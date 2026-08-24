@@ -1,0 +1,183 @@
+{
+ "engagement": "SEAM MODEL V2",
+ "store": "fb640ca0baf92bbb122b1ad7e25c5a88",
+ "manifest": "eed19a75f775",
+ "prereg_md5": "38e007836824a80f284d95f396d31243",
+ "prereg_stamp": "2026-08-24T15:06:06Z",
+ "addendum_md5": "2190aa8949edc1605d8a2d44aed9587b",
+ "addendum_stamp": "2026-08-24T15:15:17Z",
+ "verdict": "LOSES \u2014 MODEL_V vs ENGINE_ASOF 0/60 splits raw, 5/60 scale-corrected; pooled dMAE +45.6 [+31.0,+60.2]",
+ "repo_writes": 0,
+ "files": [
+  {
+   "name": "CONSTRUCTION.md",
+   "bytes": 5686,
+   "md5": "f0a17e08d2ca0464524f790400716d12"
+  },
+  {
+   "name": "PREREG.md",
+   "bytes": 15807,
+   "md5": "38e007836824a80f284d95f396d31243"
+  },
+  {
+   "name": "PREREG_ADDENDUM.md",
+   "bytes": 3426,
+   "md5": "2190aa8949edc1605d8a2d44aed9587b"
+  },
+  {
+   "name": "PREREG_STAMP.txt",
+   "bytes": 42,
+   "md5": "c520279269c0c2f5b8003707eae0f572"
+  },
+  {
+   "name": "diag.json",
+   "bytes": 13025,
+   "md5": "fbccba2e9890a9bcdf02732428898f32"
+  },
+  {
+   "name": "eval.json",
+   "bytes": 5419338,
+   "md5": "5735cf74a41f0644298eb1422d8f010e"
+  },
+  {
+   "name": "final.json",
+   "bytes": 4580,
+   "md5": "26b338a754163bfb974c495c8e3edd21"
+  },
+  {
+   "name": "oof.npz",
+   "bytes": 162584,
+   "md5": "838229cd73a92c47c5a1bdbda907d98a"
+  },
+  {
+   "name": "price.json",
+   "bytes": 27516,
+   "md5": "10dc7bde5ce738445d61879a1e2773e2"
+  },
+  {
+   "name": "s0_probe.py",
+   "bytes": 4154,
+   "md5": "dade2655962b5cab9022044cb3452594"
+  },
+  {
+   "name": "s1_asof.py",
+   "bytes": 5113,
+   "md5": "52e65c5d9384f5e7b4ff94e997bf752d"
+  },
+  {
+   "name": "s1b_diag.py",
+   "bytes": 1845,
+   "md5": "b9b0153222d52501a22d05aaa5b44c76"
+  },
+  {
+   "name": "s1c_diag.py",
+   "bytes": 1454,
+   "md5": "57ee31356318b171603e9be1abb4fd27"
+  },
+  {
+   "name": "s1d_diag.py",
+   "bytes": 1391,
+   "md5": "1449e2269890521881726c88518d9df6"
+  },
+  {
+   "name": "s2_facts.py",
+   "bytes": 3710,
+   "md5": "ce8c78e2785b89a6312971d1b7fa6335"
+  },
+  {
+   "name": "s2b_ladder.py",
+   "bytes": 1580,
+   "md5": "6b079d1d53e5a939f93b67bcd60ce4ec"
+  },
+  {
+   "name": "s3_states.py",
+   "bytes": 4257,
+   "md5": "c12f3e9a733a20cedbe30e1138a48184"
+  },
+  {
+   "name": "s4_eval.py",
+   "bytes": 11091,
+   "md5": "4771fb1de1e4df621b7ed0d2e0a5efbd"
+  },
+  {
+   "name": "s4_out.txt",
+   "bytes": 6292,
+   "md5": "172f9fd22c113399fa323a4d8411fa35"
+  },
+  {
+   "name": "s5_diag.py",
+   "bytes": 11367,
+   "md5": "32ffc8a9a7284bc5e98c4f586bf38b12"
+  },
+  {
+   "name": "s5_out.txt",
+   "bytes": 9433,
+   "md5": "f8ab0f2f301fc439c29896a9e21bb089"
+  },
+  {
+   "name": "s6_out.txt",
+   "bytes": 12637,
+   "md5": "2a03599d8ed220f1e6b13ffe368409d0"
+  },
+  {
+   "name": "s6_price.py",
+   "bytes": 12567,
+   "md5": "99623b22e60f73306d6f480c4143623c"
+  },
+  {
+   "name": "s7_out.txt",
+   "bytes": 4136,
+   "md5": "14b36928a8adc38c83ec0a520ac5c226"
+  },
+  {
+   "name": "s7_subsplit.py",
+   "bytes": 5171,
+   "md5": "3460dafcd3ed5f2400efdafb983aba9d"
+  },
+  {
+   "name": "s8_final.py",
+   "bytes": 5437,
+   "md5": "aec493c246ef4c308f721089845af10a"
+  },
+  {
+   "name": "s8_out.txt",
+   "bytes": 4906,
+   "md5": "7dfe5964142d849660fb4603e56fe879"
+  },
+  {
+   "name": "s9_out.txt",
+   "bytes": 2615,
+   "md5": "501cdf909eb0fdfeee5a1b6f3e50c123"
+  },
+  {
+   "name": "s9_why.py",
+   "bytes": 5453,
+   "md5": "03dba1bf7147ca5002755e0edda55ea1"
+  },
+  {
+   "name": "states.json",
+   "bytes": 1037113,
+   "md5": "42c233a2845d4c30b23e86e07d710dde"
+  },
+  {
+   "name": "subsplit.json",
+   "bytes": 3401,
+   "md5": "32596c203b581c93da803031d7272950"
+  },
+  {
+   "name": "v2_common.py",
+   "bytes": 2420,
+   "md5": "7b02ded0fd372865068838b9000f2ace"
+  },
+  {
+   "name": "v2_model.py",
+   "bytes": 2837,
+   "md5": "386c72e2071607248b7a6f989db9804c"
+  },
+  {
+   "name": "why.json",
+   "bytes": 938,
+   "md5": "6807f57bf9aa6483f6ac4fb444036b99"
+  }
+ ]
+}

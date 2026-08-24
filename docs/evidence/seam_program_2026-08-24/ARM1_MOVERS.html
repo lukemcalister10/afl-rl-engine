@@ -1,0 +1,656 @@
+<!doctype html><meta charset=utf-8><title>Rebake Arm 1 — Store-Alone Movers</title>
+<style>body{font:14px/1.45 -apple-system,Segoe UI,sans-serif;margin:24px;color:#111;background:#fff}
+h1{font-size:20px} .meta{color:#444;margin:6px 0 18px} table{border-collapse:collapse;width:100%}
+th,td{padding:3px 10px;border-bottom:1px solid #e5e5e5;text-align:left;font-size:13px}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums} .up{color:#0a7d33} .dn{color:#b3261e}
+thead th{position:sticky;top:0;background:#f6f6f6} .note{background:#f6f6f6;padding:10px 14px;border-radius:6px;margin:0 0 16px;max-width:70em}</style>
+<h1>Rebake Arm 1 — the store-alone refit, candidate vs live board</h1>
+<div class=meta>Live board 6fd0f7de → candidate 02a554b5 (candidate only — the live board has NOT moved).
+641 of 804 rows move: <b>329 up · 312 down · 163 flat</b>.
+Pool 700,119 → 706,175 (<b>+6,056, +0.865%</b> — the reported, waived law-9 reading).</div>
+<div class=note><b>What this arm is:</b> the incumbent model constructions refit on the current store — no design change.
+This movement is what going stale since mid-July was worth, plus your fabricated-zeros rule (T1), now applied.
+T1 alone accounts for ~38% of the total movement (it lifts young pedigree, trims the top, and slightly shrinks the pool);
+the ceiling model's refit alone carries ~40%. Board values verified by an independent supervisor rebuild, byte-exact.</div>
+<table><thead><tr><th>player</th><th>club</th><th>pos</th><th>age</th><th>games</th><th class=n>live</th><th class=n>candidate</th><th class=n>Δ</th><th class=n>Δ%</th></tr></thead><tbody>
+<tr><td>Luke Jackson</td><td>Fremantle</td><td>RUCK</td><td>25</td><td>142</td><td class=n>9285</td><td class=n>8738</td><td class='n dn'>-547</td><td class='n dn'>-5.9%</td></tr>
+<tr><td>Murphy Reid</td><td>Fremantle</td><td>SF</td><td>20</td><td>45</td><td class=n>3367</td><td class=n>3714</td><td class='n up'>+347</td><td class='n up'>+10.3%</td></tr>
+<tr><td>Zac Bailey</td><td>Brisbane</td><td>SF</td><td>27</td><td>188</td><td class=n>2611</td><td class=n>2924</td><td class='n up'>+313</td><td class='n up'>+12.0%</td></tr>
+<tr><td>Jacob Farrow</td><td>Essendon</td><td>SD</td><td>19</td><td>20</td><td class=n>2431</td><td class=n>2124</td><td class='n dn'>-307</td><td class='n dn'>-12.6%</td></tr>
+<tr><td>Jed Walter</td><td>Gold Coast</td><td>KPF</td><td>21</td><td>48</td><td class=n>815</td><td class=n>1120</td><td class='n up'>+305</td><td class='n up'>+37.4%</td></tr>
+<tr><td>Cooper Hynes</td><td>Western Bulldogs</td><td>SF</td><td>20</td><td>29</td><td class=n>929</td><td class=n>1216</td><td class='n up'>+287</td><td class='n up'>+30.9%</td></tr>
+<tr><td>Samuel Grlj</td><td>Richmond</td><td>SD</td><td>19</td><td>21</td><td class=n>1606</td><td class=n>1891</td><td class='n up'>+285</td><td class='n up'>+17.7%</td></tr>
+<tr><td>Jai Murray</td><td>Gold Coast</td><td>MID</td><td>19</td><td>8</td><td class=n>968</td><td class=n>1249</td><td class='n up'>+281</td><td class='n up'>+29.0%</td></tr>
+<tr><td>Kysaiah Pickett</td><td>Melbourne</td><td>SF</td><td>25</td><td>149</td><td class=n>3945</td><td class=n>4221</td><td class='n up'>+276</td><td class='n up'>+7.0%</td></tr>
+<tr><td>Sam Berry</td><td>Adelaide</td><td>MID</td><td>24</td><td>98</td><td class=n>3402</td><td class=n>3135</td><td class='n dn'>-267</td><td class='n dn'>-7.8%</td></tr>
+<tr><td>Dyson Sharp</td><td>Essendon</td><td>SF</td><td>19</td><td>15</td><td class=n>3288</td><td class=n>3022</td><td class='n dn'>-266</td><td class='n dn'>-8.1%</td></tr>
+<tr><td>Darcy Wilson</td><td>St Kilda</td><td>SF</td><td>21</td><td>63</td><td class=n>2654</td><td class=n>2911</td><td class='n up'>+257</td><td class='n up'>+9.7%</td></tr>
+<tr><td>Patrick Retschko</td><td>Geelong</td><td>MID</td><td>20</td><td>18</td><td class=n>1119</td><td class=n>864</td><td class='n dn'>-255</td><td class='n dn'>-22.8%</td></tr>
+<tr><td>Alex Van Wyk</td><td>Port Adelaide</td><td>RUCK</td><td>22</td><td>3</td><td class=n>315</td><td class=n>566</td><td class='n up'>+251</td><td class='n up'>+79.7%</td></tr>
+<tr><td>Harvey Langford</td><td>Melbourne</td><td>MID</td><td>20</td><td>45</td><td class=n>2332</td><td class=n>2104</td><td class='n dn'>-228</td><td class='n dn'>-9.8%</td></tr>
+<tr><td>Caleb Windsor</td><td>Melbourne</td><td>SD</td><td>21</td><td>56</td><td class=n>1160</td><td class=n>1384</td><td class='n up'>+224</td><td class='n up'>+19.3%</td></tr>
+<tr><td>Sullivan Robey</td><td>Essendon</td><td>SF</td><td>19</td><td>14</td><td class=n>2866</td><td class=n>3089</td><td class='n up'>+223</td><td class='n up'>+7.8%</td></tr>
+<tr><td>Lachlan Ash</td><td>GWS</td><td>SD</td><td>25</td><td>148</td><td class=n>5817</td><td class=n>5596</td><td class='n dn'>-221</td><td class='n dn'>-3.8%</td></tr>
+<tr><td>Francis Evans</td><td>Carlton</td><td>SF</td><td>25</td><td>65</td><td class=n>634</td><td class=n>850</td><td class='n up'>+216</td><td class='n up'>+34.1%</td></tr>
+<tr><td>Taj Hotton</td><td>Richmond</td><td>SF</td><td>20</td><td>17</td><td class=n>1940</td><td class=n>2155</td><td class='n up'>+215</td><td class='n up'>+11.1%</td></tr>
+<tr><td>Jake Bowey</td><td>Melbourne</td><td>SD</td><td>24</td><td>99</td><td class=n>3926</td><td class=n>4126</td><td class='n up'>+200</td><td class='n up'>+5.1%</td></tr>
+<tr><td>Paul Curtis</td><td>North Melbourne</td><td>SF</td><td>23</td><td>98</td><td class=n>1345</td><td class=n>1543</td><td class='n up'>+198</td><td class='n up'>+14.7%</td></tr>
+<tr><td>Zane Duursma</td><td>North Melbourne</td><td>SF</td><td>21</td><td>38</td><td class=n>331</td><td class=n>522</td><td class='n up'>+191</td><td class='n up'>+57.7%</td></tr>
+<tr><td>Xavier Lindsay</td><td>Melbourne</td><td>SD</td><td>20</td><td>24</td><td class=n>1251</td><td class=n>1438</td><td class='n up'>+187</td><td class='n up'>+14.9%</td></tr>
+<tr><td>Will Graham</td><td>Gold Coast</td><td>SF</td><td>21</td><td>36</td><td class=n>1533</td><td class=n>1720</td><td class='n up'>+187</td><td class='n up'>+12.2%</td></tr>
+<tr><td>Connor MacDonald</td><td>Hawthorn</td><td>SF</td><td>23</td><td>113</td><td class=n>2634</td><td class=n>2820</td><td class='n up'>+186</td><td class='n up'>+7.1%</td></tr>
+<tr><td>Cooper Trembath</td><td>North Melbourne</td><td>KPF</td><td>21</td><td>26</td><td class=n>1871</td><td class=n>1685</td><td class='n dn'>-186</td><td class='n dn'>-9.9%</td></tr>
+<tr><td>Kai Lohmann</td><td>Brisbane</td><td>SF</td><td>23</td><td>76</td><td class=n>744</td><td class=n>926</td><td class='n up'>+182</td><td class='n up'>+24.5%</td></tr>
+<tr><td>Darcy Jones</td><td>GWS</td><td>SF</td><td>22</td><td>37</td><td class=n>1285</td><td class=n>1461</td><td class='n up'>+176</td><td class='n up'>+13.7%</td></tr>
+<tr><td>Levi Ashcroft</td><td>Brisbane</td><td>MID</td><td>20</td><td>50</td><td class=n>3703</td><td class=n>3876</td><td class='n up'>+173</td><td class='n up'>+4.7%</td></tr>
+<tr><td>Connor Idun</td><td>GWS</td><td>SD</td><td>26</td><td>140</td><td class=n>2226</td><td class=n>2398</td><td class='n up'>+172</td><td class='n up'>+7.7%</td></tr>
+<tr><td>Errol Gulden</td><td>Sydney</td><td>MID</td><td>24</td><td>114</td><td class=n>7162</td><td class=n>6991</td><td class='n dn'>-171</td><td class='n dn'>-2.4%</td></tr>
+<tr><td>Zak Butters</td><td>Port Adelaide</td><td>MID</td><td>26</td><td>156</td><td class=n>6565</td><td class=n>6735</td><td class='n up'>+170</td><td class='n up'>+2.6%</td></tr>
+<tr><td>Jai Newcombe</td><td>Hawthorn</td><td>MID</td><td>25</td><td>125</td><td class=n>4451</td><td class=n>4620</td><td class='n up'>+169</td><td class='n up'>+3.8%</td></tr>
+<tr><td>Sid Draper</td><td>Adelaide</td><td>SF</td><td>20</td><td>10</td><td class=n>951</td><td class=n>1118</td><td class='n up'>+167</td><td class='n up'>+17.6%</td></tr>
+<tr><td>Tom Green</td><td>GWS</td><td>MID</td><td>25</td><td>115</td><td class=n>5440</td><td class=n>5282</td><td class='n dn'>-158</td><td class='n dn'>-2.9%</td></tr>
+<tr><td>Josh Rachele</td><td>Adelaide</td><td>SF</td><td>23</td><td>93</td><td class=n>1712</td><td class=n>1870</td><td class='n up'>+158</td><td class='n up'>+9.2%</td></tr>
+<tr><td>Jason Horne-Francis</td><td>Port Adelaide</td><td>SF</td><td>23</td><td>101</td><td class=n>5563</td><td class=n>5720</td><td class='n up'>+157</td><td class='n up'>+2.8%</td></tr>
+<tr><td>Ben Keays</td><td>Adelaide</td><td>SF</td><td>29</td><td>184</td><td class=n>273</td><td class=n>429</td><td class='n up'>+156</td><td class='n up'>+57.1%</td></tr>
+<tr><td>Will Day</td><td>Hawthorn</td><td>MID</td><td>25</td><td>87</td><td class=n>2009</td><td class=n>1854</td><td class='n dn'>-155</td><td class='n dn'>-7.7%</td></tr>
+<tr><td>Leo Lombard</td><td>Gold Coast</td><td>SF</td><td>20</td><td>27</td><td class=n>1770</td><td class=n>1925</td><td class='n up'>+155</td><td class='n up'>+8.8%</td></tr>
+<tr><td>Jaspa Fletcher</td><td>Brisbane</td><td>SD</td><td>22</td><td>91</td><td class=n>2474</td><td class=n>2627</td><td class='n up'>+153</td><td class='n up'>+6.2%</td></tr>
+<tr><td>Joel Freijah</td><td>Western Bulldogs</td><td>SF</td><td>21</td><td>59</td><td class=n>2750</td><td class=n>2903</td><td class='n up'>+153</td><td class='n up'>+5.6%</td></tr>
+<tr><td>Lachy Dovaston</td><td>North Melbourne</td><td>SF</td><td>19</td><td>6</td><td class=n>572</td><td class=n>723</td><td class='n up'>+151</td><td class='n up'>+26.4%</td></tr>
+<tr><td>Ed Richards</td><td>Western Bulldogs</td><td>MID</td><td>27</td><td>170</td><td class=n>4121</td><td class=n>4271</td><td class='n up'>+150</td><td class='n up'>+3.6%</td></tr>
+<tr><td>Nick Daicos</td><td>Collingwood</td><td>MID</td><td>23</td><td>117</td><td class=n>9920</td><td class=n>9771</td><td class='n dn'>-149</td><td class='n dn'>-1.5%</td></tr>
+<tr><td>Nick Watson</td><td>Hawthorn</td><td>SF</td><td>21</td><td>63</td><td class=n>3624</td><td class=n>3770</td><td class='n up'>+146</td><td class='n up'>+4.0%</td></tr>
+<tr><td>Flynn Riley</td><td>Carlton</td><td>RUCK</td><td>22</td><td>1</td><td class=n>341</td><td class=n>487</td><td class='n up'>+146</td><td class='n up'>+42.8%</td></tr>
+<tr><td>Callum Wilkie</td><td>St Kilda</td><td>KPD</td><td>30</td><td>178</td><td class=n>3527</td><td class=n>3670</td><td class='n up'>+143</td><td class='n up'>+4.1%</td></tr>
+<tr><td>Logan Morris</td><td>Brisbane</td><td>KPF</td><td>21</td><td>67</td><td class=n>3260</td><td class=n>3120</td><td class='n dn'>-140</td><td class='n dn'>-4.3%</td></tr>
+<tr><td>Thomas Sims</td><td>Richmond</td><td>KPF</td><td>20</td><td>11</td><td class=n>751</td><td class=n>613</td><td class='n dn'>-138</td><td class='n dn'>-18.4%</td></tr>
+<tr><td>Bo Allan</td><td>West Coast</td><td>SD</td><td>20</td><td>25</td><td class=n>611</td><td class=n>749</td><td class='n up'>+138</td><td class='n up'>+22.6%</td></tr>
+<tr><td>Bodhi Uwland</td><td>Gold Coast</td><td>SD</td><td>23</td><td>72</td><td class=n>3678</td><td class=n>3815</td><td class='n up'>+137</td><td class='n up'>+3.7%</td></tr>
+<tr><td>Jagga Smith</td><td>Carlton</td><td>SF</td><td>20</td><td>22</td><td class=n>4465</td><td class=n>4600</td><td class='n up'>+135</td><td class='n up'>+3.0%</td></tr>
+<tr><td>Beau Addinsall</td><td>Gold Coast</td><td>MID</td><td>19</td><td>9</td><td class=n>1217</td><td class=n>1352</td><td class='n up'>+135</td><td class='n up'>+11.1%</td></tr>
+<tr><td>Harvey Thomas</td><td>GWS</td><td>SF</td><td>21</td><td>62</td><td class=n>1994</td><td class=n>2128</td><td class='n up'>+134</td><td class='n up'>+6.7%</td></tr>
+<tr><td>John Noble</td><td>Gold Coast</td><td>SD</td><td>29</td><td>160</td><td class=n>2300</td><td class=n>2433</td><td class='n up'>+133</td><td class='n up'>+5.8%</td></tr>
+<tr><td>Jordan Croft</td><td>Western Bulldogs</td><td>KPF</td><td>21</td><td>19</td><td class=n>519</td><td class=n>387</td><td class='n dn'>-132</td><td class='n dn'>-25.4%</td></tr>
+<tr><td>Cooper Lord</td><td>Carlton</td><td>MID</td><td>21</td><td>32</td><td class=n>1094</td><td class=n>963</td><td class='n dn'>-131</td><td class='n dn'>-12.0%</td></tr>
+<tr><td>Jobe Shanahan</td><td>West Coast</td><td>KPF</td><td>20</td><td>32</td><td class=n>1246</td><td class=n>1372</td><td class='n up'>+126</td><td class='n up'>+10.1%</td></tr>
+<tr><td>Ty Gallop</td><td>Brisbane</td><td>KPF</td><td>20</td><td>24</td><td class=n>972</td><td class=n>1098</td><td class='n up'>+126</td><td class='n up'>+13.0%</td></tr>
+<tr><td>Noah Anderson</td><td>Gold Coast</td><td>MID</td><td>25</td><td>151</td><td class=n>5286</td><td class=n>5162</td><td class='n dn'>-124</td><td class='n dn'>-2.3%</td></tr>
+<tr><td>Shai Bolton</td><td>Fremantle</td><td>SF</td><td>28</td><td>180</td><td class=n>2117</td><td class=n>2240</td><td class='n up'>+123</td><td class='n up'>+5.8%</td></tr>
+<tr><td>Sam Cumming</td><td>Richmond</td><td>MID</td><td>19</td><td>14</td><td class=n>2193</td><td class=n>2315</td><td class='n up'>+122</td><td class='n up'>+5.6%</td></tr>
+<tr><td>Sean Darcy</td><td>Fremantle</td><td>RUCK</td><td>28</td><td>134</td><td class=n>913</td><td class=n>791</td><td class='n dn'>-122</td><td class='n dn'>-13.4%</td></tr>
+<tr><td>Josh Treacy</td><td>Fremantle</td><td>KPF</td><td>24</td><td>103</td><td class=n>5908</td><td class=n>5787</td><td class='n dn'>-121</td><td class='n dn'>-2.0%</td></tr>
+<tr><td>Nicholas Martin</td><td>Essendon</td><td>SF</td><td>25</td><td>83</td><td class=n>4007</td><td class=n>3887</td><td class='n dn'>-120</td><td class='n dn'>-3.0%</td></tr>
+<tr><td>Izak Rankine</td><td>Adelaide</td><td>SF</td><td>26</td><td>125</td><td class=n>4967</td><td class=n>5086</td><td class='n up'>+119</td><td class='n up'>+2.4%</td></tr>
+<tr><td>Nick Murray</td><td>Adelaide</td><td>KPD</td><td>26</td><td>78</td><td class=n>379</td><td class=n>498</td><td class='n up'>+119</td><td class='n up'>+31.4%</td></tr>
+<tr><td>Max Heath</td><td>Melbourne</td><td>KPF</td><td>24</td><td>11</td><td class=n>577</td><td class=n>696</td><td class='n up'>+119</td><td class='n up'>+20.6%</td></tr>
+<tr><td>Nathan O&#x27;Driscoll</td><td>Fremantle</td><td>MID</td><td>24</td><td>54</td><td class=n>412</td><td class=n>294</td><td class='n dn'>-118</td><td class='n dn'>-28.6%</td></tr>
+<tr><td>Jordon Sweet</td><td>Port Adelaide</td><td>RUCK</td><td>28</td><td>69</td><td class=n>2446</td><td class=n>2563</td><td class='n up'>+117</td><td class='n up'>+4.8%</td></tr>
+<tr><td>Tyler Sonsie</td><td>Richmond</td><td>SF</td><td>23</td><td>55</td><td class=n>1010</td><td class=n>894</td><td class='n dn'>-116</td><td class='n dn'>-11.5%</td></tr>
+<tr><td>Brodie Kemp</td><td>Carlton</td><td>KPF</td><td>25</td><td>72</td><td class=n>782</td><td class=n>896</td><td class='n up'>+114</td><td class='n up'>+14.6%</td></tr>
+<tr><td>Oscar Steene</td><td>Collingwood</td><td>KPF</td><td>23</td><td>8</td><td class=n>537</td><td class=n>650</td><td class='n up'>+113</td><td class='n up'>+21.0%</td></tr>
+<tr><td>Archer Reid</td><td>West Coast</td><td>KPF</td><td>21</td><td>20</td><td class=n>453</td><td class=n>341</td><td class='n dn'>-112</td><td class='n dn'>-24.7%</td></tr>
+<tr><td>Luke Davies-Uniacke</td><td>North Melbourne</td><td>MID</td><td>27</td><td>153</td><td class=n>3205</td><td class=n>3094</td><td class='n dn'>-111</td><td class='n dn'>-3.5%</td></tr>
+<tr><td>Charlie West</td><td>Collingwood</td><td>KPF</td><td>20</td><td>9</td><td class=n>433</td><td class=n>322</td><td class='n dn'>-111</td><td class='n dn'>-25.6%</td></tr>
+<tr><td>Sam Flanders</td><td>St Kilda</td><td>SF</td><td>25</td><td>101</td><td class=n>2732</td><td class=n>2623</td><td class='n dn'>-109</td><td class='n dn'>-4.0%</td></tr>
+<tr><td>Bailey Smith</td><td>Geelong</td><td>MID</td><td>26</td><td>148</td><td class=n>6262</td><td class=n>6370</td><td class='n up'>+108</td><td class='n up'>+1.7%</td></tr>
+<tr><td>Daniel Annable</td><td>Brisbane</td><td>MID</td><td>19</td><td>3</td><td class=n>1137</td><td class=n>1245</td><td class='n up'>+108</td><td class='n up'>+9.5%</td></tr>
+<tr><td>Matt Rowell</td><td>Gold Coast</td><td>MID</td><td>25</td><td>128</td><td class=n>4600</td><td class=n>4707</td><td class='n up'>+107</td><td class='n up'>+2.3%</td></tr>
+<tr><td>Sam Durham</td><td>Essendon</td><td>SF</td><td>25</td><td>111</td><td class=n>2539</td><td class=n>2432</td><td class='n dn'>-107</td><td class='n dn'>-4.2%</td></tr>
+<tr><td>Darcy Wilmot</td><td>Brisbane</td><td>SD</td><td>23</td><td>106</td><td class=n>3049</td><td class=n>3156</td><td class='n up'>+107</td><td class='n up'>+3.5%</td></tr>
+<tr><td>Gryan Miers</td><td>Geelong</td><td>SF</td><td>27</td><td>170</td><td class=n>1609</td><td class=n>1502</td><td class='n dn'>-107</td><td class='n dn'>-6.7%</td></tr>
+<tr><td>Neil Erasmus</td><td>Fremantle</td><td>MID</td><td>23</td><td>62</td><td class=n>994</td><td class=n>1101</td><td class='n up'>+107</td><td class='n up'>+10.8%</td></tr>
+<tr><td>Joshua Weddle</td><td>Hawthorn</td><td>SD</td><td>22</td><td>79</td><td class=n>1259</td><td class=n>1365</td><td class='n up'>+106</td><td class='n up'>+8.4%</td></tr>
+<tr><td>Billy Wilson</td><td>Carlton</td><td>SD</td><td>21</td><td>19</td><td class=n>980</td><td class=n>874</td><td class='n dn'>-106</td><td class='n dn'>-10.8%</td></tr>
+<tr><td>Jack Williams</td><td>West Coast</td><td>KPF</td><td>23</td><td>53</td><td class=n>476</td><td class=n>370</td><td class='n dn'>-106</td><td class='n dn'>-22.3%</td></tr>
+<tr><td>George Wardlaw</td><td>North Melbourne</td><td>MID</td><td>22</td><td>55</td><td class=n>3099</td><td class=n>2995</td><td class='n dn'>-104</td><td class='n dn'>-3.4%</td></tr>
+<tr><td>Elijah Hollands</td><td>Carlton</td><td>SF</td><td>24</td><td>47</td><td class=n>703</td><td class=n>806</td><td class='n up'>+103</td><td class='n up'>+14.7%</td></tr>
+<tr><td>Cameron Nairn</td><td>Hawthorn</td><td>SF</td><td>19</td><td>3</td><td class=n>526</td><td class=n>628</td><td class='n up'>+102</td><td class='n up'>+19.4%</td></tr>
+<tr><td>Jhye Clark</td><td>Geelong</td><td>SF</td><td>22</td><td>35</td><td class=n>829</td><td class=n>931</td><td class='n up'>+102</td><td class='n up'>+12.3%</td></tr>
+<tr><td>Hamish Davis</td><td>West Coast</td><td>MID</td><td>20</td><td>28</td><td class=n>644</td><td class=n>745</td><td class='n up'>+101</td><td class='n up'>+15.7%</td></tr>
+<tr><td>Aaron Cadman</td><td>GWS</td><td>KPF</td><td>22</td><td>77</td><td class=n>1886</td><td class=n>1984</td><td class='n up'>+98</td><td class='n up'>+5.2%</td></tr>
+<tr><td>Talor Byrne</td><td>Carlton</td><td>SF</td><td>19</td><td>17</td><td class=n>717</td><td class=n>815</td><td class='n up'>+98</td><td class='n up'>+13.7%</td></tr>
+<tr><td>Samson Ryan</td><td>Richmond</td><td>RUCK</td><td>26</td><td>30</td><td class=n>347</td><td class=n>249</td><td class='n dn'>-98</td><td class='n dn'>-28.2%</td></tr>
+<tr><td>Archie Roberts</td><td>Essendon</td><td>SD</td><td>21</td><td>48</td><td class=n>3587</td><td class=n>3683</td><td class='n up'>+96</td><td class='n up'>+2.7%</td></tr>
+<tr><td>Lachlan Cowan</td><td>Carlton</td><td>SD</td><td>22</td><td>60</td><td class=n>699</td><td class=n>603</td><td class='n dn'>-96</td><td class='n dn'>-13.7%</td></tr>
+<tr><td>Timothy English</td><td>Western Bulldogs</td><td>RUCK</td><td>29</td><td>169</td><td class=n>3340</td><td class=n>3435</td><td class='n up'>+95</td><td class='n up'>+2.8%</td></tr>
+<tr><td>Max Michalanney</td><td>Adelaide</td><td>SD</td><td>22</td><td>89</td><td class=n>503</td><td class=n>597</td><td class='n up'>+94</td><td class='n up'>+18.7%</td></tr>
+<tr><td>Ned Reeves</td><td>Hawthorn</td><td>RUCK</td><td>28</td><td>58</td><td class=n>431</td><td class=n>337</td><td class='n dn'>-94</td><td class='n dn'>-21.8%</td></tr>
+<tr><td>Chad Warner</td><td>Sydney</td><td>SF</td><td>25</td><td>130</td><td class=n>4107</td><td class=n>4015</td><td class='n dn'>-92</td><td class='n dn'>-2.2%</td></tr>
+<tr><td>James Rowbottom</td><td>Sydney</td><td>SF</td><td>26</td><td>160</td><td class=n>1279</td><td class=n>1371</td><td class='n up'>+92</td><td class='n up'>+7.2%</td></tr>
+<tr><td>Anthony Caminiti</td><td>St Kilda</td><td>KPF</td><td>23</td><td>74</td><td class=n>966</td><td class=n>874</td><td class='n dn'>-92</td><td class='n dn'>-9.5%</td></tr>
+<tr><td>Tanner Bruhn</td><td>Geelong</td><td>SD</td><td>24</td><td>86</td><td class=n>2157</td><td class=n>2066</td><td class='n dn'>-91</td><td class='n dn'>-4.2%</td></tr>
+<tr><td>Joe Berry</td><td>Port Adelaide</td><td>SF</td><td>20</td><td>35</td><td class=n>1090</td><td class=n>1180</td><td class='n up'>+90</td><td class='n up'>+8.3%</td></tr>
+<tr><td>Ryley Sanders</td><td>Western Bulldogs</td><td>SF</td><td>21</td><td>56</td><td class=n>3645</td><td class=n>3734</td><td class='n up'>+89</td><td class='n up'>+2.4%</td></tr>
+<tr><td>Andrew McGrath</td><td>Essendon</td><td>SD</td><td>28</td><td>200</td><td class=n>1152</td><td class=n>1064</td><td class='n dn'>-88</td><td class='n dn'>-7.6%</td></tr>
+<tr><td>Colby McKercher</td><td>North Melbourne</td><td>SD</td><td>21</td><td>62</td><td class=n>4417</td><td class=n>4503</td><td class='n up'>+86</td><td class='n up'>+1.9%</td></tr>
+<tr><td>Isaac Kako</td><td>Essendon</td><td>SF</td><td>20</td><td>38</td><td class=n>838</td><td class=n>924</td><td class='n up'>+86</td><td class='n up'>+10.3%</td></tr>
+<tr><td>Nick Madden</td><td>GWS</td><td>RUCK</td><td>22</td><td>12</td><td class=n>1182</td><td class=n>1268</td><td class='n up'>+86</td><td class='n up'>+7.3%</td></tr>
+<tr><td>Jake Waterman</td><td>West Coast</td><td>KPF</td><td>28</td><td>135</td><td class=n>1073</td><td class=n>987</td><td class='n dn'>-86</td><td class='n dn'>-8.0%</td></tr>
+<tr><td>Nikolas Cox</td><td>Essendon</td><td>MID</td><td>24</td><td>61</td><td class=n>187</td><td class=n>101</td><td class='n dn'>-86</td><td class='n dn'>-46.0%</td></tr>
+<tr><td>Max Holmes</td><td>Geelong</td><td>MID</td><td>24</td><td>120</td><td class=n>7697</td><td class=n>7614</td><td class='n dn'>-83</td><td class='n dn'>-1.1%</td></tr>
+<tr><td>Ethan Read</td><td>Gold Coast</td><td>KPF</td><td>21</td><td>40</td><td class=n>593</td><td class=n>510</td><td class='n dn'>-83</td><td class='n dn'>-14.0%</td></tr>
+<tr><td>Archer Day-Wicks</td><td>Essendon</td><td>SF</td><td>20</td><td>26</td><td class=n>365</td><td class=n>447</td><td class='n up'>+82</td><td class='n up'>+22.5%</td></tr>
+<tr><td>Josh Ward</td><td>Hawthorn</td><td>MID</td><td>23</td><td>90</td><td class=n>2798</td><td class=n>2717</td><td class='n dn'>-81</td><td class='n dn'>-2.9%</td></tr>
+<tr><td>Kane McAuliffe</td><td>Richmond</td><td>MID</td><td>21</td><td>24</td><td class=n>1201</td><td class=n>1120</td><td class='n dn'>-81</td><td class='n dn'>-6.7%</td></tr>
+<tr><td>Cameron Rayner</td><td>Brisbane</td><td>SF</td><td>27</td><td>190</td><td class=n>507</td><td class=n>587</td><td class='n up'>+80</td><td class='n up'>+15.8%</td></tr>
+<tr><td>James Jordon</td><td>Sydney</td><td>SF</td><td>26</td><td>136</td><td class=n>236</td><td class=n>315</td><td class='n up'>+79</td><td class='n up'>+33.5%</td></tr>
+<tr><td>Alex Neal-Bullen</td><td>Adelaide</td><td>SF</td><td>30</td><td>222</td><td class=n>342</td><td class=n>420</td><td class='n up'>+78</td><td class='n up'>+22.8%</td></tr>
+<tr><td>Caleb Serong</td><td>Fremantle</td><td>MID</td><td>25</td><td>147</td><td class=n>4754</td><td class=n>4679</td><td class='n dn'>-75</td><td class='n dn'>-1.6%</td></tr>
+<tr><td>Kieren Briggs</td><td>GWS</td><td>RUCK</td><td>27</td><td>88</td><td class=n>1791</td><td class=n>1866</td><td class='n up'>+75</td><td class='n up'>+4.2%</td></tr>
+<tr><td>Jack Payne</td><td>Brisbane</td><td>KPD</td><td>27</td><td>81</td><td class=n>197</td><td class=n>272</td><td class='n up'>+75</td><td class='n up'>+38.1%</td></tr>
+<tr><td>Rhylee West</td><td>Western Bulldogs</td><td>SF</td><td>26</td><td>103</td><td class=n>158</td><td class=n>233</td><td class='n up'>+75</td><td class='n up'>+47.5%</td></tr>
+<tr><td>Ollie Dempsey</td><td>Geelong</td><td>MID</td><td>23</td><td>81</td><td class=n>2427</td><td class=n>2353</td><td class='n dn'>-74</td><td class='n dn'>-3.0%</td></tr>
+<tr><td>Noah Mraz</td><td>Hawthorn</td><td>KPD</td><td>20</td><td>4</td><td class=n>1030</td><td class=n>957</td><td class='n dn'>-73</td><td class='n dn'>-7.1%</td></tr>
+<tr><td>Hugo Garcia</td><td>St Kilda</td><td>MID</td><td>21</td><td>49</td><td class=n>2791</td><td class=n>2864</td><td class='n up'>+73</td><td class='n up'>+2.6%</td></tr>
+<tr><td>Jack Ross</td><td>Richmond</td><td>SF</td><td>26</td><td>111</td><td class=n>2515</td><td class=n>2588</td><td class='n up'>+73</td><td class='n up'>+2.9%</td></tr>
+<tr><td>Trent Rivers</td><td>Melbourne</td><td>SD</td><td>25</td><td>139</td><td class=n>1660</td><td class=n>1587</td><td class='n dn'>-73</td><td class='n dn'>-4.4%</td></tr>
+<tr><td>Bailey Humphrey</td><td>Gold Coast</td><td>SF</td><td>22</td><td>83</td><td class=n>2382</td><td class=n>2455</td><td class='n up'>+73</td><td class='n up'>+3.1%</td></tr>
+<tr><td>Michael Frederick</td><td>Fremantle</td><td>SF</td><td>26</td><td>120</td><td class=n>72</td><td class=n>145</td><td class='n up'>+73</td><td class='n up'>+101.4%</td></tr>
+<tr><td>Jordan Clark</td><td>Fremantle</td><td>SD</td><td>26</td><td>149</td><td class=n>3274</td><td class=n>3346</td><td class='n up'>+72</td><td class='n up'>+2.2%</td></tr>
+<tr><td>Sam Lalor</td><td>Richmond</td><td>SF</td><td>20</td><td>23</td><td class=n>3590</td><td class=n>3661</td><td class='n up'>+71</td><td class='n up'>+2.0%</td></tr>
+<tr><td>Christian Moraes</td><td>Port Adelaide</td><td>SF</td><td>20</td><td>26</td><td class=n>650</td><td class=n>721</td><td class='n up'>+71</td><td class='n up'>+10.9%</td></tr>
+<tr><td>Connor Rozee</td><td>Port Adelaide</td><td>SD</td><td>26</td><td>152</td><td class=n>3313</td><td class=n>3383</td><td class='n up'>+70</td><td class='n up'>+2.1%</td></tr>
+<tr><td>Aaron Naughton</td><td>Western Bulldogs</td><td>KPF</td><td>27</td><td>188</td><td class=n>1307</td><td class=n>1237</td><td class='n dn'>-70</td><td class='n dn'>-5.4%</td></tr>
+<tr><td>Cooper Duff-Tytler</td><td>West Coast</td><td>KPF</td><td>19</td><td>15</td><td class=n>1871</td><td class=n>1940</td><td class='n up'>+69</td><td class='n up'>+3.7%</td></tr>
+<tr><td>Tom Sparrow</td><td>Melbourne</td><td>SF</td><td>26</td><td>140</td><td class=n>1531</td><td class=n>1600</td><td class='n up'>+69</td><td class='n up'>+4.5%</td></tr>
+<tr><td>Hayden Young</td><td>Fremantle</td><td>MID</td><td>25</td><td>102</td><td class=n>1782</td><td class=n>1713</td><td class='n dn'>-69</td><td class='n dn'>-3.9%</td></tr>
+<tr><td>Elijah Tsatas</td><td>Essendon</td><td>MID</td><td>22</td><td>22</td><td class=n>918</td><td class=n>987</td><td class='n up'>+69</td><td class='n up'>+7.5%</td></tr>
+<tr><td>Ben Ainsworth</td><td>Carlton</td><td>SF</td><td>28</td><td>181</td><td class=n>277</td><td class=n>208</td><td class='n dn'>-69</td><td class='n dn'>-24.9%</td></tr>
+<tr><td>Harry Kyle</td><td>Sydney</td><td>SD</td><td>19</td><td>9</td><td class=n>844</td><td class=n>912</td><td class='n up'>+68</td><td class='n up'>+8.1%</td></tr>
+<tr><td>Wil Dawson</td><td>North Melbourne</td><td>KPD</td><td>21</td><td>18</td><td class=n>296</td><td class=n>228</td><td class='n dn'>-68</td><td class='n dn'>-23.0%</td></tr>
+<tr><td>Jacob Konstanty</td><td>North Melbourne</td><td>SF</td><td>22</td><td>33</td><td class=n>108</td><td class=n>174</td><td class='n up'>+66</td><td class='n up'>+61.1%</td></tr>
+<tr><td>Angus Sheldrick</td><td>Sydney</td><td>MID</td><td>23</td><td>47</td><td class=n>717</td><td class=n>783</td><td class='n up'>+66</td><td class='n up'>+9.2%</td></tr>
+<tr><td>Josh Worrell</td><td>Adelaide</td><td>SD</td><td>25</td><td>78</td><td class=n>3074</td><td class=n>3009</td><td class='n dn'>-65</td><td class='n dn'>-2.1%</td></tr>
+<tr><td>Harrison Ramm</td><td>Port Adelaide</td><td>KPD</td><td>20</td><td>7</td><td class=n>413</td><td class=n>349</td><td class='n dn'>-64</td><td class='n dn'>-15.5%</td></tr>
+<tr><td>Finnbar Maley</td><td>Adelaide</td><td>KPF</td><td>23</td><td>13</td><td class=n>261</td><td class=n>197</td><td class='n dn'>-64</td><td class='n dn'>-24.5%</td></tr>
+<tr><td>Tristan Xerri</td><td>North Melbourne</td><td>RUCK</td><td>27</td><td>95</td><td class=n>7199</td><td class=n>7136</td><td class='n dn'>-63</td><td class='n dn'>-0.9%</td></tr>
+<tr><td>Zac Taylor</td><td>Adelaide</td><td>SF</td><td>23</td><td>46</td><td class=n>248</td><td class=n>311</td><td class='n up'>+63</td><td class='n up'>+25.4%</td></tr>
+<tr><td>Hugo Ralphsmith</td><td>Richmond</td><td>MID</td><td>25</td><td>75</td><td class=n>125</td><td class=n>188</td><td class='n up'>+63</td><td class='n up'>+50.4%</td></tr>
+<tr><td>Cameron Mackenzie</td><td>Hawthorn</td><td>MID</td><td>22</td><td>67</td><td class=n>1824</td><td class=n>1886</td><td class='n up'>+62</td><td class='n up'>+3.4%</td></tr>
+<tr><td>Patrick Voss</td><td>Fremantle</td><td>KPF</td><td>23</td><td>49</td><td class=n>1247</td><td class=n>1186</td><td class='n dn'>-61</td><td class='n dn'>-4.9%</td></tr>
+<tr><td>Jacob Weitering</td><td>Carlton</td><td>KPD</td><td>29</td><td>216</td><td class=n>1122</td><td class=n>1061</td><td class='n dn'>-61</td><td class='n dn'>-5.4%</td></tr>
+<tr><td>Jordan Ridley</td><td>Essendon</td><td>SD</td><td>28</td><td>110</td><td class=n>722</td><td class=n>783</td><td class='n up'>+61</td><td class='n up'>+8.4%</td></tr>
+<tr><td>Liam Baker</td><td>West Coast</td><td>SD</td><td>28</td><td>171</td><td class=n>426</td><td class=n>487</td><td class='n up'>+61</td><td class='n up'>+14.3%</td></tr>
+<tr><td>Keidean Coleman</td><td>Brisbane</td><td>SD</td><td>26</td><td>78</td><td class=n>776</td><td class=n>716</td><td class='n dn'>-60</td><td class='n dn'>-7.7%</td></tr>
+<tr><td>Dante Visentini</td><td>Port Adelaide</td><td>KPF</td><td>23</td><td>29</td><td class=n>1023</td><td class=n>963</td><td class='n dn'>-60</td><td class='n dn'>-5.9%</td></tr>
+<tr><td>Jack Buller</td><td>Collingwood</td><td>KPF</td><td>25</td><td>20</td><td class=n>109</td><td class=n>49</td><td class='n dn'>-60</td><td class='n dn'>-55.0%</td></tr>
+<tr><td>Harry O&#x27;Farrell</td><td>Carlton</td><td>KPD</td><td>20</td><td>6</td><td class=n>546</td><td class=n>487</td><td class='n dn'>-59</td><td class='n dn'>-10.8%</td></tr>
+<tr><td>Ben King</td><td>Gold Coast</td><td>KPF</td><td>26</td><td>143</td><td class=n>254</td><td class=n>196</td><td class='n dn'>-58</td><td class='n dn'>-22.8%</td></tr>
+<tr><td>Liam Fawcett</td><td>Richmond</td><td>KPF</td><td>21</td><td>8</td><td class=n>366</td><td class=n>308</td><td class='n dn'>-58</td><td class='n dn'>-15.8%</td></tr>
+<tr><td>Arthur Jones</td><td>Western Bulldogs</td><td>SF</td><td>23</td><td>36</td><td class=n>152</td><td class=n>210</td><td class='n up'>+58</td><td class='n up'>+38.2%</td></tr>
+<tr><td>Jake Rogers</td><td>Gold Coast</td><td>SF</td><td>21</td><td>27</td><td class=n>316</td><td class=n>259</td><td class='n dn'>-57</td><td class='n dn'>-18.0%</td></tr>
+<tr><td>Angus Clarke</td><td>Essendon</td><td>SD</td><td>20</td><td>19</td><td class=n>531</td><td class=n>588</td><td class='n up'>+57</td><td class='n up'>+10.7%</td></tr>
+<tr><td>Blake Howes</td><td>Melbourne</td><td>SD</td><td>23</td><td>48</td><td class=n>305</td><td class=n>362</td><td class='n up'>+57</td><td class='n up'>+18.7%</td></tr>
+<tr><td>Ollie Lord</td><td>Port Adelaide</td><td>KPF</td><td>24</td><td>35</td><td class=n>124</td><td class=n>67</td><td class='n dn'>-57</td><td class='n dn'>-46.0%</td></tr>
+<tr><td>Jye Caldwell</td><td>Essendon</td><td>MID</td><td>26</td><td>106</td><td class=n>1104</td><td class=n>1160</td><td class='n up'>+56</td><td class='n up'>+5.1%</td></tr>
+<tr><td>Willem Drew</td><td>Port Adelaide</td><td>MID</td><td>28</td><td>152</td><td class=n>642</td><td class=n>698</td><td class='n up'>+56</td><td class='n up'>+8.7%</td></tr>
+<tr><td>Harry Sharp</td><td>Brisbane</td><td>SF</td><td>24</td><td>57</td><td class=n>109</td><td class=n>165</td><td class='n up'>+56</td><td class='n up'>+51.4%</td></tr>
+<tr><td>Josh Battle</td><td>St Kilda</td><td>KPD</td><td>28</td><td>170</td><td class=n>1909</td><td class=n>1964</td><td class='n up'>+55</td><td class='n up'>+2.9%</td></tr>
+<tr><td>Harvey Johnston</td><td>West Coast</td><td>SD</td><td>21</td><td>14</td><td class=n>188</td><td class=n>133</td><td class='n dn'>-55</td><td class='n dn'>-29.3%</td></tr>
+<tr><td>Beau McCreery</td><td>Collingwood</td><td>SF</td><td>25</td><td>118</td><td class=n>213</td><td class=n>268</td><td class='n up'>+55</td><td class='n up'>+25.8%</td></tr>
+<tr><td>James Borlase</td><td>Adelaide</td><td>KPD</td><td>24</td><td>33</td><td class=n>391</td><td class=n>446</td><td class='n up'>+55</td><td class='n up'>+14.1%</td></tr>
+<tr><td>Oliver Florent</td><td>Carlton</td><td>SD</td><td>28</td><td>207</td><td class=n>1010</td><td class=n>1064</td><td class='n up'>+54</td><td class='n up'>+5.3%</td></tr>
+<tr><td>Caiden Cleary</td><td>Sydney</td><td>SF</td><td>21</td><td>26</td><td class=n>360</td><td class=n>414</td><td class='n up'>+54</td><td class='n up'>+15.0%</td></tr>
+<tr><td>Bailey Williams</td><td>Western Bulldogs</td><td>SD</td><td>29</td><td>191</td><td class=n>545</td><td class=n>599</td><td class='n up'>+54</td><td class='n up'>+9.9%</td></tr>
+<tr><td>Charlie Banfield</td><td>St Kilda</td><td>SF</td><td>19</td><td>3</td><td class=n>613</td><td class=n>666</td><td class='n up'>+53</td><td class='n up'>+8.6%</td></tr>
+<tr><td>Lachlan Schultz</td><td>Fremantle</td><td>SF</td><td>29</td><td>146</td><td class=n>640</td><td class=n>587</td><td class='n dn'>-53</td><td class='n dn'>-8.3%</td></tr>
+<tr><td>Hugh Boxshall</td><td>St Kilda</td><td>MID</td><td>20</td><td>21</td><td class=n>933</td><td class=n>986</td><td class='n up'>+53</td><td class='n up'>+5.7%</td></tr>
+<tr><td>Tom Brown</td><td>Richmond</td><td>SD</td><td>23</td><td>60</td><td class=n>422</td><td class=n>475</td><td class='n up'>+53</td><td class='n up'>+12.6%</td></tr>
+<tr><td>Jaxon Artemis</td><td>Essendon</td><td>SD</td><td>20</td><td>6</td><td class=n>410</td><td class=n>357</td><td class='n dn'>-53</td><td class='n dn'>-12.9%</td></tr>
+<tr><td>Toby Murray</td><td>Adelaide</td><td>KPF</td><td>23</td><td>12</td><td class=n>300</td><td class=n>247</td><td class='n dn'>-53</td><td class='n dn'>-17.7%</td></tr>
+<tr><td>Max King</td><td>St Kilda</td><td>KPF</td><td>26</td><td>83</td><td class=n>256</td><td class=n>204</td><td class='n dn'>-52</td><td class='n dn'>-20.3%</td></tr>
+<tr><td>Max Gruzewski</td><td>GWS</td><td>KPF</td><td>22</td><td>25</td><td class=n>521</td><td class=n>469</td><td class='n dn'>-52</td><td class='n dn'>-10.0%</td></tr>
+<tr><td>Hussien El Achkar</td><td>Essendon</td><td>SF</td><td>19</td><td>9</td><td class=n>447</td><td class=n>395</td><td class='n dn'>-52</td><td class='n dn'>-11.6%</td></tr>
+<tr><td>Heath Chapman</td><td>Fremantle</td><td>SD</td><td>24</td><td>87</td><td class=n>517</td><td class=n>465</td><td class='n dn'>-52</td><td class='n dn'>-10.1%</td></tr>
+<tr><td>Riley Garcia</td><td>Western Bulldogs</td><td>SF</td><td>25</td><td>39</td><td class=n>89</td><td class=n>141</td><td class='n up'>+52</td><td class='n up'>+58.4%</td></tr>
+<tr><td>Isaac Heeney</td><td>Sydney</td><td>MID</td><td>30</td><td>244</td><td class=n>3936</td><td class=n>3987</td><td class='n up'>+51</td><td class='n up'>+1.3%</td></tr>
+<tr><td>Clayton Oliver</td><td>GWS</td><td>MID</td><td>29</td><td>228</td><td class=n>2207</td><td class=n>2156</td><td class='n dn'>-51</td><td class='n dn'>-2.3%</td></tr>
+<tr><td>Latrelle Pickett</td><td>Melbourne</td><td>SF</td><td>21</td><td>15</td><td class=n>374</td><td class=n>323</td><td class='n dn'>-51</td><td class='n dn'>-13.6%</td></tr>
+<tr><td>Jack Whitlock</td><td>Port Adelaide</td><td>KPF</td><td>20</td><td>27</td><td class=n>988</td><td class=n>1039</td><td class='n up'>+51</td><td class='n up'>+5.2%</td></tr>
+<tr><td>Isaiah Dudley</td><td>Fremantle</td><td>SF</td><td>23</td><td>39</td><td class=n>260</td><td class=n>209</td><td class='n dn'>-51</td><td class='n dn'>-19.6%</td></tr>
+<tr><td>Tylar Young</td><td>West Coast</td><td>KPD</td><td>28</td><td>58</td><td class=n>396</td><td class=n>345</td><td class='n dn'>-51</td><td class='n dn'>-12.9%</td></tr>
+<tr><td>Luke Nankervis</td><td>Adelaide</td><td>MID</td><td>23</td><td>47</td><td class=n>354</td><td class=n>405</td><td class='n up'>+51</td><td class='n up'>+14.4%</td></tr>
+<tr><td>Zach Guthrie</td><td>Geelong</td><td>SD</td><td>28</td><td>151</td><td class=n>275</td><td class=n>326</td><td class='n up'>+51</td><td class='n up'>+18.5%</td></tr>
+<tr><td>Josh Sinn</td><td>Port Adelaide</td><td>SD</td><td>23</td><td>30</td><td class=n>217</td><td class=n>167</td><td class='n dn'>-50</td><td class='n dn'>-23.0%</td></tr>
+<tr><td>Cody Weightman</td><td>Western Bulldogs</td><td>SF</td><td>25</td><td>85</td><td class=n>194</td><td class=n>144</td><td class='n dn'>-50</td><td class='n dn'>-25.8%</td></tr>
+<tr><td>Luke Trainor</td><td>Richmond</td><td>SD</td><td>20</td><td>32</td><td class=n>915</td><td class=n>964</td><td class='n up'>+49</td><td class='n up'>+5.4%</td></tr>
+<tr><td>Lachlan Carmichael</td><td>Western Bulldogs</td><td>SD</td><td>19</td><td>2</td><td class=n>500</td><td class=n>549</td><td class='n up'>+49</td><td class='n up'>+9.8%</td></tr>
+<tr><td>Matt Johnson</td><td>Fremantle</td><td>MID</td><td>23</td><td>77</td><td class=n>969</td><td class=n>1018</td><td class='n up'>+49</td><td class='n up'>+5.1%</td></tr>
+<tr><td>James Peatling</td><td>Adelaide</td><td>MID</td><td>26</td><td>89</td><td class=n>1139</td><td class=n>1090</td><td class='n dn'>-49</td><td class='n dn'>-4.3%</td></tr>
+<tr><td>Will Hayward</td><td>Carlton</td><td>SF</td><td>28</td><td>205</td><td class=n>219</td><td class=n>268</td><td class='n up'>+49</td><td class='n up'>+22.4%</td></tr>
+<tr><td>Lachie Whitfield</td><td>GWS</td><td>SD</td><td>32</td><td>277</td><td class=n>2184</td><td class=n>2136</td><td class='n dn'>-48</td><td class='n dn'>-2.2%</td></tr>
+<tr><td>Isaac Quaynor</td><td>Collingwood</td><td>SD</td><td>26</td><td>153</td><td class=n>457</td><td class=n>505</td><td class='n up'>+48</td><td class='n up'>+10.5%</td></tr>
+<tr><td>Josh Draper</td><td>Fremantle</td><td>KPD</td><td>22</td><td>31</td><td class=n>328</td><td class=n>280</td><td class='n dn'>-48</td><td class='n dn'>-14.6%</td></tr>
+<tr><td>Oscar Adams</td><td>Gold Coast</td><td>KPD</td><td>23</td><td>21</td><td class=n>142</td><td class=n>94</td><td class='n dn'>-48</td><td class='n dn'>-33.8%</td></tr>
+<tr><td>Mitchell Hinge</td><td>Adelaide</td><td>SD</td><td>28</td><td>90</td><td class=n>376</td><td class=n>424</td><td class='n up'>+48</td><td class='n up'>+12.8%</td></tr>
+<tr><td>Lawson Humphries</td><td>Geelong</td><td>SD</td><td>23</td><td>58</td><td class=n>1551</td><td class=n>1598</td><td class='n up'>+47</td><td class='n up'>+3.0%</td></tr>
+<tr><td>Reilly O&#x27;Brien</td><td>Adelaide</td><td>RUCK</td><td>31</td><td>148</td><td class=n>1018</td><td class=n>1065</td><td class='n up'>+47</td><td class='n up'>+4.6%</td></tr>
+<tr><td>Jack Buckley</td><td>GWS</td><td>KPD</td><td>29</td><td>94</td><td class=n>553</td><td class=n>506</td><td class='n dn'>-47</td><td class='n dn'>-8.5%</td></tr>
+<tr><td>James O&#x27;Donnell</td><td>Western Bulldogs</td><td>KPD</td><td>24</td><td>67</td><td class=n>598</td><td class=n>551</td><td class='n dn'>-47</td><td class='n dn'>-7.9%</td></tr>
+<tr><td>Mac Andrew</td><td>Gold Coast</td><td>KPD</td><td>23</td><td>88</td><td class=n>3764</td><td class=n>3718</td><td class='n dn'>-46</td><td class='n dn'>-1.2%</td></tr>
+<tr><td>Wayne Milera</td><td>Adelaide</td><td>SD</td><td>29</td><td>141</td><td class=n>1635</td><td class=n>1681</td><td class='n up'>+46</td><td class='n up'>+2.8%</td></tr>
+<tr><td>Sam Draper</td><td>Brisbane</td><td>KPF</td><td>28</td><td>100</td><td class=n>1093</td><td class=n>1047</td><td class='n dn'>-46</td><td class='n dn'>-4.2%</td></tr>
+<tr><td>Peter Ladhams</td><td>Sydney</td><td>KPF</td><td>28</td><td>65</td><td class=n>558</td><td class=n>512</td><td class='n dn'>-46</td><td class='n dn'>-8.2%</td></tr>
+<tr><td>Ollie Greeves</td><td>Hawthorn</td><td>MID</td><td>19</td><td>4</td><td class=n>484</td><td class=n>438</td><td class='n dn'>-46</td><td class='n dn'>-9.5%</td></tr>
+<tr><td>Archie Perkins</td><td>Essendon</td><td>SF</td><td>24</td><td>117</td><td class=n>300</td><td class=n>254</td><td class='n dn'>-46</td><td class='n dn'>-15.3%</td></tr>
+<tr><td>Harry Dean</td><td>Carlton</td><td>KPD</td><td>19</td><td>19</td><td class=n>3080</td><td class=n>3035</td><td class='n dn'>-45</td><td class='n dn'>-1.5%</td></tr>
+<tr><td>Touk Miller</td><td>Gold Coast</td><td>SF</td><td>30</td><td>237</td><td class=n>2333</td><td class=n>2378</td><td class='n up'>+45</td><td class='n up'>+1.9%</td></tr>
+<tr><td>Harrison Himmelberg</td><td>GWS</td><td>SD</td><td>30</td><td>224</td><td class=n>143</td><td class=n>188</td><td class='n up'>+45</td><td class='n up'>+31.5%</td></tr>
+<tr><td>Tobie Travaglia</td><td>St Kilda</td><td>SD</td><td>20</td><td>19</td><td class=n>491</td><td class=n>535</td><td class='n up'>+44</td><td class='n up'>+9.0%</td></tr>
+<tr><td>Tom Powell</td><td>North Melbourne</td><td>SF</td><td>24</td><td>99</td><td class=n>1964</td><td class=n>1920</td><td class='n dn'>-44</td><td class='n dn'>-2.2%</td></tr>
+<tr><td>Jake Riccardi</td><td>GWS</td><td>KPF</td><td>27</td><td>98</td><td class=n>273</td><td class=n>317</td><td class='n up'>+44</td><td class='n up'>+16.1%</td></tr>
+<tr><td>Sam Marshall</td><td>Brisbane</td><td>MID</td><td>20</td><td>13</td><td class=n>546</td><td class=n>590</td><td class='n up'>+44</td><td class='n up'>+8.1%</td></tr>
+<tr><td>Darcy Fort</td><td>Geelong</td><td>RUCK</td><td>33</td><td>79</td><td class=n>138</td><td class=n>94</td><td class='n dn'>-44</td><td class='n dn'>-31.9%</td></tr>
+<tr><td>Tim Taranto</td><td>Richmond</td><td>MID</td><td>28</td><td>194</td><td class=n>2520</td><td class=n>2477</td><td class='n dn'>-43</td><td class='n dn'>-1.7%</td></tr>
+<tr><td>Jai Culley</td><td>Melbourne</td><td>MID</td><td>23</td><td>23</td><td class=n>265</td><td class=n>308</td><td class='n up'>+43</td><td class='n up'>+16.2%</td></tr>
+<tr><td>Mark Keane</td><td>Adelaide</td><td>KPD</td><td>26</td><td>65</td><td class=n>1480</td><td class=n>1438</td><td class='n dn'>-42</td><td class='n dn'>-2.8%</td></tr>
+<tr><td>Phoenix Gothard</td><td>GWS</td><td>SF</td><td>21</td><td>15</td><td class=n>1665</td><td class=n>1707</td><td class='n up'>+42</td><td class='n up'>+2.5%</td></tr>
+<tr><td>Max Kondogiannis</td><td>Essendon</td><td>SD</td><td>19</td><td>11</td><td class=n>410</td><td class=n>368</td><td class='n dn'>-42</td><td class='n dn'>-10.2%</td></tr>
+<tr><td>Logan Evans</td><td>Port Adelaide</td><td>SD</td><td>21</td><td>42</td><td class=n>1379</td><td class=n>1337</td><td class='n dn'>-42</td><td class='n dn'>-3.0%</td></tr>
+<tr><td>Balyn O&#x27;Brien</td><td>Port Adelaide</td><td>SD</td><td>19</td><td>6</td><td class=n>341</td><td class=n>299</td><td class='n dn'>-42</td><td class='n dn'>-12.3%</td></tr>
+<tr><td>Bailey J. Williams</td><td>West Coast</td><td>KPF</td><td>26</td><td>106</td><td class=n>2460</td><td class=n>2500</td><td class='n up'>+40</td><td class='n up'>+1.6%</td></tr>
+<tr><td>Joel Jeffrey</td><td>Gold Coast</td><td>SD</td><td>24</td><td>75</td><td class=n>1486</td><td class=n>1446</td><td class='n dn'>-40</td><td class='n dn'>-2.7%</td></tr>
+<tr><td>Jamarra Ugle-Hagan</td><td>Gold Coast</td><td>KPF</td><td>24</td><td>70</td><td class=n>152</td><td class=n>112</td><td class='n dn'>-40</td><td class='n dn'>-26.3%</td></tr>
+<tr><td>Calsher Dear</td><td>Hawthorn</td><td>KPF</td><td>21</td><td>31</td><td class=n>672</td><td class=n>632</td><td class='n dn'>-40</td><td class='n dn'>-6.0%</td></tr>
+<tr><td>Luke Pedlar</td><td>Adelaide</td><td>SF</td><td>24</td><td>49</td><td class=n>105</td><td class=n>65</td><td class='n dn'>-40</td><td class='n dn'>-38.1%</td></tr>
+<tr><td>Tyson Stengle</td><td>Richmond</td><td>SF</td><td>28</td><td>109</td><td class=n>216</td><td class=n>176</td><td class='n dn'>-40</td><td class='n dn'>-18.5%</td></tr>
+<tr><td>Hugh McCluggage</td><td>Brisbane</td><td>MID</td><td>28</td><td>222</td><td class=n>1578</td><td class=n>1539</td><td class='n dn'>-39</td><td class='n dn'>-2.5%</td></tr>
+<tr><td>Will Hayes</td><td>Collingwood</td><td>SF</td><td>20</td><td>11</td><td class=n>277</td><td class=n>238</td><td class='n dn'>-39</td><td class='n dn'>-14.1%</td></tr>
+<tr><td>Karl Amon</td><td>Hawthorn</td><td>SD</td><td>31</td><td>213</td><td class=n>295</td><td class=n>334</td><td class='n up'>+39</td><td class='n up'>+13.2%</td></tr>
+<tr><td>Conor Stone</td><td>GWS</td><td>SD</td><td>24</td><td>30</td><td class=n>129</td><td class=n>90</td><td class='n dn'>-39</td><td class='n dn'>-30.2%</td></tr>
+<tr><td>Logan McDonald</td><td>Sydney</td><td>KPF</td><td>24</td><td>91</td><td class=n>811</td><td class=n>849</td><td class='n up'>+38</td><td class='n up'>+4.7%</td></tr>
+<tr><td>Brent Daniels</td><td>GWS</td><td>SF</td><td>27</td><td>121</td><td class=n>1208</td><td class=n>1246</td><td class='n up'>+38</td><td class='n up'>+3.1%</td></tr>
+<tr><td>Oliver Hannaford</td><td>GWS</td><td>MID</td><td>20</td><td>5</td><td class=n>200</td><td class=n>238</td><td class='n up'>+38</td><td class='n up'>+19.0%</td></tr>
+<tr><td>Seth Campbell</td><td>Richmond</td><td>SF</td><td>22</td><td>66</td><td class=n>885</td><td class=n>847</td><td class='n dn'>-38</td><td class='n dn'>-4.3%</td></tr>
+<tr><td>Jai Serong</td><td>Sydney</td><td>KPD</td><td>23</td><td>32</td><td class=n>1066</td><td class=n>1104</td><td class='n up'>+38</td><td class='n up'>+3.6%</td></tr>
+<tr><td>Jaxon Prior</td><td>Brisbane</td><td>SD</td><td>25</td><td>84</td><td class=n>385</td><td class=n>423</td><td class='n up'>+38</td><td class='n up'>+9.9%</td></tr>
+<tr><td>Griffin Logue</td><td>North Melbourne</td><td>KPD</td><td>28</td><td>113</td><td class=n>136</td><td class=n>98</td><td class='n dn'>-38</td><td class='n dn'>-27.9%</td></tr>
+<tr><td>Karl Worner</td><td>Fremantle</td><td>SD</td><td>24</td><td>54</td><td class=n>1181</td><td class=n>1218</td><td class='n up'>+37</td><td class='n up'>+3.1%</td></tr>
+<tr><td>Matthew Jefferson</td><td>Melbourne</td><td>KPF</td><td>22</td><td>23</td><td class=n>375</td><td class=n>412</td><td class='n up'>+37</td><td class='n up'>+9.9%</td></tr>
+<tr><td>Jayden Nguyen</td><td>GWS</td><td>SD</td><td>20</td><td>10</td><td class=n>291</td><td class=n>254</td><td class='n dn'>-37</td><td class='n dn'>-12.7%</td></tr>
+<tr><td>Mykelti Lefau</td><td>Richmond</td><td>KPF</td><td>28</td><td>32</td><td class=n>110</td><td class=n>73</td><td class='n dn'>-37</td><td class='n dn'>-33.6%</td></tr>
+<tr><td>Alix Tauru</td><td>St Kilda</td><td>KPF</td><td>20</td><td>19</td><td class=n>881</td><td class=n>845</td><td class='n dn'>-36</td><td class='n dn'>-4.1%</td></tr>
+<tr><td>Koltyn Tholstrup</td><td>Melbourne</td><td>SF</td><td>21</td><td>42</td><td class=n>1889</td><td class=n>1853</td><td class='n dn'>-36</td><td class='n dn'>-1.9%</td></tr>
+<tr><td>Joe Richards</td><td>Port Adelaide</td><td>SF</td><td>27</td><td>51</td><td class=n>920</td><td class=n>956</td><td class='n up'>+36</td><td class='n up'>+3.9%</td></tr>
+<tr><td>Darcy Fogarty</td><td>Adelaide</td><td>KPF</td><td>27</td><td>140</td><td class=n>842</td><td class=n>806</td><td class='n dn'>-36</td><td class='n dn'>-4.3%</td></tr>
+<tr><td>Leek Aleer</td><td>GWS</td><td>KPD</td><td>25</td><td>32</td><td class=n>273</td><td class=n>237</td><td class='n dn'>-36</td><td class='n dn'>-13.2%</td></tr>
+<tr><td>Nick Larkey</td><td>North Melbourne</td><td>KPF</td><td>28</td><td>157</td><td class=n>542</td><td class=n>506</td><td class='n dn'>-36</td><td class='n dn'>-6.6%</td></tr>
+<tr><td>Tom Hanily</td><td>Sydney</td><td>SF</td><td>21</td><td>13</td><td class=n>188</td><td class=n>152</td><td class='n dn'>-36</td><td class='n dn'>-19.1%</td></tr>
+<tr><td>Brayden Cook</td><td>Adelaide</td><td>SF</td><td>24</td><td>52</td><td class=n>752</td><td class=n>788</td><td class='n up'>+36</td><td class='n up'>+4.8%</td></tr>
+<tr><td>Hayden McLean</td><td>Sydney</td><td>KPF</td><td>27</td><td>108</td><td class=n>263</td><td class=n>227</td><td class='n dn'>-36</td><td class='n dn'>-13.7%</td></tr>
+<tr><td>Jack Dalton</td><td>Hawthorn</td><td>MID</td><td>19</td><td>5</td><td class=n>470</td><td class=n>505</td><td class='n up'>+35</td><td class='n up'>+7.4%</td></tr>
+<tr><td>Mitchell Edwards</td><td>Geelong</td><td>RUCK</td><td>21</td><td>18</td><td class=n>1768</td><td class=n>1733</td><td class='n dn'>-35</td><td class='n dn'>-2.0%</td></tr>
+<tr><td>Mitchell Lewis</td><td>Hawthorn</td><td>KPF</td><td>28</td><td>99</td><td class=n>769</td><td class=n>734</td><td class='n dn'>-35</td><td class='n dn'>-4.6%</td></tr>
+<tr><td>Blake Hardwick</td><td>Hawthorn</td><td>SD</td><td>29</td><td>221</td><td class=n>576</td><td class=n>611</td><td class='n up'>+35</td><td class='n up'>+6.1%</td></tr>
+<tr><td>Chris Scerri</td><td>Fremantle</td><td>SF</td><td>20</td><td>9</td><td class=n>315</td><td class=n>280</td><td class='n dn'>-35</td><td class='n dn'>-11.1%</td></tr>
+<tr><td>Tom Edwards</td><td>Essendon</td><td>KPF</td><td>26</td><td>9</td><td class=n>100</td><td class=n>65</td><td class='n dn'>-35</td><td class='n dn'>-35.0%</td></tr>
+<tr><td>Ryan Angwin</td><td>GWS</td><td>MID</td><td>24</td><td>50</td><td class=n>477</td><td class=n>512</td><td class='n up'>+35</td><td class='n up'>+7.3%</td></tr>
+<tr><td>Jase Burgoyne</td><td>Port Adelaide</td><td>SD</td><td>23</td><td>79</td><td class=n>2483</td><td class=n>2517</td><td class='n up'>+34</td><td class='n up'>+1.4%</td></tr>
+<tr><td>Jake Soligo</td><td>Adelaide</td><td>SF</td><td>23</td><td>105</td><td class=n>1855</td><td class=n>1821</td><td class='n dn'>-34</td><td class='n dn'>-1.8%</td></tr>
+<tr><td>Riley Hamilton</td><td>GWS</td><td>SF</td><td>20</td><td>8</td><td class=n>260</td><td class=n>226</td><td class='n dn'>-34</td><td class='n dn'>-13.1%</td></tr>
+<tr><td>Judd McVee</td><td>Fremantle</td><td>SD</td><td>23</td><td>86</td><td class=n>318</td><td class=n>352</td><td class='n up'>+34</td><td class='n up'>+10.7%</td></tr>
+<tr><td>Harry Sheezel</td><td>North Melbourne</td><td>SF</td><td>22</td><td>88</td><td class=n>10417</td><td class=n>10450</td><td class='n up'>+33</td><td class='n up'>+0.3%</td></tr>
+<tr><td>Marcus Bontempelli</td><td>Western Bulldogs</td><td>MID</td><td>31</td><td>280</td><td class=n>3728</td><td class=n>3761</td><td class='n up'>+33</td><td class='n up'>+0.9%</td></tr>
+<tr><td>Connor O&#x27;Sullivan</td><td>Geelong</td><td>KPD</td><td>21</td><td>49</td><td class=n>2748</td><td class=n>2715</td><td class='n dn'>-33</td><td class='n dn'>-1.2%</td></tr>
+<tr><td>Charlie Curnow</td><td>Carlton</td><td>KPF</td><td>29</td><td>171</td><td class=n>1270</td><td class=n>1303</td><td class='n up'>+33</td><td class='n up'>+2.6%</td></tr>
+<tr><td>Louis Emmett</td><td>Western Bulldogs</td><td>RUCK</td><td>19</td><td>7</td><td class=n>570</td><td class=n>603</td><td class='n up'>+33</td><td class='n up'>+5.8%</td></tr>
+<tr><td>Riley Hardeman</td><td>North Melbourne</td><td>SD</td><td>21</td><td>27</td><td class=n>380</td><td class=n>347</td><td class='n dn'>-33</td><td class='n dn'>-8.7%</td></tr>
+<tr><td>Archie May</td><td>Essendon</td><td>KPF</td><td>22</td><td>17</td><td class=n>419</td><td class=n>452</td><td class='n up'>+33</td><td class='n up'>+7.9%</td></tr>
+<tr><td>James Trezise</td><td>Richmond</td><td>SD</td><td>24</td><td>38</td><td class=n>179</td><td class=n>212</td><td class='n up'>+33</td><td class='n up'>+18.4%</td></tr>
+<tr><td>Cooper Harvey</td><td>North Melbourne</td><td>SF</td><td>22</td><td>17</td><td class=n>413</td><td class=n>446</td><td class='n up'>+33</td><td class='n up'>+8.0%</td></tr>
+<tr><td>Jye Amiss</td><td>Fremantle</td><td>KPF</td><td>23</td><td>93</td><td class=n>1546</td><td class=n>1578</td><td class='n up'>+32</td><td class='n up'>+2.1%</td></tr>
+<tr><td>Zach Reid</td><td>Essendon</td><td>KPD</td><td>24</td><td>42</td><td class=n>1369</td><td class=n>1337</td><td class='n dn'>-32</td><td class='n dn'>-2.3%</td></tr>
+<tr><td>Edward Allan</td><td>Collingwood</td><td>MID</td><td>22</td><td>33</td><td class=n>873</td><td class=n>841</td><td class='n dn'>-32</td><td class='n dn'>-3.7%</td></tr>
+<tr><td>Mitchell Knevitt</td><td>Geelong</td><td>MID</td><td>23</td><td>23</td><td class=n>178</td><td class=n>210</td><td class='n up'>+32</td><td class='n up'>+18.0%</td></tr>
+<tr><td>Lewis Young</td><td>Carlton</td><td>KPF</td><td>28</td><td>91</td><td class=n>156</td><td class=n>188</td><td class='n up'>+32</td><td class='n up'>+20.5%</td></tr>
+<tr><td>Nick Blakey</td><td>Sydney</td><td>SD</td><td>26</td><td>173</td><td class=n>4213</td><td class=n>4182</td><td class='n dn'>-31</td><td class='n dn'>-0.7%</td></tr>
+<tr><td>Harry McKay</td><td>Carlton</td><td>KPF</td><td>29</td><td>160</td><td class=n>1663</td><td class=n>1694</td><td class='n up'>+31</td><td class='n up'>+1.9%</td></tr>
+<tr><td>Aliir Aliir</td><td>Port Adelaide</td><td>KPD</td><td>32</td><td>199</td><td class=n>767</td><td class=n>798</td><td class='n up'>+31</td><td class='n up'>+4.0%</td></tr>
+<tr><td>Kade Chandler</td><td>Melbourne</td><td>SF</td><td>26</td><td>101</td><td class=n>1089</td><td class=n>1120</td><td class='n up'>+31</td><td class='n up'>+2.8%</td></tr>
+<tr><td>Will Setterfield</td><td>Essendon</td><td>MID</td><td>28</td><td>95</td><td class=n>1051</td><td class=n>1020</td><td class='n dn'>-31</td><td class='n dn'>-2.9%</td></tr>
+<tr><td>Brayden Maynard</td><td>Collingwood</td><td>SD</td><td>30</td><td>246</td><td class=n>528</td><td class=n>559</td><td class='n up'>+31</td><td class='n up'>+5.9%</td></tr>
+<tr><td>Noah Roberts-Thomson</td><td>Richmond</td><td>MID</td><td>19</td><td>3</td><td class=n>263</td><td class=n>294</td><td class='n up'>+31</td><td class='n up'>+11.8%</td></tr>
+<tr><td>Jack Carroll</td><td>St Kilda</td><td>SD</td><td>24</td><td>36</td><td class=n>98</td><td class=n>129</td><td class='n up'>+31</td><td class='n up'>+31.6%</td></tr>
+<tr><td>Harley Reid</td><td>West Coast</td><td>MID</td><td>21</td><td>62</td><td class=n>3845</td><td class=n>3875</td><td class='n up'>+30</td><td class='n up'>+0.8%</td></tr>
+<tr><td>Josh Daicos</td><td>Collingwood</td><td>SD</td><td>28</td><td>174</td><td class=n>2002</td><td class=n>2032</td><td class='n up'>+30</td><td class='n up'>+1.5%</td></tr>
+<tr><td>Harris Andrews</td><td>Brisbane</td><td>KPD</td><td>30</td><td>259</td><td class=n>1444</td><td class=n>1474</td><td class='n up'>+30</td><td class='n up'>+2.1%</td></tr>
+<tr><td>Noah Howes</td><td>Collingwood</td><td>KPF</td><td>21</td><td>2</td><td class=n>304</td><td class=n>274</td><td class='n dn'>-30</td><td class='n dn'>-9.9%</td></tr>
+<tr><td>Darcy Moore</td><td>Collingwood</td><td>KPD</td><td>30</td><td>199</td><td class=n>193</td><td class=n>163</td><td class='n dn'>-30</td><td class='n dn'>-15.5%</td></tr>
+<tr><td>Charlie Comben</td><td>North Melbourne</td><td>KPD</td><td>25</td><td>70</td><td class=n>689</td><td class=n>719</td><td class='n up'>+30</td><td class='n up'>+4.4%</td></tr>
+<tr><td>Malakai Champion</td><td>West Coast</td><td>SF</td><td>20</td><td>10</td><td class=n>212</td><td class=n>182</td><td class='n dn'>-30</td><td class='n dn'>-14.2%</td></tr>
+<tr><td>Jarrod Berry</td><td>Brisbane</td><td>MID</td><td>28</td><td>202</td><td class=n>318</td><td class=n>348</td><td class='n up'>+30</td><td class='n up'>+9.4%</td></tr>
+<tr><td>Connor Budarick</td><td>Western Bulldogs</td><td>SF</td><td>25</td><td>68</td><td class=n>242</td><td class=n>272</td><td class='n up'>+30</td><td class='n up'>+12.4%</td></tr>
+<tr><td>Wade Derksen</td><td>Carlton</td><td>KPD</td><td>25</td><td>13</td><td class=n>230</td><td class=n>260</td><td class='n up'>+30</td><td class='n up'>+13.0%</td></tr>
+<tr><td>Jack Ginnivan</td><td>Collingwood</td><td>SF</td><td>24</td><td>111</td><td class=n>2067</td><td class=n>2096</td><td class='n up'>+29</td><td class='n up'>+1.4%</td></tr>
+<tr><td>Cooper Sharman</td><td>St Kilda</td><td>KPF</td><td>26</td><td>91</td><td class=n>455</td><td class=n>484</td><td class='n up'>+29</td><td class='n up'>+6.4%</td></tr>
+<tr><td>Ed Langdon</td><td>Melbourne</td><td>SF</td><td>30</td><td>225</td><td class=n>605</td><td class=n>634</td><td class='n up'>+29</td><td class='n up'>+4.8%</td></tr>
+<tr><td>Wil Powell</td><td>Gold Coast</td><td>SD</td><td>27</td><td>150</td><td class=n>886</td><td class=n>915</td><td class='n up'>+29</td><td class='n up'>+3.3%</td></tr>
+<tr><td>Elijah Hewett</td><td>West Coast</td><td>MID</td><td>22</td><td>40</td><td class=n>574</td><td class=n>603</td><td class='n up'>+29</td><td class='n up'>+5.1%</td></tr>
+<tr><td>Harry Edwards</td><td>West Coast</td><td>KPD</td><td>26</td><td>57</td><td class=n>147</td><td class=n>118</td><td class='n dn'>-29</td><td class='n dn'>-19.7%</td></tr>
+<tr><td>Will Ashcroft</td><td>Brisbane</td><td>MID</td><td>22</td><td>81</td><td class=n>6709</td><td class=n>6681</td><td class='n dn'>-28</td><td class='n dn'>-0.4%</td></tr>
+<tr><td>Sam Darcy</td><td>Western Bulldogs</td><td>KPF</td><td>23</td><td>51</td><td class=n>5109</td><td class=n>5081</td><td class='n dn'>-28</td><td class='n dn'>-0.5%</td></tr>
+<tr><td>Shannon Neale</td><td>Geelong</td><td>KPF</td><td>24</td><td>68</td><td class=n>2333</td><td class=n>2361</td><td class='n up'>+28</td><td class='n up'>+1.2%</td></tr>
+<tr><td>Dylan Patterson</td><td>Gold Coast</td><td>SD</td><td>19</td><td>5</td><td class=n>1193</td><td class=n>1165</td><td class='n dn'>-28</td><td class='n dn'>-2.3%</td></tr>
+<tr><td>Oliver Francou</td><td>West Coast</td><td>MID</td><td>20</td><td>4</td><td class=n>538</td><td class=n>510</td><td class='n dn'>-28</td><td class='n dn'>-5.2%</td></tr>
+<tr><td>Xavier Bamert</td><td>Port Adelaide</td><td>MID</td><td>19</td><td>10</td><td class=n>482</td><td class=n>454</td><td class='n dn'>-28</td><td class='n dn'>-5.8%</td></tr>
+<tr><td>Jack Scrimshaw</td><td>Hawthorn</td><td>SD</td><td>28</td><td>129</td><td class=n>154</td><td class=n>126</td><td class='n dn'>-28</td><td class='n dn'>-18.2%</td></tr>
+<tr><td>Sam Walsh</td><td>Carlton</td><td>MID</td><td>26</td><td>156</td><td class=n>3185</td><td class=n>3212</td><td class='n up'>+27</td><td class='n up'>+0.8%</td></tr>
+<tr><td>Daniel Curtin</td><td>Adelaide</td><td>MID</td><td>21</td><td>48</td><td class=n>2482</td><td class=n>2509</td><td class='n up'>+27</td><td class='n up'>+1.1%</td></tr>
+<tr><td>Mitch Georgiades</td><td>Port Adelaide</td><td>KPF</td><td>25</td><td>112</td><td class=n>1563</td><td class=n>1590</td><td class='n up'>+27</td><td class='n up'>+1.7%</td></tr>
+<tr><td>Daniel Rioli</td><td>Gold Coast</td><td>SD</td><td>29</td><td>222</td><td class=n>678</td><td class=n>705</td><td class='n up'>+27</td><td class='n up'>+4.0%</td></tr>
+<tr><td>Michael Sellwood</td><td>Western Bulldogs</td><td>SD</td><td>23</td><td>22</td><td class=n>319</td><td class=n>346</td><td class='n up'>+27</td><td class='n up'>+8.5%</td></tr>
+<tr><td>Josaia Delana</td><td>GWS</td><td>SF</td><td>20</td><td>12</td><td class=n>287</td><td class=n>260</td><td class='n dn'>-27</td><td class='n dn'>-9.4%</td></tr>
+<tr><td>Jacob Newton</td><td>West Coast</td><td>SF</td><td>20</td><td>5</td><td class=n>215</td><td class=n>188</td><td class='n dn'>-27</td><td class='n dn'>-12.6%</td></tr>
+<tr><td>Nick Bryan</td><td>Essendon</td><td>RUCK</td><td>25</td><td>36</td><td class=n>842</td><td class=n>869</td><td class='n up'>+27</td><td class='n up'>+3.2%</td></tr>
+<tr><td>Jack Bowes</td><td>Geelong</td><td>MID</td><td>28</td><td>152</td><td class=n>83</td><td class=n>56</td><td class='n dn'>-27</td><td class='n dn'>-32.5%</td></tr>
+<tr><td>Jack Sinclair</td><td>St Kilda</td><td>SD</td><td>31</td><td>224</td><td class=n>3216</td><td class=n>3242</td><td class='n up'>+26</td><td class='n up'>+0.8%</td></tr>
+<tr><td>Andrew Brayshaw</td><td>Fremantle</td><td>MID</td><td>27</td><td>193</td><td class=n>2913</td><td class=n>2887</td><td class='n dn'>-26</td><td class='n dn'>-0.9%</td></tr>
+<tr><td>Zane Peucker</td><td>Richmond</td><td>SF</td><td>19</td><td>2</td><td class=n>401</td><td class=n>427</td><td class='n up'>+26</td><td class='n up'>+6.5%</td></tr>
+<tr><td>Kyle Langford</td><td>Essendon</td><td>KPF</td><td>30</td><td>181</td><td class=n>486</td><td class=n>460</td><td class='n dn'>-26</td><td class='n dn'>-5.3%</td></tr>
+<tr><td>Joel Fitzgerald</td><td>Melbourne</td><td>MID</td><td>23</td><td>10</td><td class=n>320</td><td class=n>346</td><td class='n up'>+26</td><td class='n up'>+8.1%</td></tr>
+<tr><td>Jesse Motlop</td><td>Carlton</td><td>SF</td><td>23</td><td>63</td><td class=n>84</td><td class=n>110</td><td class='n up'>+26</td><td class='n up'>+31.0%</td></tr>
+<tr><td>Lachlan Gulbin</td><td>Gold Coast</td><td>SF</td><td>20</td><td>12</td><td class=n>293</td><td class=n>267</td><td class='n dn'>-26</td><td class='n dn'>-8.9%</td></tr>
+<tr><td>Liam Duggan</td><td>West Coast</td><td>SD</td><td>30</td><td>222</td><td class=n>194</td><td class=n>220</td><td class='n up'>+26</td><td class='n up'>+13.4%</td></tr>
+<tr><td>Esava Ratugolea</td><td>Port Adelaide</td><td>KPD</td><td>28</td><td>119</td><td class=n>168</td><td class=n>194</td><td class='n up'>+26</td><td class='n up'>+15.5%</td></tr>
+<tr><td>Harry Perryman</td><td>Collingwood</td><td>SD</td><td>28</td><td>169</td><td class=n>125</td><td class=n>99</td><td class='n dn'>-26</td><td class='n dn'>-20.8%</td></tr>
+<tr><td>Ryan Byrnes</td><td>St Kilda</td><td>SD</td><td>25</td><td>95</td><td class=n>128</td><td class=n>154</td><td class='n up'>+26</td><td class='n up'>+20.3%</td></tr>
+<tr><td>Harry Morrison</td><td>Hawthorn</td><td>MID</td><td>28</td><td>136</td><td class=n>82</td><td class=n>56</td><td class='n dn'>-26</td><td class='n dn'>-31.7%</td></tr>
+<tr><td>Harrison Oliver</td><td>GWS</td><td>SD</td><td>20</td><td>5</td><td class=n>270</td><td class=n>295</td><td class='n up'>+25</td><td class='n up'>+9.3%</td></tr>
+<tr><td>Angus Hastie</td><td>St Kilda</td><td>SD</td><td>21</td><td>21</td><td class=n>144</td><td class=n>119</td><td class='n dn'>-25</td><td class='n dn'>-17.4%</td></tr>
+<tr><td>Jay Polkinghorne</td><td>Geelong</td><td>KPF</td><td>20</td><td>6</td><td class=n>244</td><td class=n>269</td><td class='n up'>+25</td><td class='n up'>+10.2%</td></tr>
+<tr><td>Matt Carroll</td><td>Carlton</td><td>SD</td><td>21</td><td>27</td><td class=n>755</td><td class=n>780</td><td class='n up'>+25</td><td class='n up'>+3.3%</td></tr>
+<tr><td>Thomas Burton</td><td>Richmond</td><td>MID</td><td>19</td><td>5</td><td class=n>308</td><td class=n>283</td><td class='n dn'>-25</td><td class='n dn'>-8.1%</td></tr>
+<tr><td>Alex Davies</td><td>Gold Coast</td><td>MID</td><td>24</td><td>46</td><td class=n>420</td><td class=n>445</td><td class='n up'>+25</td><td class='n up'>+6.0%</td></tr>
+<tr><td>Nicholas Coffield</td><td>Western Bulldogs</td><td>SD</td><td>27</td><td>77</td><td class=n>93</td><td class=n>68</td><td class='n dn'>-25</td><td class='n dn'>-26.9%</td></tr>
+<tr><td>Callum M. Brown</td><td>GWS</td><td>SF</td><td>26</td><td>78</td><td class=n>54</td><td class=n>29</td><td class='n dn'>-25</td><td class='n dn'>-46.3%</td></tr>
+<tr><td>Riley Thilthorpe</td><td>Adelaide</td><td>KPF</td><td>24</td><td>98</td><td class=n>4274</td><td class=n>4250</td><td class='n dn'>-24</td><td class='n dn'>-0.6%</td></tr>
+<tr><td>Jayden Short</td><td>Richmond</td><td>SD</td><td>30</td><td>211</td><td class=n>895</td><td class=n>919</td><td class='n up'>+24</td><td class='n up'>+2.7%</td></tr>
+<tr><td>Sam De Koning</td><td>Geelong</td><td>KPD</td><td>25</td><td>98</td><td class=n>888</td><td class=n>912</td><td class='n up'>+24</td><td class='n up'>+2.7%</td></tr>
+<tr><td>Zac Banch</td><td>North Melbourne</td><td>SF</td><td>23</td><td>12</td><td class=n>90</td><td class=n>66</td><td class='n dn'>-24</td><td class='n dn'>-26.7%</td></tr>
+<tr><td>Oliver Henry</td><td>Geelong</td><td>KPF</td><td>24</td><td>107</td><td class=n>267</td><td class=n>291</td><td class='n up'>+24</td><td class='n up'>+9.0%</td></tr>
+<tr><td>Xavier O&#x27;Halloran</td><td>GWS</td><td>SF</td><td>26</td><td>104</td><td class=n>79</td><td class=n>55</td><td class='n dn'>-24</td><td class='n dn'>-30.4%</td></tr>
+<tr><td>Lachlan McAndrew</td><td>Adelaide</td><td>RUCK</td><td>26</td><td>24</td><td class=n>1165</td><td class=n>1188</td><td class='n up'>+23</td><td class='n up'>+2.0%</td></tr>
+<tr><td>Josh Lindsay</td><td>West Coast</td><td>SD</td><td>19</td><td>15</td><td class=n>1676</td><td class=n>1653</td><td class='n dn'>-23</td><td class='n dn'>-1.4%</td></tr>
+<tr><td>Jedd Busslinger</td><td>Western Bulldogs</td><td>KPD</td><td>22</td><td>15</td><td class=n>879</td><td class=n>902</td><td class='n up'>+23</td><td class='n up'>+2.6%</td></tr>
+<tr><td>Matthew Flynn</td><td>West Coast</td><td>RUCK</td><td>29</td><td>59</td><td class=n>619</td><td class=n>642</td><td class='n up'>+23</td><td class='n up'>+3.7%</td></tr>
+<tr><td>Tom Atkins</td><td>Geelong</td><td>MID</td><td>31</td><td>176</td><td class=n>320</td><td class=n>343</td><td class='n up'>+23</td><td class='n up'>+7.2%</td></tr>
+<tr><td>Liam O&#x27;Connell</td><td>St Kilda</td><td>SD</td><td>23</td><td>20</td><td class=n>87</td><td class=n>64</td><td class='n dn'>-23</td><td class='n dn'>-26.4%</td></tr>
+<tr><td>Mabior Chol</td><td>Hawthorn</td><td>KPF</td><td>29</td><td>126</td><td class=n>301</td><td class=n>278</td><td class='n dn'>-23</td><td class='n dn'>-7.6%</td></tr>
+<tr><td>Callum Mills</td><td>Sydney</td><td>SD</td><td>29</td><td>196</td><td class=n>1945</td><td class=n>1967</td><td class='n up'>+22</td><td class='n up'>+1.1%</td></tr>
+<tr><td>Ned Moyle</td><td>Gold Coast</td><td>RUCK</td><td>24</td><td>29</td><td class=n>1936</td><td class=n>1958</td><td class='n up'>+22</td><td class='n up'>+1.1%</td></tr>
+<tr><td>Adam Cerra</td><td>Carlton</td><td>MID</td><td>27</td><td>167</td><td class=n>1056</td><td class=n>1078</td><td class='n up'>+22</td><td class='n up'>+2.1%</td></tr>
+<tr><td>Matthew Roberts</td><td>Sydney</td><td>SD</td><td>23</td><td>67</td><td class=n>1418</td><td class=n>1440</td><td class='n up'>+22</td><td class='n up'>+1.6%</td></tr>
+<tr><td>Jack Ough</td><td>GWS</td><td>MID</td><td>20</td><td>5</td><td class=n>283</td><td class=n>305</td><td class='n up'>+22</td><td class='n up'>+7.8%</td></tr>
+<tr><td>Brady Hough</td><td>West Coast</td><td>SD</td><td>23</td><td>98</td><td class=n>369</td><td class=n>391</td><td class='n up'>+22</td><td class='n up'>+6.0%</td></tr>
+<tr><td>Matt Cottrell</td><td>Carlton</td><td>SF</td><td>26</td><td>86</td><td class=n>120</td><td class=n>142</td><td class='n up'>+22</td><td class='n up'>+18.3%</td></tr>
+<tr><td>Jesse Dattoli</td><td>Sydney</td><td>SF</td><td>20</td><td>6</td><td class=n>497</td><td class=n>518</td><td class='n up'>+21</td><td class='n up'>+4.2%</td></tr>
+<tr><td>Josh Dolan</td><td>Western Bulldogs</td><td>SF</td><td>20</td><td>22</td><td class=n>314</td><td class=n>293</td><td class='n dn'>-21</td><td class='n dn'>-6.7%</td></tr>
+<tr><td>Josh Lai</td><td>Port Adelaide</td><td>SD</td><td>21</td><td>18</td><td class=n>443</td><td class=n>464</td><td class='n up'>+21</td><td class='n up'>+4.7%</td></tr>
+<tr><td>Will Lewis</td><td>Western Bulldogs</td><td>KPF</td><td>27</td><td>11</td><td class=n>100</td><td class=n>79</td><td class='n dn'>-21</td><td class='n dn'>-21.0%</td></tr>
+<tr><td>Toby Bedford</td><td>GWS</td><td>SF</td><td>26</td><td>99</td><td class=n>319</td><td class=n>298</td><td class='n dn'>-21</td><td class='n dn'>-6.6%</td></tr>
+<tr><td>Will McLachlan</td><td>Brisbane</td><td>SF</td><td>21</td><td>7</td><td class=n>127</td><td class=n>106</td><td class='n dn'>-21</td><td class='n dn'>-16.5%</td></tr>
+<tr><td>Nate Caddy</td><td>Essendon</td><td>KPF</td><td>21</td><td>48</td><td class=n>1878</td><td class=n>1858</td><td class='n dn'>-20</td><td class='n dn'>-1.1%</td></tr>
+<tr><td>Xavier Taylor</td><td>Melbourne</td><td>SD</td><td>19</td><td>2</td><td class=n>912</td><td class=n>932</td><td class='n up'>+20</td><td class='n up'>+2.2%</td></tr>
+<tr><td>Marcus Windhager</td><td>St Kilda</td><td>SD</td><td>23</td><td>98</td><td class=n>1852</td><td class=n>1872</td><td class='n up'>+20</td><td class='n up'>+1.1%</td></tr>
+<tr><td>Ned Long</td><td>Collingwood</td><td>SF</td><td>23</td><td>58</td><td class=n>1283</td><td class=n>1303</td><td class='n up'>+20</td><td class='n up'>+1.6%</td></tr>
+<tr><td>Jeremy Cameron</td><td>Geelong</td><td>KPF</td><td>33</td><td>297</td><td class=n>855</td><td class=n>875</td><td class='n up'>+20</td><td class='n up'>+2.3%</td></tr>
+<tr><td>Ryan Maric</td><td>West Coast</td><td>SD</td><td>22</td><td>63</td><td class=n>1385</td><td class=n>1365</td><td class='n dn'>-20</td><td class='n dn'>-1.4%</td></tr>
+<tr><td>Sam Banks</td><td>Richmond</td><td>SD</td><td>23</td><td>60</td><td class=n>847</td><td class=n>867</td><td class='n up'>+20</td><td class='n up'>+2.4%</td></tr>
+<tr><td>Hugh Bond</td><td>Adelaide</td><td>SD</td><td>22</td><td>19</td><td class=n>116</td><td class=n>96</td><td class='n dn'>-20</td><td class='n dn'>-17.2%</td></tr>
+<tr><td>Rhyan Mansell</td><td>Richmond</td><td>SF</td><td>26</td><td>79</td><td class=n>71</td><td class=n>51</td><td class='n dn'>-20</td><td class='n dn'>-28.2%</td></tr>
+<tr><td>Liam Henry</td><td>St Kilda</td><td>SF</td><td>25</td><td>69</td><td class=n>64</td><td class=n>44</td><td class='n dn'>-20</td><td class='n dn'>-31.2%</td></tr>
+<tr><td>Max Hall</td><td>St Kilda</td><td>SF</td><td>24</td><td>46</td><td class=n>2639</td><td class=n>2620</td><td class='n dn'>-19</td><td class='n dn'>-0.7%</td></tr>
+<tr><td>Miles Bergman</td><td>Port Adelaide</td><td>SD</td><td>25</td><td>118</td><td class=n>1157</td><td class=n>1138</td><td class='n dn'>-19</td><td class='n dn'>-1.6%</td></tr>
+<tr><td>Hugo Hall-Kahan</td><td>Adelaide</td><td>SD</td><td>23</td><td>11</td><td class=n>554</td><td class=n>535</td><td class='n dn'>-19</td><td class='n dn'>-3.4%</td></tr>
+<tr><td>Luke Kennedy</td><td>Western Bulldogs</td><td>MID</td><td>20</td><td>6</td><td class=n>166</td><td class=n>185</td><td class='n up'>+19</td><td class='n up'>+11.4%</td></tr>
+<tr><td>Noah Long</td><td>West Coast</td><td>SF</td><td>22</td><td>36</td><td class=n>75</td><td class=n>56</td><td class='n dn'>-19</td><td class='n dn'>-25.3%</td></tr>
+<tr><td>Lloyd Meek</td><td>Hawthorn</td><td>RUCK</td><td>28</td><td>100</td><td class=n>1640</td><td class=n>1658</td><td class='n up'>+18</td><td class='n up'>+1.1%</td></tr>
+<tr><td>Jarman Impey</td><td>Hawthorn</td><td>SD</td><td>31</td><td>241</td><td class=n>797</td><td class=n>815</td><td class='n up'>+18</td><td class='n up'>+2.3%</td></tr>
+<tr><td>Archie Ludowyke</td><td>Adelaide</td><td>KPF</td><td>19</td><td>2</td><td class=n>293</td><td class=n>275</td><td class='n dn'>-18</td><td class='n dn'>-6.1%</td></tr>
+<tr><td>Harry Rowston</td><td>GWS</td><td>MID</td><td>22</td><td>29</td><td class=n>588</td><td class=n>570</td><td class='n dn'>-18</td><td class='n dn'>-3.1%</td></tr>
+<tr><td>Cameron Zurhaar</td><td>North Melbourne</td><td>SF</td><td>28</td><td>166</td><td class=n>315</td><td class=n>297</td><td class='n dn'>-18</td><td class='n dn'>-5.7%</td></tr>
+<tr><td>Joel Amartey</td><td>Sydney</td><td>KPF</td><td>27</td><td>76</td><td class=n>138</td><td class=n>120</td><td class='n dn'>-18</td><td class='n dn'>-13.0%</td></tr>
+<tr><td>Todd Marshall</td><td>Port Adelaide</td><td>KPF</td><td>28</td><td>131</td><td class=n>104</td><td class=n>86</td><td class='n dn'>-18</td><td class='n dn'>-17.3%</td></tr>
+<tr><td>Mitchito Owens</td><td>St Kilda</td><td>KPF</td><td>23</td><td>92</td><td class=n>2241</td><td class=n>2224</td><td class='n dn'>-17</td><td class='n dn'>-0.8%</td></tr>
+<tr><td>Zeke Uwland</td><td>Gold Coast</td><td>SD</td><td>19</td><td>17</td><td class=n>1805</td><td class=n>1788</td><td class='n dn'>-17</td><td class='n dn'>-0.9%</td></tr>
+<tr><td>Toby Nankervis</td><td>Richmond</td><td>RUCK</td><td>32</td><td>191</td><td class=n>2038</td><td class=n>2021</td><td class='n dn'>-17</td><td class='n dn'>-0.8%</td></tr>
+<tr><td>Jack Lukosius</td><td>Port Adelaide</td><td>KPF</td><td>26</td><td>131</td><td class=n>516</td><td class=n>533</td><td class='n up'>+17</td><td class='n up'>+3.3%</td></tr>
+<tr><td>Rhys Unwin</td><td>Essendon</td><td>SF</td><td>20</td><td>7</td><td class=n>122</td><td class=n>139</td><td class='n up'>+17</td><td class='n up'>+13.9%</td></tr>
+<tr><td>Jack Higgins</td><td>St Kilda</td><td>SF</td><td>27</td><td>161</td><td class=n>74</td><td class=n>91</td><td class='n up'>+17</td><td class='n up'>+23.0%</td></tr>
+<tr><td>Lachlan Fogarty</td><td>Carlton</td><td>SF</td><td>27</td><td>92</td><td class=n>76</td><td class=n>93</td><td class='n up'>+17</td><td class='n up'>+22.4%</td></tr>
+<tr><td>Harrison Jones</td><td>Essendon</td><td>KPF</td><td>25</td><td>66</td><td class=n>117</td><td class=n>100</td><td class='n dn'>-17</td><td class='n dn'>-14.5%</td></tr>
+<tr><td>Finn Callaghan</td><td>GWS</td><td>MID</td><td>23</td><td>90</td><td class=n>5529</td><td class=n>5513</td><td class='n dn'>-16</td><td class='n dn'>-0.3%</td></tr>
+<tr><td>Daniel Turner</td><td>Melbourne</td><td>KPD</td><td>24</td><td>55</td><td class=n>1512</td><td class=n>1528</td><td class='n up'>+16</td><td class='n up'>+1.1%</td></tr>
+<tr><td>Cody Angove</td><td>GWS</td><td>SF</td><td>20</td><td>5</td><td class=n>440</td><td class=n>456</td><td class='n up'>+16</td><td class='n up'>+3.6%</td></tr>
+<tr><td>Tom De Koning</td><td>St Kilda</td><td>RUCK</td><td>27</td><td>115</td><td class=n>1737</td><td class=n>1753</td><td class='n up'>+16</td><td class='n up'>+0.9%</td></tr>
+<tr><td>Ben Miller</td><td>Richmond</td><td>KPD</td><td>27</td><td>90</td><td class=n>935</td><td class=n>951</td><td class='n up'>+16</td><td class='n up'>+1.7%</td></tr>
+<tr><td>Braeden Campbell</td><td>Sydney</td><td>SF</td><td>24</td><td>100</td><td class=n>576</td><td class=n>560</td><td class='n dn'>-16</td><td class='n dn'>-2.8%</td></tr>
+<tr><td>Lucas Camporeale</td><td>Carlton</td><td>MID</td><td>20</td><td>3</td><td class=n>151</td><td class=n>167</td><td class='n up'>+16</td><td class='n up'>+10.6%</td></tr>
+<tr><td>Tom Cochrane</td><td>Port Adelaide</td><td>SF</td><td>20</td><td>6</td><td class=n>150</td><td class=n>134</td><td class='n dn'>-16</td><td class='n dn'>-10.7%</td></tr>
+<tr><td>Reef McInnes</td><td>Collingwood</td><td>KPD</td><td>24</td><td>23</td><td class=n>89</td><td class=n>73</td><td class='n dn'>-16</td><td class='n dn'>-18.0%</td></tr>
+<tr><td>Bailey Dale</td><td>Western Bulldogs</td><td>SD</td><td>30</td><td>196</td><td class=n>2108</td><td class=n>2093</td><td class='n dn'>-15</td><td class='n dn'>-0.7%</td></tr>
+<tr><td>Tom McCartin</td><td>Sydney</td><td>KPD</td><td>27</td><td>172</td><td class=n>1499</td><td class=n>1514</td><td class='n up'>+15</td><td class='n up'>+1.0%</td></tr>
+<tr><td>Josh Dunkley</td><td>Brisbane</td><td>MID</td><td>29</td><td>217</td><td class=n>1253</td><td class=n>1268</td><td class='n up'>+15</td><td class='n up'>+1.2%</td></tr>
+<tr><td>Oliver Hollands</td><td>Carlton</td><td>SD</td><td>22</td><td>77</td><td class=n>1585</td><td class=n>1600</td><td class='n up'>+15</td><td class='n up'>+0.9%</td></tr>
+<tr><td>Brayden Fiorini</td><td>Essendon</td><td>MID</td><td>29</td><td>125</td><td class=n>420</td><td class=n>405</td><td class='n dn'>-15</td><td class='n dn'>-3.6%</td></tr>
+<tr><td>Jasper Alger</td><td>Richmond</td><td>SF</td><td>20</td><td>12</td><td class=n>238</td><td class=n>223</td><td class='n dn'>-15</td><td class='n dn'>-6.3%</td></tr>
+<tr><td>Oliver Hayes-Brown</td><td>Richmond</td><td>RUCK</td><td>26</td><td>7</td><td class=n>207</td><td class=n>192</td><td class='n dn'>-15</td><td class='n dn'>-7.2%</td></tr>
+<tr><td>Aidan Johnson</td><td>Melbourne</td><td>KPF</td><td>26</td><td>6</td><td class=n>78</td><td class=n>63</td><td class='n dn'>-15</td><td class='n dn'>-19.2%</td></tr>
+<tr><td>Jayden Laverde</td><td>Essendon</td><td>KPD</td><td>30</td><td>163</td><td class=n>246</td><td class=n>231</td><td class='n dn'>-15</td><td class='n dn'>-6.1%</td></tr>
+<tr><td>Reuben Ginbey</td><td>West Coast</td><td>SD</td><td>22</td><td>76</td><td class=n>2211</td><td class=n>2225</td><td class='n up'>+14</td><td class='n up'>+0.6%</td></tr>
+<tr><td>Lewis Hayes</td><td>Essendon</td><td>SD</td><td>22</td><td>1</td><td class=n>349</td><td class=n>363</td><td class='n up'>+14</td><td class='n up'>+4.0%</td></tr>
+<tr><td>Harrison Petty</td><td>Melbourne</td><td>KPF</td><td>27</td><td>120</td><td class=n>460</td><td class=n>474</td><td class='n up'>+14</td><td class='n up'>+3.0%</td></tr>
+<tr><td>Corey Warner</td><td>Sydney</td><td>SF</td><td>23</td><td>28</td><td class=n>76</td><td class=n>62</td><td class='n dn'>-14</td><td class='n dn'>-18.4%</td></tr>
+<tr><td>Will Edwards</td><td>Sydney</td><td>KPD</td><td>23</td><td>13</td><td class=n>245</td><td class=n>231</td><td class='n dn'>-14</td><td class='n dn'>-5.7%</td></tr>
+<tr><td>Corey Durdin</td><td>Carlton</td><td>SF</td><td>24</td><td>87</td><td class=n>52</td><td class=n>66</td><td class='n up'>+14</td><td class='n up'>+26.9%</td></tr>
+<tr><td>Changkuoth Jiath</td><td>Melbourne</td><td>SD</td><td>27</td><td>91</td><td class=n>37</td><td class=n>51</td><td class='n up'>+14</td><td class='n up'>+37.8%</td></tr>
+<tr><td>Dan Houston</td><td>Collingwood</td><td>SD</td><td>29</td><td>212</td><td class=n>1074</td><td class=n>1087</td><td class='n up'>+13</td><td class='n up'>+1.2%</td></tr>
+<tr><td>Jack Silvagni</td><td>St Kilda</td><td>KPD</td><td>29</td><td>151</td><td class=n>617</td><td class=n>630</td><td class='n up'>+13</td><td class='n up'>+2.1%</td></tr>
+<tr><td>Jack Watkins</td><td>Port Adelaide</td><td>SF</td><td>26</td><td>11</td><td class=n>69</td><td class=n>56</td><td class='n dn'>-13</td><td class='n dn'>-18.8%</td></tr>
+<tr><td>Kye Annand</td><td>Richmond</td><td>KPD</td><td>23</td><td>11</td><td class=n>394</td><td class=n>407</td><td class='n up'>+13</td><td class='n up'>+3.3%</td></tr>
+<tr><td>Robert Hansen</td><td>North Melbourne</td><td>SF</td><td>22</td><td>20</td><td class=n>69</td><td class=n>56</td><td class='n dn'>-13</td><td class='n dn'>-18.8%</td></tr>
+<tr><td>Buku Khamis</td><td>Western Bulldogs</td><td>KPF</td><td>26</td><td>64</td><td class=n>189</td><td class=n>176</td><td class='n dn'>-13</td><td class='n dn'>-6.9%</td></tr>
+<tr><td>Elliott Himmelberg</td><td>Adelaide</td><td>KPF</td><td>28</td><td>50</td><td class=n>58</td><td class=n>45</td><td class='n dn'>-13</td><td class='n dn'>-22.4%</td></tr>
+<tr><td>Jy Farrar</td><td>Gold Coast</td><td>KPF</td><td>30</td><td>45</td><td class=n>30</td><td class=n>17</td><td class='n dn'>-13</td><td class='n dn'>-43.3%</td></tr>
+<tr><td>Finn O&#x27;Sullivan</td><td>North Melbourne</td><td>SD</td><td>20</td><td>41</td><td class=n>3294</td><td class=n>3306</td><td class='n up'>+12</td><td class='n up'>+0.4%</td></tr>
+<tr><td>Shaun Mannagh</td><td>Geelong</td><td>SF</td><td>29</td><td>57</td><td class=n>886</td><td class=n>874</td><td class='n dn'>-12</td><td class='n dn'>-1.4%</td></tr>
+<tr><td>Darcy Byrne-Jones</td><td>Port Adelaide</td><td>SF</td><td>31</td><td>243</td><td class=n>603</td><td class=n>615</td><td class='n up'>+12</td><td class='n up'>+2.0%</td></tr>
+<tr><td>Milan Murdock</td><td>West Coast</td><td>SF</td><td>26</td><td>19</td><td class=n>353</td><td class=n>365</td><td class='n up'>+12</td><td class='n up'>+3.4%</td></tr>
+<tr><td>Max Beattie</td><td>Hawthorn</td><td>SF</td><td>23</td><td>2</td><td class=n>160</td><td class=n>172</td><td class='n up'>+12</td><td class='n up'>+7.5%</td></tr>
+<tr><td>Tom Blamires</td><td>North Melbourne</td><td>SD</td><td>24</td><td>16</td><td class=n>189</td><td class=n>177</td><td class='n dn'>-12</td><td class='n dn'>-6.3%</td></tr>
+<tr><td>Wil Parker</td><td>Collingwood</td><td>SD</td><td>24</td><td>14</td><td class=n>29</td><td class=n>17</td><td class='n dn'>-12</td><td class='n dn'>-41.4%</td></tr>
+<tr><td>Henry Smith</td><td>Brisbane</td><td>KPF</td><td>24</td><td>6</td><td class=n>136</td><td class=n>148</td><td class='n up'>+12</td><td class='n up'>+8.8%</td></tr>
+<tr><td>Toby Pink</td><td>North Melbourne</td><td>KPD</td><td>28</td><td>37</td><td class=n>67</td><td class=n>55</td><td class='n dn'>-12</td><td class='n dn'>-17.9%</td></tr>
+<tr><td>Justin McInerney</td><td>Sydney</td><td>SF</td><td>26</td><td>122</td><td class=n>2025</td><td class=n>2036</td><td class='n up'>+11</td><td class='n up'>+0.5%</td></tr>
+<tr><td>Kane Farrell</td><td>Port Adelaide</td><td>SD</td><td>27</td><td>127</td><td class=n>1262</td><td class=n>1273</td><td class='n up'>+11</td><td class='n up'>+0.9%</td></tr>
+<tr><td>Jack Graham</td><td>West Coast</td><td>SF</td><td>28</td><td>162</td><td class=n>794</td><td class=n>783</td><td class='n dn'>-11</td><td class='n dn'>-1.4%</td></tr>
+<tr><td>Tom Gross</td><td>West Coast</td><td>SF</td><td>20</td><td>12</td><td class=n>428</td><td class=n>417</td><td class='n dn'>-11</td><td class='n dn'>-2.6%</td></tr>
+<tr><td>Campbell Chesser</td><td>Carlton</td><td>MID</td><td>23</td><td>39</td><td class=n>213</td><td class=n>202</td><td class='n dn'>-11</td><td class='n dn'>-5.2%</td></tr>
+<tr><td>Paddy Cross</td><td>Melbourne</td><td>SF</td><td>23</td><td>10</td><td class=n>95</td><td class=n>84</td><td class='n dn'>-11</td><td class='n dn'>-11.6%</td></tr>
+<tr><td>Ewan Mackinlay</td><td>Port Adelaide</td><td>SF</td><td>23</td><td>15</td><td class=n>163</td><td class=n>152</td><td class='n dn'>-11</td><td class='n dn'>-6.7%</td></tr>
+<tr><td>Saad El-Hawli</td><td>Essendon</td><td>SD</td><td>25</td><td>17</td><td class=n>58</td><td class=n>47</td><td class='n dn'>-11</td><td class='n dn'>-19.0%</td></tr>
+<tr><td>Conor Nash</td><td>Hawthorn</td><td>MID</td><td>28</td><td>130</td><td class=n>336</td><td class=n>347</td><td class='n up'>+11</td><td class='n up'>+3.3%</td></tr>
+<tr><td>James Tunstill</td><td>Brisbane</td><td>MID</td><td>23</td><td>23</td><td class=n>152</td><td class=n>163</td><td class='n up'>+11</td><td class='n up'>+7.2%</td></tr>
+<tr><td>Andy Moniz-Wakefield</td><td>Melbourne</td><td>SD</td><td>23</td><td>8</td><td class=n>66</td><td class=n>55</td><td class='n dn'>-11</td><td class='n dn'>-16.7%</td></tr>
+<tr><td>Nick Vlastuin</td><td>Richmond</td><td>SD</td><td>32</td><td>277</td><td class=n>96</td><td class=n>107</td><td class='n up'>+11</td><td class='n up'>+11.5%</td></tr>
+<tr><td>Jordon Butts</td><td>Adelaide</td><td>KPD</td><td>27</td><td>94</td><td class=n>36</td><td class=n>25</td><td class='n dn'>-11</td><td class='n dn'>-30.6%</td></tr>
+<tr><td>Brodie Grundy</td><td>Sydney</td><td>RUCK</td><td>32</td><td>263</td><td class=n>4142</td><td class=n>4132</td><td class='n dn'>-10</td><td class='n dn'>-0.2%</td></tr>
+<tr><td>Rowan Marshall</td><td>St Kilda</td><td>KPF</td><td>31</td><td>177</td><td class=n>2081</td><td class=n>2091</td><td class='n up'>+10</td><td class='n up'>+0.5%</td></tr>
+<tr><td>Jordan De Goey</td><td>Collingwood</td><td>SF</td><td>30</td><td>203</td><td class=n>1370</td><td class=n>1380</td><td class='n up'>+10</td><td class='n up'>+0.7%</td></tr>
+<tr><td>Mason Redman</td><td>Essendon</td><td>SD</td><td>29</td><td>159</td><td class=n>992</td><td class=n>1002</td><td class='n up'>+10</td><td class='n up'>+1.0%</td></tr>
+<tr><td>Mitch Podhajski</td><td>Collingwood</td><td>KPF</td><td>27</td><td>2</td><td class=n>118</td><td class=n>108</td><td class='n dn'>-10</td><td class='n dn'>-8.5%</td></tr>
+<tr><td>Sam Clohesy</td><td>Gold Coast</td><td>MID</td><td>24</td><td>46</td><td class=n>354</td><td class=n>344</td><td class='n dn'>-10</td><td class='n dn'>-2.8%</td></tr>
+<tr><td>Harvey Gallagher</td><td>Western Bulldogs</td><td>SD</td><td>23</td><td>28</td><td class=n>40</td><td class=n>30</td><td class='n dn'>-10</td><td class='n dn'>-25.0%</td></tr>
+<tr><td>Jake Lloyd</td><td>Sydney</td><td>SF</td><td>33</td><td>294</td><td class=n>242</td><td class=n>252</td><td class='n up'>+10</td><td class='n up'>+4.1%</td></tr>
+<tr><td>Jake Lever</td><td>Melbourne</td><td>SD</td><td>30</td><td>208</td><td class=n>178</td><td class=n>168</td><td class='n dn'>-10</td><td class='n dn'>-5.6%</td></tr>
+<tr><td>Brandon Walker</td><td>Fremantle</td><td>SD</td><td>24</td><td>67</td><td class=n>32</td><td class=n>42</td><td class='n up'>+10</td><td class='n up'>+31.2%</td></tr>
+<tr><td>Eric Hipwood</td><td>Brisbane</td><td>KPF</td><td>29</td><td>209</td><td class=n>63</td><td class=n>53</td><td class='n dn'>-10</td><td class='n dn'>-15.9%</td></tr>
+<tr><td>Xavier Duursma</td><td>Essendon</td><td>MID</td><td>26</td><td>128</td><td class=n>231</td><td class=n>241</td><td class='n up'>+10</td><td class='n up'>+4.3%</td></tr>
+<tr><td>Willem Duursma</td><td>West Coast</td><td>MID</td><td>19</td><td>21</td><td class=n>3679</td><td class=n>3670</td><td class='n dn'>-9</td><td class='n dn'>-0.2%</td></tr>
+<tr><td>Jacob Van Rooyen</td><td>Melbourne</td><td>KPF</td><td>23</td><td>79</td><td class=n>1889</td><td class=n>1880</td><td class='n dn'>-9</td><td class='n dn'>-0.5%</td></tr>
+<tr><td>Dylan Moore</td><td>Hawthorn</td><td>SF</td><td>27</td><td>148</td><td class=n>1216</td><td class=n>1225</td><td class='n up'>+9</td><td class='n up'>+0.7%</td></tr>
+<tr><td>Patrick Lipinski</td><td>Collingwood</td><td>SF</td><td>28</td><td>160</td><td class=n>745</td><td class=n>754</td><td class='n up'>+9</td><td class='n up'>+1.2%</td></tr>
+<tr><td>Joseph Fonti</td><td>GWS</td><td>SD</td><td>22</td><td>44</td><td class=n>577</td><td class=n>568</td><td class='n dn'>-9</td><td class='n dn'>-1.6%</td></tr>
+<tr><td>Lukas Cooke</td><td>Melbourne</td><td>KPD</td><td>23</td><td>2</td><td class=n>254</td><td class=n>245</td><td class='n dn'>-9</td><td class='n dn'>-3.5%</td></tr>
+<tr><td>Jack Ison</td><td>Carlton</td><td>MID</td><td>19</td><td>7</td><td class=n>454</td><td class=n>463</td><td class='n up'>+9</td><td class='n up'>+2.0%</td></tr>
+<tr><td>Roan Steele</td><td>Collingwood</td><td>MID</td><td>25</td><td>23</td><td class=n>95</td><td class=n>86</td><td class='n dn'>-9</td><td class='n dn'>-9.5%</td></tr>
+<tr><td>Daniel McStay</td><td>Collingwood</td><td>KPF</td><td>31</td><td>221</td><td class=n>294</td><td class=n>285</td><td class='n dn'>-9</td><td class='n dn'>-3.1%</td></tr>
+<tr><td>Steely Green</td><td>Richmond</td><td>SF</td><td>22</td><td>45</td><td class=n>90</td><td class=n>99</td><td class='n up'>+9</td><td class='n up'>+10.0%</td></tr>
+<tr><td>Jack Henry</td><td>Geelong</td><td>KPF</td><td>28</td><td>182</td><td class=n>218</td><td class=n>227</td><td class='n up'>+9</td><td class='n up'>+4.1%</td></tr>
+<tr><td>Jackson Archer</td><td>North Melbourne</td><td>SD</td><td>23</td><td>26</td><td class=n>25</td><td class=n>16</td><td class='n dn'>-9</td><td class='n dn'>-36.0%</td></tr>
+<tr><td>Maurice Rioli</td><td>Richmond</td><td>SF</td><td>24</td><td>59</td><td class=n>30</td><td class=n>21</td><td class='n dn'>-9</td><td class='n dn'>-30.0%</td></tr>
+<tr><td>Lachlan Weller</td><td>Gold Coast</td><td>MID</td><td>30</td><td>172</td><td class=n>48</td><td class=n>39</td><td class='n dn'>-9</td><td class='n dn'>-18.8%</td></tr>
+<tr><td>Jacob Hopper</td><td>Richmond</td><td>MID</td><td>29</td><td>177</td><td class=n>118</td><td class=n>109</td><td class='n dn'>-9</td><td class='n dn'>-7.6%</td></tr>
+<tr><td>Malcolm Rosas</td><td>Sydney</td><td>SF</td><td>25</td><td>65</td><td class=n>28</td><td class=n>19</td><td class='n dn'>-9</td><td class='n dn'>-32.1%</td></tr>
+<tr><td>Jeremy Sharp</td><td>Fremantle</td><td>MID</td><td>25</td><td>62</td><td class=n>81</td><td class=n>90</td><td class='n up'>+9</td><td class='n up'>+11.1%</td></tr>
+<tr><td>Jonty Faull</td><td>Richmond</td><td>KPF</td><td>20</td><td>26</td><td class=n>587</td><td class=n>595</td><td class='n up'>+8</td><td class='n up'>+1.4%</td></tr>
+<tr><td>Jy Simpkin</td><td>North Melbourne</td><td>SF</td><td>28</td><td>196</td><td class=n>1281</td><td class=n>1273</td><td class='n dn'>-8</td><td class='n dn'>-0.6%</td></tr>
+<tr><td>Joshua Kelly</td><td>GWS</td><td>MID</td><td>31</td><td>230</td><td class=n>739</td><td class=n>747</td><td class='n up'>+8</td><td class='n up'>+1.1%</td></tr>
+<tr><td>Massimo D&#x27;Ambrosio</td><td>Hawthorn</td><td>MID</td><td>23</td><td>89</td><td class=n>1664</td><td class=n>1672</td><td class='n up'>+8</td><td class='n up'>+0.5%</td></tr>
+<tr><td>Adam Saad</td><td>Carlton</td><td>SD</td><td>32</td><td>219</td><td class=n>432</td><td class=n>440</td><td class='n up'>+8</td><td class='n up'>+1.9%</td></tr>
+<tr><td>Flynn Perez</td><td>Hawthorn</td><td>SD</td><td>25</td><td>31</td><td class=n>46</td><td class=n>38</td><td class='n dn'>-8</td><td class='n dn'>-17.4%</td></tr>
+<tr><td>Noah Balta</td><td>Richmond</td><td>KPF</td><td>27</td><td>134</td><td class=n>465</td><td class=n>473</td><td class='n up'>+8</td><td class='n up'>+1.7%</td></tr>
+<tr><td>Brennan Cox</td><td>Fremantle</td><td>KPD</td><td>28</td><td>152</td><td class=n>206</td><td class=n>214</td><td class='n up'>+8</td><td class='n up'>+3.9%</td></tr>
+<tr><td>Dylan Stephens</td><td>North Melbourne</td><td>MID</td><td>25</td><td>104</td><td class=n>569</td><td class=n>577</td><td class='n up'>+8</td><td class='n up'>+1.4%</td></tr>
+<tr><td>Darcy Cameron</td><td>Collingwood</td><td>RUCK</td><td>31</td><td>142</td><td class=n>1593</td><td class=n>1600</td><td class='n up'>+7</td><td class='n up'>+0.4%</td></tr>
+<tr><td>Rory Laird</td><td>Adelaide</td><td>SD</td><td>33</td><td>287</td><td class=n>724</td><td class=n>731</td><td class='n up'>+7</td><td class='n up'>+1.0%</td></tr>
+<tr><td>Cody Curtin</td><td>Brisbane</td><td>KPF</td><td>19</td><td>4</td><td class=n>389</td><td class=n>396</td><td class='n up'>+7</td><td class='n up'>+1.8%</td></tr>
+<tr><td>Billy Cootee</td><td>Sydney</td><td>MID</td><td>24</td><td>9</td><td class=n>165</td><td class=n>158</td><td class='n dn'>-7</td><td class='n dn'>-4.2%</td></tr>
+<tr><td>Marc Pittonet</td><td>Carlton</td><td>RUCK</td><td>30</td><td>100</td><td class=n>569</td><td class=n>576</td><td class='n up'>+7</td><td class='n up'>+1.2%</td></tr>
+<tr><td>Luker Kentfield</td><td>Melbourne</td><td>KPF</td><td>21</td><td>3</td><td class=n>150</td><td class=n>143</td><td class='n dn'>-7</td><td class='n dn'>-4.7%</td></tr>
+<tr><td>Lachlan Blakiston</td><td>Essendon</td><td>KPD</td><td>28</td><td>28</td><td class=n>58</td><td class=n>51</td><td class='n dn'>-7</td><td class='n dn'>-12.1%</td></tr>
+<tr><td>Isaac Keeler</td><td>St Kilda</td><td>KPF</td><td>22</td><td>13</td><td class=n>191</td><td class=n>184</td><td class='n dn'>-7</td><td class='n dn'>-3.7%</td></tr>
+<tr><td>Sandy Brock</td><td>West Coast</td><td>KPD</td><td>24</td><td>20</td><td class=n>169</td><td class=n>176</td><td class='n up'>+7</td><td class='n up'>+4.1%</td></tr>
+<tr><td>Charlie Ballard</td><td>Gold Coast</td><td>KPD</td><td>27</td><td>145</td><td class=n>76</td><td class=n>69</td><td class='n dn'>-7</td><td class='n dn'>-9.2%</td></tr>
+<tr><td>Lewis Melican</td><td>Sydney</td><td>KPD</td><td>30</td><td>111</td><td class=n>35</td><td class=n>28</td><td class='n dn'>-7</td><td class='n dn'>-20.0%</td></tr>
+<tr><td>Brandon Zerk-Thatcher</td><td>Essendon</td><td>KPD</td><td>28</td><td>94</td><td class=n>79</td><td class=n>72</td><td class='n dn'>-7</td><td class='n dn'>-8.9%</td></tr>
+<tr><td>Isaac Cumming</td><td>Adelaide</td><td>MID</td><td>28</td><td>121</td><td class=n>51</td><td class=n>44</td><td class='n dn'>-7</td><td class='n dn'>-13.7%</td></tr>
+<tr><td>Mattaes Phillipou</td><td>St Kilda</td><td>SF</td><td>22</td><td>65</td><td class=n>1824</td><td class=n>1818</td><td class='n dn'>-6</td><td class='n dn'>-0.3%</td></tr>
+<tr><td>Flynn Young</td><td>Carlton</td><td>SF</td><td>24</td><td>11</td><td class=n>34</td><td class=n>28</td><td class='n dn'>-6</td><td class='n dn'>-17.6%</td></tr>
+<tr><td>Bailey Macdonald</td><td>Hawthorn</td><td>SD</td><td>22</td><td>20</td><td class=n>118</td><td class=n>112</td><td class='n dn'>-6</td><td class='n dn'>-5.1%</td></tr>
+<tr><td>Jesse Hogan</td><td>GWS</td><td>KPF</td><td>32</td><td>190</td><td class=n>272</td><td class=n>266</td><td class='n dn'>-6</td><td class='n dn'>-2.2%</td></tr>
+<tr><td>Shadeau Brain</td><td>Brisbane</td><td>SD</td><td>22</td><td>11</td><td class=n>73</td><td class=n>79</td><td class='n up'>+6</td><td class='n up'>+8.2%</td></tr>
+<tr><td>Luke Cleary</td><td>Western Bulldogs</td><td>SD</td><td>24</td><td>25</td><td class=n>34</td><td class=n>40</td><td class='n up'>+6</td><td class='n up'>+17.6%</td></tr>
+<tr><td>Jarrod Witts</td><td>Gold Coast</td><td>RUCK</td><td>34</td><td>218</td><td class=n>229</td><td class=n>223</td><td class='n dn'>-6</td><td class='n dn'>-2.6%</td></tr>
+<tr><td>Oscar McDonald</td><td>Fremantle</td><td>KPD</td><td>30</td><td>104</td><td class=n>73</td><td class=n>79</td><td class='n up'>+6</td><td class='n up'>+8.2%</td></tr>
+<tr><td>Tom Barrass</td><td>Hawthorn</td><td>KPD</td><td>31</td><td>194</td><td class=n>39</td><td class=n>45</td><td class='n up'>+6</td><td class='n up'>+15.4%</td></tr>
+<tr><td>Corey Wagner</td><td>Fremantle</td><td>SD</td><td>29</td><td>70</td><td class=n>55</td><td class=n>49</td><td class='n dn'>-6</td><td class='n dn'>-10.9%</td></tr>
+<tr><td>Harry Schoenberg</td><td>Adelaide</td><td>SF</td><td>25</td><td>67</td><td class=n>36</td><td class=n>30</td><td class='n dn'>-6</td><td class='n dn'>-16.7%</td></tr>
+<tr><td>Luke McDonald</td><td>North Melbourne</td><td>SD</td><td>31</td><td>236</td><td class=n>21</td><td class=n>15</td><td class='n dn'>-6</td><td class='n dn'>-28.6%</td></tr>
+<tr><td>Bradley Close</td><td>Geelong</td><td>SF</td><td>28</td><td>143</td><td class=n>26</td><td class=n>20</td><td class='n dn'>-6</td><td class='n dn'>-23.1%</td></tr>
+<tr><td>Ben McKay</td><td>Essendon</td><td>KPD</td><td>29</td><td>119</td><td class=n>28</td><td class=n>22</td><td class='n dn'>-6</td><td class='n dn'>-21.4%</td></tr>
+<tr><td>Liam Stocker</td><td>St Kilda</td><td>SD</td><td>26</td><td>102</td><td class=n>31</td><td class=n>37</td><td class='n up'>+6</td><td class='n up'>+19.4%</td></tr>
+<tr><td>Nasiah Wanganeen-Milera</td><td>St Kilda</td><td>SD</td><td>23</td><td>102</td><td class=n>8754</td><td class=n>8749</td><td class='n dn'>-5</td><td class='n dn'>-0.1%</td></tr>
+<tr><td>Samuel Collins</td><td>Gold Coast</td><td>KPD</td><td>32</td><td>169</td><td class=n>586</td><td class=n>591</td><td class='n up'>+5</td><td class='n up'>+0.9%</td></tr>
+<tr><td>Toby McMullin</td><td>GWS</td><td>MID</td><td>22</td><td>36</td><td class=n>69</td><td class=n>74</td><td class='n up'>+5</td><td class='n up'>+7.2%</td></tr>
+<tr><td>Liam Puncher</td><td>Collingwood</td><td>KPD</td><td>23</td><td>8</td><td class=n>172</td><td class=n>167</td><td class='n dn'>-5</td><td class='n dn'>-2.9%</td></tr>
+<tr><td>Jack Hutchinson</td><td>West Coast</td><td>MID</td><td>25</td><td>28</td><td class=n>73</td><td class=n>78</td><td class='n up'>+5</td><td class='n up'>+6.8%</td></tr>
+<tr><td>James Worpel</td><td>Geelong</td><td>MID</td><td>27</td><td>159</td><td class=n>444</td><td class=n>449</td><td class='n up'>+5</td><td class='n up'>+1.1%</td></tr>
+<tr><td>Oliver Wiltshire</td><td>Geelong</td><td>SF</td><td>24</td><td>15</td><td class=n>26</td><td class=n>31</td><td class='n up'>+5</td><td class='n up'>+19.2%</td></tr>
+<tr><td>Tom McDonald</td><td>Melbourne</td><td>KPD</td><td>34</td><td>259</td><td class=n>58</td><td class=n>53</td><td class='n dn'>-5</td><td class='n dn'>-8.6%</td></tr>
+<tr><td>Mitch McGovern</td><td>Carlton</td><td>SF</td><td>32</td><td>168</td><td class=n>46</td><td class=n>41</td><td class='n dn'>-5</td><td class='n dn'>-10.9%</td></tr>
+<tr><td>Brody Mihocek</td><td>Melbourne</td><td>KPF</td><td>33</td><td>169</td><td class=n>44</td><td class=n>39</td><td class='n dn'>-5</td><td class='n dn'>-11.4%</td></tr>
+<tr><td>Chayce Jones</td><td>Adelaide</td><td>SD</td><td>26</td><td>100</td><td class=n>17</td><td class=n>12</td><td class='n dn'>-5</td><td class='n dn'>-29.4%</td></tr>
+<tr><td>Bailey Banfield</td><td>Fremantle</td><td>SD</td><td>28</td><td>119</td><td class=n>14</td><td class=n>9</td><td class='n dn'>-5</td><td class='n dn'>-35.7%</td></tr>
+<tr><td>Tom McCarthy</td><td>West Coast</td><td>SD</td><td>26</td><td>32</td><td class=n>1329</td><td class=n>1333</td><td class='n up'>+4</td><td class='n up'>+0.3%</td></tr>
+<tr><td>Luke Ryan</td><td>Fremantle</td><td>SD</td><td>30</td><td>201</td><td class=n>1292</td><td class=n>1288</td><td class='n dn'>-4</td><td class='n dn'>-0.3%</td></tr>
+<tr><td>Harry Armstrong</td><td>Richmond</td><td>KPF</td><td>20</td><td>12</td><td class=n>498</td><td class=n>494</td><td class='n dn'>-4</td><td class='n dn'>-0.8%</td></tr>
+<tr><td>Samuel Swadling</td><td>Collingwood</td><td>MID</td><td>19</td><td>8</td><td class=n>1204</td><td class=n>1208</td><td class='n up'>+4</td><td class='n up'>+0.3%</td></tr>
+<tr><td>Sam Butler</td><td>Hawthorn</td><td>SF</td><td>23</td><td>33</td><td class=n>107</td><td class=n>111</td><td class='n up'>+4</td><td class='n up'>+3.7%</td></tr>
+<tr><td>Bayley Fritsch</td><td>Melbourne</td><td>SF</td><td>30</td><td>192</td><td class=n>286</td><td class=n>290</td><td class='n up'>+4</td><td class='n up'>+1.4%</td></tr>
+<tr><td>Tom Papley</td><td>Sydney</td><td>SF</td><td>30</td><td>214</td><td class=n>343</td><td class=n>347</td><td class='n up'>+4</td><td class='n up'>+1.2%</td></tr>
+<tr><td>George Stevens</td><td>Geelong</td><td>MID</td><td>21</td><td>4</td><td class=n>67</td><td class=n>71</td><td class='n up'>+4</td><td class='n up'>+6.0%</td></tr>
+<tr><td>Mani Liddy</td><td>Port Adelaide</td><td>MID</td><td>24</td><td>9</td><td class=n>96</td><td class=n>92</td><td class='n dn'>-4</td><td class='n dn'>-4.2%</td></tr>
+<tr><td>Sam Powell-Pepper</td><td>Port Adelaide</td><td>SF</td><td>28</td><td>158</td><td class=n>205</td><td class=n>209</td><td class='n up'>+4</td><td class='n up'>+2.0%</td></tr>
+<tr><td>Will Lorenz</td><td>Port Adelaide</td><td>MID</td><td>21</td><td>11</td><td class=n>207</td><td class=n>203</td><td class='n dn'>-4</td><td class='n dn'>-1.9%</td></tr>
+<tr><td>Oisin Mullin</td><td>Geelong</td><td>SD</td><td>26</td><td>66</td><td class=n>22</td><td class=n>26</td><td class='n up'>+4</td><td class='n up'>+18.2%</td></tr>
+<tr><td>Lachlan Jones</td><td>Port Adelaide</td><td>SD</td><td>24</td><td>94</td><td class=n>168</td><td class=n>164</td><td class='n dn'>-4</td><td class='n dn'>-2.4%</td></tr>
+<tr><td>Harvey Harrison</td><td>Collingwood</td><td>SF</td><td>23</td><td>27</td><td class=n>57</td><td class=n>61</td><td class='n up'>+4</td><td class='n up'>+7.0%</td></tr>
+<tr><td>Jackson Mead</td><td>Port Adelaide</td><td>MID</td><td>25</td><td>74</td><td class=n>22</td><td class=n>26</td><td class='n up'>+4</td><td class='n up'>+18.2%</td></tr>
+<tr><td>Sam Sturt</td><td>Fremantle</td><td>SF</td><td>26</td><td>31</td><td class=n>36</td><td class=n>32</td><td class='n dn'>-4</td><td class='n dn'>-11.1%</td></tr>
+<tr><td>Finn Maginness</td><td>Hawthorn</td><td>SF</td><td>25</td><td>64</td><td class=n>19</td><td class=n>15</td><td class='n dn'>-4</td><td class='n dn'>-21.1%</td></tr>
+<tr><td>Bobby Hill</td><td>Collingwood</td><td>SF</td><td>26</td><td>97</td><td class=n>48</td><td class=n>52</td><td class='n up'>+4</td><td class='n up'>+8.3%</td></tr>
+<tr><td>Oskar Baker</td><td>Western Bulldogs</td><td>SF</td><td>28</td><td>57</td><td class=n>18</td><td class=n>14</td><td class='n dn'>-4</td><td class='n dn'>-22.2%</td></tr>
+<tr><td>Jordan Dawson</td><td>Adelaide</td><td>MID</td><td>29</td><td>176</td><td class=n>3130</td><td class=n>3127</td><td class='n dn'>-3</td><td class='n dn'>-0.1%</td></tr>
+<tr><td>Luke Parker</td><td>North Melbourne</td><td>SD</td><td>34</td><td>338</td><td class=n>1173</td><td class=n>1176</td><td class='n up'>+3</td><td class='n up'>+0.3%</td></tr>
+<tr><td>Aidan Schubert</td><td>Hawthorn</td><td>KPF</td><td>19</td><td>1</td><td class=n>559</td><td class=n>556</td><td class='n dn'>-3</td><td class='n dn'>-0.5%</td></tr>
+<tr><td>Marcus Herbert</td><td>West Coast</td><td>MID</td><td>24</td><td>10</td><td class=n>819</td><td class=n>816</td><td class='n dn'>-3</td><td class='n dn'>-0.4%</td></tr>
+<tr><td>Tobyn Murray</td><td>Fremantle</td><td>SF</td><td>21</td><td>1</td><td class=n>241</td><td class=n>244</td><td class='n up'>+3</td><td class='n up'>+1.2%</td></tr>
+<tr><td>Josh Gibcus</td><td>Richmond</td><td>KPD</td><td>23</td><td>22</td><td class=n>250</td><td class=n>247</td><td class='n dn'>-3</td><td class='n dn'>-1.2%</td></tr>
+<tr><td>Lucca Grego</td><td>West Coast</td><td>SD</td><td>20</td><td>1</td><td class=n>64</td><td class=n>67</td><td class='n up'>+3</td><td class='n up'>+4.7%</td></tr>
+<tr><td>Zachary Williams</td><td>Carlton</td><td>SF</td><td>32</td><td>183</td><td class=n>342</td><td class=n>345</td><td class='n up'>+3</td><td class='n up'>+0.9%</td></tr>
+<tr><td>Billy Dowling</td><td>Adelaide</td><td>SF</td><td>22</td><td>13</td><td class=n>165</td><td class=n>168</td><td class='n up'>+3</td><td class='n up'>+1.8%</td></tr>
+<tr><td>Angus Anderson</td><td>Collingwood</td><td>SF</td><td>23</td><td>15</td><td class=n>291</td><td class=n>294</td><td class='n up'>+3</td><td class='n up'>+1.0%</td></tr>
+<tr><td>Oscar Allen</td><td>West Coast</td><td>KPF</td><td>27</td><td>116</td><td class=n>156</td><td class=n>153</td><td class='n dn'>-3</td><td class='n dn'>-1.9%</td></tr>
+<tr><td>Campbell Lake</td><td>St Kilda</td><td>SF</td><td>22</td><td>9</td><td class=n>222</td><td class=n>225</td><td class='n up'>+3</td><td class='n up'>+1.4%</td></tr>
+<tr><td>Campbell Gray</td><td>Richmond</td><td>KPD</td><td>23</td><td>13</td><td class=n>282</td><td class=n>285</td><td class='n up'>+3</td><td class='n up'>+1.1%</td></tr>
+<tr><td>Bailey Laurie</td><td>Melbourne</td><td>SF</td><td>24</td><td>28</td><td class=n>84</td><td class=n>87</td><td class='n up'>+3</td><td class='n up'>+3.6%</td></tr>
+<tr><td>Tim Membrey</td><td>St Kilda</td><td>KPF</td><td>32</td><td>221</td><td class=n>96</td><td class=n>93</td><td class='n dn'>-3</td><td class='n dn'>-3.1%</td></tr>
+<tr><td>Zac Fisher</td><td>North Melbourne</td><td>SF</td><td>28</td><td>133</td><td class=n>140</td><td class=n>137</td><td class='n dn'>-3</td><td class='n dn'>-2.1%</td></tr>
+<tr><td>Lachlan Bramble</td><td>Western Bulldogs</td><td>SF</td><td>28</td><td>99</td><td class=n>122</td><td class=n>119</td><td class='n dn'>-3</td><td class='n dn'>-2.5%</td></tr>
+<tr><td>Tom Cole</td><td>West Coast</td><td>SF</td><td>29</td><td>148</td><td class=n>73</td><td class=n>70</td><td class='n dn'>-3</td><td class='n dn'>-4.1%</td></tr>
+<tr><td>Billy Frampton</td><td>Collingwood</td><td>KPD</td><td>30</td><td>97</td><td class=n>55</td><td class=n>58</td><td class='n up'>+3</td><td class='n up'>+5.5%</td></tr>
+<tr><td>Sam Wicks</td><td>Sydney</td><td>SD</td><td>27</td><td>105</td><td class=n>26</td><td class=n>23</td><td class='n dn'>-3</td><td class='n dn'>-11.5%</td></tr>
+<tr><td>Jade Gresham</td><td>Essendon</td><td>SF</td><td>29</td><td>184</td><td class=n>10</td><td class=n>7</td><td class='n dn'>-3</td><td class='n dn'>-30.0%</td></tr>
+<tr><td>Bailey Scott</td><td>North Melbourne</td><td>MID</td><td>26</td><td>116</td><td class=n>17</td><td class=n>20</td><td class='n up'>+3</td><td class='n up'>+17.6%</td></tr>
+<tr><td>Brandon Starcevich</td><td>Brisbane</td><td>SD</td><td>27</td><td>143</td><td class=n>10</td><td class=n>7</td><td class='n dn'>-3</td><td class='n dn'>-30.0%</td></tr>
+<tr><td>Alex Pearce</td><td>Fremantle</td><td>KPD</td><td>31</td><td>158</td><td class=n>12</td><td class=n>9</td><td class='n dn'>-3</td><td class='n dn'>-25.0%</td></tr>
+<tr><td>Bradley Hill</td><td>St Kilda</td><td>SF</td><td>33</td><td>300</td><td class=n>1434</td><td class=n>1436</td><td class='n up'>+2</td><td class='n up'>+0.1%</td></tr>
+<tr><td>James Sicily</td><td>Hawthorn</td><td>SD</td><td>31</td><td>201</td><td class=n>1232</td><td class=n>1230</td><td class='n dn'>-2</td><td class='n dn'>-0.2%</td></tr>
+<tr><td>Dayne Zorko</td><td>Brisbane</td><td>SD</td><td>37</td><td>317</td><td class=n>969</td><td class=n>971</td><td class='n up'>+2</td><td class='n up'>+0.2%</td></tr>
+<tr><td>Thomas Stewart</td><td>Geelong</td><td>SD</td><td>33</td><td>212</td><td class=n>902</td><td class=n>904</td><td class='n up'>+2</td><td class='n up'>+0.2%</td></tr>
+<tr><td>Lachie Jaques</td><td>Western Bulldogs</td><td>SD</td><td>20</td><td>10</td><td class=n>577</td><td class=n>575</td><td class='n dn'>-2</td><td class='n dn'>-0.3%</td></tr>
+<tr><td>James Leake</td><td>GWS</td><td>SF</td><td>21</td><td>8</td><td class=n>169</td><td class=n>171</td><td class='n up'>+2</td><td class='n up'>+1.2%</td></tr>
+<tr><td>Nic Newman</td><td>Carlton</td><td>SD</td><td>33</td><td>149</td><td class=n>675</td><td class=n>677</td><td class='n up'>+2</td><td class='n up'>+0.3%</td></tr>
+<tr><td>Darcy Parish</td><td>Essendon</td><td>MID</td><td>29</td><td>179</td><td class=n>651</td><td class=n>653</td><td class='n up'>+2</td><td class='n up'>+0.3%</td></tr>
+<tr><td>Ashton Moir</td><td>Carlton</td><td>SF</td><td>21</td><td>13</td><td class=n>213</td><td class=n>215</td><td class='n up'>+2</td><td class='n up'>+0.9%</td></tr>
+<tr><td>Matt Hill</td><td>Hawthorn</td><td>SD</td><td>22</td><td>2</td><td class=n>34</td><td class=n>36</td><td class='n up'>+2</td><td class='n up'>+5.9%</td></tr>
+<tr><td>Rory Lobb</td><td>Western Bulldogs</td><td>KPD</td><td>33</td><td>219</td><td class=n>297</td><td class=n>295</td><td class='n dn'>-2</td><td class='n dn'>-0.7%</td></tr>
+<tr><td>Jack Henderson</td><td>Melbourne</td><td>SF</td><td>27</td><td>5</td><td class=n>28</td><td class=n>26</td><td class='n dn'>-2</td><td class='n dn'>-7.1%</td></tr>
+<tr><td>Blake Acres</td><td>Carlton</td><td>MID</td><td>31</td><td>197</td><td class=n>178</td><td class=n>176</td><td class='n dn'>-2</td><td class='n dn'>-1.1%</td></tr>
+<tr><td>Jackson Macrae</td><td>St Kilda</td><td>MID</td><td>32</td><td>282</td><td class=n>140</td><td class=n>142</td><td class='n up'>+2</td><td class='n up'>+1.4%</td></tr>
+<tr><td>Max Ramsden</td><td>Hawthorn</td><td>KPF</td><td>23</td><td>11</td><td class=n>57</td><td class=n>55</td><td class='n dn'>-2</td><td class='n dn'>-3.5%</td></tr>
+<tr><td>Dougal Howard</td><td>St Kilda</td><td>KPD</td><td>30</td><td>145</td><td class=n>36</td><td class=n>34</td><td class='n dn'>-2</td><td class='n dn'>-5.6%</td></tr>
+<tr><td>Hunter Clark</td><td>St Kilda</td><td>MID</td><td>27</td><td>118</td><td class=n>37</td><td class=n>39</td><td class='n up'>+2</td><td class='n up'>+5.4%</td></tr>
+<tr><td>Aidan Corr</td><td>North Melbourne</td><td>KPD</td><td>32</td><td>187</td><td class=n>13</td><td class=n>11</td><td class='n dn'>-2</td><td class='n dn'>-15.4%</td></tr>
+<tr><td>Rhys Stanley</td><td>Geelong</td><td>RUCK</td><td>36</td><td>230</td><td class=n>7</td><td class=n>5</td><td class='n dn'>-2</td><td class='n dn'>-28.6%</td></tr>
+<tr><td>Conor McKenna</td><td>Brisbane</td><td>SF</td><td>30</td><td>145</td><td class=n>5</td><td class=n>3</td><td class='n dn'>-2</td><td class='n dn'>-40.0%</td></tr>
+<tr><td>Jake Kolodjashnij</td><td>Geelong</td><td>KPD</td><td>31</td><td>209</td><td class=n>13</td><td class=n>11</td><td class='n dn'>-2</td><td class='n dn'>-15.4%</td></tr>
+<tr><td>Joel Hamling</td><td>Sydney</td><td>KPD</td><td>33</td><td>114</td><td class=n>8</td><td class=n>6</td><td class='n dn'>-2</td><td class='n dn'>-25.0%</td></tr>
+<tr><td>Max Gawn</td><td>Melbourne</td><td>RUCK</td><td>35</td><td>270</td><td class=n>3356</td><td class=n>3355</td><td class='n dn'>-1</td><td class='n dn'>-0.0%</td></tr>
+<tr><td>Zachary Merrett</td><td>Essendon</td><td>MID</td><td>31</td><td>274</td><td class=n>2406</td><td class=n>2405</td><td class='n dn'>-1</td><td class='n dn'>-0.0%</td></tr>
+<tr><td>George Hewett</td><td>Carlton</td><td>MID</td><td>31</td><td>220</td><td class=n>1942</td><td class=n>1941</td><td class='n dn'>-1</td><td class='n dn'>-0.1%</td></tr>
+<tr><td>Patrick Cripps</td><td>Carlton</td><td>MID</td><td>31</td><td>253</td><td class=n>1527</td><td class=n>1526</td><td class='n dn'>-1</td><td class='n dn'>-0.1%</td></tr>
+<tr><td>Caleb Daniel</td><td>North Melbourne</td><td>SD</td><td>30</td><td>238</td><td class=n>1232</td><td class=n>1233</td><td class='n up'>+1</td><td class='n up'>+0.1%</td></tr>
+<tr><td>Matt Whitlock</td><td>North Melbourne</td><td>KPF</td><td>20</td><td>5</td><td class=n>279</td><td class=n>278</td><td class='n dn'>-1</td><td class='n dn'>-0.4%</td></tr>
+<tr><td>Toby Greene</td><td>GWS</td><td>SF</td><td>33</td><td>281</td><td class=n>744</td><td class=n>745</td><td class='n up'>+1</td><td class='n up'>+0.1%</td></tr>
+<tr><td>Sam Taylor</td><td>GWS</td><td>KPD</td><td>27</td><td>142</td><td class=n>1185</td><td class=n>1186</td><td class='n up'>+1</td><td class='n up'>+0.1%</td></tr>
+<tr><td>Jack Gunston</td><td>Hawthorn</td><td>KPF</td><td>35</td><td>300</td><td class=n>684</td><td class=n>683</td><td class='n dn'>-1</td><td class='n dn'>-0.1%</td></tr>
+<tr><td>Matthew Kennedy</td><td>Western Bulldogs</td><td>MID</td><td>29</td><td>164</td><td class=n>682</td><td class=n>681</td><td class='n dn'>-1</td><td class='n dn'>-0.1%</td></tr>
+<tr><td>Sam Davidson</td><td>Western Bulldogs</td><td>SF</td><td>25</td><td>35</td><td class=n>100</td><td class=n>99</td><td class='n dn'>-1</td><td class='n dn'>-1.0%</td></tr>
+<tr><td>Caleb Lewis</td><td>Gold Coast</td><td>KPF</td><td>23</td><td>2</td><td class=n>168</td><td class=n>169</td><td class='n up'>+1</td><td class='n up'>+0.6%</td></tr>
+<tr><td>Mason Wood</td><td>St Kilda</td><td>SF</td><td>33</td><td>175</td><td class=n>360</td><td class=n>361</td><td class='n up'>+1</td><td class='n up'>+0.3%</td></tr>
+<tr><td>Bruce Reville</td><td>Brisbane</td><td>MID</td><td>25</td><td>43</td><td class=n>87</td><td class=n>86</td><td class='n dn'>-1</td><td class='n dn'>-1.1%</td></tr>
+<tr><td>Rhett Bazzo</td><td>West Coast</td><td>KPD</td><td>23</td><td>42</td><td class=n>491</td><td class=n>490</td><td class='n dn'>-1</td><td class='n dn'>-0.2%</td></tr>
+<tr><td>Ben Jepson</td><td>Gold Coast</td><td>MID</td><td>25</td><td>6</td><td class=n>53</td><td class=n>52</td><td class='n dn'>-1</td><td class='n dn'>-1.9%</td></tr>
+<tr><td>Henry Hustwaite</td><td>Hawthorn</td><td>MID</td><td>22</td><td>11</td><td class=n>60</td><td class=n>61</td><td class='n up'>+1</td><td class='n up'>+1.7%</td></tr>
+<tr><td>Taylor Walker</td><td>Adelaide</td><td>KPF</td><td>37</td><td>317</td><td class=n>218</td><td class=n>219</td><td class='n up'>+1</td><td class='n up'>+0.5%</td></tr>
+<tr><td>Lachie Sullivan</td><td>Collingwood</td><td>SF</td><td>29</td><td>26</td><td class=n>18</td><td class=n>17</td><td class='n dn'>-1</td><td class='n dn'>-5.6%</td></tr>
+<tr><td>Tom Doedee</td><td>Brisbane</td><td>SD</td><td>29</td><td>83</td><td class=n>30</td><td class=n>29</td><td class='n dn'>-1</td><td class='n dn'>-3.3%</td></tr>
+<tr><td>Deven Robertson</td><td>West Coast</td><td>SF</td><td>25</td><td>51</td><td class=n>148</td><td class=n>149</td><td class='n up'>+1</td><td class='n up'>+0.7%</td></tr>
+<tr><td>Jeremy Howe</td><td>Collingwood</td><td>SD</td><td>36</td><td>288</td><td class=n>182</td><td class=n>181</td><td class='n dn'>-1</td><td class='n dn'>-0.5%</td></tr>
+<tr><td>Patrick Dangerfield</td><td>Geelong</td><td>SF</td><td>37</td><td>378</td><td class=n>84</td><td class=n>85</td><td class='n up'>+1</td><td class='n up'>+1.2%</td></tr>
+<tr><td>Lachlan McNeil</td><td>Western Bulldogs</td><td>SF</td><td>25</td><td>85</td><td class=n>18</td><td class=n>17</td><td class='n dn'>-1</td><td class='n dn'>-5.6%</td></tr>
+<tr><td>Jordan Boyd</td><td>Carlton</td><td>SD</td><td>28</td><td>40</td><td class=n>20</td><td class=n>21</td><td class='n up'>+1</td><td class='n up'>+5.0%</td></tr>
+<tr><td>Tyler Brockman</td><td>West Coast</td><td>SF</td><td>24</td><td>56</td><td class=n>55</td><td class=n>54</td><td class='n dn'>-1</td><td class='n dn'>-1.8%</td></tr>
+<tr><td>Jacob Wehr</td><td>Port Adelaide</td><td>SD</td><td>28</td><td>56</td><td class=n>5</td><td class=n>6</td><td class='n up'>+1</td><td class='n up'>+20.0%</td></tr>
+<tr><td>Sam Switkowski</td><td>Fremantle</td><td>SF</td><td>30</td><td>127</td><td class=n>23</td><td class=n>22</td><td class='n dn'>-1</td><td class='n dn'>-4.3%</td></tr>
+<tr><td>Christian Salem</td><td>Melbourne</td><td>SD</td><td>31</td><td>208</td><td class=n>75</td><td class=n>74</td><td class='n dn'>-1</td><td class='n dn'>-1.3%</td></tr>
+<tr><td>Tom Lynch</td><td>Richmond</td><td>KPF</td><td>34</td><td>244</td><td class=n>9</td><td class=n>8</td><td class='n dn'>-1</td><td class='n dn'>-11.1%</td></tr>
+<tr><td>Mark O&#x27;Connor</td><td>Geelong</td><td>SD</td><td>29</td><td>167</td><td class=n>23</td><td class=n>22</td><td class='n dn'>-1</td><td class='n dn'>-4.3%</td></tr>
+<tr><td>Laitham Vandermeer</td><td>Western Bulldogs</td><td>SF</td><td>27</td><td>89</td><td class=n>6</td><td class=n>5</td><td class='n dn'>-1</td><td class='n dn'>-16.7%</td></tr>
+<tr><td>Lachlan Sholl</td><td>Adelaide</td><td>MID</td><td>26</td><td>79</td><td class=n>106</td><td class=n>105</td><td class='n dn'>-1</td><td class='n dn'>-0.9%</td></tr>
+<tr><td>Charlie Spargo</td><td>Melbourne</td><td>SF</td><td>27</td><td>127</td><td class=n>7</td><td class=n>6</td><td class='n dn'>-1</td><td class='n dn'>-14.3%</td></tr>
+<tr><td>Ben Long</td><td>Gold Coast</td><td>SF</td><td>29</td><td>156</td><td class=n>9</td><td class=n>8</td><td class='n dn'>-1</td><td class='n dn'>-11.1%</td></tr>
+<tr><td>Darcy Gardiner</td><td>Brisbane</td><td>KPD</td><td>31</td><td>195</td><td class=n>8</td><td class=n>7</td><td class='n dn'>-1</td><td class='n dn'>-12.5%</td></tr>
+<tr><td>Daniel Butler</td><td>St Kilda</td><td>SF</td><td>30</td><td>161</td><td class=n>3</td><td class=n>2</td><td class='n dn'>-1</td><td class='n dn'>-33.3%</td></tr></tbody></table>
