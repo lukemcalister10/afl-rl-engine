@@ -105,8 +105,10 @@ def _identity_table(ctx, doc, boot, board_md5, out):
                 got = ST.PIN_MEASURERS[k](ctx)
             except Exception as e:                                    # noqa: BLE001 — see docstring
                 got = 'unmeasurable here (%s)' % str(e)[:60]
+        elif k in ST.DELEGATED_PINS:
+            got = '(another writer of record: %s)' % ST.DELEGATED_PINS[k]
         else:
-            got = '(written by another writer of record — %s)' % ST.DELEGATED_PINS.get(k, 'not pinned')
+            got = '(not measurable by a preview; the flight asserts it against the pin)'
         moved = (str(got) != str(pin)) if isinstance(got, str) and len(str(got)) in (32, 64) else None
         rows.append({'identity': k, 'declared': want, 'pinned': pin, 'measured': got, 'moved': moved})
     out('IDENTITIES — every one this act declares, measured on the EDITED tree against the pins')
