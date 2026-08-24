@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_12329/sandbox
+  tree      : /tmp/landing_selftest_15554/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 6fd0f7ded2b280d1a90962c299a152e3
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,8 +9,8 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_REPO, RL_VENV
-build-lock: HELD by land-lever-12864 (pid 12864) — single writer for the shared workspace.
-base commit        c8f1b731305522b2e2dfe2a9ca36a3e5a48681ee
+build-lock: HELD by land-lever-16088 (pid 16088) — single writer for the shared workspace.
+base commit        03226ae53f1d6ff96e2427f4b3b1c8b3d7c0ced8
 board pin (before) 6fd0f7ded2b280d1a90962c299a152e3
 store pin (before) daa93053bc2d4eba30d9dc6e06e4af9e
 restore point      61 carrier(s) captured, 61 present on disk
@@ -55,7 +55,7 @@ WRITER 2: the bake-lane identities restamp_dynamic does not touch
   contract_sha256             7bd074ae626f -> 7bd074ae626f
   frozen fields asserted unmoved: 10 checked, 0 moved
 RE-STAMPED, re-read, and release_contract.py check PASSES.
-    [contract OK  0.08s]
+    [contract OK  0.07s]
 
 --- STEP 5/10  sibling        the balanced sibling, rebuilt and reconciled if moved ---
 verify BEFORE : ok=True balanced=ca8cb17e960b fails=0
@@ -85,7 +85,7 @@ WRITER 4/6: ui/tools/rebuild_movers_derived.py  (points / values / model_changes
   drift guard: derived blocks OK — committed == rebuilt (4191290 bytes, latest report R24)
   shipped model_changes == live-derived: 11 boundar(ies), EQUAL  (the F-10 predicate holds)
 WRITER 5/6: SKIPPED BY FAULT INJECTION — the mirror keeps the pin of a store this landing is replacing.
-    [ui FAILED  1.51s]
+    [ui FAILED  1.41s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'ui'
@@ -109,8 +109,8 @@ improvised manual landing under pressure.
     build_proofs       0.01s  OK
     pins               0.02s  OK
     lineage            0.00s  OK
-    contract           0.08s  OK
+    contract           0.07s  OK
     sibling            0.11s  OK
-    ui                 1.51s  FAIL
-    TOTAL              1.79s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_12864
+    ui                 1.41s  FAIL
+    TOTAL              1.68s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_16088

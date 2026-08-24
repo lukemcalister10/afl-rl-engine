@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the synthetic board move
-  tree      : /tmp/landing_selftest_12329/sandbox
+  tree      : /tmp/landing_selftest_15554/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board c6a98727dc81481e10dae5e59dd091ec
   mode      : APPLY (SELFTEST) builder=selftest-moved
@@ -8,12 +8,12 @@ LAND LEVER-LANDING — SELF-TEST — the synthetic board move
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_REPO, RL_VENV
-build-lock: HELD by land-lever-12618 (pid 12618) — single writer for the shared workspace.
-base commit        c8f1b731305522b2e2dfe2a9ca36a3e5a48681ee
+build-lock: HELD by land-lever-15811 (pid 15811) — single writer for the shared workspace.
+base commit        03226ae53f1d6ff96e2427f4b3b1c8b3d7c0ced8
 board pin (before) 6fd0f7ded2b280d1a90962c299a152e3
 store pin (before) daa93053bc2d4eba30d9dc6e06e4af9e
 restore point      61 carrier(s) captured, 61 present on disk
-    [preflight OK  0.06s]
+    [preflight OK  0.05s]
 
 --- STEP 1/10  build_proofs   bare build, predicted identity, switch leg, day-0 ---
 build         rc=0 board=c6a98727dc81481e10dae5e59dd091ec  (0.0s)
@@ -52,8 +52,8 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.06s  OK
+    preflight          0.05s  OK
     build_proofs       0.01s  OK
     pins               0.00s  FAIL
-    TOTAL              0.07s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_12618
+    TOTAL              0.06s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_15811

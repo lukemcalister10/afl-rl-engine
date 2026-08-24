@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_12329/sandbox
+  tree      : /tmp/landing_selftest_15554/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 6fd0f7ded2b280d1a90962c299a152e3
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,12 +9,12 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_REPO, RL_VENV
-build-lock: HELD by land-lever-12672 (pid 12672) — single writer for the shared workspace.
-base commit        c8f1b731305522b2e2dfe2a9ca36a3e5a48681ee
+build-lock: HELD by land-lever-15896 (pid 15896) — single writer for the shared workspace.
+base commit        03226ae53f1d6ff96e2427f4b3b1c8b3d7c0ced8
 board pin (before) 6fd0f7ded2b280d1a90962c299a152e3
 store pin (before) daa93053bc2d4eba30d9dc6e06e4af9e
 restore point      61 carrier(s) captured, 61 present on disk
-    [preflight OK  0.10s]
+    [preflight OK  0.07s]
 
 --- STEP 1/10  build_proofs   bare build, predicted identity, switch leg, day-0 ---
 build         rc=0 board=6fd0f7ded2b280d1a90962c299a152e3  (0.0s)
@@ -79,11 +79,11 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.10s  OK
+    preflight          0.07s  OK
     build_proofs       0.01s  OK
     pins               0.02s  OK
     lineage            0.00s  OK
     contract           0.08s  OK
     sibling            0.04s  FAIL
-    TOTAL              0.25s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_12672
+    TOTAL              0.22s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_15896

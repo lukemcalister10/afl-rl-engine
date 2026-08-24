@@ -1,10 +1,10 @@
 {
   "byte_exact": true,
   "commits_rewound": [],
-  "error": "base-commit store (fb640ca0baf92bbb122b1ad7e25c5a88) disagrees with that tree's expected_boot (daa93053bc2d4eba30d9dc6e06e4af9e)",
+  "error": "register tail destination (board b3e8da99bc7f632e5d1eebc732f9cf01 / store b745002eb0a0fbb1c34fa44f1ef708d6) != this entry's source (board 6fd0f7ded2b280d1a90962c299a152e3 / store fb640ca0baf92bbb122b1ad7e25c5a88), and NO SINGLE movers round report bridges BOTH legs. That is a broken chain, not a gap.",
   "failed_step": "lineage",
   "restore_point": {
-    "data/expected_boot.json": "4cb6bd57183de42743a0de28c43b021c",
+    "data/expected_boot.json": "332dcf8c39ee2a0683c8b7c3623756be",
     "data/release_contract.json": "391b34c8a6298e713de718f0c4ccb39a",
     "data/release_lineage.json": "1aa3d62e5f301c6da79e5b4c03f9db51",
     "data/rl_build/rl_app_data.json": "6fd0f7ded2b280d1a90962c299a152e3",

@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_12329/sandbox
+  tree      : /tmp/landing_selftest_15554/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 6fd0f7ded2b280d1a90962c299a152e3
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,8 +9,8 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_REPO, RL_VENV
-build-lock: HELD by land-lever-12887 (pid 12887) — single writer for the shared workspace.
-base commit        c8f1b731305522b2e2dfe2a9ca36a3e5a48681ee
+build-lock: HELD by land-lever-16111 (pid 16111) — single writer for the shared workspace.
+base commit        03226ae53f1d6ff96e2427f4b3b1c8b3d7c0ced8
 board pin (before) 6fd0f7ded2b280d1a90962c299a152e3
 store pin (before) daa93053bc2d4eba30d9dc6e06e4af9e
 restore point      61 carrier(s) captured, 61 present on disk
@@ -85,12 +85,12 @@ WRITER 4/6: ui/tools/rebuild_movers_derived.py  (points / values / model_changes
   drift guard: derived blocks OK — committed == rebuilt (4191290 bytes, latest report R24)
   shipped model_changes == live-derived: 11 boundar(ies), EQUAL  (the F-10 predicate holds)
 WRITER 5/6: ui/tools/ingest_inputs.py --mirror-only  (the ownership mirror, re-pinned to the landed board + store)
-  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_12329/sandbox/ui/data/ownership.js
+  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_15554/sandbox/ui/data/ownership.js
   MIRROR-ONLY    — the club-valuation bundle was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
   drift guard: MIRROR DRIFT GUARD — ui/data/ownership.js is byte-identical to what this tree projects (74786 bytes).
   mirror pin == the landed identity: board 6fd0f7de store daa93053 R24, 804 player(s) mirrored (pin() would ACTIVATE it)
 WRITER 6/6: SKIPPED BY FAULT INJECTION — the picks bundle keeps the stamp of a board this landing is replacing.
-    [ui FAILED  1.93s]
+    [ui FAILED  1.69s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'ui'
@@ -116,6 +116,6 @@ improvised manual landing under pressure.
     lineage            0.00s  OK
     contract           0.07s  OK
     sibling            0.11s  OK
-    ui                 1.93s  FAIL
-    TOTAL              2.23s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_12887
+    ui                 1.69s  FAIL
+    TOTAL              1.99s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_16111
