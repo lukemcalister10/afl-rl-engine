@@ -84,4 +84,17 @@ def build():
                 "Re-run bootstrap.sh to seed the pinned cache, or regenerate the band through the committed "
                 "refit entry point at a bake." % cache)
         with open(cache, 'rb') as fh: _CM = pickle.load(fh)
+        # ---- REBAKE ARM 2 — BIND THE DESIGN CONTRACT THE ARTIFACT ITSELF DECLARES ------------------
+        # THE ONE SITE. The band pickle is the thing that knows which construction it is: the exact
+        # monotone arm (register v831 D1, "Exact it is.") moves the feature dimension 11 -> 12 and the
+        # estimator class, and both ride inside the pickle as _rl_design_spec. Reading it HERE — the one
+        # place that loads the band and already rebinds cp._lvl_eff — means no environment variable can
+        # ever disagree with the bytes on disk, and no second site can bind a different contract.
+        # An INCUMBENT band declares nothing, binds nothing, and every expression downstream is
+        # byte-identical to the shipped path. This is deliberately NOT a switch; see
+        # docs/evidence/rebake_arm2_design_2026-08-24/PREREG.md section 2.
+        import sys as _sys
+        if _FV not in _sys.path: _sys.path.insert(0, _FV)
+        import exact_monotone as _EM
+        cp.bind_design(_EM.spec_of(_CM))
     return _CM

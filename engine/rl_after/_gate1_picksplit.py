@@ -6,13 +6,24 @@ ns={}
 with contextlib.redirect_stdout(io.StringIO()): exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], ns)
 MA=ns['MA']; cp=ns['cp']; PR=ns['PR'];
 def build_q97(pool):
+    """REBAKE ARM 2: the third of study B section 4.1's four hard-coded copies of the incumbent
+    construction. It now reads the bound design contract, so this gate tests the construction under test."""
     from sklearn.ensemble import GradientBoostingRegressor
-    X,yy=[],[]
+    X,yy,YR=[],[],[]
     for p in pool:
         if cp.debutyr(p)>2021 or not (p.get('pick') or p.get('_ft')): continue
         d0=cp.debutyr(p)-1; last=max([x['year'] for x in p['scoring']]+[d0])
-        for Y in range(d0,min(last,2026)+1): X.append(cp._feat(p,Y)); yy.append(cp.fwd_best3_from(p,Y,2026))
-    return GradientBoostingRegressor(loss='quantile',alpha=0.97,n_estimators=150,max_depth=4,learning_rate=0.05,min_samples_leaf=25,random_state=0).fit(np.array(X),np.array(yy))
+        for Y in range(d0,min(last,2026)+1):
+            X.append(cp._feat(p,Y)); yy.append(cp.fwd_best3_from(p,Y,2026)); YR.append(Y)
+    X=np.array(X); yy=np.array(yy)
+    _d=cp.design()
+    if _d is not None:
+        import exact_monotone as EM
+        EM.selftest_or_halt()
+        return EM.stamp(EM.make_estimator(0.97,X.shape[1],bool(_d.get('age_hill')),_d['hyperparameters'])
+                        .fit(X,yy,sample_weight=EM.recency_weight(np.array(YR),
+                                                                  _d.get('recency_halflife_years'),2026)),_d)
+    return GradientBoostingRegressor(loss='quantile',alpha=0.97,n_estimators=150,max_depth=4,learning_rate=0.05,min_samples_leaf=25,random_state=0).fit(X,yy)
 def trunc(p,T):
     d0=cp.debutyr(p)-1; q=copy.deepcopy(p); q['scoring']=[x for x in p['scoring'] if x['year']<=d0+T]; q['_pos_now']=None; q['_fut']=[]; return q,d0+T
 def real_mat(p):

@@ -117,10 +117,36 @@ def _lvl_eff(p,Y):
     ramp=LEVEL_RAMP*min(1.0, _playable_fse(p,Y)/SEASON)
     return _lvl_wt(p,Y)*min(1.0, _exposure(p,Y)/max(ramp,1e-9))
 
+# ---- REBAKE ARM 2 — THE BOUND DESIGN CONTRACT (register v831 D1/D2/D3; the design arm) --------------
+# The exact-monotone construction moves the FEATURE DIMENSION (11 -> 12: raw age out, the age hill's u/v
+# in) and the ESTIMATOR CLASS. Both are properties of the FITTED ARTIFACT, not of the environment, so
+# they are carried BY the artifact (exact_monotone.design_spec, attached as _rl_design_spec and pickled
+# with the model) and bound HERE, at one site, by whoever loaded it — wire_redesign.build() for the
+# engine, tools/rebake/refit_arm2_design.py for a fit. An environment switch was deliberately NOT used:
+# it would move config_sha256 (a live pin), and a var that disagreed with the loaded pickle would be a
+# silent dimension mismatch. See docs/evidence/rebake_arm2_design_2026-08-24/PREREG.md section 2.
+# UNBOUND (_DESIGN[0] is None) reproduces the INCUMBENT construction byte-for-byte — that is the shipped
+# default and it is what a board built on the live artifacts still gets.
+_DESIGN=[None]
+def bind_design(spec):
+    """Bind (or clear, with None) the design contract every expression below reads. Returns the prior."""
+    old=_DESIGN[0]; _DESIGN[0]=spec
+    return old
+def design():
+    return _DESIGN[0]
+
 def _feat(p,Y):
     oh=[0.0]*len(GROUPS); oh[GIDX[MA.gfut(p)]]=1.0
     ep=min(MA.effpk(p),KMAX); ten=max(0,Y-(debutyr(p)-1))
-    return oh+[np.log(ep), _exposure(p,Y), ten, _lvl_eff(p,Y), _age_asof(p,Y)]
+    f=oh+[np.log(ep), _exposure(p,Y), ten, _lvl_eff(p,Y), _age_asof(p,Y)]
+    _d=_DESIGN[0]
+    if _d is not None and _d.get('age_hill'):
+        # raw age REMOVED, u=max(0,a*-age) and v=max(0,age-a*) APPENDED, both constrained -1 at the fit.
+        # The transform is exact_monotone's own, called and never re-typed, so the row builder here and
+        # the matrix builder the selection used cannot drift apart.
+        import exact_monotone as _EM
+        return _EM.feature_row(f, _d['age_hill']['a_star'])
+    return f
 
 # ---- T1: the unobservable-season drop (#290 L3, OWNER WORD 2026-07-31) --------------------
 # The store's scoring record begins at FIRST_OBSERVABLE. A class drafted before that emits training
@@ -144,7 +170,7 @@ def build_cond_prior(cap=2026, resolved_cut=2021, pool=None):
     """Train quantile models on RESOLVED careers (debut<=resolved_cut). One row per (player, as-of-year Y) from draft year
     (games 0) through their last season; target = resolved forward best-3 from Y."""
     if pool is None: pool=[p for p in MA.data if MA.GRP.get(p['pos'])]
-    X,y=[],[]
+    X,y,YR=[],[],[]
     for p in pool:
         if debutyr(p)>resolved_cut: continue                # resolved only
         if not (p.get('pick') or p.get('_ft')): continue
@@ -154,8 +180,24 @@ def build_cond_prior(cap=2026, resolved_cut=2021, pool=None):
         for Y in range(d0, min(last,cap)+1):
             if _fo is not None and d0 < Y < _fo: continue   # T1: fabricated zero, unobservable season
             t=fwd_best3_from(p,Y,cap)
-            X.append(_feat(p,Y)); y.append(t)
-    X=np.array(X); y=np.array(y)
+            X.append(_feat(p,Y)); y.append(t); YR.append(Y)
+    X=np.array(X); y=np.array(y); YR=np.array(YR)
+    _d=_DESIGN[0]
+    if _d is not None:
+        # REBAKE ARM 2 — the exact-monotone construction (study B 2.3), with the age hill already in X
+        # (via _feat above) and the WINDOW-ANCHORED recency weight (M-60: the anchor is the whole
+        # finding — a weight measured to TODAY rather than to the end of its own training window made a
+        # 6-year half-life look 6% worse than flat when the same idea, anchored properly, is a wash).
+        # The anchor is this fit's own cap, so a walk-forward refit at T anchors at T. Every setting is
+        # read off the bound spec; nothing is a literal here.
+        import exact_monotone as _EM
+        _EM.selftest_or_halt()                               # FB4 — HALTs before any fit if the private contract moved
+        _hp=_d['hyperparameters']; _hl=_d.get('recency_halflife_years')
+        _w=_EM.recency_weight(YR,_hl,cap)
+        _ah=bool(_d.get('age_hill'))
+        models={q:_EM.stamp(_EM.make_estimator(q,X.shape[1],_ah,_hp).fit(X,y,sample_weight=_w),_d)
+                for q in Q}
+        return models, len(y)
     _NTREES=int(os.environ.get('RL_PRIOR_TREES','400'))   # default 400 (no change); lower only for fast mock sweeps
     models={q:GradientBoostingRegressor(loss='quantile',alpha=q,n_estimators=_NTREES,max_depth=4,
             learning_rate=0.05,min_samples_leaf=25,random_state=0).fit(X,y) for q in Q}

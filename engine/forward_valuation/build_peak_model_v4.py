@@ -34,7 +34,12 @@ POSI={'MID':0,'SD':1,'SF':2,'KPD':3,'KPF':4,'RUCK':5}
 #      _ARM_OUT (RL_ARM1_OUT) redirects the whole emission set — model, snapshot, stamp and census — to a
 #      CANDIDATE directory, so a candidate can be built without overwriting a pinned live artifact.
 #      UNSET reproduces the shipped emission targets for the pickle and the snapshot exactly.
-_ARM_OUT=os.environ.get('RL_ARM1_OUT') or None
+#      REBAKE ARM 2 (2026-08-24) GENERALISES THE NAME RATHER THAN ADDING A SECOND RESOLVER: RL_ARM2_OUT
+#      is read at the SAME site with the SAME meaning, so each arm can emit its own candidate set without
+#      a per-arm code path accumulating here. Both are PATH vars (config_manifest.INFRA_ALLOW class):
+#      they name WHERE an artifact is written, carry no model semantics, and are not in the value hash,
+#      so config_sha256 does not move. UNSET (either name) still reproduces the shipped emission targets.
+_ARM_OUT=os.environ.get('RL_ARM2_OUT') or os.environ.get('RL_ARM1_OUT') or None
 def _repo_out(name):
     """Where a PROVENANCE artifact goes. Candidate dir if one is declared, else the repo (never the
     out-of-repo workspace this script wrote to for its whole life), else the legacy workspace path as a
