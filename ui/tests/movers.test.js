@@ -261,8 +261,13 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   // RESTATED 2026-08-23 (THE R24 ADVANCE): back to `ok`, the fourth swing, same rule as ever — this
   // pin tracks WHAT KIND OF ACT MOVED THE BOARD LAST. The R24 advance is a round act, so the latest
   // round report terminates on the loaded board and the DIRECT-lineage branch is the honest reading.
-  eq([core.lineage(prod, curApp, trans).ok, core.lineage(prod, curApp, trans).state], [true, "ok"],
-     "bundle displays under the current app, ok — the last act to move the board was the R24 round advance, so the latest round report's terminal board IS the loaded board (direct lineage)");
+  // RESTATED 2026-08-24 (THE GRAHAM DUAL CORRECTION): back to `bridged`, the fifth swing, same rule.
+  // The owner's store edit (p_dual 90 -> 40) is an OUT-OF-ROUND act through the new edit verb; the
+  // latest round report still terminates on the pre-edit board, the move is anchored to the
+  // owner-approved column `graham-dual-40-24-8`, and `bridged` is the honest reading. The two
+  // non-vacuity assertions below re-run at this swing, unchanged, and still discriminate both ways.
+  eq([core.lineage(prod, curApp, trans).ok, core.lineage(prod, curApp, trans).state], [true, "bridged"],
+     "bundle displays under the current app, bridged — the last act to move the board was the 24/8 graham dual correction (out-of-round, owner-approved column), so the latest round report terminates one identity behind the loaded board");
   // NON-VACUITY for the restated assertion, both directions. `bridged` is a state this check can
   // FAIL to reach: a bundle on a foreign lineage does not get bridged, it fails closed as a mismatch.
   var appForeign = clone(curApp); appForeign.board = "ffffffffffffffffffffffffffffffff";
@@ -358,7 +363,7 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   // rows) this act re-prices ACTIVE rows — total 692,296 -> 700,756 across the same 804 — so it is a
   // LAW 9 mint accepted by explicit owner word, recorded as an accepted exception in the act's lineage
   // entry and never as a pass. The counter does not care; a reader comparing the eleven should.
-  ok(mc.length === 11, "eleven out-of-round boundaries are declared (the restructure, the 30/7 rederivation, the 6/8 adoption, the 10/8 DOB courier, the 10/8 never-rises restore, THE LANDING, THE D8 ADOPTION, the 20/8 injury-sheet re-cut, the 20/8 F5 rounding fix, the 20/8 back-rows repair, the 21/8 staircase adoption)  (got " + mc.length + ")");
+  ok(mc.length === 12, "twelve out-of-round boundaries are declared (the restructure, the 30/7 rederivation, the 6/8 adoption, the 10/8 DOB courier, the 10/8 never-rises restore, THE LANDING, THE D8 ADOPTION, the 20/8 injury-sheet re-cut, the 20/8 F5 rounding fix, the 20/8 back-rows repair, the 21/8 staircase adoption, the 24/8 graham dual correction)  (got " + mc.length + ")");
   ok(mc[0].between[0] === "19" && mc[0].between[1] === "post-r19-redesign-1" &&
      mc[0].owner_approved_record === true,
      "model change declared between R19 and the restructure point, anchored to the owner-approved record");
