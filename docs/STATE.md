@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v854 2026-08-25 · **THE COMPACTION HANDOVER #3 — the owner compacts with THE LANDING FULLY RULED AND NOT YET FLOWN; this entry is the successor's binding spec.** SUCCESSOR FIRST ACTS: (1) read docs/register/LATEST.md, entries v849-v854 IN FULL (this window's record; v845-v848 remain the prior chain's context), docs/STATE.md, docs/RULEBOOK.md; confirm to the owner what you r
+  > # OPEN ITEMS REGISTER · v855 2026-08-25 · **HANDOVER ADDENDUM — the owner-ordered pre-compaction audit is COMPLETE; the net prediction is FILED; four review defects found and fixed on the record.** THE NET PREDICTION (the corrected script, in the root_final/543bf900 world; docs/evidence/seam_fix_search_2026-08-25/NET_PREDICTION.json + predict_net.py with full invocation in its header): **11 movers
 
-- new-form entries under `docs/register/entries/`: 42
+- new-form entries under `docs/register/entries/`: 43
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `3f10fb117e51b72e813e95cb6570a264b439a576` |
+| generated at commit | `84aaa990847ab7d1b0498b55abda8285f93cde1d` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |
