@@ -25,6 +25,10 @@
  "identities": {
   "moves": [
    "board",
+   "balanced_board_md5"
+  ],
+  "unmoved": [
+   "store",
    "engine_head",
    "fv",
    "config",
@@ -32,20 +36,16 @@
    "q97m",
    "peak_model",
    "bust_prior",
-   "pvc_snapshot"
-  ],
-  "unmoved": [
-   "store",
+   "pvc_snapshot",
    "rl_model",
    "register",
-   "balanced_board_md5",
    "as_of_round",
    "v0surf",
    "release_version",
    "rl_model_data",
    "season_state"
   ],
-  "_doc_moves": "Measured, not assumed (PREREG_ORDER45.md C1/C4): board 82fcd8bb -> 3167cba6 \u00b7 engine_head 3af8c1f7 -> d84031cf (arm-2 head 53ce2fb7 + the O45 lever incl. the top-level keyless-probe guard, prereg SS7 R-FIX/R-FIX2) \u00b7 fv 6e9a370e -> 123a8155 (arm-2 exact-monotone design: build_peak_model_v4.py, conditional_prior.py, +exact_monotone.py) \u00b7 config eed19a75 -> 29fdfd1e (RL_O45 declared, 85 vars) \u00b7 band 34faa865 -> f39c7b96 (a*=22, uniform eras) \u00b7 q97m cfdc7321 -> 5ea7546d (own OOS selection, interior optimum) \u00b7 peak_model f305fe53 -> 8329ff93 (wordb_conditioned) \u00b7 bust_prior 5942aa6a -> ff87e42e (modernized) \u00b7 pvc_snapshot ade79790 -> 4704b829. v856's slot list carried config and fv as unmoved; both corrections are filed in the prereg (C1, C4). The engine_head, fv and gate1/wire code files move AT THE FLIP COMMIT (the staircase/Graham engine_head pattern) and are byte-stable inside the landing transaction.",
+  "_doc_moves": "THE PARTITION IS TRANSACTION-SCOPED (the Graham precedent's _doc_store pattern; attempt-4 halt 2026-08-25): inside the landing transaction only the BOARD (and its balanced derivative) moves \u2014 82fcd8bb -> 3167cba6. The ACT's other eight identity moves (engine_head 3af8c1f7->d84031cf \u00b7 fv 6e9a370e->123a8155 \u00b7 config eed19a75->29fdfd1e \u00b7 band 34faa865->f39c7b96 \u00b7 q97m cfdc7321->5ea7546d \u00b7 peak_model f305fe53->8329ff93 \u00b7 bust_prior 5942aa6a->ff87e42e \u00b7 pvc_snapshot ade79790->4704b829) happened AT THE FLIP COMMIT 7ea26b3, one commit before this landing, and are BYTE-STABLE inside the transaction \u2014 so they are declared unmoved HERE, with the act-level record carried by the flip commit, the prereg (C1/C4/SS7), and the lineage entry.",
   "_doc_store": "The store fb640ca0 is UNMOVED by this act \u2014 the arm-1 store refresh landed at the Graham act; this act adopts the arm-2 refit ON that store."
  },
  "column": {
