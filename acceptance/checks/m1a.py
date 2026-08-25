@@ -115,8 +115,11 @@ _MIRRORS = (
      '_load_q97m', 'q97m', os.path.join('data', 'q97m.pkl')),
     ('v0surf', '_resolve_v0surf_load', os.path.join('engine', 'rl_after', '_merged_recover.py'),
      '_load_v0surf', 'v0surf', os.path.join('data', 'v0surf.pkl')),
+    # ORDER 45 landing 2026-08-25 (P11 — the instrument follows the code it measures): the engine's cm
+    # resolution moved OUT of build() into the dedicated cm_load_path() (rebake arm 1 design, RL_CM_PKL
+    # precedence); the mirror is re-pointed at it in the same act that landed the move.
     ('cm/band', '_resolve_cm_load', os.path.join('engine', 'rl_after', 'wire_redesign.py'),
-     'build', 'band', os.path.join('data', 'cm_400.pkl')),
+     'cm_load_path', 'band', os.path.join('data', 'cm_400.pkl')),
 )
 
 

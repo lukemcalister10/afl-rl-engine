@@ -266,9 +266,10 @@ def assert_boot(label, store_path=None, engine_head_path=None, band_path=None, r
         # missing would silently price off the LIVE band and call itself a candidate. (This is the
         # fv_provenance doctrine — "an explicit-but-stale RL_FV therefore HALTS, it is not trusted
         # blindly" — and it is where this resolver deliberately differs from the q97m one.)
-        _c = (os.environ.get('RL_CM_PKL')
-              or '/home/claude/cm_%s.pkl' % os.environ.get('RL_PRIOR_TREES', '400'))
-        return _c if os.path.exists(_c) else None
+        _cache = (os.environ.get('RL_CM_PKL')                  # named _cache so acceptance m1a's
+                  or '/home/claude/cm_%s.pkl'                  # mirror_parity parser can READ this
+                  % os.environ.get('RL_PRIOR_TREES', '400'))   # candidate expression (ORDER 45 landing)
+        return _cache if os.path.exists(_cache) else None
     def _resolve_v0surf_load():                # mirror _merged_recover._load_v0surf precedence, byte-for-byte
         # BAKE 2026-08-20 (register v780): the out-of-repo '/home/claude/v0surf.pkl' is REMOVED from the
         # precedence at BOTH sites in the same commit — here and at _merged_recover._load_v0surf. This

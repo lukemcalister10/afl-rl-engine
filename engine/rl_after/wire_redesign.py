@@ -53,10 +53,10 @@ def cm_load_path():
     no override — its two frozen siblings already have theirs (RL_Q97M_PKL, RL_V0SURF_PKL) — so a
     candidate board could not read a candidate band without either overwriting the pinned cache in
     place (destroying the thing Guard 5 asserts) or inventing an undeclared name."""
-    p = os.environ.get('RL_CM_PKL')
-    if p:
-        return p
-    return '/home/claude/cm_%s.pkl' % os.environ.get('RL_PRIOR_TREES', '400')
+    cache = (os.environ.get('RL_CM_PKL')                       # single or-expression, named 'cache', so
+             or '/home/claude/cm_%s.pkl'                       # acceptance m1a's mirror_parity parser reads
+             % os.environ.get('RL_PRIOR_TREES', '400'))        # BOTH sides of the mirror (ORDER 45 landing)
+    return cache
 
 def build():
     """LOAD the PAR-CENTRED cm from the pinned cache resolved by cm_load_path(). The cache is the

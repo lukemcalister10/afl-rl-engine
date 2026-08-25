@@ -21,15 +21,15 @@ measurement made while this file was written, not a claim carried over from the 
 |---|---|---|---|---|
 | board | `82fcd8bb1e552b927299b5702122e321` | data/expected_boot.json | data/rl_build/rl_app_data.json | agrees |
 | store | `fb640ca0baf92bbb122b1ad7e25c5a88` | data/expected_boot.json | engine/rl_after/rl_model_data.json | agrees |
-| engine_head | `3af8c1f7d61275c198a5df70c34608c7` | data/expected_boot.json | engine/rl_after/_merged_recover.py | agrees |
+| engine_head | `d84031cff312818a158855f2dd223cc1` | data/expected_boot.json | engine/rl_after/_merged_recover.py | agrees |
 | rl_model | `6fe7c4155866d80e8045bed2d3bf2802` | data/expected_boot.json | engine/rl_after/rl_model.py | agrees |
 | balanced_board_md5 | `8838f4b3ed5089788c48a2657606711c` | data/expected_boot.json | (no in-tree artifact) | not in tree |
-| config | `eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1` | data/expected_boot.json | config_manifest.manifest_hash | agrees |
+| config | `29fdfd1e1447a1d2fb33876fe659faa06b13ad19ad4d608a110c20d231f8b86e` | data/expected_boot.json | config_manifest.manifest_hash | agrees |
 
 | release fact | value | carrier |
 |---|---|---|
-| contract seal | `d059faa92a20be155edd645650a835a8080f8cee6d118e5a0d9353e851c12c16` | data/release_contract.json:contract_sha256 |
-| config seal | `eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1` | data/release_contract.json:config_sha256 |
+| contract seal | `d47410471f71806e18ceba78c496b2e95d160b598a517a254def7e26e64e0cc9` | data/release_contract.json:contract_sha256 |
+| config seal | `29fdfd1e1447a1d2fb33876fe659faa06b13ad19ad4d608a110c20d231f8b86e` | data/release_contract.json:config_sha256 |
 | release version | v2.11-final-rc1-PROVISIONAL | data/release_contract.json:release_version |
 | round (as_of_round) | 24 | data/release_contract.json:as_of_round |
 | round (as_of_round) | 24 | data/expected_boot.json:as_of_round |
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `08200913ef2033afd4d02f5833d5e03f79b5805a` |
+| generated at commit | `3210455f0a40a4dd18914ea2c153fc3b86d243cb` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |
