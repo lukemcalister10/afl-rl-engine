@@ -1,12 +1,12 @@
 {
- "_doc": "THE ACT SPEC — ORDER 45, THE ARM-2 REBAKE ADOPTION + THE POSITION-SCALED SAFETY NET, one lever-landing on three owner words (D1/D2/D3). Predictions are INPUTS from PREREG_ORDER45.md (committed fa105f7, before the lever edit, P9). coherent_base is a PLACEHOLDER until the flip commit exists (the Graham pattern: it names the flip commit's PARENT).",
+ "_doc": "THE ACT SPEC \u2014 ORDER 45, THE ARM-2 REBAKE ADOPTION + THE POSITION-SCALED SAFETY NET, one lever-landing on three owner words (D1/D2/D3). Predictions are INPUTS from PREREG_ORDER45.md (committed fa105f7, before the lever edit, P9). coherent_base is a PLACEHOLDER until the flip commit exists (the Graham pattern: it names the flip commit's PARENT).",
  "schema_version": 1,
  "act_kind": "lever-landing",
  "coherent_base": "FILL_AT_FLIP_the_flip_commits_parent",
  "_doc_coherent_base": "Set to the parent of the flip commit that carries the arm-2 engine head + fv modules + fitted artifacts + the O45 lever + the manifest/boot/contract restamps to main. Until the flip commit is made this slot is a named placeholder; the lander refuses it as-is, by design.",
- "act": "ORDER 45 — ARM-2 REBAKE ADOPTED (board 543bf900 basis) + THE POSITION-SCALED SAFETY NET (RL_O45): with-net board 3167cba6, 10 movers +922",
+ "act": "ORDER 45 \u2014 ARM-2 REBAKE ADOPTED (board 543bf900 basis) + THE POSITION-SCALED SAFETY NET (RL_O45): with-net board 3167cba6, 10 movers +922",
  "date": "2026-08-25",
- "owner_word": "\"Yes, adopt the new model\" (D1) · \"Scaled on the safety net\" (D2) · \"Exclude mature agers\" (D3) — all 2026-08-25, verbatim, register v852/v853",
+ "owner_word": "\"Yes, adopt the new model\" (D1) \u00b7 \"Scaled on the safety net\" (D2) \u00b7 \"Exclude mature agers\" (D3) \u2014 all 2026-08-25, verbatim, register v852/v853",
  "authority": "Register v852 (D1, D5) and v853 (D2, D3, D4) record the packet rulings verbatim. The rebake candidate 543bf900 was verified before the words (v850 battery); the net's movers were predicted (NET_PREDICTION.json, reproduced by the landing seat) and prereg'd (PREREG_ORDER45.md at fa105f7) BEFORE the lever edit.",
  "prereg": {
   "path": "docs/evidence/net_lever_2026-08-25/PREREG_ORDER45.md",
@@ -14,7 +14,7 @@
   "board_after": "3167cba643a6b16e5ef5d904d8957fcd",
   "reference_board": null,
   "kill_switch": {
-   "name": "ORDER 45 — the position-scaled safety net",
+   "name": "ORDER 45 \u2014 the position-scaled safety net",
    "env": "RL_O45",
    "board_with_switch_off": "543bf900e3e7538bc75214881edc7733"
   },
@@ -43,33 +43,34 @@
    "rl_model_data",
    "season_state"
   ],
-  "_doc_moves": "Measured, not assumed (PREREG_ORDER45.md C1/C4): board 82fcd8bb -> 3167cba6 · engine_head 3af8c1f7 -> 572b823e (arm-2 head 53ce2fb7 + the O45 lever) · fv 6e9a370e -> 123a8155 (arm-2 exact-monotone design: build_peak_model_v4.py, conditional_prior.py, +exact_monotone.py) · config eed19a75 -> 29fdfd1e (RL_O45 declared, 85 vars) · band 34faa865 -> f39c7b96 (a*=22, uniform eras) · q97m cfdc7321 -> 5ea7546d (own OOS selection, interior optimum) · peak_model f305fe53 -> 8329ff93 (wordb_conditioned) · bust_prior 5942aa6a -> ff87e42e (modernized) · pvc_snapshot ade79790 -> 4704b829. v856's slot list carried config and fv as unmoved; both corrections are filed in the prereg (C1, C4). The engine_head, fv and gate1/wire code files move AT THE FLIP COMMIT (the staircase/Graham engine_head pattern) and are byte-stable inside the landing transaction.",
-  "_doc_store": "The store fb640ca0 is UNMOVED by this act — the arm-1 store refresh landed at the Graham act; this act adopts the arm-2 refit ON that store."
+  "_doc_moves": "Measured, not assumed (PREREG_ORDER45.md C1/C4): board 82fcd8bb -> 3167cba6 \u00b7 engine_head 3af8c1f7 -> e215caec (arm-2 head 53ce2fb7 + the O45 lever incl. the R-FIX synthetic-row guard, prereg SS7) \u00b7 fv 6e9a370e -> 123a8155 (arm-2 exact-monotone design: build_peak_model_v4.py, conditional_prior.py, +exact_monotone.py) \u00b7 config eed19a75 -> 29fdfd1e (RL_O45 declared, 85 vars) \u00b7 band 34faa865 -> f39c7b96 (a*=22, uniform eras) \u00b7 q97m cfdc7321 -> 5ea7546d (own OOS selection, interior optimum) \u00b7 peak_model f305fe53 -> 8329ff93 (wordb_conditioned) \u00b7 bust_prior 5942aa6a -> ff87e42e (modernized) \u00b7 pvc_snapshot ade79790 -> 4704b829. v856's slot list carried config and fv as unmoved; both corrections are filed in the prereg (C1, C4). The engine_head, fv and gate1/wire code files move AT THE FLIP COMMIT (the staircase/Graham engine_head pattern) and are byte-stable inside the landing transaction.",
+  "_doc_store": "The store fb640ca0 is UNMOVED by this act \u2014 the arm-1 store refresh landed at the Graham act; this act adopts the arm-2 refit ON that store."
  },
  "column": {
   "id": "order45-arm2-net-24-9",
-  "label": "24/9 ARM-2 REBAKE + POSITION-SCALED SAFETY NET — owner D1/D2/D3; 543bf900 basis, net moves 10 (+922), tenure-4-only after D3",
+  "label": "24/9 ARM-2 REBAKE + POSITION-SCALED SAFETY NET \u2014 owner D1/D2/D3; 543bf900 basis, net moves 10 (+922, all t4 today; armed on 19 younger rows, prereg R1)",
   "after_round": 24,
   "registered_at": "2026-08-25"
  },
  "lineage": {
-  "doc": "THE ARM-2 REBAKE ADOPTION + THE SAFETY NET, owner-worded (D1/D2/D3, 2026-08-25). The board moves 82fcd8bb -> 3167cba6 in ONE landing: the rebake basis (647 movers vs live, pool +0.02%) plus the ORDER 45 net (10 movers, +922, all tenure-4: leake +253, goad +226, green +210, edwards +115, visentini +38, smith +36, zakostelsky +28, oscar-ryan +8, anastasopoulos +7, parker +1; cooper-simpson's predicted +1 landed +0, the prereg-declared knife-edge, measured and reconciled in PREREG C3). Kill-switch RL_O45=0 board proven byte-exact 543bf900.",
+  "doc": "THE ARM-2 REBAKE ADOPTION + THE SAFETY NET, owner-worded (D1/D2/D3, 2026-08-25). The board moves 82fcd8bb -> 3167cba6 in ONE landing: the rebake basis (647 movers vs live, pool +0.02%) plus the ORDER 45 net (10 movers, +922, all tenure-4 today (armed on 19 younger rows, prereg R1): leake +253, goad +226, green +210, edwards +115, visentini +38, smith +36, zakostelsky +28, oscar-ryan +8, anastasopoulos +7, parker +1; cooper-simpson's predicted +1 landed +0, the prereg-declared knife-edge, measured and reconciled in PREREG C3). Kill-switch RL_O45=0 board proven byte-exact 543bf900.",
   "kind": "lever-landing",
   "owner_ruling_id": [
    "ARM2_REBAKE_ADOPT_2026-08-25_yes_adopt_the_new_model",
    "SAFETY_NET_SCALED_2026-08-25_scaled_on_the_safety_net",
    "MATURE_AGERS_EXCLUDED_2026-08-25_exclude_mature_agers"
   ],
-  "owner_ruling": "Owner words 2026-08-25, VERBATIM: \"Yes, adopt the new model\" (D1, register v852) · \"Scaled on the safety net\" (D2, register v853) · \"Exclude mature agers\" (D3, register v853).",
+  "owner_ruling": "Owner words 2026-08-25, VERBATIM: \"Yes, adopt the new model\" (D1, register v852) \u00b7 \"Scaled on the safety net\" (D2, register v853) \u00b7 \"Exclude mature agers\" (D3, register v853).",
   "authority": "PREREG_ORDER45.md committed at fa105f7 BEFORE the lever edit (P9), with the reproduced NET_PREDICTION.json and the falsifier evidence (kill-switch byte-exact, self-test proven able to fail, knife-edge probe)."
  },
  "day0_rebase": {
   "state": "off",
-  "_doc": "OFF — measured: no net mover is a day-0 row (every mover has >=1 career game by scope); the day-0 reference regenerated for the with-net board must agree with DAY0_FINAL_FINAL (PREREG falsifier 5)."
+  "_doc": "OFF \u2014 measured: no net mover is a day-0 row (every mover has >=1 career game by scope); the day-0 reference regenerated for the with-net board must agree with DAY0_FINAL_FINAL (PREREG falsifier 5)."
  },
  "evidence_dir": "docs/evidence/net_lever_2026-08-25",
  "claims_file": "ORDER45_CLAIMS.json",
  "gates": null,
  "_doc_gates": "null = the standard landing gate set.",
- "commit_message": "ORDER 45 LANDED on the owner's words — arm-2 rebake adopted (D1) + the position-scaled safety net (D2, mature-agers excluded D3). Board 82fcd8bb -> 3167cba6; engine head 3af8c1f7 -> 572b823e; band/q97m/peak/bust/pvc refit identities move as prereg'd; store fb640ca0 unmoved. Net movers 10 (+922), tenure-4-only; kill-switch RL_O45=0 reproduces 543bf900 byte-exact.\n\nOWNER WORDS 2026-08-25, VERBATIM: \"Yes, adopt the new model\" · \"Scaled on the safety net\" · \"Exclude mature agers\""
+ "commit_message": "ORDER 45 LANDED on the owner's words \u2014 arm-2 rebake adopted (D1) + the position-scaled safety net (D2, mature-agers excluded D3). Board 82fcd8bb -> 3167cba6; engine head 3af8c1f7 -> e215caec; band/q97m/peak/bust/pvc refit identities move as prereg'd; store fb640ca0 unmoved. Net movers 10 (+922), tenure-4-only; kill-switch RL_O45=0 reproduces 543bf900 byte-exact.\n\nOWNER WORDS 2026-08-25, VERBATIM: \"Yes, adopt the new model\" \u00b7 \"Scaled on the safety net\" \u00b7 \"Exclude mature agers\"",
+ "_doc_flip_exclusion": "data/gates_snapshots/gates_53ce2fb7.json differs in the candidate root but is EXCLUDED from the flip set (prereg R7) \u2014 the landing machinery writes its own gates snapshot."
 }

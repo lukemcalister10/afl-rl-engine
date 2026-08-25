@@ -131,6 +131,82 @@ error named (P9), never the tree against the prereg.
 
 ---
 
+## 7 · THE LAW-11 BLIND REVIEW IS ABSORBED (verdict: BLOCKED pending these corrections; the
+## reviewer independently reproduced every hash, the full board diff — exactly 10 movers +922,
+## zero strays — the knife-edge arithmetic, all nine identity moves, and the P9 commit ordering.
+## Every finding below is a correction to what this act SAYS, plus one code fix; none moves the
+## board. Where §1-§6 conflict with this section, THIS SECTION SUPERSEDES.)
+
+**R-FIX (the one code change) — the synthetic-row halt.** The first ship-gates run CRASHED on the
+lever's own D3 halt: gates price KEYLESS synthetic probe rows, and one with 1-5 games and no `_by`
+reached the halt. Fixed: a keyless row has no store identity, D3 cannot be evaluated, the net does
+not apply — base price stands; a REAL (keyed) row missing `_by` still halts. Engine head moves
+**572b823e → e215caece9e43a5eb3ab47340dbab7fa** (supersedes C1's value); candidate boot re-pinned;
+BOTH emits re-proven on the fixed head (prediction: the with-net board returns byte-identical
+`3167cba6` — the fix touches only keyless rows) and ship-gates rerun in flight.
+
+**R1 (was a BLOCKER) — the "tenure-4-only instrument" claim of §4/v856 is RETRACTED.** Measured by
+the reviewer and confirmed: the OUTCOME is tenure-4-only (all 10 movers), but the INSTRUMENT is
+not — **19 tenure-1-3 non-mature in-scope rows carry λ > 0 (12 at λ = 1.0 exactly**, mraz/francou/
+dattoli/grego/banfield/dalton/murray/ough/nairn/peucker/ludowyke/howes); they do not move today
+only because each one's counterfactual sits at or below its price (cf ≤ v). The net is ARMED on
+them: a future refit or store change can move them with no further ruling. The §4 "patterson"
+rationale compared every position against the SD knot and is void. THE DRY-RUN STATES THE TRUE
+FACT; the act-spec column label drops "tenure-4-only".
+
+**R2 (was a BLOCKER) — law 3's declared-or-red rule: the SCOPE-BOUNDARY STEPS are hereby DECLARED
+with measured margins.** The smoothstep is continuous in cameo average, but the scope edges are
+steps: crossing the banked-level boundary (any season ≥6 games) zeroes the lift. Measured steps at
+that boundary for the landed movers: **leake −253 (his largest season is 5 games — ONE game from
+the boundary), anastasopoulos −7, parker −1** (both also at 5); tenure-out-of-4 and entry-age-≥22
+edges likewise zero the lift (the latter is D3, the owner's own word). These are the ruled scope's
+own edges (D2/D3 define them), now registered before scoring per the law's threshold row, and they
+appear on the dry-run page.
+
+**R3 — the forward-lens ledger, previously omitted.** The board's +1/+2 lens columns inherit the
+lift through the LEG F3 floor (`round(φ(games)·v)`): measured **now +922 · +1 lens +618 · +2 lens
++648** (lensConservation totals move identically; vM1/vM2 zero movers). §2's walk-forward-safety
+claim is true of `ev(p, Y>2026)` but NOT of the board's lens columns; the full three-line ledger is
+the conservation statement and goes on the dry-run page.
+
+**R4 — "≥1 career game" DEFINED.** The scope test is the sum of games over the row's SEASON
+SCORING RECORDS (year ≤ 2026) — the field the lever, the prediction, and the packet the owner
+ruled on all use. It is NOT the store's flat `games` display field, which is stale on ~500 rows
+(will-green: field 0, seasons sum 3 — verified against the raw store). The stale-field
+reconciliation is QUEUED as data hygiene for act two.
+
+**R5 — the counterfactual's honest name.** `cf` is the row's price with its season scoring records
+stripped and every other field (including the `games` tally read by the peak-blend at
+rl_model.py:1275) retained — a scoring-stripped price, NOT literally "the price had he never
+played". The prediction was built with the identical strip, so the lever prices exactly what the
+owner ruled on; the §2 description is corrected, and no validation of cf beyond the three
+hand-checked movers and the D7-F6 restore assert is claimed.
+
+**R6 — C3's "identical by construction" for λ=1 rows is RETRACTED.** Those rows carry the same
+double-rounding exposure as the partial rows (`round(round(CF)/F)` vs `round(CF/F)`); all eight
+matched in fact, not by construction. The self-test's exact band stood and stands.
+
+**R7 — C4's "nothing else differs" corrected.** One additional tracked-path file differs:
+`data/gates_snapshots/gates_53ce2fb7.json` (a candidate-world snapshot for the superseded
+intermediate head). It is EXCLUDED from the flip set — the landing machinery writes its own gates
+snapshot.
+
+**R8 — the one-directionality is put IN WORDS for the owner's GO.** Law 5 says "no
+one-directional levers"; this net lifts only. The packet the owner ruled on presented it as
+exactly that (a safety net lifting toward cf), so his D2 word covers the design he saw — but the
+waiver is his to give in words, so the dry-run page carries an explicit line and the claims note
+carries the declaration. Whether shields become a standing rulebook exception (the D7 precedent)
+is queued for an owner word — rulebook changes are law 10(a).
+
+**R9 — the hardcoded 2026.** The wrap tests `Y == 2026` literally (the D7 convention); at the
+season rollover it goes inert silently. Carried class, queued for act two (wire to the declared
+LIVE_SEASON constant or add a rollover checklist assert).
+
+**R10-R12 (nits, corrected on the record):** goad λ is 0.963 (0.958 was a transcription slip);
+the pre-D3 reconciliation reads 923 + 183 = 1,106 (not 1,105); predict_net.py §4 numbers carry its
+hardcoded F/normalizer (the LEVER derives both — the reviewer verified); the lever's "active" test
+is `_retired` only, narrower than the engine's `delisted()` (zero exposure today, measured).
+
 ## 6 · P9 CORRECTIONS FILED AGAINST THE TREE (same day, before any result was read)
 
 **C1 — the identity `config` MOVES; v856's pre-filled slot list (and §5.8's "identity moves per
