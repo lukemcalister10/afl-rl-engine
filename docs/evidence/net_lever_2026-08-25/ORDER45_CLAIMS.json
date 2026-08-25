@@ -1,37 +1,129 @@
 {
- "_doc": "ORDER 45 CLAIMS — machine-checkable, recomputed never read back (tools/claims.py check, run at/after the landing; every file_md5/json_field below states the POST-LANDING tree). Drafted before the flip; base_commit is stamped at the flip. LAW-5 DECLARATION (prereg R8): the net is a ONE-DIRECTIONAL SHIELD — it lifts a scoped row toward its own scoring-stripped counterfactual and never lowers any price; the owner's D2 word ruled exactly that presented design, and his GO on the dry-run page (which states it in words) is the law-5 waiver of record. ARMED SCOPE (prereg R1): the instrument reaches tenure 1-4; 19 tenure-1-3 rows carry lambda>0 (12 at 1.0) and move nothing today only because cf<=v.",
+ "_doc": "ORDER 45 CLAIMS \u2014 machine-checkable, recomputed never read back (tools/claims.py check, run at/after the landing; every file_md5/json_field below states the POST-LANDING tree). Drafted before the flip; base_commit is stamped at the flip. LAW-5 DECLARATION (prereg R8): the net is a ONE-DIRECTIONAL SHIELD \u2014 it lifts a scoped row toward its own scoring-stripped counterfactual and never lowers any price; the owner's D2 word ruled exactly that presented design, and his GO on the dry-run page (which states it in words) is the law-5 waiver of record. ARMED SCOPE (prereg R1): the instrument reaches tenure 1-4; 19 tenure-1-3 rows carry lambda>0 (12 at 1.0) and move nothing today only because cf<=v.",
  "schema_version": 1,
  "act_type": "lever-landing",
- "act": "ORDER 45 — ARM-2 REBAKE ADOPTED + THE POSITION-SCALED SAFETY NET (RL_O45): board 82fcd8bb -> 3167cba6, net movers 10 (+922)",
+ "act": "ORDER 45 \u2014 ARM-2 REBAKE ADOPTED + THE POSITION-SCALED SAFETY NET (RL_O45): board 82fcd8bb -> 3167cba6, net movers 10 (+922)",
  "date": "2026-08-25",
- "base_commit": "STAMPED_AT_FLIP",
- "owner_word": "\"Yes, adopt the new model\" (D1) · \"Scaled on the safety net\" (D2) · \"Exclude mature agers\" (D3) — 2026-08-25, verbatim, register v852/v853",
+ "base_commit": "7ea26b30bc148f33fb6eaa0da6020ede9e83ba48",
+ "owner_word": "\"Yes, adopt the new model\" (D1) \u00b7 \"Scaled on the safety net\" (D2) \u00b7 \"Exclude mature agers\" (D3) \u2014 2026-08-25, verbatim, register v852/v853",
  "activation": {
   "RL_O45": {
    "state": "on",
-   "_doc": "Default-ON in data/model_config.json (config 29fdfd1e...). ON is activated by the owner's D2 word verbatim, 2026-08-25: \"Scaled on the safety net\" (register v853) — the packet presented the net as a default-on shield and his word ruled it. RL_O45=0 (a coherent manifest restamp or a revert of the flip commit) reproduces board 543bf900e3e7538bc75214881edc7733 byte-exact — proven twice, cmp-verified."
+   "_doc": "Default-ON in data/model_config.json (config 29fdfd1e...). ON is activated by the owner's D2 word verbatim, 2026-08-25: \"Scaled on the safety net\" (register v853) \u2014 the packet presented the net as a default-on shield and his word ruled it. RL_O45=0 (a coherent manifest restamp or a revert of the flip commit) reproduces board 543bf900e3e7538bc75214881edc7733 byte-exact \u2014 proven twice, cmp-verified."
   },
   "day0_rebase": {
    "state": "off",
-   "_doc": "off — measured: no net mover is a day-0 row; the regenerated day-0 reference for the with-net board is byte-identical to DAY0_FINAL_FINAL (86/86)."
+   "_doc": "off \u2014 measured: no net mover is a day-0 row; the regenerated day-0 reference for the with-net board is byte-identical to DAY0_FINAL_FINAL (86/86)."
   }
  },
  "claims": [
-  {"kind": "file_md5", "path": "data/rl_build/rl_app_data.json", "value": "3167cba643a6b16e5ef5d904d8957fcd", "label": "the published board of record (with-net)"},
-  {"kind": "file_md5", "path": "engine/rl_after/_merged_recover.py", "value": "d84031cff312818a158855f2dd223cc1", "label": "the engine head: arm-2 design + the ORDER 45 lever (both probe guards)"},
-  {"kind": "file_md5", "path": "data/cm_400.pkl", "value": "f39c7b96603a6d1483a8f3295fad1a29", "label": "band cm_400 (a*=22, uniform eras)"},
-  {"kind": "file_md5", "path": "data/q97m.pkl", "value": "5ea7546d9a4897114597a7d8ea1596db", "label": "q97m ceiling (own OOS selection, interior optimum)"},
-  {"kind": "file_md5", "path": "engine/rl_after/peak_model_v4.pkl", "value": "8329ff9379cf6066c0e7cd73dd6cd2e0", "label": "peak model (wordb_conditioned)"},
-  {"kind": "file_md5", "path": "engine/rl_after/bust_prior_table.json", "value": "ff87e42e502a476a90e453bad90825b0", "label": "bust prior table (modernized)"},
-  {"kind": "file_md5", "path": "engine/rl_after/pvc_snapshot.json", "value": "4704b8296008f81e7bb5407424229e85", "label": "pvc snapshot"},
-  {"kind": "json_field", "path": "data/expected_boot.json", "field": "board", "value": "3167cba643a6b16e5ef5d904d8957fcd", "label": "expected_boot.board"},
-  {"kind": "json_field", "path": "data/expected_boot.json", "field": "engine_head", "value": "d84031cff312818a158855f2dd223cc1", "label": "expected_boot.engine_head"},
-  {"kind": "json_field", "path": "data/expected_boot.json", "field": "config", "value": "29fdfd1e1447a1d2fb33876fe659faa06b13ad19ad4d608a110c20d231f8b86e", "label": "expected_boot.config (RL_O45 declared, 85 vars)"},
-  {"kind": "json_field", "path": "data/model_config.json", "field": "vars.RL_O45", "value": "1", "label": "the kill-switch's declared landing posture"},
-  {"kind": "json_field", "path": "data/release_contract.json", "field": "as_of_round", "value": 24, "label": "the round is HELD (out-of-round lever landing)"},
-  {"kind": "board_count", "path": "data/rl_build/rl_app_data.json", "section": "active", "metric": "rows", "value": 804, "label": "board rows"},
-  {"kind": "gate", "name": "rulebook_lint", "argv": ["python3", "tools/rulebook_lint.py"], "expect": "PASS", "label": "rulebook lint", "timeout_s": 300},
-  {"kind": "unmoved", "path": "engine/rl_after/rl_model_data.json", "value": "fb640ca0baf92bbb122b1ad7e25c5a88", "label": "the store — BYTE-UNMOVED by this landing"},
-  {"kind": "unmoved", "path": "engine/rl_after/rl_model.py", "value": "6fe7c4155866d80e8045bed2d3bf2802", "label": "rl_model.py — BYTE-UNMOVED by this landing"}
+  {
+   "kind": "file_md5",
+   "path": "data/rl_build/rl_app_data.json",
+   "value": "3167cba643a6b16e5ef5d904d8957fcd",
+   "label": "the published board of record (with-net)"
+  },
+  {
+   "kind": "file_md5",
+   "path": "engine/rl_after/_merged_recover.py",
+   "value": "d84031cff312818a158855f2dd223cc1",
+   "label": "the engine head: arm-2 design + the ORDER 45 lever (both probe guards)"
+  },
+  {
+   "kind": "file_md5",
+   "path": "data/cm_400.pkl",
+   "value": "f39c7b96603a6d1483a8f3295fad1a29",
+   "label": "band cm_400 (a*=22, uniform eras)"
+  },
+  {
+   "kind": "file_md5",
+   "path": "data/q97m.pkl",
+   "value": "5ea7546d9a4897114597a7d8ea1596db",
+   "label": "q97m ceiling (own OOS selection, interior optimum)"
+  },
+  {
+   "kind": "file_md5",
+   "path": "engine/rl_after/peak_model_v4.pkl",
+   "value": "8329ff9379cf6066c0e7cd73dd6cd2e0",
+   "label": "peak model (wordb_conditioned)"
+  },
+  {
+   "kind": "file_md5",
+   "path": "engine/rl_after/bust_prior_table.json",
+   "value": "ff87e42e502a476a90e453bad90825b0",
+   "label": "bust prior table (modernized)"
+  },
+  {
+   "kind": "file_md5",
+   "path": "engine/rl_after/pvc_snapshot.json",
+   "value": "4704b8296008f81e7bb5407424229e85",
+   "label": "pvc snapshot"
+  },
+  {
+   "kind": "json_field",
+   "path": "data/expected_boot.json",
+   "field": "board",
+   "value": "3167cba643a6b16e5ef5d904d8957fcd",
+   "label": "expected_boot.board"
+  },
+  {
+   "kind": "json_field",
+   "path": "data/expected_boot.json",
+   "field": "engine_head",
+   "value": "d84031cff312818a158855f2dd223cc1",
+   "label": "expected_boot.engine_head"
+  },
+  {
+   "kind": "json_field",
+   "path": "data/expected_boot.json",
+   "field": "config",
+   "value": "29fdfd1e1447a1d2fb33876fe659faa06b13ad19ad4d608a110c20d231f8b86e",
+   "label": "expected_boot.config (RL_O45 declared, 85 vars)"
+  },
+  {
+   "kind": "json_field",
+   "path": "data/model_config.json",
+   "field": "vars.RL_O45",
+   "value": "1",
+   "label": "the kill-switch's declared landing posture"
+  },
+  {
+   "kind": "json_field",
+   "path": "data/release_contract.json",
+   "field": "as_of_round",
+   "value": 24,
+   "label": "the round is HELD (out-of-round lever landing)"
+  },
+  {
+   "kind": "board_count",
+   "path": "data/rl_build/rl_app_data.json",
+   "section": "active",
+   "metric": "rows",
+   "value": 804,
+   "label": "board rows"
+  },
+  {
+   "kind": "gate",
+   "name": "rulebook_lint",
+   "argv": [
+    "python3",
+    "tools/rulebook_lint.py"
+   ],
+   "expect": "PASS",
+   "label": "rulebook lint",
+   "timeout_s": 300
+  },
+  {
+   "kind": "unmoved",
+   "path": "engine/rl_after/rl_model_data.json",
+   "value": "fb640ca0baf92bbb122b1ad7e25c5a88",
+   "label": "the store \u2014 BYTE-UNMOVED by this landing"
+  },
+  {
+   "kind": "unmoved",
+   "path": "engine/rl_after/rl_model.py",
+   "value": "6fe7c4155866d80e8045bed2d3bf2802",
+   "label": "rl_model.py \u2014 BYTE-UNMOVED by this landing"
+  }
  ]
 }
