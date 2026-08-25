@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_3738/sandbox
+  tree      : /tmp/landing_selftest_10649/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 82fcd8bb1e552b927299b5702122e321
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,12 +9,12 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_REPO, RL_VENV
-build-lock: HELD by land-lever-4541 (pid 4541) — single writer for the shared workspace.
-base commit        7092f57d9f42e49021bf41e4500497891538a64e
+build-lock: HELD by land-lever-11056 (pid 11056) — single writer for the shared workspace.
+base commit        d476a5234a8ccaf5ef7d1c64a02d76f61d5dfc83
 board pin (before) 82fcd8bb1e552b927299b5702122e321
 store pin (before) fb640ca0baf92bbb122b1ad7e25c5a88
 restore point      64 carrier(s) captured, 64 present on disk
-    [preflight OK  0.10s]
+    [preflight OK  0.09s]
 
 --- STEP 1/10  build_proofs   bare build, predicted identity, switch leg, day-0 ---
 build         rc=0 board=82fcd8bb1e552b927299b5702122e321  (0.0s)
@@ -84,12 +84,12 @@ WRITER 4/6: ui/tools/rebuild_movers_derived.py  (points / values / model_changes
   drift guard: derived blocks OK — committed == rebuilt (4237736 bytes, latest report R24)
   shipped model_changes == live-derived: 12 boundar(ies), EQUAL  (the F-10 predicate holds)
 WRITER 5/6: ui/tools/ingest_inputs.py --mirror-only  (the ownership mirror, re-pinned to the landed board + store)
-  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_3738/sandbox/ui/data/ownership.js
+  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_10649/sandbox/ui/data/ownership.js
   MIRROR-ONLY    — the club-valuation bundle was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
   drift guard: MIRROR DRIFT GUARD — ui/data/ownership.js is byte-identical to what this tree projects (74786 bytes).
   mirror pin == the landed identity: board 82fcd8bb store fb640ca0 R24, 804 player(s) mirrored (pin() would ACTIVATE it)
 WRITER 6/6: ui/tools/ingest_inputs.py --clubs-only  (the picks bundle, re-stamped to the landed board + store)
-  CLEAN INGEST — 160 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: /tmp/landing_selftest_3738/sandbox/ui/data/club_valuation.js
+  CLEAN INGEST — 160 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: /tmp/landing_selftest_10649/sandbox/ui/data/club_valuation.js
   CLUBS-ONLY     — the ownership mirror was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
   drift guard: PICKS DRIFT GUARD — ui/data/club_valuation.js is byte-identical to what this tree projects (40600 bytes).
   picks stamp == the landed identity: board 82fcd8bb store fb640ca0 R24, 160 pick(s) priced off 9729f0c5 (pin() would ACCEPT it)
@@ -106,7 +106,7 @@ AFTER   picks  b08ae50906c2b4c2cfb923668d3b13d1  UNMOVED (neither the board, the
   stamp.balanced_board_md5   8838f4b3ed5089788c48a2657606711c   OK
   stamp.asOfRound            24                                 OK
 THE HTML APP'S EMBEDDED BOARD IDENTITY IS 82fcd8bb1e552b927299b5702122e321. All six writers ran; the release block is back, the reader can see the transition that produced this board, the ownership mirror is pinned to it rather than to the store it replaced, and the pick surface is stamped to it rather than to the board before it.
-    [ui OK  2.82s]
+    [ui OK  2.86s]
     build-lock: RELEASED after 'ui' — the remaining steps write nothing and the one gate that builds takes the lock itself.
 
 --- STEP 7/10  state          docs/STATE.md regenerated from the carriers (3c) ---
@@ -129,13 +129,13 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.10s  OK
+    preflight          0.09s  OK
     build_proofs       0.01s  OK
     pins               0.02s  OK
     lineage            0.00s  OK
     contract           0.09s  OK
     sibling            0.14s  OK
-    ui                 2.82s  OK
+    ui                 2.86s  OK
     state              0.08s  FAIL
-    TOTAL              3.26s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_4541
+    TOTAL              3.29s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_11056

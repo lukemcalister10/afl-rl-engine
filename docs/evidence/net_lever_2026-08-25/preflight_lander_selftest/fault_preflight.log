@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_3738/sandbox
+  tree      : /tmp/landing_selftest_10649/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 82fcd8bb1e552b927299b5702122e321
   mode      : APPLY (SELFTEST) builder=selftest
@@ -27,4 +27,4 @@ improvised manual landing under pressure.
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
     preflight          0.02s  FAIL
     TOTAL              0.02s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_4405
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_10888

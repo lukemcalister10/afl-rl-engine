@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND STORE-EDIT — SELF-TEST — the surgical store edit
-  tree      : /tmp/landing_selftest_3738/sandbox
+  tree      : /tmp/landing_selftest_10649/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 18e30f929c93f00610f97d6c65b933cf
   mode      : APPLY (SELFTEST) builder=selftest-moved
@@ -8,18 +8,18 @@ LAND STORE-EDIT — SELF-TEST — the surgical store edit
 
 --- STEP 0/11  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_REPO, RL_VENV
-build-lock: HELD by land-edit-5583 (pid 5583) — single writer for the shared workspace.
-base commit        7092f57d9f42e49021bf41e4500497891538a64e
+build-lock: HELD by land-edit-12067 (pid 12067) — single writer for the shared workspace.
+base commit        d476a5234a8ccaf5ef7d1c64a02d76f61d5dfc83
 board pin (before) 82fcd8bb1e552b927299b5702122e321
 store pin (before) fb640ca0baf92bbb122b1ad7e25c5a88
 restore point      65 carrier(s) captured, 65 present on disk
-    [preflight OK  0.09s]
+    [preflight OK  0.11s]
 
 --- STEP 1/11  store_edit     THE SURGICAL STORE EDIT, applied in the work dir ---
 *** FAULT INJECTED at step 'store_edit': store_old_mismatch — the store already carries the NEW value, so the `old` the spec asserts is not there — an ABORT, never a repair (the exact-string law)
 store BEFORE  bb862a0551aec03c615b1afc21e14d01   (1978074 bytes)
               == expected_boot.store, so the tree is the one this act was written for.
-    [store_edit FAILED  0.13s]
+    [store_edit FAILED  0.14s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'store_edit'
@@ -48,7 +48,7 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.09s  OK
-    store_edit         0.13s  FAIL
-    TOTAL              0.22s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_5583
+    preflight          0.11s  OK
+    store_edit         0.14s  FAIL
+    TOTAL              0.25s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_12067

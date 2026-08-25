@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND ROUND-ADVANCE — SELF-TEST — the synthetic sheet re-cut
-  tree      : /tmp/landing_selftest_3738/sandbox
+  tree      : /tmp/landing_selftest_10649/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 82fcd8bb1e552b927299b5702122e321
   mode      : APPLY (SELFTEST) builder=selftest
@@ -12,12 +12,12 @@ DECLARED DIRT (2 path(s), and ONLY these): owner inputs this act is contracted t
     docs/owner_annotations/SITTER_2026_v1.csv                  (committed by the `sheet` step)
     docs/evidence/landing_selftest/SELFTEST_PREREG_LITE.md     (committed by the `sheet` step)
 RL_/PAR_ environment  RL_REPO, RL_VENV
-build-lock: HELD by land-round-5169 (pid 5169) — single writer for the shared workspace.
-base commit        7092f57d9f42e49021bf41e4500497891538a64e
+build-lock: HELD by land-round-11653 (pid 11653) — single writer for the shared workspace.
+base commit        d476a5234a8ccaf5ef7d1c64a02d76f61d5dfc83
 board pin (before) 82fcd8bb1e552b927299b5702122e321
 store pin (before) fb640ca0baf92bbb122b1ad7e25c5a88
 restore point      117 carrier(s) captured, 117 present on disk
-    [preflight OK  0.12s]
+    [preflight OK  0.11s]
 
 --- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
 sheet         docs/owner_annotations/SITTER_2026_v1.csv
@@ -46,7 +46,7 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.12s  OK
+    preflight          0.11s  OK
     sheet              0.00s  FAIL
-    TOTAL              0.12s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_5169
+    TOTAL              0.11s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_11653
