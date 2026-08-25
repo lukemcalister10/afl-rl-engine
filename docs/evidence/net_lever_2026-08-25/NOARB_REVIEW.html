@@ -1,4 +1,4 @@
-<meta charset="utf-8"><title>No-Arb Reading — With-Net Board</title>
+<meta charset="utf-8"><title>No-Arb Reading — with-net board 3167cba6</title>
 <style>
 body{font-family:system-ui,sans-serif;max-width:960px;margin:24px auto;padding:0 16px;background:#fafafa;color:#1a1a1a}
 h1{font-size:1.35rem}h2{font-size:1.05rem;margin-top:28px}
@@ -8,20 +8,18 @@ th{background:#f0f0f0;cursor:pointer}td:first-child,th:first-child{text-align:le
 .breach{background:#fde8e8;font-weight:600}.under{background:#fff7e0}
 .strip{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0}
 .card{background:#fff;border:1px solid #ddd;border-radius:8px;padding:10px 14px}
-.card b{font-size:1.05rem}.ok{color:#166534}
+.card b{font-size:1.05rem}.ok{color:#166534}.bad{color:#9a3412}
 p.note{color:#444;font-size:.92rem;line-height:1.45}
 </style>
-<h1>No-arbitrage reading — the board that would ship</h1>
-<p class="note">Measured on the <b>with-net board 3167cba6</b>: Arm 2&rsquo;s retrain + your design rulings
-<i>plus</i> the position-scaled safety net (Leake at 421 is inside these numbers). The comparison column is
-today&rsquo;s live board. The reading asks, per draft-class year: what a class&rsquo;s players are now worth
-against what was paid for them. The <b>buy rail is 1.14</b> — a class at or over it is priced as a
-systematic bargain, which the law treats as an arbitrage smell. The <b>floor is 1.03</b>.</p>
+<h1>No-arbitrage reading — with-net board 3167cba6</h1>
+<p class="note">The reading asks, per draft-class year: what a class&rsquo;s players are now worth against
+what was paid for them. The <b>buy rail is 1.14</b> — a class at or over it is priced as a systematic
+bargain, which the law treats as an arbitrage smell. The <b>floor is 1.03</b>.</p>
 <div class="strip">
 <div class="card">headline (W2)<br><b>1.0928 → 1.0637</b> <span class="ok">improved</span></div>
-<div class="card">worst class<br><b>1.2000 (2016) → 1.1738 (2011)</b> <span class="ok">improved</span></div>
+<div class="card">worst class<br><b>1.2000 (2016) → 1.1738 (2011)</b></div>
 <div class="card">classes over the buy rail<br><b>3 → 3</b> <span class="ok">no new breaches</span></div>
-<div class="card">floor margin<br><b>+0.0337</b> <span class="ok">clear of 1.03</span></div>
+<div class="card">floor margin<br><b>+0.0337 vs 1.03</b></div>
 </div>
 <h2>Per draft class</h2>
 <table><tr><th>class year</th><th>live board 82fcd8bb</th><th>with-net board 3167cba6</th><th>move</th></tr>
@@ -42,11 +40,8 @@ systematic bargain, which the law treats as an arbitrage smell. The <b>floor is 
 <tr><td>2019</td><td>1.0827</td><td>1.0614</td><td>-0.0213</td></tr>
 <tr><td>2020</td><td class="under">1.0146</td><td>1.0411</td><td>+0.0264</td></tr>
 <tr><td>2021</td><td class="under">0.9705</td><td class="under">0.9863</td><td>+0.0158</td></tr></table>
-<p class="note">⚠ red cells sit at/over the 1.14 buy rail. The three breaches (2011, 2012, 2016) are the same
-three the live board carries today — carried, not created; each one <i>shrinks</i> under the new board.</p>
-<h2>The safety net&rsquo;s movers (all tenure-4; mature-agers excluded per your ruling)</h2>
-<table id="mv"><tr><th>player</th><th>pos</th><th>tenure</th><th>cameo avg</th><th>live today</th><th>Arm 2 alone</th><th>Arm 2 + net</th><th>net lift</th></tr>
-<tr><td>James Leake</td><td>SD</td><td>4</td><td>48.1</td><td>169</td><td>168</td><td><b>421</b></td><td>+253</td></tr>
+<p class="note">⚠ red cells sit at/over the 1.14 buy rail; amber cells sit under the 1.03 floor.</p>
+<h2>The act&rsquo;s movers</h2><table><tr><th>player</th><th>pos</th><th>tenure</th><th>cameo avg</th><th>live today</th><th>base</th><th>with lever</th><th>lift</th></tr><tr><td>James Leake</td><td>SD</td><td>4</td><td>48.1</td><td>169</td><td>168</td><td><b>421</b></td><td>+253</td></tr>
 <tr><td>Taylor Goad</td><td>RUCK</td><td>4</td><td>43.5</td><td>441</td><td>441</td><td><b>667</b></td><td>+226</td></tr>
 <tr><td>Will Green</td><td>RUCK</td><td>4</td><td>62.7</td><td>468</td><td>468</td><td><b>678</b></td><td>+210</td></tr>
 <tr><td>Charlie Edwards</td><td>MID</td><td>4</td><td>47.5</td><td>289</td><td>289</td><td><b>404</b></td><td>+115</td></tr>
@@ -57,12 +52,10 @@ three the live board carries today — carried, not created; each one <i>shrinks
 <tr><td>Tom Anastasopoulos</td><td>SF</td><td>4</td><td>42.2</td><td>77</td><td>77</td><td><b>84</b></td><td>+7</td></tr>
 <tr><td>Cooper Simpson</td><td>SD</td><td>4</td><td>39.6</td><td>86</td><td>86</td><td><b>86</b></td><td>+0</td></tr>
 <tr><td>Wil Parker</td><td>SD</td><td>4</td><td>40.0</td><td>29</td><td>36</td><td><b>37</b></td><td>+1</td></tr></table>
-<p class="note">Cooper Simpson&rsquo;s predicted +1 landed +0 — a rounding boundary between the engine&rsquo;s
-arithmetic and the prediction&rsquo;s, declared in advance, measured, and reconciled on the record. Every other
-row matches the filed prediction exactly. Click any column header to sort.</p>
+<p class="note">Measured on the with-net board: Arm 2 retrain + design rulings + the position-scaled safety net (Leake 421 inside). The three rail breaches (2011/2012/2016) are the live board's own, carried not created, each shrinking under the new board. Cooper Simpson's predicted +1 landed +0 — the prereg-declared rounding knife-edge, measured and reconciled.</p>
 <script>
-document.querySelectorAll('#mv th').forEach((h,i)=>h.onclick=()=>{const t=h.closest('table');
+document.querySelectorAll('table').forEach(t=>t.querySelectorAll('th').forEach((h,i)=>h.onclick=()=>{
 const rs=[...t.rows].slice(1);const num=rs.every(r=>!isNaN(parseFloat(r.cells[i].innerText)));
 const asc=h.asc=!h.asc;rs.sort((a,b)=>{let x=a.cells[i].innerText,y=b.cells[i].innerText;
-if(num){x=parseFloat(x);y=parseFloat(y)}return (x>y?1:x<y?-1:0)*(asc?1:-1)});rs.forEach(r=>t.appendChild(r))});
+if(num){x=parseFloat(x);y=parseFloat(y)}return (x>y?1:x<y?-1:0)*(asc?1:-1)});rs.forEach(r=>t.appendChild(r))}));
 </script>
