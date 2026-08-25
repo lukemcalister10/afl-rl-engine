@@ -1,0 +1,17 @@
+config manifest (gate mode) LOADED  hash 29fdfd1e1447  (85 model vars pinned; ambient cleared)
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+cooper-simpson: pos=SD c=39.58 lambda=0.030888  CF(ev-scale)=127.03799623602409  W(ev-scale, wrapped ev)=91  F=1.0524
+   board double-round = round(W/F) = 86
+   ev-scale V candidates consistent with off-board 86 AND lever W: [90]
+   V=90: X=V+L*(CF-V)=91.1440 -> lever W=round(X)=91 -> board 86 ; single-round path round(X/F)=87
+wil-parker: pos=SD c=40.00 lambda=0.095725  CF(ev-scale)=48.2955412422622  W(ev-scale, wrapped ev)=39  F=1.0524
+   board double-round = round(W/F) = 37
+   ev-scale V candidates consistent with off-board 36 AND lever W: [38]
+   V=38: X=V+L*(CF-V)=38.9855 -> lever W=round(X)=39 -> board 37 ; single-round path round(X/F)=37
+taylor-goad: pos=RUCK c=43.50 lambda=0.962982  CF(ev-scale)=710.9521664115363  W(ev-scale, wrapped ev)=702  F=1.0524
+   board double-round = round(W/F) = 667
+   ev-scale V candidates consistent with off-board 441 AND lever W: [464]
+   V=464: X=V+L*(CF-V)=701.8104 -> lever W=round(X)=702 -> board 667 ; single-round path round(X/F)=667
+
+[exited with code 0]

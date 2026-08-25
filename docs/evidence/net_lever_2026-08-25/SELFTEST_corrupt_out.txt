@@ -1,0 +1,5 @@
+[corrupt leg] expectation altered: james-leake new -> 422
+movers 10 (predicted 11) · total lift +922 (predicted +923) · unmoved rows 794
+DISCLOSED: cooper-simpson: partial lambda 0.031, predicted 87 got 86 (declared knife-edge; reconciliation owed before the dry-run)
+SELF-TEST FAIL:
+  - james-leake: lambda=1 row must match EXACTLY (and move): predicted 422 got 421

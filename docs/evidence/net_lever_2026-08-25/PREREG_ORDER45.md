@@ -147,6 +147,21 @@ commit that re-stamps config_sha256 + expected_boot.json"). Consequences, all no
 - `release_contract.json` `config_sha256` moves and the contract re-seals via its own
   `contract_hash` (the landing preflight asserts self-consistency, tools/landing/steps.py:1133).
 
+**C3 — the knife-edge fired, on one row, and is reconciled (filed AFTER the emits; results, not
+predictions).** Falsifier 1 GREEN: the declared-`'0'` manifest emit byte-reproduced `543bf900`
+exactly. Falsifier 2: the with-net board is **`3167cba643a6b16e5ef5d904d8957fcd`** — this md5 is
+`board_after`. It moves **10 rows, +922** vs the predicted 11/+923: every λ=1 row matches
+EXACTLY, goad (λ .963) and parker (λ .096) match exactly, and **cooper-simpson (λ .0309,
+predicted 86→87) did not move** — the §4-declared double-rounding knife-edge, PROVEN by
+measurement (PROBE_KNIFE_out.txt): inner V=90, CF=127.038, X=V+λ(CF−V)=91.1440 → the lever's
+`round(X)`=91 at the ev scale → the exporter's re-denomination `round(91/1.0524)`=**86**, while
+the prediction's single-rounded `round(X/1.0524)`=87; exactly one rounding boundary separates
+the paths, and the other two partial-λ rows agree on both paths. The landed convention is the
+engine's (the lever sits at the one law, as v854/v856 specify); the deviation is within the
+declared ±1 band and is carried to the dry-run page as a named line, not silently. Falsifier 3
+GREEN: the self-test FAILS on a corrupted expectation (leake +1) and PASSES on the real one with
+the cooper-simpson deviation DISCLOSED (SELFTEST_*_out.txt).
+
 **C2 — the kill-switch proof's mechanics restated.** Gate mode also rejects DIVERGENT overrides,
 so falsifier §5.1 cannot pass `RL_O45=0` in the environment. The proof instead emits against a
 manifest that DECLARES `RL_O45='0'` (coherently restamped via `set_o45_manifest.py`), then the
