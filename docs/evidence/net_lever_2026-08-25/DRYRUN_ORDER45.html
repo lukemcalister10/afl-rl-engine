@@ -1,0 +1,90 @@
+<meta charset="utf-8"><title>ORDER 45 — The Dry-Run</title>
+<style>
+body{font-family:system-ui,sans-serif;max-width:960px;margin:24px auto;padding:0 16px;background:#fafafa;color:#1a1a1a}
+h1{font-size:1.3rem}h2{font-size:1.02rem;margin-top:26px}
+table{border-collapse:collapse;width:100%;background:#fff;font-variant-numeric:tabular-nums}
+th,td{border:1px solid #ddd;padding:5px 9px;text-align:right}
+th{background:#f0f0f0}td:first-child,th:first-child{text-align:left}
+.up{color:#166534;font-weight:600}.warn{background:#fff7e0}.red{background:#fde8e8}
+.strip{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0}
+.card{background:#fff;border:1px solid #ddd;border-radius:8px;padding:9px 13px}
+.card b{font-size:1.05rem}
+p.note,li{color:#333;font-size:.93rem;line-height:1.5}
+.pending{background:#eef;border:1px dashed #88a;padding:8px 12px;border-radius:6px}
+code{background:#eee;padding:0 4px;border-radius:3px}
+</style>
+<h1>ORDER 45 — the dry-run: one landing, on your GO</h1>
+<p class="note">The live board <code>82fcd8bb</code> moves ONCE, to the with-net board <code>3167cba6</code>:
+Arm 2's retrain + your design rulings (age peak 22, no era weighting, exact level rule, modernised
+bust table, conditioned bust feature) + the position-scaled safety net (your D1/D2/D3 words,
+verbatim on the record). Kill-switch <code>RL_O45=0</code> reproduces the no-net candidate
+<code>543bf900</code> byte-for-byte — proven twice.</p>
+
+<div class="strip">
+<div class="card">vs live board<br><b>647 movers · pool +0.02%</b></div>
+<div class="card">the net's own movers<br><b>10 rows · +922</b></div>
+<div class="card">no-arb<br><b>0 new breaches</b> · headline improves 1.0928→1.0637</div>
+<div class="card">census / day-0<br><b>PASS · 86/86 exact</b></div>
+<div class="card">ascension (O33)<br><b>re-derives</b> under its adopting rule</div>
+</div>
+
+<h2>The net's movers (the Leake fix)</h2>
+<table><tr><th>player</th><th>pos</th><th>tenure</th><th>cameo avg</th><th>live today</th><th>Arm 2 alone</th><th>with net</th><th>net lift</th></tr>
+<tr><td>James Leake</td><td>SD</td><td>4</td><td>48.1</td><td>169</td><td>168</td><td class="up">421</td><td>+253</td></tr>
+<tr><td>Taylor Goad</td><td>RUCK</td><td>4</td><td>43.5</td><td>441</td><td>441</td><td class="up">667</td><td>+226</td></tr>
+<tr><td>Will Green</td><td>RUCK</td><td>4</td><td>62.7</td><td>468</td><td>468</td><td class="up">678</td><td>+210</td></tr>
+<tr><td>Charlie Edwards</td><td>MID</td><td>4</td><td>47.5</td><td>289</td><td>289</td><td class="up">404</td><td>+115</td></tr>
+<tr><td>Vigo Visentini</td><td>RUCK</td><td>4</td><td>67.2</td><td>173</td><td>173</td><td class="up">211</td><td>+38</td></tr>
+<tr><td>Lachlan Smith</td><td>RUCK</td><td>4</td><td>53.0</td><td>150</td><td>150</td><td class="up">186</td><td>+36</td></tr>
+<tr><td>Zane Zakostelsky</td><td>KPD</td><td>4</td><td>49.0</td><td>143</td><td>143</td><td class="up">171</td><td>+28</td></tr>
+<tr><td>Oscar Ryan</td><td>SD</td><td>4</td><td>88.0</td><td>185</td><td>185</td><td class="up">193</td><td>+8</td></tr>
+<tr><td>Tom Anastasopoulos</td><td>SF</td><td>4</td><td>42.2</td><td>77</td><td>77</td><td class="up">84</td><td>+7</td></tr>
+<tr><td>Wil Parker</td><td>SD</td><td>4</td><td>40.0</td><td>29</td><td>36</td><td class="up">37</td><td>+1</td></tr>
+<tr class="warn"><td>Cooper Simpson</td><td>SD</td><td>4</td><td>39.6</td><td>86</td><td>86</td><td>86</td><td>+0 (predicted +1)</td></tr>
+</table>
+<p class="note">Cooper Simpson's predicted +1 landed +0 — a rounding boundary between the engine's
+arithmetic and the prediction's, declared in the prereg before the build, then measured and
+reconciled to the exact integer. Every other row matches the filed prediction exactly, twice.</p>
+
+<h2>Five things your GO covers, stated plainly</h2>
+<ul>
+<li><b>The net is armed beyond these ten.</b> All ten movers are fourth-year players <i>today</i>, but
+the instrument reaches tenure 1–4: <b>19 younger players sit in scope with their ramp engaged (12
+fully)</b> and move nothing only because their counterfactual currently sits at or below their price.
+A future retrain can move them with no further word from you. (The earlier "tenure-4-only by
+construction" claim was retracted by the blind review.)</li>
+<li><b>The scope edge is a hard step tonight — and your fade-out ruling covers it in act two.</b>
+The net withdraws entirely at the first 6-game season: Leake, Anastasopoulos and Parker each have a
+5-game best season, one game from that edge (Leake's step measures −253). Declared with margins per
+the no-cliffs law; your ruling this evening ("it should fade out") replaces the hard edge with an
+easing in the combined act-two build.</li>
+<li><b>The lift ripples into the forward columns.</b> The board's +1/+2 lens values inherit it
+through the evidence floor: now +922 · next-year lens +618 · year-after lens +648. That is the full
+conservation ledger.</li>
+<li><b>The net only ever raises.</b> One-directional by design — the packet you ruled presented it
+as exactly that (a safety net lifting toward the player's own no-evidence price), and the symmetry
+law's exception is yours to grant with this GO; it is also carried in the machine-checked claims
+note.</li>
+<li><b>The known reds ride, none new:</b> the carried A2/A3/A12 standing fails, the structural B4
+red (byte-agree against the still-shipped live board — it flips green at the landing itself), and
+the pinball monitor's long-disclosed ~1% exactness price. FB2 fires as it has at every stage of
+this candidate.</li>
+</ul>
+
+<h2 id="pending-gates">Ship-gates on the final engine</h2>
+<div class="pending"><b>PENDING</b> — the rerun on the final engine head <code>d84031cf</code> is in
+flight; this section is filled from its verdict column before this page is acted on.</div>
+
+<h2 id="pending-review">The blind review's final verdict</h2>
+<div class="pending"><b>PENDING</b> — three passes complete: the board's numbers verified untouched
+three times; twelve findings + six more all cured on the record; no open blockers. Final verdict
+lands with the re-proof.</div>
+
+<h2>What happens on your GO</h2>
+<p class="note">Pre-flip posture check (manifest ON, config <code>29fdfd1e</code>) → the flip commit
+(the enumerated 21-file set: engine head <code>d84031cf</code>, the five refit artifacts, the fv
+modules, the guards and manifest, the B6 instrument note) → ONE landing through
+<code>tools/land lever</code>, which rebuilds the board from source, demands it equal
+<code>3167cba6</code> exactly, re-runs the landing gates, and writes the state, lineage and register.
+Rollback at any time: the kill-switch or a revert of the flip commit.</p>
+</meta>
