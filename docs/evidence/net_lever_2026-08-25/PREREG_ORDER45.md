@@ -162,6 +162,25 @@ mid-script failure (it was in exactly that state when the reviewer measured it);
 restores the `'1'` posture on every exit path, and the PRE-FLIP CHECK IS MANDATORY: manifest
 `RL_O45='1'`, config `29fdfd1e1447…`, before the flip commit is cut.
 
+**R-FIX3 — the reviewer's interim third pass: the FLIP SET GAINS THREE COMPANION FILES (was a
+BLOCKER), and the executing emit script is filed.** (NEW-4) A full tracked-file diff (this seat
+re-measured; the C4 sweep had scoped to engine/ and data/ and missed them) finds three more
+candidate-side files, each BYTE-IDENTICAL to `rebake/arm2-design` and differing from main:
+**`boot_guard.py`** (368a6787 — Guard 5's `_resolve_cm_load` mirror, which the flip-set member
+`wire_redesign.py` documents MUST move in lock-step with its new `cm_load_path()`, on pain of
+re-opening the register-item-91 hole), **`config_manifest.py`** (41f043a2 — its INFRA_ALLOW
+learns `RL_CM_PKL`/`RL_Q97M_PKL`; without it the landed main REJECTS the filed emit recipe and
+`board_after` could not be re-derived on the tree that claims it — the C1 failure mode), and
+**`refit_q97m.py`** (4ff515e1 — the provenance script of the MOVED identity q97m). ALL THREE
+ENTER THE DECLARED FLIP SET; C4/R7's "nothing else differs" is corrected a second time, and the
+honest statement is now: the flip set = C4's list + ship_gates_check.py (NEW-2) + these three;
+`gates_snapshots/gates_53ce2fb7.json` remains the one EXCLUDED difference (R7). The widened
+INFRA_ALLOW surface (two pickle-path variables, infrastructure not model semantics — they name
+WHERE artifacts load from, and Guard 5/the manifest pin WHAT loads) is hereby declared rather
+than riding silently. (NEW-5) the R-FIX2 trap went into the EXECUTING emit script but the filed
+evidence copy lacked it — the executing copy (with trap, 2548 bytes) is now filed over the stale
+one; the recipe on the record is the recipe that runs.
+
 **R1 (was a BLOCKER) — the "tenure-4-only instrument" claim of §4/v856 is RETRACTED.** Measured by
 the reviewer and confirmed: the OUTCOME is tenure-4-only (all 10 movers), but the INSTRUMENT is
 not — **19 tenure-1-3 non-mature in-scope rows carry λ > 0 (12 at λ = 1.0 exactly**, mraz/francou/

@@ -6,6 +6,10 @@ set -eu
 export PATH="/root/rl_venv312/bin:$PATH"
 export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1
 SC=/home/user/arm2_norec
+# Review finding NEW-3: any failure between the '0' flip and the '1' restore would strand the
+# candidate root COHERENTLY sealed in the net-OFF posture. The trap restores the landing posture
+# on EVERY exit path; the pre-flip check (manifest '1', config 29fdfd1e...) remains mandatory.
+trap 'python3 "$SC/set_o45_manifest.py" 1 >/dev/null 2>&1 || true' EXIT
 cd "$SC/wsF/rl_after"
 find . -name __pycache__ -type d -exec rm -rf {} + 2>/dev/null || true
 
