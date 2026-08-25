@@ -12,11 +12,11 @@ th{background:#f0f0f0;cursor:pointer}td:first-child,th:first-child{text-align:le
 p.note{color:#444;font-size:.92rem;line-height:1.45}
 </style>
 <h1>No-arbitrage reading — with-net board 3167cba6</h1>
-<p class="note">The reading asks, per draft-class year: what a class&rsquo;s players are now worth against
-what was paid for them. The <b>buy rail is 1.14</b> — a class at or over it is priced as a systematic
+<p class="note">The reading is the YEAR-1 landing window, per draft class: what the class was worth at the
+end of its first year against what was paid for it on draft day. The <b>buy rail is 1.14</b> — a class at or over it is priced as a systematic
 bargain, which the law treats as an arbitrage smell. The <b>floor is 1.03</b>.</p>
 <div class="strip">
-<div class="card">headline (W2)<br><b>1.0928 → 1.0637</b> <span class="ok">improved</span></div>
+<div class="card">headline (W2)<br><b>1.0928 → 1.0637</b> <span class="ok">away from the rail</span></div>
 <div class="card">worst class<br><b>1.2000 (2016) → 1.1738 (2011)</b></div>
 <div class="card">classes over the buy rail<br><b>3 → 3</b> <span class="ok">no new breaches</span></div>
 <div class="card">floor margin<br><b>+0.0337 vs 1.03</b></div>
@@ -52,7 +52,7 @@ bargain, which the law treats as an arbitrage smell. The <b>floor is 1.03</b>.</
 <tr><td>Tom Anastasopoulos</td><td>SF</td><td>4</td><td>42.2</td><td>77</td><td>77</td><td><b>84</b></td><td>+7</td></tr>
 <tr><td>Cooper Simpson</td><td>SD</td><td>4</td><td>39.6</td><td>86</td><td>86</td><td><b>86</b></td><td>+0</td></tr>
 <tr><td>Wil Parker</td><td>SD</td><td>4</td><td>40.0</td><td>29</td><td>36</td><td><b>37</b></td><td>+1</td></tr></table>
-<p class="note">Measured on the with-net board: Arm 2 retrain + design rulings + the position-scaled safety net (Leake 421 inside). The three rail breaches (2011/2012/2016) are the live board's own, carried not created, each shrinking under the new board. Cooper Simpson's predicted +1 landed +0 — the prereg-declared rounding knife-edge, measured and reconciled.</p>
+<p class="note">Measured on the with-net board: Arm 2 retrain + design rulings + the position-scaled safety net (Leake 421 inside). The three rail breaches (2011/2012/2016) are the live board's own year-1 marks, carried not created, each shrinking under the new board. Cooper Simpson's predicted +1 landed +0 — the prereg-declared rounding knife-edge, measured and reconciled.</p>
 <script>
 document.querySelectorAll('table').forEach(t=>t.querySelectorAll('th').forEach((h,i)=>h.onclick=()=>{
 const rs=[...t.rows].slice(1);const num=rs.every(r=>!isNaN(parseFloat(r.cells[i].innerText)));

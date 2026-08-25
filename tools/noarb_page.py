@@ -29,8 +29,8 @@ th{background:#f0f0f0;cursor:pointer}td:first-child,th:first-child{text-align:le
 p.note{color:#444;font-size:.92rem;line-height:1.45}
 </style>
 <h1>No-arbitrage reading — $cand_label</h1>
-<p class="note">The reading asks, per draft-class year: what a class&rsquo;s players are now worth against
-what was paid for them. The <b>buy rail is $rail</b> — a class at or over it is priced as a systematic
+<p class="note">The reading is the YEAR-1 landing window, per draft class: what the class was worth at the
+end of its first year against what was paid for it on draft day. The <b>buy rail is $rail</b> — a class at or over it is priced as a systematic
 bargain, which the law treats as an arbitrage smell. The <b>floor is $floor</b>.</p>
 <div class="strip">
 <div class="card">headline (W2)<br><b>$w2l → $w2c</b> <span class="$w2cls">$w2word</span></div>
@@ -102,7 +102,8 @@ def main():
         live_label=a.live_label, cand_label=a.cand_label,
         w2l='%.4f' % L['w2'], w2c='%.4f' % C['w2'],
         w2cls='ok' if C['w2'] <= L['w2'] else 'bad',
-        w2word='improved' if C['w2'] < L['w2'] else ('unchanged' if C['w2'] == L['w2'] else 'WORSE'),
+        w2word=('away from the rail' if C['w2'] < L['w2'] else ('unchanged' if C['w2'] == L['w2'] else 'toward the rail'))
+               if C['w2'] >= floor else 'UNDER THE FLOOR',
         mxl='%.4f' % L['max_class'], mxly=L['max_class_year'],
         mxc='%.4f' % C['max_class'], mxcy=C['max_class_year'],
         nl=nl, nc=nc,
