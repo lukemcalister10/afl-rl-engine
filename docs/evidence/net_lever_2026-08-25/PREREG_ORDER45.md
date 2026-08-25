@@ -162,6 +162,21 @@ declared ±1 band and is carried to the dry-run page as a named line, not silent
 GREEN: the self-test FAILS on a corrupted expectation (leake +1) and PASSES on the real one with
 the cooper-simpson deviation DISCLOSED (SELFTEST_*_out.txt).
 
+**C4 — the identity `fv` MOVES too; v856's slot list was wrong on it as well.** Measured: the
+candidate root's `engine/forward_valuation` differs from main in `build_peak_model_v4.py`,
+`conditional_prior.py`, and a NEW `exact_monotone.py` — each byte-identical to
+`rebake/arm2-design` (the exact-monotone design that retired ORDER 44 into the fit). fv identity
+moves `6e9a370e` → `123a8155` (the candidate build's own log said so; v856 carried "fv unmoved"
+anyway). The COMPLETE flip set, measured by full-tree diff of the candidate root against main
+(pycache excluded): engine/forward_valuation {build_peak_model_v4.py, conditional_prior.py,
++exact_monotone.py} · engine/rl_after {_merged_recover.py (arm-2 head + the O45 lever),
+_gate1_picksplit.py, _gate1_wf.py, wire_redesign.py, bust_prior_table.json, peak_model_v4.pkl
+(+.srcmd5), pvc_snapshot.json (+.srcmd5)} · data {cm_400.pkl, q97m.pkl, model_config.json,
+expected_boot.json, release_contract.json} — every rl_after/fv code file verified byte-identical
+to `rebake/arm2-design` except `_merged_recover.py`, whose only delta beyond the branch is the
+ORDER 45 block. Nothing else differs; the board itself is written by the landing machinery, not
+the flip commit.
+
 **C2 — the kill-switch proof's mechanics restated.** Gate mode also rejects DIVERGENT overrides,
 so falsifier §5.1 cannot pass `RL_O45=0` in the environment. The proof instead emits against a
 manifest that DECLARES `RL_O45='0'` (coherently restamped via `set_o45_manifest.py`), then the
