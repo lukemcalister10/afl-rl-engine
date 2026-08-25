@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `84aaa990847ab7d1b0498b55abda8285f93cde1d` |
+| generated at commit | `4f89bca8afc69de9673fdf2ac3aaed8df7f3628a` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |
