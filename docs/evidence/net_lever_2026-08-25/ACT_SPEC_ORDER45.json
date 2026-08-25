@@ -14,8 +14,10 @@
   "board_after": "3167cba643a6b16e5ef5d904d8957fcd",
   "reference_board": null,
   "kill_switch": {
-   "name": "ORDER 45 \u2014 the position-scaled safety net",
-   "env": "RL_O45",
+   "name": "RL_O45=0 (ORDER 45 \u2014 the position-scaled safety net OFF)",
+   "env": {
+    "RL_O45": "0"
+   },
    "board_with_switch_off": "543bf900e3e7538bc75214881edc7733"
   },
   "_doc_kill_switch": "RL_O45 is declared in data/model_config.json at '1' (the landed posture). The switch-off board was PROVEN byte-exact at falsifier 1 via a coherently-restamped '0' manifest (PREREG_ORDER45.md C2/C3); reverting on main means flipping the manifest value and restamping config/boot/contract in one commit, or git-reverting the flip commit."
