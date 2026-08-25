@@ -71,9 +71,25 @@ the pinball monitor's long-disclosed ~1% exactness price. FB2 fires as it has at
 this candidate.</li>
 </ul>
 
-<h2 id="pending-gates">Ship-gates on the final engine</h2>
-<div class="pending"><b>PENDING</b> — the rerun on the final engine head <code>d84031cf</code> is in
-flight; this section is filled from its verdict column before this page is acted on.</div>
+<h2 id="pending-gates">Ship-gates on the final engine — the column is in (75 min, no new reds)</h2>
+<ul>
+<li><b>14 PASS</b> — including the leakage certification stamped on the exact final engine and
+config, and the games-ramp gate (which measures the base law; its blindness to the net's boundary
+is recorded in the instrument itself).</li>
+<li><b>3 carried FAILs that are yours</b>: A2 (Curtis — your "down the line"), A3 (Rozee,
+data-caused, knife-edge by design), A12 — each failing exactly its recorded way.</li>
+<li><b>B4 FAIL, structural</b>: the rebuilt board <code>3167cba6</code> vs the still-shipped
+<code>82fcd8bb</code> — this gate flips green at the landing itself, by construction.</li>
+<li class="warn" style="display:block;padding:6px 10px"><b>B3 — the honest one.</b> The book-seal
+timed out again, and this run finally measured WHY: on a fully idle machine, its matrix computed
+healthily for ~24 CPU-minutes and was killed by the check's own 30-minute internal ceiling. The
+cause is the instrument's limit, not the board, and not machine load. B3 has never sealed ANY
+candidate this cycle, including the pre-net one your packet approved. An un-capped measurement run
+is in flight for the record; the certifying fix (raise the ceiling / the load-once harness that
+makes this matrix a minutes job) rides the next act. <b>Your choice on this page:</b> land tonight
+carrying B3 as the same recorded red it has been all cycle — now with its mechanism measured — or
+hold ~90 minutes for a raised-ceiling full rerun.</li>
+</ul>
 
 <h2 id="pending-review">The blind review's final verdict</h2>
 <div class="pending"><b>PENDING</b> — three passes complete: the board's numbers verified untouched
