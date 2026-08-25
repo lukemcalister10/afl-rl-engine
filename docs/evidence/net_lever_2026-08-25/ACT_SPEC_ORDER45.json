@@ -71,6 +71,6 @@
  "claims_file": "ORDER45_CLAIMS.json",
  "gates": null,
  "_doc_gates": "null = the standard landing gate set.",
- "commit_message": "ORDER 45 LANDED on the owner's words \u2014 arm-2 rebake adopted (D1) + the position-scaled safety net (D2, mature-agers excluded D3). Board 82fcd8bb -> 3167cba6; engine head 3af8c1f7 -> e215caec; band/q97m/peak/bust/pvc refit identities move as prereg'd; store fb640ca0 unmoved. Net movers 10 (+922), tenure-4-only; kill-switch RL_O45=0 reproduces 543bf900 byte-exact.\n\nOWNER WORDS 2026-08-25, VERBATIM: \"Yes, adopt the new model\" \u00b7 \"Scaled on the safety net\" \u00b7 \"Exclude mature agers\"",
+ "commit_message": "ORDER 45 LANDED on the owner's words \u2014 arm-2 rebake adopted (D1) + the position-scaled safety net (D2, mature-agers excluded D3). Board 82fcd8bb -> 3167cba6; engine head 3af8c1f7 -> e215caec; band/q97m/peak/bust/pvc refit identities move as prereg'd; store fb640ca0 unmoved. Net movers 10 (+922), all tenure-4 today (armed on 19 younger rows, prereg R1); forward-lens ledger +618/+648 (prereg R3); kill-switch RL_O45=0 reproduces 543bf900 byte-exact.\n\nOWNER WORDS 2026-08-25, VERBATIM: \"Yes, adopt the new model\" \u00b7 \"Scaled on the safety net\" \u00b7 \"Exclude mature agers\"",
  "_doc_flip_exclusion": "data/gates_snapshots/gates_53ce2fb7.json differs in the candidate root but is EXCLUDED from the flip set (prereg R7) \u2014 the landing machinery writes its own gates snapshot."
 }
