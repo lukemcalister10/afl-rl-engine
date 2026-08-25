@@ -1,0 +1,3 @@
+movers 10 (predicted 11) · total lift +922 (predicted +923) · unmoved rows 794
+DISCLOSED: cooper-simpson: partial lambda 0.031, predicted 87 got 86 (declared knife-edge; reconciliation owed before the dry-run)
+SELF-TEST PASS (1 disclosed knife-edge deviation(s))

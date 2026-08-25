@@ -189,6 +189,23 @@ nobody should later "complete" it with these. (NEW-5) the R-FIX2 trap went into 
 evidence copy lacked it — the executing copy (with trap, 2548 bytes) is now filed over the stale
 one; the recipe on the record is the recipe that runs.
 
+**R-FIX4 (reviewer NEW-7) — the emit recipe's ANNOUNCE GUARDS were structurally broken, and the
+record is corrected.** rl_export execs the engine inside a discarded StringIO, so no module-level
+print (ORDER D7's included — measured 0 in every emit log) can ever reach the logs. The ON-leg
+announce grep was therefore a GUARANTEED false RED (it fired in BOTH chains — the first chain's
+exit-4 was mis-read by this seat as a one-off and the instrument left unfixed; this seat had even
+diagnosed the swallowed prints and corrected its conclusion without correcting the guard), and
+the OFF-leg mirror was a VACUOUS pass that could never have caught a wrapper installing with the
+dial off. BOTH RETIRED from the recipe; installation is now proven by what the boards say: the
+OFF board byte-equals `543bf900` (verified by `cmp`, reviewer-verified), the ON board differs
+from it and equals the predicted `3167cba6` with the self-test binding it to the filed movers.
+THE HONEST RESTATEMENT OF C3 AND THE RE-PROOF: falsifier 1's conclusion rests on its board-byte
+leg ALONE (which holds, twice, on both heads); falsifier 2's board leg is GREEN on the final head
+`d84031cf` — the reviewer's own full recursive diff reconfirmed exactly 10 movers +922 with zero
+strays, vP1 +618 / vP2 +648, both self-test legs correct — while its announce leg RED'd in both
+chains and is void, never having tested anything. The filed evidence copy of the recipe is
+updated in the same commit as this note.
+
 **R1 (was a BLOCKER) — the "tenure-4-only instrument" claim of §4/v856 is RETRACTED.** Measured by
 the reviewer and confirmed: the OUTCOME is tenure-4-only (all 10 movers), but the INSTRUMENT is
 not — **19 tenure-1-3 non-mature in-scope rows carry λ > 0 (12 at λ = 1.0 exactly**, mraz/francou/
