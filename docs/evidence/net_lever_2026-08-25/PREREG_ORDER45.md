@@ -206,6 +206,28 @@ strays, vP1 +618 / vP2 +648, both self-test legs correct — while its announce 
 chains and is void, never having tested anything. The filed evidence copy of the recipe is
 updated in the same commit as this note.
 
+**R-FIX5 (the review's FINAL CONDITION, filed before the owner is asked) — FALSIFIER 6 (§5.6, the
+B3 rerun) IS NOT DISCHARGED, and its carried-red record is CORRECTED under P7.** The rerun ran on
+a fully idle box and timed out again — at the instrument's OWN internal 1800s ceiling, with the
+matrix computing healthily (~24 CPU-min, watched live by the reviewer). §5.6's hypothesis
+("timed out twice on a loaded box" — implying an idle rerun resolves it) is **FALSIFIED**: the
+cause is the check's ceiling, not machine load. Under P7 a red is carried only while failing THE
+RECORDED WAY; the record is hereby re-presented in its true form: **B3 fails by instrument
+ceiling (1800s < its own workload at current scale), on any box, board-independent — and it has
+never sealed ANY candidate this cycle, including the already-adopted 543bf900**, so it does not
+discriminate between the net and the rebake the owner already ruled. An un-capped measurement run
+of the matrix is in flight for the record; the certifying fix (ceiling raise and/or the load-once
+harness making the matrix a minutes job) rides the next act, and the landing choice — carry the
+re-presented red tonight, or hold ~90 min for a raised-ceiling full rerun — is the OWNER'S,
+stated on the dry-run page in exactly these terms. ALSO from the final pass, queued non-gating
+for act two (NEW-8): B5's floor-saves report now mislabels the net's lifts as floor saves (leake
+"+266 saved" is ORDER 45's lift, arithmetic confirmed by the reviewer) — the same
+instrument-presentation class as B6/o33; a P11 scope note is owed in B5. The review's closing
+principle, adopted for the amendment draft: **A GUARD IS PROVEN ABLE TO FIRE BEFORE IT IS
+TRUSTED** (falsifier 3, run against a deliberately corrupted expectation, is the model — five
+instrument defects tonight, every one a check measuring the wrong thing and reporting a confident
+verdict anyway).
+
 **R1 (was a BLOCKER) — the "tenure-4-only instrument" claim of §4/v856 is RETRACTED.** Measured by
 the reviewer and confirmed: the OUTCOME is tenure-4-only (all 10 movers), but the INSTRUMENT is
 not — **19 tenure-1-3 non-mature in-scope rows carry λ > 0 (12 at λ = 1.0 exactly**, mraz/francou/
