@@ -175,9 +175,17 @@ learns `RL_CM_PKL`/`RL_Q97M_PKL`; without it the landed main REJECTS the filed e
 ENTER THE DECLARED FLIP SET; C4/R7's "nothing else differs" is corrected a second time, and the
 honest statement is now: the flip set = C4's list + ship_gates_check.py (NEW-2) + these three;
 `gates_snapshots/gates_53ce2fb7.json` remains the one EXCLUDED difference (R7). The widened
-INFRA_ALLOW surface (two pickle-path variables, infrastructure not model semantics — they name
-WHERE artifacts load from, and Guard 5/the manifest pin WHAT loads) is hereby declared rather
-than riding silently. (NEW-5) the R-FIX2 trap went into the EXECUTING emit script but the filed
+INFRA_ALLOW surface is **THREE variables, not two** (reviewer NEW-6, AST-parsed from both files):
+`RL_CM_PKL` and `RL_Q97M_PKL` (pickle paths — they name WHERE artifacts load from, and Guard 5/
+the manifest pin WHAT loads) plus **`RL_WS`**, which is NOT a pickle path: it is the refit
+tooling's workspace root (`config_inventory.py` classifies it "refit_q97m workspace (bake tool
+only)"), read by ZERO board-path modules and set by NO filed recipe — it is admitted solely
+because dropping it would break `config_manifest.py`'s byte-identity with `rebake/arm2-design`,
+and an accurate declaration is cheaper than a divergent file. Also for the record: six GENERATED
+docs indexes (STATE.md, register/incident INDEX/LATEST/index.json) differ only because the
+candidate root is a stale seed of an older main commit — they are DELIBERATELY NOT CARRIED
+(carrying them would revert main's registers); the flip set is an enumerated allowlist, and
+nobody should later "complete" it with these. (NEW-5) the R-FIX2 trap went into the EXECUTING emit script but the filed
 evidence copy lacked it — the executing copy (with trap, 2548 bytes) is now filed over the stale
 one; the recipe on the record is the recipe that runs.
 
