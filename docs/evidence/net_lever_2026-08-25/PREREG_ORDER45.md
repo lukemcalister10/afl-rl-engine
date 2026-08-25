@@ -145,6 +145,23 @@ not apply — base price stands; a REAL (keyed) row missing `_by` still halts. E
 BOTH emits re-proven on the fixed head (prediction: the with-net board returns byte-identical
 `3167cba6` — the fix touches only keyless rows) and ship-gates rerun in flight.
 
+**R-FIX2 — the reviewer's second pass (verdict CONDITIONAL) is absorbed; three findings, all
+addressed BEFORE the re-proof ran.** (NEW-1) The keyless-probe guard was nested inside the `_by`
+branch — a keyless probe that grows a `_by` would have slipped past it into the full net (no such
+builder exists today, measured; the B6 probe's own comment documents exactly this field-drift).
+MOVED to a top-level scope test beside `_retired`: a keyless row gets the base price whatever
+other fields it carries. Engine head moves **e215caec → d84031cff312818a158855f2dd223cc1** (the
+FLIP head; supersedes R-FIX's value); boot re-pinned; the full re-proof (both emits + self-tests
++ ship-gates) runs on THIS head, with the same byte-identical-board prediction. (NEW-2) B6's
+games-ramp gate probes with a KEYLESS synthetic — so after the guard it measures the BASE ramp
+and is STRUCTURALLY BLIND to the net's ≥6-games boundary step; recorded IN THE INSTRUMENT per
+P11 (ship_gates_check.py, the B6 header), and stated here: NO instrument in the suite covers the
+net's boundary step — R2's declaration is the only cover, and it is load-bearing. (NEW-3) the
+emit script could strand the candidate root COHERENTLY sealed in the net-OFF posture on any
+mid-script failure (it was in exactly that state when the reviewer measured it); a `trap` now
+restores the `'1'` posture on every exit path, and the PRE-FLIP CHECK IS MANDATORY: manifest
+`RL_O45='1'`, config `29fdfd1e1447…`, before the flip commit is cut.
+
 **R1 (was a BLOCKER) — the "tenure-4-only instrument" claim of §4/v856 is RETRACTED.** Measured by
 the reviewer and confirmed: the OUTCOME is tenure-4-only (all 10 movers), but the INSTRUMENT is
 not — **19 tenure-1-3 non-mature in-scope rows carry λ > 0 (12 at λ = 1.0 exactly**, mraz/francou/
