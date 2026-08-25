@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 227,
+  "coverage_entries": 228,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-25",
+      "headline": "**THE SUCCESSOR'S FIRST ROUND \u2014 the recency-less refit VERIFIED and the burn premise FALSIFIED on schedule; the owner's words lock the design shape (a\u2026",
+      "hits": {
+        "DECLARED": [
+          "**THE SUCCESSOR'S FIRST ROUND \u2014 the recency-less refit VERIFIED and the burn premise FALSIFIED on schedule; the owner's words lock the design shape (a*=22, conditioned feature); seam round 2 measures his four directions;\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 849
+    },
     {
       "by": "explicit",
       "date": "2026-08-24",
@@ -2060,7 +2074,7 @@
       "version": 622
     }
   ],
-  "incidents": 120,
+  "incidents": 121,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",

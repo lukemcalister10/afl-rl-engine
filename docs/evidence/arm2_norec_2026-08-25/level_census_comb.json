@@ -1,0 +1,90 @@
+{
+ "V4_age_shape": {
+  "a_star": 21.5,
+  "grid": {
+   "hi": 34.0,
+   "lo": 18.0,
+   "points": 33,
+   "step": 0.5
+  },
+  "mean_curve": {
+   "18.0": 74.341,
+   "20.0": 77.609,
+   "22.0": 75.826,
+   "24.0": 71.393,
+   "26.0": 68.799,
+   "28.0": 66.67,
+   "30.0": 64.107,
+   "32.0": 62.955,
+   "34.0": 62.699
+  },
+  "mean_curve_argmax_age": 21.5,
+  "pct_single_peaked": 100.0,
+  "rows": 804,
+  "rows_single_peaked_or_monotone": 804,
+  "verdict": "PASS"
+ },
+ "board_rows": 804,
+ "construction": {
+  "age_hill": {
+   "a_star": 21.5,
+   "u_index": 10,
+   "v_index": 11
+  },
+  "construction": "rebake-arm2-exact-monotone/1",
+  "exact_monotone_level": true,
+  "hyperparameters": {
+   "learning_rate": 1.0,
+   "max_depth": 4,
+   "max_iter": 800,
+   "min_samples_leaf": 25
+  },
+  "level_index": 9,
+  "monotonic_cst": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   -1,
+   -1
+  ],
+  "n_features": 12,
+  "note": "cm_400 \u2014 the five-quantile PAR-centred band. Settings SELECTED OUT OF SAMPLE on the grids declared in the prereg; never carried as literals.",
+  "quantiles": [
+   0.1,
+   0.3,
+   0.5,
+   0.7,
+   0.9
+  ],
+  "ratchet": "RL_O44_LVLMONO RETIRED \u2014 law 3 is a property of this fit, not of a read-site repair",
+  "recency_anchor": "end of training window",
+  "recency_halflife_years": null
+ },
+ "grid": {
+  "hi": 120.0,
+  "lo": 40.0,
+  "points_per_row": 321,
+  "step": 0.25
+ },
+ "raw": {
+  "negative": 0,
+  "pct_negative": 0.0,
+  "rows_with_a_drop": 0,
+  "steps": 257280,
+  "worst_row": null,
+  "worst_step_pct": 0.0
+ },
+ "read_site": {
+  "negative": 0,
+  "note": "IDENTICAL to raw \u2014 the ORDER 44 ratchet is retired; there is no second surface. The zero below is a property of the FIT.",
+  "pct_negative": 0.0,
+  "steps": 257280
+ }
+}

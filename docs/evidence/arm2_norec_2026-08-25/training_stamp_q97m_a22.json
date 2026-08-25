@@ -1,0 +1,331 @@
+{
+ "T1_fabricated_zero_rule": "NOT PART OF THIS CONSTRUCTION \u2014 the X/yy loop carries no first_observable_season skip. ARM 1 filed this and it is UNCHANGED here: moving T1 into the ceiling would be a training-row-rule change the design arm has not been ruled to make (v831 scopes the CONSTRUCTION, not the row rule). Still owed an owner word.",
+ "artifact": "q97m (the frozen q97 CEILING model) \u2014 REBAKE ARM 2, exact-monotone",
+ "band_pickle_bound_at_fit": "/home/user/arm2_norec/cand_a22/cm_400.candidate.pkl",
+ "band_pickle_md5_at_fit": "f39c7b96603a6d1483a8f3295fad1a29",
+ "blas_threads_env": {
+  "MKL_NUM_THREADS": "1",
+  "NUMEXPR_NUM_THREADS": "1",
+  "OMP_NUM_THREADS": "1",
+  "OPENBLAS_NUM_THREADS": "1"
+ },
+ "candidate_md5": "5ea7546d9a4897114597a7d8ea1596db",
+ "candidate_path": "../../../../arm2_norec/cand_a22/q97m.candidate.pkl",
+ "construction": "exact_monotone.GradOnlyPinball on HistGradientBoostingRegressor at alpha=0.97, fitted on _merged_recover.py X/yy via refit_q97m._engine_Xy/_fit",
+ "declared_grids": {
+  "a_star": [
+   20.0,
+   20.5,
+   21.0,
+   21.5,
+   22.0,
+   22.5,
+   23.0,
+   23.5,
+   24.0
+  ],
+  "recency_halflife_years": [
+   "uniform",
+   10.0,
+   12.0,
+   14.0,
+   16.0
+  ],
+  "stage1_fixed": {
+   "max_depth": 4,
+   "min_samples_leaf": 25
+  },
+  "stage1_learning_rate": [
+   0.3,
+   0.6,
+   1.0,
+   1.5
+  ],
+  "stage1_max_iter": [
+   400,
+   800,
+   1600
+  ],
+  "stage2_capacity_cross": [
+   {
+    "max_depth": 3
+   },
+   {
+    "max_depth": 5
+   },
+   {
+    "min_samples_leaf": 15
+   },
+   {
+    "min_samples_leaf": 40
+   }
+  ]
+ },
+ "design_spec": {
+  "age_hill": {
+   "a_star": 22.0,
+   "u_index": 10,
+   "v_index": 11
+  },
+  "construction": "rebake-arm2-exact-monotone/1",
+  "exact_monotone_level": true,
+  "hyperparameters": {
+   "learning_rate": 1.0,
+   "max_depth": 4,
+   "max_iter": 1600,
+   "min_samples_leaf": 25
+  },
+  "level_index": 9,
+  "monotonic_cst": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   -1,
+   -1
+  ],
+  "n_features": 12,
+  "note": "q97m \u2014 the frozen q97 CEILING (band[5], price6 weight 0.10). Feature contract SHARED with the band (asserted at load); capacity selected on its OWN row population.",
+  "quantiles": [
+   0.97
+  ],
+  "ratchet": "RL_O44_LVLMONO RETIRED \u2014 law 3 is a property of this fit, not of a read-site repair",
+  "recency_anchor": "end of training window",
+  "recency_halflife_years": null
+ },
+ "entry_point": "tools/rebake/refit_arm2_design.py",
+ "entry_point_md5": "4839da16359e08b8ee0f977e9ddad751",
+ "entry_point_version": "arm2-design/1",
+ "estimator": "HistGradientBoostingRegressor",
+ "fit_seconds": 2.7,
+ "hyperparameters": {
+  "categorical_features": "from_dtype",
+  "early_stopping": false,
+  "interaction_cst": null,
+  "l2_regularization": 0.0,
+  "learning_rate": 1.0,
+  "loss": "<exact_monotone.GradOnlyPinball object at 0x7fa2b9d75490>",
+  "max_bins": 255,
+  "max_depth": 4,
+  "max_features": 1.0,
+  "max_iter": 1600,
+  "max_leaf_nodes": 31,
+  "min_samples_leaf": 25,
+  "monotonic_cst": "[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, -1, -1]",
+  "n_iter_no_change": 10,
+  "quantile": null,
+  "random_state": 0,
+  "scoring": "loss",
+  "tol": 1e-07,
+  "validation_fraction": 0.1,
+  "verbose": 0,
+  "warm_start": false
+ },
+ "n_features_in": 12,
+ "numpy": "2.4.4",
+ "own_selected_key": "lr1.0_it1600",
+ "own_selection_grid": {
+  "lr0.3_it1600": {
+   "2014": 1.1472,
+   "2017": 1.1618,
+   "2020": 1.1118,
+   "_it": 1600,
+   "_lr": 0.3,
+   "mean": 1.1403,
+   "settings": {
+    "learning_rate": 0.3,
+    "max_depth": 4,
+    "max_iter": 1600,
+    "min_samples_leaf": 25
+   }
+  },
+  "lr0.3_it400": {
+   "2014": 1.2688,
+   "2017": 1.2776,
+   "2020": 1.2395,
+   "_it": 400,
+   "_lr": 0.3,
+   "mean": 1.262,
+   "settings": {
+    "learning_rate": 0.3,
+    "max_depth": 4,
+    "max_iter": 400,
+    "min_samples_leaf": 25
+   }
+  },
+  "lr0.3_it800": {
+   "2014": 1.2156,
+   "2017": 1.232,
+   "2020": 1.1925,
+   "_it": 800,
+   "_lr": 0.3,
+   "mean": 1.2134,
+   "settings": {
+    "learning_rate": 0.3,
+    "max_depth": 4,
+    "max_iter": 800,
+    "min_samples_leaf": 25
+   }
+  },
+  "lr0.6_it1600": {
+   "2014": 1.0578,
+   "2017": 1.0473,
+   "2020": 0.9848,
+   "_it": 1600,
+   "_lr": 0.6,
+   "mean": 1.03,
+   "settings": {
+    "learning_rate": 0.6,
+    "max_depth": 4,
+    "max_iter": 1600,
+    "min_samples_leaf": 25
+   }
+  },
+  "lr0.6_it400": {
+   "2014": 1.2142,
+   "2017": 1.2324,
+   "2020": 1.1931,
+   "_it": 400,
+   "_lr": 0.6,
+   "mean": 1.2132,
+   "settings": {
+    "learning_rate": 0.6,
+    "max_depth": 4,
+    "max_iter": 400,
+    "min_samples_leaf": 25
+   }
+  },
+  "lr0.6_it800": {
+   "2014": 1.1414,
+   "2017": 1.161,
+   "2020": 1.1124,
+   "_it": 800,
+   "_lr": 0.6,
+   "mean": 1.1383,
+   "settings": {
+    "learning_rate": 0.6,
+    "max_depth": 4,
+    "max_iter": 800,
+    "min_samples_leaf": 25
+   }
+  },
+  "lr1.0_it1600": {
+   "2014": 1.0032,
+   "2017": 1.011,
+   "2020": 0.9025,
+   "_it": 1600,
+   "_lr": 1.0,
+   "mean": 0.9722,
+   "settings": {
+    "learning_rate": 1.0,
+    "max_depth": 4,
+    "max_iter": 1600,
+    "min_samples_leaf": 25
+   }
+  },
+  "lr1.0_it3200": {
+   "2014": 1.0549,
+   "2017": 1.1174,
+   "2020": 0.9396,
+   "_it": 3200,
+   "_lr": 1.0,
+   "mean": 1.0373,
+   "settings": {
+    "learning_rate": 1.0,
+    "max_depth": 4,
+    "max_iter": 3200,
+    "min_samples_leaf": 25
+   }
+  },
+  "lr1.0_it400": {
+   "2014": 1.165,
+   "2017": 1.1853,
+   "2020": 1.1377,
+   "_it": 400,
+   "_lr": 1.0,
+   "mean": 1.1627,
+   "settings": {
+    "learning_rate": 1.0,
+    "max_depth": 4,
+    "max_iter": 400,
+    "min_samples_leaf": 25
+   }
+  },
+  "lr1.0_it800": {
+   "2014": 1.0849,
+   "2017": 1.0794,
+   "2020": 1.0246,
+   "_it": 800,
+   "_lr": 1.0,
+   "mean": 1.063,
+   "settings": {
+    "learning_rate": 1.0,
+    "max_depth": 4,
+    "max_iter": 800,
+    "min_samples_leaf": 25
+   }
+  },
+  "lr1.5_it1600": {
+   "2014": 1.0074,
+   "2017": 1.0552,
+   "2020": 0.8995,
+   "_it": 1600,
+   "_lr": 1.5,
+   "mean": 0.9874,
+   "settings": {
+    "learning_rate": 1.5,
+    "max_depth": 4,
+    "max_iter": 1600,
+    "min_samples_leaf": 25
+   }
+  },
+  "lr1.5_it400": {
+   "2014": 1.1135,
+   "2017": 1.1302,
+   "2020": 1.0744,
+   "_it": 400,
+   "_lr": 1.5,
+   "mean": 1.106,
+   "settings": {
+    "learning_rate": 1.5,
+    "max_depth": 4,
+    "max_iter": 400,
+    "min_samples_leaf": 25
+   }
+  },
+  "lr1.5_it800": {
+   "2014": 1.0242,
+   "2017": 1.021,
+   "2020": 0.9444,
+   "_it": 800,
+   "_lr": 1.5,
+   "mean": 0.9965,
+   "settings": {
+    "learning_rate": 1.5,
+    "max_depth": 4,
+    "max_iter": 800,
+    "min_samples_leaf": 25
+   }
+  }
+ },
+ "own_selection_interior_optimum": true,
+ "python": "3.12.3",
+ "scipy": "1.17.1",
+ "selection_file": "../../../../arm2_norec/selection_a22.json",
+ "selection_file_md5": "7b8b2dfa83333a20c7b7a6e8b9429e8e",
+ "selection_rule": "lowest MEAN walk-forward pinball over T=2014/2017/2020 (train YEAR<=T, score T+1..T+3), 5 quantiles, unweighted; in-sample NEVER used to choose; ties -> smaller max_iter, then smaller learning_rate",
+ "shipped_md5": "cfdc73216c099e5e8f1fda3968f31c00",
+ "shipped_path": "data/q97m.pkl",
+ "sklearn": "1.8.0",
+ "training_row_rule": "_merged_recover.py:60-64 \u2014 debut<=2021, (pick or _ft), MSD EXCLUDED (RL_MSD_POOL_EXCL=1)",
+ "training_rows": 13169,
+ "training_store_md5": "fb640ca0baf92bbb122b1ad7e25c5a88",
+ "training_store_pin_at_build": "fb640ca0baf92bbb122b1ad7e25c5a88",
+ "ts_utc": "2026-08-25T02:15:02Z"
+}

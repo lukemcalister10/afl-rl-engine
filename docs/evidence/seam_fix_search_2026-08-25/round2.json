@@ -1,0 +1,556 @@
+{
+ "M1_pedigree_pairs": {
+  "n": 8,
+  "n_same_pos": 2,
+  "pairs": [
+   {
+    "better_pedigree": "Archie Ludowyke",
+    "A_cf": 146,
+    "A_cur": 293,
+    "A_cameo": 40.0,
+    "A_g": 2,
+    "A_pos": "KPF",
+    "worse_pedigree": "Ollie Greeves",
+    "B_cf": 91,
+    "B_cur": 484,
+    "B_cameo": 44.0,
+    "B_g": 4,
+    "B_pos": "MID",
+    "tenure": 2,
+    "same_pos": false,
+    "gap": 191
+   },
+   {
+    "better_pedigree": "Ben Jepson",
+    "A_cf": 154,
+    "A_cur": 53,
+    "A_cameo": 43.7,
+    "A_g": 6,
+    "A_pos": "MID",
+    "worse_pedigree": "Lucas Camporeale",
+    "B_cf": 46,
+    "B_cur": 151,
+    "B_cameo": 41.0,
+    "B_g": 3,
+    "B_pos": "MID",
+    "tenure": 3,
+    "same_pos": true,
+    "gap": 98
+   },
+   {
+    "better_pedigree": "Zane Peucker",
+    "A_cf": 224,
+    "A_cur": 401,
+    "A_cameo": 40.5,
+    "A_g": 2,
+    "A_pos": "SF",
+    "worse_pedigree": "Ollie Greeves",
+    "B_cf": 91,
+    "B_cur": 484,
+    "B_cameo": 44.0,
+    "B_g": 4,
+    "B_pos": "MID",
+    "tenure": 2,
+    "same_pos": false,
+    "gap": 83
+   },
+   {
+    "better_pedigree": "Aidan Johnson",
+    "A_cf": 158,
+    "A_cur": 78,
+    "A_cameo": 37.0,
+    "A_g": 6,
+    "A_pos": "KPF",
+    "worse_pedigree": "Lucas Camporeale",
+    "B_cf": 46,
+    "B_cur": 151,
+    "B_cameo": 41.0,
+    "B_g": 3,
+    "B_pos": "MID",
+    "tenure": 3,
+    "same_pos": false,
+    "gap": 73
+   },
+   {
+    "better_pedigree": "Noah Roberts-Thomson",
+    "A_cf": 124,
+    "A_cur": 263,
+    "A_cameo": 38.7,
+    "A_g": 3,
+    "A_pos": "SF",
+    "worse_pedigree": "Thomas Burton",
+    "B_cf": 53,
+    "B_cur": 308,
+    "B_cameo": 39.4,
+    "B_g": 5,
+    "B_pos": "SF",
+    "tenure": 2,
+    "same_pos": true,
+    "gap": 45
+   },
+   {
+    "better_pedigree": "Aidan Johnson",
+    "A_cf": 158,
+    "A_cur": 78,
+    "A_cameo": 37.0,
+    "A_g": 6,
+    "A_pos": "KPF",
+    "worse_pedigree": "Rhys Unwin",
+    "B_cf": 21,
+    "B_cur": 122,
+    "B_cameo": 34.9,
+    "B_g": 7,
+    "B_pos": "SF",
+    "tenure": 3,
+    "same_pos": false,
+    "gap": 44
+   },
+   {
+    "better_pedigree": "Archie Ludowyke",
+    "A_cf": 146,
+    "A_cur": 293,
+    "A_cameo": 40.0,
+    "A_g": 2,
+    "A_pos": "KPF",
+    "worse_pedigree": "Thomas Burton",
+    "B_cf": 53,
+    "B_cur": 308,
+    "B_cameo": 39.4,
+    "B_g": 5,
+    "B_pos": "SF",
+    "tenure": 2,
+    "same_pos": false,
+    "gap": 15
+   },
+   {
+    "better_pedigree": "Noah Howes",
+    "A_cf": 123,
+    "A_cur": 304,
+    "A_cameo": 37.5,
+    "A_g": 2,
+    "A_pos": "KPF",
+    "worse_pedigree": "Thomas Burton",
+    "B_cf": 53,
+    "B_cur": 308,
+    "B_cameo": 39.4,
+    "B_g": 5,
+    "B_pos": "SF",
+    "tenure": 2,
+    "same_pos": false,
+    "gap": 4
+   }
+  ]
+ },
+ "M2_kp_forgiveness": {
+  "2|KP|35-45": {
+   "n": 40,
+   "mean_best3": 36.6,
+   "p70": 0.23,
+   "bust0": 0.47
+  },
+  "2|KP|45+": {
+   "n": 43,
+   "mean_best3": 41.2,
+   "p70": 0.19,
+   "bust0": 0.4
+  },
+  "2|KP|<35": {
+   "n": 41,
+   "mean_best3": 46.5,
+   "p70": 0.17,
+   "bust0": 0.29
+  },
+  "2|nonKP|35-45": {
+   "n": 68,
+   "mean_best3": 30.7,
+   "p70": 0.16,
+   "bust0": 0.51
+  },
+  "2|nonKP|45+": {
+   "n": 107,
+   "mean_best3": 38.2,
+   "p70": 0.22,
+   "bust0": 0.44
+  },
+  "2|nonKP|<35": {
+   "n": 93,
+   "mean_best3": 30.7,
+   "p70": 0.14,
+   "bust0": 0.52
+  },
+  "3|KP|35-45": {
+   "n": 34,
+   "mean_best3": 25.7,
+   "p70": 0.09,
+   "bust0": 0.59
+  },
+  "3|KP|45+": {
+   "n": 54,
+   "mean_best3": 39.8,
+   "p70": 0.24,
+   "bust0": 0.46
+  },
+  "3|KP|<35": {
+   "n": 32,
+   "mean_best3": 28.1,
+   "p70": 0.12,
+   "bust0": 0.59
+  },
+  "3|nonKP|35-45": {
+   "n": 52,
+   "mean_best3": 13.4,
+   "p70": 0.04,
+   "bust0": 0.77
+  },
+  "3|nonKP|45+": {
+   "n": 83,
+   "mean_best3": 26.9,
+   "p70": 0.17,
+   "bust0": 0.6
+  },
+  "3|nonKP|<35": {
+   "n": 67,
+   "mean_best3": 14.8,
+   "p70": 0.09,
+   "bust0": 0.78
+  },
+  "4|KP|35-45": {
+   "n": 26,
+   "mean_best3": 9.1,
+   "p70": 0.0,
+   "bust0": 0.85
+  },
+  "4|KP|45+": {
+   "n": 34,
+   "mean_best3": 14.7,
+   "p70": 0.12,
+   "bust0": 0.79
+  },
+  "4|KP|<35": {
+   "n": 25,
+   "mean_best3": 10.7,
+   "p70": 0.04,
+   "bust0": 0.8
+  },
+  "4|nonKP|35-45": {
+   "n": 49,
+   "mean_best3": 8.7,
+   "p70": 0.04,
+   "bust0": 0.86
+  },
+  "4|nonKP|45+": {
+   "n": 55,
+   "mean_best3": 8.8,
+   "p70": 0.05,
+   "bust0": 0.87
+  },
+  "4|nonKP|<35": {
+   "n": 52,
+   "mean_best3": 1.3,
+   "p70": 0.0,
+   "bust0": 0.98
+  }
+ },
+ "M3_mature_age": [
+  {
+   "key": "flynn-riley",
+   "player": "Flynn Riley",
+   "pos": "RUCK",
+   "pick": 4,
+   "stream": "MSD",
+   "tenure": 1,
+   "entry_age": 22,
+   "games": 1,
+   "cameo": 80.0,
+   "cur": 341,
+   "cf": 254
+  },
+  {
+   "key": "lukas-cooke",
+   "player": "Lukas Cooke",
+   "pos": "KPD",
+   "pick": 11,
+   "stream": "MSD",
+   "tenure": 1,
+   "entry_age": 23,
+   "games": 2,
+   "cameo": 43.5,
+   "cur": 254,
+   "cf": 184
+  },
+  {
+   "key": "max-beattie",
+   "player": "Max Beattie",
+   "pos": "SF",
+   "pick": 12,
+   "stream": "MSD",
+   "tenure": 1,
+   "entry_age": 23,
+   "games": 2,
+   "cameo": 68.0,
+   "cur": 160,
+   "cf": 88
+  },
+  {
+   "key": "alex-van-wyk",
+   "player": "Alex Van Wyk",
+   "pos": "RUCK",
+   "pick": 14,
+   "stream": "MSD",
+   "tenure": 1,
+   "entry_age": 22,
+   "games": 3,
+   "cameo": 51.7,
+   "cur": 315,
+   "cf": 254
+  },
+  {
+   "key": "mitch-podhajski",
+   "player": "Mitch Podhajski",
+   "pos": "KPF",
+   "pick": 17,
+   "stream": "MSD",
+   "tenure": 1,
+   "entry_age": 27,
+   "games": 2,
+   "cameo": 48.5,
+   "cur": 118,
+   "cf": 123
+  },
+  {
+   "key": "aidan-johnson",
+   "player": "Aidan Johnson",
+   "pos": "KPF",
+   "pick": 68,
+   "stream": "ND",
+   "tenure": 3,
+   "entry_age": 24,
+   "games": 6,
+   "cameo": 37.0,
+   "cur": 78,
+   "cf": 158
+  },
+  {
+   "key": "jack-henderson",
+   "player": "Jack Henderson",
+   "pos": "SF",
+   "pick": null,
+   "stream": "SSP",
+   "tenure": 3,
+   "entry_age": 25,
+   "games": 5,
+   "cameo": 43.0,
+   "cur": 28,
+   "cf": 53
+  },
+  {
+   "key": "ben-jepson",
+   "player": "Ben Jepson",
+   "pos": "MID",
+   "pick": null,
+   "stream": "SSP",
+   "tenure": 3,
+   "entry_age": 23,
+   "games": 6,
+   "cameo": 43.7,
+   "cur": 53,
+   "cf": 154
+  },
+  {
+   "key": "caleb-lewis",
+   "player": "Caleb Lewis",
+   "pos": "KPF",
+   "pick": 13,
+   "stream": "MSD",
+   "tenure": 2,
+   "entry_age": 22,
+   "games": 2,
+   "cameo": 12.5,
+   "cur": 168,
+   "cf": 123
+  },
+  {
+   "key": "luke-beecken",
+   "player": "Luke Beecken",
+   "pos": "MID",
+   "pick": 16,
+   "stream": "MSD",
+   "tenure": 3,
+   "entry_age": 23,
+   "games": 1,
+   "cameo": 7.0,
+   "cur": 157,
+   "cf": 204
+  },
+  {
+   "key": "liam-reidy",
+   "player": "Liam Reidy",
+   "pos": "RUCK",
+   "pick": 4,
+   "stream": "RD",
+   "tenure": 5,
+   "entry_age": 22,
+   "games": 7,
+   "cameo": 53.3,
+   "cur": 76,
+   "cf": 211
+  }
+ ],
+ "M4_t5plus": {
+  "ordinary_draftee": [
+   {
+    "key": "harry-barnett",
+    "player": "Harry Barnett",
+    "pos": "RUCK",
+    "pick": 23,
+    "stream": "ND",
+    "tenure": 5,
+    "entry_age": 18,
+    "games": 2,
+    "cameo": 15.0,
+    "cur": 422,
+    "cf": 674
+   },
+   {
+    "key": "lewis-hayes",
+    "player": "Lewis Hayes",
+    "pos": "KPD",
+    "pick": 25,
+    "stream": "ND",
+    "tenure": 5,
+    "entry_age": 18,
+    "games": 1,
+    "cameo": 64.0,
+    "cur": 349,
+    "cf": 327
+   },
+   {
+    "key": "jakob-ryan",
+    "player": "Jakob Ryan",
+    "pos": "SD",
+    "pick": 28,
+    "stream": "ND",
+    "tenure": 5,
+    "entry_age": 18,
+    "games": 1,
+    "cameo": 12.0,
+    "cur": 149,
+    "cf": 178
+   },
+   {
+    "key": "hugh-davies",
+    "player": "Hugh Davies",
+    "pos": "KPD",
+    "pick": 33,
+    "stream": "ND",
+    "tenure": 5,
+    "entry_age": 18,
+    "games": 2,
+    "cameo": 27.0,
+    "cur": 187,
+    "cf": 262
+   },
+   {
+    "key": "henry-hustwaite",
+    "player": "Henry Hustwaite",
+    "pos": "MID",
+    "pick": 37,
+    "stream": "ND",
+    "tenure": 5,
+    "entry_age": 18,
+    "games": 11,
+    "cameo": 43.3,
+    "cur": 60,
+    "cf": 213
+   },
+   {
+    "key": "jed-adams",
+    "player": "Jed Adams",
+    "pos": "KPD",
+    "pick": 38,
+    "stream": "ND",
+    "tenure": 5,
+    "entry_age": 18,
+    "games": 1,
+    "cameo": 36.0,
+    "cur": 190,
+    "cf": 222
+   },
+   {
+    "key": "hudson-o-keeffe",
+    "player": "Hudson O'Keeffe",
+    "pos": "RUCK",
+    "pick": null,
+    "stream": "SSP",
+    "tenure": 5,
+    "entry_age": 18,
+    "games": 8,
+    "cameo": 41.6,
+    "cur": 46,
+    "cf": 91
+   },
+   {
+    "key": "toby-conway",
+    "player": "Toby Conway",
+    "pos": "RUCK",
+    "pick": 24,
+    "stream": "ND",
+    "tenure": 6,
+    "entry_age": 18,
+    "games": 6,
+    "cameo": 74.0,
+    "cur": 460,
+    "cf": 673
+   },
+   {
+    "key": "max-ramsden",
+    "player": "Max Ramsden",
+    "pos": "RUCK",
+    "pick": 6,
+    "stream": "MSD",
+    "tenure": 5,
+    "entry_age": 19,
+    "games": 11,
+    "cameo": 44.3,
+    "cur": 57,
+    "cf": 123
+   },
+   {
+    "key": "henry-smith",
+    "player": "Henry Smith",
+    "pos": "RUCK",
+    "pick": 50,
+    "stream": "ND",
+    "tenure": 7,
+    "entry_age": 18,
+    "games": 6,
+    "cameo": 41.1,
+    "cur": 136,
+    "cf": 109
+   }
+  ],
+  "mature_age": [
+   {
+    "key": "liam-reidy",
+    "player": "Liam Reidy",
+    "pos": "RUCK",
+    "pick": 4,
+    "stream": "RD",
+    "tenure": 5,
+    "entry_age": 22,
+    "games": 7,
+    "cameo": 53.3,
+    "cur": 76,
+    "cf": 211
+   }
+  ]
+ },
+ "bars_repl_minus3": {
+  "MID": 77.1,
+  "SD": 75.3,
+  "RUCK": 75.5,
+  "KPD": 65.4,
+  "SF": 67.9,
+  "KPF": 63.8
+ }
+}
