@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 228,
+  "coverage_entries": 229,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-25",
+      "headline": "**THE PACKET IS DELIVERED AND THE OWNER'S VERIFY-FIRST CENSURE IS ANSWERED WITH TWO VERIFICATION SEATS \u2014 the fade machinery and the pick curve are now\u2026",
+      "hits": {
+        "DECLARED": [
+          "**THE PACKET IS DELIVERED AND THE OWNER'S VERIFY-FIRST CENSURE IS ANSWERED WITH TWO VERIFICATION SEATS \u2014 the fade machinery and the pick curve are now traced to ground, three supervisor misstatements are corrected on the\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 850
+    },
     {
       "by": "explicit",
       "date": "2026-08-25",
@@ -2074,7 +2088,7 @@
       "version": 622
     }
   ],
-  "incidents": 121,
+  "incidents": 122,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",

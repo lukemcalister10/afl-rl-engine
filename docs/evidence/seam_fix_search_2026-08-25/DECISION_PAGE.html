@@ -1,0 +1,98 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>The Decision Page — Rebake Week</title>
+<style>
+body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;margin:24px auto;max-width:1060px;background:#fafafa;color:#1a1a1a;line-height:1.45}
+h1{font-size:22px;border-bottom:3px solid #20303f;padding-bottom:8px}
+h2{font-size:17px;margin-top:30px;color:#20303f}
+.decision{background:#fff;border-left:4px solid #b8860b;padding:12px 16px;margin:14px 0;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.done{border-left-color:#0a7d33}
+.info{border-left-color:#5b7fa6}
+table{border-collapse:collapse;background:#fff;font-size:12.5px;margin:10px 0;width:100%}
+th{background:#20303f;color:#fff;padding:5px 8px;text-align:left}
+td{padding:4px 8px;border-bottom:1px solid #eee}
+.up{color:#0a7d33;font-weight:600}.dn{color:#c0392b;font-weight:600}.z{color:#999}.mat{color:#8a5a00;font-size:11px}
+.rec{background:#f0f6ee;padding:8px 12px;border-radius:4px;margin-top:8px;font-size:13px}
+.cost{background:#fdf3f0;padding:8px 12px;border-radius:4px;margin-top:8px;font-size:13px}
+.tag{display:inline-block;background:#20303f;color:#fff;font-size:11px;padding:2px 8px;border-radius:10px;margin-right:6px}
+.tagd{background:#0a7d33}.tagi{background:#5b7fa6}
+small{color:#666}
+</style></head><body>
+<h1>The decision page — one landing, on your word</h1>
+<p>The board has not moved. Everything below lands in <b>one</b> landing through the machinery when you say go.
+The candidate board is <b>543bf900</b>: Arm 1's data refresh + the new model with <b>your locked settings</b>
+(exact level rule · age peak 22 · no era weighting · modernised bust table · cameo-aware bust estimate).</p>
+
+<h2>What the candidate does, verified</h2>
+<div class="decision info"><span class="tag tagi">MEASURED</span>
+<b>647 of 804 players move</b> (349 up / 298 down) · total value <b>+148 points (+0.02% — value-neutral)</b> ·
+biggest structural gains at the top of the level curve (Daicos +748, Sheezel +767, Holmes +771 vs live) and
+staleness corrections both ways.<br>
+Verification, all on this exact board: level rule holds at raw resolution on every row (zero violations, 804/804 single-peaked in age) ·
+all 86 draft-day/sitter prices reproduce exactly (tolerance 0) · trade ladder W2 = 1.0637 vs your 1.03 floor ·
+zero new buy-rail breaches · O33 dial re-derives · frozen-gate suite: 14 pass, the three long-standing ruled reds, and the suite
+independently regenerated the board byte-for-byte. One instrument re-run owed at landing (the book seal timed out on a loaded box).
+<div class="cost"><b>The honest cost</b>: the exactness guarantee prices ~1% worse on fair out-of-sample tests than the unconstrained
+incumbent. You are buying structure (guarantees at the fit, no potholes, no age cliffs), not accuracy. The alternative — Arm 1 alone,
+keeping the read-time patch — remains coherent if you price accuracy above structure.</div></div>
+
+<h2>DECISION 1 — Adopt the new model? <small>(blocking)</small></h2>
+<div class="decision"><span class="tag">YOUR CALL</span>
+<b>(a)</b> Adopt Arm 1 + Arm 2 as locked (board 543bf900) &nbsp;·&nbsp; <b>(b)</b> Arm 1 alone (data refresh, keep the old construction) &nbsp;·&nbsp; <b>(c)</b> neither.
+<div class="rec"><b>Recommendation: (a).</b> The guarantees are real and verified; the accuracy price is measured and modest; the burn you originally
+accepted turned out to be the era-weighting's artifact and is gone (+0.02% instead of −1.61%).</div></div>
+
+<h2>DECISION 2 — The safety net's shape <small>(blocking; the Leake fix)</small></h2>
+<div class="decision"><span class="tag">YOUR CALL</span>
+Every listed player below with a decent partial-season record prices below his never-played self. The net lifts him at least to it —
+full lift at average 45+, nothing at 40 and below, smooth in between. Two shapes:
+<b>FLAT</b> (same 40–45 window for everyone, +979 total) or <b>POSITION-SCALED</b> (window scaled by each position's own bar, so talls
+qualify at lower averages — mirrors the tall/small lens the sitter side already has; +1,116 total).
+<table><tr><th>Player</th><th>Pos</th><th>Yr</th><th>Games</th><th>Avg</th><th>Now</th><th>Never-played</th><th>Flat net</th><th>Position-scaled net</th><th>Mature-age?</th></tr><tr><td>James Leake</td><td>SF</td><td>4</td><td>8</td><td>48.1</td><td>169</td><td>421</td><td class="up">+252 → 421</td><td class="up">+252 → 421</td><td class="mat"></td></tr><tr><td>Taylor Goad</td><td>RUCK</td><td>4</td><td>2</td><td>43.5</td><td>441</td><td>676</td><td class="up">+184 → 625</td><td class="up">+226 → 667</td><td class="mat"></td></tr><tr><td>Will Green</td><td>RUCK</td><td>4</td><td>3</td><td>62.7</td><td>468</td><td>678</td><td class="up">+210 → 678</td><td class="up">+210 → 678</td><td class="mat"></td></tr><tr><td>Charlie Edwards</td><td>SD</td><td>4</td><td>2</td><td>47.5</td><td>289</td><td>404</td><td class="up">+115 → 404</td><td class="up">+115 → 404</td><td class="mat"></td></tr><tr><td>Ben Jepson</td><td>MID</td><td>3</td><td>6</td><td>43.7</td><td>53</td><td>154</td><td class="up">+84 → 137</td><td class="up">+84 → 137</td><td class="mat">entered at 23</td></tr><tr><td>Aidan Johnson</td><td>KPF</td><td>3</td><td>6</td><td>37.0</td><td>78</td><td>158</td><td class="z">—</td><td class="up">+79 → 157</td><td class="mat">entered at 24</td></tr><tr><td>Vigo Visentini</td><td>RUCK</td><td>4</td><td>5</td><td>67.2</td><td>173</td><td>211</td><td class="up">+38 → 211</td><td class="up">+38 → 211</td><td class="mat"></td></tr><tr><td>Lachlan Smith</td><td>RUCK</td><td>4</td><td>2</td><td>53.0</td><td>150</td><td>186</td><td class="up">+36 → 186</td><td class="up">+36 → 186</td><td class="mat"></td></tr><tr><td>Zane Zakostelsky</td><td>KPD</td><td>4</td><td>3</td><td>49.0</td><td>143</td><td>171</td><td class="up">+28 → 171</td><td class="up">+28 → 171</td><td class="mat"></td></tr><tr><td>Jack Henderson</td><td>SF</td><td>3</td><td>5</td><td>43.0</td><td>28</td><td>53</td><td class="up">+16 → 44</td><td class="up">+25 → 53</td><td class="mat">entered at 25</td></tr><tr><td>Oscar Ryan</td><td>SD</td><td>4</td><td>2</td><td>88.0</td><td>185</td><td>193</td><td class="up">+8 → 193</td><td class="up">+8 → 193</td><td class="mat"></td></tr><tr><td>Tom Anastasopoulos</td><td>SF</td><td>4</td><td>5</td><td>42.2</td><td>77</td><td>84</td><td class="up">+3 → 80</td><td class="up">+7 → 84</td><td class="mat"></td></tr><tr><td>Mitch Podhajski</td><td>KPF</td><td>1</td><td>2</td><td>48.5</td><td>118</td><td>123</td><td class="up">+5 → 123</td><td class="up">+5 → 123</td><td class="mat">entered at 27</td></tr><tr><td>Wil Parker</td><td>SD</td><td>4</td><td>14</td><td>40.0</td><td>29</td><td>46</td><td class="z">—</td><td class="up">+2 → 31</td><td class="mat"></td></tr><tr><td>Cooper Simpson</td><td>SD</td><td>4</td><td>5</td><td>39.6</td><td>86</td><td>121</td><td class="z">—</td><td class="up">+1 → 87</td><td class="mat"></td></tr><tr><td>Daniel Annable</td><td>MID</td><td>2</td><td>3</td><td>35.3</td><td>1137</td><td>1153</td><td class="z">—</td><td class="z">—</td><td class="mat"></td></tr><tr><td>Oliver Hannaford</td><td>MID</td><td>3</td><td>5</td><td>28.2</td><td>200</td><td>205</td><td class="z">—</td><td class="z">—</td><td class="mat"></td></tr><tr><td>Harrison Oliver</td><td>SD</td><td>3</td><td>5</td><td>39.0</td><td>270</td><td>273</td><td class="z">—</td><td class="z">—</td><td class="mat"></td></tr><tr><td>Matt Whitlock</td><td>KPF</td><td>3</td><td>5</td><td>25.2</td><td>279</td><td>300</td><td class="z">—</td><td class="z">—</td><td class="mat"></td></tr><tr><td>William McCabe</td><td>KPD</td><td>4</td><td>4</td><td>31.8</td><td>231</td><td>460</td><td class="z">—</td><td class="z">—</td><td class="mat"></td></tr><tr><td>Tew Jiath</td><td>SD</td><td>4</td><td>1</td><td>24.0</td><td>102</td><td>114</td><td class="z">—</td><td class="z">—</td><td class="mat"></td></tr><tr><td>Luke Beecken</td><td>MID</td><td>3</td><td>1</td><td>7.0</td><td>157</td><td>204</td><td class="z">—</td><td class="z">—</td><td class="mat">entered at 23</td></tr></table>
+<div class="rec"><b>Recommendation: position-scaled</b> — it uses the estate's already-measured positional bars (no new constants) and the
+historical data shows weak tall cameos really do resolve better. McCabe (31.8) misses even the scaled window by ~2 points — say the word
+if you want talls reached lower, but that would be a new constant. Numbers above are against the live board; they get recomputed on the
+candidate at landing.</div></div>
+
+<h2>DECISION 3 — Mature-age players in the net? <small>(blocking only for the four names inside it)</small></h2>
+<div class="decision"><span class="tag">YOUR CALL</span>
+Four of the net's beneficiaries entered the system at 23+: <b>Jepson</b> (23, +84), <b>Aidan Johnson</b> (24, +79 scaled only),
+<b>Henderson</b> (25, +16/+25), <b>Podhajski</b> (27, +5). A mature-ager's weak games at 24–27 are arguably a stronger negative signal than a
+teenager's, and his never-played benchmark is least trustworthy. <b>(a)</b> include them · <b>(b)</b> exclude mature-agers from the net ·
+<b>(c)</b> exclude only 24+.
+<div class="rec"><b>Recommendation: (b) exclude</b> — the net's evidence base is teenage-draftee development curves; mature-agers were
+recruited to play now.</div></div>
+
+<h2>DECISION 4 — The long-tenure blind spot <small>(non-blocking; can ride or wait)</small></h2>
+<div class="decision"><span class="tag">YOUR CALL</span>
+Ordinary draftees at tenure 5+ with no banked season sit outside the net's validated range but show the same error pattern:
+<table><tr><th>Player</th><th>Avg</th><th>Now</th><th>Never-played</th><th>Type</th></tr><tr><td>Harry Barnett</td><td>15.0</td><td>422</td><td>674</td><td>ordinary draftee</td></tr><tr><td>Toby Conway</td><td>74.0</td><td>460</td><td>673</td><td>ordinary draftee</td></tr><tr><td>Henry Hustwaite</td><td>43.3</td><td>60</td><td>213</td><td>ordinary draftee</td></tr><tr><td>Hugh Davies</td><td>27.0</td><td>187</td><td>262</td><td>ordinary draftee</td></tr><tr><td>Max Ramsden</td><td>44.3</td><td>57</td><td>123</td><td>ordinary draftee</td></tr><tr><td>Hudson O'Keeffe</td><td>41.6</td><td>46</td><td>91</td><td>ordinary draftee</td></tr><tr><td>Jed Adams</td><td>36.0</td><td>190</td><td>222</td><td>ordinary draftee</td></tr><tr><td>Jakob Ryan</td><td>12.0</td><td>149</td><td>178</td><td>ordinary draftee</td></tr><tr><td>Liam Reidy</td><td>53.3</td><td>76</td><td>211</td><td>mature-age</td></tr></table>
+<b>(a)</b> extend the net to them now · <b>(b)</b> file for the off-season with the fade redesign.
+<div class="rec"><b>Recommendation: (b)</b> — their never-played benchmarks ride fade depths beyond the calibrated bracket; the fade redesign
+(your directive) rebuilds exactly that ground and they should be fixed on it, not before it.</div></div>
+
+<h2>DECISION 5 — The pedigree inversions <small>(non-blocking; the net cannot fix these)</small></h2>
+<div class="decision"><span class="tag">YOUR CALL</span>
+Same-ish evidence, materially better pedigree, lower price (your Burton–Oliver point; Burton–Oliver itself spans two tenures so it
+falls just outside these strict filters, but it is the same class):
+<table><tr><th>Better pedigree, priced LOWER</th><th>His price</th><th>Worse pedigree, priced HIGHER</th><th>His price</th><th>Gap</th></tr><tr><td>Archie Ludowyke (KPF, 40.0 avg/2g, never-played 146)</td><td>293</td><td>Ollie Greeves (MID, 44.0 avg/4g, never-played 91)</td><td>484</td><td class="dn">191</td></tr><tr><td>Ben Jepson (MID, 43.7 avg/6g, never-played 154)</td><td>53</td><td>Lucas Camporeale (MID, 41.0 avg/3g, never-played 46)</td><td>151</td><td class="dn">98</td></tr><tr><td>Zane Peucker (SF, 40.5 avg/2g, never-played 224)</td><td>401</td><td>Ollie Greeves (MID, 44.0 avg/4g, never-played 91)</td><td>484</td><td class="dn">83</td></tr><tr><td>Aidan Johnson (KPF, 37.0 avg/6g, never-played 158)</td><td>78</td><td>Lucas Camporeale (MID, 41.0 avg/3g, never-played 46)</td><td>151</td><td class="dn">73</td></tr><tr><td>Noah Roberts-Thomson (SF, 38.7 avg/3g, never-played 124)</td><td>263</td><td>Thomas Burton (SF, 39.4 avg/5g, never-played 53)</td><td>308</td><td class="dn">45</td></tr><tr><td>Aidan Johnson (KPF, 37.0 avg/6g, never-played 158)</td><td>78</td><td>Rhys Unwin (SF, 34.9 avg/7g, never-played 21)</td><td>122</td><td class="dn">44</td></tr><tr><td>Archie Ludowyke (KPF, 40.0 avg/2g, never-played 146)</td><td>293</td><td>Thomas Burton (SF, 39.4 avg/5g, never-played 53)</td><td>308</td><td class="dn">15</td></tr><tr><td>Noah Howes (KPF, 37.5 avg/2g, never-played 123)</td><td>304</td><td>Thomas Burton (SF, 39.4 avg/5g, never-played 53)</td><td>308</td><td class="dn">4</td></tr></table>
+<b>(a)</b> commission a targeted ordering fix (same constraint philosophy as the net, on the pedigree axis) ·
+<b>(b)</b> file for the off-season.
+<div class="rec"><b>Recommendation: (a), next window</b> — the class is real, small (8 pairs), and the constraint shape that fixed the
+cameo seam should generalise. Nothing lands this week either way.</div></div>
+
+<h2>Recorded and riding (no action needed)</h2>
+<div class="decision done"><span class="tag tagd">DONE</span>
+Your rulings, locked and in the register: age peak 22 · cameo-aware bust estimate · modernised bust table · value change accepted
+(the −1.61% burn's premise was falsified; the real number is +0.02%) · Graham dual correction (landed) · year-4 sitter credit stays at certainty ·
+sitter ladder's depth-4 &gt; depth-3 kink stands (your survivorship ruling).</div>
+<div class="decision done"><span class="tag tagd">QUEUED</span>
+<b>Your fade redesign</b> (spec agreed: completed-sat-seasons clock · keep the intra-season easing · verify the calibration counting ·
+the MSD entry-year wrinkle · the unwired inverted pool depth-3 cell) — design + prereg next, movers before you rule. ·
+<b>The deep-pick day-0 curve question</b> (two outcome yardsticks disagree at picks 31–70 and inside the 6–11 plateau; the curve itself
+was derived recently and properly — off-season conversation, or pull forward on your word). ·
+Engine repairs (none value-moving): the exporter's missing boot assert (F7) + loaded-path checks · the stale day-0 default ·
+the KPF/ruck display label · a note at the dead fade table that misled two operators.</div>
+
+<p><small>Everything above is measured on board 543bf900 / store fb640ca0 / round 24 unless marked otherwise. Evidence:
+docs/evidence/arm2_norec_2026-08-25/ and docs/evidence/seam_fix_search_2026-08-25/. Register v849 carries the round; v850 will carry
+this page and your rulings on it.</small></p>
+</body></html>

@@ -1,3 +1,3 @@
-# OPEN ITEMS REGISTER · v849 2026-08-25 · **THE SUCCESSOR'S FIRST ROUND — the recency-less refit VERIFIED and the burn premise FALSIFIED on schedule; the owner's words lock the design shape (a*=22, conditioned feature); seam round 2 measures his four directions; two queued repairs FIRED live and were worked through.** OWNER WORDS, verbatim (2026-08-25): *"Please run the measurement round"* · *"Val
+# OPEN ITEMS REGISTER · v850 2026-08-25 · **THE PACKET IS DELIVERED AND THE OWNER'S VERIFY-FIRST CENSURE IS ANSWERED WITH TWO VERIFICATION SEATS — the fade machinery and the pick curve are now traced to ground, three supervisor misstatements are corrected on the record, and the sitter-ladder "broken" claim is RETRACTED on the owner's ruling.** THE FINAL CANDIDATE, all owner words locked: board **5
 
-(one line per pen; full entry: docs/register/entries/v849.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
+(one line per pen; full entry: docs/register/entries/v850.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
