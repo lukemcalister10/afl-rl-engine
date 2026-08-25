@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v855 2026-08-25 · **HANDOVER ADDENDUM — the owner-ordered pre-compaction audit is COMPLETE; the net prediction is FILED; four review defects found and fixed on the record.** THE NET PREDICTION (the corrected script, in the root_final/543bf900 world; docs/evidence/seam_fix_search_2026-08-25/NET_PREDICTION.json + predict_net.py with full invocation in its header): **11 movers
+  > # OPEN ITEMS REGISTER · v856 2026-08-25 · **THE PRE-COMPACTION BLIND AUDIT IS ABSORBED — 21 findings (3 blockers, 6 errors, 6 ambiguities, 6 nits), every correction below SUPERSEDES the earlier text where they conflict; the handover is v854 + v855 + THIS, and the successor's read list is v849-v856.** BLOCKERS RESOLVED: (1) predict_net's round-then-add mispredicted oscar-ryan by 1 (192 vs the read-
 
-- new-form entries under `docs/register/entries/`: 43
+- new-form entries under `docs/register/entries/`: 44
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `4f89bca8afc69de9673fdf2ac3aaed8df7f3628a` |
+| generated at commit | `94ecd7395b4dd505a5fdcd38a1d6335a52475304` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

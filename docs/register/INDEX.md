@@ -1,8 +1,9 @@
 <!-- GENERATED-ONLY — regenerate: python3 tools/seat/pen.py index ; assert current: python3 tools/seat/pen.py verify -->
 # REGISTER ADDRESS INDEX — generated
 
-Newest entry: **v855**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
+Newest entry: **v856**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
 
+- **v856** (2026-08-25) — `docs/register/entries/v856.md` — **THE PRE-COMPACTION BLIND AUDIT IS ABSORBED — 21 findings (3 blockers, 6 errors, 6 ambiguities, 6 nits), every correction below SUPERSEDES 
 - **v855** (2026-08-25) — `docs/register/entries/v855.md` — **HANDOVER ADDENDUM — the owner-ordered pre-compaction audit is COMPLETE; the net prediction is FILED; four review defects found and fixed o
 - **v854** (2026-08-25) — `docs/register/entries/v854.md` — **THE COMPACTION HANDOVER #3 — the owner compacts with THE LANDING FULLY RULED AND NOT YET FLOWN; this entry is the successor's binding spec
 - **v853** (2026-08-25) — `docs/register/entries/v853.md` — **THE PACKET IS FULLY RULED — the landing is unblocked.** OWNER WORDS (2026-08-25, verbatim): **"Scaled on the safety net"** (D2: the POSITI

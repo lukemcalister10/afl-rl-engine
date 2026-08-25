@@ -103,8 +103,8 @@
    "v": 185,
    "cf": 193,
    "lambda": 1.0,
-   "lift": 7,
-   "new": 192
+   "lift": 8,
+   "new": 193
   },
   {
    "key": "thomas-anastasopoulos",
@@ -146,5 +146,5 @@
    "new": 37
   }
  ],
- "total_lift": 922
+ "total_lift": 923
 }

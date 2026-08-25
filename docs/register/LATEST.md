@@ -1,3 +1,3 @@
-# OPEN ITEMS REGISTER · v855 2026-08-25 · **HANDOVER ADDENDUM — the owner-ordered pre-compaction audit is COMPLETE; the net prediction is FILED; four review defects found and fixed on the record.** THE NET PREDICTION (the corrected script, in the root_final/543bf900 world; docs/evidence/seam_fix_search_2026-08-25/NET_PREDICTION.json + predict_net.py with full invocation in its header): **11 movers
+# OPEN ITEMS REGISTER · v856 2026-08-25 · **THE PRE-COMPACTION BLIND AUDIT IS ABSORBED — 21 findings (3 blockers, 6 errors, 6 ambiguities, 6 nits), every correction below SUPERSEDES the earlier text where they conflict; the handover is v854 + v855 + THIS, and the successor's read list is v849-v856.** BLOCKERS RESOLVED: (1) predict_net's round-then-add mispredicted oscar-ryan by 1 (192 vs the read-
 
-(one line per pen; full entry: docs/register/entries/v855.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
+(one line per pen; full entry: docs/register/entries/v856.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)

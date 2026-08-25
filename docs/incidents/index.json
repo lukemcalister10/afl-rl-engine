@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 234,
+  "coverage_entries": 235,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-25",
+      "headline": "**THE PRE-COMPACTION BLIND AUDIT IS ABSORBED \u2014 21 findings (3 blockers, 6 errors, 6 ambiguities, 6 nits), every correction below SUPERSEDES the earlie\u2026",
+      "hits": {
+        "DECLARED": [
+          "**THE PRE-COMPACTION BLIND AUDIT IS ABSORBED \u2014 21 findings (3 blockers, 6 errors, 6 ambiguities, 6 nits), every correction below SUPERSEDES the earlier text where they conflict; the handover is v854 + v855 + THIS, and th\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 856
+    },
     {
       "by": "explicit",
       "date": "2026-08-25",
@@ -2088,7 +2102,7 @@
       "version": 622
     }
   ],
-  "incidents": 122,
+  "incidents": 123,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",

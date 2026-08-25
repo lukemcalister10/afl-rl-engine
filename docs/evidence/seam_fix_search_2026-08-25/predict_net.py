@@ -25,7 +25,7 @@ with contextlib.redirect_stdout(io.StringIO()):
 MA=g['MA']; evf=g['ev']; F=1.0524; Y=2026
 bars={k:(v-3.0) for k,v in MA.REPL.items()}
 def lam(c,pos):
-    s=bars.get(pos,77.1)/77.1
+    s=bars[pos]/77.1                                        # KeyError = halt; no silent MID default
     lo,hi=40.0*s,45.0*s
     if c<=lo: return 0.0
     if c>=hi: return 1.0
@@ -37,20 +37,26 @@ for p in MA.data:
     gtot=sum(x.get('games',0) for x in sc)
     if gtot<1 or any(x.get('games',0)>=6 for x in sc): continue
     ten=Y-int(p.get('year') or Y)+1
-    if ten>4: continue
-    by=p.get('_by'); ea=(int(p.get('year'))-int(by)) if by and p.get('year') else None
-    if ea is not None and ea>=22: continue                     # D3: mature-agers excluded
+    if ten<1 or ten>4: continue                                # explicit both bounds
+    by=p.get('_by')
+    if not by:
+        raise SystemExit('predict_net HALT: %r has no _by; the D3 mature-age test cannot run silently.' % p.get('key'))
+    if int(p.get('year'))-int(by)>=22: continue                # D3: mature-agers excluded
     c=sum(x['avg']*x['games'] for x in sc)/gtot
-    pos=MA.GRP.get(MA.gfut(p) if hasattr(MA,'gfut') else p.get('pos')) or MA.GRP.get(p.get('pos'))
+    pos=MA.gfut(p)                                             # gfut RETURNS the group (REPL is keyed by it)
+    if pos not in bars:
+        raise SystemExit('predict_net HALT: unresolved position group for %r (gfut=%r) - a silent '
+                         'fallback would hand this row the MID knots.' % (p.get('key'), pos))
     v=evf(p,Y)/F
     s0=p['scoring']; p['scoring']=[]
     try: cf=evf(p,Y)/F
     finally: p['scoring']=s0
     L=lam(c,pos)
-    lift=round(L*max(0.0,cf-v))
+    new=round(v+L*max(0.0,cf-v))          # add-then-round: at lam=1 'new' EQUALS round(cf) exactly
+    lift=new-round(v)
     if lift>0:
         rows.append({'key':p.get('key'),'player':p.get('player'),'pos':pos,'tenure':ten,'games':int(gtot),
-                     'cameo':round(c,1),'v':round(v),'cf':round(cf),'lambda':round(L,3),'lift':lift,'new':round(v)+lift})
+                     'cameo':round(c,1),'v':round(v),'cf':round(cf),'lambda':round(L,3),'lift':lift,'new':new})
 rows.sort(key=lambda r:-r['lift'])
 tot=sum(r['lift'] for r in rows)
 json.dump({'world':'root_final (board 543bf900)','rulings':'D2 scaled, D3 mature excluded, scope t1-4 no-banked-level',
