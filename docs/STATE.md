@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v856 2026-08-25 · **THE PRE-COMPACTION BLIND AUDIT IS ABSORBED — 21 findings (3 blockers, 6 errors, 6 ambiguities, 6 nits), every correction below SUPERSEDES the earlier text where they conflict; the handover is v854 + v855 + THIS, and the successor's read list is v849-v856.** BLOCKERS RESOLVED: (1) predict_net's round-then-add mispredicted oscar-ryan by 1 (192 vs the read-
+  > # OPEN ITEMS REGISTER · v857 2026-08-25 · **THE ORDER 45 LANDING PREP — the successor seat executed the v854/v856 spec through to the dry-run gate; the with-net board is BUILT AND TRIPLY VERIFIED; the law-11 review ran FOUR passes and every finding is cured on the record; THREE NEW OWNER RULINGS reshape the queue.** OWNER WORDS (2026-08-25, verbatim): sequencing — *"I think we finish this one as p
 
-- new-form entries under `docs/register/entries/`: 44
+- new-form entries under `docs/register/entries/`: 45
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `94ecd7395b4dd505a5fdcd38a1d6335a52475304` |
+| generated at commit | `08200913ef2033afd4d02f5833d5e03f79b5805a` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 235,
+  "coverage_entries": 236,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-25",
+      "headline": "**THE ORDER 45 LANDING PREP \u2014 the successor seat executed the v854/v856 spec through to the dry-run gate; the with-net board is BUILT AND TRIPLY VERIF\u2026",
+      "hits": {
+        "DECLARED": [
+          "**THE ORDER 45 LANDING PREP \u2014 the successor seat executed the v854/v856 spec through to the dry-run gate; the with-net board is BUILT AND TRIPLY VERIFIED; the law-11 review ran FOUR passes and every finding is cured on t\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 857
+    },
     {
       "by": "explicit",
       "date": "2026-08-25",
@@ -2102,7 +2116,7 @@
       "version": 622
     }
   ],
-  "incidents": 123,
+  "incidents": 124,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",
