@@ -1,0 +1,623 @@
+[
+ {
+  "player": "Dylan Patterson",
+  "games": 5,
+  "tenure": 2,
+  "cameo": 35.6,
+  "cur": 1193,
+  "cf": 1192,
+  "in_census": true
+ },
+ {
+  "player": "Daniel Annable",
+  "games": 3,
+  "tenure": 2,
+  "cameo": 35.3,
+  "cur": 1137,
+  "cf": 1153,
+  "in_census": true
+ },
+ {
+  "player": "Xavier Taylor",
+  "games": 2,
+  "tenure": 2,
+  "cameo": 42.0,
+  "cur": 912,
+  "cf": 858,
+  "in_census": true
+ },
+ {
+  "player": "Cameron Nairn",
+  "games": 3,
+  "tenure": 2,
+  "cameo": 42.8,
+  "cur": 526,
+  "cf": 329,
+  "in_census": true
+ },
+ {
+  "player": "Lachlan Carmichael",
+  "games": 2,
+  "tenure": 2,
+  "cameo": 18.0,
+  "cur": 500,
+  "cf": 460,
+  "in_census": true
+ },
+ {
+  "player": "Aidan Schubert",
+  "games": 1,
+  "tenure": 2,
+  "cameo": 24.0,
+  "cur": 559,
+  "cf": 510,
+  "in_census": true
+ },
+ {
+  "player": "Zane Peucker",
+  "games": 2,
+  "tenure": 2,
+  "cameo": 40.5,
+  "cur": 401,
+  "cf": 224,
+  "in_census": true
+ },
+ {
+  "player": "Jack Dalton",
+  "games": 5,
+  "tenure": 2,
+  "cameo": 52.4,
+  "cur": 470,
+  "cf": 216,
+  "in_census": true
+ },
+ {
+  "player": "Tobyn Murray",
+  "games": 1,
+  "tenure": 2,
+  "cameo": 52.0,
+  "cur": 241,
+  "cf": 192,
+  "in_census": true
+ },
+ {
+  "player": "Charlie Banfield",
+  "games": 3,
+  "tenure": 2,
+  "cameo": 54.3,
+  "cur": 613,
+  "cf": 303,
+  "in_census": true
+ },
+ {
+  "player": "Cody Curtin",
+  "games": 4,
+  "tenure": 2,
+  "cameo": 29.8,
+  "cur": 389,
+  "cf": 210,
+  "in_census": true
+ },
+ {
+  "player": "Archie Ludowyke",
+  "games": 2,
+  "tenure": 2,
+  "cameo": 40.0,
+  "cur": 293,
+  "cf": 146,
+  "in_census": true
+ },
+ {
+  "player": "Noah Roberts-Thomson",
+  "games": 3,
+  "tenure": 2,
+  "cameo": 38.7,
+  "cur": 263,
+  "cf": 124,
+  "in_census": true
+ },
+ {
+  "player": "Ollie Greeves",
+  "games": 4,
+  "tenure": 2,
+  "cameo": 44.0,
+  "cur": 484,
+  "cf": 91,
+  "in_census": false
+ },
+ {
+  "player": "Thomas Burton",
+  "games": 5,
+  "tenure": 2,
+  "cameo": 39.4,
+  "cur": 308,
+  "cf": 53,
+  "in_census": false
+ },
+ {
+  "player": "Oliver Francou",
+  "games": 4,
+  "tenure": 1,
+  "cameo": 71.5,
+  "cur": 538,
+  "cf": 204,
+  "in_census": false
+ },
+ {
+  "player": "Flynn Riley",
+  "games": 1,
+  "tenure": 1,
+  "cameo": 80.0,
+  "cur": 341,
+  "cf": 254,
+  "in_census": false
+ },
+ {
+  "player": "Lukas Cooke",
+  "games": 2,
+  "tenure": 1,
+  "cameo": 43.5,
+  "cur": 254,
+  "cf": 184,
+  "in_census": false
+ },
+ {
+  "player": "Max Beattie",
+  "games": 2,
+  "tenure": 1,
+  "cameo": 68.0,
+  "cur": 160,
+  "cf": 88,
+  "in_census": false
+ },
+ {
+  "player": "Alex Van Wyk",
+  "games": 3,
+  "tenure": 1,
+  "cameo": 51.7,
+  "cur": 315,
+  "cf": 254,
+  "in_census": false
+ },
+ {
+  "player": "Mitch Podhajski",
+  "games": 2,
+  "tenure": 1,
+  "cameo": 48.5,
+  "cur": 118,
+  "cf": 123,
+  "in_census": false
+ },
+ {
+  "player": "Oliver Hannaford",
+  "games": 5,
+  "tenure": 3,
+  "cameo": 28.2,
+  "cur": 200,
+  "cf": 205,
+  "in_census": true
+ },
+ {
+  "player": "Harrison Oliver",
+  "games": 5,
+  "tenure": 3,
+  "cameo": 39.0,
+  "cur": 270,
+  "cf": 273,
+  "in_census": true
+ },
+ {
+  "player": "Jesse Dattoli",
+  "games": 6,
+  "tenure": 3,
+  "cameo": 60.5,
+  "cur": 497,
+  "cf": 159,
+  "in_census": true
+ },
+ {
+  "player": "Cody Angove",
+  "games": 5,
+  "tenure": 3,
+  "cameo": 40.2,
+  "cur": 440,
+  "cf": 244,
+  "in_census": true
+ },
+ {
+  "player": "Matt Whitlock",
+  "games": 5,
+  "tenure": 3,
+  "cameo": 25.2,
+  "cur": 279,
+  "cf": 300,
+  "in_census": true
+ },
+ {
+  "player": "Noah Mraz",
+  "games": 4,
+  "tenure": 3,
+  "cameo": 84.2,
+  "cur": 1030,
+  "cf": 192,
+  "in_census": true
+ },
+ {
+  "player": "Jack Ough",
+  "games": 5,
+  "tenure": 3,
+  "cameo": 46.0,
+  "cur": 283,
+  "cf": 141,
+  "in_census": true
+ },
+ {
+  "player": "Lucca Grego",
+  "games": 1,
+  "tenure": 3,
+  "cameo": 59.0,
+  "cur": 64,
+  "cf": 32,
+  "in_census": true
+ },
+ {
+  "player": "Alex Dodson",
+  "games": 1,
+  "tenure": 3,
+  "cameo": 13.0,
+  "cur": 85,
+  "cf": 77,
+  "in_census": true
+ },
+ {
+  "player": "Lucas Camporeale",
+  "games": 3,
+  "tenure": 3,
+  "cameo": 41.0,
+  "cur": 151,
+  "cf": 46,
+  "in_census": true
+ },
+ {
+  "player": "Rhys Unwin",
+  "games": 7,
+  "tenure": 3,
+  "cameo": 34.9,
+  "cur": 122,
+  "cf": 21,
+  "in_census": true
+ },
+ {
+  "player": "Aidan Johnson",
+  "games": 6,
+  "tenure": 3,
+  "cameo": 37.0,
+  "cur": 78,
+  "cf": 158,
+  "in_census": false
+ },
+ {
+  "player": "Tom Cochrane",
+  "games": 6,
+  "tenure": 3,
+  "cameo": 32.3,
+  "cur": 150,
+  "cf": 86,
+  "in_census": false
+ },
+ {
+  "player": "Matt Hill",
+  "games": 2,
+  "tenure": 3,
+  "cameo": 24.0,
+  "cur": 34,
+  "cf": 33,
+  "in_census": false
+ },
+ {
+  "player": "Jayden Nguyen",
+  "games": 10,
+  "tenure": 3,
+  "cameo": 40.9,
+  "cur": 291,
+  "cf": 36,
+  "in_census": false
+ },
+ {
+  "player": "Jack Henderson",
+  "games": 5,
+  "tenure": 3,
+  "cameo": 43.0,
+  "cur": 28,
+  "cf": 53,
+  "in_census": false
+ },
+ {
+  "player": "Ben Jepson",
+  "games": 6,
+  "tenure": 3,
+  "cameo": 43.7,
+  "cur": 53,
+  "cf": 154,
+  "in_census": false
+ },
+ {
+  "player": "Jacob Newton",
+  "games": 5,
+  "tenure": 2,
+  "cameo": 26.8,
+  "cur": 215,
+  "cf": 88,
+  "in_census": false
+ },
+ {
+  "player": "Caleb Lewis",
+  "games": 2,
+  "tenure": 2,
+  "cameo": 12.5,
+  "cur": 168,
+  "cf": 123,
+  "in_census": false
+ },
+ {
+  "player": "Noah Howes",
+  "games": 2,
+  "tenure": 2,
+  "cameo": 37.5,
+  "cur": 304,
+  "cf": 123,
+  "in_census": false
+ },
+ {
+  "player": "Will Green",
+  "games": 3,
+  "tenure": 4,
+  "cameo": 62.7,
+  "cur": 468,
+  "cf": 678,
+  "in_census": true
+ },
+ {
+  "player": "James Leake",
+  "games": 8,
+  "tenure": 4,
+  "cameo": 48.1,
+  "cur": 169,
+  "cf": 421,
+  "in_census": true
+ },
+ {
+  "player": "William McCabe",
+  "games": 4,
+  "tenure": 4,
+  "cameo": 31.8,
+  "cur": 231,
+  "cf": 460,
+  "in_census": true
+ },
+ {
+  "player": "Taylor Goad",
+  "games": 2,
+  "tenure": 4,
+  "cameo": 43.5,
+  "cur": 441,
+  "cf": 676,
+  "in_census": true
+ },
+ {
+  "player": "Charlie Edwards",
+  "games": 2,
+  "tenure": 4,
+  "cameo": 47.5,
+  "cur": 289,
+  "cf": 404,
+  "in_census": true
+ },
+ {
+  "player": "Oscar Ryan",
+  "games": 2,
+  "tenure": 4,
+  "cameo": 88.0,
+  "cur": 185,
+  "cf": 193,
+  "in_census": true
+ },
+ {
+  "player": "Cooper Simpson",
+  "games": 5,
+  "tenure": 4,
+  "cameo": 39.6,
+  "cur": 86,
+  "cf": 121,
+  "in_census": true
+ },
+ {
+  "player": "Tew Jiath",
+  "games": 1,
+  "tenure": 4,
+  "cameo": 24.0,
+  "cur": 102,
+  "cf": 114,
+  "in_census": true
+ },
+ {
+  "player": "Bodie Ryan",
+  "games": 4,
+  "tenure": 4,
+  "cameo": 37.9,
+  "cur": 62,
+  "cf": 62,
+  "in_census": true
+ },
+ {
+  "player": "Lachlan Smith",
+  "games": 2,
+  "tenure": 4,
+  "cameo": 53.0,
+  "cur": 150,
+  "cf": 186,
+  "in_census": true
+ },
+ {
+  "player": "Tom Anastasopoulos",
+  "games": 5,
+  "tenure": 4,
+  "cameo": 42.2,
+  "cur": 77,
+  "cf": 84,
+  "in_census": true
+ },
+ {
+  "player": "Zane Zakostelsky",
+  "games": 3,
+  "tenure": 4,
+  "cameo": 49.0,
+  "cur": 143,
+  "cf": 171,
+  "in_census": true
+ },
+ {
+  "player": "George Stevens",
+  "games": 4,
+  "tenure": 4,
+  "cameo": 62.0,
+  "cur": 67,
+  "cf": 55,
+  "in_census": true
+ },
+ {
+  "player": "Vigo Visentini",
+  "games": 5,
+  "tenure": 4,
+  "cameo": 67.2,
+  "cur": 173,
+  "cf": 211,
+  "in_census": false
+ },
+ {
+  "player": "Luker Kentfield",
+  "games": 3,
+  "tenure": 3,
+  "cameo": 32.3,
+  "cur": 150,
+  "cf": 123,
+  "in_census": false
+ },
+ {
+  "player": "Luke Beecken",
+  "games": 1,
+  "tenure": 3,
+  "cameo": 7.0,
+  "cur": 157,
+  "cf": 204,
+  "in_census": false
+ },
+ {
+  "player": "Harry Barnett",
+  "games": 2,
+  "tenure": 5,
+  "cameo": 15.0,
+  "cur": 422,
+  "cf": 674,
+  "in_census": true
+ },
+ {
+  "player": "Lewis Hayes",
+  "games": 1,
+  "tenure": 5,
+  "cameo": 64.0,
+  "cur": 349,
+  "cf": 327,
+  "in_census": true
+ },
+ {
+  "player": "Jakob Ryan",
+  "games": 1,
+  "tenure": 5,
+  "cameo": 12.0,
+  "cur": 149,
+  "cf": 178,
+  "in_census": true
+ },
+ {
+  "player": "Hugh Davies",
+  "games": 2,
+  "tenure": 5,
+  "cameo": 27.0,
+  "cur": 187,
+  "cf": 262,
+  "in_census": true
+ },
+ {
+  "player": "Henry Hustwaite",
+  "games": 11,
+  "tenure": 5,
+  "cameo": 43.3,
+  "cur": 60,
+  "cf": 213,
+  "in_census": false
+ },
+ {
+  "player": "Jed Adams",
+  "games": 1,
+  "tenure": 5,
+  "cameo": 36.0,
+  "cur": 190,
+  "cf": 222,
+  "in_census": true
+ },
+ {
+  "player": "Liam Reidy",
+  "games": 7,
+  "tenure": 5,
+  "cameo": 53.3,
+  "cur": 76,
+  "cf": 211,
+  "in_census": false
+ },
+ {
+  "player": "Hudson O'Keeffe",
+  "games": 8,
+  "tenure": 5,
+  "cameo": 41.6,
+  "cur": 46,
+  "cf": 91,
+  "in_census": false
+ },
+ {
+  "player": "Toby Conway",
+  "games": 6,
+  "tenure": 6,
+  "cameo": 74.0,
+  "cur": 460,
+  "cf": 673,
+  "in_census": false
+ },
+ {
+  "player": "Max Ramsden",
+  "games": 11,
+  "tenure": 5,
+  "cameo": 44.3,
+  "cur": 57,
+  "cf": 123,
+  "in_census": false
+ },
+ {
+  "player": "Henry Smith",
+  "games": 6,
+  "tenure": 7,
+  "cameo": 41.1,
+  "cur": 136,
+  "cf": 109,
+  "in_census": false
+ },
+ {
+  "player": "Wil Parker",
+  "games": 14,
+  "tenure": 4,
+  "cameo": 40.0,
+  "cur": 29,
+  "cf": 46,
+  "in_census": false
+ }
+]

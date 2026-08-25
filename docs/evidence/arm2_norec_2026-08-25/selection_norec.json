@@ -1,0 +1,819 @@
+{
+ "SELECTION": {
+  "a_star": 21.5,
+  "hyperparameters": {
+   "learning_rate": 1.0,
+   "max_depth": 4,
+   "max_iter": 800,
+   "min_samples_leaf": 25
+  },
+  "level_index": 9,
+  "n_features": 12,
+  "recency_anchor": "end of training window",
+  "recency_halflife_years": null
+ },
+ "_doc": "REBAKE WEEK \u00b7 ARM 2 \u2014 THE OUT-OF-SAMPLE SELECTION. Every grid point declared before the run.\n\nWHAT THIS IS\n  Ruled at register v831: the exact-constrained arm's hyperparameters, the age hill's peak a*, and the\n  recency half-life are NOT carried as literals from study B \u2014 they are SELECTED OUT OF SAMPLE at the\n  bake, over grids DECLARED IN THE PREREG BEFORE THE RUN\n  (docs/evidence/rebake_arm2_design_2026-08-24/PREREG.md sections 1.2, 1.3, 1.4, committed at e4a078f\n  before this file existed, P9).\n\nTHE SELECTION RULE, WRITTEN HERE AND NOWHERE ELSE\n  Lowest MEAN walk-forward pinball over three rolling-origin splits by AS-OF YEAR:\n      train YEAR <= T,  score T+1 .. T+3,   for T in (2014, 2017, 2020)\n  five quantiles Q = [0.10, 0.30, 0.50, 0.70, 0.90], unweighted mean of the five, unweighted mean of the\n  three splits. IN-SAMPLE LOSS IS REPORTED AND NEVER USED TO CHOOSE. Ties break to the smaller max_iter,\n  then the smaller learning_rate \u2014 declared so a tie cannot be resolved after the fact.\n\nWHY THE DESIGN MATRIX IS PAR-CENTRED, AND WHY THAT IS A DECLARED DEVIATION FROM STUDY B\n  The shipped cm_400 trains through par_redesign.retrain(), which rebinds cp._lvl_eff to lvl_par before\n  the fit. Study B selected on the PLAIN cp._lvl_eff (its X_cm.npy), so its selected lr=1.0 / max_iter=800\n  was selected for a model the estate does not build. This selects on the matrix the artifact is actually\n  fitted from. Named in the prereg as a deviation, with the reason, rather than discovered afterwards.\n\nWHY THE STAGES ARE ORDERED THE WAY THEY ARE (declared, not convenient)\n  (0) the incumbent GradientBoostingRegressor on the identical splits \u2014 the comparison arm, so FB2 has a\n      number to fire against.\n  (1) hyperparameters on the RAW-AGE, level-only design. Chosen first because the age hill and the weight\n      are both small effects (study B: 0.19% and 0.18%) and selecting them under a badly-fitted capacity\n      would be selecting noise.\n  (2) a* on the age-hill design AT the stage-1 settings. Both the owner's prior (~23) and the study's\n      fitted peak (~21.5) are IN the grid and BOTH are reported whichever wins.\n  (3) the half-life at the stage-1 settings AND the stage-2 a*.\n  Each stage's full table is emitted. Nothing is reported as \"the answer\" without its grid beside it.\n\nREAD-ONLY with respect to the estate: fits into memory, writes ONE json into the evidence tree.\n",
+ "_norec_note": "NOREC VARIANT of the arm-2 selection: recency_halflife_years -> null (uniform), a declared point of the original half-life grid (uniform mean 3.9174). All other selected settings unchanged; a* was selected at stage 2 BEFORE the half-life. Register v847(2): the v831 D3 recency ruling rested on the leaky protocol; the clean whole-career protocol reverses the sign. This file exists so the owner rules on the fitted recency-less candidate.",
+ "a_star_grid": {
+  "a20.0": {
+   "2014": 4.1864,
+   "2017": 4.1371,
+   "2020": 3.4502,
+   "_it": 800,
+   "_lr": 1.0,
+   "a_star": 20.0,
+   "mean": 3.9246,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167
+  },
+  "a20.5": {
+   "2014": 4.1782,
+   "2017": 4.1331,
+   "2020": 3.4475,
+   "_it": 800,
+   "_lr": 1.0,
+   "a_star": 20.5,
+   "mean": 3.9196,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167
+  },
+  "a21.0": {
+   "2014": 4.1814,
+   "2017": 4.1332,
+   "2020": 3.446,
+   "_it": 800,
+   "_lr": 1.0,
+   "a_star": 21.0,
+   "mean": 3.9202,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167
+  },
+  "a21.5": {
+   "2014": 4.1738,
+   "2017": 4.1333,
+   "2020": 3.4452,
+   "_it": 800,
+   "_lr": 1.0,
+   "a_star": 21.5,
+   "mean": 3.9174,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167
+  },
+  "a22.0": {
+   "2014": 4.1794,
+   "2017": 4.1409,
+   "2020": 3.4514,
+   "_it": 800,
+   "_lr": 1.0,
+   "a_star": 22.0,
+   "mean": 3.9239,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167
+  },
+  "a22.5": {
+   "2014": 4.1754,
+   "2017": 4.1396,
+   "2020": 3.4476,
+   "_it": 800,
+   "_lr": 1.0,
+   "a_star": 22.5,
+   "mean": 3.9209,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167
+  },
+  "a23.0": {
+   "2014": 4.1798,
+   "2017": 4.1323,
+   "2020": 3.4473,
+   "_it": 800,
+   "_lr": 1.0,
+   "a_star": 23.0,
+   "mean": 3.9198,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167
+  },
+  "a23.5": {
+   "2014": 4.183,
+   "2017": 4.1314,
+   "2020": 3.4451,
+   "_it": 800,
+   "_lr": 1.0,
+   "a_star": 23.5,
+   "mean": 3.9198,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167
+  },
+  "a24.0": {
+   "2014": 4.2063,
+   "2017": 4.1333,
+   "2020": 3.4607,
+   "_it": 800,
+   "_lr": 1.0,
+   "a_star": 24.0,
+   "mean": 3.9334,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167
+  }
+ },
+ "age_arm_spread_pct": 0.133,
+ "age_controls": {
+  "age_hill_features_UNCONSTRAINED": {
+   "2014": 4.1791,
+   "2017": 4.1343,
+   "2020": 3.4544,
+   "mean": 3.9226
+  },
+  "age_hill_features_constrained_at_selected_a_star": {
+   "2014": 4.1738,
+   "2017": 4.1333,
+   "2020": 3.4452,
+   "_it": 800,
+   "_lr": 1.0,
+   "a_star": 21.5,
+   "mean": 3.9174,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167
+  },
+  "raw_age_constrained_minus1": {
+   "2014": 4.167,
+   "2017": 4.1433,
+   "2020": 3.4457,
+   "mean": 3.9187
+  },
+  "raw_age_no_constraint": {
+   "2014": 4.1782,
+   "2017": 4.1324,
+   "2020": 3.4544,
+   "_it": 800,
+   "_lr": 1.0,
+   "fit_s": 12.4,
+   "mean": 3.9217,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167,
+   "settings": {
+    "learning_rate": 1.0,
+    "max_depth": 4,
+    "max_iter": 800,
+    "min_samples_leaf": 25
+   }
+  }
+ },
+ "config_sha256": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1",
+ "declared_grids": {
+  "a_star": [
+   20.0,
+   20.5,
+   21.0,
+   21.5,
+   22.0,
+   22.5,
+   23.0,
+   23.5,
+   24.0
+  ],
+  "recency_halflife_years": [
+   "uniform",
+   10.0,
+   12.0,
+   14.0,
+   16.0
+  ],
+  "stage1_fixed": {
+   "max_depth": 4,
+   "min_samples_leaf": 25
+  },
+  "stage1_learning_rate": [
+   0.3,
+   0.6,
+   1.0,
+   1.5
+  ],
+  "stage1_max_iter": [
+   400,
+   800,
+   1600
+  ],
+  "stage2_capacity_cross": [
+   {
+    "max_depth": 3
+   },
+   {
+    "max_depth": 5
+   },
+   {
+    "min_samples_leaf": 15
+   },
+   {
+    "min_samples_leaf": 40
+   }
+  ]
+ },
+ "design_shape": [
+  13220,
+  11
+ ],
+ "fb4_selftest": {
+  "EXACT_negative_steps": 0,
+  "EXACT_worst_step": 0.0,
+  "STOCK_negative_steps": 318,
+  "STOCK_worst_step": -0.6196456531568941,
+  "construction": "rebake-arm2-exact-monotone/1",
+  "failures": [],
+  "per_quantile": {
+   "q0.10": {
+    "exact_negative": 0,
+    "exact_worst": 0.0,
+    "stock_negative": 127,
+    "stock_worst": -0.28162953137762514
+   },
+   "q0.50": {
+    "exact_negative": 0,
+    "exact_worst": 0.0,
+    "stock_negative": 104,
+    "stock_worst": -0.2195261429632984
+   },
+   "q0.90": {
+    "exact_negative": 0,
+    "exact_worst": 0.0,
+    "stock_negative": 87,
+    "stock_worst": -0.6196456531568941
+   }
+  },
+  "sklearn": "1.8.0",
+  "stock_PinballLoss_differentiable": false,
+  "subclass_differentiable": true,
+  "subclass_need_update_leaves_values": false,
+  "toy_features": 10,
+  "toy_rows": 6000,
+  "toy_sweep_points_per_row": 201,
+  "toy_sweep_rows": 40,
+  "verdict": "PASS"
+ },
+ "feature_bind": "cp._lvl_eff = par_redesign.lvl_par (PAR-centred) \u2014 what cm_400 actually trains on",
+ "final_walk_forward": {
+  "2014": 4.1638,
+  "2017": 4.1267,
+  "2020": 3.427,
+  "_it": 800,
+  "_lr": 1.0,
+  "halflife": 12.0,
+  "mean": 3.9058,
+  "n_test_2014": 2283,
+  "n_test_2017": 2334,
+  "n_test_2020": 1816,
+  "n_train_2014": 5550,
+  "n_train_2017": 7833,
+  "n_train_2020": 10167
+ },
+ "first_observable_season": 2005,
+ "halflife_gain_vs_uniform_pct": 0.296,
+ "halflife_grid": {
+  "hl10y": {
+   "2014": 4.1645,
+   "2017": 4.1237,
+   "2020": 3.4357,
+   "_it": 800,
+   "_lr": 1.0,
+   "halflife": 10.0,
+   "mean": 3.908,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167
+  },
+  "hl12y": {
+   "2014": 4.1638,
+   "2017": 4.1267,
+   "2020": 3.427,
+   "_it": 800,
+   "_lr": 1.0,
+   "halflife": 12.0,
+   "mean": 3.9058,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167
+  },
+  "hl14y": {
+   "2014": 4.1684,
+   "2017": 4.1237,
+   "2020": 3.4292,
+   "_it": 800,
+   "_lr": 1.0,
+   "halflife": 14.0,
+   "mean": 3.9071,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167
+  },
+  "hl16y": {
+   "2014": 4.1731,
+   "2017": 4.1273,
+   "2020": 3.4316,
+   "_it": 800,
+   "_lr": 1.0,
+   "halflife": 16.0,
+   "mean": 3.9107,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167
+  },
+  "uniform": {
+   "2014": 4.1738,
+   "2017": 4.1333,
+   "2020": 3.4452,
+   "_it": 800,
+   "_lr": 1.0,
+   "halflife": "uniform",
+   "mean": 3.9174,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167
+  }
+ },
+ "improvement_vs_incumbent_pct": 0.39,
+ "incumbent_same_splits": {
+  "2014": 4.1637,
+  "2017": 4.1362,
+  "2020": 3.4635,
+  "mean": 3.9211,
+  "settings": {
+   "learning_rate": 0.05,
+   "max_depth": 4,
+   "min_samples_leaf": 25,
+   "n_estimators": 400
+  }
+ },
+ "owner_prior_vs_study_peak": {
+  "note": "v831 D2: a* is NOT hand-fixed. Both candidates are reported whichever wins. The owner's year-5-6 read most likely comes from the no-arb COHORT path (peak year 5 = age ~23), which is a COMPOSITION curve (survival x value) and NOT the band's conditional age response \u2014 the two are different objects and the selection settles only the band's.",
+  "owner_prior_a_star": 23.0,
+  "owner_prior_walk_forward": {
+   "2014": 4.1798,
+   "2017": 4.1323,
+   "2020": 3.4473,
+   "_it": 800,
+   "_lr": 1.0,
+   "a_star": 23.0,
+   "mean": 3.9198,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167
+  },
+  "selected": 21.5,
+  "study_B_fitted_peak_a_star": 21.5,
+  "study_B_peak_walk_forward": {
+   "2014": 4.1738,
+   "2017": 4.1333,
+   "2020": 3.4452,
+   "_it": 800,
+   "_lr": 1.0,
+   "a_star": 21.5,
+   "mean": 3.9174,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167
+  }
+ },
+ "selected_a_star": 21.5,
+ "selected_halflife_years": 12.0,
+ "selected_hyperparameters": {
+  "learning_rate": 1.0,
+  "max_depth": 4,
+  "max_iter": 800,
+  "min_samples_leaf": 25
+ },
+ "selection_rule": "lowest MEAN walk-forward pinball over T=2014/2017/2020 (train YEAR<=T, score T+1..T+3), 5 quantiles, unweighted; in-sample NEVER used to choose; ties -> smaller max_iter, then smaller learning_rate",
+ "stage1_edge_extension": {},
+ "stage1_hyperparameters": {
+  "lr0.3_it1600": {
+   "2014": 4.1834,
+   "2017": 4.1635,
+   "2020": 3.4882,
+   "_it": 1600,
+   "_lr": 0.3,
+   "fit_s": 25.3,
+   "mean": 3.945,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167,
+   "settings": {
+    "learning_rate": 0.3,
+    "max_depth": 4,
+    "max_iter": 1600,
+    "min_samples_leaf": 25
+   }
+  },
+  "lr0.3_it400": {
+   "2014": 4.6784,
+   "2017": 4.6469,
+   "2020": 3.9918,
+   "_it": 400,
+   "_lr": 0.3,
+   "fit_s": 6.6,
+   "mean": 4.439,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167,
+   "settings": {
+    "learning_rate": 0.3,
+    "max_depth": 4,
+    "max_iter": 400,
+    "min_samples_leaf": 25
+   }
+  },
+  "lr0.3_it800": {
+   "2014": 4.3588,
+   "2017": 4.321,
+   "2020": 3.6825,
+   "_it": 800,
+   "_lr": 0.3,
+   "fit_s": 13.3,
+   "mean": 4.1208,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167,
+   "settings": {
+    "learning_rate": 0.3,
+    "max_depth": 4,
+    "max_iter": 800,
+    "min_samples_leaf": 25
+   }
+  },
+  "lr0.6_it1600": {
+   "2014": 4.1918,
+   "2017": 4.1324,
+   "2020": 3.4494,
+   "_it": 1600,
+   "_lr": 0.6,
+   "fit_s": 24.7,
+   "mean": 3.9245,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167,
+   "settings": {
+    "learning_rate": 0.6,
+    "max_depth": 4,
+    "max_iter": 1600,
+    "min_samples_leaf": 25
+   }
+  },
+  "lr0.6_it400": {
+   "2014": 4.3579,
+   "2017": 4.321,
+   "2020": 3.6829,
+   "_it": 400,
+   "_lr": 0.6,
+   "fit_s": 6.4,
+   "mean": 4.1206,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167,
+   "settings": {
+    "learning_rate": 0.6,
+    "max_depth": 4,
+    "max_iter": 400,
+    "min_samples_leaf": 25
+   }
+  },
+  "lr0.6_it800": {
+   "2014": 4.185,
+   "2017": 4.1647,
+   "2020": 3.4908,
+   "_it": 800,
+   "_lr": 0.6,
+   "fit_s": 12.3,
+   "mean": 3.9468,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167,
+   "settings": {
+    "learning_rate": 0.6,
+    "max_depth": 4,
+    "max_iter": 800,
+    "min_samples_leaf": 25
+   }
+  },
+  "lr1.0_it1600": {
+   "2014": 4.2526,
+   "2017": 4.1585,
+   "2020": 3.4758,
+   "_it": 1600,
+   "_lr": 1.0,
+   "fit_s": 21.5,
+   "mean": 3.9623,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167,
+   "settings": {
+    "learning_rate": 1.0,
+    "max_depth": 4,
+    "max_iter": 1600,
+    "min_samples_leaf": 25
+   }
+  },
+  "lr1.0_it400": {
+   "2014": 4.2099,
+   "2017": 4.1919,
+   "2020": 3.5321,
+   "_it": 400,
+   "_lr": 1.0,
+   "fit_s": 6.9,
+   "mean": 3.978,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167,
+   "settings": {
+    "learning_rate": 1.0,
+    "max_depth": 4,
+    "max_iter": 400,
+    "min_samples_leaf": 25
+   }
+  },
+  "lr1.0_it800": {
+   "2014": 4.1782,
+   "2017": 4.1324,
+   "2020": 3.4544,
+   "_it": 800,
+   "_lr": 1.0,
+   "fit_s": 12.4,
+   "mean": 3.9217,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167,
+   "settings": {
+    "learning_rate": 1.0,
+    "max_depth": 4,
+    "max_iter": 800,
+    "min_samples_leaf": 25
+   }
+  },
+  "lr1.5_it1600": {
+   "2014": 4.3191,
+   "2017": 4.2047,
+   "2020": 3.4943,
+   "_it": 1600,
+   "_lr": 1.5,
+   "fit_s": 21.8,
+   "mean": 4.006,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167,
+   "settings": {
+    "learning_rate": 1.5,
+    "max_depth": 4,
+    "max_iter": 1600,
+    "min_samples_leaf": 25
+   }
+  },
+  "lr1.5_it400": {
+   "2014": 4.1721,
+   "2017": 4.1453,
+   "2020": 3.4606,
+   "_it": 400,
+   "_lr": 1.5,
+   "fit_s": 6.2,
+   "mean": 3.926,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167,
+   "settings": {
+    "learning_rate": 1.5,
+    "max_depth": 4,
+    "max_iter": 400,
+    "min_samples_leaf": 25
+   }
+  },
+  "lr1.5_it800": {
+   "2014": 4.2129,
+   "2017": 4.1477,
+   "2020": 3.4647,
+   "_it": 800,
+   "_lr": 1.5,
+   "fit_s": 11.7,
+   "mean": 3.9418,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167,
+   "settings": {
+    "learning_rate": 1.5,
+    "max_depth": 4,
+    "max_iter": 800,
+    "min_samples_leaf": 25
+   }
+  }
+ },
+ "stage1_selected": {
+  "interior_optimum": true,
+  "key": "lr1.0_it800",
+  "settings": {
+   "learning_rate": 1.0,
+   "max_depth": 4,
+   "max_iter": 800,
+   "min_samples_leaf": 25
+  }
+ },
+ "stage2_capacity": {
+  "centre": {
+   "2014": 4.1782,
+   "2017": 4.1324,
+   "2020": 3.4544,
+   "_it": 800,
+   "_lr": 1.0,
+   "fit_s": 12.4,
+   "mean": 3.9217,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167,
+   "settings": {
+    "learning_rate": 1.0,
+    "max_depth": 4,
+    "max_iter": 800,
+    "min_samples_leaf": 25
+   }
+  },
+  "depth3_leaf25": {
+   "2014": 4.1868,
+   "2017": 4.1321,
+   "2020": 3.4724,
+   "_it": 800,
+   "_lr": 1.0,
+   "mean": 3.9304,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167,
+   "settings": {
+    "learning_rate": 1.0,
+    "max_depth": 3,
+    "max_iter": 800,
+    "min_samples_leaf": 25
+   }
+  },
+  "depth4_leaf15": {
+   "2014": 4.1809,
+   "2017": 4.1419,
+   "2020": 3.4531,
+   "_it": 800,
+   "_lr": 1.0,
+   "mean": 3.9253,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167,
+   "settings": {
+    "learning_rate": 1.0,
+    "max_depth": 4,
+    "max_iter": 800,
+    "min_samples_leaf": 15
+   }
+  },
+  "depth4_leaf40": {
+   "2014": 4.1756,
+   "2017": 4.1421,
+   "2020": 3.4506,
+   "_it": 800,
+   "_lr": 1.0,
+   "mean": 3.9228,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167,
+   "settings": {
+    "learning_rate": 1.0,
+    "max_depth": 4,
+    "max_iter": 800,
+    "min_samples_leaf": 40
+   }
+  },
+  "depth5_leaf25": {
+   "2014": 4.2129,
+   "2017": 4.1457,
+   "2020": 3.4688,
+   "_it": 800,
+   "_lr": 1.0,
+   "mean": 3.9425,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167,
+   "settings": {
+    "learning_rate": 1.0,
+    "max_depth": 5,
+    "max_iter": 800,
+    "min_samples_leaf": 25
+   }
+  }
+ },
+ "store_md5": "fb640ca0baf92bbb122b1ad7e25c5a88",
+ "version": "arm2-select/1"
+}
