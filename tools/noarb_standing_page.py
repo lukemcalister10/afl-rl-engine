@@ -220,8 +220,14 @@ def main():
         'config': a.config, 'as_of_round': a.as_of_round,
         'generated_at': time.strftime('%Y-%m-%d %H:%M UTC', time.gmtime()),
     })
+    # SELF-CONTAINED DELIVERY: the frozen template links _base.css by relative path, which never
+    # loads when the page is viewed as a single file. Inline the stylesheet VERBATIM — the layout
+    # law is untouched (same bytes, different transport).
+    css = open(os.path.join(REPO, 'ui/templates/_base.css')).read()
+    html = html.replace('<link rel="stylesheet" href="_base.css">',
+                        '<style>\n%s\n</style>' % css)
     open(a.out, 'w').write(html)
-    print('wrote %s (%d bands rows, %d arms rows)' % (a.out, len(bands), len(arms)))
+    print('wrote %s (%d bands rows, %d arms rows, css inlined)' % (a.out, len(bands), len(arms)))
 
 
 if __name__ == '__main__':

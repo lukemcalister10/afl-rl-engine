@@ -2,7 +2,37 @@
      docs/evidence/assembly_2026-08-19/ASSEMBLY_NOARB.html. Seats inject data, never layout.
      TWO row blocks: the per-band cohort table, and the arm-by-arm comparison. -->
 <meta charset="utf-8"><title>THE NO-ARB TABLES — THE WITH-NET CANDIDATE 3167cba6 (Arm 2 + safety net)</title>
-<link rel="stylesheet" href="_base.css">
+<style>
+/* ui/templates/_base.css — THE ONE STYLESHEET FOR ALL FIVE OWNER-FACING PAGES.
+   Extracted verbatim in structure from the canonical assembly-era pages of 2026-08-19
+   (docs/evidence/assembly_2026-08-19/*.html). A seat NEVER edits this file to make one page
+   look different; that is the layout law. If a page needs a rule this file does not have,
+   the rule belongs here, applied to every page, or the page does not need it. */
+:root{--bg:#fff;--fg:#111;--mut:#666;--line:#d8d8d8;--hd:#f2f2f2;--acc:#1a5fb4;--up:#0a7d32;--dn:#b3261e}
+@media(prefers-color-scheme:dark){:root{--bg:#14161a;--fg:#e8e8e8;--mut:#9aa0a6;--line:#2c3038;--hd:#1c1f25;--acc:#7aa7e8;--up:#5fd07f;--dn:#ef9a93}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;margin:0;padding:20px}
+h1{font-size:20px;margin:0 0 4px}
+h2{font-size:15px;margin:22px 0 6px;color:var(--acc)}
+.sub{color:var(--mut);max-width:70em;margin-bottom:14px}
+.note{border-left:3px solid var(--acc);background:color-mix(in srgb,var(--acc) 7%,transparent);padding:10px 14px;margin:14px 0;max-width:70em;border-radius:0 4px 4px 0}
+.wrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;max-width:100%}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:13px}
+th,td{padding:5px 9px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+thead th{background:var(--hd);position:sticky;top:0;cursor:pointer;user-select:none;font-weight:600}
+thead th:hover{color:var(--acc)}
+tbody tr:hover{background:color-mix(in srgb,var(--acc) 6%,transparent)}
+.u{color:var(--up)}.d{color:var(--dn)}
+.tot{font-weight:600}
+code{background:var(--hd);padding:1px 5px;border-radius:3px;font-size:12px}
+.k{color:var(--mut);font-size:12px}
+/* THE STAMP — every page carries the identity of the tree that produced it. Not decoration:
+   a page without it cannot be told apart from a page built off a different board. */
+.stamp{margin-top:20px;padding-top:10px;border-top:1px solid var(--line);color:var(--mut);font-size:12px}
+/* An EXPLICIT, DECLARED absence (slots.ABSENT). Deliberately not a dash — see slots.py. */
+.absent{color:var(--mut);opacity:.55}
+
+</style>
 <h1>THE NO-ARB TABLES — THE CANDIDATE</h1>
 <div class="sub">THE WITH-NET CANDIDATE 3167cba6 (Arm 2 + safety net) against the live board 82fcd8bb. A group is fairly priced if it appreciates between 0% and +14% over its first year — below 0% you could sell at draft day and buy back cheaper; above +14% you could buy at draft day and beat the cost of carry. Every breaching cell is scored on your own path test; every raw year is printed. * thin cell · ** very thin.</div>
 <div class="note">Your standing presentation ruling applies: the candidate and the live reference only — no historical progress boards on this page.</div>
@@ -45,4 +75,4 @@
 <tr><td>PDN</td><td>33</td><td>-45.99%</td><td>-41.80%</td><td>-4.19%</td><td>SELL-SIDE RED → SELL-SIDE RED</td></tr>
 </tbody>
 </table></div>
-<div class="stamp">board <code>3167cba643a6b16e5ef5d904d8957fcd</code> &middot; store <code>fb640ca0baf92bbb122b1ad7e25c5a88</code> &middot; engine <code>572b823e8796675fe150d9b082961171</code> &middot; config <code>29fdfd1e1447</code> &middot; as-of round 24 &middot; built 2026-08-25 10:16 UTC</div>
+<div class="stamp">board <code>3167cba643a6b16e5ef5d904d8957fcd</code> &middot; store <code>fb640ca0baf92bbb122b1ad7e25c5a88</code> &middot; engine <code>572b823e8796675fe150d9b082961171</code> &middot; config <code>29fdfd1e1447</code> &middot; as-of round 24 &middot; built 2026-08-25 10:18 UTC</div>
