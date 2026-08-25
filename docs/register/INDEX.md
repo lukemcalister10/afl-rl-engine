@@ -1,8 +1,9 @@
 <!-- GENERATED-ONLY — regenerate: python3 tools/seat/pen.py index ; assert current: python3 tools/seat/pen.py verify -->
 # REGISTER ADDRESS INDEX — generated
 
-Newest entry: **v852**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
+Newest entry: **v853**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
 
+- **v853** (2026-08-25) — `docs/register/entries/v853.md` — **THE PACKET IS FULLY RULED — the landing is unblocked.** OWNER WORDS (2026-08-25, verbatim): **"Scaled on the safety net"** (D2: the POSITI
 - **v852** (2026-08-25) — `docs/register/entries/v852.md` — **TWO PACKET DECISIONS ARE RULED — D1 ADOPT and D5 COMMISSION — and the smoothing proposal goes to the owner on the repaired in-band candida
 - **v851** (2026-08-25) — `docs/register/entries/v851.md` — **THE CURVE-SMOOTHING STUDY IS FILED (pre-ruling), THE FADE MACHINERY IS RECONCILED TO THE CALIBRATION, AND THE OWNER RULES THE ACCRUAL ASYM
 - **v850** (2026-08-25) — `docs/register/entries/v850.md` — **THE PACKET IS DELIVERED AND THE OWNER'S VERIFY-FIRST CENSURE IS ANSWERED WITH TWO VERIFICATION SEATS — the fade machinery and the pick cur

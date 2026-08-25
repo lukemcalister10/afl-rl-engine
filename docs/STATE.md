@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v852 2026-08-25 · **TWO PACKET DECISIONS ARE RULED — D1 ADOPT and D5 COMMISSION — and the smoothing proposal goes to the owner on the repaired in-band candidate.** OWNER WORDS (2026-08-25, verbatim): **"Yes, adopt the new model"** — D1 RULED: the rebake adopts; board 543bf900 (arm-1 store refresh + exact level rule + age peak 22 + no era weighting + modernized table + condi
+  > # OPEN ITEMS REGISTER · v853 2026-08-25 · **THE PACKET IS FULLY RULED — the landing is unblocked.** OWNER WORDS (2026-08-25, verbatim): **"Scaled on the safety net"** (D2: the POSITION-SCALED ramp — knots 40-45 × pos-bar/77.1, smoothstep, full lift at the scaled upper knot) · **"Exclude mature agers"** (D3: entry-age ≥22 rows OUT of the net — jepson/johnson/henderson/podhajski drop from the mover
 
-- new-form entries under `docs/register/entries/`: 40
+- new-form entries under `docs/register/entries/`: 41
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `6c8f5e63419327659cc337e54f2226af74f0bd5c` |
+| generated at commit | `2fd4986bc0c62dc5626d0c7ff656f4d7453d573f` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

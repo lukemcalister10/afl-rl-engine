@@ -1,3 +1,3 @@
-# OPEN ITEMS REGISTER · v852 2026-08-25 · **TWO PACKET DECISIONS ARE RULED — D1 ADOPT and D5 COMMISSION — and the smoothing proposal goes to the owner on the repaired in-band candidate.** OWNER WORDS (2026-08-25, verbatim): **"Yes, adopt the new model"** — D1 RULED: the rebake adopts; board 543bf900 (arm-1 store refresh + exact level rule + age peak 22 + no era weighting + modernized table + condi
+# OPEN ITEMS REGISTER · v853 2026-08-25 · **THE PACKET IS FULLY RULED — the landing is unblocked.** OWNER WORDS (2026-08-25, verbatim): **"Scaled on the safety net"** (D2: the POSITION-SCALED ramp — knots 40-45 × pos-bar/77.1, smoothstep, full lift at the scaled upper knot) · **"Exclude mature agers"** (D3: entry-age ≥22 rows OUT of the net — jepson/johnson/henderson/podhajski drop from the mover 
 
-(one line per pen; full entry: docs/register/entries/v852.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
+(one line per pen; full entry: docs/register/entries/v853.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
