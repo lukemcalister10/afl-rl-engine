@@ -1,3 +1,3 @@
-# OPEN ITEMS REGISTER · v850 2026-08-25 · **THE PACKET IS DELIVERED AND THE OWNER'S VERIFY-FIRST CENSURE IS ANSWERED WITH TWO VERIFICATION SEATS — the fade machinery and the pick curve are now traced to ground, three supervisor misstatements are corrected on the record, and the sitter-ladder "broken" claim is RETRACTED on the owner's ruling.** THE FINAL CANDIDATE, all owner words locked: board **5
+# OPEN ITEMS REGISTER · v851 2026-08-25 · **THE CURVE-SMOOTHING STUDY IS FILED (pre-ruling), THE FADE MACHINERY IS RECONCILED TO THE CALIBRATION, AND THE OWNER RULES THE ACCRUAL ASYMMETRY.** OWNER WORDS (2026-08-25, verbatim anchors): the smoothing study commissioned ("Please look at the smoothing pass... presenting a candidate against the existing system"; conservation "1% tolerance ok"; the v0 s
 
-(one line per pen; full entry: docs/register/entries/v850.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
+(one line per pen; full entry: docs/register/entries/v851.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)

@@ -1,0 +1,70 @@
+====================================================================================================================================
+ADDENDUM -- THE +5.5% CONSERVATION BREACH, DIAGNOSED
+====================================================================================================================================
+  POST-HOC. Constructed after seeing candidate S. NOT prereg'd. Diagnostics only.
+
+THE MECHANISM, IN THREE NUMBERS
+  1. the hybrid curve entering the smoother is STEEPLY CONVEX at the head:
+       hybrid pick1 3191.2  pick2 2837.8  pick3 2732.7  (pick1 sits 9.3% above the mean of 1-3)
+  2. a CENTERED MOVING AVERAGE IS A LOCAL-CONSTANT SMOOTHER. On a convex, steeply falling head
+     it drags pick 1 DOWN, because every point it borrows -- even after edge replication -- is
+     southern and worth less:
+       pre-anchor head   ORDER 28 3191.1790  ->  CANDIDATE S 3028.7982   = -5.0884%
+  3. the anchor pin pick1 = 3000 then DIVIDES THE WHOLE CURVE BY THAT DEPRESSED HEAD, so the
+     head depression is converted one-for-one into a whole-curve INFLATION:
+       anchor factor 0.940091 -> 0.990492  = +5.3612%   and the plain total moves +5.5109%
+
+  THE TWO ARE THE SAME NUMBER. head move -5.0884%  <->  anchor-factor move +5.3612%
+  The smoothing pass does NOT remove value. It INFLATES the curve, and it does so entirely
+  through the anchor, not through the shape.
+
+THIS IS A KNOWN DEFECT IN THIS ESTATE, WITH A RULED CURE
+  o26b_loclin.py docstring, THE DEFECT (verbatim):
+    "The shipped year-zero aggregator ... is a Gaussian kernel over log(pick) followed by a
+     weighted MEAN -- a LOCAL-CONSTANT estimator. ... At pick 1 every borrowed point is southern
+     and worth less, so the estimate is dragged DOWN (-7.1% measured). ... That is textbook
+     one-sided boundary bias, and a local-constant estimator cannot fix it: it averages the
+     slope instead of fitting it."
+  ORDER 26B-C2 cured that by replacing the local-CONSTANT step with a local-LINEAR one.
+  The 5-point moving average is ITSELF a local-constant smoother, so it RE-INTRODUCES at the
+  head exactly the bias 26B-C2 was ruled in to remove: measured -7.1% then, -5.09% here.
+
+TWO POST-HOC REPAIR VARIANTS
+  variant                                           head    anchor f   plain tot    vs ship%   blocks
+  ORDER 28 (ships)                               3191.18    0.940091     47316.4    +0.0029%        2
+  CANDIDATE S (prereg'd, MA5)                    3028.80    0.990492     49922.5    +5.5109%        2
+  S-LL5  (local-LINEAR 5pt, 26B-C2 logic)        3217.44    0.932418     47229.7    -0.1803%        2
+  S-HOLD1 (ruled MA5, anchor pick held)          3191.18    0.940091     47534.9    +0.4647%        2
+
+  CONSERVATION vs THE 1%% TOLERANCE
+    CANDIDATE S (prereg'd, MA5)                 +5.5109%   BREACH
+    S-LL5  (local-LINEAR 5pt, 26B-C2 logic)     -0.1803%   WITHIN
+    S-HOLD1 (ruled MA5, anchor pick held)       +0.4647%   WITHIN
+
+  THE PLATEAUS AND THE CLIFF, ALL FOUR
+  variant                                         pick3      pick6  3->6 drop   plateaus
+  ORDER 28 (ships)                               2569.0     1319.1     -48.7%          2
+  CANDIDATE S (prereg'd, MA5)                    2587.5     1669.6     -35.5%          2
+  S-LL5  (local-LINEAR 5pt, 26B-C2 logic)        2435.8     1571.7     -35.5%          2
+  S-HOLD1 (ruled MA5, anchor pick held)          2455.8     1584.6     -35.5%          2
+    S-LL5 blocks: 8-10 (n=3), 17-20 (n=4)
+    S-HOLD1 blocks: 8-10 (n=3), 17-20 (n=4)
+
+  A1 / A3 on both variants: S-LL5 A1=True A3=True   S-HOLD1 A1=True A3=True
+
+  PER-PICK, ALL FOUR (headline picks)
+  variant                                           1       2       3       4       5       6       7      10      13      15      20      25      30      40      50      64
+  shipped integer curve                          3000    2668    2569    2239    1804    1322    1321    1318    1182     815     810     671     607     479     274     179
+  ORDER 28 float                                 3000    2668    2569    2239    1804    1319    1319    1319    1182     812     812     671     607     479     274     179
+  CANDIDATE S (MA5)                              3000    2840    2587    2203    1903    1670    1469    1404    1201     941     860     717     638     502     291     190
+  S-LL5  (local-LINEAR 5pt, 26B-C2 logic)        3000    2733    2436    2074    1792    1572    1383    1322    1131     886     810     675     601     472     274     178
+  S-HOLD1 (ruled MA5, anchor pick held)          3000    2695    2456    2091    1806    1585    1394    1333    1140     893     816     681     606     476     276     180
+
+READING
+  * The breach is NOT loss of value -- the curve INFLATES. The owner's stated fear ("shouldn't
+    remove total value") is not what happened; the failure is in the opposite direction, and it
+    is still outside the 1% band, so it is reported as a breach.
+  * The breach is entirely an ANCHOR artifact. Shape-wise the smoothing does what was asked.
+  * S-HOLD1 keeps the ruled MA5 and the ruled pin, cures the breach to +0.4647%, and still removes
+    the cliff and most of the plateau. IT IS THE VARIANT WORTH PREREG'ING NEXT -- but it has NOT
+    been prereg'd, and this seat does not present it as a candidate.
