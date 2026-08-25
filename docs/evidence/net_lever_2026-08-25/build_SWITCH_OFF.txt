@@ -1,7 +1,2 @@
-Traceback (most recent call last):
-  File "/home/user/afl-rl-engine/tools/landing/_build_child.py", line 41, in <module>
-    res = m._run_build(OVER, rl_fv=os.path.join(REPO, 'engine', 'forward_valuation'),
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/user/afl-rl-engine/session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py", line 125, in _run_build
-    env.update(env_overrides or {})
-ValueError: dictionary update sequence element #0 has length 1; 2 is required
+BUILD SWITCH_OFF   mode=dev       rc=0 board_md5=543bf900e3e7538bc75214881edc7733  (1034.6s)
+  staging removed: /home/claude/fvprov_cdl37a9a

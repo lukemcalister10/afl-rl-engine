@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_30746/sandbox
+  tree      : /tmp/landing_selftest_3738/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 82fcd8bb1e552b927299b5702122e321
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,12 +9,12 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_REPO, RL_VENV
-build-lock: HELD by land-lever-31668 (pid 31668) — single writer for the shared workspace.
-base commit        7675434e5424e802438d80a9958cae9d0d358a81
+build-lock: HELD by land-lever-4726 (pid 4726) — single writer for the shared workspace.
+base commit        7092f57d9f42e49021bf41e4500497891538a64e
 board pin (before) 82fcd8bb1e552b927299b5702122e321
 store pin (before) fb640ca0baf92bbb122b1ad7e25c5a88
 restore point      64 carrier(s) captured, 64 present on disk
-    [preflight OK  0.08s]
+    [preflight OK  0.06s]
 
 --- STEP 1/10  build_proofs   bare build, predicted identity, switch leg, day-0 ---
 build         rc=0 board=82fcd8bb1e552b927299b5702122e321  (0.0s)
@@ -55,12 +55,12 @@ WRITER 2: the bake-lane identities restamp_dynamic does not touch
   contract_sha256             d059faa92a20 -> d059faa92a20
   frozen fields asserted unmoved: 10 checked, 0 moved
 RE-STAMPED, re-read, and release_contract.py check PASSES.
-    [contract OK  0.10s]
+    [contract OK  0.09s]
 
 --- STEP 5/10  sibling        the balanced sibling, rebuilt and reconciled if moved ---
 verify BEFORE : ok=True balanced=8838f4b3ed50 fails=0
 the sibling is CURRENT — nothing to reconcile, and this step writes nothing.
-    [sibling OK  0.16s]
+    [sibling OK  0.14s]
 
 --- STEP 6/10  ui             ALL SIX UI writers, and the identity read back out ---
 *** FAULT INJECTED at step 'ui': stale_ownership_mirror — WRITER 5 never runs and the shipped ownership mirror keeps a foreign store pin — the live ownership lane ships SWITCHED OFF, silently
@@ -85,7 +85,7 @@ WRITER 4/6: ui/tools/rebuild_movers_derived.py  (points / values / model_changes
   drift guard: derived blocks OK — committed == rebuilt (4237736 bytes, latest report R24)
   shipped model_changes == live-derived: 12 boundar(ies), EQUAL  (the F-10 predicate holds)
 WRITER 5/6: SKIPPED BY FAULT INJECTION — the mirror keeps the pin of a store this landing is replacing.
-    [ui FAILED  2.22s]
+    [ui FAILED  1.93s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'ui'
@@ -105,12 +105,12 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.08s  OK
+    preflight          0.06s  OK
     build_proofs       0.01s  OK
     pins               0.02s  OK
     lineage            0.00s  OK
-    contract           0.10s  OK
-    sibling            0.16s  OK
-    ui                 2.22s  FAIL
-    TOTAL              2.59s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_31668
+    contract           0.09s  OK
+    sibling            0.14s  OK
+    ui                 1.93s  FAIL
+    TOTAL              2.25s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_4726

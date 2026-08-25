@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_30746/sandbox
+  tree      : /tmp/landing_selftest_3738/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 82fcd8bb1e552b927299b5702122e321
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,17 +9,17 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_REPO, RL_VENV
-build-lock: HELD by land-lever-31362 (pid 31362) — single writer for the shared workspace.
-base commit        7675434e5424e802438d80a9958cae9d0d358a81
+build-lock: HELD by land-lever-4421 (pid 4421) — single writer for the shared workspace.
+base commit        7092f57d9f42e49021bf41e4500497891538a64e
 board pin (before) 82fcd8bb1e552b927299b5702122e321
 store pin (before) fb640ca0baf92bbb122b1ad7e25c5a88
 restore point      64 carrier(s) captured, 64 present on disk
-    [preflight OK  0.09s]
+    [preflight OK  0.07s]
 
 --- STEP 1/10  build_proofs   bare build, predicted identity, switch leg, day-0 ---
 *** FAULT INJECTED at step 'build_proofs': wrong_board — the build reports a board that is not the prereg prediction
 build         rc=0 board=00000000000000000000000000000001  (0.0s)
-    [build_proofs FAILED  0.02s]
+    [build_proofs FAILED  0.01s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'build_proofs'
@@ -40,7 +40,7 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.09s  OK
-    build_proofs       0.02s  FAIL
-    TOTAL              0.11s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_31362
+    preflight          0.07s  OK
+    build_proofs       0.01s  FAIL
+    TOTAL              0.08s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_4421
