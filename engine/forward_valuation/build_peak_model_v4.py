@@ -23,7 +23,46 @@ from sklearn.ensemble import HistGradientBoostingRegressor
 MA.P_HOOK=None; MA.PROD_GATE='off'
 allp=[p for p in MA.data if MA.GRP.get(p['pos'])]
 POSI={'MID':0,'SD':1,'SF':2,'KPD':3,'KPF':4,'RUCK':5}
-_BUST_PATH='/home/claude/rl_workspace/rl_after/bust_prior_table.json'   # L4 fix (2): where bootstrap.sh copies it
+# ---- OUTPUT ROOTS (REBAKE ARM 1, 2026-08-24 — ruled at register v831/v833: "fix build_peak_model_v4's
+#      two output paths"). BOTH blind design studies spent most of their forensic budget on the same
+#      embarrassing detail: THIS SCRIPT ALREADY WRITES EXACTLY THE RIGHT PROVENANCE STAMP, and writes it
+#      to /home/claude/rl_workspace/rl_after/ — outside the repository, not seeded in a fresh container,
+#      where nothing can read it, assert it, or commit it (study A §3.5 "The sibling's stamp does not
+#      exist to read"; study B M-17). The two paths are training_store_stamp.json and
+#      age_source_census.json. They are now REPO-ANCHORED: they land in <RL_REPO>/data/model_provenance/,
+#      beside the estate, where boot_guard and the release manifest can reach them.
+#      _ARM_OUT (RL_ARM1_OUT) redirects the whole emission set — model, snapshot, stamp and census — to a
+#      CANDIDATE directory, so a candidate can be built without overwriting a pinned live artifact.
+#      UNSET reproduces the shipped emission targets for the pickle and the snapshot exactly.
+#      REBAKE ARM 2 (2026-08-24) GENERALISES THE NAME RATHER THAN ADDING A SECOND RESOLVER: RL_ARM2_OUT
+#      is read at the SAME site with the SAME meaning, so each arm can emit its own candidate set without
+#      a per-arm code path accumulating here. Both are PATH vars (config_manifest.INFRA_ALLOW class):
+#      they name WHERE an artifact is written, carry no model semantics, and are not in the value hash,
+#      so config_sha256 does not move. UNSET (either name) still reproduces the shipped emission targets.
+_ARM_OUT=os.environ.get('RL_ARM2_OUT') or os.environ.get('RL_ARM1_OUT') or None
+def _repo_out(name):
+    """Where a PROVENANCE artifact goes. Candidate dir if one is declared, else the repo (never the
+    out-of-repo workspace this script wrote to for its whole life), else the legacy workspace path as a
+    last resort so the script still runs with no RL_REPO bound."""
+    if _ARM_OUT: return os.path.join(_ARM_OUT,name)
+    _r=os.environ.get('RL_REPO') or os.environ.get('CLAUDE_PROJECT_DIR')
+    if _r:
+        _d=os.path.join(_r,'data','model_provenance'); os.makedirs(_d,exist_ok=True)
+        return os.path.join(_d,name)
+    return '/home/claude/rl_workspace/rl_after/'+name
+def _art_out(name,shipped):
+    """Where a FITTED artifact goes. Candidate dir if declared, else the shipped path, byte-for-byte."""
+    return os.path.join(_ARM_OUT,name) if _ARM_OUT else shipped
+if _ARM_OUT: os.makedirs(_ARM_OUT,exist_ok=True)
+# bust_prior_table is an INPUT. Repo-anchored first (the committed single source), then the workspace
+# copy bootstrap.sh seeds — L4 fix (2) kept, with the checkout ahead of the mutable shared workspace.
+_BUST_PATH=next((_p for _p in (
+    os.path.join(os.environ.get('RL_REPO') or os.environ.get('CLAUDE_PROJECT_DIR') or '',
+                 'engine','rl_after','bust_prior_table.json'),
+    '/home/claude/rl_workspace/rl_after/bust_prior_table.json') if _p and os.path.exists(_p)), None)
+if _BUST_PATH is None:
+    raise SystemExit('build_peak_model_v4 HALT: bust_prior_table.json not found under <RL_REPO>/engine/'
+                     'rl_after/ or the seeded workspace — it is a TRAINING INPUT to this model.')
 PT=json.load(open(_BUST_PATH))
 SEASON=22  # reference full home-and-away
 def bp(pos,pick): return PT[pos][str(min(max(int(round(pick)),1),70))]
@@ -96,7 +135,8 @@ for pos in ['MID','SD','SF','KPD','KPF','RUCK']:
     print('  %-9s actual %.1f draft-proj %.1f (%+.0f%%)'%(pos,act,dr,100*(dr-act)/max(act,1)))
 spec=[p for p in allp if MA.effpk(p)>20 and 2006<=MA.debut(p)<=2016 and sum(x['games'] for x in p['scoring'] if x['year']<=MA.debut(p)+2)>=20 and best([x for x in p['scoring']],3)]
 print('Kondogiannis bias: %+.1f'%np.mean([(best([x for x in p['scoring']],3))-m.predict([feats(p,MA.debut(p)+2)])[0] for p in spec]))
-pickle.dump({'model':m,'fnames':['logPVC','effpk','pos','best2','best1','recent_gw','last_avg','last_g','games','nss','maxg','early','slope','yrs_since_best','age','T','bust_prior']},open('/home/claude/rl_workspace/forward_valuation/peak_model_v4.pkl','wb'))
+_PKL_SRC=_art_out('peak_model_v4.pkl','/home/claude/rl_workspace/forward_valuation/peak_model_v4.pkl')
+pickle.dump({'model':m,'fnames':['logPVC','effpk','pos','best2','best1','recent_gw','last_avg','last_g','games','nss','maxg','early','slope','yrs_since_best','age','T','bust_prior']},open(_PKL_SRC,'wb'))
 # CO-EMIT the TRAIN-TIME PVC snapshot (Phase-4 disposition, DPP-strip build). The logPVC feature above is
 # np.log(MA.PVC[ep]); inference (rl_model._v4_init) must read the SAME PVC as a FROZEN feature to break the
 # SCALE<->PVC<->peak_est bootstrap cycle. pvc_snapshot.json is therefore a DERIVED artifact of THIS build, not a
@@ -112,13 +152,15 @@ assert _pvc_keys==list(range(1,66)), (
     'PVC domain moved: expected the ruled 1..64 + pool index 65 (65 keys), measured %d keys %r..%r'
     % (len(_pvc_keys), _pvc_keys[:3], _pvc_keys[-3:]))
 _snap={str(k):float(MA.PVC[k]) for k in _pvc_keys}
-_snap_path='/home/claude/rl_workspace/rl_after/pvc_snapshot.json'
-_pkl_src='/home/claude/rl_workspace/forward_valuation/peak_model_v4.pkl'
-_pkl_dst='/home/claude/rl_workspace/rl_after/peak_model_v4.pkl'
+_snap_path=_art_out('pvc_snapshot.json','/home/claude/rl_workspace/rl_after/pvc_snapshot.json')
+_pkl_src=_PKL_SRC
+_pkl_dst=_art_out('peak_model_v4.pkl','/home/claude/rl_workspace/rl_after/peak_model_v4.pkl')
 try: _os.chmod(_snap_path, _st.S_IWUSR|_st.S_IRUSR|_st.S_IRGRP|_st.S_IROTH)
 except Exception: pass
 json.dump(_snap, open(_snap_path,'w'))
-try: _sh.copyfile(_pkl_src,_pkl_dst)   # place the pkl where rl_model actually reads it (co-located tier-2 caches)
+try:
+    if _os.path.abspath(_pkl_src)!=_os.path.abspath(_pkl_dst):
+        _sh.copyfile(_pkl_src,_pkl_dst)   # place the pkl where rl_model actually reads it (co-located tier-2 caches)
 except Exception: pass
 
 # ---- THE AGE-SOURCE CENSUS, EMITTED AND COUNTED (hard L4 acceptance) ----------------------------
@@ -163,7 +205,7 @@ _census_doc={
                             'pct':round(100.0*_cen['FALLBACK']/_train_total,3) if _train_total else None,
                             '_note':'must fall by EXACTLY the number of rows the DOB courier writes'},
 }
-_census_path='/home/claude/rl_workspace/rl_after/age_source_census.json'
+_census_path=_repo_out('age_source_census.json')   # OUTPUT PATH 1 of 2, now in-repo (ARM 1)
 json.dump(_census_doc, open(_census_path,'w'), indent=1, sort_keys=True)
 print('AGE-SOURCE CENSUS: %s = %d of %d training rows (sums OK); fallback %.3f%%'
       % (_cen, _cen_sum, _train_total, 100.0*_cen['FALLBACK']/max(_train_total,1)))
@@ -182,17 +224,24 @@ for _nm,_pth in (('peak_model_v4.pkl',_pkl_dst),('pvc_snapshot.json',_snap_path)
                  ('bust_prior_table.json',_BUST_PATH),('age_source_census.json',_census_path)):
     try: _stamp['artifacts'][_nm]=hashlib.md5(open(_pth,'rb').read()).hexdigest()
     except Exception as _e: _stamp['artifacts'][_nm]='UNREADABLE: %r'%(_e,)
-json.dump(_stamp, open('/home/claude/rl_workspace/rl_after/training_store_stamp.json','w'),
-          indent=1, sort_keys=True)
-print('TRAINING-STORE STAMP: store %s · v0surf %s · gamma %s · %d rows'
-      % (_store_md5[:8], _V0SURF_MD5[:8], MA.GAMMA, _train_total))
-try:
-    import single_source as _SS   # /home/claude/rl_after on sys.path (line 2) -> tier-2 frozen stamp + read-only
-    _SS.stamp_tier2_frozen('pvc_snapshot.json'); _SS.stamp_tier2_frozen('peak_model_v4.pkl')
-    print('co-emitted + tier-2-stamped pvc_snapshot.json (train-time PVC) + peak_model_v4.pkl (read-only)')
-except Exception as _e:
-    _os.chmod(_snap_path, _st.S_IRUSR|_st.S_IRGRP|_st.S_IROTH)
-    print('co-emitted pvc_snapshot.json (train-time PVC, read-only) — %d picks (stamp skipped: %s)'%(len(_snap),_e))
+_stamp_path=_repo_out('training_store_stamp.json')   # OUTPUT PATH 2 of 2, now in-repo (ARM 1)
+json.dump(_stamp, open(_stamp_path,'w'), indent=1, sort_keys=True)
+print('TRAINING-STORE STAMP: store %s · v0surf %s · gamma %s · %d rows -> %s'
+      % (_store_md5[:8], _V0SURF_MD5[:8], MA.GAMMA, _train_total, _stamp_path))
+if _ARM_OUT:
+    # CANDIDATE mode: the tier-2 frozen stamp is the LIVE artifact's seal (it marks the file the engine
+    # loads read-only and records its source md5). A candidate is not that file and must not be sealed as
+    # though it were — the stamp would name a live artifact that this run did not write.
+    print('CANDIDATE emission -> %s (peak_model_v4.pkl + pvc_snapshot.json); tier-2 freeze stamp NOT '
+          'applied: a candidate is not the loaded artifact'%_ARM_OUT)
+else:
+    try:
+        import single_source as _SS   # /home/claude/rl_after on sys.path (line 2) -> tier-2 frozen stamp + read-only
+        _SS.stamp_tier2_frozen('pvc_snapshot.json'); _SS.stamp_tier2_frozen('peak_model_v4.pkl')
+        print('co-emitted + tier-2-stamped pvc_snapshot.json (train-time PVC) + peak_model_v4.pkl (read-only)')
+    except Exception as _e:
+        _os.chmod(_snap_path, _st.S_IRUSR|_st.S_IRGRP|_st.S_IROTH)
+        print('co-emitted pvc_snapshot.json (train-time PVC, read-only) — %d picks (stamp skipped: %s)'%(len(_snap),_e))
 # ===== WIRE-CHECK: do proven guns recover now the current year counts? =====
 MA.BASE_REF=2026; MA.AGE_REF=2026; orig=MA.peak_est
 def pev4(p):

@@ -256,10 +256,19 @@ def assert_boot(label, store_path=None, engine_head_path=None, band_path=None, r
             if _c and os.path.exists(_c):
                 return _c
         return None
-    def _resolve_cm_load():                    # mirror wire_redesign.build() cache precedence
-        _trees = os.environ.get('RL_PRIOR_TREES', '400')
-        _cache = '/home/claude/cm_%s.pkl' % _trees
-        return _cache if os.path.exists(_cache) else None
+    def _resolve_cm_load():                    # mirror wire_redesign.cm_load_path() precedence, byte-for-byte
+        # REBAKE ARM 1 2026-08-24: wire_redesign gained RL_CM_PKL (a PATH var, INFRA_ALLOW) so a candidate
+        # board can read a candidate band without overwriting the pinned cache. This mirror MUST move with
+        # it — the block's own rule, and the register-item-91 hole if it does not. UNSET on both sides
+        # reproduces the shipped resolution exactly.
+        # NO FALL-THROUGH, and that is deliberate: an explicitly-set RL_CM_PKL is THE path at BOTH
+        # sites. If it fell through to the pinned cache, a candidate board whose candidate band was
+        # missing would silently price off the LIVE band and call itself a candidate. (This is the
+        # fv_provenance doctrine — "an explicit-but-stale RL_FV therefore HALTS, it is not trusted
+        # blindly" — and it is where this resolver deliberately differs from the q97m one.)
+        _c = (os.environ.get('RL_CM_PKL')
+              or '/home/claude/cm_%s.pkl' % os.environ.get('RL_PRIOR_TREES', '400'))
+        return _c if os.path.exists(_c) else None
     def _resolve_v0surf_load():                # mirror _merged_recover._load_v0surf precedence, byte-for-byte
         # BAKE 2026-08-20 (register v780): the out-of-repo '/home/claude/v0surf.pkl' is REMOVED from the
         # precedence at BOTH sites in the same commit — here and at _merged_recover._load_v0surf. This
@@ -276,8 +285,10 @@ def assert_boot(label, store_path=None, engine_head_path=None, band_path=None, r
                 '$RL_V0SURF_PKL -> <repo>/data/v0surf.pkl  (BAKE 2026-08-20: the out-of-repo shadow removed)',
                 'the engine would FIT the shipped V0 pick-curve surface at build time (the _iso_dec weather the freeze removed)'),
                ('band', exp.get('band'), _resolve_cm_load(),
-                '/home/claude/cm_%s.pkl (RL_PRIOR_TREES)' % os.environ.get('RL_PRIOR_TREES', '400'),
-                'the engine would RETRAIN a non-canonical cm forest (DYNAMIC_ARCH, not bit-stable)'))
+                '$RL_CM_PKL -> /home/claude/cm_%s.pkl (RL_PRIOR_TREES)' % os.environ.get('RL_PRIOR_TREES', '400'),
+                'the engine HALTS at wire_redesign.build() (REBAKE ARM 1 2026-08-24: the silent-refit-'
+                'on-cache-miss fallback that would have RETRAINED a non-canonical, non-bit-stable cm '
+                'forest here is DELETED)'))
     for _fld, _pin, _lp, _prec, _elsemsg in _LOADED:
         if _pin is None:
             continue

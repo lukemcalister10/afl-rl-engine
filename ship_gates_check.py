@@ -829,6 +829,12 @@ except Exception as ex:
 # 6-game production value. Monotone-in-evidence clause UNCHANGED (covers the 9->10g dip separately).
 # DECLARED smoothness thresholds pending ratification: no single 0->6 step > 50% of the total 0->6 rise T,
 # AND cumulative rise by 3g >= 25% of T (anti-flat-start). Prior "seam 10%/3x" shorthand superseded.
+# SCOPE EXCLUSION, recorded here per P11 (ORDER 45 landing, 2026-08-25, PREREG_ORDER45.md SS7 NEW-2):
+# this gate's synthetic probe is KEYLESS, and the ORDER 45 safety net returns keyless rows at the base
+# price — so B6 measures the BASE ramp and is STRUCTURALLY BLIND to the net's own scope-boundary step at
+# the >=6-games banked-level edge (the owner-ruled D2/D3 scope; leake -253 one game from it). A B6 PASS
+# does NOT cover ORDER 45; the net's boundary steps are covered by the prereg's R2 DECLARATION with
+# measured margins, not by any instrument in this suite.
 try:
     def ramp_p(gm):
         # top-level 'games' carried per the M3 wiring-time note (D4 backtest, m3_design §1): the age pin

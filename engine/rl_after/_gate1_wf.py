@@ -11,13 +11,27 @@ MA=ns['MA']; cp=ns['cp']; PR=ns['PR'];
 def setmodels(cm,q97):
     ns['cm']=cm; ns['q97m']=q97   # swap the trained/leaky part; pole(_POLE) + ISO stay in-sample structural priors
 def build_q97(pool):
-    X,yy=[],[]
+    """The gate's own q97 leg. REBAKE ARM 2: study B section 4.1 records that this harness HARD-CODES the
+    incumbent construction, and that a rebake "needs the hyperparameters changed in all four places at
+    once" — otherwise B2 certifies a model that is not the one under test. It now reads the SAME bound
+    design contract cp.build_cond_prior reads, so IS and WF legs stay MATCHED (which is what makes the
+    gap leakage rather than a capacity difference) and the gate tests the shipped construction."""
+    X,yy,YR=[],[],[]
     for p in pool:
         if cp.debutyr(p)>2021 or not (p.get('pick') or p.get('_ft')): continue
         d0=cp.debutyr(p)-1; last=max([x['year'] for x in p['scoring']]+[d0])
-        for Y in range(d0,min(last,2026)+1): X.append(cp._feat(p,Y)); yy.append(cp.fwd_best3_from(p,Y,2026))
+        for Y in range(d0,min(last,2026)+1):
+            X.append(cp._feat(p,Y)); yy.append(cp.fwd_best3_from(p,Y,2026)); YR.append(Y)
+    X=np.array(X); yy=np.array(yy)
+    _d=cp.design()
+    if _d is not None:
+        import exact_monotone as EM
+        EM.selftest_or_halt()
+        return EM.stamp(EM.make_estimator(0.97,X.shape[1],bool(_d.get('age_hill')),_d['hyperparameters'])
+                        .fit(X,yy,sample_weight=EM.recency_weight(np.array(YR),
+                                                                  _d.get('recency_halflife_years'),2026)),_d)
     from sklearn.ensemble import GradientBoostingRegressor
-    return GradientBoostingRegressor(loss='quantile',alpha=0.97,n_estimators=150,max_depth=4,learning_rate=0.05,min_samples_leaf=25,random_state=0).fit(np.array(X),np.array(yy))
+    return GradientBoostingRegressor(loss='quantile',alpha=0.97,n_estimators=150,max_depth=4,learning_rate=0.05,min_samples_leaf=25,random_state=0).fit(X,yy)
 def trunc(p,T):
     d0=cp.debutyr(p)-1; q=copy.deepcopy(p); q['scoring']=[x for x in p['scoring'] if x['year']<=d0+T]; q['_pos_now']=None; q['_fut']=[]
     return q,d0+T

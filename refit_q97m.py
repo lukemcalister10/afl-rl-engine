@@ -51,9 +51,16 @@ def _md5_bytes(b): return hashlib.md5(b).hexdigest()
 def _md5_file(p):
     with open(p, 'rb') as f: return _md5_bytes(f.read())
 
-def _engine_Xy():
+def _engine_Xy(with_meta=False):
     """Fit-inputs, straight from the engine: exec _merged_recover.py (which now LOADS q97m) and read its X/yy.
-    Uses the pinned workspace copy the build uses, so the refit trains on the identical pool the freeze did."""
+    Uses the pinned workspace copy the build uses, so the refit trains on the identical pool the freeze did.
+
+    REBAKE ARM 2: the engine's X is built through cp._feat, so if the LOADED BAND declares the design
+    contract (exact_monotone), X already carries the 12-feature age-hill layout and the returned spec says
+    so. That is the point of binding the contract at the artifact rather than at a switch — the ceiling
+    cannot be fitted on a different feature vector from the band it will be composed with, because it is
+    literally reading the band's own bound feature builder. with_meta also returns the per-row as-of YEAR,
+    which the window-anchored recency weight needs and which the engine's own loop discards."""
     ws = os.environ.get('RL_WS', '/home/claude/rl_workspace/rl_after')
     eng = os.path.join(ws, '_merged_recover.py')
     if not os.path.exists(eng):
@@ -63,14 +70,49 @@ def _engine_Xy():
     try:
         os.chdir(ws)
         g = {}
+        # SPLIT AT THE q97m LOAD, NOT AT THE "=== AFTER" PRINT (rebake ARM 2 correction). X/yy are fully
+        # built at _merged_recover.py:58-64, BEFORE q97m=_load_q97m(). Exec'ing past that point made THE
+        # REFIT ENTRY POINT REQUIRE A LOADABLE q97m IN ORDER TO PRODUCE ONE — a latent circularity that
+        # nobody hit while the artifact existed, and that would have blocked the one legitimate path to
+        # regenerate it the moment it did not. Stopping at the load also means the ARM 2 artifact-contract
+        # halts (which compare the band's spec to the CEILING'S) are not reached while the ceiling is
+        # precisely what is being fitted. The L4 membership tripwire at :65-75 still runs: it is above the
+        # split. Strictly less code executes than before, and X/yy are identical.
+        src = open(eng).read()
+        cut = src.index('q97m=_load_q97m()')
         with contextlib.redirect_stdout(io.StringIO()):
-            exec(open(eng).read().split('print("=== AFTER')[0], g)
-        return np.array(g['X']), np.array(g['yy'])
+            exec(src[:cut], g)
+        X, yy = np.array(g['X']), np.array(g['yy'])
+        if not with_meta:
+            return X, yy
+        cp = g['cp']
+        # the as-of year per row, re-enumerated by the engine's OWN row rule (_merged_recover.py:60-64),
+        # read out of the exec'd globals so it cannot drift from the loop that built X.
+        yr = []
+        for p in g['pool']:
+            if cp.debutyr(p) > 2021 or not (p.get('pick') or p.get('_ft')) or (g['_L4_MSD'] and p.get('type') == 'MSD'):
+                continue
+            d0 = cp.debutyr(p) - 1
+            last = max([x['year'] for x in p['scoring']] + [d0])
+            yr.extend(range(d0, min(last, 2026) + 1))
+        assert len(yr) == X.shape[0], 'q97m row re-enumeration %d != engine X %d' % (len(yr), X.shape[0])
+        return X, yy, np.array(yr, int), cp.design()
     finally:
         os.chdir(cwd0)
 
-def _fit(X, yy):
-    return GradientBoostingRegressor(**Q97M_KW).fit(X, yy)
+def _fit(X, yy, spec=None, year=None):
+    """The incumbent GradientBoostingRegressor, or — when a design contract is bound — the exact-monotone
+    construction with the CEILING'S OWN out-of-sample-selected settings. The ceiling and the band select
+    separately (they are different fits on different row populations: q97m excludes MSD and carries no T1)
+    but they must share the FEATURE contract, which specs_agree asserts at load."""
+    if spec is None:
+        return GradientBoostingRegressor(**Q97M_KW).fit(X, yy)
+    sys.path.insert(0, os.environ.get('RL_FV') or os.path.join(_repo_root(), 'engine', 'forward_valuation'))
+    import exact_monotone as EM
+    EM.selftest_or_halt()                       # FB4 — before any fit, here as at every other fit site
+    w = EM.recency_weight(year, spec.get('recency_halflife_years'), 2026) if year is not None else None
+    m = EM.make_estimator(0.97, X.shape[1], bool(spec.get('age_hill')), spec['hyperparameters'])
+    return EM.stamp(m.fit(X, yy, sample_weight=w), spec)
 
 def main(argv):
     root = _repo_root()

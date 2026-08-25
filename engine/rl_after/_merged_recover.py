@@ -93,6 +93,57 @@ def _load_q97m():
                      "/home/claude/q97m.pkl, <repo>/data/q97m.pkl). Re-run bootstrap.sh to seed the workspace copy, "
                      "or regenerate via refit_q97m.py at a bake. The engine NEVER fits q97m at build time.")
 q97m=_load_q97m()
+# ==== REBAKE ARM 2 — THE TWO ARTIFACT-CONTRACT HALTS ======================================================
+# The design arm (register v831 D1, "Exact it is.") retires the ORDER 44 read-site ratchet INTO THE FIT.
+# That trade is only sound if two things are true at load, and neither of them is checkable by looking at
+# a file name — both live inside the pickles. So both are asserted here, on entry, and both are proven
+# able to fire (docs/evidence/rebake_arm2_design_2026-08-24/transcripts/nonvacuity_*.txt).
+#
+# (A) COHERENCE. The band and the ceiling must declare the SAME feature contract. They are loaded by two
+#     different resolvers with two different precedences — wire_redesign.cm_load_path() and _load_q97m()
+#     above — and register v834's F7 is exactly what happens when they disagree: a MIXED board (candidate
+#     band + LIVE ceiling) was built, parity-gated, stamped and reported with no verdict anywhere, because
+#     one override was bound and the other was not. A dimension mismatch would raise somewhere deep in
+#     sklearn; a SEMANTIC mismatch (same width, different a*) would not raise at all — it would just price
+#     one model's rows through another model's columns, silently. This HALT closes both.
+# (B) PROTECTION. With the ratchet retired, law 3 is guaranteed by the FIT and by nothing else. An engine
+#     that loads a band which does NOT declare the exact-monotone contract is pricing with neither a fit
+#     guarantee nor a read-site repair — which is strictly worse than the shipped board was. It refuses.
+#     This is the honest consequence of the retirement and it is stated as a halt, not as a comment: the
+#     incumbent artifacts are still perfectly loadable on ARM 1's branch, where the ratchet still stands.
+import sys as _sys
+if W._FV not in _sys.path: _sys.path.insert(0,W._FV)
+import exact_monotone as _EM
+_SPEC_CM=_EM.spec_of(cm); _SPEC_Q=_EM.spec_of(q97m)
+if not _EM.specs_agree(_SPEC_CM,_SPEC_Q):
+    raise SystemExit(
+        "\n============ ARTIFACT COHERENCE HALT (rebake ARM 2) — MIXED BAND/CEILING ============\n"
+        "  The band and the q97 ceiling declare DIFFERENT feature contracts. They are loaded by two\n"
+        "  separate resolvers, so a run that binds one override and not the other silently prices a\n"
+        "  MIXED board — register v834's F7, measured: candidate band + live ceiling built, parity-gated\n"
+        "  and reported with no verdict anywhere.\n"
+        "    band    (%s): %r\n"
+        "    ceiling (%s): %r\n"
+        "  Bind RL_CM_PKL and RL_Q97M_PKL to the SAME artifact set, or point both at the pinned pair.\n"
+        "===================================================================================="
+        %(W.cm_load_path(),_SPEC_CM,os.environ.get('RL_Q97M_PKL') or '<precedence>',_SPEC_Q))
+if _SPEC_CM is None:
+    raise SystemExit(
+        "\n============ LAW-3 PROTECTION HALT (rebake ARM 2) — UNPROTECTED BAND ============\n"
+        "  The loaded band declares NO exact-monotone contract (_rl_design_spec absent), and the ORDER 44\n"
+        "  read-site ratchet has been RETIRED from this engine — forced by study B M-52: _o44_xs() walked\n"
+        "  estimators_, an attribute the design arm's estimator does not have, so 'new estimator + ratchet\n"
+        "  retained' is not a configuration that exists.\n"
+        "  Pricing this band here would enforce law 3 by NEITHER the fit NOR a read-site repair. The\n"
+        "  shipped board's own raw surface carried 23.05%% descending level steps (ARM 1's census); this\n"
+        "  engine would ship all of them straight through.\n"
+        "    band loaded from : %s\n"
+        "  Use an exact-constrained band (tools/rebake/refit_arm2_design.py), or run the incumbent\n"
+        "  artifacts on the branch where the ratchet still stands.\n"
+        "================================================================================"
+        %W.cm_load_path())
+print("REBAKE ARM 2 CONTRACT: band+ceiling agree | %s | a*=%s | %d features | ratchet RETIRED"
+      %(_SPEC_CM['construction'],(_SPEC_CM.get('age_hill') or {}).get('a_star'),_SPEC_CM['n_features']))
 WQ6=np.array([0.18]*5+[0.10]); WQ6/=WQ6.sum(); RECX=[0.30,0.52,0.67,0.82,0.97,1.30]; RECY=[0.54,0.64,0.84,1.00,1.00,1.00]
 midpos=next(r['pos'] for r in MA.data if MA.GRP.get(r.get('pos'))=='MID'); GRPPOS={}
 for r in MA.data:
@@ -365,188 +416,66 @@ def _feat_infer(p,Y):
     oh=[0.0]*len(cp.GROUPS); oh[cp.GIDX[MA.gfut(p)]]=1.0
     ep=min(MA.effpk(p),cp.KMAX); age=cp._age_asof(p,Y)
     ten=eff_ten(p,Y, max(0,Y-(cp.debutyr(p)-1)))             # base = original _feat tenure
-    return oh+[np.log(ep), cp._exposure(p,Y), ten, cp._lvl_eff(p,Y), age]
+    f=oh+[np.log(ep), cp._exposure(p,Y), ten, cp._lvl_eff(p,Y), age]
+    _d=cp.design()                                           # REBAKE ARM 2: bound from the loaded band, wire_redesign.build()
+    if _d is not None and _d.get('age_hill'):
+        return _EM.feature_row(f, _d['age_hill']['a_star'])  # raw age out, u/v in — the SAME transform the fit used
+    return f
 # (inference rebind deferred to AFTER the isotonic guard builds on ORIGINAL features -> proven-flat stays Delta=0)
-# ==== ORDER 44 — THE LEVEL-AXIS BAND MONOTONISER (RL_O44_LVLMONO; KILL-SWITCH; ADOPTED 2026-08-21) ========
-# WHY THIS EXISTS. docs/evidence/trough_diagnosis_2026-08-20/WORKINGS_TROUGH.md established BY PREDICTION —
-# riser locations derived from the tree thresholds ALONE matched the measured sweep 30/37 with every named
-# riser and plateau EXACT, and a blind band-only ranking named two new victims in advance — that the five
-# pinned quantile forests read at conditional_prior.py:164-167 (plus q97m) are PIECEWISE-CONSTANT IN EVERY
-# INPUT BY CONSTRUCTION and carry NO monotonicity constraint on the level feature (`monotonic_cst` is not
-# passed at the fit site). So a player's band can step DOWN on a RISING level. Register v806: LAW 3 (NO
-# CLIFFS) VIOLATION — 44 of 86 thin-evidence rows would be priced HIGHER by some LOWER round-23 score than
-# the one they actually made; kondogiannis +11.2%, dolan +21.6%, hayes +34.8%. Nothing evaluated their score
-# and decided it was bad. They fell off a stair.
+# ==== ORDER 44 — THE LEVEL-AXIS BAND MONOTONISER — RETIRED INTO THE FIT (rebake ARM 2, 2026-08-24) =======
+# WHAT STOOD HERE. RL_O44_LVLMONO and its five modes ('off' / 'ratchet' / 'ratchet+conserve' / 'smooth' /
+# 'smooth+conserve'), the knot reader _o44_xs(), the band expression _o44_rows6(), the plateau midpointer
+# _o44_mid(), the monotone band _o44_band(), the feature memo _O44_MEMO, the knot cache _O44_XS, the
+# suspend flag _O44_SUSPEND and the law-9 conservation constants _O44_C. Adopted 2026-08-21 (register
+# v808), default 'ratchet'. It read the band off the forests at EVERY row and took a componentwise running
+# maximum over every piece of the step surface at or below the row's level, because the shipped forests
+# carried a DESCENDING band on a RISING demonstrated level at 23.05% of all steps (ARM 1's own census, on
+# every board row) — a direct law-3 breach that the fit itself produced.
 #
-# THE PRINCIPLE IS ALREADY WRITTEN IN THIS ENGINE'S OWN HAND. _prod_path (:2944-2962) declares in its own
-# docstring: "the band prior is a stepwise (GBR) surface whose exposure-axis steps ... leave the evidence
-# ramp non-monotone (B6 law: more games at the same rate never worth less)" — and installs a moving average
-# to fix it, ON THE GAMES AXIS ONLY. Same surface, level axis, left raw. The law that was applied there
-# applies here. This dial is that application, and it is done AT THE READ SITE exactly as LEG A already does
-# to iso_corr (:986, "the ratio is non-monotone even though the numerator is") and as _iso_dec /
-# _fit_pick_curve do on the pick axis.
+# WHY IT IS GONE, AND WHY THAT WAS FORCED RATHER THAN CHOSEN. PREREG_STAIRCASE.md section 8 bound its own
+# removal to a rebake MUST-MOVE PROOF: "the rebake is not complete until this dial and its code are gone
+# from _merged_recover.py and the board built without them reproduces the monotone behaviour from the
+# constrained forests alone." Study B M-52 then closed the only alternative: _o44_xs() walked
+#     for _e in np.asarray(_m.estimators_).ravel():
+# and HistGradientBoostingRegressor — the only estimator in the pinned sklearn that accepts monotonic_cst
+# at all (M-18/M-19) — HAS NO estimators_. So "new estimator + read-site ratchet retained" is not a
+# configuration that exists: it dies at load. Keeping any read-site smoother through the estimator swap
+# would mean rewriting the whole knot walker against the NEW estimator's own private internals — a larger
+# internal-API dependency than the four-line loss subclass that makes the fit exact in the first place.
+# The comparison paper's F1 is the record of that adjudication; register v831 D1 is the owner's word on it
+# ("Exact it is."), and this deletion is that word executed.
 #
-# WHAT IT DOES NOT TOUCH — and this is the whole of what makes it BOUNDED rather than a bake. It does NOT
-# edit conditional_prior.py. It does NOT refit anything. cm_400.pkl (34faa865) and data/q97m.pkl (cfdc7321)
-# are Guard-5-pinned frozen artifacts and are READ EXACTLY AS THEY ARE. No pin moves, no re-stamp, no
-# re-certification. FIX 1 — monotonic_cst on feature 9 at the fit — is the permanent repair and it is a
-# BAKE-class act with an unbounded blast radius; it is not this.
+# WHAT REPLACES IT — A PROPERTY, NOT A REPAIR. engine/forward_valuation/exact_monotone.py's GradOnlyPinball
+# disables the post-hoc leaf line search that was overwriting the grower's monotone bounds, so
+# monotonic_cst[9] = +1 is EXACT. The band is now non-decreasing in demonstrated level BECAUSE EVERY TREE
+# IN EVERY FOREST IS, over the whole population, not because a running maximum papered over the steps
+# afterwards. The full-population census V3 is the standing gate on that claim, and it now reads zero at
+# RAW — on the fit itself, with no read-site operator anywhere.
 #
-# NOT A MANIFEST DIAL, ON PURPOSE (the RL_CAPT / RL_ISOFADE / RL_EVW / RL_UNCOMP / RL_ONEMACH kill-switch
-# family; the D8 pattern at :1118+). It is ABSENT from data/model_config.json, so config_manifest.enforce()
-# REJECTS it as an unknown model override in bake/gate/canonical mode and NO CERTIFYING BUILD CAN CARRY IT.
-# THAT PROPERTY IS UNCHANGED BY THE ADOPTION BELOW: the default literal moved, data/model_config.json did
-# NOT, so config_sha256 stays UNMOVED and a canonical build still cannot CARRY this name — it can only
-# ship the baked-in default. The release-contract SEAL does move, because it hashes the identity set and
-# engine_head/board moved; that is the distinction repair 1590a37 had to make and it is kept here.
+# THE MUST-MOVE PROOF IS EVIDENCE, NOT AN ASSERTION. Three boards were built and compared:
+#   (a) the shipped board, incumbent forests + ratchet ON                                     6fd0f7de
+#   (b) the exact-constrained forests + the ratchet STILL ON, in a scratch engine whose knot reader was
+#       generalised to the new estimator's own bin thresholds (four lines, in the evidence tree, never
+#       here)
+#   (c) the exact-constrained forests with this block DELETED — the candidate board
+# (b) == (c), and the ratchet's per-row effect on the constrained artifacts is exactly zero on every board
+# row: a MEASURED no-op before the code was cut. Transcripts and per-row census:
+# docs/evidence/rebake_arm2_design_2026-08-24/mustmove.json and transcripts/mustmove_*.txt.
 #
-# FAIL-CLOSED ON A TYPO (law 2, SILENCE IS A RED). An unrecognised value HALTS. A dial that reads a
-# misspelling as "off" is law 2's failure in dial form: the run produces a board, the board is the base
-# board, and nobody learns that the variant never ran.
+# THE PROTECTION THAT REPLACES THE DIAL. Because law 3 is now carried by the fit alone, this engine REFUSES
+# to price a band that does not declare the exact-monotone contract — the LAW-3 PROTECTION HALT at the
+# artifact-contract block above. The dial could be set to 'off' by anyone; the halt cannot.
 #
-# SCAFFOLDING, AND SAID SO HERE. This monotonises the OUTPUT of a surface whose defect is at the FIT. It is
-# CLASSIFIED FOR RETIREMENT AT THE VARIANT-C REBAKE (owner-scheduled post-R24), and its removal is a rebake
-# MUST-MOVE PROOF: that rebake is not complete until this block is gone and the board built from the
-# CONSTRAINED forests alone reproduces the monotone behaviour without it. PREREG_STAIRCASE.md §8.
-#
-# BAKE 2026-08-21 (register v808 PENDING): RL_O44_LVLMONO IS NOW DEFAULT 'ratchet' — VARIANT A, RAW,
-# UNCONSERVED. KILL-SWITCH: RL_O44_LVLMONO=0, which reproduces 68be10c79d0ee096455754e084bcf757
-# byte-exact. THE WORD WAS GIVEN, 2026-08-21, VERBATIM: "I misunderstood the A and B difference. I think
-# based on those explanations, A raw I prefer. Lock that in, unconserved." It RE-RULES an earlier word in
-# the same session ("Happy to lock in 1.22% and variant B"); the act that word drove HALTED BEFORE ITS
-# FLIP when the B-raw no-arb reading was measured and showed four new buy-rail breaches, the owner was
-# shown it, and he changed his choice. The flip happened through EXACTLY the declared lane and nothing
-# else — the default literal on the line below moved '0' -> 'ratchet', data/model_config.json was NOT
-# touched, and no parameter was added, fitted or targeted. The BARE build (this name unset, no
-# model-semantics RL_* set at all) reproduces the priced candidate board b3e8da99bc7f632e5d1eebc732f9cf01
-# / total 700,756 / 804 rows BYTE-EXACT — the board the owner chose, not a rebuild of it.
-#
-# 'ratchet' AND NOT 'ratchet+conserve', ON THE OWNER'S OWN REASONING, VERBATIM: "in principle I don't like
-# 'enforcing conservation' as that's another mechanism that gets baked in... If we want to conserve, I'd
-# prefer to find a lever to remove value that works on its own." The conserved arms are rejected ON
-# PRINCIPLE, not on their numbers. LAW 9 IS THEREFORE BREACHED ON ITS FACE AND ACCEPTED BY OWNER WORD:
-# this board MINTS +8,460 SCAR = +1.2220% against a 200-SCAR (+/-0.029%) band_scar rail, 42.3x. Stated,
-# never netted, never called a pass. A raw is the arm the owner's own "1.22%" figure was quoted from.
-#
-# THE NO-ARB BAND RAILS WERE WAIVED, VERBATIM: "happy to waive the no arb reading for this" — given AFTER
-# the supervisor told him A raw was expected to breach similarly to B raw. THE WAIVER COVERED THE BAND
-# RAILS, NOT THE CLASS LAW AND NOT THE MEASUREMENT. F4 was measured BEFORE this flip and PASSED (W2
-# 1.0943, inside floor 1.03 / rail 1.14), and the full reading was emitted anyway: three ND cells cross
-# the +14% buy rail that were inside it on the live board (PRIMARY picks 1-20 / 1-10 / 11-20), ZERO pool
-# arms cross, and nothing is repaired on the buy side. Evidence:
-# docs/evidence/staircase_adoption_2026-08-21/ (PREREG_ADOPTION_A_RAW.md committed BEFORE this edit;
-# NOARB_ARAW_SFXARAW.html, all five arms side by side) and docs/evidence/staircase_fix_2026-08-20/ (the
-# pricing). The B-raw reading that caused the earlier halt is kept beside it at NOARB_BRAW_SFXBRAW.html.
-_O44_MODES=('off','ratchet','ratchet+conserve','smooth','smooth+conserve')
-_O44_RAW=(os.environ.get('RL_O44_LVLMONO','ratchet') or '0').strip().lower()   # ORDER 44: VARIANT A RAW (SHIPPED DEFAULT, ADOPTED 2026-08-21)
-if _O44_RAW in ('0','','no','false'): _O44_RAW='off'
-if _O44_RAW not in _O44_MODES:
-    raise SystemExit("ORDER 44 HALT: RL_O44_LVLMONO=%r is not one of %s. An unrecognised dial value is not "
-                     "'off' — a run that silently prices the BASE board under a candidate label is exactly "
-                     "the failure law 2 (SILENCE IS A RED) names."
-                     %(os.environ.get('RL_O44_LVLMONO'),'/'.join(_O44_MODES)))
-_O44=(_O44_RAW!='off')                                   # ORDER 44 master: OFF => every expression below is bypassed and _b6_core is byte-identical
-_O44_SMOOTH=_O44_RAW.startswith('smooth')                # VARIANT B (ratchet + midpoint linear interpolation)
-_O44_CONSERVE=_O44_RAW.endswith('+conserve')             # the law-9 renormalisation leg (calibrated at load, below ev)
-_O44_LO,_O44_HI=40.0,120.0                               # THE DECLARED WINDOW: the full model domain (the forests' own
-_O44_EPS=1e-9                                            #   level range is 40.75-116.26, so this window contains it).
-_O44_LVL=9                                               # the level feature index in BOTH cp._feat and _feat_infer
-_O44_MEMO={}; _O44_XS={}                                 #   (oh[6] + log(ep), exposure, tenure, LVL, age)
-_O44_SUSPEND=[False]
-_O44_C={}
-def _o44_xs():
-    """THE EXACT KNOTS OF THE STEP SURFACE — the sample set the monotoniser runs on.
-
-    THIS IS A CORRECTION MADE AGAINST THE TREE, AND THE PREREG WAS CORRECTED TO MATCH IT (P9). The prereg
-    declared a FIXED 0.5 LEVEL GRID, carried from the window the diagnosis measured FIX 2's blast radius on.
-    Measured before the first build, on the pinned forests, THAT WINDOW IS NOT MONOTONE: a running max over
-    {fixed grid points <= lvl} U {lvl} is not nested in lvl, because the row's own off-grid point leaves the
-    set as lvl advances. On a MID/pick-40 row swept 44->58 it left 30 NEGATIVE steps and a worst step of
-    -0.47 on the band's weighted mean. A fix for a monotonicity violation that is itself non-monotone is not
-    a fix, and shrinking the step only shrinks the residual — it never reaches zero.
-
-    THE EXACT CONSTRUCTION, WHICH DOES. A gradient-boosted forest is PIECEWISE CONSTANT in every input, and
-    the pieces are separated by the trees' own split thresholds on that input — a FINITE, KNOWN set, read
-    straight off the fitted trees (2,329 distinct on feature 9 across cm_400's five forests and q97m, range
-    40.7489-116.2636; the diagnosis's own threshold census, §2, counts the same population per model).
-    Sampling one point strictly inside every piece therefore samples the surface EXACTLY, not approximately,
-    and the sample set { k+eps : k a knot, k+eps <= lvl } IS NESTED in lvl. A max over a nested family is
-    non-decreasing BY CONSTRUCTION — no residual, no 'essentially', nothing to shrink. sklearn's split is
-    `X[:,f] <= threshold`, so the piece ABOVE a knot is sampled at knot+eps; eps=1e-9 against a measured
-    minimum knot gap of 7.6e-06 cannot skip a piece, and it is the resolution the diagnosis's own bisection
-    used. The row's own exact level needs no separate term and gets none: it lies inside a sampled piece and
-    the surface is CONSTANT there, so a row on an already-monotone stretch is priced at its own raw band,
-    unchanged, EXACTLY — which is why this construction keeps the 'most rows unmoved' behaviour that a grid
-    approximation would have destroyed.
-
-    Cached on the identity of the two model objects, so the V0 structural-prior swap at :1949 is honoured."""
-    _k=(id(cm),id(q97m))
-    _x=_O44_XS.get(_k)
-    if _x is None:
-        _s=set()
-        for _m in [cm[_q] for _q in cp.Q]+[q97m]:
-            for _e in np.asarray(_m.estimators_).ravel():
-                _t=_e.tree_; _s.update(float(_v) for _v in _t.threshold[_t.feature==_O44_LVL])
-        _x=np.concatenate([[_O44_LO],np.array(sorted(_s),dtype=float)+_O44_EPS,[_O44_HI]])
-        _x=np.unique(_x[(_x>=_O44_LO)&(_x<=_O44_HI)])
-        _O44_XS[_k]=_x
-    return _x
-def _o44_rows6(F):
-    """The BASE six-leg band at every row of F (n,11) -> (n,6). The per-row expression is _b6_core's own,
-    verbatim: sort of the five quantile predictions, then max(q97m, b[4]). Factored so the sample set and
-    the row's own point are built by ONE expression and cannot drift apart. cm/q97m are read as MODULE
-    GLOBALS at call time, exactly as the base path reads them."""
-    P=np.sort(np.column_stack([np.asarray(cm[q].predict(F),dtype=float) for q in cp.Q]),axis=1)
-    return np.column_stack([P,np.maximum(np.asarray(q97m.predict(F),dtype=float),P[:,4])])
-def _o44_mid(x,y):
-    """The ratchet's MAXIMAL PLATEAUS -> one (midpoint, value) knot each. PARAMETER-FREE, which is the whole
-    reason this smoothing was chosen over a minimum-slope floor: a slope floor needs a slope CONSTANT, and a
-    constant this seat picked would be a fitted number. The estate's standing answer to 'which constant?' is
-    'none, if the derivation has a boundary solution' (ORDER D8's asc == 1)."""
-    n=len(y); mx=[]; my=[]; i=0
-    while i<n:
-        j=i
-        while j+1<n and y[j+1]==y[i]: j+=1
-        mx.append(0.5*(x[i]+x[j])); my.append(float(y[i])); i=j+1
-    return mx,my
-def _o44_band(p,Y):
-    """THE MONOTONE BAND at this row's own features. Memoised on the exact feature bytes + the identity of
-    the two model objects: the band is a pure function of those, so the memo cannot change a value."""
-    f=np.asarray(cp._feat(p,Y),dtype=float)
-    k=(f.tobytes(),id(cm),id(q97m))
-    r=_O44_MEMO.get(k)
-    if r is not None: return r.copy()
-    lvl=float(f[_O44_LVL]); XS=_o44_xs()
-    if not _O44_SMOOTH:
-        # VARIANT A — THE RATCHET. The componentwise running maximum over every piece of the step surface AT
-        # OR BELOW this row's level. Nested in lvl, therefore EXACTLY non-decreasing (see _o44_xs). A row
-        # below the window has no piece below it and the ratchet is the IDENTITY there, by construction
-        # rather than by a special case. Sortedness survives the running max — if b_i(x) <= b_{i+1}(x) at
-        # every x then max_{x'<=x} b_i <= max_{x'<=x} b_{i+1} — so no re-sort is owed and none is done.
-        xs=XS[XS<=lvl]
-        if xs.size==0: xs=np.array([lvl],dtype=float)
-        F=np.repeat(f[None,:],xs.size,axis=0); F[:,_O44_LVL]=xs
-        out=np.maximum.accumulate(_o44_rows6(F),axis=0)[-1]
-    else:
-        # VARIANT B — RATCHET + SMOOTHED. The ratchet is built across the WHOLE window, because B at lvl
-        # legitimately depends on where the next upward step sits. That is a smoothing of a MEASURED
-        # surface, not a lookahead into unmeasured data — but it IS an invented surface between measured
-        # steps, and it is disclosed as such in the packet rather than defended here. Then per leg: maximal
-        # plateaus -> midpoint knots -> linear interpolation, held flat outside the first and last midpoint
-        # (np.interp's own edge behaviour, which is the declared one). Re-sorted afterwards: the six legs
-        # are interpolated on DIFFERENT knot sets and may cross by a hair, and the k-th order statistic of
-        # componentwise non-decreasing functions is itself non-decreasing — so the sort RESTORES the base
-        # invariant band[5] >= band[4] without costing the monotonicity the whole dial exists to buy.
-        F=np.repeat(f[None,:],XS.size,axis=0); F[:,_O44_LVL]=XS
-        R=np.maximum.accumulate(_o44_rows6(F),axis=0)
-        _l=min(max(lvl,_O44_LO),_O44_HI)
-        out=np.sort(np.array([np.interp(_l,*_o44_mid(XS,R[:,i])) for i in range(6)],dtype=float))
-    _O44_MEMO[k]=out
-    return out.copy()
+# RL_O33_TAPEROFF IS NOT RETIRED HERE AND IS NOT THE SAME KIND OF OBJECT (study B I-15). It is not a patch
+# on a fit defect — it is a value judgement about post-peak taper that the owner looked at and adopted
+# ("Yes. I'm adopting.", register v798). Retiring it means RE-DERIVING asc == 1 from the rebaked ceiling
+# and showing the boundary solution still binds; it does not vanish because the forests changed. That
+# re-derivation is measured and reported by this arm, and the dial stands or falls on it.
 def _b6_core(p,Y):
     MA.AGE_REF=Y; MA.BASE_REF=(MA._LENS_FORM if getattr(MA,'_LENS_FORM',None) is not None else Y); MA._pe_clear()   # LEG E projection law (R103.3): a forward lens sets MA._LENS_FORM (=the true-now form anchor, 2026) so AGE_REF>BASE_REF => _dev_advance CREDITS expected production (age+k through the map's own growth curve; no lens-only term, the Reid constraint). _LENS_FORM None (balanced/back path) => BASE_REF=AGE_REF=Y, byte-exact.
-    if _O44 and not _O44_SUSPEND[0]:                                          # ORDER 44 read-site monotonisation (dial OFF or suspended => the two shipped lines below, untouched)
-        with contextlib.redirect_stdout(io.StringIO()): return _o44_band(p,Y)
+    # ORDER 44 RETIRED (above): the two lines below are the band, unmediated. They were the
+    # `dial OFF` path and they are now the only path — _b6_core is byte-identical to what
+    # RL_O44_LVLMONO=0 always produced, on forests that no longer need the repair.
     with contextlib.redirect_stdout(io.StringIO()): b=np.asarray(cp.cond_prior_band(p,cm,Y))
     return np.append(b,max(float(q97m.predict(np.array([cp._feat(p,Y)]))[0]),b[4]))
 def b6(p,Y=2026):
@@ -1113,7 +1042,9 @@ def _uncomp_prod(pr,p,Y,bb):
     return _C*v0p+delta                                            # production-side renorm; captain delta additive & nominal
 def raw_ev(p,Y=2026):
     _bb=b6(p,Y); pr=price6(p,_bb,Y)
-    if _O44_CONSERVE: pr*=_O44_C.get(MA.gfut(p),1.0)               # ORDER 44 LAW-9 LEG: per-position production-side conservation renorm, the SAME hook and the SAME class the shipped _UC_C renorm uses (:934). Dial off / raw variants => this line does not execute and the expression below is byte-identical.
+    # ORDER 44 LAW-9 LEG RETIRED with its dial: the +conserve variants were never the shipped
+    # default (RAW/unconserved was, under the owner's recorded waiver v830), and the
+    # renormalisation had nothing left to renormalise once the ratchet was gone.
     pr=_uncomp_prod(pr,p,Y,_bb)                                    # LEG B v1.1 map at the production-value hook (inert unless RL_UNCOMP on + s set)
     pos=MA.gfut(p); pk=MA.effpk(p)
     with _form_anchor_clock():                                                        # LEG F3 §2.vi: the pedigree-pole fade keys on PROJECTED EVIDENCE (BASE_REF), not the advancing age/tenure clock (k=0 identity)
@@ -6121,60 +6052,15 @@ if MA._UNCOMP and MA.UNCOMP_S is not None:
     for _g in sorted(_UC_VREFB):
         print("    %-8s V_ref_b=%8.1f RHO_DEN=%7.2f C=%.5f"%(_g,_UC_VREFB.get(_g,0.0),_UC_RHODEN.get(_g,0.0),_UC_C.get(_g,1.0)))
 
-# ==== ORDER 44 — THE LAW-9 CONSERVATION CALIBRATION. Isomorphic to the _UC_C block directly above. ==========
-# LAW 9 (CONSERVATION): "re-pricing redistributes value; it does not mint or burn it", threshold band_scar =
-# 200 (RULEBOOK v3 PART 3). Against a 692,296 board that is +/-0.029%. The diagnosis measured the RAW
-# monotonisation at mean +0.61% of price6 — roughly 21x the rail. An isotonic-INCREASING projection takes a
-# running maximum, so it can ONLY EVER RAISE: the raw variants MINT, and that is the single largest open
-# question the diagnosis left (WORKINGS_TROUGH §8 "what a fix-act would have to measure", item 1).
-#
-# THE MACHINERY IS THE ENGINE'S OWN AND THE CLASS IT RIDES IS THE POSITION. This is a byte-for-byte
-# structural copy of the shipped LEG B v1.1 production-side conservation renorm: _UC_C declared at :892,
-# applied at :934 (`return _C*v0p+delta`), calibrated immediately above (`_UC_C[_g]=(_s0/_s0p)`). ONE
-# load-time pass over the SAME valuation scope, the SAME per-position class (MA.gfut), the SAME
-# sum-ratio, applied at the SAME production hook. Nothing here is invented; the prior lever that conserved
-# is carried, and the class law is the rail it rides.
-#
-# CHEAPER THAN _UC_C'S PASS, AND DECLARED: _UC_C accumulates THROUGH the hook during a full ev() because its
-# map fires on a conditioned subset. ORDER 44's object is the BAND, which feeds price6 for EVERY scoped row,
-# so the two sums are taken directly — price6 under the SUSPENDED band and price6 under the MONOTONE band —
-# rather than by driving a full ev() twice. Same numbers, one third the cost.
-#
-# WHAT IT DOES NOT CLAIM. The board total is NOT identically the production total: ORDER 31 blends production
-# with pedigree and age credit downstream (:5194-5199, price = rho31(g)*e + o31_pi*ped + age_credit), and the
-# diagnosis measured that transmission explicitly (Billy Cootee's production share is 0.029 and the band
-# cannot reach him). So each POSITION's total production leg is conserved BY CONSTRUCTION and a residual
-# BOARD drift is EXPECTED. That residual is MEASURED against the 200-SCAR rail by this act and reported,
-# never assumed to be zero. C is calibrated at Y=2026 and applied at every lens year — the single-constant
-# choice _UC_C already makes, carried, not re-derived.
-if _O44_CONSERVE:
-    _o44_clk=(MA.AGE_REF,MA.BASE_REF)                          # save/restore: _UC_C leaves the clock pinned because rl_export pins it anyway; this block is DEFAULT-REACHABLE under a candidate dial, so it puts the clock back exactly as it found it
-    MA.BASE_REF=MA.AGE_REF=2026; MA._pe_clear()                # pin to the present (mirrors rl_export.py / the _UC_C block above)
-    _o44_off={}; _o44_on={}; _o44_n=0
-    for _p in MA.data:
-        if not (_isreal(_p) and not delisted(_p) and not _p.get('_retired')): continue
-        _g=MA.gfut(_p)
-        if _g not in MA.REPL: continue
-        try:
-            _O44_SUSPEND[0]=True
-            with contextlib.redirect_stdout(io.StringIO()): _o0=float(price6(_p,b6(_p,2026),2026))
-            _O44_SUSPEND[0]=False
-            with contextlib.redirect_stdout(io.StringIO()): _o1=float(price6(_p,b6(_p,2026),2026))
-        except Exception:
-            continue
-        finally:
-            _O44_SUSPEND[0]=False
-        if _o0>0.0 and _o1>0.0:
-            _o44_off[_g]=_o44_off.get(_g,0.0)+_o0; _o44_on[_g]=_o44_on.get(_g,0.0)+_o1; _o44_n+=1
-    for _g,_s0 in _o44_off.items():
-        _s1=_o44_on.get(_g,0.0); _O44_C[_g]=(_s0/_s1) if _s1>0.0 else 1.0
-    MA.AGE_REF,MA.BASE_REF=_o44_clk; MA._pe_clear()
-    print("=== ORDER 44 LAW-9 CONSERVATION CALIBRATION (%s) | per-position C over %d scoped rows ==="%(_O44_RAW,_o44_n))
-    for _g in sorted(_o44_off):
-        print("    %-8s SUM(price6 off)=%12.1f  SUM(price6 mono)=%12.1f  mint=%+7.3f%%  C=%.6f"
-              %(_g,_o44_off[_g],_o44_on.get(_g,0.0),
-                100.0*(_o44_on.get(_g,0.0)-_o44_off[_g])/_o44_off[_g] if _o44_off[_g] else 0.0,
-                _O44_C.get(_g,1.0)))
+# ==== ORDER 44's LAW-9 CONSERVATION CALIBRATION — RETIRED WITH ITS DIAL (rebake ARM 2) ==================
+# The block that stood here calibrated a per-position constant C = SUM(price6 | ratchet suspended) /
+# SUM(price6 | ratchet on) and applied it at the production hook, for the '+conserve' variants only. It
+# was never the shipped default: the adopted dial was RAW and UNCONSERVED, under the owner's recorded
+# waiver ('happy to waive the no arb reading for this', and on conservation: "in principle I don't like
+# 'enforcing conservation'... I'd prefer to find a lever to remove value that works on its own").
+# With the ratchet retired there is no read-site mint to renormalise, so the leg has no object. The
+# law-9 reading of the rebake itself is MEASURED AND REPORTED (waived as a gate at v830), not enforced
+# here — docs/evidence/rebake_arm2_design_2026-08-24/movers.json.
 
 # ==== RL_AVAIL APPLICATION — set per-record availability fields + Part-1 attribution (G-ATTR) ================
 # Runs AFTER ev is fully defined so attribution can diff ev(layer-on) vs ev(layer-off) per register name. The
@@ -6508,6 +6394,83 @@ if _O43:
           "LIFTED to their healthy counterpart, %d keep an injury-regime value at or above it. The "
           "guard is a per-row max at Y=2026: it can only RAISE. NO FREE PARAMETER. ==="
           %(len(_D7_ROWS),len(_D7_FLOOR),len(_D7_ROWS)-len(_D7_FLOOR)))
+# ==== ORDER 45 (RL_O45) — THE POSITION-SCALED SAFETY NET. PREREG_ORDER45.md committed at fa105f7 ========
+# BEFORE this edit (P9). Owner words, verbatim, 2026-08-25 (register v852/v853): "Yes, adopt the new
+# model" (D1) · "Scaled on the safety net" (D2) · "Exclude mature agers" (D3).
+# THE SHIELD, NOT A CHARGE (the ORDER D7 convention): a scoped row's price is lifted TOWARD its own
+# scoring-stripped counterfactual — the price this engine would put on the row had it never played —
+# scaled by how far its cameo evidence clears the position-scaled knots. It can only raise, it is
+# declared here, and its one-directionality is owner-ruled (the packet's D2), not discovered later.
+# SCOPE (Y=2026 only): active (not _retired) · NO banked level (no season with >=6 games) · >=1 career
+# game · tenure 1-4 (entry-year convention) · entry age <22 (D3; a scoped row with missing _by HALTS).
+# lambda = smoothstep on knots (40,45) x posbar/MIDbar, where posbar = REPL[gfut]-3 — gfut RETURNS the
+# group and REPL is keyed by it (NEVER the display 'grp' label; seven gfut-vs-display sightings stand).
+# The counterfactual probe is NON-DESTRUCTIVE BY ASSERTION (the D7-F6 rule): strip -> price -> restore
+# -> re-price must equal the original EXACTLY, else HALT. No recursion: the probe prices through the
+# pre-45 inner symbol, and a stripped row has 0 games so it could not re-enter scope regardless.
+# Walk-forward safety: Y != 2026 is returned untouched (the D7 convention); years-1+ matrices cannot
+# be reached. Dial off => this wrapper is never installed => board 543bf900 byte-exact.
+_O45=os.environ.get('RL_O45','1')!='0'                        # kill-switch (G-ATTR separability): RL_O45=0 => 543bf900 byte-exact. Declared exception, not a dial.
+if _O45:
+    _O45_BARS={k:(float(v)-3.0) for k,v in MA.REPL.items()}   # posbar = REPL - 3, keyed by the gfut group
+    def _o45_lam(c,pos):
+        s=_O45_BARS[pos]/_O45_BARS['MID']                     # MID normalizer derived, not typed; KeyError = halt
+        lo,hi=40.0*s,45.0*s
+        if c<=lo: return 0.0
+        if c>=hi: return 1.0
+        t=(c-lo)/(hi-lo)
+        return 3.0*t*t-2.0*t*t*t                              # smoothstep: C1 at both knots, no cliff (law 3)
+    _ev_pre45=ev
+    def ev(p,Y=2026,__inner=_ev_pre45):
+        """ORDER 45 (RL_O45) — THE POSITION-SCALED SAFETY NET, at the one law. A tenure-1-4,
+        entry-age-<22, no-banked-level row with >=1 career game is lifted toward its own
+        scoring-stripped counterfactual by lambda(cameo) on the position-scaled knots. A max,
+        so it can only raise. Dial off => this wrapper is never installed."""
+        _v=__inner(p,Y)
+        if int(Y)!=2026 or p.get('_retired'): return _v
+        if p.get('key') is None: return _v                     # a KEYLESS row is a synthetic probe (gates and
+                                                               # diagnostics build them to test the BASE laws):
+                                                               # no store identity => the net does not apply,
+                                                               # WHATEVER other fields the probe carries. Top-level
+                                                               # by review finding NEW-1 — a probe that grows a _by
+                                                               # must not slip past a guard nested in the _by branch.
+                                                               # Measured: 0 of 2650 store rows are keyless.
+        _sc=[x for x in (p.get('scoring') or []) if x.get('year',0)<=2026]
+        _g=sum(x.get('games',0) for x in _sc)
+        if _g<1 or any(x.get('games',0)>=6 for x in _sc): return _v
+        _ten=2026-int(p.get('year') or 2026)+1
+        if _ten<1 or _ten>4: return _v
+        _by=p.get('_by')
+        if not _by:
+            raise SystemExit('ORDER 45 HALT: %r is in net scope with no _by; the D3 mature-age '
+                             'exclusion cannot run silently. (Keyless synthetic probes were already '
+                             'returned above — a row reaching this line is a REAL store row.)'%p.get('key'))
+        if int(p.get('year'))-int(_by)>=22: return _v          # D3: mature-agers excluded
+        _pos=MA.gfut(p)
+        if _pos not in _O45_BARS:
+            raise SystemExit('ORDER 45 HALT: unresolved position group for %r (gfut=%r) — a silent '
+                             'fallback would hand this row the MID knots.'%(p.get('key'),_pos))
+        _c=sum(x['avg']*x['games'] for x in _sc)/_g
+        _L=_o45_lam(_c,_pos)
+        if _L<=0.0: return _v
+        _s0=p['scoring']; p['scoring']=[]
+        try:
+            with contextlib.redirect_stdout(io.StringIO()):
+                _cf=__inner(p,Y)
+        finally:
+            p['scoring']=_s0
+        with contextlib.redirect_stdout(io.StringIO()):
+            _vb=__inner(p,Y)
+        if _vb!=_v:
+            raise SystemExit('ORDER 45 HALT (the D7-F6 rule): %r did not restore EXACTLY after the '
+                             'scoring-stripped counterfactual probe (%r -> %r). The probe is corrupting '
+                             'the board it prices; nothing it produced can be trusted.'%(p.get('key'),_v,_vb))
+        if _cf<=_v: return _v
+        return int(round(_v+_L*(_cf-_v)))                      # add-then-round: at lambda=1 the row IS its counterfactual
+    print("=== ORDER 45 SAFETY NET LIVE (PREREG_ORDER45) — the position-scaled shield: tenure 1-4, "
+          "entry age <22, no banked level, >=1 career game; lambda smoothstep on knots (40,45) x "
+          "posbar/MIDbar; lift toward the row's own scoring-stripped counterfactual. A max at Y=2026: "
+          "it can only RAISE. RL_O45=0 => never installed. ===")
 print("=== AFTER (wired: delist + staleness + isotonic) — named players ===")
 print(f"{'player':22s}{'pos':8s}{'pk':>3s}{'g':>3s}{'ten':>4s}{'dlst':>5s}{'draft':>6s}{'BEFORE':>7s}{'AFTER':>7s}  reasoning")
 before={'Ronin O':526,'Will Martyn':554,'Sam Philp':714,'Oscar Ryan':570,'Tew Jiath':509,'Jakob Ryan':594,'Harrison Jones':528,'Keidean Coleman':723,'Dylan Stephens':761}

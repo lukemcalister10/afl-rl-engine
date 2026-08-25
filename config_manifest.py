@@ -48,7 +48,24 @@ _PREFIX = re.compile(r'^(RL_|PAR_)')
 # As of this commit the engine's precedence is $RL_V0SURF_PKL -> <repo>/data/v0surf.pkl, so the var is no
 # longer needed to reach the in-repo surface; it is admitted for a legitimate re-point, not as a crutch.
 INFRA_ALLOW = {'RL_REPO', 'RL_APP_DATA', 'RL_FV',
-               'RL_ALLOW_PVCFIT_BOARD', 'RL_CONFIG_MODE', 'RL_VENV', 'RL_V0SURF_PKL'}
+               'RL_ALLOW_PVCFIT_BOARD', 'RL_CONFIG_MODE', 'RL_VENV', 'RL_V0SURF_PKL',
+               # REBAKE ARM 1 2026-08-24. Both are FITTED-ARTIFACT PATH vars, not model semantics —
+               # the same class as RL_V0SURF_PKL above, and they are covered by Guard 5's load-path
+               # block (0e), which asserts the md5 of whatever they resolve to against the pin. So an
+               # allowed path var can point the engine at a pickle, but never at an UNVERIFIED one.
+               #   RL_Q97M_PKL is NOT new: it has been the engine's first q97m candidate since the
+               #   2026-07-14 freeze (_merged_recover.py:87) and Guard 5 has mirrored it since
+               #   (boot_guard.py:255) — it was simply never added here, so enforce('gate') rejected
+               #   the estate's own shipped switch as an UNKNOWN model override. Found by this arm.
+               #   RL_CM_PKL is new and gives the band the override its two frozen siblings already
+               #   have (wire_redesign.cm_load_path, mirrored in boot_guard._resolve_cm_load).
+               # NEITHER moves config_sha256: canonical_hash() is computed over manifest['vars'] only,
+               # and this set is not in it. Measured across this edit, not assumed.
+               #   RL_WS is the THIRD of the same class, and also not new: refit_q97m.py:57 has read it
+               #   since the 2026-07-14 freeze ("the pinned workspace copy the build uses") and it too
+               #   was never listed here, so the committed refit entry point could not be run under the
+               #   pinned configuration it is supposed to be run under. Found the same way — by running it.
+               'RL_Q97M_PKL', 'RL_CM_PKL', 'RL_WS'}
 
 
 def repo_root():
