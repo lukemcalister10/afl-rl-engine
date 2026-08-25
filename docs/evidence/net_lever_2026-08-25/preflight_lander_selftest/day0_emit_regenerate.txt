@@ -1,0 +1,22 @@
+======================================================================================================
+DAY-0 PRINT REFERENCE — REGENERATED FROM THIS TREE  (tools/landing/day0_emit.py)
+======================================================================================================
+  board      82fcd8bb1e552b927299b5702122e321   data/rl_build/rl_app_data.json
+  store      fb640ca0baf92bbb122b1ad7e25c5a88
+  engine     3af8c1f7d61275c198a5df70c34608c7   (READ-ONLY: no engine file is touched, no board is built)
+  predicate  _entry30b_price   BASE_REF 2026
+  activated  SELF-TEST FIXTURE — no owner word exists or is claimed.
+  reference  docs/evidence/landing_selftest/DAY0_DOCTORED_REF.json
+  writing    docs/evidence/landing_selftest/DAY0_SELFTEST.json
+
+  A1  printed day-0 identity on the board being read : 86 of 86 at tolerance 0  (fresh ND 44, pool 42)
+
+  THE MANDATORY ROW DIFF vs docs/evidence/landing_selftest/DAY0_DOCTORED_REF.json
+    population  0 row(s) added    0 row(s) dropped 
+    printed day-0 MOVED on 1 of 86 rows in common — every one printed, no truncation:
+      adam-sweid                         242 -> 241   (-1)
+    derived_v0 (the matrix year-0 column) moved on 0 row(s) — the raw entry object does not move
+
+  WRITTEN  docs/evidence/landing_selftest/DAY0_SELFTEST.json   md5 2c6ed58a19fbef74f3e578d04e87b859
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.

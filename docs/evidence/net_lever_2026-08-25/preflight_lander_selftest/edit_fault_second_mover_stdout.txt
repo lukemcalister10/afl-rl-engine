@@ -1,0 +1,68 @@
+======================================================================================================
+LAND STORE-EDIT — SELF-TEST — the surgical store edit
+  tree      : /tmp/landing_selftest_30746/sandbox
+  owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
+  prereg    : tools/landing/selftest.py (fixture)   predicts board 18e30f929c93f00610f97d6c65b933cf
+  mode      : APPLY (SELFTEST) builder=selftest-moved
+======================================================================================================
+
+--- STEP 0/11  preflight      clean tree, build lock, the restore point ---
+RL_/PAR_ environment  RL_REPO, RL_VENV
+build-lock: HELD by land-edit-432 (pid 432) — single writer for the shared workspace.
+base commit        7675434e5424e802438d80a9958cae9d0d358a81
+board pin (before) 82fcd8bb1e552b927299b5702122e321
+store pin (before) fb640ca0baf92bbb122b1ad7e25c5a88
+restore point      65 carrier(s) captured, 65 present on disk
+    [preflight OK  0.08s]
+
+--- STEP 1/11  store_edit     THE SURGICAL STORE EDIT, applied in the work dir ---
+store BEFORE  fb640ca0baf92bbb122b1ad7e25c5a88   (1978074 bytes)
+              == expected_boot.store, so the tree is the one this act was written for.
+THE EDIT — surgical, inside the named row's span; `old` asserted, never repaired:
+    will-graham                  p_dual_stream      40 -> 39   (row span 164121..164899, at char 164817)
+store AFTER   bb862a0551aec03c615b1afc21e14d01   (1978074 bytes, +0)
+byte check: reversing every declared replacement reproduces the store byte-for-byte — the ONLY bytes that differ are the declared field values.
+WRITTEN and re-read: 1 row(s) edited, 2650 rows in the store, every other row untouched.
+season clock  re-derived from the edited store by season_state.derive (the sole deriver)
+    source_store_md5  fb640ca0baf9 -> bb862a0551ae
+    every derived VALUE asserted unchanged (10 field(s) checked); WRITTEN and re-read.
+    [store_edit OK  0.21s]
+
+--- STEP 2/11  build_proofs   bare build, predicted identity, switch leg, day-0 ---
+*** FAULT INJECTED at step 'build_proofs': second_mover — a SECOND board row moves and the act declared one — the undeclared mover must be NAMED, not merely implied by a board md5 that is not the predicted one
+build         rc=0 board=179601a774824fdb330da71edfae79bc  (0.0s)
+built FROM the edited store: sidecar source_md5 bb862a0551ae == the store this act wrote
+MOVERS — EVERY ONE, WITH VALUES  (2 of 1002 valued row(s) moved)
+    harry-sheezel                Harry Sheezel              10417 -> 10416   (-1)  [active]
+    nick-daicos                  Nick Daicos                9920 -> 9919   (-1)  [active]
+pool (sum of active v)  699857 -> 699855  (-2)
+    [build_proofs FAILED  0.12s]
+
+======================================================================================================
+LANDING ABORTED AT STEP 'build_proofs'
+======================================================================================================
+  THE MOVERS ARE NOT THE MOVERS THIS ACT DECLARED.
+      UNEXPECTED MOVER(S): harry-sheezel 10417 -> 10416, nick-daicos 9920 -> 9919
+      DECLARED AND ABSENT: (none)
+  A store edit predicts who moves; a second mover means the edit did something the act did not say it would, and that is an abort.
+
+carriers that moved before the failure: 2
+    data/season_state.json                                           fe7b7b9e8c41 -> bf8fbba8eb5d
+    engine/rl_after/rl_model_data.json                               fb640ca0baf9 -> bb862a0551ae
+RESTORING 2 carrier(s):
+    rewrite  data/season_state.json
+    rewrite  engine/rl_after/rl_model_data.json
+
+ABORT PROOF: every carrier is BYTE-EXACT to the identity captured at step 0.
+
+THE RECOVERY LADDER: abort-then-retry is the recovery. A landing this lander cannot
+complete after abort+retry is a round that SLIPS, on the owner's call — never an
+improvised manual landing under pressure.
+======================================================================================================
+
+--- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
+    preflight          0.08s  OK
+    store_edit         0.21s  OK
+    build_proofs       0.12s  FAIL
+    TOTAL              0.41s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_432

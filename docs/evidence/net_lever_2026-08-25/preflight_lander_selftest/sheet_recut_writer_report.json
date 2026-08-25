@@ -1,0 +1,370 @@
+{
+  "abort": null,
+  "commits": [
+    "3e7cfca62be8787d92b7da9d5817ed5de4550809",
+    "3b6571ddb3670c447f4fb2236a988fe85b5d5d37"
+  ],
+  "error": null,
+  "facts": {
+    "advance": {
+      "applied": false,
+      "as_of_round": 24,
+      "board": "82fcd8bb1e552b927299b5702122e321",
+      "rehearsal": true,
+      "round": 24,
+      "store": "fb640ca0baf92bbb122b1ad7e25c5a88"
+    },
+    "base": {
+      "carriers": {
+        "data/expected_boot.json": "94a7fecb975a169ddebd8a45796fcf4f",
+        "data/release_contract.json": "b0fb2ae36034747f8966736cef20cce7",
+        "data/release_lineage.json": "eca9433fdb983d5d2fd60e5a594e828c",
+        "data/rl_build/rl_app_data.json": "82fcd8bb1e552b927299b5702122e321",
+        "data/rl_build/rl_app_data.json.srcmd5": "eb2e23724453d45384b64b487e11ef09",
+        "data/season_state.json": "fe7b7b9e8c4121f30ac07f2e96e12707",
+        "data/sheet_pins.json": "a4ee39f7ec80ee6b6172aa28e0c17aae",
+        "docs/STATE.md": "ae1095ab34db0d832df034a23662db59",
+        "docs/evidence/final_candidate_2026-08-19/DAY0_CP.json": "72d583f1261357cd88b85e0c1133df79",
+        "docs/owner_annotations/SITTER_2026_v1.csv": "6a257b9d1cd51e4bbaff1cc67b9a69e3",
+        "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r15/journal.jsonl": "8f7e48989f0ca5504029167053e61a89",
+        "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r15/manifest.json": "c1d1aa6187ea11dfb0097f1210de7de2",
+        "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r16/journal.jsonl": "fc1c373703b7ba92585295e92bb0441d",
+        "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r16/manifest.json": "bce0fbc15a9e8c032b9ac10d18f3a027",
+        "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r17/journal.jsonl": "7a2daba6ecca0b634a5862c9beb81395",
+        "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r17/manifest.json": "49c15b8960b46b43146989b570cd0c43",
+        "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r18/journal.jsonl": "888b30194bed3e1c8f42aa608e7a946d",
+        "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r18/manifest.json": "a6c5a206c59d68bac602c7929c094ecf",
+        "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r19/journal.jsonl": "d2a4687aad7431ceab01d2e6e6f85e5f",
+        "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r19/manifest.json": "a8a2df8ea2eb6022f7895c372425d71b",
+        "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r20/journal.jsonl": "47fb00c24ee5b55c02d3b128d6498cd0",
+        "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r20/manifest.json": "ed69bf5f21a2c490454b8352bfc807d5",
+        "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r21/journal.jsonl": "a6dcb2688e49aa306e73b5acd8f092d5",
+        "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r21/manifest.json": "3bc488f4b4536ac9154f0a5723c730de",
+        "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r22/journal.jsonl": "2992024ee666abc22c0f35a9676a66e1",
+        "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r22/manifest.json": "ee49d37c96d81ecc3cd365a7fbd449a6",
+        "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r23/journal.jsonl": "0465d409ab5140a94f3ab84db90f4658",
+        "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r23/manifest.json": "ccbe9aeea041eb0608c890847418b3cc",
+        "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r24/journal.jsonl": "c1901e117b2e68277b626b53041a2dad",
+        "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r24/manifest.json": "4d9171e2f47d9c3ddd6421c9e379c1ea",
+        "engine/rl_after/ingestion/applied_rounds_ledger.json": "a4948c6a626ae62065bc187477ef6cdb",
+        "engine/rl_after/ingestion/catchup_identity_overrides.json": "7b0d8ff087287be0663eb92468ee505a",
+        "engine/rl_after/ingestion/finalization_journal.jsonl": "9336246bc865b5ecb2df919ac67c115c",
+        "engine/rl_after/ingestion/finalization_state.json": "a90785673be4b21baeb07a97c30dab55",
+        "engine/rl_after/ingestion/movers/movers_R15.csv": "b6871f4e3ad73d72f17bbe84d20a449e",
+        "engine/rl_after/ingestion/movers/movers_R15.json": "1d78eed9b027d06d5d77f4711680c9ec",
+        "engine/rl_after/ingestion/movers/movers_R16.csv": "d25d57392b2eb9c40c04c819797b159e",
+        "engine/rl_after/ingestion/movers/movers_R16.json": "2a262a8a138cde521f6d499d9d61fd30",
+        "engine/rl_after/ingestion/movers/movers_R17.csv": "8c1cfaad8dbc5727230ddcecaeda5031",
+        "engine/rl_after/ingestion/movers/movers_R17.json": "4d647947b5d58c15dd990a771a62374e",
+        "engine/rl_after/ingestion/movers/movers_R18.csv": "db712431751db55548c01f785e5b428f",
+        "engine/rl_after/ingestion/movers/movers_R18.json": "3d5f7822caf4c5e05f27feefa8fc6436",
+        "engine/rl_after/ingestion/movers/movers_R19.csv": "70abf42bf6b866955d1e090759adc028",
+        "engine/rl_after/ingestion/movers/movers_R19.json": "c844f56e4ae2cc38032e3235283ef499",
+        "engine/rl_after/ingestion/movers/movers_R20.csv": "8d3bf5be6fc8ac420f17007cf8fb3f1c",
+        "engine/rl_after/ingestion/movers/movers_R20.json": "8c52b3efddd9d223518f77ea25d9d052",
+        "engine/rl_after/ingestion/movers/movers_R21.csv": "a9a6f885a4449b59b4805a504b8be1f5",
+        "engine/rl_after/ingestion/movers/movers_R21.json": "48155fbe18ed1badfecc9a715c28933e",
+        "engine/rl_after/ingestion/movers/movers_R22.csv": "8d5af44cdf4d1472fe76495add87e5c6",
+        "engine/rl_after/ingestion/movers/movers_R22.json": "85d5bb922da78c45e494f2b6a1d8510c",
+        "engine/rl_after/ingestion/movers/movers_R23.csv": "8dd497d982d37029a3a130a54fc69412",
+        "engine/rl_after/ingestion/movers/movers_R23.json": "93c84a125cf02dc645d80b2bae660398",
+        "engine/rl_after/ingestion/movers/movers_R24.csv": "636cf2a266572c627e034845131ac90a",
+        "engine/rl_after/ingestion/movers/movers_R24.json": "29bacdcf873f25acd7da64672979b0ee",
+        "engine/rl_after/ingestion/pos_rank_history.json": "d676783e8f7a29c2fc5f55ae5e031eb0",
+        "engine/rl_after/ingestion/rank_history.json": "edacdfdcbeff70c9197b818ddde9c39c",
+        "engine/rl_after/ingestion/sibling_repin_state.json": "fe3115454f9de2b6f64a39a647cde62a",
+        "engine/rl_after/ingestion/test_movers_transition.py": "bc31f7c76e1f2b61104ddc5557a9dfc3",
+        "engine/rl_after/ingestion/value_history.json": "5dd849aeb17227f668f13fea674a3972",
+        "engine/rl_after/rl_app_data.json": "82fcd8bb1e552b927299b5702122e321",
+        "engine/rl_after/rl_app_data.json.srcmd5": "eb2e23724453d45384b64b487e11ef09",
+        "engine/rl_after/rl_model_data.json": "fb640ca0baf92bbb122b1ad7e25c5a88",
+        "scores/R21.csv": "bcec783c5179b65f8dd5df091d2f8819",
+        "scores/R22.csv": "82b456d5675c18b137180416b82432fc",
+        "scores/R23.csv": "f4849bc4933801e80228bfc0e29e0c65",
+        "scores/R24.csv": "1ebd6323826608a37d1e828eab2ae415",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/accepted_board_06d8af60.json": "81822b2baf9c8270034ac9f1f54995fb",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_113b36f8.json": "666dc8969c5f960ae6bac8c7e66f2a3d",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_1d5c9f7a.json": "0efe6eac94eb68f1c42b681069b7d12f",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_4b448a82.json": "7fa4ddd72e47bd67b06678cf2e12a2b4",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_5ea978f7.json": "0b6474a17eaf3413504e7a2f7290f732",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_68be10c7.json": "6c7c809d3b6c6b33f2d5b398cf3d62bd",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_6e724cca.json": "42f2b19f22e6bb4d367af7bfc98ba0c0",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_6fd0f7de.json": "b0c8835ef321da1768b630f0f7a3a8d7",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_7a3f4fe2.json": "c729a6d84866e33e360b1468614514d8",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_82fcd8bb.json": "24383eee944015a3274c7c2addb941dc",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_8a38cca4.json": "00295dec394462dbc6370032c2cd5f7a",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_a05fe951.json": "f0454ed594c204f45aaee1ca38a51e7b",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_a672ed3a.json": "15d3765ed047c52c481021766fab728d",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_b3e8da99.json": "94809f0693e27a254994cd3332b824e7",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_06d8af60.json": "6565a4ef51d67bdf6adfaaaf15fd3976",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_123deccb.json": "bc290a0b557b046c7608543dc096239b",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_1373e824.json": "4fcd55c9b5708e791be26e5e157b425e",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_234c3414.json": "143680d49a1d0888120a38b91ececa5b",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_3970156c.json": "252e619d44451c5f54bc42afce9aa334",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_4939d740.json": "ba88c83d58a617265fedc5f31083c888",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_5546f278.json": "496b0f545792e7f64bef67ee3e2fc9a0",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_556ad70d.json": "0c2fcec96ecd425a498594c693e21169",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_72fe3a17.json": "9cc6239d4a6ca9ea7556205a8a80d139",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_7c32a540.json": "90697dce6f9998b8cb66b0de1d1c128a",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_8838f4b3.json": "66db40d67bfd5e32552a8e44fd530ccb",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_a49c155f.json": "fd0e7d98ebff1e2d29acb62d4c473ba0",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_a970c19c.json": "0e1fd61104f7033823da919a81c512c1",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_b4cc0b2b.json": "d8bf6f592992a589d858dd1f01896192",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_ca8cb17e.json": "7e4b54843505ed5d6bf441c7aae66836",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_e616936e.json": "f5ecab77fbb7a48befc49ae30e8c0c57",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_113b36f8.py": "6db17a8e9f1435da58c46d4544c1af49",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_1d5c9f7a.py": "a7204641eba1b2364eb36558ea9a462e",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_4b448a82.py": "ec25d1c4987248edc54fdf18cd7db549",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_5ea978f7.py": "3106ee9512fcd70cf9a2078049bccdd9",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_68be10c7.py": "92530c678152f5758ecb0ae252f17736",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_6e724cca.py": "c3d407285223debfcafbc0f18c032678",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_6fd0f7de.py": "0d25bd628682799afbb4206e02c27dad",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_7a3f4fe2.py": "753bd58f6b658469ee98ec01a04b95f7",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_82fcd8bb.py": "922edccb694665b601d311d4dcf27027",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_8a38cca4.py": "f4c31ef9d25bfe7b97ee0bea2529df4f",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_a05fe951.py": "716dcdc7c5e67f025bd1f3370463c560",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_a672ed3a.py": "b393f00bce843401eb66e4e8eced46a5",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_b3e8da99.py": "f9079bb36af9a7b14bb47b674f68f69f",
+        "session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py": "0222f8be2f41cff0f45c6d82878dd89a",
+        "ui/data/board_view_public.js": "70bab90bcf5d0fb354f50efe3f142b57",
+        "ui/data/board_view_working.js": "cccc8c8f933b7ef891a0787c17f10b4f",
+        "ui/data/club_valuation.js": "b08ae50906c2b4c2cfb923668d3b13d1",
+        "ui/data/movers.js": "98d87764258685e3ce7f41372ea067a5",
+        "ui/data/movers_transition.js": "8fce2f8ee8ea577dffafc422672612e3",
+        "ui/data/ownership.js": "cc6b0d847d710b5554047c20cb08c579",
+        "ui/tests/movers.test.js": "af8ddfe8d948d8c9c185258bdeed6938"
+      },
+      "commit": "7675434e5424e802438d80a9958cae9d0d358a81",
+      "expected_boot": {
+        "as_of_round": 24,
+        "balanced_board_md5": "8838f4b3ed5089788c48a2657606711c",
+        "band": "34faa8659cc8f19794f5cb9584fa19b2",
+        "board": "82fcd8bb1e552b927299b5702122e321",
+        "bust_prior": "5942aa6ad7be1d482eed737997486c70",
+        "config": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1",
+        "engine_head": "3af8c1f7d61275c198a5df70c34608c7",
+        "fv": "6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346",
+        "peak_model": "f305fe5330222f4fa14d3654a0e91ef7",
+        "pvc_snapshot": "ade79790efc8ad4585c2c6800a935eaa",
+        "q97m": "cfdc73216c099e5e8f1fda3968f31c00",
+        "register": "652d83e87780e415a01a2de6d8b3cc57",
+        "register_note": "LTI_REGISTER.md \u2014 owner-authored availability sidecar, pinned as a versioned input (R-REG=R2, Chapter-3 2026-07-09). Guard 5 asserts it on entry like the store; bootstrap seeds it to the workspace; the lookalike tripwire (single_source.py) keeps it single. Owner edits it -> this pin moves in the same commit (a curation edit, NOT a store bake).",
+        "release_version": "v2.11-final-rc1-PROVISIONAL",
+        "rl_model": "6fe7c4155866d80e8045bed2d3bf2802",
+        "store": "fb640ca0baf92bbb122b1ad7e25c5a88",
+        "tag": "ID-PRIMARY MIGRATION candidate (clean scope) 2026-07-12 \u2014 NOT A BAKE PROMOTION (no tag, no main merge; owner word required). base = v2.8 (store 04f38dad, board 9ecbe0fa). Store MOVED 04f38dad -> b0c39d78: 804 stable_player_id (afl-player-v1-<20hex>) + affl_team + eligibilities attached (identity fields, not read by ev(), 0 board movers); 5 named DOB corrections (onley/kickett/rodriguez/driscoll _by 2000->2007/2006; mcandrew _by 1999->2000); taylor-adams marked _retired (mid-season retirement). RE-ENTRY TRIO (perez/mcandrew/keane -> pickless SSP) DEFERRED to the v2.9 lever build (owner-ruled 2026-07-12; register v11 item 11a) \u2014 it reprices 657 non-named rows via the load-time calibration refit. luke-nankervis NO-import (store PSD pick 2 stands). Engine code UNTOUCHED at the store migration (head 7a07e369) -> board de4baef9; book RE-SEALED for the new store (n re-counted). [v2.9 REFIT+BAKE 2026-07-13 rides ON this store: engine 7a07e369->2030e5df (6 env-gated levers, default-ON), board de4baef9->8a66b4ba->f2d6e3f5->81e48293 (refit -> export/display -> L7 num\u00e9raire+override BAKE, display-only), store b0c39d78 UNCHANGED; cohort gate PASS 126.8/125.2/116.1; see _engine_head_note.] Board movers vs 9ecbe0fa: 94 = 5 DOB + adams removed + 88 hairline retirement ripple (<=+/-2 SCAR, owner-declared expected). Two Max Kings remain separately keyed (collision sentry GREEN). Lineage: v2.8 (9bd0cfd) -> this candidate. Tag push + main promote are owner-only. [ITEM 20 STORE-IDENTITY JOB 2026-07-13 (first job post-v2.9-tag) MOVED the store b0c39d78 -> 340a7a32 and the board 81e48293 -> 3dc19fbb: see _item20_note above. Engine ev()/config/band/rl_model UNCHANGED; the ONLY v mover is bramble (+1); everything else is identity/display. v2.9 tag (9f8ae76) is unmoved and remains canonical; this is the next chapter's first store write, no re-tag.]",
+        "v0surf": "5dd34ca82735f5c8f021b1c7320df8f8"
+      }
+    },
+    "catchup_preflight": {
+      "ran": false,
+      "rehearsal": true
+    },
+    "claims": {
+      "activation": {
+        "day0_rebase": {
+          "_doc": "off by default; the M1b ruling \u2014 automation never re-bases itself green",
+          "state": "off"
+        }
+      },
+      "claims_path": "/tmp/landing_selftest_30746/sandbox/docs/evidence/landing_selftest/SELFTEST_CLAIMS.json",
+      "n_claims": 9,
+      "verified": true
+    },
+    "commit": {
+      "commit": "3b6571ddb3670c447f4fb2236a988fe85b5d5d37",
+      "committed": true,
+      "paths": [
+        "docs/STATE.md",
+        "docs/evidence/landing_selftest/MOVERS_R24.html",
+        "docs/evidence/landing_selftest/SELFTEST_CLAIMS.json",
+        "docs/evidence/landing_selftest/claims_check.txt",
+        "docs/evidence/landing_selftest/gate_release_contract_check.txt",
+        "docs/evidence/landing_selftest/gate_release_manifest_check.txt"
+      ]
+    },
+    "contract": {
+      "check": "PASS",
+      "seal_after": "d059faa92a20be155edd645650a835a8080f8cee6d118e5a0d9353e851c12c16",
+      "seal_before": "d059faa92a20be155edd645650a835a8080f8cee6d118e5a0d9353e851c12c16",
+      "trailing_newline_in_committed_file": true
+    },
+    "day0": "off",
+    "gates": {
+      "all_pass": true,
+      "gates": [
+        {
+          "argv": [
+            "python3",
+            "release_manifest_check.py"
+          ],
+          "elapsed_s": 0.1,
+          "exit": 0,
+          "name": "release_manifest_check",
+          "ok": true
+        },
+        {
+          "argv": [
+            "python3",
+            "release_contract.py",
+            "check"
+          ],
+          "elapsed_s": 0.1,
+          "exit": 0,
+          "name": "release_contract_check",
+          "ok": true
+        }
+      ]
+    },
+    "generator_sync": {
+      "board": "82fcd8bb1e552b927299b5702122e321",
+      "synced": false
+    },
+    "movers_page": {
+      "board_total_after": 700119,
+      "board_total_before": 700756,
+      "down": 478,
+      "md5": "ec9962f65db0e77f56bfd598027a119c",
+      "path": "docs/evidence/landing_selftest/MOVERS_R24.html",
+      "rendered": true,
+      "rows": 804,
+      "up": 220,
+      "written": true
+    },
+    "preflight": {
+      "base_commit": "7675434e5424e802438d80a9958cae9d0d358a81",
+      "board_before": "82fcd8bb1e552b927299b5702122e321",
+      "carriers_captured": 117,
+      "lock": "land-round-32128"
+    },
+    "scores": {
+      "rehearsal": true,
+      "scores": null
+    },
+    "sheet": {
+      "commit": "3e7cfca62be8787d92b7da9d5817ed5de4550809",
+      "engine_head": "3af8c1f7d61275c198a5df70c34608c7",
+      "moved": [
+        "sheet_md5",
+        "pinned_at",
+        "provenance"
+      ],
+      "prereg_lite": "docs/evidence/landing_selftest/SELFTEST_PREREG_LITE.md",
+      "recut": true,
+      "sheet_injured_y": 35,
+      "sheet_md5": "6a257b9d1cd51e4bbaff1cc67b9a69e3",
+      "sheet_rows": 219
+    },
+    "sibling": {
+      "balanced_board_md5": "8838f4b3ed5089788c48a2657606711c",
+      "fails_after": 0,
+      "fails_before": 0,
+      "reconciled": false
+    },
+    "state": {
+      "changed": true,
+      "md5": "85ccd949b59d0668b070cac8e1976196",
+      "path": "docs/STATE.md",
+      "stamp_commit": "3e7cfca62be8787d92b7da9d5817ed5de4550809",
+      "written": true
+    },
+    "ui": {
+      "bundle_md5": "cccc8c8f933b7ef891a0787c17f10b4f",
+      "club_valuation_md5": "b08ae50906c2b4c2cfb923668d3b13d1",
+      "club_valuation_moved": false,
+      "club_valuation_pin": "82fcd8bb",
+      "embedded_board": "82fcd8bb1e552b927299b5702122e321",
+      "mirror_md5": "8fce2f8ee8ea577dffafc422672612e3",
+      "mirror_moved": false,
+      "model_changes": 12,
+      "movers_md5": "98d87764258685e3ce7f41372ea067a5",
+      "movers_moved": false,
+      "n_picks": 160,
+      "ownership_md5": "cc6b0d847d710b5554047c20cb08c579",
+      "ownership_moved": false,
+      "ownership_pin": "fb640ca0",
+      "public_md5": "70bab90bcf5d0fb354f50efe3f142b57",
+      "register_entries": 14,
+      "writers": 6
+    }
+  },
+  "failed_step": null,
+  "ok": true,
+  "timings": [
+    {
+      "seconds": 0.11,
+      "step": "preflight",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.24,
+      "step": "sheet",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.0,
+      "step": "scores",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.0,
+      "step": "catchup_preflight",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.01,
+      "step": "advance",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.01,
+      "step": "generator_sync",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.0,
+      "step": "day0",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.1,
+      "step": "contract",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.19,
+      "step": "sibling",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 2.79,
+      "step": "ui",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.15,
+      "step": "movers_page",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.18,
+      "step": "state",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.19,
+      "step": "gates",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.31,
+      "step": "claims",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 1.46,
+      "step": "commit",
+      "verdict": "OK"
+    }
+  ]
+}
