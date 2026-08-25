@@ -1,8 +1,9 @@
 <!-- GENERATED-ONLY — regenerate: python3 tools/seat/pen.py index ; assert current: python3 tools/seat/pen.py verify -->
 # REGISTER ADDRESS INDEX — generated
 
-Newest entry: **v851**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
+Newest entry: **v852**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
 
+- **v852** (2026-08-25) — `docs/register/entries/v852.md` — **TWO PACKET DECISIONS ARE RULED — D1 ADOPT and D5 COMMISSION — and the smoothing proposal goes to the owner on the repaired in-band candida
 - **v851** (2026-08-25) — `docs/register/entries/v851.md` — **THE CURVE-SMOOTHING STUDY IS FILED (pre-ruling), THE FADE MACHINERY IS RECONCILED TO THE CALIBRATION, AND THE OWNER RULES THE ACCRUAL ASYM
 - **v850** (2026-08-25) — `docs/register/entries/v850.md` — **THE PACKET IS DELIVERED AND THE OWNER'S VERIFY-FIRST CENSURE IS ANSWERED WITH TWO VERIFICATION SEATS — the fade machinery and the pick cur
 - **v849** (2026-08-25) — `docs/register/entries/v849.md` — **THE SUCCESSOR'S FIRST ROUND — the recency-less refit VERIFIED and the burn premise FALSIFIED on schedule; the owner's words lock the desig
