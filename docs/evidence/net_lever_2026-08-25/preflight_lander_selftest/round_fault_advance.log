@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
-  tree      : /tmp/landing_selftest_10649/sandbox
+  tree      : /tmp/landing_selftest_15944/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 82fcd8bb1e552b927299b5702122e321
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,12 +9,12 @@ LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
 
 --- STEP 0/14  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_REPO, RL_VENV
-build-lock: HELD by land-round-11568 (pid 11568) — single writer for the shared workspace.
-base commit        d476a5234a8ccaf5ef7d1c64a02d76f61d5dfc83
+build-lock: HELD by land-round-16861 (pid 16861) — single writer for the shared workspace.
+base commit        c363ad8915f5eff6a741446edee90367eea84e18
 board pin (before) 82fcd8bb1e552b927299b5702122e321
 store pin (before) fb640ca0baf92bbb122b1ad7e25c5a88
 restore point      117 carrier(s) captured, 117 present on disk
-    [preflight OK  0.09s]
+    [preflight OK  0.08s]
 
 --- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
 sheet         docs/owner_annotations/SITTER_2026_v1.csv
@@ -55,10 +55,10 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.09s  OK
+    preflight          0.08s  OK
     sheet              0.00s  OK
     scores             0.00s  OK
     catchup_preflight     0.00s  OK
     advance            0.01s  FAIL
-    TOTAL              0.10s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_11568
+    TOTAL              0.09s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_16861

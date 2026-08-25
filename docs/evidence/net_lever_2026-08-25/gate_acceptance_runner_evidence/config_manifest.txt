@@ -1,0 +1,6 @@
+$ python3 config_manifest.py check
+(cwd /home/user/afl-rl-engine)
+
+CONFIG-MANIFEST CHECK: PASS (hash 29fdfd1e1447; 85 vars; pin+stored consistent)
+
+[exit 0]

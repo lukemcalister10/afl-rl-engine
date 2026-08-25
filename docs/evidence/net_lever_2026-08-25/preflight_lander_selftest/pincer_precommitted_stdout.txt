@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND ROUND-ADVANCE — SELF-TEST — the input-commit pincer (R24 rehearsal §3.1 RUN A + RUN C)
-  tree      : /tmp/landing_selftest_10649/sandbox
+  tree      : /tmp/landing_selftest_15944/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 82fcd8bb1e552b927299b5702122e321
   mode      : APPLY (SELFTEST) builder=selftest
@@ -12,12 +12,12 @@ DECLARED DIRT (2 path(s), and ONLY these): owner inputs this act is contracted t
     scores/R25.csv                                             (committed by the `catchup_preflight` step)
     engine/rl_after/ingestion/catchup_identity_overrides.json  (committed by the `catchup_preflight` step)
 RL_/PAR_ environment  RL_REPO, RL_VENV
-build-lock: HELD by land-round-11995 (pid 11995) — single writer for the shared workspace.
-base commit        244327b9827330fb550ae2f8fa9dc752368f1011
+build-lock: HELD by land-round-17288 (pid 17288) — single writer for the shared workspace.
+base commit        d4370efca9f1a51e74ba5ee6f460d708adadeb06
 board pin (before) 82fcd8bb1e552b927299b5702122e321
 store pin (before) fb640ca0baf92bbb122b1ad7e25c5a88
 restore point      118 carrier(s) captured, 118 present on disk
-    [preflight OK  0.10s]
+    [preflight OK  0.08s]
 
 --- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
 sheet         docs/owner_annotations/SITTER_2026_v1.csv
@@ -50,7 +50,7 @@ explicit paths (2):
     engine/rl_after/ingestion/catchup_identity_overrides.json
     scores/R25.csv
 NOTHING TO COMMIT: every named path is already committed at this content. The inputs of record are in the tree, which is what this commit exists to ensure; no empty commit is manufactured to say so.
-    [catchup_preflight OK  0.14s]
+    [catchup_preflight OK  0.13s]
 
 --- STEP 4/14  advance        THE ARMED CATCH-UP — ADVANCE-REPIN runs inside it ---
 *** FAULT INJECTED at step 'advance': stop_before_arming — the transaction is stopped at the door of the armed advance, so the case measures the four steps that already ran — the input-commit pincer
@@ -72,10 +72,10 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.10s  OK
+    preflight          0.08s  OK
     sheet              0.00s  OK
     scores             0.00s  OK
-    catchup_preflight     0.14s  OK
+    catchup_preflight     0.13s  OK
     advance            0.00s  FAIL
-    TOTAL              0.24s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_11995
+    TOTAL              0.21s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_17288

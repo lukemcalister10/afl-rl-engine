@@ -1,2 +1,2 @@
-BUILD LANDING      mode=dev       rc=0 board_md5=3167cba643a6b16e5ef5d904d8957fcd  (1067.0s)
-  staging removed: /home/claude/fvprov_kob5s5sa
+BUILD LANDING      mode=dev       rc=0 board_md5=3167cba643a6b16e5ef5d904d8957fcd  (1022.1s)
+  staging removed: /home/claude/fvprov_pokbfhgy
