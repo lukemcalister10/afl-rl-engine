@@ -128,3 +128,28 @@ before the dry-run, not waved through).
 
 Corrections to this prereg, if any are forced by the tree, are made AGAINST the tree with the
 error named (P9), never the tree against the prereg.
+
+---
+
+## 6 · P9 CORRECTIONS FILED AGAINST THE TREE (same day, before any result was read)
+
+**C1 — the identity `config` MOVES; v856's pre-filled slot list (and §5.8's "identity moves per
+v856") had it UNMOVED, and that was wrong.** The gate-mode config manifest rejects any RL_* dial
+not declared in `data/model_config.json` (measured: the first emit attempt HALTED on
+`UNKNOWN model override RL_O45='0'`). Declaring the kill-switch is therefore part of the lever
+build, exactly as the manifest's own doc requires ("amend the manifest at a bake in the same
+commit that re-stamps config_sha256 + expected_boot.json"). Consequences, all now predictions:
+- `model_config.json` gains `vars.RL_O45 = '1'` (+ a var_note) → config hash moves
+  `eed19a75f775…` → **`29fdfd1e1447…`** (85 vars; `config_manifest.py check` PASS in the
+  candidate root);
+- `expected_boot.json` `config` and `engine_head` re-pin (engine head `53ce2fb7` →
+  **`572b823e`**, the lever-carrying head — this is the head the flip commit takes to main);
+- `release_contract.json` `config_sha256` moves and the contract re-seals via its own
+  `contract_hash` (the landing preflight asserts self-consistency, tools/landing/steps.py:1133).
+
+**C2 — the kill-switch proof's mechanics restated.** Gate mode also rejects DIVERGENT overrides,
+so falsifier §5.1 cannot pass `RL_O45=0` in the environment. The proof instead emits against a
+manifest that DECLARES `RL_O45='0'` (coherently restamped via `set_o45_manifest.py`), then the
+manifest is restored to the landing posture `'1'`. The emitted board embeds no config identity
+(verified: no config/engine hash in `rl_app_data.json`), so byte-equality with `543bf900` is
+still the falsifier. The board of record's landed posture is the `'1'` manifest.
