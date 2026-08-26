@@ -363,7 +363,12 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   // rows) this act re-prices ACTIVE rows — total 692,296 -> 700,756 across the same 804 — so it is a
   // LAW 9 mint accepted by explicit owner word, recorded as an accepted exception in the act's lineage
   // entry and never as a pass. The counter does not care; a reader comparing the eleven should.
-  ok(mc.length === 12, "twelve out-of-round boundaries are declared (the restructure, the 30/7 rederivation, the 6/8 adoption, the 10/8 DOB courier, the 10/8 never-rises restore, THE LANDING, THE D8 ADOPTION, the 20/8 injury-sheet re-cut, the 20/8 F5 rounding fix, the 20/8 back-rows repair, the 21/8 staircase adoption, the 24/8 graham dual correction)  (got " + mc.length + ")");
+  // THIRTEENTH BUMP (ORDER 45 landing, 25/8): the arm-2 rebake + position-scaled safety net —
+  // board 82fcd8bb -> 3167cba6 on the owner's D1/D2/D3 words. Same growth, same reason as the
+  // twelve before it; this line only counts, and the property that matters is stated once below
+  // (EVERY boundary anchored to an owner-approved record). Deriving this count from the lineage
+  // instead of bumping it (the P4 cure) is queued for the combined act two.
+  ok(mc.length === 13, "thirteen out-of-round boundaries are declared (the restructure, the 30/7 rederivation, the 6/8 adoption, the 10/8 DOB courier, the 10/8 never-rises restore, THE LANDING, THE D8 ADOPTION, the 20/8 injury-sheet re-cut, the 20/8 F5 rounding fix, the 20/8 back-rows repair, the 21/8 staircase adoption, the 24/8 graham dual correction, the 25/8 ORDER 45 arm-2 rebake + safety net)  (got " + mc.length + ")");
   ok(mc[0].between[0] === "19" && mc[0].between[1] === "post-r19-redesign-1" &&
      mc[0].owner_approved_record === true,
      "model change declared between R19 and the restructure point, anchored to the owner-approved record");
