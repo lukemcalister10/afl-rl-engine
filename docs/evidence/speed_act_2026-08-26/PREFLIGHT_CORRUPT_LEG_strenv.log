@@ -1,0 +1,5 @@
+======================================================================================================
+PREFLIGHT — the sub-second battery, before the lock, the sandbox and the first build.
+======================================================================================================
+  spec_validate            FAIL    0.00s  raised SpecError('act spec corrupt_spec_strenv.json cannot drive a landing — 1 problem(s):\n  - prereg.kill_switch.env must be a NON-EMPTY O
+the spec is unfit; nothing else is worth measuring against it.

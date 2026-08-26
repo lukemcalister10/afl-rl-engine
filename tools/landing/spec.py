@@ -31,6 +31,20 @@ TRACKED_IDENTITIES = ('board', 'store', 'engine_head', 'rl_model', 'fv', 'config
                       'balanced_board_md5', 'as_of_round', 'v0surf', 'band', 'q97m', 'peak_model',
                       'bust_prior', 'pvc_snapshot', 'release_version', 'rl_model_data', 'season_state')
 
+#: THE SCOPE PARTITION (ORDER 45 attempt-4 class, 2026-08-25; the Graham `_doc_store` precedent).
+#: `identities.moves` means MOVES DURING THE LANDING TRANSACTION. An identity that moved at the FLIP
+#: COMMIT — before the transaction opened — is byte-stable inside it and belongs in `unmoved`.
+#: Declaring it in `moves` used to fail in one of two ways, both discovered mid-transaction:
+#:   - a PIN_MEASURERS identity (engine_head, fv, config, ...) HALTED at the pins step, minutes after
+#:     the first build: "DECLARED MOVING and the tree says it did not move" (ABORT_pins.json);
+#:   - an identity with NO writer of record at all was silently filtered out at the same step — a
+#:     declared move that was a complete no-op, which is worse than a halt.
+#: Both are now refused at VALIDATION time, seconds after the spec is written. The two tables below
+#: are cross-asserted against steps.PIN_MEASURERS / steps.DELEGATED_PINS at steps import (P4: assert
+#: the relationship, never this month's list), so they cannot drift from the code that enforces them.
+FLIP_SCOPED_IDENTITIES = ('engine_head', 'rl_model', 'fv', 'config', 'v0surf')
+NO_WRITER_IDENTITIES = ('band', 'q97m', 'peak_model', 'bust_prior', 'pvc_snapshot', 'release_version')
+
 #: Slots every act spec must fill. Absent slot = refused; the point is that an unfilled slot is
 #: VISIBLE, which is the same argument tools/claims.py makes for its own fixed schema.
 REQUIRED_SLOTS = ('schema_version', 'act_kind', 'act', 'date', 'owner_word', 'authority',
@@ -144,6 +158,12 @@ def _validate_round(doc):
                        '(c): arming the score-write needs Luke\'s explicit word, under any level of '
                        'model autonomy. The lander is handed the word and the token; it never '
                        'composes either.')
+        elif not isinstance(arming['env'], dict):
+            # a string env survived the truthiness test above and then raised AttributeError out of
+            # validate(), defeating the collect-every-problem contract (found in the speed-act audit,
+            # same wrong-typed-env class as kill_switch attempt 1)
+            bad.append('round.arming.env must be an OBJECT of env-var name -> value strings, '
+                       'not a %s' % type(arming['env']).__name__)
         elif not str(arming['env'].get('INGEST_SCORE_APPLY') or '').strip() or \
                 str(arming['env'].get('INGEST_SCORE_APPLY_ARMED') or '') != '1':
             bad.append('round.arming.env must arm BOTH halves of the gate: '
@@ -318,6 +338,26 @@ def validate(doc):
                 for k in ('name', 'env', 'board_with_switch_off'):
                     if k not in ks:
                         bad.append('prereg.kill_switch.%s is required when a switch is declared' % k)
+                # TYPED, not just present (ORDER 45 attempt-1, 2026-08-25: env declared as the STRING
+                # "RL_O45=0" passed this validator and died ~2 minutes into the SECOND build inside
+                # dict(...) — "dictionary update sequence element #0 has length 1". A wrong-typed
+                # switch is refused here, in the first second, with the shape spelled out.)
+                if 'name' in ks and not (isinstance(ks.get('name'), str) and ks['name'].strip()):
+                    bad.append('prereg.kill_switch.name must be a non-empty string')
+                if 'env' in ks:
+                    env = ks['env']
+                    if not isinstance(env, dict) or not env:
+                        bad.append('prereg.kill_switch.env must be a NON-EMPTY OBJECT of env-var '
+                                   'name -> value strings, e.g. {"RL_O45": "0"} — not a string, not '
+                                   'a list. It is handed verbatim to the switch-off build\'s '
+                                   'environment (attempt-1 class, 2026-08-25).')
+                    elif not all(isinstance(k, str) and isinstance(v, str) for k, v in env.items()):
+                        bad.append('prereg.kill_switch.env carries a non-string key or value — env '
+                                   'vars are strings on both sides; write "0", not 0')
+                bso = ks.get('board_with_switch_off')
+                if bso and (len(str(bso)) != 32 or any(c not in '0123456789abcdef' for c in str(bso))):
+                    bad.append('prereg.kill_switch.board_with_switch_off %r is not an md5 — it is '
+                               'the byte-exact board the switch-off build must reproduce' % bso)
 
     ids = doc.get('identities')
     if not isinstance(ids, dict):
@@ -336,6 +376,21 @@ def validate(doc):
             if k not in TRACKED_IDENTITIES:
                 bad.append('identity %r is not one this lander tracks (%s)'
                            % (k, ', '.join(TRACKED_IDENTITIES)))
+        # THE SCOPE PARTITION (attempt-4 class — see the table comments at the top of this file).
+        # `moves` is TRANSACTION scope. Flip-carried identities go in `unmoved`.
+        for k in moves:
+            if k in FLIP_SCOPED_IDENTITIES:
+                bad.append('identities.moves declares %r, which moves at the FLIP COMMIT, not inside '
+                           'the landing transaction — the pins step would HALT minutes in with '
+                           '"DECLARED MOVING and the tree says it did not move" (ORDER 45 attempt 4, '
+                           '2026-08-25). Declare it in `unmoved`: the flip-carried identity is '
+                           'byte-stable inside the transaction (the Graham _doc_store precedent).' % k)
+            elif k in NO_WRITER_IDENTITIES:
+                bad.append('identities.moves declares %r, which has NO writer of record in the '
+                           'landing transaction — the pins step would silently ignore it, making the '
+                           'declaration a no-op (worse than a halt). It is act-scoped: it moves at a '
+                           'bake/flip and rides into the transaction already moved. Declare it in '
+                           '`unmoved`.' % k)
 
     col = doc.get('column')
     if col is not None:

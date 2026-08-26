@@ -582,6 +582,14 @@ class Ctx(object):
         env.pop('RL_BUILD_LOCK_HELD', None)
         env['RL_REPO'] = self.root
         env['PYTHONHASHSEED'] = env.get('PYTHONHASHSEED', '0')
+        # PICKLE ISOLATION (ORDER 45 attempts 2+5 class fix, 2026-08-26; twin of Sandbox.env's fix).
+        # Every child of THIS transaction reads THIS tree's committed band/q97m — never the shared,
+        # mutable /home/claude copies that whichever build bootstrapped last re-seeded. Same bytes on
+        # a healthy box (bootstrap copies from these very files), so the shipped resolution is
+        # byte-identical; on a poisoned box this is the difference between an abort and a landing.
+        # Both are INFRA_ALLOW path vars asserted by Guard 5's load-path block against the pin.
+        env['RL_CM_PKL'] = os.path.join(self.root, 'data', 'cm_400.pkl')
+        env['RL_Q97M_PKL'] = os.path.join(self.root, 'data', 'q97m.pkl')
         return env
 
     def run(self, argv, timeout=1800, env_overrides=None):

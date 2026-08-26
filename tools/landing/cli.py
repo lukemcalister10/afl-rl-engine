@@ -148,11 +148,29 @@ def _file_preflight_evidence(src, dest_dir):
               % (e, src))
 
 
+def _run_cheap_preflight(a, doc):
+    """The sub-second battery, before the selftest (minutes) and the first build (more minutes).
+    Skipped under --selftest for the same reason _preflight_selftest is: the sandbox's fault runs
+    exercise the transaction, and every one of these checks re-runs at gate time anyway."""
+    if a.selftest:
+        return
+    from tools.landing import preflight as PF
+    ok, results = PF.run_preflight(a.root, a.spec)
+    ev = doc.get('evidence_dir')
+    if ev:
+        PF.file_evidence(results, os.path.join(a.root, ev))
+    if not ok:
+        raise SystemExit('PREFLIGHT FAILED. No lock taken, no sandbox cut, no build run, the tree '
+                         'untouched — every failure above was knowable in seconds, which is the '
+                         'point (ORDER 45 ledger, register v858).')
+
+
 def cmd_lever(a):
     doc = SP.load(a.spec)
     if doc['act_kind'] != 'lever-landing':
         raise SystemExit('this spec is act_kind %r; `land lever` runs lever-landing specs.'
                          % doc['act_kind'])
+    _run_cheap_preflight(a, doc)
     doc['_spec_rel'] = os.path.relpath(os.path.abspath(a.spec), os.path.abspath(a.root))
     builder = TX.BUILDERS[a.builder]() if a.builder in TX.BUILDERS else None
     if builder is None:
@@ -203,6 +221,7 @@ def cmd_round(a):
     if doc['act_kind'] != 'round-advance':
         raise SystemExit('this spec is act_kind %r; `land round` runs round-advance specs.'
                          % doc['act_kind'])
+    _run_cheap_preflight(a, doc)
     doc['_spec_rel'] = os.path.relpath(os.path.abspath(a.spec), os.path.abspath(a.root))
     builder = TX.BUILDERS[a.builder]() if a.builder in TX.BUILDERS else None
     if builder is None:
@@ -239,6 +258,7 @@ def cmd_edit(a):
     if doc['act_kind'] != 'store-edit':
         raise SystemExit('this spec is act_kind %r; `land edit` runs store-edit specs.'
                          % doc['act_kind'])
+    _run_cheap_preflight(a, doc)
     doc['_spec_rel'] = os.path.relpath(os.path.abspath(a.spec), os.path.abspath(a.root))
     if a.dry_run:
         from tools.landing import preview as PV
@@ -308,6 +328,12 @@ def _print_round_sequence():
     print('  %d carriers: %d shared with the lever landing, %d added by 2b.'
           % (len(CA.ROUND_CARRIERS), len(CA.LEVER_CARRIERS), len(CA.ROUND_EXTRA_CARRIERS)))
     return 0
+
+
+def cmd_preflight(a):
+    from tools.landing import preflight as PF
+    ok, _results = PF.run_preflight(a.root, a.spec)
+    return 0 if ok else 1
 
 
 def cmd_spec_template(a):
@@ -387,6 +413,12 @@ def main(argv=None):
     p.add_argument('--log', default=None, help='write the full transcript here')
     p.add_argument('--print-sequence', action='store_true', help='print the steps and carriers, exit')
     p.set_defaults(fn=cmd_edit)
+
+    p = sub.add_parser('preflight', help='the sub-second pre-launch battery, standalone (it also '
+                                         'runs automatically at the top of lever/round/edit)')
+    p.add_argument('--spec', required=True)
+    p.add_argument('--root', default=os.environ.get('RL_REPO') or os.getcwd())
+    p.set_defaults(fn=cmd_preflight)
 
     p = sub.add_parser('spec-template', help='print a blank act spec')
     p.add_argument('--act-kind', default='lever-landing')

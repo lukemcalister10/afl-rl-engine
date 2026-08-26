@@ -97,6 +97,18 @@ DELEGATED_PINS = {
     'rl_model_data': 'the round lander (2b) — the store is written by a score application',
 }
 
+# P4 CROSS-ASSERT (speed act 2026-08-26): spec.py refuses `moves` declarations for identities with
+# no writer of record IN THIS TRANSACTION (spec.NO_WRITER_IDENTITIES) — the attempt-4 silent-no-op
+# class. That table is only honest while it equals what THIS file actually filters out, so the
+# relationship is asserted here, at import, rather than each side carrying this month's list.
+from . import spec as _SPEC_TABLES
+assert set(_SPEC_TABLES.NO_WRITER_IDENTITIES) == \
+       set(_SPEC_TABLES.TRACKED_IDENTITIES) - set(PIN_MEASURERS) - set(DELEGATED_PINS), \
+    ('spec.NO_WRITER_IDENTITIES has drifted from steps.PIN_MEASURERS/DELEGATED_PINS — update the '
+     'spec table in the SAME commit that adds or removes a pin writer')
+assert set(_SPEC_TABLES.FLIP_SCOPED_IDENTITIES) <= set(PIN_MEASURERS), \
+    'spec.FLIP_SCOPED_IDENTITIES names an identity the pins step cannot even measure'
+
 #: The standing landing gate set. Each is run and its verdict read off the exit code — never taken
 #: on trust, never parsed for a hopeful word.
 #:

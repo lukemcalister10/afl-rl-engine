@@ -1,0 +1,7 @@
+SPEC VALIDATOR CORRUPT-LEG PROOF (speed act 2026-08-26, P15 draft discipline)
+landed ORDER45 spec problems: []
+LEG string-env       FIRES: prereg.kill_switch.env must be a NON-EMPTY OBJECT of env-var name -> value strings, e.g. {"RL_O45": "0"} — not a string, not a list. It is handed verbatim to the switch-off build's environment (attempt-1 class, 2026-08-25).
+LEG int-env-value    FIRES: prereg.kill_switch.env carries a non-string key or value — env vars are strings on both sides; write "0", not 0
+LEG bad-bso          FIRES: prereg.kill_switch.board_with_switch_off 'xyz' is not an md5 — it is the byte-exact board the switch-off build must reproduce
+LEG flip-scoped      FIRES: identities.moves declares 'engine_head', which moves at the FLIP COMMIT, not inside the landing transaction — the pins step would HALT minutes in with "DECLARED MOVING and the tree says it did not move" (ORDER 45 attempt 4, 2026-08-25). Declare it in `unmoved`: the flip-carried identity is byte-stable inside the transaction (the Graham _doc_store precedent).
+LEG no-writer        FIRES: identities.moves declares 'band', which has NO writer of record in the landing transaction — the pins step would silently ignore it, making the declaration a no-op (worse than a halt). It is act-scoped: it moves at a bake/flip and rides into the transaction already moved. Declare it in `unmoved`.

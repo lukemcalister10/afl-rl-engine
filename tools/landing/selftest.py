@@ -308,6 +308,19 @@ class Sandbox(object):
             env.pop(legacy, None)
         env['GIT_AUTHOR_NAME'] = env['GIT_COMMITTER_NAME'] = 'selftest'
         env['GIT_AUTHOR_EMAIL'] = env['GIT_COMMITTER_EMAIL'] = 'selftest@local'
+        # SANDBOX PICKLE ISOLATION (ORDER 45 attempts 2 AND 5, 2026-08-25 — the class fix, at last).
+        # The sandbox tree is cut from `coherent_base` (the OLD engine on a flip act), but the band
+        # resolver has NO repo fallback: $RL_CM_PKL -> /home/claude/cm_<trees>.pkl, full stop — and
+        # /home/claude is SHARED AND MUTABLE, re-seeded by whichever candidate build bootstrapped
+        # last. So the old-engine selftest read candidate-engine pickles and died, twice, and the
+        # workaround was a git-restore in the launch wrapper. The fix: pin the sandbox's engine to
+        # the sandbox's OWN committed pickles. Both vars are config_manifest.INFRA_ALLOW path vars
+        # (value-neutral by construction — unlike the RL_BUILD_LOCK_FILE burn above, these are
+        # DECLARED engine path inputs, not tool flags), and boot_guard's mirrored resolvers follow
+        # the same precedence, so Guard 5 asserts the sandbox file == the sandbox pin. q97m keeps a
+        # repo fallback but the shared copy outranked it; cm has no fallback at all.
+        env['RL_CM_PKL'] = os.path.join(self.path, 'data', 'cm_400.pkl')
+        env['RL_Q97M_PKL'] = os.path.join(self.path, 'data', 'q97m.pkl')
         return env
 
     def head(self):
