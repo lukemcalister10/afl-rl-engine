@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# tools/harness — THE LOAD-ONCE BATTERY COMMAND.
+#   tools/harness [--emit-json OUT.json] PASS1.py [PASS2.py ...]
+#
+# One engine load, every instrument pass in-process (owner directive, register v857/v858:
+# "Parallelise. Load things once."). This wrapper is run_panel.sh's discipline verbatim —
+# build lock, Guard 5, explicit RL_FV bind, gate-mode manifest — then hands the loaded-world
+# work to tools/harness_run.py. It adds nothing but the name and the discipline.
+set -euo pipefail
+HERE=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+WS=/home/claude/rl_workspace/rl_after
+. "$HERE/tools/build_lock.sh"
+build_lock_acquire harness || exit 1
+export RL_FV="$HERE/engine/forward_valuation"
+RL_REPO="$HERE" python3 "$HERE/boot_guard.py" harness "$WS/rl_model_data.json" "$WS/_merged_recover.py" "$HERE/data/cm_400.pkl" "$WS/LTI_REGISTER.md" || exit 1
+# Pass paths are resolved against the CALLER's cwd before we enter the workspace.
+ARGS=()
+for a in "$@"; do
+  case "$a" in
+    --emit-json) ARGS+=("$a");;
+    -*) ARGS+=("$a");;
+    *) if [[ "$a" == /* ]]; then ARGS+=("$a"); else ARGS+=("$(pwd)/$a"); fi;;
+  esac
+done
+cd "$WS"
+# The bootstrap ENV line, reproduced: workdir + vendored unidecode on PYTHONPATH.
+export PYTHONPATH="$WS:/home/claude/rl_vendor${PYTHONPATH:+:$PYTHONPATH}"
+# env -u RL_BUILD_LOCK_HELD: the thrice-burned rule — never ship an RL_ tooling var into the
+# engine. The lock's export is the ONE recorded survivor of the class (tools/landing/carriers.py)
+# and gate-mode enforce() rightly rejects it; the lock itself stays held by this process's flock
+# fd across the exec, so dropping the marker drops nothing but the collision.
+exec env -u RL_BUILD_LOCK_HELD RL_CONFIG_MODE=gate RL_REPO="$HERE" python3 "$HERE/tools/harness_run.py" "${ARGS[@]}"

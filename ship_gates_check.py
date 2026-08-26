@@ -379,7 +379,11 @@ if not ('B1' in SKIP and 'B3' in SKIP):
             _mfd, CAND_MATRIX = _tf.mkstemp(prefix='s4_cand_', suffix='.json'); os.close(_mfd)
             _menv = _subenv(S4_MATRIX=CAND_MATRIX, RL_CONFIG_MODE='gate', RL_REPO=ROOT)   # rev143: strip SGC_* from the gate-mode child
             _mrun = subprocess.run([sys.executable, 's4_matrix_M1v7.py'], cwd=RA, env=_menv,
-                                   capture_output=True, text=True, timeout=1800)
+                                   capture_output=True, text=True, timeout=5400)   # CEILING RAISED 1800->5400 (speed act
+                                   # 2026-08-26): the arm-2 exact-monotone band made the gate-mode regen ~35 min where the
+                                   # header above says ~3 — the MEASURED cause of the ORDER 45 B1/B3 timeouts (register
+                                   # v858, falsifier 6 carried on the owner's "We can do B3 in the next set"). The sealer
+                                   # copy (docs/evidence/speed_act_2026-08-26/reseal_speed.py) carries the SAME ceiling.
         _meta = json.load(open(CAND_MATRIX)).get('__meta__', {}) if (CAND_MATRIX and os.path.exists(CAND_MATRIX)) else {}
         _mok = bool(_meta) and _meta.get('engine_head_md5', '')[:8] == HEAD and _meta.get('store_md5', '')[:8] == STORE
         if CONFIG_HASH is not None:
