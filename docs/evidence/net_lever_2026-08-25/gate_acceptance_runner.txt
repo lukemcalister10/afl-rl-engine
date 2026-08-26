@@ -18,13 +18,13 @@ doc_lint                 PASS        doc_lint: 0 FAIL, 0 WARN  (live=7 history=2
 rulebook_lint            PASS        note R5 TWIN ABSENCE: docs/acceptance_v2_0.json is absent, as the v3 amendment lef…
 ruled_red_ledger         PASS        3 step entries probed, all still failing exactly as their ruling records
 inbox_manifest           PASS        inbox_manifest: 1 archived file(s), 0 problem(s), 0 stale generated file(s)
-mirror_parity            FAIL        cm/band: no candidate expression found in boot_guard.py._resolve_cm_load
+mirror_parity            PASS        3 fitted-artifact resolvers mirror the engine byte-for-byte; all 3 pins hold
 dial_coverage            PASS        84 of 85 declared dials read with a default in engine source (1 self-declared orph…
 oneliner_gamma           PASS        6 of ship_gates_check.py's 7 exported vars are manifest dials and all agree (enfor…
 oneliner_r14_restore     PASS        R14 disposable fixture + fail-closed controls + movers transition: 50 [PASS], exit…
 oneliner_f1_lens         PASS        the F1 export-parity leg is present, key-for-key, and still reports a mismatch cou…
 register_form            PASS        pen verify: frozen 219021ac sealed-ok=True · 45 new-form entries · newest v857 / i…
-state_file               PASS        state: PASS — docs/STATE.md is a regeneration of this tree (stamp 270c2d767b13)
+state_file               PASS        state: PASS — docs/STATE.md is a regeneration of this tree (stamp 0ab95667e8ea)
 -----------------------  ----------  -----------------------------------------------------------------------------------
 
 EVIDENCE:
@@ -46,7 +46,7 @@ EVIDENCE:
   register_form            /home/user/afl-rl-engine/docs/evidence/net_lever_2026-08-25/gate_acceptance_runner_evidence/register_form_index.txt
   state_file               /home/user/afl-rl-engine/docs/evidence/net_lever_2026-08-25/gate_acceptance_runner_evidence/state_file.txt
 
-AGGREGATE  17 checks  |  PASS 16  FAIL 1  BLOCKED 0  RULED-RED 0
-VERDICT    RED — 1 gating failure(s): mirror_parity
+AGGREGATE  17 checks  |  PASS 17  FAIL 0  BLOCKED 0  RULED-RED 0
+VERDICT    GREEN — no gating failures.
 
-[exit 1]
+[exit 0]

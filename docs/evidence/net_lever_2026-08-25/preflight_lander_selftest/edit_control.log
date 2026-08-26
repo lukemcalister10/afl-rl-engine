@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND STORE-EDIT — SELF-TEST — the surgical store edit
-  tree      : /tmp/landing_selftest_15944/sandbox
+  tree      : /tmp/landing_selftest_25879/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 18e30f929c93f00610f97d6c65b933cf
   mode      : APPLY (SELFTEST) builder=selftest-moved
@@ -8,8 +8,8 @@ LAND STORE-EDIT — SELF-TEST — the surgical store edit
 
 --- STEP 0/11  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_REPO, RL_VENV
-build-lock: HELD by land-edit-17332 (pid 17332) — single writer for the shared workspace.
-base commit        c363ad8915f5eff6a741446edee90367eea84e18
+build-lock: HELD by land-edit-27662 (pid 27662) — single writer for the shared workspace.
+base commit        e40ffa761b8d7d36bf8bd873f90206390e670f0c
 board pin (before) 82fcd8bb1e552b927299b5702122e321
 store pin (before) fb640ca0baf92bbb122b1ad7e25c5a88
 restore point      65 carrier(s) captured, 65 present on disk
@@ -26,7 +26,7 @@ WRITTEN and re-read: 1 row(s) edited, 2650 rows in the store, every other row un
 season clock  re-derived from the edited store by season_state.derive (the sole deriver)
     source_store_md5  fb640ca0baf9 -> bb862a0551ae
     every derived VALUE asserted unchanged (10 field(s) checked); WRITTEN and re-read.
-    [store_edit OK  0.22s]
+    [store_edit OK  0.21s]
 
 --- STEP 2/11  build_proofs   bare build, predicted identity, switch leg, day-0 ---
 build         rc=0 board=18e30f929c93f00610f97d6c65b933cf  (0.0s)
@@ -61,7 +61,7 @@ chain OK: register tail destination == this entry's source on board and store
 append-only OK: 14 prior entries byte-verbatim; top-level baseline 06d8af60b679a12db07c064c60c065f9 / v2.11-present-lens-baseline UNMOVED
 MOVED by this transition: ['board', 'store'] (of 11 identities)
 re-read OK: round-trips at indent=1; prior entries still byte-verbatim.
-    [lineage OK  0.21s]
+    [lineage OK  0.22s]
 
 --- STEP 5/11  contract       restamp_dynamic + the bake-lane repin + check ---
 contract seal self-consistent before the act: d059faa92a20
@@ -95,7 +95,7 @@ LANDING ABORTED AT STEP 'sibling'
 carriers that moved before the failure: 13
     data/expected_boot.json                                          94a7fecb975a -> e5dafe239350
     data/release_contract.json                                       b0fb2ae36034 -> 9a043df67b11
-    data/release_lineage.json                                        eca9433fdb98 -> cde604a458af
+    data/release_lineage.json                                        eca9433fdb98 -> bb3e816ea2fb
     data/rl_build/rl_app_data.json                                   82fcd8bb1e55 -> 18e30f929c93
     data/rl_build/rl_app_data.json.srcmd5                            eb2e23724453 -> 5816ec173f18
     data/season_state.json                                           fe7b7b9e8c41 -> bf8fbba8eb5d
@@ -130,11 +130,11 @@ improvised manual landing under pressure.
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
     preflight          0.07s  OK
-    store_edit         0.22s  OK
+    store_edit         0.21s  OK
     build_proofs       0.07s  OK
     pins               0.02s  OK
-    lineage            0.21s  OK
+    lineage            0.22s  OK
     contract           0.09s  OK
     sibling            0.05s  FAIL
     TOTAL              0.73s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_17332
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_27662

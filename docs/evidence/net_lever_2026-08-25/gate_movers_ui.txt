@@ -1,0 +1,74 @@
+$ node ui/tests/movers.test.js
+
+MOVERS-VIEW TESTS
+  ------------------------------------------------------------
+  [PASS] valid report passes integrity
+  [PASS] null report fails closed
+  [PASS] missing committed board id fails closed
+  [PASS] missing release identity fails closed
+  [PASS] board mismatch fails closed
+  [PASS] duplicate player rows fail closed
+  [PASS] coherent bundle passes full-identity lineage  (got [true,"ok"])
+  [PASS] empty bundle on the loaded lineage -> honest empty state  (got [true,"empty"])
+  [PASS] empty 270a2c5f bundle vs a different baseline board fails closed (not empty state)
+  [PASS] same newest board, differing store: displayed (transition is no longer a gate)
+  [PASS] differing release_version: displayed (enforcement removed)
+  [PASS] differing engine_head: displayed (enforcement removed)
+  [PASS] differing fv: displayed (enforcement removed)
+  [PASS] differing config: displayed (enforcement removed)
+  [PASS] differing register: displayed (enforcement removed)
+  [PASS] ONE ASSERT: newest stored point != loaded board fails closed
+  [PASS] ONE ASSERT: newest stored point == loaded board passes
+  [PASS] a report with a different balanced_board_md5 fails closed
+  [PASS] baseline board-anchor break fails closed
+  [PASS] baseline store-anchor break fails closed
+  [PASS] a board-identity discontinuity is DISPLAYED, not rejected (chain removed 2026-07-28)
+  [PASS] a store-identity discontinuity is DISPLAYED, not rejected (chain removed 2026-07-28)
+  [PASS] latest report board != loaded current board fails closed
+  [PASS] incoherent as_of_round fails closed
+  [PASS] non-sequential points are DISPLAYED — from/to needs no consecutive series
+  [PASS] value risers order  (got ["a","d","c","b"])
+  [PASS] value fallers order  (got ["b","c","d","a"])
+  [PASS] rank risers deterministic tie-break (a before d)  (got ["a","d","c","b"])
+  [PASS] club filter  (got ["a","c"])
+  [PASS] position filter  (got ["a","c"])
+  [PASS] DNP filter keeps DNP player  (got ["d"])
+  [PASS] played filter  (got ["a","b","c"])
+  [PASS] DNP player present in the complete table
+  [PASS] listed score of 0 is PLAYED
+  [PASS] summary headline movers  (got ["a","b","a","b"])
+  [PASS] production ui/data/movers.js carries R15-R24  (got [15,16,17,18,19,20,21,22,23,24])
+  [PASS] production bundle carries ten reports (one per round)
+  [PASS] complete historical board/store chain R14->R19 is exact + continuous
+  [PASS] latest report terminates at the R19 recovery-materialised store f37d9716 (history; superseded as the accepted store by ITEM 411 D1 c120cfd5)
+  [PASS] transition record is an owner-approved movers_release_transition
+  [PASS] transition digest matches the restored R15-R19 reports byte-for-byte (content anchor)  (got "sha256:6aea584536c6cd98c7949947620687d549b6f6f54fcc44acf3ca6fd71aaf8c4d")
+  [PASS] bundle displays under the current app, bridged — the last act to move the board was the 24/8 graham dual correction (out-of-round, owner-approved column), so the latest round report terminates one identity behind the loaded board  (got [true,"bridged"])
+  [PASS] NON-VACUITY: a bundle whose newest point is not the loaded board is refused, not bridged  (got [false,"mismatch"])
+  [PASS] NON-VACUITY: loaded at the bundle's own terminal identity the SAME bundle reads ok — bridged is a discriminating state  (got [true,"ok"])
+  [PASS] RESOLVED (#271 A17, 2026-08-06): bundle baseline anchor 06d8af60 now agrees with the loaded app's 06d8af60 — the reason the state is ok, not bridged
+  [PASS] the same bundle WITHOUT a transition also displays (gate removed)
+  [PASS] app has advanced past the transition destination — the record is history, not the current release
+  [PASS] transition destination is the restructure board — the boundary the tab labels
+  [FAIL] twelve out-of-round boundaries are declared (the restructure, the 30/7 rederivation, the 6/8 adoption, the 10/8 DOB courier, the 10/8 never-rises restore, THE LANDING, THE D8 ADOPTION, the 20/8 injury-sheet re-cut, the 20/8 F5 rounding fix, the 20/8 back-rows repair, the 21/8 staircase adoption, the 24/8 graham dual correction)  (got 13)
+  [PASS] model change declared between R19 and the restructure point, anchored to the owner-approved record
+  [PASS] model change declared between R20 and the 30/7 rederivation, anchored to the owner-approved record
+  [PASS] model change declared between the 30/7 rederivation and the 6/8 adoption, anchored to the owner-approved adoption record
+  [PASS] the 30/7 boundary carries its own owner ruling id (A22's known-false flag is cleared)  (got ["ITEM_271_Addendum_17"])
+  [PASS] EVERY declared out-of-round boundary is anchored to an owner-approved record
+  [PASS] a range spanning the restructure is LABELLED
+  [PASS] a range inside one model is not
+  [PASS] ONE ASSERT: newest stored point == loaded board passes
+  [PASS] ONE ASSERT: newest stored point != loaded board fails closed
+  [PASS] future report append preserves all R15-R19 reports byte-for-byte (historical digest unchanged)  (got "sha256:6aea584536c6cd98c7949947620687d549b6f6f54fcc44acf3ca6fd71aaf8c4d")
+  [PASS] the appended future report carries the then-current governing identity (destination)
+  [PASS] movers module exports only pure view logic (applies NO scores)  (got ["core","makeView"])
+  [PASS] scratch evidence bundle carries R15-R19  (got [15,16,17,18,19])
+  [PASS] scratch bundle passes full-identity lineage against its own last board/store/release
+  [PASS] every scratch report carries the same fixed balanced_board_md5 (06d8af60)
+  [PASS] every scratch round report: integrity + unique coverage + no v2.10 tag + balanced not synthesized
+  [PASS] scratch reports represent DNP players
+  ------------------------------------------------------------
+MOVERS TESTS: 1 FAIL / 66
+
+[exit 1]
