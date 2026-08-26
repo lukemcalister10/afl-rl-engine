@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v860 2026-08-26 · **THE OUTCOME-YARDSTICK QUESTION ENTERS ACT TWO — owner word, verbatim (2026-08-26): "Let's resolve the outcome yardstick please and fold it in."** The story as presented: the day-0 pick curve is calibrated on YARDSTICK A (whole-career delivered production, discounted to draft day, busts at zero — ORDER 28); the v838 seam study measured YARDSTICK B (probab
+  > # OPEN ITEMS REGISTER · v861 2026-08-26 · **THE OUTCOME-YARDSTICK QUESTION IS RULED: YARDSTICK A REMAINS THE PRICING YARDSTICK.** Owner words, verbatim (2026-08-26, on the side-by-side): "Year 3 is too self referential and doesn't consider different positions taking different time. Best exist prices players across their best and doesn't price longevity. We can remain with the current system please
 
-- new-form entries under `docs/register/entries/`: 48
+- new-form entries under `docs/register/entries/`: 49
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `27621c238c312ed4c93d8e1110a3255af7a9cc42` |
+| generated at commit | `79fa088448abdfdee0fa304c4239f846a63a2670` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

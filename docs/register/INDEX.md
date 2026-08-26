@@ -1,8 +1,9 @@
 <!-- GENERATED-ONLY — regenerate: python3 tools/seat/pen.py index ; assert current: python3 tools/seat/pen.py verify -->
 # REGISTER ADDRESS INDEX — generated
 
-Newest entry: **v860**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
+Newest entry: **v861**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
 
+- **v861** (2026-08-26) — `docs/register/entries/v861.md` — **THE OUTCOME-YARDSTICK QUESTION IS RULED: YARDSTICK A REMAINS THE PRICING YARDSTICK.** Owner words, verbatim (2026-08-26, on the side-by-si
 - **v860** (2026-08-26) — `docs/register/entries/v860.md` — **THE OUTCOME-YARDSTICK QUESTION ENTERS ACT TWO — owner word, verbatim (2026-08-26): "Let's resolve the outcome yardstick please and fold it
 - **v859** (2026-08-26) — `docs/register/entries/v859.md` — **THE ORDER 45 SOAK IS CLOSED — owner word, verbatim (2026-08-26): "Okay, looks right. Moving on."** Given against the full landed-movers re
 - **v858** (2026-08-26) — `docs/register/entries/v858.md` — **ORDER 45 IS LANDED — the board of record moved ONCE, 82fcd8bb → 3167cba6, at landing commit 50903d4, on the owner's verbatim "Go".** The l
