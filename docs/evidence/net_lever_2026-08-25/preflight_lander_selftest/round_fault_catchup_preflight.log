@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
-  tree      : /tmp/landing_selftest_25879/sandbox
+  tree      : /tmp/landing_selftest_1814/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 82fcd8bb1e552b927299b5702122e321
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,12 +9,12 @@ LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
 
 --- STEP 0/14  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_REPO, RL_VENV
-build-lock: HELD by land-round-27172 (pid 27172) — single writer for the shared workspace.
-base commit        e40ffa761b8d7d36bf8bd873f90206390e670f0c
+build-lock: HELD by land-round-2739 (pid 2739) — single writer for the shared workspace.
+base commit        3e394caadd7f096e5abd815a82bcad7a68c05009
 board pin (before) 82fcd8bb1e552b927299b5702122e321
 store pin (before) fb640ca0baf92bbb122b1ad7e25c5a88
 restore point      117 carrier(s) captured, 117 present on disk
-    [preflight OK  0.09s]
+    [preflight OK  0.08s]
 
 --- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
 sheet         docs/owner_annotations/SITTER_2026_v1.csv
@@ -40,7 +40,7 @@ injured=Y players listed in R24: 0 []
   
   About to apply rounds [24] — each as its own sequential transaction, committed in order.
   NOT APPROVED — nothing applied. Re-run with --approve (or answer `yes`).
-    [catchup_preflight FAILED  0.16s]
+    [catchup_preflight FAILED  0.14s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'catchup_preflight'
@@ -58,9 +58,9 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.09s  OK
+    preflight          0.08s  OK
     sheet              0.00s  OK
     scores             0.00s  OK
-    catchup_preflight     0.16s  FAIL
-    TOTAL              0.25s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_27172
+    catchup_preflight     0.14s  FAIL
+    TOTAL              0.22s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_2739

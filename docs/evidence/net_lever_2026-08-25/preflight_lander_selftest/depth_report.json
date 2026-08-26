@@ -187,7 +187,7 @@
         "ui/data/movers_transition.js": "8fce2f8ee8ea577dffafc422672612e3",
         "ui/data/ownership.js": "cc6b0d847d710b5554047c20cb08c579"
       },
-      "commit": "e40ffa761b8d7d36bf8bd873f90206390e670f0c",
+      "commit": "3e394caadd7f096e5abd815a82bcad7a68c05009",
       "expected_boot": {
         "as_of_round": 24,
         "balanced_board_md5": "8838f4b3ed5089788c48a2657606711c",
@@ -278,17 +278,17 @@
       "unmoved_checked": 6
     },
     "preflight": {
-      "base_commit": "e40ffa761b8d7d36bf8bd873f90206390e670f0c",
+      "base_commit": "3e394caadd7f096e5abd815a82bcad7a68c05009",
       "board_before": "82fcd8bb1e552b927299b5702122e321",
       "carriers_captured": 64,
-      "lock": "land-lever-26965"
+      "lock": "land-lever-2563"
     }
   },
   "failed_step": "sibling",
   "ok": false,
   "timings": [
     {
-      "seconds": 0.07,
+      "seconds": 0.06,
       "step": "preflight",
       "verdict": "OK"
     },
@@ -303,17 +303,17 @@
       "verdict": "OK"
     },
     {
-      "seconds": 0.2,
+      "seconds": 0.17,
       "step": "lineage",
       "verdict": "OK"
     },
     {
-      "seconds": 0.11,
+      "seconds": 0.08,
       "step": "contract",
       "verdict": "OK"
     },
     {
-      "seconds": 0.05,
+      "seconds": 0.04,
       "step": "sibling",
       "verdict": "FAIL"
     }

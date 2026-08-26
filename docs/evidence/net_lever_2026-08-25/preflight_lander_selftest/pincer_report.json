@@ -3,10 +3,10 @@
     "byte_exact": true,
     "commits_rewound": {
       "commits": [
-        "1235f457a5ea923d1a6fb8f73723a0755f83bb03"
+        "d4ef98b71f0dbdd92a182db0e9de07df23eac9e0"
       ],
       "rewound": true,
-      "to": "e40ffa761b8d7d36bf8bd873f90206390e670f0c"
+      "to": "3e394caadd7f096e5abd815a82bcad7a68c05009"
     },
     "error": "STOPPED AT THE DOOR, BY REQUEST (selftest fault `advance:stop_at_the_door`). Steps 0-3 ran for real against an uncommitted owner score file; the armed advance is where this case deliberately ends, because a self-test does not arm a score-write.",
     "failed_step": "advance",
@@ -261,7 +261,7 @@
         "ui/data/ownership.js": "cc6b0d847d710b5554047c20cb08c579",
         "ui/tests/movers.test.js": "af8ddfe8d948d8c9c185258bdeed6938"
       },
-      "commit": "e40ffa761b8d7d36bf8bd873f90206390e670f0c",
+      "commit": "3e394caadd7f096e5abd815a82bcad7a68c05009",
       "expected_boot": {
         "as_of_round": 24,
         "balanced_board_md5": "8838f4b3ed5089788c48a2657606711c",
@@ -285,7 +285,7 @@
     },
     "catchup_preflight": {
       "clean": true,
-      "commit": "1235f457a5ea923d1a6fb8f73723a0755f83bb03",
+      "commit": "d4ef98b71f0dbdd92a182db0e9de07df23eac9e0",
       "counts": {
         "absent_dnp": 396,
         "encoding": "utf-8",
@@ -298,10 +298,10 @@
       "ran": true
     },
     "preflight": {
-      "base_commit": "e40ffa761b8d7d36bf8bd873f90206390e670f0c",
+      "base_commit": "3e394caadd7f096e5abd815a82bcad7a68c05009",
       "board_before": "82fcd8bb1e552b927299b5702122e321",
       "carriers_captured": 118,
-      "lock": "land-round-27473"
+      "lock": "land-round-3040"
     },
     "scores": {
       "bytes": 7223,
@@ -327,7 +327,7 @@
   "ok": false,
   "timings": [
     {
-      "seconds": 0.09,
+      "seconds": 0.08,
       "step": "preflight",
       "verdict": "OK"
     },
@@ -342,7 +342,7 @@
       "verdict": "OK"
     },
     {
-      "seconds": 0.25,
+      "seconds": 0.43,
       "step": "catchup_preflight",
       "verdict": "OK"
     },
