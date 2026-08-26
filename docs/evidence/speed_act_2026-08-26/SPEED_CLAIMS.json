@@ -1,0 +1,169 @@
+{
+ "schema_version": 1,
+ "act_type": "small-act",
+ "act": "THE SPEED ACT \u2014 load-once harness, land preflight, typed spec validation, sandbox/transaction pickle isolation, B1/B3 ceiling 1800->5400s, the book RE-SEALED on the landed ORDER 45 tree, falsifier 6 discharged (B3 PASS)",
+ "date": "2026-08-26",
+ "base_commit": "eb906b7",
+ "seat": "supervisor seat, speed act",
+ "owner_word": "\"While we wait, is there that you can do now that means once this landing is done the next set of updates we are pushing through are quicker?\" + the standing efficiency directive (2026-08-25, verbatim): \"No convenient interpretation of my words to be lazy. We don't unnecessarily run machine time or actual time when it could be made efficient. Parallelise. Load things once.\" + \"We can do B3 in the next set\" + (2026-08-26) \"please continue, stopping only if there is a blocker to pushing live. Try to land what we've worked on if it's possible\"",
+ "_note": "THE CLAIM IS THAT NOTHING VALUE-BEARING MOVED. The speed act edits tooling (tools/harness, tools/harness_run.py, tools/landing/{spec,steps,txn,selftest,cli,preflight}.py), one instrument ceiling (ship_gates_check.py B1/B3 regen 1800->5400s, at the measured arm-2 cause), and ONE certification stamp (data/book_stable_seal.json, RE-SEALED head 1867e953->d84031cf per the declared lineage copy docs/evidence/speed_act_2026-08-26/reseal_speed.py \u2014 a stamp over the book, not a value carrier; its four fields are claimed as json_field below and its stable stamp REPRODUCES the independently-run 2026-08-25 uncapped matrix byte-stable). Every value-bearing artifact is claimed unmoved. FULL-SUITE GATES, first complete run on the arm-2 tree (SHIP_GATES_FULL_RUN.log): B3 PASS (seal matched \u2014 falsifier 6 of prereg ORDER45 DISCHARGED), B4 PASS (bare gate-mode rebuild == shipped board 3167cba6 byte-exact), B6/D14a-d/A5-A11 PASS, A12 carried standing-fail as recorded, A9/A15/B1 STRUCK as ruled, A13/A14/C1/C2 PENDING as always. B2 FAIL \u2014 NEW FINDING, disclosed: _gate1_wf.py pins RL_PRIOR_TREES=150 and the stale pre-rebake /home/claude/cm_150.pkl declares no design spec, so the ARM-2 coherence halt correctly refuses a mixed band/ceiling; B2 has never yet run on the arm-2 engine (its 2026-08-25 greens were pre-flip roots). Repair queued: re-base the B2 producer onto the arm-2 artifact family. Re-run: python3 tools/claims.py check docs/evidence/speed_act_2026-08-26/SPEED_CLAIMS.json",
+ "activation": {
+  "_doc": "This act arms nothing and introduces no dial. The preflight verb runs unconditionally (a check, not a switch); the harness is an invoked tool; the seal is a stamp. The raised B1/B3 ceiling is a timeout constant, not a behavior switch."
+ },
+ "claims": [
+  {
+   "kind": "unmoved",
+   "label": "board of record",
+   "path": "data/rl_build/rl_app_data.json",
+   "value": "3167cba643a6b16e5ef5d904d8957fcd"
+  },
+  {
+   "kind": "unmoved",
+   "label": "shipped board (engine copy)",
+   "path": "engine/rl_after/rl_app_data.json",
+   "value": "3167cba643a6b16e5ef5d904d8957fcd"
+  },
+  {
+   "kind": "unmoved",
+   "label": "store (ONE SOURCE)",
+   "path": "engine/rl_after/rl_model_data.json",
+   "value": "fb640ca0baf92bbb122b1ad7e25c5a88"
+  },
+  {
+   "kind": "unmoved",
+   "label": "engine_head",
+   "path": "engine/rl_after/_merged_recover.py",
+   "value": "d84031cff312818a158855f2dd223cc1"
+  },
+  {
+   "kind": "unmoved",
+   "label": "rl_model",
+   "path": "engine/rl_after/rl_model.py",
+   "value": "6fe7c4155866d80e8045bed2d3bf2802"
+  },
+  {
+   "kind": "unmoved",
+   "label": "band pickle",
+   "path": "data/cm_400.pkl",
+   "value": "f39c7b96603a6d1483a8f3295fad1a29"
+  },
+  {
+   "kind": "unmoved",
+   "label": "q97m pickle",
+   "path": "data/q97m.pkl",
+   "value": "5ea7546d9a4897114597a7d8ea1596db"
+  },
+  {
+   "kind": "unmoved",
+   "label": "v0surf pickle",
+   "path": "data/v0surf.pkl",
+   "value": "5dd34ca82735f5c8f021b1c7320df8f8"
+  },
+  {
+   "kind": "unmoved",
+   "label": "pvc snapshot",
+   "path": "engine/rl_after/pvc_snapshot.json",
+   "value": "4704b8296008f81e7bb5407424229e85"
+  },
+  {
+   "kind": "unmoved",
+   "label": "bust prior table",
+   "path": "engine/rl_after/bust_prior_table.json",
+   "value": "ff87e42e502a476a90e453bad90825b0"
+  },
+  {
+   "kind": "unmoved",
+   "label": "model config manifest",
+   "path": "data/model_config.json",
+   "value": "9aa19cdedf9cbe8dbc81779ef8dbe695"
+  },
+  {
+   "kind": "json_field",
+   "label": "the RE-SEALED book seal: head",
+   "path": "data/book_stable_seal.json",
+   "field": "head_md5",
+   "value": "d84031cf"
+  },
+  {
+   "kind": "json_field",
+   "label": "the RE-SEALED book seal: store",
+   "path": "data/book_stable_seal.json",
+   "field": "store_md5",
+   "value": "fb640ca0"
+  },
+  {
+   "kind": "json_field",
+   "label": "the RE-SEALED book seal: stable stamp",
+   "path": "data/book_stable_seal.json",
+   "field": "stable_sha256",
+   "value": "5b5f65afdbe9a2564b10db479abc3af21b141b2ffbd7a90e253b1394fdd161ed"
+  },
+  {
+   "kind": "json_field",
+   "label": "the RE-SEALED book seal: n re-counted",
+   "path": "data/book_stable_seal.json",
+   "field": "n_players",
+   "value": 2650
+  },
+  {
+   "kind": "gate",
+   "name": "release_contract_check",
+   "argv": [
+    "python3",
+    "release_contract.py",
+    "check"
+   ],
+   "match": "PASS"
+  },
+  {
+   "kind": "gate",
+   "name": "release_manifest_check",
+   "argv": [
+    "python3",
+    "release_manifest_check.py"
+   ],
+   "match": "PASS"
+  },
+  {
+   "kind": "gate",
+   "name": "acceptance mirror_parity",
+   "argv": [
+    "python3",
+    "-m",
+    "acceptance.runner",
+    "--only",
+    "mirror_parity"
+   ]
+  },
+  {
+   "kind": "gate",
+   "name": "movers_ui",
+   "argv": [
+    "node",
+    "ui/tests/movers.test.js"
+   ]
+  },
+  {
+   "kind": "gate",
+   "name": "land preflight (the new verb, against the landed ORDER 45 spec)",
+   "argv": [
+    "python3",
+    "tools/landing/cli.py",
+    "preflight",
+    "--spec",
+    "docs/evidence/net_lever_2026-08-25/ACT_SPEC_ORDER45.json",
+    "--root",
+    "."
+   ]
+  },
+  {
+   "kind": "gate",
+   "name": "spec validator corrupt leg (string kill-switch env MUST be refused)",
+   "argv": [
+    "python3",
+    "-c",
+    "import sys,json,copy; sys.path.insert(0,\"tools\"); from landing import spec; d=json.load(open(\"docs/evidence/net_lever_2026-08-25/ACT_SPEC_ORDER45.json\")); d[\"prereg\"][\"kill_switch\"][\"env\"]=\"RL_O45=0\"; sys.exit(0 if any(\"NON-EMPTY OBJECT\" in p for p in spec.validate(d)) else 1)"
+   ]
+  }
+ ]
+}

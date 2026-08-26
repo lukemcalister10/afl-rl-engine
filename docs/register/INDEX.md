@@ -1,8 +1,9 @@
 <!-- GENERATED-ONLY — regenerate: python3 tools/seat/pen.py index ; assert current: python3 tools/seat/pen.py verify -->
 # REGISTER ADDRESS INDEX — generated
 
-Newest entry: **v862**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
+Newest entry: **v863**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
 
+- **v863** (2026-08-26) — `docs/register/entries/v863.md` — **THE SPEED ACT IS LANDED — every deliverable proven, the book re-sealed on the landed tree, and falsifier 6 discharged at last.** Owner wor
 - **v862** (2026-08-26) — `docs/register/entries/v862.md` — **THE PEDIGREE ACT (D5) IS RE-SCOPED BY THE OWNER TO ROOT CAUSE, AND ITS EVIDENCE BASE IS CORRECTED TWICE.** Owner words, verbatim (2026-08-
 - **v861** (2026-08-26) — `docs/register/entries/v861.md` — **THE OUTCOME-YARDSTICK QUESTION IS RULED: YARDSTICK A REMAINS THE PRICING YARDSTICK.** Owner words, verbatim (2026-08-26, on the side-by-si
 - **v860** (2026-08-26) — `docs/register/entries/v860.md` — **THE OUTCOME-YARDSTICK QUESTION ENTERS ACT TWO — owner word, verbatim (2026-08-26): "Let's resolve the outcome yardstick please and fold it

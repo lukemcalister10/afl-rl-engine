@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 241,
+  "coverage_entries": 242,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-26",
+      "headline": "**THE SPEED ACT IS LANDED \u2014 every deliverable proven, the book re-sealed on the landed tree, and falsifier 6 discharged at last.** Owner words: the st\u2026",
+      "hits": {
+        "DECLARED": [
+          "**THE SPEED ACT IS LANDED \u2014 every deliverable proven, the book re-sealed on the landed tree, and falsifier 6 discharged at last.** Owner words: the standing efficiency directive (\"No convenient interpretation of my words\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 863
+    },
     {
       "by": "explicit",
       "date": "2026-08-26",
@@ -2144,7 +2158,7 @@
       "version": 622
     }
   ],
-  "incidents": 126,
+  "incidents": 127,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",

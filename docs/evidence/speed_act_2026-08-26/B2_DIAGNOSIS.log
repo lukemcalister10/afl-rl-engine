@@ -1,0 +1,14 @@
+build-lock: HELD by b2diag (pid 5150) since 2026-08-26T15:24:39Z — single writer for the shared workspace.
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+
+============ ARTIFACT COHERENCE HALT (rebake ARM 2) — MIXED BAND/CEILING ============
+  The band and the q97 ceiling declare DIFFERENT feature contracts. They are loaded by two
+  separate resolvers, so a run that binds one override and not the other silently prices a
+  MIXED board — register v834's F7, measured: candidate band + live ceiling built, parity-gated
+  and reported with no verdict anywhere.
+    band    (/home/claude/cm_150.pkl): None
+    ceiling (<precedence>): {'construction': 'rebake-arm2-exact-monotone/1', 'exact_monotone_level': True, 'level_index': 9, 'n_features': 12, 'age_hill': {'a_star': 22.0, 'u_index': 10, 'v_index': 11}, 'monotonic_cst': [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, -1, -1], 'hyperparameters': {'learning_rate': 1.0, 'max_depth': 4, 'max_iter': 1600, 'min_samples_leaf': 25}, 'recency_halflife_years': None, 'recency_anchor': 'end of training window', 'quantiles': [0.97], 'ratchet': 'RL_O44_LVLMONO RETIRED — law 3 is a property of this fit, not of a read-site repair', 'note': 'q97m — the frozen q97 CEILING (band[5], price6 weight 0.10). Feature contract SHARED with the band (asserted at load); capacity selected on its OWN row population.'}
+  Bind RL_CM_PKL and RL_Q97M_PKL to the SAME artifact set, or point both at the pinned pair.
+====================================================================================
+build-lock: released by b2diag

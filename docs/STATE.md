@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v862 2026-08-26 · **THE PEDIGREE ACT (D5) IS RE-SCOPED BY THE OWNER TO ROOT CAUSE, AND ITS EVIDENCE BASE IS CORRECTED TWICE.** Owner words, verbatim (2026-08-26): "Jepson's pedigree shouldn't be higher than camporeale's though? That seems like a terrible comparison" · "It sounds like we said we would fix it in this build, but don't have a fix yet" (accurate — commissioned a
+  > # OPEN ITEMS REGISTER · v863 2026-08-26 · **THE SPEED ACT IS LANDED — every deliverable proven, the book re-sealed on the landed tree, and falsifier 6 discharged at last.** Owner words: the standing efficiency directive ("No convenient interpretation of my words to be lazy... Parallelise. Load things once"), "We can do B3 in the next set", and this sitting's "please continue, stopping only if ther
 
-- new-form entries under `docs/register/entries/`: 50
+- new-form entries under `docs/register/entries/`: 51
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `21f27059cd012a9dadc046d397d971c949d66e83` |
+| generated at commit | `eb906b7a4f52b7cc4327b5827ca00ade2d2e3d88` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |
