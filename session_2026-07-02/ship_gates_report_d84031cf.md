@@ -1,0 +1,160 @@
+# ship_gates_check report — STATE: PROTOTYPE/UNREGISTERED @ d84031cf — NOT AN ENDORSED STATE — head d84031cf store fb640ca0 config 29fdfd1e1447
+_Three-column rule (Luke, binding D10): every board output reports CONTROL / PREVIOUS / CURRENT with explicit deltas._
+```
+=== STATE: PROTOTYPE/UNREGISTERED @ d84031cf — NOT AN ENDORSED STATE ===
+=== SHIP GATES BOARD — head d84031cf store fb640ca0 config 29fdfd1e1447 — suite 764a0d91 — 2026-08-26 ===
+=== CONFIG MANIFEST (gate mode): data/model_config.json hash 29fdfd1e1447a1d2 — ambient model env cleared + pinned; unknown/divergent overrides rejected (halt) ===
+=== THREE-COLUMN RULE (Luke, binding D10): CONTROL=7a07e369 · PREVIOUS=efea88e5 · CURRENT=d84031cf ===
+A1        PASS    | PASS    | PASS     Duursma>Uwland: 3737 vs 2026
+A2        FAIL    | FAIL    | FAIL     Curtis>=0.90xWard: 1641 vs 2549 (Ward=2832, ratio=0.579) [AMENDED 02/07/2026; UNCHANGED at 0.90 by ruling D7 — Luke: "we can look at Curtis down the line"]; Weddle>Ward: 1383 vs 2832
+A3   [DC] FAIL    | FAIL    | FAIL     Connor Rozee: 2026=3358 2025=5256 ratio=0.64 (need >=0.75) [evaluated PRE-LTI-layer — Luke 02/07; AMENDED 0.80->0.75 Luke D7 data-caused (out for 2026), knife-edge by design]
+          triage: [DC] gate — attribute ENGINE- vs DATA-caused BEFORE this blocks (SHIP_GATES PROCESS)
+A4        PASS    | PASS    | PASS     Harley Reid board rank=34 ev=4061 (need TOP 40)
+A5        PASS    | PASS    | PASS     Jack Ginnivan=2314 (floor 1600); Jake Bowey=4189 (floor 2100); Nick Blakey=4275 (floor 2600) [SCAR floors — RE-BASE if PVC re-levels]
+A6        PASS    | PASS    | PASS     yr1-3 RUCK median=222 (n=11, pooled — thin slice) vs pick-matched MID kernel median=580 (n=70, bw=0.6 log-pick, RATIFIED 02/07)
+A7        PASS    | PASS    | PASS     Ryan Maric: future_position=MID gfut=MID (need MID/MID) [AMENDED 2026-07-05: _fut blend stripped -> single future_position, owner-authorised]; Ed Langdon: future_position=SD gfut=SD (need SD/SD) [AMENDED 2026-07-05: _fut blend stripped -> single future_position, owner-authorised]
+A8   [DC] PASS    | PASS    | PASS     Berry=2969 Tsatas=869 ratio=3.42x (need >=2.00x) [display de-ambiguated D4 02/07]
+A9        PASS    | PASS    | STRUCK   Luke 2026-08-20 — player-ordering assertion RETIRED, verbatim: "Those player ordering assertions were retired and are outdated. Since they occurred, Ward has hit an excellent run of form." Prior pattern: scored-never-flagged (register A9/pair-2 precedent); dated reads retired wholesale RULEBOOK v2.1 PART 2 (owner 2026-07-22). Zombie note: retired while this suite was bricked at :49; surfaced FAIL only on the first run after the unbricking. SCORED (never flagged): Ginnivan=2314 vs Ward=2832 (retired assertion was Ginnivan>Ward; ratio=0.817)  <- MOVED
+A10  [DC] PASS    | PASS    | PASS     Charlie Curnow: 2026=1322 2025=1980 ratio=0.67 (need >=0.50) [AMENDED 0.70->0.50 Luke 02/07 data-caused, PROVISIONAL — review at season-complete]
+A11  [DC] PASS    | PASS    | PASS     Farrow>Patterson: 2183 vs 1180; Cumming>Annable: 2434 vs 1227
+A12  [DC] FAIL    | FAIL    | FAIL     Travaglia>Moraes: 517 vs 713; Smillie>Retschko: 786 vs 883
+          triage: [DC] gate — attribute ENGINE- vs DATA-caused BEFORE this blocks (SHIP_GATES PROCESS)
+A13       PENDING | PENDING | PENDING  PVC stage not run; advisory vs stand-in PVC[1]=3000: George Wardlaw=3313 lineball=True; Levi Ashcroft=3792 lineball=False
+A14       PENDING | PENDING | PENDING  PVC stage not run; advisory vs stand-in PVC[8]=1320: Trent Rivers=1597 lineball=False; Zach Reid=1348 lineball=True; Jase Burgoyne=2751 lineball=False
+A15       STRUCK  | STRUCK  | STRUCK   Luke 02/07/2026 — convexity dimension seeded as V_NEXT #1
+B1        PASS    | PASS    | STRUCK   [STRUCK — Luke 2026-08-20, verbatim: "That cohort rail again was retired. Weeks ago." The JULY-8 CONSTRUCTION is RETIRED. Its law, G-COHORT (walk-forward book ratio, max 1.3), was carried by the owner-signed RULEBOOK v2.1 and its twin docs/acceptance_v2_0.json; the v3 amendment of 2026-08-20 removed that twin and records G-COHORT in RULEBOOK PART 3 as RETIRED, with its 1.3 payload written down there. RULEBOOK PART 3 is the pointer of record. Zombie note: retired while this suite was bricked at :49; surfaced HALT only on the first run after the unbricking. SCORED, NEVER FLAGGED — every figure below still prints; only the alarm is removed] JULY-8 construction (owner-ruled 2026-07-13, register v52 — CONFORMED; raw class-year sums of Vpath averaged UNWEIGHTED across 17 classes 2004-2020 incurve ND+RD; CANDIDATE regenerated this run — engine d84031cf store fb640ca0 config 29fdfd1e1447): y1=62013.7 y2=67636.5 y3=78430.0 y4=90763.2 y5=91110.3 y6=87615.0 y7=79571.6; den=min(y1,y2)=y1=62013.7; ratios y4=1.4636(above-guide) y5=1.4692(above-guide) y6=1.4128(above-guide); RETIRED hard<=1.30 bar -> would have BREACHED at y[4, 5, 6] — SCORED, NOT FLAGGED (struck); guide 1.20-1.25 ADVISORY (margin reported, never gates)  <- MOVED
+B2        PASS    | PASS    | FAIL     producer _gate1_wf.py emitted no certificate (exit=1); stderr tail: e6 weight 0.10). Feature contract SHARED with the band (asserted at load); capacity selected on its OWN row population.'}
+  Bind RL_CM_PKL and RL_Q97M_PKL to the SAME artifact set, or point both at the pinned pair.
+====================================================================================
+  <- MOVED
+B3        PASS    | PASS    | PASS     CANDIDATE book stable seal (regenerated this run — engine d84031cf store fb640ca0 config 29fdfd1e1447): MATCHES the sealed baseline. current=5b5f65afdbe9a256.. (2650 players) vs baseline=5b5f65afdbe9a256.. (2650 players, sealed head d84031cf) [full stable-keyed content seal; raw-file sha is id(p)-keyed / non-deterministic by design]
+B4        PASS    | PASS    | PASS     regenerated rl_app_data.json md5=3167cba6 vs shipped 3167cba6 (byte-agree gate; export exit=0)
+B5        FEATURE | FEATURE | FEATURE  floor-as-pricing-feature (Luke-ruled 02/07; VARIANT A flat .05 tail; #326 scope = national draftees + 225 engine-pool entrants on their signed division levels): 26 saves, aggregate lift +5464; the floor is still a pure lower bound: lowered=0 (bar 0), moved outside the floor scope=0 (bar 0); saves table printed below (the new alarm surface)
+B6        PASS    | PASS    | PASS     ramp(0..14g)=[1120, 1204, 1317, 1436, 1577, 1676, 1924, 2061, 2185, 2305, 2605, 2884, 3165, 3321, 3427]; dips(more games worth less)=none; 0->6 rise T=+804; 0->6 steps>50%T=none; rise by 3g=+316 (need >=201) [whole-ramp re-spec, DECLARED thresholds]
+D14a      PASS    | PASS    | PASS     same pos×draft-age×recorded-pick ⇒ identical V0* across draft years: max cross-draft dispersion=0.0000 SCAR over the 1448 rows the surface prices (Luke's amended law; board path) [report-only, all ND incl. 122 pool rows at 65+: 235.4]
+D14b      PASS    | PASS    | PASS     within (pos×draft-age×draft-year) V0 inversions under V0* = 0 (D13 guard-transform → assertion; obituary E5) [report-only, all ND incl. pool: 430 — ladder-vs-pool pairs, different price objects]
+D14c      PASS    | PASS    | PASS     KPP retention floor O1 depth-monotone = True (max of isotonic-non-increasing KPP/nonKPP; comparator nonKPP-only)
+D14d      —       | —       | PASS     SURFACE never-rises (R12): 0 rising step(s) picks 1-64 · 0 over the full 1-90 grid · scanned 90 pos×draft-age profiles (8010 adjacent pairs; players expose ~8%)  <- MOVED
+C1        PENDING | PENDING | PENDING  naive-baseline book not yet built — definition proposal in report (needs its own directive)
+C2        PENDING | PENDING | PENDING  V1-pick-model book not yet built — definition proposal in report (needs its own directive)
+          columns: CONTROL | PREVIOUS | CURRENT (three-column rule; snapshots data/gates_snapshots/)
+VERDICT: FAIL=4  FEATURE=1  PASS=15  PENDING=4  STRUCK=3  (4758s)
+```
+
+## Supporting detail
+
+B1 — STRUCK (Luke 2026-08-20, "That cohort rail again was retired. Weeks ago."). The bold row is the RETIRED July-8 raw-class-sum construction, still SCORED and still printed; the indexed yr1=100 row is a NON-GATING SHAPE diagnostic (peak position + pre-peak dip), DEMOTED 2026-07-13 — its historic headline 126.8/125.2/116.1 is NOT the gate.
+  SHAPE read (indexed, advisory): peak at yr5, pre-peak low 100.0 (index yr1=100).
+| class | peakN | d1 | d2 | d3 | d4 | d5 | d6 | d7 |
+|---|---|---|---|---|---|---|---|---|
+| 2004 | 5 | 100 | 112 | 144 | 149 | 158 | 141 | 129 |
+| 2005 | 4 | 100 | 121 | 140 | 183 | 172 | 174 | 158 |
+| 2006 | 4 | 100 | 113 | 133 | 167 | 166 | 163 | 149 |
+| 2007 | 5 | 100 | 110 | 110 | 128 | 166 | 159 | 132 |
+| 2008 | 4 | 100 | 116 | 163 | 197 | 175 | 156 | 139 |
+| 2009 | 4 | 100 | 110 | 99 | 116 | 112 | 103 | 93 |
+| 2010 | 4 | 100 | 115 | 127 | 154 | 151 | 130 | 104 |
+| 2011 | 5 | 100 | 111 | 136 | 163 | 164 | 161 | 137 |
+| 2012 | 6 | 100 | 98 | 115 | 126 | 123 | 129 | 110 |
+| 2013 | 5 | 100 | 116 | 142 | 175 | 177 | 161 | 128 |
+| 2014 | 4 | 100 | 118 | 138 | 154 | 140 | 152 | 145 |
+| 2015 | 4 | 100 | 105 | 119 | 125 | 120 | 125 | 122 |
+| 2016 | 4 | 100 | 116 | 146 | 176 | 167 | 165 | 145 |
+| 2017 | 3 | 100 | 100 | 116 | 113 | 114 | 114 | 112 |
+| 2018 | 5 | 100 | 105 | 108 | 114 | 128 | 115 | 111 |
+| 2019 | 5 | 100 | 97 | 111 | 138 | 146 | 141 | 119 |
+| 2020 | 6 | 100 | 86 | 98 | 98 | 112 | 112 | — |
+| _indexed AVG (SHAPE DIAGNOSTIC — DEMOTED 2026-07-13, NOT the gate)_ | _5_ | _100_ | _109_ | _126_ | _146_ | _146_ | _141_ | _127_ |
+| **July-8 raw-sum AVG (the STRUCK rail, scored but never flagged — Luke 2026-08-20)** | **—** | **62014** | **67637** | **78430** | **90763** | **91110** | **87615** | **79572** |
+
+B5 FLOOR-SAVES table (n=26, aggregate lift=+5464 — printed every gates-board run, the new alarm surface):
+| player | club | yrs-in-system | raw ev | floor | saved-to | lift | register status |
+|---|---|---|---|---|---|---|---|
+| Tom Green | — | 7 | 4277 | 91.1 | 5530 | +1253 | clear |
+| Nicholas Martin | — | 5 | 3121 | 42.3 | 4100 | +979 | clear |
+| Connor Rozee | — | 8 | 2513 | 110.9 | 3358 | +845 | clear |
+| Joshua Kelly | — | 13 | 421 | 153.2 | 768 | +347 | clear |
+| Jack Viney | — | 14 | 246 | 79.9 | 557 | +311 | clear |
+| James Leake | — | 3 | 177 | 199.1 | 443 | +266 | clear |
+| Taylor Goad | — | 3 | 464 | 239.4 | 702 | +238 | clear |
+| Will Green | — | 3 | 492 | 239.4 | 714 | +222 | clear |
+| Brayden Fiorini | — | 11 | 240 | 53.0 | 440 | +200 | clear |
+| Darcy Jones | — | 4 | 1393 | 134.0 | 1575 | +182 | clear |
+| Mitchell Hinge | — | 10 | 272 | 12.9 | 413 | +141 | clear |
+| Charlie Edwards | — | 3 | 304 | 297.0 | 425 | +121 | clear |
+| Sam Powell-Pepper | — | 10 | 133 | 33.5 | 230 | +96 | clear |
+| Thomas Sims | — | 2 | 587 | 190.4 | 638 | +51 | clear |
+| Vigo Visentini | — | 3 | 182 | 75.7 | 222 | +40 | clear |
+| Lachlan Smith | — | 3 | 158 | 130.0 | 196 | +38 | clear |
+| Zane Zakostelsky | — | 3 | 150 | 77.6 | 180 | +30 | clear |
+| Harry Edwards | — | 8 | 129 | 19.4 | 157 | +28 | clear |
+| Riley Garcia | — | 7 | 84 | 8.0 | 112 | +28 | clear |
+| Jesse Motlop | — | 5 | 136 | 65.5 | 155 | +18 | clear |
+| Josh Sinn | — | 5 | 206 | 122.5 | 214 | +8 | clear |
+| Oscar Ryan | — | 3 | 195 | 154.5 | 203 | +8 | clear |
+| Tom Anastasopoulos | — | 3 | 81 | 69.2 | 88 | +7 | clear |
+| Ollie Lord | — | 6 | 127 | 18.0 | 133 | +7 | clear |
+| Wil Parker | — | 3 | 38 | 19.2 | 39 | +1 | clear |
+| Cooper Simpson | — | 3 | 90 | 126.9 | 91 | +1 | clear |
+
+## Board top-50 (A4 context) — CONTROL 7a07e369 · PREVIOUS efea88e5 · CURRENT d84031cf
+| # | player | pos | CONTROL | PREVIOUS | CURRENT | D vs ctl | D vs prev |
+|---|---|---|---|---|---|---|---|
+| 1 | Harry Sheezel | MID | 8115 | 7151 | 11770 | +3655 | +4619 |
+| 2 | Nick Daicos | MID | 8050 | 7002 | 11227 | +3177 | +4225 |
+| 3 | Nasiah Wanganeen-Milera | MID | 6606 | 5794 | 9956 | +3350 | +4162 |
+| 4 | Luke Jackson | RUCK | 7799 | 6803 | 9952 | +2153 | +3149 |
+| 5 | Max Holmes | MID | 6269 | 5386 | 8912 | +2643 | +3526 |
+| 6 | Errol Gulden | MID | 5983 | 5256 | 7919 | +1936 | +2663 |
+| 7 | Tristan Xerri | RUCK | 6649 | 5795 | 7589 | +940 | +1794 |
+| 8 | Will Ashcroft | MID | 5155 | 4768 | 7419 | +2264 | +2651 |
+| 9 | Zak Butters | MID | 6059 | 5174 | 6724 | +665 | +1550 |
+| 10 | Bailey Smith | MID | 5605 | 4715 | 6258 | +653 | +1543 |
+| 11 | Josh Treacy | KPF | — | — | 6183 | — | — |
+| 12 | Noah Anderson | MID | 4765 | 4091 | 5890 | +1125 | +1799 |
+| 13 | Finn Callaghan | MID | 5442 | 4904 | 5855 | +413 | +951 |
+| 14 | Jason Horne-Francis | MID | 3996 | 3702 | 5850 | +1854 | +2148 |
+| 15 | Lachlan Ash | SD | 5187 | 4611 | 5679 | +492 | +1068 |
+| 16 | Sam Darcy | KPF | 4013 | 4144 | 5604 | +1591 | +1460 |
+| 17 | Tom Green | MID | 4391 | 4424 | 5530 | +1139 | +1106 |
+| 18 | Izak Rankine | SF | 2768 | 2428 | 5300 | +2532 | +2872 |
+| 19 | Jagga Smith | MID | 3192 | 2822 | 5217 | +2025 | +2395 |
+| 20 | Matt Rowell | MID | 4185 | 3752 | 5185 | +1000 | +1433 |
+| 21 | Jai Newcombe | MID | — | — | 4967 | — | — |
+| 22 | Caleb Serong | MID | 4701 | 4170 | 4774 | +73 | +604 |
+| 23 | Kysaiah Pickett | SF | 3496 | 3076 | 4668 | +1172 | +1592 |
+| 24 | Riley Thilthorpe | KPF | 3818 | 3702 | 4508 | +690 | +806 |
+| 25 | Colby McKercher | MID | 3829 | 3627 | 4471 | +642 | +844 |
+| 26 | Bodhi Uwland | SD | — | — | 4350 | — | — |
+| 27 | Ed Richards | MID | 3078 | 2625 | 4323 | +1245 | +1698 |
+| 28 | Nick Blakey | SD | 3598 | 3266 | 4275 | +677 | +1009 |
+| 29 | Brodie Grundy | RUCK | 3959 | 3314 | 4245 | +286 | +931 |
+| 30 | Chad Warner | MID | — | — | 4190 | — | — |
+| 31 | Jake Bowey | SD | 3096 | 2926 | 4189 | +1093 | +1263 |
+| 32 | Nicholas Martin | MID | — | — | 4100 | — | — |
+| 33 | Mac Andrew | KPD | 3691 | 3504 | 4087 | +396 | +583 |
+| 34 | Harley Reid | MID | 3726 | 3549 | 4061 | +335 | +512 |
+| 35 | Archie Roberts | SD | 4577 | 4668 | 4026 | -551 | -642 |
+| 36 | Isaac Heeney | MID | 3981 | 3301 | 3977 | -4 | +676 |
+| 37 | Ryley Sanders | MID | 4129 | 3926 | 3890 | -239 | -36 |
+| 38 | Marcus Bontempelli | MID | 3721 | 3084 | 3821 | +100 | +737 |
+| 39 | Nick Watson | SF | 3720 | 3538 | 3802 | +82 | +264 |
+| 40 | Levi Ashcroft | MID | 3193 | 3028 | 3792 | +599 | +764 |
+| 41 | Willem Duursma | MID | 4429 | 4110 | 3737 | -692 | -373 |
+| 42 | Sam Lalor | MID | 3574 | 3337 | 3698 | +124 | +361 |
+| 43 | Callum Wilkie | KPD | — | — | 3690 | — | — |
+| 44 | Murphy Reid | SF | 3953 | 3742 | 3574 | -379 | -168 |
+| 45 | Max Gawn | RUCK | 2538 | 2112 | 3554 | +1016 | +1442 |
+| 46 | Timothy English | RUCK | 3349 | 2916 | 3525 | +176 | +609 |
+| 47 | Jordan Clark | SD | 3307 | 3007 | 3360 | +53 | +353 |
+| 48 | Connor Rozee | MID | 2392 | 2892 | 3358 | +966 | +466 |
+| 49 | Zac Bailey | SF | 2519 | 2244 | 3343 | +824 | +1099 |
+| 50 | Jack Sinclair | SD | — | — | 3314 | — | — |
+
+## C1/C2 DEFINITION PROPOSAL (for supervisor ruling)
+Rebuild the walk-forward book (s4 matrix protocol, as-of values, only <=T data) twice more:
+(a) NAIVE BASELINE: last-2-season era-adjusted avg -> value via simple age curve + position multipliers;
+(b) ORIGINAL V1 PICK MODEL: value = PVC(effective pick) with the V1 age/tenure profile.
+Headline metrics, engine must beat both on: (1) within-player GATE-1 protocol (WF good/bust separation,
+leakage-matched); (2) rank correlation of as-of value vs realized fwd best-3 production (real_mat);
+(3) cohort growth-law shape error vs the realized production curve. Each becomes C1x/C2x scripted lines.
