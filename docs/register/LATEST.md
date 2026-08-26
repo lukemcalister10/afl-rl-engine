@@ -1,3 +1,3 @@
-# OPEN ITEMS REGISTER · v859 2026-08-26 · **THE ORDER 45 SOAK IS CLOSED — owner word, verbatim (2026-08-26): "Okay, looks right. Moving on."** Given against the full landed-movers review page (655 rows, live 82fcd8bb → landed 3167cba6, the 10 net rows flagged; totals 358 up / 297 down / pool +1,070 = rebake +148 + net +922, reconciled exactly). G3.iv hand-verification is thereby discharged; the ac
+# OPEN ITEMS REGISTER · v860 2026-08-26 · **THE OUTCOME-YARDSTICK QUESTION ENTERS ACT TWO — owner word, verbatim (2026-08-26): "Let's resolve the outcome yardstick please and fold it in."** The story as presented: the day-0 pick curve is calibrated on YARDSTICK A (whole-career delivered production, discounted to draft day, busts at zero — ORDER 28); the v838 seam study measured YARDSTICK B (probab
 
-(one line per pen; full entry: docs/register/entries/v859.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
+(one line per pen; full entry: docs/register/entries/v860.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
