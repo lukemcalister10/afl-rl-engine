@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v865 2026-08-26 · **MECHANISM (a) IS PRICED, AND THE STUDY REFUTES ITS OWN HEADLINE FORM — the honest result the owner's ask was for.** His words (2026-08-26): "Can we price up a movers list under A please?" — after this seat recommended (a) capital-conditional maturation over (b) clock credit at the D5 fork (v864). THE STUDY (docs/evidence/speed_act_2026-08-26/pass_mech_a.
+  > # OPEN ITEMS REGISTER · v866 2026-08-26 · **THE THIN-STATE CAPITAL LOADING IS MEASURED FROM RESOLVED COHORTS — the ~2× residual target for the oliver class SURVIVES ITS MOST CONSERVATIVE CUT, and the tall/mobile split lands directly on the ruck-relief packet word.** Owner exchange (2026-08-26): he caught this seat's mech-(a) estimate ("I thought you said under A Oliver would be 390-430?" — the κ-m
 
-- new-form entries under `docs/register/entries/`: 53
+- new-form entries under `docs/register/entries/`: 54
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `ef4eada455f9c90cdbc8f38300ae0299db16ce43` |
+| generated at commit | `4bdd2dd1e09322c28f8f10e8d70c019b19c71ac7` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

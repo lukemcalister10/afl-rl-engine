@@ -7,11 +7,11 @@
 
 # INCIDENT INDEX — generated from the open-items register
 
-**Coverage: 244 register entries, v622–v865, across both homes of the record** — the frozen `docs/OPEN_ITEMS_REGISTER.md` (entry region bounded by the `SEAM v540` tail stamp) and, post-3b, one file per entry under `docs/register/entries/`. The generator parses the ` · vNNN (date):` entry markers and nothing else; the four historical markers with qualified dates (`2026-08-10/11` and kin) are indexed under their ISO prefix. The record before v622 predates the marker form and is one continuous body of prose with no entry boundaries a parser can find; it is NOT indexed, and inventing boundaries for it would be archaeology dressed as extraction. No tagging convention is retro-applied to the append-only record, ever.
+**Coverage: 245 register entries, v622–v866, across both homes of the record** — the frozen `docs/OPEN_ITEMS_REGISTER.md` (entry region bounded by the `SEAM v540` tail stamp) and, post-3b, one file per entry under `docs/register/entries/`. The generator parses the ` · vNNN (date):` entry markers and nothing else; the four historical markers with qualified dates (`2026-08-10/11` and kin) are indexed under their ISO prefix. The record before v622 predates the marker form and is one continuous body of prose with no entry boundaries a parser can find; it is NOT indexed, and inventing boundaries for it would be archaeology dressed as extraction. No tagging convention is retro-applied to the append-only record, ever.
 
 **The extraction rules are CONSERVATIVE. When unsure, an entry is EXCLUDED.** An entry is an incident only by its own words: CORRECTION, INCIDENT, HALT, DEFECT, REVERT, BREACH, FALSE-RED. Design vocabulary that contains those letters without being an incident — "halt-not-warn", "fail-closed", "would halt" — is stripped before the rules run. This is a LOOKUP, not a replacement: the register remains the durable record, and an entry missing here is an index limitation, not an absolution.
 
-**127 of 244 indexed entries carry incident words (52%).**
+**127 of 245 indexed entries carry incident words (52%).**
 
 ### v863 · 2026-08-26 · DECLARED
 
