@@ -1,0 +1,25 @@
+====================================================================================================
+CLAIMS CHECK — ORDER 45 — ARM-2 REBAKE ADOPTED (board 543bf900 basis) + THE POSITION-SCALED SAFETY NET (RL_O45): with-net board 3167cba6, 10 movers +922
+  act type   : lever-landing
+  date       : 2026-08-25   base: a446d9db44066fa6af911db80ffc8d3b62618b9e
+  owner word : "Yes, adopt the new model" (D1) · "Scaled on the safety net" (D2) · "Exclude mature agers" (D3) — all 2026-08-25, verbatim, register v852/v853
+  tree       : /home/user/afl-rl-engine
+====================================================================================================
+  ACTIVATION  day0_rebase                              off
+
+  OK   file_md5     the published board of record                  md5 3167cba643a6b16e5ef5d904d8957fcd (claimed 3167cba643a6b16e5ef5d904d8957fcd)
+  OK   file_md5     the store                                      md5 fb640ca0baf92bbb122b1ad7e25c5a88 (claimed fb640ca0baf92bbb122b1ad7e25c5a88)
+  OK   json_field   expected_boot.board                            board = '3167cba643a6b16e5ef5d904d8957fcd' (claimed '3167cba643a6b16e5ef5d904d8957fcd')
+  OK   json_field   expected_boot.engine_head                      engine_head = 'd84031cff312818a158855f2dd223cc1' (claimed 'd84031cff312818a158855f2dd223cc1')
+  OK   json_field   the round, HELD by a lever landing             as_of_round = 24 (claimed 24)
+  OK   json_field   the release seal                               contract_sha256 = 'de37f057eba1665b636f1202ae3319e8293fe141731bc2d49612ddb4194dabaf' (claimed 'de37f057eba1665b636f1202ae3319e8293fe141731bc2d49612ddb4194dabaf')
+  OK   board_count  board rows                                     active.rows = 804 (claimed 804)
+  OK   gate         release_manifest_check                         exit 0 (expected PASS)
+  OK   gate         release_contract_check                         exit 0 (expected PASS)
+  OK   gate         acceptance_runner                              exit 0 (expected PASS)
+  OK   gate         movers_transition                              exit 0 (expected PASS)
+  OK   gate         movers_ui                                      exit 0 (expected PASS)
+  OK   unmoved      BYTE-UNMOVED by this lever-landing             md5 fb640ca0baf92bbb122b1ad7e25c5a88 (claimed fb640ca0baf92bbb122b1ad7e25c5a88)
+
+CLAIMS: 13 of 13 verified against the tree; 0 shape problem(s)
+VERDICT: GREEN — every claim recomputed and held

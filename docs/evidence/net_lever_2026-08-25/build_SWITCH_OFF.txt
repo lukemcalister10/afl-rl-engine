@@ -1,2 +1,2 @@
-BUILD SWITCH_OFF   mode=dev       rc=0 board_md5=543bf900e3e7538bc75214881edc7733  (1012.1s)
-  staging removed: /home/claude/fvprov__sf_ilp3
+BUILD SWITCH_OFF   mode=dev       rc=0 board_md5=543bf900e3e7538bc75214881edc7733  (794.1s)
+  staging removed: /home/claude/fvprov_mhnf4kl2

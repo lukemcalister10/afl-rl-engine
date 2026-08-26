@@ -19,16 +19,16 @@ measurement made while this file was written, not a claim carried over from the 
 
 | identity | pinned value | carrier | re-hashed from | verdict |
 |---|---|---|---|---|
-| board | `82fcd8bb1e552b927299b5702122e321` | data/expected_boot.json | data/rl_build/rl_app_data.json | agrees |
+| board | `3167cba643a6b16e5ef5d904d8957fcd` | data/expected_boot.json | data/rl_build/rl_app_data.json | agrees |
 | store | `fb640ca0baf92bbb122b1ad7e25c5a88` | data/expected_boot.json | engine/rl_after/rl_model_data.json | agrees |
 | engine_head | `d84031cff312818a158855f2dd223cc1` | data/expected_boot.json | engine/rl_after/_merged_recover.py | agrees |
 | rl_model | `6fe7c4155866d80e8045bed2d3bf2802` | data/expected_boot.json | engine/rl_after/rl_model.py | agrees |
-| balanced_board_md5 | `8838f4b3ed5089788c48a2657606711c` | data/expected_boot.json | (no in-tree artifact) | not in tree |
+| balanced_board_md5 | `b7149d5ff7b62ad0916f9a950351b03d` | data/expected_boot.json | (no in-tree artifact) | not in tree |
 | config | `29fdfd1e1447a1d2fb33876fe659faa06b13ad19ad4d608a110c20d231f8b86e` | data/expected_boot.json | config_manifest.manifest_hash | agrees |
 
 | release fact | value | carrier |
 |---|---|---|
-| contract seal | `d47410471f71806e18ceba78c496b2e95d160b598a517a254def7e26e64e0cc9` | data/release_contract.json:contract_sha256 |
+| contract seal | `de37f057eba1665b636f1202ae3319e8293fe141731bc2d49612ddb4194dabaf` | data/release_contract.json:contract_sha256 |
 | config seal | `29fdfd1e1447a1d2fb33876fe659faa06b13ad19ad4d608a110c20d231f8b86e` | data/release_contract.json:config_sha256 |
 | release version | v2.11-final-rc1-PROVISIONAL | data/release_contract.json:release_version |
 | round (as_of_round) | 24 | data/release_contract.json:as_of_round |
@@ -57,21 +57,21 @@ gate claimed by name (process law P5).
 
 ## LINEAGE TIP
 
-`data/release_lineage.json` — the append-only out-of-round transition register, 14 entries.
+`data/release_lineage.json` — the append-only out-of-round transition register, 15 entries.
 
 | field | value |
 |---|---|
-| column | graham-dual-40-24-8 |
+| column | order45-arm2-net-24-9 |
 | after round | 24 |
-| board moved | `6fd0f7ded2b280d1a90962c299a152e3` → `82fcd8bb1e552b927299b5702122e321` |
-| identities moved | board, store |
-| owner ruling id | WILL_GRAHAM_DUAL_2026-08-24_edit_to_40pct_SF_and_recalculate |
+| board moved | `82fcd8bb1e552b927299b5702122e321` → `3167cba643a6b16e5ef5d904d8957fcd` |
+| identities moved | board |
+| owner ruling id | ARM2_REBAKE_ADOPT_2026-08-25_yes_adopt_the_new_model, SAFETY_NET_SCALED_2026-08-25_scaled_on_the_safety_net, MATURE_AGERS_EXCLUDED_2026-08-25_exclude_mature_agers |
 
 ## GENERATION STAMP
 
 | field | value |
 |---|---|
-| generated at commit | `3210455f0a40a4dd18914ea2c153fc3b86d243cb` |
+| generated at commit | `a446d9db44066fa6af911db80ffc8d3b62618b9e` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |
