@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v863 2026-08-26 · **THE SPEED ACT IS LANDED — every deliverable proven, the book re-sealed on the landed tree, and falsifier 6 discharged at last.** Owner words: the standing efficiency directive ("No convenient interpretation of my words to be lazy... Parallelise. Load things once"), "We can do B3 in the next set", and this sitting's "please continue, stopping only if ther
+  > # OPEN ITEMS REGISTER · v864 2026-08-26 · **THE D5 DECOMPOSITION IS MEASURED — the young-entrant pricing path read stage-by-stage from the engine's own symbols, and the mechanism behind the owner's question ("why is Oliver so under priced compared to a Burton") now has numbers instead of hypotheses.** Instrument: docs/evidence/speed_act_2026-08-26/pass_pedigree_decomp.py on the load-once harness (
 
-- new-form entries under `docs/register/entries/`: 51
+- new-form entries under `docs/register/entries/`: 52
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `eb906b7a4f52b7cc4327b5827ca00ade2d2e3d88` |
+| generated at commit | `d90ccd3687fe99b37031d07056580da8b4407792` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |
