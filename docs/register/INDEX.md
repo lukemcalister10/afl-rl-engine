@@ -1,8 +1,9 @@
 <!-- GENERATED-ONLY — regenerate: python3 tools/seat/pen.py index ; assert current: python3 tools/seat/pen.py verify -->
 # REGISTER ADDRESS INDEX — generated
 
-Newest entry: **v857**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
+Newest entry: **v858**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
 
+- **v858** (2026-08-26) — `docs/register/entries/v858.md` — **ORDER 45 IS LANDED — the board of record moved ONCE, 82fcd8bb → 3167cba6, at landing commit 50903d4, on the owner's verbatim "Go".** The l
 - **v857** (2026-08-25) — `docs/register/entries/v857.md` — **THE ORDER 45 LANDING PREP — the successor seat executed the v854/v856 spec through to the dry-run gate; the with-net board is BUILT AND TR
 - **v856** (2026-08-25) — `docs/register/entries/v856.md` — **THE PRE-COMPACTION BLIND AUDIT IS ABSORBED — 21 findings (3 blockers, 6 errors, 6 ambiguities, 6 nits), every correction below SUPERSEDES 
 - **v855** (2026-08-25) — `docs/register/entries/v855.md` — **HANDOVER ADDENDUM — the owner-ordered pre-compaction audit is COMPLETE; the net prediction is FILED; four review defects found and fixed o

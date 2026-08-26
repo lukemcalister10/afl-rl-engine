@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v857 2026-08-25 · **THE ORDER 45 LANDING PREP — the successor seat executed the v854/v856 spec through to the dry-run gate; the with-net board is BUILT AND TRIPLY VERIFIED; the law-11 review ran FOUR passes and every finding is cured on the record; THREE NEW OWNER RULINGS reshape the queue.** OWNER WORDS (2026-08-25, verbatim): sequencing — *"I think we finish this one as p
+  > # OPEN ITEMS REGISTER · v858 2026-08-26 · **ORDER 45 IS LANDED — the board of record moved ONCE, 82fcd8bb → 3167cba6, at landing commit 50903d4, on the owner's verbatim "Go".** The live engine now carries the arm-2 rebake (D1) + the position-scaled safety net (D2, mature-agers out D3): engine head d84031cf · fv 123a8155 · config 29fdfd1e (RL_O45 declared '1') · band f39c7b96 · q97m 5ea7546d · peak
 
-- new-form entries under `docs/register/entries/`: 45
+- new-form entries under `docs/register/entries/`: 46
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `a446d9db44066fa6af911db80ffc8d3b62618b9e` |
+| generated at commit | `41deb348c827161f3ca8723125199734222b7580` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 236,
+  "coverage_entries": 237,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-26",
+      "headline": "**ORDER 45 IS LANDED \u2014 the board of record moved ONCE, 82fcd8bb \u2192 3167cba6, at landing commit 50903d4, on the owner's verbatim \"Go\".** The live engine\u2026",
+      "hits": {
+        "DECLARED": [
+          "**ORDER 45 IS LANDED \u2014 the board of record moved ONCE, 82fcd8bb \u2192 3167cba6, at landing commit 50903d4, on the owner's verbatim \"Go\".** The live engine now carries the arm-2 rebake (D1) + the position-scaled safety net (D\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 858
+    },
     {
       "by": "explicit",
       "date": "2026-08-25",
@@ -2116,7 +2130,7 @@
       "version": 622
     }
   ],
-  "incidents": 124,
+  "incidents": 125,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",
