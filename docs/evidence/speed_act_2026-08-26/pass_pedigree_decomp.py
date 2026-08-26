@@ -30,7 +30,7 @@ def run(ns):
     G, MA = ns['G'], ns['MA']
     for sym in ('o31_D', 'o31_pi', 'o31_cu', 'o36_kappa', 'o32_sigma_sel', 'rho31', 'pv_games',
                 'pv_pedigree', 'day0_v0', '_ev_pre45', '_o45_lam', '_O45_BARS', '_PL_F',
-                'BASE_REF', 'AGE_REF', '_pe_clear', 'ev', 'nseas_pro'):
+                'ev', 'nseas_pro'):
         if sym not in G:
             raise SystemExit('decomp HALT: engine symbol %r absent — the map this pass was built '
                              'against no longer matches the engine; re-map, do not guess.' % sym)
@@ -52,9 +52,11 @@ def run(ns):
         gtot = sum(x.get('games', 0) for x in sc)
         if gtot > 8 or any(x.get('games', 0) >= 6 for x in sc):
             continue                                    # thin-evidence class: 0-8 games, no banked level
-        # THE CLOCK DISCIPLINE (H3 repair, rl_export.py:211): re-pin per row, always.
-        G['BASE_REF'] = G['AGE_REF'] = Y
-        G['_pe_clear']()
+        # THE CLOCK DISCIPLINE (H3 repair class): the clock lives on the MA module — ev() pins it
+        # per call on the live path (_merged_recover :475), but the o31_*/display reads below run
+        # OUTSIDE ev, so re-pin per row, always.
+        MA.BASE_REF = MA.AGE_REF = Y
+        MA._pe_clear()
         pos = MA.gfut(p)
         if pos not in G['_O45_BARS']:
             raise SystemExit('decomp HALT: unresolved position group for %r (gfut=%r).' % (p['key'], pos))
