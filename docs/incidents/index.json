@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 240,
+  "coverage_entries": 241,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-26",
+      "headline": "**THE PEDIGREE ACT (D5) IS RE-SCOPED BY THE OWNER TO ROOT CAUSE, AND ITS EVIDENCE BASE IS CORRECTED TWICE.** Owner words, verbatim (2026-08-26): \"Jeps\u2026",
+      "hits": {
+        "DECLARED": [
+          "**THE PEDIGREE ACT (D5) IS RE-SCOPED BY THE OWNER TO ROOT CAUSE, AND ITS EVIDENCE BASE IS CORRECTED TWICE.** Owner words, verbatim (2026-08-26): \"Jepson's pedigree shouldn't be higher than camporeale's though? That seems\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 862
+    },
     {
       "by": "explicit",
       "date": "2026-08-26",
@@ -2130,7 +2144,7 @@
       "version": 622
     }
   ],
-  "incidents": 125,
+  "incidents": 126,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",

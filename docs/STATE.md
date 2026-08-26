@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v861 2026-08-26 · **THE OUTCOME-YARDSTICK QUESTION IS RULED: YARDSTICK A REMAINS THE PRICING YARDSTICK.** Owner words, verbatim (2026-08-26, on the side-by-side): "Year 3 is too self referential and doesn't consider different positions taking different time. Best exist prices players across their best and doesn't price longevity. We can remain with the current system please
+  > # OPEN ITEMS REGISTER · v862 2026-08-26 · **THE PEDIGREE ACT (D5) IS RE-SCOPED BY THE OWNER TO ROOT CAUSE, AND ITS EVIDENCE BASE IS CORRECTED TWICE.** Owner words, verbatim (2026-08-26): "Jepson's pedigree shouldn't be higher than camporeale's though? That seems like a terrible comparison" · "It sounds like we said we would fix it in this build, but don't have a fix yet" (accurate — commissioned a
 
-- new-form entries under `docs/register/entries/`: 49
+- new-form entries under `docs/register/entries/`: 50
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `79fa088448abdfdee0fa304c4239f846a63a2670` |
+| generated at commit | `21f27059cd012a9dadc046d397d971c949d66e83` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |
