@@ -1,0 +1,15 @@
+====================================================================================================
+SPEED ACT — THE BOOK RE-SEAL ON THE LANDED ORDER 45 TREE, BARE SHIPPED LINE, GATE MODE
+====================================================================================================
+  worktree      : /home/user/afl-rl-engine
+  engine head   : d84031cf   store: fb640ca0
+  RL_V0SURF_PKL : <NOT SET — the in-repo pinned surface is now the default load path>
+
+regenerating the book matrix (gate mode, BARE LINE — no env dials; the shipped defaults price it) ...
+matrix meta   : engine=d84031cf store=fb640ca0 config=29fdfd1e1447
+
+  sealed (before): head 1867e953 store b745002e n 2650 stable 9f46aba3ba8b056d
+  candidate      : head d84031cf store fb640ca0 n 2650 stable 5b5f65afdbe9a256
+
+RE-SEALED: head 1867e953 -> d84031cf | n_players 2650 -> 2650 | stable_sha256 9f46aba3 -> 5b5f65af
+NOT ADOPTED. OWNER WORD PENDING.
