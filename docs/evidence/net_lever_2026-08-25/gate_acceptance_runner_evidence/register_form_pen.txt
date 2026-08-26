@@ -1,6 +1,6 @@
 $ python3 tools/seat/pen.py verify
 (cwd /home/user/afl-rl-engine)
 
-pen verify: frozen 219021ac sealed-ok=True · 45 new-form entries · newest v857
+pen verify: frozen 219021ac sealed-ok=True · 46 new-form entries · newest v858
 
 [exit 0]
