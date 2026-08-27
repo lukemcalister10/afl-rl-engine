@@ -1,8 +1,9 @@
 <!-- GENERATED-ONLY — regenerate: python3 tools/seat/pen.py index ; assert current: python3 tools/seat/pen.py verify -->
 # REGISTER ADDRESS INDEX — generated
 
-Newest entry: **v872**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
+Newest entry: **v873**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
 
+- **v873** (2026-08-27) — `docs/register/entries/v873.md` — **RUCK RELIEF IS RULED — the tall cells of the retention surface are THE ONE CARRIER; no second ruck lever enters the build.** Owner word, v
 - **v872** (2026-08-27) — `docs/register/entries/v872.md` — **THE CANDIDATE WATERFALL IS PRICED — one board, every direct mover tracked live → candidate with per-mechanism attribution, the two designe
 - **v871** (2026-08-27) — `docs/register/entries/v871.md` — **THE OTHER EDGE OF THE BOUNDARY IS MEASURED — the feared just-banked inversion barely exists (1 row of 28), and the outcome data says THE S
 - **v870** (2026-08-27) — `docs/register/entries/v870.md` — **THE SURFACE MOVERS ARE PRICED — the form the owner's three constraints produced, and every named check lands where the design predicted.**

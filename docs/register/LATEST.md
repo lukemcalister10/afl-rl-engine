@@ -1,3 +1,3 @@
-# OPEN ITEMS REGISTER · v872 2026-08-27 · **THE CANDIDATE WATERFALL IS PRICED — one board, every direct mover tracked live → candidate with per-mechanism attribution, the two designed mechanisms engine-priced exactly and the pending five declared as overlay.** Owner ask (2026-08-27): "Please produce one candidate board that tracks all direct movers, from live, to the end candidate result, tracking
+# OPEN ITEMS REGISTER · v873 2026-08-27 · **RUCK RELIEF IS RULED — the tall cells of the retention surface are THE ONE CARRIER; no second ruck lever enters the build.** Owner word, verbatim (2026-08-27): "Ruck relief yes" — given against this seat's stated recommendation ("confirm the tall cells ARE the ruck relief — one lever, no second ruck mechanism"). Effect: the fade redesign's ruck-relief it
 
-(one line per pen; full entry: docs/register/entries/v872.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
+(one line per pen; full entry: docs/register/entries/v873.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
