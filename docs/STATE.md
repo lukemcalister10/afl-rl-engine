@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v876 2026-08-27 · **THE CANDIDATE NO-ARB TABLES ARE ON THE STANDING TEMPLATE — W2 HOLDS INSIDE THE RAILS (P-5 GREEN), the deep draft HEALS, the head deepens two points with its path test still passing; and the road there filed THREE guard-halts, every one the machinery working.** Owner ask (2026-08-27): "And the no arb tables with these changes in? There should be a templat
+  > # OPEN ITEMS REGISTER · v877 2026-08-27 · **THE CANDIDATE NO-ARB READING IS APPROVED — the owner has seen and accepted the disclosed head trade.** Owner word, verbatim (2026-08-27): "Alright great. Approved. What next?" — given against the v876 tables: W2 +10.50% inside the rail, the deep-draft sell-side red healing to fair, the pool arms improving, AND the disclosed cost (picks 1-20 buy-side red
 
-- new-form entries under `docs/register/entries/`: 64
+- new-form entries under `docs/register/entries/`: 65
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `29eb1b8294fab577329118975174b817ce7aac7f` |
+| generated at commit | `ca32feb2d5bc77b88fb34273a748409a37aa7202` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |
