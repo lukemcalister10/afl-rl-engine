@@ -1,0 +1,440 @@
+{
+ "base_ref": 2026,
+ "board": "NOREC candidate (recency-less arm 2)",
+ "board_md5": "530a4053622c29092274fab0aa1fee7f",
+ "label": "regenerated day-0 final for the NOREC candidate board",
+ "entry_year_note": "printed taken FROM the published board; identity round(derived_v0*D)==printed asserted here",
+ "identity_all": "86 of 86 at tolerance 0",
+ "rows": [
+  {
+   "key": "oskar-taylor",
+   "printed": 624,
+   "derived_v0": 981.6364003140842
+  },
+  {
+   "key": "mitchell-marsh",
+   "printed": 534,
+   "derived_v0": 714.2210449409969
+  },
+  {
+   "key": "harley-barker",
+   "printed": 484,
+   "derived_v0": 847.7437598404954
+  },
+  {
+   "key": "adam-sweid",
+   "printed": 250,
+   "derived_v0": 443.8370143853265
+  },
+  {
+   "key": "blake-thredgold",
+   "printed": 372,
+   "derived_v0": 503.87804361929443
+  },
+  {
+   "key": "avery-thomas",
+   "printed": 250,
+   "derived_v0": 458.22061076740977
+  },
+  {
+   "key": "sam-allen",
+   "printed": 423,
+   "derived_v0": 783.0105088550637
+  },
+  {
+   "key": "thomas-matthews",
+   "printed": 228,
+   "derived_v0": 425.2323045864746
+  },
+  {
+   "key": "tyan-prindable",
+   "printed": 355,
+   "derived_v0": 676.34562979358
+  },
+  {
+   "key": "hunter-holmes",
+   "printed": 337,
+   "derived_v0": 647.6741719710797
+  },
+  {
+   "key": "jevan-phillipou",
+   "printed": 209,
+   "derived_v0": 407.4121381864447
+  },
+  {
+   "key": "koby-evans",
+   "printed": 199,
+   "derived_v0": 397.08279772146716
+  },
+  {
+   "key": "tylah-williams",
+   "printed": 195,
+   "derived_v0": 393.69859686501144
+  },
+  {
+   "key": "tai-hayes",
+   "printed": 143,
+   "derived_v0": 298.3246315951657
+  },
+  {
+   "key": "koby-coulson",
+   "printed": 218,
+   "derived_v0": 461.0412582630492
+  },
+  {
+   "key": "hugo-mikunda",
+   "printed": 133,
+   "derived_v0": 284.1973286232545
+  },
+  {
+   "key": "max-king-syd",
+   "printed": 131,
+   "derived_v0": 281.0298173196793
+  },
+  {
+   "key": "finnegan-davis",
+   "printed": 78,
+   "derived_v0": 170.53650789367612
+  },
+  {
+   "key": "kye-fincher",
+   "printed": 135,
+   "derived_v0": 295.7084369395381
+  },
+  {
+   "key": "zac-mccarthy",
+   "printed": 149,
+   "derived_v0": 213.03852565963354
+  },
+  {
+   "key": "matthew-leray",
+   "printed": 103,
+   "derived_v0": 230.21497552256417
+  },
+  {
+   "key": "will-darcy",
+   "printed": 257,
+   "derived_v0": 366.5651890791144
+  },
+  {
+   "key": "fred-rodriguez",
+   "printed": 91,
+   "derived_v0": 212.39992549540213
+  },
+  {
+   "key": "riley-onley",
+   "printed": 91,
+   "derived_v0": 212.39992549540213
+  },
+  {
+   "key": "leon-kickett",
+   "printed": 86,
+   "derived_v0": 200.77927605040077
+  },
+  {
+   "key": "nick-driscoll",
+   "printed": 91,
+   "derived_v0": 212.39992549540213
+  },
+  {
+   "key": "kalani-white",
+   "printed": 65,
+   "derived_v0": 92.35874340265629
+  },
+  {
+   "key": "noah-chamberlain",
+   "printed": 37,
+   "derived_v0": 86.64903086038251
+  },
+  {
+   "key": "liam-hetherton",
+   "printed": 82,
+   "derived_v0": 117.30450712681677
+  },
+  {
+   "key": "jai-saxena",
+   "printed": 23,
+   "derived_v0": 54.67806545309878
+  },
+  {
+   "key": "ryda-luke",
+   "printed": 23,
+   "derived_v0": 54.67806545309878
+  },
+  {
+   "key": "toby-whan",
+   "printed": 23,
+   "derived_v0": 54.67806545309878
+  },
+  {
+   "key": "jesse-mellor",
+   "printed": 48,
+   "derived_v0": 112.72490408994679
+  },
+  {
+   "key": "oliver-griffin",
+   "printed": 88,
+   "derived_v0": 207.68237377991244
+  },
+  {
+   "key": "harrison-coe",
+   "printed": 254,
+   "derived_v0": 448.21342329607927
+  },
+  {
+   "key": "caleb-may",
+   "printed": 254,
+   "derived_v0": 448.21342329607927
+  },
+  {
+   "key": "max-mapley",
+   "printed": 254,
+   "derived_v0": 448.21342329607927
+  },
+  {
+   "key": "josh-smillie",
+   "printed": 933,
+   "derived_v0": 1591.1308647194237
+  },
+  {
+   "key": "ned-bowman",
+   "printed": 175,
+   "derived_v0": 440.0516725169894
+  },
+  {
+   "key": "james-barrat",
+   "printed": 332,
+   "derived_v0": 473.79004602573843
+  },
+  {
+   "key": "charlie-nicholls",
+   "printed": 341,
+   "derived_v0": 486.91843219584797
+  },
+  {
+   "key": "kayle-gerreyn",
+   "printed": 300,
+   "derived_v0": 428.88658675306385
+  },
+  {
+   "key": "ben-camporeale",
+   "printed": 179,
+   "derived_v0": 567.44126549464
+  },
+  {
+   "key": "joel-cochran",
+   "printed": 264,
+   "derived_v0": 377.5176705121642
+  },
+  {
+   "key": "cooper-bell",
+   "printed": 263,
+   "derived_v0": 375.5263102516097
+  },
+  {
+   "key": "jacob-molier",
+   "printed": 177,
+   "derived_v0": 252.53014363529115
+  },
+  {
+   "key": "riak-andrew",
+   "printed": 259,
+   "derived_v0": 369.55222946994616
+  },
+  {
+   "key": "luke-urquhart",
+   "printed": 67,
+   "derived_v0": 214.62666651732368
+  },
+  {
+   "key": "tyler-welsh",
+   "printed": 146,
+   "derived_v0": 209.05580513852448
+  },
+  {
+   "key": "patrick-said",
+   "printed": 50,
+   "derived_v0": 159.80690870462553
+  },
+  {
+   "key": "jaren-carr",
+   "printed": 31,
+   "derived_v0": 100.99568013027725
+  },
+  {
+   "key": "cody-anderson",
+   "printed": 31,
+   "derived_v0": 100.0
+  },
+  {
+   "key": "lennox-hoffman",
+   "printed": 111,
+   "derived_v0": 260.29088995681457
+  },
+  {
+   "key": "river-stevens",
+   "printed": 44,
+   "derived_v0": 103.02153132816662
+  },
+  {
+   "key": "keighton-matofai-forbes",
+   "printed": 111,
+   "derived_v0": 260.29088995681457
+  },
+  {
+   "key": "logan-smith",
+   "printed": 396,
+   "derived_v0": 566.0434372785456
+  },
+  {
+   "key": "aiden-riddle",
+   "printed": 260,
+   "derived_v0": 372.0760157379352
+  },
+  {
+   "key": "harry-charleson",
+   "printed": 109,
+   "derived_v0": 254.6586738490823
+  },
+  {
+   "key": "asher-eastham",
+   "printed": 86,
+   "derived_v0": 200.77927605040077
+  },
+  {
+   "key": "joe-pike",
+   "printed": 260,
+   "derived_v0": 372.0760157379352
+  },
+  {
+   "key": "eamonn-armstrong",
+   "printed": 37,
+   "derived_v0": 87.02989219418069
+  },
+  {
+   "key": "cillian-burke",
+   "printed": 37,
+   "derived_v0": 87.02989219418069
+  },
+  {
+   "key": "matt-duffy",
+   "printed": 37,
+   "derived_v0": 87.02989219418069
+  },
+  {
+   "key": "zak-evans",
+   "printed": 113,
+   "derived_v0": 264.74599677792054
+  },
+  {
+   "key": "jacob-moss",
+   "printed": 64,
+   "derived_v0": 91.4029494151171
+  },
+  {
+   "key": "jaime-uhr-henry",
+   "printed": 56,
+   "derived_v0": 79.68694966717874
+  },
+  {
+   "key": "ricky-mentha",
+   "printed": 23,
+   "derived_v0": 54.67806545309878
+  },
+  {
+   "key": "benny-barrett",
+   "printed": 23,
+   "derived_v0": 54.67806545309878
+  },
+  {
+   "key": "zac-walker",
+   "printed": 153,
+   "derived_v0": 358.5352973164835
+  },
+  {
+   "key": "harry-demattia",
+   "printed": 342,
+   "derived_v0": 846.0364306658314
+  },
+  {
+   "key": "ollie-murphy",
+   "printed": 198,
+   "derived_v0": 393.6820990228279
+  },
+  {
+   "key": "luke-lloyd",
+   "printed": 193,
+   "derived_v0": 387.8460587629247
+  },
+  {
+   "key": "patrick-snell",
+   "printed": 166,
+   "derived_v0": 371.5435897305007
+  },
+  {
+   "key": "reece-torrent",
+   "printed": 26,
+   "derived_v0": 100.0
+  },
+  {
+   "key": "xavier-walsh",
+   "printed": 116,
+   "derived_v0": 204.37405209598916
+  },
+  {
+   "key": "rob-monahan",
+   "printed": 37,
+   "derived_v0": 87.02989219418069
+  },
+  {
+   "key": "nathan-wardius",
+   "printed": 37,
+   "derived_v0": 86.64903086038251
+  },
+  {
+   "key": "iliro-smit",
+   "printed": 314,
+   "derived_v0": 448.21342329607927
+  },
+  {
+   "key": "brayden-george",
+   "printed": 175,
+   "derived_v0": 440.0516725169894
+  },
+  {
+   "key": "max-knobel",
+   "printed": 313,
+   "derived_v0": 628.4926092181586
+  },
+  {
+   "key": "ben-murphy",
+   "printed": 37,
+   "derived_v0": 87.02989219418069
+  },
+  {
+   "key": "kobe-mcdonald",
+   "printed": 37,
+   "derived_v0": 87.02989219418069
+  },
+  {
+   "key": "indy-cotton",
+   "printed": 46,
+   "derived_v0": 107.69641281841622
+  },
+  {
+   "key": "oscar-berry",
+   "printed": 54,
+   "derived_v0": 95.39801931497091
+  },
+  {
+   "key": "patrick-carr",
+   "printed": 56,
+   "derived_v0": 79.68694966717874
+  },
+  {
+   "key": "cillian-bourke",
+   "printed": 37,
+   "derived_v0": 87.02989219418069
+  }
+ ]
+}

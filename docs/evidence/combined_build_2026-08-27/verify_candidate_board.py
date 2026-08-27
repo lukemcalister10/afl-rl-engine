@@ -24,7 +24,16 @@ def rows(d):
     return {r['key']: r['v'] for L in ('active', 'back') for r in d[L]}
 lv, cv = rows(LB), rows(CB)
 bk = {r['key']: bool(r.get('bk')) for L in ('active', 'back') for r in LB[L]}
-gnow = {r['key']: r.get('g') or 0 for L in ('active', 'back') for r in LB[L]}
+# THE EASING SCOPE, from the STORE's scoring records (blind-review finding 1: the board's `g`
+# field is CAREER games, not current-season — the first cut of this classifier mislabeled 13
+# career-banked veterans as easing). O48's own scope: exactly one banked season AND it is 2026.
+_STORE = json.load(open('/home/user/cand_build/ws/rl_after/rl_model_data.json'))
+gnow = {}
+for _rec in (_STORE.values() if isinstance(_STORE, dict) else _STORE):
+    if isinstance(_rec, dict) and _rec.get('key'):
+        _b = [x for x in (_rec.get('scoring') or [])
+              if x.get('year', 0) <= 2026 and x.get('games', 0) >= 6]
+        gnow[_rec['key']] = 6 if (len(_b) == 1 and _b[0].get('year') == 2026) else 0
 
 verdict = {'checks': {}, 'named': [], 'unexplained': [], 'stepup_landed': [], 'easing_candidates': [],
            'refit_ripple': []}
