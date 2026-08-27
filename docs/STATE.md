@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v866 2026-08-26 · **THE THIN-STATE CAPITAL LOADING IS MEASURED FROM RESOLVED COHORTS — the ~2× residual target for the oliver class SURVIVES ITS MOST CONSERVATIVE CUT, and the tall/mobile split lands directly on the ruck-relief packet word.** Owner exchange (2026-08-26): he caught this seat's mech-(a) estimate ("I thought you said under A Oliver would be 390-430?" — the κ-m
+  > # OPEN ITEMS REGISTER · v867 2026-08-27 · **THE FITTED-FLOOR MOVERS ARE PRICED — surgical this time, and the interaction the list surfaced is itself a finding.** Owner ask (2026-08-27): "Can I see the movers list please, just for this change" — the D5 fix sized by the v866 outcome bounds, not the refuted κ-mirror (v865). THE STUDY (pass_mech_fit.py on the harness, 478s load + 163s for three full-b
 
-- new-form entries under `docs/register/entries/`: 54
+- new-form entries under `docs/register/entries/`: 55
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `4bdd2dd1e09322c28f8f10e8d70c019b19c71ac7` |
+| generated at commit | `8ada5ec9310e77cbc4c264a27323fe9e1e863c8e` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |
