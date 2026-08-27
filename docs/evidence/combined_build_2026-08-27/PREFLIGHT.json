@@ -25,15 +25,15 @@
  },
  {
   "check": "release_contract",
-  "verdict": "FAIL",
-  "detail": "===============================================================",
+  "verdict": "PASS",
+  "detail": "release_contract check PASS",
   "seconds": 0.06
  },
  {
   "check": "release_manifest",
-  "verdict": "FAIL",
-  "detail": "  RELEASE MANIFEST COHERENCE: FAIL",
-  "seconds": 0.06
+  "verdict": "PASS",
+  "detail": "release_manifest_check PASS",
+  "seconds": 0.07
  },
  {
   "check": "mirror_parity",
@@ -45,7 +45,7 @@
   "check": "movers_ui",
   "verdict": "PASS",
   "detail": "movers.test.js green",
-  "seconds": 0.53
+  "seconds": 0.5
  },
  {
   "check": "shared_pickles",
