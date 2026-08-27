@@ -1,0 +1,6 @@
+$ python3 tools/inbox_manifest.py check
+(cwd /home/user/afl-rl-engine)
+
+inbox_manifest: 1 archived file(s), 0 problem(s), 0 stale generated file(s)
+
+[exit 0]

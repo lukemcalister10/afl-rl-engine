@@ -1,0 +1,93 @@
+RELEASE MANIFEST — carrier coherence over the full identity set
+  root: /home/user/afl-rl-engine
+
+  STORE  [computed md5 engine/rl_after/rl_model_data.json]
+    (truth)                                       fb640ca0baf92bbb122b1ad7e25c5a88                                 
+    expected_boot.store                           fb640ca0baf92bbb122b1ad7e25c5a88                                 OK
+    release_contract.identities.store             fb640ca0baf92bbb122b1ad7e25c5a88                                 OK
+    season_state.source_store_md5                 fb640ca0baf92bbb122b1ad7e25c5a88                                 OK
+    rl_app_data.srcmd5.source_md5                 fb640ca0baf92bbb122b1ad7e25c5a88                                 OK
+    board_view_working.stamp.store_md5            fb640ca0baf92bbb122b1ad7e25c5a88                                 OK
+    board_view_working.stamp.store                fb640ca0                                                         OK
+    board_view_working.stamp.release.store        fb640ca0baf92bbb122b1ad7e25c5a88                                 OK
+    book_stable_seal.store_md5                    fb640ca0                                                         OK
+    -> 8 carriers, COHERENT
+
+  BOARD  [computed md5 data/rl_build/rl_app_data.json]
+    (truth)                                       530a4053622c29092274fab0aa1fee7f                                 
+    expected_boot.board                           530a4053622c29092274fab0aa1fee7f                                 OK
+    release_contract.identities.board             530a4053622c29092274fab0aa1fee7f                                 OK
+    rl_app_data.srcmd5.own_md5                    530a4053622c29092274fab0aa1fee7f                                 OK
+    board_view_working.stamp.board_md5            530a4053622c29092274fab0aa1fee7f                                 OK
+    board_view_working.stamp.board                530a4053622c29092274fab0aa1fee7f                                 OK
+    board_view_working.stamp.srcmd5               530a4053622c29092274fab0aa1fee7f                                 OK
+    board_view_working.stamp.release.board        530a4053622c29092274fab0aa1fee7f                                 OK
+    -> 7 carriers, COHERENT
+
+  ENGINE_HEAD  [computed md5 engine/rl_after/_merged_recover.py]
+    (truth)                                       a5550b678f05e5c8b80cd3952d1b4ce5                                 
+    expected_boot.engine_head                     a5550b678f05e5c8b80cd3952d1b4ce5                                 OK
+    release_contract.identities.engine_head       a5550b678f05e5c8b80cd3952d1b4ce5                                 OK
+    board_view_working.stamp.engine               a5550b67                                                         OK
+    board_view_working.stamp.release.engine_head  a5550b678f05e5c8b80cd3952d1b4ce5                                 OK
+    book_stable_seal.head_md5                     a5550b67                                                         OK
+    -> 5 carriers, COHERENT
+
+  RL_MODEL  [computed md5 engine/rl_after/rl_model.py]
+    (truth)                                       6fe7c4155866d80e8045bed2d3bf2802                                 
+    expected_boot.rl_model                        6fe7c4155866d80e8045bed2d3bf2802                                 OK
+    release_contract.identities.rl_model          6fe7c4155866d80e8045bed2d3bf2802                                 OK
+    board_view_working.stamp.release.rl_model     6fe7c4155866d80e8045bed2d3bf2802                                 OK
+    -> 3 carriers, COHERENT
+
+  FV  [computed fv tree hash (fv_provenance)]
+    (truth)                                       123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345 
+    expected_boot.fv                              123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345 OK
+    release_contract.identities.fv                123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345 OK
+    board_view_working.stamp.release.fv           123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345 OK
+    -> 3 carriers, COHERENT
+
+  CONFIG  [computed manifest hash (config_manifest)]
+    (truth)                                       f233d1604975cdbda18bde0d31e253c8254bddc97fb7f1be6ac0412f57e06979 
+    expected_boot.config                          f233d1604975cdbda18bde0d31e253c8254bddc97fb7f1be6ac0412f57e06979 OK
+    release_contract.config_sha256                f233d1604975cdbda18bde0d31e253c8254bddc97fb7f1be6ac0412f57e06979 OK
+    board_view_working.stamp.config               f233d1604975                                                     OK
+    board_view_working.stamp.release.config       f233d1604975cdbda18bde0d31e253c8254bddc97fb7f1be6ac0412f57e06979 OK
+    book_stable_seal.config                       f233d1604975cdbda18bde0d31e253c8254bddc97fb7f1be6ac0412f57e06979 OK
+    -> 5 carriers, COHERENT
+
+  REGISTER  [computed md5 LTI_REGISTER.md]
+    (truth)                                       652d83e87780e415a01a2de6d8b3cc57                                 
+    expected_boot.register                        652d83e87780e415a01a2de6d8b3cc57                                 OK
+    release_contract.identities.register          652d83e87780e415a01a2de6d8b3cc57                                 OK
+    board_view_working.stamp.register             652d83e8                                                         OK
+    board_view_working.stamp.release.register     652d83e87780e415a01a2de6d8b3cc57                                 OK
+    -> 4 carriers, COHERENT
+
+  AS_OF_ROUND  [anchor data/expected_boot.json]
+    (truth)                                       24                                                               
+    expected_boot.as_of_round                     24                                                               OK
+    release_contract.as_of_round                  24                                                               OK
+    season_state.as_of_round                      24                                                               OK
+    board_view_working.stamp.asOfRound            24                                                               OK
+    board_view_working.stamp.release.as_of_round  24                                                               OK
+    -> 5 carriers, COHERENT
+
+  SHEET  [computed md5 docs/owner_annotations/SITTER_2026_v1.csv]
+    (truth)                                       21361291f26d35108b88f92f885c5063                                 
+    sheet_pins.sheet_md5                          21361291f26d35108b88f92f885c5063                                 OK
+    -> 1 carriers, COHERENT
+
+  SHEET_ROWS  [computed csv row count docs/owner_annotations/SITTER_2026_v1.csv]
+    (truth)                                       219                                                              
+    sheet_pins.sheet_rows                         219                                                              OK
+    -> 1 carriers, COHERENT
+
+  SHEET_INJURED_Y  [computed injured=Y count docs/owner_annotations/SITTER_2026_v1.csv]
+    (truth)                                       35                                                               
+    sheet_pins.sheet_injured_y                    35                                                               OK
+    -> 1 carriers, COHERENT
+
+  43 carrier fields across 11 identities and 8 files: 43 coherent, 0 incoherent, 0 sealed-lag
+
+  RELEASE MANIFEST COHERENCE: PASS

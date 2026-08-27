@@ -1,0 +1,10 @@
+$ python3 tools/rulebook_lint.py /home/user/afl-rl-engine
+(cwd /home/user/afl-rl-engine)
+
+rulebook_lint: 0 FAIL  (tree /home/user/afl-rl-engine)
+  note PART 1 laws counted: 12  (ONE-SOURCE, SILENCE-IS-A-RED, L-SMOOTH, G-MONO, L-SYMMETRY, L-SAGE-FADE, L-CAPTAIN, LENS-PROJECTION, CONSERVATION, OWNER-ONLY-WORDS, THE-SEAM-PATTERN, G-Y0)
+  note PROCESS LAWS counted: 13  (THE-BOARD-MOVES-ONLY-IN-AN-ACT-THAT-SAYS-IT-WILL, NEVER-BOOT-ON-AN-UNVERIFIED-STORE, ONE-WRITER, ASSERT-THE-RELATIONSHIP-NEVER-THIS-MONTH-S-NUMBER, A-GATE-S-NAME-IS-NOT-COVERAGE, GENERATED-ONLY, RULED-RED-IS-NOT-A-SNOOZE-BUTTON, EXPLICIT-PATHS-ONLY, THE-PREREG-COMES-FIRST, NO-SECOND-LAWS-FILE-EVER, THE-RETIREMENT-IS-RECORDED-WHERE-THE-GATE-LIVES, THE-PRICED-ARM-READING, A-PINNED-OWNER-INPUT-HAS-ONE-NAMED-WRITER)
+  note R4 ONE LAWS FILE: no derived laws view found in the tree — the RULEBOOK is the only laws file, which is what PART 4 P10 requires.
+  note R5 TWIN ABSENCE: docs/acceptance_v2_0.json is absent, as the v3 amendment left it.
+
+[exit 0]
