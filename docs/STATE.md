@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v868 2026-08-27 · **THE OWNER'S BOUNDARY QUESTION ADDS THE MISSING DESIGN CONSTRAINT: EVIDENCE-MONOTONICITY AT MATCHED CAPITAL — and the flat floor of v867 is NOT LANDABLE AS-IS.** His question (2026-08-27, verbatim): "Are players who've played a full season (6+ games) to a mediocre standard now rated below those who haven't?" MEASURED, two instruments, no engine load: (1)
+  > # OPEN ITEMS REGISTER · v869 2026-08-27 · **THE OWNER'S GENEROSITY OBJECTION IS MEASURED AND CONFIRMED ON ALL THREE COUNTS — the within-class gradients replace the flat floor, and the D5 surface's dimensions are now fully specified.** His words (2026-08-27): "It just seems too generous for some players. Like McCabe in 3 years hasn't done much. He doesn't deserve to be worthless, but also retaining
 
-- new-form entries under `docs/register/entries/`: 56
+- new-form entries under `docs/register/entries/`: 57
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `16762fcda1ab17444236a465bb294876f6f5b4ee` |
+| generated at commit | `a51f15ad5d82998c8b0a1b62364719070aafe74a` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

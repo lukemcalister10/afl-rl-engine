@@ -1,3 +1,3 @@
-# OPEN ITEMS REGISTER · v868 2026-08-27 · **THE OWNER'S BOUNDARY QUESTION ADDS THE MISSING DESIGN CONSTRAINT: EVIDENCE-MONOTONICITY AT MATCHED CAPITAL — and the flat floor of v867 is NOT LANDABLE AS-IS.** His question (2026-08-27, verbatim): "Are players who've played a full season (6+ games) to a mediocre standard now rated below those who haven't?" MEASURED, two instruments, no engine load: (1) 
+# OPEN ITEMS REGISTER · v869 2026-08-27 · **THE OWNER'S GENEROSITY OBJECTION IS MEASURED AND CONFIRMED ON ALL THREE COUNTS — the within-class gradients replace the flat floor, and the D5 surface's dimensions are now fully specified.** His words (2026-08-27): "It just seems too generous for some players. Like McCabe in 3 years hasn't done much. He doesn't deserve to be worthless, but also retaining
 
-(one line per pen; full entry: docs/register/entries/v868.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
+(one line per pen; full entry: docs/register/entries/v869.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
