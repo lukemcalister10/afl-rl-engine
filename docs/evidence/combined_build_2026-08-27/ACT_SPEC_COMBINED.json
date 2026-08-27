@@ -1,0 +1,57 @@
+{
+ "_doc": "THE ACT SPEC — THE COMBINED BUILD (the D5 pedigree repair as ruled): the evidence-conditional capital-retention surface (ORDER 46, with the final price guard), the survivorship step-up clock law (ORDER 47), the first-banked-season easing at the grid's measured W=1.0 (ORDER 48), and the S_LL5G smoothed day-0 law baked — one joint board move, 287 movers, net +3,460 pre-level, every mover attributed and blind-review GREEN. Driven by `tools/land lever`. The artifact/code identity moves happened AT THE FLIP COMMIT 2c212ff, one commit ahead (the ORDER 45 pattern); this landing moves the BOARD and its balanced derivative.",
+ "schema_version": 1,
+ "act_kind": "lever-landing",
+ "coherent_base": "2c212ff",
+ "_doc_coherent_base": "The flip commit — files and pins moved TOGETHER (the bake restamped expected_boot in the same tree as the artifacts), so the tree is coherent from the flip onward: expected_boot.engine_head 856e8328 == md5(_merged_recover.py), config f233d160 == canonical_hash(manifest), v0surf pin d9f5d15d == md5(data/v0surf.pkl). The board of record deliberately still reads 3167cba6 — moving it is THIS transaction's one job (P1).",
+ "act": "THE COMBINED BUILD — ORDERS 46/47/48 + the S_LL5G bake: the thin-evidence retention surface (v869 conservative cells, knots 0.40/0.525/0.65, tall ceiling 0.92 ruled AT equality, the no-gain-past-draft cap as a price-level no-decrease guard), the step-up clock law (FADE_LAW_DERIVATION L3a verbatim, zero new constants), the easing taper during a first banked season at the declared grid's measured output W=1.0, and the smoothed day-0 law as the pvc artifact of record; with the riding repairs (B2 re-base, the exporter day-0 assert one clause wider, the entrant seal re-priced, the v0surf refit)",
+ "date": "2026-08-27",
+ "owner_word": "Agree on your mechanism. Please present the movers board",
+ "authority": "Owner words, verbatim, register-anchored: the mechanism (v875, above) · 'Lock in LL5G then' + 'A for depth 3 cap' + '<2 is fine for sat season' + 'Keep the easing' (v874) · 'Ruck relief yes' (v873) · the candidate no-arb APPROVED 'Alright great. Approved.' (v877) · the standing directive 'please continue, stopping only if there is a blocker to pushing live. Try to land what we've worked on if it's possible' — the LANDING word for this act, given with the movers-list handover confirmed for the owner's morning ('Okay, so I'll see an updated and final movers list with all features implemented soon?'). Law 11 blind review: TWO ROUNDS, GREEN (BLIND_REVIEW.md). The v877 re-present condition was tested and does NOT fire: the final rails sit INSIDE the approved profile in every headline (W2 +7.96 vs approved +10.50, head +16.01 vs +17.08, deep +1.12 vs +2.47, zero new breach classes) — disclosed as the movers document's headline 5.",
+ "prereg": {
+  "path": "docs/evidence/combined_build_2026-08-27/PREREG.md",
+  "board_before": "3167cba643a6b16e5ef5d904d8957fcd",
+  "board_after": "530a4053622c29092274fab0aa1fee7f",
+  "_doc_board_after": "THE PREDICTION: the build from this flipped tree reproduces the verified candidate BYTE-EXACT — 530a4053, built and byte-agreed twice already (the chain leg B and the manual B4 rebuild), 287 movers vs live, net +3,460 pre-level, named rows oliver 360 / mccabe 325 / leake 617 / goad 737 / edwards 614 / riak 259 / dodson 101 / burton 239 unchanged. Any other board halts the landing — do not repair forward.",
+  "reference_board": "docs/evidence/combined_build_2026-08-27/board_candidate.json",
+  "kill_switch": null,
+  "_doc_kill_switch": "null — NOT because there is no dial, but because an env-only switch cannot produce this act's off-world: the act moves FROZEN ARTIFACTS (the smoothed curve, the refit v0surf, both seals, the exporter pin) alongside the dials, and the artifact laws themselves refuse a mixed world (the v0surf frozen-signature halt and the F5 seal reconciliation fired on exactly that, on the record). THE REVERT IS THE GIT-REVERT OF THE FLIP COMMIT 2c212ff, restoring files and pins together; its board is live 3167cba6 by identity. The dials-0 + pre-flip-artifacts world was PROVEN to reproduce 3167cba6 BYTE-EXACT five separate times as F1 leg A (run_f1_and_candidate.sh, f1_legA.log) — the standing revert rehearsal. The dial off-path (RL_O46/47/48='0') additionally reproduces the pre-order engine byte-for-byte at the code level, asserted by the same F1 chain.",
+  "_doc_p6_deviation": "NAMED PREREG DEVIATION (P-6): the prereg scoped 'post-level conservation within band_scar 200' anticipating a re-level lever; no re-level was ever designed or ruled, and the net the owner APPROVED on the movers board (v875: +2,948) plus the disclosed overlays lands at +3,460 (+0.49%%). Precedent: the ORDER 45 landing carried +922 (with the rebake, +1,070) with no re-level on the owner's Go (v858/v859). Inventing a re-level at the landing, unreviewed, against the pick1=3000 pin interlock, was refused as exactly the over-engineering the owner challenged tonight. If the owner wants the net paid back, that is a follow-up ruling, named in the movers document."
+ },
+ "identities": {
+  "moves": ["board", "balanced_board_md5"],
+  "unmoved": ["store", "engine_head", "fv", "config", "band", "q97m", "peak_model", "bust_prior", "pvc_snapshot", "rl_model", "register", "as_of_round", "v0surf", "release_version", "rl_model_data", "season_state"],
+  "_doc_moves": "THE PARTITION IS TRANSACTION-SCOPED (the ORDER 45 _doc_moves pattern): inside this landing only the BOARD (3167cba6 -> 530a4053) and its balanced derivative move. The ACT's other identity moves — engine_head d84031cf->856e8328 · config 29fdfd1e->f233d160 · v0surf 5dd34ca8->d9f5d15d · the pvc curve to 1c3b22d1 · book seal 5b5f65af->b6f67e94 · entrant seal ccc26a9e->bd2d091b — happened AT THE FLIP COMMIT 2c212ff and are BYTE-STABLE inside the transaction, so they are declared unmoved HERE with the act-level record carried by the flip commit, the prereg, and the lineage entry. pvc_snapshot is unmoved at BOTH levels (frozen, the peak model's train-time feature — the bake's first draft touched it and was caught; register v878 catch 1)."
+ },
+ "column": {
+  "id": "combined-build-46-47-48-sll5g",
+  "label": "24/9 THE COMBINED BUILD — retention surface + step-up clock law + first-banked easing (W=1.0, the grid's output) + S_LL5G day-0 law; 287 movers, net +3,460; oliver 283->360, mccabe 231->325, leake 421->617, dodson 85->101; blind-review GREEN",
+  "after_round": 24,
+  "registered_at": "2026-08-27"
+ },
+ "lineage": {
+  "doc": "THE D5 PEDIGREE REPAIR AS RULED — the owner's root-cause directive ('It shouldn't be a targetted fix just to close the Oliver Burton issue, but identify why Oliver is so under priced compared to a Burton and fix that instead') resolved by measurement (the v864-v871 evidence chain) into the evidence-conditional capital-retention surface, composed with the survivorship step-up (the derivation's clock law, dodson benchmark held at 101) and the kept easing sized by the declared grid procedure (W=1.0 — the largest weight under which no eased row reaches its thin twin), on the S_LL5G smoothed day-0 law. 287 movers, net +3,460 pre-level, five-way attribution closing exactly on every row (smoothing -277 / surface +3,225 / step-up +239 / easing +276 / residual -3). Headline movers: oliver +77, mccabe +94, leake +196, goad +70, edwards +210, riak-andrew +141, smillie +186 (the step-up on a pick-3 pedigree, disclosed), pickett +125, dawson +109. Burton unchanged 239 (standing-above-draft protected). Rails: W2 1.0637->1.0796 inside (1.03,1.14), zero new breach classes, inside the approved v876 profile in every headline.",
+  "kind": "lever-landing",
+  "owner_ruling_id": [
+   "MECHANISM_AGREED_2026-08-27_agree_on_your_mechanism",
+   "SLL5G_LOCKED_2026-08-27_lock_in_ll5g_then",
+   "DEPTH3_CAP_A_2026-08-27_a_for_depth_3_cap",
+   "SAT_SEASON_LT2_2026-08-27_lt2_is_fine_for_sat_season",
+   "EASING_KEPT_2026-08-27_keep_the_easing",
+   "RUCK_RELIEF_2026-08-27_ruck_relief_yes",
+   "NOARB_APPROVED_2026-08-27_alright_great_approved"
+  ],
+  "owner_ruling": "Owner words 2026-08-27, VERBATIM: 'Agree on your mechanism. Please present the movers board' (v875) · 'Lock in LL5G then' / 'A for depth 3 cap' / '<2 is fine for sat season' / 'Keep the easing' (v874) · 'Ruck relief yes' (v873) · 'Alright great. Approved.' (v877, the no-arb tables) · standing: 'please continue, stopping only if there is a blocker to pushing live. Try to land what we've worked on if it's possible'.",
+  "authority": "PREREG.md committed at 797485d BEFORE any engine edit (P9); FADE_LAW_DERIVATION.md at 953fb55; the build blocks at registers v878-v879; blind review (law 11) BLIND_REVIEW.md GREEN."
+ },
+ "day0_rebase": {
+  "state": "on",
+  "activated_by": "Owner words v875 ('Agree on your mechanism. Please present the movers board') and v877 ('Alright great. Approved.') — the approved movers board INCLUDES the day-0 rows the widened law moves (barrat, bowman, nicholls, gerreyn, ben-camporeale, cochran and their class: the surface floors their printed prices, capped at their stamps), and the printed-day-0 identity was restated ONE clause wider in the exporter, the regenerator, the verifier and the emitter, all reading through the engine's own names. The regenerated reference passed its identity on ALL 86 rows against the candidate board.",
+  "reference": "docs/evidence/candidate_31f/DAY0_31F_FINAL.json",
+  "new_reference": "docs/evidence/combined_build_2026-08-27/DAY0_CAND_530a4053.json"
+ },
+ "evidence_dir": "docs/evidence/combined_build_2026-08-27",
+ "claims_file": "COMBINED_CLAIMS.json",
+ "gates": null,
+ "commit_message": "THE COMBINED BUILD IS LANDED — the board of record moves ONCE, 3167cba6 -> 530a4053, on the owner's standing land-if-possible word, with the movers document waiting for his morning.\n\nThe D5 pedigree repair as ruled (registers v862-v879): the evidence-conditional capital-retention\nsurface (ORDER 46 — v869 conservative cells, knots .40/.525/.65, tall ceiling .92 AT equality,\nthe no-gain-past-draft cap as a price-level no-decrease guard), the survivorship step-up clock\nlaw (ORDER 47 — FADE_LAW_DERIVATION L3a verbatim, zero new constants, dodson 85->101 inside the\nregistered window), the first-banked-season easing at the declared grid's measured output W=1.0\n(ORDER 48), and the S_LL5G smoothed day-0 law baked (pin1=3000, strict descent).\n\n287 movers, net +3,460 pre-level, five-way attribution closing exactly on every row; oliver\n283->360, mccabe 231->325, leake 421->617, goad 667->737, edwards 404->614, riak-andrew 118->259,\nburton 239 UNCHANGED (the standing-above-draft protection). Blind review (law 11): two rounds,\nGREEN. Rails: W2 1.0637->1.0796 inside (1.03,1.14), zero new breach classes, INSIDE the approved\nv876 profile on every headline (v877 re-present condition tested, does not fire). F1: the\ndials-off + pre-flip-artifacts world reproduces 3167cba6 byte-exact, proven five times. B2\ncertificate leakage 0.000 on the re-based producer; the book re-sealed b6f67e94; B4 byte-agree\nproven twice. The full ship-gates suite certifies on this landed tree (the v863 pattern)."
+}
