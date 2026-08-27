@@ -504,6 +504,19 @@ class Ctx(object):
         self.spec = spec
         self.opts = opts
         self.carriers = carriers
+        # THE SPEC-NAMED DAY-0 REFERENCE IS A CARRIER WHEN THE RE-BASE IS ACTIVATED. The registry's
+        # standing entry hard-codes one reference path, but day0_emit's law is that the standing
+        # reference is whatever the act spec names (`day0_rebase.reference`) — so an act whose spec
+        # names a different file writes OUTSIDE the enumerated set: its abort cannot restore the
+        # reference and its commit refuses the landing's own write as foreign (both measured live,
+        # 2026-08-27 takes 9-10). The declaration stays enumerated — the spec is the enumerator.
+        d0 = (spec.get('day0_rebase') or {}) if isinstance(spec, dict) else {}
+        ref = d0.get('reference')
+        if d0.get('state') == 'on' and ref and not CA.in_scope(ref, self.carriers):
+            self.carriers = tuple(self.carriers) + (CA.F(
+                ref, 'steps.build_proofs / steps.day0 — the activated re-base (day0_emit)',
+                "the act spec's own day-0 standing reference (day0_rebase.reference); a file a "
+                "landing writes must be a file its abort can put back and its commit can stage"),)
         self.builder = builder or RealBuilder()
         self.fault = fault                       # 'step' or 'step:mode'
         self.facts = {}
