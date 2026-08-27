@@ -1,8 +1,9 @@
 <!-- GENERATED-ONLY — regenerate: python3 tools/seat/pen.py index ; assert current: python3 tools/seat/pen.py verify -->
 # REGISTER ADDRESS INDEX — generated
 
-Newest entry: **v867**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
+Newest entry: **v868**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
 
+- **v868** (2026-08-27) — `docs/register/entries/v868.md` — **THE OWNER'S BOUNDARY QUESTION ADDS THE MISSING DESIGN CONSTRAINT: EVIDENCE-MONOTONICITY AT MATCHED CAPITAL — and the flat floor of v867 is
 - **v867** (2026-08-27) — `docs/register/entries/v867.md` — **THE FITTED-FLOOR MOVERS ARE PRICED — surgical this time, and the interaction the list surfaced is itself a finding.** Owner ask (2026-08-2
 - **v866** (2026-08-26) — `docs/register/entries/v866.md` — **THE THIN-STATE CAPITAL LOADING IS MEASURED FROM RESOLVED COHORTS — the ~2× residual target for the oliver class SURVIVES ITS MOST CONSERVA
 - **v865** (2026-08-26) — `docs/register/entries/v865.md` — **MECHANISM (a) IS PRICED, AND THE STUDY REFUTES ITS OWN HEADLINE FORM — the honest result the owner's ask was for.** His words (2026-08-26)
