@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 257,
+  "coverage_entries": 258,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-27",
+      "headline": "**BUILD BLOCK 4 IS COMPLETE ON THE CANDIDATE BRANCH (9cca5fb): the battery is GREEN, the easing constant is the declared procedure's measured output, \u2026",
+      "hits": {
+        "DECLARED": [
+          "**BUILD BLOCK 4 IS COMPLETE ON THE CANDIDATE BRANCH (9cca5fb): the battery is GREEN, the easing constant is the declared procedure's measured output, the matrix agrees with the board row-for-row, the final rails sit INSI\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 879
+    },
     {
       "by": "explicit",
       "date": "2026-08-27",
@@ -2186,7 +2200,7 @@
       "version": 622
     }
   ],
-  "incidents": 129,
+  "incidents": 130,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",

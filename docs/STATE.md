@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v878 2026-08-27 · **BUILD BLOCK 3 LANDED ON THE CANDIDATE BRANCH (4bfdb76): the levers are BUILT, F1 is GREEN on the final bytes, and the candidate board f8d6ff9c is VERIFIED with EVERY mover attributed.** Owner authority: the banked words v873-v875 + the fold-everything and land-if-possible directives; no new word taken this block. THE BOARD: leg A (dials 0, kill-switch wo
+  > # OPEN ITEMS REGISTER · v879 2026-08-27 · **BUILD BLOCK 4 IS COMPLETE ON THE CANDIDATE BRANCH (9cca5fb): the battery is GREEN, the easing constant is the declared procedure's measured output, the matrix agrees with the board row-for-row, the final rails sit INSIDE the approved profile, and the movers document is finished and BLIND-REVIEW GREEN.** Owner authority: the banked words + the land-if-pos
 
-- new-form entries under `docs/register/entries/`: 66
+- new-form entries under `docs/register/entries/`: 67
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `953fb5528f0df7828e951c5064276f49760e9a7c` |
+| generated at commit | `219fe262d8de9a3c7bdd1b935f601e0c01211e54` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |
