@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v873 2026-08-27 · **RUCK RELIEF IS RULED — the tall cells of the retention surface are THE ONE CARRIER; no second ruck lever enters the build.** Owner word, verbatim (2026-08-27): "Ruck relief yes" — given against this seat's stated recommendation ("confirm the tall cells ARE the ruck relief — one lever, no second ruck mechanism"). Effect: the fade redesign's ruck-relief it
+  > # OPEN ITEMS REGISTER · v874 2026-08-27 · **FOUR WORDS RULED IN ONE SITTING — the combined build's open decisions collapse to the mechanism dials alone.** Owner words, verbatim (2026-08-27): **"Lock in LL5G then"** — CURVE SMOOTHING RULED: S_LL5G is the build's day-0 law (strictly decreasing everywhere, conservation −0.18%; the waterfall's Δsm column is its movers; MA5 stays rejected, S_HOLD1 dead
 
-- new-form entries under `docs/register/entries/`: 61
+- new-form entries under `docs/register/entries/`: 62
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `23c6a41902e7b598324caf8e5578b0f3cda29522` |
+| generated at commit | `094f390d631492c165685565be9fc91cf0946146` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |
