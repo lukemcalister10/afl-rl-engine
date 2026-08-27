@@ -1,27 +1,25 @@
-"""THE CANDIDATE-WORLD EMITTER — the standing 29C emitter, copied, with THE CANDIDATE DELTA.
+"""THE CANDIDATE-WORLD EMITTER v2 — the 31-F instrument of record, copied, with THE CANDIDATE DELTA.
 
-  Source: docs/evidence/landing_29_2026-08-13/noarb29c/emit_matrix_29c.py, copied byte-for-byte and
-  edited ONLY at the sites below. Purpose: the owner's standing no-arb tables under the ruled
-  candidate (register v873-v875): S_LL5G smoothing + the evidence-conditional retention surface at
-  conservative/0.40/0.92. The walk-forward therefore prices EVERY as-of year under the candidate
-  laws, which is what W2 and the rails require.
+  Source: docs/evidence/candidate_31f/emit_matrix_31f.py (the emitter that produced the ARM2CAND
+  matrix of record, run_battery_final.sh lineage), copied byte-for-byte and edited ONLY at the sites
+  below. The first candidate copy (emit_matrix_cand.py v1) was based one instrument back
+  (emit_matrix_29c) whose replication proof expects the pre-fade day-0 shape; the halt that caught
+  it was the guard doing its job and is filed in the register. This copy consumes the
+  regenerated-shape day-0 file (printed == round(derived x D)), the same shape run_battery_final
+  consumed, with RL_DAY0_FINAL pointed at the file regenerated against the LIVE board 3167cba6
+  (DAY0_LIVE_3167cba6.json, identity all-pass).
 
-THE CANDIDATE DELTA — three sites, inserted at the one seam right after the engine load and the
-ORIGINAL replication proof:
-  SITE A  the BASE-WORLD PROOF RUNS FIRST, UNCHANGED (the unsmoothed law must reproduce the
-          published board day-0 EXACTLY — proving the copy's arithmetic before any delta applies);
-          THEN the smoothed posv (S_LL5G_POSV.json) replaces BOTH the engine's G['_POSV'] and this
-          emitter's local _POSV — one curve, two readers, no mixed basis.
-  SITE B  G['o31_pi'] is wrapped with the RULED surface, AS-OF-AWARE: tenure, the class test and
-          the cameo-quality cell are all read relative to the year being priced (Yv), exactly as the
-          built lever will behave in a walk-forward. Cells = v869 conservative line; knots
-          0.40/0.525/0.65; tall ceiling 0.92; class = no >=6-game season as of Yv, tenure 2-4 at Yv,
-          entry age <22.
-  SITE C  the output filename becomes per_entrant_CANDIDATE.json.
-  NOT applied, disclosed: the draft-price cap (a price-level rule; <=9 rows at 2026, negligible to
-  cohort rails; exact in the built lever) and the pending fade-law pieces (step-up, depth-3, easing
-  sizing) which land at the build.
+THE CANDIDATE DELTA (register v873-v875) — inserted AFTER the original replication proof, so the
+base world is proven before any delta applies:
+  SITE A  S_LL5G posv into BOTH day-0 readers (engine G['_POSV'] + this emitter's local _POSV).
+  SITE B  G['o31_pi'] wrapped with the RULED retention surface, AS-OF-AWARE (tenure/class/cameo
+          cell read at the year being priced): v869 conservative cells, knots 0.40/0.525/0.65,
+          tall ceiling 0.92, class = no >=6-game season as-of, tenure 2-4, entry age <22.
+  SITE C  output name per_entrant_CANDIDATE.json.
+  Disclosed as in v1: the draft-price cap (<=9 rows at 2026) and the pending fade-law pieces land
+  at the build, not in this emit.
 """
+
 
 import os, sys, io, contextlib, json, hashlib
 
@@ -43,6 +41,19 @@ with contextlib.redirect_stdout(io.StringIO()):
 MA = G['MA']; ev = G['ev']; delisted = G['delisted']
 _ev_qual = G['_ev_qual']; _ev_pw = G['_ev_pw']; v0_start = G['v0_start']
 META = G['_V0CURVE_META']
+
+_29C_SRC = os.environ.get('RL_EMIT_29C', os.path.join(
+    REPO, 'docs/evidence/landing_29_2026-08-13/noarb29c/emit_matrix_29c.py'))
+_29C_MD5 = hashlib.md5(open(_29C_SRC, 'rb').read()).hexdigest()
+if _29C_MD5 != '0c3efa545832dd1131bd2b403588af29':
+    raise SystemExit("ORDER 31-F HALT: the 29C emitter this copy was taken from has moved (md5 %s). "
+                     "The 'one declared change' claim is only checkable against the original."
+                     % _29C_MD5)
+if os.environ.get('RL_O31', '0') == '0':
+    raise SystemExit("ORDER 31-F HALT: RL_O31 is unset. This emitter's years 1..7 come from ev(p,Y); "
+                     "with the lane off they would be the Step-2 law emitted under an ORDER-31-F "
+                     "label, which is precisely the mixed-basis defect the 29C act exists to end.")
+o31_D = G['o31_D']
 
 STORE_MD5 = hashlib.md5(open('rl_model_data.json', 'rb').read()).hexdigest()[:8]
 ENGINE_HEAD = hashlib.md5(open('_merged_recover.py', 'rb').read()).hexdigest()[:8]
@@ -90,7 +101,7 @@ def _landed_v0_engine(p):
 # board 36d5dfc7). If this file's arithmetic is not THE SAME ARITHMETIC, every historical year-0 it
 # computes is worthless, so the emit refuses to proceed rather than produce a plausible matrix.
 _DAY0 = os.environ.get('RL_DAY0_FINAL',
-                       os.path.join(REPO, 'docs/evidence/landing_29_2026-08-13/DAY0_29B_FINAL.json'))
+                       os.path.join(REPO, 'docs/evidence/candidate_31f/DAY0_31F_FINAL.json'))
 _d0 = json.load(open(_DAY0))
 _bykey = {q.get('key'): q for q in MA.data}
 _rep_ok = 0
@@ -98,17 +109,23 @@ _rep_mis = []
 for _row in _d0['rows']:
     _q = _bykey.get(_row['key'])
     _mb = None if _q is None else _landed_v0_board(_q)
-    if _mb is not None and int(round(_mb)) == _row['printed'] and abs(_mb - _row['derived_v0']) == 0.0:
+    # THE 31-F DELTA. TWO legs, both at tolerance 0:
+    #   (a) the RAW ENTRY OBJECT -- what this emitter writes as year-0 -- against ::derived_v0
+    #   (b) the BOARD'S PRINTED DAY-0 PRICE at BASE_REF, which under the one law is v0 x D(c_u),
+    #       against ::printed.  o31_D comes from the ENGINE, so the guard cannot drift from the law.
+    _pr = None if _mb is None else int(round(_mb * float(o31_D(_q, MA.BASE_REF))))
+    if (_mb is not None and _pr == _row['printed']
+            and abs(_mb - _row['derived_v0']) == 0.0):
         _rep_ok += 1
     else:
-        _rep_mis.append((_row['key'], _row['printed'], _mb))
+        _rep_mis.append((_row['key'], _row['printed'], _pr, _mb))
 if _rep_ok != len(_d0['rows']) or _rep_mis:
     raise SystemExit(
-        "ORDER 29C HALT (replication): %d of %d wired entrants reproduce the board's printed day-0 at "
+        "ORDER 31-F HALT (replication): %d of %d wired entrants reproduce the board's printed day-0 at "
         "tolerance 0. Mismatches: %s. The year-0 column is only the landed law if it reproduces the "
         "law's own published output EXACTLY; a partial match is a DIFFERENT law and must not be "
         "emitted as this one." % (_rep_ok, len(_d0['rows']), _rep_mis[:10]))
-print("ORDER 29C REPLICATION: %d of %d wired entrants on board %s reproduce printed day-0 EXACTLY "
+print("ORDER 31-F REPLICATION: %d of %d wired entrants on board %s reproduce printed day-0 EXACTLY "
       "(tolerance 0, on the printed integer AND the unrounded derived_v0)"
       % (_rep_ok, len(_d0['rows']), _d0['board_md5'][:8]))
 # ==== END OF THE ORDER 29C BLOCK =================================================================
@@ -118,8 +135,8 @@ _SLL5G = json.load(open(os.path.join(REPO, 'docs/evidence/curve_smooth_study_202
 _POSV_S = {_g: {int(_k): float(_v) for _k, _v in _d.items()} for _g, _d in _SLL5G['posv'].items()}
 if set(_POSV_S) != set(_POSV):
     raise SystemExit('CANDIDATE HALT: smoothed posv position set differs from the artifact.')
-_POSV = _POSV_S                    # SITE A: this emitter's own year-0 law reads the smoothed curve
-G['_POSV'] = _POSV_S               #         and so does the engine's day0_v0 — one curve, two readers
+_POSV = _POSV_S
+G['_POSV'] = _POSV_S
 print('CANDIDATE DELTA: S_LL5G posv swapped into BOTH readers (engine + emitter).')
 
 _TALLS = {'RUCK', 'KPF', 'KPD'}
@@ -152,7 +169,7 @@ def _cand_L(p, Yv):
     if _rel <= _hi: return _t[2] + (_t[3] - _t[2]) * (_rel - _mid) / (_hi - _mid)
     return _t[3]
 
-def _cand_pi(p, Yv, g=None, _Dov=None):        # SITE B: the ruled surface, AS-OF-AWARE
+def _cand_pi(p, Yv, g=None, _Dov=None):
     _v = _orig_pi(p, Yv, g, _Dov)
     if _cand_in_class(p, Yv):
         return max(_v, _cand_L(p, Yv))
@@ -406,7 +423,7 @@ meta = dict(store_md5=STORE_MD5,
                 years_1_to_7_untouched=True,
                 rounding='round(.,1) CARRIED from the standing emitter; the VALUE changed, not the schema',
                 brief='#334 comment 5289123976', prereg='noarb29c/PREREG_29C.md'))
-_outpath = os.path.join(OUT, 'per_entrant_CANDIDATE.json')   # SITE C: the candidate matrix
+_outpath = os.path.join(OUT, 'per_entrant_CANDIDATE.json')   # SITE C
 json.dump(dict(meta=meta, recs=recs), open(_outpath, 'w'), indent=0)
 
 nd64 = [r for r in recs if r['teaches_curve']]
