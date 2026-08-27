@@ -50,7 +50,7 @@ MOVERS-VIEW TESTS
   [PASS] the same bundle WITHOUT a transition also displays (gate removed)
   [PASS] app has advanced past the transition destination — the record is history, not the current release
   [PASS] transition destination is the restructure board — the boundary the tab labels
-  [FAIL] thirteen out-of-round boundaries are declared (the restructure, the 30/7 rederivation, the 6/8 adoption, the 10/8 DOB courier, the 10/8 never-rises restore, THE LANDING, THE D8 ADOPTION, the 20/8 injury-sheet re-cut, the 20/8 F5 rounding fix, the 20/8 back-rows repair, the 21/8 staircase adoption, the 24/8 graham dual correction, the 25/8 ORDER 45 arm-2 rebake + safety net)  (got 14)
+  [PASS] out-of-round boundary count DERIVED from the lineage register (P4): 13 boundary-bearing register entries + the pre-register restructure = 14 (bundle declares 14)
   [PASS] model change declared between R19 and the restructure point, anchored to the owner-approved record
   [PASS] model change declared between R20 and the 30/7 rederivation, anchored to the owner-approved record
   [PASS] model change declared between the 30/7 rederivation and the 6/8 adoption, anchored to the owner-approved adoption record
@@ -69,6 +69,6 @@ MOVERS-VIEW TESTS
   [PASS] every scratch round report: integrity + unique coverage + no v2.10 tag + balanced not synthesized
   [PASS] scratch reports represent DNP players
   ------------------------------------------------------------
-MOVERS TESTS: 1 FAIL / 66
+MOVERS TESTS: ALL 66 PASS
 
-[exit 1]
+[exit 0]

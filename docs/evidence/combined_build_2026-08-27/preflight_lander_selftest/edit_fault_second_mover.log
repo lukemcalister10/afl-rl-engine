@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND STORE-EDIT — SELF-TEST — the surgical store edit
-  tree      : /tmp/landing_selftest_4353/sandbox
+  tree      : /tmp/landing_selftest_8070/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board a2c786c93be6c3a3089275aadac0afff
   mode      : APPLY (SELFTEST) builder=selftest-moved
@@ -8,12 +8,12 @@ LAND STORE-EDIT — SELF-TEST — the surgical store edit
 
 --- STEP 0/11  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-edit-6666 (pid 6666) — single writer for the shared workspace.
-base commit        930f55b5c2a4259da4f3bdd229d5ac753521f709
+build-lock: HELD by land-edit-9835 (pid 9835) — single writer for the shared workspace.
+base commit        393c12d11d0370aef2b060b54b27017265c7b2e4
 board pin (before) 3167cba643a6b16e5ef5d904d8957fcd
 store pin (before) fb640ca0baf92bbb122b1ad7e25c5a88
 restore point      68 carrier(s) captured, 68 present on disk
-    [preflight OK  0.09s]
+    [preflight OK  0.06s]
 
 --- STEP 1/11  store_edit     THE SURGICAL STORE EDIT, applied in the work dir ---
 store BEFORE  fb640ca0baf92bbb122b1ad7e25c5a88   (1978074 bytes)
@@ -26,7 +26,7 @@ WRITTEN and re-read: 1 row(s) edited, 2650 rows in the store, every other row un
 season clock  re-derived from the edited store by season_state.derive (the sole deriver)
     source_store_md5  fb640ca0baf9 -> bb862a0551ae
     every derived VALUE asserted unchanged (10 field(s) checked); WRITTEN and re-read.
-    [store_edit OK  0.21s]
+    [store_edit OK  0.20s]
 
 --- STEP 2/11  build_proofs   bare build, predicted identity, switch leg, day-0 ---
 *** FAULT INJECTED at step 'build_proofs': second_mover — a SECOND board row moves and the act declared one — the undeclared mover must be NAMED, not merely implied by a board md5 that is not the predicted one
@@ -61,8 +61,8 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.09s  OK
-    store_edit         0.21s  OK
+    preflight          0.06s  OK
+    store_edit         0.20s  OK
     build_proofs       0.12s  FAIL
-    TOTAL              0.42s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_6666
+    TOTAL              0.38s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_9835

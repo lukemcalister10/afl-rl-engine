@@ -1,0 +1,25 @@
+====================================================================================================
+CLAIMS CHECK — THE COMBINED BUILD — ORDERS 46/47/48 + the S_LL5G bake: the thin-evidence retention surface (v869 conservative cells, knots 0.40/0.525/0.65, tall ceiling 0.92 ruled AT equality, the no-gain-past-draft cap as a price-level no-decrease guard), the step-up clock law (FADE_LAW_DERIVATION L3a verbatim, zero new constants), the easing taper during a first banked season at the declared grid's measured output W=1.0, and the smoothed day-0 law as the pvc artifact of record; with the riding repairs (B2 re-base, the exporter day-0 assert one clause wider, the entrant seal re-priced, the v0surf refit)
+  act type   : lever-landing
+  date       : 2026-08-27   base: a868004200f1507043d8021129374238d84bfa04
+  owner word : Agree on your mechanism. Please present the movers board
+  tree       : /home/user/afl-rl-engine
+====================================================================================================
+  ACTIVATION  day0_rebase                              on  (by: Owner words v875 ('Agree on your mechanism. Please present the movers board') and v877 ('Alright great. Approved.') — the approved movers board INCLUDES the day-0 rows the widened law moves (barrat, bowman, nicholls, gerreyn, ben-camporeale, cochran and their class: the surface floors their printed prices, capped at their stamps), and the printed-day-0 identity was restated ONE clause wider in the exporter, the regenerator, the verifier and the emitter, all reading through the engine's own names. The regenerated reference passed its identity on ALL 86 rows against the candidate board.)
+
+  OK   file_md5     the published board of record                  md5 530a4053622c29092274fab0aa1fee7f (claimed 530a4053622c29092274fab0aa1fee7f)
+  OK   file_md5     the store                                      md5 fb640ca0baf92bbb122b1ad7e25c5a88 (claimed fb640ca0baf92bbb122b1ad7e25c5a88)
+  OK   json_field   expected_boot.board                            board = '530a4053622c29092274fab0aa1fee7f' (claimed '530a4053622c29092274fab0aa1fee7f')
+  OK   json_field   expected_boot.engine_head                      engine_head = 'a5550b678f05e5c8b80cd3952d1b4ce5' (claimed 'a5550b678f05e5c8b80cd3952d1b4ce5')
+  OK   json_field   the round, HELD by a lever landing             as_of_round = 24 (claimed 24)
+  OK   json_field   the release seal                               contract_sha256 = '7cd796dee6ceb7716d70619b085e87cfe1c365cc8ef1279e1c9f197859972451' (claimed '7cd796dee6ceb7716d70619b085e87cfe1c365cc8ef1279e1c9f197859972451')
+  OK   board_count  board rows                                     active.rows = 804 (claimed 804)
+  OK   gate         release_manifest_check                         exit 0 (expected PASS)
+  OK   gate         release_contract_check                         exit 0 (expected PASS)
+  OK   gate         acceptance_runner                              exit 0 (expected PASS)
+  OK   gate         movers_transition                              exit 0 (expected PASS)
+  OK   gate         movers_ui                                      exit 0 (expected PASS)
+  OK   unmoved      BYTE-UNMOVED by this lever-landing             md5 fb640ca0baf92bbb122b1ad7e25c5a88 (claimed fb640ca0baf92bbb122b1ad7e25c5a88)
+
+CLAIMS: 13 of 13 verified against the tree; 0 shape problem(s)
+VERDICT: GREEN — every claim recomputed and held
