@@ -5,7 +5,8 @@
   "validations": "restore byte-exact 804/804; out-of-class invariance held",
   "board_total_now": 700927,
   "board_total_fit": 708325,
-  "n_movers": 68
+  "n_movers": 68,
+  "v0_source": "per_entrant_ARM2CAND.json v0 column \u2014 the CURRENT entry law day-0 price for the player's slot (today's currency), the board's own draft-day stamp basis"
  },
  "movers": [
   {
@@ -25,7 +26,10 @@
    "board_fit": 695,
    "delta": 464,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 768,
+   "fit_vs_draft": -73,
+   "now_vs_draft": -537
   },
   {
    "key": "taylor-goad",
@@ -44,7 +48,10 @@
    "board_fit": 997,
    "delta": 330,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 1128,
+   "fit_vs_draft": -131,
+   "now_vs_draft": -461
   },
   {
    "key": "will-green",
@@ -63,7 +70,10 @@
    "board_fit": 1007,
    "delta": 329,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 1132,
+   "fit_vs_draft": -125,
+   "now_vs_draft": -454
   },
   {
    "key": "matt-whitlock",
@@ -82,7 +92,10 @@
    "board_fit": 593,
    "delta": 320,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 632,
+   "fit_vs_draft": -39,
+   "now_vs_draft": -359
   },
   {
    "key": "charlie-nicholls",
@@ -101,7 +114,10 @@
    "board_fit": 445,
    "delta": 234,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 515,
+   "fit_vs_draft": -70,
+   "now_vs_draft": -304
   },
   {
    "key": "riak-andrew",
@@ -120,7 +136,10 @@
    "board_fit": 338,
    "delta": 220,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 390,
+   "fit_vs_draft": -52,
+   "now_vs_draft": -272
   },
   {
    "key": "james-barrat",
@@ -139,7 +158,10 @@
    "board_fit": 432,
    "delta": 219,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 499,
+   "fit_vs_draft": -67,
+   "now_vs_draft": -286
   },
   {
    "key": "kayle-gerreyn",
@@ -158,7 +180,10 @@
    "board_fit": 394,
    "delta": 217,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 456,
+   "fit_vs_draft": -62,
+   "now_vs_draft": -279
   },
   {
    "key": "cooper-bell",
@@ -177,7 +202,10 @@
    "board_fit": 343,
    "delta": 214,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 397,
+   "fit_vs_draft": -54,
+   "now_vs_draft": -268
   },
   {
    "key": "joel-cochran",
@@ -196,7 +224,10 @@
    "board_fit": 345,
    "delta": 212,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 399,
+   "fit_vs_draft": -54,
+   "now_vs_draft": -266
   },
   {
    "key": "aidan-schubert",
@@ -215,7 +246,10 @@
    "board_fit": 754,
    "delta": 204,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 718,
+   "fit_vs_draft": 36,
+   "now_vs_draft": -168
   },
   {
    "key": "zane-zakostelsky",
@@ -234,7 +268,10 @@
    "board_fit": 369,
    "delta": 198,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 395,
+   "fit_vs_draft": -26,
+   "now_vs_draft": -224
   },
   {
    "key": "logan-smith",
@@ -253,7 +290,10 @@
    "board_fit": 515,
    "delta": 194,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 596,
+   "fit_vs_draft": -81,
+   "now_vs_draft": -275
   },
   {
    "key": "lachlan-smith",
@@ -272,7 +312,10 @@
    "board_fit": 380,
    "delta": 194,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 414,
+   "fit_vs_draft": -34,
+   "now_vs_draft": -228
   },
   {
    "key": "dylan-patterson",
@@ -291,7 +334,10 @@
    "board_fit": 1299,
    "delta": 177,
    "boundary_5g": true,
-   "named": false
+   "named": false,
+   "v0_draft": 1679,
+   "fit_vs_draft": -380,
+   "now_vs_draft": -557
   },
   {
    "key": "cody-curtin",
@@ -310,7 +356,10 @@
    "board_fit": 551,
    "delta": 177,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 346,
+   "fit_vs_draft": 205,
+   "now_vs_draft": 28
   },
   {
    "key": "patrick-snell",
@@ -329,7 +378,10 @@
    "board_fit": 339,
    "delta": 172,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 393,
+   "fit_vs_draft": -54,
+   "now_vs_draft": -226
   },
   {
    "key": "ollie-murphy",
@@ -348,7 +400,10 @@
    "board_fit": 363,
    "delta": 163,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 419,
+   "fit_vs_draft": -56,
+   "now_vs_draft": -219
   },
   {
    "key": "luke-lloyd",
@@ -367,7 +422,10 @@
    "board_fit": 356,
    "delta": 161,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 412,
+   "fit_vs_draft": -56,
+   "now_vs_draft": -217
   },
   {
    "key": "vigo-visentini",
@@ -386,7 +444,10 @@
    "board_fit": 372,
    "delta": 161,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 392,
+   "fit_vs_draft": -20,
+   "now_vs_draft": -181
   },
   {
    "key": "iliro-smit",
@@ -405,7 +466,10 @@
    "board_fit": 408,
    "delta": 154,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 472,
+   "fit_vs_draft": -64,
+   "now_vs_draft": -218
   },
   {
    "key": "alex-dodson",
@@ -424,7 +488,10 @@
    "board_fit": 234,
    "delta": 149,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 250,
+   "fit_vs_draft": -16,
+   "now_vs_draft": -165
   },
   {
    "key": "jacob-molier",
@@ -443,7 +510,10 @@
    "board_fit": 231,
    "delta": 148,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 267,
+   "fit_vs_draft": -36,
+   "now_vs_draft": -184
   },
   {
    "key": "aiden-riddle",
@@ -462,7 +532,10 @@
    "board_fit": 339,
    "delta": 128,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 392,
+   "fit_vs_draft": -53,
+   "now_vs_draft": -181
   },
   {
    "key": "joe-pike",
@@ -481,7 +554,10 @@
    "board_fit": 339,
    "delta": 128,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 392,
+   "fit_vs_draft": -53,
+   "now_vs_draft": -181
   },
   {
    "key": "tyler-welsh",
@@ -500,7 +576,10 @@
    "board_fit": 191,
    "delta": 127,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 221,
+   "fit_vs_draft": -30,
+   "now_vs_draft": -157
   },
   {
    "key": "ben-camporeale",
@@ -519,7 +598,10 @@
    "board_fit": 235,
    "delta": 121,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 604,
+   "fit_vs_draft": -369,
+   "now_vs_draft": -490
   },
   {
    "key": "will-darcy",
@@ -538,7 +620,10 @@
    "board_fit": 335,
    "delta": 119,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 387,
+   "fit_vs_draft": -52,
+   "now_vs_draft": -171
   },
   {
    "key": "mitchell-marsh",
@@ -557,7 +642,10 @@
    "board_fit": 657,
    "delta": 118,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 759,
+   "fit_vs_draft": -102,
+   "now_vs_draft": -220
   },
   {
    "key": "noah-howes",
@@ -576,7 +664,10 @@
    "board_fit": 342,
    "delta": 111,
    "boundary_5g": false,
-   "named": true
+   "named": true,
+   "v0_draft": 229,
+   "fit_vs_draft": 113,
+   "now_vs_draft": 2
   },
   {
    "key": "luker-kentfield",
@@ -595,7 +686,10 @@
    "board_fit": 226,
    "delta": 105,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 229,
+   "fit_vs_draft": -3,
+   "now_vs_draft": -108
   },
   {
    "key": "harrison-oliver",
@@ -614,7 +708,10 @@
    "board_fit": 374,
    "delta": 91,
    "boundary_5g": true,
-   "named": true
+   "named": true,
+   "v0_draft": 856,
+   "fit_vs_draft": -482,
+   "now_vs_draft": -573
   },
   {
    "key": "cooper-simpson",
@@ -633,7 +730,10 @@
    "board_fit": 175,
    "delta": 89,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 367,
+   "fit_vs_draft": -192,
+   "now_vs_draft": -281
   },
   {
    "key": "blake-thredgold",
@@ -652,7 +752,10 @@
    "board_fit": 458,
    "delta": 86,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 530,
+   "fit_vs_draft": -72,
+   "now_vs_draft": -158
   },
   {
    "key": "archie-ludowyke",
@@ -671,7 +774,10 @@
    "board_fit": 350,
    "delta": 86,
    "boundary_5g": false,
-   "named": true
+   "named": true,
+   "v0_draft": 250,
+   "fit_vs_draft": 100,
+   "now_vs_draft": 14
   },
   {
    "key": "xavier-walsh",
@@ -690,7 +796,10 @@
    "board_fit": 186,
    "delta": 70,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 215,
+   "fit_vs_draft": -29,
+   "now_vs_draft": -99
   },
   {
    "key": "zac-mccarthy",
@@ -709,7 +818,10 @@
    "board_fit": 195,
    "delta": 67,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 225,
+   "fit_vs_draft": -30,
+   "now_vs_draft": -97
   },
   {
    "key": "thomas-anastasopoulos",
@@ -728,7 +840,10 @@
    "board_fit": 147,
    "delta": 63,
    "boundary_5g": true,
-   "named": false
+   "named": false,
+   "v0_draft": 294,
+   "fit_vs_draft": -147,
+   "now_vs_draft": -210
   },
   {
    "key": "oliver-hannaford",
@@ -747,7 +862,10 @@
    "board_fit": 285,
    "delta": 59,
    "boundary_5g": true,
-   "named": false
+   "named": false,
+   "v0_draft": 626,
+   "fit_vs_draft": -341,
+   "now_vs_draft": -400
   },
   {
    "key": "ned-bowman",
@@ -766,7 +884,10 @@
    "board_fit": 175,
    "delta": 58,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 449,
+   "fit_vs_draft": -274,
+   "now_vs_draft": -332
   },
   {
    "key": "jacob-newton",
@@ -785,7 +906,10 @@
    "board_fit": 252,
    "delta": 58,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 219,
+   "fit_vs_draft": 33,
+   "now_vs_draft": -25
   },
   {
    "key": "luke-urquhart",
@@ -804,7 +928,10 @@
    "board_fit": 89,
    "delta": 53,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 228,
+   "fit_vs_draft": -139,
+   "now_vs_draft": -192
   },
   {
    "key": "bodie-ryan",
@@ -823,7 +950,10 @@
    "board_fit": 114,
    "delta": 52,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 214,
+   "fit_vs_draft": -100,
+   "now_vs_draft": -152
   },
   {
    "key": "tew-jiath",
@@ -842,7 +972,10 @@
    "board_fit": 151,
    "delta": 49,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 355,
+   "fit_vs_draft": -204,
+   "now_vs_draft": -253
   },
   {
    "key": "george-stevens",
@@ -861,7 +994,10 @@
    "board_fit": 112,
    "delta": 46,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 210,
+   "fit_vs_draft": -98,
+   "now_vs_draft": -144
   },
   {
    "key": "liam-hetherton",
@@ -880,7 +1016,10 @@
    "board_fit": 107,
    "delta": 41,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 124,
+   "fit_vs_draft": -17,
+   "now_vs_draft": -58
   },
   {
    "key": "patrick-said",
@@ -899,7 +1038,10 @@
    "board_fit": 65,
    "delta": 40,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 167,
+   "fit_vs_draft": -102,
+   "now_vs_draft": -142
   },
   {
    "key": "noah-mraz",
@@ -918,7 +1060,10 @@
    "board_fit": 978,
    "delta": 34,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 478,
+   "fit_vs_draft": 500,
+   "now_vs_draft": 466
   },
   {
    "key": "kalani-white",
@@ -937,7 +1082,10 @@
    "board_fit": 84,
    "delta": 32,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 97,
+   "fit_vs_draft": -13,
+   "now_vs_draft": -45
   },
   {
    "key": "jacob-moss",
@@ -956,7 +1104,10 @@
    "board_fit": 83,
    "delta": 31,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 96,
+   "fit_vs_draft": -13,
+   "now_vs_draft": -44
   },
   {
    "key": "oscar-ryan",
@@ -975,7 +1126,10 @@
    "board_fit": 224,
    "delta": 31,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 520,
+   "fit_vs_draft": -296,
+   "now_vs_draft": -327
   },
   {
    "key": "jaime-uhr-henry",
@@ -994,7 +1148,10 @@
    "board_fit": 73,
    "delta": 28,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 84,
+   "fit_vs_draft": -11,
+   "now_vs_draft": -39
   },
   {
    "key": "patrick-carr",
@@ -1013,7 +1170,10 @@
    "board_fit": 73,
    "delta": 28,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 84,
+   "fit_vs_draft": -11,
+   "now_vs_draft": -39
   },
   {
    "key": "cody-anderson",
@@ -1032,7 +1192,10 @@
    "board_fit": 41,
    "delta": 26,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 105,
+   "fit_vs_draft": -64,
+   "now_vs_draft": -90
   },
   {
    "key": "jaren-carr",
@@ -1051,7 +1214,10 @@
    "board_fit": 41,
    "delta": 25,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 106,
+   "fit_vs_draft": -65,
+   "now_vs_draft": -90
   },
   {
    "key": "noah-roberts-thomson",
@@ -1070,7 +1236,10 @@
    "board_fit": 309,
    "delta": 21,
    "boundary_5g": false,
-   "named": true
+   "named": true,
+   "v0_draft": 288,
+   "fit_vs_draft": 21,
+   "now_vs_draft": 0
   },
   {
    "key": "ollie-greeves",
@@ -1089,7 +1258,10 @@
    "board_fit": 385,
    "delta": 21,
    "boundary_5g": false,
-   "named": true
+   "named": true,
+   "v0_draft": 224,
+   "fit_vs_draft": 161,
+   "now_vs_draft": 140
   },
   {
    "key": "lucca-grego",
@@ -1108,7 +1280,10 @@
    "board_fit": 87,
    "delta": 21,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 183,
+   "fit_vs_draft": -96,
+   "now_vs_draft": -117
   },
   {
    "key": "jayden-nguyen",
@@ -1127,7 +1302,10 @@
    "board_fit": 274,
    "delta": 21,
    "boundary_5g": true,
-   "named": false
+   "named": false,
+   "v0_draft": 88,
+   "fit_vs_draft": 186,
+   "now_vs_draft": 165
   },
   {
    "key": "daniel-annable",
@@ -1146,7 +1324,10 @@
    "board_fit": 1186,
    "delta": 20,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 1661,
+   "fit_vs_draft": -475,
+   "now_vs_draft": -495
   },
   {
    "key": "wil-parker",
@@ -1165,7 +1346,10 @@
    "board_fit": 54,
    "delta": 17,
    "boundary_5g": true,
-   "named": false
+   "named": false,
+   "v0_draft": 113,
+   "fit_vs_draft": -59,
+   "now_vs_draft": -76
   },
   {
    "key": "reece-torrent",
@@ -1184,7 +1368,10 @@
    "board_fit": 41,
    "delta": 15,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 105,
+   "fit_vs_draft": -64,
+   "now_vs_draft": -79
   },
   {
    "key": "thomas-burton",
@@ -1203,7 +1390,10 @@
    "board_fit": 253,
    "delta": 14,
    "boundary_5g": true,
-   "named": true
+   "named": true,
+   "v0_draft": 131,
+   "fit_vs_draft": 122,
+   "now_vs_draft": 108
   },
   {
    "key": "jack-ough",
@@ -1222,7 +1412,10 @@
    "board_fit": 300,
    "delta": 10,
    "boundary_5g": true,
-   "named": false
+   "named": false,
+   "v0_draft": 664,
+   "fit_vs_draft": -364,
+   "now_vs_draft": -374
   },
   {
    "key": "tom-cochrane",
@@ -1241,7 +1434,10 @@
    "board_fit": 147,
    "delta": 10,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 211,
+   "fit_vs_draft": -64,
+   "now_vs_draft": -74
   },
   {
    "key": "matt-hill",
@@ -1260,7 +1456,10 @@
    "board_fit": 45,
    "delta": 9,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 82,
+   "fit_vs_draft": -37,
+   "now_vs_draft": -46
   },
   {
    "key": "harry-demattia",
@@ -1279,7 +1478,10 @@
    "board_fit": 345,
    "delta": 5,
    "boundary_5g": false,
-   "named": false
+   "named": false,
+   "v0_draft": 886,
+   "fit_vs_draft": -541,
+   "now_vs_draft": -546
   },
   {
    "key": "jack-dalton",
@@ -1298,7 +1500,10 @@
    "board_fit": 481,
    "delta": 3,
    "boundary_5g": true,
-   "named": false
+   "named": false,
+   "v0_draft": 441,
+   "fit_vs_draft": 40,
+   "now_vs_draft": 37
   },
   {
    "key": "zane-peucker",
@@ -1317,7 +1522,10 @@
    "board_fit": 393,
    "delta": 0,
    "boundary_5g": false,
-   "named": true
+   "named": true,
+   "v0_draft": 444,
+   "fit_vs_draft": -51,
+   "now_vs_draft": -51
   },
   {
    "key": "cody-angove",
@@ -1336,7 +1544,10 @@
    "board_fit": 432,
    "delta": 0,
    "boundary_5g": false,
-   "named": true
+   "named": true,
+   "v0_draft": 887,
+   "fit_vs_draft": -455,
+   "now_vs_draft": -455
   },
   {
    "key": "lucas-camporeale",
@@ -1355,7 +1566,10 @@
    "board_fit": 155,
    "delta": 0,
    "boundary_5g": false,
-   "named": true
+   "named": true,
+   "v0_draft": 278,
+   "fit_vs_draft": -123,
+   "now_vs_draft": -123
   },
   {
    "key": "rhys-unwin",
@@ -1374,7 +1588,10 @@
    "board_fit": 141,
    "delta": 0,
    "boundary_5g": false,
-   "named": true
+   "named": true,
+   "v0_draft": 141,
+   "fit_vs_draft": 0,
+   "now_vs_draft": 0
   },
   {
    "key": "luke-kennedy",
@@ -1393,7 +1610,10 @@
    "board_fit": 181,
    "delta": 0,
    "boundary_5g": false,
-   "named": true
+   "named": true,
+   "v0_draft": 147,
+   "fit_vs_draft": 34,
+   "now_vs_draft": 34
   },
   {
    "key": "aidan-johnson",
@@ -1412,7 +1632,10 @@
    "board_fit": 75,
    "delta": 0,
    "boundary_5g": true,
-   "named": true
+   "named": true,
+   "v0_draft": 293,
+   "fit_vs_draft": -218,
+   "now_vs_draft": -218
   }
  ]
 }
