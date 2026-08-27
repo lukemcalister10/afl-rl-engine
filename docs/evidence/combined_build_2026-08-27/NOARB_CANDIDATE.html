@@ -1,0 +1,78 @@
+<!-- ui/templates/noarb.html — THE NO-ARB TABLES. Layout frozen from
+     docs/evidence/assembly_2026-08-19/ASSEMBLY_NOARB.html. Seats inject data, never layout.
+     TWO row blocks: the per-band cohort table, and the arm-by-arm comparison. -->
+<meta charset="utf-8"><title>THE NO-ARB TABLES — CANDIDATE (S_LL5G + retention surface, ruled v873-v875; study world)</title>
+<style>
+/* ui/templates/_base.css — THE ONE STYLESHEET FOR ALL FIVE OWNER-FACING PAGES.
+   Extracted verbatim in structure from the canonical assembly-era pages of 2026-08-19
+   (docs/evidence/assembly_2026-08-19/*.html). A seat NEVER edits this file to make one page
+   look different; that is the layout law. If a page needs a rule this file does not have,
+   the rule belongs here, applied to every page, or the page does not need it. */
+:root{--bg:#fff;--fg:#111;--mut:#666;--line:#d8d8d8;--hd:#f2f2f2;--acc:#1a5fb4;--up:#0a7d32;--dn:#b3261e}
+@media(prefers-color-scheme:dark){:root{--bg:#14161a;--fg:#e8e8e8;--mut:#9aa0a6;--line:#2c3038;--hd:#1c1f25;--acc:#7aa7e8;--up:#5fd07f;--dn:#ef9a93}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;margin:0;padding:20px}
+h1{font-size:20px;margin:0 0 4px}
+h2{font-size:15px;margin:22px 0 6px;color:var(--acc)}
+.sub{color:var(--mut);max-width:70em;margin-bottom:14px}
+.note{border-left:3px solid var(--acc);background:color-mix(in srgb,var(--acc) 7%,transparent);padding:10px 14px;margin:14px 0;max-width:70em;border-radius:0 4px 4px 0}
+.wrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;max-width:100%}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:13px}
+th,td{padding:5px 9px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+thead th{background:var(--hd);position:sticky;top:0;cursor:pointer;user-select:none;font-weight:600}
+thead th:hover{color:var(--acc)}
+tbody tr:hover{background:color-mix(in srgb,var(--acc) 6%,transparent)}
+.u{color:var(--up)}.d{color:var(--dn)}
+.tot{font-weight:600}
+code{background:var(--hd);padding:1px 5px;border-radius:3px;font-size:12px}
+.k{color:var(--mut);font-size:12px}
+/* THE STAMP — every page carries the identity of the tree that produced it. Not decoration:
+   a page without it cannot be told apart from a page built off a different board. */
+.stamp{margin-top:20px;padding-top:10px;border-top:1px solid var(--line);color:var(--mut);font-size:12px}
+/* An EXPLICIT, DECLARED absence (slots.ABSENT). Deliberately not a dash — see slots.py. */
+.absent{color:var(--mut);opacity:.55}
+
+</style>
+<h1>THE NO-ARB TABLES — THE CANDIDATE</h1>
+<div class="sub">CANDIDATE (S_LL5G + retention surface, ruled v873-v875; study world) against LIVE (board 3167cba6). A group is fairly priced if it appreciates between 0% and +14% over its first year — below 0% you could sell at draft day and buy back cheaper; above +14% you could buy at draft day and beat the cost of carry. Every breaching cell is scored on your own path test; every raw year is printed. * thin cell · ** very thin.</div>
+<div class="note">Your standing presentation ruling applies: the candidate and the live reference only — no historical progress boards on this page.</div>
+
+<h2>The ND band tables — CANDIDATE (S_LL5G + retention surface, ruled v873-v875; study world) (PRIMARY cohorts 2005-2023, then MODERN cohorts 2019-2023)</h2>
+<div class="wrap"><table>
+<thead><tr>
+<th>band</th><th>n</th><th>yr0</th><th>yr1</th><th>yr2</th><th>yr3</th><th>yr4</th>
+<th>yr5</th><th>yr6</th><th>yr7</th><th>yr0&rarr;1</th><th>margin</th><th>verdict</th><th>path test</th>
+</tr></thead>
+<tbody>
+<tr><td>PRIMARY · ALL picks 1-64</td><td>1314</td><td>1.000</td><td>1.105</td><td>1.208</td><td>1.389</td><td>1.563</td><td>1.588</td><td>1.522</td><td>1.367</td><td>+10.50%</td><td>+3.50%</td><td>fair</td><td>no breach (yr0→1 within the rail)</td></tr>
+<tr><td>PRIMARY · picks 1-20</td><td>380</td><td>1.000</td><td>1.171</td><td>1.254</td><td>1.425</td><td>1.617</td><td>1.603</td><td>1.492</td><td>1.340</td><td>+17.08%</td><td>-3.08%</td><td>BUY-SIDE RED</td><td>PASS (a: no later year beats carry; b: destination settles)</td></tr>
+<tr><td>PRIMARY · picks 21-64</td><td>820</td><td>1.000</td><td>1.025</td><td>1.154</td><td>1.364</td><td>1.501</td><td>1.589</td><td>1.594</td><td>1.390</td><td>+2.47%</td><td>+11.53%</td><td>fair</td><td>no breach (yr0→1 within the rail)</td></tr>
+<tr><td>PRIMARY · picks 1-10</td><td>190</td><td>1.000</td><td>1.176</td><td>1.241</td><td>1.421</td><td>1.607</td><td>1.545</td><td>1.431</td><td>1.266</td><td>+17.64%</td><td>-3.64%</td><td>BUY-SIDE RED</td><td>PASS (a: no later year beats carry; b: destination settles)</td></tr>
+<tr><td>PRIMARY · picks 11-20</td><td>190</td><td>1.000</td><td>1.160</td><td>1.279</td><td>1.434</td><td>1.637</td><td>1.718</td><td>1.611</td><td>1.487</td><td>+15.98%</td><td>-1.98%</td><td>BUY-SIDE RED</td><td>PASS (a: no later year beats carry; b: destination settles)</td></tr>
+<tr><td>PRIMARY · picks 21-30</td><td>190</td><td>1.000</td><td>1.127</td><td>1.237</td><td>1.476</td><td>1.712</td><td>1.690</td><td>1.728</td><td>1.482</td><td>+12.68%</td><td>+1.32%</td><td>fair</td><td>no breach (yr0→1 within the rail)</td></tr>
+<tr><td>PRIMARY · picks 31-40</td><td>190</td><td>1.000</td><td>0.952</td><td>1.039</td><td>1.369</td><td>1.360</td><td>1.526</td><td>1.375</td><td>1.230</td><td>-4.83%</td><td>+18.83%</td><td>SELL-SIDE RED</td><td>no breach (yr0→1 within the rail)</td></tr>
+<tr><td>PRIMARY · picks 41-64</td><td>440</td><td>1.000</td><td>0.981</td><td>1.165</td><td>1.245</td><td>1.403</td><td>1.539</td><td>1.641</td><td>1.430</td><td>-1.90%</td><td>+15.90%</td><td>SELL-SIDE RED</td><td>no breach (yr0→1 within the rail)</td></tr>
+<tr><td>MODERN · ALL picks 1-64</td><td>325</td><td>1.000</td><td>1.085</td><td>1.098</td><td>1.194</td><td>1.291</td><td>1.433</td><td>1.263</td><td>1.225</td><td>+8.52%</td><td>+5.48%</td><td>fair</td><td>no breach (yr0→1 within the rail)</td></tr>
+<tr><td>MODERN · picks 1-20</td><td>100</td><td>1.000</td><td>1.232</td><td>1.218</td><td>1.360</td><td>1.539</td><td>1.640</td><td>1.397</td><td>1.623</td><td>+23.24%</td><td>-9.24%</td><td>BUY-SIDE RED</td><td>FAIL (b: destination still rising)</td></tr>
+<tr><td>MODERN · picks 21-64</td><td>211</td><td>1.000</td><td>0.856</td><td>0.906</td><td>0.945</td><td>0.908</td><td>1.155</td><td>1.110</td><td>0.677</td><td>-14.40%</td><td>+28.40%</td><td>SELL-SIDE RED</td><td>no breach (yr0→1 within the rail)</td></tr>
+<tr><td>MODERN · picks 1-10</td><td>50</td><td>1.000</td><td>1.323</td><td>1.297</td><td>1.468</td><td>1.680</td><td>1.736</td><td>1.489</td><td>1.677*</td><td>+32.34%</td><td>-18.34%</td><td>BUY-SIDE RED</td><td>FAIL (b: destination still rising)</td></tr>
+<tr><td>MODERN · picks 11-20</td><td>50</td><td>1.000</td><td>1.066</td><td>1.074</td><td>1.161</td><td>1.279</td><td>1.469</td><td>1.232</td><td>1.521*</td><td>+6.57%</td><td>+7.43%</td><td>fair</td><td>no breach (yr0→1 within the rail)</td></tr>
+<tr><td>MODERN · picks 21-30</td><td>50</td><td>1.000</td><td>0.885</td><td>0.991</td><td>0.868</td><td>0.826</td><td>1.120</td><td>1.367</td><td>0.472*</td><td>-11.53%</td><td>+25.53%</td><td>SELL-SIDE RED</td><td>no breach (yr0→1 within the rail)</td></tr>
+<tr><td>MODERN · picks 31-40</td><td>50</td><td>1.000</td><td>0.904</td><td>0.969</td><td>1.318</td><td>1.331</td><td>1.680</td><td>1.452</td><td>1.056*</td><td>-9.62%</td><td>+23.62%</td><td>SELL-SIDE RED</td><td>no breach (yr0→1 within the rail)</td></tr>
+<tr><td>MODERN · picks 41-64</td><td>111</td><td>1.000</td><td>0.785</td><td>0.764</td><td>0.706</td><td>0.631</td><td>0.751</td><td>0.541</td><td>0.553</td><td>-21.48%</td><td>+35.48%</td><td>SELL-SIDE RED</td><td>no breach (yr0→1 within the rail)</td></tr>
+</tbody>
+</table></div>
+
+<h2>The pool-arm comparison — candidate vs LIVE (board 3167cba6) (PRIMARY window, yr0→1 appreciation)</h2>
+<div class="wrap"><table>
+<thead><tr><th>arm</th><th>n</th><th>candidate</th><th>reference</th><th>&Delta;</th><th>verdict</th></tr></thead>
+<tbody>
+<tr><td>RD</td><td>623</td><td>-6.22%</td><td>-10.66%</td><td>+4.44%</td><td>SELL-SIDE RED → SELL-SIDE RED</td></tr>
+<tr><td>UNR</td><td>49</td><td>-38.17%</td><td>-41.51%</td><td>+3.34%</td><td>SELL-SIDE RED → SELL-SIDE RED</td></tr>
+<tr><td>IRE</td><td>47</td><td>-5.82%</td><td>-8.35%</td><td>+2.53%</td><td>SELL-SIDE RED → SELL-SIDE RED</td></tr>
+<tr><td>SSP</td><td>31</td><td>+56.90%</td><td>+52.94%</td><td>+3.96%</td><td>BUY-SIDE RED → BUY-SIDE RED</td></tr>
+<tr><td>PDA</td><td>43</td><td>-28.83%</td><td>-31.80%</td><td>+2.97%</td><td>SELL-SIDE RED → SELL-SIDE RED</td></tr>
+<tr><td>PDN</td><td>33</td><td>-42.18%</td><td>-45.99%</td><td>+3.81%</td><td>SELL-SIDE RED → SELL-SIDE RED</td></tr>
+</tbody>
+</table></div>
+<div class="stamp">board <code>3167cba6</code> &middot; store <code>fb640ca0</code> &middot; engine <code>d84031cf</code> &middot; config <code>29fdfd1e</code> &middot; as-of round 24 &middot; built 2026-08-27 07:50 UTC</div>

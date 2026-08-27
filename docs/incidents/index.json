@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 254,
+  "coverage_entries": 255,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-27",
+      "headline": "**THE CANDIDATE NO-ARB TABLES ARE ON THE STANDING TEMPLATE \u2014 W2 HOLDS INSIDE THE RAILS (P-5 GREEN), the deep draft HEALS, the head deepens two points \u2026",
+      "hits": {
+        "DECLARED": [
+          "**THE CANDIDATE NO-ARB TABLES ARE ON THE STANDING TEMPLATE \u2014 W2 HOLDS INSIDE THE RAILS (P-5 GREEN), the deep draft HEALS, the head deepens two points with its path test still passing; and the road there filed THREE guard\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 876
+    },
     {
       "by": "explicit",
       "date": "2026-08-26",
@@ -2158,7 +2172,7 @@
       "version": 622
     }
   ],
-  "incidents": 127,
+  "incidents": 128,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",

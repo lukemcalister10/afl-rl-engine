@@ -1,8 +1,9 @@
 <!-- GENERATED-ONLY — regenerate: python3 tools/seat/pen.py index ; assert current: python3 tools/seat/pen.py verify -->
 # REGISTER ADDRESS INDEX — generated
 
-Newest entry: **v875**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
+Newest entry: **v876**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
 
+- **v876** (2026-08-27) — `docs/register/entries/v876.md` — **THE CANDIDATE NO-ARB TABLES ARE ON THE STANDING TEMPLATE — W2 HOLDS INSIDE THE RAILS (P-5 GREEN), the deep draft HEALS, the head deepens t
 - **v875** (2026-08-27) — `docs/register/entries/v875.md` — **THE MECHANISM IS RULED — EVERY OWNER WORD FOR THE COMBINED BUILD IS NOW BANKED, and the candidate board of record is re-presented under th
 - **v874** (2026-08-27) — `docs/register/entries/v874.md` — **FOUR WORDS RULED IN ONE SITTING — the combined build's open decisions collapse to the mechanism dials alone.** Owner words, verbatim (2026
 - **v873** (2026-08-27) — `docs/register/entries/v873.md` — **RUCK RELIEF IS RULED — the tall cells of the retention surface are THE ONE CARRIER; no second ruck lever enters the build.** Owner word, v
