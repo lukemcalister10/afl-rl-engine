@@ -1,994 +1,440 @@
 {
  "base_ref": 2026,
- "board": "ORDER 31-F candidate",
- "board_md5": "fe6be9d6ac76ebc34d26ebc11d796505",
- "entry_year_note": "at a row's OWN entry year the fade clock c_u <= 1 so D == 1 and the day-0 price IS day0_v0(p); the fade below is the value at Y=2026 for rows that entered earlier and have never played",
- "identity_all": "89 of 89 at tolerance 0",
- "label": "ORDER 31-F -- the candidate's own printed day-0 prices",
- "law": "printed = round(day0_v0(p) * D(c_u)) -- the ONE LAW at g=0, where rho(0)=0 and pi(0,c,s) == D(c) exactly",
- "mismatches": [],
- "n_fresh_nd": 46,
- "n_pool": 43,
- "n_wired": 89,
+ "board": "NOREC candidate (recency-less arm 2)",
+ "board_md5": "530a4053622c29092274fab0aa1fee7f",
+ "label": "regenerated day-0 final for the NOREC candidate board",
+ "entry_year_note": "printed taken FROM the published board; identity round(derived_v0*D)==printed asserted here",
+ "identity_all": "86 of 86 at tolerance 0",
  "rows": [
   {
-   "cell": null,
-   "day0_price": 528.6584223586943,
-   "derived_v0": 903.8014284605089,
-   "fade_D": 0.5849276242671858,
    "key": "oskar-taylor",
-   "pick": 15,
-   "pos": "SD",
-   "printed": 529,
-   "ty": "ND"
+   "printed": 624,
+   "derived_v0": 981.6364003140842
   },
   {
-   "cell": null,
-   "day0_price": 453.10036594686443,
-   "derived_v0": 774.6263762367552,
-   "fade_D": 0.5849276242671858,
-   "key": "lachlan-carmichael",
-   "pick": 21,
-   "pos": "SD",
-   "printed": 453,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 422.0941511792196,
-   "derived_v0": 721.6177415249131,
-   "fade_D": 0.5849276242671858,
    "key": "mitchell-marsh",
-   "pick": 22,
-   "pos": "KPF",
-   "printed": 422,
-   "ty": "ND"
+   "printed": 534,
+   "derived_v0": 714.2210449409969
   },
   {
-   "cell": null,
-   "day0_price": 470.6996883001117,
-   "derived_v0": 843.128494491119,
-   "fade_D": 0.5582775239783688,
    "key": "harley-barker",
-   "pick": 24,
-   "pos": "MID",
-   "printed": 471,
-   "ty": "ND"
+   "printed": 484,
+   "derived_v0": 847.7437598404954
   },
   {
-   "cell": null,
-   "day0_price": 250.20195475594184,
-   "derived_v0": 427.74856986691657,
-   "fade_D": 0.5849276242671858,
    "key": "adam-sweid",
-   "pick": 25,
-   "pos": "SF",
    "printed": 250,
-   "ty": "ND"
+   "derived_v0": 443.8370143853265
   },
   {
-   "cell": null,
-   "day0_price": 281.0229473171717,
-   "derived_v0": 503.37499764375303,
-   "fade_D": 0.5582775239783688,
    "key": "blake-thredgold",
-   "pick": 26,
-   "pos": "KPD",
-   "printed": 281,
-   "ty": "ND"
+   "printed": 372,
+   "derived_v0": 503.87804361929443
   },
   {
-   "cell": null,
-   "day0_price": 271.56529772363933,
-   "derived_v0": 464.2716234574562,
-   "fade_D": 0.5849276242671858,
    "key": "avery-thomas",
-   "pick": 28,
-   "pos": "SD",
-   "printed": 272,
-   "ty": "ND"
+   "printed": 250,
+   "derived_v0": 458.22061076740977
   },
   {
-   "cell": null,
-   "day0_price": 463.1546339476592,
-   "derived_v0": 791.8152857422534,
-   "fade_D": 0.5849276242671858,
    "key": "sam-allen",
-   "pick": 29,
-   "pos": "MID",
-   "printed": 463,
-   "ty": "ND"
+   "printed": 423,
+   "derived_v0": 783.0105088550637
   },
   {
-   "cell": null,
-   "day0_price": 247.28873714538327,
-   "derived_v0": 422.7680945231365,
-   "fade_D": 0.5849276242671858,
    "key": "thomas-matthews",
-   "pick": 30,
-   "pos": "SF",
-   "printed": 247,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 396.5897572016801,
-   "derived_v0": 678.0150923775213,
-   "fade_D": 0.5849276242671858,
-   "key": "tyan-prindable",
-   "pick": 32,
-   "pos": "MID",
-   "printed": 397,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 380.0522270851915,
-   "derived_v0": 649.7423122413339,
-   "fade_D": 0.5849276242671858,
-   "key": "hunter-holmes",
-   "pick": 33,
-   "pos": "MID",
-   "printed": 380,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 244.3755195348247,
-   "derived_v0": 417.7876191793564,
-   "fade_D": 0.5849276242671858,
-   "key": "jevan-phillipou",
-   "pick": 35,
-   "pos": "SF",
-   "printed": 244,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 242.62758896848956,
-   "derived_v0": 414.7993339730884,
-   "fade_D": 0.5849276242671858,
-   "key": "koby-evans",
-   "pick": 38,
-   "pos": "SF",
-   "printed": 243,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 242.10448812182608,
-   "derived_v0": 413.90503384951523,
-   "fade_D": 0.5849276242671858,
-   "key": "tylah-williams",
-   "pick": 39,
-   "pos": "SF",
-   "printed": 242,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 228.33030751561432,
-   "derived_v0": 390.3565125714025,
-   "fade_D": 0.5849276242671858,
-   "key": "tobyn-murray",
-   "pick": 40,
-   "pos": "SF",
    "printed": 228,
-   "ty": "ND"
+   "derived_v0": 425.2323045864746
   },
   {
-   "cell": null,
-   "day0_price": 174.0171009201828,
-   "derived_v0": 297.50193648008405,
-   "fade_D": 0.5849276242671858,
-   "key": "tai-hayes",
-   "pick": 44,
-   "pos": "SF",
-   "printed": 174,
-   "ty": "ND"
+   "key": "tyan-prindable",
+   "printed": 355,
+   "derived_v0": 676.34562979358
   },
   {
-   "cell": null,
-   "day0_price": 269.7496003425658,
-   "derived_v0": 461.1674832087404,
-   "fade_D": 0.5849276242671858,
-   "key": "koby-coulson",
-   "pick": 46,
-   "pos": "MID",
-   "printed": 270,
-   "ty": "ND"
+   "key": "hunter-holmes",
+   "printed": 337,
+   "derived_v0": 647.6741719710797
   },
   {
-   "cell": null,
-   "day0_price": 163.40844579581315,
-   "derived_v0": 279.365239418357,
-   "fade_D": 0.5849276242671858,
-   "key": "hugo-mikunda",
-   "pick": 48,
-   "pos": "SF",
-   "printed": 163,
-   "ty": "ND"
+   "key": "jevan-phillipou",
+   "printed": 209,
+   "derived_v0": 407.4121381864447
   },
   {
-   "cell": null,
-   "day0_price": 155.4072366594724,
-   "derived_v0": 278.369144349601,
-   "fade_D": 0.5582775239783688,
-   "key": "max-king-syd",
-   "pick": 49,
-   "pos": "SF",
-   "printed": 155,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 100.16557599408743,
-   "derived_v0": 171.2443930470505,
-   "fade_D": 0.5849276242671858,
-   "key": "finnegan-davis",
-   "pick": 51,
-   "pos": "SD",
-   "printed": 100,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 173.9099156406846,
-   "derived_v0": 297.31869110911623,
-   "fade_D": 0.5849276242671858,
-   "key": "kye-fincher",
-   "pick": 52,
-   "pos": "MID",
-   "printed": 174,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 125.29381555748618,
-   "derived_v0": 214.2039636347452,
-   "fade_D": 0.5849276242671858,
-   "key": "zac-mccarthy",
-   "pick": 55,
-   "pos": "KPF",
-   "printed": 125,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 136.62888878017804,
-   "derived_v0": 233.58255468161664,
-   "fade_D": 0.5849276242671858,
-   "key": "matthew-leray",
-   "pick": 56,
-   "pos": "MID",
-   "printed": 137,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 215.276440643099,
-   "derived_v0": 368.03944917596175,
-   "fade_D": 0.5849276242671858,
-   "key": "will-darcy",
-   "pick": 58,
-   "pos": "KPD",
-   "printed": 215,
-   "ty": "ND"
-  },
-  {
-   "cell": "RD|MID",
-   "day0_price": 123.47843879104647,
-   "derived_v0": 212.39992549540213,
-   "fade_D": 0.581348785801337,
-   "key": "fred-rodriguez",
-   "pick": 1,
-   "pos": "MID",
-   "printed": 123,
-   "ty": "RD"
-  },
-  {
-   "cell": "RD|MID",
-   "day0_price": 123.47843879104647,
-   "derived_v0": 212.39992549540213,
-   "fade_D": 0.581348785801337,
-   "key": "riley-onley",
-   "pick": 2,
-   "pos": "MID",
-   "printed": 123,
-   "ty": "RD"
-  },
-  {
-   "cell": "RD|SF",
-   "day0_price": 116.72278834597195,
-   "derived_v0": 200.77927605040077,
-   "fade_D": 0.581348785801337,
-   "key": "leon-kickett",
-   "pick": 4,
-   "pos": "SF",
-   "printed": 117,
-   "ty": "RD"
-  },
-  {
-   "cell": "RD|MID",
-   "day0_price": 123.47843879104647,
-   "derived_v0": 212.39992549540213,
-   "fade_D": 0.581348785801337,
-   "key": "nick-driscoll",
-   "pick": 6,
-   "pos": "MID",
-   "printed": 123,
-   "ty": "RD"
-  },
-  {
-   "cell": "PDN|KPF",
-   "day0_price": 53.69264333527148,
-   "derived_v0": 92.35874340265629,
-   "fade_D": 0.581348785801337,
-   "key": "kalani-white",
-   "pick": null,
-   "pos": "KPF",
-   "printed": 54,
-   "ty": "PDN"
-  },
-  {
-   "cell": "PDA|SF",
-   "day0_price": 48.052581085790855,
-   "derived_v0": 86.64903086038251,
-   "fade_D": 0.5545657072981915,
-   "key": "noah-chamberlain",
-   "pick": null,
-   "pos": "SF",
-   "printed": 48,
-   "ty": "PDA"
-  },
-  {
-   "cell": "PDA|KPF",
-   "day0_price": 65.05305696404889,
-   "derived_v0": 117.30450712681677,
-   "fade_D": 0.5545657072981915,
-   "key": "liam-hetherton",
-   "pick": null,
-   "pos": "KPF",
-   "printed": 65,
-   "ty": "PDA"
-  },
-  {
-   "cell": "PDN|SF",
-   "day0_price": 31.787026961125008,
-   "derived_v0": 54.67806545309878,
-   "fade_D": 0.581348785801337,
-   "key": "jai-saxena",
-   "pick": null,
-   "pos": "SF",
-   "printed": 32,
-   "ty": "PDN"
-  },
-  {
-   "cell": "PDN|SF",
-   "day0_price": 31.787026961125008,
-   "derived_v0": 54.67806545309878,
-   "fade_D": 0.581348785801337,
-   "key": "ryda-luke",
-   "pick": null,
-   "pos": "SF",
-   "printed": 32,
-   "ty": "PDN"
-  },
-  {
-   "cell": "PDN|SF",
-   "day0_price": 31.787026961125008,
-   "derived_v0": 54.67806545309878,
-   "fade_D": 0.581348785801337,
-   "key": "toby-whan",
-   "pick": null,
-   "pos": "SF",
-   "printed": 32,
-   "ty": "PDN"
-  },
-  {
-   "cell": "PDN|MID",
-   "day0_price": 65.53248612226272,
-   "derived_v0": 112.72490408994679,
-   "fade_D": 0.581348785801337,
-   "key": "jesse-mellor",
-   "pick": null,
-   "pos": "MID",
-   "printed": 66,
-   "ty": "PDN"
-  },
-  {
-   "cell": "MSD|SF",
-   "day0_price": 120.73589582929152,
-   "derived_v0": 207.68237377991244,
-   "fade_D": 0.581348785801337,
-   "key": "oliver-griffin",
-   "pick": 6,
-   "pos": "SF",
-   "printed": 121,
-   "ty": "MSD"
-  },
-  {
-   "cell": "MSD|RUCK",
-   "day0_price": 260.5683294130364,
-   "derived_v0": 448.21342329607927,
-   "fade_D": 0.581348785801337,
-   "key": "harrison-coe",
-   "pick": 8,
-   "pos": "RUCK",
-   "printed": 261,
-   "ty": "MSD"
-  },
-  {
-   "cell": "MSD|RUCK",
-   "day0_price": 260.5683294130364,
-   "derived_v0": 448.21342329607927,
-   "fade_D": 0.581348785801337,
-   "key": "caleb-may",
-   "pick": 9,
-   "pos": "RUCK",
-   "printed": 261,
-   "ty": "MSD"
-  },
-  {
-   "cell": "MSD|SF",
-   "day0_price": 120.73589582929152,
-   "derived_v0": 207.68237377991244,
-   "fade_D": 0.581348785801337,
-   "key": "max-beattie",
-   "pick": 12,
-   "pos": "SF",
-   "printed": 121,
-   "ty": "MSD"
-  },
-  {
-   "cell": "MSD|RUCK",
-   "day0_price": 260.5683294130364,
-   "derived_v0": 448.21342329607927,
-   "fade_D": 0.581348785801337,
-   "key": "max-mapley",
-   "pick": 18,
-   "pos": "RUCK",
-   "printed": 261,
-   "ty": "MSD"
-  },
-  {
-   "cell": null,
-   "day0_price": 458.8103735251381,
-   "derived_v0": 1577.6493483192783,
-   "fade_D": 0.2908189795241407,
-   "key": "josh-smillie",
-   "pick": 7,
-   "pos": "MID",
-   "printed": 459,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 124.10771923020263,
-   "derived_v0": 426.75247479816056,
-   "fade_D": 0.2908189795241407,
-   "key": "ned-bowman",
-   "pick": 26,
-   "pos": "SF",
-   "printed": 124,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 137.94222868780406,
-   "derived_v0": 474.3233365082129,
-   "fade_D": 0.2908189795241407,
-   "key": "james-barrat",
-   "pick": 32,
-   "pos": "KPD",
-   "printed": 138,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 142.3204255972237,
-   "derived_v0": 489.37805170109186,
-   "fade_D": 0.2908189795241407,
-   "key": "charlie-nicholls",
-   "pick": 34,
-   "pos": "KPF",
-   "printed": 142,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 125.96808059957931,
-   "derived_v0": 433.1494485184478,
-   "fade_D": 0.2908189795241407,
-   "key": "kayle-gerreyn",
-   "pick": 37,
-   "pos": "KPF",
-   "printed": 126,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 166.96929771384887,
-   "derived_v0": 574.1348036742866,
-   "fade_D": 0.2908189795241407,
-   "key": "ben-camporeale",
-   "pick": 43,
-   "pos": "MID",
-   "printed": 167,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 110.21937389943123,
-   "derived_v0": 378.9964949322779,
-   "fade_D": 0.2908189795241407,
-   "key": "joel-cochran",
-   "pick": 47,
-   "pos": "KPD",
-   "printed": 110,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 109.64000719662194,
-   "derived_v0": 377.0043047947659,
-   "fade_D": 0.2908189795241407,
-   "key": "cooper-bell",
-   "pick": 49,
-   "pos": "KPD",
-   "printed": 110,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 73.83860812118373,
-   "derived_v0": 253.89886259144387,
-   "fade_D": 0.2908189795241407,
-   "key": "jacob-molier",
-   "pick": 52,
-   "pos": "RUCK",
-   "printed": 74,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 107.90190708819401,
-   "derived_v0": 371.0277343822298,
-   "fade_D": 0.2908189795241407,
-   "key": "riak-andrew",
-   "pick": 55,
-   "pos": "KPD",
-   "printed": 108,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 62.910261596576106,
-   "derived_v0": 216.32103138355853,
-   "fade_D": 0.2908189795241407,
-   "key": "luke-urquhart",
-   "pick": 57,
-   "pos": "MID",
-   "printed": 63,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 61.13584470866414,
-   "derived_v0": 210.21958335972116,
-   "fade_D": 0.2908189795241407,
-   "key": "tyler-welsh",
-   "pick": 59,
-   "pos": "KPF",
-   "printed": 61,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 46.08891152106193,
-   "derived_v0": 158.47972369779984,
-   "fade_D": 0.2908189795241407,
-   "key": "patrick-said",
-   "pick": 60,
-   "pos": "SF",
-   "printed": 46,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 29.38173848494228,
-   "derived_v0": 101.03102119751203,
-   "fade_D": 0.2908189795241407,
-   "key": "jaren-carr",
-   "pick": 63,
-   "pos": "SF",
-   "printed": 29,
-   "ty": "ND"
-  },
-  {
-   "cell": null,
-   "day0_price": 29.08189795241407,
-   "derived_v0": 100.0,
-   "fade_D": 0.2908189795241407,
-   "key": "cody-anderson",
-   "pick": 64,
-   "pos": "SF",
-   "printed": 29,
-   "ty": "ND"
-  },
-  {
-   "cell": "ND|SD",
-   "day0_price": 144.3484014921766,
-   "derived_v0": 260.29088995681457,
-   "fade_D": 0.5545657072981915,
-   "key": "lennox-hoffman",
-   "pick": 66,
-   "pos": "SD",
-   "printed": 144,
-   "ty": "ND"
-  },
-  {
-   "cell": "ND|SF",
-   "day0_price": 57.13220838794752,
-   "derived_v0": 103.02153132816662,
-   "fade_D": 0.5545657072981915,
-   "key": "river-stevens",
-   "pick": 67,
-   "pos": "SF",
-   "printed": 57,
-   "ty": "ND"
-  },
-  {
-   "cell": "ND|SD",
-   "day0_price": 144.3484014921766,
-   "derived_v0": 260.29088995681457,
-   "fade_D": 0.5545657072981915,
-   "key": "keighton-matofai-forbes",
-   "pick": 69,
-   "pos": "SD",
-   "printed": 144,
-   "ty": "ND"
-  },
-  {
-   "cell": "ND|RUCK",
-   "day0_price": 313.9082791558762,
-   "derived_v0": 566.0434372785456,
-   "fade_D": 0.5545657072981915,
-   "key": "logan-smith",
-   "pick": 71,
-   "pos": "RUCK",
-   "printed": 314,
-   "ty": "ND"
-  },
-  {
-   "cell": "RD|RUCK",
-   "day0_price": 206.34059883640109,
-   "derived_v0": 372.0760157379352,
-   "fade_D": 0.5545657072981915,
-   "key": "aiden-riddle",
-   "pick": 2,
-   "pos": "RUCK",
-   "printed": 206,
-   "ty": "RD"
-  },
-  {
-   "cell": "RD|SD",
-   "day0_price": 141.22496758273581,
-   "derived_v0": 254.6586738490823,
-   "fade_D": 0.5545657072981915,
-   "key": "harry-charleson",
-   "pick": 3,
-   "pos": "SD",
-   "printed": 141,
-   "ty": "RD"
-  },
-  {
-   "cell": "RD|SF",
-   "day0_price": 111.34530123370935,
-   "derived_v0": 200.77927605040077,
-   "fade_D": 0.5545657072981915,
-   "key": "asher-eastham",
-   "pick": 7,
-   "pos": "SF",
-   "printed": 111,
-   "ty": "RD"
-  },
-  {
-   "cell": "RD|RUCK",
-   "day0_price": 206.34059883640109,
-   "derived_v0": 372.0760157379352,
-   "fade_D": 0.5545657072981915,
-   "key": "joe-pike",
-   "pick": 9,
-   "pos": "RUCK",
-   "printed": 206,
-   "ty": "RD"
-  },
-  {
-   "cell": "IRE|SD",
-   "day0_price": 48.263793720751174,
-   "derived_v0": 87.02989219418069,
-   "fade_D": 0.5545657072981915,
-   "key": "eamonn-armstrong",
-   "pick": null,
-   "pos": "SD",
-   "printed": 48,
-   "ty": "IRE"
-  },
-  {
-   "cell": "IRE|SD",
-   "day0_price": 48.263793720751174,
-   "derived_v0": 87.02989219418069,
-   "fade_D": 0.5545657072981915,
-   "key": "cillian-burke",
-   "pick": null,
-   "pos": "SD",
-   "printed": 48,
-   "ty": "IRE"
-  },
-  {
-   "cell": "IRE|SD",
-   "day0_price": 48.263793720751174,
-   "derived_v0": 87.02989219418069,
-   "fade_D": 0.5545657072981915,
-   "key": "matt-duffy",
-   "pick": null,
-   "pos": "SD",
-   "printed": 48,
-   "ty": "IRE"
-  },
-  {
-   "cell": "UNR|MID",
-   "day0_price": 146.81905095751225,
-   "derived_v0": 264.74599677792054,
-   "fade_D": 0.5545657072981915,
-   "key": "zak-evans",
-   "pick": null,
-   "pos": "MID",
-   "printed": 147,
-   "ty": "UNR"
-  },
-  {
-   "cell": "UNR|KPF",
-   "day0_price": 50.688941291535244,
-   "derived_v0": 91.4029494151171,
-   "fade_D": 0.5545657072981915,
-   "key": "jacob-moss",
-   "pick": null,
-   "pos": "KPF",
-   "printed": 51,
-   "ty": "UNR"
-  },
-  {
-   "cell": "UNR|RUCK",
-   "day0_price": 44.19164960461437,
-   "derived_v0": 79.68694966717874,
-   "fade_D": 0.5545657072981915,
-   "key": "jaime-uhr-henry",
-   "pick": null,
-   "pos": "RUCK",
-   "printed": 44,
-   "ty": "UNR"
-  },
-  {
-   "cell": "PDN|SF",
-   "day0_price": 30.32258004169454,
-   "derived_v0": 54.67806545309878,
-   "fade_D": 0.5545657072981915,
-   "key": "ricky-mentha",
-   "pick": null,
-   "pos": "SF",
-   "printed": 30,
-   "ty": "PDN"
-  },
-  {
-   "cell": "PDN|SF",
-   "day0_price": 30.32258004169454,
-   "derived_v0": 54.67806545309878,
-   "fade_D": 0.5545657072981915,
-   "key": "benny-barrett",
-   "pick": null,
-   "pos": "SF",
-   "printed": 30,
-   "ty": "PDN"
-  },
-  {
-   "cell": "MSD|SD",
-   "day0_price": 198.83138074768306,
-   "derived_v0": 358.5352973164835,
-   "fade_D": 0.5545657072981915,
-   "key": "zac-walker",
-   "pick": 11,
-   "pos": "SD",
+   "key": "koby-evans",
    "printed": 199,
-   "ty": "MSD"
+   "derived_v0": 397.08279772146716
   },
   {
-   "cell": null,
-   "day0_price": 324.8326560149496,
-   "derived_v0": 842.1323994223629,
-   "fade_D": 0.3857263492507347,
-   "key": "harry-demattia",
-   "pick": 25,
-   "pos": "MID",
-   "printed": 325,
-   "ty": "ND"
+   "key": "tylah-williams",
+   "printed": 195,
+   "derived_v0": 393.69859686501144
   },
   {
-   "cell": null,
-   "day0_price": 153.65728701760082,
-   "derived_v0": 398.35828513161437,
-   "fade_D": 0.3857263492507347,
-   "key": "ollie-murphy",
-   "pick": 41,
-   "pos": "KPD",
-   "printed": 154,
-   "ty": "ND"
+   "key": "tai-hayes",
+   "printed": 143,
+   "derived_v0": 298.3246315951657
   },
   {
-   "cell": null,
-   "day0_price": 150.96898144737975,
-   "derived_v0": 391.3888219994144,
-   "fade_D": 0.3857263492507347,
-   "key": "luke-lloyd",
-   "pick": 42,
-   "pos": "KPD",
-   "printed": 151,
-   "ty": "ND"
+   "key": "koby-coulson",
+   "printed": 218,
+   "derived_v0": 461.0412582630492
   },
   {
-   "cell": null,
-   "day0_price": 143.88361368278464,
-   "derived_v0": 373.01992451974183,
-   "fade_D": 0.3857263492507347,
-   "key": "patrick-snell",
-   "pick": 53,
-   "pos": "KPD",
-   "printed": 144,
-   "ty": "ND"
+   "key": "hugo-mikunda",
+   "printed": 133,
+   "derived_v0": 284.1973286232545
   },
   {
-   "cell": null,
-   "day0_price": 38.572634925073466,
-   "derived_v0": 100.0,
-   "fade_D": 0.3857263492507347,
-   "key": "reece-torrent",
-   "pick": 64,
-   "pos": "MID",
-   "printed": 39,
-   "ty": "ND"
+   "key": "max-king-syd",
+   "printed": 131,
+   "derived_v0": 281.0298173196793
   },
   {
-   "cell": "RD|KPD",
-   "day0_price": 113.33884075400967,
-   "derived_v0": 204.37405209598916,
-   "fade_D": 0.5545657072981915,
-   "key": "xavier-walsh",
-   "pick": 6,
-   "pos": "KPD",
+   "key": "finnegan-davis",
+   "printed": 78,
+   "derived_v0": 170.53650789367612
+  },
+  {
+   "key": "kye-fincher",
+   "printed": 135,
+   "derived_v0": 295.7084369395381
+  },
+  {
+   "key": "zac-mccarthy",
+   "printed": 149,
+   "derived_v0": 213.03852565963354
+  },
+  {
+   "key": "matthew-leray",
+   "printed": 103,
+   "derived_v0": 230.21497552256417
+  },
+  {
+   "key": "will-darcy",
+   "printed": 257,
+   "derived_v0": 366.5651890791144
+  },
+  {
+   "key": "fred-rodriguez",
+   "printed": 91,
+   "derived_v0": 212.39992549540213
+  },
+  {
+   "key": "riley-onley",
+   "printed": 91,
+   "derived_v0": 212.39992549540213
+  },
+  {
+   "key": "leon-kickett",
+   "printed": 86,
+   "derived_v0": 200.77927605040077
+  },
+  {
+   "key": "nick-driscoll",
+   "printed": 91,
+   "derived_v0": 212.39992549540213
+  },
+  {
+   "key": "kalani-white",
+   "printed": 65,
+   "derived_v0": 92.35874340265629
+  },
+  {
+   "key": "noah-chamberlain",
+   "printed": 37,
+   "derived_v0": 86.64903086038251
+  },
+  {
+   "key": "liam-hetherton",
+   "printed": 82,
+   "derived_v0": 117.30450712681677
+  },
+  {
+   "key": "jai-saxena",
+   "printed": 23,
+   "derived_v0": 54.67806545309878
+  },
+  {
+   "key": "ryda-luke",
+   "printed": 23,
+   "derived_v0": 54.67806545309878
+  },
+  {
+   "key": "toby-whan",
+   "printed": 23,
+   "derived_v0": 54.67806545309878
+  },
+  {
+   "key": "jesse-mellor",
+   "printed": 48,
+   "derived_v0": 112.72490408994679
+  },
+  {
+   "key": "oliver-griffin",
+   "printed": 88,
+   "derived_v0": 207.68237377991244
+  },
+  {
+   "key": "harrison-coe",
+   "printed": 254,
+   "derived_v0": 448.21342329607927
+  },
+  {
+   "key": "caleb-may",
+   "printed": 254,
+   "derived_v0": 448.21342329607927
+  },
+  {
+   "key": "max-mapley",
+   "printed": 254,
+   "derived_v0": 448.21342329607927
+  },
+  {
+   "key": "josh-smillie",
+   "printed": 933,
+   "derived_v0": 1591.1308647194237
+  },
+  {
+   "key": "ned-bowman",
+   "printed": 175,
+   "derived_v0": 440.0516725169894
+  },
+  {
+   "key": "james-barrat",
+   "printed": 332,
+   "derived_v0": 473.79004602573843
+  },
+  {
+   "key": "charlie-nicholls",
+   "printed": 341,
+   "derived_v0": 486.91843219584797
+  },
+  {
+   "key": "kayle-gerreyn",
+   "printed": 300,
+   "derived_v0": 428.88658675306385
+  },
+  {
+   "key": "ben-camporeale",
+   "printed": 179,
+   "derived_v0": 567.44126549464
+  },
+  {
+   "key": "joel-cochran",
+   "printed": 264,
+   "derived_v0": 377.5176705121642
+  },
+  {
+   "key": "cooper-bell",
+   "printed": 263,
+   "derived_v0": 375.5263102516097
+  },
+  {
+   "key": "jacob-molier",
+   "printed": 177,
+   "derived_v0": 252.53014363529115
+  },
+  {
+   "key": "riak-andrew",
+   "printed": 259,
+   "derived_v0": 369.55222946994616
+  },
+  {
+   "key": "luke-urquhart",
+   "printed": 67,
+   "derived_v0": 214.62666651732368
+  },
+  {
+   "key": "tyler-welsh",
+   "printed": 146,
+   "derived_v0": 209.05580513852448
+  },
+  {
+   "key": "patrick-said",
+   "printed": 50,
+   "derived_v0": 159.80690870462553
+  },
+  {
+   "key": "jaren-carr",
+   "printed": 31,
+   "derived_v0": 100.99568013027725
+  },
+  {
+   "key": "cody-anderson",
+   "printed": 31,
+   "derived_v0": 100.0
+  },
+  {
+   "key": "lennox-hoffman",
+   "printed": 111,
+   "derived_v0": 260.29088995681457
+  },
+  {
+   "key": "river-stevens",
+   "printed": 44,
+   "derived_v0": 103.02153132816662
+  },
+  {
+   "key": "keighton-matofai-forbes",
+   "printed": 111,
+   "derived_v0": 260.29088995681457
+  },
+  {
+   "key": "logan-smith",
+   "printed": 396,
+   "derived_v0": 566.0434372785456
+  },
+  {
+   "key": "aiden-riddle",
+   "printed": 260,
+   "derived_v0": 372.0760157379352
+  },
+  {
+   "key": "harry-charleson",
+   "printed": 109,
+   "derived_v0": 254.6586738490823
+  },
+  {
+   "key": "asher-eastham",
+   "printed": 86,
+   "derived_v0": 200.77927605040077
+  },
+  {
+   "key": "joe-pike",
+   "printed": 260,
+   "derived_v0": 372.0760157379352
+  },
+  {
+   "key": "eamonn-armstrong",
+   "printed": 37,
+   "derived_v0": 87.02989219418069
+  },
+  {
+   "key": "cillian-burke",
+   "printed": 37,
+   "derived_v0": 87.02989219418069
+  },
+  {
+   "key": "matt-duffy",
+   "printed": 37,
+   "derived_v0": 87.02989219418069
+  },
+  {
+   "key": "zak-evans",
    "printed": 113,
-   "ty": "RD"
+   "derived_v0": 264.74599677792054
   },
   {
-   "cell": "IRE|SD",
-   "day0_price": 48.263793720751174,
-   "derived_v0": 87.02989219418069,
-   "fade_D": 0.5545657072981915,
+   "key": "jacob-moss",
+   "printed": 64,
+   "derived_v0": 91.4029494151171
+  },
+  {
+   "key": "jaime-uhr-henry",
+   "printed": 56,
+   "derived_v0": 79.68694966717874
+  },
+  {
+   "key": "ricky-mentha",
+   "printed": 23,
+   "derived_v0": 54.67806545309878
+  },
+  {
+   "key": "benny-barrett",
+   "printed": 23,
+   "derived_v0": 54.67806545309878
+  },
+  {
+   "key": "zac-walker",
+   "printed": 153,
+   "derived_v0": 358.5352973164835
+  },
+  {
+   "key": "harry-demattia",
+   "printed": 342,
+   "derived_v0": 846.0364306658314
+  },
+  {
+   "key": "ollie-murphy",
+   "printed": 198,
+   "derived_v0": 393.6820990228279
+  },
+  {
+   "key": "luke-lloyd",
+   "printed": 193,
+   "derived_v0": 387.8460587629247
+  },
+  {
+   "key": "patrick-snell",
+   "printed": 166,
+   "derived_v0": 371.5435897305007
+  },
+  {
+   "key": "reece-torrent",
+   "printed": 26,
+   "derived_v0": 100.0
+  },
+  {
+   "key": "xavier-walsh",
+   "printed": 116,
+   "derived_v0": 204.37405209598916
+  },
+  {
    "key": "rob-monahan",
-   "pick": null,
-   "pos": "SD",
-   "printed": 48,
-   "ty": "IRE"
+   "printed": 37,
+   "derived_v0": 87.02989219418069
   },
   {
-   "cell": "PDA|SF",
-   "day0_price": 48.052581085790855,
-   "derived_v0": 86.64903086038251,
-   "fade_D": 0.5545657072981915,
    "key": "nathan-wardius",
-   "pick": null,
-   "pos": "SF",
-   "printed": 48,
-   "ty": "PDA"
+   "printed": 37,
+   "derived_v0": 86.64903086038251
   },
   {
-   "cell": "MSD|RUCK",
-   "day0_price": 248.56379411073394,
-   "derived_v0": 448.21342329607927,
-   "fade_D": 0.5545657072981915,
    "key": "iliro-smit",
-   "pick": 10,
-   "pos": "RUCK",
-   "printed": 249,
-   "ty": "MSD"
+   "printed": 314,
+   "derived_v0": 448.21342329607927
   },
   {
-   "cell": null,
-   "day0_price": 169.53631886249127,
-   "derived_v0": 426.75247479816056,
-   "fade_D": 0.39727085107749216,
    "key": "brayden-george",
-   "pick": 26,
-   "pos": "SF",
-   "printed": 170,
-   "ty": "ND"
+   "printed": 175,
+   "derived_v0": 440.0516725169894
   },
   {
-   "cell": null,
-   "day0_price": 252.8922003170084,
-   "derived_v0": 636.5737622861208,
-   "fade_D": 0.39727085107749216,
    "key": "max-knobel",
-   "pick": 42,
-   "pos": "RUCK",
-   "printed": 253,
-   "ty": "ND"
+   "printed": 313,
+   "derived_v0": 628.4926092181586
   },
   {
-   "cell": "IRE|SD",
-   "day0_price": 50.5947221555082,
-   "derived_v0": 87.02989219418069,
-   "fade_D": 0.581348785801337,
    "key": "ben-murphy",
-   "pick": null,
-   "pos": "SD",
-   "printed": 51,
-   "ty": "IRE"
+   "printed": 37,
+   "derived_v0": 87.02989219418069
   },
   {
-   "cell": "IRE|SD",
-   "day0_price": 50.5947221555082,
-   "derived_v0": 87.02989219418069,
-   "fade_D": 0.581348785801337,
    "key": "kobe-mcdonald",
-   "pick": null,
-   "pos": "SD",
-   "printed": 51,
-   "ty": "IRE"
+   "printed": 37,
+   "derived_v0": 87.02989219418069
   },
   {
-   "cell": "UNR|SD",
-   "day0_price": 62.60917882714581,
-   "derived_v0": 107.69641281841622,
-   "fade_D": 0.581348785801337,
    "key": "indy-cotton",
-   "pick": null,
-   "pos": "SD",
-   "printed": 63,
-   "ty": "UNR"
-  },
-  {
-   "cell": "UNR|KPD",
-   "day0_price": 55.45952269661083,
-   "derived_v0": 95.39801931497091,
-   "fade_D": 0.581348785801337,
-   "key": "oscar-berry",
-   "pick": null,
-   "pos": "KPD",
-   "printed": 55,
-   "ty": "UNR"
-  },
-  {
-   "cell": "UNR|RUCK",
-   "day0_price": 46.325911433226615,
-   "derived_v0": 79.68694966717874,
-   "fade_D": 0.581348785801337,
-   "key": "patrick-carr",
-   "pick": null,
-   "pos": "RUCK",
    "printed": 46,
-   "ty": "UNR"
+   "derived_v0": 107.69641281841622
   },
   {
-   "cell": "IRE|SD",
-   "day0_price": 50.5947221555082,
-   "derived_v0": 87.02989219418069,
-   "fade_D": 0.581348785801337,
+   "key": "oscar-berry",
+   "printed": 54,
+   "derived_v0": 95.39801931497091
+  },
+  {
+   "key": "patrick-carr",
+   "printed": 56,
+   "derived_v0": 79.68694966717874
+  },
+  {
    "key": "cillian-bourke",
-   "pick": null,
-   "pos": "SD",
-   "printed": 51,
-   "ty": "IRE"
+   "printed": 37,
+   "derived_v0": 87.02989219418069
   }
  ]
 }

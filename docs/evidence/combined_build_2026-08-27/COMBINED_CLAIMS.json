@@ -3,7 +3,7 @@
   "act_type": "lever-landing",
   "act": "THE COMBINED BUILD \u2014 ORDERS 46/47/48 + the S_LL5G bake: the thin-evidence retention surface (v869 conservative cells, knots 0.40/0.525/0.65, tall ceiling 0.92 ruled AT equality, the no-gain-past-draft cap as a price-level no-decrease guard), the step-up clock law (FADE_LAW_DERIVATION L3a verbatim, zero new constants), the easing taper during a first banked season at the declared grid's measured output W=1.0, and the smoothed day-0 law as the pvc artifact of record; with the riding repairs (B2 re-base, the exporter day-0 assert one clause wider, the entrant seal re-priced, the v0surf refit)",
   "date": "2026-08-27",
-  "base_commit": "a868004200f1507043d8021129374238d84bfa04",
+  "base_commit": "21bf936a3fa3e85cf24e0ac8242fb5beee8716b4",
   "owner_word": "Agree on your mechanism. Please present the movers board",
   "activation": {
     "day0_rebase": {
@@ -137,6 +137,7 @@
     "data/rl_build/rl_app_data.json.srcmd5": "9cf9828f66c11ddd1b9b83c81cc72782",
     "data/sheet_pins.json": "a4ee39f7ec80ee6b6172aa28e0c17aae",
     "docs/STATE.md": "714396915c7c6ddede6a69103f35fbdd",
+    "docs/evidence/candidate_31f/DAY0_31F_FINAL.json": "d88f21913f737105fbfe1ec046340f91",
     "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/journal.jsonl": "a46befc7100f100bed9155415f20979c",
     "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/manifest.json": "23c861fc7a85ec058fc8a3f156d25121",
     "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/board_view_public": "12c5c49dd5767ad69a20b8cf3d46916f",
@@ -304,14 +305,14 @@
   },
   "_step_timings_s": {
     "preflight": 0.09,
-    "build_proofs": 1167.16,
+    "build_proofs": 1127.97,
     "pins": 0.02,
-    "lineage": 0.21,
-    "contract": 0.1,
-    "sibling": 2130.05,
-    "ui": 2.63,
-    "state": 0.17,
-    "gates": 17.41
+    "lineage": 0.22,
+    "contract": 0.11,
+    "sibling": 2170.79,
+    "ui": 2.66,
+    "state": 0.18,
+    "gates": 15.99
   },
   "_landed_by": "tools/landing (`land lever`), PLAN_v6 PACKAGE 2a"
 }

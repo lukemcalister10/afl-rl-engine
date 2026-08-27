@@ -1,7 +1,7 @@
 ====================================================================================================
 CLAIMS CHECK — THE COMBINED BUILD — ORDERS 46/47/48 + the S_LL5G bake: the thin-evidence retention surface (v869 conservative cells, knots 0.40/0.525/0.65, tall ceiling 0.92 ruled AT equality, the no-gain-past-draft cap as a price-level no-decrease guard), the step-up clock law (FADE_LAW_DERIVATION L3a verbatim, zero new constants), the easing taper during a first banked season at the declared grid's measured output W=1.0, and the smoothed day-0 law as the pvc artifact of record; with the riding repairs (B2 re-base, the exporter day-0 assert one clause wider, the entrant seal re-priced, the v0surf refit)
   act type   : lever-landing
-  date       : 2026-08-27   base: a868004200f1507043d8021129374238d84bfa04
+  date       : 2026-08-27   base: 21bf936a3fa3e85cf24e0ac8242fb5beee8716b4
   owner word : Agree on your mechanism. Please present the movers board
   tree       : /home/user/afl-rl-engine
 ====================================================================================================

@@ -938,6 +938,73 @@
    ],
    "invariants": {},
    "_measured_note": "moved/unchanged are MEASURED by tools/landing (steps._measure_sides), not asserted: every `source` identity is re-hashed from the committed tree at a446d9d via git show, every `destination` identity from the live tree, and each side is cross-checked against THAT TREE'S OWN data/expected_boot.json before the entry is composed."
+  },
+  {
+   "_doc": "THE D5 PEDIGREE REPAIR AS RULED \u2014 the owner's root-cause directive ('It shouldn't be a targetted fix just to close the Oliver Burton issue, but identify why Oliver is so under priced compared to a Burton and fix that instead') resolved by measurement (the v864-v871 evidence chain) into the evidence-conditional capital-retention surface, composed with the survivorship step-up (the derivation's clock law, dodson benchmark held at 101) and the kept easing sized by the declared grid procedure (W=1.0 \u2014 the largest weight under which no eased row reaches its thin twin), on the S_LL5G smoothed day-0 law. 287 movers, net +3,460 pre-level, five-way attribution closing exactly on every row (smoothing -277 / surface +3,225 / step-up +239 / easing +276 / residual -3). Headline movers: oliver +77, mccabe +94, leake +196, goad +70, edwards +210, riak-andrew +141, smillie +186 (the step-up on a pick-3 pedigree, disclosed), pickett +125, dawson +109. Burton unchanged 239 (standing-above-draft protected). Rails: W2 1.0637->1.0796 inside (1.03,1.14), zero new breach classes, inside the approved v876 profile in every headline.",
+   "kind": "lever-landing",
+   "schema_version": 2,
+   "owner_approved": true,
+   "owner_ruling_id": [
+    "MECHANISM_AGREED_2026-08-27_agree_on_your_mechanism",
+    "SLL5G_LOCKED_2026-08-27_lock_in_ll5g_then",
+    "DEPTH3_CAP_A_2026-08-27_a_for_depth_3_cap",
+    "SAT_SEASON_LT2_2026-08-27_lt2_is_fine_for_sat_season",
+    "EASING_KEPT_2026-08-27_keep_the_easing",
+    "RUCK_RELIEF_2026-08-27_ruck_relief_yes",
+    "NOARB_APPROVED_2026-08-27_alright_great_approved"
+   ],
+   "owner_ruling": "Owner words 2026-08-27, VERBATIM: 'Agree on your mechanism. Please present the movers board' (v875) \u00b7 'Lock in LL5G then' / 'A for depth 3 cap' / '<2 is fine for sat season' / 'Keep the easing' (v874) \u00b7 'Ruck relief yes' (v873) \u00b7 'Alright great. Approved.' (v877, the no-arb tables) \u00b7 standing: 'please continue, stopping only if there is a blocker to pushing live. Try to land what we've worked on if it's possible'.",
+   "authority": "PREREG.md committed at 797485d BEFORE any engine edit (P9); FADE_LAW_DERIVATION.md at 953fb55; the build blocks at registers v878-v879; blind review (law 11) BLIND_REVIEW.md GREEN.",
+   "applies_to": {
+    "bundle": "ui/data/movers.js",
+    "boundary": [
+     "24",
+     "combined-build-46-47-48-sll5g"
+    ]
+   },
+   "source": {
+    "release_version": "v2.11-final-rc1-PROVISIONAL",
+    "board": "3167cba643a6b16e5ef5d904d8957fcd",
+    "store": "fb640ca0baf92bbb122b1ad7e25c5a88",
+    "rl_model": "6fe7c4155866d80e8045bed2d3bf2802",
+    "engine_head": "a5550b678f05e5c8b80cd3952d1b4ce5",
+    "fv": "123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345",
+    "config": "f233d1604975cdbda18bde0d31e253c8254bddc97fb7f1be6ac0412f57e06979",
+    "register": "652d83e87780e415a01a2de6d8b3cc57",
+    "balanced_board_md5": "b7149d5ff7b62ad0916f9a950351b03d",
+    "v0surf": "d9f5d15d9606edcdd5708233197dd951",
+    "as_of_round": 24
+   },
+   "destination": {
+    "release_version": "v2.11-final-rc1-PROVISIONAL",
+    "board": "530a4053622c29092274fab0aa1fee7f",
+    "store": "fb640ca0baf92bbb122b1ad7e25c5a88",
+    "rl_model": "6fe7c4155866d80e8045bed2d3bf2802",
+    "engine_head": "a5550b678f05e5c8b80cd3952d1b4ce5",
+    "fv": "123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345",
+    "config": "f233d1604975cdbda18bde0d31e253c8254bddc97fb7f1be6ac0412f57e06979",
+    "register": "652d83e87780e415a01a2de6d8b3cc57",
+    "balanced_board_md5": "b7149d5ff7b62ad0916f9a950351b03d",
+    "v0surf": "d9f5d15d9606edcdd5708233197dd951",
+    "as_of_round": 24
+   },
+   "moved_by_transition": [
+    "board"
+   ],
+   "unchanged_across_transition": [
+    "as_of_round",
+    "balanced_board_md5",
+    "config",
+    "engine_head",
+    "fv",
+    "register",
+    "release_version",
+    "rl_model",
+    "store",
+    "v0surf"
+   ],
+   "invariants": {},
+   "_measured_note": "moved/unchanged are MEASURED by tools/landing (steps._measure_sides), not asserted: every `source` identity is re-hashed from the committed tree at 21bf936 via git show, every `destination` identity from the live tree, and each side is cross-checked against THAT TREE'S OWN data/expected_boot.json before the entry is composed."
   }
  ]
 }
