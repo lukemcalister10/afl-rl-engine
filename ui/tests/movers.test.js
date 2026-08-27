@@ -368,7 +368,23 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   // twelve before it; this line only counts, and the property that matters is stated once below
   // (EVERY boundary anchored to an owner-approved record). Deriving this count from the lineage
   // instead of bumping it (the P4 cure) is queued for the combined act two.
-  ok(mc.length === 13, "thirteen out-of-round boundaries are declared (the restructure, the 30/7 rederivation, the 6/8 adoption, the 10/8 DOB courier, the 10/8 never-rises restore, THE LANDING, THE D8 ADOPTION, the 20/8 injury-sheet re-cut, the 20/8 F5 rounding fix, the 20/8 back-rows repair, the 21/8 staircase adoption, the 24/8 graham dual correction, the 25/8 ORDER 45 arm-2 rebake + safety net)  (got " + mc.length + ")");
+  // THE P4 CURE, FORCED AND DELIVERED (THE COMBINED BUILD landing, 27/8). The ORDER 45 bump note
+  // queued "deriving this count from the lineage instead of bumping it" for this very act — and the
+  // act's own machinery made the fixed pin IMPOSSIBLE, not merely inelegant: the speed act's
+  // preflight battery (built 26/8, AFTER the last bump) runs this test on the PRE-landing tree and
+  // the landing's gate step runs it on the LANDED tree, so any pinned number is wrong in exactly one
+  // of the two worlds (measured: the 13-pin aborted the landing at gates; a 14-pin fails the
+  // battery). P4's own words are the cure: ASSERT THE RELATIONSHIP, NEVER THIS MONTH'S LIST. The
+  // relationship: every declared boundary beyond the pre-register restructure (mc[0], pinned by its
+  // own assertion below) corresponds to a boundary-bearing entry in the release transition register
+  // — the same source the bundle derives from — so the equality holds in BOTH worlds by
+  // construction, and a bundle/register drift still fails loudly in either direction. The thirteen
+  // bump notes above stand as history; no future landing edits this file for the count again.
+  var regB = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "..", "data", "release_lineage.json"), "utf8"))
+      .release_transition_register.filter(function (e) { return e && e.applies_to && e.applies_to.boundary; }).length;
+  ok(mc.length === regB + 1, "out-of-round boundary count DERIVED from the lineage register (P4): " +
+     regB + " boundary-bearing register entries + the pre-register restructure = " + (regB + 1) +
+     " (bundle declares " + mc.length + ")");
   ok(mc[0].between[0] === "19" && mc[0].between[1] === "post-r19-redesign-1" &&
      mc[0].owner_approved_record === true,
      "model change declared between R19 and the restructure point, anchored to the owner-approved record");

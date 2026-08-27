@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the synthetic board move
-  tree      : /tmp/landing_selftest_1802/sandbox
+  tree      : /tmp/landing_selftest_4353/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board a2c786c93be6c3a3089275aadac0afff
   mode      : APPLY (SELFTEST) builder=selftest-moved
@@ -8,8 +8,8 @@ LAND LEVER-LANDING — SELF-TEST — the synthetic board move
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-lever-2666 (pid 2666) — single writer for the shared workspace.
-base commit        8a93705b0fb1c6afeee91061e1c01b86bdf86960
+build-lock: HELD by land-lever-5341 (pid 5341) — single writer for the shared workspace.
+base commit        930f55b5c2a4259da4f3bdd229d5ac753521f709
 board pin (before) 3167cba643a6b16e5ef5d904d8957fcd
 store pin (before) fb640ca0baf92bbb122b1ad7e25c5a88
 restore point      67 carrier(s) captured, 67 present on disk
@@ -41,7 +41,7 @@ chain OK: register tail destination == this entry's source on board and store
 append-only OK: 15 prior entries byte-verbatim; top-level baseline 06d8af60b679a12db07c064c60c065f9 / v2.11-present-lens-baseline UNMOVED
 MOVED by this transition: ['board'] (of 11 identities)
 re-read OK: round-trips at indent=1; prior entries still byte-verbatim.
-    [lineage OK  0.26s]
+    [lineage OK  0.22s]
 
 --- STEP 4/10  contract       restamp_dynamic + the bake-lane repin + check ---
 contract seal self-consistent before the act: de37f057eba1
@@ -61,7 +61,7 @@ WRITER 2: the bake-lane identities restamp_dynamic does not touch
   contract_sha256             e4c7d9a966ce -> e4c7d9a966ce
   frozen fields asserted unmoved: 10 checked, 0 moved
 RE-STAMPED, re-read, and release_contract.py check PASSES.
-    [contract OK  0.10s]
+    [contract OK  0.12s]
 
 --- STEP 5/10  sibling        the balanced sibling, rebuilt and reconciled if moved ---
 *** FAULT INJECTED at step 'sibling': sidecar_corrupt — the sibling provenance sidecar is unreadable
@@ -75,7 +75,7 @@ LANDING ABORTED AT STEP 'sibling'
 carriers that moved before the failure: 11
     data/expected_boot.json                                          7c68771e1930 -> e833f1699ffb
     data/release_contract.json                                       055b55b37691 -> 9a5505c93671
-    data/release_lineage.json                                        20cfa28ad615 -> c7436bafe75a
+    data/release_lineage.json                                        20cfa28ad615 -> 3a1dcf706173
     data/rl_build/rl_app_data.json                                   3167cba643a6 -> a2c786c93be6
     data/rl_build/rl_app_data.json.srcmd5                            9cf9828f66c1 -> 87df4062111a
     engine/rl_after/ingestion/pos_rank_history.json                  f93a87091f67 -> e69a728a1049
@@ -108,8 +108,8 @@ improvised manual landing under pressure.
     preflight          0.08s  OK
     build_proofs       0.01s  OK
     pins               0.02s  OK
-    lineage            0.26s  OK
-    contract           0.10s  OK
+    lineage            0.22s  OK
+    contract           0.12s  OK
     sibling            0.05s  FAIL
-    TOTAL              0.52s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_2666
+    TOTAL              0.50s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_5341
