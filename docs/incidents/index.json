@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 258,
+  "coverage_entries": 259,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-27",
+      "headline": "**THE COMBINED BUILD IS LANDED (main d7a7726, take 11 of the transaction): the board of record moved ONCE, 3167cba6 \u2192 530a4053, and every step's postc\u2026",
+      "hits": {
+        "DECLARED": [
+          "**THE COMBINED BUILD IS LANDED (main d7a7726, take 11 of the transaction): the board of record moved ONCE, 3167cba6 \u2192 530a4053, and every step's postcondition held.** Owner authority: the banked mechanism words (v873/v87\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 880
+    },
     {
       "by": "explicit",
       "date": "2026-08-27",
@@ -2200,7 +2214,7 @@
       "version": 622
     }
   ],
-  "incidents": 130,
+  "incidents": 131,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",
