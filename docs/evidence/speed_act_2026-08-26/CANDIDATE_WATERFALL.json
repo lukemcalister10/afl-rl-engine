@@ -12,7 +12,34 @@
   "board_total_live": 700927,
   "board_total_smooth": 700650,
   "board_total_cand": 703875,
-  "n_movers": 254
+  "n_movers": 254,
+  "stepup_class": {
+   "definition": "ND, tenure 3, every season <2 games (owner word 2026-08-27: \"<2 is fine for sat season\"), entry age <22",
+   "n": 21,
+   "keys": [
+    "josh-smillie",
+    "ned-bowman",
+    "james-barrat",
+    "charlie-nicholls",
+    "kayle-gerreyn",
+    "ben-camporeale",
+    "joel-cochran",
+    "lucca-grego",
+    "cooper-bell",
+    "jacob-molier",
+    "alex-dodson",
+    "riak-andrew",
+    "luke-urquhart",
+    "tyler-welsh",
+    "patrick-said",
+    "jaren-carr",
+    "cody-anderson",
+    "lennox-hoffman",
+    "river-stevens",
+    "keighton-matofai-forbes",
+    "logan-smith"
+   ]
+  }
  },
  "movers": [
   {
@@ -1047,7 +1074,7 @@
    "d_total": 21,
    "d_vs_v0": -87,
    "capped": false,
-   "stepup_pending": false,
+   "stepup_pending": true,
    "named": false
   },
   {
@@ -4083,7 +4110,7 @@
    "d_total": -1,
    "d_vs_v0": -153,
    "capped": false,
-   "stepup_pending": false,
+   "stepup_pending": true,
    "named": true
   },
   {

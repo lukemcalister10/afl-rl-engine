@@ -1,3 +1,3 @@
-# OPEN ITEMS REGISTER · v874 2026-08-27 · **FOUR WORDS RULED IN ONE SITTING — the combined build's open decisions collapse to the mechanism dials alone.** Owner words, verbatim (2026-08-27): **"Lock in LL5G then"** — CURVE SMOOTHING RULED: S_LL5G is the build's day-0 law (strictly decreasing everywhere, conservation −0.18%; the waterfall's Δsm column is its movers; MA5 stays rejected, S_HOLD1 dead
+# OPEN ITEMS REGISTER · v875 2026-08-27 · **THE MECHANISM IS RULED — EVERY OWNER WORD FOR THE COMBINED BUILD IS NOW BANKED, and the candidate board of record is re-presented under the full ruled set.** Owner word, verbatim (2026-08-27): **"Agree on your mechanism. Please present the movers board"** — the D5 evidence-conditional retention surface lands at this seat's recommended dials: THE CONSERVA
 
-(one line per pen; full entry: docs/register/entries/v874.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
+(one line per pen; full entry: docs/register/entries/v875.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)

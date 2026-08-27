@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v874 2026-08-27 · **FOUR WORDS RULED IN ONE SITTING — the combined build's open decisions collapse to the mechanism dials alone.** Owner words, verbatim (2026-08-27): **"Lock in LL5G then"** — CURVE SMOOTHING RULED: S_LL5G is the build's day-0 law (strictly decreasing everywhere, conservation −0.18%; the waterfall's Δsm column is its movers; MA5 stays rejected, S_HOLD1 dead
+  > # OPEN ITEMS REGISTER · v875 2026-08-27 · **THE MECHANISM IS RULED — EVERY OWNER WORD FOR THE COMBINED BUILD IS NOW BANKED, and the candidate board of record is re-presented under the full ruled set.** Owner word, verbatim (2026-08-27): **"Agree on your mechanism. Please present the movers board"** — the D5 evidence-conditional retention surface lands at this seat's recommended dials: THE CONSERVA
 
-- new-form entries under `docs/register/entries/`: 62
+- new-form entries under `docs/register/entries/`: 63
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `094f390d631492c165685565be9fc91cf0946146` |
+| generated at commit | `65080548a992ddcfc2aa1fd66b786635b205e6ad` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |
