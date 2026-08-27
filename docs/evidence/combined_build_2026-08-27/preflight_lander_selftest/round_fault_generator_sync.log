@@ -1,0 +1,72 @@
+======================================================================================================
+LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
+  tree      : /tmp/landing_selftest_7669/sandbox
+  owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
+  prereg    : tools/landing/selftest.py (fixture)   predicts board 3167cba643a6b16e5ef5d904d8957fcd
+  mode      : APPLY (SELFTEST) builder=selftest
+  NOTE      : this act is a DECLARED NO-OP REHEARSAL — it predicts the board it already has and moves no identity.
+======================================================================================================
+
+--- STEP 0/14  preflight      clean tree, build lock, the restore point ---
+RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
+build-lock: HELD by land-round-8640 (pid 8640) — single writer for the shared workspace.
+base commit        a095c61289e1906e3ede9de5b80fc9c8bc5c0de0
+board pin (before) 3167cba643a6b16e5ef5d904d8957fcd
+store pin (before) fb640ca0baf92bbb122b1ad7e25c5a88
+restore point      120 carrier(s) captured, 120 present on disk
+    [preflight OK  0.08s]
+
+--- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
+sheet         docs/owner_annotations/SITTER_2026_v1.csv
+  MEASURED (never typed): md5=21361291f26d35108b88f92f885c5063 rows=219 injured_y=35
+  PINNED                : md5=21361291f26d35108b88f92f885c5063 rows=219 injured_y=35
+the declaration describes the sheet on disk. NO RE-CUT DECLARED — this step writes nothing, and `land round` remains the pin file's sole writer by not writing.
+    [sheet OK  0.00s]
+
+--- STEP 2/14  scores         the owner's score file and the bindings, asserted ---
+no scores file declared — this act is a REHEARSAL and applies nothing.
+    [scores OK  0.00s]
+
+--- STEP 3/14  catchup_preflight read-only preflight, CLEAN, then the inputs commit ---
+no scores file — nothing to preflight. (REHEARSAL.)
+    [catchup_preflight OK  0.00s]
+
+--- STEP 4/14  advance        THE ARMED CATCH-UP — ADVANCE-REPIN runs inside it ---
+REHEARSAL — nothing is armed and nothing is applied.
+  as_of_round  24                                 HELD
+  board        3167cba643a6b16e5ef5d904d8957fcd   HELD
+  store        fb640ca0baf92bbb122b1ad7e25c5a88   HELD
+    [advance OK  0.01s]
+
+--- STEP 5/14  generator_sync the generator-side board copy, synced and DISCLOSED ---
+*** FAULT INJECTED at step 'generator_sync': generator_drift — the generator-side board copy stops being the published board
+published board  3167cba643a6b16e5ef5d904d8957fcd   sidecar 9cf9828f66c11ddd1b9b83c81cc72782
+generator board  12b77623e4e84903fc4bc104e1aff720   sidecar 9cf9828f66c11ddd1b9b83c81cc72782
+    [generator_sync FAILED  0.01s]
+
+======================================================================================================
+LANDING ABORTED AT STEP 'generator_sync'
+======================================================================================================
+  the generator-side copy (12b77623e4e84903fc4bc104e1aff720) is not the published board (3167cba643a6b16e5ef5d904d8957fcd) and this act is a declared no-op. A rehearsal does not repair a tree it did not break; this incoherence pre-dates the act and is reported, not absorbed.
+
+carriers that moved before the failure: 1
+    engine/rl_after/rl_app_data.json                                 3167cba643a6 -> 12b77623e4e8
+RESTORING 1 carrier(s):
+    rewrite  engine/rl_after/rl_app_data.json
+
+ABORT PROOF: every carrier is BYTE-EXACT to the identity captured at step 0.
+
+THE RECOVERY LADDER: abort-then-retry is the recovery. A landing this lander cannot
+complete after abort+retry is a round that SLIPS, on the owner's call — never an
+improvised manual landing under pressure.
+======================================================================================================
+
+--- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
+    preflight          0.08s  OK
+    sheet              0.00s  OK
+    scores             0.00s  OK
+    catchup_preflight     0.00s  OK
+    advance            0.01s  OK
+    generator_sync     0.01s  FAIL
+    TOTAL              0.10s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_8640
