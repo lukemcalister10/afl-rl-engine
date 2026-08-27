@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 256,
+  "coverage_entries": 257,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-27",
+      "headline": "**BUILD BLOCK 3 LANDED ON THE CANDIDATE BRANCH (4bfdb76): the levers are BUILT, F1 is GREEN on the final bytes, and the candidate board f8d6ff9c is VE\u2026",
+      "hits": {
+        "DECLARED": [
+          "**BUILD BLOCK 3 LANDED ON THE CANDIDATE BRANCH (4bfdb76): the levers are BUILT, F1 is GREEN on the final bytes, and the candidate board f8d6ff9c is VERIFIED with EVERY mover attributed.** Owner authority: the banked word\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 878
+    },
     {
       "by": "explicit",
       "date": "2026-08-27",
@@ -2172,7 +2186,7 @@
       "version": 622
     }
   ],
-  "incidents": 128,
+  "incidents": 129,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",
