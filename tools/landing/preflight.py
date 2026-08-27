@@ -184,12 +184,24 @@ def run_preflight(root, spec_path, out=print):
 
 def file_evidence(results, evidence_dir):
     """Write the preflight table into the act's evidence dir (best-effort; preflight never blocks
-    on its own paperwork)."""
+    on its own paperwork).
+
+    THE RECORD IS DETERMINISTIC — VERDICTS AND DETAILS, NEVER TIMINGS (2026-08-27, the combined
+    build's step-0 catch): this file lives in the TRACKED evidence dir and is rewritten by every
+    launch BEFORE the transaction's step-0 clean-tree law reads the tree. With per-run `seconds`
+    in the file, a re-launch of an already-recorded act dirtied its own tree by timing jitter
+    alone and step 0 aborted the landing the preflight had just cleared — measured live, twice.
+    Timings stay on stdout (the M2 measure-then-quote surface); the FILE carries what the record
+    is FOR: which checks ran and what they said. A re-run with identical verdicts is now
+    byte-identical and the tree stays clean."""
     try:
         os.makedirs(evidence_dir, exist_ok=True)
         p = os.path.join(evidence_dir, 'PREFLIGHT.json')
-        json.dump([{'check': n, 'verdict': v, 'detail': d, 'seconds': s} for n, v, d, s in results],
-                  open(p, 'w'), indent=1)
+        body = json.dumps([{'check': n, 'verdict': v, 'detail': d} for n, v, d, _s in results],
+                          indent=1)
+        if os.path.exists(p) and open(p).read() == body:
+            return p
+        open(p, 'w').write(body)
         return p
     except OSError:
         return None
