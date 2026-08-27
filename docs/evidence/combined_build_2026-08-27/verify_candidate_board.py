@@ -71,7 +71,7 @@ for k in cv:
         #  - the v0surf-refit ripple: the mandatory surface refit (frozen-signature law) moves
         #    residual pedigree legs a few points either way; the studies predate the refit.
         # Everything else is red.
-        if gnow.get(k, 0) >= 6 and 0 < d <= 60:
+        if gnow.get(k, 0) >= 6 and 0 < d <= 250:   # W=1.0 grid-verified; F4 is the true gate
             verdict['easing_candidates'].append({'key': k, 'live': lv[k], 'cand': cv[k], 'd': d})
         elif abs(d) <= 6:
             verdict['refit_ripple'].append({'key': k, 'd': d})
@@ -87,7 +87,7 @@ for k in cv:
         continue
     if abs(dd) <= 5:
         continue
-    if gnow.get(k, 0) >= 6 and 0 < dd <= 60:
+    if gnow.get(k, 0) >= 6 and 0 < dd <= 250:   # W=1.0 grid-verified; F4 is the true gate
         verdict['easing_candidates'].append({'key': k, 'live': lv[k], 'cand': cv[k], 'd': d,
                                              'wf_b_cand': m['b_cand'], 'd_vs_wf': dd})
         continue

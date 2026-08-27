@@ -19,8 +19,8 @@
   },
   "totals": {
    "live": 703290,
-   "cand": 706544,
-   "net": 3254,
+   "cand": 706750,
+   "net": 3460,
    "wf_pred_net": 2948
   }
  },
@@ -133,26 +133,26 @@
   {
    "key": "latrelle-pickett",
    "live": 386,
-   "cand": 410,
-   "d": 24,
+   "cand": 511,
+   "d": 125,
    "wf_b_cand": 376,
-   "d_vs_wf": 34
+   "d_vs_wf": 135
   },
   {
    "key": "wil-dawson",
    "live": 287,
-   "cand": 314,
-   "d": 27,
+   "cand": 396,
+   "d": 109,
    "wf_b_cand": 286,
-   "d_vs_wf": 28
+   "d_vs_wf": 110
   },
   {
    "key": "jordan-croft",
    "live": 474,
-   "cand": 490,
-   "d": 16,
+   "cand": 513,
+   "d": 39,
    "wf_b_cand": 482,
-   "d_vs_wf": 8
+   "d_vs_wf": 31
   },
   {
    "key": "joshua-kelly",

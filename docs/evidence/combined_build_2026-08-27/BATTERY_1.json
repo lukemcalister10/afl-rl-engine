@@ -1,0 +1,315 @@
+{
+ "f2": {
+  "o46_leak": [],
+  "o47_direct": 18,
+  "o47_twin_channel": [],
+  "o47_via_net": 0,
+  "o48_leak": [],
+  "n_movers": {
+   "o46": 45,
+   "o47": 18,
+   "o48": 3
+  },
+  "pass": true
+ },
+ "f3": {
+  "ceiling_bad": [],
+  "ceiling_disclosed_standing": [
+   [
+    "jacob-newton",
+    "MOBILE",
+    0.934,
+    0.997
+   ]
+  ],
+  "pass": true,
+  "pairs_base": 345,
+  "pairs_cand": 399,
+  "pairs_drill": [
+   [
+    "dylan-patterson",
+    0.71,
+    "tobie-travaglia",
+    0.38
+   ],
+   [
+    "dylan-patterson",
+    0.71,
+    "zane-duursma",
+    0.23
+   ],
+   [
+    "dylan-patterson",
+    0.71,
+    "caleb-windsor",
+    0.71
+   ],
+   [
+    "dylan-patterson",
+    0.71,
+    "jhye-clark",
+    0.49
+   ],
+   [
+    "dylan-patterson",
+    0.71,
+    "neil-erasmus",
+    0.61
+   ],
+   [
+    "daniel-annable",
+    0.69,
+    "sid-draper",
+    0.39
+   ],
+   [
+    "daniel-annable",
+    0.69,
+    "zane-duursma",
+    0.23
+   ],
+   [
+    "daniel-annable",
+    0.69,
+    "elijah-tsatas",
+    0.4
+   ],
+   [
+    "daniel-annable",
+    0.69,
+    "jhye-clark",
+    0.49
+   ],
+   [
+    "daniel-annable",
+    0.69,
+    "neil-erasmus",
+    0.61
+   ],
+   [
+    "xavier-taylor",
+    0.7,
+    "tobie-travaglia",
+    0.38
+   ],
+   [
+    "xavier-taylor",
+    0.7,
+    "jhye-clark",
+    0.49
+   ],
+   [
+    "xavier-taylor",
+    0.7,
+    "elijah-hewett",
+    0.4
+   ],
+   [
+    "xavier-taylor",
+    0.7,
+    "neil-erasmus",
+    0.61
+   ],
+   [
+    "xavier-taylor",
+    0.7,
+    "josh-sinn",
+    0.16
+   ],
+   [
+    "xavier-taylor",
+    0.7,
+    "campbell-chesser",
+    0.13
+   ],
+   [
+    "oskar-taylor",
+    0.64,
+    "elijah-hewett",
+    0.4
+   ],
+   [
+    "oskar-taylor",
+    0.64,
+    "harry-rowston",
+    0.53
+   ],
+   [
+    "oskar-taylor",
+    0.64,
+    "max-michalanney",
+    0.61
+   ],
+   [
+    "oskar-taylor",
+    0.64,
+    "campbell-chesser",
+    0.13
+   ],
+   [
+    "oskar-taylor",
+    0.64,
+    "tom-brown",
+    0.44
+   ],
+   [
+    "oskar-taylor",
+    0.64,
+    "mitchell-knevitt",
+    0.23
+   ],
+   [
+    "cameron-nairn",
+    1.03,
+    "tom-gross",
+    0.88
+   ],
+   [
+    "cameron-nairn",
+    1.03,
+    "riley-hardeman",
+    0.57
+   ],
+   [
+    "cameron-nairn",
+    1.03,
+    "caiden-cleary",
+    0.98
+   ],
+   [
+    "cameron-nairn",
+    1.03,
+    "clay-hall",
+    0.56
+   ],
+   [
+    "cameron-nairn",
+    1.03,
+    "jacob-konstanty",
+    0.35
+   ],
+   [
+    "cameron-nairn",
+    1.03,
+    "sam-butler-1",
+    0.27
+   ],
+   [
+    "cameron-nairn",
+    1.03,
+    "jesse-motlop",
+    0.34
+   ],
+   [
+    "lachlan-carmichael",
+    0.67,
+    "sam-marshall",
+    0.66
+   ],
+   [
+    "lachlan-carmichael",
+    0.67,
+    "jake-rogers",
+    0.44
+   ],
+   [
+    "lachlan-carmichael",
+    0.67,
+    "riley-hardeman",
+    0.57
+   ],
+   [
+    "lachlan-carmichael",
+    0.67,
+    "clay-hall",
+    0.56
+   ],
+   [
+    "lachlan-carmichael",
+    0.67,
+    "harry-rowston",
+    0.53
+   ],
+   [
+    "lachlan-carmichael",
+    0.67,
+    "max-michalanney",
+    0.61
+   ],
+   [
+    "lachlan-carmichael",
+    0.67,
+    "tom-brown",
+    0.44
+   ],
+   [
+    "lachlan-carmichael",
+    0.67,
+    "josh-goater",
+    0.1
+   ],
+   [
+    "lachlan-carmichael",
+    0.67,
+    "mitchell-knevitt",
+    0.23
+   ],
+   [
+    "mitchell-marsh",
+    0.75,
+    "jonty-faull",
+    0.69
+   ],
+   [
+    "mitchell-marsh",
+    0.75,
+    "harry-armstrong",
+    0.74
+   ]
+  ],
+  "n_thin": 125,
+  "n_banked": 178
+ },
+ "f4": {
+  "grid": {
+   "1.0": {
+    "n_viol": 0,
+    "viol_head": [],
+    "new_pairs": 0,
+    "n_up": 3
+   },
+   "0.75": {
+    "n_viol": 0,
+    "viol_head": [],
+    "new_pairs": 0,
+    "n_up": 3
+   },
+   "0.5": {
+    "n_viol": 0,
+    "viol_head": [],
+    "new_pairs": 0,
+    "n_up": 3
+   },
+   "0.25": {
+    "n_viol": 0,
+    "viol_head": [],
+    "new_pairs": 0,
+    "n_up": 3
+   }
+  },
+  "chosen_W": 1.0,
+  "manifest_W": 1.0,
+  "n_eased_scope": 53,
+  "rebuild_needed": false
+ },
+ "f5": {
+  "bad": [],
+  "pass": true,
+  "n_class": 125
+ },
+ "f7": {
+  "bad": [],
+  "pass": true
+ },
+ "pass": true
+}

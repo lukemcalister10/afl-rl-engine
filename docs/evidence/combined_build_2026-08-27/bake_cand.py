@@ -52,7 +52,12 @@ json.dump(pvc, open(os.path.join(RA, 'pvc_curve_v2.json'), 'w'), indent=0, sort_
 man = json.load(open(os.path.join(ROOT, 'data', 'model_config.json')))
 sys.path.insert(0, ROOT)
 import config_manifest as CM
-for k, v in (('RL_O46', '1'), ('RL_O47', '1'), ('RL_O48', '1'), ('RL_O48_W', '0.25')):
+# RL_O48_W=1.0: the DECLARED grid procedure's output (FADE_LAW_DERIVATION.md L4, prereg F4) —
+# the largest of {1.0,0.75,0.5,0.25} under which every eased row prices strictly below its
+# thin-twin (banked seasons stripped, cameo kept) and the censuses count zero new violations.
+# Measured in BATTERY_1.json: all four weights pass with 0 violations => 1.0. The first bake's
+# 0.25 was a placeholder pending this battery, as the derivation doc declares.
+for k, v in (('RL_O46', '1'), ('RL_O47', '1'), ('RL_O48', '1'), ('RL_O48_W', '1.0')):
     man['vars'][k] = v
 man['config_sha256'] = CM.canonical_hash(man['vars'])
 json.dump(man, open(os.path.join(ROOT, 'data', 'model_config.json'), 'w'), indent=1, sort_keys=True)
