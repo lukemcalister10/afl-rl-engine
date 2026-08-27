@@ -1,0 +1,21 @@
+{
+ "passes": {
+  "pass_battery_1": {
+   "pass": true,
+   "chosen_W": 1.0,
+   "rebuild": false,
+   "f2": true,
+   "f3_ceiling_bad": 0,
+   "f3_pairs": [
+    345,
+    399
+   ],
+   "f5": true,
+   "f7": true,
+   "out": "/home/user/cand_build/root/docs/evidence/combined_build_2026-08-27/BATTERY_1.json"
+  }
+ },
+ "failed": [],
+ "workdir": "/home/user/cand_build/ws/rl_after",
+ "wall_s": 615.9
+}

@@ -4496,6 +4496,63 @@ if _O30B_PREVIEW:
                     return max(0.0,(1.0-_r)*_pre+_post)
                 return _post
         return max(0.0,fade30b_clock(p,Y)-o31_played_units(p,Y))
+    # ==== ORDERS 46-47 — THE COMBINED BUILD (register v873-v875; prereg docs/evidence/combined_build_2026-08-27) ====
+    # ORDER 46 (RL_O46, default '1'): THE EVIDENCE-CONDITIONAL CAPITAL-RETENTION SURFACE. Inside the
+    # thin-evidence class (every season <2 games as-of Y — the owner's sat word — tenure 2-4 at Y,
+    # entry age <22) the pedigree multiplier pi is FLOORED at the measured fair capital loading:
+    # cells fitted on resolved cohorts 2003-2018 at the CONSERVATIVE (fixed-horizon) line, register
+    # v869; piecewise-linear in cameo-quality rel = career cameo avg / REPL bar across the knots
+    # 0.40/0.525/0.65 (no cliff — mccabe sits on the edge); era t2-3 vs t4; the tall ceiling 0.92 is
+    # the v868 banked-mediocre cap, ruled AT equality. The floor's PRICE-level cap (never past the
+    # day-0 stamp via the lift; standing above-draft prices are not clawed back) lives at the blend.
+    # ORDER 47 (RL_O47, default '1'): HELP STEPS AT THE TRANSITION (the accrual asymmetry, owner
+    # 2026-08-25 twice-refined: "hurt accrues through the season, help steps at the season
+    # transition... survivors are entitled immediately"). ZERO NEW CONSTANTS: the entitled level is
+    # the EXISTING fitted table's own value — D(4)>D(3) is the measured survivorship selection — and
+    # the snap reads it only when HIGHER (help), never lower (hurt keeps accruing). Both dials off
+    # => neither branch below is reached => byte-exact to the pre-order board.
+    _O46=os.environ.get('RL_O46','1')!='0'
+    _O47=os.environ.get('RL_O47','1')!='0'
+    _O46F=[True]     # the in-body floor's live switch: the ORDER 46 FINAL GUARD (end of file) flips it
+                     # to price a row's floor-off twin in one call; nothing else may touch it.
+    _O46_TALL={'RUCK','KPF','KPD'}
+    _O46_CELLS={(0,0):(0.31,0.19,0.45,0.41),(0,1):(0.01,0.00,0.66,0.66),
+                (1,0):(0.70,0.21,0.92,0.92),(1,1):(0.25,0.00,0.67,0.67)}
+    _O46_KNOTS=(0.40,0.525,0.65)
+    def _o46_class(p,Y):
+        """The thin-evidence SURFACE class as-of Y (prereg L1, the v869/v870 studies' class): no season
+        with >=6 games, tenure 2-4, entry age <22 (mature-agers stay the owner's own packet word, D3
+        convention). NOT the <2 sat-season word — that word defines which seasons are SAT for the
+        STEP-UP (_o47_class below); the first build conflated the two and priced oliver/mccabe (cameo
+        rows with 2-5 game seasons) OUT of the surface — caught by the board verification, filed."""
+        _yr=int(p.get('year') or 0)
+        _t=Y-_yr+1
+        if not (2<=_t<=4): return False
+        _by=p.get('_by')
+        if not _by or _yr-int(_by)>=22: return False
+        return not any(_x.get('games',0)>=6 for _x in (p.get('scoring') or []) if _x.get('year',0)<=Y)
+    def _o47_class(p,Y):
+        """The STEP-UP class (prereg L3): every season <2 games — the ruled sat word — with the same
+        tenure/entry frame. The max() structure below self-selects the tenure-3 rows (D(4)>D(3) is the
+        only rising step), which is what makes the registered class 21 rows."""
+        _yr=int(p.get('year') or 0)
+        _t=Y-_yr+1
+        if not (2<=_t<=4): return False
+        _by=p.get('_by')
+        if not _by or _yr-int(_by)>=22: return False
+        return not any(_x.get('games',0)>=2 for _x in (p.get('scoring') or []) if _x.get('year',0)<=Y)
+    def _o46_L(p,Y):
+        """The measured cell, interpolated in rel across the knots — v869's conservative line."""
+        _cells=_O46_CELLS[(1 if MA.gfut(p) in _O46_TALL else 0, 1 if (Y-int(p.get('year') or Y)+1)>=4 else 0)]
+        _sc=[_x for _x in (p.get('scoring') or []) if _x.get('year',0)<=Y]
+        _g=sum(_x.get('games',0) for _x in _sc)
+        if _g==0: return _cells[0]
+        _rel=(sum(_x['avg']*_x['games'] for _x in _sc)/_g)/MA.REPL[MA.gfut(p)]
+        _lo,_mid,_hi=_O46_KNOTS
+        if _rel<=_lo: return _cells[1]
+        if _rel<=_mid: return _cells[1]+(_cells[2]-_cells[1])*(_rel-_lo)/(_mid-_lo)
+        if _rel<=_hi: return _cells[2]+(_cells[3]-_cells[2])*(_rel-_mid)/(_hi-_mid)
+        return _cells[3]
     def o31_D(p,Y):
         """The fade at the UNPLAYED depth. ONE law for every pathway: the ruled ND schedule is applied to
         every non-pool row (a BORROW for RD and pickless-ND rows, disclosed), and pool rows take the
@@ -4505,6 +4562,19 @@ if _O30B_PREVIEW:
         stays production-only. σ_sel(0 games)=0, so gameless rows are untouched."""
         _cu=o31_cu(p,Y)
         _D=(o31_pool_D(_cu) if p.get('_pool') else o31_fade_D(_cu))
+        if _O47 and _o47_class(p,Y):
+            # ORDER 47 — THE CLOCK LAW (FADE_LAW_DERIVATION.md L3a, verbatim): the unplayed clock
+            # SNAPS to the next integer level IF AND ONLY IF the table's value there is HIGHER (help
+            # steps, hurt accrues; v851's 143/77/106 ladder; benchmark dodson D(2.871)->D(4)). The
+            # search runs to the flat and stops at the FIRST higher level; a clock already at its
+            # best level finds none and stands. [The first cut of this order transcribed an
+            # nsat-counting formula instead; it handed the O45 scoring-stripped counterfactual twin
+            # a fresh-survivor level D(2) — caught by the residual probe, filed. The law is a
+            # function of the CLOCK, so every row — twins included — reads it identically.]
+            _Dtab=(o31_pool_D if p.get('_pool') else o31_fade_D)
+            _k=int(_cu) if _cu==int(_cu) else int(_cu)+1
+            while _k<=O31_FADE_FLAT_FROM and _Dtab(_k)<=_D: _k+=1
+            if _k<=O31_FADE_FLAT_FROM: _D=_Dtab(_k)
         # ORDER D (RL_O35, owner word: the MEASURED curve): the per-year sitting cost scales with
         # the fitted pick-signal — D^kappa(pick), smooth in ln(pick), NEVER a band step. Applied to
         # the row's own schedule BEFORE the relief; 1^kappa == 1 so rows the fade does not reach
@@ -5134,7 +5204,7 @@ if _O30B_PREVIEW:
         if _w>=1.0: return _f
         if _f<=0.0 or _old<=0.0: return _f*_w+_old*(1.0-_w)
         return _math.exp(_w*_math.log(_f)+(1.0-_w)*_math.log(_old))
-    def o31_pi(p,Y,g=None,_Dov=None):
+    def o31_pi(p,Y,g=None,_Dov=None,_nofloor=False):
         """pi(g, c_u, s) = Phi(g,s) * [ D(c_u)*(1-rho(g)) + beta_mono(g)*rho(g) ].
         At g=0 this is D(c_u) EXACTLY. As rho -> 1 it is the measured additive beta EXACTLY.
         ORDER 41: _Dov overrides the sitter fade D — used ONLY to form the ABSENCE-FREE reference
@@ -5161,7 +5231,10 @@ if _O30B_PREVIEW:
             # three dials off `_O38` is False and o37_factor runs exactly as before, byte for byte.
             _pi*=(((o38_factor(p,Y,_g) if _O38 else o37_factor(p,Y,_g)) if _O37 else
                   max(0.0,1.0-O32_ETA*((_g/O32_GAMMA_D)*_math.exp(1.0-_g/O32_GAMMA_D)))))
-        return _pi
+        if _O46 and _O46F[0] and not _nofloor and _o46_class(p,Y):
+            _pi=max(_pi,_o46_L(p,Y))               # ORDER 46: the retention surface (floor, in-body —
+        return _pi                                 # the studies' proven site; _nofloor serves the
+                                                   # exporter mirror; _O46F serves the final guard)
     # ===== ORDER 41 (RL_O41_R3) — THE PRODUCTION FADE, SIZED BY THE OWNER'S R1 COMBINED-TAKE LAW ===
     # THE OWNER: "his production leg should fade with 2 seasons out." Conway is the exhibit, never the
     # target. THE SIZING LAW IS HIS R1 RULING: split collection across mechanisms is NOT a defect, an
@@ -5373,18 +5446,43 @@ if _O30B_PREVIEW:
         residual the combined-take law leaves. Dial off => this line is not reached."""
         _g=pv_games(p,Y)
         _ped=pv_pedigree(p)
-        _v=rho31(_g)*float(e)+o31_pi(p,Y,_g)*_ped+o32_age_credit(p,Y,_g)
-        return _v-o41_r3_take(p,Y,_g,e,_ped) if _O41_R3 else _v
+        _pi31=o31_pi(p,Y,_g)
+        _v=rho31(_g)*float(e)+_pi31*_ped+o32_age_credit(p,Y,_g)
+        if _O41_R3: _v=_v-o41_r3_take(p,Y,_g,e,_ped)
+        # (ORDER 46's price cap moved OUT of this blend to the FINAL GUARD at the end of the file:
+        # capping here left the floored pi visible to downstream stages that gate on it — the
+        # measured mraz flip, where a route relief switched off and a standing 943 fell to 739.
+        # The cap and the no-decrease belong at the level of the price the owner's rule speaks
+        # about: the finished one.)
+        return _v
     if _O31:
         _PV['blend']=_pv_order31
         # THE DAY-0 PREDICATE IS RESTATED, NOT DROPPED. Under the one law a zero-games row's price IS
         # v0 x D(c_u) with c_u == the fade clock, so rl_export's printed-day-0 assert keeps its meaning and
         # its tolerance-0 equality -- it now proves the one law reproduces the ruled sitter law rather than
         # asserting a separately-wired branch against itself.
+        # ORDER 46 RESTATEMENT (2026-08-27, the prereg's own 'F7 exporter assert' repair): inside the
+        # retention-surface class the sitter law is ONE CLAUSE WIDER — pi is floored at the measured cell
+        # and the lift is capped at the day-0 stamp — so the predicate is read THROUGH the engine's own
+        # o31_pi/cap path for exactly those rows (same rows, tolerance 0, the 29B->30B->31 lineage
+        # continued). Out-of-class rows and the dials-off path keep the pre-order expression verbatim,
+        # which is what keeps F1's byte-exact off-proof meaningful. The wall below (pi(0)==D) still
+        # holds because the gameless 'none' cells sit below the (O47-stepped) fade everywhere measured;
+        # the widening binds only on cameo evidence, through L1's cells, never the maturation term.
         def _entry30b_price(p,Y=2026,__d=_entry29b_derived):
             _d0=__d(p,Y)
             if _d0 is None: return None
-            return _d0*o31_D(p,Y)
+            if not (_O46 and _o46_class(p,Y)):
+                return _d0*o31_D(p,Y)
+            # the ORDER 46 FINAL GUARD's construct, mirrored in board currency (the pre-order
+            # identity proved pi_raw(g)==D on the sitter set, so the off-leg is the old law):
+            #   max(off, min(on, max(off, day0)))
+            _g=pv_games(p,Y)
+            _off=_d0*o31_pi(p,Y,_g,_nofloor=True)
+            _on=_d0*o31_pi(p,Y,_g)
+            _d0c=day0_v0(p)
+            _cap=max(_off,float(_d0c)) if _d0c is not None else _off
+            return max(_off,min(_on,_cap))
         # BUILD-FAILING STRUCTURAL ASSERTS (the brief's assert wall, at the law itself).
         _o31_bad=[]
         for _p in MA.data:
@@ -6420,6 +6518,17 @@ if _O45:
         if c>=hi: return 1.0
         t=(c-lo)/(hi-lo)
         return 3.0*t*t-2.0*t*t*t                              # smoothstep: C1 at both knots, no cliff (law 3)
+    # ==== ORDER 48 (RL_O48, default '1') — THE BOUNDARY EASING (owner word "Keep the easing", v874;
+    # ruled with the v871 measurement in front of him). The net's hard edge at the FIRST >=6-game
+    # season becomes a ONE-SEASON TAPER: during a row's first banked season — and only then — the
+    # net applies at weight RL_O48_W; after it, zero, exactly as before. RL_O48_W is set by the
+    # DECLARED PROCEDURE (FADE_LAW_DERIVATION.md L4): the largest of {1.0,0.75,0.5,0.25} that passes
+    # prereg F4 (the eased price stays below the row's thin-twin surface price; the v868/v871
+    # censuses count ZERO new inversions) — the battery computes it, the manifest declares it, and
+    # if even 0.25 fails F4 the ease lands at 0 with the owner told his ruling was sized out by his
+    # own constraint. Dial off => the banked test below is the pre-order test byte-for-byte.
+    _O48=os.environ.get('RL_O48','1')!='0'
+    _O48_W=float(os.environ.get('RL_O48_W','0.25'))
     _ev_pre45=ev
     def ev(p,Y=2026,__inner=_ev_pre45):
         """ORDER 45 (RL_O45) — THE POSITION-SCALED SAFETY NET, at the one law. A tenure-1-4,
@@ -6437,7 +6546,16 @@ if _O45:
                                                                # Measured: 0 of 2650 store rows are keyless.
         _sc=[x for x in (p.get('scoring') or []) if x.get('year',0)<=2026]
         _g=sum(x.get('games',0) for x in _sc)
-        if _g<1 or any(x.get('games',0)>=6 for x in _sc): return _v
+        if _g<1: return _v
+        _bk=sum(1 for x in _sc if x.get('games',0)>=6)
+        if _bk and not (_O48 and _O48_W>0.0 and _bk==1
+                        and any(x.get('year')==int(Y) and x.get('games',0)>=6 for x in _sc)):
+            return _v                              # ORDER 48: the taper applies DURING a row's
+                                                   # first banked season and only then (the law's
+                                                   # word) — one banked season AND it is the
+                                                   # current one; a completed first banked season,
+                                                   # more than one, or dial off => the hard edge,
+                                                   # byte-for-byte
         _ten=2026-int(p.get('year') or 2026)+1
         if _ten<1 or _ten>4: return _v
         _by=p.get('_by')
@@ -6452,6 +6570,7 @@ if _O45:
                              'fallback would hand this row the MID knots.'%(p.get('key'),_pos))
         _c=sum(x['avg']*x['games'] for x in _sc)/_g
         _L=_o45_lam(_c,_pos)
+        if _bk: _L=_L*_O48_W                                   # ORDER 48: the one-season taper
         if _L<=0.0: return _v
         _s0=p['scoring']; p['scoring']=[]
         try:
@@ -6471,6 +6590,33 @@ if _O45:
           "entry age <22, no banked level, >=1 career game; lambda smoothstep on knots (40,45) x "
           "posbar/MIDbar; lift toward the row's own scoring-stripped counterfactual. A max at Y=2026: "
           "it can only RAISE. RL_O45=0 => never installed. ===")
+# ==== ORDER 46 FINAL GUARD — the surface as a PRICE-LEVEL no-decrease, capped at the day-0 stamp ====
+# The owner's rule (v869) speaks about the FINISHED price: the surface's lift may not take a row past
+# his draft-day stamp, and a standing price is never repossessed. The first cut capped at the blend,
+# which left the floored pi visible to every downstream stage that gates on it — measured on mraz
+# (KPD, standing 943 well above draft 452): the floor lifted pi 0.39->0.92, a downstream relief keyed
+# on unproven-pi switched OFF, and the "floor" priced him DOWN 204. A floor that can lower a price is
+# not a floor. So the construct now lives HERE, outside every wrapper, on the finished number:
+#     v_off = the price with the in-body floor switched off (the row's own standing law)
+#     v     = the price with it on
+#     final = max(v_off, min(v, max(v_off, day0*F)))
+# — monotone by construction (never below v_off), capped by construction (the lift stops at the
+# stamp), and the cap can never bite below the standing price. Costs one extra pricing per IN-CLASS
+# row only. Dial off => _O46 is False, the branch below never runs, the call passes through.
+_ev_pre46g=ev
+def ev(p,Y=2026,__inner=_ev_pre46g):
+    _v=__inner(p,Y)
+    if not _O46 or p.get('_retired') or p.get('key') is None or not _o46_class(p,Y):
+        return _v
+    _O46F[0]=False
+    try:
+        with contextlib.redirect_stdout(io.StringIO()):
+            _voff=__inner(p,Y)
+    finally:
+        _O46F[0]=True
+    _d0c=day0_v0(p)
+    _cap=max(_voff,float(_d0c)*_PL_F) if _d0c is not None else _voff
+    return max(_voff,min(_v,_cap))
 print("=== AFTER (wired: delist + staleness + isotonic) — named players ===")
 print(f"{'player':22s}{'pos':8s}{'pk':>3s}{'g':>3s}{'ten':>4s}{'dlst':>5s}{'draft':>6s}{'BEFORE':>7s}{'AFTER':>7s}  reasoning")
 before={'Ronin O':526,'Will Martyn':554,'Sam Philp':714,'Oscar Ryan':570,'Tew Jiath':509,'Jakob Ryan':594,'Harrison Jones':528,'Keidean Coleman':723,'Dylan Stephens':761}

@@ -1,0 +1,11 @@
+{
+ "passes": {
+  "pass_probe_residuals": {
+   "out": "/home/user/cand_build/root/docs/evidence/combined_build_2026-08-27/PROBE_RESIDUALS.json",
+   "n": 9
+  }
+ },
+ "failed": [],
+ "workdir": "/home/user/cand_build/ws/rl_after",
+ "wall_s": 361.3
+}

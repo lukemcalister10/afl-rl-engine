@@ -745,7 +745,7 @@ _OV.assert_presence(active)
 # §2.viii (owner item 359): the phantom layer carries the FULL expected annual intake (~103 slots) — the real
 # draft pick structure at v2-curve PVC per EFFECTIVE pick, plus mechanisms at their measured pick-equivalents
 # (MSD 90, all others 92 — item 341). The slot structure is measured from recorded store intake history and
-# SEALED before this render (session_2026-07-18/legf5/sealed_entrant_structure.json, seal bd2d091b (ORDER 29: re-measured at the ruled curve 9729f0c5; the OCCUPANCY COUNTS are byte-identical to seal c9e7491b — only the PRICING moved, so this is a re-price of a frozen measurement, never a re-count. RE-SEALED cbb7c431 -> ccc26a9e by THE F5 ROUNDING ACT 2026-08-20: entrant_pvc.total 56772 -> 56773, the sum of the seal's OWN rounded parts instead of a third independent rounding. RE-SEALED ccc26a9e -> bd2d091b at the S_LL5G COMBINED BUILD 2026-08-27: the curve moved (smoothed day-0 law, owner word v874), so the frozen COUNTS — byte-identical again — were RE-PRICED at the baked curve (payload c8980547): draft 49595 -> 49480, mech unchanged 7178; the stamp is MEASURED live per #306 L7, so it now names the baked curve and the current store) — NOT
+# SEALED before this render (session_2026-07-18/legf5/sealed_entrant_structure.json, seal ccc26a9e (ORDER 29: re-measured at the ruled curve 9729f0c5; the OCCUPANCY COUNTS are byte-identical to seal c9e7491b — only the PRICING moved, so this is a re-price of a frozen measurement, never a re-count. RE-SEALED cbb7c431 -> ccc26a9e by THE F5 ROUNDING ACT 2026-08-20: entrant_pvc.total 56772 -> 56773, the sum of the seal's OWN rounded parts instead of a third independent rounding. The COUNTS and the STAMP are byte-identical to cbb7c431 — nothing was re-measured and nothing was re-stamped; only the arithmetic that derives the total changed) — NOT
 # tuned against the §2.x gate (the LAW: sealed from history first). phantom=true; never at k=0; never gates/bakes.
 #
 # OBITUARY — F1's §2.i/§2.ii sizing is SUPERSEDED (delete, don't disable; CORE rule 7). The F1 phantom intake
@@ -763,9 +763,9 @@ if os.environ.get('RL_LEGF', '1') != '0':
     _lf_struct = json.load(open(_lf_seal_path))
     _lf_chk = {_kk: _vv for _kk, _vv in _lf_struct.items() if _kk != 'seal_sha256_8'}
     _lf_seal = _hl.sha256(json.dumps(_lf_chk, sort_keys=True, separators=(',', ':')).encode()).hexdigest()[:8]
-    if not (_lf_seal == _lf_struct.get('seal_sha256_8') == 'bd2d091b'):
+    if not (_lf_seal == _lf_struct.get('seal_sha256_8') == 'ccc26a9e'):
         raise SystemExit('LEG F5 HALT (§2.viii): sealed entrant structure seal drift — recomputed %s vs stored '
-                         '%s vs pinned bd2d091b. Re-seal from intake history before rendering.'
+                         '%s vs pinned ccc26a9e. Re-seal from intake history before rendering.'
                          % (_lf_seal, _lf_struct.get('seal_sha256_8')))
     _PVCMAX = max(PVC)
     def _lf_pvc(_e): return PVC.get(min(int(_e), _PVCMAX), PVC[_PVCMAX])   # v2-curve PVC of an effective pick
