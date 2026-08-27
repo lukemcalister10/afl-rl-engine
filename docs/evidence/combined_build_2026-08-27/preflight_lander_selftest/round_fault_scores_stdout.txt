@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
-  tree      : /tmp/landing_selftest_12507/sandbox
+  tree      : /tmp/landing_selftest_1802/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 3167cba643a6b16e5ef5d904d8957fcd
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,12 +9,12 @@ LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
 
 --- STEP 0/14  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-round-13421 (pid 13421) — single writer for the shared workspace.
-base commit        b80185d1bf6968a4d4214cd4d35b028abd88953a
+build-lock: HELD by land-round-2824 (pid 2824) — single writer for the shared workspace.
+base commit        8a93705b0fb1c6afeee91061e1c01b86bdf86960
 board pin (before) 3167cba643a6b16e5ef5d904d8957fcd
 store pin (before) fb640ca0baf92bbb122b1ad7e25c5a88
 restore point      120 carrier(s) captured, 120 present on disk
-    [preflight OK  0.08s]
+    [preflight OK  0.11s]
 
 --- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
 sheet         docs/owner_annotations/SITTER_2026_v1.csv
@@ -43,8 +43,8 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.08s  OK
+    preflight          0.11s  OK
     sheet              0.00s  OK
     scores             0.00s  FAIL
-    TOTAL              0.08s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_13421
+    TOTAL              0.11s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_2824

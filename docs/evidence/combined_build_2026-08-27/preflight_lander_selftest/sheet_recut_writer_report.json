@@ -1,8 +1,8 @@
 {
   "abort": null,
   "commits": [
-    "6c1b088d8b0fbbd558086c18d960eb247a33ccd4",
-    "282a6fa7c4b7f824bf5b91cd10c7e95ab69f691d"
+    "70c83629d59c829aa97b1acd7142579784c73ba1",
+    "26ad789cad96d204067d58cbaa384b9c949c3ed2"
   ],
   "error": null,
   "facts": {
@@ -137,7 +137,7 @@
         "ui/data/ownership.js": "bbe84cd7acfbab056e7c94d0d2dbe671",
         "ui/tests/movers.test.js": "12bd3828f88d29459f94a9f4054306d1"
       },
-      "commit": "b80185d1bf6968a4d4214cd4d35b028abd88953a",
+      "commit": "8a93705b0fb1c6afeee91061e1c01b86bdf86960",
       "expected_boot": {
         "as_of_round": 24,
         "balanced_board_md5": "b7149d5ff7b62ad0916f9a950351b03d",
@@ -170,12 +170,12 @@
           "state": "off"
         }
       },
-      "claims_path": "/tmp/landing_selftest_12507/sandbox/docs/evidence/landing_selftest/SELFTEST_CLAIMS.json",
+      "claims_path": "/tmp/landing_selftest_1802/sandbox/docs/evidence/landing_selftest/SELFTEST_CLAIMS.json",
       "n_claims": 9,
       "verified": true
     },
     "commit": {
-      "commit": "282a6fa7c4b7f824bf5b91cd10c7e95ab69f691d",
+      "commit": "26ad789cad96d204067d58cbaa384b9c949c3ed2",
       "committed": true,
       "paths": [
         "docs/STATE.md",
@@ -235,17 +235,17 @@
       "written": true
     },
     "preflight": {
-      "base_commit": "b80185d1bf6968a4d4214cd4d35b028abd88953a",
+      "base_commit": "8a93705b0fb1c6afeee91061e1c01b86bdf86960",
       "board_before": "3167cba643a6b16e5ef5d904d8957fcd",
       "carriers_captured": 120,
-      "lock": "land-round-13561"
+      "lock": "land-round-2996"
     },
     "scores": {
       "rehearsal": true,
       "scores": null
     },
     "sheet": {
-      "commit": "6c1b088d8b0fbbd558086c18d960eb247a33ccd4",
+      "commit": "70c83629d59c829aa97b1acd7142579784c73ba1",
       "engine_head": "d84031cff312818a158855f2dd223cc1",
       "moved": [
         "sheet_md5",
@@ -266,9 +266,9 @@
     },
     "state": {
       "changed": true,
-      "md5": "a7941fd6e6256016c623977633626737",
+      "md5": "af66e882e675bc578ea3344bc5b1f1bd",
       "path": "docs/STATE.md",
-      "stamp_commit": "6c1b088d8b0fbbd558086c18d960eb247a33ccd4",
+      "stamp_commit": "70c83629d59c829aa97b1acd7142579784c73ba1",
       "written": true
     },
     "ui": {
@@ -300,7 +300,7 @@
       "verdict": "OK"
     },
     {
-      "seconds": 0.16,
+      "seconds": 0.79,
       "step": "sheet",
       "verdict": "OK"
     },
@@ -330,42 +330,42 @@
       "verdict": "OK"
     },
     {
-      "seconds": 0.08,
+      "seconds": 0.11,
       "step": "contract",
       "verdict": "OK"
     },
     {
-      "seconds": 0.13,
+      "seconds": 0.15,
       "step": "sibling",
       "verdict": "OK"
     },
     {
-      "seconds": 1.94,
+      "seconds": 2.64,
       "step": "ui",
       "verdict": "OK"
     },
     {
-      "seconds": 0.12,
+      "seconds": 0.14,
       "step": "movers_page",
       "verdict": "OK"
     },
     {
-      "seconds": 0.14,
+      "seconds": 0.17,
       "step": "state",
       "verdict": "OK"
     },
     {
-      "seconds": 0.13,
+      "seconds": 0.16,
       "step": "gates",
       "verdict": "OK"
     },
     {
-      "seconds": 0.22,
+      "seconds": 0.3,
       "step": "claims",
       "verdict": "OK"
     },
     {
-      "seconds": 0.22,
+      "seconds": 0.24,
       "step": "commit",
       "verdict": "OK"
     }

@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_12507/sandbox
+  tree      : /tmp/landing_selftest_1802/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 3167cba643a6b16e5ef5d904d8957fcd
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,12 +9,12 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-lever-12885 (pid 12885) — single writer for the shared workspace.
-base commit        b80185d1bf6968a4d4214cd4d35b028abd88953a
+build-lock: HELD by land-lever-2255 (pid 2255) — single writer for the shared workspace.
+base commit        8a93705b0fb1c6afeee91061e1c01b86bdf86960
 board pin (before) 3167cba643a6b16e5ef5d904d8957fcd
 store pin (before) fb640ca0baf92bbb122b1ad7e25c5a88
 restore point      67 carrier(s) captured, 67 present on disk
-    [preflight OK  0.07s]
+    [preflight OK  0.09s]
 
 --- STEP 1/10  build_proofs   bare build, predicted identity, switch leg, day-0 ---
 build         rc=0 board=3167cba643a6b16e5ef5d904d8957fcd  (0.0s)
@@ -59,10 +59,10 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.07s  OK
+    preflight          0.09s  OK
     build_proofs       0.01s  OK
     pins               0.02s  OK
     lineage            0.00s  OK
     contract           0.00s  FAIL
-    TOTAL              0.10s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_12885
+    TOTAL              0.12s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_2255

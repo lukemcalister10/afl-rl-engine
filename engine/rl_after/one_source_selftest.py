@@ -517,7 +517,13 @@ if _pvc2_on:
     # store, the per-entrant derivation, and the byte-frozen contract. Live-store divergence means
     # "re-derivation due" in the claims note/checklist; it is not curve corruption and must not re-alarm weekly.
     _curve_contract_path=(os.path.join(_repo,'ui','release_pick_curve.json') if _repo else None)
-    _contract_md5='a6a4c9d02fc5b0203ce44f9f228740a1'   # RE-PINNED by THE LANDING MOP-UP
+    _contract_md5='05c2bf2f3a618fafcd7e50ca755d2e00'   # RE-PINNED by THE S_LL5G LANDING MOP-UP
+    # (the combined build 2026-08-27, registers v873-v879; owner word v874 "Lock in LL5G then"):
+    # the release-active artifact moved to file md5 031ec76e / payload 1c3b22d1 at the flip (the
+    # smoothed day-0 law), the landing board 530a4053 is built on it, and the contract still named
+    # 78ad9842 / 9729f0c5 — caught by the landing's own ui ring-fence, the abort restored every
+    # carrier, and this mirror+pin move together in one commit exactly as every prior act did.
+    # PREVIOUS PIN: a6a4c9d02fc5b0203ce44f9f228740a1, which was RE-PINNED by THE LANDING MOP-UP
     # (register v786 ruling R2, owner word 2026-08-20: "yes, the pick curve should be updated";
     # preregistered at docs/evidence/landing_tail_2026-08-20/PREREG_CURVE_MIRROR.md BEFORE the edit).
     # ui/release_pick_curve.json was the last stale MIRROR of the curve THE LANDING adopted: the
