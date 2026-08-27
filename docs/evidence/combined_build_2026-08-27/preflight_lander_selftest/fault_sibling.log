@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_8070/sandbox
+  tree      : /tmp/landing_selftest_11062/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 3167cba643a6b16e5ef5d904d8957fcd
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,8 +9,8 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-lever-8436 (pid 8436) — single writer for the shared workspace.
-base commit        393c12d11d0370aef2b060b54b27017265c7b2e4
+build-lock: HELD by land-lever-11443 (pid 11443) — single writer for the shared workspace.
+base commit        bf62f068d264f430f70377df4722b635caa0ef54
 board pin (before) 3167cba643a6b16e5ef5d904d8957fcd
 store pin (before) fb640ca0baf92bbb122b1ad7e25c5a88
 restore point      67 carrier(s) captured, 67 present on disk
@@ -55,11 +55,11 @@ WRITER 2: the bake-lane identities restamp_dynamic does not touch
   contract_sha256             de37f057eba1 -> de37f057eba1
   frozen fields asserted unmoved: 10 checked, 0 moved
 RE-STAMPED, re-read, and release_contract.py check PASSES.
-    [contract OK  0.10s]
+    [contract OK  0.09s]
 
 --- STEP 5/10  sibling        the balanced sibling, rebuilt and reconciled if moved ---
 *** FAULT INJECTED at step 'sibling': sidecar_corrupt — the sibling provenance sidecar is unreadable
-    [sibling FAILED  0.08s]
+    [sibling FAILED  0.05s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'sibling'
@@ -83,7 +83,7 @@ improvised manual landing under pressure.
     build_proofs       0.01s  OK
     pins               0.02s  OK
     lineage            0.00s  OK
-    contract           0.10s  OK
-    sibling            0.08s  FAIL
-    TOTAL              0.28s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_8436
+    contract           0.09s  OK
+    sibling            0.05s  FAIL
+    TOTAL              0.24s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_11443
