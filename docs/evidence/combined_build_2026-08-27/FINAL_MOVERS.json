@@ -12,7 +12,8 @@
    "JOSH SMILLIE +180 \u2014 the survivorship step-up (the derived clock law) on a pick-3 pedigree; the class was predicted, this size was not: the law pays a tenure-3 survivor the D(4) level and his pedigree is the largest in the class.",
    "EASING AT FULL WEIGHT (W=1.0): the declared sizing procedure (largest grid weight under which no eased row reaches its thin twin) passed at every weight, so it selects 1.0. It reaches exactly THREE rows (pickett +135, dawson +110, croft +31 \u2014 first banked season in progress), not the ~28 small ups the prereg predicted, and moir is NOT among them (he moves -1 through the ripple). The sizes exceed the +28/+34 seen at the 0.25 placeholder; the constraint you set is the only thing that binds them.",
    "v0surf refit ripple (the residual column): 35 rows within the +/-6 bound, net -3 \u2014 the mandatory fitted-surface regeneration under the smoothed curve; the studies predate it. [Corrected at blind review: the first draft classified 13 of these \u2014 career-banked veterans \u2014 as easing off a career-games field; the easing class is now derived from the store's own scoring records.]",
-   "F3 AS PREREGISTERED FIRED: the pairwise thin-above-any-banked census GREW 345 -> 399 (+54). The battery gate was re-instrumented to the ruled construction \u2014 no thin row the lift touches may load above the banked-mediocre ceiling you set the cells at (0.81 mobile / 0.92 tall, tall ruled AT equality) \u2014 and that gate is clean (zero breaches; newton disclosed: his 0.93 loading is standing MSD route floors, lift capped at his stamp). The +54 pairs are thin rows floored above rows that RESOLVED DOWN (busts and poor outcomes) \u2014 the six-game step you ruled \u2014 but the prereg falsifier as WRITTEN failed and the re-instrumentation is named here, not buried."
+   "F3 AS PREREGISTERED FIRED: the pairwise thin-above-any-banked census GREW 345 -> 399 (+54). The battery gate was re-instrumented to the ruled construction \u2014 no thin row the lift touches may load above the banked-mediocre ceiling you set the cells at (0.81 mobile / 0.92 tall, tall ruled AT equality) \u2014 and that gate is clean (zero breaches; newton disclosed: his 0.93 loading is standing MSD route floors, lift capped at his stamp). The +54 pairs are thin rows floored above rows that RESOLVED DOWN (busts and poor outcomes; the blind review independently recomputed the censuses: ~51 of ~55 fit that description cleanly, the remainder ride the step-up/smoothing and the disclosed newton standing row) \u2014 the six-game step you ruled \u2014 but the prereg falsifier as WRITTEN failed and the re-instrumentation is named here, not buried.",
+   "THE FINAL RAILS vs THE TABLES YOU APPROVED (v876/v877): every headline moved TOWARD safety \u2014 W2 +7.96% (approved +10.50%; live +6.37%; rail 1.14, F8 green), head 1-20 +16.01% (approved +17.08%), deep 21-64 +1.12% still healed-fair (approved +2.47%). Same three carried breach classes (2011/2012/2016), ZERO new \u2014 they deepen ~0.01-0.018 where P-5 said shrink-or-hold, a named deviation. The differences are the built step-up/easing and the v0surf refit replacing the studies' approximations; judged INSIDE the approval (same shape, smaller magnitudes, safer direction) \u2014 the kill-switch stands if you read it otherwise. Full tables: NOARB_FINAL.html \u00b7 class marks: noarb_class_FINAL.json."
   ],
   "columns": "live -> +smoothing -> +surface -> +step-up -> +easing -> +residual = candidate; v0 = the smoothed draft-day stamp; d_from_v0 = candidate minus draft day"
  },
@@ -1704,8 +1705,8 @@
    "d_easing": 0,
    "d_residual": 6,
    "d_total": 6,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 1839,
+   "d_from_v0": -1799,
    "flag": "RIPPLE"
   },
   {
@@ -2160,8 +2161,8 @@
    "d_easing": 0,
    "d_residual": 4,
    "d_total": 4,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 1247,
+   "d_from_v0": -1223,
    "flag": "RIPPLE"
   },
   {
@@ -2559,8 +2560,8 @@
    "d_easing": 0,
    "d_residual": -3,
    "d_total": -3,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 2210,
+   "d_from_v0": -2174,
    "flag": "RIPPLE"
   },
   {
@@ -2578,8 +2579,8 @@
    "d_easing": 0,
    "d_residual": -3,
    "d_total": -3,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 2296,
+   "d_from_v0": -2249,
    "flag": "RIPPLE"
   },
   {
@@ -2597,8 +2598,8 @@
    "d_easing": 0,
    "d_residual": -3,
    "d_total": -3,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 1926,
+   "d_from_v0": -1896,
    "flag": "RIPPLE"
   },
   {
@@ -2616,8 +2617,8 @@
    "d_easing": 0,
    "d_residual": -3,
    "d_total": -3,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 2296,
+   "d_from_v0": -2249,
    "flag": "RIPPLE"
   },
   {
@@ -2863,8 +2864,8 @@
    "d_easing": 0,
    "d_residual": -2,
    "d_total": -2,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 583,
+   "d_from_v0": 21,
    "flag": "RIPPLE"
   },
   {
@@ -2977,8 +2978,8 @@
    "d_easing": 0,
    "d_residual": 2,
    "d_total": 2,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 2938,
+   "d_from_v0": -2206,
    "flag": "RIPPLE"
   },
   {
@@ -3148,8 +3149,8 @@
    "d_easing": 0,
    "d_residual": -2,
    "d_total": -2,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 1382,
+   "d_from_v0": -855,
    "flag": "RIPPLE"
   },
   {
@@ -3224,8 +3225,8 @@
    "d_easing": 0,
    "d_residual": -2,
    "d_total": -2,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 1255,
+   "d_from_v0": -1053,
    "flag": "RIPPLE"
   },
   {
@@ -3338,8 +3339,8 @@
    "d_easing": 0,
    "d_residual": -2,
    "d_total": -2,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 2587,
+   "d_from_v0": -2533,
    "flag": "RIPPLE"
   },
   {
@@ -3357,8 +3358,8 @@
    "d_easing": 0,
    "d_residual": 2,
    "d_total": 2,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 1378,
+   "d_from_v0": -1353,
    "flag": "RIPPLE"
   },
   {
@@ -3376,8 +3377,8 @@
    "d_easing": 0,
    "d_residual": 2,
    "d_total": 2,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 1062,
+   "d_from_v0": -1039,
    "flag": "RIPPLE"
   },
   {
@@ -3395,8 +3396,8 @@
    "d_easing": 0,
    "d_residual": 2,
    "d_total": 2,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 1378,
+   "d_from_v0": -1353,
    "flag": "RIPPLE"
   },
   {
@@ -3414,8 +3415,8 @@
    "d_easing": 0,
    "d_residual": 2,
    "d_total": 2,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 1588,
+   "d_from_v0": -1552,
    "flag": "RIPPLE"
   },
   {
@@ -3433,8 +3434,8 @@
    "d_easing": 0,
    "d_residual": -2,
    "d_total": -2,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 2587,
+   "d_from_v0": -2533,
    "flag": "RIPPLE"
   },
   {
@@ -3452,8 +3453,8 @@
    "d_easing": 0,
    "d_residual": 2,
    "d_total": 2,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 1378,
+   "d_from_v0": -1353,
    "flag": "RIPPLE"
   },
   {
@@ -3623,8 +3624,8 @@
    "d_easing": 0,
    "d_residual": -1,
    "d_total": -1,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 2047,
+   "d_from_v0": 1143,
    "flag": "RIPPLE"
   },
   {
@@ -4022,8 +4023,8 @@
    "d_easing": 0,
    "d_residual": -1,
    "d_total": -1,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 536,
+   "d_from_v0": 960,
    "flag": "RIPPLE"
   },
   {
@@ -4364,8 +4365,8 @@
    "d_easing": 0,
    "d_residual": -1,
    "d_total": -1,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 433,
+   "d_from_v0": -309,
    "flag": "RIPPLE"
   },
   {
@@ -4630,8 +4631,8 @@
    "d_easing": 0,
    "d_residual": -1,
    "d_total": -1,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 910,
+   "d_from_v0": -493,
    "flag": "RIPPLE"
   },
   {
@@ -5276,8 +5277,8 @@
    "d_easing": 0,
    "d_residual": -1,
    "d_total": -1,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 618,
+   "d_from_v0": -607,
    "flag": "RIPPLE"
   },
   {
@@ -5295,8 +5296,8 @@
    "d_easing": 0,
    "d_residual": -1,
    "d_total": -1,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 363,
+   "d_from_v0": -357,
    "flag": "RIPPLE"
   },
   {
@@ -5314,8 +5315,8 @@
    "d_easing": 0,
    "d_residual": -1,
    "d_total": -1,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 1382,
+   "d_from_v0": -1353,
    "flag": "RIPPLE"
   },
   {
@@ -5333,8 +5334,8 @@
    "d_easing": 0,
    "d_residual": -1,
    "d_total": -1,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 322,
+   "d_from_v0": -314,
    "flag": "RIPPLE"
   },
   {
@@ -5352,8 +5353,8 @@
    "d_easing": 0,
    "d_residual": 1,
    "d_total": 1,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 2229,
+   "d_from_v0": -2189,
    "flag": "RIPPLE"
   },
   {
@@ -5371,8 +5372,8 @@
    "d_easing": 0,
    "d_residual": 1,
    "d_total": 1,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 1587,
+   "d_from_v0": -1552,
    "flag": "RIPPLE"
   },
   {
@@ -5390,8 +5391,8 @@
    "d_easing": 0,
    "d_residual": -1,
    "d_total": -1,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 1382,
+   "d_from_v0": -1353,
    "flag": "RIPPLE"
   },
   {
@@ -5409,8 +5410,8 @@
    "d_easing": 0,
    "d_residual": 1,
    "d_total": 1,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 678,
+   "d_from_v0": -665,
    "flag": "RIPPLE"
   },
   {
@@ -5428,8 +5429,8 @@
    "d_easing": 0,
    "d_residual": -1,
    "d_total": -1,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 748,
+   "d_from_v0": -733,
    "flag": "RIPPLE"
   },
   {
@@ -5447,8 +5448,8 @@
    "d_easing": 0,
    "d_residual": 1,
    "d_total": 1,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 1086,
+   "d_from_v0": -1070,
    "flag": "RIPPLE"
   },
   {
@@ -5466,8 +5467,8 @@
    "d_easing": 0,
    "d_residual": 1,
    "d_total": 1,
-   "v0": null,
-   "d_from_v0": null,
+   "v0": 2229,
+   "d_from_v0": -2189,
    "flag": "RIPPLE"
   }
  ]

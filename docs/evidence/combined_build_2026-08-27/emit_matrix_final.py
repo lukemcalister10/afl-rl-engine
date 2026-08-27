@@ -61,6 +61,24 @@ sys.path.insert(0, '.')
 OUT = os.environ.get('RL_OUT', os.path.dirname(os.path.abspath(__file__)))
 os.makedirs(OUT, exist_ok=True)
 
+# CANDIDATE WORLD-COHERENCE (caught live, 2026-08-27): this emitter never enforced the config
+# manifest, so the engine priced with CODE DEFAULTS wherever the manifest differs — measured on
+# the first candidate run: RL_O48_W fell back to 0.25 against the manifest's 1.0 and the eased
+# rows priced a different world than the board (pickett 410 vs the board's 511). The live-world
+# runs never exposed this because the live manifest matches the defaults on every emitter-relevant
+# var. Enforce the manifest exactly as regen_day0 does; the board build, the day-0 regen and this
+# matrix now provably price ONE world.
+# The emitter's own I/O paths are INSTRUMENT inputs, not model vars — captured above (REPO,
+# WORKDIR, VENDOR, OUT) or here (_DAY0_ENV), then POPPED so the manifest scan judges only what
+# can move a price.
+_DAY0_ENV = os.environ.pop('RL_DAY0_FINAL', None)
+for _k in ('RL_OUT', 'RL_WORKDIR', 'RL_VENDOR'):
+    os.environ.pop(_k, None)
+os.environ.setdefault('RL_CONFIG_MODE', 'gate')
+sys.path.insert(0, REPO)
+import config_manifest as _CM
+_CM.enforce(os.environ['RL_CONFIG_MODE'])
+
 src = open('_merged_recover.py').read().split('print("=== AFTER')[0]
 G = {'__name__': '_noarb338_emit'}
 with contextlib.redirect_stdout(io.StringIO()):
@@ -76,10 +94,15 @@ if _29C_MD5 != '0c3efa545832dd1131bd2b403588af29':
     raise SystemExit("ORDER 31-F HALT: the 29C emitter this copy was taken from has moved (md5 %s). "
                      "The 'one declared change' claim is only checkable against the original."
                      % _29C_MD5)
-if os.environ.get('RL_O31', '0') == '0':
-    raise SystemExit("ORDER 31-F HALT: RL_O31 is unset. This emitter's years 1..7 come from ev(p,Y); "
-                     "with the lane off they would be the Step-2 law emitted under an ORDER-31-F "
-                     "label, which is precisely the mixed-basis defect the 29C act exists to end.")
+# The lane check now reads the ENGINE'S OWN resolved state (G['_O31']) rather than ambient env:
+# under manifest enforcement ambient is cleared and the manifest (which pins RL_O31=1) configures
+# the engine directly — the ambient read was a pre-manifest pattern and cannot see that world.
+# Reading the engine's resolved global is strictly stronger: it is the state that actually priced.
+if not G.get('_O31'):
+    raise SystemExit("ORDER 31-F HALT: the ORDER 31 lane is OFF in the loaded engine. This "
+                     "emitter's years 1..7 come from ev(p,Y); with the lane off they would be the "
+                     "Step-2 law emitted under an ORDER-31-F label, which is precisely the "
+                     "mixed-basis defect the 29C act exists to end.")
 o31_D = G['o31_D']
 
 STORE_MD5 = hashlib.md5(open('rl_model_data.json', 'rb').read()).hexdigest()[:8]
@@ -127,8 +150,7 @@ def _landed_v0_engine(p):
 # For the 89 currently wired entrants the board itself published the answer (DAY0_29B_FINAL.json,
 # board 36d5dfc7). If this file's arithmetic is not THE SAME ARITHMETIC, every historical year-0 it
 # computes is worthless, so the emit refuses to proceed rather than produce a plausible matrix.
-_DAY0 = os.environ.get('RL_DAY0_FINAL',
-                       os.path.join(REPO, 'docs/evidence/candidate_31f/DAY0_31F_FINAL.json'))
+_DAY0 = _DAY0_ENV or os.path.join(REPO, 'docs/evidence/candidate_31f/DAY0_31F_FINAL.json')
 _d0 = json.load(open(_DAY0))
 _bykey = {q.get('key'): q for q in MA.data}
 _rep_ok = 0

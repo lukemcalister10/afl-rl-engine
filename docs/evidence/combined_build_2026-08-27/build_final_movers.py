@@ -48,15 +48,12 @@ for _rec in (STORE.values() if isinstance(STORE, dict) else STORE):
 easing = {r['key']: r for r in BV['easing_candidates'] if r['key'] in easing_keys}
 mx = {}
 if matrix_p:
-    try:
-        _m = json.load(open(matrix_p))
-        _recs = _m if isinstance(_m, list) else _m.get('rows') or _m.get('entrants') or []
-        for r in _recs:
-            k = r.get('key')
-            if k and r.get('v0') is not None:
-                mx[k] = r['v0']
-    except Exception:
-        pass
+    _m = json.load(open(matrix_p))
+    _recs = _m if isinstance(_m, list) else _m.get('recs') or _m.get('rows') or []
+    for r in _recs:
+        k = r.get('key')
+        if k and r.get('v0') is not None:
+            mx[k] = int(round(r['v0'] / 1.0524))   # matrix v0 is engine currency; board = /F
 
 out = []
 for k in cv:
@@ -119,6 +116,14 @@ meta = {
         'cleanly, the remainder ride the step-up/smoothing and the disclosed newton standing row) '
         '— the six-game step you ruled — but the prereg falsifier as WRITTEN failed and the '
         're-instrumentation is named here, not buried.',
+        'THE FINAL RAILS vs THE TABLES YOU APPROVED (v876/v877): every headline moved TOWARD '
+        'safety — W2 +7.96% (approved +10.50%; live +6.37%; rail 1.14, F8 green), head 1-20 '
+        '+16.01% (approved +17.08%), deep 21-64 +1.12% still healed-fair (approved +2.47%). Same '
+        'three carried breach classes (2011/2012/2016), ZERO new — they deepen ~0.01-0.018 where '
+        'P-5 said shrink-or-hold, a named deviation. The differences are the built step-up/easing '
+        'and the v0surf refit replacing the studies\' approximations; judged INSIDE the approval '
+        '(same shape, smaller magnitudes, safer direction) — the kill-switch stands if you read '
+        'it otherwise. Full tables: NOARB_FINAL.html · class marks: noarb_class_FINAL.json.',
     ],
     'columns': 'live -> +smoothing -> +surface -> +step-up -> +easing -> +residual = candidate; '
                'v0 = the smoothed draft-day stamp; d_from_v0 = candidate minus draft day',
