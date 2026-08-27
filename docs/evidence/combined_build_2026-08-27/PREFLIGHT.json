@@ -1,0 +1,62 @@
+[
+ {
+  "check": "spec_validate",
+  "verdict": "PASS",
+  "detail": "act \"THE COMBINED BUILD \u2014 ORDERS 46/47/48 + the S_LL5G bake: the thin-evidence retention surface (v869 conservative cells, knots 0.40/0.525/0.65, tall ceiling 0.92 ruled AT equality, the no-gain-past-draft cap as a price-level no-decrease guard), the step-up clock law (FADE_LAW_DERIVATION L3a verbatim, zero new constants), the easing taper during a first banked season at the declared grid's measured output W=1.0, and the smoothed day-0 law as the pvc artifact of record; with the riding repairs (B2 re-base, the exporter day-0 assert one clause wider, the entrant seal re-priced, the v0surf refit)\", kind lever-landing, 2 moves",
+  "seconds": 0.0
+ },
+ {
+  "check": "declared_paths",
+  "verdict": "PASS",
+  "detail": "prereg + evidence paths resolve",
+  "seconds": 0.0
+ },
+ {
+  "check": "coherent_base",
+  "verdict": "PASS",
+  "detail": "2c212ff -> 2c212ffed636",
+  "seconds": 0.0
+ },
+ {
+  "check": "pins_vs_tree",
+  "verdict": "PASS",
+  "detail": "7 unmoved pins == tree",
+  "seconds": 0.01
+ },
+ {
+  "check": "release_contract",
+  "verdict": "FAIL",
+  "detail": "===============================================================",
+  "seconds": 0.06
+ },
+ {
+  "check": "release_manifest",
+  "verdict": "FAIL",
+  "detail": "  RELEASE MANIFEST COHERENCE: FAIL",
+  "seconds": 0.06
+ },
+ {
+  "check": "mirror_parity",
+  "verdict": "PASS",
+  "detail": "acceptance mirror_parity GREEN",
+  "seconds": 0.2
+ },
+ {
+  "check": "movers_ui",
+  "verdict": "PASS",
+  "detail": "movers.test.js green",
+  "seconds": 0.53
+ },
+ {
+  "check": "shared_pickles",
+  "verdict": "PASS",
+  "detail": "shared pickles == tree pickles",
+  "seconds": 0.04
+ },
+ {
+  "check": "build_lock",
+  "verdict": "PASS",
+  "detail": "build-lock: FREE (last holder record: bootstrap 2092 2026-08-27T08:44:28Z)",
+  "seconds": 0.01
+ }
+]
