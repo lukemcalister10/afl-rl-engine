@@ -1,0 +1,261 @@
+{
+ "noah-mraz": {
+  "pos": "KPD",
+  "route": "ND",
+  "pick": 35,
+  "year": 2024,
+  "by": 2006,
+  "seasons": [
+   [
+    2026,
+    4
+   ]
+  ],
+  "bk": 0,
+  "o46_class": true,
+  "o47_class": false,
+  "o47_nsat": 0,
+  "L": 0.92,
+  "o31_D": 0.4737,
+  "pi": 0.92,
+  "pi_nofloor": 0.3869,
+  "day0_v0": 451.9,
+  "full": 739,
+  "no_o48": 739,
+  "no_o47": 739,
+  "no_o46": 943,
+  "dials_off": 943
+ },
+ "taylor-goad": {
+  "pos": "RUCK",
+  "route": "ND",
+  "pick": 20,
+  "year": 2023,
+  "by": 2005,
+  "seasons": [
+   [
+    2026,
+    2
+   ]
+  ],
+  "bk": 0,
+  "o46_class": true,
+  "o47_class": false,
+  "o47_nsat": 0,
+  "L": 0.67,
+  "o31_D": 0.6032,
+  "pi": 0.67,
+  "pi_nofloor": 0.3912,
+  "day0_v0": 1067.1,
+  "full": 795,
+  "no_o48": 795,
+  "no_o47": 737,
+  "no_o46": 784,
+  "dials_off": 664
+ },
+ "will-green": {
+  "pos": "RUCK",
+  "route": "ND",
+  "pick": 16,
+  "year": 2023,
+  "by": 2005,
+  "seasons": [
+   [
+    2026,
+    3
+   ]
+  ],
+  "bk": 0,
+  "o46_class": true,
+  "o47_class": false,
+  "o47_nsat": 0,
+  "L": 0.67,
+  "o31_D": 0.6032,
+  "pi": 0.67,
+  "pi_nofloor": 0.4093,
+  "day0_v0": 1071.1,
+  "full": 800,
+  "no_o48": 800,
+  "no_o47": 745,
+  "no_o46": 800,
+  "dials_off": 675
+ },
+ "wil-dawson": {
+  "pos": "KPD",
+  "route": "ND",
+  "pick": 22,
+  "year": 2023,
+  "by": 2005,
+  "seasons": [
+   [
+    2024,
+    3
+   ],
+   [
+    2025,
+    5
+   ],
+   [
+    2026,
+    10
+   ]
+  ],
+  "bk": 1,
+  "o46_class": false,
+  "o47_class": false,
+  "o47_nsat": 0,
+  "L": null,
+  "o31_D": 1.0,
+  "pi": 0.1432,
+  "pi_nofloor": 0.1432,
+  "day0_v0": 628.0,
+  "full": 332,
+  "no_o48": 286,
+  "no_o47": 314,
+  "no_o46": 332,
+  "dials_off": 286
+ },
+ "jordan-croft": {
+  "pos": "KPF",
+  "route": "ND",
+  "pick": 15,
+  "year": 2023,
+  "by": 2005,
+  "seasons": [
+   [
+    2025,
+    2
+   ],
+   [
+    2026,
+    17
+   ]
+  ],
+  "bk": 1,
+  "o46_class": false,
+  "o47_class": false,
+  "o47_nsat": 0,
+  "L": null,
+  "o31_D": 1.0,
+  "pi": 0.1441,
+  "pi_nofloor": 0.1441,
+  "day0_v0": 814.8,
+  "full": 514,
+  "no_o48": 482,
+  "no_o47": 490,
+  "no_o46": 514,
+  "dials_off": 482
+ },
+ "latrelle-pickett": {
+  "pos": "SF",
+  "route": "ND",
+  "pick": 12,
+  "year": 2025,
+  "by": 2005,
+  "seasons": [
+   [
+    2026,
+    15
+   ]
+  ],
+  "bk": 1,
+  "o46_class": false,
+  "o47_class": false,
+  "o47_nsat": 0,
+  "L": null,
+  "o31_D": 1.0,
+  "pi": 0.1652,
+  "pi_nofloor": 0.1652,
+  "day0_v0": 915.1,
+  "full": 410,
+  "no_o48": 376,
+  "no_o47": 410,
+  "no_o46": 410,
+  "dials_off": 376
+ },
+ "rhys-unwin": {
+  "pos": "SF",
+  "route": "ND",
+  "pick": 61,
+  "year": 2024,
+  "by": 2006,
+  "seasons": [
+   [
+    2025,
+    3
+   ],
+   [
+    2026,
+    4
+   ]
+  ],
+  "bk": 0,
+  "o46_class": true,
+  "o47_class": false,
+  "o47_nsat": 0,
+  "L": 0.3806,
+  "o31_D": 0.2573,
+  "pi": 0.3806,
+  "pi_nofloor": 0.1235,
+  "day0_v0": 134.9,
+  "full": 135,
+  "no_o48": 135,
+  "no_o47": 135,
+  "no_o46": 142,
+  "dials_off": 142
+ },
+ "charlie-edwards": {
+  "pos": "MID",
+  "route": "ND",
+  "pick": 21,
+  "year": 2023,
+  "by": 2005,
+  "seasons": [
+   [
+    2026,
+    2
+   ]
+  ],
+  "bk": 0,
+  "o46_class": true,
+  "o47_class": false,
+  "o47_nsat": 0,
+  "L": 0.66,
+  "o31_D": 0.4045,
+  "pi": 0.66,
+  "pi_nofloor": 0.29,
+  "day0_v0": 898.9,
+  "full": 614,
+  "no_o48": 614,
+  "no_o47": 614,
+  "no_o46": 533,
+  "dials_off": 393
+ },
+ "harrison-oliver": {
+  "pos": "SD",
+  "route": "ND",
+  "pick": 19,
+  "year": 2024,
+  "by": 2006,
+  "seasons": [
+   [
+    2026,
+    5
+   ]
+  ],
+  "bk": 0,
+  "o46_class": true,
+  "o47_class": false,
+  "o47_nsat": 0,
+  "L": 0.394,
+  "o31_D": 0.3886,
+  "pi": 0.394,
+  "pi_nofloor": 0.1734,
+  "day0_v0": 810.8,
+  "full": 360,
+  "no_o48": 360,
+  "no_o47": 360,
+  "no_o46": 283,
+  "dials_off": 283
+ }
+}

@@ -1,0 +1,315 @@
+{
+ "checks": {
+  "rowset": {
+   "only_live": [],
+   "only_cand": [],
+   "pass": true
+  },
+  "named": {
+   "bad": [],
+   "pass": true
+  },
+  "attribution": {
+   "n_unexplained": 0,
+   "pass": true
+  },
+  "f5_draft_cap": {
+   "bad": [],
+   "pass": true
+  },
+  "totals": {
+   "live": 703290,
+   "cand": 706544,
+   "net": 3254,
+   "wf_pred_net": 2948
+  }
+ },
+ "named": [
+  {
+   "key": "harrison-oliver",
+   "live": 283,
+   "cand": 360,
+   "wf_b_cand": 360,
+   "stepup": false,
+   "d_vs_wf": 0,
+   "pass": true
+  },
+  {
+   "key": "william-mccabe",
+   "live": 231,
+   "cand": 325,
+   "wf_b_cand": 325,
+   "stepup": false,
+   "d_vs_wf": 0,
+   "pass": true
+  },
+  {
+   "key": "james-leake",
+   "live": 421,
+   "cand": 617,
+   "wf_b_cand": 617,
+   "stepup": false,
+   "d_vs_wf": 0,
+   "pass": true
+  },
+  {
+   "key": "taylor-goad",
+   "live": 667,
+   "cand": 737,
+   "wf_b_cand": 737,
+   "stepup": false,
+   "d_vs_wf": 0,
+   "pass": true
+  },
+  {
+   "key": "riak-andrew",
+   "live": 118,
+   "cand": 259,
+   "wf_b_cand": 259,
+   "stepup": true,
+   "d_vs_wf": 0,
+   "pass": true
+  },
+  {
+   "key": "alex-dodson",
+   "live": 85,
+   "cand": 101,
+   "wf_b_cand": 84,
+   "stepup": true,
+   "d_vs_wf": 17,
+   "pass": true
+  },
+  {
+   "key": "charlie-edwards",
+   "live": 404,
+   "cand": 614,
+   "wf_b_cand": 614,
+   "stepup": false,
+   "d_vs_wf": 0,
+   "pass": true
+  },
+  {
+   "key": "thomas-burton",
+   "live": 239,
+   "cand": 239,
+   "wf_b_cand": 239,
+   "stepup": false,
+   "d_vs_wf": 0,
+   "pass": true
+  }
+ ],
+ "unexplained": [],
+ "stepup_landed": [
+  {
+   "key": "josh-smillie",
+   "live": 747,
+   "cand": 933,
+   "wf_b_cand": 753,
+   "d_beyond_wf": 180
+  },
+  {
+   "key": "ned-bowman",
+   "live": 117,
+   "cand": 175,
+   "wf_b_cand": 136,
+   "d_beyond_wf": 39
+  },
+  {
+   "key": "ben-camporeale",
+   "live": 114,
+   "cand": 179,
+   "wf_b_cand": 176,
+   "d_beyond_wf": 3
+  },
+  {
+   "key": "alex-dodson",
+   "live": 85,
+   "cand": 101,
+   "wf_b_cand": 84,
+   "d_beyond_wf": 17
+  }
+ ],
+ "easing_candidates": [
+  {
+   "key": "latrelle-pickett",
+   "live": 386,
+   "cand": 410,
+   "d": 24,
+   "wf_b_cand": 376,
+   "d_vs_wf": 34
+  },
+  {
+   "key": "wil-dawson",
+   "live": 287,
+   "cand": 314,
+   "d": 27,
+   "wf_b_cand": 286,
+   "d_vs_wf": 28
+  },
+  {
+   "key": "jordan-croft",
+   "live": 474,
+   "cand": 490,
+   "d": 16,
+   "wf_b_cand": 482,
+   "d_vs_wf": 8
+  },
+  {
+   "key": "joshua-kelly",
+   "live": 730,
+   "cand": 732,
+   "d": 2
+  },
+  {
+   "key": "jaidyn-stephenson",
+   "live": 23,
+   "cand": 25,
+   "d": 2
+  },
+  {
+   "key": "josh-schache",
+   "live": 39,
+   "cand": 40,
+   "d": 1
+  },
+  {
+   "key": "aaron-francis",
+   "live": 20,
+   "cand": 24,
+   "d": 4
+  },
+  {
+   "key": "zak-jones",
+   "live": 21,
+   "cand": 23,
+   "d": 2
+  },
+  {
+   "key": "will-hoskin-elliott",
+   "live": 23,
+   "cand": 25,
+   "d": 2
+  },
+  {
+   "key": "brad-crouch",
+   "live": 34,
+   "cand": 35,
+   "d": 1
+  },
+  {
+   "key": "adam-tomlinson",
+   "live": 12,
+   "cand": 13,
+   "d": 1
+  },
+  {
+   "key": "dyson-heppell",
+   "live": 34,
+   "cand": 36,
+   "d": 2
+  },
+  {
+   "key": "brodie-smith",
+   "live": 15,
+   "cand": 16,
+   "d": 1
+  },
+  {
+   "key": "gary-rohan",
+   "live": 23,
+   "cand": 25,
+   "d": 2
+  },
+  {
+   "key": "travis-boak",
+   "live": 34,
+   "cand": 40,
+   "d": 6
+  },
+  {
+   "key": "tom-hawkins",
+   "live": 39,
+   "cand": 40,
+   "d": 1
+  }
+ ],
+ "refit_ripple": [
+  {
+   "key": "connor-rozee",
+   "d": -1
+  },
+  {
+   "key": "thomas-sims",
+   "d": -2
+  },
+  {
+   "key": "darcy-jones",
+   "d": -1
+  },
+  {
+   "key": "lance-collard",
+   "d": -1
+  },
+  {
+   "key": "jack-viney",
+   "d": -2
+  },
+  {
+   "key": "josh-sinn",
+   "d": -2
+  },
+  {
+   "key": "brayden-fiorini",
+   "d": -1
+  },
+  {
+   "key": "caleb-mitchell",
+   "d": -1
+  },
+  {
+   "key": "tom-emmett",
+   "d": -1
+  },
+  {
+   "key": "ben-hobbs",
+   "d": -1
+  },
+  {
+   "key": "miller-bergman",
+   "d": -1
+  },
+  {
+   "key": "will-phillips",
+   "d": -2
+  },
+  {
+   "key": "jack-billings",
+   "d": -3
+  },
+  {
+   "key": "dylan-shiel",
+   "d": -3
+  },
+  {
+   "key": "tom-mitchell",
+   "d": -1
+  },
+  {
+   "key": "sebastian-ross",
+   "d": -1
+  },
+  {
+   "key": "sam-day",
+   "d": -3
+  },
+  {
+   "key": "andrew-gaff",
+   "d": -3
+  },
+  {
+   "key": "dustin-martin",
+   "d": -2
+  }
+ ],
+ "pass": true
+}

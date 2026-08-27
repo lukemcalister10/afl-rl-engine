@@ -1,8 +1,14 @@
 """GATE 1 — within-player, LEAKAGE-GUARDED. Each test cohort held OUT of training; held-out cond_prior prices its players
 at truncated tenures (only <=T info); structural pole (synthetic par) stays fixed (no test-player career in it).
-IS vs WF both @150 trees (matched -> gap=leakage, tree-robust). Shape: future-good priced near par early, busts below; no violent yr0/1 moves."""
+IS vs WF legs are CAPACITY-MATCHED by construction: under the ARM-2 design both are built from the
+bound design spec (build_cond_prior + this gate's build_q97 read the same contract), so the gap is leakage,
+not a capacity difference. [B2 RE-BASE 2026-08-27, the v863 red: this file used to pin RL_PRIOR_TREES=150
+before exec'ing the engine head; under ARM-2 that pin is DEAD for the fit (the bound spec decides) but it
+re-pointed cm_load_path() at the stale pre-rebake /home/claude/cm_150.pkl (no _rl_design_spec) while q97m
+resolved to the ARM-2 pickle — the artifact-coherence halt correctly refused the mixed pair. The pin is
+removed; the engine loads the pinned coherent pair; the legacy no-design fallbacks keep their own literals.]
+Shape: future-good priced near par early, busts below; no violent yr0/1 moves."""
 import io,contextlib,copy,os,numpy as np,time
-os.environ['RL_PRIOR_TREES']='150'
 ns={}
 with contextlib.redirect_stdout(io.StringIO()):
     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], ns)
