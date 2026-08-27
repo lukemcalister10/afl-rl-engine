@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_7669/sandbox
+  tree      : /tmp/landing_selftest_10909/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 3167cba643a6b16e5ef5d904d8957fcd
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,8 +9,8 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-lever-8021 (pid 8021) — single writer for the shared workspace.
-base commit        a095c61289e1906e3ede9de5b80fc9c8bc5c0de0
+build-lock: HELD by land-lever-11271 (pid 11271) — single writer for the shared workspace.
+base commit        9bdae6e0a73e8858d6bc7fa191a89d09d4fca462
 board pin (before) 3167cba643a6b16e5ef5d904d8957fcd
 store pin (before) fb640ca0baf92bbb122b1ad7e25c5a88
 restore point      67 carrier(s) captured, 67 present on disk
@@ -30,7 +30,7 @@ both sidecars agree with the board beside them and with the live store. OK.
 fields that moved in expected_boot.json: []
 must-not-move list: 7 checked, 0 moved
 NO PIN MOVES — this act is a declared no-op rehearsal; expected_boot is untouched.
-    [pins OK  0.01s]
+    [pins OK  0.02s]
 
 --- STEP 3/10  lineage        the out-of-round column and the append-only entry ---
 no column declared
@@ -55,11 +55,11 @@ WRITER 2: the bake-lane identities restamp_dynamic does not touch
   contract_sha256             de37f057eba1 -> de37f057eba1
   frozen fields asserted unmoved: 10 checked, 0 moved
 RE-STAMPED, re-read, and release_contract.py check PASSES.
-    [contract OK  0.07s]
+    [contract OK  0.08s]
 
 --- STEP 5/10  sibling        the balanced sibling, rebuilt and reconciled if moved ---
 *** FAULT INJECTED at step 'sibling': sidecar_corrupt — the sibling provenance sidecar is unreadable
-    [sibling FAILED  0.03s]
+    [sibling FAILED  0.04s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'sibling'
@@ -81,9 +81,9 @@ improvised manual landing under pressure.
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
     preflight          0.07s  OK
     build_proofs       0.01s  OK
-    pins               0.01s  OK
+    pins               0.02s  OK
     lineage            0.00s  OK
-    contract           0.07s  OK
-    sibling            0.03s  FAIL
-    TOTAL              0.19s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_8021
+    contract           0.08s  OK
+    sibling            0.04s  FAIL
+    TOTAL              0.22s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_11271

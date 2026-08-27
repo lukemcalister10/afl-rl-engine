@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
-  tree      : /tmp/landing_selftest_7669/sandbox
+  tree      : /tmp/landing_selftest_10909/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 3167cba643a6b16e5ef5d904d8957fcd
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,12 +9,12 @@ LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
 
 --- STEP 0/14  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-round-8603 (pid 8603) — single writer for the shared workspace.
-base commit        a095c61289e1906e3ede9de5b80fc9c8bc5c0de0
+build-lock: HELD by land-round-11816 (pid 11816) — single writer for the shared workspace.
+base commit        9bdae6e0a73e8858d6bc7fa191a89d09d4fca462
 board pin (before) 3167cba643a6b16e5ef5d904d8957fcd
 store pin (before) fb640ca0baf92bbb122b1ad7e25c5a88
 restore point      120 carrier(s) captured, 120 present on disk
-    [preflight OK  0.09s]
+    [preflight OK  0.08s]
 
 --- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
 sheet         docs/owner_annotations/SITTER_2026_v1.csv
@@ -58,9 +58,9 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.09s  OK
+    preflight          0.08s  OK
     sheet              0.00s  OK
     scores             0.00s  OK
     catchup_preflight     0.12s  FAIL
-    TOTAL              0.21s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_8603
+    TOTAL              0.20s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_11816

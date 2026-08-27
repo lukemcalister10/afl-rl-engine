@@ -2,61 +2,51 @@
  {
   "check": "spec_validate",
   "verdict": "PASS",
-  "detail": "act \"THE COMBINED BUILD \u2014 ORDERS 46/47/48 + the S_LL5G bake: the thin-evidence retention surface (v869 conservative cells, knots 0.40/0.525/0.65, tall ceiling 0.92 ruled AT equality, the no-gain-past-draft cap as a price-level no-decrease guard), the step-up clock law (FADE_LAW_DERIVATION L3a verbatim, zero new constants), the easing taper during a first banked season at the declared grid's measured output W=1.0, and the smoothed day-0 law as the pvc artifact of record; with the riding repairs (B2 re-base, the exporter day-0 assert one clause wider, the entrant seal re-priced, the v0surf refit)\", kind lever-landing, 2 moves",
-  "seconds": 0.0
+  "detail": "act \"THE COMBINED BUILD \u2014 ORDERS 46/47/48 + the S_LL5G bake: the thin-evidence retention surface (v869 conservative cells, knots 0.40/0.525/0.65, tall ceiling 0.92 ruled AT equality, the no-gain-past-draft cap as a price-level no-decrease guard), the step-up clock law (FADE_LAW_DERIVATION L3a verbatim, zero new constants), the easing taper during a first banked season at the declared grid's measured output W=1.0, and the smoothed day-0 law as the pvc artifact of record; with the riding repairs (B2 re-base, the exporter day-0 assert one clause wider, the entrant seal re-priced, the v0surf refit)\", kind lever-landing, 2 moves"
  },
  {
   "check": "declared_paths",
   "verdict": "PASS",
-  "detail": "prereg + evidence paths resolve",
-  "seconds": 0.0
+  "detail": "prereg + evidence paths resolve"
  },
  {
   "check": "coherent_base",
   "verdict": "PASS",
-  "detail": "6f0fd3b -> 6f0fd3b0bf70",
-  "seconds": 0.0
+  "detail": "6f0fd3b -> 6f0fd3b0bf70"
  },
  {
   "check": "pins_vs_tree",
   "verdict": "PASS",
-  "detail": "7 unmoved pins == tree",
-  "seconds": 0.01
+  "detail": "7 unmoved pins == tree"
  },
  {
   "check": "release_contract",
   "verdict": "PASS",
-  "detail": "release_contract check PASS",
-  "seconds": 0.06
+  "detail": "release_contract check PASS"
  },
  {
   "check": "release_manifest",
   "verdict": "PASS",
-  "detail": "release_manifest_check PASS",
-  "seconds": 0.06
+  "detail": "release_manifest_check PASS"
  },
  {
   "check": "mirror_parity",
   "verdict": "PASS",
-  "detail": "acceptance mirror_parity GREEN",
-  "seconds": 0.2
+  "detail": "acceptance mirror_parity GREEN"
  },
  {
   "check": "movers_ui",
   "verdict": "PASS",
-  "detail": "movers.test.js green",
-  "seconds": 0.52
+  "detail": "movers.test.js green"
  },
  {
   "check": "shared_pickles",
   "verdict": "PASS",
-  "detail": "shared pickles == tree pickles",
-  "seconds": 0.04
+  "detail": "shared pickles == tree pickles"
  },
  {
   "check": "build_lock",
   "verdict": "PASS",
-  "detail": "build-lock: FREE (last holder record: bootstrap 2092 2026-08-27T08:44:28Z)",
-  "seconds": 0.01
+  "detail": "build-lock: FREE (last holder record: bootstrap 2092 2026-08-27T08:44:28Z)"
  }
 ]
