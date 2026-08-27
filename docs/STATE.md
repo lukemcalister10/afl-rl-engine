@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v870 2026-08-27 · **THE SURFACE MOVERS ARE PRICED — the form the owner's three constraints produced, and every named check lands where the design predicted.** His word: "Yes please" (2026-08-27, on fitting the evidence-conditional surface). THE STUDY (pass_mech_surface.py on the harness, 598s load + 205s sweeps; same patch/restore machinery): retention L(family, evidence-qu
+  > # OPEN ITEMS REGISTER · v871 2026-08-27 · **THE OTHER EDGE OF THE BOUNDARY IS MEASURED — the feared just-banked inversion barely exists (1 row of 28), and the outcome data says THE STEP AT SIX GAMES IS REAL INFORMATION, NOT AN ARTEFACT: no blending across the class boundary.** Owner question (2026-08-27): "How does this interact with players who are on the precipice of 'not having played a full se
 
-- new-form entries under `docs/register/entries/`: 58
+- new-form entries under `docs/register/entries/`: 59
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `a21cd6b7fc3a2252776e959a9f2e5a56de004336` |
+| generated at commit | `a098c4a980481070c815033301f829488b37224f` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

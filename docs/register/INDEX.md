@@ -1,8 +1,9 @@
 <!-- GENERATED-ONLY — regenerate: python3 tools/seat/pen.py index ; assert current: python3 tools/seat/pen.py verify -->
 # REGISTER ADDRESS INDEX — generated
 
-Newest entry: **v870**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
+Newest entry: **v871**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
 
+- **v871** (2026-08-27) — `docs/register/entries/v871.md` — **THE OTHER EDGE OF THE BOUNDARY IS MEASURED — the feared just-banked inversion barely exists (1 row of 28), and the outcome data says THE S
 - **v870** (2026-08-27) — `docs/register/entries/v870.md` — **THE SURFACE MOVERS ARE PRICED — the form the owner's three constraints produced, and every named check lands where the design predicted.**
 - **v869** (2026-08-27) — `docs/register/entries/v869.md` — **THE OWNER'S GENEROSITY OBJECTION IS MEASURED AND CONFIRMED ON ALL THREE COUNTS — the within-class gradients replace the flat floor, and th
 - **v868** (2026-08-27) — `docs/register/entries/v868.md` — **THE OWNER'S BOUNDARY QUESTION ADDS THE MISSING DESIGN CONSTRAINT: EVIDENCE-MONOTONICITY AT MATCHED CAPITAL — and the flat floor of v867 is

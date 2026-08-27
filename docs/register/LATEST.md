@@ -1,3 +1,3 @@
-# OPEN ITEMS REGISTER · v870 2026-08-27 · **THE SURFACE MOVERS ARE PRICED — the form the owner's three constraints produced, and every named check lands where the design predicted.** His word: "Yes please" (2026-08-27, on fitting the evidence-conditional surface). THE STUDY (pass_mech_surface.py on the harness, 598s load + 205s sweeps; same patch/restore machinery): retention L(family, evidence-qu
+# OPEN ITEMS REGISTER · v871 2026-08-27 · **THE OTHER EDGE OF THE BOUNDARY IS MEASURED — the feared just-banked inversion barely exists (1 row of 28), and the outcome data says THE STEP AT SIX GAMES IS REAL INFORMATION, NOT AN ARTEFACT: no blending across the class boundary.** Owner question (2026-08-27): "How does this interact with players who are on the precipice of 'not having played a full se
 
-(one line per pen; full entry: docs/register/entries/v870.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
+(one line per pen; full entry: docs/register/entries/v871.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
