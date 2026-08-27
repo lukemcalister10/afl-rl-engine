@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND STORE-EDIT — SELF-TEST — the surgical store edit
-  tree      : /tmp/landing_selftest_10909/sandbox
+  tree      : /tmp/landing_selftest_12507/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board a2c786c93be6c3a3089275aadac0afff
   mode      : APPLY (SELFTEST) builder=selftest-moved
@@ -8,12 +8,12 @@ LAND STORE-EDIT — SELF-TEST — the surgical store edit
 
 --- STEP 0/11  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-edit-12305 (pid 12305) — single writer for the shared workspace.
-base commit        9bdae6e0a73e8858d6bc7fa191a89d09d4fca462
+build-lock: HELD by land-edit-13929 (pid 13929) — single writer for the shared workspace.
+base commit        b80185d1bf6968a4d4214cd4d35b028abd88953a
 board pin (before) 3167cba643a6b16e5ef5d904d8957fcd
 store pin (before) fb640ca0baf92bbb122b1ad7e25c5a88
 restore point      68 carrier(s) captured, 68 present on disk
-    [preflight OK  0.06s]
+    [preflight OK  0.05s]
 
 --- STEP 1/11  store_edit     THE SURGICAL STORE EDIT, applied in the work dir ---
 store BEFORE  fb640ca0baf92bbb122b1ad7e25c5a88   (1978074 bytes)
@@ -85,7 +85,7 @@ RE-STAMPED, re-read, and release_contract.py check PASSES.
 
 --- STEP 6/11  sibling        the balanced sibling, rebuilt and reconciled if moved ---
 *** FAULT INJECTED at step 'sibling': sidecar_corrupt — the sibling provenance sidecar is unreadable
-    [sibling FAILED  0.03s]
+    [sibling FAILED  0.04s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'sibling'
@@ -95,7 +95,7 @@ LANDING ABORTED AT STEP 'sibling'
 carriers that moved before the failure: 13
     data/expected_boot.json                                          7c68771e1930 -> e3ad6607f710
     data/release_contract.json                                       055b55b37691 -> 7dbff09afbca
-    data/release_lineage.json                                        20cfa28ad615 -> 743214d378c6
+    data/release_lineage.json                                        20cfa28ad615 -> 95f9aac0f074
     data/rl_build/rl_app_data.json                                   3167cba643a6 -> a2c786c93be6
     data/rl_build/rl_app_data.json.srcmd5                            9cf9828f66c1 -> ab670839bb6a
     data/season_state.json                                           fe7b7b9e8c41 -> bf8fbba8eb5d
@@ -129,12 +129,12 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.06s  OK
+    preflight          0.05s  OK
     store_edit         0.14s  OK
     build_proofs       0.04s  OK
     pins               0.02s  OK
     lineage            0.14s  OK
     contract           0.09s  OK
-    sibling            0.03s  FAIL
+    sibling            0.04s  FAIL
     TOTAL              0.52s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_12305
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_13929

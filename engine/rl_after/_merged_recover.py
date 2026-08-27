@@ -6528,7 +6528,14 @@ if _O45:
     # if even 0.25 fails F4 the ease lands at 0 with the owner told his ruling was sized out by his
     # own constraint. Dial off => the banked test below is the pre-order test byte-for-byte.
     _O48=os.environ.get('RL_O48','1')!='0'
-    _O48_W=float(os.environ.get('RL_O48_W','0.25'))
+    _O48_W=float(os.environ.get('RL_O48_W','1.0'))  # THE GRID'S MEASURED OUTPUT IS THE LANDED
+                                                    # DEFAULT (F4, BATTERY_1: every weight passed,
+                                                    # largest-passing selects 1.0; the manifest pins
+                                                    # the same value). The '0.25' placeholder died
+                                                    # at the lander's BARE build — the shipped line
+                                                    # is CODE DEFAULTS ALONE (the B4/reseal law), so
+                                                    # the landed constant lives HERE, not only in
+                                                    # the manifest.
     _ev_pre45=ev
     def ev(p,Y=2026,__inner=_ev_pre45):
         """ORDER 45 (RL_O45) — THE POSITION-SCALED SAFETY NET, at the one law. A tenure-1-4,

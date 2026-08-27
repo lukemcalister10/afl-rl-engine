@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND ROUND-ADVANCE — SELF-TEST — the input-commit pincer (R24 rehearsal §3.1 RUN A + RUN C)
-  tree      : /tmp/landing_selftest_10909/sandbox
+  tree      : /tmp/landing_selftest_12507/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 3167cba643a6b16e5ef5d904d8957fcd
   mode      : APPLY (SELFTEST) builder=selftest
@@ -12,12 +12,12 @@ DECLARED DIRT (2 path(s), and ONLY these): owner inputs this act is contracted t
     scores/R25.csv                                             (committed by the `catchup_preflight` step)
     engine/rl_after/ingestion/catchup_identity_overrides.json  (committed by the `catchup_preflight` step)
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-round-12262 (pid 12262) — single writer for the shared workspace.
-base commit        1aef6dad2b707728ec69d975fb4c50a2aa31de1f
+build-lock: HELD by land-round-13885 (pid 13885) — single writer for the shared workspace.
+base commit        bf9600c2f557ab045cd2d6362dbfc90464886727
 board pin (before) 3167cba643a6b16e5ef5d904d8957fcd
 store pin (before) fb640ca0baf92bbb122b1ad7e25c5a88
 restore point      121 carrier(s) captured, 121 present on disk
-    [preflight OK  0.08s]
+    [preflight OK  0.09s]
 
 --- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
 sheet         docs/owner_annotations/SITTER_2026_v1.csv
@@ -72,10 +72,10 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.08s  OK
+    preflight          0.09s  OK
     sheet              0.00s  OK
     scores             0.00s  OK
     catchup_preflight     0.11s  OK
     advance            0.00s  FAIL
-    TOTAL              0.19s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_12262
+    TOTAL              0.20s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_13885
