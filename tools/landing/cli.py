@@ -151,18 +151,32 @@ def _file_preflight_evidence(src, dest_dir):
 def _run_cheap_preflight(a, doc):
     """The sub-second battery, before the selftest (minutes) and the first build (more minutes).
     Skipped under --selftest for the same reason _preflight_selftest is: the sandbox's fault runs
-    exercise the transaction, and every one of these checks re-runs at gate time anyway."""
+    exercise the transaction, and every one of these checks re-runs at gate time anyway.
+
+    Returns the results list; THE RECORD IS FILED AFTER THE TRANSACTION, never before it (shrink
+    review S4, 2026-08-28). The launch-time write into the TRACKED evidence dir dirtied the very
+    tree step 0 then refused — twice as timing jitter, then every launch as the lock-holder line —
+    and each launch cost a ritual commit to clear its own paperwork. Verdicts stay on stdout at
+    launch (the M2 measure-then-quote surface); the file rides the transaction's own commit window,
+    the same pattern the selftest transcripts have always used (_file_preflight_evidence)."""
     if a.selftest:
-        return
+        return None
     from tools.landing import preflight as PF
     ok, results = PF.run_preflight(a.root, a.spec)
-    ev = doc.get('evidence_dir')
-    if ev:
-        PF.file_evidence(results, os.path.join(a.root, ev))
     if not ok:
         raise SystemExit('PREFLIGHT FAILED. No lock taken, no sandbox cut, no build run, the tree '
                          'untouched — every failure above was knowable in seconds, which is the '
                          'point (ORDER 45 ledger, register v858).')
+    return results
+
+
+def _file_cheap_preflight(results, evidence_dir):
+    """File the launch preflight record into the act's evidence dir AFTER the transaction closed
+    (committed or restored either way — the write can no longer trip step 0's clean-tree law)."""
+    if not results:
+        return
+    from tools.landing import preflight as PF
+    PF.file_evidence(results, evidence_dir)
 
 
 def cmd_lever(a):
@@ -170,7 +184,7 @@ def cmd_lever(a):
     if doc['act_kind'] != 'lever-landing':
         raise SystemExit('this spec is act_kind %r; `land lever` runs lever-landing specs.'
                          % doc['act_kind'])
-    _run_cheap_preflight(a, doc)
+    pf_results = _run_cheap_preflight(a, doc)
     doc['_spec_rel'] = os.path.relpath(os.path.abspath(a.spec), os.path.abspath(a.root))
     builder = TX.BUILDERS[a.builder]() if a.builder in TX.BUILDERS else None
     if builder is None:
@@ -183,6 +197,7 @@ def cmd_lever(a):
     ctx = TX.Ctx(a.root, doc, opts, builder=builder, fault=a.fault, keep_work=a.keep_work)
     res = TX.run(ctx, ST.LEVER_SEQUENCE)
     _file_preflight_evidence(pre_ev, ctx.evidence_dir)
+    _file_cheap_preflight(pf_results, ctx.evidence_dir)
     _write_reports(a, ctx, res)
     return 0 if res.ok else 1
 
@@ -221,7 +236,7 @@ def cmd_round(a):
     if doc['act_kind'] != 'round-advance':
         raise SystemExit('this spec is act_kind %r; `land round` runs round-advance specs.'
                          % doc['act_kind'])
-    _run_cheap_preflight(a, doc)
+    pf_results = _run_cheap_preflight(a, doc)
     doc['_spec_rel'] = os.path.relpath(os.path.abspath(a.spec), os.path.abspath(a.root))
     builder = TX.BUILDERS[a.builder]() if a.builder in TX.BUILDERS else None
     if builder is None:
@@ -235,6 +250,7 @@ def cmd_round(a):
                  carriers=CA.ROUND_CARRIERS)
     res = TX.run(ctx, ST.ROUND_SEQUENCE)
     _file_preflight_evidence(pre_ev, ctx.evidence_dir)
+    _file_cheap_preflight(pf_results, ctx.evidence_dir)
     _write_reports(a, ctx, res)
     return 0 if res.ok else 1
 
@@ -258,7 +274,7 @@ def cmd_edit(a):
     if doc['act_kind'] != 'store-edit':
         raise SystemExit('this spec is act_kind %r; `land edit` runs store-edit specs.'
                          % doc['act_kind'])
-    _run_cheap_preflight(a, doc)
+    pf_results = _run_cheap_preflight(a, doc)
     doc['_spec_rel'] = os.path.relpath(os.path.abspath(a.spec), os.path.abspath(a.root))
     if a.dry_run:
         from tools.landing import preview as PV
@@ -275,6 +291,7 @@ def cmd_edit(a):
                  carriers=CA.EDIT_CARRIERS)
     res = TX.run(ctx, ST.EDIT_SEQUENCE)
     _file_preflight_evidence(pre_ev, ctx.evidence_dir)
+    _file_cheap_preflight(pf_results, ctx.evidence_dir)
     _write_reports(a, ctx, res)
     return 0 if res.ok else 1
 

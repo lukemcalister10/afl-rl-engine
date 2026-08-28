@@ -201,9 +201,44 @@ def cmd_append(a):
     write_latest(nxt, date, body)
     write_index()
     rc = cmd_verify()
-    print('penned v%d -> %s (%d bytes). Commit explicit-path: the entry, LATEST.md, INDEX.md, '
-          'index.json.' % (nxt, os.path.relpath(path, ROOT), len(text.encode())))
+    if rc == 0 and a.file:
+        rc = _file_pen(nxt, path, a.commit_message)
+    else:
+        print('penned v%d -> %s (%d bytes). Commit explicit-path: the entry, LATEST.md, INDEX.md, '
+              'index.json.' % (nxt, os.path.relpath(path, ROOT), len(text.encode())))
     return rc
+
+
+def _file_pen(nxt, entry_path, message):
+    """--file: the whole filing chain in one command (shrink review S12, owner word 2026-08-28).
+
+    Before this flag every pen was four commands and a push — entry, incident index, STATE, an
+    explicit-path commit — a procedure that grew out of its own misses (v822). The chain here is
+    the SAME four instruments invoked in the same order, not a fifth implementation; each one's
+    own verify still gates the next, and the commit is explicit-path (P8), never `add -A`."""
+    import subprocess
+
+    def run(argv):
+        p = subprocess.run(argv, cwd=ROOT, capture_output=True, text=True)
+        if p.returncode != 0:
+            print((p.stdout or '') + (p.stderr or ''))
+        return p.returncode
+
+    if run([sys.executable, os.path.join(ROOT, 'tools', 'incident_index.py'), 'write']):
+        die('incident_index write failed — the entry stands, the filing stopped')
+    if run([sys.executable, '-m', 'tools.landing.state', 'write']):
+        die('STATE write failed — the entry stands, the filing stopped')
+    if run([sys.executable, '-m', 'tools.landing.state', 'check']):
+        die('STATE check failed after write')
+    paths = [os.path.relpath(entry_path, ROOT),
+             'docs/register/LATEST.md', 'docs/register/INDEX.md', 'docs/register/index.json',
+             'docs/incidents/INDEX.md', 'docs/incidents/index.json', 'docs/STATE.md']
+    msg = message or ('register v%d' % nxt)
+    if run(['git', 'add', '--'] + paths) or run(['git', 'commit', '-m', msg, '--'] + paths):
+        die('the explicit-path commit failed')
+    print('penned AND filed v%d — entry + indexes + incidents + STATE committed (explicit paths). '
+          'Push when ready.' % nxt)
+    return 0
 
 
 def main(argv=None):
@@ -214,6 +249,9 @@ def main(argv=None):
     a1.add_argument('--incident', choices=('yes', 'no'))
     a1.add_argument('--date')
     a1.add_argument('--dry-run', action='store_true')
+    a1.add_argument('--file', action='store_true',
+                    help='run the whole filing chain: incident index + STATE + explicit-path commit (S12)')
+    a1.add_argument('--commit-message', help='commit message for --file (default: "register vN")')
     sub.add_parser('verify')
     a3 = sub.add_parser('index')
     a = ap.parse_args(argv)
