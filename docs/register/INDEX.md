@@ -1,8 +1,9 @@
 <!-- GENERATED-ONLY — regenerate: python3 tools/seat/pen.py index ; assert current: python3 tools/seat/pen.py verify -->
 # REGISTER ADDRESS INDEX — generated
 
-Newest entry: **v880**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
+Newest entry: **v881**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
 
+- **v881** (2026-08-28) — `docs/register/entries/v881.md` — **THE OWNER'S LOCATIONS UPDATE + THE THIRD DRAFT YEAR + THE 56-ASSET CLUB RATING ARE LIVE (main, the #283 lane + one ingest act).** Owner wo
 - **v880** (2026-08-27) — `docs/register/entries/v880.md` — **THE COMBINED BUILD IS LANDED (main d7a7726, take 11 of the transaction): the board of record moved ONCE, 3167cba6 → 530a4053, and every st
 - **v879** (2026-08-27) — `docs/register/entries/v879.md` — **BUILD BLOCK 4 IS COMPLETE ON THE CANDIDATE BRANCH (9cca5fb): the battery is GREEN, the easing constant is the declared procedure's measure
 - **v878** (2026-08-27) — `docs/register/entries/v878.md` — **BUILD BLOCK 3 LANDED ON THE CANDIDATE BRANCH (4bfdb76): the levers are BUILT, F1 is GREEN on the final bytes, and the candidate board f8d6

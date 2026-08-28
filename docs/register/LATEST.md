@@ -1,3 +1,3 @@
-# OPEN ITEMS REGISTER · v880 2026-08-27 · **THE COMBINED BUILD IS LANDED (main d7a7726, take 11 of the transaction): the board of record moved ONCE, 3167cba6 → 530a4053, and every step's postcondition held.** Owner authority: the banked mechanism words (v873/v874/v875) + the no-arb approval (v877) + the standing land-if-possible directive, executed while the owner sleeps per his word; the final ra
+# OPEN ITEMS REGISTER · v881 2026-08-28 · **THE OWNER'S LOCATIONS UPDATE + THE THIRD DRAFT YEAR + THE 56-ASSET CLUB RATING ARE LIVE (main, the #283 lane + one ingest act).** Owner words 2026-08-28, verbatim in the code at each site: the locations files (with his two corrections: Brayden George and Robert Hansen to Free agents), "THREE years worth of picks issued now", the rating formula ("Best 41 
 
-(one line per pen; full entry: docs/register/entries/v880.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
+(one line per pen; full entry: docs/register/entries/v881.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)

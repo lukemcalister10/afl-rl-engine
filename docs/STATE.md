@@ -20,7 +20,7 @@ measurement made while this file was written, not a claim carried over from the 
 | identity | pinned value | carrier | re-hashed from | verdict |
 |---|---|---|---|---|
 | board | `530a4053622c29092274fab0aa1fee7f` | data/expected_boot.json | data/rl_build/rl_app_data.json | agrees |
-| store | `fb640ca0baf92bbb122b1ad7e25c5a88` | data/expected_boot.json | engine/rl_after/rl_model_data.json | agrees |
+| store | `b4d23810ebb6b53f07a0ae40a3c24b97` | data/expected_boot.json | engine/rl_after/rl_model_data.json | agrees |
 | engine_head | `a5550b678f05e5c8b80cd3952d1b4ce5` | data/expected_boot.json | engine/rl_after/_merged_recover.py | agrees |
 | rl_model | `6fe7c4155866d80e8045bed2d3bf2802` | data/expected_boot.json | engine/rl_after/rl_model.py | agrees |
 | balanced_board_md5 | `c06ff1e897f850bbecf3330e9050c365` | data/expected_boot.json | (no in-tree artifact) | not in tree |
@@ -28,7 +28,7 @@ measurement made while this file was written, not a claim carried over from the 
 
 | release fact | value | carrier |
 |---|---|---|
-| contract seal | `7cd796dee6ceb7716d70619b085e87cfe1c365cc8ef1279e1c9f197859972451` | data/release_contract.json:contract_sha256 |
+| contract seal | `360d537e5fe95f54a3d8ce8a295e67cde061793b684fe82db5dfae798e8f78ad` | data/release_contract.json:contract_sha256 |
 | config seal | `f233d1604975cdbda18bde0d31e253c8254bddc97fb7f1be6ac0412f57e06979` | data/release_contract.json:config_sha256 |
 | release version | v2.11-final-rc1-PROVISIONAL | data/release_contract.json:release_version |
 | round (as_of_round) | 24 | data/release_contract.json:as_of_round |
@@ -50,28 +50,28 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v880 2026-08-27 · **THE COMBINED BUILD IS LANDED (main d7a7726, take 11 of the transaction): the board of record moved ONCE, 3167cba6 → 530a4053, and every step's postcondition held.** Owner authority: the banked mechanism words (v873/v874/v875) + the no-arb approval (v877) + the standing land-if-possible directive, executed while the owner sleeps per his word; the final ra
+  > # OPEN ITEMS REGISTER · v881 2026-08-28 · **THE OWNER'S LOCATIONS UPDATE + THE THIRD DRAFT YEAR + THE 56-ASSET CLUB RATING ARE LIVE (main, the #283 lane + one ingest act).** Owner words 2026-08-28, verbatim in the code at each site: the locations files (with his two corrections: Brayden George and Robert Hansen to Free agents), "THREE years worth of picks issued now", the rating formula ("Best 41
 
-- new-form entries under `docs/register/entries/`: 68
+- new-form entries under `docs/register/entries/`: 69
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
 
-`data/release_lineage.json` — the append-only out-of-round transition register, 16 entries.
+`data/release_lineage.json` — the append-only out-of-round transition register, 17 entries.
 
 | field | value |
 |---|---|
-| column | combined-build-46-47-48-sll5g |
-| after round | 24 |
-| board moved | `3167cba643a6b16e5ef5d904d8957fcd` → `530a4053622c29092274fab0aa1fee7f` |
-| identities moved | board |
-| owner ruling id | MECHANISM_AGREED_2026-08-27_agree_on_your_mechanism, SLL5G_LOCKED_2026-08-27_lock_in_ll5g_then, DEPTH3_CAP_A_2026-08-27_a_for_depth_3_cap, SAT_SEASON_LT2_2026-08-27_lt2_is_fine_for_sat_season, EASING… |
+| column | (none) |
+| after round | (none) |
+| board moved | `?` → `?` |
+| identities moved | (none) |
+| owner ruling id | OWNERSHIP_SINGLE_SOURCE_2026-07-30 |
 
 ## GENERATION STAMP
 
 | field | value |
 |---|---|
-| generated at commit | `c559d6b4c3464849f97e0f94b98242cb2078ab38` |
+| generated at commit | `12d06db90cb5d348e15a9d83c2196a446ac346f6` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

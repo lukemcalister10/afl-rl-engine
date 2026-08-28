@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 259,
+  "coverage_entries": 260,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-28",
+      "headline": "**THE OWNER'S LOCATIONS UPDATE + THE THIRD DRAFT YEAR + THE 56-ASSET CLUB RATING ARE LIVE (main, the #283 lane + one ingest act).** Owner words 2026-0\u2026",
+      "hits": {
+        "DECLARED": [
+          "**THE OWNER'S LOCATIONS UPDATE + THE THIRD DRAFT YEAR + THE 56-ASSET CLUB RATING ARE LIVE (main, the #283 lane + one ingest act).** Owner words 2026-08-28, verbatim in the code at each site: the locations files (with his\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 881
+    },
     {
       "by": "explicit",
       "date": "2026-08-27",
@@ -2214,7 +2228,7 @@
       "version": 622
     }
   ],
-  "incidents": 131,
+  "incidents": 132,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",
