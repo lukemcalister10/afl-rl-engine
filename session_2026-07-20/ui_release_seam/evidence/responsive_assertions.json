@@ -21,19 +21,19 @@
     "width": 320,
     "name": "names usable width (>=50px, not one-char column)",
     "ok": true,
-    "detail": "Luke Jacks:159px Nick Daico:166px Harry Shee:159px Tristan Xe:159px Max Holmes:159px"
+    "detail": "Harry Shee:161px Nick Daico:161px Nasiah Wan:166px Luke Jacks:166px Max Holmes:166px"
   },
   {
     "width": 320,
     "name": "names render in <= 2 text lines (never char-by-char)",
     "ok": true,
-    "detail": "1L 1L 1L 1L 1L"
+    "detail": "1L 1L 2L 1L 1L"
   },
   {
     "width": 320,
     "name": "every nav destination reachable + in viewport",
     "ok": true,
-    "detail": "Board✓ Clubs✓ Player✓ Trade ✓ Round ✓ Movers✓ Workin✓ Public✓"
+    "detail": "AFFL R✓ Clubs✓ Player✓ Trade ✓ Movers✓"
   },
   {
     "width": 320,
@@ -93,19 +93,19 @@
     "width": 360,
     "name": "names usable width (>=50px, not one-char column)",
     "ok": true,
-    "detail": "Luke Jacks:199px Nick Daico:206px Harry Shee:199px Tristan Xe:199px Max Holmes:199px"
+    "detail": "Harry Shee:201px Nick Daico:201px Nasiah Wan:206px Luke Jacks:206px Max Holmes:206px"
   },
   {
     "width": 360,
     "name": "names render in <= 2 text lines (never char-by-char)",
     "ok": true,
-    "detail": "1L 1L 1L 1L 1L"
+    "detail": "1L 1L 2L 1L 1L"
   },
   {
     "width": 360,
     "name": "every nav destination reachable + in viewport",
     "ok": true,
-    "detail": "Board✓ Clubs✓ Player✓ Trade ✓ Round ✓ Movers✓ Workin✓ Public✓"
+    "detail": "AFFL R✓ Clubs✓ Player✓ Trade ✓ Movers✓"
   },
   {
     "width": 360,
@@ -165,19 +165,19 @@
     "width": 390,
     "name": "names usable width (>=50px, not one-char column)",
     "ok": true,
-    "detail": "Luke Jacks:229px Nick Daico:236px Harry Shee:229px Tristan Xe:229px Max Holmes:229px"
+    "detail": "Harry Shee:231px Nick Daico:231px Nasiah Wan:236px Luke Jacks:236px Max Holmes:236px"
   },
   {
     "width": 390,
     "name": "names render in <= 2 text lines (never char-by-char)",
     "ok": true,
-    "detail": "1L 1L 1L 1L 1L"
+    "detail": "1L 1L 2L 1L 1L"
   },
   {
     "width": 390,
     "name": "every nav destination reachable + in viewport",
     "ok": true,
-    "detail": "Board✓ Clubs✓ Player✓ Trade ✓ Round ✓ Movers✓ Workin✓ Public✓"
+    "detail": "AFFL R✓ Clubs✓ Player✓ Trade ✓ Movers✓"
   },
   {
     "width": 390,
@@ -237,7 +237,7 @@
     "width": 430,
     "name": "names usable width (>=50px, not one-char column)",
     "ok": true,
-    "detail": "Luke Jacks:269px Nick Daico:276px Harry Shee:269px Tristan Xe:269px Max Holmes:269px"
+    "detail": "Harry Shee:271px Nick Daico:271px Nasiah Wan:276px Luke Jacks:276px Max Holmes:276px"
   },
   {
     "width": 430,
@@ -249,7 +249,7 @@
     "width": 430,
     "name": "every nav destination reachable + in viewport",
     "ok": true,
-    "detail": "Board✓ Clubs✓ Player✓ Trade ✓ Round ✓ Movers✓ Workin✓ Public✓"
+    "detail": "AFFL R✓ Clubs✓ Player✓ Trade ✓ Movers✓"
   },
   {
     "width": 430,
@@ -309,19 +309,19 @@
     "width": 720,
     "name": "names usable width (>=50px, not one-char column)",
     "ok": true,
-    "detail": "Luke Jacks:230px Nick Daico:230px Harry Shee:230px Tristan Xe:230px Max Holmes:230px"
+    "detail": "Harry Shee:262px Nick Daico:262px Nasiah Wan:262px Luke Jacks:262px Max Holmes:262px"
   },
   {
     "width": 720,
     "name": "names render in <= 2 text lines (never char-by-char)",
     "ok": true,
-    "detail": "1L 1L 1L 1L 1L"
+    "detail": "1L 1L 2L 1L 1L"
   },
   {
     "width": 720,
     "name": "every nav destination reachable + in viewport",
     "ok": true,
-    "detail": "Board✓ Clubs✓ Player✓ Trade ✓ Round ✓ Movers✓ Workin✓ Public✓"
+    "detail": "AFFL R✓ Clubs✓ Player✓ Trade ✓ Movers✓"
   },
   {
     "width": 720,
@@ -381,7 +381,7 @@
     "width": 1440,
     "name": "names usable width (>=50px, not one-char column)",
     "ok": true,
-    "detail": "Luke Jacks:336px Nick Daico:336px Harry Shee:336px Tristan Xe:336px Max Holmes:336px"
+    "detail": "Harry Shee:372px Nick Daico:372px Nasiah Wan:372px Luke Jacks:372px Max Holmes:372px"
   },
   {
     "width": 1440,
@@ -393,7 +393,7 @@
     "width": 1440,
     "name": "every nav destination reachable + in viewport",
     "ok": true,
-    "detail": "Board✓ Clubs✓ Player✓ Trade ✓ Round ✓ Movers✓ Workin✓ Public✓"
+    "detail": "AFFL R✓ Clubs✓ Player✓ Trade ✓ Movers✓"
   },
   {
     "width": 1440,

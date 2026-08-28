@@ -50,8 +50,10 @@ page.on('console', m => { if (m.type() === 'error') pageErrors.push('console: ' 
 await page.goto(URL);
 await page.waitForTimeout(600);
 
+/* RESTATED 2026-08-28 (owner redesign): the app ships ONE fully transparent tier — the public
+   renderer and the tier toggle are retired, so `setTier` went with them. Item substance that
+   survives (form, pick, rank denominator, navigation, totals) is asserted against THE app. */
 const go = async (view) => { await page.evaluate(v => MD.go(v), view); await page.waitForTimeout(250); };
-const setTier = async (t) => { await page.evaluate(t2 => { MD.state.tier = t2; MD.render(); }, t); await page.waitForTimeout(250); };
 
 /* ------------------------------------------------------------------ the app renders at all */
 section('PREREQUISITE — the board ring-fence');
@@ -91,18 +93,20 @@ const canon = await page.evaluate(() => ({
 }));
 check(canon.a === canon.b && canon.b === canon.c && canon.a === 'Free Agents',
   'item 5 — both authored spellings canonicalise to one key', JSON.stringify(canon));
-const bothSpellingsSelected = await page.evaluate(() => {
-  const b = window.__MATCHDAY_MOVERS__;
-  const rep = b.reports['20'];
-  const filtered = MD.movers.core.filter(rep.players, { club: 'Free Agents' });
-  const spellings = {};
-  filtered.forEach(p => { spellings[p.affl_team] = (spellings[p.affl_team] || 0) + 1; });
-  return spellings;
+/* RESTATED 2026-08-28: since #283 the club filter matches each player's LIVE club (the ownership
+   store is the single source of ownership), not the report row's stored affl_team — a row's stored
+   spelling can be any club the player has since left. What remains item 5's to assert: the
+   selection is exactly the live-store Free-Agents pool, canonicalised, and non-empty. */
+const poolSel = await page.evaluate(() => {
+  const rep = window.__MATCHDAY_MOVERS__.reports['20'];
+  const live = (p) => (MD.ownership ? MD.ownership.clubOf(p) : (p ? p.affl_team : null));
+  const want = rep.players.filter(p => (MD.canonClub(live(p)) || '—') === 'Free Agents');
+  const got = MD.movers.core.filter(rep.players, { club: 'Free Agents' });
+  return { n: got.length, wantN: want.length };
 });
-check(Object.keys(bothSpellingsSelected).length >= 1 &&
-      Object.keys(bothSpellingsSelected).every(s => /^free agents$/i.test(s)),
-  'item 5 — selecting the pool returns rows of BOTH authored spellings',
-  JSON.stringify(bothSpellingsSelected));
+check(poolSel.n > 0 && poolSel.n === poolSel.wantN,
+  'item 5 — selecting the pool returns exactly the live-store Free-Agents rows',
+  JSON.stringify(poolSel));
 
 /* ------------------------------------------------------------------ CLUSTER 1: the player card */
 section('CLUSTER 1 — the player card (items 3, 17, 18)');
@@ -120,7 +124,10 @@ const HIST = await page.evaluate(() => {
    The literal stays a literal ON PURPOSE — it is the drift sentinel that made adoption's new column
    visible at all. It moves by one every time a landed change adds a column, and that edit is the
    point. */
-check(HIST.series && HIST.series.length === 9, 'item 3 — the history has all nine points',
+/* Sentinel RE-PINNED 2026-08-28: rounds landed through R23 and twelve further model changes landed
+   (through the combined build), so the point count moved 9 → 25. The literal stays a literal — it
+   is the drift sentinel, and it moves by hand every time a landed change adds a column. */
+check(HIST.series && HIST.series.length === 25, 'item 3 — the history has all 25 points',
   HIST.series ? String(HIST.series.length) : 'null');
 check(HIST.series.every(r => r.v != null && r.rank != null && r.posRank != null),
   'item 3 — value, rank and positional rank are present at EVERY point (no participation gate)');
@@ -135,9 +142,14 @@ check(modelPt && modelPt.score.state === 'not-a-round' && modelPt.v != null,
 /* #274 item 1 — the adoption column is a point in its own right, and it must behave like one rather
    than merely be tolerated by a loosened count. Named explicitly so a missing or mislabelled column
    fails here instead of passing as "some non-round point". */
-check(modelPts.map(r => r.id).join(',') === 'post-r19-redesign-1,rederivation-30-7',
-  'item 3 — BOTH out-of-round columns are present, in order, flagged not-a-round',
-  modelPts.map(r => r.id).join(','));
+/* RESTATED 2026-08-28: fourteen model changes have landed, so the two-name literal became a
+   derivation — the out-of-round columns must be EXACTLY the bundle's model_changes, in order.
+   (The bundle list is the same one the card's MC-N ids index; see ui/MAINTAINER.md.) */
+const wantMcIds = await page.evaluate(() =>
+  (window.__MATCHDAY_MOVERS__.model_changes || []).map(c => String(c.between[1])));
+check(modelPts.map(r => String(r.id)).join(',') === wantMcIds.join(',') && wantMcIds.length >= 2,
+  'item 3 — every out-of-round column is present, in bundle order, flagged not-a-round',
+  modelPts.map(r => r.id).join(',') + ' vs ' + wantMcIds.join(','));
 check(modelPts.every(r => r.score.state === 'not-a-round' && r.v != null),
   'item 3 — every out-of-round column carries value/rank movement but never a score');
 
@@ -192,48 +204,46 @@ check(completeRounds.every(r => HONESTY.scoreByPoint[r] === HONESTY.cov.rounds[r
 await page.evaluate(() => MD.go('card', 'aaron-cadman'));
 await page.waitForTimeout(300);
 check(await page.locator('.histtbl').count() === 1, 'item 3 — the card renders the history table');
-/* Both counts RESTATED at #274 item 1, same cause as the series length above: adoption added the 30/7
-   column, which is a ninth row and a SECOND model-change tag. Kept as literals — the drift sentinels. */
-check(await page.locator('.histtbl tbody tr').count() === 9, 'item 3 — nine rows, one per point');
-check(await page.locator('.histtbl .mctag').count() === 2,
-  'item 3 — BOTH out-of-round rows carry a "model change" tag (the restructure and the 30/7 rederivation)');
+/* RESTATED 2026-08-28: one line per event (owner word) — the row count equals the series, model
+   rows carry the bare "Model change (MC-N)" id, and the coverage-caveat essay (.histnote) is
+   retired to ui/MAINTAINER.md. */
+check(await page.locator('.histtbl tbody tr').count() === HIST.series.length,
+  'item 3 — one row per point, no more and no fewer');
+const mcidTexts = await page.locator('.histtbl .mcid').allTextContents();
+check(mcidTexts.length === modelPts.length && mcidTexts.every(t => /^\(MC-\d+\)$/.test(t.trim())),
+  'item 3 — every model-change row is ONE line: "Model change (MC-N)", ids sequential over the bundle',
+  JSON.stringify(mcidTexts.slice(0, 4)));
 check(await page.locator('.reserved:has-text("weekly-loop phase")').count() === 0,
   'item 3 — the "reserved · wired in the weekly-loop phase" placeholder is gone');
-const noteText = await page.locator('.histnote').innerText();
-check(/not uniform/i.test(noteText) && /did not play/i.test(noteText),
-  'item 3 — the card states the coverage caveat in words');
+check(await page.locator('.histnote').count() === 0,
+  'item 3 — the coverage-caveat essay is off the card (maintainer doc, not screen furniture)');
 
-/* items 17 + 18 — public parity */
-await setTier('public');
-await page.waitForTimeout(250);
-const pubCard = await page.locator('.card').innerText();
-check(/recent form/i.test(pubCard), 'item 17 — Recent form is exposed on the public card');
-check(/pick\s*\d+/i.test(pubCard), 'item 18 — the public card shows the draft pick');
-check(/of\s*804/i.test(pubCard), 'item 18 — the public card shows rank WITH its denominator');
-check(await page.locator('.histtbl').count() === 1, 'item 3 — the public card carries the weekly history too');
-check(!/guard 5|store <b>|engine <b>/i.test(pubCard), 'item 18 — build provenance stays hidden in public');
-check(!/owner override/i.test(pubCard), 'item 18 — the owner override stays hidden in public');
-check(!/per-lever/i.test(pubCard), 'item 18 — the per-lever attribution panel stays hidden in public');
-const steady = await page.locator('.statrow').innerText();
+/* items 17 + 18 — the substance survives on THE card (one transparent tier) */
+const cardText = await page.locator('.card').innerText();
+check(/recent form/i.test(cardText), 'item 17 — Recent form is exposed on the card');
+check(/pick\s*\d+/i.test(cardText), 'item 18 — the card shows the draft pick');
+check(/\/\s*804/.test(cardText), 'item 18 — the card shows rank WITH its denominator');
+check(!/guard 5|board <b>|engine <b>/i.test(cardText), 'item 18 — no build provenance on the card');
+check(!/per-lever|why the price/i.test(cardText), 'item 18 — no attribution panel on the card');
+const steady = await page.locator('.statrow').first().innerText();
 check(!/—\s*steady/i.test(steady), 'item 18 — the hardcoded "— steady" movement is gone');
 
 /* ------------------------------------------------------------------ CLUSTER 2: navigation */
 section('CLUSTER 2 — navigation (items 12, 16, 15, 9, 11)');
-await setTier('public');
 await go('board');
-const pubRows = page.locator('.rows .row.public');
-check(await pubRows.count() === 804, 'the public board renders');
-const pubRowText = await pubRows.first().innerText();
-check(/\n/.test(pubRowText) && (await page.locator('.rows .row.public .club').count()) === 804,
-  'item 9 — every public row carries the AFFL/AFL club');
+const bRows = page.locator('.rows .row.working');
+check(await bRows.count() === 804, 'the board renders all rows');
+const bRowText = await bRows.first().innerText();
+check(/\n/.test(bRowText) && (await page.locator('.rows .row.working .club').count()) === 804,
+  'item 9 — every row carries the AFFL/AFL club');
 
-// item 16 — a public player row opens that player's profile.
-await pubRows.nth(3).click();
+// item 16 — a player row opens that player's profile.
+await bRows.nth(3).click();
 await page.waitForTimeout(300);
 const viewAfterPlayerClick = await page.evaluate(() => MD.state.view);
 const keyAfterPlayerClick = await page.evaluate(() => MD.state.cardKey);
 check(viewAfterPlayerClick === 'card' && !!keyAfterPlayerClick,
-  'item 16 — clicking a player in Public opens that player\'s profile',
+  'item 16 — clicking a player opens that player\'s profile',
   viewAfterPlayerClick + '/' + keyAfterPlayerClick);
 
 // item 12 — a club opened from the Clubs page lands on THAT club, not the all-player list.
@@ -244,17 +254,22 @@ const afterClubOpen = await page.evaluate(() => ({
   view: MD.state.view, filter: MD.board.snapshot().clubFilter,
   rows: document.querySelectorAll('.rows .row').length,
   summary: document.querySelectorAll('.clubsummary').length,
+  picksPanel: document.querySelectorAll('.pickspanel').length,
 }));
 check(afterClubOpen.view === 'board' && !!afterClubOpen.filter,
-  'item 12 — opening a club in Public routes to the board WITH the club filter set');
+  'item 12 — opening a club routes to the board WITH the club filter set');
 check(afterClubOpen.rows > 0 && afterClubOpen.rows < 804,
-  'item 12 — the public board shows that club only, not the all-player list',
+  'item 12 — the board shows that club only, not the all-player list',
   'rows=' + afterClubOpen.rows);
+check(afterClubOpen.picksPanel === 1,
+  'owner fix 2026-08-28 — a focused club shows its PICKS at the bottom of its board');
 check(afterClubOpen.summary === 1, 'item 11 — the club page opens with the club profile summary');
 
+/* RESTATED 2026-08-28: the metric labels are the owner's — "Rating" (the 56-asset club rating)
+   and "Depth" (was Non-Best-23) — and ranks read plain "rank N". */
 const summaryText = await page.locator('.clubsummary').innerText();
-check(/overall/i.test(summaryText) && /best-23/i.test(summaryText) && /top-5/i.test(summaryText) &&
-      /non-best-23/i.test(summaryText) && /rank \d+ of 16/i.test(summaryText),
+check(/rating/i.test(summaryText) && /best-23/i.test(summaryText) && /top-5/i.test(summaryText) &&
+      /depth/i.test(summaryText) && /rank \d+/i.test(summaryText),
   'item 11 — the summary carries the comparison-page metrics, each with its rank');
 check((await page.locator('.clubsummary')).first() !== null &&
       await page.evaluate(() => {
@@ -265,7 +280,7 @@ check((await page.locator('.clubsummary')).first() !== null &&
 
 // item 15 — universal Back: club -> player -> back lands on the club page again.
 const clubBefore = await page.evaluate(() => MD.board.snapshot().clubFilter);
-await page.locator('.rows .row.public').first().click();
+await page.locator('.rows .row.working').first().click();
 await page.waitForTimeout(300);
 check(await page.evaluate(() => MD.state.view) === 'card', 'item 15 — club → player navigates to the card');
 check(await page.locator('.backnav button').count() === 1, 'item 15 — a universal Back control is present');
@@ -291,7 +306,6 @@ check(await page.evaluate(() => MD.state.view) === 'board', 'item 15 — Back fr
 
 /* ------------------------------------------------------------------ item 21: club totals */
 section('ITEM 21 — club totals computed in the browser');
-await setTier('working');
 await go('clubs');
 const totals = await page.evaluate(() => {
   const ct = MD.clubTotals.compute();
@@ -323,8 +337,14 @@ const totals = await page.evaluate(() => {
       && beforePerturb.every((v, i) => v === afterPerturb[i]),
     bakedWasReadable: Object.keys(baked).length === 16,
     picksKept: ct.clubs.every(c => c.totalPicks > 0),
-    identities: ct.clubs.every(c => c.overall === c.totalPlayer + c.totalPicks &&
-                                    c.totalPlayer === c.best23 + c.nonBest23),
+    /* RESTATED 2026-08-28: `overall` is now the owner's 56-asset rating, so the conservation
+       identity is rating == (players − material excluded) + (picks − material cut) + phantom. */
+    identities: ct.clubs.every(c => {
+      const f = c.rating56 || {};
+      const conserve = (c.totalPlayer - f.materialExcludedPlayers)
+        + (c.totalPicks - f.materialExcludedPicks) + f.phantomAdded;
+      return Math.abs(c.overall - conserve) < 0.5 && c.totalPlayer === c.best23 + c.nonBest23;
+    }),
     boardPin: ct.playerSource.board.slice(0, 8),
     stampPin: (MD.seam.working.stamp.board_md5 || '').slice(0, 8),
   };
@@ -340,69 +360,47 @@ check(totals.independentOfBaked,
 check(totals.picksKept, 'item 21 — the ingest\'s PVC band-priced picks are kept, not recomputed');
 check(totals.identities, 'item 21 — overall == player + picks and player == best23 + nonBest23');
 check(totals.boardPin === totals.stampPin, 'item 21 — the totals name the board they were summed from');
-const clubsIntro = await page.locator('.cintro').innerText();
-check(/browser/i.test(clubsIntro), 'item 21 — the Clubs page says the totals are summed in the browser');
+check(await page.locator('.cintro').count() === 0,
+  'owner word 2026-08-28 — the Clubs-page intro essay is retired (methodology lives in ui/MAINTAINER.md)');
 
-/* -------------------------------------------------- #274 item 3 — the over-free lens (v − FHV) */
-section('#274 item 3 — over free');
-await setTier('working'); await go('board');
-const OF = await page.evaluate(() => {
+/* ------------------------------------- the ONE movement column (owner redesign 2026-08-28) */
+section('REDESIGN — Round Δ is the one movement column; over-free is retired');
+await go('board');
+const RD = await page.evaluate(() => {
   const rows = Array.from(document.querySelectorAll('.row.working'));
-  const cell = (r) => r.querySelector('.ofree');
-  const first = rows[0];
-  const val = (r) => Number(String(r.querySelector('.val').innerText).replace(/[^\d.-]/g, ''));
+  const rd = MD.board.roundDeltas();
+  const rep = (() => {
+    const mv = window.__MATCHDAY_MOVERS__;
+    return mv.reports[String(mv.rounds[mv.rounds.length - 1])];
+  })();
+  const byKey = {}; rep.players.forEach(r => { byKey[r.key] = r; });
+  // the pill text must be the report's own value_change for that player, on every row it renders
+  const agree = (MD.seam.working.players || []).every(p => {
+    const r = rd && rd[p.key];
+    return !r || r.d === byKey[p.key].value_change;
+  });
   return {
-    fhv: MD.config.FHV,
-    cells: rows.filter(r => cell(r)).length,
     rows: rows.length,
-    firstVal: val(first),
-    firstText: cell(first).innerText,
-    below: document.querySelectorAll('.row.working .ofree.belowfree').length,
-    // the flag must agree with the arithmetic on EVERY row, not just look plausible
-    flagAgrees: rows.every(r => (val(r) < MD.config.FHV) === cell(r).classList.contains('belowfree')),
-    // pure helpers, both directions
-    helperOk: MD.overFree(1000) === 1000 - MD.config.FHV && MD.overFree(null) === null &&
-              MD.belowFree(MD.config.FHV - 1) === true && MD.belowFree(MD.config.FHV) === false,
-    hasHeader: !!document.querySelector('.rowhead.working .ofree'),
+    ofreeCells: document.querySelectorAll('.ofree').length,
+    pills: rows.filter(r => r.querySelector('.pill')).length,
+    round: rd && rd._round, prev: rd && rd._prev,
+    repRound: rep.current_round, repPrev: rep.previous_round,
+    agree,
   };
 });
-check(OF.fhv === 190, 'item 3 — FHV is the ruled constant 190 (#270 Option A)', String(OF.fhv));
-check(OF.cells === OF.rows && OF.rows > 0,
-  'item 3 — every board row carries the over-free cell', OF.cells + '/' + OF.rows);
-check(OF.hasHeader, 'item 3 — the column is headed');
-check(OF.firstText.replace(/[^\d]/g, '') === String(OF.firstVal - OF.fhv),
-  'item 3 — the figure is exactly value − FHV', OF.firstText + ' vs ' + (OF.firstVal - OF.fhv));
-check(OF.flagAgrees, 'item 3 — the below-free flag agrees with the arithmetic on every row');
-check(OF.below > 0 && OF.below < OF.rows,
-  'NON-VACUITY: the flag fires on some rows and not others  (' + OF.below + ' of ' + OF.rows + ' below free)');
-check(OF.helperOk, 'item 3 — the lens helpers are pure: null in / null out, and the boundary is exclusive');
-
-/* NON-VACUITY the other way: move FHV and BOTH the column and the flag must move with it, proving one
-   constant drives both and neither is a stored figure. */
-const OF2 = await page.evaluate(() => {
-  const before = document.querySelectorAll('.row.working .ofree.belowfree').length;
-  MD.config.FHV = 100000;                       // in-page only; nothing is written anywhere
-  MD.go('board');
-  const rows = Array.from(document.querySelectorAll('.row.working'));
-  const after = document.querySelectorAll('.row.working .ofree.belowfree').length;
-  const text = rows[0].querySelector('.ofree').innerText;
-  MD.config.FHV = 190; MD.go('board');
-  return { before, after, total: rows.length, text };
-});
-check(OF2.after === OF2.total && OF2.after !== OF2.before,
-  'NON-VACUITY: raising FHV flags EVERY row below free — one constant drives the whole lens  (' +
-  OF2.before + ' -> ' + OF2.after + ' of ' + OF2.total + ')');
-check(/^−/.test(OF2.text), 'NON-VACUITY: and the figure itself follows FHV, so it is computed not stored',
-  OF2.text);
+check(RD.ofreeCells === 0, 'the over-free column is retired — no .ofree cell renders anywhere');
+check(RD.pills === RD.rows && RD.rows > 0,
+  'every board row carries the Round Δ cell', RD.pills + '/' + RD.rows);
+check(RD.round === RD.repRound && RD.prev === RD.repPrev,
+  'Round Δ is the LATEST weekly report\'s round pair', RD.round + ' vs ' + RD.prev);
+check(RD.agree, 'every rendered delta is the report\'s own value_change — computed nowhere else');
 
 /* ------------------------------------------------------------------ no runtime errors anywhere */
 section('RUNTIME');
 for (const v of ['board', 'clubs', 'card', 'trade', 'movers']) {
-  for (const t of ['working', 'public']) {
-    await setTier(t); await go(v);
-  }
+  await go(v);
 }
-check(pageErrors.length === 0, 'every view renders in both tiers with no page errors',
+check(pageErrors.length === 0, 'every view renders with no page errors',
   pageErrors.slice(0, 4).join(' | '));
 
 await browser.close();

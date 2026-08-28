@@ -66,7 +66,7 @@ header.mast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px
 
 /* ---- item 4: column headings (grid-aligned to the row templates) ---- */
 .rowhead{display:grid;gap:12px;align-items:end;padding:14px 16px 6px;border-bottom:1px solid var(--edge)}
-.rowhead.working{grid-template-columns:48px 24px 1fr 62px 154px 88px 122px 106px 82px 74px}
+.rowhead.working{grid-template-columns:48px 1fr 62px 154px 88px 122px 106px 74px}
 /* #274 item 3 — over-free lens. `belowfree` is the standing delist-candidate flag: it must not rely
    on colour alone (the Matchday LOCK), so the figure itself is always printed and carries a tooltip. */
 .ofree{font-family:var(--mono);font-size:12px;color:var(--faint)}
@@ -83,7 +83,7 @@ header.mast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px
 .rows{margin-top:8px;display:flex;flex-direction:column;gap:8px}
 .row{display:grid;gap:12px;align-items:center;background:var(--card);border:1px solid var(--edge);
   padding:10px 16px;cursor:pointer;text-align:left;width:100%;font:inherit;color:inherit}
-.row.working{grid-template-columns:48px 24px 1fr 62px 154px 88px 122px 106px 82px 74px}
+.row.working{grid-template-columns:48px 1fr 62px 154px 88px 122px 106px 74px}
 .row.public{grid-template-columns:52px 1fr 82px 154px 92px 130px 120px}
 .row:hover{background:var(--card-2);border-color:#2c3446}
 /* #139 item 16: a public row with no joinable profile is not a navigation target and must not pretend
@@ -317,7 +317,7 @@ footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--
 
 @media(max-width:920px){
   /* narrow: keep name · club · value · Δ (club is now first-class); pos/meta/bar fold away */
-  .row.working{grid-template-columns:40px 20px 1fr 120px 84px 96px}
+  .row.working{grid-template-columns:40px 1fr 120px 84px 96px}
   .row.public{grid-template-columns:42px 1fr 120px 96px 120px}   /* + club (item 9) */
   /* #274 item 3: the over-free lens folds away with pos/meta at narrow widths — it is a desktop
      comparison column, and the phone layout is a named-area grid with no room for a tenth track. */
@@ -547,3 +547,7 @@ footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--
   .moverrow .mr.dpr{display:none}
 }
 @media(max-width:480px){.movercards{grid-template-columns:1fr}}
+
+/* redesign 2026-08-28 */
+.mcid{opacity:.6;font-size:.85em;margin-left:.25em}
+.hmodel .hpt{color:var(--faint,#8a93a3)}

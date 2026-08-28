@@ -131,20 +131,12 @@ MD.pocket = (function () {
 
     const block1 = '<div class="pk-sec">Value pockets</div>' +
       '<table class="pk-tbl">' + colhead + "<tbody>" + metricRows(club, agg) + "</tbody></table>";
-    const block2 = '<div class="pk-sec">Positional value <small>(owner counting rule)</small></div>' +
+    const block2 = '<div class="pk-sec">Positional value</div>' +
       '<table class="pk-tbl">' + posColhead + "<tbody>" + positionRows(club, agg) + "</tbody></table>";
 
-    const foot = '<div class="pk-foot">' +
-      "League average = mean over the " + agg.nClubs + " ranked clubs; the Free-Agents pool is " +
-      "excluded from every denominator and is never ranked (item 191). Positional value uses the " +
-      "owner rule, collapse-first — a Key listing absorbs its General counterpart (Key-Fwd absorbs " +
-      "Gen-Fwd, Key-Def absorbs Gen-Def; the General token is slot eligibility, not a second position). " +
-      "After that collapse a player counts 1 to his position, a DPP player 0.5 to each, except a DPP " +
-      "midfielder (the non-mid counts 1, the mid 0). Best-23 is the existing exact greedy, run here " +
-      "over the live board. Player value, Top-5/10, Best-23 and Non-Best-23 are computed in the browser " +
-      "from the stamped board; Picks are the ingest's PVC band prices." +
-      "</div>";
-    return head + block1 + block2 + foot;
+    // The methodology essay that used to render here (counting rule, league-average basis) is
+    // maintainer documentation now — ui/MAINTAINER.md (owner word 2026-08-28).
+    return head + block1 + block2;
   }
 
   // ------------------------------------------------------------------ the single floating panel

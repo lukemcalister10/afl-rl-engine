@@ -196,7 +196,7 @@ MD.trade = (function () {
         meta = it.pool ? '<i>2026 ND · position-blind level</i>' : '<i>2026 ND</i>';
       } else {
         const pl = MD.seam.indexed().byKey[it.key];
-        const pin = MD.anchors[it.key] ? ' <span class="tpin" title="carries your ★ read">★</span>' : "";
+        const pin = "";   // the ★ read pin is retired from every surface (owner word 2026-08-28)
         nm = fmt.esc(pl ? pl.name : it.key) + pin;
         meta = '<i>' + fmt.esc(pl ? pl.pos : "") + (pl && pl.age ? " · " + pl.age + "yo" : "") + "</i>";
       }
@@ -232,25 +232,14 @@ MD.trade = (function () {
       gapCls = "dn"; gapTxt = "−" + fmt.n(-gap) + " SCAR";
       line = "You give up <b>" + fmt.n(-gap) + "</b> — roughly " + describePick(-gap) + ".";
     }
-    // pinned-player note (the desk shows the read pin whenever a pinned player is on the table)
-    const onTable = MD.state.trade.give.concat(MD.state.trade.get)
-      .filter(function (it) { return it.t === "player" && MD.anchors[it.key]; })
-      .map(function (it) { return MD.seam.indexed().byKey[it.key].name + " (" + MD.anchors[it.key].read + ")"; });
-    const pinNote = onTable.length ? " Carries your ★ read: " + onTable.join(", ") + "." : "";
     v.innerHTML = '<div class="gap num ' + gapCls + '">' + gapTxt + "</div>" +
-      '<div class="line">' + line + "</div>" +
-      '<div class="sub">The model speaks; you overrule.' + pinNote + "</div>";
+      '<div class="line">' + line + "</div>";
     return v;
   }
 
   function render(container) {
     seed();
     container.innerHTML = "";
-    if (MD.state.tier === "public") {
-      container.innerHTML = '<div class="reserved" style="margin-top:20px"><b>Trade desk is a working-aid view.</b> ' +
-        "The public trim publishes values, ranks and movement only — trade tooling stays owner-side.</div>";
-      return;
-    }
     const desk = fmt.el("div", "desk");
     const give = pane("give", "You give", container);
     const get = pane("get", "You get", container);
@@ -259,19 +248,12 @@ MD.trade = (function () {
     container.appendChild(desk);
     container.appendChild(verdict(give.total, get.total));
 
-    const tr = fmt.el("div", "translator");
-    tr.innerHTML = "<b>Draft translator — arrives after its calibration gate.</b>" +
-      "<p>Will sit here: paste a live-draft pick swap, get it restated in board currency. " +
-      "Designed in now, wired later; nothing fake rendered until the gate clears.</p>";
-    container.appendChild(tr);
-
-    const foot = fmt.el("footer", "foot");
-    foot.innerHTML = "one currency: SCAR · picks priced off the pick-value curve (PVC, stamped artifact): ordinals 1–64, everything past 64 at the one pool level · verdict in plain language, figures alongside";
-    container.appendChild(foot);
+    // The "Draft translator" promise-placeholder used to render here; an unwired feature is not
+    // screen furniture (owner word 2026-08-28). describePick stays live for when it is wired.
   }
 
   /* describePick is exposed so the defect suite can exercise the EXACT shipped translator (same
-     doctrine as MD.board.retroFor and counting.js): a pure function of an amount and the stamped PVC,
-     reading no DOM and computing no price. */
+     doctrine as counting.js): a pure function of an amount and the stamped PVC, reading no DOM and
+     computing no price. */
   return { render: render, describePick: describePick };
 })();

@@ -615,11 +615,7 @@
         (hasPart
           ? '<span class="lbl">played</span><b class="num">' + fmt.n(tal.played) + "</b>" +
             '<span class="lbl">DNP</span><b class="num">' + fmt.n(tal.dnp) + "</b>"
-          : '<span class="lbl">participation</span><b class="num" title="A from/to range is not a ' +
-            'round, so no played/DNP fact is claimed for it.">not recorded</b>') +
-        '<span class="lbl">board</span><b class="num">' + fmt.esc(String(report.board_md5_before || "").slice(0, 8)) +
-          " → " + fmt.esc(String(report.board_md5_after || "").slice(0, 8)) + "</b>" +
-        '<span class="lbl">release</span><b class="num">' + fmt.esc(rel.release_version || "—") + "</b>";
+          : '<span class="lbl">participation</span><b class="num">not recorded</b>');
       return s;
     }
 
@@ -665,8 +661,7 @@
         sc.style.color = "var(--faint)";
         sc.style.textTransform = "none";
         sc.style.letterSpacing = ".04em";
-        sc.textContent = "· scoped to the R22 → R23 change per owner word — the wider from/to range " +
-          "and the retrospective “every round under today's model” view are queued";
+        sc.textContent = "· R22 → R23 only for now";
         wrap.appendChild(sc);
       }
 
@@ -780,9 +775,7 @@
           ? '<span class="pill up">PLAYED ' + fmt.n(p.score) + "</span>"
           : part === "dnp"
             ? '<span class="pill na">DNP</span>'
-            : '<span class="pill na" title="Participation is not recorded for this comparison. A ' +
-              'from/to range is not a round, so there is no single played/DNP fact to state — and an ' +
-              'absent fact is never reported as a missed game.">not recorded</span>';
+            : '<span class="pill na">—</span>';
         const r = fmt.el("div", "moverrow" + (part === "dnp" ? " dnp" : ""));
         r.setAttribute("data-key", p.key);
         r.setAttribute("data-participation", part);
@@ -857,10 +850,9 @@
       holder.appendChild(roundSelect(b, report));
       const spans = core.spansModelChange(b, state.from, state.to);
       if (spans.length) {
-        const names = spans.map(function (s) { return s.label; }).join(", ");
         holder.appendChild(fmt.el("div", "note modelchange",
-          "This range spans " + fmt.esc(names) + " — a change to the model itself, not to the players. " +
-          "Part of every difference below comes from that redesign rather than from football."));
+          "Includes " + spans.length + " model change" + (spans.length === 1 ? "" : "s") +
+          " — part of the movement is the model, not football."));
       }
       holder.appendChild(metaStrip(report));
       holder.appendChild(summaryCards(report));

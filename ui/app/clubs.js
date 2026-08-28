@@ -13,13 +13,13 @@ MD.clubs = (function () {
   let sortDir = "desc";
 
   const COLS = [
-    { key: "overall", label: "Overall", cls: "overall", tip: "players + picks" },
+    { key: "overall", label: "Rating", cls: "overall", tip: "the 56-asset club rating" },
     { key: "totalPlayer", label: "Player value", cls: "" },
     { key: "totalPicks", label: "Picks value", cls: "picks" },
     { key: "top5", label: "Top-5", cls: "" },
     { key: "top10", label: "Top-10", cls: "" },
     { key: "best23", label: "Best-23", cls: "" },
-    { key: "nonBest23", label: "Non-Best-23", cls: "" },
+    { key: "nonBest23", label: "Depth", cls: "", tip: "player value beyond the best 23" },
   ];
 
   function sorted(clubs) {
@@ -62,10 +62,10 @@ MD.clubs = (function () {
     club.appendChild(nm);
     const open = fmt.el("a", "copen", "open ›");
     open.href = "#";
-    open.title = "open " + fmt.esc(c.display || c.team) + " on the board (picks included)";
+    open.title = "open " + fmt.esc(c.display || c.team);
     open.addEventListener("click", function (e) {
       e.preventDefault();
-      MD.board.focusClub(c.team, true);   // filter the board to this club + turn picks on
+      MD.board.focusClub(c.team);   // the club view always shows roster + held picks
       MD.go("board");
     });
     club.appendChild(open);
@@ -96,38 +96,14 @@ MD.clubs = (function () {
       return;
     }
 
-    const ps = ct.playerSource || {};
-    intro.innerHTML =
-      "<b>" + fmt.n(ct.clubs.length) + " AFFL clubs</b> ranked by Overall Value " +
-      "(players + held picks). <b>Player value, Top-5/10, Best-23 and Non-Best-23 are summed in your " +
-      "browser from the board on screen</b> — board <b>" + fmt.esc(String(ps.board || "").slice(0, 8)) +
-      "</b>, round <b>" + fmt.esc(String(ps.asOfRound != null ? ps.asOfRound : "—")) +
-      "</b> — so they cannot fall behind the board the way a generated file can. " +
-      (ct.picksAvailable
-        ? "Picks are the ingest's canonical-PVC band prices (2027 × " +
-          fmt.esc(String((ct.picksSource || {}).mult2027 != null ? ct.picksSource.mult2027 : 0.9)) +
-          ", balanced) — a pick's price comes from the curve, not from the board, so it is not re-summable here."
-        /* v827: the reason now comes from `picksSource.reason`, which is the PIN's verdict, not only
-           the ingest's own halt. A bundle stamped to another board is refused by MD.clubTotals.pin()
-           without any `halt` block in the file, so reading `clubHalt()` alone would have printed "the
-           club-valuation bundle is absent" for a bundle that is present and merely stale — the one
-           sentence a reader must never be shown about a stale pick surface. `clubHalt()` is still the
-           fallback, since an ingest halt reaches both. */
-        : '<span class="halt">Picks unavailable</span> — ' +
-          fmt.esc((ct.picksSource || {}).reason || (halt && halt.reason) ||
-                  "the club-valuation bundle is absent") +
-          ". Picks and Overall show <b>n/a</b> rather than 0; the player-side columns are unaffected.") +
-      /* #274 item 2: this described the greedy that was replaced ("by board value + 5 best-remaining
-         bench"). It now describes the ruled selection (#271 Addendum 19) — the best 23 a club can
-         actually field, chosen by solving the assignment over each player's eligible positions rather
-         than filling slots in order, so a dual-position player is used wherever he is worth most. */
-      " <b>Best-23</b> = the most valuable 23 the club can legally field — the XVIII " +
-      "(2 K-DEF · 4 G-DEF · 5 MID · 4 G-FWD · 2 K-FWD · 1 RUC) plus 5 bench, chosen together so that " +
-      "every slot is filled by someone eligible for it and the total board value is the highest possible. " +
-      "Dual-position players count toward whichever slot makes the side strongest. " +
-      "Every column sortable; click a club to open its board view. " +
-      "<small>(The AFFL league is 16 clubs + a Free-Agents pool; Free Agents is a pool, not a club, so it is not ranked.)</small>";
-    page.appendChild(intro);
+    // REDESIGNED 2026-08-28 (owner word): no description blob — the table is the page. The one
+    // sentence that survives is a picks-unavailable warning, because n/a columns need their reason.
+    if (!ct.picksAvailable) {
+      intro.innerHTML = '<span class="halt">Picks unavailable</span> — ' +
+        fmt.esc((ct.picksSource || {}).reason || (halt && halt.reason) || "the picks bundle is absent") +
+        ". Rating and Picks show n/a.";
+      page.appendChild(intro);
+    }
 
     const table = fmt.el("table", "ctable");
     const thead = fmt.el("thead");
@@ -142,11 +118,6 @@ MD.clubs = (function () {
     tablewrap.appendChild(table);
     page.appendChild(tablewrap);
 
-    const foot = fmt.el("div", "cfoot");
-    foot.textContent = "Non-Best-23 = Total Player Value − Best-23 (roster depth beyond the best XXIII). " +
-      "Pure view — no value is recomputed. These are sums, top-Ns and a positional selection over the " +
-      "board's own figures; picks and player values share one currency (pick 1 = 3000).";
-    page.appendChild(foot);
     container.appendChild(page);
   }
 

@@ -171,52 +171,59 @@ console.log("v2.11 UI/RELEASE-SEAM — UI proof (real config.js / seam.js / main
     "the REAL shipped bundle passes the ring-fence (the app renders)", JSON.stringify(fence(SHIPPED)));
 })();
 
-// ==== retrospective seam (board.js) — real F2 contract: store_md5 AND balanced_board_md5 ==========
+// ==== retro seam RETIRED; Round Δ is the one movement column (owner redesign 2026-08-28) =========
 (function () {
-  var TAIL = "deadbeefdeadbeefdeadbeef";
-  var STORE = "968de0c7", BAL = "06d8af60";       // the real F2 stamp values (heads)
-  function board(working, retro) {
+  /* The retrospective bake-delta seam ("delta vs bake", retroFor, __MATCHDAY_RETRO__) was ruled OFF
+     the product: the board's single movement figure is ROUND Δ — this round vs the previous round,
+     from the latest weekly report of record. These checks pin the retirement (no half-removed
+     machinery) and the replacement's exact data path. */
+  function board(movers) {
     var ctx = makeCtx({
-      MD: { fmt: {}, seam: { working: working }, state: {}, config: {} },
-      __MATCHDAY_RETRO__: retro,
+      MD: { fmt: {}, seam: { working: { stamp: {}, players: [] } }, state: {}, config: {} },
+      __MATCHDAY_MOVERS__: movers,
     });
     load(ctx, "board.js");
     return ctx.MD.board;
   }
-  // working stamp AFTER a bake set balanced_board_md5; store_md5 is the verified store.
-  var wBaked = { stamp: { board_md5: "aaaa1111" + TAIL, store_md5: STORE + TAIL, balanced_board_md5: BAL + TAIL } };
-  // working stamp on THIS prep branch: balanced not set yet.
-  var wPrep = { stamp: { board_md5: "aaaa1111" + TAIL, store_md5: STORE + TAIL, balanced_board_md5: null } };
-  var goodEntry = { stamp: { store_md5: STORE, balanced_board_md5: BAL } };  // F2-shaped (8-hex heads)
 
-  check(typeof board(wBaked, null).retroFor === "function",
-    "board.js exposes retroFor (the exact retro identity check)");
+  // the retired machinery is GONE, not dormant
+  check(typeof board(null).retroFor === "undefined",
+    "retroFor is retired — board.js no longer exposes the bake-delta seam");
+  check(appSrc("board.js").indexOf("__MATCHDAY_RETRO__") < 0,
+    "board.js no longer reads the retro bundle at all");
+  ["board.js", "card.js"].forEach(function (name) {
+    var src = appSrc(name);
+    check(src.indexOf("delta vs bake") < 0 && src.indexOf("over free") < 0,
+      name + ": no 'delta vs bake' / 'over free' display text survives");
+  });
 
-  // both F2 identities present + matching -> ok
-  check(board(wBaked, { "-1": goodEntry }).retroFor(1).state === "ok",
-    "retro ACCEPTS an F2 stamp with matching store_md5 AND balanced_board_md5");
+  // the replacement: Round Δ from the LATEST weekly report of record
+  var movers = {
+    rounds: [22, 23],
+    reports: {
+      "22": { current_round: 22, previous_round: 21,
+              players: [{ key: "p1", value_change: 999, prev_value: 1, cur_value: 1000 }] },
+      "23": { current_round: 23, previous_round: 22,
+              players: [{ key: "p1", value_change: -40, prev_value: 540, cur_value: 500 },
+                        { key: "p2", value_change: 25, prev_value: 100, cur_value: 125 }] },
+    },
+  };
+  var b = board(movers);
+  check(typeof b.roundDeltas === "function", "board.js exposes roundDeltas (the Round Δ source)");
+  var rd = b.roundDeltas();
+  check(rd && rd._round === 23 && rd._prev === 22,
+    "Round Δ is the LATEST report's round pair (23 vs 22), not an older report", JSON.stringify(rd && { r: rd._round, p: rd._prev }));
+  check(rd && rd.p1 && rd.p1.d === -40 && rd.p1.prev === 540 && rd.p1.cur === 500,
+    "Round Δ carries the report's own value_change/prev/cur per player", JSON.stringify(rd && rd.p1));
+  check(rd && rd.p2 && rd.p2.d === 25, "every player in the report is covered");
 
-  // wrong store identity -> mismatch, names store_md5
-  var mStore = board(wBaked, { "-1": { stamp: { store_md5: "ffff9999", balanced_board_md5: BAL } } }).retroFor(1);
-  check(mStore.state === "mismatch" && mStore.field === "store_md5" && mStore.got === "ffff9999" && mStore.want === STORE,
-    "retro REFUSES a wrong store_md5 and names the field", JSON.stringify(mStore));
-
-  // wrong balanced-board identity -> mismatch, names balanced_board_md5
-  var mBal = board(wBaked, { "-1": { stamp: { store_md5: STORE, balanced_board_md5: "ffff9999" } } }).retroFor(1);
-  check(mBal.state === "mismatch" && mBal.field === "balanced_board_md5" && mBal.got === "ffff9999" && mBal.want === BAL,
-    "retro REFUSES a wrong balanced_board_md5 and names the field", JSON.stringify(mBal));
-
-  // balanced_board_md5 not set yet (prep) -> pending, never ok, even with a fully-matching store
-  check(board(wPrep, { "-1": goodEntry }).retroFor(1).state === "pending",
-    "retro stays PENDING while balanced_board_md5 is unset (no premature ok)");
-
-  // no retro bundle -> pending (empty-state safe)
-  check(board(wBaked, null).retroFor(1).state === "pending",
-    "retro with no bundle stays empty-state 'pending'");
+  // empty-state safe: no movers bundle -> null, never a throw or an invented zero
+  check(board(null).roundDeltas() === null,
+    "no weekly report -> roundDeltas is null (renders '—', never an invented 0)");
 
   // no hardcoded identity fallbacks anywhere in board.js
   check(appSrc("board.js").indexOf("968de0c7") < 0 && appSrc("board.js").indexOf("06d8af60") < 0,
-    "board.js retro check hardcodes neither 968de0c7 nor 06d8af60");
+    "board.js hardcodes neither 968de0c7 nor 06d8af60");
 })();
 
 console.log("  " + "-".repeat(66));

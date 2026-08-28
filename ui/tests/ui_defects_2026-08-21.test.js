@@ -191,17 +191,16 @@ section("(c) dRound — the false comments and the bridge they justified are rem
 (function () {
   var board = appSrc("board.js"), card = appSrc("card.js"), config = appSrc("config.js");
 
-  /* NOTE ON THESE ASSERTIONS: both files now QUOTE the retracted claim in order to retract it, so
-     asserting the absence of the old sentence would fail on the correction itself. What must be true
-     is that the MECHANISM is gone and the CORRECTION is stated. That is what is checked. */
+  /* RESTATED 2026-08-28 (owner redesign): board.js and card.js were rewritten clean, so the
+     retraction comments this block used to look for went with the file they annotated. What must
+     stay true is the MECHANISM: no dRound bridge, and the one movement column reads the weekly
+     report of record (Round Δ) with the card taking the board's own figure. */
   check(board.indexOf("w.dRound") < 0,
     "the name->key dRound bridge is DELETED, not left returning null");
-  check(board.indexOf("REMOVED") > 0 && board.indexOf("premise was never true") > 0,
-    "board.js records that the premise was false, so the bridge is not rebuilt from the same belief");
-  check(board.indexOf("no writer") > 0, "board.js names the real cause (no writer) where the field is read");
-  check(card.indexOf("CORRECTED 2026-08-21") > 0 && card.indexOf("It does not, and it never did") > 0,
-    "card.js retracts the claim in place rather than leaving it to be believed again");
-  check(card.indexOf("not published") > 0, "…and the public card prints the honest state");
+  check(board.indexOf("__MATCHDAY_MOVERS__") > 0,
+    "the board's one movement column reads the weekly report of record (Round Δ)");
+  check(card.indexOf("MD.board.roundDeltas()") > 0,
+    "the card's Round Δ is the board's own figure — one source, not a second computation");
 
   // the default Δ basis must be one the board actually carries
   var ctx = makeCtx();
@@ -228,20 +227,15 @@ section("(c) dRound — the false comments and the bridge they justified are rem
 /* =============== (d) the attribution waterfall ================================================= */
 section("(d) attribution — the waterfall reads the SHIPPED {L1..L5} shape");
 (function () {
+  /* RESTATED 2026-08-28 (owner redesign): the waterfall panel is OFF the card — "Why the price is
+     what it is" is process, not product. The DATA survives on the shipped board (asserted below);
+     only the screen furniture is gone, and it must be ALL gone, not half-rendered. */
   var card = appSrc("card.js");
-  check(card.indexOf("renders the moment the") < 0, "the 'awaiting the export field' notice is gone");
-  // the header quotes the old shape in order to explain the mismatch; what must be gone is the WAIT.
-  check(card.indexOf("G-ATTR already requires these to exist") < 0,
-    "the card no longer tells the owner the field is missing");
-  check(card.indexOf("leverBlock(p)") > 0, "the panel now renders the shipped block");
-  ["L1", "L2", "L3", "L4", "L5"].forEach(function (c) {
-    check(new RegExp("\\b" + c + ":\\s*\\{").test(card), "the label map names " + c);
-  });
-  check(card.indexOf("RL_PVCADOPT") > 0 && card.indexOf("RL_DIAL14") > 0 && card.indexOf("RL_AGE") > 0,
-    "and it names the env dials the certified chain toggled — the map is sourced, not invented");
-  check(card.indexOf("path-additive") > 0 || card.indexOf("chain’s") > 0,
-    "the fixed-order caveat (G-ATTR is path-additive) is stated on the panel");
-  check(card.indexOf("resid") > 0, "the unattributed residual has its own bar");
+  check(card.indexOf("leverBlock") < 0 && card.indexOf("Why the price is") < 0,
+    "the waterfall panel is retired from the card (owner word 2026-08-28)");
+  check(card.indexOf("RL_PVCADOPT") < 0 && card.indexOf("RL_DIAL14") < 0,
+    "…and no dial-map fragment survives on the surface");
+  check(card.indexOf("resid") < 0, "…and no residual bar either — the removal is whole");
 
   // the shipped board must actually carry the shape the card now reads
   var w = null;
@@ -282,10 +276,14 @@ section("(2) the +1/+2 projection lenses are re-disabled and unreachable");
     "…and the backward lenses pass through untouched");
   check(!ctx.MD.lensDisabled(ctx.MD.config.LENS_DEFAULT), "the default lens is never a disabled one");
 
+  /* RESTATED 2026-08-28 (owner redesign): the board no longer has a lens control AT ALL — a
+     retired picker cannot smuggle a disabled lens in, and the card truncates the lens series to
+     the three backward entries, so +1/+2 render nowhere. */
   var board = appSrc("board.js");
-  check(board.indexOf("forward-lens toggle is RE-ENABLED") < 0,
-    "the stale 'RE-ENABLED' comment that licensed this is gone");
-  check(board.indexOf("MD.lensClamp(s.lens)") > 0, "the board clamps at render, so a restored snapshot cannot smuggle one in");
+  check(board.indexOf("lensClamp") < 0 && board.indexOf("s.lens") < 0,
+    "the board carries NO lens control — the picker is retired with the forward lenses");
+  check(/\.slice\(0, 3\)/.test(appSrc("card.js")),
+    "the card truncates the lens series to the three backward entries — +1/+2 render nowhere");
 })();
 
 /* =============== (4) v0 — the sidecar, the pin, and the arithmetic ============================= */
@@ -418,19 +416,15 @@ section("(4b) v0 on the public tier — joined at generation time, and NO key ad
   check(P.players.every(function (r) { return r.v0 === null ? r.v0_origin === "unrecoverable" : r.v0 > 0; }),
     "an unrecoverable entry price is NULL with its origin named — never 0, never silently omitted");
 
-  /* THE CARD READS THE ROW, NOT THE KEYED MODULE. A public row has no key, so calling MD.v0.of() there
-     could only ever refuse — and reaching for a name bridge to make it answer is the thing this design
-     exists to avoid. */
+  /* RESTATED 2026-08-28 (owner redesign): the app now ships ONE fully transparent tier, so the
+     public-card renderer is gone. The public BUNDLE keeps its leak-proof v0 join (asserted above,
+     unchanged); on the card, the entry price renders through MD.v0 — one vocabulary, no copy. */
   var cardsrc = appSrc("card.js");
-  check(cardsrc.indexOf("v0SectionPublic(p)") > 0, "the public card renders the entry-price section");
-  var pubFn = cardsrc.split("function v0SectionPublic")[1].split("function renderWorking")[0];
-  check(pubFn.indexOf("MD.v0.of(") < 0,
-    "…and it does NOT call the keyed resolver — it reads the public row's own v0 / v0_origin");
-  check(pubFn.indexOf("v0Block(") > 0 && pubFn.indexOf("v0Absent(") > 0 && pubFn.indexOf("v0Refused(") > 0,
-    "…through the SAME three renderers the working card uses, so both tiers say the same words");
-  check(cardsrc.indexOf("MD.v0.ratioText") > 0 && cardsrc.indexOf("MD.v0.originWord") > 0 &&
-        cardsrc.indexOf("MD.v0.originTip") > 0,
-    "the ratio notation and the origin vocabulary are MD.v0's, not a second copy");
+  check(cardsrc.indexOf("renderPublic") < 0 && cardsrc.indexOf("v0SectionPublic") < 0,
+    "the public-tier card renderer is retired — one transparent tier");
+  check(cardsrc.indexOf("v0Section(p)") > 0, "the card renders the entry-price section");
+  check(cardsrc.indexOf("MD.v0.of(") > 0 && cardsrc.indexOf("MD.v0.ratioText") > 0,
+    "the entry price and ratio notation are MD.v0's, not a second copy");
 
   /* THE COMMENT MUST NOT OUTLIVE ITS TRUTH — the module said "pending an owner word" and the word came.
      As with dRound above, the header QUOTES the retracted note in order to retract it, so what is
@@ -533,15 +527,18 @@ section("(5) board filters — cohort year · age · live eligibility");
     kpfElig.length + " eligible vs " + kpfPos.length + " modelled");
 
   // ---- the filters ride the universal Back
+  /* RESTATED 2026-08-28 (owner redesign): the column-lens toggle (v0Col) is retired with the rest
+     of the board controls — the columns are fixed. The five surviving filters still ride Back. */
   var snap = B.snapshot();
-  check("cohortFilter" in snap && "ageFilter" in snap && "eligFilter" in snap && "v0Col" in snap,
-    "the snapshot carries the new filters and the column lens, so Back restores the board you were on",
+  check("clubFilter" in snap && "posFilter" in snap &&
+        "cohortFilter" in snap && "ageFilter" in snap && "eligFilter" in snap,
+    "the snapshot carries all five surviving filters, so Back restores the board you were on",
     JSON.stringify(Object.keys(snap)));
-  B.restore({ cohortFilter: "2024", ageFilter: "b:-20", eligFilter: "KPF", v0Col: true });
+  B.restore({ cohortFilter: "2024", ageFilter: "b:-20", eligFilter: "KPF" });
   var snap2 = B.snapshot();
-  check(snap2.cohortFilter === "2024" && snap2.ageFilter === "b:-20" && snap2.eligFilter === "KPF" &&
-        snap2.v0Col === true, "…and restore round-trips them", JSON.stringify(snap2));
-  B.restore({ cohortFilter: null, ageFilter: null, eligFilter: null, v0Col: false });
+  check(snap2.cohortFilter === "2024" && snap2.ageFilter === "b:-20" && snap2.eligFilter === "KPF",
+    "…and restore round-trips them", JSON.stringify(snap2));
+  B.restore({ cohortFilter: null, ageFilter: null, eligFilter: null });
 })();
 
 console.log("\n  " + "-".repeat(72));

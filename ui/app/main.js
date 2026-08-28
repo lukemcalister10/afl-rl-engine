@@ -29,30 +29,18 @@ window.MD = window.MD || {};
         (fence.got ? " · got " + fmt.esc(fence.got) + " · want " + fmt.esc(fence.want) : "") + "</p></div>";
   }
 
+  /* REDESIGNED 2026-08-28 (owner word): one clean masthead — the round, the year, the player
+     count. Identity/provenance chrome lives in ui/MAINTAINER.md, never on this surface; the seam
+     ring-fence still fail-closes the whole page if the data is not the stamped board. */
   function masthead() {
-    const s = MD.state, st = MD.seam.working.stamp || {};
-    const pub = s.tier === "public";
-    const bar = fmt.el("div", "pitchbanner");
-    bar.textContent = pub
-      ? "Player Values · public trim — values · ranks · movement"
-      : "Working aid · live board · reads · rules · controls";
-
+    const st = MD.seam.working.stamp || {};
     const mast = fmt.el("header", "mast");
-    mast.innerHTML = '<div class="brand">Value<b>Board</b><span class="sub">' +
-      (pub ? "Player Values" : "Real-Draft Value Engine") + "</span></div>";
+    mast.innerHTML = '<div class="brand">Value<b>Board</b><span class="sub">AFFL Keeper League</span></div>';
     mast.appendChild(fmt.el("div", "spacer"));
     const stamp = fmt.el("div", "stamp");
-    if (pub) {
-      stamp.innerHTML = roundLabel(st) + " · " + (st.baseYear || 2026) + "<br>movement vs previous round · " +
-        fmt.n(st.nPlayers) + " players";
-    } else {
-      stamp.innerHTML = roundLabel(st) + " · board <b>" + releaseLabel(st) + "</b> · engine <b>" + st.engine + "</b> · store <b>" + st.store +
-        "</b> · board id <b>" + st.board + '</b><span class="badge">real</span><span class="badge ok">guard 5 pass</span><br>' +
-        "Δ " + (s.deltaBase === "bake" ? "vs last accepted bake" : "vs previous round") + " · " +
-        fmt.n(st.nPlayers) + " players · panel " + fmt.esc((st.panel || "").split(" ")[1] || "10/10");
-    }
+    stamp.innerHTML = roundLabel(st) + " · " + (st.baseYear || 2026) + " · " + fmt.n(st.nPlayers) + " players";
     mast.appendChild(stamp);
-    return { bar: bar, mast: mast };
+    return { mast: mast };
   }
 
   /* #139 items 2, 13 and 14 — the tab list.
@@ -113,14 +101,7 @@ window.MD = window.MD || {};
     });
     row.appendChild(tabs);
 
-    const tier = fmt.el("div", "tier");
-    [["working", "Working"], ["public", "Public"]].forEach(function (d) {
-      const btn = fmt.el("button", s.tier === d[0] ? "on" : "", d[1]);
-      btn.addEventListener("click", function () { s.tier = d[0]; render(); });
-      tier.appendChild(btn);
-    });
-    row.appendChild(tier);
-    container.appendChild(row);
+    container.appendChild(row);   // the tier toggle is gone: ONE transparent board (owner word 2026-08-28)
   }
 
   function render() {
@@ -129,7 +110,6 @@ window.MD = window.MD || {};
     const s = MD.state;
     root.innerHTML = "";
     const mh = masthead();
-    root.appendChild(mh.bar);
     const app = fmt.el("div", "app");
     app.appendChild(mh.mast);
     controls(app);
