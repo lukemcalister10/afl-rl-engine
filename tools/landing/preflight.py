@@ -152,6 +152,54 @@ def run_preflight(root, spec_path, out=print):
                ('FAIL', ([l for l in o.splitlines() if 'FAIL' in l] or [o.strip()[:200]])[0][:200])
     check('movers_ui', _movers)
 
+    # 8b · CLEAN TREE, before the selftest instead of after it (shrink review S11, 2026-08-28).
+    #      Step 0 asserts this too — but step 0 runs after the pre-transaction selftest (minutes),
+    #      and two takes of the combined-build landing paid that price to discover dirt knowable
+    #      here in milliseconds. Same law, earlier door. Declared act inputs and the act's own
+    #      evidence/claims/spec paths are the only permitted dirt (txn.declared_dirt's classes).
+    def _clean():
+        rc, o = _run(['git', 'status', '--porcelain'], root)
+        if rc != 0:
+            return ('FAIL', 'git status failed')
+        d = doc or {}
+        allowed = [p for p in (d.get('evidence_dir'), d.get('claims_file')) if p]
+        allowed.append(os.path.relpath(os.path.abspath(spec_path), root))
+        sheet = (d.get('sheet') or {}) if isinstance(d.get('sheet'), dict) else {}
+        rnd = (d.get('round') or {}) if isinstance(d.get('round'), dict) else {}
+        for p in (sheet.get('path'), sheet.get('declaration'), sheet.get('prereg'),
+                  (rnd.get('scores') or {}).get('path') if isinstance(rnd.get('scores'), dict) else None,
+                  'engine/rl_after/ingestion/catchup_identity_overrides.json' if rnd else None):
+            if p:
+                allowed.append(p)
+        foreign = []
+        for ln in o.splitlines():
+            if not ln.strip():
+                continue
+            rel = ln[3:].strip().strip('"').split(' -> ')[-1]
+            if not any(rel == a or rel.startswith(a.rstrip('/') + '/') for a in allowed):
+                foreign.append(rel)
+        return ('FAIL', 'undeclared dirt (step 0 would refuse after the selftest): %s'
+                % ', '.join(foreign[:6])) if foreign else ('PASS', 'tree clean up to declared inputs')
+    check('clean_tree', _clean)
+
+    # 8c · the picks/curve halt battery, read-only (S11; the take-8 class: a stale curve-mirror or
+    #      contract pin died at ui writer 5, ~55 build-minutes in — the same standing checker runs
+    #      here in --clubs-check mode, which writes NOTHING and fires every coherence halt).
+    def _picks():
+        rc, o = _run([sys.executable, 'ui/tools/ingest_inputs.py', '--clubs-check'], root)
+        return ('PASS', 'picks/curve halt battery clean (read-only)') if rc == 0 else \
+               ('FAIL', ([l for l in o.splitlines() if 'HALT' in l or 'DRIFT' in l] or
+                         [o.strip()[:200]])[0][:200])
+    check('picks_curve', _picks)
+
+    # 8d · the py movers suite (S11; it was the one cheap landing gate absent from this battery —
+    #      its js twin has run here since ORDER 45).
+    def _movers_py():
+        rc, o = _run([sys.executable, 'engine/rl_after/ingestion/test_movers_transition.py'], root)
+        return ('PASS', 'test_movers_transition.py green') if rc == 0 else \
+               ('FAIL', ([l for l in o.splitlines() if 'FAIL' in l] or [o.strip()[:200]])[0][:200])
+    check('movers_py', _movers_py)
+
     # 9 · shared pickles vs this tree (attempts 2+5 — isolation makes this non-fatal, so it is a
     #     NOTE, but a mismatch means some other tree bootstrapped last; say so before launching)
     def _pickles():
