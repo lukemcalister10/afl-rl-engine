@@ -139,6 +139,57 @@ function oracleBest23(roster, broken) {
   return { total: total, keys: keys };
 }
 
+
+/* THE OWNER'S 56-ASSET RATING — oracle transliteration #3 (2026-08-28). Same sorts, same ordinal
+   tie-breaks, same greedy break as ingest_inputs.py rating56 and club_totals.js rating56Of. */
+const SLOT_VALUE = 150, PLAYER_SLOTS = 41, PICK_SLOTS_PER_YEAR = 5;
+const PICK_YEARS = [2026, 2027, 2028];
+function oracleRating56(roster, tp) {
+  const ord = function (x, y) { return x < y ? -1 : x > y ? 1 : 0; };
+  const sorted = roster.slice().sort(function (a, b) {
+    return (b.v - a.v) || ord(String(a.key || ""), String(b.key || ""));
+  });
+  const slots = sorted.slice(0, PLAYER_SLOTS).map(function (p) { return { kind: "player", key: p.key, v: p.v }; });
+  const excludedPlayers = sorted.slice(PLAYER_SLOTS);
+  const vacantPlayer = Math.max(0, PLAYER_SLOTS - sorted.length);
+  for (let i = 0; i < vacantPlayer; i++) slots.push({ kind: "phantom", key: null, v: SLOT_VALUE });
+  let counted = [], surplus = [], vacantPick = 0;
+  PICK_YEARS.forEach(function (yr) {
+    const ps = tp.filter(function (p) { return p.year === yr; }).sort(function (a, b) {
+      return (b.value - a.value) || ord(String(a.id), String(b.id));
+    });
+    counted = counted.concat(ps.slice(0, PICK_SLOTS_PER_YEAR));
+    vacantPick += Math.max(0, PICK_SLOTS_PER_YEAR - ps.length);
+    surplus = surplus.concat(ps.slice(PICK_SLOTS_PER_YEAR));
+  });
+  const rescued = {};
+  let displaced = 0, nDisplaced = 0;
+  const surplusR14 = surplus.filter(function (p) { return p.round >= 1 && p.round <= 4; })
+    .sort(function (a, b) { return (b.value - a.value) || ord(String(a.id), String(b.id)); });
+  for (let j = 0; j < surplusR14.length; j++) {
+    let lo = 0;
+    for (let k = 1; k < slots.length; k++) {
+      if (slots[k].v < slots[lo].v ||
+          (slots[k].v === slots[lo].v && String(slots[k].key || "") < String(slots[lo].key || ""))) lo = k;
+    }
+    if (surplusR14[j].value > slots[lo].v) {
+      if (slots[lo].kind === "player") { displaced += slots[lo].v; nDisplaced++; }
+      slots[lo] = { kind: "pick", key: String(surplusR14[j].id), v: surplusR14[j].value };
+      rescued[String(surplusR14[j].id)] = true;
+    } else break;
+  }
+  const cut = surplus.filter(function (p) { return !rescued[String(p.id)]; });
+  const phantomSlots = slots.filter(function (s) { return s.kind === "phantom"; }).length;
+  const rating = slots.reduce(function (s, x) { return s + x.v; }, 0)
+    + counted.reduce(function (s, p) { return s + p.value; }, 0) + SLOT_VALUE * vacantPick;
+  return {
+    rating: rating,
+    phantomAdded: SLOT_VALUE * (phantomSlots + vacantPick),
+    materialExcludedPlayers: excludedPlayers.reduce(function (s, p) { return s + p.v; }, 0) + displaced,
+    materialExcludedPicks: cut.reduce(function (s, p) { return s + p.value; }, 0),
+  };
+}
+
 function oracleClubs(players, picksByTeam, opts) {
   opts = opts || {};
   const rosterBy = {};
@@ -156,8 +207,9 @@ function oracleClubs(players, picksByTeam, opts) {
     const best23 = sel.total, best23Keys = sel.keys;
     const tp = picksByTeam[team] || [];
     const totalPicks = tp.reduce(function (s, p) { return s + p.value; }, 0);
+    const r56 = oracleRating56(roster, tp);
     return {
-      team: team, overall: totalPlayer + totalPicks, totalPlayer: totalPlayer, totalPicks: totalPicks,
+      team: team, overall: r56.rating, r56: r56, totalPlayer: totalPlayer, totalPicks: totalPicks,
       top5: top5, top10: top10, best23: best23, nonBest23: totalPlayer - best23,
       nRoster: roster.length, nPicks: tp.length, best23Keys: best23Keys,
     };
@@ -299,11 +351,16 @@ check(boundClubs > 0 && boundMatched === boundClubs,
     "/18, the eligibility axis fills 18/18");
 });
 
-/* the identities the baked file asserted about itself must still hold on the live computation */
+/* the identities restated for the 56-asset rating (owner formula 2026-08-28): the rating conserves —
+   overall == (all players - excluded players) + (all picks - cut picks) + the phantom 150s — and the
+   best23 partition is unchanged. The old identity (overall == player + picks) died WITH the old rule. */
 const idOk = ui.clubs.every(function (c) {
-  return c.overall === c.totalPlayer + c.totalPicks && c.totalPlayer === c.best23 + c.nonBest23;
+  const f = c.rating56 || {};
+  return c.overall === (c.totalPlayer - f.materialExcludedPlayers)
+                       + (c.totalPicks - f.materialExcludedPicks) + f.phantomAdded
+      && c.totalPlayer === c.best23 + c.nonBest23;
 });
-check(idOk, "overall == player + picks, and player == best23 + nonBest23");
+check(idOk, "overall == (players - excluded) + (picks - cut) + phantom (56-asset conservation), and player == best23 + nonBest23");
 
 /* -------------------------------------------------------------------------------- NON-VACUITY (1)
    Move a real player's value and re-run BOTH sides: they must still agree, and the club's total must

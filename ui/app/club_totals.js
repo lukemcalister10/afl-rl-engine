@@ -191,6 +191,76 @@ MD.clubTotals = (function () {
 
   let _cache = null;
 
+  /* THE OWNER'S 56-ASSET CLUB RATING (his formula, 2026-08-28): best 41 player slots + best 5
+     picks per issued year (2026/2027/2028) = 56 assets; every VACANT required slot counts 150;
+     then every surplus round-1-4 pick, best first, REPLACES the lowest counted player slot while
+     it is worth more (a vacant player slot, valued 150, is the degenerate lowest slot). The
+     rating is the sum of the final 56. Pick values arrive already year-weighted from the ingest
+     (2026 = own band; 2027 = 50/50 with the round average; 2028 = the round average).
+     TRANSLITERATION of ingest_inputs.py rating56 — same sorts, same tie-breaks (-value then
+     key/id), same greedy break — so two languages price one rating. */
+  var SLOT_VALUE = 150, PLAYER_SLOTS = 41, PICK_SLOTS_PER_YEAR = 5;
+  var PICK_YEARS = [2026, 2027, 2028];
+  function rating56Of(roster, myPicks) {
+    var ord = function (x, y) { return x < y ? -1 : x > y ? 1 : 0; };
+    var sorted = roster.slice().sort(function (a, b) {
+      return (b.v - a.v) || ord(String(a.key || ""), String(b.key || ""));
+    });
+    var slots = sorted.slice(0, PLAYER_SLOTS).map(function (p) {
+      return { kind: "player", key: p.key, v: p.v };
+    });
+    var excludedPlayers = sorted.slice(PLAYER_SLOTS);
+    var vacantPlayer = Math.max(0, PLAYER_SLOTS - sorted.length);
+    for (var i = 0; i < vacantPlayer; i++) slots.push({ kind: "phantom", key: null, v: SLOT_VALUE });
+
+    var counted = [], surplus = [], vacantPick = 0;
+    PICK_YEARS.forEach(function (yr) {
+      var ps = myPicks.filter(function (p) { return p.year === yr; }).sort(function (a, b) {
+        return (b.value - a.value) || ord(String(a.id), String(b.id));
+      });
+      counted = counted.concat(ps.slice(0, PICK_SLOTS_PER_YEAR));
+      vacantPick += Math.max(0, PICK_SLOTS_PER_YEAR - ps.length);
+      surplus = surplus.concat(ps.slice(PICK_SLOTS_PER_YEAR));
+    });
+
+    var rescued = {}, displacedPlayers = 0, nDisplacedPlayers = 0;
+    var surplusR14 = surplus.filter(function (p) { return p.round >= 1 && p.round <= 4; })
+      .sort(function (a, b) { return (b.value - a.value) || ord(String(a.id), String(b.id)); });
+    for (var j = 0; j < surplusR14.length; j++) {
+      var lo = 0;
+      for (var k = 1; k < slots.length; k++) {
+        if (slots[k].v < slots[lo].v ||
+            (slots[k].v === slots[lo].v &&
+             String(slots[k].key || "") < String(slots[lo].key || ""))) lo = k;
+      }
+      if (surplusR14[j].value > slots[lo].v) {
+        if (slots[lo].kind === "player") { displacedPlayers += slots[lo].v; nDisplacedPlayers++; }
+        slots[lo] = { kind: "pick", key: String(surplusR14[j].id), v: surplusR14[j].value };
+        rescued[String(surplusR14[j].id)] = true;
+      } else break;
+    }
+
+    var cutPicks = surplus.filter(function (p) { return !rescued[String(p.id)]; });
+    var phantomSlots = slots.filter(function (s) { return s.kind === "phantom"; }).length;
+    var rating = slots.reduce(function (s, x) { return s + x.v; }, 0)
+      + counted.reduce(function (s, p) { return s + p.value; }, 0)
+      + SLOT_VALUE * vacantPick;
+    return {
+      rating: rating,
+      facts: {
+        phantomAdded: SLOT_VALUE * (phantomSlots + vacantPick),
+        materialExcludedPlayers: excludedPlayers.reduce(function (s, p) { return s + p.v; }, 0) + displacedPlayers,
+        materialExcludedPicks: cutPicks.reduce(function (s, p) { return s + p.value; }, 0),
+        countedPicksTotal: counted.reduce(function (s, p) { return s + p.value; }, 0),
+        vacantPlayerSlots: phantomSlots,
+        vacantPickSlots: vacantPick,
+        rescuedPickIds: Object.keys(rescued).sort(),
+        nExcludedPlayers: excludedPlayers.length + nDisplacedPlayers,
+        nCutPicks: cutPicks.length,
+      },
+    };
+  }
+
   function compute() {
     if (_cache) return _cache;
     const w = MD.seam.working;
@@ -225,10 +295,16 @@ MD.clubTotals = (function () {
       const myPicks = picksByTeam[team] || [];
       const totalPicks = myPicks.reduce(function (s, p) { return s + p.value; }, 0);
 
+      // THE OWNER'S 56-ASSET RATING (2026-08-28) — `overall` IS this rating. Transliterated
+      // line-for-line from ingest_inputs.py rating56 (same sorts, same tie-breaks, same greedy
+      // replacement); club_totals_parity.test.js proves the two agree.
+      const r56 = rating56Of(roster, myPicks);
+
       return {
         team: team,
         display: (MD.config.CLUB_DISPLAY && MD.config.CLUB_DISPLAY[team]) || team,
-        overall: totalPlayer + totalPicks,
+        overall: r56.rating,
+        rating56: r56.facts,
         totalPlayer: totalPlayer,
         totalPicks: totalPicks,
         top5: sumN(5), top10: sumN(10),
@@ -257,7 +333,7 @@ MD.clubTotals = (function () {
                               tag: (cv.stamp || {}).tag,
                               pvcCurveMd5: (cv.stamp || {}).pvcCurveMd5,
                               pvcCurveFileMd5: (cv.stamp || {}).pvcCurveFileMd5,
-                              mult2027: (cv.stamp || {}).mult2027, nPicks: (cv.stamp || {}).nPicks,
+                              yearRule: (cv.stamp || {}).yearRule, nPicks: (cv.stamp || {}).nPicks,
                               pinOk: true, absent: false },
       picksAvailable: !halted,
     };

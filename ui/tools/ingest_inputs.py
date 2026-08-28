@@ -101,8 +101,15 @@ OUT_OWNERSHIP = os.environ.get(
 SKIP_STORE_APPLY = False
 
 EXPECTED_BOARD = None      # ui/app/config.js EXPECTED_BOARD — v2.11-final-rc board of record (Board B + visible future-draft ladder; balanced_board_md5 06d8af60 preserved as lineage)
-PICK_FUTURE_DISCOUNT = 0.10      # R104.5 balanced posture — the ONLY posture in this build
+# R104.5's flat 10% future discount is SUPERSEDED for pick valuation by the owner's year rule of
+# 2026-08-28 (three draft years now issued): 2026 = 100% the pick's own projected band value ·
+# 2027 = 50% own band value + 50% the round's average value · 2028 = 100% the round's average.
+# The uncertainty discount now lives in the regression-to-round-mean, not a flat multiplier.
 BASE_YEAR = 2026
+PICK_YEARS = (BASE_YEAR, BASE_YEAR + 1, BASE_YEAR + 2)
+SLOT_VALUE = 150                 # the owner's vacant-slot allowance (per vacant player or pick slot)
+PLAYER_SLOTS = 41                # the required player list
+PICK_SLOTS_PER_YEAR = 5          # the required picks per draft year
 
 # Known release pick-curve pathways -> the engine curve FILENAME each pathway loads. The contract's
 # adopted_pathway MUST be one of these; the resolver cross-checks the contract's declared path AND the
@@ -427,7 +434,7 @@ def assert_pvc(pvc, resolved):
 # ----------------------------------------------------------------------------------- price one pick
 _POOL_VALUE = None   # the ruled pool index value, published by resolve() from the release-active curve
 
-def price_pick(pvc, lo, hi, year, pool_value=None):
+def price_pick(pvc, lo, hi, year, pool_value=None, rnd=None):
     # THE RULED SPLIT (RULEBOOK v2.1 law 4): the national curve prices picks 1-64; EVERYTHING past 64
     # is the pool at ONE index, valued at the curve artifact's committed pool_value. No new decision is
     # taken here — both halves are read from the release-active artifact.
@@ -438,11 +445,29 @@ def price_pick(pvc, lo, hi, year, pool_value=None):
             halt("pick %d is past the curve domain and the release-active curve publishes no "
                  "pool_value — cannot price it (HALT-AND-ASK)" % pk)
         return _pv
-    vals = [_v(p) for p in range(lo, hi + 1)]
-    mean = sum(vals) / len(vals)
-    if year == 2027:
-        mean *= (1.0 - PICK_FUTURE_DISCOUNT)
-    return mean
+
+    def _mean(a, b):
+        vals = [_v(p) for p in range(a, b + 1)]
+        return sum(vals) / len(vals)
+
+    own = _mean(lo, hi)
+    # THE OWNER'S YEAR RULE (2026-08-28, verbatim): "2026: 100% its own projected pick value.
+    # 2027: 50% its own projected pick value + 50% average pick value for that round.
+    # 2028: 100% the average pick value for that round." The round average is the engine curve's
+    # mean over the round's sixteen slots (round 5 sits wholly past the curve domain = the pool
+    # level). This SUPERSEDES the flat R104.5 10% discount and the workbook's own 0.9/0.8
+    # multipliers — the sheet's Value columns were never ingested and still are not.
+    if year == BASE_YEAR:
+        return own
+    if rnd is None:
+        halt("a %d pick needs its round to price the round average (HALT-AND-ASK)" % year)
+    r_lo, r_hi = (int(rnd) - 1) * 16 + 1, int(rnd) * 16
+    r_avg = _mean(r_lo, r_hi)
+    if year == BASE_YEAR + 1:
+        return 0.5 * own + 0.5 * r_avg
+    if year == BASE_YEAR + 2:
+        return r_avg
+    halt("pick year %s is outside the issued windows %s (HALT-AND-ASK)" % (year, list(PICK_YEARS)))
 
 
 # ----------------------------------------------------------------------------------------- the picks
@@ -465,18 +490,16 @@ def load_picks(pvc, affl_teams):
     except zipfile.BadZipFile:
         halt("AFFL_Pick_Locations.xlsx is not a readable .xlsx (not a zip container)")
 
-    # --- Ladder: the 2027 multiplier cell (read + reconcile against R104.5's governing 0.10) ---
-    mult = None
+    # --- Ladder: the year multipliers are the WORKBOOK'S OWN display convention and are NOT
+    # ingested (the owner's year rule of 2026-08-28 governs pricing here — see price_pick). The
+    # cells are still read and reported so a sheet change is visible, never silently ignored.
+    # This RESTATES the old R104.5 reconciliation halt, superseded by the same owner word.
+    mults = {}
     for row in ladder_rows:
-        if row and row[0] and str(row[0]).startswith("2027 value multiplier"):
-            mult = row[1]
-    governing = round(1.0 - PICK_FUTURE_DISCOUNT, 6)
-    agree = mult is not None and abs(float(mult) - governing) < 1e-6
-    check("ladder 2027 multiplier reconciles to R104.5 balanced (1-0.10=0.90)", agree,
-          "sheet cell = %s · governing = %s" % (mult, governing))
-    if not agree:
-        halt("2027 MULTIPLIER DISAGREEMENT: the sheet says %s but R104.5 balanced governs %s — "
-             "reconcile the sheet or the ruling (HALT-AND-FLAG, never silently pick)" % (mult, governing))
+        if row and row[0] and "value multiplier" in str(row[0]):
+            mults[str(row[0]).split()[0]] = row[1]
+    check("ladder year multipliers read (workbook display only, NOT ingested; owner year rule "
+          "2026-08-28 governs)", True, "sheet cells = %s" % (mults or "none"))
 
     # --- Picks ledger ---
     if picks_rows is None:
@@ -489,7 +512,12 @@ def load_picks(pvc, affl_teams):
         picks.append(dict(id=pid, year=int(yr), rnd=rnd, orig=str(orig).strip(),
                           owner=str(owner).strip(), lo=int(lo), hi=int(hi)))
 
-    check("pick ledger row count == 160", len(picks) == 160, "%d rows" % len(picks))
+    # 16 clubs x 5 rounds x 3 issued years (2026/2027/2028 — the third year issued 2026-08-28)
+    expected_n = 16 * 5 * len(PICK_YEARS)
+    check("pick ledger row count == %d" % expected_n, len(picks) == expected_n, "%d rows" % len(picks))
+    if len(picks) != expected_n:
+        halt("pick ledger carries %d rows, expected %d (16 clubs x 5 rounds x %d years)"
+             % (len(picks), expected_n, len(PICK_YEARS)))
 
     # bands 1..80, low <= high
     band_ok = all(1 <= p["lo"] <= 80 and 1 <= p["hi"] <= 80 and p["lo"] <= p["hi"] for p in picks)
@@ -498,12 +526,12 @@ def load_picks(pvc, affl_teams):
     if not band_ok:
         halt("band violation on pick ids %s (out of 1-80 or low>high)" % bad)
 
-    # draft year <= one year ahead
+    # the three issued draft years, exactly (owner word 2026-08-28: THREE years of picks issued)
     yrs = sorted({p["year"] for p in picks})
-    yr_ok = all(BASE_YEAR <= y <= BASE_YEAR + 1 for y in yrs)
-    check("both drafts <= one year ahead (%d/%d)" % (BASE_YEAR, BASE_YEAR + 1), yr_ok, "years=%s" % yrs)
+    yr_ok = yrs == sorted(PICK_YEARS)
+    check("the issued draft years are exactly %s" % (list(PICK_YEARS),), yr_ok, "years=%s" % yrs)
     if not yr_ok:
-        halt("draft year out of [%d, %d]: %s" % (BASE_YEAR, BASE_YEAR + 1, yrs))
+        halt("draft years %s != the issued windows %s" % (yrs, list(PICK_YEARS)))
 
     # every Owner + Origin joins to exactly one AFFL club (Free Agents permitted)
     club_set = set(affl_teams) | {FREE_AGENTS}
@@ -531,18 +559,21 @@ def load_picks(pvc, affl_teams):
     for p in picks:
         p["team"] = omap[p["owner"]]
         p["origin_team"] = omap[p["orig"]]
-        p["value"] = round(price_pick(pvc, p["lo"], p["hi"], p["year"]))
+        p["rnd"] = int(p["rnd"])
+        if not (1 <= p["rnd"] <= 5):
+            halt("pick id %s carries round %s (rounds are 1-5)" % (p["id"], p["rnd"]))
+        p["value"] = round(price_pick(pvc, p["lo"], p["hi"], p["year"], rnd=p["rnd"]))
         p["band"] = "#%d-%d" % (p["lo"], p["hi"]) if p["lo"] != p["hi"] else "#%d" % p["lo"]
 
     # pick-count conservation (the Dashboard convention): ledger == Sum per-owner counts == 160
     per_owner = collections.Counter(p["team"] for p in picks)
-    conserved = sum(per_owner.values()) == len(picks) == 160
-    check("pick-count conservation (Sum per-club == ledger == 160)", conserved,
+    conserved = sum(per_owner.values()) == len(picks) == expected_n
+    check("pick-count conservation (Sum per-club == ledger == %d)" % expected_n, conserved,
           "sum=%d ledger=%d" % (sum(per_owner.values()), len(picks)))
     if not conserved:
         halt("pick-count conservation failed")
-    check("all 160 picks priced off the canonical curve", all("value" in p for p in picks),
-          "priced=%d" % sum(1 for p in picks if "value" in p))
+    check("all %d picks priced off the canonical curve (owner year rule 2026-08-28)" % expected_n,
+          all("value" in p for p in picks), "priced=%d" % sum(1 for p in picks if "value" in p))
     return picks
 
 
@@ -730,6 +761,76 @@ def best23_of(roster):
     return total, keys
 
 
+def rating56(roster, team_picks):
+    """THE OWNER'S CLUB RATING (his formula, 2026-08-28): the sum of 56 selected assets.
+
+    Best 41 player slots + best 5 picks per issued year (3 years) = 56. Every VACANT required
+    slot counts SLOT_VALUE (150). Then every surplus R1-4 pick, best first, REPLACES the lowest
+    counted player slot while it is worth more (his words: "those picks only earn additional
+    credit when they are actually better than one of the players occupying its 41-player
+    allowance"). A vacant player slot is the degenerate lowest counted slot (value 150), so a
+    surplus pick worth more than 150 fills a vacancy before it displaces a real player.
+
+    Deterministic: every sort is (-value, key/id) so the three transliterations (this, the
+    browser's club_totals.js, the parity oracle) tie-break identically.
+
+    Returns (rating, facts) where facts carries the phantom/excluded accounting the owner asked
+    to see: phantomAdded (150s counted), materialExcludedPlayers / materialExcludedPicks (real
+    asset value the allowance rules cut).
+    """
+    roster = sorted(roster, key=lambda x: (-x["v"], x.get("key") or ""))
+    counted_players = [{"kind": "player", "key": p.get("key"), "v": p["v"]}
+                      for p in roster[:PLAYER_SLOTS]]
+    excluded_players = roster[PLAYER_SLOTS:]
+    vacant_player = max(0, PLAYER_SLOTS - len(roster))
+    player_slots = counted_players + [{"kind": "phantom", "key": None, "v": SLOT_VALUE}
+                                      for _ in range(vacant_player)]
+
+    counted_picks, surplus, vacant_pick = [], [], 0
+    for yr in PICK_YEARS:
+        ps = sorted([p for p in team_picks if p["year"] == yr],
+                    key=lambda x: (-x["value"], str(x["id"])))
+        counted_picks += ps[:PICK_SLOTS_PER_YEAR]
+        vacant_pick += max(0, PICK_SLOTS_PER_YEAR - len(ps))
+        surplus += ps[PICK_SLOTS_PER_YEAR:]
+
+    # surplus R1-4 replacement, best surplus pick first, greedy until no improvement
+    rescued, displaced = [], []
+    surplus_r14 = sorted([p for p in surplus if 1 <= int(p["rnd"]) <= 4],
+                         key=lambda x: (-x["value"], str(x["id"])))
+    for pk in surplus_r14:
+        lo_i = min(range(len(player_slots)), key=lambda i: (player_slots[i]["v"],
+                                                            player_slots[i]["key"] or ""))
+        if pk["value"] > player_slots[lo_i]["v"]:
+            displaced.append(player_slots[lo_i])
+            player_slots[lo_i] = {"kind": "pick", "key": str(pk["id"]), "v": pk["value"]}
+            rescued.append(pk)
+        else:
+            break
+
+    rescued_ids = {str(p["id"]) for p in rescued}
+    cut_picks = [p for p in surplus if str(p["id"]) not in rescued_ids]
+    phantom = (SLOT_VALUE * sum(1 for s in player_slots if s["kind"] == "phantom")
+               + SLOT_VALUE * vacant_pick)
+    excl_players = (sum(p["v"] for p in excluded_players)
+                    + sum(s["v"] for s in displaced if s["kind"] == "player"))
+    excl_picks = sum(p["value"] for p in cut_picks)
+    rating = (sum(s["v"] for s in player_slots) + sum(p["value"] for p in counted_picks)
+              + SLOT_VALUE * vacant_pick)
+    facts = {
+        "phantomAdded": phantom,
+        "materialExcludedPlayers": excl_players,
+        "materialExcludedPicks": excl_picks,
+        "countedPicksTotal": sum(p["value"] for p in counted_picks),
+        "vacantPlayerSlots": sum(1 for s in player_slots if s["kind"] == "phantom"),
+        "vacantPickSlots": vacant_pick,
+        "rescuedPickIds": sorted(rescued_ids),
+        "nExcludedPlayers": len(excluded_players) + sum(1 for s in displaced if s["kind"] == "player"),
+        "nCutPicks": len(cut_picks),
+    }
+    return rating, facts
+
+
 def build_clubs(players, picks, affl_teams):
     picks_by_team = collections.defaultdict(list)
     for p in picks:
@@ -753,10 +854,14 @@ def build_clubs(players, picks, affl_teams):
 
         tp = [t for t in picks_by_team[team]]
         total_picks = sum(p["value"] for p in tp)
+        # THE OWNER'S 56-ASSET RATING (2026-08-28) — `overall` IS this rating now; the raw sums
+        # stay exported for display and for the note the owner asked for.
+        overall, r56 = rating56(roster, tp)
         clubs.append({
             "team": team,
             "display": DISPLAY.get(team, team),
-            "overall": total_player + total_picks,
+            "overall": overall,
+            "rating56": r56,
             "totalPlayer": total_player,
             "totalPicks": total_picks,
             "top5": top5, "top10": top10,
@@ -885,8 +990,10 @@ def run():
                          % (resolved["path"], resolved["gate"], contract.get("release_version")),
             "pvcPathway": resolved["gate"], "pvcCurveMd5": resolved["curve_md5"],
             "pvcCurveFileMd5": resolved["file_md5"], "releaseCurveContract": "ui/release_pick_curve.json",
-            "pvcOk": True, "discount2027": PICK_FUTURE_DISCOUNT, "mult2027": 1.0 - PICK_FUTURE_DISCOUNT,
-            "posture": "balanced (canonical; the only posture in this build)",
+            "pvcOk": True,
+            "yearRule": "2026=own band; 2027=50% own + 50% round avg; 2028=round avg "
+                        "(owner word 2026-08-28 — supersedes the flat R104.5 10% discount)",
+            "posture": "owner year rule 2026-08-28 (regression-to-round-mean, no flat multiplier)",
             "nPicks": len(picks), "nClubs": len(clubs),
             # NO WALL CLOCK. This stamp carried a `generated` ISO timestamp until 2026-08-21 and it
             # was the ONE field that made this bundle impossible to byte-prove: "regenerate and
