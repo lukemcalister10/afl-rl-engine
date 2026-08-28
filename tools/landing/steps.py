@@ -647,10 +647,43 @@ def build_proofs(ctx):
     pre = ctx.spec['prereg']
     predicted = pre['board_after']
 
-    res = ctx.builder.build(ctx, tag='LANDING', mode='dev')
-    ctx.log('build         rc=%s board=%s  (%.1fs)' % (res['rc'], res['board_md5'], res['elapsed_s']))
-    if res['rc'] != 0:
-        raise StepError('the bare build failed (rc=%s). See %s' % (res['rc'], res.get('stdout_path')))
+    # THE PROOF STASH (shrink S13, owner word 2026-08-28): a relaunch whose INPUT identities are
+    # byte-identical to an already-proven flight INSTALLS the proven artifacts and verifies them
+    # instead of rebuilding — the combined-build landing re-proved one board four times (77 min).
+    # Never consulted in a selftest or fault run (those exercise the real machinery), never for
+    # the edit verb (its proofs are per-edit), and only when a prediction exists to verify against.
+    _stash_ok = (not ctx.opts.selftest and not ctx.fault and predicted
+                 and ctx.spec['act_kind'] != 'store-edit')
+    _stash_key = _stash_hit = None
+    if _stash_ok:
+        from tools.landing import proofstash as PS
+        _stash_key = PS.build_key(ctx)
+        _stash_hit = PS.load('build', _stash_key)
+        if _stash_hit and _stash_hit[1].get('board_md5') != predicted:
+            _stash_hit = None                       # a proof of a different prediction is no proof
+
+    if _stash_hit:
+        _files, _sfacts = _stash_hit
+        bp = os.path.join(ctx.work_dir, 'stash_board.json')
+        sp = os.path.join(ctx.work_dir, 'stash_board.json.srcmd5')
+        for name, dst in (('board', bp), ('sidecar', sp)):
+            with open(_files[name], 'rb') as s, open(dst, 'wb') as d:
+                d.write(s.read())
+        got = md5(bp)
+        if got != predicted:
+            raise StepError('the stashed proof re-hashed to %s, not the prereg prediction %s — '
+                            'the stash is discarded and the full build must run (delete the entry '
+                            'and relaunch)' % (got, predicted))
+        res = {'rc': 0, 'board_md5': got, 'elapsed_s': 0.0,
+               'board_path': bp, 'sidecar_path': sp, 'stashed': True}
+        ctx.log('build         PROVEN EARLIER — stash key %s: the board re-hashed to the prereg '
+                'prediction (%s); inputs byte-identical, nothing re-derived (S13)'
+                % (_stash_key, got))
+    else:
+        res = ctx.builder.build(ctx, tag='LANDING', mode='dev')
+        ctx.log('build         rc=%s board=%s  (%.1fs)' % (res['rc'], res['board_md5'], res['elapsed_s']))
+        if res['rc'] != 0:
+            raise StepError('the bare build failed (rc=%s). See %s' % (res['rc'], res.get('stdout_path')))
 
     # ---- THE EDIT VERB'S OWN PROOFS, before the prediction is judged ----------------------------
     # They run FIRST so that an act which moved the wrong rows dies naming the ROWS. An md5 mismatch
@@ -715,7 +748,12 @@ def build_proofs(ctx):
 
     # ---- the kill-switch leg, when the act declares a switch -------------------------------------
     ks = pre.get('kill_switch')
-    if ks:
+    if ks and _stash_hit:
+        facts['kill_switch'] = dict(_stash_hit[1].get('kill_switch') or {})
+        facts['kill_switch']['stashed'] = True
+        ctx.log('switch-off    PROVEN EARLIER (stashed with the build proof): board_off=%s'
+                % facts['kill_switch'].get('board_off'))
+    elif ks:
         off = ctx.builder.build(ctx, tag='SWITCH_OFF', mode='dev', env_overrides=ks['env'])
         ctx.log('switch-off    rc=%s board=%s  (%.1fs)' % (off['rc'], off['board_md5'], off['elapsed_s']))
         if off['rc'] != 0:
@@ -729,6 +767,16 @@ def build_proofs(ctx):
                             'nothing is either dead or silently deleted, and this is the positive '
                             'control that says so.')
         facts['kill_switch'] = {'name': ks['name'], 'board_off': off['board_md5']}
+
+    # ---- the proof is BANKED after the full path succeeded (S13) --------------------------------
+    if _stash_ok and not _stash_hit:
+        from tools.landing import proofstash as PS
+        PS.save('build', _stash_key,
+                {'board': res['board_path'], 'sidecar': res['sidecar_path']},
+                {'board_md5': res['board_md5'], 'kill_switch': facts.get('kill_switch'),
+                 'act': ctx.spec.get('act'), 'proven_elapsed_s': res.get('elapsed_s')})
+        ctx.log('proof stash   BANKED under key %s — a relaunch with byte-identical inputs '
+                'installs and verifies instead of rebuilding (S13)' % _stash_key)
 
     # ---- DAY-0 RE-BASING: EXPLICIT, OFF BY DEFAULT, WITH A PRINTED ROW DIFF (M1b / A-F6) ---------
     facts['day0_rebase'] = _day0(ctx)
@@ -1040,6 +1088,19 @@ def _append_transition(ctx):
     # ---- THE CHAIN, asserted in the form that is TRUE ------------------------------------------
     prev = (reg[-1].get('destination') or {}) if reg else {}
     tail_board, tail_store = str(prev.get('board')), str(prev.get('store'))
+    # A STORE-ONLY TRANSITION'S TAIL (2026-08-28, caught by the edit-verb selftest the first time a
+    # landing followed an ownership apply): the #283 lane's entries carry NO destination.board —
+    # DELIBERATELY and load-bearing (a board key would make the pointer note supersede the real
+    # board-boundary record in round_movers.model_changes). The entry still RECORDS the board, as
+    # the invariant it actually is: `invariants.board_unmoved_by_transition`. The chain law reads
+    # the tail's board from that declared field — never inferred, never skipped; a tail carrying
+    # NEITHER field still halts below.
+    if prev.get('board') is None and reg:
+        _inv_board = ((reg[-1].get('invariants') or {}).get('board_unmoved_by_transition'))
+        if _inv_board:
+            tail_board = str(_inv_board)
+            ctx.log('chain: the tail is a store-only transition (no destination.board by design); '
+                    'its board read from invariants.board_unmoved_by_transition = %s' % tail_board[:12])
     if (tail_board, tail_store) == (src['board'], src['store']):
         ctx.log('chain OK: register tail destination == this entry\'s source on board and store')
         bridge = None

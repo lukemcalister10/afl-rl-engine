@@ -112,8 +112,26 @@ def _preflight_selftest(a, doc):
     exercised against, and the lander under test is the working copy either way.
     """
     from tools.landing import selftest as SELF
+    from tools.landing import proofstash as PS
     ev = tempfile.mkdtemp(prefix='preflight_lander_selftest_')
     base = doc.get('coherent_base') or None
+
+    # SHRINK S13/S7 (owner word 2026-08-28): the selftest proves THE LANDER against a spec on a
+    # base. Byte-identical lander + spec + base => the standing proof stands — re-proving the
+    # identical abort ladder cost ~11 min on every retry of the combined-build landing (~10 runs
+    # in one night, one informative). The marker lives outside the repo, records the pass it
+    # stands on, and ANY byte moving in tools/landing/ or the spec (or LANDING_SELFTEST=force)
+    # runs the full 43 legs again.
+    _here = os.path.dirname(os.path.abspath(__file__))
+    _fp = PS.lander_fingerprint(_here, a.spec, base)
+    if os.environ.get('LANDING_SELFTEST') != 'force' and PS.selftest_passed(_fp):
+        print('=' * 102)
+        print('PRE-TRANSACTION SELF-TEST — STANDING PROOF (S13/S7): lander + spec + base are '
+              'byte-identical to an already-passed run (fingerprint %s).' % _fp[:12])
+        print('  Re-run it any time with LANDING_SELFTEST=force; any byte moving in '
+              'tools/landing/ or the spec re-runs it automatically.')
+        print('=' * 102)
+        return None
     print('=' * 102)
     print('PRE-TRANSACTION SELF-TEST — the lander proves its abort ladder BEFORE opening a landing.')
     print('  transcripts: %s  (filed into the landing evidence dir when the transaction closes)' % ev)
@@ -130,6 +148,8 @@ def _preflight_selftest(a, doc):
     print('PRE-TRANSACTION SELF-TEST PASSED. Opening the transaction.')
     print('=' * 102)
     print('')
+    PS.record_selftest_pass(_fp, {'spec': os.path.abspath(a.spec), 'base': base or 'HEAD',
+                                  'transcripts': ev})
     return ev
 
 
