@@ -1,0 +1,14 @@
+{
+ "passes": {
+  "pass_avail_smoothing": {
+   "class": 162,
+   "movers": 80,
+   "net": -2806,
+   "currency": "engine/_PL_F",
+   "out": "/home/user/afl-rl-engine/docs/evidence/avail_smoothing_2026-08-28/AVAIL_SMOOTHING_STUDY.json"
+  }
+ },
+ "failed": [],
+ "workdir": "/home/user/afl-rl-engine/engine/rl_after",
+ "wall_s": 5822.4
+}
