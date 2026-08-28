@@ -1,7 +1,7 @@
 {
  "_doc": "MODEL CONFIG MANIFEST \u2014 the single versioned source for every model-semantics RL_*/PAR_* variable (gate-integrity repair, 2026-07-09, the durable half of R3). config_manifest.py loads THIS file; in BAKE/GATE mode it clears the ambient model environment, rejects unknown/divergent overrides, loads these values explicitly, and stamps config_sha256 into the produced artifacts' identity records (boot identity, book meta, gate report). Consumers verify code + store + CONFIG together. Ordinary dev-shell runs (no RL_CONFIG_MODE) are UNAFFECTED. Values are the env-string form the engine reads; they equal the current code defaults (post gate-integrity fix c, PAR_RAMPS default is 22), so clearing ambient + loading this manifest reproduces the board/book/panel byte-for-byte. Change a value ONLY at a bake, in the same commit that re-stamps config_sha256 and expected_boot.json. v2.9 COMPLETION (2026-07-14): the five wired v2.9 kill-switches (RL_PVCADOPT/RL_MSD_POOL_EXCL/RL_DIAL14/RL_AGE/RL_L5_PICKLESS) plus the two availability-layer arms surfaced by a full code audit (RL_AVAIL/RL_LTI_RETURN) are now enumerated here at their default-ON canonical values, so config_sha256 finally covers the model we ship; baked_state moved v2.7->v2.9 and the hash was re-stamped. Values still == engine defaults => board/book/panel byte-identical.",
  "baked_state": "FINAL-INTEGRATION v2.11-final-rc (PROVISIONAL) \u2014 RL_PVC2/RL_LEGE/RL_LEGF=1 posture; board 039ff8d4 (Board B + visible future-draft ladder); store 968de0c7 unchanged",
- "config_sha256": "f233d1604975cdbda18bde0d31e253c8254bddc97fb7f1be6ac0412f57e06979",
+ "config_sha256": "d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4",
  "date": "2026-07-09",
  "excluded_infrastructure_vars": {
   "CLAUDE_PROJECT_DIR": "checkout locator",
@@ -47,6 +47,7 @@
   "RL_LTI_RETURN": "LTI Part-2 return-haircut arm (separable lever, G-ATTR) \u2014 model-semantics, board-affecting for return-season players, default ON (engine _merged_recover.py:57). Surfaced by the same code audit; pinned at its default. RL_LTI_RETURN=0 => return arm off.",
   "RL_MSD_POOL_EXCL": "v2.9 L4 MSD training-pool exclusion; default ON (engine _merged_recover.py:15).",
   "RL_O45": "ORDER 45 \u2014 the position-scaled safety net kill-switch (PREREG_ORDER45.md, owner words D1/D2/D3 2026-08-25). Default ON; RL_O45=0 => the final ev() wrap is never installed => board 543bf900 byte-exact.",
+  "RL_O49": "ORDER 49 availability exposure blend (owner ruling 2026-08-28, TAU=2.5): final = w*played + (1-w)*sitter, w=1-exp(-games/2.5); tenure 1-4, entry age <22, 1-12 career games.",
   "RL_PVCADOPT": "v2.9 L1 _PVC0 ev-channel swap + V0/RUC rebuild; default ON (engine _merged_recover.py:1016).",
   "RL_PVCFIT": "HELD OUT per owner ruling R3 (default 0); the R3 export bake-guard + RULING-CONFIG assertion remain the primary enforcement, this manifest reasserts 0 and rejects a divergent ambient 1 in bake/gate mode",
   "RL_RUCK_TAX": "pinned for official-env parity; currently orphaned on the live board path (only verify_anchors.py, itself an orphan per docs/CHANGELOG, references rd.RUCK_TAX) \u2014 inert either way, pinned so bake/gate mode does not flag the official env's ambient 0.25 as unknown",
@@ -113,6 +114,7 @@
   "RL_O47": "1",
   "RL_O48": "1",
   "RL_O48_W": "1.0",
+  "RL_O49": "1",
   "RL_OVPX": "1",
   "RL_PICK1": "3000",
   "RL_PRIOR_TREES": "400",

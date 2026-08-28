@@ -6640,10 +6640,15 @@ def ev(p,Y=2026,__inner=_ev_pre46g):
 # sitter price; past 12 the studied class ends and w(12)=0.992 rounds to the played price anyway).
 # Outermost wrapper BY CONSTRUCTION — it blends finished prices, never intermediate stages, so no
 # downstream gate can key on a blended figure it wasn't built to read.
-# Dial off (RL_O49 unset/'0') => the wrapper is never installed: byte-exact pass-through. The default
-# flips to '1' at the landing that pins it in gate-mode config, after the candidate build reproduces
-# the owner-approved movers table (79 direct movers, net -1,465 board-side, +/-1 rounding).
-_O49=os.environ.get('RL_O49','0')=='1'
+# Dial off (RL_O49=0) => the wrapper is never installed: byte-exact pass-through (the declared kill
+# switch; candidate act Phase A proved it byte-exact to 530a4053). DEFAULT FLIPPED '0'->'1' at the
+# flip commit ahead of the ORDER 49 landing (P9), in the same commit that pins RL_O49='1' in
+# data/model_config.json (config f233d160 -> d4f3c3cf) — code default == manifest value, the house
+# invariant that keeps dev-shell and gate-mode builds signing identically. The candidate build
+# reproduced the owner-approved TAU 2.5 movers table within the prereg's +/-1 rounding bar
+# (78 movers exact/+/-1, toby-murray's tabled -1 rounding to 0, net -1,467 vs tabled -1,465;
+# O49_CANDIDATE_VERDICT.json).
+_O49=os.environ.get('RL_O49','1')=='1'
 if _O49:
     _O49_TAU=2.5
     _O49_GMAX=12
