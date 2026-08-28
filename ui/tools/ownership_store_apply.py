@@ -524,7 +524,9 @@ def _run(cmd, cwd, env=None, label=""):
 
 # ------------------------------------------------------------------------------ the transaction
 def apply(root=None, verbose=True):
-    """T0-T10. Returns 'NOOP' or 'APPLIED'. Nothing live is touched until the atomic commit."""
+    """T0-T11. Returns 'NOOP', 'APPLIED', or 'APPLIED_SIBLING_REPIN_REQUIRED' (exit 3 via main —
+    the apply stands; the sibling repin follow-up is required and named). Nothing live is touched
+    until the atomic commit."""
     root = os.path.abspath(root or DEFAULT_ROOT)
     out = (lambda *a: print(*a)) if verbose else (lambda *a: None)
     out("\n  #283 OWNERSHIP STORE APPLY — out-of-round transaction (seam Ruling 1, 2026-07-30)")
@@ -610,7 +612,32 @@ def apply(root=None, verbose=True):
         _commit(root, ws, out)
         out("\n  APPLIED — %d ownership moves landed; %d targets committed atomically."
             % (len(plan.rows), len(TARGETS)))
-        return "APPLIED"
+
+        # T11 SIBLING COHERENCE (2026-08-28, found live on the first post-flip apply): the balanced
+        # sibling's sidecar binds source_store_md5 AND contract_sha256, and T1/T3 move both — so
+        # every store apply STALES the sibling, and nothing here checked. The stale sidecar cost the
+        # lander selftest a ~36-min sandbox rebuild PER LEG before it was caught. The rebuild is
+        # ~36 min of engine and does not belong inside this atomic lane (a reclaim mid-build would
+        # strand a half-applied T-chain), so this step VERIFIES and, on staleness, names the exact
+        # required follow-up out loud — SILENCE IS A RED; an incoherent tree never exits quietly.
+        try:
+            import subprocess as _sp
+            _v = _sp.run([sys.executable,
+                          os.path.join(root, "engine", "rl_after", "ingestion", "sibling_repin.py"),
+                          "verify", "--repo", root], capture_output=True, text=True, timeout=300)
+            _vd = json.loads((_v.stdout or "{}")[(_v.stdout or "{}").index("{"):]) if "{" in (_v.stdout or "") else {}
+        except Exception as _ex:
+            _vd = {"ok": False, "fails": ["verify unrunnable: %r" % (_ex,)]}
+        if _vd.get("ok"):
+            out("  [T11] sibling coherence verified against the applied store")
+            return "APPLIED"
+        out("  [T11] SIBLING REPIN REQUIRED — the applied store staled the balanced sibling's "
+            "sidecar (%s). The apply STANDS (T10 committed); run, under the build lock:\n"
+            "        bash tools/build_lock.sh run sibling-repin -- %s engine/rl_after/ingestion/"
+            "sibling_repin.py reconcile --repo . --commit <head>\n"
+            "        and commit the repinned carriers before the next landing or selftest."
+            % ("; ".join(_vd.get("fails") or []), sys.executable))
+        return "APPLIED_SIBLING_REPIN_REQUIRED"
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 
@@ -811,7 +838,8 @@ def main(argv):
         if cmd == "preflight":
             preflight(root)
         elif cmd == "apply":
-            apply(root)
+            if apply(root) == "APPLIED_SIBLING_REPIN_REQUIRED":
+                return 3      # T11: the apply stands, the named sibling follow-up is REQUIRED
         elif cmd == "verify":
             verify(root)
         else:
