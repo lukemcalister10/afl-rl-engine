@@ -2,7 +2,7 @@
   "active": 804,
   "as_of_round": 24,
   "balanced_board_md5": "c06ff1e897f850bbecf3330e9050c365",
-  "contract_sha256": "7cd796dee6ceb7716d70619b085e87cfe1c365cc8ef1279e1c9f197859972451",
+  "contract_sha256": "360d537e5fe95f54a3d8ce8a295e67cde061793b684fe82db5dfae798e8f78ad",
   "forward_board_md5": "530a4053622c29092274fab0aa1fee7f",
   "forward_oracle": "test_forward_lens_530a4053.py",
   "forward_p1_total": 640206,
@@ -10,11 +10,11 @@
   "forward_vector": "forward_vector_530a4053.json",
   "forward_vector_sha256": "562f38dc4154924b57fbc37cd02d3c153afa9e0716548e24c5e01e8c5b2d9de1",
   "fv_identity": "123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345",
-  "generated_at_commit": null,
+  "generated_at_commit": "260bf5a",
   "harry_sheezel": 11169,
   "kind": "sibling_repin_state",
   "present_value_total": 704384,
   "reference_vector": "reference_vector_c06ff1e8.json",
   "schema_version": 1,
-  "source_store_md5": "fb640ca0baf92bbb122b1ad7e25c5a88"
+  "source_store_md5": "b4d23810ebb6b53f07a0ae40a3c24b97"
 }
