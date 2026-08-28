@@ -517,54 +517,22 @@ if _pvc2_on:
     # store, the per-entrant derivation, and the byte-frozen contract. Live-store divergence means
     # "re-derivation due" in the claims note/checklist; it is not curve corruption and must not re-alarm weekly.
     _curve_contract_path=(os.path.join(_repo,'ui','release_pick_curve.json') if _repo else None)
-    _contract_md5='05c2bf2f3a618fafcd7e50ca755d2e00'   # RE-PINNED by THE S_LL5G LANDING MOP-UP
-    # (the combined build 2026-08-27, registers v873-v879; owner word v874 "Lock in LL5G then"):
-    # the release-active artifact moved to file md5 031ec76e / payload 1c3b22d1 at the flip (the
-    # smoothed day-0 law), the landing board 530a4053 is built on it, and the contract still named
-    # 78ad9842 / 9729f0c5 — caught by the landing's own ui ring-fence, the abort restored every
-    # carrier, and this mirror+pin move together in one commit exactly as every prior act did.
-    # PREVIOUS PIN: a6a4c9d02fc5b0203ce44f9f228740a1, which was RE-PINNED by THE LANDING MOP-UP
-    # (register v786 ruling R2, owner word 2026-08-20: "yes, the pick curve should be updated";
-    # preregistered at docs/evidence/landing_tail_2026-08-20/PREREG_CURVE_MIRROR.md BEFORE the edit).
-    # ui/release_pick_curve.json was the last stale MIRROR of the curve THE LANDING adopted: the
-    # release-active artifact moved to file md5 78ad9842 / payload 9729f0c5 under ORDER 31-F, the
-    # landed board a05fe951 is built on that curve, and the contract still named f6f3027f / df766dff.
-    # Both contract fields move, so this pin moves in the same commit exactly as prior acts did.
-    # Unlike #326 the PAYLOAD identity moves too — the ladder itself was re-derived on the moved
-    # ruler — which is why this act was ruled by the owner rather than taken as a mechanical mirror.
-    # PREVIOUS PIN: bdc21f33eb70d49dd481f7e63a1b0398, which was
-    # RE-PINNED by #334 ORDER 25 (THE POOL
-    # UPDATE v2: the re-trued pool levels move the artifact's bytes, so the contract's
-    # mirror and its pick_curve_file_md5 move with them, and this pin moves in the same
-    # commit exactly as prior acts did). PREVIOUS PIN: 2e745ae3851637a88f68a950c230e363, which was
-    # RE-PINNED by #334 ORDER 23 (the pool
-    # update: derived pool levels + the amended ND65+ law move the artifact's bytes, so the
-    # contract's mirror and its pick_curve_file_md5 move with them, and this pin moves in the
-    # same commit exactly as prior acts did). PREVIOUS PIN: eae593f220460d880be20da38e3de39d,
-    # which was RE-PINNED by #326 (per-division pool entry anchors):
-    # the curve artifact gains the N43 signed pool_levels block beside pool_value, so the artifact FILE md5
-    # moves b7389fe4 -> 988135ef and the contract's pick_curve_file_md5 + its pool_levels mirror move with it.
-    # The curve PAYLOAD identity df766dff is UNCHANGED — the ladder itself was not touched — which is why
-    # pick_curve_curve_md5 below does not move. Both pins move in this one change, as prior acts did.
-    # PREVIOUS PIN: 5b7c108c230b9afc18089a8db0aeb650 — RE-PINNED by the #274 adoption mop-up act (owner word
-    # 2026-07-30): ui/release_pick_curve.json carried the STALE pool_value 528 after the 30/7 rederivation moved
-    # the pool price to 299. The release-active artifact (engine/rl_after/pvc_curve_v2.json) already carried 299
-    # and self-documents the move at stamp.prev_pool_value = 528, so the contract was a stale mirror, not a
-    # second decision. Re-stamping it moves this md5, which is why the pin moves in the SAME commit.
-    # PREVIOUS PIN: 432f0153cbe326d0ac0d0b50ec22aeb6 — RE-PINNED at THE SPLIT (2026-07-28), when the adopted
-    # curve's DOMAIN went 1-99 -> 1-64 + pool. Values over 1-64 are byte-identical; that pin moved because the
-    # contract file records the new domain, the pool index and the supersession. Curve SOURCE store and
-    # per_entrant are UNCHANGED below - nothing was re-derived, so those two pins MOVE in this commit.
+    # THE MIRROR-FILE BYTE PIN IS RETIRED (shrink S2, owner word 2026-08-28). `_contract_md5`
+    # pinned the ui/release_pick_curve.json FILE bytes and carried a seven-act re-pin lineage in
+    # this comment (#274 -> THE SPLIT -> #326 -> #334 x2 -> the 2026-08-20 mop-up -> the S_LL5G
+    # mop-up) — every firing on record was the pin being restamped after a legitimate act, never a
+    # wrong value (the catch ledger, register v880's review). What the pin STOOD FOR is asserted
+    # below as relationships that cannot go stale: the contract's fields must agree with the LIVE
+    # curve artifact (file bytes, payload md5, source store, per-entrant) and the artifact must
+    # self-declare its laws. A hand-edit to the mirror's VALUES still halts on those agreements; a
+    # hand-edit to its prose no longer does — the accepted S2 trade, named in the review.
     _curve_source_store='f1e8c9fed35462536d00add604f69a3f'
     _per_entrant_md5='999d24c8'
     if not _curve_contract_path or not os.path.exists(_curve_contract_path):
         check(False, "FROZEN-RULER provenance contract present at ui/release_pick_curve.json")
     else:
         _cc=json.load(open(_curve_contract_path))
-        _cc_md5=hashlib.md5(open(_curve_contract_path,'rb').read()).hexdigest()
         _stamp=_v2.get('stamp',{})
-        check(_cc_md5==_contract_md5,
-              "FROZEN-RULER contract byte-untouched: md5=%s (expected %s)"%(_cc_md5,_contract_md5))
         check(str(_cc.get('curve_source_store_md5'))==_curve_source_store,
               "FROZEN-RULER contract source store == %s (got %s)"%(_curve_source_store[:8],str(_cc.get('curve_source_store_md5'))[:8]))
         # ITEM 271 stage B — DECLARED HELD-UNTIL-ADOPTION. The four checks below bind the curve ARTIFACT to a

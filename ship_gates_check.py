@@ -126,7 +126,7 @@ SKIP = set(os.environ.get('SGC_SKIP', '').upper().split(',')) - {''}
 # one-shot fixes: (1) REJECT any UNRECOGNIZED SGC_* here (unhandled leakage HALTs — halt-not-warn); (2) the
 # report write is pinned IN-FENCE below (a leaked/foreign SGC_REPORT_DIR can never write outside the checkout).
 # No gate assertion, threshold or verdict is touched (SHIP_GATES §RED-PATH; the frozen suite 764a0d91 unamended).
-_SGC_OK = {'SGC_SKIP', 'SGC_B1_MATRIX', 'SGC_REPORT_DIR',
+_SGC_OK = {'SGC_SKIP', 'SGC_B1_MATRIX', 'SGC_REPORT_DIR', 'SGC_B3',
            # PLAN_v6 1a 2026-08-20 — the :49 workspace-resolution inputs. Recognized here so
            # the tripwire keeps HALTING on everything else; see the RA block at :49 for why
            # they are SGC_* and not RL_*.
@@ -364,7 +364,13 @@ _B1_INJECT = os.environ.get('SGC_B1_MATRIX')
 # INJECT_RUN, so a normal run (seam UNSET) is byte-identical to before. See SHIP_GATES.md §RED-PATH TEST SEAM.
 INJECT_RUN = _B1_INJECT is not None
 INJECT_BANNER = '################  INJECTED MATRIX — THIS RUN IS NOT A CERTIFICATION  ################'
-if not ('B1' in SKIP and 'B3' in SKIP):
+# SHRINK S10 (owner word 2026-08-28): the candidate-matrix rebuild — the suite's single largest
+# computation (~45-90 min) — is BAKE-SCOPED. Its only consumer is B3 (B1 computes nothing since
+# S5), and the freeze-stamp only says something new when the BOOK's inputs move, which is a bake
+# act. A bake arms it with SGC_B3=1 (recognized above); a red-path proof still injects via
+# SGC_B1_MATRIX (the fail-close is unweakened: an injected run exits non-zero regardless).
+B3_ARMED = os.environ.get('SGC_B3') == '1'
+if (INJECT_RUN or B3_ARMED) and not ('B1' in SKIP and 'B3' in SKIP):
     try:
         if _B1_INJECT is not None:
             CAND_MATRIX = _B1_INJECT; _mrun = None
@@ -541,7 +547,12 @@ except Exception as ex:
 try:
     _seal_path = os.path.join(ROOT, 'data', 'book_stable_seal.json')
     _mpath_b3 = CAND_MATRIX     # gate-integrity (a): seal the CANDIDATE (regenerated this run), not the baked v2.5
-    if 'B3' in SKIP:
+    if not (INJECT_RUN or B3_ARMED):
+        gate('B3', False, 'BAKE-SCOPED', 'shrink S10 (owner word 2026-08-28): the freeze-stamp runs '
+             'at bake acts (arm with SGC_B3=1) — the matrix it seals only moves when the book\'s '
+             'inputs move, and rebuilding it cost 45-90 min of every board run for a comparison '
+             'that cannot say anything new between bakes. The seal baseline stands untouched.')
+    elif 'B3' in SKIP:
         gate('B3', False, 'NOT-RUN', 'SGC_SKIP=B3')
     elif not os.path.exists(_seal_path):
         gate('B3', False, 'NOT-RUN', f'no book seal baseline at {os.path.relpath(_seal_path, ROOT)} — run the freeze-stamp to seal the baked book')
