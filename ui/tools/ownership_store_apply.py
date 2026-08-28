@@ -398,7 +398,10 @@ def restamp_season_state(path, store_md5):
     if before != after:
         raise Halt("season_state derived values moved under an ownership write: %s"
                    % [k for k in before if before[k] != after[k]])
-    _atomic_write_text(path, json.dumps(d, indent=1) + "\n" if raw.endswith("\n") else json.dumps(d, indent=1))
+    # THE CANONICAL SERIALIZATION IS indent=2 (season_state.py's own print, and the edit verb's
+    # round-trip guard refuses anything else — which is how this line's indent=1 was caught,
+    # 2026-08-28: the first edit-verb selftest on a tree where an apply was the LAST writer).
+    _atomic_write_text(path, json.dumps(d, indent=2) + ("\n" if raw.endswith("\n") else ""))
     return before
 
 
