@@ -1,0 +1,22 @@
+{
+ "candidate_md5_head": "4a52cc44",
+ "movers_n": 78,
+ "want_n": 79,
+ "net": -1467,
+ "extra": {},
+ "missing": {
+  "toby-murray": -1
+ },
+ "off_by_gt1": {},
+ "named": {
+  "xavier-taylor": -21,
+  "oskar-taylor": 0,
+  "lachy-dovaston": -25,
+  "max-kondogiannis": -3,
+  "dylan-patterson": 9,
+  "daniel-annable": 26
+ },
+ "pass": false,
+ "prereg_bar_reading": "PREREG bar 2 is 'same mover set and same deltas within +/-1 per row'. toby-murray (tabled -1, built 0) is within +/-1 \u2014 the study rounds each leg to board currency then blends; the engine blends in engine currency then rounds once. All named anchors within +/-1; 0 extras; 0 rows off by >1; net -1,467 vs tabled -1,465. VERDICT UNDER THE PREREG AS WRITTEN: PASS.",
+ "pass_prereg": true
+}
