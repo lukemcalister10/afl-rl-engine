@@ -91,6 +91,7 @@ from extract_board_view import norm_club as _mirror_club    # noqa: E402
 STORE_REL = os.path.join("engine", "rl_after", "rl_model_data.json")
 BOARD_REL = os.path.join("data", "rl_build", "rl_app_data.json")
 SIDECAR_REL = BOARD_REL + ".srcmd5"
+GEN_SIDECAR_REL = os.path.join("engine", "rl_after", "rl_app_data.json.srcmd5")   # the generator-side TWIN
 BOOT_REL = os.path.join("data", "expected_boot.json")
 CONTRACT_REL = os.path.join("data", "release_contract.json")
 SEASON_REL = os.path.join("data", "season_state.json")
@@ -108,6 +109,10 @@ TARGETS = (
     ("manifest", BOOT_REL),
     ("release_contract", CONTRACT_REL),
     ("board_sidecar", SIDECAR_REL),
+    ("board_sidecar_generator", GEN_SIDECAR_REL),   # 2026-08-28: BOTH sidecars move in lockstep — the
+    # landing installs them as one four-file lockstep (_install_board) and the round lander's
+    # generator_sync law asserts they agree; this lane moved ONE of the twins and the selftest
+    # caught the divergence (the third missing-twin instance: sibling, v0 sidecar, this).
     ("season_state", SEASON_REL),
     ("board_view_working", BVW_REL),
     ("release_lineage", LINEAGE_REL),
@@ -562,6 +567,10 @@ def apply(root=None, verbose=True):
         # T3 the pin moves
         restamp_manifest(w(BOOT_REL), plan.md5_after)
         restamp_board_sidecar(w(SIDECAR_REL), plan.md5_after, plan.board_md5)
+        # 2026-08-28: the GENERATOR-SIDE TWIN moves in the same breath — the landing installs the
+        # board + BOTH sidecars as one lockstep and generator_sync asserts they agree; this lane
+        # restamped one twin and the lander selftest caught the divergence on the next run.
+        restamp_board_sidecar(w(GEN_SIDECAR_REL), plan.md5_after, plan.board_md5)
         season_frozen = restamp_season_state(w(SEASON_REL), plan.md5_after)
         rc = _load_release_contract_module(ws)
         season_doc = json.load(open(w(SEASON_REL)))
