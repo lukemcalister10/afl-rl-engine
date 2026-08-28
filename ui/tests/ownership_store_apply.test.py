@@ -113,8 +113,13 @@ check(not plan.moves and plan.md5_before == plan.md5_after == live_md5,
 lin = json.load(open(os.path.join(REPO, OSA.LINEAGE_REL)))
 reg = lin["release_transition_register"]
 ours = [e for e in reg if OSA.OWNER_RULING_ID in (e.get("owner_ruling_id") or [])]
-check(len(ours) == 1,
-      "exactly ONE #283 register entry exists — a re-run appends no second one (%d total entries)" % len(reg))
+# DERIVED (2026-08-28, the S1 form): each ownership apply appends exactly ONE entry, so the count
+# equals the number of DISTINCT store transitions recorded under the ruling — a hard-coded 1 went
+# stale on the second-ever apply. A preflight re-run appending nothing is proven by the NO-OP
+# check above; duplicates (two entries recording the SAME transition) are refused here.
+_trans = [(e.get("source", {}).get("store"), e.get("destination", {}).get("store")) for e in ours]
+check(len(ours) >= 1 and len(set(_trans)) == len(_trans),
+      "every #283 entry records a DISTINCT store transition (n=%d; a re-run appends no duplicate)" % len(ours))
 # THE ERA-BOUND ASSERT, corrected 2026-08-05 by the #328 re-closure (owner ruling OPTION A).
 # This used to read `ours[0]["destination"]["store"] == live_md5`. That is true only while #283 is the
 # LATEST store transition — it ties a SEALED HISTORICAL entry to a moving head, so the first legitimate

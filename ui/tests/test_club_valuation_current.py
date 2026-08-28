@@ -46,7 +46,9 @@ assert cv.get("halt") is None, "ingest halted: %r" % (cv.get("halt"),)
 picks_by_team = cv.get("picksByTeam", {})
 n_picks = sum(len(v) for v in picks_by_team.values())
 assert len(picks_by_team) == 16, "expected 16 teams in the picks ledger, got %d" % len(picks_by_team)
-assert n_picks == 160, "expected 160 held picks, got %d" % n_picks
+_years = sorted({p["year"] for t in cv["picksByTeam"].values() for p in t})
+_expected = 16 * 5 * len(_years)
+assert n_picks == _expected, "expected %d held picks (16x5x%d years %s), got %d" % (_expected, len(_years), _years, n_picks)
 assert stamp["nPicks"] == n_picks, "stamp nPicks %r disagrees with the ledger (%d)" % (stamp["nPicks"], n_picks)
 
 # every pick is a band with a price on it; the price is the curve's, never re-derived here.
@@ -54,7 +56,7 @@ for team, picks in picks_by_team.items():
     for p in picks:
         assert p["value"] > 0, "%s: pick %r has no value" % (team, p.get("band"))
         assert p["low"] <= p["high"], "%s: band %r is inverted" % (team, p.get("band"))
-        assert p["year"] in (2026, 2027), "%s: unexpected pick year %r" % (team, p.get("year"))
+        assert p["year"] in (2026, 2027, 2028), "%s: unexpected pick year %r" % (team, p.get("year"))
 
 # the PVC identity that actually governs pick prices.
 assert stamp["pvcOk"] is True, "the ingest did not validate the PVC"

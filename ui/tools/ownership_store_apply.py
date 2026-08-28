@@ -580,10 +580,23 @@ def apply(root=None, verbose=True):
         out("  [T5] release_transition_register entry appended (ruling id %s)" % OWNER_RULING_ID)
         out("  [T6] movers_transition.js mirror written byte-identically")
 
-        # T7 the board_view bundles (the ring-fence now passes against the moved pin)
+        # T7 the board_view bundles (the ring-fence now passes against the moved pin).
+        # BOTH HALVES OF THE PAIR, ALWAYS: extract_board_view REGENERATES the bundle and DROPS
+        # `stamp.release`; only round_movers.inject_release_contract puts it back (the landing's
+        # writers 1+2, steps.py ui). This tool ran only the first half until 2026-08-28 — the
+        # FOURTH strike of the thrice-proven trap, caught by release_manifest_check + three ui
+        # suites on the first apply after the release block moved into the working stamp.
         _run([sys.executable, os.path.join(ws, "ui", "tools", "extract_board_view.py")], cwd=ws,
              label="extract_board_view")
-        out("  [T7] board_view_{working,public}.js regenerated")
+        import importlib.util as _ilu
+        _rm_path = os.path.join(ws, "engine", "rl_after", "ingestion", "round_movers.py")
+        _spec = _ilu.spec_from_file_location("_osa_round_movers", _rm_path)
+        _rm = _ilu.module_from_spec(_spec)
+        _spec.loader.exec_module(_rm)
+        _boot = json.load(open(os.path.join(ws, "data", "expected_boot.json")))
+        _rm.inject_release_contract(os.path.join(ws, BVW_REL), ws, int(_boot["as_of_round"]))
+        out("  [T7] board_view_{working,public}.js regenerated + the release block re-injected "
+            "(both halves of the writer pair)")
 
         # T8 the mirrors: sidecar + club_valuation, generated FROM the store
         _run([sys.executable, os.path.join(ws, "ui", "tools", "ingest_inputs.py")], cwd=ws,

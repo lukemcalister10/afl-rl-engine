@@ -142,9 +142,11 @@ with tempfile.TemporaryDirectory(prefix="clubprov_") as TMP:
     check(b is not None and len(b.get("clubs", [])) == 16, "CASE1 16 clubs present",
           "%s" % (len(b.get("clubs", [])) if b else None))
     npk = sum(len(v) for v in (b or {}).get("picksByTeam", {}).values())
-    check(npk == 160, "CASE1 160 picks present", "picks=%d" % npk)
-    check(b is not None and sum(c["nPicks"] for c in b["clubs"]) == 160,
-          "CASE1 pick-count conservation: Sum per-club nPicks == 160")
+    _expn = 16 * 5 * len({p["year"] for t in (b or {}).get("picksByTeam", {}).values() for p in t})
+    check(npk == _expn, "CASE1 every ledger pick present (16x5xissued years = %d)" % _expn,
+          "picks=%d" % npk)
+    check(b is not None and sum(c["nPicks"] for c in b["clubs"]) == _expn,
+          "CASE1 pick-count conservation: Sum per-club nPicks == the ledger count")
     st = (b or {}).get("stamp", {})
     check(st.get("pvcPathway") == "RL_PVC2", "CASE1 resolved pathway == RL_PVC2", st.get("pvcPathway"))
     # ITEM 271 Addendum 23 fix 2: DERIVED from the release-active curve artifact, not hardcoded — the
@@ -189,12 +191,12 @@ with tempfile.TemporaryDirectory(prefix="clubprov_") as TMP:
             # ITEM 271 Addendum 23 fix 1 lockstep: the oracle recomputes the SAME quantity, so it must
             # see the same ruled split. pool_value comes from the release-active artifact, one source.
             expect = round(ing.price_pick(v2, p["low"], p["high"], p["year"],
-                                          pool_value=_live_pool_value))
+                                          pool_value=_live_pool_value, rnd=p["round"]))
             if expect != p["value"]:
                 priced_ok = False
             sample += 1
-    check(priced_ok and sample == 160,
-          "CASE1 all 160 pick values == engine-curve mean (no workbook value ingested)", "checked=%d" % sample)
+    check(priced_ok and sample == 16 * 5 * len(ing.PICK_YEARS),
+          "CASE1 all pick values == the engine-curve year rule (no workbook value ingested)", "checked=%d" % sample)
 
     # ---- CASE 6: existing views cannot regress — ingest wrote ONLY club_valuation.js -----------------
     check(open(REAL_BOARD, "rb").read() == board_before,

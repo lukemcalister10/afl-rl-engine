@@ -87,23 +87,35 @@ check(disagree.length === 0,
 check(OWN.stamp.nOverriding === 0 && (OWN.overriding || []).length === 0,
   "nOverriding is 0 BY CONSTRUCTION — a mirror cannot override the field it is generated from");
 
-// the fixture: the owner's 2026-07-29 moves are actually on the board
-const FIXTURE = {
-  "beau-mccreery": "Sydney Swans",
-  "lachie-neale": "West Coast Eagles",
-  "jack-sinclair": "Western Bulldogs",
-  "ed-langdon": "West Coast Eagles",
-  "brennan-cox": "West Coast Eagles",
-  // sam-butler-1 is the name-twin row (a second 'Sam Butler' exists in the store as sam-butler).
-  // It is in the change set, so this asserts the write landed on the BOARD player, not his twin.
-  "sam-butler-1": "Carlton Blues",
+// the fixture, DERIVED (shrink review S1 form, 2026-08-28): the six sentinel players' clubs are
+// read from the CURRENT authored CSV — the single source this suite exists to prove — instead of
+// a frozen 2026-07-29 snapshot, which went stale the first time the owner traded one of them
+// again (Ed Langdon, 2026-08-28). The property is unchanged: authored sheet == board == mirror,
+// three ways, including the name-twin row (sam-butler-1 is the BOARD row for the authored 'Sam
+// Butler'; his storeless twin sam-butler must NOT receive the write).
+const SENTINELS = {
+  "beau-mccreery": "Beau McCreery",
+  "lachie-neale": "Lachie Neale",
+  "jack-sinclair": "Jack Sinclair",
+  "ed-langdon": "Ed Langdon",
+  "brennan-cox": "Brennan Cox",
+  "sam-butler-1": "Sam Butler",
 };
+const csvText = fs.readFileSync(path.join(__dirname, "..", "..", "docs", "inputs", "AFFL_Player_Locations.csv"), "utf8");
+const sheetClub = {};
+csvText.split(/\r?\n/).slice(1).forEach(function (ln) {
+  if (!ln.trim()) return;
+  const m = ln.match(/^("[^"]*"|[^,]*),("[^"]*"|[^,]*),/);
+  if (m) sheetClub[m[1].replace(/"/g, "")] = m[2].replace(/"/g, "");
+});
+const FIXTURE = {};
+Object.keys(SENTINELS).forEach(function (k) { FIXTURE[k] = sheetClub[SENTINELS[k]]; });
 const byKey = {};
 W.players.forEach(function (p) { if (p.key) byKey[p.key] = p; });
 const fixtureOk = Object.keys(FIXTURE).every(function (k) {
-  return byKey[k] && byKey[k].affl_team === FIXTURE[k] && OWN.byKey[k] === FIXTURE[k];
+  return FIXTURE[k] && byKey[k] && byKey[k].affl_team === FIXTURE[k] && OWN.byKey[k] === FIXTURE[k];
 });
-check(fixtureOk, "the owner's 2026-07-29 moves are on the board AND in the mirror (incl. the name-twin sam-butler-1)");
+check(fixtureOk, "the authored sheet's clubs for the six sentinels are on the board AND in the mirror (DERIVED from the CSV; incl. the name-twin sam-butler-1)");
 
 // V6 — the two free-agent spellings must not fork a bucket
 const buckets = {};

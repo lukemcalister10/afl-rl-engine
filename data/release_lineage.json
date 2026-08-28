@@ -1005,6 +1005,37 @@
    ],
    "invariants": {},
    "_measured_note": "moved/unchanged are MEASURED by tools/landing (steps._measure_sides), not asserted: every `source` identity is re-hashed from the committed tree at 21bf936 via git show, every `destination` identity from the live tree, and each side is cross-checked against THAT TREE'S OWN data/expected_boot.json before the entry is composed."
+  },
+  {
+   "_doc": "OUT-OF-ROUND OWNERSHIP STORE WRITE (#283). The owner's AFFL ownership CSV is couriered into the store's affl_team; the #232 sidecar becomes a generated mirror rebuilt FROM the store. Appended, not substituted: every prior entry is preserved verbatim. The BOARD DOES NOT MOVE \u2014 affl_team is not in the board of record (128 lensPicks keys, all null; the 804 active rows do not carry it), so this is an identity-only transition with no engine build. Per this register's own law an APPENDED entry is the shape prescribed for an out-of-round move.",
+   "kind": "movers_release_transition",
+   "schema_version": 2,
+   "owner_approved": true,
+   "owner_ruling_id": [
+    "OWNERSHIP_SINGLE_SOURCE_2026-07-30"
+   ],
+   "owner_ruling": "2026-07-30, owner ruling on #283: the store becomes the single source of ownership truth; the ingest writes the CSV's ownership into the store's affl_team (owner authorship by courier), and the #232 sidecar survives as a generated mirror rebuilt FROM the store, never independently authoritative.",
+   "authority": "Luke McAlister (owner) \u2014 sole merge authority; relayed by the seam on #283",
+   "source": {
+    "release_version": "v2.11-final-rc1-PROVISIONAL",
+    "store": "fb640ca0baf92bbb122b1ad7e25c5a88",
+    "as_of_round": 24
+   },
+   "destination": {
+    "release_version": "v2.11-final-rc1-PROVISIONAL",
+    "store": "b4d23810ebb6b53f07a0ae40a3c24b97",
+    "as_of_round": 24
+   },
+   "invariants": {
+    "store_moved_by_transition": {
+     "from": "fb640ca0baf92bbb122b1ad7e25c5a88",
+     "to": "b4d23810ebb6b53f07a0ae40a3c24b97"
+    },
+    "board_unmoved_by_transition": "530a4053622c29092274fab0aa1fee7f",
+    "declares_no_landing_board": "this transition moves the STORE only; it is a pointer note to the boundary reader and must never supersede a board-boundary record (round_movers.model_changes)",
+    "fields_written": "affl_team only",
+    "engine_build": "none \u2014 affl_team is not read by ev() and is absent from the board of record"
+   }
   }
  ]
 }

@@ -93,7 +93,8 @@ def parity():
 
     rows = X.rows(wbpath, "Picks")
     ledger = [r for i, r in enumerate(rows) if i >= 2 and r[0] is not None]
-    check("ledger row count == 160 (the ingest's conservation figure)", len(ledger) == 160, "%d rows" % len(ledger))
+    _exp = 16 * 5 * len({r[1] for r in ledger})   # 16 clubs x 5 rounds x the issued years (S1 form)
+    check("ledger row count == %d (16x5xissued years)" % _exp, len(ledger) == _exp, "%d rows" % len(ledger))
 
     lad = X.rows(wbpath, "Ladder")
     mult = None
@@ -110,7 +111,7 @@ def parity():
         for p in picks:
             baked[p["id"]] = p
 
-    check("oracle bundle carries all 160 picks", len(baked) == 160, "%d picks" % len(baked))
+    check("oracle bundle carries every ledger pick", len(baked) == len(ledger), "%d picks vs %d ledger rows" % (len(baked), len(ledger)))
 
     mism = []
     for r in ledger:
