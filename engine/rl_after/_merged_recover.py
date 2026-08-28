@@ -6624,6 +6624,60 @@ def ev(p,Y=2026,__inner=_ev_pre46g):
     _d0c=day0_v0(p)
     _cap=max(_voff,float(_d0c)*_PL_F) if _d0c is not None else _voff
     return max(_voff,min(_v,_cap))
+
+# ==== ORDER 49 (RL_O49) — THE AVAILABILITY EXPOSURE BLEND (owner ruling 2026-08-28: "lock in tau 2.5") ====
+# The Taylor/Taylor cliff, removed at the one law: a played row's price was ALL played-channel from game
+# one (a 2-game cameo fully shielded the draft prior) while a 0-game row took the sitter channel whole.
+# The ruled repair: every young thin-sample row is the EXPOSURE BLEND of the two channels the engine
+# already prices —
+#     final = w*v_played + (1-w)*v_sitter,   w = 1 - exp(-career_games/2.5)
+# where v_sitter is the row's own scoring-stripped counterfactual through the FULL wrapped chain (the
+# ORDER 45 net and the ORDER 46 final guard included — the study's exact legs, AVAIL_SMOOTHING_STUDY).
+# SYMMETRIC by the owner's ruling on the tabled variant: thin evidence counts partially whichever way
+# it points, so a row priced BELOW its sitter shadow (annable) recovers (1-w) of the damage exactly as
+# a row priced above it (mraz) keeps only w of the lift. Class = the STUDIED class, verbatim: Y=2026,
+# tenure 1-4, entry age <22 (D3 mature-agers out), career games 1..12 (a 0-game row already IS its
+# sitter price; past 12 the studied class ends and w(12)=0.992 rounds to the played price anyway).
+# Outermost wrapper BY CONSTRUCTION — it blends finished prices, never intermediate stages, so no
+# downstream gate can key on a blended figure it wasn't built to read.
+# Dial off (RL_O49 unset/'0') => the wrapper is never installed: byte-exact pass-through. The default
+# flips to '1' at the landing that pins it in gate-mode config, after the candidate build reproduces
+# the owner-approved movers table (79 direct movers, net -1,465 board-side, +/-1 rounding).
+_O49=os.environ.get('RL_O49','0')=='1'
+if _O49:
+    _O49_TAU=2.5
+    _O49_GMAX=12
+    _ev_pre49=ev
+    def ev(p,Y=2026,__inner=_ev_pre49):
+        _v=__inner(p,Y)
+        if int(Y)!=2026 or p.get('_retired'): return _v
+        if p.get('key') is None: return _v                     # keyless synthetic probes test the BASE laws
+        _sc=[x for x in (p.get('scoring') or []) if x.get('year',0)<=2026]
+        _g=sum(x.get('games',0) for x in _sc)
+        if _g<1 or _g>_O49_GMAX: return _v
+        _ten=2026-int(p.get('year') or 2026)+1
+        if _ten<1 or _ten>4: return _v
+        _by=p.get('_by')
+        if not _by:
+            raise SystemExit('ORDER 49 HALT: %r is in blend scope with no _by; the D3 mature-age '
+                             'exclusion cannot run silently.'%p.get('key'))
+        if int(p.get('year'))-int(_by)>=22: return _v          # D3: mature-agers excluded
+        _s0=p['scoring']; p['scoring']=[]
+        try:
+            with contextlib.redirect_stdout(io.StringIO()):
+                _vsit=__inner(p,Y)
+        finally:
+            p['scoring']=_s0
+        with contextlib.redirect_stdout(io.StringIO()):
+            _vb=__inner(p,Y)
+        if _vb!=_v:
+            raise SystemExit('ORDER 49 HALT (the D7-F6 rule): %r did not restore EXACTLY after the '
+                             'scoring-stripped counterfactual probe (%r -> %r).'%(p.get('key'),_v,_vb))
+        _w=1.0-_math.exp(-_g/_O49_TAU)
+        return int(round(_w*_v+(1.0-_w)*_vsit))
+    print("=== ORDER 49 AVAILABILITY EXPOSURE BLEND LIVE (owner ruling 2026-08-28, TAU=2.5) — "
+          "tenure 1-4, entry age <22, 1-12 career games: final = w*played + (1-w)*sitter, "
+          "w=1-exp(-g/2.5); sitter leg through the full wrapped chain ===")
 print("=== AFTER (wired: delist + staleness + isotonic) — named players ===")
 print(f"{'player':22s}{'pos':8s}{'pk':>3s}{'g':>3s}{'ten':>4s}{'dlst':>5s}{'draft':>6s}{'BEFORE':>7s}{'AFTER':>7s}  reasoning")
 before={'Ronin O':526,'Will Martyn':554,'Sam Philp':714,'Oscar Ryan':570,'Tew Jiath':509,'Jakob Ryan':594,'Harrison Jones':528,'Keidean Coleman':723,'Dylan Stephens':761}
