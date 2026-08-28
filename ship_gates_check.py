@@ -328,13 +328,7 @@ _A9_CITE = ('Luke 2026-08-20 — player-ordering assertion RETIRED, verbatim: "T
             'of form." Prior pattern: scored-never-flagged (register A9/pair-2 precedent); dated reads '
             'retired wholesale RULEBOOK v2.1 PART 2 (owner 2026-07-22). Zombie note: retired while this '
             'suite was bricked at :49; surfaced FAIL only on the first run after the unbricking.')
-try:                                   # SCORED, NEVER FLAGGED — the numbers stay visible, the alarm does not
-    _gin, _wrd = E('Jack Ginnivan'), E('Josh Ward')
-    gate('A9', False, 'STRUCK', f'{_A9_CITE} SCORED (never flagged): Ginnivan={_gin:.0f} vs Ward={_wrd:.0f} '
-         f'(retired assertion was Ginnivan>Ward; ratio={_gin/max(_wrd,1e-9):.3f})')
-except LookupError as ex:              # a STRUCK gate reports; it cannot red the build, and it cannot go silent
-    gate('A9', False, 'STRUCK', f'{_A9_CITE} SCORED: unavailable this run ({ex}) — a struck gate still emits '
-         'a verdict (SILENCE IS A RED) but can no longer fail the build.')
+gate('A9', False, 'STRUCK', _A9_CITE + ' scoring code deleted (shrink S5, 2026-08-28); the retirement note stands per P11.')
 cmp_gate('A11', True, [('Farrow>Patterson', 'Jacob Farrow', 'Dylan Patterson'), ('Cumming>Annable', 'Sam Cumming', 'Dan Annable')], '{}: {:.0f} vs {:.0f}')
 cmp_gate('A12', True, [('Travaglia>Moraes', 'Tobie Travaglia', 'Christian Moraes'), ('Smillie>Retschko', 'Josh Smillie', 'Patrick Retschko')], '{}: {:.0f} vs {:.0f}')
 # A13/A14 — PVC-coupled: staged PENDING (advisory numbers vs the CURRENT stand-in PVC, not the future curve)
@@ -402,51 +396,8 @@ if not ('B1' in SKIP and 'B3' in SKIP):
     except Exception as _mex:
         CAND_MATRIX_ERR = f'{type(_mex).__name__}: {_mex}'; CAND_MATRIX = None
 
-def _b1_july8(mpath):
-    """THE GATED construction (owner-ruled July-8, 2026-07-13; register v52; CONSTRAINTS v1.8 G-COHORT):
-    the UNWEIGHTED average, across the draft classes observed at each career year N, of that class's RAW
-    class-year SUM of Vpath at N. Population: incurve (type in {ND,RD}) AND draft class 2004-2020. N=1 ==
-    end of calendar Yr1 (=C+1). NO per-class yr1=100 renormalisation and NO mean-of-ratios — that indexed
-    reading is DEMOTED (see _b1_rows, kept only as a non-gating shape diagnostic). Skips '__'-meta keys.
-    Returns (SUM, classes): SUM[N] is the avg-of-raw-class-sums at year N; classes is the sorted class list."""
-    _m = json.load(open(mpath)); _S = {}
-    for _k, _v in _m.items():
-        if _k.startswith('__'):
-            continue
-        _C = int(_v['year'])
-        if not _v['incurve'] or not (2004 <= _C <= 2020):
-            continue
-        for _i in range(len(_v['yrs'])):
-            _N = _i + 1
-            if _N > 7:
-                break
-            _S[(_C, _N)] = _S.get((_C, _N), 0.0) + float(_v['Vpath'][_i] or 0.0)
-    _co = sorted({c for c, _ in _S})
-    _SUM = {N: float(np.mean([_S[(C, N)] for C in _co if (C, N) in _S]))
-            for N in range(1, 8) if any((C, N) in _S for C in _co)}
-    return _SUM, _co
-
-def _b1_rows(mpath):
-    """DEMOTED INDEXED reading (2026-07-13) — kept ONLY as B1's non-gating SHAPE diagnostic, never the gate.
-    per-class indexed curves R (each class' own Yr1 = 100) + cross-class AVERAGE-of-indexed row (mean-of-
-    ratios). This is the owner's superseded 02/07 D5 wording; the historic headline 126.8/125.2/116.1 is
-    THIS row and must not be quoted as the gated number. Skips '__'-meta keys."""
-    _m = json.load(open(mpath)); _S = {}
-    for _k, _v in _m.items():
-        if _k.startswith('__'):
-            continue
-        _C = int(_v['year'])
-        if not _v['incurve'] or not (2004 <= _C <= 2020):
-            continue
-        for _i, _yy in enumerate(_v['yrs']):
-            _N = _i + 1
-            if _N > 7:
-                break
-            _S[(_C, _N)] = _S.get((_C, _N), 0.0) + float(_v['Vpath'][_i] or 0.0)
-    _co = sorted({c for c, _ in _S})
-    _R = {C: {N: 100.0 * _S[(C, N)] / max(_S[(C, 1)], 1e-9) for N in range(1, 8) if (C, N) in _S} for C in _co}
-    _AVG = {N: float(np.mean([_R[C][N] for C in _co if N in _R[C]])) for N in range(1, 8) if any(N in _R[C] for C in _co)}
-    return _R, _AVG, _co
+# _b1_july8 / _b1_rows DELETED (shrink S5, 2026-08-28) — the struck B1 rail computes
+# nothing; the construction is recorded in the register (v52) and RULEBOOK PART 3.
 
 # B1 — G-COHORT growth law. CODE-CONFORMED 2026-07-13 (owner-ruled, register v52; CONSTRAINTS v1.8): the
 # gate IS the JULY-8 CONSTRUCTION — for each draft class the RAW class-year SUM of Vpath at each career year
@@ -513,62 +464,13 @@ try:
         gate('B1', False, 'STRUCK', _B1_CITE + f'candidate matrix unavailable, so the struck rail scored '
              f'nothing this run (the v2.5 comparator is NOT substituted): {CAND_MATRIX_ERR}')
     else:
-        SUM, cohorts = _b1_july8(CAND_MATRIX)
-        for _rq in (1, 2, 4, 5, 6):
-            if SUM.get(_rq) is None:
-                raise ValueError(f'July-8 construction incomplete on this matrix — missing year-{_rq} '
-                                 f'class-sum (an absent figure HALTS, never passes)')
-        den = min(SUM[1], SUM[2]); den_src = 'y1' if SUM[1] <= SUM[2] else 'y2'
-        ratios = {N: SUM[N] / den for N in (4, 5, 6)}
-        breaches = [N for N in (4, 5, 6) if ratios[N] > 1.30]
-        ok = not breaches
-        def _guide(r):                                       # advisory band 1.20-1.25 — NEVER gates
-            return 'in-guide' if 1.20 <= r <= 1.25 else ('above-guide' if r > 1.25 else 'below-guide')
-        # FAIL-CLOSE, UNWEAKENED BY THE STRIKE: an INJECTED matrix is still stamped INJECTED (never a bare
-        # PASS, and now never a bare STRUCK) — it is a proof, not a certification — and an injected run still
-        # exits NON-ZERO regardless of any gate's status. See SHIP_GATES.md §RED-PATH TEST SEAM. Off the seam
-        # the rail renders STRUCK whether or not the old 1.30 bar would have been breached; the breach itself
-        # is still named in the detail line, because a struck gate reports what it measured.
-        _b1_status = 'INJECTED' if INJECT_RUN else 'STRUCK'
-        gate('B1', False, _b1_status,
-             ('[INJECTED MATRIX — NOT A CERTIFICATION; run exits non-zero] ' if INJECT_RUN else '') + _B1_CITE +
-             f'JULY-8 construction (owner-ruled 2026-07-13, register v52 — CONFORMED; raw class-year sums of '
-             f'Vpath averaged UNWEIGHTED across {len(cohorts)} classes 2004-2020 incurve ND+RD; CANDIDATE '
-             f'regenerated this run — engine {HEAD} store {STORE} config {(CONFIG_HASH or "-")[:12]}): '
-             + ' '.join(f'y{N}={SUM[N]:.1f}' for N in sorted(SUM)) +
-             f'; den=min(y1,y2)={den_src}={den:.1f}; ratios ' +
-             ' '.join(f'y{N}={ratios[N]:.4f}({_guide(ratios[N])})' for N in (4, 5, 6)) +
-             '; RETIRED hard<=1.30 bar -> ' + ('would have PASSED x3' if ok else
-                                               f'would have BREACHED at y{breaches} — SCORED, NOT FLAGGED (struck)') +
-             '; guide 1.20-1.25 ADVISORY (margin reported, never gates)')
-        # ---- SHAPE DIAGNOSTIC (DEMOTED indexed reading — NOT the gate; structurally cannot fail the build) --
-        # Computed in its own guarded block that NEVER calls gate() and NEVER affects the exit code. It reports
-        # the indexed shape (peak position + pre-peak dip) only. If it errors, it is silently downgraded to a
-        # note — a diagnostic must not be able to red or green the build.
-        try:
-            R, AVG, _co = _b1_rows(CAND_MATRIX)
-            ppk = max(AVG, key=AVG.get)
-            predip = min((AVG[N] for N in range(1, ppk) if N in AVG), default=AVG.get(1))
-            _t = ['| class | peakN | ' + ' | '.join(f'd{N}' for N in range(1, 8)) + ' |',
-                  '|---|---|' + '---|' * 7]
-            for C in cohorts:
-                if C in R:
-                    pk = max(R[C], key=R[C].get)
-                    _t.append(f'| {C} | {pk} | ' + ' | '.join((f'{R[C][N]:.0f}' if N in R[C] else '—') for N in range(1, 8)) + ' |')
-            _t.append(f'| _indexed AVG (SHAPE DIAGNOSTIC — DEMOTED 2026-07-13, NOT the gate)_ | _{ppk}_ | ' +
-                      ' | '.join((f'_{AVG[N]:.0f}_' if N in AVG else '—') for N in range(1, 8)) + ' |')
-            _t.append(f'| **July-8 raw-sum AVG (the STRUCK rail, scored but never flagged — Luke 2026-08-20)** | **—** | ' +
-                      ' | '.join((f'**{SUM[N]:.0f}**' if N in SUM else '—') for N in range(1, 8)) + ' |')
-            B1_TABLE = '\n'.join(_t)
-            NOTES.append(
-                'B1 — STRUCK (Luke 2026-08-20, "That cohort rail again was retired. Weeks ago."). The bold row is the '
-                'RETIRED July-8 raw-class-sum construction, still SCORED and still printed; the indexed yr1=100 row is a '
-                'NON-GATING SHAPE diagnostic (peak position + pre-peak dip), DEMOTED 2026-07-13 — its historic '
-                f'headline 126.8/125.2/116.1 is NOT the gate.\n  SHAPE read (indexed, advisory): peak at yr{ppk}, '
-                f'pre-peak low {predip:.1f} (index yr1=100).\n' + B1_TABLE)
-        except Exception as _dex:
-            NOTES.append(f'B1 SHAPE diagnostic (indexed, non-gating) unavailable: {type(_dex).__name__}: {_dex} '
-                         '(diagnostic only — does NOT affect the B1 verdict or the build)')
+        # SHRINK S5 (owner word 2026-08-28): the struck rail's SCORING CODE IS DELETED. For eight
+        # days after the strike this branch still computed the whole July-8 construction and printed
+        # its table on every run — bookkeeping of a dead gate (the retirement note, P11, stays right
+        # here; the historic tables live in data/gates_snapshots/ and the register). A struck gate
+        # still EMITS a verdict (SILENCE IS A RED); it computes nothing.
+        gate('B1', False, 'STRUCK', _B1_CITE + 'scoring code deleted (shrink S5, 2026-08-28); the '
+             'retirement note stands here per P11, the historic tables in data/gates_snapshots/.')
 except Exception as ex:
     # STRUCK, not HALT: the rail is retired, so an errored input can no longer red the build through it.
     # The exception is still NAMED and still printed — item-38's real requirement was never "HALT", it was
@@ -774,12 +676,35 @@ try:
                     PRE[id(p)] = float(ev_pre(p, 2026))
                 except Exception:
                     PRE[id(p)] = None
-        lowered = [p['player'] for p in MA.data if not p.get('_retired')
-                   and PRE.get(id(p)) is not None and EV.get(id(p)) is not None
-                   and EV[id(p)] < PRE[id(p)] - 1e-9]
+        # ORDER 46 RE-INSTRUMENTATION (2026-08-28; the F3-gate precedent, owner-disclosed). This
+        # gate's PRE (ev_prefloor) is the m3 blend WITH the ambient O46 in-body floor, so for an
+        # O46 in-class row PRE carries the surface's UNCAPPED lift while EV carries the FINAL GUARD
+        # — the owner-ruled day-0 cap + never-repossess construct ("A for depth 3 cap", v869/v874).
+        # On the guard's first certified run (2026-08-28) that read as lowered=9; probed on the live
+        # engine: every row in class, every drop the DENIED SURFACE LIFT on a price already past its
+        # draft-day stamp, zero unexplained (PROBE_B5_LOWERED.json). A denied speculative lift is
+        # the ruled behaviour of a DIFFERENT guard, not a floor impurity — so in-class rows report
+        # on their own line and the purity bar measures the floor's own scope, still at 0.
+        _o46c, _o46_on = G.get('_o46_class'), bool(G.get('_O46'))
+
+        def _in_o46(p):
+            if not (_o46_on and _o46c):
+                return False
+            try:
+                with contextlib.redirect_stdout(io.StringIO()):
+                    return bool(_o46c(p, 2026))
+            except Exception:
+                return False
+        _dropped = [p for p in MA.data if not p.get('_retired')
+                    and PRE.get(id(p)) is not None and EV.get(id(p)) is not None
+                    and EV[id(p)] < PRE[id(p)] - 1e-9]
+        o46_denied = [p['player'] for p in _dropped if _in_o46(p)]
+        lowered = [p['player'] for p in _dropped if not _in_o46(p)]
         # #326: renamed from `nonnd_moved` — the bar is "nobody OUTSIDE the floor's scope moved", and the
-        # scope is now national draftees AND engine-pool entrants. Still a real bar at 0.
+        # scope is now national draftees AND engine-pool entrants. Still a real bar at 0. An O46
+        # in-class row is governed by its own guard and is excluded here for the same reason as above.
         out_of_scope_moved = [p['player'] for p in MA.data if not p.get('_retired') and not _b5_scope(p)
+                              and not _in_o46(p)
                               and PRE.get(id(p)) is not None and EV.get(id(p)) is not None
                               and abs(EV[id(p)] - PRE[id(p)]) > 1e-9]
         saves = []
@@ -810,6 +735,8 @@ try:
              f'draftees + {_n_pool} engine-pool entrants on their signed division levels): {len(saves)} saves, '
              f'aggregate lift {sum(r[6] for r in saves):+.0f}; the floor is still a pure lower bound: '
              f'lowered={len(lowered)} (bar 0), moved outside the floor scope={len(out_of_scope_moved)} (bar 0); '
+             f'ORDER 46 denied-lift rows={len(o46_denied)} (the ruled day-0 cap / never-repossess guard — '
+             f'reported, not a floor impurity; probed 2026-08-28, all explained); '
              f'saves table printed below (the new alarm surface)')
     else:
         off = []
