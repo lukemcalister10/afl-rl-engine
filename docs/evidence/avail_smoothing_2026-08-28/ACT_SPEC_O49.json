@@ -1,0 +1,61 @@
+{
+  "_doc": "THE ACT SPEC — THE ORDER 49 AVAILABILITY EXPOSURE BLEND ADOPTION (TAU 2.5). Driven by tools/land lever. The board prediction is the candidate act's own measured identity (O49_CANDIDATE_VERDICT.json), committed before this landing.",
+  "schema_version": 1,
+  "act_kind": "lever-landing",
+  "act": "THE ORDER 49 AVAILABILITY EXPOSURE BLEND (TAU 2.5) — RL_O49 default '0' -> '1'",
+  "date": "2026-08-28",
+  "owner_word": "Please lock in tau 2.5 and build that",
+  "authority": "Owner word 2026-08-28, verbatim, ruling on the tabled TAU=2.5 variant of the availability-smoothing study (AVAIL_SMOOTHING_VARIANTS.html, Variant A: 79 movers, 70 down -1,611 / 9 up +146, net -1,465), followed by 'Okay, thanks. Please land tau'. The symmetric blend is the ruled variant. LAW 9: the net is a BURN of -1,467 SCAR (no mint), accepted in the owner-approved table.",
+  "prereg": {
+    "path": "docs/evidence/avail_smoothing_2026-08-28/PREREG_ORDER49.md",
+    "board_before": "530a4053622c29092274fab0aa1fee7f",
+    "board_after": "4a52cc4490f950c7b7856fc28ddcb949",
+    "_doc_board_after": "THE PREDICTION: the candidate board identity measured by the candidate act (Phase C, o49_candidate.sh) and verified against the owner-approved TAU 2.5 movers table within the prereg's +/-1 rounding bar (O49_CANDIDATE_VERDICT.json, committed 1834ff7 before this landing).",
+    "reference_board": null,
+    "kill_switch": {
+      "name": "RL_O49=0",
+      "env": {
+        "RL_O49": "0"
+      },
+      "board_with_switch_off": "530a4053622c29092274fab0aa1fee7f",
+      "_doc": "The declared kill-switch must restore the retired live board 530a4053 BYTE-EXACT (the candidate act's Phase A proved exactly this, twice, in two containers)."
+    }
+  },
+  "identities": {
+    "moves": [
+      "board",
+      "balanced_board_md5"
+    ],
+    "unmoved": [
+      "store",
+      "engine_head",
+      "rl_model",
+      "fv",
+      "config",
+      "register",
+      "as_of_round"
+    ],
+    "_doc_engine_head_config": "engine_head and config both moved at THE FLIP COMMIT (7b5efc2) one commit ahead of this landing, per P9: engine default '0'->'1', RL_O49 pinned '1' in data/model_config.json (f233d160 -> d4f3c3cf), boot config pin re-stamped in the same commit. Within this transaction both are HEAD-to-HEAD unmoved."
+  },
+  "column": {
+    "id": "order49-avail-blend-28-8",
+    "label": "28/8 ORDER 49 AVAILABILITY EXPOSURE BLEND — TAU 2.5 owner-locked; the Taylor/Taylor cliff removed at the one law (final = w*played + (1-w)*sitter, w=1-exp(-g/2.5), tenure 1-4, entry age <22, 1-12 career games); 78 movers, net -1,467; xavier-taylor -21, dovaston -25, kondogiannis -3, patterson +9, annable +26, sitters unmoved",
+    "after_round": 24
+  },
+  "lineage": {
+    "doc": "The availability exposure blend adopted at the owner's TAU 2.5 ruling. Every young thin-sample row is the exposure blend of its played price and its own scoring-stripped sitter counterfactual (both legs through the full wrapped chain, ORDER 45 net + ORDER 46 final guard included). Symmetric: thin evidence counts partially whichever way it points. Class verbatim from the study: Y=2026, tenure 1-4, entry age <22, 1-12 career games. D7-F6 exact-restore HALT live on every probe.",
+    "owner_ruling_id": [
+      "AVAIL_BLEND_TAU25_2026-08-28_lock_in_tau_2_5_and_build_that",
+      "AVAIL_BLEND_LAND_2026-08-28_please_land_tau"
+    ],
+    "owner_ruling": "Please lock in tau 2.5 and build that",
+    "authority": "Owner word 2026-08-28 on the tabled Variant A after reviewing TAU 4 / TAU 3 / TAU 2.5 / cut-cap / 8-game-floor alternatives; landing ordered same day ('Please land tau').",
+    "invariants": {}
+  },
+  "day0_rebase": {
+    "state": "off"
+  },
+  "evidence_dir": "docs/evidence/avail_smoothing_2026-08-28",
+  "gates": null,
+  "_doc_gates": "null = the standard landing gate set (steps.DEFAULT_GATES)."
+}
