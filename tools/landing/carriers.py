@@ -252,12 +252,13 @@ ROUND_EXTRA_CARRIERS = (
       'the weekly staged-transaction records; tracked (R15…R23 all are). An aborted landing must not '
       'leave a half-open txn behind'),
 
-    # ---- the weekly fixture bumps -----------------------------------------------------------------
-    F('engine/rl_after/ingestion/test_movers_transition.py', 'the advance (weekly round expectation)',
-      'the py movers suite carries the round it expects and the future-append fixture; both are '
-      'bumped every week by the advance (R22 bumped 21->22, R23 bumped 22->23)'),
-    F('ui/tests/movers.test.js', 'the advance (weekly round expectation)',
-      'the js movers suite, same weekly bump'),
+    # ---- the weekly fixture bumps — RETIRED (shrink review S1, owner word 2026-08-28) ------------
+    # The two movers suites carried hand-typed round pins ([15..N], the future-append round, the
+    # manifest round) that the advance seat pre-bumped before every flight — the trap the R24
+    # rehearsal filed ("all five weekly pins go red the moment R24 lands and no step moves them")
+    # and the eleventh-bump ledger recorded. Every such pin is now DERIVED inside the suites from
+    # the bundle and the manifest (the P4 form), so no landing writes these files and they are no
+    # longer carriers: a landing that touches them again is correctly refused as foreign.
 
     # ---- the day-0 standing reference -------------------------------------------------------------
     F('docs/evidence/final_candidate_2026-08-19/DAY0_CP.json',

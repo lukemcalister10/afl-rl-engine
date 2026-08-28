@@ -197,12 +197,15 @@ def run_all():
         'the manifest has legitimately advanced past the transition destination (round 20 applied)')
     _ck(dst.get('as_of_round') == 19,
         'transition destination round is 19 — the round the restructure landed after (unchanging history)')
-    # WEEKLY ROUND PIN — bumped by each round advance, and by nothing else. 23 -> 24 at the R24
-    # advance (2026-08-23; PRE-BUMPED before the flight per the rehearsal's recommended recipe —
-    # `land round` runs its gates inside the transaction, so the bump must precede it; the tree is
-    # deliberately red on this suite between the bump commit and the landing). Prior: 22 -> 23 at
-    # R23 (2026-08-20), inside the advance's own commit, the hand-walk ordering.
-    _ck(eb.get('as_of_round') == 24, 'manifest as_of_round has advanced to 24')
+    # DERIVED (shrink review S1, owner word 2026-08-28; the P4 form). This was the WEEKLY ROUND
+    # PIN — a hand-typed integer bumped by every advance and nothing else, with a pre-bump commit
+    # ritual the rehearsal itself flagged ("the tree is deliberately red on this suite between the
+    # bump commit and the landing"). The relationship worth holding: the manifest's round IS the
+    # bundle's newest report — the advance regenerates both in one transaction, so this holds in
+    # both worlds with no pre-bump, and a bundle lagging or leading the manifest fails loudly.
+    _ck(eb.get('as_of_round') == prod['rounds'][-1],
+        'manifest as_of_round == the bundle\'s newest report round (DERIVED: %s)' % eb.get('as_of_round'))
+    _ck(eb.get('as_of_round') >= 24, 'the live round never shrinks below landed history (>= 24)')
 
     # ---- exactly the expected fields move; the rest are unchanged (same model pins) ----
     # OWNER-RULED SEMANTIC RESTATEMENT (owner rulings v467 + v469, 2026-07-26; ITEM 411 directive D1).
@@ -244,37 +247,40 @@ def run_all():
         'a modified report identity changes the content digest (tamper detected)')
 
     # ---- FUTURE APPEND preserves R15-R19 byte-for-byte (accumulate_bundle write path) ----
-    # WEEKLY ROUND PIN — the future round advances with the applied history. R23 was APPLIED
-    # 2026-08-20 and is now real history in the bundle, so appending a fabricated R23 would be
-    # (correctly) refused by the same-round conflict guard. R24 is the first round that does not yet
-    # exist. (R22 moved this fixture R22 -> R23 for exactly the same reason on 2026-08-10.)
+    # DERIVED (shrink review S1): the future round is the bundle's newest + 1, computed — this
+    # fixture was the second weekly pin (R23 -> R24 -> ... hand-moved each advance because a
+    # fabricated copy of an APPLIED round is correctly refused by the same-round conflict guard).
     scr = tempfile.mkdtemp(prefix='movers_append_')
     try:
         bpath = os.path.join(scr, 'movers.js')
         shutil.copyfile(os.path.join(REPO, 'ui', 'data', 'movers.js'), bpath)
         before = {str(r): json.dumps(prod['reports'][str(r)], sort_keys=True) for r in ROUNDS}
-        live24 = prod['reports']['24']
-        r25 = _mk_future_report(25, live24['board_md5_after'], '25b0ard' + '0' * 25,
-                                live24['source_store_md5_after'], '25st0re' + '0' * 25, dst)
-        res = MV.accumulate_bundle(bpath, r25, repo_root=REPO)
+        live_n = prod['rounds'][-1]
+        fut_n = live_n + 1
+        live_last = prod['reports'][str(live_n)]
+        r_fut = _mk_future_report(fut_n, live_last['board_md5_after'], '%db0ard' % fut_n + '0' * 25,
+                                  live_last['source_store_md5_after'], '%dst0re' % fut_n + '0' * 25, dst)
+        res = MV.accumulate_bundle(bpath, r_fut, repo_root=REPO)
         _ck(res.get('overwrite_conflict') is False and res.get('wrote') is True,
-            'appending a future R25 report writes (no overwrite conflict)')
+            'appending a future R%d report writes (no overwrite conflict)' % fut_n)
         after_bundle = MV.load_bundle(bpath)
-        _ck(after_bundle['rounds'] == prod['rounds'] + [25], 'the bundle carries R15-R25 after the append')
+        _ck(after_bundle['rounds'] == prod['rounds'] + [fut_n],
+            'the bundle carries R15-R%d after the append' % fut_n)
         after = {str(r): json.dumps(after_bundle['reports'][str(r)], sort_keys=True) for r in ROUNDS}
         _ck(all(before[str(r)] == after[str(r)] for r in ROUNDS),
             'every R15-R19 report is byte-for-byte preserved after the future append')
         _ck(MV.canonical_reports_digest(after_bundle, ROUNDS) == ap['historical_reports_digest'],
             'the R15-R19 content digest is UNCHANGED after the future append')
-        _ck(after_bundle['reports']['25']['release_identity']['release_version'] == dst['release_version'],
+        _ck(after_bundle['reports'][str(fut_n)]['release_identity']['release_version'] == dst['release_version'],
             'the appended future report carries the then-current governing identity (destination)')
-        # SAME-ROUND CONFLICT GUARD still fail-closed: a DIFFERENT R24 must be refused, not merged.
-        fake24 = _mk_future_report(24, live24['board_md5_before'], 'fakeb0ard' + '0' * 23,
-                                   live24['source_store_md5_before'], 'fakest0re' + '0' * 23, dst)
+        # SAME-ROUND CONFLICT GUARD still fail-closed: a DIFFERENT copy of the live round must be
+        # refused, not merged (round DERIVED — this was the third weekly-pin site).
+        fake_live = _mk_future_report(live_n, live_last['board_md5_before'], 'fakeb0ard' + '0' * 23,
+                                      live_last['source_store_md5_before'], 'fakest0re' + '0' * 23, dst)
         bytes_before = open(bpath, 'rb').read()
-        res2 = MV.accumulate_bundle(bpath, fake24, repo_root=REPO)
+        res2 = MV.accumulate_bundle(bpath, fake_live, repo_root=REPO)
         _ck(res2.get('overwrite_conflict') is True and res2.get('wrote') is False,
-            'a DIFFERENT R24 is refused as an overwrite conflict (never merged)')
+            'a DIFFERENT copy of the live round (R%d) is refused as an overwrite conflict (never merged)' % live_n)
         _ck(open(bpath, 'rb').read() == bytes_before,
             'the bundle is left BYTE-UNCHANGED by the refused conflicting write')
     finally:

@@ -163,14 +163,18 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
     release: rel,
   };
 
-  // POSITIVE — the populated production bundle carries exactly R15-R23
-  // WEEKLY ROUND PIN — bumped by each round advance and by nothing else. R15-R22 / eight reports ->
-  // R15-R24 / ten reports at the R24 advance (2026-08-23; PRE-BUMPED before the flight per the
-  // rehearsal recipe — the lander's gates run inside the transaction, so the bump precedes it and the
-  // tree is deliberately red on this suite between the bump commit and the landing). Hand-pin: the
-  // advance transaction does not own this file, so the advance seat moves it and discloses it.
-  eq(prod.rounds, [15, 16, 17, 18, 19, 20, 21, 22, 23, 24], "production ui/data/movers.js carries R15-R24");
-  ok(prod.reports && Object.keys(prod.reports).length === 10, "production bundle carries ten reports (one per round)");
+  // POSITIVE — the populated production bundle carries R15..the LIVE round, DERIVED (shrink review
+  // S1, owner word 2026-08-28; the P4 form). This was the WEEKLY ROUND PIN — a hand-typed
+  // [15..N] bumped by every advance and by nothing else, the exact trap the R24 rehearsal filed
+  // ("all five weekly pins go red the moment R24 lands and no step moves them") and the eleventh-
+  // bump ledger recorded. The advance regenerates the bundle AND moves as_of_round in ONE
+  // transaction, so the derived form holds in both worlds with no pre-bump commit; a bundle that
+  // lags or leads the live round still fails loudly in either direction.
+  var expRounds = []; for (var rr = 15; rr <= Number(curApp.as_of_round); rr++) expRounds.push(rr);
+  ok(expRounds.length >= 10, "the derived round range reaches at least R24 (it never shrinks below landed history)");
+  eq(prod.rounds, expRounds, "production ui/data/movers.js carries R15..the live round (DERIVED from the loaded app's as_of_round)");
+  ok(prod.reports && Object.keys(prod.reports).length === expRounds.length,
+     "production bundle carries one report per round, count DERIVED (" + expRounds.length + ")");
   // the complete historical board/store chain (baseline R14 -> R15 -> ... -> R19) is exact + continuous
   var chainOk = true, prevB = prod.baseline.board, prevS = prod.baseline.store;
   [15, 16, 17, 18, 19].forEach(function (r) {
