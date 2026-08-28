@@ -450,6 +450,13 @@ def price_pick(pvc, lo, hi, year, pool_value=None, rnd=None):
         vals = [_v(p) for p in range(a, b + 1)]
         return sum(vals) / len(vals)
 
+    # ROUND 5 IS WORTH ZERO IN THIS LANE (owner word 2026-08-28, his Carlton example): only
+    # rounds 1-4 are eligible assets in the club rating, so an R5 pick prices 0 here and a club
+    # short of five R1-4 picks in a year carries 150-phantoms instead. The engine's law-4 pool
+    # pricing (trade/entry currency at the pool index) is a DIFFERENT lane and is untouched.
+    if rnd is not None and int(rnd) == 5:
+        return 0.0
+
     own = _mean(lo, hi)
     # THE OWNER'S YEAR RULE (2026-08-28, verbatim): "2026: 100% its own projected pick value.
     # 2027: 50% its own projected pick value + 50% average pick value for that round.
@@ -788,7 +795,9 @@ def rating56(roster, team_picks):
 
     counted_picks, surplus, vacant_pick = [], [], 0
     for yr in PICK_YEARS:
-        ps = sorted([p for p in team_picks if p["year"] == yr],
+        # ELIGIBLE = ROUNDS 1-4 ONLY (owner word 2026-08-28): an R5 pick is worth 0 and never
+        # occupies a counted slot — 3 eligible picks in a year means 2 phantom slots, not 2 R5s.
+        ps = sorted([p for p in team_picks if p["year"] == yr and 1 <= int(p["rnd"]) <= 4],
                     key=lambda x: (-x["value"], str(x["id"])))
         counted_picks += ps[:PICK_SLOTS_PER_YEAR]
         vacant_pick += max(0, PICK_SLOTS_PER_YEAR - len(ps))

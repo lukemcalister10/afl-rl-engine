@@ -54,7 +54,12 @@ assert stamp["nPicks"] == n_picks, "stamp nPicks %r disagrees with the ledger (%
 # every pick is a band with a price on it; the price is the curve's, never re-derived here.
 for team, picks in picks_by_team.items():
     for p in picks:
-        assert p["value"] > 0, "%s: pick %r has no value" % (team, p.get("band"))
+        # R5 picks price ZERO in this lane (owner word 2026-08-28: only rounds 1-4 are eligible
+        # club-rating assets); every R1-4 pick must still carry a positive engine-curve value.
+        if p.get("round") == 5:
+            assert p["value"] == 0, "%s: R5 pick %r must price 0 in this lane" % (team, p.get("band"))
+        else:
+            assert p["value"] > 0, "%s: pick %r has no value" % (team, p.get("band"))
         assert p["low"] <= p["high"], "%s: band %r is inverted" % (team, p.get("band"))
         assert p["year"] in (2026, 2027, 2028), "%s: unexpected pick year %r" % (team, p.get("year"))
 

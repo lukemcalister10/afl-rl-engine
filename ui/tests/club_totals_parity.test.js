@@ -155,7 +155,7 @@ function oracleRating56(roster, tp) {
   for (let i = 0; i < vacantPlayer; i++) slots.push({ kind: "phantom", key: null, v: SLOT_VALUE });
   let counted = [], surplus = [], vacantPick = 0;
   PICK_YEARS.forEach(function (yr) {
-    const ps = tp.filter(function (p) { return p.year === yr; }).sort(function (a, b) {
+    const ps = tp.filter(function (p) { return p.year === yr && p.round >= 1 && p.round <= 4; }).sort(function (a, b) {
       return (b.value - a.value) || ord(String(a.id), String(b.id));
     });
     counted = counted.concat(ps.slice(0, PICK_SLOTS_PER_YEAR));
