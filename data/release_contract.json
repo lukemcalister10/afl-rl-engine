@@ -20,7 +20,7 @@
     "owner_word": "2026-07-30 \u2014 \"30/7 rederivation for the label. Adopt.\""
   },
   "as_of_round": 24,
-  "config_sha256": "f233d1604975cdbda18bde0d31e253c8254bddc97fb7f1be6ac0412f57e06979",
+  "config_sha256": "d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4",
   "f5_entrant_reconciliation": {
     "canonical_build": "rl_export.py RL_LEGF=1 (Option A: engine emits the ladder)",
     "entrant_layer_pvc": 77611,
@@ -35,7 +35,7 @@
     "balanced_board_md5": "c06ff1e897f850bbecf3330e9050c365",
     "band": "f39c7b96603a6d1483a8f3295fad1a29",
     "board": "530a4053622c29092274fab0aa1fee7f",
-    "engine_head": "a5550b678f05e5c8b80cd3952d1b4ce5",
+    "engine_head": "17243c16277842e0a30470cfbdb5b196",
     "fv": "123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345",
     "register": "652d83e87780e415a01a2de6d8b3cc57",
     "rl_model": "6fe7c4155866d80e8045bed2d3bf2802",
@@ -89,5 +89,5 @@
     "RL_LEGF": "1",
     "RL_PVC2": "1"
   },
-  "contract_sha256": "360d537e5fe95f54a3d8ce8a295e67cde061793b684fe82db5dfae798e8f78ad"
+  "contract_sha256": "23297500c8c30f97f90d80225ef9b12bd4703e33b48567971d15e23d70a2df7f"
 }
