@@ -96,14 +96,14 @@ section("(a) movers — participation is tri-state, never a truthiness test");
   check(src.indexOf("core.participation(p)") > 0, "the renderer resolves through the shared tri-state");
 })();
 
-/* =============== the FROM/TO SCOPE ============================================================= */
-section("(3) from/to — scoped to the R22 → R23 boundary, machinery intact");
+/* =============== the FROM/TO SCOPE — LIFTED (owner word 2026-08-28) ============================ */
+section("(3) from/to — scope lifted; defaults to the LATEST round's single-model report");
 (function () {
   var movers = require(path.join(UI, "app", "movers.js"));
   var core = movers.core;
 
-  check(core.SCOPE && String(core.SCOPE.from) === "22" && String(core.SCOPE.to) === "23",
-    "the scope is declared as R22 -> R23", JSON.stringify(core.SCOPE));
+  check(!core.SCOPE && !core.scopedPoints,
+    "the R22 -> R23 scope is retired outright, not left dormant");
 
   var live = null;
   try {
@@ -113,24 +113,29 @@ section("(3) from/to — scoped to the R22 → R23 boundary, machinery intact");
   } catch (e) { /* bundle absent -> the shipped-bundle assertions below are skipped, loudly */ }
 
   if (!live) {
-    check(false, "the shipped movers bundle loads (needed for the scope assertions)");
+    check(false, "the shipped movers bundle loads (needed for the default-pair assertions)");
   } else {
-    var all = core.points(live), scoped = core.scopedPoints(live);
-    check(scoped.length === 2, "the shipped bundle can honour the scope", "got " + scoped.length);
-    check(scoped.map(function (p) { return String(p.id); }).join(",") === "22,23",
-      "and it resolves to exactly [22, 23] in from->to order",
-      scoped.map(function (p) { return p.id; }).join(","));
-    check(all.length > scoped.length,
-      "the scope really narrows the selector (" + scoped.length + " of " + all.length + " stored points)");
-    // the machinery is NOT removed: any pair still compares
+    // the default pair is the LATEST stored round report's own pair: the round board vs the board
+    // immediately before it — single-model, football only, and it IS the stored report (with the
+    // played/DNP facts), never a synthetic cross-model diff.
+    var dp = core.defaultPair(live);
+    var lastRound = String(live.rounds[live.rounds.length - 1]);
+    check(dp && dp.to === lastRound,
+      "defaultPair lands on the latest stored round (" + lastRound + ")", JSON.stringify(dp));
+    var rep = core.compare(live, dp.from, dp.to);
+    check(rep && !rep.synthetic && String(rep.submitted_round) === lastRound,
+      "…and it resolves to the STORED report — single model, football only, participation facts intact");
+    check(core.spansModelChange(live, dp.from, dp.to).length === 0,
+      "…and the default pair crosses NO model change (never a cross-model featured view)");
+    // the machinery is intact: any stored pair still compares
     var wide = core.compare(live, "20", "23");
     check(wide && wide.players && wide.players.length > 0,
-      "core.compare still answers for an out-of-scope pair — the scope is display, not capability");
+      "core.compare still answers for any stored pair — the selector is fully open again");
   }
 
   var src = appSrc("movers.js");
-  check(src.indexOf("retrospective") > 0 && src.indexOf("QUEUED post-model-confidence") > 0,
-    "the future retrospective-view ask is recorded in the code, not built");
+  check(src.indexOf("retrospective") > 0 || src.indexOf("RETROSPECTIVE") > 0,
+    "the retrospective (walk-forward) ask stays recorded in the code while the engine act is in flight");
 })();
 
 /* =============== (b) TRADE: the ceiling clamp ================================================== */

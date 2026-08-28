@@ -345,45 +345,26 @@
 
     points: function (bundle) { return ((bundle || {}).points || []).slice(); },
 
-    /* ---- THE SCOPE (owner word 2026-08-21) ---------------------------------------------------
-       > "only show the R22/23 change for now. Once we're happy with the model, I wouldn't mind the
-       >  from/to page going back and showing what each round since we started the ingestion would
-       >  look like under that live state of the model"
+    /* ---- THE SCOPE, LIFTED (owner word 2026-08-28) --------------------------------------------
+       The 2026-08-21 scope pinned the tab to R22 → R23 "while the model is under ruling". The owner
+       has now ruled the opposite way: the tab must NOT feature a cross-model pair, and must default
+       to the LATEST round. So the default pair is the newest stored ROUND REPORT's own pair — the
+       round board vs the board immediately before it (after any model changes) — which is football
+       only, single-model, and carries the played/DNP facts. The full from/to selector is open again
+       over every stored point; a user-chosen span that crosses model changes still gets the banner.
 
-       So the tab keeps ALL its from/to machinery — the two dropdowns, the synthetic comparator, the
-       model-change labelling — and simply narrows the SELECTABLE range to one boundary while the
-       model is still being ruled on. This is a display scope, not a capability removal: nothing is
-       deleted, `core.compare` still answers for any pair, and lifting the scope is deleting the two
-       ids below.
-
-       THE FUTURE ASK, RECORDED NOT BUILT: the owner's second sentence is a RETROSPECTIVE view — every
-       round since ingestion re-priced under the CURRENT model state — which is a different object
-       from this tab. This tab compares two STORED boards, each priced by the model that was live when
-       it was stored; a retrospective view would have to re-price historical rounds through today's
-       engine, i.e. an engine act with its own boards, not a UI join over `bundle.values`. It is
-       QUEUED post-model-confidence in docs/proposals/ui_backlog/UI_PARKED_2026-08-21.md. Do not
-       approximate it by widening this selector — that would show old boards under old models and
-       label them as the live model's answer, which is the opposite of what he asked for.
-
-       ONE THING THE OWNER SHOULD KNOW ABOUT THIS PARTICULAR PAIR, stated here rather than discovered
-       on screen: R22 → R23 is NOT a single round. Five out-of-round board moves sit between the two
-       stored points (the 10/8 DOB courier, the 10/8 never-rises restore, THE LANDING, the D8 adoption
-       and the 20/8 injury-sheet re-cut), so the tab labels the span as a model change — correctly — and
-       the comparison carries NO played/DNP facts, because there is no one round for them to be facts
-       about. Value and rank movement across the pair are real and complete. The participation-bearing
-       view of R23 is the STORED report, whose baseline is the 20/8 injury-sheet re-cut rather than R22;
-       re-pointing this scope at that pair is changing `from` below to "the-sheet-recut-20-8". That is
-       the owner's call, not a seat's, and it is why the scope is two ids in one place. */
-    SCOPE: { from: "22", to: "23", why: "R22 → R23 only, while the model is under ruling" },
-
-    /* The points the selector may offer under the scope. Empty/short => the bundle cannot honour the
-       scope and the caller falls back to the unscoped defaults rather than showing a wrong pair. */
-    scopedPoints: function (bundle) {
-      var want = [String(core.SCOPE.from), String(core.SCOPE.to)];
-      var got = core.points(bundle).filter(function (p) { return want.indexOf(String(p.id)) !== -1; });
-      // preserve the declared from→to order regardless of the bundle's own ordering
-      got.sort(function (a, b) { return want.indexOf(String(a.id)) - want.indexOf(String(b.id)); });
-      return got.length === 2 ? got : [];
+       THE RETROSPECTIVE ASK (every round since R14 re-priced under the CURRENT model) is an ENGINE
+       act, not a UI join — old boards under old models must never be labeled as the live model's
+       answer. It is in flight as the walk-forward project; when its boards land the selector simply
+       gains those points. */
+    defaultPair: function (bundle) {
+      var reports = (bundle || {}).reports || {};
+      var rounds = ((bundle || {}).rounds || []).slice();
+      for (var i = rounds.length - 1; i >= 0; i--) {
+        var rep = reports[String(rounds[i])];
+        if (rep) return { from: String(rep.previous_round), to: String(rounds[i]) };
+      }
+      return null;
     },
 
     /* Does the selected range cross a board move that happened outside a round? If so the tab must
@@ -608,9 +589,21 @@
       var tal = { played: 0, dnp: 0, unrecorded: 0 };
       (report.players || []).forEach(function (p) { tal[core.participation(p)] += 1; });
       var hasPart = !!(tal.played || tal.dnp);
+      // point display in FOOTBALL terms: a round number as itself; a model-change point as the
+      // round whose board it updated ("R23 · post-model") — the MC ids live on the selector.
+      var _pt = function (id) {
+        if (/^\d+$/.test(String(id))) return "R" + id;
+        var pts = core.points(bundle());
+        for (var i = 0; i < pts.length; i++) {
+          if (String(pts[i].id) === String(id) && pts[i].after_round != null) {
+            return "R" + pts[i].after_round + " · post-model";
+          }
+        }
+        return "prior board";
+      };
       s.innerHTML =
-        '<span class="lbl">Round</span><b class="num">R' + report.submitted_round + "</b>" +
-        '<span class="lbl">baseline</span><b class="num">R' + report.previous_round + "</b>" +
+        '<span class="lbl">To</span><b class="num">' + _pt(report.submitted_round) + "</b>" +
+        '<span class="lbl">baseline</span><b class="num">' + _pt(report.previous_round) + "</b>" +
         '<span class="lbl">players</span><b class="num">' + fmt.n(report.player_count) + "</b>" +
         (hasPart
           ? '<span class="lbl">played</span><b class="num">' + fmt.n(tal.played) + "</b>" +
@@ -619,52 +612,39 @@
       return s;
     }
 
+    /* Display name for a stored point: rounds as themselves, out-of-round boards as their MC-N id
+       (the ledger behind each ID is ui/MAINTAINER.md — the verbose labels render nowhere). */
+    function pointLabel(b, p) {
+      if (p.kind === "round" || /^\d+$/.test(String(p.id))) return "Round " + p.id;
+      const list = (b || {}).model_changes || [];
+      for (let i = 0; i < list.length; i++) {
+        if (String((list[i].between || [])[1]) === String(p.id)) return "Model change (MC-" + (i + 1) + ")";
+      }
+      return "Model change";
+    }
+
     function roundSelect(b, report) {
       const wrap = fmt.el("div", "strip moversbar");
-      const scoped = core.scopedPoints(b);
-      const inScope = scoped.length === 2;
-      // Under the scope the dropdowns offer ONLY the two declared points; unscoped they offer every
-      // stored point exactly as before. See core.SCOPE for the owner word and the future ask.
-      const pts = inScope ? scoped : core.points(b);
+      const pts = core.points(b);
 
       // TWO dropdowns — compare any two stored points. Rounds and out-of-round columns (e.g. the
       // post-restructure board) are equally selectable; the tab no longer assumes a fixed series.
       function pointSel(which, selected) {
         const sel = fmt.el("select", "boardsel");
         pts.forEach(function (p) {
-          const o = fmt.el("option", "", p.label);
+          const o = fmt.el("option", "", pointLabel(b, p));
           o.value = String(p.id); if (String(p.id) === String(selected)) o.selected = true;
           sel.appendChild(o);
         });
-        if (inScope) {
-          // one boundary, so there is nothing to choose: the control stays visible (it names the two
-          // ends of what is on screen) and is inert rather than hidden. The disabled affordance is
-          // inline — the stylesheet's .lensoff rule is scoped to two segs and is not this seat's.
-          sel.disabled = true;
-          sel.classList.add("lensoff");
-          sel.style.opacity = ".55";
-          sel.style.cursor = "not-allowed";
-          sel.title = "Scoped to " + core.SCOPE.why + ".";
-        } else {
-          sel.addEventListener("change", function () {
-            state[which] = sel.value; state.sort = null; render(MD.__moversHolder);
-          });
-        }
+        sel.addEventListener("change", function () {
+          state[which] = sel.value; state.sort = null; render(MD.__moversHolder);
+        });
         return sel;
       }
       wrap.appendChild(fmt.el("span", "lbl", "From"));
       wrap.appendChild(pointSel("from", state.from));
       wrap.appendChild(fmt.el("span", "lbl", "To"));
       wrap.appendChild(pointSel("to", state.to));
-      if (inScope) {
-        const sc = fmt.el("span", "lbl");
-        sc.style.color = "var(--faint)";
-        sc.style.textTransform = "none";
-        sc.style.letterSpacing = ".04em";
-        sc.textContent = "· R22 → R23 only for now";
-        wrap.appendChild(sc);
-      }
-
       // view toggle (value risers/fallers, rank risers/fallers, all)
       const seg = fmt.el("div", "seg");
       [["value_risers", "Value risers"], ["value_fallers", "Value fallers"], ["rank_risers", "Rank risers"],
@@ -822,22 +802,14 @@
       const lin = core.lineage(b, appIdentity(), transitionRecord());
       if (lin.state === "empty") { emptyState(holder, lin.why); return; }   // honest empty, not an alarm
       if (!lin.ok) { failState(holder, lin.why); return; }                  // out-of-lineage -> fail closed
-      // FROM/TO: the owner's scope first (core.SCOPE — R22 → R23 only, 2026-08-21). A bundle that
-      // cannot honour it falls back to the previous default (the two most recent stored points)
-      // rather than showing a pair the owner did not ask for.
-      const scoped = core.scopedPoints(b);
-      if (scoped.length === 2) {
-        state.from = String(core.SCOPE.from);
-        state.to = String(core.SCOPE.to);
-      }
+      // FROM/TO default (owner word 2026-08-28): the LATEST round's stored report — the round board
+      // vs the board immediately before it, single-model, football only. User selections stick.
       const pts = core.points(b);
-      if (scoped.length === 2) { /* scope set above */ }
-      else if (pts.length >= 2) {
-        if (state.to == null) state.to = pts[pts.length - 1].id;
-        if (state.from == null) state.from = pts[pts.length - 2].id;
-      } else if (pts.length === 1) {
-        if (state.to == null) state.to = pts[0].id;
-        if (state.from == null) state.from = pts[0].id;
+      if (state.to == null || state.from == null) {
+        const dp = core.defaultPair(b);
+        if (dp) { state.from = dp.from; state.to = dp.to; }
+        else if (pts.length >= 2) { state.to = pts[pts.length - 1].id; state.from = pts[pts.length - 2].id; }
+        else if (pts.length === 1) { state.to = pts[0].id; state.from = pts[0].id; }
       }
       const report = core.compare(b, state.from, state.to);
       // A synthetic comparison carries no committed-report identity; only a STORED report is checked.

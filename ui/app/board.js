@@ -100,7 +100,13 @@ MD.board = (function () {
     if (!mv || !rounds.length) return _rd;
     const rep = (mv.reports || {})[String(rounds[rounds.length - 1])];
     if (!rep || !rep.players) return _rd;
-    _rd = { _round: rep.current_round, _prev: rep.previous_round };
+    // The report names its round as submitted_round (older fixtures: current_round) and its baseline
+    // as the immediately-preceding POINT, which can be a model-change id. The football pair the pill
+    // names is round vs previous ROUND — the model changes between them are their own history lines.
+    const cur = rep.submitted_round != null ? rep.submitted_round : rep.current_round;
+    const priorRounds = rounds.map(Number).filter(function (n) { return !isNaN(n) && n < Number(cur); });
+    const prev = priorRounds.length ? Math.max.apply(null, priorRounds) : rep.previous_round;
+    _rd = { _round: cur, _prev: prev };
     rep.players.forEach(function (r) {
       if (r.key) _rd[r.key] = { d: r.value_change, prev: r.prev_value, cur: r.cur_value };
     });

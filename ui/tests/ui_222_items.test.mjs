@@ -384,15 +384,23 @@ const RD = await page.evaluate(() => {
     ofreeCells: document.querySelectorAll('.ofree').length,
     pills: rows.filter(r => r.querySelector('.pill')).length,
     round: rd && rd._round, prev: rd && rd._prev,
-    repRound: rep.current_round, repPrev: rep.previous_round,
+    repRound: rep.submitted_round != null ? rep.submitted_round : rep.current_round,
+    // the pill names the football pair: the round vs the previous stored ROUND — the model changes
+    // between them are their own history lines, never smeared into this figure's label.
+    prevRound: (() => {
+      const mv = window.__MATCHDAY_MOVERS__;
+      const cur = rep.submitted_round != null ? rep.submitted_round : rep.current_round;
+      const lower = mv.rounds.map(Number).filter(n => !isNaN(n) && n < Number(cur));
+      return lower.length ? Math.max(...lower) : rep.previous_round;
+    })(),
     agree,
   };
 });
 check(RD.ofreeCells === 0, 'the over-free column is retired — no .ofree cell renders anywhere');
 check(RD.pills === RD.rows && RD.rows > 0,
   'every board row carries the Round Δ cell', RD.pills + '/' + RD.rows);
-check(RD.round === RD.repRound && RD.prev === RD.repPrev,
-  'Round Δ is the LATEST weekly report\'s round pair', RD.round + ' vs ' + RD.prev);
+check(RD.round === RD.repRound && RD.prev === RD.prevRound,
+  'Round Δ is the LATEST report\'s round vs the previous stored round', RD.round + ' vs ' + RD.prev);
 check(RD.agree, 'every rendered delta is the report\'s own value_change — computed nowhere else');
 
 /* ------------------------------------------------------------------ no runtime errors anywhere */
