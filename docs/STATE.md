@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v883 2026-08-29 · **THE WALK-FORWARD RETROSPECTIVE IS LIVE — every round since R14 re-priced under the current engine and selectable in Movers; and the container-reclaim failure that had blocked it for eleven attempts was the supervisor's own launch pattern, not the infrastructure.** Owner ask 2026-08-29, verbatim: "What about the movers list having each round since round 1
+  > # OPEN ITEMS REGISTER · v884 2026-08-29 · **SHRINK S8 IS BUILT AND PROVEN — the sibling half of the proof stash; and the shrink cut list's disposition is now on the record, which it was not.** Owner word 2026-08-29, on the item put to him with its risk stated: "Your suggestion makes sense though. S6 we can do after this is all locked away." He also asked the question the machinery had never been m
 
-- new-form entries under `docs/register/entries/`: 71
+- new-form entries under `docs/register/entries/`: 72
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `5c8c5d10714ba84650f47a62d455ead04833ef8d` |
+| generated at commit | `1194646dc54f7b843656144b43e731193ccb2fd7` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

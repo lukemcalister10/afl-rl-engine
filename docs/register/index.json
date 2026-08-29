@@ -420,7 +420,7 @@
   "98": "docs/OPEN_ITEMS_REGISTER.md",
   "99": "docs/OPEN_ITEMS_REGISTER.md"
  },
- "newest": "v883",
+ "newest": "v884",
  "nnumbers": {
   "N1": [
    "docs/OPEN_ITEMS_REGISTER.md"
@@ -769,6 +769,7 @@
   "v880": "docs/register/entries/v880.md",
   "v881": "docs/register/entries/v881.md",
   "v882": "docs/register/entries/v882.md",
-  "v883": "docs/register/entries/v883.md"
+  "v883": "docs/register/entries/v883.md",
+  "v884": "docs/register/entries/v884.md"
  }
 }
