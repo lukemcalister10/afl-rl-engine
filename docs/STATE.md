@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v881 2026-08-28 · **THE OWNER'S LOCATIONS UPDATE + THE THIRD DRAFT YEAR + THE 56-ASSET CLUB RATING ARE LIVE (main, the #283 lane + one ingest act).** Owner words 2026-08-28, verbatim in the code at each site: the locations files (with his two corrections: Brayden George and Robert Hansen to Free agents), "THREE years worth of picks issued now", the rating formula ("Best 41
+  > # OPEN ITEMS REGISTER · v882 2026-08-29 · **THE ORDER 49 AVAILABILITY EXPOSURE BLEND (TAU 2.5) IS LANDED — the Taylor/Taylor cliff is removed at the one law; and the S4 WALK-FORWARD PARALLELIZATION IS PROVEN AND ADOPTED.** Owner words 2026-08-28/29, verbatim at each site: "Please lock in tau 2.5 and build that", then "Please land tau" — ruled on the tabled Variant A of the availability-smoothing s
 
-- new-form entries under `docs/register/entries/`: 69
+- new-form entries under `docs/register/entries/`: 70
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `da2d627c0c3937bd2e777930bb7932669f9b4ee8` |
+| generated at commit | `68164056908c9f289b6cdbc72c0df8f711d3e4bf` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

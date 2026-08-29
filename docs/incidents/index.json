@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 260,
+  "coverage_entries": 261,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-29",
+      "headline": "**THE ORDER 49 AVAILABILITY EXPOSURE BLEND (TAU 2.5) IS LANDED \u2014 the Taylor/Taylor cliff is removed at the one law; and the S4 WALK-FORWARD PARALLELIZ\u2026",
+      "hits": {
+        "DECLARED": [
+          "**THE ORDER 49 AVAILABILITY EXPOSURE BLEND (TAU 2.5) IS LANDED \u2014 the Taylor/Taylor cliff is removed at the one law; and the S4 WALK-FORWARD PARALLELIZATION IS PROVEN AND ADOPTED.** Owner words 2026-08-28/29, verbatim at \u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 882
+    },
     {
       "by": "explicit",
       "date": "2026-08-28",
@@ -2228,7 +2242,7 @@
       "version": 622
     }
   ],
-  "incidents": 132,
+  "incidents": 133,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",
