@@ -1,0 +1,48 @@
+4a52cc44
+=== ARM 1: SEQUENTIAL baseline (current world, solo, OMP free) ===
+config manifest (gate mode) LOADED  hash d4f3c3cf8707  (90 model vars pinned; ambient cleared)
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+eligible players: 2650
+[F2 FIX] double-fade harness removed; book built from live gated engine ev()
+matrix saved (CALENDAR-indexed): 2650 players -> /tmp/s4_seq_baseline.json
+BOOK PARITY GATE PASS: all 804 shared board players' present value == round(book cur / 1.0524) [numéraire]; 0 board players outside the cohort book (_pvc_exclude): []
+
+MAPPING-ONLY PROOF — Seth Campbell: yrs=[2023, 2024, 2025, 2026] Vpath=[90, 417, 873, 880]
+  new anchor (calendar Yr1 2023, no games)=90; the 465 first-played value now sits at its correct slot 2 (Yr2)
+
+CURVE-ANCHOR BIAS (2004-2024 ND+RD, n=2092):
+  sat out draft Yr1: 593 players (28% of curve pool)
+  over-valuation when anchored at first-played vs real Yr1: total=108238 SCAR, mean=+183, median=+67
+  whole-pool anchor sum: buggy=1323535 -> fixed=1288542  (2.6% lower overall)
+  picks 1-20: 72 sat-out, mean over-val +338 (36% of real Yr1)
+  picks 21-40: 137 sat-out, mean over-val +117 (36% of real Yr1)
+  picks 41-64: 178 sat-out, mean over-val +148 (121% of real Yr1)
+  pool: 206 sat-out, mean over-val +202 (181% of real Yr1)
+sequential: 619fe67f7143f986cb5a896f12c1f9e23c10860175fb500920d82a0d4583ef1f 2650
+=== ARM 2: PARALLEL (S4_WORKERS=4, OMP_NUM_THREADS=1) ===
+config manifest (gate mode) LOADED  hash d4f3c3cf8707  (90 model vars pinned; ambient cleared)
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+S4_WORKERS=4 — 4 shard children pricing in parallel (overlap=25, stable-key order)
+eligible players: 2650
+[F2 FIX] double-fade harness removed; book built from live gated engine ev()
+S4 PARALLEL MERGE: 2650 rows from 4 workers; 25 overlap rows agreed exactly across workers (the no-tradeoff bar); stable-key ordered
+matrix saved (CALENDAR-indexed): 2650 players -> /tmp/s4_parallel_proof.json
+BOOK PARITY GATE PASS: all 804 shared board players' present value == round(book cur / 1.0524) [numéraire]; 0 board players outside the cohort book (_pvc_exclude): []
+
+MAPPING-ONLY PROOF — Seth Campbell: yrs=[2023, 2024, 2025, 2026] Vpath=[90, 417, 873, 880]
+  new anchor (calendar Yr1 2023, no games)=90; the 465 first-played value now sits at its correct slot 2 (Yr2)
+
+CURVE-ANCHOR BIAS (2004-2024 ND+RD, n=2092):
+  sat out draft Yr1: 593 players (28% of curve pool)
+  over-valuation when anchored at first-played vs real Yr1: total=108238 SCAR, mean=+183, median=+67
+  whole-pool anchor sum: buggy=1323535 -> fixed=1288542  (2.6% lower overall)
+  picks 1-20: 72 sat-out, mean over-val +338 (36% of real Yr1)
+  picks 21-40: 137 sat-out, mean over-val +117 (36% of real Yr1)
+  picks 41-64: 178 sat-out, mean over-val +148 (121% of real Yr1)
+  pool: 206 sat-out, mean over-val +202 (181% of real Yr1)
+parallel  : 619fe67f7143f986cb5a896f12c1f9e23c10860175fb500920d82a0d4583ef1f 2650
+S4 PARALLEL PROOF: MATCH — parallel is byte-exact to the sequential world (current, post-O49)
+
+[exited with code 0]
