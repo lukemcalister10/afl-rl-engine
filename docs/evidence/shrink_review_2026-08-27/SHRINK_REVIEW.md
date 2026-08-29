@@ -25,9 +25,22 @@ true state, each line carried by a citation in the code or the register — not 
 | S11 — three checks added to the step-0 battery | **LIVE** | register v881 |
 | S12 — one-command pen | **LIVE** | register v881; every entry since v881 is filed through it |
 
-**STILL AWAITING YOUR WORD — two items, and neither should be built without it.**
+| S8 — the sibling rebuild, identity-keyed ("S13 slice 2") | **LIVE** (owner word 2026-08-29) | `tools/landing/steps.py` `_install_sibling_stash`; 23 assertions in `tools/landing/test_proofstash.py`, run in the step-0 preflight battery |
 
-**S6 — collapse the identity-pin triplication.** Unruled and untouched: no `shrink S6` marker
+S8 as built caches ONLY the derivation. `build_sibling` is two full engine builds that write nothing
+and return a derived-identity dict; everything in the step that writes — the plan, the overlay
+validation, the contract self-seal, the atomic replacement, the journal, the rollback ladder, the
+verify-after — still runs for real on every flight. That is the answer to the risk raised when the
+item was put to the owner: the cache stays on the side of the step that only computes. A hit needs
+three things, and any one failing rebuilds: not a selftest and not a fault run; the key, over every
+PIN_MEASURERS identity measured live at that point in the transaction; and the entry's own recorded
+store / fv / rl_model provenance still equalling live — an independent check, so a key collision or
+an entry that outlived its inputs is caught by the artifact's own record rather than by trust.
+
+**STILL AWAITING YOUR WORD — one item.**
+
+**S6 — collapse the identity-pin triplication.** DEFERRED BY OWNER WORD 2026-08-29 ("S6 we can do
+after this is all locked away"), to be taken up once the current run of work is settled. Unruled and untouched: no `shrink S6` marker
 exists anywhere in the code. It is the largest remaining item and the one that would have prevented
 the five restamps the ORDER 49 flip needed (register v882), but it rewrites how release identity is
 carried, which is the thing that guards everything else. The RL_-prefix namespace fix in
