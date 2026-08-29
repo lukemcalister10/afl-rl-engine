@@ -69,6 +69,12 @@ def run(ns):
 
     banked = []
     for R in ROUNDS:
+        # RESUMABLE: a banked round is skipped, so a reclaim mid-series costs only the load, and
+        # the next run finishes the remainder. (Container reclaims are landing every ~15 min.)
+        if os.path.exists(os.path.join(HERE, 'values_r%d.json' % R)):
+            banked.append(R)
+            ns['T']('r%-3d already banked — skipped' % R)
+            continue
         meta = json.load(open(os.path.join(WORK, 'r%d' % R, 'META.json')))
         st = json.load(open(os.path.join(WORK, 'r%d' % R, 'season_state.json')))
         trunc = json.load(open(os.path.join(WORK, 'r%d' % R, 'rl_model_data.json')))
