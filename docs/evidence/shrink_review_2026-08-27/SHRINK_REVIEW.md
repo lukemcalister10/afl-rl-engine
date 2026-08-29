@@ -6,6 +6,42 @@ Method: three independent evidence sweeps — (1) the full instrument inventory 
 ledger of the combined-build landing night. Every claim below carries a register citation or
 a measured timing. NOTHING on this list is implemented without the owner's word per item.
 
+## DISPOSITION AS AT 2026-08-29 (added after the fact — the slots below were never filled in)
+
+The per-item `**Your word: ____**` slots were left blank when the rulings came, so this document
+still reads as twelve open questions when ten of them are settled and shipped. What follows is the
+true state, each line carried by a citation in the code or the register — not by memory.
+
+| Item | State | Evidence |
+| --- | --- | --- |
+| S1 — derive the moving-identity pins | **LIVE** | register v881 ("S1/S4/S11/S12 live") |
+| S2 — retire the curve-mirror byte pins | **LIVE** | `engine/rl_after/one_source_selftest.py:520` ("shrink S2, owner word 2026-08-28") |
+| S3 — book seal at bake acts only | **LIVE, via S10** | the seal is B3's baseline, and B3 is bake-scoped (`ship_gates_check.py:551`), so no landing asserts it |
+| S4 — PREFLIGHT.json out of the pre-step-0 tree | **LIVE** | register v881 |
+| S5 — delete struck gates' scoring code | **LIVE** | `ship_gates_check.py:331, 405` ("shrink S5, 2026-08-28") |
+| S7 — selftest once per (spec, lander hash) | **LIVE** | `tools/landing/cli.py:119` ("SHRINK S13/S7, owner word 2026-08-28") |
+| S9 — bare-build proof: verify-installed on retries | **LIVE, via S13 slice 1** | `tools/landing/steps.py:650` — the stash re-hashes the installed board against the prereg prediction instead of rebuilding |
+| S10 — B3 freeze-stamp at bake acts only | **LIVE** | `ship_gates_check.py:367, 551` |
+| S11 — three checks added to the step-0 battery | **LIVE** | register v881 |
+| S12 — one-command pen | **LIVE** | register v881; every entry since v881 is filed through it |
+
+**STILL AWAITING YOUR WORD — two items, and neither should be built without it.**
+
+**S6 — collapse the identity-pin triplication.** Unruled and untouched: no `shrink S6` marker
+exists anywhere in the code. It is the largest remaining item and the one that would have prevented
+the five restamps the ORDER 49 flip needed (register v882), but it rewrites how release identity is
+carried, which is the thing that guards everything else. The RL_-prefix namespace fix in
+`carriers.py`'s header rides with it if you rule it.
+
+**S8 — the sibling rebuild, identity-keyed ("S13 slice 2").** The mechanism already exists and is
+proven: `tools/landing/proofstash.py` is generic in its `kind`, and the build proof (slice 1) has
+been through a landing. Extending it to the sibling is a small change with a large saving — the
+sibling reconcile is 54% of a landing's wall-clock (2,171s), and this build rebuilt it four times to
+the same identity with three of the four deleted byte-exact by aborts. WHY IT IS NOT DONE ANYWAY:
+slice 1 stashes a pure derivation (build a board, hash it, compare to the prereg prediction), while
+the sibling step WRITES AND COMMITS to the repository. That is a genuinely different risk shape and
+it carries its own decision slot, so it waits for you rather than riding in on S13's word.
+
 ## THE VERDICT
 
 The estate carries **242 distinct verification instruments**. The recorded catch weight is
