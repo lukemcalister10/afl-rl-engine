@@ -199,6 +199,8 @@ def _assemble_root(R):
     eb['store'] = meta['store_md5']
     eb['as_of_round'] = R
     json.dump(eb, open(eb_p, 'w'), indent=1, sort_keys=True)
+    shutil.copytree(os.path.join(REPO, 'engine', 'forward_valuation'),
+                    os.path.join(root, 'engine', 'forward_valuation'))
     for extra in ('config_manifest.py', 'boot_guard.py'):
         src = os.path.join(REPO, extra)
         if os.path.exists(src):

@@ -1,0 +1,7 @@
+config manifest (gate mode) LOADED  hash d4f3c3cf8707  (90 model vars pinned; ambient cleared)
+
+CONFIG ACCEPTED d4f3c3cf8707  (trusted /home/claude/retro_walkforward/r24/root/config_manifest.py)
+
+============ FORWARD-VALUATION PROVENANCE (Guard 5) FAILED — BUILD HALTED ============
+  - fv CHECKOUT DRIFT: engine/forward_valuation source set is ABSENT/empty at /home/claude/retro_walkforward/r24/root/engine/forward_valuation — cannot assert the forward-valuation pin 123a8155 (restore the checkout, or re-pin at a bake).
+=====================================================================================
