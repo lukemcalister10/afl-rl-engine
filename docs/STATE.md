@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v882 2026-08-29 · **THE ORDER 49 AVAILABILITY EXPOSURE BLEND (TAU 2.5) IS LANDED — the Taylor/Taylor cliff is removed at the one law; and the S4 WALK-FORWARD PARALLELIZATION IS PROVEN AND ADOPTED.** Owner words 2026-08-28/29, verbatim at each site: "Please lock in tau 2.5 and build that", then "Please land tau" — ruled on the tabled Variant A of the availability-smoothing s
+  > # OPEN ITEMS REGISTER · v883 2026-08-29 · **THE WALK-FORWARD RETROSPECTIVE IS LIVE — every round since R14 re-priced under the current engine and selectable in Movers; and the container-reclaim failure that had blocked it for eleven attempts was the supervisor's own launch pattern, not the infrastructure.** Owner ask 2026-08-29, verbatim: "What about the movers list having each round since round 1
 
-- new-form entries under `docs/register/entries/`: 70
+- new-form entries under `docs/register/entries/`: 71
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `68164056908c9f289b6cdbc72c0df8f711d3e4bf` |
+| generated at commit | `5c8c5d10714ba84650f47a62d455ead04833ef8d` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

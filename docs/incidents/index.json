@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 261,
+  "coverage_entries": 262,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-29",
+      "headline": "**THE WALK-FORWARD RETROSPECTIVE IS LIVE \u2014 every round since R14 re-priced under the current engine and selectable in Movers; and the container-reclai\u2026",
+      "hits": {
+        "DECLARED": [
+          "**THE WALK-FORWARD RETROSPECTIVE IS LIVE \u2014 every round since R14 re-priced under the current engine and selectable in Movers; and the container-reclaim failure that had blocked it for eleven attempts was the supervisor's\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 883
+    },
     {
       "by": "explicit",
       "date": "2026-08-29",
@@ -2242,7 +2256,7 @@
       "version": 622
     }
   ],
-  "incidents": 133,
+  "incidents": 134,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",
