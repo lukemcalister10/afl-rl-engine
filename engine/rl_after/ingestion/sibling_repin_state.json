@@ -2,7 +2,7 @@
   "active": 804,
   "as_of_round": 24,
   "balanced_board_md5": "c06ff1e897f850bbecf3330e9050c365",
-  "contract_sha256": "360d537e5fe95f54a3d8ce8a295e67cde061793b684fe82db5dfae798e8f78ad",
+  "contract_sha256": "23297500c8c30f97f90d80225ef9b12bd4703e33b48567971d15e23d70a2df7f",
   "forward_board_md5": "530a4053622c29092274fab0aa1fee7f",
   "forward_oracle": "test_forward_lens_530a4053.py",
   "forward_p1_total": 640206,
