@@ -266,6 +266,52 @@ def control():
           % len(lv))
 
 
+def resume(max_conc=4):
+    """RESTART-SURVIVABLE DRIVER. Container reclaims have been landing faster than a single build
+    completes, so the series is not gated serially on a control build any more: every unbanked round
+    is launched detached, each banks its own values_rN.json, and a relaunch simply skips what is
+    already banked. R24 remains the CONTROL — it is priced like any other round and its value-equality
+    to the live board is asserted by `control-check` before the series is emitted. If that assertion
+    fails the whole series is discarded, so the discipline is unchanged; only the ordering is."""
+    todo = [R for R in ROUNDS
+            if not os.path.exists(os.path.join(HERE, 'values_r%d.json' % R))]
+    if not todo:
+        print('all %d rounds banked — nothing to resume' % len(ROUNDS))
+        return
+    running = 0
+    for R in todo:
+        if running >= max_conc:
+            break
+        log = os.path.join(WORK, 'r%d.log' % R)
+        cmd = ('setsid nohup env OMP_NUM_THREADS=1 %s %s run %d > %s 2>&1 < /dev/null &'
+               % (sys.executable, os.path.abspath(__file__), R, log))
+        subprocess.Popen(['/bin/bash', '-c', cmd])
+        running += 1
+        print('launched r%d -> %s' % (R, log))
+    print('%d launched, %d still queued (relaunch resume to continue)'
+          % (running, max(0, len(todo) - running)))
+
+
+def control_check():
+    """The control assertion, run on the BANKED r24: its no-op truncation must reproduce the live
+    board's values exactly. The series is emitted only if this passes."""
+    p24 = os.path.join(HERE, 'values_r24.json')
+    if not os.path.exists(p24):
+        raise SystemExit('HALT: r24 is not banked — the control cannot be asserted.')
+    got = json.load(open(p24))
+    live = json.load(open(os.path.join(REPO, 'data', 'rl_build', 'rl_app_data.json')))
+    lv = {p['key']: p['v'] for p in live['active']}
+    diff = {k: (got['values'][k], lv[k]) for k in lv
+            if k in got['values'] and got['values'][k] != lv[k]}
+    missing = [k for k in lv if k not in got['values']]
+    if diff or missing:
+        json.dump({'diff': diff, 'missing': missing},
+                  open(os.path.join(HERE, 'CONTROL_FAIL.json'), 'w'), indent=1)
+        raise SystemExit('CONTROL FAIL: %d value diffs, %d missing — the pipeline does NOT reproduce '
+                         'the live board; the series is NOT emitted.' % (len(diff), len(missing)))
+    print('CONTROL PASS: r24 reproduces the live board values exactly (%d rows).' % len(lv))
+
+
 if __name__ == '__main__':
     verb = sys.argv[1] if len(sys.argv) > 1 else 'status'
     if verb == 'emit-stores':
@@ -274,9 +320,13 @@ if __name__ == '__main__':
         run_round(int(sys.argv[2]))
     elif verb == 'control':
         control()
+    elif verb == 'resume':
+        resume(int(sys.argv[2]) if len(sys.argv) > 2 else 4)
+    elif verb == 'control-check':
+        control_check()
     elif verb == 'status':
         for R in ROUNDS:
             p = os.path.join(HERE, 'values_r%d.json' % R)
             print('r%-3d %s' % (R, 'BANKED' if os.path.exists(p) else '-'))
     else:
-        raise SystemExit('verbs: emit-stores | run R | control | status')
+        raise SystemExit('verbs: emit-stores | run R | resume [N] | control-check | control | status')
