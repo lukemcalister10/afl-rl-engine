@@ -1,0 +1,6 @@
+$ python3 release_contract.py check
+
+RELEASE-CONTRACT CHECK
+RELEASE-CONTRACT CHECK: PASS  (contract e2cd5c806631; identities + config + posture consistent)
+
+[exit 0]

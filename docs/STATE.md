@@ -19,17 +19,17 @@ measurement made while this file was written, not a claim carried over from the 
 
 | identity | pinned value | carrier | re-hashed from | verdict |
 |---|---|---|---|---|
-| board | `530a4053622c29092274fab0aa1fee7f` | data/expected_boot.json | data/rl_build/rl_app_data.json | agrees |
+| board | `4a52cc4490f950c7b7856fc28ddcb949` | data/expected_boot.json | data/rl_build/rl_app_data.json | agrees |
 | store | `b4d23810ebb6b53f07a0ae40a3c24b97` | data/expected_boot.json | engine/rl_after/rl_model_data.json | agrees |
-| engine_head | `a5550b678f05e5c8b80cd3952d1b4ce5` | data/expected_boot.json | engine/rl_after/_merged_recover.py | agrees |
+| engine_head | `17243c16277842e0a30470cfbdb5b196` | data/expected_boot.json | engine/rl_after/_merged_recover.py | agrees |
 | rl_model | `6fe7c4155866d80e8045bed2d3bf2802` | data/expected_boot.json | engine/rl_after/rl_model.py | agrees |
-| balanced_board_md5 | `c06ff1e897f850bbecf3330e9050c365` | data/expected_boot.json | (no in-tree artifact) | not in tree |
-| config | `f233d1604975cdbda18bde0d31e253c8254bddc97fb7f1be6ac0412f57e06979` | data/expected_boot.json | config_manifest.manifest_hash | agrees |
+| balanced_board_md5 | `1ad6a04bdfa21d60a25b1771f5c7fa6e` | data/expected_boot.json | (no in-tree artifact) | not in tree |
+| config | `d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4` | data/expected_boot.json | config_manifest.manifest_hash | agrees |
 
 | release fact | value | carrier |
 |---|---|---|
-| contract seal | `360d537e5fe95f54a3d8ce8a295e67cde061793b684fe82db5dfae798e8f78ad` | data/release_contract.json:contract_sha256 |
-| config seal | `f233d1604975cdbda18bde0d31e253c8254bddc97fb7f1be6ac0412f57e06979` | data/release_contract.json:config_sha256 |
+| contract seal | `e2cd5c80663118605460073e9eb5c180216c1dfdaf756e10d6237790975cda27` | data/release_contract.json:contract_sha256 |
+| config seal | `d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4` | data/release_contract.json:config_sha256 |
 | release version | v2.11-final-rc1-PROVISIONAL | data/release_contract.json:release_version |
 | round (as_of_round) | 24 | data/release_contract.json:as_of_round |
 | round (as_of_round) | 24 | data/expected_boot.json:as_of_round |
@@ -57,21 +57,21 @@ gate claimed by name (process law P5).
 
 ## LINEAGE TIP
 
-`data/release_lineage.json` — the append-only out-of-round transition register, 17 entries.
+`data/release_lineage.json` — the append-only out-of-round transition register, 18 entries.
 
 | field | value |
 |---|---|
-| column | (none) |
-| after round | (none) |
-| board moved | `?` → `?` |
-| identities moved | (none) |
-| owner ruling id | OWNERSHIP_SINGLE_SOURCE_2026-07-30 |
+| column | order49-avail-blend-28-8 |
+| after round | 24 |
+| board moved | `530a4053622c29092274fab0aa1fee7f` → `4a52cc4490f950c7b7856fc28ddcb949` |
+| identities moved | board |
+| owner ruling id | AVAIL_BLEND_TAU25_2026-08-28_lock_in_tau_2_5_and_build_that, AVAIL_BLEND_LAND_2026-08-28_please_land_tau |
 
 ## GENERATION STAMP
 
 | field | value |
 |---|---|
-| generated at commit | `12d06db90cb5d348e15a9d83c2196a446ac346f6` |
+| generated at commit | `da2d627c0c3937bd2e777930bb7932669f9b4ee8` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

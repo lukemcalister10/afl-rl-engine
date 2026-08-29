@@ -1,0 +1,25 @@
+====================================================================================================
+CLAIMS CHECK — THE ORDER 49 AVAILABILITY EXPOSURE BLEND (TAU 2.5) — RL_O49 default '0' -> '1'
+  act type   : lever-landing
+  date       : 2026-08-28   base: da2d627c0c3937bd2e777930bb7932669f9b4ee8
+  owner word : Please lock in tau 2.5 and build that
+  tree       : /home/user/afl-rl-engine
+====================================================================================================
+  ACTIVATION  day0_rebase                              off
+
+  OK   file_md5     the published board of record                  md5 4a52cc4490f950c7b7856fc28ddcb949 (claimed 4a52cc4490f950c7b7856fc28ddcb949)
+  OK   file_md5     the store                                      md5 b4d23810ebb6b53f07a0ae40a3c24b97 (claimed b4d23810ebb6b53f07a0ae40a3c24b97)
+  OK   json_field   expected_boot.board                            board = '4a52cc4490f950c7b7856fc28ddcb949' (claimed '4a52cc4490f950c7b7856fc28ddcb949')
+  OK   json_field   expected_boot.engine_head                      engine_head = '17243c16277842e0a30470cfbdb5b196' (claimed '17243c16277842e0a30470cfbdb5b196')
+  OK   json_field   the round, HELD by a lever landing             as_of_round = 24 (claimed 24)
+  OK   json_field   the release seal                               contract_sha256 = 'e2cd5c80663118605460073e9eb5c180216c1dfdaf756e10d6237790975cda27' (claimed 'e2cd5c80663118605460073e9eb5c180216c1dfdaf756e10d6237790975cda27')
+  OK   board_count  board rows                                     active.rows = 804 (claimed 804)
+  OK   gate         release_manifest_check                         exit 0 (expected PASS)
+  OK   gate         release_contract_check                         exit 0 (expected PASS)
+  OK   gate         acceptance_runner                              exit 0 (expected PASS)
+  OK   gate         movers_transition                              exit 0 (expected PASS)
+  OK   gate         movers_ui                                      exit 0 (expected PASS)
+  OK   unmoved      BYTE-UNMOVED by this lever-landing             md5 b4d23810ebb6b53f07a0ae40a3c24b97 (claimed b4d23810ebb6b53f07a0ae40a3c24b97)
+
+CLAIMS: 13 of 13 verified against the tree; 0 shape problem(s)
+VERDICT: GREEN — every claim recomputed and held

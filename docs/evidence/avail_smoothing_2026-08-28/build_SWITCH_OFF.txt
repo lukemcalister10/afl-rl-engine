@@ -1,0 +1,2 @@
+BUILD SWITCH_OFF   mode=dev       rc=0 board_md5=530a4053622c29092274fab0aa1fee7f  (559.9s)
+  staging removed: /home/claude/fvprov_44_pmn2m
