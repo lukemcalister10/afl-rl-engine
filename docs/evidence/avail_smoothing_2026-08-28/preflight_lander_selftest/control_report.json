@@ -1,0 +1,272 @@
+{
+  "abort": null,
+  "commits": [
+    "c0dd5b857adf3c7d270ee2d668d77a05c4d1e2cd"
+  ],
+  "error": null,
+  "facts": {
+    "base": {
+      "carriers": {
+        "data/expected_boot.json": "ace8afbeb6bcde7a519cc27679596032",
+        "data/release_contract.json": "25e10fe9c5225e5da90eccab941caf75",
+        "data/release_lineage.json": "ae2e39b9cd6a9773326139a218c9fc07",
+        "data/rl_build/rl_app_data.json": "530a4053622c29092274fab0aa1fee7f",
+        "data/rl_build/rl_app_data.json.srcmd5": "3081a0a426fcf382db50f543293b1917",
+        "data/sheet_pins.json": "a4ee39f7ec80ee6b6172aa28e0c17aae",
+        "docs/STATE.md": "d5f5e66d5e938e40ea3d103cfe04b800",
+        "engine/rl_after/ingestion/pos_rank_history.json": "b6f7cb7d8e4233efba8cd4c6a96532c5",
+        "engine/rl_after/ingestion/rank_history.json": "ed78d8e1efac9f7766a8c5144d81fe08",
+        "engine/rl_after/ingestion/sibling_repin_state.json": "177490d12af523009c06776d3e4ff797",
+        "engine/rl_after/ingestion/value_history.json": "6bf78829ff0a8ab61c644534e357f8de",
+        "engine/rl_after/rl_app_data.json": "530a4053622c29092274fab0aa1fee7f",
+        "engine/rl_after/rl_app_data.json.srcmd5": "3081a0a426fcf382db50f543293b1917",
+        "engine/rl_after/rl_model_data.json": "b4d23810ebb6b53f07a0ae40a3c24b97",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/accepted_board_06d8af60.json": "81822b2baf9c8270034ac9f1f54995fb",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_113b36f8.json": "666dc8969c5f960ae6bac8c7e66f2a3d",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_1d5c9f7a.json": "0efe6eac94eb68f1c42b681069b7d12f",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_3167cba6.json": "37df29274baa5187b034b620a46ef0cc",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_4b448a82.json": "7fa4ddd72e47bd67b06678cf2e12a2b4",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_530a4053.json": "61955fb0abe8d9d934bbb923c2b3614d",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_5ea978f7.json": "0b6474a17eaf3413504e7a2f7290f732",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_68be10c7.json": "6c7c809d3b6c6b33f2d5b398cf3d62bd",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_6e724cca.json": "42f2b19f22e6bb4d367af7bfc98ba0c0",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_6fd0f7de.json": "b0c8835ef321da1768b630f0f7a3a8d7",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_7a3f4fe2.json": "c729a6d84866e33e360b1468614514d8",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_82fcd8bb.json": "24383eee944015a3274c7c2addb941dc",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_8a38cca4.json": "00295dec394462dbc6370032c2cd5f7a",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_a05fe951.json": "f0454ed594c204f45aaee1ca38a51e7b",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_a672ed3a.json": "15d3765ed047c52c481021766fab728d",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_b3e8da99.json": "94809f0693e27a254994cd3332b824e7",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_06d8af60.json": "6565a4ef51d67bdf6adfaaaf15fd3976",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_123deccb.json": "bc290a0b557b046c7608543dc096239b",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_1373e824.json": "4fcd55c9b5708e791be26e5e157b425e",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_234c3414.json": "143680d49a1d0888120a38b91ececa5b",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_3970156c.json": "252e619d44451c5f54bc42afce9aa334",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_4939d740.json": "ba88c83d58a617265fedc5f31083c888",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_5546f278.json": "496b0f545792e7f64bef67ee3e2fc9a0",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_556ad70d.json": "0c2fcec96ecd425a498594c693e21169",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_72fe3a17.json": "9cc6239d4a6ca9ea7556205a8a80d139",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_7c32a540.json": "90697dce6f9998b8cb66b0de1d1c128a",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_8838f4b3.json": "66db40d67bfd5e32552a8e44fd530ccb",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_a49c155f.json": "fd0e7d98ebff1e2d29acb62d4c473ba0",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_a970c19c.json": "0e1fd61104f7033823da919a81c512c1",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_b4cc0b2b.json": "d8bf6f592992a589d858dd1f01896192",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_b7149d5f.json": "32f0a9c934ceaf13b645443964cd0d33",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_c06ff1e8.json": "3178258ece7299758a487164d9bd297f",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_ca8cb17e.json": "7e4b54843505ed5d6bf441c7aae66836",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_e616936e.json": "f5ecab77fbb7a48befc49ae30e8c0c57",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_113b36f8.py": "6db17a8e9f1435da58c46d4544c1af49",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_1d5c9f7a.py": "a7204641eba1b2364eb36558ea9a462e",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_3167cba6.py": "df43987656d1b6edfb9fee93156bfa41",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_4b448a82.py": "ec25d1c4987248edc54fdf18cd7db549",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_530a4053.py": "830f16694f1664c832040bfe49b8e32a",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_5ea978f7.py": "3106ee9512fcd70cf9a2078049bccdd9",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_68be10c7.py": "92530c678152f5758ecb0ae252f17736",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_6e724cca.py": "c3d407285223debfcafbc0f18c032678",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_6fd0f7de.py": "0d25bd628682799afbb4206e02c27dad",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_7a3f4fe2.py": "753bd58f6b658469ee98ec01a04b95f7",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_82fcd8bb.py": "922edccb694665b601d311d4dcf27027",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_8a38cca4.py": "f4c31ef9d25bfe7b97ee0bea2529df4f",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_a05fe951.py": "716dcdc7c5e67f025bd1f3370463c560",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_a672ed3a.py": "b393f00bce843401eb66e4e8eced46a5",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_b3e8da99.py": "f9079bb36af9a7b14bb47b674f68f69f",
+        "session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py": "fc4a7be3a85e614cb1ad564b30575139",
+        "ui/data/board_view_public.js": "ccfd4bf0f363173d6a5c9c68991e299d",
+        "ui/data/board_view_working.js": "a6fae4c8c53ff904bb26dac329d25b99",
+        "ui/data/club_valuation.js": "33f68a41c09539abff21c2b2cbb760cf",
+        "ui/data/movers.js": "638978ffcdd4c36b419bf50c6ca70313",
+        "ui/data/movers_transition.js": "da74c828e73f18d7854f1ee912880657",
+        "ui/data/ownership.js": "7b62cf5824b37060ed863301c113d39e"
+      },
+      "commit": "0679e6f0b7f74576106222d137398e14c3f77362",
+      "expected_boot": {
+        "as_of_round": 24,
+        "balanced_board_md5": "c06ff1e897f850bbecf3330e9050c365",
+        "band": "f39c7b96603a6d1483a8f3295fad1a29",
+        "board": "530a4053622c29092274fab0aa1fee7f",
+        "bust_prior": "ff87e42e502a476a90e453bad90825b0",
+        "config": "d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4",
+        "engine_head": "17243c16277842e0a30470cfbdb5b196",
+        "fv": "123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345",
+        "peak_model": "8329ff9379cf6066c0e7cd73dd6cd2e0",
+        "pvc_snapshot": "4704b8296008f81e7bb5407424229e85",
+        "q97m": "5ea7546d9a4897114597a7d8ea1596db",
+        "register": "652d83e87780e415a01a2de6d8b3cc57",
+        "register_note": "LTI_REGISTER.md \u2014 owner-authored availability sidecar, pinned as a versioned input (R-REG=R2, Chapter-3 2026-07-09). Guard 5 asserts it on entry like the store; bootstrap seeds it to the workspace; the lookalike tripwire (single_source.py) keeps it single. Owner edits it -> this pin moves in the same commit (a curation edit, NOT a store bake).",
+        "release_version": "v2.11-final-rc1-PROVISIONAL",
+        "rl_model": "6fe7c4155866d80e8045bed2d3bf2802",
+        "store": "b4d23810ebb6b53f07a0ae40a3c24b97",
+        "tag": "ID-PRIMARY MIGRATION candidate (clean scope) 2026-07-12 \u2014 NOT A BAKE PROMOTION (no tag, no main merge; owner word required). base = v2.8 (store 04f38dad, board 9ecbe0fa). Store MOVED 04f38dad -> b0c39d78: 804 stable_player_id (afl-player-v1-<20hex>) + affl_team + eligibilities attached (identity fields, not read by ev(), 0 board movers); 5 named DOB corrections (onley/kickett/rodriguez/driscoll _by 2000->2007/2006; mcandrew _by 1999->2000); taylor-adams marked _retired (mid-season retirement). RE-ENTRY TRIO (perez/mcandrew/keane -> pickless SSP) DEFERRED to the v2.9 lever build (owner-ruled 2026-07-12; register v11 item 11a) \u2014 it reprices 657 non-named rows via the load-time calibration refit. luke-nankervis NO-import (store PSD pick 2 stands). Engine code UNTOUCHED at the store migration (head 7a07e369) -> board de4baef9; book RE-SEALED for the new store (n re-counted). [v2.9 REFIT+BAKE 2026-07-13 rides ON this store: engine 7a07e369->2030e5df (6 env-gated levers, default-ON), board de4baef9->8a66b4ba->f2d6e3f5->81e48293 (refit -> export/display -> L7 num\u00e9raire+override BAKE, display-only), store b0c39d78 UNCHANGED; cohort gate PASS 126.8/125.2/116.1; see _engine_head_note.] Board movers vs 9ecbe0fa: 94 = 5 DOB + adams removed + 88 hairline retirement ripple (<=+/-2 SCAR, owner-declared expected). Two Max Kings remain separately keyed (collision sentry GREEN). Lineage: v2.8 (9bd0cfd) -> this candidate. Tag push + main promote are owner-only. [ITEM 20 STORE-IDENTITY JOB 2026-07-13 (first job post-v2.9-tag) MOVED the store b0c39d78 -> 340a7a32 and the board 81e48293 -> 3dc19fbb: see _item20_note above. Engine ev()/config/band/rl_model UNCHANGED; the ONLY v mover is bramble (+1); everything else is identity/display. v2.9 tag (9f8ae76) is unmoved and remains canonical; this is the next chapter's first store write, no re-tag.]",
+        "v0surf": "d9f5d15d9606edcdd5708233197dd951"
+      }
+    },
+    "build_proofs": {
+      "board_built": "530a4053622c29092274fab0aa1fee7f",
+      "build_elapsed_s": 0.0,
+      "day0_rebase": "off",
+      "installed": true,
+      "kill_switch": null,
+      "predicted_board": "530a4053622c29092274fab0aa1fee7f",
+      "reference_board": null
+    },
+    "claims": {
+      "activation": {
+        "day0_rebase": {
+          "_doc": "off by default; the M1b ruling \u2014 automation never re-bases itself green",
+          "state": "off"
+        }
+      },
+      "claims_path": "/tmp/landing_selftest_2688/sandbox/docs/evidence/landing_selftest/SELFTEST_CLAIMS.json",
+      "n_claims": 10,
+      "verified": true
+    },
+    "commit": {
+      "commit": "c0dd5b857adf3c7d270ee2d668d77a05c4d1e2cd",
+      "committed": true,
+      "paths": [
+        "docs/STATE.md",
+        "docs/evidence/landing_selftest/",
+        "ui/data/movers.js"
+      ]
+    },
+    "contract": {
+      "check": "PASS",
+      "seal_after": "23297500c8c30f97f90d80225ef9b12bd4703e33b48567971d15e23d70a2df7f",
+      "seal_before": "23297500c8c30f97f90d80225ef9b12bd4703e33b48567971d15e23d70a2df7f",
+      "trailing_newline_in_committed_file": false
+    },
+    "gates": {
+      "all_pass": true,
+      "gates": [
+        {
+          "argv": [
+            "python3",
+            "release_manifest_check.py"
+          ],
+          "elapsed_s": 0.0,
+          "exit": 0,
+          "name": "release_manifest_check",
+          "ok": true
+        },
+        {
+          "argv": [
+            "python3",
+            "release_contract.py",
+            "check"
+          ],
+          "elapsed_s": 0.0,
+          "exit": 0,
+          "name": "release_contract_check",
+          "ok": true
+        }
+      ]
+    },
+    "lineage": {
+      "column": null,
+      "entry": null
+    },
+    "pins": {
+      "board": "530a4053622c29092274fab0aa1fee7f",
+      "moved": [],
+      "store": "b4d23810ebb6b53f07a0ae40a3c24b97",
+      "unmoved_checked": 7
+    },
+    "preflight": {
+      "base_commit": "0679e6f0b7f74576106222d137398e14c3f77362",
+      "board_before": "530a4053622c29092274fab0aa1fee7f",
+      "carriers_captured": 70,
+      "lock": "land-lever-2840"
+    },
+    "sibling": {
+      "balanced_board_md5": "c06ff1e897f850bbecf3330e9050c365",
+      "fails_after": 0,
+      "fails_before": 0,
+      "reconciled": false
+    },
+    "state": {
+      "changed": true,
+      "md5": "db3b460602c2fe284ea929907c1b595e",
+      "path": "docs/STATE.md",
+      "stamp_commit": "0679e6f0b7f74576106222d137398e14c3f77362",
+      "written": true
+    },
+    "ui": {
+      "bundle_md5": "a6fae4c8c53ff904bb26dac329d25b99",
+      "club_valuation_md5": "33f68a41c09539abff21c2b2cbb760cf",
+      "club_valuation_moved": false,
+      "club_valuation_pin": "530a4053",
+      "embedded_board": "530a4053622c29092274fab0aa1fee7f",
+      "mirror_md5": "da74c828e73f18d7854f1ee912880657",
+      "mirror_moved": false,
+      "model_changes": 14,
+      "movers_md5": "0f7457832571126e3664e3c4ebe3878b",
+      "movers_moved": true,
+      "n_picks": 240,
+      "ownership_md5": "7b62cf5824b37060ed863301c113d39e",
+      "ownership_moved": false,
+      "ownership_pin": "b4d23810",
+      "public_md5": "ccfd4bf0f363173d6a5c9c68991e299d",
+      "register_entries": 17,
+      "writers": 6
+    }
+  },
+  "failed_step": null,
+  "ok": true,
+  "timings": [
+    {
+      "seconds": 0.13,
+      "step": "preflight",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.02,
+      "step": "build_proofs",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.02,
+      "step": "pins",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.0,
+      "step": "lineage",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.06,
+      "step": "contract",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.11,
+      "step": "sibling",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 1.77,
+      "step": "ui",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.11,
+      "step": "state",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.09,
+      "step": "gates",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.19,
+      "step": "claims",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.23,
+      "step": "commit",
+      "verdict": "OK"
+    }
+  ]
+}

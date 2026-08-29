@@ -1,0 +1,54 @@
+======================================================================================================
+LAND STORE-EDIT — SELF-TEST — the surgical store edit
+  tree      : /tmp/landing_selftest_2688/sandbox
+  owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
+  prereg    : tools/landing/selftest.py (fixture)   predicts board 969cb62392fba51d63f9cda76c960ffd
+  mode      : APPLY (SELFTEST) builder=selftest-moved
+======================================================================================================
+
+--- STEP 0/11  preflight      clean tree, build lock, the restore point ---
+RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
+build-lock: HELD by land-edit-4212 (pid 4212) — single writer for the shared workspace.
+base commit        0679e6f0b7f74576106222d137398e14c3f77362
+board pin (before) 530a4053622c29092274fab0aa1fee7f
+store pin (before) b4d23810ebb6b53f07a0ae40a3c24b97
+restore point      71 carrier(s) captured, 71 present on disk
+    [preflight OK  0.07s]
+
+--- STEP 1/11  store_edit     THE SURGICAL STORE EDIT, applied in the work dir ---
+*** FAULT INJECTED at step 'store_edit': store_old_mismatch — the store already carries the NEW value, so the `old` the spec asserts is not there — an ABORT, never a repair (the exact-string law)
+store BEFORE  64fa524a01c367ea8e8ead3c985594f6   (1978015 bytes)
+              == expected_boot.store, so the tree is the one this act was written for.
+    [store_edit FAILED  0.09s]
+
+======================================================================================================
+LANDING ABORTED AT STEP 'store_edit'
+======================================================================================================
+  THE OLD VALUE THE SPEC ASSERTS IS NOT THE VALUE IN THE STORE.
+      row   : will-graham
+      field : p_dual_stream
+      spec asserts old = 40
+      store carries    = 39
+  This is an ABORT, not a repair. The spec was written against a store that no longer says what it said — re-measure the row, re-prereg the edit, and fly it again.
+
+carriers that moved before the failure: 3
+    data/expected_boot.json                                          ace8afbeb6bc -> e461f8742122
+    data/season_state.json                                           506db8cae372 -> e9274a4c8112
+    engine/rl_after/rl_model_data.json                               b4d23810ebb6 -> 64fa524a01c3
+RESTORING 3 carrier(s):
+    rewrite  data/expected_boot.json
+    rewrite  data/season_state.json
+    rewrite  engine/rl_after/rl_model_data.json
+
+ABORT PROOF: every carrier is BYTE-EXACT to the identity captured at step 0.
+
+THE RECOVERY LADDER: abort-then-retry is the recovery. A landing this lander cannot
+complete after abort+retry is a round that SLIPS, on the owner's call — never an
+improvised manual landing under pressure.
+======================================================================================================
+
+--- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
+    preflight          0.07s  OK
+    store_edit         0.09s  FAIL
+    TOTAL              0.16s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_4212

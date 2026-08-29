@@ -1,0 +1,79 @@
+======================================================================================================
+LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
+  tree      : /tmp/landing_selftest_2688/sandbox
+  owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
+  prereg    : tools/landing/selftest.py (fixture)   predicts board 530a4053622c29092274fab0aa1fee7f
+  mode      : APPLY (SELFTEST) builder=selftest
+  NOTE      : this act is a DECLARED NO-OP REHEARSAL — it predicts the board it already has and moves no identity.
+======================================================================================================
+
+--- STEP 0/14  preflight      clean tree, build lock, the restore point ---
+RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
+build-lock: HELD by land-round-3726 (pid 3726) — single writer for the shared workspace.
+base commit        0679e6f0b7f74576106222d137398e14c3f77362
+board pin (before) 530a4053622c29092274fab0aa1fee7f
+store pin (before) b4d23810ebb6b53f07a0ae40a3c24b97
+restore point      121 carrier(s) captured, 121 present on disk
+    [preflight OK  0.08s]
+
+--- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
+sheet         docs/owner_annotations/SITTER_2026_v1.csv
+  MEASURED (never typed): md5=21361291f26d35108b88f92f885c5063 rows=219 injured_y=35
+  PINNED                : md5=21361291f26d35108b88f92f885c5063 rows=219 injured_y=35
+the declaration describes the sheet on disk. NO RE-CUT DECLARED — this step writes nothing, and `land round` remains the pin file's sole writer by not writing.
+    [sheet OK  0.00s]
+
+--- STEP 2/14  scores         the owner's score file and the bindings, asserted ---
+no scores file declared — this act is a REHEARSAL and applies nothing.
+    [scores OK  0.00s]
+
+--- STEP 3/14  catchup_preflight read-only preflight, CLEAN, then the inputs commit ---
+no scores file — nothing to preflight. (REHEARSAL.)
+    [catchup_preflight OK  0.00s]
+
+--- STEP 4/14  advance        THE ARMED CATCH-UP — ADVANCE-REPIN runs inside it ---
+REHEARSAL — nothing is armed and nothing is applied.
+  as_of_round  24                                 HELD
+  board        530a4053622c29092274fab0aa1fee7f   HELD
+  store        b4d23810ebb6b53f07a0ae40a3c24b97   HELD
+    [advance OK  0.01s]
+
+--- STEP 5/14  generator_sync the generator-side board copy, synced and DISCLOSED ---
+published board  530a4053622c29092274fab0aa1fee7f   sidecar 3081a0a426fcf382db50f543293b1917
+generator board  530a4053622c29092274fab0aa1fee7f   sidecar 3081a0a426fcf382db50f543293b1917
+the generator-side copy is already the published board. Nothing to sync.
+    [generator_sync OK  0.00s]
+
+--- STEP 6/14  day0           the day-0 reference — regenerated AT the advance, only ---
+*** FAULT INJECTED at step 'day0': day0_no_movers — THE M1b GUARD: the day-0 re-base is ACTIVATED and no row moves
+day-0 generator: DECLARED EMPTY — this act supplies docs/evidence/final_candidate_2026-08-19/DAY0_CP.json by its own means and the lander runs no emitter. The diff below is still mandatory.
+day-0 re-base : ACTIVATED by 'SELF-TEST FIXTURE — no owner word exists.'
+   docs/evidence/final_candidate_2026-08-19/DAY0_CP.json -> docs/evidence/final_candidate_2026-08-19/DAY0_CP.json
+   THE MANDATORY ROW DIFF — every moved row, printed, 0 of 86:
+    [day0 FAILED  0.00s]
+
+======================================================================================================
+LANDING ABORTED AT STEP 'day0'
+======================================================================================================
+  day-0 re-base is ACTIVATED and NO row moves. An activated re-base that changes nothing is a re-base nobody needed to authorise; refusing.
+
+carriers that moved before the failure: 0
+RESTORING 0 carrier(s):
+
+ABORT PROOF: every carrier is BYTE-EXACT to the identity captured at step 0.
+
+THE RECOVERY LADDER: abort-then-retry is the recovery. A landing this lander cannot
+complete after abort+retry is a round that SLIPS, on the owner's call — never an
+improvised manual landing under pressure.
+======================================================================================================
+
+--- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
+    preflight          0.08s  OK
+    sheet              0.00s  OK
+    scores             0.00s  OK
+    catchup_preflight     0.00s  OK
+    advance            0.01s  OK
+    generator_sync     0.00s  OK
+    day0               0.00s  FAIL
+    TOTAL              0.09s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_3726
