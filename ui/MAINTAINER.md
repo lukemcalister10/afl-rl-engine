@@ -69,8 +69,49 @@ The ledger — what each ID actually was, and the owner rulings that authorized 
 | MC-12 | 24/8 Will Graham dual corrected — owner store edit p_dual 90 → 40; one mover (−262) | 24 → graham-dual-40-24-8 | WILL_GRAHAM_DUAL_2026-08-24_edit_to_40pct_SF_and_recalculate |
 | MC-13 | 25/8 ARM-2 rebake + position-scaled safety net — owner D1/D2/D3; 543bf900 basis, net moves 10 (+922, all t4 today; armed on 19 younger rows, prereg R1) | graham-dual-40-24-8 → order45-arm2-net-24-9 | ARM2_REBAKE_ADOPT_2026-08-25_yes_adopt_the_new_model, SAFETY_NET_SCALED_2026-08-25_scaled_on_the_safety_net, MATURE_AGERS_EXCLUDED_2026-08-25_exclude_mature_agers |
 | MC-14 | 27/8 THE COMBINED BUILD — retention surface + step-up clock law + first-banked easing (W=1.0) + S_LL5G day-0 law; 287 movers, net +3,460; blind-review GREEN | order45-arm2-net-24-9 → combined-build-46-47-48-sll5g | MECHANISM_AGREED_2026-08-27_agree_on_your_mechanism, SLL5G_LOCKED_2026-08-27_lock_in_ll5g_then, DEPTH3_CAP_A_2026-08-27_a_for_depth_3_cap, SAT_SEASON_LT2_2026-08-27_lt2_is_fine_for_sat_season, EASING_KEPT_2026-08-27_keep_the_easing, RUCK_RELIEF_2026-08-27_ruck_relief_yes, NOARB_APPROVED_2026-08-27_alright_great_approved |
+| MC-15 | 28/8 ORDER 49 availability exposure blend — TAU 2.5 owner-locked; the Taylor/Taylor cliff removed at the one law (`final = w·played + (1−w)·sitter`, `w = 1 − exp(−games/2.5)`, tenure 1–4, entry age <22, 1–12 career games); 78 movers, net −1,467 | combined-build-46-47-48-sll5g → order49-avail-blend-28-8 | TAU_LOCKED_2026-08-28_please_lock_in_tau_2_5_and_build_that |
 
 Full incident records for every ruling ID live in the repo registers (`docs/registers/`).
+
+## The walk-forward retrospective (2026-08-29) — retro points
+
+`ui/data/movers.js` now carries eleven extra points, `retro-r14 … retro-r24`, each `kind: "retro"`
+with an `after_round`. A retro point is the CURRENT engine's answer for that round's football:
+the season clock set to the round's derived `calendar_progress` / `exposure_pace`, every 2026
+scoring row truncated to as-at-that-round, the whole active board priced through the engine's own
+`ev()`, and every mutated row restored and asserted. They were produced on ONE engine load
+(`docs/evidence/walkforward_retro_2026-08-29/pass_retro_series.py` under `tools/harness_run.py`);
+the per-round subprocess builds it replaced paid a ~12-minute load eleven times over.
+
+THE CONTROL: R24's truncation is a no-op, so `retro-r24` must reproduce the live board exactly.
+It does — 0 diffs, 0 missing over 804 rows (`RETRO_ONELOAD_VERDICT.json`) — which validates the
+clock handling, the currency mapping (`ev()/_PL_F` plus the display layer's owner overrides) and
+the export path in one assertion. Re-run that control before trusting any re-emission.
+
+A retro point is NOT a board this application ever served, and three places read "the newest /
+every point" as the record. All three exclude `kind === "retro"`, and each would be a live defect
+without it:
+
+| Place | What excluding retro prevents |
+| --- | --- |
+| `core.lineage` THE ONE ASSERT (`ui/app/movers.js`) | `retro-r24`'s in-process pricing becomes "the newest stored point", never equals the served board, and fail-closes the entire Movers tab |
+| `round_finalize._newest_point_vs_live_board` | the same assert on the producer side halts the NEXT round's finalisation |
+| the player-card history (`ui/app/history.js`) | eleven re-pricings interleave into every card, doubling the table with movement that never happened |
+
+The from/to selector is where the two worlds are allowed to meet, and a pair with exactly one retro
+end is banner-labelled (`core.crossesWorlds`).
+
+THE DEFAULT PAIR is the newest consecutive retro pair (R23 → R24), not the newest stored report.
+A stored report is priced under the model that was live that week — R24's predates ORDER 45/46/47/48
+and the ORDER 49 blend — and its `previous_round` is the last out-of-round column, so the tab used
+to open on `MC-11 → Round 24`. The owner asked for "round 23 to 24, under the current model"; the
+retro pair is literally that, and its `to` end is the live board.
+
+PARTICIPATION ON A ONE-ROUND RETRO PAIR: a range whose two retro ends are one round apart IS that
+round, so `core.compare` reads played / DNP / score from that round's own stored report — football
+facts do not depend on which engine priced the player. Every other range (multi-round, mixed-world,
+spanning an out-of-round column) keeps the honest "not recorded", and `ui_defects_2026-08-21` asserts
+both directions so the enrichment can never silently widen.
 
 ## Clubs page: the 56-asset rating
 
