@@ -376,7 +376,10 @@ class RoundFinalizer:
         board_path = os.path.join(self.repo_root, 'data', 'rl_build', 'rl_app_data.json')
         live = (hashlib.md5(open(board_path, 'rb').read()).hexdigest()
                 if os.path.exists(board_path) else None)
-        points = bundle.get('points') or []
+        # STORED points only. A retro point is the current model's re-pricing of an old round, not a
+        # board this application ever served; its `board` names an in-process pricing. Counting one as
+        # the newest point would fail this assert the moment the retrospective series was emitted.
+        points = [p for p in (bundle.get('points') or []) if p.get('kind') != 'retro']
         if not points:
             return None, live
         newest = points[-1]

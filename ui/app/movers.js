@@ -323,7 +323,13 @@
       // is history and needs no continuity. This is what keeps the removal from being a blanket
       // "always ok" — an out-of-date or foreign bundle still fails closed here.
       if (app.board) {
-        var pts = core.points(bundle);
+        // STORED points only. A retro point is the CURRENT model's re-pricing of an old round —
+        // it is not a board the application ever served, and it carries no board identity of the
+        // committed chain (its `board` names the in-process pricing, not a committed export). The
+        // assert is about the newest point of the RECORD, so retro points are excluded; including
+        // them would make the newest point a re-pricing and fail-close the tab the moment the
+        // retrospective was emitted, which is the opposite of what the assert is for.
+        var pts = core.points(bundle).filter(function (p) { return p.kind !== "retro"; });
         var newestBoard = null;
         if (pts.length) {
           var np = pts[pts.length - 1];
@@ -818,11 +824,14 @@
       // FROM/TO default (owner word 2026-08-28): the LATEST round's stored report — the round board
       // vs the board immediately before it, single-model, football only. User selections stick.
       const pts = core.points(b);
+      // the no-report fallback picks from STORED points only — defaulting to a retro pair would open
+      // the tab on a re-pricing rather than on the record.
+      const stored = pts.filter(function (p) { return p.kind !== "retro"; });
       if (state.to == null || state.from == null) {
         const dp = core.defaultPair(b);
         if (dp) { state.from = dp.from; state.to = dp.to; }
-        else if (pts.length >= 2) { state.to = pts[pts.length - 1].id; state.from = pts[pts.length - 2].id; }
-        else if (pts.length === 1) { state.to = pts[0].id; state.from = pts[0].id; }
+        else if (stored.length >= 2) { state.to = stored[stored.length - 1].id; state.from = stored[stored.length - 2].id; }
+        else if (stored.length === 1) { state.to = stored[0].id; state.from = stored[0].id; }
       }
       const report = core.compare(b, state.from, state.to);
       // A synthetic comparison carries no committed-report identity; only a STORED report is checked.

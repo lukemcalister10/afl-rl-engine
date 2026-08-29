@@ -108,7 +108,11 @@ MD.history = (function () {
       const to = mc.between && mc.between[1];
       if (to) changes[String(to)] = mc;
     });
-    return b.points.map(function (pt) {
+    // The card is the RECORD: what this player's value did on the boards the app actually served.
+    // Retro points are the current model's re-pricing of old rounds — a second world, offered in the
+    // movers selector where a comparison names its own two endpoints. Interleaving them here would
+    // double every card's history and read as movement that never happened.
+    return b.points.filter(function (pt) { return pt.kind !== "retro"; }).map(function (pt) {
       return {
         id: String(pt.id),
         label: pt.label,
