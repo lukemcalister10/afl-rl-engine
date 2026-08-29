@@ -21,6 +21,38 @@ for p in players:
     k=(p.get('key') or MA.slug(p['player']), p.get('type'), p.get('year'))  # +year: keep same-name-different-cohort pairs distinct
     if k not in best or len(p['scoring'])>len(best[k]['scoring']): best[k]=p
 players=list(best.values())
+# ==== S2 PARALLELIZATION (owner word 2026-08-28: "go on walk forward assuming no tradeoffs") =====
+# The as-of pricing is per-player independent GIVEN the full-population as-of-Y state, so each
+# worker replicates the (cheap) whole-population truncation for every year and prices only its
+# shard — every cell's computation is state-identical to the sequential run, whatever the engine
+# reads across players. Sharding is by DETERMINISTIC stable-key order (never id()); an OVERLAP set
+# of 25 players is priced by EVERY worker and the parent refuses the merge on any disagreement —
+# the no-tradeoff bar, checked in the run itself. Names are S4_* (a tool's own flags are never
+# RL_*). Default S4_WORKERS=1 is the sequential path, byte-for-byte the code above this line.
+players.sort(key=lambda p:(str(p.get('key') or MA.slug(p['player'])),str(p.get('type')),str(p.get('year') or '')))
+_S4_WORKERS=max(1,int(os.environ.get('S4_WORKERS','1') or '1'))
+_S4_SHARD=os.environ.get('S4_SHARD')            # "i/N" in a worker child
+_S4_OVERLAP=25
+def _stable_key(p): return '%s|%s|%s'%(p.get('key') or MA.slug(p['player']),p.get('type'),p.get('year'))
+if _S4_SHARD:
+    _si,_sn=(int(x) for x in _S4_SHARD.split('/'))
+    def _mine(j): return j%_sn==_si or j<_S4_OVERLAP
+else:
+    def _mine(j): return True
+_PARENT=(_S4_WORKERS>1 and not _S4_SHARD)
+if _PARENT:
+    import subprocess as _sp, tempfile as _tf
+    _shard_files=[]
+    _procs=[]
+    for _i in range(_S4_WORKERS):
+        _fd,_sf=_tf.mkstemp(prefix='s4_shard_%d_'%_i,suffix='.json'); os.close(_fd)
+        _shard_files.append(_sf)
+        _env=dict(os.environ); _env['S4_SHARD']='%d/%d'%(_i,_S4_WORKERS); _env['S4_SHARD_OUT']=_sf
+        _env.pop('S4_WORKERS',None)
+        _procs.append(_sp.Popen([__import__('sys').executable,os.path.abspath(__file__)],env=_env,
+                                stdout=_sp.PIPE,stderr=_sp.STDOUT,text=True))
+    print('S4_WORKERS=%d — %d shard children pricing in parallel (overlap=%d, stable-key order)'
+          %(_S4_WORKERS,_S4_WORKERS,_S4_OVERLAP),flush=True)
 # ISOLATED DATA FIX (Isaac Kako, ND pk13 2024): his real 2025 debut (23g, 55.1 — 2024 Rising Star) was missing
 # from the source DB. As of the one-source rewire (2026-07-05) it is FOLDED INTO THE STORE (single source of
 # truth), so both the board and this book read it directly -- the former book-local patch is DELETED. Luke
@@ -69,35 +101,39 @@ def _listed_through(p,lastscore):
     d=_debut_year(p)
     return max((d+_min_tenure(p)-1) if d is not None else 0, lastscore)   # own data extends the minimum
 # WALK-FORWARD as-of value matrix (UNCHANGED — values are correct; only the indexing was wrong)
+# S2: the truncation runs over the FULL population in every process; only the PRICING is sharded.
 ASOF={}
-for Y in range(2003,2027):
-    saved={}
-    for p in players:
-        if (p.get('year') or 9999)>Y: continue
-        LL=p.get('_last_listed'); RET=p.get('_retired'); lastscore=max((r['year'] for r in p['scoring']), default=0)
-        saved[id(p)]=(p['scoring'],RET,LL); p['scoring']=[r for r in p['scoring'] if r['year']<=Y]
-        # #338 (2026-08-06): was `LL if LL is not None else (lastscore if RET else None)` — lastscore is 0 for an
-        # evidence-less career, so the player was delisted at every as-of year. Now the minimum listing tenure.
-        eff_last = _listed_through(p,lastscore)
-        p['_retired']=False; p['_last_listed']= eff_last if (eff_last is not None and eff_last < Y) else None
-    MA.BASE_REF=Y; MA.AGE_REF=Y; MA._pe_clear()
-    g['_BOARD_PATH']=(Y==2026)   # F2 parity: the PRESENT-year column uses the BOARD path (V0 curve + KPP floor ON) so `cur` == the board (engine gated); 2003-2025 keep Luke's D14 backtest exemption (board-only laws OFF -> the historical walk-forward book reproduces)
-    for p in players:
-        if (p.get('year') or 9999)>Y: continue
-        try:
-            with contextlib.redirect_stdout(io.StringIO()): ASOF[(id(p),Y)]=ev(p,Y)
-        except Exception: ASOF[(id(p),Y)]=None
-    for p in players:
-        if id(p) in saved: p['scoring'],p['_retired'],p['_last_listed']=saved[id(p)]
-    MA._pe_clear()
-MA.BASE_REF=MA.AGE_REF=2026; MA._pe_clear()
+if not _PARENT:
+    for Y in range(2003,2027):
+        saved={}
+        for p in players:
+            if (p.get('year') or 9999)>Y: continue
+            LL=p.get('_last_listed'); RET=p.get('_retired'); lastscore=max((r['year'] for r in p['scoring']), default=0)
+            saved[id(p)]=(p['scoring'],RET,LL); p['scoring']=[r for r in p['scoring'] if r['year']<=Y]
+            # #338 (2026-08-06): was `LL if LL is not None else (lastscore if RET else None)` — lastscore is 0 for an
+            # evidence-less career, so the player was delisted at every as-of year. Now the minimum listing tenure.
+            eff_last = _listed_through(p,lastscore)
+            p['_retired']=False; p['_last_listed']= eff_last if (eff_last is not None and eff_last < Y) else None
+        MA.BASE_REF=Y; MA.AGE_REF=Y; MA._pe_clear()
+        g['_BOARD_PATH']=(Y==2026)   # F2 parity: the PRESENT-year column uses the BOARD path (V0 curve + KPP floor ON) so `cur` == the board (engine gated); 2003-2025 keep Luke's D14 backtest exemption (board-only laws OFF -> the historical walk-forward book reproduces)
+        for _j,p in enumerate(players):
+            if not _mine(_j): continue
+            if (p.get('year') or 9999)>Y: continue
+            try:
+                with contextlib.redirect_stdout(io.StringIO()): ASOF[(id(p),Y)]=ev(p,Y)
+            except Exception: ASOF[(id(p),Y)]=None
+        for p in players:
+            if id(p) in saved: p['scoring'],p['_retired'],p['_last_listed']=saved[id(p)]
+        MA._pe_clear()
+    MA.BASE_REF=MA.AGE_REF=2026; MA._pe_clear()
 def adjavg(y,a): return round(a,1)   # RAW season avg (era normalization removed — #334 stage B owner ruling)
 def retired_now(p):
     if delisted(p): return True
     lg=max((r['year'] for r in p['scoring'] if r.get('games',0)>=1), default=None); dy=p.get('year')
     return bool(lg is not None and dy is not None and dy<=2021 and lg<=2024)
 rec={}; nsat=0
-for p in players:
+for _j,p in enumerate(players):
+    if _PARENT or not _mine(_j): continue
     C=p.get('year')
     if C is None: continue
     played={x['year']:(x['games'],x['avg']) for x in p['scoring'] if x['games']>=1}
@@ -126,6 +162,42 @@ for p in players:
                     year=C,cat=p.get('_cat'),draftval=round(MA.PVC[min(MA.effpk(p),MA.POOL_PICK)]) if not p.get('_pickless') else None,
                     yrs=yrs,Vpath=Vpath,Ppath=Ppath,cur=ASOF.get((id(p),2026)),anchor=anchor,old_anchor=old_anchor,
                     sat_out_yr1=sat,retired_now=rn,incurve=(p.get('type') in INCURVE))
+# ==== S2: worker dump / parent merge =============================================================
+if _S4_SHARD:
+    # a worker emits its shard keyed by STABLE key (never id()) and exits; the parent owns the file
+    _shard={_stable_key(p):rec[id(p)] for _j,p in enumerate(players) if _mine(_j) and id(p) in rec}
+    _own=[_stable_key(p) for _j,p in enumerate(players) if _j%_sn==_si and id(p) in rec]
+    json.dump({'shard':_S4_SHARD,'own':_own,'rows':_shard},open(os.environ['S4_SHARD_OUT'],'w'))
+    print('shard %s: %d rows (%d own + overlap)'%(_S4_SHARD,len(_shard),len(_own)),flush=True)
+    raise SystemExit(0)
+if _PARENT:
+    for _i,_pr in enumerate(_procs):
+        _out,_ =_pr.communicate()
+        if _pr.returncode!=0:
+            raise SystemExit('S4 SHARD %d/%d FAILED (rc=%s):\n%s'%(_i,_S4_WORKERS,_pr.returncode,(_out or '')[-2000:]))
+    _by_key={}; _overlap_seen={}
+    for _sf in _shard_files:
+        _sd=json.load(open(_sf))
+        for _k in _sd['own']:
+            _by_key[_k]=_sd['rows'][_k]
+        for _k,_v in _sd['rows'].items():
+            _overlap_seen.setdefault(_k,[]).append(json.dumps(_v,sort_keys=True))
+        os.unlink(_sf)
+    # THE NO-TRADEOFF BAR, IN-RUN: every overlap row priced by two or more workers must agree
+    # EXACTLY (the filed guard). A single disagreement kills the merge — never a quiet average.
+    _dis=[_k for _k,_vs in _overlap_seen.items() if len(_vs)>1 and len(set(_vs))!=1]
+    if _dis:
+        raise SystemExit('S4 PARALLEL DETERMINISM FAILED: %d overlap row(s) disagree across workers: %s'
+                         %(len(_dis),_dis[:5]))
+    _n_over=sum(1 for _vs in _overlap_seen.values() if len(_vs)>1)
+    _missing=[_stable_key(p) for p in players if p.get('year') is not None and _stable_key(p) not in _by_key]
+    if _missing:
+        raise SystemExit('S4 MERGE INCOMPLETE: %d player(s) unpriced: %s'%(len(_missing),_missing[:5]))
+    for _j,_k in enumerate(sorted(_by_key)):
+        rec[_j]=_by_key[_k]
+    nsat=sum(1 for _v in rec.values() if _v['sat_out_yr1'] and _v['incurve'] and 2004<=_v['year']<=2024)
+    print('S4 PARALLEL MERGE: %d rows from %d workers; %d overlap rows agreed exactly across '
+          'workers (the no-tradeoff bar); stable-key ordered'%(len(rec),_S4_WORKERS,_n_over),flush=True)
 _book_out=os.environ.get('S4_MATRIX','s4_matrix.json')
 if _book_out=='s4_matrix.json': _SS.prepare_write('s4_matrix.json')   # clear read-only from a prior guarded build
 # gate-integrity (a): embed code/store/config identity so the B1/B3 gate runner can assert the regenerated
