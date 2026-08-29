@@ -706,16 +706,39 @@ try:
                     return bool(_o46c(p, 2026))
             except Exception:
                 return False
+        # ORDER 49 RE-INSTRUMENTATION (2026-08-29; the O46 precedent above, same shape). PRE is the
+        # m3-blend stage; ORDER 49 (the availability exposure blend, owner-ruled TAU 2.5, landed
+        # c9271f00) blends FINISHED prices as the OUTERMOST wrapper — so a cameo row priced above
+        # its sitter shadow ends BELOW PRE by the ruled construction, not by a floor impurity.
+        # First post-landing run read lowered=33 / scope-moved=3, all in the blend's class. The
+        # class test mirrors the engine's ORDER 49 block field-for-field (Y=2026 · tenure 1-4 ·
+        # entry age <22 · 1-12 career games · keyed · not retired); in-class rows report on their
+        # own line and the purity bar keeps measuring the floor's own scope at 0.
+        _o49_on = bool(G.get('_O49'))
+
+        def _in_o49(p):
+            if not _o49_on or p.get('_retired') or p.get('key') is None:
+                return False
+            _yr = int(p.get('year') or 0)
+            if not (1 <= 2026 - _yr + 1 <= 4):
+                return False
+            _by = p.get('_by')
+            if not _by or _yr - int(_by) >= 22:
+                return False
+            _g = sum(x.get('games', 0) for x in (p.get('scoring') or [])
+                     if x.get('year', 0) <= 2026)
+            return 1 <= _g <= 12
         _dropped = [p for p in MA.data if not p.get('_retired')
                     and PRE.get(id(p)) is not None and EV.get(id(p)) is not None
                     and EV[id(p)] < PRE[id(p)] - 1e-9]
         o46_denied = [p['player'] for p in _dropped if _in_o46(p)]
-        lowered = [p['player'] for p in _dropped if not _in_o46(p)]
+        o49_blend = [p['player'] for p in _dropped if _in_o49(p) and not _in_o46(p)]
+        lowered = [p['player'] for p in _dropped if not _in_o46(p) and not _in_o49(p)]
         # #326: renamed from `nonnd_moved` — the bar is "nobody OUTSIDE the floor's scope moved", and the
         # scope is now national draftees AND engine-pool entrants. Still a real bar at 0. An O46
         # in-class row is governed by its own guard and is excluded here for the same reason as above.
         out_of_scope_moved = [p['player'] for p in MA.data if not p.get('_retired') and not _b5_scope(p)
-                              and not _in_o46(p)
+                              and not _in_o46(p) and not _in_o49(p)
                               and PRE.get(id(p)) is not None and EV.get(id(p)) is not None
                               and abs(EV[id(p)] - PRE[id(p)]) > 1e-9]
         saves = []
@@ -748,6 +771,9 @@ try:
              f'lowered={len(lowered)} (bar 0), moved outside the floor scope={len(out_of_scope_moved)} (bar 0); '
              f'ORDER 46 denied-lift rows={len(o46_denied)} (the ruled day-0 cap / never-repossess guard — '
              f'reported, not a floor impurity; probed 2026-08-28, all explained); '
+             f'ORDER 49 blend rows={len(o49_blend)} (the owner-ruled TAU 2.5 availability exposure blend '
+             f'lowering finished prices toward the sitter shadow — the landed construction, not a floor '
+             f'impurity; landed c9271f00, movers verified vs the approved table); '
              f'saves table printed below (the new alarm surface)')
     else:
         off = []
