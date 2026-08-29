@@ -124,10 +124,10 @@ const HIST = await page.evaluate(() => {
    The literal stays a literal ON PURPOSE — it is the drift sentinel that made adoption's new column
    visible at all. It moves by one every time a landed change adds a column, and that edit is the
    point. */
-/* Sentinel RE-PINNED 2026-08-28: rounds landed through R23 and twelve further model changes landed
-   (through the combined build), so the point count moved 9 → 25. The literal stays a literal — it
-   is the drift sentinel, and it moves by hand every time a landed change adds a column. */
-check(HIST.series && HIST.series.length === 25, 'item 3 — the history has all 25 points',
+/* Sentinel RE-PINNED 2026-08-29: the ORDER 49 landing added its model-change column (MC-15,
+   order49-avail-blend-28-8), 25 → 26. The literal stays a literal — it is the drift sentinel,
+   and it moves by hand every time a landed change adds a column. */
+check(HIST.series && HIST.series.length === 26, 'item 3 — the history has all 26 points',
   HIST.series ? String(HIST.series.length) : 'null');
 check(HIST.series.every(r => r.v != null && r.rank != null && r.posRank != null),
   'item 3 — value, rank and positional rank are present at EVERY point (no participation gate)');
