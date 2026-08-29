@@ -1,0 +1,37 @@
+======================================================================================================
+THE LANDER SELF-TEST — every step broken once, every abort proved (PLAN_v6 2a.3)
+  live tree : /home/user/afl-rl-engine   (READ-ONLY to this self-test; asserted byte-unmoved at the end)
+  sandbox   : /tmp/landing_selftest_2003
+  transcripts: /home/claude/s8_selftest
+  base      : HEAD
+======================================================================================================
+sandbox created at /tmp/landing_selftest_2003/sandbox (base db138ee13c89)
+
+--- CONTROL: a clean no-op landing in this sandbox must SUCCEED ---
+  PASS control_clean_run            exit 0
+  PASS commit_explicit_paths        6 path(s) committed, all declared: docs/STATE.md, docs/evidence/landing_selftest/SELFTEST_CLAIMS.json, docs/evidence/landing_selftest/claims_check.txt, docs/evidence/landing_selftest/gate_release_contract_check.txt
+
+--- LOCK: a landing must refuse to start while another holder has the lock ---
+  PASS build_lock_refuses           exit 1; the landing refused to become a second writer
+
+--- FAULTS: every step in LEVER_SEQUENCE broken once ---
+  PASS fault_sibling                fault=sidecar_corrupt; exit 1; failed_step='sibling'; carriers moved after abort: NONE (byte-exact)
+
+--- DEPTH: a landing that WROTE pins + column + lineage + contract, then aborted ---
+  PASS abort_restores_writers       11 carrier(s) had been written and were restored: data/expected_boot.json, data/release_contract.json, data/release_lineage.json, data/rl_build/rl_app_data.json, data/rl_build/rl_app_data.json.srcmd5, engine/rl_after/ingestion/pos_rank_history.json
+
+--- ROUND: a clean round rehearsal in this sandbox must SUCCEED (PLAN_v6 2b) ---
+  PASS round_control_clean_run      exit 0
+  PASS round_commit_explicit_paths  7 path(s) committed, all declared: docs/STATE.md, docs/evidence/landing_selftest/MOVERS_R24.html, docs/evidence/landing_selftest/SELFTEST_CLAIMS.json, docs/evidence/landing_selftest/claims_check.txt
+
+--- ROUND FAULTS: every step 2b ADDS, broken once ---
+
+--- CLAIMS: the checker's own negative control still fires ---
+  PASS claims_negative_control      CLAIMS SELF-TEST: 11 PASS / 0 FAIL
+  PASS packet_slot_validator        PACKET SELF-TEST: 5 PASS / 0 FAIL
+  PASS live_tree_untouched          every live carrier byte-unmoved across the whole self-test
+
+======================================================================================================
+STEPS BROKEN 1   CAUGHT 1   ABORTED BYTE-EXACT 1
+SELF-TEST: 10 PASS / 0 FAIL
+======================================================================================================

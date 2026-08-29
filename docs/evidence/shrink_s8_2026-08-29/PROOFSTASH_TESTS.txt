@@ -1,0 +1,27 @@
+PROOF STASH TESTS
+  ------------------------------------------------------------
+  [PASS] the sibling key moves when ANY input identity moves (store)
+  [PASS] ...and when the config moves
+  [PASS] ...and is stable when nothing moved
+  [PASS] a different act never shares a key with another act
+  [PASS] a MISS runs the real build
+  [PASS] ...and banks the proof under the key
+  [PASS] a HIT on unchanged inputs does NOT rebuild
+  [PASS] ...and returns the proven identity
+  [PASS] ...and says so in the transcript
+  [PASS] an entry whose OWN recorded store does not match live is REFUSED, and the full build runs
+  [PASS] ...and says why
+  [PASS] ...and the answer is the freshly built one
+  [PASS] a stale fv_identity is caught independently of the store
+  [PASS] a stale rl_model_md5 is caught independently of the store
+  [PASS] a tampered entry fails its own md5 and loads as a miss
+  [PASS] ...and the landing rebuilds rather than using tampered bytes
+  [PASS] the stash is NEVER consulted in a selftest
+  [PASS] the stash is NEVER consulted in a fault run
+  [PASS] the step patches build_sibling while it runs
+  [PASS] ...and restores it, so the gate check and the CLI are untouched by landing policy
+  [PASS] a with_forward=False build is never served from the stash
+  [PASS] an unwritable stash does not fail the landing — it just does not cache
+  [PASS] ...and says so plainly
+  ------------------------------------------------------------
+PROOF STASH TESTS: ALL 23 PASS
