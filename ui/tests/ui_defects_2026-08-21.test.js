@@ -115,16 +115,40 @@ section("(3) from/to — scope lifted; defaults to the LATEST round's single-mod
   if (!live) {
     check(false, "the shipped movers bundle loads (needed for the default-pair assertions)");
   } else {
-    // the default pair is the LATEST stored round report's own pair: the round board vs the board
-    // immediately before it — single-model, football only, and it IS the stored report (with the
-    // played/DNP facts), never a synthetic cross-model diff.
+    // RESTATED 2026-08-29 (THE WALK-FORWARD RETROSPECTIVE). Until the retrospective landed, the best
+    // available single-model default was the latest STORED round report's own pair. It is no longer:
+    // a stored report is priced under the model that was live that week, and R24's was finalised
+    // before ORDER 45/46/47/48 and before the ORDER 49 blend, so it is a superseded model's answer —
+    // and its `previous_round` is the last out-of-round column, not R23. The owner asked for "round
+    // 23 to 24, under the current model". That is now literally available: the newest consecutive
+    // RETRO pair, one model on both ends, one round of football between them, terminating on a
+    // re-pricing that reproduces the live board exactly. It is synthetic in construction and single-
+    // model in meaning, which is the property the original assertion was actually protecting.
     var dp = core.defaultPair(live);
-    var lastRound = String(live.rounds[live.rounds.length - 1]);
-    check(dp && dp.to === lastRound,
-      "defaultPair lands on the latest stored round (" + lastRound + ")", JSON.stringify(dp));
+    var lastRound = Number(live.rounds[live.rounds.length - 1]);
+    var pts = core.points(live), byId = {};
+    pts.forEach(function (p) { byId[String(p.id)] = p; });
+    var pf = byId[String((dp || {}).from)], pt = byId[String((dp || {}).to)];
+    check(pf && pt && pf.kind === "retro" && pt.kind === "retro" &&
+          Number(pt.after_round) === lastRound && Number(pf.after_round) === lastRound - 1,
+      "defaultPair is the newest consecutive RETRO pair — R" + (lastRound - 1) + " to R" + lastRound +
+      ", both ends under the current model", JSON.stringify(dp));
     var rep = core.compare(live, dp.from, dp.to);
-    check(rep && !rep.synthetic && String(rep.submitted_round) === lastRound,
-      "…and it resolves to the STORED report — single model, football only, participation facts intact");
+    check(rep && String(rep.submitted_round) === String(dp.to) && rep.player_count > 0,
+      "…and it resolves to a comparison over the whole priced population");
+    // NOT a loss of the facts: a one-round retro pair IS that round, so played/DNP/score are read
+    // from the round's own stored report. Football does not depend on which engine priced it.
+    var stored24 = (live.reports || {})[String(lastRound)] || {};
+    check(rep.views.played_count === (stored24.views || {}).played_count &&
+          rep.views.dnp_count === (stored24.views || {}).dnp_count &&
+          rep.players.every(function (p) { return p.played !== null; }),
+      "…and it keeps the round's participation facts (played " + rep.views.played_count +
+      " / DNP " + rep.views.dnp_count + ") — the chips, the scores and both filters survive the change");
+    // NON-VACUITY: a range that is NOT one round of football still says the facts are unknown.
+    var multi = core.compare(live, "retro-r14", "retro-r24");
+    check(multi.synthetic && multi.views.played_count === null &&
+          multi.players.every(function (p) { return p.played === null && p.score === null; }),
+      "a multi-round retro range has NO single participation fact and says so (not recorded)");
     check(core.spansModelChange(live, dp.from, dp.to).length === 0,
       "…and the default pair crosses NO model change (never a cross-model featured view)");
     // the machinery is intact: any stored pair still compares

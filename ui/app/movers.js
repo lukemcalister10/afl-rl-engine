@@ -359,11 +359,27 @@
        only, single-model, and carries the played/DNP facts. The full from/to selector is open again
        over every stored point; a user-chosen span that crosses model changes still gets the banner.
 
-       THE RETROSPECTIVE ASK (every round since R14 re-priced under the CURRENT model) is an ENGINE
-       act, not a UI join — old boards under old models must never be labeled as the live model's
-       answer. It is in flight as the walk-forward project; when its boards land the selector simply
-       gains those points. */
+       THE RETROSPECTIVE HAS NOW LANDED (2026-08-29), and it changes what the honest default is.
+       A stored round report measures its round under the model that was live THAT WEEK: the R24
+       report was finalised before ORDER 45/46/47/48 and before the ORDER 49 blend, so its numbers
+       are a superseded model's answer, and its `previous_round` is the last out-of-round column
+       rather than R23 itself. The owner asked for "round 23 to 24, under the current model", and
+       the newest consecutive RETRO pair is exactly that: one model on both ends, one round of
+       football between them, and — because R24 re-priced reproduces the live board exactly — the
+       `to` end IS the board the app is serving. So the default is the newest consecutive retro
+       pair when the series is present, and the newest stored report's own pair when it is not.
+       Every stored point remains selectable; a user-chosen mixed pair still gets the banner. */
     defaultPair: function (bundle) {
+      var pts = core.points(bundle);
+      var retro = [];
+      for (var r = 0; r < pts.length; r++) {
+        if (pts[r].kind === "retro" && pts[r].after_round != null) retro.push(pts[r]);
+      }
+      retro.sort(function (x, y) { return Number(x.after_round) - Number(y.after_round); });
+      for (var q = retro.length - 1; q >= 1; q--) {
+        if (Number(retro[q].after_round) - Number(retro[q - 1].after_round) === 1)
+          return { from: String(retro[q - 1].id), to: String(retro[q].id) };
+      }
       var reports = (bundle || {}).reports || {};
       var rounds = ((bundle || {}).rounds || []).slice();
       for (var i = rounds.length - 1; i >= 0; i--) {
@@ -438,6 +454,39 @@
       }
       players.sort(function (x, y) { return x.key < y.key ? -1 : x.key > y.key ? 1 : 0; });
 
+      /* ONE ROUND OF FOOTBALL, RE-PRICED. When both ends are retro points exactly one round apart,
+         the range IS round `to.after_round` — so the participation facts are known after all, and
+         they are football, not model: whether a man played that round and what he scored does not
+         depend on which engine priced him. They are read from that round's own stored report, so the
+         default view keeps the played/DNP chips, the scores and the two filters it would otherwise
+         lose to the generic "not recorded". Any other range (multi-round, mixed-world, spanning an
+         out-of-round column) is left as it was — genuinely unknown, and saying so. */
+      var pts = core.points(bundle), byId = {};
+      for (var pi = 0; pi < pts.length; pi++) byId[String(pts[pi].id)] = pts[pi];
+      var pf = byId[String(fromId)], pt = byId[String(toId)];
+      var oneRound = pf && pt && pf.kind === "retro" && pt.kind === "retro" &&
+                     pf.after_round != null && pt.after_round != null &&
+                     Number(pt.after_round) - Number(pf.after_round) === 1;
+      var facts = null, played_count = null, dnp_count = null;
+      if (oneRound) {
+        var rr = (bundle.reports || {})[String(pt.after_round)];
+        if (rr && Number(rr.submitted_round) === Number(pt.after_round)) {
+          facts = {};
+          for (var ri = 0; ri < (rr.players || []).length; ri++) {
+            var rp = rr.players[ri];
+            facts[rp.key] = { played: rp.played, dnp: rp.dnp, score: rp.score };
+          }
+          played_count = (rr.views || {}).played_count;
+          dnp_count = (rr.views || {}).dnp_count;
+        }
+      }
+      if (facts) {
+        for (var fi = 0; fi < players.length; fi++) {
+          var fx = facts[players[fi].key];
+          if (fx) { players[fi].played = fx.played; players[fi].dnp = fx.dnp; players[fi].score = fx.score; }
+        }
+      }
+
       function rankView(field, desc) {
         var e = players.filter(function (p) { return p[field] != null; });
         e.sort(function (x, y) {
@@ -455,7 +504,7 @@
         views: {
           value_risers: rankView("value_change", true), value_fallers: rankView("value_change", false),
           rank_risers: rankView("rank_change", true), rank_fallers: rankView("rank_change", false),
-          played_count: null, dnp_count: null,
+          played_count: played_count, dnp_count: dnp_count,
         },
       };
     },
@@ -614,7 +663,10 @@
         var pts = core.points(bundle());
         for (var i = 0; i < pts.length; i++) {
           if (String(pts[i].id) === String(id) && pts[i].after_round != null) {
-            return "R" + pts[i].after_round + " · post-model";
+            // a retro point is that round re-priced under the live model, not a board that followed
+            // a model change — it must not read "post-model", which means the opposite thing.
+            return "R" + pts[i].after_round +
+                   (pts[i].kind === "retro" ? " · current model" : " · post-model");
           }
         }
         return "prior board";
