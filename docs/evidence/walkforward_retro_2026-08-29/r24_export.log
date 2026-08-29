@@ -1,7 +1,7 @@
 config manifest (gate mode) LOADED  hash d4f3c3cf8707  (90 model vars pinned; ambient cleared)
 
 CONFIG ACCEPTED d4f3c3cf8707  (trusted /home/claude/retro_walkforward/r24/root/config_manifest.py)
-
-============ FORWARD-VALUATION PROVENANCE (Guard 5) FAILED — BUILD HALTED ============
-  - fv CHECKOUT DRIFT: engine/forward_valuation source set is ABSENT/empty at /home/claude/retro_walkforward/r24/root/engine/forward_valuation — cannot assert the forward-valuation pin 123a8155 (restore the checkout, or re-pin at a bake).
-=====================================================================================
+PROVENANCE {"RL_FV_env": "/home/user/afl-rl-engine/engine/forward_valuation", "config_manifest_identity": "d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4", "config_manifest_path": "/home/claude/retro_walkforward/r24/root/data/model_config.json", "distribution_pricing_md5": "33e07a9ee66a29e9d8ef3dc45cca52f6", "fv_identity": "123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345", "fv_identity_expected": "123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345", "resolved_fv_dir": "/home/user/afl-rl-engine/engine/forward_valuation", "rl_model_md5": "6fe7c4155866d80e8045bed2d3bf2802", "rl_model_path": "/home/claude/retro_walkforward/r24/root/engine/rl_after/rl_model.py"}
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+ORDER 41 HALT: RL_O41_INJ=1 but the owner's annotation file is ABSENT at /home/claude/retro_walkforward/r24/root/docs/owner_annotations/SITTER_2026_v1.csv. The injury stream reads a PINNED OWNER INPUT and will not run without it, and will not substitute a guess for it.

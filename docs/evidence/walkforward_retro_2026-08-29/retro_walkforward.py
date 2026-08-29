@@ -179,32 +179,49 @@ def emit_stores():
 
 
 def _assemble_root(R):
+    """Assemble a sandbox repo root by SYMLINKING the live repo wholesale, then replacing ONLY the
+    three overridden files with real ones. Copying selected subtrees was the wrong shape: the engine
+    reads pinned owner inputs from several repo-relative paths (data/, docs/owner_annotations/,
+    engine/forward_valuation/, ...) and every path missed cost a full engine load before its halt.
+    A symlink farm is complete by construction — anything the engine reads resolves to the real
+    repo — and the overrides are the only real files, so nothing can write back into the repo."""
     meta = json.load(open(os.path.join(WORK, 'r%d' % R, 'META.json')))
     root = os.path.join(WORK, 'r%d' % R, 'root')
-    ra = os.path.join(root, 'engine', 'rl_after')
     if os.path.exists(root):
         shutil.rmtree(root)
-    os.makedirs(os.path.join(root, 'data'), exist_ok=True)
-    shutil.copytree(WS, ra)
-    shutil.copy(os.path.join(WORK, 'r%d' % R, 'rl_model_data.json'),
-                os.path.join(ra, 'rl_model_data.json'))
+    os.makedirs(root)
+    # top level: symlink everything except the two dirs carrying an override
+    for name in os.listdir(REPO):
+        if name in ('data', 'engine', '.git'):
+            continue
+        os.symlink(os.path.join(REPO, name), os.path.join(root, name))
+    # data/: symlink every entry, then write the two real overrides
+    os.makedirs(os.path.join(root, 'data'))
     for name in os.listdir(os.path.join(REPO, 'data')):
-        src = os.path.join(REPO, 'data', name)
-        if os.path.isfile(src):
-            shutil.copy(src, os.path.join(root, 'data', name))
+        if name in ('expected_boot.json', 'season_state.json'):
+            continue
+        os.symlink(os.path.join(REPO, 'data', name), os.path.join(root, 'data', name))
     shutil.copy(os.path.join(WORK, 'r%d' % R, 'season_state.json'),
                 os.path.join(root, 'data', 'season_state.json'))
-    eb_p = os.path.join(root, 'data', 'expected_boot.json')
-    eb = json.load(open(eb_p))
+    eb = json.load(open(os.path.join(REPO, 'data', 'expected_boot.json')))
     eb['store'] = meta['store_md5']
     eb['as_of_round'] = R
-    json.dump(eb, open(eb_p, 'w'), indent=1, sort_keys=True)
-    shutil.copytree(os.path.join(REPO, 'engine', 'forward_valuation'),
-                    os.path.join(root, 'engine', 'forward_valuation'))
-    for extra in ('config_manifest.py', 'boot_guard.py'):
-        src = os.path.join(REPO, extra)
-        if os.path.exists(src):
-            shutil.copy(src, os.path.join(root, extra))
+    json.dump(eb, open(os.path.join(root, 'data', 'expected_boot.json'), 'w'),
+              indent=1, sort_keys=True)
+    # engine/: symlink every entry except rl_after, which is a real dir of symlinks + the store
+    os.makedirs(os.path.join(root, 'engine'))
+    for name in os.listdir(os.path.join(REPO, 'engine')):
+        if name == 'rl_after':
+            continue
+        os.symlink(os.path.join(REPO, 'engine', name), os.path.join(root, 'engine', name))
+    ra = os.path.join(root, 'engine', 'rl_after')
+    os.makedirs(ra)
+    for name in os.listdir(WS):
+        if name in ('rl_model_data.json', 'rl_app_data.json'):
+            continue
+        os.symlink(os.path.join(WS, name), os.path.join(ra, name))
+    shutil.copy(os.path.join(WORK, 'r%d' % R, 'rl_model_data.json'),
+                os.path.join(ra, 'rl_model_data.json'))
     return root, ra
 
 
