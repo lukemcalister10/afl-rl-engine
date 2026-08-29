@@ -367,6 +367,18 @@
       return null;
     },
 
+    /* Is exactly ONE end of the range a current-model re-pricing? Then the difference carries the
+       whole model gap between then and now, and the tab must SAY so. Retro-to-retro is a clean
+       football read (one model, two dates); stored-to-stored is the historical record. A label,
+       never a gate — every pair stays selectable. */
+    crossesWorlds: function (bundle, fromId, toId) {
+      var pts = core.points(bundle), by = {};
+      for (var i = 0; i < pts.length; i++) by[String(pts[i].id)] = pts[i];
+      var a = by[String(fromId)], b2 = by[String(toId)];
+      if (!a || !b2) return false;
+      return (a.kind === "retro") !== (b2.kind === "retro");
+    },
+
     /* Does the selected range cross a board move that happened outside a round? If so the tab must
        SAY so — part of the difference is the model, not the players. A label, never a gate. */
     spansModelChange: function (bundle, fromId, toId) {
@@ -615,6 +627,7 @@
     /* Display name for a stored point: rounds as themselves, out-of-round boards as their MC-N id
        (the ledger behind each ID is ui/MAINTAINER.md — the verbose labels render nowhere). */
     function pointLabel(b, p) {
+      if (p.kind === "retro") return p.label || ("R" + p.after_round + " · current model");
       if (p.kind === "round" || /^\d+$/.test(String(p.id))) return "Round " + p.id;
       const list = (b || {}).model_changes || [];
       for (let i = 0; i < list.length; i++) {
@@ -820,6 +833,11 @@
         failState(holder, "no players are recorded at both selected points"); return;
       }
       holder.appendChild(roundSelect(b, report));
+      if (core.crossesWorlds(b, state.from, state.to)) {
+        holder.appendChild(fmt.el("div", "note modelchange",
+          "One end is priced under the current model and the other is the board as it stood — " +
+          "this difference carries the model gap, not just football."));
+      }
       const spans = core.spansModelChange(b, state.from, state.to);
       if (spans.length) {
         holder.appendChild(fmt.el("div", "note modelchange",

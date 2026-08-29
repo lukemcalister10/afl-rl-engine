@@ -409,6 +409,31 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   ok(core.spansModelChange(prod, "19", "20").length === 1, "a range spanning the restructure is LABELLED");
   ok(core.spansModelChange(prod, "post-r19-redesign-1", "20").length === 0, "a range inside one model is not");
 
+  /* THE WALK-FORWARD RETROSPECTIVE (owner ask 2026-08-29): rounds R14-R24 re-priced under the LIVE
+     engine join the selector as kind:"retro" points. The stored as-they-were points are untouched,
+     so exactly one distinction has to be enforced: a comparison with ONE end in each world carries
+     the whole model gap and must be labelled. Asserted on a synthetic bundle so the check holds
+     before, during and after the real emission. */
+  var worlds = { points: [
+    { id: "16", label: "Round 16", kind: "round", after_round: 16 },
+    { id: "24", label: "Round 24", kind: "round", after_round: 24 },
+    { id: "retro-r16", label: "R16 · current model", kind: "retro", after_round: 16 },
+    { id: "retro-r24", label: "R24 · current model", kind: "retro", after_round: 24 },
+  ] };
+  ok(core.crossesWorlds(worlds, "16", "retro-r24") === true,
+     "stored vs retro is a CROSS-WORLD read and is flagged");
+  ok(core.crossesWorlds(worlds, "retro-r16", "24") === true, "...in either direction");
+  ok(core.crossesWorlds(worlds, "retro-r16", "retro-r24") === false,
+     "retro vs retro is one model, two dates — a clean football read, not flagged");
+  ok(core.crossesWorlds(worlds, "16", "24") === false,
+     "stored vs stored is the historical record — not flagged");
+  ok(core.crossesWorlds(worlds, "16", "nope") === false,
+     "an unknown endpoint never invents a flag");
+  // and the real bundle: every retro point (once emitted) names its round and carries a board
+  var retro = core.points(prod).filter(function (p) { return p.kind === "retro"; });
+  ok(retro.every(function (p) { return /^retro-r\d+$/.test(p.id) && p.after_round >= 14 && p.board; }),
+     "every emitted retro point is round-keyed and names the board it was priced on (n=" + retro.length + ")");
+
   // WHAT STILL FAILS CLOSED — the one assert, both directions (non-vacuity).
   ok(core.lineage(prod, curApp, trans).ok, "ONE ASSERT: newest stored point == loaded board passes");
   var appW = clone(curApp); appW.board = "ffffffffffffffffffffffffffffffff";
