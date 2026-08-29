@@ -1300,6 +1300,97 @@ def sibling(ctx):
     """
     ctx.fault_point('sibling')
     SR = _load(ctx, 'sibling_repin', 'engine/rl_after/ingestion/sibling_repin.py')
+    _restore_build = _install_sibling_stash(ctx, SR)
+    try:
+        return _sibling_body(ctx, SR)
+    finally:
+        _restore_build()
+
+
+def _install_sibling_stash(ctx, SR):
+    """THE SIBLING PROOF STASH (shrink S8, the sibling half of S13; owner word 2026-08-29).
+
+    The sibling reconcile is 54% of a landing's wall-clock (2,171s) and the combined-build landing
+    rebuilt it FOUR times to the same identity, three of them deleted byte-exact by aborts. What
+    costs the time is `build_sibling` — two full engine builds (the balanced/strict present-lens
+    board and the config-of-record forward view) that WRITE NOTHING and return a derived-identity
+    dict. That is a pure derivation, exactly the shape slice 1 caches.
+
+    SO ONLY THE DERIVATION IS CACHED. Everything that writes still runs for real, every flight: the
+    plan, the overlay validation, the release-contract self-seal, the atomic replacement, the
+    journal, the rollback ladder and the verify-after. This is deliberate — the owner was told that
+    the sibling step writing and committing is what makes it a different risk shape from slice 1,
+    and the answer is to keep the cache on the side of the step that only computes.
+
+    THE PATCH IS SCOPED TO THIS STEP. `SR.build_sibling` is restored in a finally, so the gate's
+    `check`, the CLI and every other caller of the module are untouched by landing policy.
+
+    THREE THINGS MUST HOLD FOR A HIT TO BE USED, and any one failing rebuilds:
+      * not a selftest and not a fault run (those exist to exercise the real machinery);
+      * the key — every PIN_MEASURERS identity measured LIVE at this point in the transaction;
+      * the entry's OWN recorded provenance (source_store_md5 / fv_identity / rl_model_md5, which
+        `build_sibling` derives from the artifacts it actually built) still equals what is live.
+    The third is the one that matters: it is an independent check against the key, so a key that
+    somehow collided or an entry that outlived its inputs is caught by the artifact's own record
+    rather than by trust in the key alone.
+    """
+    _orig = SR.build_sibling
+    if ctx.opts.selftest or ctx.fault:
+        return lambda: None
+
+    from tools.landing import proofstash as PS
+    key = PS.sibling_key(ctx)
+
+    def _live():
+        return {'store': PIN_MEASURERS['store'](ctx),
+                'fv': PIN_MEASURERS['fv'](ctx),
+                'rl_model': PIN_MEASURERS['rl_model'](ctx)}
+
+    def _stashed_build(repo_root, with_forward=True):
+        if not with_forward:
+            return _orig(repo_root, with_forward=with_forward)   # not the shape that is cached
+        hit = PS.load('sibling', key)
+        if hit:
+            try:
+                sib = json.load(open(hit[0]['sib'], encoding='utf-8'))
+            except Exception:
+                sib = None
+            if sib is not None:
+                live = _live()
+                same = (sib.get('source_store_md5') == live['store'] and
+                        sib.get('fv_identity') == live['fv'] and
+                        sib.get('rl_model_md5') == live['rl_model'])
+                if same:
+                    ctx.log('sibling       PROVEN EARLIER — stash key %s: balanced %s, forward %s; '
+                            'the entry\'s own store/fv/rl_model provenance matches live, nothing '
+                            'rebuilt (S8)'
+                            % (key, str(sib.get('board_md5'))[:12],
+                               str(sib.get('forward_board_md5'))[:12]))
+                    return sib
+                ctx.log('sibling       stash entry DISCARDED — its recorded provenance no longer '
+                        'matches live (store/fv/rl_model); the full build runs.')
+        sib = _orig(repo_root, with_forward=with_forward)
+        try:
+            tmp = os.path.join(ctx.work_dir, 'sibling_proof.json')
+            with open(tmp, 'w', encoding='utf-8') as fh:
+                json.dump(sib, fh, sort_keys=True)
+            PS.save('sibling', key, {'sib': tmp},
+                    {'board_md5': sib.get('board_md5'),
+                     'forward_board_md5': sib.get('forward_board_md5'),
+                     'source_store_md5': sib.get('source_store_md5')})
+            ctx.log('sibling       proof stashed under key %s' % key)
+        except Exception as exc:                      # a stash failure must never fail a landing
+            ctx.log('sibling       proof NOT stashed (%s) — the landing is unaffected.' % exc)
+        return sib
+
+    SR.build_sibling = _stashed_build
+
+    def _restore():
+        SR.build_sibling = _orig
+    return _restore
+
+
+def _sibling_body(ctx, SR):
     sr = SR.SiblingRepin(ctx.root)
     before = sr.verify()
     ctx.log('verify BEFORE : ok=%s balanced=%s fails=%d'

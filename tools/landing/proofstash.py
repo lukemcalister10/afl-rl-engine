@@ -59,6 +59,27 @@ def build_key(ctx):
     return hashlib.sha256(json.dumps(basis, sort_keys=True).encode()).hexdigest()[:24]
 
 
+def sibling_key(ctx):
+    """The input-identity key for a SIBLING build proof (shrink S8, "S13 slice 2").
+
+    Unlike `build_key`, this measures EVERY PIN_MEASURERS identity LIVE, including the ones the act
+    declares as moving. That is not a loosening, it is the opposite: the sibling step runs after the
+    board, store and contract are already committed, so at that moment every input the sibling build
+    reads is at its final value and can be measured rather than assumed. The balanced board itself is
+    a DELEGATED pin, not a PIN_MEASURERS entry, so the sibling's own OUTPUT is correctly absent from
+    its own key.
+    """
+    from tools.landing import steps as ST
+    inputs = {}
+    for k, fn in ST.PIN_MEASURERS.items():
+        try:
+            inputs[k] = str(fn(ctx))
+        except Exception:
+            inputs[k] = '<unmeasurable>'
+    basis = {'inputs': inputs, 'act': ctx.spec.get('act'), 'act_kind': ctx.spec.get('act_kind')}
+    return hashlib.sha256(json.dumps(basis, sort_keys=True).encode()).hexdigest()[:24]
+
+
 def save(kind, key, files, facts):
     """files: {name: absolute_source_path}. Copies each into the entry and records its md5."""
     ent = os.path.join(stash_dir(), '%s_%s' % (kind, key))

@@ -152,6 +152,17 @@ def run_preflight(root, spec_path, out=print):
                ('FAIL', ([l for l in o.splitlines() if 'FAIL' in l] or [o.strip()[:200]])[0][:200])
     check('movers_ui', _movers)
 
+    # 8a · THE PROOF STASH'S OWN TESTS (shrink S8, 2026-08-29). The stash is the one instrument whose
+    #      purpose is to NOT run the thing it stands in for, and the lander selftest deliberately
+    #      disables it — so nothing else in the estate proves its decision boundary. If it is going to
+    #      be trusted to skip a 36-minute rebuild in the next few minutes, its own 23 assertions cost
+    #      a fraction of a second here.
+    def _stash():
+        rc, o = _run([sys.executable, 'tools/landing/test_proofstash.py'], root)
+        return ('PASS', 'proof-stash tests green') if rc == 0 else \
+               ('FAIL', ([l for l in o.splitlines() if 'FAIL' in l] or [o.strip()[:200]])[0][:200])
+    check('proof_stash', _stash)
+
     # 8b · CLEAN TREE, before the selftest instead of after it (shrink review S11, 2026-08-28).
     #      Step 0 asserts this too — but step 0 runs after the pre-transaction selftest (minutes),
     #      and two takes of the combined-build landing paid that price to discover dirt knowable
