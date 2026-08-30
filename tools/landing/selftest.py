@@ -814,6 +814,14 @@ def main(root=None, keep=False, only=None, evidence_dir=None, base=None):
                                    'INGEST_SCORE_APPLY': 'selftest-never-armed'},
                            'owner_word': 'SELF-TEST FIXTURE — no owner word exists or is claimed, '
                                          'and this flight stops before the advance.'}}
+            # THE FIXTURE FOLLOWS THE SEASON. `_synthetic_scores` builds the round AFTER the one the
+            # sandbox stands on, so once R24 is applied this fixture is round 25 — a FINALS week,
+            # which the spec validator requires to declare a column, a lineage entry and the clubs
+            # that played. It refused this fixture the first time the season reached that point,
+            # which is the validator working: a finals spec without a fixture would mark every player
+            # at a non-playing club as a DNP. The fixture fills those slots rather than the test
+            # pinning itself to a home-and-away round it will eventually outlive.
+            _finals_slots(spec, sb.path, sc['round'], 'the input-commit pincer')
             spec['prereg']['round_expected'] = {
                 'round': sc['round'], 'listed': counts['listed'], 'resolved': counts['resolved'],
                 'absent_dnp': counts['absent_dnp'], 'scores_sha256': sc['sha256'],
@@ -1161,6 +1169,38 @@ def main(root=None, keep=False, only=None, evidence_dir=None, base=None):
         print('\nsandbox KEPT at %s' % sb.path)
     return 0 if ok == len(results) else 1
 
+
+def _finals_slots(spec, sandbox_path, round_n, what):
+    """Fill the three slots a FINALS-week spec must carry, for a synthetic fixture.
+
+    A finals week holds the calendar round, so by the standing rule of 2026-07-28 it is an
+    out-of-round board move and the validator requires a column, a lineage entry and `clubs_played`.
+    A self-test fixture is not exempt from that — it drives the same validator the real act does —
+    and the clubs are read from the sandbox's own store so the fixture invents no club, exactly as
+    `_synthetic_scores` invents no player."""
+    from tools.landing.spec import HOME_AND_AWAY_ROUNDS
+    if int(round_n) <= HOME_AND_AWAY_ROUNDS:
+        return spec
+    clubs = []
+    try:
+        with open(os.path.join(sandbox_path, 'engine', 'rl_after', 'rl_model_data.json'),
+                  encoding='utf-8') as fh:
+            d = json.load(fh)
+        rows = d['players'] if isinstance(d, dict) and 'players' in d else d
+        clubs = sorted({r.get('afl_club') for r in rows if r.get('afl_club')})[:4]
+    except Exception:
+        clubs = []
+    if not clubs:
+        raise RuntimeError('the finals fixture could not read a club from the sandbox store; it '
+                           'refuses to invent one')
+    spec['round']['clubs_played'] = clubs
+    spec['column'] = {'id': 'selftest-finals-%d' % int(round_n),
+                      'label': 'SELF-TEST FIXTURE — %s at finals feed round %d' % (what, int(round_n)),
+                      'after_round': HOME_AND_AWAY_ROUNDS}
+    spec['lineage'] = {'doc': 'SELF-TEST FIXTURE', 'owner_ruling_id': ['SELFTEST_FIXTURE'],
+                       'owner_ruling': 'SELF-TEST FIXTURE — no owner ruling exists or is claimed.',
+                       'authority': 'self-test', 'invariants': {}}
+    return spec
 
 def _synthetic_scores(sandbox_path):
     """A SYNTHETIC owner score file for the round AFTER the one the sandbox stands on. Never data.
