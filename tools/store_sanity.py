@@ -16,7 +16,7 @@ establishes by looking, not by remembering. A guard that costs milliseconds is t
 between a correction that sticks and one that has to be made a fourth time.
 
 THE BAR: a season cannot contain more games than a season has. 24 home-and-away rounds plus a
-maximum of 4 finals = 28. The ceiling is deliberately generous — it is not trying to detect a
+maximum of 5 finals (FW1 / FW2 / SF / PF / GF, the owner's structure) = 29. The ceiling is deliberately generous — it is not trying to detect a
 player who missed a week, it is trying to make an IMPOSSIBLE row impossible to ignore. Historic
 seasons ran to 22 or 23 rounds, so a tighter per-year table would catch more; it would also be one
 more thing to maintain each season, and the failure this exists for is off by a factor of two.
@@ -28,8 +28,14 @@ import sys
 ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 STORE = os.path.join('engine', 'rl_after', 'rl_model_data.json')
 
-#: 24 home-and-away rounds + at most 4 finals. A season with more games than this did not happen.
-SEASON_GAMES_CEILING = 28
+#: 24 home-and-away rounds + at most 5 finals. A season with more games than this did not happen.
+#:
+#: THE FIVE IS THE OWNER'S FINALS STRUCTURE, NOT AN ASSUMPTION (2026-08-30, verbatim): "FW1 is 4
+#: teams playing / FW2 is 8 teams / SF is 4 teams / PF is 4 teams / GF is 2 teams". A club that
+#: enters at FW1 and reaches the Grand Final plays all five, so 24 + 5 = 29. This ceiling was 28 in
+#: its first draft, written against a four-week finals series I assumed rather than asked about —
+#: which would have red-flagged a legitimate 29-game season the first time one appeared.
+SEASON_GAMES_CEILING = 29
 
 
 def rows(root):
@@ -59,7 +65,7 @@ def main(argv=None):
     if argv and len(argv) > 1 and argv[1] == '--root':
         root = os.path.abspath(argv[2])
     bad = offenders(root)
-    print('STORE SANITY — a season cannot contain more than %d games (24 H&A + 4 finals)'
+    print('STORE SANITY — a season cannot contain more than %d games (24 H&A + 5 finals)'
           % SEASON_GAMES_CEILING)
     if not bad:
         n = sum(len(r.get('scoring') or []) for r in rows(root))
