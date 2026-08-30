@@ -36,6 +36,7 @@ transaction on a real build. Which is which is stated in the tally rather than b
 """
 
 import hashlib
+import io
 import json
 import os
 import shutil
@@ -721,6 +722,10 @@ def main(root=None, keep=False, only=None, evidence_dir=None, base=None):
             return _synthetic_recut(sb.path)
 
         recut_md5 = _stage_recut()
+        # MEASURED from the sandbox's own re-cut sheet, not pinned. The synthetic re-cut appends a
+        # byte to a notes cell, so it moves the md5 and nothing else — rows and injured-Y are
+        # whatever the tree carries, and the fixture must say so rather than assert last month's.
+        _recut_rows, _recut_y = _sheet_facts_from_tree(sb.path)
         for label, predicted_md5, want_ok in (('sheet_recut_wrong_prediction', '0' * 32, False),
                                               ('sheet_recut_writer', recut_md5, True)):
             if label != 'sheet_recut_wrong_prediction':
@@ -731,7 +736,8 @@ def main(root=None, keep=False, only=None, evidence_dir=None, base=None):
                 'prereg_lite': prereg_rel,
                 'owner_word': 'SELF-TEST FIXTURE — no owner word exists or is claimed.',
                 'disclosed_movers': 'nobody: this re-cut appends one byte to a notes cell.',
-                'predicted': {'sheet_md5': predicted_md5, 'sheet_rows': 219, 'sheet_injured_y': 35},
+                'predicted': {'sheet_md5': predicted_md5, 'sheet_rows': _recut_rows,
+                              'sheet_injured_y': _recut_y},
                 'provenance': 'SELF-TEST FIXTURE — sandbox only.'}
             # THE SPEC LIVES OUTSIDE THE SANDBOX. It is written for this case rather than committed
             # with the other fixtures, and an uncommitted file inside the tree is DIRT — which is
@@ -750,8 +756,8 @@ def main(root=None, keep=False, only=None, evidence_dir=None, base=None):
             if want_ok:
                 ok = (rc == 0 and report.get('ok') is True
                       and pins.get('sheet_md5') == recut_md5
-                      and int(pins.get('sheet_rows')) == 219
-                      and int(pins.get('sheet_injured_y')) == 35
+                      and int(pins.get('sheet_rows')) == _recut_rows
+                      and int(pins.get('sheet_injured_y')) == _recut_y
                       and (report.get('facts') or {}).get('sheet', {}).get('commit'))
                 record(label, ok, 'exit %s; the declaration now reads md5=%s rows=%s injured_y=%s; '
                                   'sheet commit %s; engine_head asserted UNMOVED'
@@ -1201,6 +1207,23 @@ def _finals_slots(spec, sandbox_path, round_n, what):
                        'owner_ruling': 'SELF-TEST FIXTURE — no owner ruling exists or is claimed.',
                        'authority': 'self-test', 'invariants': {}}
     return spec
+
+def _sheet_facts_from_tree(sandbox_path):
+    """(rows, injured_y) MEASURED from the sandbox's own sheet — never pinned as a literal.
+
+    This fixture hard-coded `sheet_injured_y: 35` and `sheet_rows: 219`, and the moment a real
+    re-cut moved the live sheet to 34 the self-test refused its own POSITIVE case: it predicted 35,
+    measured 34, and halted — correctly, by its own law that "the prereg-lite is corrected against
+    the tree, never the tree against the prereg-lite". The fixture was the thing that was wrong.
+    Process law P4: assert the relationship, never this month's number."""
+    import csv as _csv
+    p = os.path.join(sandbox_path, 'docs', 'owner_annotations', 'SITTER_2026_v1.csv')
+    with open(p, 'rb') as fh:
+        text = fh.read().decode('cp1252')
+    rows = [r for r in _csv.reader(io.StringIO(text)) if r]
+    hdr, body = rows[0], rows[1:]
+    ix = hdr.index('injured')
+    return len(body), sum(1 for r in body if r[ix] == 'Y')
 
 def _synthetic_scores(sandbox_path):
     """A SYNTHETIC owner score file for the round AFTER the one the sandbox stands on. Never data.
