@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_4692/sandbox
+  tree      : /tmp/landing_selftest_6616/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board f81dbcda220110ad0113ae0633b6c34e
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,12 +9,12 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-lever-5096 (pid 5096) — single writer for the shared workspace.
-base commit        c84cfad908cfd0b8320e2674d94dcda326ea1408
+build-lock: HELD by land-lever-7019 (pid 7019) — single writer for the shared workspace.
+base commit        3d16a23ce70fb9a50eccccdf1a14920cc14f8103
 board pin (before) f81dbcda220110ad0113ae0633b6c34e
 store pin (before) a9dec7e4785c6861a84f3beaae2f020e
 restore point      76 carrier(s) captured, 76 present on disk
-    [preflight OK  0.11s]
+    [preflight OK  0.09s]
 
 --- STEP 1/10  build_proofs   bare build, predicted identity, switch leg, day-0 ---
 build         rc=0 board=f81dbcda220110ad0113ae0633b6c34e  (0.0s)
@@ -59,10 +59,10 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.11s  OK
+    preflight          0.09s  OK
     build_proofs       0.01s  OK
     pins               0.02s  OK
     lineage            0.00s  OK
     contract           0.00s  FAIL
-    TOTAL              0.14s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_5096
+    TOTAL              0.12s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_7019

@@ -14,7 +14,7 @@
   "ok": false,
   "timings": [
     {
-      "seconds": 0.04,
+      "seconds": 0.05,
       "step": "preflight",
       "verdict": "FAIL"
     }

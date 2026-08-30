@@ -174,8 +174,38 @@ class RoundCatchup:
             for k, scores in seen.items():
                 if len(scores) > 1:
                     dups.append({'key': k, 'scores': sorted(scores)})
+            # ABSENCE IS SCOPED BY THE FIXTURE, exactly as the movers report scopes it. In a
+            # home-and-away round all 18 clubs play, `fixture_clubs` returns None, and this is the
+            # plain set difference it has always been. In a FINALS week only some clubs play, and an
+            # active player at a club that did not play has no football to miss: he is UNRECORDED,
+            # not absent-and-therefore-DNP. Counting him as a DNP here made this preflight report 712
+            # for FW1 against a prereg of 93, and the two numbers are measuring different things
+            # rather than disagreeing about one — which is why the halt was right and the fix belongs
+            # here rather than in the prediction.
+            #
+            # ONE READER, NOT TWO: the fixture comes from round_movers.fixture_clubs, the same
+            # function the report uses, so the count this step asserts and the count the report
+            # publishes cannot drift apart.
             listed_keys = set(seen)
-            absent = sorted(active_keys - listed_keys)
+            try:
+                from . import round_movers as _MV
+            except (ImportError, ValueError):
+                import round_movers as _MV  # type: ignore
+            _clubs = _MV.fixture_clubs(self.repo_root, round_n)
+            if _clubs is None:
+                absent = sorted(active_keys - listed_keys)
+            else:
+                _club_of = {r.get('key'): r.get('afl_club') for r in self._store_rows()} \
+                    if hasattr(self, '_store_rows') else None
+                if _club_of is None:
+                    import json as _json
+                    with open(os.path.join(self.repo_root, 'engine', 'rl_after',
+                                           'rl_model_data.json'), encoding='utf-8') as _fh:
+                        _d = _json.load(_fh)
+                    _rows = _d['players'] if isinstance(_d, dict) and 'players' in _d else _d
+                    _club_of = {r.get('key'): r.get('afl_club') for r in _rows}
+                absent = sorted(k for k in (active_keys - listed_keys)
+                                if _club_of.get(k) in _clubs)
             overrides_applied = [{'name': r.name, 'key': r.key, 'score': r.score, 'via': r.via}
                                  for r in resolved if r.via.startswith('owner-override')]
             triples = {ledger_key(r.stable_player_id, self.season, round_n) for r in resolved}

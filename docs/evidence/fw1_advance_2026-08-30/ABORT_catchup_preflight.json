@@ -1,7 +1,7 @@
 {
   "byte_exact": true,
   "commits_rewound": [],
-  "error": "ORDER 42 WILL HALT THE ADVANCE. 1 player(s) marked injured=Y on the pinned owner sheet appear in the score file: ['jack-viney']. The advance increments games_2026 for every listed player, so the sheet and the store would disagree and the board regen halts INSIDE the staged transaction. The remedy is the owner-worded re-cut (R23 runbook \u00a74 H2 / ERRATUM E7), declared as spec.sheet with its prereg-lite \u2014 not a weakened guard.",
+  "error": "THE PREFLIGHT DOES NOT MATCH THE PREREG:\n    absent_dnp: prereg 93, preflight 712\nThe prediction is an INPUT to this lander; a landing that accepted its own preflight as the answer would assert nothing at all.",
   "failed_step": "catchup_preflight",
   "restore_point": {
     "data/expected_boot.json": "530ac275f5d56edbb41e3468f8e996d7",
@@ -10,10 +10,10 @@
     "data/rl_build/rl_app_data.json": "f81dbcda220110ad0113ae0633b6c34e",
     "data/rl_build/rl_app_data.json.srcmd5": "be84fa93abdb7cfa9b444963476dab03",
     "data/season_state.json": "a59358138884adba1063f27228845fc1",
-    "data/sheet_pins.json": "a4ee39f7ec80ee6b6172aa28e0c17aae",
+    "data/sheet_pins.json": "226b73ff64e6a6967103bfee788848a0",
     "docs/STATE.md": "26f555342db67a4889ecefcf8914c090",
     "docs/evidence/final_candidate_2026-08-19/DAY0_CP.json": "72d583f1261357cd88b85e0c1133df79",
-    "docs/owner_annotations/SITTER_2026_v1.csv": "21361291f26d35108b88f92f885c5063",
+    "docs/owner_annotations/SITTER_2026_v1.csv": "61ef3e61a685909784c1d6eb23859788",
     "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/journal.jsonl": "a46befc7100f100bed9155415f20979c",
     "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/manifest.json": "23c861fc7a85ec058fc8a3f156d25121",
     "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/board_view_public": "12c5c49dd5767ad69a20b8cf3d46916f",

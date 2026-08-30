@@ -2,8 +2,8 @@
   "abort": {
     "byte_exact": true,
     "commits_rewound": [],
-    "error": "a sheet re-cut is DECLARED and the declaration already describes the sheet. A re-cut that moves no pin is a re-cut nobody needed to authorise.",
-    "failed_step": "sheet",
+    "error": "THE PREFLIGHT DOES NOT MATCH THE PREREG:\n    absent_dnp: prereg 93, preflight 712\nThe prediction is an INPUT to this lander; a landing that accepted its own preflight as the answer would assert nothing at all.",
+    "failed_step": "catchup_preflight",
     "restore_point": {
       "data/expected_boot.json": "530ac275f5d56edbb41e3468f8e996d7",
       "data/release_contract.json": "64c2f478110517df1244d13e246d27ed",
@@ -285,7 +285,7 @@
     "restored": []
   },
   "commits": [],
-  "error": "a sheet re-cut is DECLARED and the declaration already describes the sheet. A re-cut that moves no pin is a re-cut nobody needed to authorise.",
+  "error": "THE PREFLIGHT DOES NOT MATCH THE PREREG:\n    absent_dnp: prereg 93, preflight 712\nThe prediction is an INPUT to this lander; a landing that accepted its own preflight as the answer would assert nothing at all.",
   "facts": {
     "base": {
       "carriers": {
@@ -566,7 +566,7 @@
         "ui/data/movers_transition.js": "2fe0edca98be0e542820155eac061e1d",
         "ui/data/ownership.js": "c1bf5f269b0cd146391960dfe3e1afbc"
       },
-      "commit": "e870539564ab4fb9a1cc5477fcf99959ae864b08",
+      "commit": "fa78f754020d7ce8f22b9595d459744905ade680",
       "expected_boot": {
         "as_of_round": 24,
         "balanced_board_md5": "cdae239d5865be9463c4ef461daf0a35",
@@ -589,23 +589,55 @@
       }
     },
     "preflight": {
-      "base_commit": "e870539564ab4fb9a1cc5477fcf99959ae864b08",
+      "base_commit": "fa78f754020d7ce8f22b9595d459744905ade680",
       "board_before": "f81dbcda220110ad0113ae0633b6c34e",
       "carriers_captured": 276,
-      "lock": "land-round-4692"
+      "lock": "land-round-6616"
+    },
+    "scores": {
+      "bytes": 1562,
+      "md5": "e8ba891be3a1653dacada06256f169c3",
+      "overrides_declared": [
+        "Will Hayes"
+      ],
+      "overrides_in_file": [
+        "Bailey Williams",
+        "Bailey Williams WBD",
+        "Callum Brown",
+        "Will Hayes"
+      ],
+      "scores": "scores/FW1.csv",
+      "sha256": "d86f976b843d77537853e337ab32673fa61837bd2f6a0df3adf89d5db1f3a85b"
+    },
+    "sheet": {
+      "commit": null,
+      "recut": false,
+      "sheet_injured_y": 34,
+      "sheet_md5": "61ef3e61a685909784c1d6eb23859788",
+      "sheet_rows": 219
     }
   },
-  "failed_step": "sheet",
+  "failed_step": "catchup_preflight",
   "ok": false,
   "timings": [
     {
-      "seconds": 0.14,
+      "seconds": 0.13,
       "step": "preflight",
       "verdict": "OK"
     },
     {
       "seconds": 0.0,
       "step": "sheet",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.0,
+      "step": "scores",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.11,
+      "step": "catchup_preflight",
       "verdict": "FAIL"
     }
   ]

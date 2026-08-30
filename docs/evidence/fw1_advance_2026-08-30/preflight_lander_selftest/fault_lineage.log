@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the synthetic board move
-  tree      : /tmp/landing_selftest_4692/sandbox
+  tree      : /tmp/landing_selftest_6616/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 89bf05a99b8bb439e7d1454312228d38
   mode      : APPLY (SELFTEST) builder=selftest-moved
@@ -8,12 +8,12 @@ LAND LEVER-LANDING — SELF-TEST — the synthetic board move
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-lever-5072 (pid 5072) — single writer for the shared workspace.
-base commit        c84cfad908cfd0b8320e2674d94dcda326ea1408
+build-lock: HELD by land-lever-6995 (pid 6995) — single writer for the shared workspace.
+base commit        3d16a23ce70fb9a50eccccdf1a14920cc14f8103
 board pin (before) f81dbcda220110ad0113ae0633b6c34e
 store pin (before) a9dec7e4785c6861a84f3beaae2f020e
 restore point      76 carrier(s) captured, 76 present on disk
-    [preflight OK  0.10s]
+    [preflight OK  0.08s]
 
 --- STEP 1/10  build_proofs   bare build, predicted identity, switch leg, day-0 ---
 build         rc=0 board=89bf05a99b8bb439e7d1454312228d38  (0.0s)
@@ -38,7 +38,7 @@ WRITTEN and re-read.
 *** FAULT INJECTED at step 'lineage': chain_broken — the register tail names a board no movers report can bridge
 column        selftest-synthetic-move registered (dry_run=False)
 ASSERTED: the newest stored point is this column, naming the live board 89bf05a99b8bb439e7d1454312228d38
-    [lineage FAILED  0.30s]
+    [lineage FAILED  0.29s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'lineage'
@@ -74,9 +74,9 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.10s  OK
+    preflight          0.08s  OK
     build_proofs       0.01s  OK
     pins               0.02s  OK
-    lineage            0.30s  FAIL
-    TOTAL              0.43s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_5072
+    lineage            0.29s  FAIL
+    TOTAL              0.40s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_6995

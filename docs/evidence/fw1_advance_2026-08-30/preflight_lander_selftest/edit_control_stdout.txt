@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND STORE-EDIT — SELF-TEST — the surgical store edit
-  tree      : /tmp/landing_selftest_4692/sandbox
+  tree      : /tmp/landing_selftest_6616/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 89bf05a99b8bb439e7d1454312228d38
   mode      : APPLY (SELFTEST) builder=selftest-moved
@@ -8,8 +8,8 @@ LAND STORE-EDIT — SELF-TEST — the surgical store edit
 
 --- STEP 0/11  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-edit-6211 (pid 6211) — single writer for the shared workspace.
-base commit        c84cfad908cfd0b8320e2674d94dcda326ea1408
+build-lock: HELD by land-edit-8133 (pid 8133) — single writer for the shared workspace.
+base commit        3d16a23ce70fb9a50eccccdf1a14920cc14f8103
 board pin (before) f81dbcda220110ad0113ae0633b6c34e
 store pin (before) a9dec7e4785c6861a84f3beaae2f020e
 restore point      77 carrier(s) captured, 77 present on disk
@@ -26,7 +26,7 @@ WRITTEN and re-read: 1 row(s) edited, 2650 rows in the store, every other row un
 season clock  re-derived from the edited store by season_state.derive (the sole deriver)
     source_store_md5  a9dec7e4785c -> add18779b2e8
     every derived VALUE asserted unchanged (10 field(s) checked); WRITTEN and re-read.
-    [store_edit OK  0.18s]
+    [store_edit OK  0.20s]
 
 --- STEP 2/11  build_proofs   bare build, predicted identity, switch leg, day-0 ---
 build         rc=0 board=89bf05a99b8bb439e7d1454312228d38  (0.0s)
@@ -61,7 +61,7 @@ chain OK: register tail destination == this entry's source on board and store
 append-only OK: 19 prior entries byte-verbatim; top-level baseline 06d8af60b679a12db07c064c60c065f9 / v2.11-present-lens-baseline UNMOVED
 MOVED by this transition: ['board', 'store'] (of 11 identities)
 re-read OK: round-trips at indent=1; prior entries still byte-verbatim.
-    [lineage OK  0.19s]
+    [lineage OK  0.20s]
 
 --- STEP 5/11  contract       restamp_dynamic + the bake-lane repin + check ---
 contract seal self-consistent before the act: 86c597e01e67
@@ -81,7 +81,7 @@ RE-STAMPED, re-read, and release_contract.py check PASSES.
 
 --- STEP 6/11  sibling        the balanced sibling, rebuilt and reconciled if moved ---
 *** FAULT INJECTED at step 'sibling': sidecar_corrupt — the sibling provenance sidecar is unreadable
-    [sibling FAILED  0.04s]
+    [sibling FAILED  0.05s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'sibling'
@@ -91,7 +91,7 @@ LANDING ABORTED AT STEP 'sibling'
 carriers that moved before the failure: 13
     data/expected_boot.json                                          530ac275f5d5 -> bdd4fbbb8f44
     data/release_contract.json                                       64c2f4781105 -> 807d44de802e
-    data/release_lineage.json                                        4c641ddbf6b6 -> 113869486f4d
+    data/release_lineage.json                                        4c641ddbf6b6 -> c36b6f5d96a5
     data/rl_build/rl_app_data.json                                   f81dbcda2201 -> 89bf05a99b8b
     data/rl_build/rl_app_data.json.srcmd5                            be84fa93abdb -> 9d7d9a479416
     data/season_state.json                                           a59358138884 -> c4aa0690a75e
@@ -126,11 +126,11 @@ improvised manual landing under pressure.
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
     preflight          0.07s  OK
-    store_edit         0.18s  OK
+    store_edit         0.20s  OK
     build_proofs       0.06s  OK
     pins               0.02s  OK
-    lineage            0.19s  OK
+    lineage            0.20s  OK
     contract           0.09s  OK
-    sibling            0.04s  FAIL
-    TOTAL              0.65s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_6211
+    sibling            0.05s  FAIL
+    TOTAL              0.69s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_8133

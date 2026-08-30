@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND ROUND-ADVANCE — SELF-TEST — the synthetic sheet re-cut
-  tree      : /tmp/landing_selftest_4692/sandbox
+  tree      : /tmp/landing_selftest_6616/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board f81dbcda220110ad0113ae0633b6c34e
   mode      : APPLY (SELFTEST) builder=selftest
@@ -12,12 +12,12 @@ DECLARED DIRT (2 path(s), and ONLY these): owner inputs this act is contracted t
     docs/owner_annotations/SITTER_2026_v1.csv                  (committed by the `sheet` step)
     docs/evidence/landing_selftest/SELFTEST_PREREG_LITE.md     (committed by the `sheet` step)
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-round-5805 (pid 5805) — single writer for the shared workspace.
-base commit        c84cfad908cfd0b8320e2674d94dcda326ea1408
+build-lock: HELD by land-round-7728 (pid 7728) — single writer for the shared workspace.
+base commit        3d16a23ce70fb9a50eccccdf1a14920cc14f8103
 board pin (before) f81dbcda220110ad0113ae0633b6c34e
 store pin (before) a9dec7e4785c6861a84f3beaae2f020e
 restore point      128 carrier(s) captured, 128 present on disk
-    [preflight OK  0.14s]
+    [preflight OK  0.12s]
 
 --- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
 sheet         docs/owner_annotations/SITTER_2026_v1.csv
@@ -33,9 +33,9 @@ explicit paths (3):
     data/sheet_pins.json
     docs/evidence/landing_selftest/SELFTEST_PREREG_LITE.md
     docs/owner_annotations/SITTER_2026_v1.csv
-committed c62d1971f6ce
+committed 9ac9432a4f55
 engine_head UNMOVED across the sheet commit: 17243c16277842e0a30470cfbdb5b196  (the 3a property, asserted)
-    [sheet OK  0.14s]
+    [sheet OK  0.20s]
 
 --- STEP 2/14  scores         the owner's score file and the bindings, asserted ---
 no scores file declared — this act is a REHEARSAL and applies nothing.
@@ -82,7 +82,7 @@ RE-STAMPED, re-read, and release_contract.py check PASSES.
 --- STEP 8/14  sibling        the balanced sibling: verify (the repin ran in-txn) ---
 verify BEFORE : ok=True balanced=cdae239d5865 fails=0
 the sibling is CURRENT — nothing to reconcile, and this step writes nothing.
-    [sibling OK  0.15s]
+    [sibling OK  0.14s]
 
 --- STEP 9/14  ui             ALL SIX UI writers, and the identity read back out ---
 BEFORE  working e5a407c709c1e6e33631355352b9f8f3  release-block=True
@@ -106,12 +106,12 @@ WRITER 4/6: ui/tools/rebuild_movers_derived.py  (points / values / model_changes
   drift guard: derived blocks OK — committed == rebuilt (4449156 bytes, latest report R24)
   shipped model_changes == live-derived: 16 boundar(ies), EQUAL  (the F-10 predicate holds)
 WRITER 5/6: ui/tools/ingest_inputs.py --mirror-only  (the ownership mirror, re-pinned to the landed board + store)
-  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_4692/sandbox/ui/data/ownership.js
+  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_6616/sandbox/ui/data/ownership.js
   MIRROR-ONLY    — the club-valuation bundle was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
   drift guard: MIRROR DRIFT GUARD — ui/data/ownership.js is byte-identical to what this tree projects (74727 bytes).
   mirror pin == the landed identity: board f81dbcda store a9dec7e4 R24, 804 player(s) mirrored (pin() would ACTIVATE it)
 WRITER 6/6: ui/tools/ingest_inputs.py --clubs-only  (the picks bundle, re-stamped to the landed board + store)
-  CLEAN INGEST — 240 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: /tmp/landing_selftest_4692/sandbox/ui/data/club_valuation.js
+  CLEAN INGEST — 240 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: /tmp/landing_selftest_6616/sandbox/ui/data/club_valuation.js
   CLUBS-ONLY     — the ownership mirror was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
   drift guard: PICKS DRIFT GUARD — ui/data/club_valuation.js is byte-identical to what this tree projects (58319 bytes).
   picks stamp == the landed identity: board f81dbcda store a9dec7e4 R24, 240 pick(s) priced off 1c3b22d1 (pin() would ACCEPT it)
@@ -128,7 +128,7 @@ AFTER   picks  9d3dc5e07d722b51f37a0278ee5b6166  UNMOVED (neither the board, the
   stamp.balanced_board_md5   cdae239d5865be9463c4ef461daf0a35   OK
   stamp.asOfRound            24                                 OK
 THE HTML APP'S EMBEDDED BOARD IDENTITY IS f81dbcda220110ad0113ae0633b6c34e. All six writers ran; the release block is back, the reader can see the transition that produced this board, the ownership mirror is pinned to it rather than to the store it replaced, and the pick surface is stamped to it rather than to the board before it.
-    [ui OK  2.61s]
+    [ui OK  2.69s]
     build-lock: RELEASED after 'ui' — the remaining steps write nothing and the one gate that builds takes the lock itself.
 
 --- STEP 10/14  movers_page    the owner's movers page, through the frozen template ---
@@ -146,17 +146,17 @@ wrote docs/evidence/landing_selftest/MOVERS_R24.html  (193796 bytes, 804 rows, m
     [movers_page OK  0.14s]
 
 --- STEP 11/14  state          docs/STATE.md regenerated from the carriers (3c) ---
-state: docs/STATE.md md5 4581ccd0718d21bdc8a2029806a020fa (moved); regeneration verified
-    [state OK  0.16s]
+state: docs/STATE.md md5 c62c9b4a9189148891b17168eadf377c (moved); regeneration verified
+    [state OK  0.17s]
 
 --- STEP 12/14  gates          the landing gate set, verdicts off exit codes ---
   release_manifest_check   PASS   exit=0  (0.1s)
   release_contract_check   PASS   exit=0  (0.1s)
-    [gates OK  0.15s]
+    [gates OK  0.16s]
 
 --- STEP 13/14  claims         emit the claims file and verify it against the tree ---
 VERDICT: GREEN — every claim recomputed and held
-    [claims OK  0.27s]
+    [claims OK  0.28s]
 
 --- STEP 14/14  commit         ONE commit, explicit paths only ---
 explicit paths (8):
@@ -168,29 +168,29 @@ explicit paths (8):
     docs/evidence/landing_selftest/gate_release_contract_check.txt
     docs/evidence/landing_selftest/gate_release_manifest_check.txt
     ui/data/movers.js
-committed 125c1a604eaf
-    [commit OK  0.39s]
+committed 45740a9a1e02
+    [commit OK  0.24s]
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.14s  OK
-    sheet              0.14s  OK
+    preflight          0.12s  OK
+    sheet              0.20s  OK
     scores             0.00s  OK
     catchup_preflight     0.00s  OK
     advance            0.01s  OK
     generator_sync     0.01s  OK
     day0               0.00s  OK
     contract           0.09s  OK
-    sibling            0.15s  OK
-    ui                 2.61s  OK
+    sibling            0.14s  OK
+    ui                 2.69s  OK
     movers_page        0.14s  OK
-    state              0.16s  OK
-    gates              0.15s  OK
-    claims             0.27s  OK
-    commit             0.39s  OK
-    TOTAL              4.26s
+    state              0.17s  OK
+    gates              0.16s  OK
+    claims             0.28s  OK
+    commit             0.24s  OK
+    TOTAL              4.25s
 
 ======================================================================================================
 LANDING COMPLETE — every step's postcondition held.
 SOAK: hand-verification stands until the owner's word per act type (G3.iv).
 ======================================================================================================
-work dir discarded (the landing completed): /tmp/landing_work_5805
+work dir discarded (the landing completed): /tmp/landing_work_7728
