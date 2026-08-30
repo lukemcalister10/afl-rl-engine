@@ -11,8 +11,8 @@ DECLARED DIRT (2 path(s), and ONLY these): owner inputs this act is contracted t
     scores/FW1.csv                                             (committed by the `catchup_preflight` step)
     engine/rl_after/ingestion/catchup_identity_overrides.json  (committed by the `catchup_preflight` step)
 RL_/PAR_ environment  RL_VENV
-build-lock: HELD by land-round-6616 (pid 6616) — single writer for the shared workspace.
-base commit        fa78f754020d7ce8f22b9595d459744905ade680
+build-lock: HELD by land-round-8327 (pid 8327) — single writer for the shared workspace.
+base commit        04224206039bc3b22bc38857ea5063166a29d161
 board pin (before) f81dbcda220110ad0113ae0633b6c34e
 store pin (before) a9dec7e4785c6861a84f3beaae2f020e
 restore point      276 carrier(s) captured, 276 present on disk
@@ -38,25 +38,64 @@ scores file   scores/FW1.csv  (1562 bytes)
 injured=Y players listed in R25: 0 []
   ================ CATCH-UP PREFLIGHT ================
     season 2026 · 1 round(s) · identity overrides: Bailey Williams, Bailey Williams WBD, Callum Brown, Will Hayes
-    R25  enc=utf-8     listed/played=92   resolved=92   listed-zero=0   absent/DNP=712   sha256 d86f976b843d
+    R25  enc=utf-8     listed/played=92   resolved=92   listed-zero=0   absent/DNP=93    sha256 d86f976b843d
           identity override: Will Hayes             -> will-hayes-b           (score 27, owner-override:map_all)
     PREFLIGHT CLEAN — every name resolves to a stable identity; no duplicate/ambiguous.
   ===================================================
   
   About to apply rounds [25] — each as its own sequential transaction, committed in order.
   NOT APPROVED — nothing applied. Re-run with --approve (or answer `yes`).
-preflight counts, MEASURED: {"absent_dnp": 712, "encoding": "utf-8", "listed": 92, "listed_zero": 0, "resolved": 92, "sha256": "d86f976b843d"}
-    [catchup_preflight FAILED  0.11s]
+preflight counts, MEASURED: {"absent_dnp": 93, "encoding": "utf-8", "listed": 92, "listed_zero": 0, "resolved": 92, "sha256": "d86f976b843d"}
+PREREG MET: listed/resolved/absent-DNP and the score file sha256 all as predicted.
+explicit paths (2):
+    engine/rl_after/ingestion/catchup_identity_overrides.json
+    scores/FW1.csv
+NOTHING TO COMMIT: every named path is already committed at this content. The inputs of record are in the tree, which is what this commit exists to ensure; no empty commit is manufactured to say so.
+    [catchup_preflight OK  0.16s]
+
+--- STEP 4/14  advance        THE ARMED CATCH-UP — ADVANCE-REPIN runs inside it ---
+ARMED BY OWNER WORD (law 10c): Explicit word given
+  arming both halves for this run only, no code edit: INGEST_SCORE_APPLY=<token> INGEST_SCORE_APPLY_ARMED=1
+  ================ CATCH-UP PREFLIGHT ================
+    season 2026 · 1 round(s) · identity overrides: Bailey Williams, Bailey Williams WBD, Callum Brown, Will Hayes
+    R25  enc=utf-8     listed/played=92   resolved=92   listed-zero=0   absent/DNP=93    sha256 d86f976b843d
+          identity override: Will Hayes             -> will-hayes-b           (score 27, owner-override:map_all)
+    PREFLIGHT CLEAN — every name resolves to a stable identity; no duplicate/ambiguous.
+  ===================================================
+  
+  About to apply rounds [25] — each as its own sequential transaction, committed in order.
+  round_entry: FAIL — StagedValidationError: STAGED validation failed:
+    - staged season_state as_of_round 24 != round 25 (stale round)
+    - staged expected_boot as_of_round 24 != round 25 (boot manifest did not advance)
+    - staged release_contract as_of_round 24 != round 25 (stale contract)
+    - staged contract season_metadata.as_of_round != round 25 (artifacts on different rounds)
+armed run     exit=2  (2743.4s)
+    [advance FAILED  2743.42s]
 
 ======================================================================================================
-LANDING ABORTED AT STEP 'catchup_preflight'
+LANDING ABORTED AT STEP 'advance'
 ======================================================================================================
-  THE PREFLIGHT DOES NOT MATCH THE PREREG:
-      absent_dnp: prereg 93, preflight 712
-  The prediction is an INPUT to this lander; a landing that accepted its own preflight as the answer would assert nothing at all.
+  THE ARMED ADVANCE DID NOT COMPLETE (exit 2). Exit 3 = the store-write gate was not armed; 4 = an incomplete transaction is open (round_entry recover); 6 = finalization incomplete (round_entry finalize --round 25). The staged transaction rolls itself back; this lander then restores every carrier.
+  ================ CATCH-UP PREFLIGHT ================
+    season 2026 · 1 round(s) · identity overrides: Bailey Williams, Bailey Williams WBD, Callum Brown, Will Hayes
+    R25  enc=utf-8     listed/played=92   resolved=92   listed-zero=0   absent/DNP=93    sha256 d86f976b843d
+          identity override: Will Hayes             -> will-hayes-b           (score 27, owner-override:map_all)
+    PREFLIGHT CLEAN — every name resolves to a stable identity; no duplicate/ambiguous.
+  ===================================================
+  
+  About to apply rounds [25] — each as its own sequential transaction, committed in order.
+  round_entry: FAIL — StagedValidationError: STAGED validation failed:
+    - staged season_state as_of_round 24 != round 25 (stale round)
+    - staged expected_boot as_of_round 24 != round 25 (boot manifest did not advance)
+    - staged release_contract as_of_round 24 != round 25 (stale contract)
+    - staged contract season_metadata.as_of_round != round 25 (artifacts on different rounds)
 
-carriers that moved before the failure: 0
-RESTORING 0 carrier(s):
+carriers that moved before the failure: 2
+    engine/rl_after/ingestion/.weekly_txn/txn_catchup_r25/journal.jsonl ABSENT -> e183997fbd63
+    engine/rl_after/ingestion/.weekly_txn/txn_catchup_r25/manifest.json ABSENT -> 04da2aee216c
+RESTORING 2 carrier(s):
+    delete   engine/rl_after/ingestion/.weekly_txn/txn_catchup_r25/journal.jsonl
+    delete   engine/rl_after/ingestion/.weekly_txn/txn_catchup_r25/manifest.json
 
 ABORT PROOF: every carrier is BYTE-EXACT to the identity captured at step 0.
 
@@ -69,6 +108,7 @@ improvised manual landing under pressure.
     preflight          0.13s  OK
     sheet              0.00s  OK
     scores             0.00s  OK
-    catchup_preflight     0.11s  FAIL
-    TOTAL              0.24s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_6616
+    catchup_preflight     0.16s  OK
+    advance         2743.42s  FAIL
+    TOTAL           2743.71s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_8327

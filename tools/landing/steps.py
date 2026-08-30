@@ -102,6 +102,7 @@ DELEGATED_PINS = {
 # class. That table is only honest while it equals what THIS file actually filters out, so the
 # relationship is asserted here, at import, rather than each side carrying this month's list.
 from . import spec as _SPEC_TABLES
+from .spec import HOME_AND_AWAY_ROUNDS
 assert set(_SPEC_TABLES.NO_WRITER_IDENTITIES) == \
        set(_SPEC_TABLES.TRACKED_IDENTITIES) - set(PIN_MEASURERS) - set(DELEGATED_PINS), \
     ('spec.NO_WRITER_IDENTITIES has drifted from steps.PIN_MEASURERS/DELEGATED_PINS — update the '
@@ -2726,9 +2727,19 @@ def advance(ctx):
     if str(boot.get('board')) != board_now or str(boot.get('store')) != store_now:
         raise StepError('expected_boot does not name the tree the advance produced (board %s/%s, '
                         'store %s/%s)' % (boot.get('board'), board_now, boot.get('store'), store_now))
-    if int(boot.get('as_of_round')) != n:
-        raise StepError('expected_boot.as_of_round is %s after an advance to round %d'
-                        % (boot.get('as_of_round'), n))
+    # THE CALENDAR ROUND, which equals the feed round for every home-and-away advance and does NOT
+    # for a finals week. Feed rounds 25-29 are ledger keys; `as_of_round` holds at 24 so a
+    # non-finalist's completed season is untouched. Asserting `== n` here would demand the advance
+    # the hold exists to prevent — and, worse, would pass silently if the hold ever stopped working,
+    # because the two numbers agree on every ordinary round.
+    _cal = min(n, HOME_AND_AWAY_ROUNDS)
+    if int(boot.get('as_of_round')) != _cal:
+        raise StepError('expected_boot.as_of_round is %s after an advance to feed round %d '
+                        '(the calendar round for this act is %d)'
+                        % (boot.get('as_of_round'), n, _cal))
+    if n > HOME_AND_AWAY_ROUNDS and int(boot.get('as_of_round')) != HOME_AND_AWAY_ROUNDS:
+        raise StepError('a FINALS week must HOLD the calendar round at %d; expected_boot says %s'
+                        % (HOME_AND_AWAY_ROUNDS, boot.get('as_of_round')))
     season = json.load(open(_p(ctx, 'data', 'season_state.json'), encoding='utf-8'))
     if int(season.get('as_of_round')) != n:
         raise StepError('season_state.as_of_round is %s after an advance to round %d'

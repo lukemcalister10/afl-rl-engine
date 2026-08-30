@@ -1,3 +1,5 @@
+$ python3 tools/round_entry/round_entry.py catchup --file 25=scores/FW1.csv --approve
+
 ================ CATCH-UP PREFLIGHT ================
   season 2026 · 1 round(s) · identity overrides: Bailey Williams, Bailey Williams WBD, Callum Brown, Will Hayes
   R25  enc=utf-8     listed/played=92   resolved=92   listed-zero=0   absent/DNP=93    sha256 d86f976b843d
@@ -6,4 +8,10 @@
 ===================================================
 
 About to apply rounds [25] — each as its own sequential transaction, committed in order.
-NOT APPROVED — nothing applied. Re-run with --approve (or answer `yes`).
+round_entry: FAIL — StagedValidationError: STAGED validation failed:
+  - staged season_state as_of_round 24 != round 25 (stale round)
+  - staged expected_boot as_of_round 24 != round 25 (boot manifest did not advance)
+  - staged release_contract as_of_round 24 != round 25 (stale contract)
+  - staged contract season_metadata.as_of_round != round 25 (artifacts on different rounds)
+
+[exit 2]

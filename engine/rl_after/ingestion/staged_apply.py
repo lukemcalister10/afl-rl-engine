@@ -574,7 +574,11 @@ class StagedRoundApplier:
             #      transaction's target set is extended with the new sibling targets (persisted in the
             #      manifest) so _collect_staged / _backup_originals / _commit / rollback / recovery cover them.
             self._fault('during_sibling_staging')
-            sib_targets = self._stage_sibling(ws, txn_dir, int(snapshot['round']),
+            # THE CALENDAR ROUND, not the feed round: RepinPlan writes `as_of_round` into the
+            # sibling sidecar and the reference-vector doc, and sibling_repin's own default reads it
+            # from expected_boot.as_of_round. Handing it 25 would stamp a finals feed round into two
+            # artifacts that must agree with a boot manifest holding at 24.
+            sib_targets = self._stage_sibling(ws, txn_dir, _cal_round,
                                               staged_store_md5, generated_at,
                                               staged_board_md5=staged_board_md5,
                                               canonical_manifest_loaded=bool(
@@ -1298,7 +1302,16 @@ class StagedRoundApplier:
         #         store / round / season identity) must pass. A stale round on ANY of the three artifacts, or
         #         a stale pin/contract, is rejected here — before commit.
         try:
-            _round = int(snapshot['round'])
+            _feed = int(snapshot['round'])
+            # THE THREE ARTIFACTS ARE CHECKED AGAINST THE CALENDAR ROUND, NOT THE FEED ROUND, and for
+            # a home-and-away round those are the same number so this is byte-identical to what it
+            # always asserted. They part company in a FINALS week: the feed round is 25-29 (the dedup
+            # ledger key) while `as_of_round` HOLDS at 24, which is the whole mechanism that keeps a
+            # non-finalist's completed season untouched. Asserting the feed round here would demand
+            # the very advance the hold exists to prevent — it refused FW1 with "staged season_state
+            # as_of_round 24 != round 25 (stale round)", which was this check reading a deliberate
+            # hold as staleness.
+            _round = min(_feed, int(self.calendar_rounds))
             _ss = json.load(open(os.path.join(ws, 'data', 'season_state.json')))
             _con = json.load(open(os.path.join(ws, 'data', 'release_contract.json')))
         except (OSError, ValueError) as e:
