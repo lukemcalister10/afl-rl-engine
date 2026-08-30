@@ -136,6 +136,11 @@ the exact greedy over the live board; Picks are the ingest's PVC band prices.
 
 ## Live identity (for the maintainer, not the screen)
 
-Current bake at the time of this redesign: board 530a4053622c29092274fab0aa1fee7f · engine
-a5550b67 · config f233d160 · curve 1c3b22d1 · store b4d23810 · book seal b6f67e94. The
-authoritative copy of these is always the newest register entry, not this file.
+Live as at 2026-08-29: board 4a52cc4490f950c7b7856fc28ddcb949 · engine 17243c16 · config
+d4f3c3cf · curve 1c3b22d1 · store b4d23810 · book seal 619fe67f. The ORDER 49 availability
+blend moved the board 530a4053 -> 4a52cc44, the engine a5550b67 -> 17243c16, the config
+f233d160 -> d4f3c3cf and the seal b6f67e94 -> 619fe67f; the store did not move.
+
+This block is a convenience, and it goes stale the moment an act lands — the AUTHORITATIVE copy
+is always the newest register entry, and the machine-readable one is `data/expected_boot.json`.
+Read one of those before trusting this.
