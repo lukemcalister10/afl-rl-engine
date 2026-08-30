@@ -1,3 +1,3 @@
-# OPEN ITEMS REGISTER · v886 2026-08-30 · **THE PICK YEAR RULE IS COMPLETE AND HIS TWO OUTPUT CHECKS ARE NOW ASSERTED — and the incident is that the supervisor got it wrong twice in three days, once each way, by taking half a two-part rule for the whole of it.** Owner word 2026-08-30, verbatim and now at the site: "2026 picks - based on finishing positions, at full price / 2027 picks - 1/3 project
+# OPEN ITEMS REGISTER · v887 2026-08-30 · **SHRINK S6 IS LANDED — one stamped carrier, every other stamp derived from the tree and checked against it; THE CUT LIST IS NOW COMPLETE.** Owner word 2026-08-29 then 2026-08-30: "S6 we can do after this is all locked away", then "Alright, so now s6?". S6 CHANGED SHAPE ONCE IT WAS SCOPED, AND THAT IS THE FINDING. The cut list called for collapsing the ide
 
-(one line per pen; full entry: docs/register/entries/v886.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
+(one line per pen; full entry: docs/register/entries/v887.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)

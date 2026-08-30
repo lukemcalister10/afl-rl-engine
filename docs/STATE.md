@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v886 2026-08-30 · **THE PICK YEAR RULE IS COMPLETE AND HIS TWO OUTPUT CHECKS ARE NOW ASSERTED — and the incident is that the supervisor got it wrong twice in three days, once each way, by taking half a two-part rule for the whole of it.** Owner word 2026-08-30, verbatim and now at the site: "2026 picks - based on finishing positions, at full price / 2027 picks - 1/3 project
+  > # OPEN ITEMS REGISTER · v887 2026-08-30 · **SHRINK S6 IS LANDED — one stamped carrier, every other stamp derived from the tree and checked against it; THE CUT LIST IS NOW COMPLETE.** Owner word 2026-08-29 then 2026-08-30: "S6 we can do after this is all locked away", then "Alright, so now s6?". S6 CHANGED SHAPE ONCE IT WAS SCOPED, AND THAT IS THE FINDING. The cut list called for collapsing the ide
 
-- new-form entries under `docs/register/entries/`: 74
+- new-form entries under `docs/register/entries/`: 75
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `8f8ce543b60a4c8316865b68cde827248e7d44d7` |
+| generated at commit | `80d37d4ae452568dd02836c244c9cfee48bd29d6` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

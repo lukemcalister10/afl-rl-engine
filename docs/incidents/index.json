@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 265,
+  "coverage_entries": 266,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-30",
+      "headline": "**SHRINK S6 IS LANDED \u2014 one stamped carrier, every other stamp derived from the tree and checked against it; THE CUT LIST IS NOW COMPLETE.** Owner wor\u2026",
+      "hits": {
+        "DECLARED": [
+          "**SHRINK S6 IS LANDED \u2014 one stamped carrier, every other stamp derived from the tree and checked against it; THE CUT LIST IS NOW COMPLETE.** Owner word 2026-08-29 then 2026-08-30: \"S6 we can do after this is all locked a\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 887
+    },
     {
       "by": "explicit",
       "date": "2026-08-30",
@@ -2284,7 +2298,7 @@
       "version": 622
     }
   ],
-  "incidents": 136,
+  "incidents": 137,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",
