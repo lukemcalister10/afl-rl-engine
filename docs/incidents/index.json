@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 264,
+  "coverage_entries": 265,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-30",
+      "headline": "**THE PICK YEAR RULE IS COMPLETE AND HIS TWO OUTPUT CHECKS ARE NOW ASSERTED \u2014 and the incident is that the supervisor got it wrong twice in three days\u2026",
+      "hits": {
+        "DECLARED": [
+          "**THE PICK YEAR RULE IS COMPLETE AND HIS TWO OUTPUT CHECKS ARE NOW ASSERTED \u2014 and the incident is that the supervisor got it wrong twice in three days, once each way, by taking half a two-part rule for the whole of it.**\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 886
+    },
     {
       "by": "explicit",
       "date": "2026-08-30",
@@ -2270,7 +2284,7 @@
       "version": 622
     }
   ],
-  "incidents": 135,
+  "incidents": 136,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",

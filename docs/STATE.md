@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v885 2026-08-30 · **THE PICK YEAR RULE IS THE OWNER'S WORKBOOK AGAIN — 2027 ×0.9 and 2028 ×0.8 on the pick's OWN projected band, the multipliers read from his sheet. AN OWNER INPUT HAD BEEN OVERRIDDEN BY THE IMPLEMENTATION, AND THAT IS THE INCIDENT.** Owner word 2026-08-30, verbatim and now in the code at the site: "I ruled 0.8x for a reason, because the pick is so far in t
+  > # OPEN ITEMS REGISTER · v886 2026-08-30 · **THE PICK YEAR RULE IS COMPLETE AND HIS TWO OUTPUT CHECKS ARE NOW ASSERTED — and the incident is that the supervisor got it wrong twice in three days, once each way, by taking half a two-part rule for the whole of it.** Owner word 2026-08-30, verbatim and now at the site: "2026 picks - based on finishing positions, at full price / 2027 picks - 1/3 project
 
-- new-form entries under `docs/register/entries/`: 73
+- new-form entries under `docs/register/entries/`: 74
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `b4dffc0ad32a514b168680a823bc170963dca8f1` |
+| generated at commit | `8f8ce543b60a4c8316865b68cde827248e7d44d7` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |
