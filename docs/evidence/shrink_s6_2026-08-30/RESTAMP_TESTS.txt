@@ -1,0 +1,120 @@
+RESTAMP TESTS
+  ----------------------------------------------------------------------
+  [PASS] no path is both a stamp and a historical record
+  [PASS] no path is both a stamp and declared identity-free
+  [PASS] the stamp table has no duplicate paths
+  [PASS] a coherent tree reports every stamp agreeing
+  [PASS] expected_boot claims at least one identity (it can fail)
+  [PASS] a stale board in expected_boot is DETECTED
+  [PASS] a stale store in expected_boot is DETECTED
+  [PASS] a stale engine_head in expected_boot is DETECTED
+  [PASS] a stale rl_model in expected_boot is DETECTED
+  [PASS] a stale register in expected_boot is DETECTED
+  [PASS] a stale v0surf in expected_boot is DETECTED
+  [PASS] a stale config in expected_boot is DETECTED
+  [PASS] a stale fv in expected_boot is DETECTED
+  [PASS] release_contract claims at least one identity (it can fail)
+  [PASS] a stale board in release_contract is DETECTED
+  [PASS] a stale store in release_contract is DETECTED
+  [PASS] a stale engine_head in release_contract is DETECTED
+  [PASS] a stale rl_model in release_contract is DETECTED
+  [PASS] a stale register in release_contract is DETECTED
+  [PASS] a stale fv in release_contract is DETECTED
+  [PASS] a stale config in release_contract is DETECTED
+  [PASS] board_view_working claims at least one identity (it can fail)
+  [PASS] a stale board in board_view_working is DETECTED
+  [PASS] a stale store in board_view_working is DETECTED
+  [PASS] a stale engine_head in board_view_working is DETECTED
+  [PASS] a stale register in board_view_working is DETECTED
+  [PASS] a stale config in board_view_working is DETECTED
+  [PASS] club_valuation claims at least one identity (it can fail)
+  [PASS] a stale board in club_valuation is DETECTED
+  [PASS] a stale store in club_valuation is DETECTED
+  [PASS] a stale engine_head in club_valuation is DETECTED
+  [PASS] sibling_repin_state claims at least one identity (it can fail)
+  [PASS] a stale store in sibling_repin_state is DETECTED
+  [PASS] a stale fv in sibling_repin_state is DETECTED
+  [PASS] a stamp carrying an 8- or 12-char prefix agrees rather than false-alarming
+  [PASS] prefix agreement discriminates: a matching prefix passes, a different one fails
+  [PASS] a stamp that makes no claim for one identity is not a disagreement
+  [PASS] a stamp that has stopped claiming ANY identity is REFUSED as vacuous, not passed
+  [PASS] an unreadable stamp fails closed
+================================================================================================
+RESTAMP CHECK — every stamp against the tree it claims to describe
+================================================================================================
+  tree board        bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+  tree config       cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+  tree engine_head  eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+  tree fv           ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+  tree register     rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+  tree rl_model     mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+  tree store        ssssssssssssssssssssssssssssssss
+  tree v0surf       vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+------------------------------------------------------------------------------------------------
+  expected_boot          STALE       engine_head dddddddddddd != eeeeeeeeeeee
+                                     writer of record: tools/land (pins step) · tools/owner/lti_repin.py for the register pin
+  release_contract       AGREES      7 identity claim(s)
+  board_view_working     AGREES      5 identity claim(s)
+  club_valuation         AGREES      3 identity claim(s)
+  sibling_repin_state    AGREES      2 identity claim(s)
+------------------------------------------------------------------------------------------------
+  NO IDENTITY CLAIM BY DESIGN (named so the absence is a decision, not an oversight):
+    ui/data/board_view_public.js                   the public bundle carries no engine/store/board id — process stays off user surfaces
+  FENCED (carry the same values as HISTORY and are never restamped):
+    data/release_lineage.json                      the chain of past releases — it names superseded engines on purpose
+    data/gates_snapshots/                          each snapshot is keyed to the head it recorded
+    ui/data/movers.js                              every point records the board as it stood at that point
+    ui/data/movers_transition.js                   the owner-approved provenance transition, a historical record
+    engine/rl_after/ingestion/value_history.json   the value record
+    engine/rl_after/ingestion/rank_history.json    the rank record
+    engine/rl_after/ingestion/pos_rank_history.json the positional-rank record
+    data/book_stable_seal.json                     BAKE-ONLY: the seal moves at bake acts and nowhere else (shrink S3/S10)
+================================================================================================
+RESTAMP: 1 OF 5 STAMPS ARE STALE
+
+================================================================================================
+RESTAMP APPLY — each stale stamp through its own writer of record
+================================================================================================
+  [PASS] apply REFUSES to move expected_boot — moving the carrier is a landing act
+================================================================================================
+RESTAMP CHECK — every stamp against the tree it claims to describe
+================================================================================================
+  tree board        bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+  tree config       cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+  tree engine_head  eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+  tree fv           ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+  tree register     rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+  tree rl_model     mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+  tree store        ssssssssssssssssssssssssssssssss
+  tree v0surf       vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+------------------------------------------------------------------------------------------------
+  expected_boot          AGREES      8 identity claim(s)
+  release_contract       AGREES      7 identity claim(s)
+  board_view_working     AGREES      5 identity claim(s)
+  club_valuation         AGREES      3 identity claim(s)
+  sibling_repin_state    STALE       store xxxxxxxxxxxx != ssssssssssss
+                                     writer of record: engine/rl_after/ingestion/sibling_repin.py (reconcile)
+------------------------------------------------------------------------------------------------
+  NO IDENTITY CLAIM BY DESIGN (named so the absence is a decision, not an oversight):
+    ui/data/board_view_public.js                   the public bundle carries no engine/store/board id — process stays off user surfaces
+  FENCED (carry the same values as HISTORY and are never restamped):
+    data/release_lineage.json                      the chain of past releases — it names superseded engines on purpose
+    data/gates_snapshots/                          each snapshot is keyed to the head it recorded
+    ui/data/movers.js                              every point records the board as it stood at that point
+    ui/data/movers_transition.js                   the owner-approved provenance transition, a historical record
+    engine/rl_after/ingestion/value_history.json   the value record
+    engine/rl_after/ingestion/rank_history.json    the rank record
+    engine/rl_after/ingestion/pos_rank_history.json the positional-rank record
+    data/book_stable_seal.json                     BAKE-ONLY: the seal moves at bake acts and nowhere else (shrink S3/S10)
+================================================================================================
+RESTAMP: 1 OF 5 STAMPS ARE STALE
+
+================================================================================================
+RESTAMP APPLY — each stale stamp through its own writer of record
+================================================================================================
+  [PASS] apply REFUSES the sibling sidecar — its writer REBUILDS, and a build belongs in a transaction that can abort
+  [PASS] restamp measures exactly the identities the landing transaction pins (8)
+  [PASS] and every measured value is byte-identical to the lander's own measurer
+  [PASS] the live repository: every stamp agrees with the tree
+  ----------------------------------------------------------------------
+RESTAMP TESTS: ALL 44 PASS

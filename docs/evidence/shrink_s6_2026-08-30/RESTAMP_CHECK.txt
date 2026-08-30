@@ -1,0 +1,31 @@
+================================================================================================
+RESTAMP CHECK — every stamp against the tree it claims to describe
+================================================================================================
+  tree board        4a52cc4490f950c7b7856fc28ddcb949
+  tree config       d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4
+  tree engine_head  17243c16277842e0a30470cfbdb5b196
+  tree fv           123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345
+  tree register     652d83e87780e415a01a2de6d8b3cc57
+  tree rl_model     6fe7c4155866d80e8045bed2d3bf2802
+  tree store        b4d23810ebb6b53f07a0ae40a3c24b97
+  tree v0surf       d9f5d15d9606edcdd5708233197dd951
+------------------------------------------------------------------------------------------------
+  expected_boot          AGREES      8 identity claim(s)
+  release_contract       AGREES      7 identity claim(s)
+  board_view_working     AGREES      5 identity claim(s)
+  club_valuation         AGREES      3 identity claim(s)
+  sibling_repin_state    AGREES      2 identity claim(s)
+------------------------------------------------------------------------------------------------
+  NO IDENTITY CLAIM BY DESIGN (named so the absence is a decision, not an oversight):
+    ui/data/board_view_public.js                   the public bundle carries no engine/store/board id — process stays off user surfaces
+  FENCED (carry the same values as HISTORY and are never restamped):
+    data/release_lineage.json                      the chain of past releases — it names superseded engines on purpose
+    data/gates_snapshots/                          each snapshot is keyed to the head it recorded
+    ui/data/movers.js                              every point records the board as it stood at that point
+    ui/data/movers_transition.js                   the owner-approved provenance transition, a historical record
+    engine/rl_after/ingestion/value_history.json   the value record
+    engine/rl_after/ingestion/rank_history.json    the rank record
+    engine/rl_after/ingestion/pos_rank_history.json the positional-rank record
+    data/book_stable_seal.json                     BAKE-ONLY: the seal moves at bake acts and nowhere else (shrink S3/S10)
+================================================================================================
+RESTAMP: ALL 5 STAMPS AGREE WITH THE TREE

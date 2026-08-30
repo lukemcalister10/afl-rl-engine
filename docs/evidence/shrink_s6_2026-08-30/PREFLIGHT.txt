@@ -1,0 +1,21 @@
+======================================================================================================
+PREFLIGHT — the sub-second battery, before the lock, the sandbox and the first build.
+======================================================================================================
+  spec_validate            PASS    0.00s  act "THE ORDER 49 AVAILABILITY EXPOSURE BLEND (TAU 2.5) — RL_O49 default '0' -> '1'", kind lever-landing, 2 moves
+  declared_paths           PASS    0.00s  prereg + evidence paths resolve
+  coherent_base            SKIP    0.00s  no coherent_base declared (sandbox cuts from HEAD)
+  pins_vs_tree             PASS    0.01s  7 unmoved pins == tree
+  release_contract         PASS    0.08s  release_contract check PASS
+  release_manifest         PASS    0.09s  release_manifest_check PASS
+  mirror_parity            PASS    0.28s  acceptance mirror_parity GREEN
+  movers_ui                PASS    1.00s  movers.test.js green
+  proof_stash              PASS    0.05s  proof-stash tests green
+  identity_stamps          PASS    0.12s  ALL 5 STAMPS AGREE WITH THE TREE
+  clean_tree               FAIL    0.03s  undeclared dirt (step 0 would refuse after the selftest): docs/evidence/shrink_s6_2026-08-30/
+  picks_curve              PASS    0.15s  picks/curve halt battery clean (read-only)
+  movers_py                PASS    2.18s  test_movers_transition.py green
+  shared_pickles           PASS    0.04s  shared pickles == tree pickles
+  build_lock               PASS    0.01s  build-lock: FREE (last holder record: bootstrap 1380 2026-08-30T02:01:22Z)
+------------------------------------------------------------------------------------------------------
+PREFLIGHT FAILED — 15 checks, 1 failed, 4.0s total.  (Attempts 3+9 died to PLATFORM RECLAIMS: arm the keep-alive chain before any launch longer than minutes.)
+======================================================================================================
