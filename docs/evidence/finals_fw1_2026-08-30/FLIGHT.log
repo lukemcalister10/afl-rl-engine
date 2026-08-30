@@ -1,0 +1,30 @@
+======================================================================================================
+LAND STORE-EDIT — FINALS WEEK 1 APPLIED AS A STORE EDIT — 92 players at four clubs gain one game and a re-averaged 2026 season row. The calendar is not touched, because a finals week was never a calendar event: the store has always carried finals inside the season row (Bontempelli 2016 reads 26 games — 22 home-and-away plus four finals).
+  tree      : /home/user/afl-rl-engine
+  owner word: "Explicit word given" (2026-08-30), on the FW1 direct-movers preview. On the lane: "We're literally just updating player averages and game counts. Before round 14 we didn't add games one by one, we just priced based off averages and total season game counts. It really shouldn't be that hard." And on scope: "As long as it doesn't impact the movers list still being accurate as of each round since round 14."
+  prereg    : docs/evidence/finals_fw1_2026-08-30/PREREG.md   predicts board None
+  mode      : APPLY builder=real
+======================================================================================================
+
+--- STEP 0/11  preflight      clean tree, build lock, the restore point ---
+    [preflight FAILED  0.03s]
+
+======================================================================================================
+LANDING ABORTED AT STEP 'preflight'
+======================================================================================================
+  THE TREE IS NOT CLEAN. A landing transaction starts from a committed tree, or its abort restores a state nobody chose:
+      ?? docs/evidence/finals_fw1_2026-08-30/ACT_SPEC_FW1_EDIT.json
+      ?? docs/evidence/finals_fw1_2026-08-30/FW1_EDIT_PLAN.json
+      ?? docs/evidence/finals_fw1_2026-08-30/PREREG.md
+
+NO RESTORE POINT EXISTS: the failure precedes step 0's capture, so nothing was written by this landing and there is nothing to restore. The tree is as the landing found it.
+
+THE RECOVERY LADDER: abort-then-retry is the recovery. A landing this lander cannot
+complete after abort+retry is a round that SLIPS, on the owner's call — never an
+improvised manual landing under pressure.
+======================================================================================================
+
+--- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
+    preflight          0.03s  FAIL
+    TOTAL              0.03s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_18480

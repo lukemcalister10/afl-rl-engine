@@ -1,0 +1,3 @@
+
+DAY-0 EMITTER HALT — NOTHING WAS WRITTEN
+  REFUSING TO WRITE: day-0 re-basing is 'off' in this act spec. The M1b ruling is explicit — "Day-0 re-basing becomes an explicit, owner-visible, off-by-default input with a mandatory printed diff of every moved row; a suite inheriting the capability without the judgement re-bases itself green on the first halt." This emitter regenerates the standing reference ONLY inside an act whose spec says day0_rebase.state = "on" and names the owner word that turned it on. Nothing was written.
