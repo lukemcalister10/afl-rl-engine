@@ -1,0 +1,54 @@
+======================================================================================================
+LAND ROUND-ADVANCE — FW1 — FINALS WEEK 1 APPLIED (feed round 25; the calendar round HELD at 24)
+  tree      : /home/user/afl-rl-engine
+  owner word: Explicit word given (owner, verbatim, 2026-08-30), on the FW1 direct-movers preview: 87 movers, all of them players who played, pool 702,917 -> 704,376.
+  prereg    : docs/evidence/fw1_advance_2026-08-30/PREREG.md   predicts board None
+  mode      : APPLY builder=real
+======================================================================================================
+
+--- STEP 0/14  preflight      clean tree, build lock, the restore point ---
+DECLARED DIRT (2 path(s), and ONLY these): owner inputs this act is contracted to COMMIT ITSELF, and which are therefore expected uncommitted at step 0:
+    scores/FW1.csv                                             (committed by the `catchup_preflight` step)
+    engine/rl_after/ingestion/catchup_identity_overrides.json  (committed by the `catchup_preflight` step)
+RL_/PAR_ environment  RL_VENV
+build-lock: HELD by land-round-4995 (pid 4995) — single writer for the shared workspace.
+base commit        dc8f5c1eb553229f4397feaeae3d9d9612ebc794
+board pin (before) f81dbcda220110ad0113ae0633b6c34e
+store pin (before) a9dec7e4785c6861a84f3beaae2f020e
+restore point      276 carrier(s) captured, 276 present on disk
+    [preflight OK  0.13s]
+
+--- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
+sheet         docs/owner_annotations/SITTER_2026_v1.csv
+  MEASURED (never typed): md5=21361291f26d35108b88f92f885c5063 rows=219 injured_y=35
+  PINNED                : md5=21361291f26d35108b88f92f885c5063 rows=219 injured_y=35
+the declaration describes the sheet on disk. NO RE-CUT DECLARED — this step writes nothing, and `land round` remains the pin file's sole writer by not writing.
+    [sheet OK  0.00s]
+
+--- STEP 2/14  scores         the owner's score file and the bindings, asserted ---
+scores file   scores/FW1.csv  (1562 bytes)
+  md5    e8ba891be3a1653dacada06256f169c3   OK
+  sha256 d86f976b843d77537853e337ab32673fa61837bd2f6a0df3adf89d5db1f3a85b   OK
+    [scores FAILED  0.00s]
+
+======================================================================================================
+LANDING ABORTED AT STEP 'scores'
+======================================================================================================
+  the act declares an identity override for 'Will Hayes' and engine/rl_after/ingestion/catchup_identity_overrides.json carries none. IdentityOverrides._by_name is keyed by the EXACT display string (ERRATUM E2): a rule under a different name is never consulted. The lander asserts bindings; it never authors one.
+
+carriers that moved before the failure: 0
+RESTORING 0 carrier(s):
+
+ABORT PROOF: every carrier is BYTE-EXACT to the identity captured at step 0.
+
+THE RECOVERY LADDER: abort-then-retry is the recovery. A landing this lander cannot
+complete after abort+retry is a round that SLIPS, on the owner's call — never an
+improvised manual landing under pressure.
+======================================================================================================
+
+--- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
+    preflight          0.13s  OK
+    sheet              0.00s  OK
+    scores             0.00s  FAIL
+    TOTAL              0.13s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_4995
