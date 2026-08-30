@@ -1,0 +1,1474 @@
+[
+ {
+  "key": "joel-freijah",
+  "name": "Joel Freijah",
+  "score": 112,
+  "g": [
+   23,
+   24
+  ],
+  "a": [
+   77.59,
+   79.02
+  ],
+  "before": 2512,
+  "after": 2870,
+  "delta": 358
+ },
+ {
+  "key": "harry-dean",
+  "name": "Harry Dean",
+  "score": 99,
+  "g": [
+   19,
+   20
+  ],
+  "a": [
+   59.52,
+   61.49
+  ],
+  "before": 2806,
+  "after": 3035,
+  "delta": 229
+ },
+ {
+  "key": "aaron-naughton",
+  "name": "Aaron Naughton",
+  "score": 110,
+  "g": [
+   22,
+   23
+  ],
+  "a": [
+   68.55,
+   70.35
+  ],
+  "before": 1189,
+  "after": 1415,
+  "delta": 226
+ },
+ {
+  "key": "cooper-lord",
+  "name": "Cooper Lord",
+  "score": 70,
+  "g": [
+   9,
+   10
+  ],
+  "a": [
+   76.23,
+   75.61
+  ],
+  "before": 975,
+  "after": 1158,
+  "delta": 183
+ },
+ {
+  "key": "daniel-turner",
+  "name": "Daniel Turner",
+  "score": 93,
+  "g": [
+   18,
+   19
+  ],
+  "a": [
+   76.23,
+   77.11
+  ],
+  "before": 1554,
+  "after": 1732,
+  "delta": 178
+ },
+ {
+  "key": "samuel-swadling",
+  "name": "Samuel Swadling",
+  "score": 100,
+  "g": [
+   8,
+   9
+  ],
+  "a": [
+   70.75,
+   74.0
+  ],
+  "before": 1069,
+  "after": 1240,
+  "delta": 171
+ },
+ {
+  "key": "jacob-weitering",
+  "name": "Jacob Weitering",
+  "score": 116,
+  "g": [
+   12,
+   13
+  ],
+  "a": [
+   77.67,
+   80.62
+  ],
+  "before": 1069,
+  "after": 1239,
+  "delta": 170
+ },
+ {
+  "key": "jagga-smith",
+  "name": "Jagga Smith",
+  "score": 124,
+  "g": [
+   22,
+   23
+  ],
+  "a": [
+   88.05,
+   89.61
+  ],
+  "before": 4880,
+  "after": 5029,
+  "delta": 149
+ },
+ {
+  "key": "arthur-jones",
+  "name": "Arthur Jones",
+  "score": 109,
+  "g": [
+   18,
+   19
+  ],
+  "a": [
+   55.85,
+   58.65
+  ],
+  "before": 208,
+  "after": 322,
+  "delta": 114
+ },
+ {
+  "key": "luke-kennedy",
+  "name": "Luke Kennedy",
+  "score": 51,
+  "g": [
+   6,
+   7
+  ],
+  "a": [
+   42.0,
+   43.29
+  ],
+  "before": 168,
+  "after": 277,
+  "delta": 109
+ },
+ {
+  "key": "xavier-lindsay",
+  "name": "Xavier Lindsay",
+  "score": 66,
+  "g": [
+   6,
+   7
+  ],
+  "a": [
+   61.17,
+   61.86
+  ],
+  "before": 1279,
+  "after": 1388,
+  "delta": 109
+ },
+ {
+  "key": "harvey-langford",
+  "name": "Harvey Langford",
+  "score": 90,
+  "g": [
+   23,
+   24
+  ],
+  "a": [
+   65.39,
+   66.42
+  ],
+  "before": 1804,
+  "after": 1912,
+  "delta": 108
+ },
+ {
+  "key": "ben-ainsworth",
+  "name": "Ben Ainsworth",
+  "score": 106,
+  "g": [
+   23,
+   24
+  ],
+  "a": [
+   68.94,
+   70.48
+  ],
+  "before": 256,
+  "after": 346,
+  "delta": 90
+ },
+ {
+  "key": "marcus-bontempelli",
+  "name": "Marcus Bontempelli",
+  "score": 134,
+  "g": [
+   22,
+   23
+  ],
+  "a": [
+   117.17,
+   117.9
+  ],
+  "before": 3626,
+  "after": 3702,
+  "delta": 76
+ },
+ {
+  "key": "ned-long",
+  "name": "Ned Long",
+  "score": 91,
+  "g": [
+   21,
+   22
+  ],
+  "a": [
+   69.17,
+   70.16
+  ],
+  "before": 1290,
+  "after": 1353,
+  "delta": 63
+ },
+ {
+  "key": "rhylee-west",
+  "name": "Rhylee West",
+  "score": 88,
+  "g": [
+   22,
+   23
+  ],
+  "a": [
+   63.98,
+   65.02
+  ],
+  "before": 212,
+  "after": 270,
+  "delta": 58
+ },
+ {
+  "key": "timothy-english",
+  "name": "Timothy English",
+  "score": 112,
+  "g": [
+   15,
+   16
+  ],
+  "a": [
+   100.07,
+   100.82
+  ],
+  "before": 3350,
+  "after": 3405,
+  "delta": 55
+ },
+ {
+  "key": "daniel-mcstay",
+  "name": "Daniel McStay",
+  "score": 92,
+  "g": [
+   23,
+   24
+  ],
+  "a": [
+   68.36,
+   69.34
+  ],
+  "before": 293,
+  "after": 341,
+  "delta": 48
+ },
+ {
+  "key": "brodie-kemp",
+  "name": "Brodie Kemp",
+  "score": 72,
+  "g": [
+   23,
+   24
+  ],
+  "a": [
+   65.7,
+   65.96
+  ],
+  "before": 720,
+  "after": 767,
+  "delta": 47
+ },
+ {
+  "key": "sam-walsh",
+  "name": "Sam Walsh",
+  "score": 125,
+  "g": [
+   23,
+   24
+  ],
+  "a": [
+   101.24,
+   102.23
+  ],
+  "before": 3073,
+  "after": 3118,
+  "delta": 45
+ },
+ {
+  "key": "nick-haynes",
+  "name": "Nick Haynes",
+  "score": 102,
+  "g": [
+   18,
+   19
+  ],
+  "a": [
+   77.01,
+   78.33
+  ],
+  "before": 117,
+  "after": 156,
+  "delta": 39
+ },
+ {
+  "key": "matthew-kennedy-1",
+  "name": "Matthew Kennedy",
+  "score": 103,
+  "g": [
+   23,
+   24
+  ],
+  "a": [
+   85.71,
+   86.43
+  ],
+  "before": 668,
+  "after": 706,
+  "delta": 38
+ },
+ {
+  "key": "lachlan-bramble",
+  "name": "Lachlan Bramble",
+  "score": 98,
+  "g": [
+   23,
+   24
+  ],
+  "a": [
+   64.98,
+   66.36
+  ],
+  "before": 119,
+  "after": 155,
+  "delta": 36
+ },
+ {
+  "key": "darcy-cameron",
+  "name": "Darcy Cameron",
+  "score": 108,
+  "g": [
+   22,
+   23
+  ],
+  "a": [
+   93.95,
+   94.56
+  ],
+  "before": 1522,
+  "after": 1557,
+  "delta": 35
+ },
+ {
+  "key": "matt-cottrell",
+  "name": "Matt Cottrell",
+  "score": 97,
+  "g": [
+   12,
+   13
+  ],
+  "a": [
+   62.83,
+   65.46
+  ],
+  "before": 131,
+  "after": 164,
+  "delta": 33
+ },
+ {
+  "key": "oliver-hollands",
+  "name": "Oliver Hollands",
+  "score": 85,
+  "g": [
+   12,
+   13
+  ],
+  "a": [
+   68.95,
+   70.18
+  ],
+  "before": 1533,
+  "after": 1565,
+  "delta": 32
+ },
+ {
+  "key": "oliver-florent",
+  "name": "Oliver Florent",
+  "score": 84,
+  "g": [
+   23,
+   24
+  ],
+  "a": [
+   89.35,
+   89.13
+  ],
+  "before": 1053,
+  "after": 1074,
+  "delta": 21
+ },
+ {
+  "key": "adam-cerra",
+  "name": "Adam Cerra",
+  "score": 107,
+  "g": [
+   19,
+   20
+  ],
+  "a": [
+   80.73,
+   82.04
+  ],
+  "before": 1005,
+  "after": 1022,
+  "delta": 17
+ },
+ {
+  "key": "isaac-quaynor",
+  "name": "Isaac Quaynor",
+  "score": 66,
+  "g": [
+   20,
+   21
+  ],
+  "a": [
+   75.68,
+   75.22
+  ],
+  "before": 608,
+  "after": 624,
+  "delta": 16
+ },
+ {
+  "key": "harry-mckay",
+  "name": "Harry McKay",
+  "score": 78,
+  "g": [
+   20,
+   21
+  ],
+  "a": [
+   75.69,
+   75.8
+  ],
+  "before": 1643,
+  "after": 1658,
+  "delta": 15
+ },
+ {
+  "key": "charlie-west",
+  "name": "Charlie West",
+  "score": 12,
+  "g": [
+   8,
+   9
+  ],
+  "a": [
+   38.24,
+   35.32
+  ],
+  "before": 318,
+  "after": 331,
+  "delta": 13
+ },
+ {
+  "key": "josh-dolan",
+  "name": "Josh Dolan",
+  "score": 39,
+  "g": [
+   11,
+   12
+  ],
+  "a": [
+   49.62,
+   48.73
+  ],
+  "before": 318,
+  "after": 330,
+  "delta": 12
+ },
+ {
+  "key": "tim-membrey",
+  "name": "Tim Membrey",
+  "score": 70,
+  "g": [
+   19,
+   20
+  ],
+  "a": [
+   63.67,
+   63.99
+  ],
+  "before": 98,
+  "after": 108,
+  "delta": 10
+ },
+ {
+  "key": "jack-crisp",
+  "name": "Jack Crisp",
+  "score": 88,
+  "g": [
+   23,
+   24
+  ],
+  "a": [
+   83.03,
+   83.24
+  ],
+  "before": 347,
+  "after": 355,
+  "delta": 8
+ },
+ {
+  "key": "francis-evans",
+  "name": "Francis Evans",
+  "score": 67,
+  "g": [
+   21,
+   22
+  ],
+  "a": [
+   74.19,
+   73.86
+  ],
+  "before": 793,
+  "after": 798,
+  "delta": 5
+ },
+ {
+  "key": "lachlan-cowan",
+  "name": "Lachlan Cowan",
+  "score": 67,
+  "g": [
+   22,
+   23
+  ],
+  "a": [
+   66.62,
+   66.64
+  ],
+  "before": 594,
+  "after": 598,
+  "delta": 4
+ },
+ {
+  "key": "changkuoth-jiath",
+  "name": "Changkuoth Jiath",
+  "score": 66,
+  "g": [
+   15,
+   16
+  ],
+  "a": [
+   66.34,
+   66.32
+  ],
+  "before": 63,
+  "after": 66,
+  "delta": 3
+ },
+ {
+  "key": "beau-mccreery",
+  "name": "Beau McCreery",
+  "score": 68,
+  "g": [
+   22,
+   23
+  ],
+  "a": [
+   66.48,
+   66.55
+  ],
+  "before": 226,
+  "after": 228,
+  "delta": 2
+ },
+ {
+  "key": "kysaiah-pickett",
+  "name": "Kysaiah Pickett",
+  "score": 72,
+  "g": [
+   23,
+   24
+  ],
+  "a": [
+   97.5,
+   96.44
+  ],
+  "before": 4433,
+  "after": 4435,
+  "delta": 2
+ },
+ {
+  "key": "ryley-sanders",
+  "name": "Ryley Sanders",
+  "score": 87,
+  "g": [
+   21,
+   22
+  ],
+  "a": [
+   87.24,
+   87.23
+  ],
+  "before": 3769,
+  "after": 3771,
+  "delta": 2
+ },
+ {
+  "key": "roan-steele",
+  "name": "Roan Steele",
+  "score": 57,
+  "g": [
+   18,
+   19
+  ],
+  "a": [
+   59.41,
+   59.28
+  ],
+  "before": 84,
+  "after": 85,
+  "delta": 1
+ },
+ {
+  "key": "sam-davidson",
+  "name": "Sam Davidson",
+  "score": 68,
+  "g": [
+   16,
+   17
+  ],
+  "a": [
+   54.83,
+   55.6
+  ],
+  "before": 115,
+  "after": 116,
+  "delta": 1
+ },
+ {
+  "key": "billy-frampton",
+  "name": "billy-frampton",
+  "score": 69,
+  "g": [
+   23,
+   24
+  ],
+  "a": [
+   62.48,
+   62.75
+  ],
+  "before": null,
+  "after": null,
+  "delta": 0
+ },
+ {
+  "key": "jake-melksham",
+  "name": "jake-melksham",
+  "score": 26,
+  "g": [
+   6,
+   7
+  ],
+  "a": [
+   42.02,
+   39.73
+  ],
+  "before": null,
+  "after": null,
+  "delta": 0
+ },
+ {
+  "key": "steele-sidebottom",
+  "name": "steele-sidebottom",
+  "score": 43,
+  "g": [
+   20,
+   21
+  ],
+  "a": [
+   63.05,
+   62.1
+  ],
+  "before": null,
+  "after": null,
+  "delta": 0
+ },
+ {
+  "key": "will-hayes-b",
+  "name": "will-hayes-b",
+  "score": 27,
+  "g": [
+   9,
+   10
+  ],
+  "a": [
+   37.87,
+   36.78
+  ],
+  "before": null,
+  "after": null,
+  "delta": 0
+ },
+ {
+  "key": "buku-khamis",
+  "name": "Buku Khamis",
+  "score": 41,
+  "g": [
+   23,
+   24
+  ],
+  "a": [
+   59.77,
+   58.99
+  ],
+  "before": 155,
+  "after": 154,
+  "delta": -1
+ },
+ {
+  "key": "cooper-hynes",
+  "name": "Cooper Hynes",
+  "score": 63,
+  "g": [
+   21,
+   22
+  ],
+  "a": [
+   52.3,
+   52.79
+  ],
+  "before": 1073,
+  "after": 1072,
+  "delta": -1
+ },
+ {
+  "key": "jake-bowey",
+  "name": "Jake Bowey",
+  "score": 102,
+  "g": [
+   15,
+   16
+  ],
+  "a": [
+   102.41,
+   102.38
+  ],
+  "before": 3980,
+  "after": 3979,
+  "delta": -1
+ },
+ {
+  "key": "ryan-gardner",
+  "name": "Ryan Gardner",
+  "score": 24,
+  "g": [
+   2,
+   3
+  ],
+  "a": [
+   32.0,
+   29.33
+  ],
+  "before": 7,
+  "after": 6,
+  "delta": -1
+ },
+ {
+  "key": "harvey-harrison",
+  "name": "Harvey Harrison",
+  "score": 45,
+  "g": [
+   11,
+   12
+  ],
+  "a": [
+   45.63,
+   45.58
+  ],
+  "before": 87,
+  "after": 85,
+  "delta": -2
+ },
+ {
+  "key": "marc-pittonet",
+  "name": "Marc Pittonet",
+  "score": 82,
+  "g": [
+   20,
+   21
+  ],
+  "a": [
+   82.23,
+   82.22
+  ],
+  "before": 527,
+  "after": 525,
+  "delta": -2
+ },
+ {
+  "key": "cody-weightman",
+  "name": "Cody Weightman",
+  "score": 53,
+  "g": [
+   9,
+   10
+  ],
+  "a": [
+   54.44,
+   54.3
+  ],
+  "before": 186,
+  "after": 183,
+  "delta": -3
+ },
+ {
+  "key": "kade-chandler",
+  "name": "Kade Chandler",
+  "score": 76,
+  "g": [
+   22,
+   23
+  ],
+  "a": [
+   78.94,
+   78.81
+  ],
+  "before": 1122,
+  "after": 1117,
+  "delta": -5
+ },
+ {
+  "key": "harry-sharp",
+  "name": "Harry Sharp",
+  "score": 40,
+  "g": [
+   23,
+   24
+  ],
+  "a": [
+   63.29,
+   62.32
+  ],
+  "before": 105,
+  "after": 98,
+  "delta": -7
+ },
+ {
+  "key": "mitch-mcgovern",
+  "name": "Mitch McGovern",
+  "score": 42,
+  "g": [
+   23,
+   24
+  ],
+  "a": [
+   64.35,
+   63.42
+  ],
+  "before": 44,
+  "after": 37,
+  "delta": -7
+ },
+ {
+  "key": "james-o-donnell",
+  "name": "James O'Donnell",
+  "score": 56,
+  "g": [
+   19,
+   20
+  ],
+  "a": [
+   63.16,
+   62.8
+  ],
+  "before": 474,
+  "after": 466,
+  "delta": -8
+ },
+ {
+  "key": "bailey-laurie",
+  "name": "Bailey Laurie",
+  "score": 20,
+  "g": [
+   16,
+   17
+  ],
+  "a": [
+   51.48,
+   49.63
+  ],
+  "before": 125,
+  "after": 115,
+  "delta": -10
+ },
+ {
+  "key": "michael-sellwood",
+  "name": "Michael Sellwood",
+  "score": 30,
+  "g": [
+   22,
+   23
+  ],
+  "a": [
+   61.99,
+   60.6
+  ],
+  "before": 306,
+  "after": 296,
+  "delta": -10
+ },
+ {
+  "key": "angus-anderson",
+  "name": "Angus Anderson",
+  "score": 47,
+  "g": [
+   15,
+   16
+  ],
+  "a": [
+   57.44,
+   56.79
+  ],
+  "before": 276,
+  "after": 264,
+  "delta": -12
+ },
+ {
+  "key": "lachlan-schultz",
+  "name": "Lachlan Schultz",
+  "score": 70,
+  "g": [
+   20,
+   21
+  ],
+  "a": [
+   77.71,
+   77.34
+  ],
+  "before": 672,
+  "after": 658,
+  "delta": -14
+ },
+ {
+  "key": "jack-steele",
+  "name": "Jack Steele",
+  "score": 90,
+  "g": [
+   23,
+   24
+  ],
+  "a": [
+   94.5,
+   94.31
+  ],
+  "before": 1124,
+  "after": 1109,
+  "delta": -15
+ },
+ {
+  "key": "jeremy-howe",
+  "name": "Jeremy Howe",
+  "score": 67,
+  "g": [
+   17,
+   18
+  ],
+  "a": [
+   81.29,
+   80.5
+  ],
+  "before": 181,
+  "after": 165,
+  "delta": -16
+ },
+ {
+  "key": "joel-fitzgerald",
+  "name": "Joel Fitzgerald",
+  "score": 55,
+  "g": [
+   10,
+   11
+  ],
+  "a": [
+   68.6,
+   67.36
+  ],
+  "before": 305,
+  "after": 288,
+  "delta": -17
+ },
+ {
+  "key": "talor-byrne",
+  "name": "Talor Byrne",
+  "score": 46,
+  "g": [
+   17,
+   18
+  ],
+  "a": [
+   56.57,
+   55.98
+  ],
+  "before": 659,
+  "after": 642,
+  "delta": -17
+ },
+ {
+  "key": "josh-daicos",
+  "name": "Josh Daicos",
+  "score": 96,
+  "g": [
+   23,
+   24
+  ],
+  "a": [
+   95.45,
+   95.47
+  ],
+  "before": 2143,
+  "after": 2125,
+  "delta": -18
+ },
+ {
+  "key": "ed-langdon",
+  "name": "Ed Langdon",
+  "score": 70,
+  "g": [
+   23,
+   24
+  ],
+  "a": [
+   79.38,
+   78.99
+  ],
+  "before": 631,
+  "after": 612,
+  "delta": -19
+ },
+ {
+  "key": "nick-daicos",
+  "name": "Nick Daicos",
+  "score": 126,
+  "g": [
+   22,
+   23
+  ],
+  "a": [
+   119.48,
+   119.76
+  ],
+  "before": 10655,
+  "after": 10636,
+  "delta": -19
+ },
+ {
+  "key": "bayley-fritsch",
+  "name": "Bayley Fritsch",
+  "score": 57,
+  "g": [
+   21,
+   22
+  ],
+  "a": [
+   73.8,
+   73.04
+  ],
+  "before": 304,
+  "after": 281,
+  "delta": -23
+ },
+ {
+  "key": "ed-richards",
+  "name": "Ed Richards",
+  "score": 94,
+  "g": [
+   22,
+   23
+  ],
+  "a": [
+   111.14,
+   110.39
+  ],
+  "before": 4108,
+  "after": 4083,
+  "delta": -25
+ },
+ {
+  "key": "rory-lobb",
+  "name": "Rory Lobb",
+  "score": 43,
+  "g": [
+   20,
+   21
+  ],
+  "a": [
+   72.02,
+   70.64
+  ],
+  "before": 295,
+  "after": 265,
+  "delta": -30
+ },
+ {
+  "key": "connor-budarick",
+  "name": "Connor Budarick",
+  "score": 38,
+  "g": [
+   13,
+   14
+  ],
+  "a": [
+   71.57,
+   69.17
+  ],
+  "before": 253,
+  "after": 221,
+  "delta": -32
+ },
+ {
+  "key": "max-gawn",
+  "name": "Max Gawn",
+  "score": 119,
+  "g": [
+   23,
+   24
+  ],
+  "a": [
+   128.05,
+   127.67
+  ],
+  "before": 3377,
+  "after": 3345,
+  "delta": -32
+ },
+ {
+  "key": "xavier-taylor",
+  "name": "Xavier Taylor",
+  "score": 27,
+  "g": [
+   2,
+   3
+  ],
+  "a": [
+   42.0,
+   37.0
+  ],
+  "before": 873,
+  "after": 841,
+  "delta": -32
+ },
+ {
+  "key": "tom-mcdonald",
+  "name": "Tom McDonald",
+  "score": 26,
+  "g": [
+   10,
+   11
+  ],
+  "a": [
+   60.3,
+   57.18
+  ],
+  "before": 59,
+  "after": 26,
+  "delta": -33
+ },
+ {
+  "key": "edward-allan",
+  "name": "Edward Allan",
+  "score": 53,
+  "g": [
+   18,
+   19
+  ],
+  "a": [
+   69.4,
+   68.54
+  ],
+  "before": 851,
+  "after": 812,
+  "delta": -39
+ },
+ {
+  "key": "harrison-petty",
+  "name": "Harrison Petty",
+  "score": 43,
+  "g": [
+   19,
+   20
+  ],
+  "a": [
+   72.24,
+   70.78
+  ],
+  "before": 422,
+  "after": 382,
+  "delta": -40
+ },
+ {
+  "key": "blake-acres",
+  "name": "Blake Acres",
+  "score": 57,
+  "g": [
+   10,
+   11
+  ],
+  "a": [
+   80.1,
+   78.0
+  ],
+  "before": 172,
+  "after": 130,
+  "delta": -42
+ },
+ {
+  "key": "koltyn-tholstrup",
+  "name": "Koltyn Tholstrup",
+  "score": 55,
+  "g": [
+   23,
+   24
+  ],
+  "a": [
+   73.4,
+   72.63
+  ],
+  "before": 1739,
+  "after": 1695,
+  "delta": -44
+ },
+ {
+  "key": "patrick-lipinski",
+  "name": "Patrick Lipinski",
+  "score": 60,
+  "g": [
+   19,
+   20
+  ],
+  "a": [
+   77.62,
+   76.74
+  ],
+  "before": 758,
+  "after": 707,
+  "delta": -51
+ },
+ {
+  "key": "trent-rivers",
+  "name": "Trent Rivers",
+  "score": 76,
+  "g": [
+   16,
+   17
+  ],
+  "a": [
+   79.03,
+   78.85
+  ],
+  "before": 1517,
+  "after": 1466,
+  "delta": -51
+ },
+ {
+  "key": "bailey-williams-wb",
+  "name": "Bailey Williams",
+  "score": 68,
+  "g": [
+   17,
+   18
+  ],
+  "a": [
+   83.76,
+   82.88
+  ],
+  "before": 596,
+  "after": 541,
+  "delta": -55
+ },
+ {
+  "key": "bailey-dale",
+  "name": "Bailey Dale",
+  "score": 93,
+  "g": [
+   18,
+   19
+  ],
+  "a": [
+   102.23,
+   101.74
+  ],
+  "before": 2051,
+  "after": 1990,
+  "delta": -61
+ },
+ {
+  "key": "patrick-cripps",
+  "name": "Patrick Cripps",
+  "score": 81,
+  "g": [
+   23,
+   24
+  ],
+  "a": [
+   99.13,
+   98.37
+  ],
+  "before": 1526,
+  "after": 1465,
+  "delta": -61
+ },
+ {
+  "key": "tom-sparrow",
+  "name": "Tom Sparrow",
+  "score": 52,
+  "g": [
+   23,
+   24
+  ],
+  "a": [
+   89.04,
+   87.5
+  ],
+  "before": 1568,
+  "after": 1506,
+  "delta": -62
+ },
+ {
+  "key": "dan-houston",
+  "name": "Dan Houston",
+  "score": 71,
+  "g": [
+   23,
+   24
+  ],
+  "a": [
+   84.31,
+   83.76
+  ],
+  "before": 1127,
+  "after": 1055,
+  "delta": -72
+ },
+ {
+  "key": "lewis-young",
+  "name": "Lewis Young",
+  "score": 44,
+  "g": [
+   12,
+   13
+  ],
+  "a": [
+   58.26,
+   57.16
+  ],
+  "before": 223,
+  "after": 148,
+  "delta": -75
+ },
+ {
+  "key": "jordan-de-goey",
+  "name": "Jordan De Goey",
+  "score": 61,
+  "g": [
+   21,
+   22
+  ],
+  "a": [
+   89.69,
+   88.39
+  ],
+  "before": 1398,
+  "after": 1307,
+  "delta": -91
+ },
+ {
+  "key": "billy-wilson",
+  "name": "Billy Wilson",
+  "score": 52,
+  "g": [
+   15,
+   16
+  ],
+  "a": [
+   76.27,
+   74.75
+  ],
+  "before": 956,
+  "after": 840,
+  "delta": -116
+ },
+ {
+  "key": "caleb-windsor",
+  "name": "Caleb Windsor",
+  "score": 49,
+  "g": [
+   20,
+   21
+  ],
+  "a": [
+   59.83,
+   59.31
+  ],
+  "before": 1126,
+  "after": 995,
+  "delta": -131
+ },
+ {
+  "key": "george-hewett",
+  "name": "George Hewett",
+  "score": 72,
+  "g": [
+   18,
+   19
+  ],
+  "a": [
+   104.67,
+   102.95
+  ],
+  "before": 1944,
+  "after": 1809,
+  "delta": -135
+ },
+ {
+  "key": "jack-viney",
+  "name": "Jack Viney",
+  "score": 55,
+  "g": [
+   0,
+   1
+  ],
+  "a": [
+   0.0,
+   55.0
+  ],
+  "before": 527,
+  "after": 312,
+  "delta": -215
+ }
+]
