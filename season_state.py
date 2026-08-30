@@ -85,10 +85,18 @@ def exposure_pace(store_rows, inprog_year, home_and_away_games=None):
     med = statistics.median(cur) if cur else 0.0
     raw = med / EXPO_DEN
     val = min(1.0, round(raw, EXPO_ROUND))
+    _cap = {}
+    if home_and_away_games is not None:
+        # RECORDED ONLY WHEN IT WAS APPLIED. Adding this key unconditionally changed the derivation
+        # metadata for every caller, and the edit verb's store_edit step correctly refused the next
+        # landing over it: only the PROVENANCE stamp may move in a store-edit act, and this made the
+        # DERIVATION appear to move while the value (0.909) did not. An uncapped call must produce
+        # byte-identical metadata to the one that existed before the fence was added.
+        _cap = {'home_and_away_cap': int(home_and_away_games)}
     meta = {'eligible_durable_players': len(durable), 'median_current_games': med, 'denominator': EXPO_DEN,
-            'home_and_away_cap': home_and_away_games,
             'raw_ratio': raw, 'released_value': val, 'rounding': 'round(., %d) then cap 1.0' % EXPO_ROUND,
             'scope_denominator': EXPO_SCOPE_DEN, 'durable_min_prior_games': EXPO_DURABLE_MIN}
+    meta.update(_cap)
     return val, meta
 
 
