@@ -175,6 +175,17 @@ def run_preflight(root, spec_path, out=print):
                          or [o.strip()[:200]])[0][:200])
     check('identity_stamps', _restamp)
 
+    # 8c · THE STORE'S CONTENT, not its identity (2026-08-30). Every other guard in the estate
+    #      asserts the store's md5; none of them reads what the numbers say, so an impossible row
+    #      hashes green forever. jesse-joyce carried 61/60/60 games for 2017-2019 from the initial
+    #      seed onward, through owner corrections that never reached the store. Milliseconds here.
+    def _store_sanity():
+        rc, o = _run([sys.executable, 'tools/store_sanity.py'], root)
+        if rc == 0:
+            return ('PASS', ([l.strip() for l in o.splitlines() if 'PASS' in l] or ['store rows sane'])[0][:120])
+        return ('FAIL', ([l.strip() for l in o.splitlines() if 'IMPOSSIBLE' in l] or [o.strip()[:200]])[0][:200])
+    check('store_sanity', _store_sanity)
+
     # 8b · CLEAN TREE, before the selftest instead of after it (shrink review S11, 2026-08-28).
     #      Step 0 asserts this too — but step 0 runs after the pre-transaction selftest (minutes),
     #      and two takes of the combined-build landing paid that price to discover dirt knowable
