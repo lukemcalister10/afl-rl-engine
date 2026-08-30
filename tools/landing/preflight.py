@@ -163,6 +163,18 @@ def run_preflight(root, spec_path, out=print):
                ('FAIL', ([l for l in o.splitlines() if 'FAIL' in l] or [o.strip()[:200]])[0][:200])
     check('proof_stash', _stash)
 
+    # 8b · EVERY IDENTITY STAMP AGAINST THE TREE (shrink S6, 2026-08-30). The contract step already
+    #      refuses if a carrier disagrees, but it runs deep inside the transaction, after the build.
+    #      The ORDER 49 flip left five stamps behind and each was found by a gate run costing
+    #      minutes; the same divergence is visible here, before the lock, in well under a second.
+    def _restamp():
+        rc, o = _run([sys.executable, 'tools/restamp.py', 'check'], root)
+        if rc == 0:
+            return ('PASS', ([l for l in o.splitlines() if l.startswith('RESTAMP:')] or ['stamps agree'])[-1][9:].strip())
+        return ('FAIL', ([l.strip() for l in o.splitlines() if 'STALE' in l or 'VACUOUS' in l]
+                         or [o.strip()[:200]])[0][:200])
+    check('identity_stamps', _restamp)
+
     # 8b · CLEAN TREE, before the selftest instead of after it (shrink review S11, 2026-08-28).
     #      Step 0 asserts this too — but step 0 runs after the pre-transaction selftest (minutes),
     #      and two takes of the combined-build landing paid that price to discover dirt knowable

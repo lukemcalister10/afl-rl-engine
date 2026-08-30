@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# tools/restamp — every identity stamp, checked against the tree and, on `apply`, brought into line
+# through its own writer of record. See tools/restamp.py for the stamp set and the history fence.
+#
+#   tools/restamp            # check (read-only); non-zero if any stamp is stale
+#   tools/restamp apply      # bring the stale ones into line
+set -euo pipefail
+exec python3 "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/restamp.py" "$@"

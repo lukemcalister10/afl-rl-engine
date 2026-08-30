@@ -1202,7 +1202,6 @@ def contract(ctx):
     body = json.dumps(rc, indent=2).encode()
     if raw != body and raw != body + b'\n':
         raise StepError('release_contract.json does not round-trip at indent=2; refusing to reformat it')
-    trailing_newline = (raw == body + b'\n')
     if rc['contract_sha256'] != RCT.contract_hash(rc):
         raise StepError('the contract seal is not self-consistent BEFORE this act')
     ctx.log('contract seal self-consistent before the act: %s' % rc['contract_sha256'][:12])
@@ -1231,48 +1230,33 @@ def contract(ctx):
         ctx.log('   restamp_dynamic returned seal %s' % str(seal)[:12])
         rc = json.loads(open(cp, 'rb').read())
 
-    FROZEN = ('identities.band', 'identities.register', 'release_version', 'switch_posture',
-              'pvc_provenance', 'must_be_unset', 'held_checks', 'adopted', 'season_state_policy_id',
-              '_retired_checks')
-    FROZEN = tuple(list(FROZEN) + list(ctx.spec.get('contract_frozen_extra') or ()))
+    # WRITER 2 IS NOW release_contract.restamp_bake_identities (shrink S6, 2026-08-30). It used to be
+    # written out here, inline, which made this transaction the ONLY way to restamp a contract's
+    # bake-lane identities — so a dial flip committed by hand had to do it by hand, and the ORDER 49
+    # flip got it wrong (the identities and the self-hash were two of five stamps left behind, each
+    # found by a gate rather than by noticing). The same function now serves this step and
+    # `tools/restamp`: one place where these four fields are written, one definition of what may
+    # move while they are, and the trailing-newline preservation that makes a no-op landing
+    # genuinely byte-exact lives with the write instead of beside it.
+    ctx.log('WRITER 2: the bake-lane identities restamp_dynamic does not touch '
+            '(release_contract.restamp_bake_identities — shared with tools/restamp)')
+    try:
+        rep = RCT.restamp_bake_identities(ctx.root, measured,
+                                          frozen_extra=ctx.spec.get('contract_frozen_extra') or (),
+                                          dry_run=bool(ctx.opts.dry_run))
+    except AssertionError as exc:
+        # the shared writer speaks AssertionError; inside the transaction every refusal must be a
+        # StepError so the abort ladder names the failed step and restores the carriers.
+        raise StepError('the bake-lane contract restamp refused: %s' % exc)
+    for field, was, now in rep['moved']:
+        ctx.log('  contract %-24s %s -> %s' % (field, str(was)[:12], str(now)[:12]))
+    ctx.log('  contract_sha256             %s -> %s' % (rep['seal_before'][:12], rep['seal_after'][:12]))
+    ctx.log('  frozen fields asserted unmoved: %d checked, 0 moved' % rep['frozen_checked'])
 
-    def snap(c):
-        return {k: json.dumps(c['identities'].get(k.split('.', 1)[1], None), sort_keys=True)
-                if k.startswith('identities.') else json.dumps(c.get(k), sort_keys=True)
-                for k in FROZEN}
-
-    fb = snap(rc)
-    ctx.log('WRITER 2: the bake-lane identities restamp_dynamic does not touch')
-    ctx.log('  contract config_sha256      %s -> %s' % (rc['config_sha256'][:12], measured['config'][:12]))
-    rc['config_sha256'] = measured['config']
-    for f in ('engine_head', 'rl_model', 'fv'):
-        ctx.log('  contract identities.%-12s %s -> %s'
-                % (f, str(rc['identities'][f])[:12], measured[f][:12]))
-        rc['identities'][f] = measured[f]
-    old_seal = rc.pop('contract_sha256')
-    rc['contract_sha256'] = RCT.contract_hash(rc)
-    ctx.log('  contract_sha256             %s -> %s' % (old_seal[:12], rc['contract_sha256'][:12]))
-    mv = [k for k in fb if fb[k] != snap(rc)[k]]
-    if mv:
-        raise StepError('a field writer 2 must not touch moved: %s' % mv)
-    ctx.log('  frozen fields asserted unmoved: %d checked, 0 moved' % len(FROZEN))
-
-    out = {'seal_before': before['contract_sha256'], 'seal_after': rc['contract_sha256'],
-           'trailing_newline_in_committed_file': trailing_newline}
+    out = {'seal_before': before['contract_sha256'], 'seal_after': rep['seal_after'],
+           'trailing_newline_in_committed_file': rep['trailing_newline_in_committed_file']}
     if not ctx.opts.dry_run:
-        # THE TRAILING NEWLINE IS PRESERVED, and that is a repair rather than a nicety. The committed
-        # file carries one; `json.dump(indent=2)` emits none. Every hand-written landing script this
-        # library consolidates NOTED the discrepancy in a print and then dropped the byte anyway, so
-        # a landing that moved nothing still moved a file. Writing back the convention the file
-        # arrived with is what makes a no-op rehearsal genuinely byte-exact — and it is the same rule
-        # the pins step already follows: the ONLY bytes that differ are the declared values.
-        tmp = cp + '.landing_tmp'
-        with open(tmp, 'w', encoding='utf-8') as fh:
-            fh.write(json.dumps(rc, indent=2) + ('\n' if trailing_newline else ''))
-        os.replace(tmp, cp)
         rc2 = json.load(open(cp, encoding='utf-8'))
-        if rc2['contract_sha256'] != RCT.contract_hash(rc2):
-            raise StepError('the seal must verify after the write')
         if rc2['identities']['store'] != boot['store'] or rc2['identities']['board'] != boot['board']:
             raise StepError('the contract store/board pins do not name the live tree')
         if int(rc2['as_of_round']) != as_of:

@@ -350,6 +350,93 @@ def verify(mode=None, root=None, halt=True):
     return contract.get('contract_sha256')
 
 
+#: The BAKE-LANE identities — the ones `restamp_dynamic` deliberately does not touch because they
+#: move only when the engine itself moves, not when a round advances. `config` is carried at the
+#: contract's top level as `config_sha256`; the other three live under `identities`.
+BAKE_LANE_IDENTITIES = ('engine_head', 'rl_model', 'fv')
+
+#: Fields a bake-lane restamp must leave byte-identical. Asserted, not assumed: the whole point of a
+#: restamp is that it moves exactly what it declares and nothing else.
+BAKE_LANE_FROZEN = ('identities.band', 'identities.register', 'release_version', 'switch_posture',
+                    'pvc_provenance', 'must_be_unset', 'held_checks', 'adopted',
+                    'season_state_policy_id', '_retired_checks')
+
+
+def restamp_bake_identities(root, measured, frozen_extra=(), dry_run=False):
+    """Re-stamp the BAKE-LANE identities (config_sha256 + engine_head / rl_model / fv) to values
+    MEASURED FROM THE TREE, re-seal, and prove the frozen fields did not move.
+
+    ONE IMPLEMENTATION, TWO CALLERS (shrink S6, 2026-08-30). This logic lived only inside the
+    landing transaction's contract step, which meant a change made OUTSIDE a landing — a dial flip
+    committed by hand, say — had no way to reach it and had to restamp the contract manually. The
+    ORDER 49 flip did exactly that and got it wrong: the contract identities and its self-hash were
+    two of five stamps left behind, each found by running a gate rather than by noticing. The lander
+    step and `tools/restamp` now both call THIS function, so there is one place where a contract's
+    bake-lane identities are written and one definition of what may move while they are.
+
+    `measured` is {'config', 'engine_head', 'rl_model', 'fv'} -> the value read from the tree by the
+    caller's own measurers. This function does not measure: it writes what it is given and proves
+    what it did, so the caller keeps ownership of what "the tree" means.
+
+    The trailing newline of the committed file is preserved — `json.dump(indent=2)` emits none, and
+    a landing that moved no value must still move no byte.
+
+    Returns a report {'moved': [...], 'seal_before', 'seal_after', 'frozen_checked', 'writes'}.
+    """
+    missing = [k for k in ('config',) + BAKE_LANE_IDENTITIES if k not in measured]
+    if missing:
+        raise AssertionError('restamp_bake_identities needs a measured value for %s' % missing)
+    cp = contract_path(root)
+    with open(cp, 'rb') as f:
+        raw = f.read()
+    rc = json.loads(raw)
+    body = json.dumps(rc, indent=2).encode()
+    if raw != body and raw != body + b'\n':
+        raise AssertionError('release_contract.json does not round-trip at indent=2; '
+                             'refusing to reformat it')
+    trailing_newline = (raw == body + b'\n')
+    if rc['contract_sha256'] != contract_hash(rc):
+        raise AssertionError('the contract seal is not self-consistent BEFORE this restamp')
+
+    frozen = tuple(list(BAKE_LANE_FROZEN) + list(frozen_extra or ()))
+
+    def snap(c):
+        return {k: json.dumps(c['identities'].get(k.split('.', 1)[1], None), sort_keys=True)
+                if k.startswith('identities.') else json.dumps(c.get(k), sort_keys=True)
+                for k in frozen}
+
+    fb = snap(rc)
+    moved = []
+    if rc['config_sha256'] != measured['config']:
+        moved.append(('config_sha256', rc['config_sha256'], measured['config']))
+    rc['config_sha256'] = measured['config']
+    for f in BAKE_LANE_IDENTITIES:
+        if rc['identities'].get(f) != measured[f]:
+            moved.append(('identities.' + f, rc['identities'].get(f), measured[f]))
+        rc['identities'][f] = measured[f]
+    seal_before = rc.pop('contract_sha256')
+    rc['contract_sha256'] = contract_hash(rc)
+    drift = [k for k in fb if fb[k] != snap(rc)[k]]
+    if drift:
+        raise AssertionError('a field a bake-lane restamp must not touch moved: %s' % drift)
+
+    report = {'moved': moved, 'seal_before': seal_before, 'seal_after': rc['contract_sha256'],
+              'frozen_checked': len(frozen), 'writes': False,
+              'trailing_newline_in_committed_file': trailing_newline}
+    if dry_run:
+        return report
+    tmp = cp + '.restamp_tmp'
+    with open(tmp, 'w', encoding='utf-8') as fh:
+        fh.write(json.dumps(rc, indent=2) + ('\n' if trailing_newline else ''))
+    os.replace(tmp, cp)
+    with open(cp, encoding='utf-8') as fh:
+        rc2 = json.load(fh)
+    if rc2['contract_sha256'] != contract_hash(rc2):
+        raise AssertionError('the seal must verify after the write')
+    report['writes'] = True
+    return report
+
+
 def restamp_dynamic(root, as_of_round, store_md5, board_md5, season_state):
     """Re-stamp the DYNAMIC fields of <root>/data/release_contract.json to a newly-accepted round and
     recompute the deterministic self-hash (supervisor 3rd review req 3 — one coherent weekly authority).
