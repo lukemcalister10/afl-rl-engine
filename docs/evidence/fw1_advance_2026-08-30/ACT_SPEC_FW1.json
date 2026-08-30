@@ -22,17 +22,7 @@
     },
     "_doc_round_expected": "absent_dnp is 93 \u2014 the players at the FOUR clubs that PLAYED who were not selected. It is NOT 712: the 619 at clubs that did not play are UNRECORDED, not DNP, which is the owner's ruling of 2026-08-30 and is asserted as a partition inside round_movers (played + dnp + unrecorded == the priced board)."
   },
-  "sheet": {
-    "path": "docs/owner_annotations/SITTER_2026_v1.csv",
-    "prereg_lite": "docs/evidence/fw1_advance_2026-08-30/SHEET_RECUT_PREREG.md",
-    "owner_word": "Yes, Viney has returned. Nobody else.",
-    "disclosed_movers": "jack-viney \u2014 injured Y -> N. He played Finals Week 1 for Melbourne (SC 55) while the pinned sheet carried him injured=Y with games_2026=0. EXACTLY ONE ROW DIFFERS across the file and only the `injured` column moved on it, asserted column-by-column after the write.",
-    "predicted": {
-      "sheet_md5": "61ef3e61a685909784c1d6eb23859788",
-      "sheet_rows": 219,
-      "sheet_injured_y": 34
-    }
-  },
+  "sheet": null,
   "round": {
     "number": 25,
     "_doc_number": "THE FEED ROUND, which is a (player, season, round) dedup-ledger key and NOT the calendar. staged_apply holds as_of_round at calendar_rounds = 24.",
@@ -98,5 +88,6 @@
     "state": "off"
   },
   "evidence_dir": "docs/evidence/fw1_advance_2026-08-30",
-  "gates": null
+  "gates": null,
+  "_doc_sheet": "NULL, and that is the R23 precedent rather than an omission. The injury-sheet re-cut (jack-viney injured Y->N, on the owner's word) is its OWN committed act, exactly as R23's was \u2014 the CSV and data/sheet_pins.json move together in one commit with the prereg-lite beside them, and the round that follows declares sheet:null, which is what ACT_SPEC_R24.json does. Declaring a re-cut here instead deadlocks: the `sheet` step refuses a declaration that moves no pin ('a re-cut that moves no pin is a re-cut nobody needed to authorise'), while preflight's release-manifest coherence refuses a pin that does not describe the sheet. The pin must therefore already be correct when the round launches \u2014 which means the re-cut happened before it. Prereg-lite: docs/evidence/fw1_advance_2026-08-30/SHEET_RECUT_PREREG.md."
 }
