@@ -1,6 +1,6 @@
 ================ CATCH-UP PREFLIGHT ================
   season 2026 · 1 round(s) · identity overrides: Bailey Williams, Bailey Williams WBD, Callum Brown, Will Hayes
-  R25  enc=utf-8     listed/played=408  resolved=408  listed-zero=0   absent/DNP=396   sha256 7f59c535a8cf
+  R25  enc=utf-8     listed/played=408  resolved=408  listed-zero=0   absent/DNP=92    sha256 7f59c535a8cf
         identity override: Callum M. Brown        -> callum-brown-ire       (score 50, owner-override:map_all)
         identity override: Will Hayes             -> will-hayes-b           (score 34, owner-override:map_all)
   PREFLIGHT CLEAN — every name resolves to a stable identity; no duplicate/ambiguous.

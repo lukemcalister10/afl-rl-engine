@@ -38,7 +38,7 @@
       "round": 25,
       "listed": 408,
       "resolved": 408,
-      "absent_dnp": 396,
+      "absent_dnp": 92,
       "scores_sha256": "7f59c535a8cf0217c529a1aa6b353e3780f2f5fd1af778a5edf8cde07f2e5db1",
       "ledger_before": 0,
       "ledger_delta": 408

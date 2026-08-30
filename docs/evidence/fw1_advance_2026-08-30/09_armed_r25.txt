@@ -8,10 +8,12 @@ $ python3 tools/round_entry/round_entry.py catchup --file 25=scores/FW1.csv --ap
 ===================================================
 
 About to apply rounds [25] — each as its own sequential transaction, committed in order.
-round_entry: FAIL — StagedValidationError: STAGED validation failed:
-  - staged season_state as_of_round 24 != round 25 (stale round)
-  - staged expected_boot as_of_round 24 != round 25 (boot manifest did not advance)
-  - staged release_contract as_of_round 24 != round 25 (stale contract)
-  - staged contract season_metadata.as_of_round != round 25 (artifacts on different rounds)
 
-[exit 2]
+================ CATCH-UP APPLIED ================
+  R25  store a9dec7e4->415929d3  board f81dbcda->083406f7  players=92  guard5=True  hist=[14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]  final=FINALIZED  movers->UI=804
+  Final store 415929d3 · board 083406f7
+  Per-round backups, transaction records, dedup ledger, value/overall-rank/positional-rank
+  histories and movers reports are all retained.
+=================================================
+
+[exit 0]

@@ -2,7 +2,7 @@
   "abort": {
     "byte_exact": true,
     "commits_rewound": [],
-    "error": "THE ARMED ADVANCE DID NOT COMPLETE (exit 2). Exit 3 = the store-write gate was not armed; 4 = an incomplete transaction is open (round_entry recover); 6 = finalization incomplete (round_entry finalize --round 25). The staged transaction rolls itself back; this lander then restores every carrier.\n================ CATCH-UP PREFLIGHT ================\n  season 2026 \u00b7 1 round(s) \u00b7 identity overrides: Bailey Williams, Bailey Williams WBD, Callum Brown, Will Hayes\n  R25  enc=utf-8     listed/played=92   resolved=92   listed-zero=0   absent/DNP=93    sha256 d86f976b843d\n        identity override: Will Hayes             -> will-hayes-b           (score 27, owner-override:map_all)\n  PREFLIGHT CLEAN \u2014 every name resolves to a stable identity; no duplicate/ambiguous.\n===================================================\n\nAbout to apply rounds [25] \u2014 each as its own sequential transaction, committed in order.\nround_entry: FAIL \u2014 StagedValidationError: STAGED validation failed:\n  - staged season_state as_of_round 24 != round 25 (stale round)\n  - staged expected_boot as_of_round 24 != round 25 (boot manifest did not advance)\n  - staged release_contract as_of_round 24 != round 25 (stale contract)\n  - staged contract season_metadata.as_of_round != round 25 (artifacts on different rounds)\n",
+    "error": "season_state.as_of_round is 24 after an advance to round 25",
     "failed_step": "advance",
     "restore_point": {
       "data/expected_boot.json": "530ac275f5d56edbb41e3468f8e996d7",
@@ -284,17 +284,105 @@
     },
     "restored": [
       {
+        "action": "rewrite",
+        "path": "data/expected_boot.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "data/release_contract.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "data/rl_build/rl_app_data.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "data/rl_build/rl_app_data.json.srcmd5"
+      },
+      {
+        "action": "rewrite",
+        "path": "data/season_state.json"
+      },
+      {
         "action": "delete",
         "path": "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r25/journal.jsonl"
       },
       {
         "action": "delete",
         "path": "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r25/manifest.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/ingestion/applied_rounds_ledger.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/ingestion/finalization_journal.jsonl"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/ingestion/finalization_state.json"
+      },
+      {
+        "action": "delete",
+        "path": "engine/rl_after/ingestion/movers/movers_R25.csv"
+      },
+      {
+        "action": "delete",
+        "path": "engine/rl_after/ingestion/movers/movers_R25.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/ingestion/pos_rank_history.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/ingestion/rank_history.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/ingestion/sibling_repin_state.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/ingestion/value_history.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/rl_model_data.json"
+      },
+      {
+        "action": "delete",
+        "path": "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_083406f7.json"
+      },
+      {
+        "action": "delete",
+        "path": "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_21dfbbdb.json"
+      },
+      {
+        "action": "delete",
+        "path": "session_2026-07-20/fv_provenance_remediation/test_forward_lens_083406f7.py"
+      },
+      {
+        "action": "rewrite",
+        "path": "session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py"
+      },
+      {
+        "action": "rewrite",
+        "path": "ui/data/board_view_public.js"
+      },
+      {
+        "action": "rewrite",
+        "path": "ui/data/board_view_working.js"
+      },
+      {
+        "action": "rewrite",
+        "path": "ui/data/movers.js"
       }
     ]
   },
   "commits": [],
-  "error": "THE ARMED ADVANCE DID NOT COMPLETE (exit 2). Exit 3 = the store-write gate was not armed; 4 = an incomplete transaction is open (round_entry recover); 6 = finalization incomplete (round_entry finalize --round 25). The staged transaction rolls itself back; this lander then restores every carrier.\n================ CATCH-UP PREFLIGHT ================\n  season 2026 \u00b7 1 round(s) \u00b7 identity overrides: Bailey Williams, Bailey Williams WBD, Callum Brown, Will Hayes\n  R25  enc=utf-8     listed/played=92   resolved=92   listed-zero=0   absent/DNP=93    sha256 d86f976b843d\n        identity override: Will Hayes             -> will-hayes-b           (score 27, owner-override:map_all)\n  PREFLIGHT CLEAN \u2014 every name resolves to a stable identity; no duplicate/ambiguous.\n===================================================\n\nAbout to apply rounds [25] \u2014 each as its own sequential transaction, committed in order.\nround_entry: FAIL \u2014 StagedValidationError: STAGED validation failed:\n  - staged season_state as_of_round 24 != round 25 (stale round)\n  - staged expected_boot as_of_round 24 != round 25 (boot manifest did not advance)\n  - staged release_contract as_of_round 24 != round 25 (stale contract)\n  - staged contract season_metadata.as_of_round != round 25 (artifacts on different rounds)\n",
+  "error": "season_state.as_of_round is 24 after an advance to round 25",
   "facts": {
     "base": {
       "carriers": {
@@ -575,7 +663,7 @@
         "ui/data/movers_transition.js": "2fe0edca98be0e542820155eac061e1d",
         "ui/data/ownership.js": "c1bf5f269b0cd146391960dfe3e1afbc"
       },
-      "commit": "04224206039bc3b22bc38857ea5063166a29d161",
+      "commit": "c06b6e17441c12d5d5298e638d0e6e40225452d8",
       "expected_boot": {
         "as_of_round": 24,
         "balanced_board_md5": "cdae239d5865be9463c4ef461daf0a35",
@@ -612,10 +700,10 @@
       "ran": true
     },
     "preflight": {
-      "base_commit": "04224206039bc3b22bc38857ea5063166a29d161",
+      "base_commit": "c06b6e17441c12d5d5298e638d0e6e40225452d8",
       "board_before": "f81dbcda220110ad0113ae0633b6c34e",
       "carriers_captured": 276,
-      "lock": "land-round-8327"
+      "lock": "land-round-8872"
     },
     "scores": {
       "bytes": 1562,
@@ -644,7 +732,7 @@
   "ok": false,
   "timings": [
     {
-      "seconds": 0.13,
+      "seconds": 0.15,
       "step": "preflight",
       "verdict": "OK"
     },
@@ -659,12 +747,12 @@
       "verdict": "OK"
     },
     {
-      "seconds": 0.16,
+      "seconds": 0.18,
       "step": "catchup_preflight",
       "verdict": "OK"
     },
     {
-      "seconds": 2743.42,
+      "seconds": 2841.03,
       "step": "advance",
       "verdict": "FAIL"
     }

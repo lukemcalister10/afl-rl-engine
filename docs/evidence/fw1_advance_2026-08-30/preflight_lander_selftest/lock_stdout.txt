@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_6616/sandbox
+  tree      : /tmp/landing_selftest_8872/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board f81dbcda220110ad0113ae0633b6c34e
   mode      : APPLY (SELFTEST) builder=selftest
@@ -10,7 +10,7 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
 waiting for lock held by other-seat since 2026-08-20T00:00:00Z
-  (lock /tmp/landing_selftest_6616/selftest.lock; waiting up to 0s; this landing will not start until that act finishes — two engine acts through one workspace void both.)
+  (lock /tmp/landing_selftest_8872/selftest.lock; waiting up to 0s; this landing will not start until that act finishes — two engine acts through one workspace void both.)
     [preflight FAILED  0.05s]
 
 ======================================================================================================
@@ -28,4 +28,4 @@ improvised manual landing under pressure.
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
     preflight          0.05s  FAIL
     TOTAL              0.05s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_6924
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_9181

@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the synthetic board move
-  tree      : /tmp/landing_selftest_6616/sandbox
+  tree      : /tmp/landing_selftest_8872/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 89bf05a99b8bb439e7d1454312228d38
   mode      : APPLY (SELFTEST) builder=selftest-moved
@@ -8,8 +8,8 @@ LAND LEVER-LANDING — SELF-TEST — the synthetic board move
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-lever-7415 (pid 7415) — single writer for the shared workspace.
-base commit        3d16a23ce70fb9a50eccccdf1a14920cc14f8103
+build-lock: HELD by land-lever-9683 (pid 9683) — single writer for the shared workspace.
+base commit        92b9692e9dbc8e701d36237014ada639a9d49f8c
 board pin (before) f81dbcda220110ad0113ae0633b6c34e
 store pin (before) a9dec7e4785c6861a84f3beaae2f020e
 restore point      76 carrier(s) captured, 76 present on disk
@@ -71,7 +71,7 @@ LANDING ABORTED AT STEP 'sibling'
 carriers that moved before the failure: 11
     data/expected_boot.json                                          530ac275f5d5 -> f86ab873c619
     data/release_contract.json                                       64c2f4781105 -> 8f76cc06a562
-    data/release_lineage.json                                        4c641ddbf6b6 -> 24ca64e4da19
+    data/release_lineage.json                                        4c641ddbf6b6 -> eba24f94e063
     data/rl_build/rl_app_data.json                                   f81dbcda2201 -> 89bf05a99b8b
     data/rl_build/rl_app_data.json.srcmd5                            be84fa93abdb -> b595d670eebb
     engine/rl_after/ingestion/pos_rank_history.json                  2dce67877051 -> 15e22e5e8a03
@@ -108,4 +108,4 @@ improvised manual landing under pressure.
     contract           0.09s  OK
     sibling            0.04s  FAIL
     TOTAL              0.46s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_7415
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_9683

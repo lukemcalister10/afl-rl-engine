@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND STORE-EDIT — SELF-TEST — the surgical store edit
-  tree      : /tmp/landing_selftest_6616/sandbox
+  tree      : /tmp/landing_selftest_8872/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 89bf05a99b8bb439e7d1454312228d38
   mode      : APPLY (SELFTEST) builder=selftest-moved
@@ -8,12 +8,12 @@ LAND STORE-EDIT — SELF-TEST — the surgical store edit
 
 --- STEP 0/11  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-edit-8179 (pid 8179) — single writer for the shared workspace.
-base commit        3d16a23ce70fb9a50eccccdf1a14920cc14f8103
+build-lock: HELD by land-edit-10471 (pid 10471) — single writer for the shared workspace.
+base commit        92b9692e9dbc8e701d36237014ada639a9d49f8c
 board pin (before) f81dbcda220110ad0113ae0633b6c34e
 store pin (before) a9dec7e4785c6861a84f3beaae2f020e
 restore point      77 carrier(s) captured, 77 present on disk
-    [preflight OK  0.07s]
+    [preflight OK  0.10s]
 
 --- STEP 1/11  store_edit     THE SURGICAL STORE EDIT, applied in the work dir ---
 store BEFORE  a9dec7e4785c6861a84f3beaae2f020e   (1978019 bytes)
@@ -36,7 +36,7 @@ MOVERS — EVERY ONE, WITH VALUES  (2 of 1002 valued row(s) moved)
     harry-sheezel                Harry Sheezel              11169 -> 11168   (-1)  [active]
     nick-daicos                  Nick Daicos                10655 -> 10654   (-1)  [active]
 pool (sum of active v)  702917 -> 702915  (-2)
-    [build_proofs FAILED  0.11s]
+    [build_proofs FAILED  0.12s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'build_proofs'
@@ -61,8 +61,8 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.07s  OK
+    preflight          0.10s  OK
     store_edit         0.20s  OK
-    build_proofs       0.11s  FAIL
-    TOTAL              0.38s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_8179
+    build_proofs       0.12s  FAIL
+    TOTAL              0.42s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_10471

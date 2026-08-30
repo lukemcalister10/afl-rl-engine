@@ -2659,9 +2659,13 @@ def advance(ctx):
         if moved:
             raise StepError('a REHEARSAL moved %s. A no-op that moves the board is not a no-op.'
                             % moved)
-        if int(held['as_of_round']) != n:
-            raise StepError('the act declares round %d and the tree is at round %s. A rehearsal '
-                            'holds the round it is standing on.' % (n, held['as_of_round']))
+        # A REHEARSAL holds the round it stands on, and for a finals rehearsal that is the CALENDAR
+        # round — the tree sits at 24 while the act declares feed round 25, and demanding they match
+        # would make a finals rehearsal impossible to run at all.
+        if int(held['as_of_round']) != min(n, HOME_AND_AWAY_ROUNDS):
+            raise StepError('the act declares feed round %d (calendar %d) and the tree is at round '
+                            '%s. A rehearsal holds the round it is standing on.'
+                            % (n, min(n, HOME_AND_AWAY_ROUNDS), held['as_of_round']))
         return {'applied': False, 'rehearsal': True, 'round': n, **held}
 
     arming = rnd['arming']
@@ -2741,9 +2745,10 @@ def advance(ctx):
         raise StepError('a FINALS week must HOLD the calendar round at %d; expected_boot says %s'
                         % (HOME_AND_AWAY_ROUNDS, boot.get('as_of_round')))
     season = json.load(open(_p(ctx, 'data', 'season_state.json'), encoding='utf-8'))
-    if int(season.get('as_of_round')) != n:
-        raise StepError('season_state.as_of_round is %s after an advance to round %d'
-                        % (season.get('as_of_round'), n))
+    if int(season.get('as_of_round')) != _cal:
+        raise StepError('season_state.as_of_round is %s after an advance to feed round %d '
+                        '(the calendar round for this act is %d)'
+                        % (season.get('as_of_round'), n, _cal))
     if str(ctx.spec['prereg'].get('board_before')) != facts['board_before'] and \
             not str(ctx.spec['prereg'].get('board_before')).startswith(facts['board_before']):
         raise StepError('the advance started from board %s; the prereg says it starts from %s'
@@ -3027,9 +3032,15 @@ def movers_page(ctx):
         if base_col.get('board') != rep.get('board_md5_before'):
             fails.append('baseline column board %s != report board_md5_before %s'
                          % (base_col.get('board'), rep.get('board_md5_before')))
-        if int(base_col.get('after_round')) != n - 1:
+        # RULE M0 IN A FINALS WEEK. A home-and-away advance to round N compares against N-1, and
+        # for every ordinary round this is unchanged. A FINALS week holds the calendar at 24 and
+        # earns an out-of-round column, so its baseline is the last point at that held round — 24,
+        # not 24 (n-1 would be 24 for FW1 by accident and 25 for FW2, which is a round that will
+        # never exist). The expected baseline is therefore the calendar round the act holds.
+        _want_base = (n - 1) if n <= HOME_AND_AWAY_ROUNDS else HOME_AND_AWAY_ROUNDS
+        if int(base_col.get('after_round')) != _want_base:
             fails.append('RULE M0: the baseline sits at as_of_round %s, not %d'
-                         % (base_col.get('after_round'), n - 1))
+                         % (base_col.get('after_round'), _want_base))
     if not (rep.get('integrity') or {}).get('coverage_full'):
         fails.append('the report does not claim full coverage')
     if int(rep.get('player_count') or 0) != len(rep.get('players') or []):

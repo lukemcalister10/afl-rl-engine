@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_6616/sandbox
+  tree      : /tmp/landing_selftest_8872/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board f81dbcda220110ad0113ae0633b6c34e
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,8 +9,8 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-lever-7019 (pid 7019) — single writer for the shared workspace.
-base commit        3d16a23ce70fb9a50eccccdf1a14920cc14f8103
+build-lock: HELD by land-lever-9276 (pid 9276) — single writer for the shared workspace.
+base commit        92b9692e9dbc8e701d36237014ada639a9d49f8c
 board pin (before) f81dbcda220110ad0113ae0633b6c34e
 store pin (before) a9dec7e4785c6861a84f3beaae2f020e
 restore point      76 carrier(s) captured, 76 present on disk
@@ -65,4 +65,4 @@ improvised manual landing under pressure.
     lineage            0.00s  OK
     contract           0.00s  FAIL
     TOTAL              0.12s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_7019
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_9276

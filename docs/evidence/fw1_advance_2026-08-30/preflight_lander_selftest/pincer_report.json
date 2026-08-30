@@ -3,10 +3,10 @@
     "byte_exact": true,
     "commits_rewound": {
       "commits": [
-        "5863b7fac116fb2f89148454f551ebb16b5fa72b"
+        "9ba61c7d2e698cc795d5fb87c7fd96ac85054ca0"
       ],
       "rewound": true,
-      "to": "3d16a23ce70fb9a50eccccdf1a14920cc14f8103"
+      "to": "92b9692e9dbc8e701d36237014ada639a9d49f8c"
     },
     "error": "STOPPED AT THE DOOR, BY REQUEST (selftest fault `advance:stop_at_the_door`). Steps 0-3 ran for real against an uncommitted owner score file; the armed advance is where this case deliberately ends, because a self-test does not arm a score-write.",
     "failed_step": "advance",
@@ -283,7 +283,7 @@
         "ui/data/movers_transition.js": "2fe0edca98be0e542820155eac061e1d",
         "ui/data/ownership.js": "c1bf5f269b0cd146391960dfe3e1afbc"
       },
-      "commit": "3d16a23ce70fb9a50eccccdf1a14920cc14f8103",
+      "commit": "92b9692e9dbc8e701d36237014ada639a9d49f8c",
       "expected_boot": {
         "as_of_round": 24,
         "balanced_board_md5": "cdae239d5865be9463c4ef461daf0a35",
@@ -307,9 +307,9 @@
     },
     "catchup_preflight": {
       "clean": true,
-      "commit": "5863b7fac116fb2f89148454f551ebb16b5fa72b",
+      "commit": "9ba61c7d2e698cc795d5fb87c7fd96ac85054ca0",
       "counts": {
-        "absent_dnp": 396,
+        "absent_dnp": 92,
         "encoding": "utf-8",
         "listed": 408,
         "listed_zero": 0,
@@ -320,10 +320,10 @@
       "ran": true
     },
     "preflight": {
-      "base_commit": "3d16a23ce70fb9a50eccccdf1a14920cc14f8103",
+      "base_commit": "92b9692e9dbc8e701d36237014ada639a9d49f8c",
       "board_before": "f81dbcda220110ad0113ae0633b6c34e",
       "carriers_captured": 129,
-      "lock": "land-round-7917"
+      "lock": "land-round-10184"
     },
     "scores": {
       "bytes": 7223,
@@ -350,7 +350,7 @@
   "ok": false,
   "timings": [
     {
-      "seconds": 0.09,
+      "seconds": 0.12,
       "step": "preflight",
       "verdict": "OK"
     },
@@ -365,7 +365,7 @@
       "verdict": "OK"
     },
     {
-      "seconds": 0.25,
+      "seconds": 0.34,
       "step": "catchup_preflight",
       "verdict": "OK"
     },

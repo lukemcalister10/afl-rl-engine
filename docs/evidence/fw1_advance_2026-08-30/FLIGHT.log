@@ -11,12 +11,12 @@ DECLARED DIRT (2 path(s), and ONLY these): owner inputs this act is contracted t
     scores/FW1.csv                                             (committed by the `catchup_preflight` step)
     engine/rl_after/ingestion/catchup_identity_overrides.json  (committed by the `catchup_preflight` step)
 RL_/PAR_ environment  RL_VENV
-build-lock: HELD by land-round-8327 (pid 8327) — single writer for the shared workspace.
-base commit        04224206039bc3b22bc38857ea5063166a29d161
+build-lock: HELD by land-round-8872 (pid 8872) — single writer for the shared workspace.
+base commit        c06b6e17441c12d5d5298e638d0e6e40225452d8
 board pin (before) f81dbcda220110ad0113ae0633b6c34e
 store pin (before) a9dec7e4785c6861a84f3beaae2f020e
 restore point      276 carrier(s) captured, 276 present on disk
-    [preflight OK  0.13s]
+    [preflight OK  0.15s]
 
 --- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
 sheet         docs/owner_annotations/SITTER_2026_v1.csv
@@ -51,7 +51,7 @@ explicit paths (2):
     engine/rl_after/ingestion/catchup_identity_overrides.json
     scores/FW1.csv
 NOTHING TO COMMIT: every named path is already committed at this content. The inputs of record are in the tree, which is what this commit exists to ensure; no empty commit is manufactured to say so.
-    [catchup_preflight OK  0.16s]
+    [catchup_preflight OK  0.18s]
 
 --- STEP 4/14  advance        THE ARMED CATCH-UP — ADVANCE-REPIN runs inside it ---
 ARMED BY OWNER WORD (law 10c): Explicit word given
@@ -64,38 +64,71 @@ ARMED BY OWNER WORD (law 10c): Explicit word given
   ===================================================
   
   About to apply rounds [25] — each as its own sequential transaction, committed in order.
-  round_entry: FAIL — StagedValidationError: STAGED validation failed:
-    - staged season_state as_of_round 24 != round 25 (stale round)
-    - staged expected_boot as_of_round 24 != round 25 (boot manifest did not advance)
-    - staged release_contract as_of_round 24 != round 25 (stale contract)
-    - staged contract season_metadata.as_of_round != round 25 (artifacts on different rounds)
-armed run     exit=2  (2743.4s)
-    [advance FAILED  2743.42s]
+  
+  ================ CATCH-UP APPLIED ================
+    R25  store a9dec7e4->415929d3  board f81dbcda->083406f7  players=92  guard5=True  hist=[14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]  final=FINALIZED  movers->UI=804
+    Final store 415929d3 · board 083406f7
+    Per-round backups, transaction records, dedup ledger, value/overall-rank/positional-rank
+    histories and movers reports are all retained.
+  =================================================
+armed run     exit=0  (2841.0s)
+    [advance FAILED  2841.03s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'advance'
 ======================================================================================================
-  THE ARMED ADVANCE DID NOT COMPLETE (exit 2). Exit 3 = the store-write gate was not armed; 4 = an incomplete transaction is open (round_entry recover); 6 = finalization incomplete (round_entry finalize --round 25). The staged transaction rolls itself back; this lander then restores every carrier.
-  ================ CATCH-UP PREFLIGHT ================
-    season 2026 · 1 round(s) · identity overrides: Bailey Williams, Bailey Williams WBD, Callum Brown, Will Hayes
-    R25  enc=utf-8     listed/played=92   resolved=92   listed-zero=0   absent/DNP=93    sha256 d86f976b843d
-          identity override: Will Hayes             -> will-hayes-b           (score 27, owner-override:map_all)
-    PREFLIGHT CLEAN — every name resolves to a stable identity; no duplicate/ambiguous.
-  ===================================================
-  
-  About to apply rounds [25] — each as its own sequential transaction, committed in order.
-  round_entry: FAIL — StagedValidationError: STAGED validation failed:
-    - staged season_state as_of_round 24 != round 25 (stale round)
-    - staged expected_boot as_of_round 24 != round 25 (boot manifest did not advance)
-    - staged release_contract as_of_round 24 != round 25 (stale contract)
-    - staged contract season_metadata.as_of_round != round 25 (artifacts on different rounds)
+  season_state.as_of_round is 24 after an advance to round 25
 
-carriers that moved before the failure: 2
-    engine/rl_after/ingestion/.weekly_txn/txn_catchup_r25/journal.jsonl ABSENT -> e183997fbd63
-    engine/rl_after/ingestion/.weekly_txn/txn_catchup_r25/manifest.json ABSENT -> 04da2aee216c
-RESTORING 2 carrier(s):
+carriers that moved before the failure: 24
+    data/expected_boot.json                                          530ac275f5d5 -> 64493475bef0
+    data/release_contract.json                                       64c2f4781105 -> 9ec7841423b6
+    data/rl_build/rl_app_data.json                                   f81dbcda2201 -> 083406f7f09b
+    data/rl_build/rl_app_data.json.srcmd5                            be84fa93abdb -> 9d52c1dfe49b
+    data/season_state.json                                           a59358138884 -> a45a674af1b1
+    engine/rl_after/ingestion/.weekly_txn/txn_catchup_r25/journal.jsonl ABSENT -> 6ed8cdcfa4e7
+    engine/rl_after/ingestion/.weekly_txn/txn_catchup_r25/manifest.json ABSENT -> 83be5e3f279a
+    engine/rl_after/ingestion/applied_rounds_ledger.json             a4948c6a626a -> 085a6197d24e
+    engine/rl_after/ingestion/finalization_journal.jsonl             9336246bc865 -> 4b13518806af
+    engine/rl_after/ingestion/finalization_state.json                a90785673be4 -> 194e3f0ae753
+    engine/rl_after/ingestion/movers/movers_R25.csv                  ABSENT -> 2813174338e5
+    engine/rl_after/ingestion/movers/movers_R25.json                 ABSENT -> 3a3867cb3515
+    engine/rl_after/ingestion/pos_rank_history.json                  2dce67877051 -> a627642b8394
+    engine/rl_after/ingestion/rank_history.json                      028d28ddc4af -> c7a7c6b230f8
+    engine/rl_after/ingestion/sibling_repin_state.json               6e8797940d90 -> cf4b8306a4ad
+    engine/rl_after/ingestion/value_history.json                     45ab462c19eb -> da04507cda41
+    engine/rl_after/rl_model_data.json                               a9dec7e4785c -> 415929d3c9d5
+    session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_083406f7.json ABSENT -> 007a03751523
+    session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_21dfbbdb.json ABSENT -> 823de79626ff
+    session_2026-07-20/fv_provenance_remediation/test_forward_lens_083406f7.py ABSENT -> 15bef1fc39d6
+    session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py 1338985525d3 -> 84ed2b4b5555
+    ui/data/board_view_public.js                                     7edcfc19d6eb -> 29b78dbf299c
+    ui/data/board_view_working.js                                    e5a407c709c1 -> 64c3e5c44ac3
+    ui/data/movers.js                                                ee0afbb7e4f6 -> fdf7764560d2
+RESTORING 24 carrier(s):
+    rewrite  data/expected_boot.json
+    rewrite  data/release_contract.json
+    rewrite  data/rl_build/rl_app_data.json
+    rewrite  data/rl_build/rl_app_data.json.srcmd5
+    rewrite  data/season_state.json
     delete   engine/rl_after/ingestion/.weekly_txn/txn_catchup_r25/journal.jsonl
     delete   engine/rl_after/ingestion/.weekly_txn/txn_catchup_r25/manifest.json
+    rewrite  engine/rl_after/ingestion/applied_rounds_ledger.json
+    rewrite  engine/rl_after/ingestion/finalization_journal.jsonl
+    rewrite  engine/rl_after/ingestion/finalization_state.json
+    delete   engine/rl_after/ingestion/movers/movers_R25.csv
+    delete   engine/rl_after/ingestion/movers/movers_R25.json
+    rewrite  engine/rl_after/ingestion/pos_rank_history.json
+    rewrite  engine/rl_after/ingestion/rank_history.json
+    rewrite  engine/rl_after/ingestion/sibling_repin_state.json
+    rewrite  engine/rl_after/ingestion/value_history.json
+    rewrite  engine/rl_after/rl_model_data.json
+    delete   session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_083406f7.json
+    delete   session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_21dfbbdb.json
+    delete   session_2026-07-20/fv_provenance_remediation/test_forward_lens_083406f7.py
+    rewrite  session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py
+    rewrite  ui/data/board_view_public.js
+    rewrite  ui/data/board_view_working.js
+    rewrite  ui/data/movers.js
 
 ABORT PROOF: every carrier is BYTE-EXACT to the identity captured at step 0.
 
@@ -105,10 +138,10 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.13s  OK
+    preflight          0.15s  OK
     sheet              0.00s  OK
     scores             0.00s  OK
-    catchup_preflight     0.16s  OK
-    advance         2743.42s  FAIL
-    TOTAL           2743.71s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_8327
+    catchup_preflight     0.18s  OK
+    advance         2841.03s  FAIL
+    TOTAL           2841.36s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_8872

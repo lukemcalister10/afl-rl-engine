@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND ROUND-ADVANCE — SELF-TEST — the input-commit pincer (R24 rehearsal §3.1 RUN A + RUN C)
-  tree      : /tmp/landing_selftest_6616/sandbox
+  tree      : /tmp/landing_selftest_8872/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board f81dbcda220110ad0113ae0633b6c34e
   mode      : APPLY (SELFTEST) builder=selftest
@@ -12,12 +12,12 @@ DECLARED DIRT (2 path(s), and ONLY these): owner inputs this act is contracted t
     scores/R25.csv                                             (committed by the `catchup_preflight` step)
     engine/rl_after/ingestion/catchup_identity_overrides.json  (committed by the `catchup_preflight` step)
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-round-8071 (pid 8071) — single writer for the shared workspace.
-base commit        79b2c10504bc52628fe4391502ea076ccab55db6
+build-lock: HELD by land-round-10339 (pid 10339) — single writer for the shared workspace.
+base commit        4ebebbffe9225bcd50b60cffd2631e452037d96a
 board pin (before) f81dbcda220110ad0113ae0633b6c34e
 store pin (before) a9dec7e4785c6861a84f3beaae2f020e
 restore point      129 carrier(s) captured, 129 present on disk
-    [preflight OK  0.10s]
+    [preflight OK  0.11s]
 
 --- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
 sheet         docs/owner_annotations/SITTER_2026_v1.csv
@@ -37,7 +37,7 @@ scores file   scores/R25.csv  (7223 bytes)
 injured=Y players listed in R25: 0 []
   ================ CATCH-UP PREFLIGHT ================
     season 2026 · 1 round(s) · identity overrides: Bailey Williams, Bailey Williams WBD, Callum Brown, Will Hayes
-    R25  enc=utf-8     listed/played=408  resolved=408  listed-zero=0   absent/DNP=396   sha256 7f59c535a8cf
+    R25  enc=utf-8     listed/played=408  resolved=408  listed-zero=0   absent/DNP=92    sha256 7f59c535a8cf
           identity override: Callum M. Brown        -> callum-brown-ire       (score 50, owner-override:map_all)
           identity override: Will Hayes             -> will-hayes-b           (score 34, owner-override:map_all)
     PREFLIGHT CLEAN — every name resolves to a stable identity; no duplicate/ambiguous.
@@ -45,13 +45,13 @@ injured=Y players listed in R25: 0 []
   
   About to apply rounds [25] — each as its own sequential transaction, committed in order.
   NOT APPROVED — nothing applied. Re-run with --approve (or answer `yes`).
-preflight counts, MEASURED: {"absent_dnp": 396, "encoding": "utf-8", "listed": 408, "listed_zero": 0, "resolved": 408, "sha256": "7f59c535a8cf"}
+preflight counts, MEASURED: {"absent_dnp": 92, "encoding": "utf-8", "listed": 408, "listed_zero": 0, "resolved": 408, "sha256": "7f59c535a8cf"}
 PREREG MET: listed/resolved/absent-DNP and the score file sha256 all as predicted.
 explicit paths (2):
     engine/rl_after/ingestion/catchup_identity_overrides.json
     scores/R25.csv
 NOTHING TO COMMIT: every named path is already committed at this content. The inputs of record are in the tree, which is what this commit exists to ensure; no empty commit is manufactured to say so.
-    [catchup_preflight OK  0.13s]
+    [catchup_preflight OK  0.18s]
 
 --- STEP 4/14  advance        THE ARMED CATCH-UP — ADVANCE-REPIN runs inside it ---
 *** FAULT INJECTED at step 'advance': stop_before_arming — the transaction is stopped at the door of the armed advance, so the case measures the four steps that already ran — the input-commit pincer
@@ -73,10 +73,10 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.10s  OK
+    preflight          0.11s  OK
     sheet              0.00s  OK
     scores             0.00s  OK
-    catchup_preflight     0.13s  OK
+    catchup_preflight     0.18s  OK
     advance            0.00s  FAIL
-    TOTAL              0.23s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_8071
+    TOTAL              0.29s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_10339
