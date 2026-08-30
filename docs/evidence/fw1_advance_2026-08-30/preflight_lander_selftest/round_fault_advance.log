@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
-  tree      : /tmp/landing_selftest_4995/sandbox
+  tree      : /tmp/landing_selftest_4692/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board f81dbcda220110ad0113ae0633b6c34e
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,17 +9,17 @@ LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
 
 --- STEP 0/14  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-round-6001 (pid 6001) — single writer for the shared workspace.
-base commit        5a5742badf335d724ce5e30b64961273c8a05554
+build-lock: HELD by land-round-5696 (pid 5696) — single writer for the shared workspace.
+base commit        c84cfad908cfd0b8320e2674d94dcda326ea1408
 board pin (before) f81dbcda220110ad0113ae0633b6c34e
 store pin (before) a9dec7e4785c6861a84f3beaae2f020e
 restore point      128 carrier(s) captured, 128 present on disk
-    [preflight OK  0.09s]
+    [preflight OK  0.13s]
 
 --- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
 sheet         docs/owner_annotations/SITTER_2026_v1.csv
-  MEASURED (never typed): md5=21361291f26d35108b88f92f885c5063 rows=219 injured_y=35
-  PINNED                : md5=21361291f26d35108b88f92f885c5063 rows=219 injured_y=35
+  MEASURED (never typed): md5=61ef3e61a685909784c1d6eb23859788 rows=219 injured_y=34
+  PINNED                : md5=61ef3e61a685909784c1d6eb23859788 rows=219 injured_y=34
 the declaration describes the sheet on disk. NO RE-CUT DECLARED — this step writes nothing, and `land round` remains the pin file's sole writer by not writing.
     [sheet OK  0.00s]
 
@@ -55,10 +55,10 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.09s  OK
+    preflight          0.13s  OK
     sheet              0.00s  OK
     scores             0.00s  OK
     catchup_preflight     0.00s  OK
     advance            0.01s  FAIL
-    TOTAL              0.10s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_6001
+    TOTAL              0.14s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_5696

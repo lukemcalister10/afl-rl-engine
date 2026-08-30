@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND ROUND-ADVANCE — SELF-TEST — the input-commit pincer (R24 rehearsal §3.1 RUN A + RUN C)
-  tree      : /tmp/landing_selftest_4995/sandbox
+  tree      : /tmp/landing_selftest_4692/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board f81dbcda220110ad0113ae0633b6c34e
   mode      : APPLY (SELFTEST) builder=selftest
@@ -12,17 +12,17 @@ DECLARED DIRT (2 path(s), and ONLY these): owner inputs this act is contracted t
     scores/R25.csv                                             (committed by the `catchup_preflight` step)
     engine/rl_after/ingestion/catchup_identity_overrides.json  (committed by the `catchup_preflight` step)
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-round-6452 (pid 6452) — single writer for the shared workspace.
-base commit        17da2b5996474fb754f3aec3e6d3093f1683cdc4
+build-lock: HELD by land-round-6149 (pid 6149) — single writer for the shared workspace.
+base commit        6a1a27bfd5e61ccdcd4c2a32e0d313b9f16b8e6b
 board pin (before) f81dbcda220110ad0113ae0633b6c34e
 store pin (before) a9dec7e4785c6861a84f3beaae2f020e
 restore point      129 carrier(s) captured, 129 present on disk
-    [preflight OK  0.10s]
+    [preflight OK  0.14s]
 
 --- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
 sheet         docs/owner_annotations/SITTER_2026_v1.csv
-  MEASURED (never typed): md5=21361291f26d35108b88f92f885c5063 rows=219 injured_y=35
-  PINNED                : md5=21361291f26d35108b88f92f885c5063 rows=219 injured_y=35
+  MEASURED (never typed): md5=61ef3e61a685909784c1d6eb23859788 rows=219 injured_y=34
+  PINNED                : md5=61ef3e61a685909784c1d6eb23859788 rows=219 injured_y=34
 the declaration describes the sheet on disk. NO RE-CUT DECLARED — this step writes nothing, and `land round` remains the pin file's sole writer by not writing.
     [sheet OK  0.00s]
 
@@ -30,15 +30,16 @@ the declaration describes the sheet on disk. NO RE-CUT DECLARED — this step wr
 scores file   scores/R25.csv  (7223 bytes)
   md5    00dcccf02fd61d2ef761c2915b8bfeb9   OK
   sha256 7f59c535a8cf0217c529a1aa6b353e3780f2f5fd1af778a5edf8cde07f2e5db1   OK
-0 declared override(s), all present; 3 in the file overall
+0 declared override(s), all present; 4 in the file overall
     [scores OK  0.00s]
 
 --- STEP 3/14  catchup_preflight read-only preflight, CLEAN, then the inputs commit ---
 injured=Y players listed in R25: 0 []
   ================ CATCH-UP PREFLIGHT ================
-    season 2026 · 1 round(s) · identity overrides: Bailey Williams, Bailey Williams WBD, Callum Brown
+    season 2026 · 1 round(s) · identity overrides: Bailey Williams, Bailey Williams WBD, Callum Brown, Will Hayes
     R25  enc=utf-8     listed/played=408  resolved=408  listed-zero=0   absent/DNP=396   sha256 7f59c535a8cf
           identity override: Callum M. Brown        -> callum-brown-ire       (score 50, owner-override:map_all)
+          identity override: Will Hayes             -> will-hayes-b           (score 34, owner-override:map_all)
     PREFLIGHT CLEAN — every name resolves to a stable identity; no duplicate/ambiguous.
   ===================================================
   
@@ -50,7 +51,7 @@ explicit paths (2):
     engine/rl_after/ingestion/catchup_identity_overrides.json
     scores/R25.csv
 NOTHING TO COMMIT: every named path is already committed at this content. The inputs of record are in the tree, which is what this commit exists to ensure; no empty commit is manufactured to say so.
-    [catchup_preflight OK  0.13s]
+    [catchup_preflight OK  0.12s]
 
 --- STEP 4/14  advance        THE ARMED CATCH-UP — ADVANCE-REPIN runs inside it ---
 *** FAULT INJECTED at step 'advance': stop_before_arming — the transaction is stopped at the door of the armed advance, so the case measures the four steps that already ran — the input-commit pincer
@@ -72,10 +73,10 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.10s  OK
+    preflight          0.14s  OK
     sheet              0.00s  OK
     scores             0.00s  OK
-    catchup_preflight     0.13s  OK
+    catchup_preflight     0.12s  OK
     advance            0.00s  FAIL
-    TOTAL              0.23s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_6452
+    TOTAL              0.26s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_6149

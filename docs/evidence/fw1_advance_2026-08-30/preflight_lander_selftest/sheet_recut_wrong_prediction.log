@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND ROUND-ADVANCE — SELF-TEST — the synthetic sheet re-cut
-  tree      : /tmp/landing_selftest_4995/sandbox
+  tree      : /tmp/landing_selftest_4692/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board f81dbcda220110ad0113ae0633b6c34e
   mode      : APPLY (SELFTEST) builder=selftest
@@ -12,18 +12,18 @@ DECLARED DIRT (2 path(s), and ONLY these): owner inputs this act is contracted t
     docs/owner_annotations/SITTER_2026_v1.csv                  (committed by the `sheet` step)
     docs/evidence/landing_selftest/SELFTEST_PREREG_LITE.md     (committed by the `sheet` step)
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-round-6090 (pid 6090) — single writer for the shared workspace.
-base commit        5a5742badf335d724ce5e30b64961273c8a05554
+build-lock: HELD by land-round-5786 (pid 5786) — single writer for the shared workspace.
+base commit        c84cfad908cfd0b8320e2674d94dcda326ea1408
 board pin (before) f81dbcda220110ad0113ae0633b6c34e
 store pin (before) a9dec7e4785c6861a84f3beaae2f020e
 restore point      128 carrier(s) captured, 128 present on disk
-    [preflight OK  0.12s]
+    [preflight OK  0.13s]
 
 --- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
 sheet         docs/owner_annotations/SITTER_2026_v1.csv
-  MEASURED (never typed): md5=6a257b9d1cd51e4bbaff1cc67b9a69e3 rows=219 injured_y=35
-  PINNED                : md5=21361291f26d35108b88f92f885c5063 rows=219 injured_y=35
-  PREDICTED (prereg-lite docs/evidence/landing_selftest/SELFTEST_PREREG_LITE.md): md5=00000000000000000000000000000000 rows=219 injured_y=35
+  MEASURED (never typed): md5=01161960cb15eac0617cc02a7a15e49d rows=219 injured_y=34
+  PINNED                : md5=61ef3e61a685909784c1d6eb23859788 rows=219 injured_y=34
+  PREDICTED (prereg-lite docs/evidence/landing_selftest/SELFTEST_PREREG_LITE.md): md5=00000000000000000000000000000000 rows=219 injured_y=34
   owner word: SELF-TEST FIXTURE — no owner word exists or is claimed.
   disclosed movers: nobody: this re-cut appends one byte to a notes cell.
     [sheet FAILED  0.00s]
@@ -32,7 +32,7 @@ sheet         docs/owner_annotations/SITTER_2026_v1.csv
 LANDING ABORTED AT STEP 'sheet'
 ======================================================================================================
   THE RE-CUT IS NOT THE RE-CUT THAT WAS PREDICTED:
-      sheet_md5: predicted 00000000000000000000000000000000, measured 6a257b9d1cd51e4bbaff1cc67b9a69e3
+      sheet_md5: predicted 00000000000000000000000000000000, measured 01161960cb15eac0617cc02a7a15e49d
   The prereg-lite is corrected against the tree, never the tree against the prereg-lite, and a re-cut whose measured facts are not the disclosed ones is a HALT AND A REPORT.
 
 carriers that moved before the failure: 0
@@ -46,7 +46,7 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.12s  OK
+    preflight          0.13s  OK
     sheet              0.00s  FAIL
-    TOTAL              0.12s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_6090
+    TOTAL              0.13s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_5786

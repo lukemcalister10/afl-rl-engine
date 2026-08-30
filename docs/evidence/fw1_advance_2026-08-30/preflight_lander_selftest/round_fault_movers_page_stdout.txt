@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
-  tree      : /tmp/landing_selftest_4995/sandbox
+  tree      : /tmp/landing_selftest_4692/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board f81dbcda220110ad0113ae0633b6c34e
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,17 +9,17 @@ LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
 
 --- STEP 0/14  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-round-6058 (pid 6058) — single writer for the shared workspace.
-base commit        5a5742badf335d724ce5e30b64961273c8a05554
+build-lock: HELD by land-round-5753 (pid 5753) — single writer for the shared workspace.
+base commit        c84cfad908cfd0b8320e2674d94dcda326ea1408
 board pin (before) f81dbcda220110ad0113ae0633b6c34e
 store pin (before) a9dec7e4785c6861a84f3beaae2f020e
 restore point      128 carrier(s) captured, 128 present on disk
-    [preflight OK  0.09s]
+    [preflight OK  0.13s]
 
 --- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
 sheet         docs/owner_annotations/SITTER_2026_v1.csv
-  MEASURED (never typed): md5=21361291f26d35108b88f92f885c5063 rows=219 injured_y=35
-  PINNED                : md5=21361291f26d35108b88f92f885c5063 rows=219 injured_y=35
+  MEASURED (never typed): md5=61ef3e61a685909784c1d6eb23859788 rows=219 injured_y=34
+  PINNED                : md5=61ef3e61a685909784c1d6eb23859788 rows=219 injured_y=34
 the declaration describes the sheet on disk. NO RE-CUT DECLARED — this step writes nothing, and `land round` remains the pin file's sole writer by not writing.
     [sheet OK  0.00s]
 
@@ -68,7 +68,7 @@ RE-STAMPED, re-read, and release_contract.py check PASSES.
 --- STEP 8/14  sibling        the balanced sibling: verify (the repin ran in-txn) ---
 verify BEFORE : ok=True balanced=cdae239d5865 fails=0
 the sibling is CURRENT — nothing to reconcile, and this step writes nothing.
-    [sibling OK  0.13s]
+    [sibling OK  0.14s]
 
 --- STEP 9/14  ui             ALL SIX UI writers, and the identity read back out ---
 BEFORE  working e5a407c709c1e6e33631355352b9f8f3  release-block=True
@@ -92,12 +92,12 @@ WRITER 4/6: ui/tools/rebuild_movers_derived.py  (points / values / model_changes
   drift guard: derived blocks OK — committed == rebuilt (4449156 bytes, latest report R24)
   shipped model_changes == live-derived: 16 boundar(ies), EQUAL  (the F-10 predicate holds)
 WRITER 5/6: ui/tools/ingest_inputs.py --mirror-only  (the ownership mirror, re-pinned to the landed board + store)
-  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_4995/sandbox/ui/data/ownership.js
+  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_4692/sandbox/ui/data/ownership.js
   MIRROR-ONLY    — the club-valuation bundle was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
   drift guard: MIRROR DRIFT GUARD — ui/data/ownership.js is byte-identical to what this tree projects (74727 bytes).
   mirror pin == the landed identity: board f81dbcda store a9dec7e4 R24, 804 player(s) mirrored (pin() would ACTIVATE it)
 WRITER 6/6: ui/tools/ingest_inputs.py --clubs-only  (the picks bundle, re-stamped to the landed board + store)
-  CLEAN INGEST — 240 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: /tmp/landing_selftest_4995/sandbox/ui/data/club_valuation.js
+  CLEAN INGEST — 240 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: /tmp/landing_selftest_4692/sandbox/ui/data/club_valuation.js
   CLUBS-ONLY     — the ownership mirror was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
   drift guard: PICKS DRIFT GUARD — ui/data/club_valuation.js is byte-identical to what this tree projects (58319 bytes).
   picks stamp == the landed identity: board f81dbcda store a9dec7e4 R24, 240 pick(s) priced off 1c3b22d1 (pin() would ACCEPT it)
@@ -114,7 +114,7 @@ AFTER   picks  9d3dc5e07d722b51f37a0278ee5b6166  UNMOVED (neither the board, the
   stamp.balanced_board_md5   cdae239d5865be9463c4ef461daf0a35   OK
   stamp.asOfRound            24                                 OK
 THE HTML APP'S EMBEDDED BOARD IDENTITY IS f81dbcda220110ad0113ae0633b6c34e. All six writers ran; the release block is back, the reader can see the transition that produced this board, the ownership mirror is pinned to it rather than to the store it replaced, and the pick surface is stamped to it rather than to the board before it.
-    [ui OK  2.63s]
+    [ui OK  2.68s]
     build-lock: RELEASED after 'ui' — the remaining steps write nothing and the one gate that builds takes the lock itself.
 
 --- STEP 10/14  movers_page    the owner's movers page, through the frozen template ---
@@ -152,7 +152,7 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.09s  OK
+    preflight          0.13s  OK
     sheet              0.00s  OK
     scores             0.00s  OK
     catchup_preflight     0.00s  OK
@@ -160,8 +160,8 @@ improvised manual landing under pressure.
     generator_sync     0.01s  OK
     day0               0.00s  OK
     contract           0.09s  OK
-    sibling            0.13s  OK
-    ui                 2.63s  OK
+    sibling            0.14s  OK
+    ui                 2.68s  OK
     movers_page        0.12s  FAIL
-    TOTAL              3.08s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_6058
+    TOTAL              3.18s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_5753

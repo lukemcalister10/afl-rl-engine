@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND STORE-EDIT — SELF-TEST — the surgical store edit
-  tree      : /tmp/landing_selftest_4995/sandbox
+  tree      : /tmp/landing_selftest_4692/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 89bf05a99b8bb439e7d1454312228d38
   mode      : APPLY (SELFTEST) builder=selftest-moved
@@ -8,12 +8,12 @@ LAND STORE-EDIT — SELF-TEST — the surgical store edit
 
 --- STEP 0/11  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-edit-6542 (pid 6542) — single writer for the shared workspace.
-base commit        5a5742badf335d724ce5e30b64961273c8a05554
+build-lock: HELD by land-edit-6238 (pid 6238) — single writer for the shared workspace.
+base commit        c84cfad908cfd0b8320e2674d94dcda326ea1408
 board pin (before) f81dbcda220110ad0113ae0633b6c34e
 store pin (before) a9dec7e4785c6861a84f3beaae2f020e
 restore point      77 carrier(s) captured, 77 present on disk
-    [preflight OK  0.10s]
+    [preflight OK  0.07s]
 
 --- STEP 1/11  store_edit     THE SURGICAL STORE EDIT, applied in the work dir ---
 *** FAULT INJECTED at step 'store_edit': store_old_mismatch — the store already carries the NEW value, so the `old` the spec asserts is not there — an ABORT, never a repair (the exact-string law)
@@ -48,7 +48,7 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.10s  OK
+    preflight          0.07s  OK
     store_edit         0.13s  FAIL
-    TOTAL              0.23s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_6542
+    TOTAL              0.20s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_6238

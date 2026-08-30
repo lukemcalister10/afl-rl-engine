@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the synthetic board move
-  tree      : /tmp/landing_selftest_4995/sandbox
+  tree      : /tmp/landing_selftest_4692/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 89bf05a99b8bb439e7d1454312228d38
   mode      : APPLY (SELFTEST) builder=selftest-moved
@@ -8,12 +8,12 @@ LAND LEVER-LANDING — SELF-TEST — the synthetic board move
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-lever-5797 (pid 5797) — single writer for the shared workspace.
-base commit        5a5742badf335d724ce5e30b64961273c8a05554
+build-lock: HELD by land-lever-5492 (pid 5492) — single writer for the shared workspace.
+base commit        c84cfad908cfd0b8320e2674d94dcda326ea1408
 board pin (before) f81dbcda220110ad0113ae0633b6c34e
 store pin (before) a9dec7e4785c6861a84f3beaae2f020e
 restore point      76 carrier(s) captured, 76 present on disk
-    [preflight OK  0.09s]
+    [preflight OK  0.11s]
 
 --- STEP 1/10  build_proofs   bare build, predicted identity, switch leg, day-0 ---
 build         rc=0 board=89bf05a99b8bb439e7d1454312228d38  (0.0s)
@@ -71,7 +71,7 @@ LANDING ABORTED AT STEP 'sibling'
 carriers that moved before the failure: 11
     data/expected_boot.json                                          530ac275f5d5 -> f86ab873c619
     data/release_contract.json                                       64c2f4781105 -> 8f76cc06a562
-    data/release_lineage.json                                        4c641ddbf6b6 -> 6ac857b9d87d
+    data/release_lineage.json                                        4c641ddbf6b6 -> a90ff87f44dd
     data/rl_build/rl_app_data.json                                   f81dbcda2201 -> 89bf05a99b8b
     data/rl_build/rl_app_data.json.srcmd5                            be84fa93abdb -> b595d670eebb
     engine/rl_after/ingestion/pos_rank_history.json                  2dce67877051 -> 15e22e5e8a03
@@ -101,11 +101,11 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.09s  OK
+    preflight          0.11s  OK
     build_proofs       0.01s  OK
     pins               0.02s  OK
     lineage            0.22s  OK
     contract           0.09s  OK
     sibling            0.04s  FAIL
-    TOTAL              0.47s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_5797
+    TOTAL              0.49s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_5492

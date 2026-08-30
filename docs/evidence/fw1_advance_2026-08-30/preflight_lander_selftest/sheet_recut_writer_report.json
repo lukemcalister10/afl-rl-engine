@@ -1,8 +1,8 @@
 {
   "abort": null,
   "commits": [
-    "0889230c7b279e36a3df62ce2a70470206c196f5",
-    "deef84e15fbbd627e8107bf65cb7b65034d21441"
+    "c62d1971f6cec40c58eac362d5c998d79d2e7381",
+    "125c1a604eaf3f858ab1b26889bca8ee6ca713b6"
   ],
   "error": null,
   "facts": {
@@ -22,10 +22,10 @@
         "data/rl_build/rl_app_data.json": "f81dbcda220110ad0113ae0633b6c34e",
         "data/rl_build/rl_app_data.json.srcmd5": "be84fa93abdb7cfa9b444963476dab03",
         "data/season_state.json": "a59358138884adba1063f27228845fc1",
-        "data/sheet_pins.json": "a4ee39f7ec80ee6b6172aa28e0c17aae",
+        "data/sheet_pins.json": "226b73ff64e6a6967103bfee788848a0",
         "docs/STATE.md": "26f555342db67a4889ecefcf8914c090",
         "docs/evidence/final_candidate_2026-08-19/DAY0_CP.json": "72d583f1261357cd88b85e0c1133df79",
-        "docs/owner_annotations/SITTER_2026_v1.csv": "6a257b9d1cd51e4bbaff1cc67b9a69e3",
+        "docs/owner_annotations/SITTER_2026_v1.csv": "01161960cb15eac0617cc02a7a15e49d",
         "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r15/journal.jsonl": "8f7e48989f0ca5504029167053e61a89",
         "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r15/manifest.json": "c1d1aa6187ea11dfb0097f1210de7de2",
         "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r16/journal.jsonl": "fc1c373703b7ba92585295e92bb0441d",
@@ -47,7 +47,7 @@
         "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r24/journal.jsonl": "c1901e117b2e68277b626b53041a2dad",
         "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r24/manifest.json": "4d9171e2f47d9c3ddd6421c9e379c1ea",
         "engine/rl_after/ingestion/applied_rounds_ledger.json": "a4948c6a626ae62065bc187477ef6cdb",
-        "engine/rl_after/ingestion/catchup_identity_overrides.json": "7b0d8ff087287be0663eb92468ee505a",
+        "engine/rl_after/ingestion/catchup_identity_overrides.json": "b0c6c1ed763f97dce22221d3f4904376",
         "engine/rl_after/ingestion/finalization_journal.jsonl": "9336246bc865b5ecb2df919ac67c115c",
         "engine/rl_after/ingestion/finalization_state.json": "a90785673be4b21baeb07a97c30dab55",
         "engine/rl_after/ingestion/movers/movers_R15.csv": "b6871f4e3ad73d72f17bbe84d20a449e",
@@ -145,7 +145,7 @@
         "ui/data/movers_transition.js": "2fe0edca98be0e542820155eac061e1d",
         "ui/data/ownership.js": "c1bf5f269b0cd146391960dfe3e1afbc"
       },
-      "commit": "5a5742badf335d724ce5e30b64961273c8a05554",
+      "commit": "c84cfad908cfd0b8320e2674d94dcda326ea1408",
       "expected_boot": {
         "as_of_round": 24,
         "balanced_board_md5": "cdae239d5865be9463c4ef461daf0a35",
@@ -178,12 +178,12 @@
           "state": "off"
         }
       },
-      "claims_path": "/tmp/landing_selftest_4995/sandbox/docs/evidence/landing_selftest/SELFTEST_CLAIMS.json",
+      "claims_path": "/tmp/landing_selftest_4692/sandbox/docs/evidence/landing_selftest/SELFTEST_CLAIMS.json",
       "n_claims": 9,
       "verified": true
     },
     "commit": {
-      "commit": "deef84e15fbbd627e8107bf65cb7b65034d21441",
+      "commit": "125c1a604eaf3f858ab1b26889bca8ee6ca713b6",
       "committed": true,
       "paths": [
         "data/release_contract.json",
@@ -245,17 +245,17 @@
       "written": true
     },
     "preflight": {
-      "base_commit": "5a5742badf335d724ce5e30b64961273c8a05554",
+      "base_commit": "c84cfad908cfd0b8320e2674d94dcda326ea1408",
       "board_before": "f81dbcda220110ad0113ae0633b6c34e",
       "carriers_captured": 128,
-      "lock": "land-round-6109"
+      "lock": "land-round-5805"
     },
     "scores": {
       "rehearsal": true,
       "scores": null
     },
     "sheet": {
-      "commit": "0889230c7b279e36a3df62ce2a70470206c196f5",
+      "commit": "c62d1971f6cec40c58eac362d5c998d79d2e7381",
       "engine_head": "17243c16277842e0a30470cfbdb5b196",
       "moved": [
         "sheet_md5",
@@ -264,8 +264,8 @@
       ],
       "prereg_lite": "docs/evidence/landing_selftest/SELFTEST_PREREG_LITE.md",
       "recut": true,
-      "sheet_injured_y": 35,
-      "sheet_md5": "6a257b9d1cd51e4bbaff1cc67b9a69e3",
+      "sheet_injured_y": 34,
+      "sheet_md5": "01161960cb15eac0617cc02a7a15e49d",
       "sheet_rows": 219
     },
     "sibling": {
@@ -276,9 +276,9 @@
     },
     "state": {
       "changed": true,
-      "md5": "e867676cff8adaab0d1fe5bfdbeb1ee5",
+      "md5": "4581ccd0718d21bdc8a2029806a020fa",
       "path": "docs/STATE.md",
-      "stamp_commit": "0889230c7b279e36a3df62ce2a70470206c196f5",
+      "stamp_commit": "c62d1971f6cec40c58eac362d5c998d79d2e7381",
       "written": true
     },
     "ui": {
@@ -305,12 +305,12 @@
   "ok": true,
   "timings": [
     {
-      "seconds": 0.1,
+      "seconds": 0.14,
       "step": "preflight",
       "verdict": "OK"
     },
     {
-      "seconds": 0.16,
+      "seconds": 0.14,
       "step": "sheet",
       "verdict": "OK"
     },
@@ -345,12 +345,12 @@
       "verdict": "OK"
     },
     {
-      "seconds": 0.14,
+      "seconds": 0.15,
       "step": "sibling",
       "verdict": "OK"
     },
     {
-      "seconds": 2.69,
+      "seconds": 2.61,
       "step": "ui",
       "verdict": "OK"
     },
@@ -365,17 +365,17 @@
       "verdict": "OK"
     },
     {
-      "seconds": 0.16,
+      "seconds": 0.15,
       "step": "gates",
       "verdict": "OK"
     },
     {
-      "seconds": 0.28,
+      "seconds": 0.27,
       "step": "claims",
       "verdict": "OK"
     },
     {
-      "seconds": 0.25,
+      "seconds": 0.39,
       "step": "commit",
       "verdict": "OK"
     }

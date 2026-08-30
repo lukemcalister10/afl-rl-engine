@@ -10,7 +10,7 @@
       "data/release_lineage.json": "4c641ddbf6b62361a02221d108a90d7b",
       "data/rl_build/rl_app_data.json": "f81dbcda220110ad0113ae0633b6c34e",
       "data/rl_build/rl_app_data.json.srcmd5": "be84fa93abdb7cfa9b444963476dab03",
-      "data/sheet_pins.json": "a4ee39f7ec80ee6b6172aa28e0c17aae",
+      "data/sheet_pins.json": "226b73ff64e6a6967103bfee788848a0",
       "docs/STATE.md": "26f555342db67a4889ecefcf8914c090",
       "engine/rl_after/ingestion/pos_rank_history.json": "2dce6787705123d7488fb48ef1c68d97",
       "engine/rl_after/ingestion/rank_history.json": "028d28ddc4aff5a854b53e638f467984",
@@ -107,7 +107,7 @@
         "data/release_lineage.json": "4c641ddbf6b62361a02221d108a90d7b",
         "data/rl_build/rl_app_data.json": "f81dbcda220110ad0113ae0633b6c34e",
         "data/rl_build/rl_app_data.json.srcmd5": "be84fa93abdb7cfa9b444963476dab03",
-        "data/sheet_pins.json": "a4ee39f7ec80ee6b6172aa28e0c17aae",
+        "data/sheet_pins.json": "226b73ff64e6a6967103bfee788848a0",
         "docs/STATE.md": "26f555342db67a4889ecefcf8914c090",
         "engine/rl_after/ingestion/pos_rank_history.json": "2dce6787705123d7488fb48ef1c68d97",
         "engine/rl_after/ingestion/rank_history.json": "028d28ddc4aff5a854b53e638f467984",
@@ -179,7 +179,7 @@
         "ui/data/movers_transition.js": "2fe0edca98be0e542820155eac061e1d",
         "ui/data/ownership.js": "c1bf5f269b0cd146391960dfe3e1afbc"
       },
-      "commit": "5a5742badf335d724ce5e30b64961273c8a05554",
+      "commit": "c84cfad908cfd0b8320e2674d94dcda326ea1408",
       "expected_boot": {
         "as_of_round": 24,
         "balanced_board_md5": "cdae239d5865be9463c4ef461daf0a35",
@@ -227,10 +227,10 @@
       "unmoved_checked": 7
     },
     "preflight": {
-      "base_commit": "5a5742badf335d724ce5e30b64961273c8a05554",
+      "base_commit": "c84cfad908cfd0b8320e2674d94dcda326ea1408",
       "board_before": "f81dbcda220110ad0113ae0633b6c34e",
       "carriers_captured": 76,
-      "lock": "land-lever-5649"
+      "lock": "land-lever-5345"
     },
     "sibling": {
       "balanced_board_md5": "cdae239d5865be9463c4ef461daf0a35",
@@ -243,7 +243,7 @@
   "ok": false,
   "timings": [
     {
-      "seconds": 0.11,
+      "seconds": 0.12,
       "step": "preflight",
       "verdict": "OK"
     },
@@ -263,7 +263,7 @@
       "verdict": "OK"
     },
     {
-      "seconds": 0.1,
+      "seconds": 0.09,
       "step": "contract",
       "verdict": "OK"
     },
@@ -273,7 +273,7 @@
       "verdict": "OK"
     },
     {
-      "seconds": 2.61,
+      "seconds": 2.51,
       "step": "ui",
       "verdict": "FAIL"
     }

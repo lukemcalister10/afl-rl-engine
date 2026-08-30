@@ -47,9 +47,9 @@
     "owner_word": "SELF-TEST FIXTURE \u2014 no owner word exists or is claimed.",
     "disclosed_movers": "nobody: this re-cut appends one byte to a notes cell.",
     "predicted": {
-      "sheet_md5": "6a257b9d1cd51e4bbaff1cc67b9a69e3",
+      "sheet_md5": "01161960cb15eac0617cc02a7a15e49d",
       "sheet_rows": 219,
-      "sheet_injured_y": 35
+      "sheet_injured_y": 34
     },
     "provenance": "SELF-TEST FIXTURE \u2014 sandbox only."
   },

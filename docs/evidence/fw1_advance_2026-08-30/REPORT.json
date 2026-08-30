@@ -2,8 +2,8 @@
   "abort": {
     "byte_exact": true,
     "commits_rewound": [],
-    "error": "ORDER 42 WILL HALT THE ADVANCE. 1 player(s) marked injured=Y on the pinned owner sheet appear in the score file: ['jack-viney']. The advance increments games_2026 for every listed player, so the sheet and the store would disagree and the board regen halts INSIDE the staged transaction. The remedy is the owner-worded re-cut (R23 runbook \u00a74 H2 / ERRATUM E7), declared as spec.sheet with its prereg-lite \u2014 not a weakened guard.",
-    "failed_step": "catchup_preflight",
+    "error": "a sheet re-cut is DECLARED and the declaration already describes the sheet. A re-cut that moves no pin is a re-cut nobody needed to authorise.",
+    "failed_step": "sheet",
     "restore_point": {
       "data/expected_boot.json": "530ac275f5d56edbb41e3468f8e996d7",
       "data/release_contract.json": "64c2f478110517df1244d13e246d27ed",
@@ -11,10 +11,10 @@
       "data/rl_build/rl_app_data.json": "f81dbcda220110ad0113ae0633b6c34e",
       "data/rl_build/rl_app_data.json.srcmd5": "be84fa93abdb7cfa9b444963476dab03",
       "data/season_state.json": "a59358138884adba1063f27228845fc1",
-      "data/sheet_pins.json": "a4ee39f7ec80ee6b6172aa28e0c17aae",
+      "data/sheet_pins.json": "226b73ff64e6a6967103bfee788848a0",
       "docs/STATE.md": "26f555342db67a4889ecefcf8914c090",
       "docs/evidence/final_candidate_2026-08-19/DAY0_CP.json": "72d583f1261357cd88b85e0c1133df79",
-      "docs/owner_annotations/SITTER_2026_v1.csv": "21361291f26d35108b88f92f885c5063",
+      "docs/owner_annotations/SITTER_2026_v1.csv": "61ef3e61a685909784c1d6eb23859788",
       "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/journal.jsonl": "a46befc7100f100bed9155415f20979c",
       "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/manifest.json": "23c861fc7a85ec058fc8a3f156d25121",
       "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/board_view_public": "12c5c49dd5767ad69a20b8cf3d46916f",
@@ -285,7 +285,7 @@
     "restored": []
   },
   "commits": [],
-  "error": "ORDER 42 WILL HALT THE ADVANCE. 1 player(s) marked injured=Y on the pinned owner sheet appear in the score file: ['jack-viney']. The advance increments games_2026 for every listed player, so the sheet and the store would disagree and the board regen halts INSIDE the staged transaction. The remedy is the owner-worded re-cut (R23 runbook \u00a74 H2 / ERRATUM E7), declared as spec.sheet with its prereg-lite \u2014 not a weakened guard.",
+  "error": "a sheet re-cut is DECLARED and the declaration already describes the sheet. A re-cut that moves no pin is a re-cut nobody needed to authorise.",
   "facts": {
     "base": {
       "carriers": {
@@ -295,10 +295,10 @@
         "data/rl_build/rl_app_data.json": "f81dbcda220110ad0113ae0633b6c34e",
         "data/rl_build/rl_app_data.json.srcmd5": "be84fa93abdb7cfa9b444963476dab03",
         "data/season_state.json": "a59358138884adba1063f27228845fc1",
-        "data/sheet_pins.json": "a4ee39f7ec80ee6b6172aa28e0c17aae",
+        "data/sheet_pins.json": "226b73ff64e6a6967103bfee788848a0",
         "docs/STATE.md": "26f555342db67a4889ecefcf8914c090",
         "docs/evidence/final_candidate_2026-08-19/DAY0_CP.json": "72d583f1261357cd88b85e0c1133df79",
-        "docs/owner_annotations/SITTER_2026_v1.csv": "21361291f26d35108b88f92f885c5063",
+        "docs/owner_annotations/SITTER_2026_v1.csv": "61ef3e61a685909784c1d6eb23859788",
         "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/journal.jsonl": "a46befc7100f100bed9155415f20979c",
         "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/manifest.json": "23c861fc7a85ec058fc8a3f156d25121",
         "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/board_view_public": "12c5c49dd5767ad69a20b8cf3d46916f",
@@ -566,7 +566,7 @@
         "ui/data/movers_transition.js": "2fe0edca98be0e542820155eac061e1d",
         "ui/data/ownership.js": "c1bf5f269b0cd146391960dfe3e1afbc"
       },
-      "commit": "2115c03e0ab3c9d280306e08b28a35844c779057",
+      "commit": "e870539564ab4fb9a1cc5477fcf99959ae864b08",
       "expected_boot": {
         "as_of_round": 24,
         "balanced_board_md5": "cdae239d5865be9463c4ef461daf0a35",
@@ -589,55 +589,23 @@
       }
     },
     "preflight": {
-      "base_commit": "2115c03e0ab3c9d280306e08b28a35844c779057",
+      "base_commit": "e870539564ab4fb9a1cc5477fcf99959ae864b08",
       "board_before": "f81dbcda220110ad0113ae0633b6c34e",
       "carriers_captured": 276,
-      "lock": "land-round-6694"
-    },
-    "scores": {
-      "bytes": 1562,
-      "md5": "e8ba891be3a1653dacada06256f169c3",
-      "overrides_declared": [
-        "Will Hayes"
-      ],
-      "overrides_in_file": [
-        "Bailey Williams",
-        "Bailey Williams WBD",
-        "Callum Brown",
-        "Will Hayes"
-      ],
-      "scores": "scores/FW1.csv",
-      "sha256": "d86f976b843d77537853e337ab32673fa61837bd2f6a0df3adf89d5db1f3a85b"
-    },
-    "sheet": {
-      "commit": null,
-      "recut": false,
-      "sheet_injured_y": 35,
-      "sheet_md5": "21361291f26d35108b88f92f885c5063",
-      "sheet_rows": 219
+      "lock": "land-round-4692"
     }
   },
-  "failed_step": "catchup_preflight",
+  "failed_step": "sheet",
   "ok": false,
   "timings": [
     {
-      "seconds": 0.13,
+      "seconds": 0.14,
       "step": "preflight",
       "verdict": "OK"
     },
     {
       "seconds": 0.0,
       "step": "sheet",
-      "verdict": "OK"
-    },
-    {
-      "seconds": 0.0,
-      "step": "scores",
-      "verdict": "OK"
-    },
-    {
-      "seconds": 0.0,
-      "step": "catchup_preflight",
       "verdict": "FAIL"
     }
   ]
