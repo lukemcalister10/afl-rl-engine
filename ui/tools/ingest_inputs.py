@@ -433,8 +433,9 @@ def assert_pvc(pvc, resolved):
 
 # ----------------------------------------------------------------------------------- price one pick
 _POOL_VALUE = None   # the ruled pool index value, published by resolve() from the release-active curve
+_YEAR_MULTIPLIERS = {}  # the owner's Ladder-sheet distance discounts, published when the workbook is read
 
-def price_pick(pvc, lo, hi, year, pool_value=None, rnd=None):
+def price_pick(pvc, lo, hi, year, pool_value=None, rnd=None, year_multipliers=None):
     # THE RULED SPLIT (RULEBOOK v2.1 law 4): the national curve prices picks 1-64; EVERYTHING past 64
     # is the pool at ONE index, valued at the curve artifact's committed pool_value. No new decision is
     # taken here — both halves are read from the release-active artifact.
@@ -458,23 +459,28 @@ def price_pick(pvc, lo, hi, year, pool_value=None, rnd=None):
         return 0.0
 
     own = _mean(lo, hi)
-    # THE OWNER'S YEAR RULE (2026-08-28, verbatim): "2026: 100% its own projected pick value.
-    # 2027: 50% its own projected pick value + 50% average pick value for that round.
-    # 2028: 100% the average pick value for that round." The round average is the engine curve's
-    # mean over the round's sixteen slots (round 5 sits wholly past the curve domain = the pool
-    # level). This SUPERSEDES the flat R104.5 10% discount and the workbook's own 0.9/0.8
-    # multipliers — the sheet's Value columns were never ingested and still are not.
+    # THE OWNER'S YEAR RULE, RESTORED TO HIS WORKBOOK (2026-08-30): a future pick is its OWN
+    # projected band value, discounted for the distance — "the pick is so far in the future the
+    # asset is worth less". The multipliers are HIS, set in the workbook he maintains
+    # (Ladder!B2 "2027 value multiplier" 0.9, Ladder!B3 "2028 value multiplier" 0.8), and they are
+    # READ FROM THAT SHEET, never hard-coded here: if he moves a cell the rating moves with it.
+    #
+    # WHAT THIS REPLACES, AND WHY IT WAS WRONG. Between 2026-08-28 and 2026-08-30 this priced a
+    # 2027 pick at half own + half the round average and a 2028 pick at the round average outright.
+    # That made every 2028 pick in a round worth the SAME NUMBER — a wooden-spooner's first and a
+    # premier's first both 1,582 — which discards the projected finishing positions the owner sets
+    # by hand on the Ladder sheet for 2027 AND 2028 ("Edit each team\'s projected finishing pick
+    # range ... Years are independent"). The workbook was never ambiguous; its Value (counted)
+    # column is `=IF(year=2027, Raw*Ladder!B2, IF(year=2028, Raw*Ladder!B3, Raw))`, and Raw is the
+    # same band mean computed here. The supersession note that stood in this comment claimed his
+    # word had retired those multipliers; his word of 2026-08-30 is that it had not.
     if year == BASE_YEAR:
         return own
-    if rnd is None:
-        halt("a %d pick needs its round to price the round average (HALT-AND-ASK)" % year)
-    r_lo, r_hi = (int(rnd) - 1) * 16 + 1, int(rnd) * 16
-    r_avg = _mean(r_lo, r_hi)
-    if year == BASE_YEAR + 1:
-        return 0.5 * own + 0.5 * r_avg
-    if year == BASE_YEAR + 2:
-        return r_avg
-    halt("pick year %s is outside the issued windows %s (HALT-AND-ASK)" % (year, list(PICK_YEARS)))
+    m = (year_multipliers or {}).get(int(year))
+    if m is None:
+        halt("no workbook multiplier for %s — the Ladder sheet must carry a \"%s value "
+             "multiplier\" cell (HALT-AND-ASK)" % (year, year))
+    return m * own
 
 
 # ----------------------------------------------------------------------------------------- the picks
@@ -497,16 +503,43 @@ def load_picks(pvc, affl_teams):
     except zipfile.BadZipFile:
         halt("AFFL_Pick_Locations.xlsx is not a readable .xlsx (not a zip container)")
 
-    # --- Ladder: the year multipliers are the WORKBOOK'S OWN display convention and are NOT
-    # ingested (the owner's year rule of 2026-08-28 governs pricing here — see price_pick). The
-    # cells are still read and reported so a sheet change is visible, never silently ignored.
-    # This RESTATES the old R104.5 reconciliation halt, superseded by the same owner word.
+    # --- Ladder: THE YEAR MULTIPLIERS ARE INGESTED (owner word 2026-08-30: "I ruled 0.8x for a
+    # reason, because the pick is so far in the future the asset is worth less. Like 2027 picks are
+    # worth 0.9x. It is simple. I ruled it"). They are read from HIS sheet rather than written into
+    # this file, so the rating follows the workbook: move Ladder!B2 or B3 and the next ingest moves
+    # with it. Until 2026-08-30 these cells were read and REPORTED but deliberately not applied —
+    # that was the defect, and it is the reason a 2028 wooden-spooner's first priced the same as a
+    # premier's. A missing or out-of-range cell HALTS: pricing three draft years off a sheet whose
+    # discount cells cannot be read is exactly the silent-default class this estate refuses.
     mults = {}
     for row in ladder_rows:
         if row and row[0] and "value multiplier" in str(row[0]):
-            mults[str(row[0]).split()[0]] = row[1]
-    check("ladder year multipliers read (workbook display only, NOT ingested; owner year rule "
-          "2026-08-28 governs)", True, "sheet cells = %s" % (mults or "none"))
+            label = str(row[0]).split()[0]
+            try:
+                yr = int(label)
+            except (TypeError, ValueError):
+                halt("ladder multiplier row %r does not start with a year (HALT-AND-ASK)" % (row[0],))
+            try:
+                mults[yr] = float(row[1])
+            except (TypeError, ValueError):
+                halt("ladder %s multiplier is not a number: %r (HALT-AND-ASK)" % (yr, row[1]))
+    need = [y for y in PICK_YEARS if y != BASE_YEAR]
+    missing = [y for y in need if y not in mults]
+    check("ladder carries a value multiplier for every discounted year %s" % need,
+          not missing, "read %s" % ({k: mults[k] for k in sorted(mults)} or "none"))
+    if missing:
+        halt("the Ladder sheet has no value multiplier for %s — every issued year after %d must "
+             "carry one (HALT-AND-ASK)" % (missing, BASE_YEAR))
+    bad = {y: m for y, m in mults.items() if not (0.0 < m <= 1.0)}
+    check("every ladder multiplier is a discount in (0, 1]", not bad, "offending = %s" % (bad or "none"))
+    if bad:
+        halt("ladder multiplier(s) outside (0, 1]: %s — a future pick may not be worth more than "
+             "its own projected value (HALT-AND-ASK)" % bad)
+    if BASE_YEAR in mults and mults[BASE_YEAR] != 1.0:
+        halt("the sheet carries a %d multiplier of %s; the base year is undiscounted by the owner's "
+             "own note on that sheet (HALT-AND-ASK)" % (BASE_YEAR, mults[BASE_YEAR]))
+    global _YEAR_MULTIPLIERS
+    _YEAR_MULTIPLIERS = dict(mults)
 
     # --- Picks ledger ---
     if picks_rows is None:
@@ -569,7 +602,8 @@ def load_picks(pvc, affl_teams):
         p["rnd"] = int(p["rnd"])
         if not (1 <= p["rnd"] <= 5):
             halt("pick id %s carries round %s (rounds are 1-5)" % (p["id"], p["rnd"]))
-        p["value"] = round(price_pick(pvc, p["lo"], p["hi"], p["year"], rnd=p["rnd"]))
+        p["value"] = round(price_pick(pvc, p["lo"], p["hi"], p["year"], rnd=p["rnd"],
+                                      year_multipliers=mults))
         p["band"] = "#%d-%d" % (p["lo"], p["hi"]) if p["lo"] != p["hi"] else "#%d" % p["lo"]
 
     # pick-count conservation (the Dashboard convention): ledger == Sum per-owner counts == 160
@@ -579,7 +613,7 @@ def load_picks(pvc, affl_teams):
           "sum=%d ledger=%d" % (sum(per_owner.values()), len(picks)))
     if not conserved:
         halt("pick-count conservation failed")
-    check("all %d picks priced off the canonical curve (owner year rule 2026-08-28)" % expected_n,
+    check("all %d picks priced off the canonical curve (owner year rule: own projected band, x0.9 for 2027 and x0.8 for 2028, read from the Ladder sheet — 2026-08-30)" % expected_n,
           all("value" in p for p in picks), "priced=%d" % sum(1 for p in picks if "value" in p))
     return picks
 
@@ -1000,9 +1034,11 @@ def run():
             "pvcPathway": resolved["gate"], "pvcCurveMd5": resolved["curve_md5"],
             "pvcCurveFileMd5": resolved["file_md5"], "releaseCurveContract": "ui/release_pick_curve.json",
             "pvcOk": True,
-            "yearRule": "2026=own band; 2027=50% own + 50% round avg; 2028=round avg "
-                        "(owner word 2026-08-28 — supersedes the flat R104.5 10% discount)",
-            "posture": "owner year rule 2026-08-28 (regression-to-round-mean, no flat multiplier)",
+            "yearRule": "2026=own band; 2027=0.9 x own band; 2028=0.8 x own band — the "
+                        "multipliers READ FROM the workbook's Ladder sheet (owner word "
+                        "2026-08-30: a pick further in the future is worth less)",
+            "yearMultipliers": {str(y): _YEAR_MULTIPLIERS[y] for y in sorted(_YEAR_MULTIPLIERS)},
+            "posture": "owner year rule 2026-08-30 (own projected band, workbook distance discount)",
             "nPicks": len(picks), "nClubs": len(clubs),
             # NO WALL CLOCK. This stamp carried a `generated` ISO timestamp until 2026-08-21 and it
             # was the ONE field that made this bundle impossible to byte-prove: "regenerate and

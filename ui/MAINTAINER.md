@@ -118,8 +118,18 @@ both directions so the enrichment can never silently widen.
 The "Rating" column is the 56-asset club rating (owner formula, 2026-08-28): best 41 player
 slots + best 5 eligible picks per year (2026/2027/2028) = 56 assets; 150 per vacant slot
 (phantom); surplus R1–4 picks replace the lowest counted player when worth more; pick years
-valued 2026 = full own projected band, 2027 = ½ own + ½ round average, 2028 = round average;
-R5 picks are worth 0 and never occupy a slot. Implementation: `ui/tools/ingest_inputs.py`
+valued 2026 = full own projected band, 2027 = 0.9 × own band, 2028 = 0.8 × own band, the two
+multipliers READ FROM the workbook's own Ladder sheet (B2/B3) rather than written into the code,
+so moving a cell moves the rating (owner word 2026-08-30: a pick further in the future is worth
+less); R5 picks are worth 0 and never occupy a slot.
+
+A note for whoever reads this next, because it was got wrong once: between 2026-08-28 and
+2026-08-30 the future years were priced by regression to the round average — 2028 at the round
+average outright — which made every 2028 pick in a round the same number and threw away the
+per-club projected finishing positions the owner maintains by hand on that same Ladder sheet for
+2027 and 2028. The workbook was never ambiguous about it; its `Value (counted)` column is
+`=IF(year=2027, Raw×Ladder!B2, IF(year=2028, Raw×Ladder!B3, Raw))`. If a future rule ever seems
+to supersede the sheet, check the sheet. Implementation: `ui/tools/ingest_inputs.py`
 (`rating56`), `ui/app/club_totals.js` (`rating56Of`), with a parity oracle in
 `ui/tests/test_club_valuation_current.py`. "Depth" is the former Non-Best-23 column.
 

@@ -179,11 +179,21 @@ with tempfile.TemporaryDirectory(prefix="clubprov_") as TMP:
         raw = json.dumps(b)
         check(stale not in raw, "CASE1 no stale token '%s' carried forward" % stale)
 
-    # no-workbook-value: every pick price == the engine-curve mean (price_pick), never a sheet value.
+    # RESTATED 2026-08-30. The label below still holds where it matters — no pick takes its price
+    # from the sheet's Value columns; every price is the engine curve's own band mean. What the
+    # owner's word of 2026-08-30 added is that the DISTANCE DISCOUNT does come from his sheet
+    # (Ladder!B2 0.9 for 2027, Ladder!B3 0.8 for 2028). So the oracle reads those multipliers back
+    # out of the bundle's own stamp rather than carrying a copy: if the ingest applied a discount
+    # the stamp does not declare, or declared one it did not apply, this re-derivation disagrees.
     sys.path.insert(0, os.path.join(REPO, "ui", "tools"))
     import ingest_inputs as ing  # noqa: E402  (imported for the pure price_pick, no path dependency)
     v2 = load_curve_values("pvc_curve_v2.json")
     _live_pool_value = json.load(open(os.path.join(REAL_ENGINE, "pvc_curve_v2.json"))).get("pool_value")
+    _stamp_mults = {int(y): float(m) for y, m in
+                    ((b or {}).get("stamp", {}).get("yearMultipliers") or {}).items()}
+    check(sorted(_stamp_mults) == [y for y in ing.PICK_YEARS if y != ing.BASE_YEAR],
+          "CASE1 the bundle stamp declares a distance multiplier for every discounted year",
+          "stamp = %s" % (_stamp_mults or "none"))
     priced_ok = True
     sample = 0
     for team, picks in (b or {}).get("picksByTeam", {}).items():
@@ -191,7 +201,8 @@ with tempfile.TemporaryDirectory(prefix="clubprov_") as TMP:
             # ITEM 271 Addendum 23 fix 1 lockstep: the oracle recomputes the SAME quantity, so it must
             # see the same ruled split. pool_value comes from the release-active artifact, one source.
             expect = round(ing.price_pick(v2, p["low"], p["high"], p["year"],
-                                          pool_value=_live_pool_value, rnd=p["round"]))
+                                          pool_value=_live_pool_value, rnd=p["round"],
+                                          year_multipliers=_stamp_mults))
             if expect != p["value"]:
                 priced_ok = False
             sample += 1
