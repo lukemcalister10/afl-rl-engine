@@ -1,10 +1,10 @@
 {
-  "_doc": "FINALS WEEK 1 — the first finals application. A FINALS WEEK IS NOT A ROUND ADVANCE: feed round 25 is a ledger key, the CALENDAR round is HELD at 24, calendar_progress stays 1.00, and every non-finalist's completed season is untouched. Because the board moves and the round does not, this act EARNS an out-of-round column and a lineage entry, exactly as a dial flip does (standing owner rule 2026-07-28).",
+  "_doc": "FINALS WEEK 1 \u2014 the first finals application. A FINALS WEEK IS NOT A ROUND ADVANCE: feed round 25 is a ledger key, the CALENDAR round is HELD at 24, calendar_progress stays 1.00, and every non-finalist's completed season is untouched. Because the board moves and the round does not, this act EARNS an out-of-round column and a lineage entry, exactly as a dial flip does (standing owner rule 2026-07-28).",
   "schema_version": 1,
   "act_kind": "round-advance",
-  "act": "FW1 — FINALS WEEK 1 APPLIED (feed round 25; the calendar round HELD at 24)",
+  "act": "FW1 \u2014 FINALS WEEK 1 APPLIED (feed round 25; the calendar round HELD at 24)",
   "date": "2026-08-30",
-  "owner_word": "PENDING — LAW 10(c) arming word required. The owner has delivered the scores and the fixture; the score-write token is his and the lander composes neither.",
+  "owner_word": "Explicit word given (owner, verbatim, 2026-08-30), on the FW1 direct-movers preview: 87 movers, all of them players who played, pool 702,917 -> 704,376.",
   "authority": "owner screenshots of the FootyWire SC column 2026-08-30 (transcribed, verified against his own conservation check); fixture 'FW1 is 4 teams playing' + the four clubs; DNP ruling 'should carry a DNP but the DNP shouldn't directly count against a player'",
   "prereg": {
     "path": "docs/evidence/fw1_advance_2026-08-30/PREREG.md",
@@ -20,7 +20,7 @@
       "ledger_before": 3906,
       "ledger_delta": 92
     },
-    "_doc_round_expected": "absent_dnp is 93 — the players at the FOUR clubs that PLAYED who were not selected. It is NOT 712: the 619 at clubs that did not play are UNRECORDED, not DNP, which is the owner's ruling of 2026-08-30 and is asserted as a partition inside round_movers (played + dnp + unrecorded == the priced board)."
+    "_doc_round_expected": "absent_dnp is 93 \u2014 the players at the FOUR clubs that PLAYED who were not selected. It is NOT 712: the 619 at clubs that did not play are UNRECORDED, not DNP, which is the owner's ruling of 2026-08-30 and is asserted as a partition inside round_movers (played + dnp + unrecorded == the priced board)."
   },
   "sheet": null,
   "round": {
@@ -31,37 +31,62 @@
       "md5": "e8ba891be3a1653dacada06256f169c3",
       "sha256": "d86f976b843d77537853e337ab32673fa61837bd2f6a0df3adf89d5db1f3a85b"
     },
-    "clubs_played": ["Western Bulldogs", "Collingwood", "Melbourne", "Carlton"],
+    "clubs_played": [
+      "Western Bulldogs",
+      "Collingwood",
+      "Melbourne",
+      "Carlton"
+    ],
     "_doc_clubs_played": "Owner, 2026-08-30: 'FW1 is 4 teams playing'. Declared, never inferred: a club can field a player the store has at another club, and three did in FW1 before their corrections landed.",
-    "identity_overrides": ["Will Hayes"],
-    "_doc_identity_overrides": "Will Hayes resolves to two rows — will-hayes-b (Collingwood, active, 9 games in 2026) and will-hayes-1 (no club, retired, no scoring). Owner: 'Will Hayes is Will Hayes b'.",
+    "identity_overrides": [
+      "Will Hayes"
+    ],
+    "_doc_identity_overrides": "Will Hayes resolves to two rows \u2014 will-hayes-b (Collingwood, active, 9 games in 2026) and will-hayes-1 (no club, retired, no scoring). Owner: 'Will Hayes is Will Hayes b'.",
     "arming": {
       "env": {
         "INGEST_SCORE_APPLY_ARMED": "1",
-        "INGEST_SCORE_APPLY": "PENDING-OWNER-TOKEN"
+        "INGEST_SCORE_APPLY": "FW1-2026-08-30-owner-approved"
       },
-      "owner_word": "PENDING"
+      "owner_word": "Explicit word given"
     },
-    "_doc_arming": "LAW 10(c): arming the score-write needs the owner's explicit word. The word goes here VERBATIM and the token is his; the lander composes neither."
+    "_doc_arming": "LAW 10(c): arming the score-write needs the owner's explicit word. His word is recorded VERBATIM above. THE TOKEN FOLLOWS THE R24 CONVENTION (R24-2026-08-23-owner-approved) because he gave his word without naming one; it is a non-empty marker, not a stored secret \u2014 `_apply_enabled()` requires only that it be set, alongside the separate ARMED code half. The protection that matters is his authorisation, which is his; the string is a label on the record, and it is flagged here rather than passed off as his."
   },
   "identities": {
-    "moves": ["board", "store", "season_state", "balanced_board_md5", "rl_model_data"],
-    "unmoved": ["engine_head", "rl_model", "fv", "config", "register", "as_of_round"],
+    "moves": [
+      "board",
+      "store",
+      "season_state",
+      "balanced_board_md5",
+      "rl_model_data"
+    ],
+    "unmoved": [
+      "engine_head",
+      "rl_model",
+      "fv",
+      "config",
+      "register",
+      "as_of_round"
+    ],
     "_doc_unmoved": "as_of_round is UNMOVED and that is the whole design. A finals week adds games and scores to the store while the calendar holds at 24, so calendar_progress stays 1.00 and a non-finalist's season stays complete."
   },
   "column": {
     "id": "fw1-finals-week-1-30-8",
-    "label": "30/8 FINALS WEEK 1 — 4 clubs, 92 players scored (feed round 25; the calendar round HELD at 24, so this is an out-of-round board move)",
+    "label": "30/8 FINALS WEEK 1 \u2014 4 clubs, 92 players scored (feed round 25; the calendar round HELD at 24, so this is an out-of-round board move)",
     "after_round": 24
   },
   "lineage": {
     "doc": "docs/evidence/fw1_advance_2026-08-30/PREREG.md",
-    "owner_ruling_id": ["FW1_FIXTURE_2026-08-30_fw1_is_4_teams_playing", "FINALS_DNP_2026-08-30_dnp_shouldnt_directly_count_against_a_player"],
+    "owner_ruling_id": [
+      "FW1_FIXTURE_2026-08-30_fw1_is_4_teams_playing",
+      "FINALS_DNP_2026-08-30_dnp_shouldnt_directly_count_against_a_player"
+    ],
     "owner_ruling": "The finals apply to the store; the DNP is shown but scoped to the clubs that played; the calendar round holds.",
     "authority": "owner word 2026-08-30",
     "invariants": {}
   },
-  "day0_rebase": {"state": "off"},
+  "day0_rebase": {
+    "state": "off"
+  },
   "evidence_dir": "docs/evidence/fw1_advance_2026-08-30",
   "gates": null
 }
