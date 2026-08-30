@@ -7,20 +7,19 @@ PREFLIGHT — the sub-second battery, before the lock, the sandbox and the first
   pins_vs_tree             PASS    0.01s  7 unmoved pins == tree
   release_contract         PASS    0.08s  release_contract check PASS
   release_manifest         PASS    0.08s  release_manifest_check PASS
-  mirror_parity            PASS    0.25s  acceptance mirror_parity GREEN
-  movers_ui                PASS    0.92s  movers.test.js green
-  proof_stash              PASS    0.06s  proof-stash tests green
-  identity_stamps          PASS    0.11s  ALL 5 STAMPS AGREE WITH THE TREE
-  clean_tree               FAIL    0.02s  undeclared dirt (step 0 would refuse after the selftest): docs/evidence/shrink_s6_2026-08-30/PREFLIGHT.txt
-  picks_curve              PASS    0.15s  picks/curve halt battery clean (read-only)
-  movers_py                PASS    2.18s  test_movers_transition.py green
+  mirror_parity            PASS    0.29s  acceptance mirror_parity GREEN
+  movers_ui                PASS    1.02s  movers.test.js green
+  proof_stash              PASS    0.05s  proof-stash tests green
+  identity_stamps          PASS    0.12s  ALL 5 STAMPS AGREE WITH THE TREE
+  clean_tree               PASS    0.02s  tree clean up to declared inputs
+  picks_curve              PASS    0.19s  picks/curve halt battery clean (read-only)
+  movers_py                PASS    2.19s  test_movers_transition.py green
   shared_pickles           PASS    0.04s  shared pickles == tree pickles
   build_lock               PASS    0.01s  build-lock: FREE (last holder record: bootstrap 1380 2026-08-30T02:01:22Z)
 ------------------------------------------------------------------------------------------------------
-PREFLIGHT FAILED — 15 checks, 1 failed, 3.9s total.  (Attempts 3+9 died to PLATFORM RECLAIMS: arm the keep-alive chain before any launch longer than minutes.)
+PREFLIGHT CLEAN — 15 checks, 0 failed, 4.1s total.  (Attempts 3+9 died to PLATFORM RECLAIMS: arm the keep-alive chain before any launch longer than minutes.)
 ======================================================================================================
 
-(Captured outside the repository and filed in the same commit: writing this transcript into the
-tree would dirty the tree its own clean_tree check polices — the self-reference shrink S4 removed
-for PREFLIGHT.json, and the reason that record is filed at the landing commit rather than written
-at launch.)
+(Captured outside the repository against a clean tree and filed in the same commit: written in
+place, this transcript would dirty the tree its own clean_tree check polices — the self-reference
+shrink S4 removed for PREFLIGHT.json.)
