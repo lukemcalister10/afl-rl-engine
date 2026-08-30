@@ -45,11 +45,25 @@ except (ImportError, ValueError):
     from score_ingestor import IngestionGatedError, _apply_enabled, APPLY_DEFAULT, _APPLY_ENV  # type: ignore
 
 # ---- season bound (config; owner pins the exact count at go-live — step 3) ------------------
-# AFL runs a 24-round home-and-away calendar (23 games each, one bye per club across the 24 rounds).
-# A weekly feed round outside [1, SEASON_ROUNDS] is a data error (a fat-fingered round), refused
-# before any merge. Owner-overridable via the RoundApplier arg / RL_SEASON_ROUNDS at go-live; this is
-# a sanity bound, not a valuation input — kept intentionally generous so a real round is never rejected.
-DEFAULT_SEASON_ROUNDS = 24
+# AFL runs a 24-round home-and-away calendar (23 games each, one bye per club across the 24 rounds),
+# followed by a FIVE-week finals series (owner 2026-08-30: "FW1 is 4 teams playing / FW2 is 8 teams /
+# SF is 4 teams / PF is 4 teams / GF is 2 teams"). A weekly feed round outside [1, SEASON_ROUNDS] is a
+# data error (a fat-fingered round), refused before any merge. Owner-overridable via the RoundApplier
+# arg / RL_SEASON_ROUNDS at go-live; this is a sanity bound, not a valuation input — kept
+# intentionally generous so a real round is never rejected.
+#
+# FINALS TAKE FEED ROUNDS 25-29 (FW1 25, FW2 26, SF 27, PF 28, GF 29), so the bound is 29.
+#
+# A FEED ROUND IS NOT THE CALENDAR, and conflating the two would undo the whole point. This number
+# is a LEDGER KEY: the dedup ledger keys on (stable_player_id, season, round) and is what blocks an
+# accidental re-send, so each finals week needs its own. `as_of_round` — the calendar, the thing
+# `calendar_progress = as_of_round / season_total_rounds` divides — HOLDS AT 24 through the finals.
+# That is what keeps a non-finalist's season complete and his valuation untouched: stretching the
+# season to 29 calendar rounds would drop progress to 0.83 and re-open every finished season in the
+# competition.
+DEFAULT_SEASON_ROUNDS = 29
+FINALS_FEED_ROUNDS = {25: 'FW1', 26: 'FW2', 27: 'SF', 28: 'PF', 29: 'GF'}
+HOME_AND_AWAY_ROUNDS = 24
 
 
 class SeasonBoundError(ValueError):

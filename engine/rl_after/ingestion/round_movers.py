@@ -254,11 +254,12 @@ def point_key(point):
 
 
 def build_report(repo_root, round_n, *, played=None, evidence=None, generated_at=None,
-                 release_identity_override=None, from_point=None):
+                 release_identity_override=None, from_point=None, clubs_played=None):
     """Build the full movers report for a committed round, comparing two STORED points in the histories.
 
     `played` maps stable key -> submitted score for players LISTED this round (a score of 0 is a
-    legitimate played score); a key absent from it is DNP. `evidence` carries the transaction's
+    legitimate played score); a key absent from it is DNP — UNLESS `clubs_played` says his club did
+    not play at all, in which case he is UNRECORDED. See the three-state note on `clubs_played`. `evidence` carries the transaction's
     store/board md5 before/after + txn id (from the applier result). `release_identity_override`, when
     given, is the round's FROZEN governing identity (used by a historical repair so the rebuilt report
     keeps its original release/board/store identity instead of the current manifest's).
@@ -300,7 +301,17 @@ def build_report(repo_root, round_n, *, played=None, evidence=None, generated_at
         dvp = (round(dv / pv * 100.0, 2) if (dv is not None and pv not in (None, 0)) else None)
         drank = (pr - cr) if (pr is not None and cr is not None) else None      # +ve == improved
         dpos = (pp - cp) if (pp is not None and cp is not None) else None       # +ve == improved
+        # THREE STATES, NOT TWO (owner ruling 2026-08-30: "should carry a DNP but the DNP shouldn't
+        # directly count against a player"). In a home-and-away round all 18 clubs play, so absent
+        # == DNP and `clubs_played` is None. In a FINALS week only some clubs play: an absent player
+        # whose club PLAYED was dropped or was a late out — a real DNP, and shown as one — while an
+        # absent player whose club did not play had no football to miss. Marking the second as DNP
+        # would have flagged 712 of 804 players in FW1 for the crime of their club not making the
+        # four. `played=None, dnp=None` is the ABSENT sentinel the UI already renders as "not
+        # recorded" (movers.js core.participation, history.js: "it fails SAFE — an unrecognised
+        # shape yields 'not recorded', never a DNP").
         did_play = key in played
+        club_played = True if clubs_played is None else (club_by_key.get(key) in clubs_played)
         players.append({
             # `club` is the AFL club (where the player actually plays); `affl_team` is the AFFL
             # ownership/fantasy team — distinct concepts, both carried so the UI never conflates them.
@@ -308,7 +319,8 @@ def build_report(repo_root, round_n, *, played=None, evidence=None, generated_at
             'affl_team': affl_by_key.get(key), 'pos': _label_pos(p.get('grp') or p.get('gf')),
             'posCode': p.get('grp') or p.get('gf'),
             'previous_round': prev_round, 'current_round': round_n,
-            'played': did_play, 'dnp': not did_play,
+            'played': did_play if (did_play or club_played) else None,
+            'dnp': (not did_play) if club_played else None,
             'score': (played.get(key) if did_play else None),
             'prev_value': pv, 'cur_value': cv, 'value_change': dv, 'value_change_pct': dvp,
             'prev_rank': pr, 'cur_rank': cr, 'rank_change': drank,
@@ -336,7 +348,34 @@ def build_report(repo_root, round_n, *, played=None, evidence=None, generated_at
         'rank_fallers': rank_view('rank_change', False)[:50],
         'played_count': sum(1 for p in players if p['played']),
         'dnp_count': sum(1 for p in players if p['dnp']),
+        'unrecorded_count': sum(1 for p in players if p['played'] is None and p['dnp'] is None),
     }
+    # THE PARTITION IS ASSERTED, not assumed: every active player is in exactly one of the three
+    # states. A finals week that mis-scoped its fixture shows up here as a count that does not add
+    # up, which is a far better failure than a silently mislabelled board.
+    _tri = views['played_count'] + views['dnp_count'] + views['unrecorded_count']
+    if _tri != len(players):
+        raise ValueError('participation does not partition the board: played %d + dnp %d + '
+                         'unrecorded %d = %d, but %d players were priced'
+                         % (views['played_count'], views['dnp_count'], views['unrecorded_count'],
+                            _tri, len(players)))
+    if clubs_played is not None:
+        # UNRECORDED is exactly: at a club outside the fixture AND did not play.
+        _expect_unrec = sum(1 for p in players
+                            if club_by_key.get(p['key']) not in clubs_played and p['key'] not in played)
+        if views['unrecorded_count'] != _expect_unrec:
+            raise ValueError('unrecorded %d != the %d active players at clubs outside the fixture '
+                             'who did not play — the fixture and the board disagree'
+                             % (views['unrecorded_count'], _expect_unrec))
+        # AND THE ONE THAT EARNS ITS KEEP: a player who PLAYED but whose club is not in the fixture.
+        # Either the fixture is wrong, or the store's `afl_club` is stale for him. Both are real and
+        # both must be seen — this is not a fatal error (afl_club is an identity/display field and is
+        # not read by ev(), so his score applies correctly either way), but it is never silent. FW1
+        # found three on first contact: schultz and membrey at Collingwood and sharp at Melbourne,
+        # each of whom the store still had at his former club.
+        _off_fixture = sorted(p['key'] for p in players
+                              if p['key'] in played and club_by_key.get(p['key']) not in clubs_played)
+        views['played_outside_fixture'] = _off_fixture
 
     ev = evidence or {}
     board_after = ev.get('board_md5_after')

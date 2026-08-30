@@ -64,16 +64,29 @@ def _games(row, year):
     return 0
 
 
-def exposure_pace(store_rows, inprog_year):
+def exposure_pace(store_rows, inprog_year, home_and_away_games=None):
     """Empirical exposure pace from the store: median current-season games of the durable population / EXPO_DEN.
-    Returns (value, metadata). Capped at 1.0 (season complete). Independent of calendar progress."""
+    Returns (value, metadata). Capped at 1.0 (season complete). Independent of calendar progress.
+
+    FENCED TO HOME-AND-AWAY (2026-08-30). This is a POPULATION statistic with a shared denominator,
+    and once finals are folded into the season row only the eight-or-so clubs still playing can move
+    it. A league-wide dial that a quarter of the competition can push is the exact shape of "punishes
+    non-finalists". `home_and_away_games` caps each player's contribution at the games available to
+    everyone; pass 23 (the H&A maximum) during and after the finals.
+
+    MEASURED, so the size of the fence is honest: at R24 it would not actually have moved — median 20
+    and pace 0.909 either way, because finals games land on players already above the median. That is
+    luck, not structure, and it stops being true the moment the population shifts."""
     prior_year = inprog_year - 1
     durable = [r for r in store_rows if _games(r, prior_year) >= EXPO_DURABLE_MIN]
     cur = [_games(r, inprog_year) for r in durable]
+    if home_and_away_games is not None:
+        cur = [min(g, int(home_and_away_games)) for g in cur]
     med = statistics.median(cur) if cur else 0.0
     raw = med / EXPO_DEN
     val = min(1.0, round(raw, EXPO_ROUND))
     meta = {'eligible_durable_players': len(durable), 'median_current_games': med, 'denominator': EXPO_DEN,
+            'home_and_away_cap': home_and_away_games,
             'raw_ratio': raw, 'released_value': val, 'rounding': 'round(., %d) then cap 1.0' % EXPO_ROUND,
             'scope_denominator': EXPO_SCOPE_DEN, 'durable_min_prior_games': EXPO_DURABLE_MIN}
     return val, meta

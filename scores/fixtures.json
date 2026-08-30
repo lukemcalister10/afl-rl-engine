@@ -1,0 +1,11 @@
+{
+  "_doc": "THE FINALS FIXTURE — which clubs played in each finals week. A home-and-away round needs no entry: all 18 clubs play, so absence is unambiguously a DNP. A finals week does need one, because absence then means two different things (dropped, or your club is not in it) and the scores file alone cannot tell them apart — a club can field a player the store has at another club, and three did in FW1 alone. Feed rounds 25-29 are the finals series; they are LEDGER KEYS for the (player, season, round) dedup, never the calendar. as_of_round HOLDS at 24 throughout the finals.",
+  "season": 2026,
+  "weeks": {
+    "25": {"label": "FW1", "clubs": ["Western Bulldogs", "Collingwood", "Melbourne", "Carlton"]},
+    "26": {"label": "FW2", "clubs": []},
+    "27": {"label": "SF", "clubs": []},
+    "28": {"label": "PF", "clubs": []},
+    "29": {"label": "GF", "clubs": []}
+  }
+}
