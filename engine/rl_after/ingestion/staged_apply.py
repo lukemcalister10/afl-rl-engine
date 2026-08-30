@@ -515,9 +515,38 @@ class StagedRoundApplier:
                               as_of_round=_cal_round,
                               why='a finals feed round is a ledger key, not the calendar')
             _ssm = self._season_state_module()
+            # AND THE DENOMINATOR IS THE CALENDAR TOO. `calendar_progress = as_of_round /
+            # season_total_rounds`. Holding the numerator at 24 while passing the FEED bound (29)
+            # as the denominator gives 24/29 = 0.83 — which is not a partial hold, it is the exact
+            # number the comment eight lines above and round_apply's own header both name as the
+            # punishment of non-finalists the owner ruled against. calendar_progress is a live
+            # pricing dial (rl_model.SEASON_PROG, conditional_prior._SFE, _merged_recover.M3_FE;
+            # 1.0 turns the lever OFF), so 0.83 re-opens every completed season in the competition.
+            # `self.season_rounds` (29) bounds the LEDGER KEY and nothing else.
             _ss_new = _ssm.derive(_cal_round, wsapp.store_path,
                                   season_year=int(snapshot['season_year']),
-                                  season_total_rounds=self.season_rounds)
+                                  season_total_rounds=self.calendar_rounds)
+            # THE HOLD, ASSERTED AGAINST THE TREE RATHER THAN TRUSTED. A finals week holds the
+            # calendar, so it may not move calendar_progress AT ALL — same numerator, same
+            # denominator, same number as the season_state already on disk. Anything else is the
+            # whole board being re-priced behind a round that was supposed to stand still, and it
+            # must be a halt inside the transaction rather than a discovery on the owner's page.
+            if _cal_round != _feed_round:
+                with open(os.path.join(ws, 'data', 'season_state.json'), encoding='utf-8') as _pf:
+                    _ss_prev = json.load(_pf)
+                for _k in ('calendar_progress', 'as_of_round', 'season_total_rounds'):
+                    if _ss_prev.get(_k) != _ss_new.get(_k):
+                        raise SeasonBoundError(
+                            'a FINALS week (feed round %d, calendar %d) moved season_state.%s from '
+                            '%r to %r. The calendar is HELD: the store gains the games and the '
+                            'scores, and every non-finalist\'s season stays complete. A finals week '
+                            'that moves the calendar has re-opened every finished season in the '
+                            'competition, which is the one thing this lane exists to prevent.'
+                            % (_feed_round, _cal_round, _k, _ss_prev.get(_k), _ss_new.get(_k)))
+                self._journal(txn_dir, 'FINALS_CALENDAR_UNMOVED',
+                              calendar_progress=_ss_new['calendar_progress'],
+                              as_of_round=_ss_new['as_of_round'],
+                              season_total_rounds=_ss_new.get('season_total_rounds'))
             with open(os.path.join(ws, 'data', 'season_state.json'), 'w') as _ssf:
                 json.dump(_ss_new, _ssf, indent=2)
             self._journal(txn_dir, 'SEASON_STATE_STAGED', as_of_round=_ss_new['as_of_round'],
