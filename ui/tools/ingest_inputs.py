@@ -459,29 +459,39 @@ def price_pick(pvc, lo, hi, year, pool_value=None, rnd=None, year_multipliers=No
         return 0.0
 
     own = _mean(lo, hi)
-    # THE OWNER'S YEAR RULE, RESTORED TO HIS WORKBOOK (2026-08-30): a future pick is its OWN
-    # projected band value, discounted for the distance — "the pick is so far in the future the
-    # asset is worth less". The multipliers are HIS, set in the workbook he maintains
-    # (Ladder!B2 "2027 value multiplier" 0.9, Ladder!B3 "2028 value multiplier" 0.8), and they are
-    # READ FROM THAT SHEET, never hard-coded here: if he moves a cell the rating moves with it.
+    # THE OWNER'S YEAR RULE (2026-08-30, verbatim and complete — this supersedes BOTH earlier
+    # readings, each of which had half of it):
     #
-    # WHAT THIS REPLACES, AND WHY IT WAS WRONG. Between 2026-08-28 and 2026-08-30 this priced a
-    # 2027 pick at half own + half the round average and a 2028 pick at the round average outright.
-    # That made every 2028 pick in a round worth the SAME NUMBER — a wooden-spooner's first and a
-    # premier's first both 1,582 — which discards the projected finishing positions the owner sets
-    # by hand on the Ladder sheet for 2027 AND 2028 ("Edit each team\'s projected finishing pick
-    # range ... Years are independent"). The workbook was never ambiguous; its Value (counted)
-    # column is `=IF(year=2027, Raw*Ladder!B2, IF(year=2028, Raw*Ladder!B3, Raw))`, and Raw is the
-    # same band mean computed here. The supersession note that stood in this comment claimed his
-    # word had retired those multipliers; his word of 2026-08-30 is that it had not.
+    #     "2026 picks - based on finishing positions, at full price
+    #      2027 picks - 1/3 projected finish, 2/3 'average' round value, then x0.9
+    #      2028 - 100% average round value, then x0.8"
+    #
+    # TWO THINGS ARE HAPPENING AT ONCE, and taking either for the whole rule is what went wrong
+    # twice. (1) CERTAINTY ABOUT WHERE THE PICK LANDS decays with distance: 2026 positions are
+    # nearly known, so a 2026 pick is its own projected band; 2027 is mostly unknown, so it is
+    # one third its own projection and two thirds the round's average; 2028 is unknown outright,
+    # so every pick in a round is that round's average and each 2028 first is worth the same as
+    # every other 2028 first. (2) SEPARATELY, THE ASSET IS WORTH LESS FOR BEING FURTHER AWAY —
+    # his 0.9 and 0.8, which multiply the result of (1). The 2026-08-28 rule had only the decay;
+    # the 2026-08-30 first pass had only the discount. Both are his, and both apply.
+    #
+    # The two multipliers are READ FROM HIS SHEET (Ladder!B2 / Ladder!B3), never written here, so
+    # moving a cell moves the rating. The 1/3-2/3 weight is the ruling above and is stated here.
     if year == BASE_YEAR:
         return own
+    if rnd is None:
+        halt("a %s pick needs its round to price the round average (HALT-AND-ASK)" % year)
     m = (year_multipliers or {}).get(int(year))
     if m is None:
         halt("no workbook multiplier for %s — the Ladder sheet must carry a \"%s value "
              "multiplier\" cell (HALT-AND-ASK)" % (year, year))
-    return m * own
-
+    r_lo, r_hi = (int(rnd) - 1) * 16 + 1, int(rnd) * 16
+    r_avg = _mean(r_lo, r_hi)
+    if year == BASE_YEAR + 1:
+        return m * (own / 3.0 + 2.0 * r_avg / 3.0)
+    if year == BASE_YEAR + 2:
+        return m * r_avg
+    halt("pick year %s is outside the issued windows %s (HALT-AND-ASK)" % (year, list(PICK_YEARS)))
 
 # ----------------------------------------------------------------------------------------- the picks
 def load_picks(pvc, affl_teams):
@@ -605,6 +615,44 @@ def load_picks(pvc, affl_teams):
         p["value"] = round(price_pick(pvc, p["lo"], p["hi"], p["year"], rnd=p["rnd"],
                                       year_multipliers=mults))
         p["band"] = "#%d-%d" % (p["lo"], p["hi"]) if p["lo"] != p["hi"] else "#%d" % p["lo"]
+
+    # THE OWNER'S OWN TWO CHECKS ON THE YEAR RULE (2026-08-30), asserted rather than asserted-about.
+    # He stated the rule and then stated what it should produce: "the total value of all 2028 picks
+    # should be 80% of the round average of all 2026 picks", and "each 2028 first is worth the same".
+    # Both are properties of the whole priced set, not of one formula, so they catch a class the
+    # per-pick re-derivation cannot: a discount applied to the wrong leg, a round average taken over
+    # the wrong span, or a 2028 pick that kept any trace of its own projected position.
+    #
+    # WHY THE COMPARISON IS A RATIO AND CARRIES SLACK. Within a round the sixteen 2026 projections
+    # tile the sixteen slots, so their sum IS sixteen round averages, which is what makes his check
+    # exact in principle. In practice two things move it by a handful of points on ~47,000: each
+    # pick is rounded to a whole number, and a club whose projection is a RANGE (low != high) prices
+    # the mean of its band rather than one slot, so the tiling is near-exact rather than exact. The
+    # bar is 1%, which is ~40x the observed slack and still far tighter than any real rule error.
+    r14 = [p for p in picks if 1 <= p["rnd"] <= 4]
+    base_total = sum(p["value"] for p in r14 if p["year"] == BASE_YEAR)
+    for yr in sorted(y for y in PICK_YEARS if y != BASE_YEAR):
+        yr_total = sum(p["value"] for p in r14 if p["year"] == yr)
+        want = mults[yr]
+        got = (yr_total / base_total) if base_total else 0.0
+        ok = abs(got - want) <= 0.01
+        check("R1-4 %d pick value is %.2f of %d's (the owner's conservation check)" % (yr, want, BASE_YEAR),
+              ok, "%d / %d = %.4f vs %.2f" % (yr_total, base_total, got, want))
+        if not ok:
+            halt("the %d total is %.4f of the %d total, not the ruled %.2f — the year rule is not "
+                 "producing what the owner's check says it must (HALT-AND-ASK)" % (yr, got, BASE_YEAR, want))
+
+    # "each 2028 first is worth the same" — the LAST issued year is pure round average, so within a
+    # round every pick in it must carry one identical value. This is the strongest statement of the
+    # decay half of the rule and it is checked directly, per round, not inferred from the formula.
+    last_year = max(PICK_YEARS)
+    for rr in (1, 2, 3, 4):
+        vals = sorted({p["value"] for p in r14 if p["year"] == last_year and p["rnd"] == rr})
+        check("every %d round-%d pick carries one identical value (pure round average)" % (last_year, rr),
+              len(vals) == 1, "distinct values = %s" % vals)
+        if len(vals) != 1:
+            halt("%d round %d prices %d distinct values %s — a %d pick must not carry any trace of "
+                 "its own projected position (HALT-AND-ASK)" % (last_year, rr, len(vals), vals, last_year))
 
     # pick-count conservation (the Dashboard convention): ledger == Sum per-owner counts == 160
     per_owner = collections.Counter(p["team"] for p in picks)
@@ -1034,9 +1082,11 @@ def run():
             "pvcPathway": resolved["gate"], "pvcCurveMd5": resolved["curve_md5"],
             "pvcCurveFileMd5": resolved["file_md5"], "releaseCurveContract": "ui/release_pick_curve.json",
             "pvcOk": True,
-            "yearRule": "2026=own band; 2027=0.9 x own band; 2028=0.8 x own band — the "
-                        "multipliers READ FROM the workbook's Ladder sheet (owner word "
-                        "2026-08-30: a pick further in the future is worth less)",
+            "yearRule": "2026 = own projected band at full price; 2027 = (1/3 own + 2/3 round "
+                        "average) x 0.9; 2028 = round average x 0.8. Two effects, both his: "
+                        "certainty about where the pick lands decays with distance, and the asset "
+                        "is discounted for being further away. The two multipliers are READ FROM "
+                        "the workbook's Ladder sheet (owner word 2026-08-30).",
             "yearMultipliers": {str(y): _YEAR_MULTIPLIERS[y] for y in sorted(_YEAR_MULTIPLIERS)},
             "posture": "owner year rule 2026-08-30 (own projected band, workbook distance discount)",
             "nPicks": len(picks), "nClubs": len(clubs),
