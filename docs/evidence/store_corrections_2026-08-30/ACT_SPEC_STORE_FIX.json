@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "act_kind": "store-edit",
-  "act": "THE TWO IMPOSSIBLE-GAMES ROWS CORRECTED — jesse-joyce 2017/2018/2019 games and avg transposed; nathan-lovett-murray 2008 games 40 -> 20; both career-games fields re-derived",
+  "act": "THE FOUR IMPOSSIBLE-GAMES ROWS AND THREE STALE CLUBS CORRECTED \u2014 jesse-joyce 2017/2018/2019 games and avg transposed; nathan-lovett-murray 2008 games 40 -> 20; both career-games fields re-derived; schultz/membrey/sharp moved to the club they actually play for",
   "date": "2026-08-30",
-  "owner_word": "Jesse Joyce: \"The Jesse Joyce issue is one I have corrected a few times and obviously you have not listened, that is very annoying - those are his averages from years of about 20 games each\", then on the transposed reading put to him: \"Yep those numbers are correct on Joyce.\" Nathan Lovett-Murray: \"Yep, Lovett-Murray 20 games not 40.\"",
+  "owner_word": "Jesse Joyce: \"The Jesse Joyce issue is one I have corrected a few times and obviously you have not listened, that is very annoying - those are his averages from years of about 20 games each\", then on the transposed reading put to him: \"Yep those numbers are correct on Joyce.\" Nathan Lovett-Murray: \"Yep, Lovett-Murray 20 games not 40.\" Clubs: \"The players are at the appeared in club. Not the end of the world that the store is wrong but might as well fix it.\"",
   "authority": "owner correction of store content, 2026-08-30",
   "prereg": {
     "path": "docs/evidence/store_corrections_2026-08-30/PREREG.md",
@@ -14,35 +14,114 @@
   },
   "edit": {
     "store": [
-      {"key": "jesse-joyce", "field": "scoring[2017].games", "old": 61, "new": 11},
-      {"key": "jesse-joyce", "field": "scoring[2017].avg", "old": 11.0, "new": 61.0},
-      {"key": "jesse-joyce", "field": "scoring[2018].games", "old": 60, "new": 17},
-      {"key": "jesse-joyce", "field": "scoring[2018].avg", "old": 17.0, "new": 60.0},
-      {"key": "jesse-joyce", "field": "scoring[2019].games", "old": 60, "new": 19},
-      {"key": "jesse-joyce", "field": "scoring[2019].avg", "old": 19.0, "new": 60.0},
-      {"key": "jesse-joyce", "field": "games", "old": 182, "new": 48},
-      {"key": "nathan-lovett-murray", "field": "scoring[2008].games", "old": 40, "new": 20},
-      {"key": "nathan-lovett-murray", "field": "games", "old": 116, "new": 96}
+      {
+        "key": "jesse-joyce",
+        "field": "scoring[2017].games",
+        "old": 61,
+        "new": 11
+      },
+      {
+        "key": "jesse-joyce",
+        "field": "scoring[2017].avg",
+        "old": 11.0,
+        "new": 61.0
+      },
+      {
+        "key": "jesse-joyce",
+        "field": "scoring[2018].games",
+        "old": 60,
+        "new": 17
+      },
+      {
+        "key": "jesse-joyce",
+        "field": "scoring[2018].avg",
+        "old": 17.0,
+        "new": 60.0
+      },
+      {
+        "key": "jesse-joyce",
+        "field": "scoring[2019].games",
+        "old": 60,
+        "new": 19
+      },
+      {
+        "key": "jesse-joyce",
+        "field": "scoring[2019].avg",
+        "old": 19.0,
+        "new": 60.0
+      },
+      {
+        "key": "jesse-joyce",
+        "field": "games",
+        "old": 182,
+        "new": 48
+      },
+      {
+        "key": "nathan-lovett-murray",
+        "field": "scoring[2008].games",
+        "old": 40,
+        "new": 20
+      },
+      {
+        "key": "nathan-lovett-murray",
+        "field": "games",
+        "old": 116,
+        "new": 96
+      },
+      {
+        "key": "lachlan-schultz",
+        "field": "afl_club",
+        "old": "Fremantle",
+        "new": "Collingwood"
+      },
+      {
+        "key": "tim-membrey",
+        "field": "afl_club",
+        "old": "St Kilda",
+        "new": "Collingwood"
+      },
+      {
+        "key": "harry-sharp",
+        "field": "afl_club",
+        "old": "Brisbane",
+        "new": "Melbourne"
+      }
     ],
     "expected_movers": []
   },
   "identities": {
-    "moves": ["store", "board"],
-    "unmoved": ["engine_head", "rl_model", "fv", "config", "register", "as_of_round"]
+    "moves": [
+      "store",
+      "board"
+    ],
+    "unmoved": [
+      "engine_head",
+      "rl_model",
+      "fv",
+      "config",
+      "register",
+      "as_of_round"
+    ]
   },
   "column": {
     "id": "store-fix-impossible-games-30-8",
-    "label": "30/8 IMPOSSIBLE-GAMES ROWS CORRECTED — joyce 2017-19 games/avg transposed, lovett-murray 2008 40->20 games; both retired, 0 board movers predicted",
+    "label": "30/8 STORE CORRECTIONS \u2014 joyce 2017-19 games/avg transposed, lovett-murray 2008 40->20 games, both career totals re-derived, and schultz/membrey/sharp re-clubbed to where they play (identity only)",
     "after_round": 24
   },
   "lineage": {
     "doc": "docs/evidence/store_corrections_2026-08-30/PREREG.md",
-    "owner_ruling_id": ["STORE_FIX_JOYCE_2026-08-30_yep_those_numbers_are_correct_on_joyce", "STORE_FIX_LOVETT_MURRAY_2026-08-30_20_games_not_40"],
+    "owner_ruling_id": [
+      "STORE_FIX_JOYCE_2026-08-30_yep_those_numbers_are_correct_on_joyce",
+      "STORE_FIX_LOVETT_MURRAY_2026-08-30_20_games_not_40",
+      "STORE_FIX_CLUBS_2026-08-30_players_are_at_the_appeared_in_club"
+    ],
     "owner_ruling": "Owner corrections to two retired players' season rows, 2026-08-30.",
     "authority": "owner word 2026-08-30",
     "invariants": {}
   },
-  "day0_rebase": {"state": "off"},
+  "day0_rebase": {
+    "state": "off"
+  },
   "evidence_dir": "docs/evidence/store_corrections_2026-08-30",
   "gates": null
 }
