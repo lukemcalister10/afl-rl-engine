@@ -1,0 +1,795 @@
+{
+ "feed_round": 25,
+ "listed": 92,
+ "resolved": 92,
+ "movers": [
+  {
+   "key": "joel-freijah",
+   "name": "Joel Freijah",
+   "before": 2512,
+   "after": 2871,
+   "delta": 359,
+   "score": 112.0,
+   "played": true
+  },
+  {
+   "key": "harry-dean",
+   "name": "Harry Dean",
+   "before": 2806,
+   "after": 3036,
+   "delta": 230,
+   "score": 99.0,
+   "played": true
+  },
+  {
+   "key": "aaron-naughton",
+   "name": "Aaron Naughton",
+   "before": 1189,
+   "after": 1414,
+   "delta": 225,
+   "score": 110.0,
+   "played": true
+  },
+  {
+   "key": "cooper-lord",
+   "name": "Cooper Lord",
+   "before": 975,
+   "after": 1158,
+   "delta": 183,
+   "score": 70.0,
+   "played": true
+  },
+  {
+   "key": "daniel-turner",
+   "name": "Daniel Turner",
+   "before": 1554,
+   "after": 1730,
+   "delta": 176,
+   "score": 93.0,
+   "played": true
+  },
+  {
+   "key": "samuel-swadling",
+   "name": "Samuel Swadling",
+   "before": 1069,
+   "after": 1241,
+   "delta": 172,
+   "score": 100.0,
+   "played": true
+  },
+  {
+   "key": "jacob-weitering",
+   "name": "Jacob Weitering",
+   "before": 1069,
+   "after": 1235,
+   "delta": 166,
+   "score": 116.0,
+   "played": true
+  },
+  {
+   "key": "jagga-smith",
+   "name": "Jagga Smith",
+   "before": 4880,
+   "after": 5030,
+   "delta": 150,
+   "score": 124.0,
+   "played": true
+  },
+  {
+   "key": "caleb-windsor",
+   "name": "Caleb Windsor",
+   "before": 1126,
+   "after": 998,
+   "delta": -128,
+   "score": 49.0,
+   "played": true
+  },
+  {
+   "key": "george-hewett",
+   "name": "George Hewett",
+   "before": 1944,
+   "after": 1816,
+   "delta": -128,
+   "score": 72.0,
+   "played": true
+  },
+  {
+   "key": "billy-wilson",
+   "name": "Billy Wilson",
+   "before": 956,
+   "after": 841,
+   "delta": -115,
+   "score": 52.0,
+   "played": true
+  },
+  {
+   "key": "luke-kennedy",
+   "name": "Luke Kennedy",
+   "before": 168,
+   "after": 276,
+   "delta": 108,
+   "score": 51.0,
+   "played": true
+  },
+  {
+   "key": "arthur-jones",
+   "name": "Arthur Jones",
+   "before": 208,
+   "after": 316,
+   "delta": 108,
+   "score": 109.0,
+   "played": true
+  },
+  {
+   "key": "xavier-lindsay",
+   "name": "Xavier Lindsay",
+   "before": 1279,
+   "after": 1380,
+   "delta": 101,
+   "score": 66.0,
+   "played": true
+  },
+  {
+   "key": "harvey-langford",
+   "name": "Harvey Langford",
+   "before": 1804,
+   "after": 1901,
+   "delta": 97,
+   "score": 90.0,
+   "played": true
+  },
+  {
+   "key": "jordan-de-goey",
+   "name": "Jordan De Goey",
+   "before": 1398,
+   "after": 1308,
+   "delta": -90,
+   "score": 61.0,
+   "played": true
+  },
+  {
+   "key": "ben-ainsworth",
+   "name": "Ben Ainsworth",
+   "before": 256,
+   "after": 345,
+   "delta": 89,
+   "score": 106.0,
+   "played": true
+  },
+  {
+   "key": "marcus-bontempelli",
+   "name": "Marcus Bontempelli",
+   "before": 3626,
+   "after": 3705,
+   "delta": 79,
+   "score": 134.0,
+   "played": true
+  },
+  {
+   "key": "lewis-young",
+   "name": "Lewis Young",
+   "before": 223,
+   "after": 148,
+   "delta": -75,
+   "score": 44.0,
+   "played": true
+  },
+  {
+   "key": "dan-houston",
+   "name": "Dan Houston",
+   "before": 1127,
+   "after": 1056,
+   "delta": -71,
+   "score": 71.0,
+   "played": true
+  },
+  {
+   "key": "ned-long",
+   "name": "Ned Long",
+   "before": 1290,
+   "after": 1354,
+   "delta": 64,
+   "score": 91.0,
+   "played": true
+  },
+  {
+   "key": "bailey-dale",
+   "name": "Bailey Dale",
+   "before": 2051,
+   "after": 1989,
+   "delta": -62,
+   "score": 93.0,
+   "played": true
+  },
+  {
+   "key": "tom-sparrow",
+   "name": "Tom Sparrow",
+   "before": 1568,
+   "after": 1507,
+   "delta": -61,
+   "score": 52.0,
+   "played": true
+  },
+  {
+   "key": "patrick-cripps",
+   "name": "Patrick Cripps",
+   "before": 1526,
+   "after": 1469,
+   "delta": -57,
+   "score": 81.0,
+   "played": true
+  },
+  {
+   "key": "rhylee-west",
+   "name": "Rhylee West",
+   "before": 212,
+   "after": 268,
+   "delta": 56,
+   "score": 88.0,
+   "played": true
+  },
+  {
+   "key": "timothy-english",
+   "name": "Timothy English",
+   "before": 3350,
+   "after": 3405,
+   "delta": 55,
+   "score": 112.0,
+   "played": true
+  },
+  {
+   "key": "bailey-williams-wb",
+   "name": "Bailey Williams",
+   "before": 596,
+   "after": 542,
+   "delta": -54,
+   "score": 68.0,
+   "played": true
+  },
+  {
+   "key": "patrick-lipinski",
+   "name": "Patrick Lipinski",
+   "before": 758,
+   "after": 706,
+   "delta": -52,
+   "score": 60.0,
+   "played": true
+  },
+  {
+   "key": "edward-allan",
+   "name": "Edward Allan",
+   "before": 851,
+   "after": 801,
+   "delta": -50,
+   "score": 53.0,
+   "played": true
+  },
+  {
+   "key": "trent-rivers",
+   "name": "Trent Rivers",
+   "before": 1517,
+   "after": 1468,
+   "delta": -49,
+   "score": 76.0,
+   "played": true
+  },
+  {
+   "key": "sam-walsh",
+   "name": "Sam Walsh",
+   "before": 3073,
+   "after": 3120,
+   "delta": 47,
+   "score": 125.0,
+   "played": true
+  },
+  {
+   "key": "brodie-kemp",
+   "name": "Brodie Kemp",
+   "before": 720,
+   "after": 766,
+   "delta": 46,
+   "score": 72.0,
+   "played": true
+  },
+  {
+   "key": "daniel-mcstay",
+   "name": "Daniel McStay",
+   "before": 293,
+   "after": 338,
+   "delta": 45,
+   "score": 92.0,
+   "played": true
+  },
+  {
+   "key": "koltyn-tholstrup",
+   "name": "Koltyn Tholstrup",
+   "before": 1739,
+   "after": 1695,
+   "delta": -44,
+   "score": 55.0,
+   "played": true
+  },
+  {
+   "key": "blake-acres",
+   "name": "Blake Acres",
+   "before": 172,
+   "after": 131,
+   "delta": -41,
+   "score": 57.0,
+   "played": true
+  },
+  {
+   "key": "harrison-petty",
+   "name": "Harrison Petty",
+   "before": 422,
+   "after": 383,
+   "delta": -39,
+   "score": 43.0,
+   "played": true
+  },
+  {
+   "key": "nick-haynes",
+   "name": "Nick Haynes",
+   "before": 117,
+   "after": 155,
+   "delta": 38,
+   "score": 102.0,
+   "played": true
+  },
+  {
+   "key": "lachlan-bramble",
+   "name": "Lachlan Bramble",
+   "before": 119,
+   "after": 156,
+   "delta": 37,
+   "score": 98.0,
+   "played": true
+  },
+  {
+   "key": "darcy-cameron",
+   "name": "Darcy Cameron",
+   "before": 1522,
+   "after": 1559,
+   "delta": 37,
+   "score": 108.0,
+   "played": true
+  },
+  {
+   "key": "matthew-kennedy-1",
+   "name": "Matthew Kennedy",
+   "before": 668,
+   "after": 705,
+   "delta": 37,
+   "score": 103.0,
+   "played": true
+  },
+  {
+   "key": "tom-mcdonald",
+   "name": "Tom McDonald",
+   "before": 59,
+   "after": 26,
+   "delta": -33,
+   "score": 26.0,
+   "played": true
+  },
+  {
+   "key": "connor-budarick",
+   "name": "Connor Budarick",
+   "before": 253,
+   "after": 222,
+   "delta": -31,
+   "score": 38.0,
+   "played": true
+  },
+  {
+   "key": "matt-cottrell",
+   "name": "Matt Cottrell",
+   "before": 131,
+   "after": 162,
+   "delta": 31,
+   "score": 97.0,
+   "played": true
+  },
+  {
+   "key": "rory-lobb",
+   "name": "Rory Lobb",
+   "before": 295,
+   "after": 264,
+   "delta": -31,
+   "score": 43.0,
+   "played": true
+  },
+  {
+   "key": "oliver-hollands",
+   "name": "Oliver Hollands",
+   "before": 1533,
+   "after": 1562,
+   "delta": 29,
+   "score": 85.0,
+   "played": true
+  },
+  {
+   "key": "max-gawn",
+   "name": "Max Gawn",
+   "before": 3377,
+   "after": 3349,
+   "delta": -28,
+   "score": 119.0,
+   "played": true
+  },
+  {
+   "key": "bayley-fritsch",
+   "name": "Bayley Fritsch",
+   "before": 304,
+   "after": 281,
+   "delta": -23,
+   "score": 57.0,
+   "played": true
+  },
+  {
+   "key": "ed-richards",
+   "name": "Ed Richards",
+   "before": 4108,
+   "after": 4087,
+   "delta": -21,
+   "score": 94.0,
+   "played": true
+  },
+  {
+   "key": "oliver-florent",
+   "name": "Oliver Florent",
+   "before": 1053,
+   "after": 1074,
+   "delta": 21,
+   "score": 84.0,
+   "played": true
+  },
+  {
+   "key": "charlie-west",
+   "name": "Charlie West",
+   "before": 318,
+   "after": 338,
+   "delta": 20,
+   "score": 12.0,
+   "played": true
+  },
+  {
+   "key": "ed-langdon",
+   "name": "Ed Langdon",
+   "before": 631,
+   "after": 613,
+   "delta": -18,
+   "score": 70.0,
+   "played": true
+  },
+  {
+   "key": "adam-cerra",
+   "name": "Adam Cerra",
+   "before": 1005,
+   "after": 1022,
+   "delta": 17,
+   "score": 107.0,
+   "played": true
+  },
+  {
+   "key": "isaac-quaynor",
+   "name": "Isaac Quaynor",
+   "before": 608,
+   "after": 624,
+   "delta": 16,
+   "score": 66.0,
+   "played": true
+  },
+  {
+   "key": "josh-daicos",
+   "name": "Josh Daicos",
+   "before": 2143,
+   "after": 2127,
+   "delta": -16,
+   "score": 96.0,
+   "played": true
+  },
+  {
+   "key": "lachlan-schultz",
+   "name": "Lachlan Schultz",
+   "before": 672,
+   "after": 657,
+   "delta": -15,
+   "score": 70.0,
+   "played": true
+  },
+  {
+   "key": "harry-mckay",
+   "name": "Harry McKay",
+   "before": 1643,
+   "after": 1658,
+   "delta": 15,
+   "score": 78.0,
+   "played": true
+  },
+  {
+   "key": "jeremy-howe",
+   "name": "Jeremy Howe",
+   "before": 181,
+   "after": 166,
+   "delta": -15,
+   "score": 67.0,
+   "played": true
+  },
+  {
+   "key": "josh-dolan",
+   "name": "Josh Dolan",
+   "before": 318,
+   "after": 332,
+   "delta": 14,
+   "score": 39.0,
+   "played": true
+  },
+  {
+   "key": "jack-steele",
+   "name": "Jack Steele",
+   "before": 1124,
+   "after": 1110,
+   "delta": -14,
+   "score": 90.0,
+   "played": true
+  },
+  {
+   "key": "xavier-taylor",
+   "name": "Xavier Taylor",
+   "before": 873,
+   "after": 860,
+   "delta": -13,
+   "score": 27.0,
+   "played": true
+  },
+  {
+   "key": "talor-byrne",
+   "name": "Talor Byrne",
+   "before": 659,
+   "after": 646,
+   "delta": -13,
+   "score": 46.0,
+   "played": true
+  },
+  {
+   "key": "angus-anderson",
+   "name": "Angus Anderson",
+   "before": 276,
+   "after": 266,
+   "delta": -10,
+   "score": 47.0,
+   "played": true
+  },
+  {
+   "key": "tim-membrey",
+   "name": "Tim Membrey",
+   "before": 98,
+   "after": 108,
+   "delta": 10,
+   "score": 70.0,
+   "played": true
+  },
+  {
+   "key": "nick-daicos",
+   "name": "Nick Daicos",
+   "before": 10655,
+   "after": 10646,
+   "delta": -9,
+   "score": 126.0,
+   "played": true
+  },
+  {
+   "key": "james-o-donnell",
+   "name": "James O'Donnell",
+   "before": 474,
+   "after": 466,
+   "delta": -8,
+   "score": 56.0,
+   "played": true
+  },
+  {
+   "key": "bailey-laurie",
+   "name": "Bailey Laurie",
+   "before": 125,
+   "after": 118,
+   "delta": -7,
+   "score": 20.0,
+   "played": true
+  },
+  {
+   "key": "harry-sharp",
+   "name": "Harry Sharp",
+   "before": 105,
+   "after": 98,
+   "delta": -7,
+   "score": 40.0,
+   "played": true
+  },
+  {
+   "key": "mitch-mcgovern",
+   "name": "Mitch McGovern",
+   "before": 44,
+   "after": 37,
+   "delta": -7,
+   "score": 42.0,
+   "played": true
+  },
+  {
+   "key": "jack-crisp",
+   "name": "Jack Crisp",
+   "before": 347,
+   "after": 354,
+   "delta": 7,
+   "score": 88.0,
+   "played": true
+  },
+  {
+   "key": "cooper-hynes",
+   "name": "Cooper Hynes",
+   "before": 1073,
+   "after": 1067,
+   "delta": -6,
+   "score": 63.0,
+   "played": true
+  },
+  {
+   "key": "kade-chandler",
+   "name": "Kade Chandler",
+   "before": 1122,
+   "after": 1116,
+   "delta": -6,
+   "score": 76.0,
+   "played": true
+  },
+  {
+   "key": "francis-evans",
+   "name": "Francis Evans",
+   "before": 793,
+   "after": 798,
+   "delta": 5,
+   "score": 67.0,
+   "played": true
+  },
+  {
+   "key": "ryley-sanders",
+   "name": "Ryley Sanders",
+   "before": 3769,
+   "after": 3773,
+   "delta": 4,
+   "score": 87.0,
+   "played": true
+  },
+  {
+   "key": "lachlan-cowan",
+   "name": "Lachlan Cowan",
+   "before": 594,
+   "after": 598,
+   "delta": 4,
+   "score": 67.0,
+   "played": true
+  },
+  {
+   "key": "will-hayes-b",
+   "name": "Will Hayes",
+   "before": 234,
+   "after": 237,
+   "delta": 3,
+   "score": 27.0,
+   "played": true
+  },
+  {
+   "key": "michael-sellwood",
+   "name": "Michael Sellwood",
+   "before": 306,
+   "after": 309,
+   "delta": 3,
+   "score": 30.0,
+   "played": true
+  },
+  {
+   "key": "changkuoth-jiath",
+   "name": "Changkuoth Jiath",
+   "before": 63,
+   "after": 66,
+   "delta": 3,
+   "score": 66.0,
+   "played": true
+  },
+  {
+   "key": "marc-pittonet",
+   "name": "Marc Pittonet",
+   "before": 527,
+   "after": 524,
+   "delta": -3,
+   "score": 82.0,
+   "played": true
+  },
+  {
+   "key": "harvey-harrison",
+   "name": "Harvey Harrison",
+   "before": 87,
+   "after": 85,
+   "delta": -2,
+   "score": 45.0,
+   "played": true
+  },
+  {
+   "key": "beau-mccreery",
+   "name": "Beau McCreery",
+   "before": 226,
+   "after": 228,
+   "delta": 2,
+   "score": 68.0,
+   "played": true
+  },
+  {
+   "key": "cody-weightman",
+   "name": "Cody Weightman",
+   "before": 186,
+   "after": 184,
+   "delta": -2,
+   "score": 53.0,
+   "played": true
+  },
+  {
+   "key": "joel-fitzgerald",
+   "name": "Joel Fitzgerald",
+   "before": 305,
+   "after": 306,
+   "delta": 1,
+   "score": 55.0,
+   "played": true
+  },
+  {
+   "key": "roan-steele",
+   "name": "Roan Steele",
+   "before": 84,
+   "after": 85,
+   "delta": 1,
+   "score": 57.0,
+   "played": true
+  },
+  {
+   "key": "jake-bowey",
+   "name": "Jake Bowey",
+   "before": 3980,
+   "after": 3981,
+   "delta": 1,
+   "score": 102.0,
+   "played": true
+  },
+  {
+   "key": "kysaiah-pickett",
+   "name": "Kysaiah Pickett",
+   "before": 4433,
+   "after": 4434,
+   "delta": 1,
+   "score": 72.0,
+   "played": true
+  },
+  {
+   "key": "ryan-gardner",
+   "name": "Ryan Gardner",
+   "before": 7,
+   "after": 6,
+   "delta": -1,
+   "score": 24.0,
+   "played": true
+  },
+  {
+   "key": "billy-frampton",
+   "name": "Billy Frampton",
+   "before": 66,
+   "after": 67,
+   "delta": 1,
+   "score": 69.0,
+   "played": true
+  }
+ ],
+ "n_movers": 87,
+ "n_movers_who_played": 87,
+ "pool_before": 702917,
+ "pool_after": 704376,
+ "control_pass": true
+}
