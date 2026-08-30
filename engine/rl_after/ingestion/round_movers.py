@@ -662,6 +662,17 @@ def previous_point(repo_root, round_n):
     try:
         idx = ids.index(str(int(round_n)))
     except ValueError:
+        # A FINALS WEEK IS NEVER A NUMBERED POINT. Its column is `fw1-...`, not `25`, so the lookup
+        # above always misses and the old fallback returned `round_n - 1`: 24 for FW1, which is the
+        # RIGHT ANSWER BY ACCIDENT ONLY WHEN NOTHING HAS MOVED THE BOARD SINCE ROUND 24 — and the
+        # store correction had. The report would then have started from f81dbcda while its declared
+        # baseline column carried round 24's 4a52cc44, and RULE M0 would have failed the movers page
+        # at step 10, after a 47-minute advance. For FW2 it is not even accidentally right: it would
+        # return 25, a point that will never exist.
+        #
+        # The point a finals week moved from is simply THE MOST RECENT STORED POINT, whatever it is.
+        if int(round_n) > HOME_AND_AWAY_ROUNDS and ids:
+            return ids[-1]
         return int(round_n) - 1
     return ids[idx - 1] if idx > 0 else (int(round_n) - 1)
 
