@@ -24,6 +24,7 @@ there is nowhere else it would show. A canonical-copy mismatch fails `check`.
 
 | file | md5 | sha256 (prefix) | bytes | arrived | canonical copy | purpose |
 |---|---|---|---|---|---|---|
+| `FW1.csv` | `e8ba891be3a1653dacada06256f169c3` | `d86f976b843d7753…` | 1562 | 2026-08-30 | `scores/FW1.csv` | Finals Week 1 player scores (SuperCoach 'SC' column) — TRANSCRIBED BY THE SUPERVISOR from four owner screenshots of the FootyWire match statistics pages, because the page itself is behind a Cloudflare bot challenge and was not fetched. 92 rows = 4 clubs x 23 selected. Verified by the owner's own conservation check before use: WBD 1714 + Collingwood 1587 = 3301 and Melbourne 1425 + Carlton 1875 = 3300, against his stated ~3300 per match. NOT YET APPLIED — a finals week needs the fixture scoping first, or every player at a non-finalist club is recorded as a DNP. |
 | `R23.csv` | `f4849bc4933801e80228bfc0e29e0c65` | `e3d5410e0e57a925…` | 7279 | 2026-08-20 | `scores/R23.csv` | Round 23 player scores — the owner's couriered round file, the input of record for the R23 advance (docs/runbooks/R23_RUNBOOK.md; round_entry catchup --file 23=scores/R23.csv). One row per player who played R23. |
 
 ---

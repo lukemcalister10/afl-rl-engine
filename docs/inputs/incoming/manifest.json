@@ -7,6 +7,19 @@
   ],
   "files": [
     {
+      "arrived": "2026-08-30",
+      "bytes": 1562,
+      "canonical_copies_all": [
+        "scores/FW1.csv"
+      ],
+      "canonical_copy": "scores/FW1.csv",
+      "delivered_by": "owner screenshots 2026-08-30; transcribed by the supervisor, resolution + conservation reports in docs/evidence/finals_fw1_2026-08-30/",
+      "file": "FW1.csv",
+      "md5": "e8ba891be3a1653dacada06256f169c3",
+      "purpose": "Finals Week 1 player scores (SuperCoach 'SC' column) \u2014 TRANSCRIBED BY THE SUPERVISOR from four owner screenshots of the FootyWire match statistics pages, because the page itself is behind a Cloudflare bot challenge and was not fetched. 92 rows = 4 clubs x 23 selected. Verified by the owner's own conservation check before use: WBD 1714 + Collingwood 1587 = 3301 and Melbourne 1425 + Carlton 1875 = 3300, against his stated ~3300 per match. NOT YET APPLIED \u2014 a finals week needs the fixture scoping first, or every player at a non-finalist club is recorded as a DNP.",
+      "sha256": "d86f976b843d77537853e337ab32673fa61837bd2f6a0df3adf89d5db1f3a85b"
+    },
+    {
       "arrived": "2026-08-20",
       "bytes": 7279,
       "canonical_copies_all": [
