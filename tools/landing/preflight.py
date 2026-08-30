@@ -186,6 +186,15 @@ def run_preflight(root, spec_path, out=print):
         return ('FAIL', ([l.strip() for l in o.splitlines() if 'IMPOSSIBLE' in l] or [o.strip()[:200]])[0][:200])
     check('store_sanity', _store_sanity)
 
+    # 8d · THE SURGICAL EDITOR'S OWN REFUSALS (2026-08-30). The season path reaches INSIDE a
+    #      container the editor had until now refused to touch, and a narrower target is one that
+    #      can be missed. Its 14 assertions are almost all refusals; they cost milliseconds.
+    def _store_edit():
+        rc, o = _run([sys.executable, 'tools/landing/test_store_edit.py'], root)
+        return ('PASS', 'store-edit season-path tests green') if rc == 0 else \
+               ('FAIL', ([l for l in o.splitlines() if 'FAIL' in l] or [o.strip()[:200]])[0][:200])
+    check('store_edit_paths', _store_edit)
+
     # 8b · CLEAN TREE, before the selftest instead of after it (shrink review S11, 2026-08-28).
     #      Step 0 asserts this too — but step 0 runs after the pre-transaction selftest (minutes),
     #      and two takes of the combined-build landing paid that price to discover dirt knowable

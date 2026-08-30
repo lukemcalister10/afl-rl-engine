@@ -269,6 +269,55 @@ def _scalar_json(v):
     return (a,) if a == b else (a, b)
 
 
+#: A season-row field path: `scoring[2017].games`. The store's scoring rows are a LIST of season
+#: objects, and a list is exactly what `_scalar_json` refuses to serialise hopefully — correctly, its
+#: on-disk spacing is not this step's to assume. So a season correction addresses the SCALAR inside a
+#: named season instead of rewriting the container around it, and every assertion the flat path makes
+#: is made again one level down.
+_SEASON_FIELD = re.compile(r'^scoring\[(\d{4})\]\.([A-Za-z_][A-Za-z0-9_]*)$')
+
+
+def _season_spans(span_text, year):
+    """EVERY (start, end, parsed) season object for `year` inside one row's text.
+
+    Walks the `scoring` list brace-by-brace rather than regexing for the year, because `"year": 2017`
+    can appear inside any season object and the one that MATTERS is the object it opens, not the
+    first place those bytes occur. Returns offsets relative to `span_text`.
+
+    ALL matches are returned, not the first, because the caller must REFUSE a row that carries the
+    same season twice rather than quietly editing whichever came first — the same law the flat path
+    applies to a non-unique text hit. A duplicated year is a broken row; picking one is a guess.
+    """
+    out = []
+    m = re.search(r'"scoring"\s*:\s*\[', span_text)
+    if not m:
+        return out
+    i = m.end()
+    depth = 0
+    obj_start = None
+    while i < len(span_text):
+        ch = span_text[i]
+        if ch == '{':
+            if depth == 0:
+                obj_start = i
+            depth += 1
+        elif ch == '}':
+            depth -= 1
+            if depth == 0 and obj_start is not None:
+                chunk = span_text[obj_start:i + 1]
+                try:
+                    parsed = json.loads(chunk)
+                except ValueError:
+                    parsed = None
+                if isinstance(parsed, dict) and parsed.get('year') == year:
+                    out.append((obj_start, i + 1, parsed))
+                obj_start = None
+        elif ch == ']' and depth == 0:
+            return out
+        i += 1
+    return out
+
+
 def apply_store_edits(text, edits):
     """THE SURGICAL BYTE REPLACEMENT. -> (new_text, [applied]). Pure: it writes nothing.
 
@@ -301,11 +350,42 @@ def apply_store_edits(text, edits):
             raise StepError('edit %d: the store has no row with key %r. The lander edits a row it '
                             'found; it never creates one.' % (i, key))
         start, end, row = spans[key]
-        if field not in row:
-            raise StepError('edit %d: row %r has no field %r (it carries: %s). A field that is not '
-                            'there is not a field that is wrong.'
-                            % (i, key, field, ', '.join(sorted(row)[:12])))
-        got = row[field]
+
+        # A SEASON-ROW PATH (`scoring[2017].games`) narrows the span to that one season object and
+        # then behaves exactly as the flat path does inside it: the field must exist, `old` must
+        # match on its JSON encoding, the text must occur EXACTLY ONCE in the narrowed span, and the
+        # row must re-parse with that one change and nothing else. Owner corrections to a season are
+        # the common case (a transposed games/avg pair, a finals week's games and score), and the
+        # alternative — declaring the whole `scoring` list as one value — is precisely the container
+        # rewrite `_scalar_json` refuses, because its on-disk spacing is not ours to assume.
+        sm = _SEASON_FIELD.match(str(field))
+        season = None
+        if sm:
+            yr, sub = int(sm.group(1)), sm.group(2)
+            span_txt = cur[start:end]
+            found = _season_spans(span_txt, yr)
+            if not found:
+                raise StepError('edit %d: row %r has no scoring row for %d. The lander edits a '
+                                'season it found; it never creates one.' % (i, key, yr))
+            if len(found) > 1:
+                raise StepError('edit %d: row %r carries the %d season %d times. A duplicated season '
+                                'is a broken row, and choosing one of them would be a guess — fix '
+                                'the duplication first.' % (i, key, yr, len(found)))
+            s_off, s_end, s_obj = found[0]
+            if sub not in s_obj:
+                raise StepError('edit %d: row %r season %d has no field %r (it carries: %s). A '
+                                'field that is not there is not a field that is wrong.'
+                                % (i, key, yr, sub, ', '.join(sorted(s_obj))))
+            season = {'year': yr, 'sub': sub, 'abs_start': start + s_off, 'abs_end': start + s_end,
+                      'obj': s_obj}
+            start, end = season['abs_start'], season['abs_end']
+            row, field, got = s_obj, sub, s_obj[sub]
+        else:
+            if field not in row:
+                raise StepError('edit %d: row %r has no field %r (it carries: %s). A field that is '
+                                'not there is not a field that is wrong.'
+                                % (i, key, field, ', '.join(sorted(row)[:12])))
+            got = row[field]
         if json.dumps(got, sort_keys=True) != json.dumps(old, sort_keys=True):
             raise StepError(
                 'THE OLD VALUE THE SPEC ASSERTS IS NOT THE VALUE IN THE STORE.\n'
@@ -331,13 +411,34 @@ def apply_store_edits(text, edits):
         new_span = span[:m.start()] + m.group(1) + new_enc + span[m.end():]
         nxt = cur[:start] + new_span + cur[end:]
 
-        after = store_row_spans(nxt, [key])[key][2]
-        if json.dumps(dict(after, **{field: old}), sort_keys=True) != json.dumps(row, sort_keys=True):
-            raise StepError('edit %d: the row changed in some way other than the one declared field'
-                            % i)
+        # THE AFTER-CHECK IS MADE AT THE SAME LEVEL THE EDIT WAS: for a season path, the season
+        # object must carry the new value and be otherwise identical, AND the whole row must be
+        # identical outside that one season — so a replacement that strayed past the season's braces
+        # is caught by the row-level comparison rather than passing on the narrow one.
+        after_row = store_row_spans(nxt, [key])[key][2]
+        if season is not None:
+            after_found = _season_spans(nxt[store_row_spans(nxt, [key])[key][0]:
+                                            store_row_spans(nxt, [key])[key][1]], season['year'])
+            if len(after_found) != 1:
+                raise StepError('edit %d: the %d season row of %r is not uniquely present after the '
+                                'replacement (%d found)' % (i, season['year'], key, len(after_found)))
+            after = after_found[0][2]
+            before_row_restored = json.loads(json.dumps(after_row))
+            for srow in (before_row_restored.get('scoring') or []):
+                if srow.get('year') == season['year']:
+                    srow[field] = old
+            if json.dumps(before_row_restored, sort_keys=True) != json.dumps(
+                    store_row_spans(cur, [key])[key][2], sort_keys=True):
+                raise StepError('edit %d: the row changed in some way other than the one declared '
+                                'season field' % i)
+        else:
+            after = after_row
+            if json.dumps(dict(after, **{field: old}), sort_keys=True) != json.dumps(row, sort_keys=True):
+                raise StepError('edit %d: the row changed in some way other than the one declared field'
+                                % i)
         if json.dumps(after[field], sort_keys=True) != json.dumps(new, sort_keys=True):
             raise StepError('edit %d: the row does not carry the new value after the replacement' % i)
-        applied.append({'key': key, 'field': field, 'old': old, 'new': new,
+        applied.append({'key': key, 'field': e['field'], 'old': old, 'new': new,
                         'row_span': [start, end], 'at': start + m.start(),
                         'chars_before': len(cur), 'chars_after': len(nxt),
                         'old_text': m.group(0), 'new_text': m.group(1) + new_enc})
