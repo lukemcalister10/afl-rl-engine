@@ -4,7 +4,7 @@
   "act_kind": "round-advance",
   "act": "FW1 \u2014 FINALS WEEK 1 APPLIED (feed round 25; the calendar round HELD at 24)",
   "date": "2026-08-30",
-  "owner_word": "Explicit word given (owner, verbatim, 2026-08-30), on the FW1 direct-movers preview: 87 movers, all of them players who played, pool 702,917 -> 704,376.",
+  "owner_word": "Explicit word given (owner, verbatim, 2026-08-30), on the FW1 direct-movers preview: 87 movers, all of them players who played, pool 702,917 -> 704,376. Sheet: \"Yes, Viney has returned. Nobody else.\"",
   "authority": "owner screenshots of the FootyWire SC column 2026-08-30 (transcribed, verified against his own conservation check); fixture 'FW1 is 4 teams playing' + the four clubs; DNP ruling 'should carry a DNP but the DNP shouldn't directly count against a player'",
   "prereg": {
     "path": "docs/evidence/fw1_advance_2026-08-30/PREREG.md",
@@ -22,7 +22,17 @@
     },
     "_doc_round_expected": "absent_dnp is 93 \u2014 the players at the FOUR clubs that PLAYED who were not selected. It is NOT 712: the 619 at clubs that did not play are UNRECORDED, not DNP, which is the owner's ruling of 2026-08-30 and is asserted as a partition inside round_movers (played + dnp + unrecorded == the priced board)."
   },
-  "sheet": null,
+  "sheet": {
+    "path": "docs/owner_annotations/SITTER_2026_v1.csv",
+    "prereg_lite": "docs/evidence/fw1_advance_2026-08-30/SHEET_RECUT_PREREG.md",
+    "owner_word": "Yes, Viney has returned. Nobody else.",
+    "disclosed_movers": "jack-viney \u2014 injured Y -> N. He played Finals Week 1 for Melbourne (SC 55) while the pinned sheet carried him injured=Y with games_2026=0. EXACTLY ONE ROW DIFFERS across the file and only the `injured` column moved on it, asserted column-by-column after the write.",
+    "predicted": {
+      "sheet_md5": "61ef3e61a685909784c1d6eb23859788",
+      "sheet_rows": 219,
+      "sheet_injured_y": 34
+    }
+  },
   "round": {
     "number": 25,
     "_doc_number": "THE FEED ROUND, which is a (player, season, round) dedup-ledger key and NOT the calendar. staged_apply holds as_of_round at calendar_rounds = 24.",
