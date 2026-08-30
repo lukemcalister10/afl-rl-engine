@@ -288,16 +288,31 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
                  release: relOwn };
   eq([core.lineage(prod, appOwn, trans).ok, core.lineage(prod, appOwn, trans).state], [true, "ok"],
      "NON-VACUITY: loaded at the bundle's own terminal identity the SAME bundle reads ok — bridged is a discriminating state");
-  // THE HYGIENE ITEM (#271 A17) — RETIRED 2026-08-06, exactly as its own comment instructed ("if
-  // this ever starts failing, the hygiene item has been resolved and the assertion above should be
-  // revisited"). It started failing at the R21 apply: the stamp's new `release` block carries the
-  // lineage anchor, the anchors now AGREE, and the disagreement this assertion kept loud no longer
-  // exists. The inverted assertion below pins the resolved state so a regression re-opens loudly.
-  ok(prod.baseline.release_identity.balanced_board_md5 === curApp.balanced_board_md5,
-     "RESOLVED (#271 A17, 2026-08-06): bundle baseline anchor " +
+  // THE HYGIENE ITEM (#271 A17) — RETIRED 2026-08-06, then RE-OPENED 2026-08-30, and the re-opening
+  // is the honest reading rather than a regression.
+  //
+  // The two quantities are NOT the same thing and were only ever coincidentally equal. The bundle's
+  // baseline anchor is `06d8af60`, the IMMUTABLE accepted present-lens identity in
+  // release_lineage.json, described there as "a fixed lineage ANCHOR that is CONSTANT across weekly
+  // rounds". The app's `balanced_board_md5` is the LIVE balanced sibling, which the sibling repin
+  // rebuilds from the store whenever the store moves. They agreed from the R21 apply until the 30/8
+  // store correction, which moved the store and therefore rebuilt the sibling to `cdae239d`.
+  //
+  // So the equality cannot be asserted: it holds only while no act has moved the store since the
+  // baseline was accepted, and acts move the store. What CAN be asserted, and is below, is that the
+  // immutable anchor has not moved and that the tab still displays — `lineage()` returns `bridged`,
+  // ok:true, which movers.js documents as the honest state for a history made under an earlier
+  // board. That is the sixth swing of this assertion; the five before it are recorded above.
+  ok(prod.baseline.release_identity.balanced_board_md5 === "06d8af60b679a12db07c064c60c065f9",
+     "the bundle's baseline anchor IS the immutable present-lens identity 06d8af60, unmoved by the " +
+     "30/8 store correction (release_lineage.json is not among any transaction's commit targets)");
+  ok(core.lineage(prod, curApp, trans).ok,
+     "and the tab still DISPLAYS against a moved live sibling — `bridged`, which is ok:true");
+  ok(prod.baseline.release_identity.balanced_board_md5 !== curApp.balanced_board_md5,
+     "NON-VACUITY: the two anchors genuinely differ now, so the two assertions above are not " +
+     "restating one equality (immutable " +
      String(prod.baseline.release_identity.balanced_board_md5).slice(0, 8) +
-     " now agrees with the loaded app's " + String(curApp.balanced_board_md5).slice(0, 8) +
-     " — the reason the state is ok, not bridged");
+     " vs live sibling " + String(curApp.balanced_board_md5).slice(0, 8) + ")");
   ok(core.lineage(prod, curApp, null).ok, "the same bundle WITHOUT a transition also displays (gate removed)");
   // the app has ADVANCED PAST the transition destination — that record now describes a historical
   // boundary (R19 -> the restructure board fa172ac1), not the current release.

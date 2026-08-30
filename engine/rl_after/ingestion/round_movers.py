@@ -253,6 +253,49 @@ def point_key(point):
     return str(int(point))
 
 
+#: The home-and-away season. A feed round above it is a finals week: real football, applied to the
+#: store, with the CALENDAR round held (staged_apply.calendar_rounds).
+HOME_AND_AWAY_ROUNDS = 24
+FIXTURES_REL = ('scores', 'fixtures.json')
+
+
+def fixture_clubs(repo_root, round_n):
+    """The clubs that played in `round_n`, or None when every club did.
+
+    READ FROM THE REPO, NOT PLUMBED THROUGH THE CALLERS. The finalizer builds the report four layers
+    below the lander, and threading a fixture down that chain would mean four places that could
+    forget it — with the failure being silent and severe (712 of 804 players wrongly marked DNP in
+    FW1). Reading it here means a finals report cannot be built without its fixture by ANY caller,
+    and a home-and-away round needs no entry at all: no entry -> None -> every club played, which is
+    byte-identical to the behaviour before finals existed.
+
+    A finals round with NO fixture entry is a HALT, not a default. Defaulting to "all clubs played"
+    for a week when only four did is exactly the wrong answer, and it is the one a missing-entry
+    default would give."""
+    p = os.path.join(repo_root, *FIXTURES_REL)
+    if not os.path.exists(p):
+        if int(round_n) > HOME_AND_AWAY_ROUNDS:
+            raise ValueError('round %s is a finals week and %s does not exist. A finals report '
+                             'cannot be built without its fixture: every player at a club that did '
+                             'not play would be recorded as a DNP.'
+                             % (round_n, os.path.join(*FIXTURES_REL)))
+        return None
+    with open(p, encoding='utf-8') as fh:
+        doc = json.load(fh)
+    wk = (doc.get('weeks') or {}).get(str(int(round_n)))
+    if wk is None:
+        if int(round_n) > HOME_AND_AWAY_ROUNDS:
+            raise ValueError('round %s is a finals week with no entry in %s — declare the clubs '
+                             'that played.' % (round_n, os.path.join(*FIXTURES_REL)))
+        return None
+    clubs = wk.get('clubs') or []
+    if not clubs:
+        raise ValueError('round %s is declared in %s with an EMPTY club list. An empty fixture is '
+                         'not "everyone played"; it is an undeclared one.'
+                         % (round_n, os.path.join(*FIXTURES_REL)))
+    return set(clubs)
+
+
 def build_report(repo_root, round_n, *, played=None, evidence=None, generated_at=None,
                  release_identity_override=None, from_point=None, clubs_played=None):
     """Build the full movers report for a committed round, comparing two STORED points in the histories.
@@ -270,6 +313,8 @@ def build_report(repo_root, round_n, *, played=None, evidence=None, generated_at
     round_n = int(round_n)
     prev_round = (round_n - 1) if from_point is None else from_point
     played = played or {}
+    if clubs_played is None:
+        clubs_played = fixture_clubs(repo_root, round_n)
     ing = os.path.join(repo_root, 'engine', 'rl_after', 'ingestion')
     vh = _load(os.path.join(ing, 'value_history.json'))
     rh = _load(os.path.join(ing, 'rank_history.json'))

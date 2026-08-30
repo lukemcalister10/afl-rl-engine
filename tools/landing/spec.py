@@ -25,6 +25,8 @@ import os
 
 SCHEMA_VERSION = 1
 ACT_KINDS = ('lever-landing', 'round-advance', 'store-edit')
+#: the home-and-away season; a feed round above it is a finals week, which HOLDS the calendar
+HOME_AND_AWAY_ROUNDS = 24
 
 #: Every identity the lander tracks in `data/expected_boot.json`. `moves`/`unmoved` must partition it.
 TRACKED_IDENTITIES = ('board', 'store', 'engine_head', 'rl_model', 'fv', 'config', 'register',
@@ -107,18 +109,47 @@ def _validate_round(doc):
     pre = doc.get('prereg') or {}
     rnd = doc.get('round')
 
+    # IS THIS ACT THE ROUND, OR IS IT OUT OF ROUND? That is what decides the two refusals below, and
+    # until the finals it was the same question as "is this act_kind round-advance". It is not any
+    # more. A FINALS WEEK (feed round 25-29) applies real football to the store but HOLDS the calendar
+    # at 24 — `as_of_round` does not move, `calendar_progress` stays 1.00, and a non-finalist's
+    # completed season is untouched. By the standing rule of 2026-07-28 a board move that is not the
+    # round IS an out-of-round move, so a finals week EARNS its column and its lineage entry exactly
+    # as a dial flip does. Refusing them here would have forced the FW1..GF board moves to go
+    # unrecorded in the very register that exists to record board moves outside a round.
+    _feed = None
+    if isinstance(rnd, dict):
+        try:
+            _feed = int(rnd.get('number'))
+        except (TypeError, ValueError):
+            _feed = None
+    _is_finals = _feed is not None and _feed > HOME_AND_AWAY_ROUNDS
+
     if 'sheet' not in doc:
         bad.append('the `sheet` slot must be PRESENT on a round-advance spec — null when this '
                    'advance re-cuts no sheet. An unfilled slot has to be visible; an absent one is '
                    'indistinguishable from a seat who has not got to it yet.')
-    if doc.get('column') is not None:
+    if doc.get('column') is not None and not _is_finals:
         bad.append('a ROUND ADVANCE declares a column. It earns none: the out-of-round history '
                    'column marks a board move OUTSIDE a round (standing owner rule 2026-07-28), and '
                    'this move is the round. (R23 runbook ERRATUM E5.)')
-    if doc.get('lineage') is not None:
+    if doc.get('column') is None and _is_finals:
+        bad.append('a FINALS week (feed round %d) declares no column. It earns one: the round is '
+                   'HELD at %d, so this is a board move OUTSIDE a round and the standing rule of '
+                   '2026-07-28 gives it a column.' % (_feed, HOME_AND_AWAY_ROUNDS))
+    if doc.get('lineage') is not None and not _is_finals:
         bad.append('a ROUND ADVANCE declares a lineage entry. It earns none: '
                    'data/release_lineage.json records OUT-OF-ROUND transitions only, and R23\'s '
                    'register tail correctly stayed at the round-22 re-cut boundary. (ERRATUM E5.)')
+    if doc.get('lineage') is None and _is_finals:
+        bad.append('a FINALS week declares no lineage entry. The board moves and the round does '
+                   'not, which is the definition of an out-of-round transition.')
+    if _is_finals and not (doc.get('round') or {}).get('clubs_played'):
+        bad.append('a FINALS week must declare `round.clubs_played` — the clubs that actually '
+                   'played. Without it every active player at a club that did NOT play is recorded '
+                   'as a DNP (712 of 804 in FW1), which is the owner ruling of 2026-08-30 exactly '
+                   'inverted. It cannot be inferred from the scores file: a club can field a player '
+                   'the store has at another club, and three did in FW1.')
 
     if not isinstance(rnd, dict):
         bad.append('round must be an object: {"number", "scores", "arming", "identity_overrides"}')

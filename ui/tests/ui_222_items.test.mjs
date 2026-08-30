@@ -127,7 +127,11 @@ const HIST = await page.evaluate(() => {
 /* Sentinel RE-PINNED 2026-08-29: the ORDER 49 landing added its model-change column (MC-15,
    order49-avail-blend-28-8), 25 → 26. The literal stays a literal — it is the drift sentinel,
    and it moves by hand every time a landed change adds a column. */
-check(HIST.series && HIST.series.length === 26, 'item 3 — the history has all 26 points',
+// A HARD-PINNED COUNT, and it moves whenever an out-of-round act lands — it was 26 until the
+// 30/8 store correction added its column. That is what this pin is FOR: a point count that changed
+// without anyone noticing would mean the card had silently gained or lost an event. Restate it in
+// the same commit as the act that moved it, and never to make a red go away.
+check(HIST.series && HIST.series.length === 27, 'item 3 — the history has all 27 points',
   HIST.series ? String(HIST.series.length) : 'null');
 check(HIST.series.every(r => r.v != null && r.rank != null && r.posRank != null),
   'item 3 — value, rank and positional rank are present at EVERY point (no participation gate)');
