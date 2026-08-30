@@ -1098,6 +1098,69 @@
    ],
    "invariants": {},
    "_measured_note": "moved/unchanged are MEASURED by tools/landing (steps._measure_sides), not asserted: every `source` identity is re-hashed from the committed tree at da2d627 via git show, every `destination` identity from the live tree, and each side is cross-checked against THAT TREE'S OWN data/expected_boot.json before the entry is composed."
+  },
+  {
+   "_doc": "docs/evidence/store_corrections_2026-08-30/PREREG.md",
+   "kind": "movers_release_transition",
+   "schema_version": 2,
+   "owner_approved": true,
+   "owner_ruling_id": [
+    "STORE_FIX_JOYCE_2026-08-30_yep_those_numbers_are_correct_on_joyce",
+    "STORE_FIX_LOVETT_MURRAY_2026-08-30_20_games_not_40",
+    "STORE_FIX_CLUBS_2026-08-30_players_are_at_the_appeared_in_club"
+   ],
+   "owner_ruling": "Owner corrections to two retired players' season rows, 2026-08-30.",
+   "authority": "owner word 2026-08-30",
+   "applies_to": {
+    "bundle": "ui/data/movers.js",
+    "boundary": [
+     "24",
+     "store-fix-impossible-games-30-8"
+    ]
+   },
+   "source": {
+    "release_version": "v2.11-final-rc1-PROVISIONAL",
+    "board": "4a52cc4490f950c7b7856fc28ddcb949",
+    "store": "b4d23810ebb6b53f07a0ae40a3c24b97",
+    "rl_model": "6fe7c4155866d80e8045bed2d3bf2802",
+    "engine_head": "17243c16277842e0a30470cfbdb5b196",
+    "fv": "123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345",
+    "config": "d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4",
+    "register": "652d83e87780e415a01a2de6d8b3cc57",
+    "balanced_board_md5": "1ad6a04bdfa21d60a25b1771f5c7fa6e",
+    "v0surf": "d9f5d15d9606edcdd5708233197dd951",
+    "as_of_round": 24
+   },
+   "destination": {
+    "release_version": "v2.11-final-rc1-PROVISIONAL",
+    "board": "f81dbcda220110ad0113ae0633b6c34e",
+    "store": "a9dec7e4785c6861a84f3beaae2f020e",
+    "rl_model": "6fe7c4155866d80e8045bed2d3bf2802",
+    "engine_head": "17243c16277842e0a30470cfbdb5b196",
+    "fv": "123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345",
+    "config": "d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4",
+    "register": "652d83e87780e415a01a2de6d8b3cc57",
+    "balanced_board_md5": "1ad6a04bdfa21d60a25b1771f5c7fa6e",
+    "v0surf": "d9f5d15d9606edcdd5708233197dd951",
+    "as_of_round": 24
+   },
+   "moved_by_transition": [
+    "board",
+    "store"
+   ],
+   "unchanged_across_transition": [
+    "as_of_round",
+    "balanced_board_md5",
+    "config",
+    "engine_head",
+    "fv",
+    "register",
+    "release_version",
+    "rl_model",
+    "v0surf"
+   ],
+   "invariants": {},
+   "_measured_note": "moved/unchanged are MEASURED by tools/landing (steps._measure_sides), not asserted: every `source` identity is re-hashed from the committed tree at 172113c via git show, every `destination` identity from the live tree, and each side is cross-checked against THAT TREE'S OWN data/expected_boot.json before the entry is composed."
   }
  ]
 }
