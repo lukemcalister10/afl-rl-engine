@@ -8,7 +8,7 @@
   "prereg": {
     "path": "docs/evidence/store_corrections_2026-08-30/PREREG.md",
     "board_before": "4a52cc4490f950c7b7856fc28ddcb949",
-    "board_after": null,
+    "board_after": "f81dbcda220110ad0113ae0633b6c34e",
     "reference_board": null,
     "kill_switch": null
   },

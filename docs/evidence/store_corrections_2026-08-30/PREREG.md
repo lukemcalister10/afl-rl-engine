@@ -54,3 +54,23 @@ If any row moves, this act ABORTS and the movement is explained before it flies 
 `tools/store_sanity.py` goes from 4 impossible rows to PASS over 11,484 season rows — verified
 against the post-edit text before this spec was written. The check sits in the step-0 preflight, so
 the red is visible on every launch until this lands.
+
+## The dry-run, and the prediction it becomes
+
+Run 2026-08-30 (`land edit --dry-run`, 1,186s, wrote nothing — all 253 live carriers re-hashed
+after it, 0 moved). All twelve edits applied surgically, each reported with its byte span.
+
+    store   b4d23810ebb6b53f07a0ae40a3c24b97 -> a9dec7e4785c6861a84f3beaae2f020e
+    board   4a52cc4490f950c7b7856fc28ddcb949 -> f81dbcda220110ad0113ae0633b6c34e
+
+**MOVERS: 0 of 1,002 valued rows. Pool 702,917 -> 702,917 (+0).** The declared prediction —
+`expected_movers: []` — met exactly. Both corrected players are `_retired` and off the active board,
+so no valuation depends on them; the board identity moves only because the board file carries the
+`afl_club` label for the three re-clubbed players, which is display and not value.
+
+Every other identity asserted unmoved as declared: engine_head, rl_model, fv, config, register.
+`as_of_round` stays 24 — this act HOLDS the round, as a store-edit must.
+
+`board_after` is now pinned to `f81dbcda...` in the spec, so the flight asserts the prediction
+byte-exact rather than merely asserting internal consistency. If the real run reproduces anything
+else, it aborts.
