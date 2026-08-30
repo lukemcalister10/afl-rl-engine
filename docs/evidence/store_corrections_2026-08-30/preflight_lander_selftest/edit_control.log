@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND STORE-EDIT — SELF-TEST — the surgical store edit
-  tree      : /tmp/landing_selftest_5292/sandbox
+  tree      : /tmp/landing_selftest_7009/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board b643974822385dc9cd72e42151b8f772
   mode      : APPLY (SELFTEST) builder=selftest-moved
@@ -8,12 +8,12 @@ LAND STORE-EDIT — SELF-TEST — the surgical store edit
 
 --- STEP 0/11  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-edit-6806 (pid 6806) — single writer for the shared workspace.
-base commit        22ac40d7c5b828773638a12e509c2e2a39b98a68
+build-lock: HELD by land-edit-8514 (pid 8514) — single writer for the shared workspace.
+base commit        f529302f6b6dffd785d35cd92a0e720906f82fee
 board pin (before) 4a52cc4490f950c7b7856fc28ddcb949
 store pin (before) b4d23810ebb6b53f07a0ae40a3c24b97
 restore point      74 carrier(s) captured, 74 present on disk
-    [preflight OK  0.06s]
+    [preflight OK  0.07s]
 
 --- STEP 1/11  store_edit     THE SURGICAL STORE EDIT, applied in the work dir ---
 store BEFORE  b4d23810ebb6b53f07a0ae40a3c24b97   (1978015 bytes)
@@ -77,7 +77,7 @@ WRITER 2: the bake-lane identities restamp_dynamic does not touch (release_contr
   contract_sha256             03e34079eaf9 -> 03e34079eaf9
   frozen fields asserted unmoved: 10 checked, 0 moved
 RE-STAMPED, re-read, and release_contract.py check PASSES.
-    [contract OK  0.09s]
+    [contract OK  0.11s]
 
 --- STEP 6/11  sibling        the balanced sibling, rebuilt and reconciled if moved ---
 *** FAULT INJECTED at step 'sibling': sidecar_corrupt — the sibling provenance sidecar is unreadable
@@ -91,7 +91,7 @@ LANDING ABORTED AT STEP 'sibling'
 carriers that moved before the failure: 13
     data/expected_boot.json                                          8538fc1057ce -> e2d1aa10e20c
     data/release_contract.json                                       dc293e6dd710 -> c353e8b694dd
-    data/release_lineage.json                                        3f516a1d930a -> 8f81672f34da
+    data/release_lineage.json                                        3f516a1d930a -> 7bd57d400c34
     data/rl_build/rl_app_data.json                                   4a52cc4490f9 -> b64397482238
     data/rl_build/rl_app_data.json.srcmd5                            ce8c5af879ad -> aac87da80e45
     data/season_state.json                                           506db8cae372 -> e9274a4c8112
@@ -125,12 +125,12 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.06s  OK
+    preflight          0.07s  OK
     store_edit         0.19s  OK
     build_proofs       0.06s  OK
     pins               0.02s  OK
     lineage            0.19s  OK
-    contract           0.09s  OK
+    contract           0.11s  OK
     sibling            0.04s  FAIL
-    TOTAL              0.65s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_6806
+    TOTAL              0.68s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_8514

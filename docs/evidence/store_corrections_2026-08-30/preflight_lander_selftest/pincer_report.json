@@ -3,10 +3,10 @@
     "byte_exact": true,
     "commits_rewound": {
       "commits": [
-        "432c25f8b2041af91a77736e51b0242365904dd4"
+        "f0b5939fe909182babbddb98b639731935fceb5c"
       ],
       "rewound": true,
-      "to": "22ac40d7c5b828773638a12e509c2e2a39b98a68"
+      "to": "f529302f6b6dffd785d35cd92a0e720906f82fee"
     },
     "error": "STOPPED AT THE DOOR, BY REQUEST (selftest fault `advance:stop_at_the_door`). Steps 0-3 ran for real against an uncommitted owner score file; the armed advance is where this case deliberately ends, because a self-test does not arm a score-write.",
     "failed_step": "advance",
@@ -277,7 +277,7 @@
         "ui/data/movers_transition.js": "d68824f90d1cd5db10881af559257e73",
         "ui/data/ownership.js": "7722f229541938f592cf33160209fea0"
       },
-      "commit": "22ac40d7c5b828773638a12e509c2e2a39b98a68",
+      "commit": "f529302f6b6dffd785d35cd92a0e720906f82fee",
       "expected_boot": {
         "as_of_round": 24,
         "balanced_board_md5": "1ad6a04bdfa21d60a25b1771f5c7fa6e",
@@ -301,7 +301,7 @@
     },
     "catchup_preflight": {
       "clean": true,
-      "commit": "432c25f8b2041af91a77736e51b0242365904dd4",
+      "commit": "f0b5939fe909182babbddb98b639731935fceb5c",
       "counts": {
         "absent_dnp": 396,
         "encoding": "utf-8",
@@ -314,10 +314,10 @@
       "ran": true
     },
     "preflight": {
-      "base_commit": "22ac40d7c5b828773638a12e509c2e2a39b98a68",
+      "base_commit": "f529302f6b6dffd785d35cd92a0e720906f82fee",
       "board_before": "4a52cc4490f950c7b7856fc28ddcb949",
       "carriers_captured": 126,
-      "lock": "land-round-6596"
+      "lock": "land-round-8311"
     },
     "scores": {
       "bytes": 7223,
@@ -358,7 +358,7 @@
       "verdict": "OK"
     },
     {
-      "seconds": 0.29,
+      "seconds": 0.27,
       "step": "catchup_preflight",
       "verdict": "OK"
     },

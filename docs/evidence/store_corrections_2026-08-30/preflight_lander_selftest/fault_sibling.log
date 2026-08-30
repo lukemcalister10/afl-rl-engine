@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_5292/sandbox
+  tree      : /tmp/landing_selftest_7009/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 4a52cc4490f950c7b7856fc28ddcb949
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,12 +9,12 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-lever-5715 (pid 5715) — single writer for the shared workspace.
-base commit        22ac40d7c5b828773638a12e509c2e2a39b98a68
+build-lock: HELD by land-lever-7431 (pid 7431) — single writer for the shared workspace.
+base commit        f529302f6b6dffd785d35cd92a0e720906f82fee
 board pin (before) 4a52cc4490f950c7b7856fc28ddcb949
 store pin (before) b4d23810ebb6b53f07a0ae40a3c24b97
 restore point      73 carrier(s) captured, 73 present on disk
-    [preflight OK  0.07s]
+    [preflight OK  0.09s]
 
 --- STEP 1/10  build_proofs   bare build, predicted identity, switch leg, day-0 ---
 build         rc=0 board=4a52cc4490f950c7b7856fc28ddcb949  (0.0s)
@@ -77,11 +77,11 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.07s  OK
+    preflight          0.09s  OK
     build_proofs       0.01s  OK
     pins               0.02s  OK
     lineage            0.00s  OK
     contract           0.09s  OK
     sibling            0.06s  FAIL
-    TOTAL              0.25s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_5715
+    TOTAL              0.27s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_7431

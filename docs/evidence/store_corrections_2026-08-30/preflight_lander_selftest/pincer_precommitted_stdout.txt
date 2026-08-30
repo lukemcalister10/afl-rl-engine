@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND ROUND-ADVANCE — SELF-TEST — the input-commit pincer (R24 rehearsal §3.1 RUN A + RUN C)
-  tree      : /tmp/landing_selftest_5292/sandbox
+  tree      : /tmp/landing_selftest_7009/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 4a52cc4490f950c7b7856fc28ddcb949
   mode      : APPLY (SELFTEST) builder=selftest
@@ -12,8 +12,8 @@ DECLARED DIRT (2 path(s), and ONLY these): owner inputs this act is contracted t
     scores/R25.csv                                             (committed by the `catchup_preflight` step)
     engine/rl_after/ingestion/catchup_identity_overrides.json  (committed by the `catchup_preflight` step)
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-round-6752 (pid 6752) — single writer for the shared workspace.
-base commit        ba518ec36bece8d4ba5bf2d1a46a952caeaa8369
+build-lock: HELD by land-round-8465 (pid 8465) — single writer for the shared workspace.
+base commit        1d6a51ba581bd1dd445a6649b35095e30dc7f535
 board pin (before) 4a52cc4490f950c7b7856fc28ddcb949
 store pin (before) b4d23810ebb6b53f07a0ae40a3c24b97
 restore point      126 carrier(s) captured, 126 present on disk
@@ -50,7 +50,7 @@ explicit paths (2):
     engine/rl_after/ingestion/catchup_identity_overrides.json
     scores/R25.csv
 NOTHING TO COMMIT: every named path is already committed at this content. The inputs of record are in the tree, which is what this commit exists to ensure; no empty commit is manufactured to say so.
-    [catchup_preflight OK  0.13s]
+    [catchup_preflight OK  0.12s]
 
 --- STEP 4/14  advance        THE ARMED CATCH-UP — ADVANCE-REPIN runs inside it ---
 *** FAULT INJECTED at step 'advance': stop_before_arming — the transaction is stopped at the door of the armed advance, so the case measures the four steps that already ran — the input-commit pincer
@@ -75,7 +75,7 @@ improvised manual landing under pressure.
     preflight          0.09s  OK
     sheet              0.00s  OK
     scores             0.00s  OK
-    catchup_preflight     0.13s  OK
+    catchup_preflight     0.12s  OK
     advance            0.00s  FAIL
-    TOTAL              0.22s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_6752
+    TOTAL              0.21s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_8465

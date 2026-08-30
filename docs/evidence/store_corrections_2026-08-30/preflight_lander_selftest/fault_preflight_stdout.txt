@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_5292/sandbox
+  tree      : /tmp/landing_selftest_7009/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 4a52cc4490f950c7b7856fc28ddcb949
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,7 +9,7 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 *** FAULT INJECTED at step 'preflight': dirty_tree — an uncommitted file appears before the restore point
-    [preflight FAILED  0.02s]
+    [preflight FAILED  0.04s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'preflight'
@@ -25,6 +25,6 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.02s  FAIL
-    TOTAL              0.02s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_5620
+    preflight          0.04s  FAIL
+    TOTAL              0.04s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_7336

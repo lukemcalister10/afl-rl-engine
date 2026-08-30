@@ -1,7 +1,7 @@
 {
   "abort": null,
   "commits": [
-    "a3afc9b38a727eb61f063330d611eb82070216ea"
+    "72b1d82af6b1a66d1a29f683fccf10efab2957d6"
   ],
   "error": null,
   "facts": {
@@ -141,7 +141,7 @@
         "ui/data/movers_transition.js": "d68824f90d1cd5db10881af559257e73",
         "ui/data/ownership.js": "7722f229541938f592cf33160209fea0"
       },
-      "commit": "22ac40d7c5b828773638a12e509c2e2a39b98a68",
+      "commit": "f529302f6b6dffd785d35cd92a0e720906f82fee",
       "expected_boot": {
         "as_of_round": 24,
         "balanced_board_md5": "1ad6a04bdfa21d60a25b1771f5c7fa6e",
@@ -174,12 +174,12 @@
           "state": "off"
         }
       },
-      "claims_path": "/tmp/landing_selftest_5292/sandbox/docs/evidence/landing_selftest/SELFTEST_CLAIMS.json",
+      "claims_path": "/tmp/landing_selftest_7009/sandbox/docs/evidence/landing_selftest/SELFTEST_CLAIMS.json",
       "n_claims": 11,
       "verified": true
     },
     "commit": {
-      "commit": "a3afc9b38a727eb61f063330d611eb82070216ea",
+      "commit": "72b1d82af6b1a66d1a29f683fccf10efab2957d6",
       "committed": true,
       "paths": [
         "data/release_contract.json",
@@ -237,10 +237,10 @@
       "written": true
     },
     "preflight": {
-      "base_commit": "22ac40d7c5b828773638a12e509c2e2a39b98a68",
+      "base_commit": "f529302f6b6dffd785d35cd92a0e720906f82fee",
       "board_before": "4a52cc4490f950c7b7856fc28ddcb949",
       "carriers_captured": 125,
-      "lock": "land-round-6119"
+      "lock": "land-round-7835"
     },
     "scores": {
       "rehearsal": true,
@@ -261,9 +261,9 @@
     },
     "state": {
       "changed": true,
-      "md5": "14cf129dd679b64a39208d3e90859fe2",
+      "md5": "21e4121d1e38b507482607e33fbda0c8",
       "path": "docs/STATE.md",
-      "stamp_commit": "22ac40d7c5b828773638a12e509c2e2a39b98a68",
+      "stamp_commit": "f529302f6b6dffd785d35cd92a0e720906f82fee",
       "written": true
     },
     "ui": {
@@ -290,7 +290,7 @@
   "ok": true,
   "timings": [
     {
-      "seconds": 0.09,
+      "seconds": 0.12,
       "step": "preflight",
       "verdict": "OK"
     },
@@ -335,12 +335,12 @@
       "verdict": "OK"
     },
     {
-      "seconds": 2.72,
+      "seconds": 2.56,
       "step": "ui",
       "verdict": "OK"
     },
     {
-      "seconds": 0.14,
+      "seconds": 0.17,
       "step": "movers_page",
       "verdict": "OK"
     },
@@ -350,17 +350,17 @@
       "verdict": "OK"
     },
     {
-      "seconds": 0.16,
+      "seconds": 0.15,
       "step": "gates",
       "verdict": "OK"
     },
     {
-      "seconds": 0.28,
+      "seconds": 0.26,
       "step": "claims",
       "verdict": "OK"
     },
     {
-      "seconds": 0.24,
+      "seconds": 0.25,
       "step": "commit",
       "verdict": "OK"
     }

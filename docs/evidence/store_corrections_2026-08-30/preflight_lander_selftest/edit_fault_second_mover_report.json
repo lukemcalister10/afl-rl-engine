@@ -171,7 +171,7 @@
         "ui/data/movers_transition.js": "d68824f90d1cd5db10881af559257e73",
         "ui/data/ownership.js": "7722f229541938f592cf33160209fea0"
       },
-      "commit": "22ac40d7c5b828773638a12e509c2e2a39b98a68",
+      "commit": "f529302f6b6dffd785d35cd92a0e720906f82fee",
       "expected_boot": {
         "as_of_round": 24,
         "balanced_board_md5": "1ad6a04bdfa21d60a25b1771f5c7fa6e",
@@ -194,10 +194,10 @@
       }
     },
     "preflight": {
-      "base_commit": "22ac40d7c5b828773638a12e509c2e2a39b98a68",
+      "base_commit": "f529302f6b6dffd785d35cd92a0e720906f82fee",
       "board_before": "4a52cc4490f950c7b7856fc28ddcb949",
       "carriers_captured": 74,
-      "lock": "land-edit-6852"
+      "lock": "land-edit-8560"
     },
     "store_edit": {
       "bytes_after": 1978015,

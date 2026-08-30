@@ -2,7 +2,7 @@
   "abort": {
     "byte_exact": true,
     "commits_rewound": [],
-    "error": "gate release_manifest_check did not pass (exit 1; 'PASS' absent from output):\n     OK\n    board_view_working.stamp.register             652d83e8                                                         OK\n    board_view_working.stamp.release.register     652d83e87780e415a01a2de6d8b3cc57                                 OK\n    -> 4 carriers, COHERENT\n\n  AS_OF_ROUND  [anchor data/expected_boot.json]\n    (truth)                                       24                                                               \n    expected_boot.as_of_round                     24                                                               OK\n    release_contract.as_of_round                  24                                                               OK\n    season_state.as_of_round                      24                                                               OK\n    board_view_working.stamp.asOfRound            24                                                               OK\n    board_view_working.stamp.release.as_of_round  24                                                               OK\n    -> 5 carriers, COHERENT\n\n  SHEET  [computed md5 docs/owner_annotations/SITTER_2026_v1.csv]\n    (truth)                                       21361291f26d35108b88f92f885c5063                                 \n    sheet_pins.sheet_md5                          21361291f26d35108b88f92f885c5063                                 OK\n    -> 1 carriers, COHERENT\n\n  SHEET_ROWS  [computed csv row count docs/owner_annotations/SITTER_2026_v1.csv]\n    (truth)                                       219                                                              \n    sheet_pins.sheet_rows                         219                                                              OK\n    -> 1 carriers, COHERENT\n\n  SHEET_INJURED_Y  [computed injured=Y count docs/owner_annotations/SITTER_2026_v1.csv]\n    (truth)                                       35                                                               \n    sheet_pins.sheet_injured_y                    35                                                               OK\n    -> 1 carriers, COHERENT\n\n  43 carrier fields across 11 identities and 8 files: 42 coherent, 1 incoherent, 0 sealed-lag\n\n  HALTED CARRIERS \u2014 the blocked-once law reports each of these ONCE, and every\n  downstream check that reads one is marked BLOCKED rather than failing again:\n    expected_boot:board\n        expected_boot.board = aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa (expected 4a52cc4490f950c7b7856fc28ddcb949)\n\n  RELEASE MANIFEST COHERENCE: FAIL\n\n\nPER-CHECK RAW OUTPUT: /tmp/landing_selftest_5292/sandbox/docs/evidence/landing_selftest/gate_release_manifest_check.txt",
+    "error": "gate release_manifest_check did not pass (exit 1; 'PASS' absent from output):\n     OK\n    board_view_working.stamp.register             652d83e8                                                         OK\n    board_view_working.stamp.release.register     652d83e87780e415a01a2de6d8b3cc57                                 OK\n    -> 4 carriers, COHERENT\n\n  AS_OF_ROUND  [anchor data/expected_boot.json]\n    (truth)                                       24                                                               \n    expected_boot.as_of_round                     24                                                               OK\n    release_contract.as_of_round                  24                                                               OK\n    season_state.as_of_round                      24                                                               OK\n    board_view_working.stamp.asOfRound            24                                                               OK\n    board_view_working.stamp.release.as_of_round  24                                                               OK\n    -> 5 carriers, COHERENT\n\n  SHEET  [computed md5 docs/owner_annotations/SITTER_2026_v1.csv]\n    (truth)                                       21361291f26d35108b88f92f885c5063                                 \n    sheet_pins.sheet_md5                          21361291f26d35108b88f92f885c5063                                 OK\n    -> 1 carriers, COHERENT\n\n  SHEET_ROWS  [computed csv row count docs/owner_annotations/SITTER_2026_v1.csv]\n    (truth)                                       219                                                              \n    sheet_pins.sheet_rows                         219                                                              OK\n    -> 1 carriers, COHERENT\n\n  SHEET_INJURED_Y  [computed injured=Y count docs/owner_annotations/SITTER_2026_v1.csv]\n    (truth)                                       35                                                               \n    sheet_pins.sheet_injured_y                    35                                                               OK\n    -> 1 carriers, COHERENT\n\n  43 carrier fields across 11 identities and 8 files: 42 coherent, 1 incoherent, 0 sealed-lag\n\n  HALTED CARRIERS \u2014 the blocked-once law reports each of these ONCE, and every\n  downstream check that reads one is marked BLOCKED rather than failing again:\n    expected_boot:board\n        expected_boot.board = aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa (expected 4a52cc4490f950c7b7856fc28ddcb949)\n\n  RELEASE MANIFEST COHERENCE: FAIL\n\n\nPER-CHECK RAW OUTPUT: /tmp/landing_selftest_7009/sandbox/docs/evidence/landing_selftest/gate_release_manifest_check.txt",
     "failed_step": "gates",
     "restore_point": {
       "data/expected_boot.json": "8538fc1057ce1bfbdb8dc43aedb742b3",
@@ -99,7 +99,7 @@
     ]
   },
   "commits": [],
-  "error": "gate release_manifest_check did not pass (exit 1; 'PASS' absent from output):\n     OK\n    board_view_working.stamp.register             652d83e8                                                         OK\n    board_view_working.stamp.release.register     652d83e87780e415a01a2de6d8b3cc57                                 OK\n    -> 4 carriers, COHERENT\n\n  AS_OF_ROUND  [anchor data/expected_boot.json]\n    (truth)                                       24                                                               \n    expected_boot.as_of_round                     24                                                               OK\n    release_contract.as_of_round                  24                                                               OK\n    season_state.as_of_round                      24                                                               OK\n    board_view_working.stamp.asOfRound            24                                                               OK\n    board_view_working.stamp.release.as_of_round  24                                                               OK\n    -> 5 carriers, COHERENT\n\n  SHEET  [computed md5 docs/owner_annotations/SITTER_2026_v1.csv]\n    (truth)                                       21361291f26d35108b88f92f885c5063                                 \n    sheet_pins.sheet_md5                          21361291f26d35108b88f92f885c5063                                 OK\n    -> 1 carriers, COHERENT\n\n  SHEET_ROWS  [computed csv row count docs/owner_annotations/SITTER_2026_v1.csv]\n    (truth)                                       219                                                              \n    sheet_pins.sheet_rows                         219                                                              OK\n    -> 1 carriers, COHERENT\n\n  SHEET_INJURED_Y  [computed injured=Y count docs/owner_annotations/SITTER_2026_v1.csv]\n    (truth)                                       35                                                               \n    sheet_pins.sheet_injured_y                    35                                                               OK\n    -> 1 carriers, COHERENT\n\n  43 carrier fields across 11 identities and 8 files: 42 coherent, 1 incoherent, 0 sealed-lag\n\n  HALTED CARRIERS \u2014 the blocked-once law reports each of these ONCE, and every\n  downstream check that reads one is marked BLOCKED rather than failing again:\n    expected_boot:board\n        expected_boot.board = aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa (expected 4a52cc4490f950c7b7856fc28ddcb949)\n\n  RELEASE MANIFEST COHERENCE: FAIL\n\n\nPER-CHECK RAW OUTPUT: /tmp/landing_selftest_5292/sandbox/docs/evidence/landing_selftest/gate_release_manifest_check.txt",
+  "error": "gate release_manifest_check did not pass (exit 1; 'PASS' absent from output):\n     OK\n    board_view_working.stamp.register             652d83e8                                                         OK\n    board_view_working.stamp.release.register     652d83e87780e415a01a2de6d8b3cc57                                 OK\n    -> 4 carriers, COHERENT\n\n  AS_OF_ROUND  [anchor data/expected_boot.json]\n    (truth)                                       24                                                               \n    expected_boot.as_of_round                     24                                                               OK\n    release_contract.as_of_round                  24                                                               OK\n    season_state.as_of_round                      24                                                               OK\n    board_view_working.stamp.asOfRound            24                                                               OK\n    board_view_working.stamp.release.as_of_round  24                                                               OK\n    -> 5 carriers, COHERENT\n\n  SHEET  [computed md5 docs/owner_annotations/SITTER_2026_v1.csv]\n    (truth)                                       21361291f26d35108b88f92f885c5063                                 \n    sheet_pins.sheet_md5                          21361291f26d35108b88f92f885c5063                                 OK\n    -> 1 carriers, COHERENT\n\n  SHEET_ROWS  [computed csv row count docs/owner_annotations/SITTER_2026_v1.csv]\n    (truth)                                       219                                                              \n    sheet_pins.sheet_rows                         219                                                              OK\n    -> 1 carriers, COHERENT\n\n  SHEET_INJURED_Y  [computed injured=Y count docs/owner_annotations/SITTER_2026_v1.csv]\n    (truth)                                       35                                                               \n    sheet_pins.sheet_injured_y                    35                                                               OK\n    -> 1 carriers, COHERENT\n\n  43 carrier fields across 11 identities and 8 files: 42 coherent, 1 incoherent, 0 sealed-lag\n\n  HALTED CARRIERS \u2014 the blocked-once law reports each of these ONCE, and every\n  downstream check that reads one is marked BLOCKED rather than failing again:\n    expected_boot:board\n        expected_boot.board = aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa (expected 4a52cc4490f950c7b7856fc28ddcb949)\n\n  RELEASE MANIFEST COHERENCE: FAIL\n\n\nPER-CHECK RAW OUTPUT: /tmp/landing_selftest_7009/sandbox/docs/evidence/landing_selftest/gate_release_manifest_check.txt",
   "facts": {
     "base": {
       "carriers": {
@@ -177,7 +177,7 @@
         "ui/data/movers_transition.js": "d68824f90d1cd5db10881af559257e73",
         "ui/data/ownership.js": "7722f229541938f592cf33160209fea0"
       },
-      "commit": "22ac40d7c5b828773638a12e509c2e2a39b98a68",
+      "commit": "f529302f6b6dffd785d35cd92a0e720906f82fee",
       "expected_boot": {
         "as_of_round": 24,
         "balanced_board_md5": "1ad6a04bdfa21d60a25b1771f5c7fa6e",
@@ -225,10 +225,10 @@
       "unmoved_checked": 7
     },
     "preflight": {
-      "base_commit": "22ac40d7c5b828773638a12e509c2e2a39b98a68",
+      "base_commit": "f529302f6b6dffd785d35cd92a0e720906f82fee",
       "board_before": "4a52cc4490f950c7b7856fc28ddcb949",
       "carriers_captured": 73,
-      "lock": "land-lever-5794"
+      "lock": "land-lever-7510"
     },
     "sibling": {
       "balanced_board_md5": "1ad6a04bdfa21d60a25b1771f5c7fa6e",
@@ -238,9 +238,9 @@
     },
     "state": {
       "changed": true,
-      "md5": "14cf129dd679b64a39208d3e90859fe2",
+      "md5": "21e4121d1e38b507482607e33fbda0c8",
       "path": "docs/STATE.md",
-      "stamp_commit": "22ac40d7c5b828773638a12e509c2e2a39b98a68",
+      "stamp_commit": "f529302f6b6dffd785d35cd92a0e720906f82fee",
       "written": true
     },
     "ui": {
@@ -292,7 +292,7 @@
       "verdict": "OK"
     },
     {
-      "seconds": 0.13,
+      "seconds": 0.14,
       "step": "sibling",
       "verdict": "OK"
     },
@@ -302,7 +302,7 @@
       "verdict": "OK"
     },
     {
-      "seconds": 0.16,
+      "seconds": 0.17,
       "step": "state",
       "verdict": "OK"
     },
