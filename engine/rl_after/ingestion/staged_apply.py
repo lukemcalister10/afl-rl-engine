@@ -39,7 +39,7 @@ try:
     from .score_ingestor import (IngestionGatedError, _apply_enabled, APPLY_DEFAULT, _APPLY_ENV,
                                  IngestionPreview, SeasonAppend, ScoreIngestor, ROUND_DECIMALS)
     from .round_score_parser import RoundScore
-    from .round_apply import (RoundApplier, DEFAULT_SEASON_ROUNDS, SeasonBoundError,
+    from .round_apply import (RoundApplier, DEFAULT_SEASON_ROUNDS, HOME_AND_AWAY_ROUNDS, SeasonBoundError,
                               DuplicateRoundError, PreviewNotCleanError, load_ledger, save_ledger,
                               ledger_key, _md5_full)
 except (ImportError, ValueError):    # allow direct-script / non-package execution
@@ -49,7 +49,7 @@ except (ImportError, ValueError):    # allow direct-script / non-package executi
     from score_ingestor import (IngestionGatedError, _apply_enabled, APPLY_DEFAULT, _APPLY_ENV,  # type: ignore
                                 IngestionPreview, SeasonAppend, ScoreIngestor, ROUND_DECIMALS)
     from round_score_parser import RoundScore  # type: ignore
-    from round_apply import (RoundApplier, DEFAULT_SEASON_ROUNDS, SeasonBoundError,  # type: ignore
+    from round_apply import (RoundApplier, DEFAULT_SEASON_ROUNDS, HOME_AND_AWAY_ROUNDS, SeasonBoundError,  # type: ignore
                              DuplicateRoundError, PreviewNotCleanError, load_ledger, save_ledger,
                              ledger_key, _md5_full)
 
@@ -253,6 +253,12 @@ class StagedRoundApplier:
         self.repo_root = os.path.abspath(repo_root)
         self.season_rounds = int(season_rounds if season_rounds is not None
                                  else os.environ.get('RL_SEASON_ROUNDS', DEFAULT_SEASON_ROUNDS))
+        # TWO BOUNDS, DELIBERATELY DISTINCT. `season_rounds` is the FEED bound — the largest round
+        # number the ledger will accept, 29 once the five finals weeks are issuable. `calendar_rounds`
+        # is the SEASON — 24 home-and-away rounds, the denominator of calendar_progress, and it does
+        # not grow when finals start. Capping the calendar with the feed bound would be a no-op and
+        # would silently stamp as_of_round=25 for FW1.
+        self.calendar_rounds = int(os.environ.get('RL_CALENDAR_ROUNDS', HOME_AND_AWAY_ROUNDS))
         # txn root MUST be on the same filesystem as the live files -> default under repo_root.
         self.txn_root = os.path.abspath(txn_root) if txn_root else os.path.join(
             self.repo_root, 'engine', 'rl_after', 'ingestion', TXN_DIRNAME)
@@ -492,8 +498,24 @@ class StagedRoundApplier:
             #      into the workspace + committed atomically (it is a TARGET) — a crash can never leave a new
             #      round with stale Round-14 season-state, a new store with a stale exposure pace, or a board
             #      built from season-state different from its stamped state.
+            # THE CALENDAR ROUND IS NOT THE FEED ROUND, and a finals week is where they part company
+            # (owner ruling 2026-08-30). Feed rounds 25-29 are FW1/FW2/SF/PF/GF: they are ledger keys
+            # for the (player, season, round) dedup, and they carry real football that must reach the
+            # store. But `as_of_round` is the CALENDAR — the thing `calendar_progress =
+            # as_of_round / season_total_rounds` divides — and the home-and-away season is 24 rounds
+            # and stays 24. Stamping 25 here would give a calendar progress of 1.04, and stretching
+            # season_total_rounds to 29 instead would drop it to 0.83 and re-open every finished
+            # season in the competition, which is precisely the punishment of non-finalists the owner
+            # ruled against. So the finals HOLD the round: the store gains the games and the scores,
+            # and every non-finalist's season stays complete and his valuation untouched.
+            _feed_round = int(snapshot['round'])
+            _cal_round = min(_feed_round, int(self.calendar_rounds))
+            if _cal_round != _feed_round:
+                self._journal(txn_dir, 'FINALS_ROUND_HELD', feed_round=_feed_round,
+                              as_of_round=_cal_round,
+                              why='a finals feed round is a ledger key, not the calendar')
             _ssm = self._season_state_module()
-            _ss_new = _ssm.derive(int(snapshot['round']), wsapp.store_path,
+            _ss_new = _ssm.derive(_cal_round, wsapp.store_path,
                                   season_year=int(snapshot['season_year']),
                                   season_total_rounds=self.season_rounds)
             with open(os.path.join(ws, 'data', 'season_state.json'), 'w') as _ssf:
@@ -522,8 +544,8 @@ class StagedRoundApplier:
 
             # (c) RE-STAMP the workspace boot manifest (move store+board pins AND advance as_of_round)
             self._fault('during_manifest_staging')
-            wsapp._restamp_manifest(staged_store_md5, staged_board_md5, as_of_round=int(snapshot['round']))
-            self._journal(txn_dir, 'MANIFEST_STAGED', as_of_round=int(snapshot['round']))
+            wsapp._restamp_manifest(staged_store_md5, staged_board_md5, as_of_round=_cal_round)
+            self._journal(txn_dir, 'MANIFEST_STAGED', as_of_round=_cal_round, feed_round=_feed_round)
 
             # (c2) RE-STAMP the authoritative dynamic RELEASE CONTRACT from the staged manifest + board +
             #      season-state (supervisor 3rd review req 3): advance as_of_round, re-pin identities.store/
@@ -539,8 +561,8 @@ class StagedRoundApplier:
             #      part this transaction's invariants actually rest on — permanently immutable.
             self._fault('during_contract_staging')
             _rc = self._release_contract_module()
-            _new_csha = _rc.restamp_dynamic(ws, int(snapshot['round']), staged_store_md5, staged_board_md5, _ss_new)
-            self._journal(txn_dir, 'CONTRACT_STAGED', as_of_round=int(snapshot['round']),
+            _new_csha = _rc.restamp_dynamic(ws, _cal_round, staged_store_md5, staged_board_md5, _ss_new)
+            self._journal(txn_dir, 'CONTRACT_STAGED', as_of_round=_cal_round,
                           contract_sha256=_new_csha[:12], store=staged_store_md5[:8], board=staged_board_md5[:8])
 
             # (c3) SIBLING (ITEM 408 item 5): build the balanced/strict sibling board from the SAME staged
