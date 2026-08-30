@@ -2,8 +2,8 @@
   "abort": {
     "byte_exact": true,
     "commits_rewound": [],
-    "error": "the act declares an identity override for 'Will Hayes' and engine/rl_after/ingestion/catchup_identity_overrides.json carries none. IdentityOverrides._by_name is keyed by the EXACT display string (ERRATUM E2): a rule under a different name is never consulted. The lander asserts bindings; it never authors one.",
-    "failed_step": "scores",
+    "error": "ORDER 42 WILL HALT THE ADVANCE. 1 player(s) marked injured=Y on the pinned owner sheet appear in the score file: ['jack-viney']. The advance increments games_2026 for every listed player, so the sheet and the store would disagree and the board regen halts INSIDE the staged transaction. The remedy is the owner-worded re-cut (R23 runbook \u00a74 H2 / ERRATUM E7), declared as spec.sheet with its prereg-lite \u2014 not a weakened guard.",
+    "failed_step": "catchup_preflight",
     "restore_point": {
       "data/expected_boot.json": "530ac275f5d56edbb41e3468f8e996d7",
       "data/release_contract.json": "64c2f478110517df1244d13e246d27ed",
@@ -184,7 +184,7 @@
       "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r24/journal.jsonl": "c1901e117b2e68277b626b53041a2dad",
       "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r24/manifest.json": "4d9171e2f47d9c3ddd6421c9e379c1ea",
       "engine/rl_after/ingestion/applied_rounds_ledger.json": "a4948c6a626ae62065bc187477ef6cdb",
-      "engine/rl_after/ingestion/catchup_identity_overrides.json": "7b0d8ff087287be0663eb92468ee505a",
+      "engine/rl_after/ingestion/catchup_identity_overrides.json": "b0c6c1ed763f97dce22221d3f4904376",
       "engine/rl_after/ingestion/finalization_journal.jsonl": "9336246bc865b5ecb2df919ac67c115c",
       "engine/rl_after/ingestion/finalization_state.json": "a90785673be4b21baeb07a97c30dab55",
       "engine/rl_after/ingestion/movers/movers_R15.csv": "b6871f4e3ad73d72f17bbe84d20a449e",
@@ -285,7 +285,7 @@
     "restored": []
   },
   "commits": [],
-  "error": "the act declares an identity override for 'Will Hayes' and engine/rl_after/ingestion/catchup_identity_overrides.json carries none. IdentityOverrides._by_name is keyed by the EXACT display string (ERRATUM E2): a rule under a different name is never consulted. The lander asserts bindings; it never authors one.",
+  "error": "ORDER 42 WILL HALT THE ADVANCE. 1 player(s) marked injured=Y on the pinned owner sheet appear in the score file: ['jack-viney']. The advance increments games_2026 for every listed player, so the sheet and the store would disagree and the board regen halts INSIDE the staged transaction. The remedy is the owner-worded re-cut (R23 runbook \u00a74 H2 / ERRATUM E7), declared as spec.sheet with its prereg-lite \u2014 not a weakened guard.",
   "facts": {
     "base": {
       "carriers": {
@@ -468,7 +468,7 @@
         "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r24/journal.jsonl": "c1901e117b2e68277b626b53041a2dad",
         "engine/rl_after/ingestion/.weekly_txn/txn_catchup_r24/manifest.json": "4d9171e2f47d9c3ddd6421c9e379c1ea",
         "engine/rl_after/ingestion/applied_rounds_ledger.json": "a4948c6a626ae62065bc187477ef6cdb",
-        "engine/rl_after/ingestion/catchup_identity_overrides.json": "7b0d8ff087287be0663eb92468ee505a",
+        "engine/rl_after/ingestion/catchup_identity_overrides.json": "b0c6c1ed763f97dce22221d3f4904376",
         "engine/rl_after/ingestion/finalization_journal.jsonl": "9336246bc865b5ecb2df919ac67c115c",
         "engine/rl_after/ingestion/finalization_state.json": "a90785673be4b21baeb07a97c30dab55",
         "engine/rl_after/ingestion/movers/movers_R15.csv": "b6871f4e3ad73d72f17bbe84d20a449e",
@@ -566,7 +566,7 @@
         "ui/data/movers_transition.js": "2fe0edca98be0e542820155eac061e1d",
         "ui/data/ownership.js": "c1bf5f269b0cd146391960dfe3e1afbc"
       },
-      "commit": "dc8f5c1eb553229f4397feaeae3d9d9612ebc794",
+      "commit": "2115c03e0ab3c9d280306e08b28a35844c779057",
       "expected_boot": {
         "as_of_round": 24,
         "balanced_board_md5": "cdae239d5865be9463c4ef461daf0a35",
@@ -589,10 +589,25 @@
       }
     },
     "preflight": {
-      "base_commit": "dc8f5c1eb553229f4397feaeae3d9d9612ebc794",
+      "base_commit": "2115c03e0ab3c9d280306e08b28a35844c779057",
       "board_before": "f81dbcda220110ad0113ae0633b6c34e",
       "carriers_captured": 276,
-      "lock": "land-round-4995"
+      "lock": "land-round-6694"
+    },
+    "scores": {
+      "bytes": 1562,
+      "md5": "e8ba891be3a1653dacada06256f169c3",
+      "overrides_declared": [
+        "Will Hayes"
+      ],
+      "overrides_in_file": [
+        "Bailey Williams",
+        "Bailey Williams WBD",
+        "Callum Brown",
+        "Will Hayes"
+      ],
+      "scores": "scores/FW1.csv",
+      "sha256": "d86f976b843d77537853e337ab32673fa61837bd2f6a0df3adf89d5db1f3a85b"
     },
     "sheet": {
       "commit": null,
@@ -602,7 +617,7 @@
       "sheet_rows": 219
     }
   },
-  "failed_step": "scores",
+  "failed_step": "catchup_preflight",
   "ok": false,
   "timings": [
     {
@@ -618,6 +633,11 @@
     {
       "seconds": 0.0,
       "step": "scores",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.0,
+      "step": "catchup_preflight",
       "verdict": "FAIL"
     }
   ]

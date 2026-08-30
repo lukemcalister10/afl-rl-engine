@@ -11,8 +11,8 @@ DECLARED DIRT (2 path(s), and ONLY these): owner inputs this act is contracted t
     scores/FW1.csv                                             (committed by the `catchup_preflight` step)
     engine/rl_after/ingestion/catchup_identity_overrides.json  (committed by the `catchup_preflight` step)
 RL_/PAR_ environment  RL_VENV
-build-lock: HELD by land-round-4995 (pid 4995) — single writer for the shared workspace.
-base commit        dc8f5c1eb553229f4397feaeae3d9d9612ebc794
+build-lock: HELD by land-round-6694 (pid 6694) — single writer for the shared workspace.
+base commit        2115c03e0ab3c9d280306e08b28a35844c779057
 board pin (before) f81dbcda220110ad0113ae0633b6c34e
 store pin (before) a9dec7e4785c6861a84f3beaae2f020e
 restore point      276 carrier(s) captured, 276 present on disk
@@ -29,12 +29,19 @@ the declaration describes the sheet on disk. NO RE-CUT DECLARED — this step wr
 scores file   scores/FW1.csv  (1562 bytes)
   md5    e8ba891be3a1653dacada06256f169c3   OK
   sha256 d86f976b843d77537853e337ab32673fa61837bd2f6a0df3adf89d5db1f3a85b   OK
-    [scores FAILED  0.00s]
+  override Will Hayes               -> will-hayes-b           rule=map_all   rounds=None
+      reason: Owner ruling 2026-08-30, verbatim: "Will Hayes is Will Hayes b". The store carries two rows for this display name: will-hayes-b (AFL club Collingwood,
+1 declared override(s), all present; 4 in the file overall
+    [scores OK  0.00s]
+
+--- STEP 3/14  catchup_preflight read-only preflight, CLEAN, then the inputs commit ---
+injured=Y players listed in R25: 1 ['jack-viney']
+    [catchup_preflight FAILED  0.00s]
 
 ======================================================================================================
-LANDING ABORTED AT STEP 'scores'
+LANDING ABORTED AT STEP 'catchup_preflight'
 ======================================================================================================
-  the act declares an identity override for 'Will Hayes' and engine/rl_after/ingestion/catchup_identity_overrides.json carries none. IdentityOverrides._by_name is keyed by the EXACT display string (ERRATUM E2): a rule under a different name is never consulted. The lander asserts bindings; it never authors one.
+  ORDER 42 WILL HALT THE ADVANCE. 1 player(s) marked injured=Y on the pinned owner sheet appear in the score file: ['jack-viney']. The advance increments games_2026 for every listed player, so the sheet and the store would disagree and the board regen halts INSIDE the staged transaction. The remedy is the owner-worded re-cut (R23 runbook §4 H2 / ERRATUM E7), declared as spec.sheet with its prereg-lite — not a weakened guard.
 
 carriers that moved before the failure: 0
 RESTORING 0 carrier(s):
@@ -49,6 +56,7 @@ improvised manual landing under pressure.
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
     preflight          0.13s  OK
     sheet              0.00s  OK
-    scores             0.00s  FAIL
+    scores             0.00s  OK
+    catchup_preflight     0.00s  FAIL
     TOTAL              0.13s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_4995
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_6694
