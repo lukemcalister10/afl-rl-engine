@@ -37,10 +37,25 @@ PIN_MEASURERS identity measured live at that point in the transaction; and the e
 store / fv / rl_model provenance still equalling live — an independent check, so a key collision or
 an entry that outlived its inputs is caught by the artifact's own record rather than by trust.
 
-**STILL AWAITING YOUR WORD — one item.**
+| S6 — collapse the identity-pin triplication | **LIVE** (owner word 2026-08-30) | `release_contract.restamp_bake_identities` (one writer, two callers) + `tools/restamp`; 44 assertions in `tools/test_restamp.py`, wired into the step-0 preflight at 0.12s |
 
-**S6 — collapse the identity-pin triplication.** DEFERRED BY OWNER WORD 2026-08-29 ("S6 we can do
-after this is all locked away"), to be taken up once the current run of work is settled. Unruled and untouched: no `shrink S6` marker
+**THE CUT LIST IS COMPLETE.** Every item is ruled and shipped; none is outstanding.
+
+S6 changed shape once it was scoped, and the finding is the useful part. Inside `tools/land` the
+identities were ALREADY derived rather than copied — the contract step measures each one from the
+tree and refuses if a carrier disagrees — so "collapse three carriers into one" was the wrong
+repair for two of the three. What had no equivalent was a change made OUTSIDE a landing, which is
+exactly what the ORDER 49 flip was. So S6 as built is: the contract's bake-lane write extracted to
+one function with two callers (the landing step and the tool), and a `check`/`apply` tool that
+derives every other stamp from the tree and rewrites a stale one THROUGH ITS OWN WRITER OF RECORD.
+
+It refuses two things by design: `expected_boot`, because moving the CARRIER is a landing act with
+a prereg and an abort ladder behind it; and the sibling sidecar, because its writer rebuilds before
+it writes. And it ENUMERATES rather than searches — `release_lineage` names superseded engines on
+purpose, the gate snapshots are keyed to the head they recorded, and the movers and value/rank
+histories ARE the record; a tool that updated every file containing the old id would falsify all of
+them, so the stamp set, the history set and the carries-no-identity-by-design set are three named
+tables and the tool refuses if any two overlap. Unruled and untouched: no `shrink S6` marker
 exists anywhere in the code. It is the largest remaining item and the one that would have prevented
 the five restamps the ORDER 49 flip needed (register v882), but it rewrites how release identity is
 carried, which is the thing that guards everything else. The RL_-prefix namespace fix in
