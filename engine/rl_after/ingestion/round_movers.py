@@ -259,6 +259,37 @@ HOME_AND_AWAY_ROUNDS = 24
 FIXTURES_REL = ('scores', 'fixtures.json')
 
 
+#: THE FINALS WEEKS, BY NAME. A feed round above the home-and-away season is real football with a
+#: name, not a number: there is no "round 25" on any ladder, on any fixture, or in anything the
+#: owner reads. The feed round is a dedup-ledger key and stays one; every USER-FACING string that
+#: would otherwise print it prints this instead. Round 26 is the one that proves the point — the
+#: numeric label there is not merely ugly, it names a week that never existed.
+FINALS_WEEK_NAMES = {
+    25: 'FINALS WEEK 1',
+    26: 'FINALS WEEK 2',
+    27: 'SEMI-FINAL',
+    28: 'PRELIMINARY FINAL',
+    29: 'GRAND FINAL',
+}
+
+
+def round_label(round_n):
+    """The human name for a round. `round 24` for the season proper, `FINALS WEEK 1` above it.
+
+    A finals round the table does not name is a HALT rather than a silent `round 30`: the feed
+    ceiling is 29 and anything past it is a bug upstream, not a week to invent a name for.
+    """
+    n = int(round_n)
+    if n <= HOME_AND_AWAY_ROUNDS:
+        return 'round %d' % n
+    try:
+        return FINALS_WEEK_NAMES[n]
+    except KeyError:
+        raise ValueError('round %d is above the home-and-away season (%d) but is not a named '
+                         'finals week %s — refusing to invent a label for it'
+                         % (n, HOME_AND_AWAY_ROUNDS, sorted(FINALS_WEEK_NAMES)))
+
+
 def fixture_clubs(repo_root, round_n):
     """The clubs that played in `round_n`, or None when every club did.
 

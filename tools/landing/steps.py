@@ -3020,6 +3020,15 @@ def movers_page(ctx):
                          % (boot['board'], n))
     prev = rep.get('previous_round')
     rm = _load(ctx, 'round_movers', 'engine/rl_after/ingestion/round_movers.py')
+    # RULE M0 IN A FINALS WEEK, hoisted out of the branch below because the page's LABELS need it
+    # too and a value that exists only on the happy path is a value that goes missing later.
+    # A home-and-away advance to round N compares against N-1 and is unchanged. A finals week holds
+    # the calendar at 24 and earns an out-of-round column, so its baseline is the last point at
+    # that held round: 24 for FW1 (which n-1 gets right by accident) and 24 for FW2 (which n-1
+    # gets wrong, naming a round 25 that will never exist).
+    _want_base = (n - 1) if n <= HOME_AND_AWAY_ROUNDS else HOME_AND_AWAY_ROUNDS
+    _label = rm.round_label(n)                       # 'round 24' / 'FINALS WEEK 1'
+    _label_short = ('R%d' % n) if n <= HOME_AND_AWAY_ROUNDS else _label
     pp = rm.previous_point(ctx.root, n)
     pp_id = pp.get('id') if isinstance(pp, dict) else pp
     if str(prev) != str(pp_id):
@@ -3032,12 +3041,6 @@ def movers_page(ctx):
         if base_col.get('board') != rep.get('board_md5_before'):
             fails.append('baseline column board %s != report board_md5_before %s'
                          % (base_col.get('board'), rep.get('board_md5_before')))
-        # RULE M0 IN A FINALS WEEK. A home-and-away advance to round N compares against N-1, and
-        # for every ordinary round this is unchanged. A FINALS week holds the calendar at 24 and
-        # earns an out-of-round column, so its baseline is the last point at that held round — 24,
-        # not 24 (n-1 would be 24 for FW1 by accident and 25 for FW2, which is a round that will
-        # never exist). The expected baseline is therefore the calendar round the act holds.
-        _want_base = (n - 1) if n <= HOME_AND_AWAY_ROUNDS else HOME_AND_AWAY_ROUNDS
         if int(base_col.get('after_round')) != _want_base:
             fails.append('RULE M0: the baseline sits at as_of_round %s, not %d'
                          % (base_col.get('after_round'), _want_base))
@@ -3049,7 +3052,7 @@ def movers_page(ctx):
         raise StepError('THE MOVERS PAGE WOULD NOT DESCRIBE THE TREE IT WAS BUILT FROM:\n    %s'
                         % '\n    '.join(fails))
     ctx.log('fences OK: report R%d, board %s, baseline %r at round %d (rule M0, via previous_point)'
-            % (n, rep['board_md5_after'][:12], prev, n - 1))
+            % (n, rep['board_md5_after'][:12], prev, _want_base))
 
     sys.path.insert(0, _p(ctx, 'ui', 'templates'))
     try:
@@ -3061,9 +3064,19 @@ def movers_page(ctx):
             sys.path.pop(0)
 
     order = sorted(rep['players'], key=lambda p: (-p['value_change'], p['name']))
+    #: THREE STATES IN THE `played` CELL, because there are three. `'yes' if played else 'no'`
+    #: reads an unrecorded player — one whose club was not scheduled this week — as a player who
+    #: DID NOT PLAY, and the owner's ruling is the opposite: a DNP is a real fact about a listed
+    #: player whose club took the field, and it must not be invented for the 619 who had no game
+    #: to miss. `played` is a non-nullable slot, so the third state is a word, not slots.ABSENT.
+    #: The score cell is unchanged: no score is no score, in both of the not-played states.
+    def _played_cell(p):
+        if p['played']:
+            return 'yes'
+        return 'no' if p['dnp'] else 'not scheduled'
     players = [{
         'name': p['name'], 'pos': p['pos'], 'club': p['club'],
-        'played': 'yes' if p['played'] else 'no',
+        'played': _played_cell(p),
         'score': ('%g' % p['score']) if p['played'] else slots.ABSENT,
         'prev_value': p['prev_value'], 'cur_value': p['cur_value'],
         'value_change': '%+d' % p['value_change'],
@@ -3084,18 +3097,29 @@ def movers_page(ctx):
         'round_movers.previous_point and asserted by the lander. That is rule M0 — a diff baseline '
         'must share as_of_round with the candidate — so any board move that landed between the last '
         'round report and this round sits on the ROUND-%d side of this boundary and appears nowhere '
-        'in the numbers below. EVERY DELTA ON THIS PAGE IS WHAT ROUND %d\'S SCORES DID.'
-        % (prev, rep['board_md5_before'][:8], n - 1, n - 1, n))
+        'in the numbers below. EVERY DELTA ON THIS PAGE IS WHAT %s\'S SCORES DID.'
+        % (prev, rep['board_md5_before'][:8], _want_base, _want_base, _label.upper()))
+    #: THE PARTICIPATION LINE IS THREE-STATE IN A FINALS WEEK. In the season proper every priced
+    #: player either played or did not, so `played + dnp == len(players)` and a two-term line adds
+    #: up. In a finals week most clubs are not playing at all: 92 played, 93 did not, and 619 were
+    #: never scheduled. Printing only the first two under a header that says 804 players is a page
+    #: that visibly does not add up, so the third term appears exactly when it is non-zero.
+    _views = rep.get('views') or {}
+    _unrec = int(_views.get('unrecorded_count') or 0)
+    _parts = ['%d played' % int(_views.get('played_count') or 0),
+              '%d did not' % int(_views.get('dnp_count') or 0)]
+    if _unrec:
+        _parts.append('%d not scheduled' % _unrec)
     data = {
-        'page_title': 'THE MOVERS — round %d, %s' % (n, rep.get('season', 2026)),
-        'subtitle': ('%d players · %d played, %d did not · %d moved (%d up, %d down) · '
+        'page_title': 'THE MOVERS — %s, %s' % (_label, rep.get('season', 2026)),
+        'subtitle': ('%d players · %s · %d moved (%d up, %d down) · '
                      'board total %s -> %s (%+d)'
-                     % (len(players), (rep.get('views') or {}).get('played_count', 0),
-                        (rep.get('views') or {}).get('dnp_count', 0), up + dn, up, dn,
+                     % (len(players), ', '.join(_parts), up + dn, up, dn,
                         format(tb, ','), format(ta, ','), ta - tb)),
         'boundary_note': note,
-        'from_label': '%s (%s, round %d)' % (prev, rep['board_md5_before'][:8], n - 1),
-        'to_label': 'R%d board %s' % (n, rep['board_md5_after'][:8]),
+        'from_label': '%s (%s, %s)' % (prev, rep['board_md5_before'][:8],
+                                       rm.round_label(_want_base)),
+        'to_label': '%s board %s' % (_label_short, rep['board_md5_after'][:8]),
         'board_md5_before': rep['board_md5_before'], 'board_md5': rep['board_md5_after'],
         'store_md5_before': rep['source_store_md5_before'], 'store_md5': rep['source_store_md5_after'],
         'engine_head': rep['release_identity']['engine_head'],

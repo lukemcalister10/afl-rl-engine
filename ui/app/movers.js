@@ -308,8 +308,19 @@
       var directBalanced = !app.balanced_board_md5 || histId.balanced_board_md5 === app.balanced_board_md5;
       var directVersion = !app.release_version || histId.release_version === app.release_version;
       if (directBoard && directStore && directFixed && directBalanced && directVersion) {
-        if (appRel && appRel.as_of_round != null && lastRel.as_of_round != null && appRel.as_of_round !== lastRel.as_of_round)
-          return { ok: false, state: "mismatch", why: "loaded as_of_round " + appRel.as_of_round + " != latest report as_of_round " + lastRel.as_of_round };
+        /* THE CALENDAR HOLD, BROWSER SIDE — the same law staged_apply enforces on the engine side.
+           A FEED round above the home-and-away season is a finals week: it is a real week of
+           football and a real (player, season, round) ledger key, but it advances no ladder, so
+           the loaded release contract HOLDS its as_of_round at 24 while the report that produced
+           the board names the feed round it applied. The two are then legitimately different
+           numbers describing the same tree, and a bare `!==` reads that as a stale bundle and
+           fail-closes the whole tab. What must hold is the RELATIONSHIP: the loaded contract sits
+           at the calendar round of the newest report. For every ordinary round min() is the
+           identity and this is the check it always was. */
+        var wantLoaded = lastRel.as_of_round == null ? null
+          : Math.min(Number(lastRel.as_of_round), core.HOME_AND_AWAY_ROUNDS);
+        if (appRel && appRel.as_of_round != null && wantLoaded != null && Number(appRel.as_of_round) !== wantLoaded)
+          return { ok: false, state: "mismatch", why: "loaded as_of_round " + appRel.as_of_round + " != the calendar round " + wantLoaded + " of the latest report (as_of_round " + lastRel.as_of_round + ")" };
         return appRel ? { ok: true, state: "ok" } : { ok: true, state: "unanchored" };
       }
 
@@ -349,6 +360,11 @@
        Deltas are computed here from `bundle.values`, never stored, so adding a point can never
        invalidate an existing comparison and there is nothing to keep continuous. */
 
+    /* The home-and-away season. A report round above it is a finals week, which holds the calendar
+       rather than advancing it — the engine-side constant is round_movers.HOME_AND_AWAY_ROUNDS and
+       staged_apply's RL_CALENDAR_ROUNDS, and this is the browser's copy of the same number. */
+    HOME_AND_AWAY_ROUNDS: 24,
+
     points: function (bundle) { return ((bundle || {}).points || []).slice(); },
 
     /* ---- THE SCOPE, LIFTED (owner word 2026-08-28) --------------------------------------------
@@ -371,6 +387,31 @@
        Every stored point remains selectable; a user-chosen mixed pair still gets the banner. */
     defaultPair: function (bundle) {
       var pts = core.points(bundle);
+      /* AND THE RETRO DEFAULT EXPIRES THE MOMENT NEW FOOTBALL LANDS. The paragraph above chose the
+         retro pair on a stated condition — "because R24 re-priced reproduces the live board
+         exactly, the `to` end IS the board the app is serving". Land a finals week and that
+         condition is false: the newest point of the record is the finals column, the retro series
+         ends one board move behind it, and defaulting there shows the owner last week's football
+         under the heading of a tab he opened to see this week's. So the newest STORED round report
+         wins whenever its own terminal board is the newest stored point — which is exactly the
+         condition the retro default was claiming for itself. NEWEST means newest STORED point, the
+         same filter the integrity assert below uses and for the same reason: the retro block is
+         appended after the stored series and stays there, so `points[last]` is a fixed tail, not
+         the newest thing that happened. Read that way, today's tree is unmoved — the newest stored
+         point is the 30/8 store correction, which no round report produced, so the retro pair
+         still wins — and it moves the day a week of football lands on top. */
+      var newest = null;
+      for (var z = pts.length - 1; z >= 0; z--) {
+        if (pts[z].kind !== "retro") { newest = pts[z]; break; }
+      }
+      if (newest && newest.board) {
+        var rpts = (bundle || {}).reports || {}, rnds = ((bundle || {}).rounds || []).slice();
+        for (var y = rnds.length - 1; y >= 0; y--) {
+          var cand = rpts[String(rnds[y])];
+          if (cand && cand.board_md5_after === newest.board)
+            return { from: String(cand.previous_round), to: String(rnds[y]) };
+        }
+      }
       var retro = [];
       for (var r = 0; r < pts.length; r++) {
         if (pts[r].kind === "retro" && pts[r].after_round != null) retro.push(pts[r]);

@@ -502,6 +502,92 @@ if (fs.existsSync(scratchPath)) {
   console.log("  [skip] scratch evidence bundle not present (run generate_movers_bundle.py)");
 }
 
+/* ================================================================================================
+   THE FINALS WEEKS, BROWSER SIDE (2026-08-30). A feed round above the home-and-away season is real
+   football applied to the ledger, but it advances no ladder: staged_apply HOLDS the calendar at 24,
+   so the loaded release contract says 24 while the report that produced the board says 25. Both
+   numbers are correct and they are not the same number. Every check below exists because a bare
+   equality between them fail-closes the entire Movers tab on the week the owner most wants to read
+   it.  Ordinary rounds are asserted alongside each one: min() is the identity below 24, so nothing
+   about the season proper may move.
+   ================================================================================================ */
+console.log("  -- the finals weeks (feed round above the calendar hold) --");
+
+eq(core.HOME_AND_AWAY_ROUNDS, 24, "the browser carries the same home-and-away constant as the engine");
+
+/* A finals bundle: R16 is the last ordinary round (B1->B2), FW1 is feed round 25 applied on top
+   (B2->B3). The loaded app is on B3 with the contract HELD at 24; the FW1 report names 25. */
+function mkFinalsBundle() {
+  var b = mkBundle();
+  b.rounds = [15, 16, 25];
+  b.reports["25"] = {
+    kind: "weekly_movers_report", submitted_round: 25, previous_round: "fw1-baseline-col",
+    board_md5_before: "B2", board_md5_after: "B3", source_store_md5_before: "S2", source_store_md5_after: "S3",
+    release_identity: mkRel(25, "B3", "S3"),
+    integrity: { players_unique: true, coverage_full: true, board_after_matches_committed: true },
+    views: { played_count: 92, dnp_count: 93, unrecorded_count: 619 }, player_count: 1,
+    players: [{ key: "a", name: "A", played: true, dnp: false, cur_value: 100, value_change: 1, rank_change: 0, pos_rank_change: 0 }],
+  };
+  b.points = [
+    { id: "16", kind: "round", after_round: 16, board: "B2" },
+    { id: "fw1-baseline-col", kind: "out_of_round", after_round: 24, board: "B2" },
+    { id: "25", kind: "round", after_round: 24, board: "B3" },
+    { id: "r24", kind: "retro", after_round: 24, board: "B2" },   // the permanent retro tail
+  ];
+  return b;
+}
+var FIN = mkFinalsBundle();
+
+/* THE ONE THAT WOULD HAVE SHIPPED BROKEN. Loaded contract at 24, latest report at 25. */
+var finApp = mkApp(24, "B3", "S3", { as_of_round: 24 });
+var finLin = core.lineage(FIN, finApp);
+ok(finLin.ok, "a finals week is coherent: the loaded contract HOLDS at 24 while the report names feed round 25"
+   + (finLin.ok ? "" : "  (why: " + finLin.why + ")"));
+
+/* ...and the relationship is still asserted, not abandoned. A contract at some OTHER round is
+   still a stale bundle and still fails closed. */
+ok(!core.lineage(FIN, mkApp(23, "B3", "S3", { as_of_round: 23 })).ok,
+   "a finals week still fails closed when the loaded contract is at neither the calendar round nor the feed round");
+ok(!core.lineage(FIN, mkApp(25, "B3", "S3", { as_of_round: 25 })).ok,
+   "a finals week fails closed if the loaded contract ADVANCED the calendar to the feed round (the hold is the point)");
+
+/* The season proper is untouched: below 24 the calendar round IS the feed round. */
+ok(core.lineage(mkBundle(), APP).ok, "an ordinary round is unchanged: contract 16 == report 16");
+ok(!core.lineage(mkBundle(), mkApp(15, "B2", "S2", { as_of_round: 15 })).ok,
+   "an ordinary round still fails closed on a contract one round behind its latest report");
+
+/* THE DEFAULT PAIR. `points` keeps the retro block appended after the stored series permanently,
+   so "newest" can only mean the newest STORED point — the same filter the integrity assert uses.
+
+   THE TREE AS IT STANDS THE MOMENT BEFORE FW1: the newest stored point is the 30/8 store
+   correction, an out-of-round column no round report produced. There is nothing football-shaped
+   to point at, so the retro pair keeps the default and today's tab does not move.
+   Once a finals week lands on top, its own pair takes over. */
+var storeFixB = mkBundle();
+storeFixB.points = [           // the retro block sits at the TAIL, exactly as the shipped bundle does
+  { id: "16", kind: "round", after_round: 16, board: "B2" },
+  { id: "store-fix", kind: "out_of_round", after_round: 24, board: "SF" },
+  { id: "r23", kind: "retro", after_round: 23, board: "R23" },
+  { id: "r24", kind: "retro", after_round: 24, board: "B2" },
+];
+eq(core.defaultPair(storeFixB), { from: "r23", to: "r24" },
+   "a store correction on top of the retrospective does not steal the default — no report produced that board");
+ok(core.points(storeFixB)[core.points(storeFixB).length - 1].kind === "retro",
+   "the retro block sits at the TAIL of points even when a later stored point exists (why 'newest' filters retro)");
+eq(core.defaultPair(FIN), { from: "fw1-baseline-col", to: "25" },
+   "once a finals week lands, the default is ITS pair — the `to` end is the board the app serves");
+
+/* A retro series present but superseded by the finals week must NOT win the default. */
+var FIN2 = mkFinalsBundle();
+FIN2.points = [
+  { id: "fw1-baseline-col", kind: "out_of_round", after_round: 24, board: "B2" },
+  { id: "25", kind: "round", after_round: 24, board: "B3" },
+  { id: "r23", kind: "retro", after_round: 23, board: "R23" },
+  { id: "r24", kind: "retro", after_round: 24, board: "B2" },
+];
+eq(core.defaultPair(FIN2), { from: "fw1-baseline-col", to: "25" },
+   "the retro default EXPIRES when new football moves the board past it");
+
 console.log("  " + "-".repeat(60));
 if (fails) { console.log("MOVERS TESTS: " + fails + " FAIL / " + n); process.exit(1); }
 console.log("MOVERS TESTS: ALL " + n + " PASS");
