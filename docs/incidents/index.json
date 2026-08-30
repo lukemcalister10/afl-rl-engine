@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 263,
+  "coverage_entries": 264,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-30",
+      "headline": "**THE PICK YEAR RULE IS THE OWNER'S WORKBOOK AGAIN \u2014 2027 \u00d70.9 and 2028 \u00d70.8 on the pick's OWN projected band, the multipliers read from his sheet. AN\u2026",
+      "hits": {
+        "DECLARED": [
+          "**THE PICK YEAR RULE IS THE OWNER'S WORKBOOK AGAIN \u2014 2027 \u00d70.9 and 2028 \u00d70.8 on the pick's OWN projected band, the multipliers read from his sheet. AN OWNER INPUT HAD BEEN OVERRIDDEN BY THE IMPLEMENTATION, AND THAT IS TH\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 885
+    },
     {
       "by": "explicit",
       "date": "2026-08-29",
@@ -2256,7 +2270,7 @@
       "version": 622
     }
   ],
-  "incidents": 134,
+  "incidents": 135,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",

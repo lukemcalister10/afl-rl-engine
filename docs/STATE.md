@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v884 2026-08-29 · **SHRINK S8 IS BUILT AND PROVEN — the sibling half of the proof stash; and the shrink cut list's disposition is now on the record, which it was not.** Owner word 2026-08-29, on the item put to him with its risk stated: "Your suggestion makes sense though. S6 we can do after this is all locked away." He also asked the question the machinery had never been m
+  > # OPEN ITEMS REGISTER · v885 2026-08-30 · **THE PICK YEAR RULE IS THE OWNER'S WORKBOOK AGAIN — 2027 ×0.9 and 2028 ×0.8 on the pick's OWN projected band, the multipliers read from his sheet. AN OWNER INPUT HAD BEEN OVERRIDDEN BY THE IMPLEMENTATION, AND THAT IS THE INCIDENT.** Owner word 2026-08-30, verbatim and now in the code at the site: "I ruled 0.8x for a reason, because the pick is so far in t
 
-- new-form entries under `docs/register/entries/`: 72
+- new-form entries under `docs/register/entries/`: 73
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `1194646dc54f7b843656144b43e731193ccb2fd7` |
+| generated at commit | `b4dffc0ad32a514b168680a823bc170963dca8f1` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

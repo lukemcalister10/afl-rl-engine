@@ -1,8 +1,9 @@
 <!-- GENERATED-ONLY — regenerate: python3 tools/seat/pen.py index ; assert current: python3 tools/seat/pen.py verify -->
 # REGISTER ADDRESS INDEX — generated
 
-Newest entry: **v884**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
+Newest entry: **v885**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
 
+- **v885** (2026-08-30) — `docs/register/entries/v885.md` — **THE PICK YEAR RULE IS THE OWNER'S WORKBOOK AGAIN — 2027 ×0.9 and 2028 ×0.8 on the pick's OWN projected band, the multipliers read from his
 - **v884** (2026-08-29) — `docs/register/entries/v884.md` — **SHRINK S8 IS BUILT AND PROVEN — the sibling half of the proof stash; and the shrink cut list's disposition is now on the record, which it 
 - **v883** (2026-08-29) — `docs/register/entries/v883.md` — **THE WALK-FORWARD RETROSPECTIVE IS LIVE — every round since R14 re-priced under the current engine and selectable in Movers; and the contai
 - **v882** (2026-08-29) — `docs/register/entries/v882.md` — **THE ORDER 49 AVAILABILITY EXPOSURE BLEND (TAU 2.5) IS LANDED — the Taylor/Taylor cliff is removed at the one law; and the S4 WALK-FORWARD 
