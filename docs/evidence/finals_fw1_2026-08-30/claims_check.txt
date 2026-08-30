@@ -1,0 +1,25 @@
+====================================================================================================
+CLAIMS CHECK — FINALS WEEK 1 APPLIED AS A STORE EDIT — 92 players at four clubs gain one game and a re-averaged 2026 season row. The calendar is not touched, because a finals week was never a calendar event: the store has always carried finals inside the season row (Bontempelli 2016 reads 26 games — 22 home-and-away plus four finals).
+  act type   : store-edit
+  date       : 2026-08-30   base: 0e199da9af189e961820b5bb9097c03611fbef87
+  owner word : "Explicit word given" (2026-08-30), on the FW1 direct-movers preview. On the lane: "We're literally just updating player averages and game counts. Before round 14 we didn't add games one by one, we just priced based off averages and total season game counts. It really shouldn't be that hard." And on scope: "As long as it doesn't impact the movers list still being accurate as of each round since round 14."
+  tree       : /home/user/afl-rl-engine
+====================================================================================================
+  ACTIVATION  day0_rebase                              off
+
+  OK   file_md5     the published board of record                  md5 c8c2f2b6f99445484fadaa8c44afe609 (claimed c8c2f2b6f99445484fadaa8c44afe609)
+  OK   file_md5     the store                                      md5 415929d3c9d561cc58bef00ae63432b2 (claimed 415929d3c9d561cc58bef00ae63432b2)
+  OK   json_field   expected_boot.board                            board = 'c8c2f2b6f99445484fadaa8c44afe609' (claimed 'c8c2f2b6f99445484fadaa8c44afe609')
+  OK   json_field   expected_boot.engine_head                      engine_head = '17243c16277842e0a30470cfbdb5b196' (claimed '17243c16277842e0a30470cfbdb5b196')
+  OK   json_field   the round, HELD by a store edit                as_of_round = 24 (claimed 24)
+  OK   json_field   the release seal                               contract_sha256 = 'f17fa61ecea685095f5a2da4905af7440edee9d854bf6fe58827f29f837ed126' (claimed 'f17fa61ecea685095f5a2da4905af7440edee9d854bf6fe58827f29f837ed126')
+  OK   board_count  board rows                                     active.rows = 804 (claimed 804)
+  OK   gate         release_manifest_check                         exit 0 (expected PASS)
+  OK   gate         release_contract_check                         exit 0 (expected PASS)
+  OK   gate         acceptance_runner                              exit 0 (expected PASS)
+  OK   gate         movers_transition                              exit 0 (expected PASS)
+  OK   gate         movers_ui                                      exit 0 (expected PASS)
+  OK   unmoved      BYTE-UNMOVED by this store-edit                md5 226b73ff64e6a6967103bfee788848a0 (claimed 226b73ff64e6a6967103bfee788848a0)
+
+CLAIMS: 13 of 13 verified against the tree; 0 shape problem(s)
+VERDICT: GREEN — every claim recomputed and held

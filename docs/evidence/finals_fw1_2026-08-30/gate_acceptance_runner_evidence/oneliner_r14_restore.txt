@@ -1,0 +1,69 @@
+$ /root/rl_venv312/bin/python3 /home/user/afl-rl-engine/engine/rl_after/ingestion/test_weekly_updater.py
+
+weekly-updater fast tests:
+  test_snapshot_identity PASS
+  test_bridge_preserves_score_meaning PASS
+  test_gate_off_by_default PASS
+  test_prestaging_refusals PASS
+  test_repo_root_resolves_or_fails_loudly PASS
+  test_movers_zero_report_seed_reanchors_to_first_report PASS
+  test_movers_populated_bundle_never_reanchors PASS
+  test_finalized_status_clears_stale_failure PASS
+R14 disposable-fixture fail-closed tests + negative controls:
+  [PASS] positive: fixture is the accepted R14 baseline (store/board/boot/season/ledger + contract seal)
+  [PASS] control 1: an unavailable R14 anchor halts (fail-closed)
+  [PASS] control 4: a non-ancestor anchor halts (fail-closed)
+  [PASS] control 2: a wrong R14 store md5 halts (fail-closed)
+  [PASS] control 3: a wrong R14 canonical-board md5 halts (fail-closed)
+  [PASS] control 5: R19 ledger state cannot leak into an R14 scratch (fail-closed)
+  [PASS] control 6: R19 finalization state cannot leak into an R14 scratch (fail-closed)
+  [PASS] control 7: R19 movers outputs cannot leak into an R14 scratch (fail-closed)
+  [PASS] control 15: missing sibling support trees fail closed (no partial advance)
+  [PASS] control 16: historical restore does NOT replace current implementation source
+  [PASS] control 17: current immutable model inputs remain current
+ALL R14 FIXTURE CONTROLS PASS
+movers provenance-transition tests:
+  [PASS] production ui/data/movers.js still carries the owner-authorised R15-R19 history
+  [PASS] production bundle has one report per round
+  [PASS] data/release_lineage.json declares release_transition
+  [PASS] transition is an owner-approved movers_release_transition
+  [PASS] release_lineage.json release_transition == ui/data/movers_transition.js (consistent)
+  [PASS] release_lineage.json release_transition_register == the mirror's register (era succession: ALL entries reach the reader)
+  [PASS] the mirror carries the transition keys plus the register and NOTHING else (zero authorship)
+  [PASS] the ITEM 408 record is preserved BYTE-VERBATIM as the mirror payload's prefix (never rewritten)
+  [PASS] the register carries at least one transition record  (16 of 20 entries)
+  [PASS] EVERY register record is owner-approved and names its ruling id
+  [PASS] the shipped bundle's model_changes == what the live tree derives (reader and bundle in step)
+  [PASS] more than one out-of-round boundary is carried end-to-end — the single-slot limit is gone  (17 boundaries)
+  [PASS] EVERY out-of-round boundary reaches the reader owner-approved, naming its ruling id
+  [PASS] NON-VACUITY: with the register removed the newest boundary LOSES its owner approval  (approved 1 of 17, vs 17 of 17 with it)
+  [PASS] transition source + destination carry every id field (fixed pins + board + store)
+  [PASS] transition applies_to R15-R19
+  [PASS] transition SOURCE == the R15-R19 reports terminal identity
+  [PASS] transition source round == 19
+  [PASS] every historical report carries the identical fixed release identity
+  [PASS] transition DESTINATION is the post-restructure board (the boundary the tab labels)
+  [PASS] transition DESTINATION store is the post-restructure store
+  [PASS] the manifest has legitimately advanced past the transition destination (round 20 applied)
+  [PASS] transition destination round is 19 — the round the restructure landed after (unchanging history)
+  [PASS] manifest as_of_round == the bundle's newest report round (DERIVED: 24)
+  [PASS] the live round never shrinks below landed history (>= 24)
+  [PASS] exactly release_version/balanced_board_md5/engine_head/board/store move across the transition
+  [PASS] rl_model/fv/config/register are UNCHANGED across the transition (same R19 model pins)
+  [PASS] the transition self-declares the moved/unchanged field sets correctly
+  [PASS] recomputed R15-R19 content digest == the transition declared digest (sha256:6aea584536c6cd98c7949947620687d549b6f6f54fcc44acf3ca6fd71aaf8c4d)
+  [PASS] a modified player movement changes the content digest (tamper detected)
+  [PASS] a modified report identity changes the content digest (tamper detected)
+  [PASS] appending a future R25 report writes (no overwrite conflict)
+  [PASS] the bundle carries R15-R25 after the append
+  [PASS] every R15-R19 report is byte-for-byte preserved after the future append
+  [PASS] the R15-R19 content digest is UNCHANGED after the future append
+  [PASS] the appended future report carries the then-current governing identity (destination)
+  [PASS] a DIFFERENT copy of the live round (R24) is refused as an overwrite conflict (never merged)
+  [PASS] the bundle is left BYTE-UNCHANGED by the refused conflicting write
+  [PASS] score_ingestor.APPLY_DEFAULT is False (code half OFF)
+  [PASS] score-write gate is OFF (no explicit apply token) — no score can be applied
+MOVERS TRANSITION TESTS: ALL 40 PASS
+ALL FAST TESTS PASS
+
+[exit 0]

@@ -1,0 +1,10 @@
+ship_gates_check.py model env vs data/model_config.json:
+  PAR_RAMPS          suite 22       manifest 22       OK
+  PYTHONHASHSEED     suite 0        manifest (not a dial) OK
+  RL_GAMMA           suite 1.0      manifest 1.0      OK
+  RL_PICK1           suite 3000     manifest 3000     OK
+  RL_PRIOR_TREES     suite 400      manifest 400      OK
+  RL_RECENCY_DECAY   suite 0.72     manifest 0.72     OK
+  RL_RUCK_TAX        suite 0.25     manifest 0.25     OK
+
+WHY THIS CHECK EXISTS: enforce("gate") three lines below that update REJECTS a divergent override, so ONE divergent dial makes the entire frozen A/B gate family unexecutable on every box. RL_GAMMA sat at 0.85 against a manifest pinning 1.0 and the suite killed itself on its own line. M1a repaired it; this keeps it repaired.
