@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND STORE-EDIT — SELF-TEST — the surgical store edit
-  tree      : /tmp/landing_selftest_18480/sandbox
+  tree      : /tmp/landing_selftest_20523/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 89bf05a99b8bb439e7d1454312228d38
   mode      : APPLY (SELFTEST) builder=selftest-moved
@@ -8,12 +8,12 @@ LAND STORE-EDIT — SELF-TEST — the surgical store edit
 
 --- STEP 0/11  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-edit-20071 (pid 20071) — single writer for the shared workspace.
-base commit        807d51ad4662ec01d525f6ec66cebfd128a977f4
+build-lock: HELD by land-edit-22216 (pid 22216) — single writer for the shared workspace.
+base commit        c8d3473fcb136c12dc7792b9b6bbf4634a51f841
 board pin (before) f81dbcda220110ad0113ae0633b6c34e
 store pin (before) a9dec7e4785c6861a84f3beaae2f020e
 restore point      77 carrier(s) captured, 77 present on disk
-    [preflight OK  0.08s]
+    [preflight OK  0.10s]
 
 --- STEP 1/11  store_edit     THE SURGICAL STORE EDIT, applied in the work dir ---
 store BEFORE  a9dec7e4785c6861a84f3beaae2f020e   (1978019 bytes)
@@ -61,8 +61,8 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.08s  OK
+    preflight          0.10s  OK
     store_edit         0.20s  OK
     build_proofs       0.11s  FAIL
-    TOTAL              0.39s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_20071
+    TOTAL              0.41s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_22216

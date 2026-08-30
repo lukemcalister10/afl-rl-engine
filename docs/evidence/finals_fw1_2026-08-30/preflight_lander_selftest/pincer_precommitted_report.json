@@ -272,7 +272,7 @@
         "ui/data/movers_transition.js": "2fe0edca98be0e542820155eac061e1d",
         "ui/data/ownership.js": "c1bf5f269b0cd146391960dfe3e1afbc"
       },
-      "commit": "9bca81d95e9fc82e49e201b19e0a1bbe2588821a",
+      "commit": "18cf1e5649407654ee06d091829a51265e50a5f4",
       "expected_boot": {
         "as_of_round": 24,
         "balanced_board_md5": "cdae239d5865be9463c4ef461daf0a35",
@@ -309,10 +309,10 @@
       "ran": true
     },
     "preflight": {
-      "base_commit": "9bca81d95e9fc82e49e201b19e0a1bbe2588821a",
+      "base_commit": "18cf1e5649407654ee06d091829a51265e50a5f4",
       "board_before": "f81dbcda220110ad0113ae0633b6c34e",
       "carriers_captured": 129,
-      "lock": "land-round-19973"
+      "lock": "land-round-22055"
     },
     "scores": {
       "bytes": 7223,
@@ -339,7 +339,7 @@
   "ok": false,
   "timings": [
     {
-      "seconds": 0.1,
+      "seconds": 0.09,
       "step": "preflight",
       "verdict": "OK"
     },
@@ -354,7 +354,7 @@
       "verdict": "OK"
     },
     {
-      "seconds": 0.21,
+      "seconds": 0.17,
       "step": "catchup_preflight",
       "verdict": "OK"
     },

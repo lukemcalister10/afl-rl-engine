@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_18480/sandbox
+  tree      : /tmp/landing_selftest_20523/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board f81dbcda220110ad0113ae0633b6c34e
   mode      : APPLY (SELFTEST) builder=selftest
@@ -10,8 +10,8 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
 waiting for lock held by other-seat since 2026-08-20T00:00:00Z
-  (lock /tmp/landing_selftest_18480/selftest.lock; waiting up to 0s; this landing will not start until that act finishes — two engine acts through one workspace void both.)
-    [preflight FAILED  0.04s]
+  (lock /tmp/landing_selftest_20523/selftest.lock; waiting up to 0s; this landing will not start until that act finishes — two engine acts through one workspace void both.)
+    [preflight FAILED  0.05s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'preflight'
@@ -26,6 +26,6 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.04s  FAIL
-    TOTAL              0.04s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_18826
+    preflight          0.05s  FAIL
+    TOTAL              0.05s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_20855

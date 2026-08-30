@@ -588,6 +588,36 @@ FIN2.points = [
 eq(core.defaultPair(FIN2), { from: "fw1-baseline-col", to: "25" },
    "the retro default EXPIRES when new football moves the board past it");
 
+/* ================================================================================================
+   THE SHIPPED BUNDLE STILL CARRIES THE ROUNDS SINCE 14 (owner constraint, 2026-08-30: "as long as
+   it doesn't impact the movers list still being accurate as of each round since round 14").
+
+   Every act that rebuilds the bundle DROPS the retrospective block — `round_movers` builds `points`
+   from the value-history columns, and a retro point is not one of those. It has happened twice
+   (f1026eb dropped it, b53cde1 put it back; the FW1 finals edit dropped it again) and both times it
+   was noticed by a person looking. This makes it a red.
+
+   The re-emitter replays BANKED per-round values and does not re-price, so restoring the series is
+   byte-exact and cheap:  python3 docs/evidence/walkforward_retro_2026-08-29/emit_retro_series.py
+   ================================================================================================ */
+var shipped = readBundle(path.join(__dirname, "..", "data", "movers.js"));
+var shippedRetro = (shipped.points || []).filter(function (p) { return p.kind === "retro"; });
+eq(shippedRetro.map(function (p) { return p.after_round; }), [14,15,16,17,18,19,20,21,22,23,24],
+   "the SHIPPED bundle carries the whole retrospective series R14-R24");
+ok(shippedRetro.every(function (p) { return p.board && p.label; }),
+   "every shipped retro point names the board it was priced on and carries its label");
+var shippedRounds = shipped.rounds || [];
+ok(shippedRounds.length >= 10 && shippedRounds[0] === 15,
+   "the SHIPPED bundle still carries every stored round report from R15 (got " +
+   shippedRounds.length + " starting at R" + shippedRounds[0] + ")");
+var retroReadings = 0;
+Object.keys(shipped.values || {}).forEach(function (k) {
+  var bp = (shipped.values[k] || {}).byPoint || {};
+  Object.keys(bp).forEach(function (id) { if (id.indexOf("retro-r") === 0) retroReadings++; });
+});
+ok(retroReadings > 8000,
+   "the shipped retro points carry their per-player readings (" + retroReadings + " values)");
+
 console.log("  " + "-".repeat(60));
 if (fails) { console.log("MOVERS TESTS: " + fails + " FAIL / " + n); process.exit(1); }
 console.log("MOVERS TESTS: ALL " + n + " PASS");

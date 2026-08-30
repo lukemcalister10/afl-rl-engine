@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_18480/sandbox
+  tree      : /tmp/landing_selftest_20523/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board f81dbcda220110ad0113ae0633b6c34e
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,8 +9,8 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-lever-19146 (pid 19146) — single writer for the shared workspace.
-base commit        807d51ad4662ec01d525f6ec66cebfd128a977f4
+build-lock: HELD by land-lever-21187 (pid 21187) — single writer for the shared workspace.
+base commit        c8d3473fcb136c12dc7792b9b6bbf4634a51f841
 board pin (before) f81dbcda220110ad0113ae0633b6c34e
 store pin (before) a9dec7e4785c6861a84f3beaae2f020e
 restore point      76 carrier(s) captured, 76 present on disk
@@ -56,7 +56,7 @@ RE-STAMPED, re-read, and release_contract.py check PASSES.
 --- STEP 5/10  sibling        the balanced sibling, rebuilt and reconciled if moved ---
 verify BEFORE : ok=True balanced=cdae239d5865 fails=0
 the sibling is CURRENT — nothing to reconcile, and this step writes nothing.
-    [sibling OK  0.15s]
+    [sibling OK  0.14s]
 
 --- STEP 6/10  ui             ALL SIX UI writers, and the identity read back out ---
 *** FAULT INJECTED at step 'ui': stale_ownership_mirror — WRITER 5 never runs and the shipped ownership mirror keeps a foreign store pin — the live ownership lane ships SWITCHED OFF, silently
@@ -81,7 +81,7 @@ WRITER 4/6: ui/tools/rebuild_movers_derived.py  (points / values / model_changes
   drift guard: derived blocks OK — committed == rebuilt (4449156 bytes, latest report R24)
   shipped model_changes == live-derived: 16 boundar(ies), EQUAL  (the F-10 predicate holds)
 WRITER 5/6: SKIPPED BY FAULT INJECTION — the mirror keeps the pin of a store this landing is replacing.
-    [ui FAILED  1.98s]
+    [ui FAILED  2.14s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'ui'
@@ -110,7 +110,7 @@ improvised manual landing under pressure.
     pins               0.02s  OK
     lineage            0.00s  OK
     contract           0.09s  OK
-    sibling            0.15s  OK
-    ui                 1.98s  FAIL
-    TOTAL              2.34s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_19146
+    sibling            0.14s  OK
+    ui                 2.14s  FAIL
+    TOTAL              2.49s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_21187

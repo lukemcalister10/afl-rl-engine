@@ -1,249 +1,9 @@
 {
-  "abort": {
-    "byte_exact": true,
-    "commits_rewound": [],
-    "error": "THE MOVERS ARE NOT THE MOVERS THIS ACT DECLARED.\n    UNEXPECTED MOVER(S): aaron-naughton 1189 -> 1415, adam-saad 431 -> 429, adam-treloar 828 -> 827, andrew-brayshaw 2896 -> 2894, andrew-mcgrath 1105 -> 1104, angus-anderson 276 -> 264, archer-day-wicks 354 -> 353, archie-roberts 3825 -> 3822, arthur-jones 208 -> 322, ash-johnson 8 -> 7, bailey-dale 2051 -> 1990, bailey-humphrey 2381 -> 2380, bailey-laurie 125 -> 115, bailey-smith 5947 -> 5943, bailey-williams-wb 596 -> 541, ben-ainsworth 256 -> 346, ben-miller 978 -> 980, billy-wilson 956 -> 840, blake-acres 172 -> 130, blake-hardwick 625 -> 624, bodhi-uwland 4133 -> 4131, brandon-zerk-thatcher 79 -> 78, brayden-maynard 544 -> 543, brodie-grundy 4033 -> 4032, brodie-kemp 720 -> 767, buku-khamis 155 -> 154, caleb-daniel 1251 -> 1250, caleb-serong 4537 -> 4533, caleb-windsor 1126 -> 995, callum-mills 1964 -> 1963, callum-wilkie 3506 -> 3508, cameron-mackenzie 1770 -> 1769, chad-warner 3981 -> 3978, charlie-comben 659 -> 658, charlie-west 318 -> 331, christian-petracca 1763 -> 1762, clayton-oliver 2282 -> 2280, cody-weightman 186 -> 183, colby-mckercher 4264 -> 4265, connor-budarick 253 -> 221, connor-idun 2376 -> 2374, connor-macdonald 2939 -> 2938, connor-o-sullivan 2640 -> 2645, connor-rozee 3190 -> 3187, cooper-duff-tytler 1796 -> 1795, cooper-hynes 1073 -> 1072, daniel-mcstay 293 -> 341, daniel-turner 1554 -> 1732, darcy-fogarty 822 -> 824, darcy-jones 1496 -> 1495, darcy-parish 621 -> 620, darcy-wilmot 3114 -> 3113, darcy-wilson 2716 -> 2715, dylan-patterson 1134 -> 1133, dyson-sharp 3081 -> 3080, ed-richards 4108 -> 4083, edward-allan 851 -> 812, errol-gulden 7524 -> 7518, ethan-read 555 -> 554, finn-callaghan 5548 -> 5544, francis-evans 793 -> 798, george-hewett 1944 -> 1809, harley-reid 3859 -> 3856, harris-andrews 1600 -> 1601, harrison-petty 422 -> 382, harry-sheezel 11169 -> 11161, harvey-langford 1804 -> 1912, harvey-thomas 2017 -> 2016, hugh-bond 132 -> 131, hugh-mccluggage 1591 -> 1589, hugo-garcia 2895 -> 2893, hussien-el-achkar 421 -> 420, isaac-heeney 3774 -> 3770, izak-rankine 5029 -> 5028, jack-gunston 683 -> 682, jack-lukosius 543 -> 542, jack-ross 2425 -> 2423, jack-silvagni 697 -> 698, jack-sinclair 3149 -> 3148, jack-steele 1124 -> 1109, jack-whitlock 1009 -> 1008, jacob-farrow 2066 -> 2065, jacob-van-rooyen 1814 -> 1820, jacob-weitering 1069 -> 1239, jagga-smith 4880 -> 5029, jai-newcombe 4719 -> 4715, jake-bowey 3980 -> 3979, jake-lever 191 -> 192, james-sicily 1201 -> 1200, jase-burgoyne 2614 -> 2613, jason-horne-francis 5559 -> 5554, jaspa-fletcher 2752 -> 2751, jed-walter 1036 -> 1035, jeremy-howe 181 -> 165, joel-fitzgerald 305 -> 288, joel-freijah 2512 -> 2870, joel-jeffrey 1449 -> 1448, john-noble 2339 -> 2338, jordan-clark 3197 -> 3196, jordan-dawson 2950 -> 2948, jordon-sweet 2564 -> 2563, joseph-fonti 493 -> 492, josh-battle 1870 -> 1871, josh-daicos 2143 -> 2125, josh-dolan 318 -> 330, josh-draper 261 -> 260, josh-dunkley 1310 -> 1309, josh-treacy 5875 -> 5874, josh-ward 2691 -> 2689, josh-worrell 2792 -> 2790, justin-mcinerney 1907 -> 1906, jy-simpkin 1223 -> 1222, kane-farrell 1321 -> 1320, kieren-briggs 1970 -> 1969, koltyn-tholstrup 1739 -> 1695, kyle-langford 486 -> 485, kysaiah-pickett 4433 -> 4435, lachie-neale 2181 -> 2180, lachlan-ash 5390 -> 5387, lawson-humphries 1695 -> 1693, leo-lombard 1779 -> 1778, levi-ashcroft 3598 -> 3597, luke-davies-uniacke 3101 -> 3098, luke-jackson 9453 -> 9450, luke-kennedy 168 -> 277, luke-parker 1175 -> 1173, mac-andrew 3882 -> 3884, marcus-bontempelli 3626 -> 3702, marcus-herbert 850 -> 848, mark-keane 1491 -> 1493, matt-cottrell 131 -> 164, matt-rowell 4927 -> 4923, max-gawn 3377 -> 3345, max-holmes 8466 -> 8459, michael-sellwood 306 -> 296, miles-bergman 999 -> 998, mitchell-lewis 769 -> 771, mitchito-owens 1980 -> 1985, murphy-reid 3396 -> 3395, nasiah-wanganeen-milera 9461 -> 9453, ned-long 1290 -> 1353, nicholas-martin 3896 -> 3893, nick-blakey 4061 -> 4060, nick-bryan 714 -> 713, nick-daicos 10655 -> 10636, nick-haynes 117 -> 156, nick-madden 1214 -> 1213, nick-watson 3611 -> 3610, noah-anderson 5600 -> 5595, noah-mraz 816 -> 819, oliver-florent 1053 -> 1074, oliver-francou 403 -> 402, oliver-henry 262 -> 261, oliver-hollands 1533 -> 1565, ollie-dempsey 2468 -> 2466, patrick-cripps 1526 -> 1465, peter-wright 1270 -> 1269, reilly-o-brien 994 -> 993, reuben-ginbey 2244 -> 2248, rhylee-west 212 -> 270, riley-hamilton 218 -> 217, riley-thilthorpe 4289 -> 4288, robert-hansen 107 -> 106, rowan-marshall 2052 -> 2051, sam-berry 2821 -> 2818, sam-cumming 2313 -> 2312, sam-darcy 5339 -> 5341, sam-davidson 115 -> 116, sam-de-koning 851 -> 850, sam-durham 2482 -> 2481, sam-flanders 2554 -> 2552, sam-lalor 3514 -> 3513, sam-taylor 1139 -> 1142, sam-walsh 3073 -> 3118, samuel-swadling 1069 -> 1240, tanner-bruhn 2010 -> 2009, thomas-stewart 903 -> 902, tim-kelly 1212 -> 1210, tim-taranto 2447 -> 2445, timothy-english 3350 -> 3405, toby-greene 747 -> 746, toby-murray 225 -> 224, tom-de-koning 1611 -> 1610, tom-green 5255 -> 5250, tom-mccarthy 1359 -> 1357, tom-mccartin 1433 -> 1434, tom-sparrow 1568 -> 1506, trent-rivers 1517 -> 1466, tristan-xerri 7211 -> 7209, wil-parker 66 -> 65, wil-powell 852 -> 850, will-ashcroft 7058 -> 7053, will-day 1861 -> 1860, will-hayward 281 -> 280, will-setterfield 987 -> 986, xavier-duursma 240 -> 239, xavier-lindsay 1279 -> 1388, xavier-taylor 873 -> 841, zac-bailey 3179 -> 3178, zachary-merrett 2408 -> 2407, zak-butters 6386 -> 6381\n    DECLARED AND ABSENT: aaron-naughton 1189 -> 1413, angus-anderson 276 -> 266, arthur-jones 208 -> 316, bailey-dale 2051 -> 1991, bailey-laurie 125 -> 118, bailey-williams-wb 596 -> 542, ben-ainsworth 256 -> 344, billy-wilson 956 -> 841, blake-acres 172 -> 131, brodie-kemp 720 -> 765, caleb-windsor 1126 -> 998, charlie-west 318 -> 338, cody-weightman 186 -> 184, connor-budarick 253 -> 222, cooper-hynes 1073 -> 1067, daniel-mcstay 293 -> 339, daniel-turner 1554 -> 1731, ed-richards 4108 -> 4086, edward-allan 851 -> 815, francis-evans 793 -> 799, george-hewett 1944 -> 1812, harrison-petty 422 -> 383, harvey-langford 1804 -> 1901, jack-steele 1124 -> 1110, jacob-weitering 1069 -> 1237, jagga-smith 4880 -> 5030, jeremy-howe 181 -> 166, joel-fitzgerald 305 -> 306, joel-freijah 2512 -> 2871, josh-daicos 2143 -> 2126, josh-dolan 318 -> 332, koltyn-tholstrup 1739 -> 1696, kysaiah-pickett 4433 -> 4436, luke-kennedy 168 -> 276, marcus-bontempelli 3626 -> 3705, matt-cottrell 131 -> 161, max-gawn 3377 -> 3346, michael-sellwood 306 -> 309, ned-long 1290 -> 1354, nick-daicos 10655 -> 10644, nick-haynes 117 -> 155, oliver-florent 1053 -> 1075, oliver-hollands 1533 -> 1562, patrick-cripps 1526 -> 1466, rhylee-west 212 -> 269, sam-walsh 3073 -> 3121, samuel-swadling 1069 -> 1241, timothy-english 3350 -> 3406, tom-sparrow 1568 -> 1507, trent-rivers 1517 -> 1469, will-hayes-b 234 -> 237, xavier-lindsay 1279 -> 1379, xavier-taylor 873 -> 860\nA store edit predicts who moves; a second mover means the edit did something the act did not say it would, and that is an abort.",
-    "failed_step": "build_proofs",
-    "restore_point": {
-      "data/expected_boot.json": "530ac275f5d56edbb41e3468f8e996d7",
-      "data/release_contract.json": "64c2f478110517df1244d13e246d27ed",
-      "data/release_lineage.json": "4c641ddbf6b62361a02221d108a90d7b",
-      "data/rl_build/rl_app_data.json": "f81dbcda220110ad0113ae0633b6c34e",
-      "data/rl_build/rl_app_data.json.srcmd5": "be84fa93abdb7cfa9b444963476dab03",
-      "data/season_state.json": "a59358138884adba1063f27228845fc1",
-      "data/sheet_pins.json": "226b73ff64e6a6967103bfee788848a0",
-      "docs/STATE.md": "26f555342db67a4889ecefcf8914c090",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/journal.jsonl": "a46befc7100f100bed9155415f20979c",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/manifest.json": "23c861fc7a85ec058fc8a3f156d25121",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/board_view_public": "12c5c49dd5767ad69a20b8cf3d46916f",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/board_view_working": "4743500a347270b113e502b7a4028b3b",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/forward_oracle.ABSENT": "bf2ec1aa4c8591141230715a1e6366f4",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/forward_vector.ABSENT": "cde5f7ec44e5c9856cebd9711b856c7a",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/fv_test": "abf604e83cd865181a5ecff64a407b2d",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/manifest": "d434bd6db56db6d827812a7de9e2e87a",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/reference_vector.ABSENT": "152a0ae2540d8293709e3b8ba4e7b132",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/release_contract": "8abfe0aed071c013c56809874fc7f87b",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/sidecar": "08a08072a1f26f805b9dfd55e0e88ac1",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/board_view_public": "a619df779393f05ca899db857b7e7502",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/board_view_working": "477ed8a784af4b6ebc53dcbb63608c4f",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/forward_oracle": "3106ee9512fcd70cf9a2078049bccdd9",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/forward_vector": "0b6474a17eaf3413504e7a2f7290f732",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/fv_test": "8e1da70941cb36223e0927632e94391e",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/manifest": "202604b0cd27597a1758c1546be77f40",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/reference_vector": "fd0e7d98ebff1e2d29acb62d4c473ba0",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/release_contract": "6907c766aa94657f3b54b514d0a015eb",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/sidecar": "305ca65cddb9919e88b861e9af908dc0",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/journal.jsonl": "27c1fa381561a78bf78859f15976d0fb",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/manifest.json": "a1d3c708f283a9e28a499fe995a2c984",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/board_view_public": "a619df779393f05ca899db857b7e7502",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/board_view_working": "268057da531f01f925bfbef5552c20be",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/forward_oracle.ABSENT": "42fe4fa2202f5978598a270e21b97beb",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/forward_vector.ABSENT": "d00819b41ac37bfcac7bc5edc4301e9c",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/fv_test": "8e1da70941cb36223e0927632e94391e",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/manifest": "d0c942eb3411f750b2a04c0043e44c4f",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/reference_vector.ABSENT": "3a9d4031b760e688c354b36c48e92128",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/release_contract": "ef01ef50e0caf32a6af32fb6d0372a36",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/sidecar": "305ca65cddb9919e88b861e9af908dc0",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/board_view_public": "cbb075d0ffbd80da97d5cdd73bf23f87",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/board_view_working": "162df5a42224d8489cefd76d93139748",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/forward_oracle": "a7204641eba1b2364eb36558ea9a462e",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/forward_vector": "0efe6eac94eb68f1c42b681069b7d12f",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/fv_test": "0e822a3854cfe4d9154e89a3483946a9",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/manifest": "c619e7a19dce296dc715db3a449d9ea3",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/reference_vector": "f5ecab77fbb7a48befc49ae30e8c0c57",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/release_contract": "85daa5d704a2cf142f5153e93260e56a",
-      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/sidecar": "fdbac2a4d1015c9c11470f81719bfb61",
-      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/journal.jsonl": "ec876a9ebce8b521a7258e9dbee90fbd",
-      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/manifest.json": "e214641bcd46b294316d1aece758da93",
-      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/board_view_public": "540bcdb444fbd5375c048cc8a26ba291",
-      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/board_view_working": "f2af9df4f7157a24a76e6759ec933f1e",
-      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/forward_oracle.ABSENT": "1d95b600a3c767e4fd52317a0910ea26",
-      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/forward_vector.ABSENT": "91f190ac11a825521312a675fe423cad",
-      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/fv_test": "3cff43704b8f395aa5ab81cddec6ac64",
-      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/manifest": "908e767782dfcf2923f0120149b2c9f6",
-      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/reference_vector.ABSENT": "305d7f7cd133ebb571c684c27aba58b3",
-      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/release_contract": "e892a476b3396a1443f5dc7f878fff36",
-      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/sidecar": "d04865c11366d05a1b9bcc25552abb38",
-      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/board_view_public": "540bcdb444fbd5375c048cc8a26ba291",
-      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/board_view_working": "2a8a4aa8aef82c858b3e803b4b9b16d2",
-      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/forward_oracle": "92530c678152f5758ecb0ae252f17736",
-      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/forward_vector": "6c7c809d3b6c6b33f2d5b398cf3d62bd",
-      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/fv_test": "a3cdbc3cd37fdb74f0af77e399b2f43f",
-      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/manifest": "5ec041aaa0875c1bc2efbe50fb72927f",
-      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/reference_vector": "0c2fcec96ecd425a498594c693e21169",
-      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/release_contract": "45b7fb095c8a0bfb9812164d10b9b692",
-      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/sidecar": "600ead8b4269cd54764840c6bc42097a",
-      "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/journal.jsonl": "4b0426ee2f80c75a52ac4303285c58ff",
-      "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/manifest.json": "ea616391e6a1200da3faf6cb2bf92893",
-      "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/sidecar": "f9771c9aabcad4975755bdf9eceaf755",
-      "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/sidecar": "899998a830f6abc7dbd65e1a96a1dd08",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/journal.jsonl": "dc7330ba1cdafe65c0111599087c6110",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/manifest.json": "bb2fcad20c4fa667c910a04710721855",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/board_view_public": "ccfd4bf0f363173d6a5c9c68991e299d",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/board_view_working": "a6fae4c8c53ff904bb26dac329d25b99",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/forward_oracle.ABSENT": "32fe8a46187bb4a899222a2860a072cb",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/forward_vector.ABSENT": "d2b736610a600d87493e15d406f33c2b",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/fv_test": "fc4a7be3a85e614cb1ad564b30575139",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/manifest": "f8b0351f5f27fb9990d74c52843254c5",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/reference_vector.ABSENT": "84a490978f81c8d6ffe65723b042c45a",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/release_contract": "9122036aa0c08eaf5db9be0770f69f95",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/sidecar": "177490d12af523009c06776d3e4ff797",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/board_view_public": "a54d68e7023ac8d1288183f32b35073e",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/board_view_working": "4d73b9a638cbe892f485be5381247925",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/forward_oracle": "2f09419ce7723beb9dac5c0b1c130e3d",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/forward_vector": "75e6ff721fc5993162b4a2e4654ca5c5",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/fv_test": "51e14ae58a174b099baa4fc3378470b4",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/manifest": "8538fc1057ce1bfbdb8dc43aedb742b3",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/reference_vector": "d29d67c6b61f783493ddba18e571afa4",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/release_contract": "dc293e6dd710108c7b01dc492dca19d6",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/sidecar": "706db9cf06cab038da231e0e88ba0762",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/journal.jsonl": "7adecc694211985f8e333ac863a80afc",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/manifest.json": "fe60735297e4f403917574291ea171bb",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/board_view_public": "0d9089ecb6de834818958f0d9e2472fc",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/board_view_working": "6a611cf9bd70b306799c37d14fc61bf9",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/forward_oracle.ABSENT": "f99474d51b6cfded234e4b2aac26dff4",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/forward_vector.ABSENT": "a45357d154e500c3da82fa5c06c8e7d2",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/fv_test": "22af7f0d638ca885940fbbf194c3b207",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/manifest": "ad7d41ff5c4b0b395ff5c6e6dc74f61a",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/reference_vector.ABSENT": "8d44e6269cda798f3b60049c39751a15",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/release_contract": "f690187c05bb40331a31403eac863964",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/sidecar": "29e2ff0c3c98120779347fbd2690f067",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/board_view_public": "70bab90bcf5d0fb354f50efe3f142b57",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/board_view_working": "05b7257da6299707c76955b539ab6f8e",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/forward_oracle": "922edccb694665b601d311d4dcf27027",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/forward_vector": "24383eee944015a3274c7c2addb941dc",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/fv_test": "0222f8be2f41cff0f45c6d82878dd89a",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/manifest": "94a7fecb975a169ddebd8a45796fcf4f",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/reference_vector": "66db40d67bfd5e32552a8e44fd530ccb",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/release_contract": "b0fb2ae36034747f8966736cef20cce7",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/sidecar": "fe3115454f9de2b6f64a39a647cde62a",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/journal.jsonl": "003892c02f323707a7d44fdff6359480",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/manifest.json": "a0433726714c6bbc814303b3bc69899a",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/board_view_public": "70bab90bcf5d0fb354f50efe3f142b57",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/board_view_working": "cccc8c8f933b7ef891a0787c17f10b4f",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/forward_oracle.ABSENT": "c2b527db1de349a471dd8fb5b94c638c",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/forward_vector.ABSENT": "9138f299d5b68d4cfee7a491792a8c06",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/fv_test": "0222f8be2f41cff0f45c6d82878dd89a",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/manifest": "0f3c7d418653bb9aef14d76f152f4560",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/reference_vector.ABSENT": "8ddf6eb1877c3c5e88f684d1468280a5",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/release_contract": "3c3e6e280fe150a1e4ea67be4fd07b28",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/sidecar": "fe3115454f9de2b6f64a39a647cde62a",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/board_view_public": "ffe0eb7aff32ac3d1f13562fc0bc7b5e",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/board_view_working": "4525eba210774ef0cdc0578065c94c84",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/forward_oracle": "df43987656d1b6edfb9fee93156bfa41",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/forward_vector": "37df29274baa5187b034b620a46ef0cc",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/fv_test": "837ba4bc313a2d4f238453dbf179583a",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/manifest": "7c68771e1930e50b7e76ee30a7fd977b",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/reference_vector": "32f0a9c934ceaf13b645443964cd0d33",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/release_contract": "055b55b37691eacc14aa2e252fd79d2a",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/sidecar": "b33d74d33af1c7fa78b705ef77d45587",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_c06ff1e8/journal.jsonl": "b8987dd883b50eadbcc2dfcfff352369",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_c06ff1e8/manifest.json": "c1b46056c1fe23938c51f36a0d72600f",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_c06ff1e8/originals/sidecar": "b2b411cd27f30c861630185bc87f786a",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_c06ff1e8/staged/sidecar": "7974155c2c9dc8d2f9c11392d213cbe4",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/journal.jsonl": "597a1096cb18f03fa0a8f687d415e42e",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/manifest.json": "07d07b3206bda0283b1ca0537c3c5bea",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/board_view_public": "9274e0dd9892b205424fb5970451d53e",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/board_view_working": "f382e51a009ff2e4ae548f30cc6aabf0",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/forward_oracle.ABSENT": "6446baa6aee4b30c39852398b61456a6",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/forward_vector.ABSENT": "d656e3fd9ccb689cfba22d0b10e2d1d6",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/fv_test": "51e14ae58a174b099baa4fc3378470b4",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/manifest": "b97504a40b4ebea120ba9d44373df5a3",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/reference_vector.ABSENT": "06a090fe5e1a23ce05c96162c3eca4f6",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/release_contract": "5c62603bb4ac460a3eb66689fb40a39b",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/sidecar": "706db9cf06cab038da231e0e88ba0762",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/board_view_public": "f7b53936acbe16ef7059d93479b28790",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/board_view_working": "d876f5da8a1c8e513a9a7a411281b032",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/forward_oracle": "8d57e1b0b0dd0638d3bbcf23aa0d6cc5",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/forward_vector": "188634a5052d274ba138db570e2161eb",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/fv_test": "1338985525d36cf42b105bc8952f3036",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/manifest": "530ac275f5d56edbb41e3468f8e996d7",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/reference_vector": "96a7a3274623671217992afb83d3a052",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/release_contract": "64c2f478110517df1244d13e246d27ed",
-      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/sidecar": "6e8797940d9033d670bff207e593baf4",
-      "engine/rl_after/ingestion/pos_rank_history.json": "2dce6787705123d7488fb48ef1c68d97",
-      "engine/rl_after/ingestion/rank_history.json": "028d28ddc4aff5a854b53e638f467984",
-      "engine/rl_after/ingestion/sibling_repin_state.json": "6e8797940d9033d670bff207e593baf4",
-      "engine/rl_after/ingestion/value_history.json": "45ab462c19eb216a090c1a9d269021ad",
-      "engine/rl_after/rl_app_data.json": "f81dbcda220110ad0113ae0633b6c34e",
-      "engine/rl_after/rl_app_data.json.srcmd5": "be84fa93abdb7cfa9b444963476dab03",
-      "engine/rl_after/rl_model_data.json": "a9dec7e4785c6861a84f3beaae2f020e",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/accepted_board_06d8af60.json": "81822b2baf9c8270034ac9f1f54995fb",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_113b36f8.json": "666dc8969c5f960ae6bac8c7e66f2a3d",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_1d5c9f7a.json": "0efe6eac94eb68f1c42b681069b7d12f",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_3167cba6.json": "37df29274baa5187b034b620a46ef0cc",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_4a52cc44.json": "75e6ff721fc5993162b4a2e4654ca5c5",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_4b448a82.json": "7fa4ddd72e47bd67b06678cf2e12a2b4",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_530a4053.json": "61955fb0abe8d9d934bbb923c2b3614d",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_5ea978f7.json": "0b6474a17eaf3413504e7a2f7290f732",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_68be10c7.json": "6c7c809d3b6c6b33f2d5b398cf3d62bd",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_6e724cca.json": "42f2b19f22e6bb4d367af7bfc98ba0c0",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_6fd0f7de.json": "b0c8835ef321da1768b630f0f7a3a8d7",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_7a3f4fe2.json": "c729a6d84866e33e360b1468614514d8",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_82fcd8bb.json": "24383eee944015a3274c7c2addb941dc",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_8a38cca4.json": "00295dec394462dbc6370032c2cd5f7a",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_a05fe951.json": "f0454ed594c204f45aaee1ca38a51e7b",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_a672ed3a.json": "15d3765ed047c52c481021766fab728d",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_b3e8da99.json": "94809f0693e27a254994cd3332b824e7",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_f81dbcda.json": "188634a5052d274ba138db570e2161eb",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_06d8af60.json": "6565a4ef51d67bdf6adfaaaf15fd3976",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_123deccb.json": "bc290a0b557b046c7608543dc096239b",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_1373e824.json": "4fcd55c9b5708e791be26e5e157b425e",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_1ad6a04b.json": "d29d67c6b61f783493ddba18e571afa4",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_234c3414.json": "143680d49a1d0888120a38b91ececa5b",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_3970156c.json": "252e619d44451c5f54bc42afce9aa334",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_4939d740.json": "ba88c83d58a617265fedc5f31083c888",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_5546f278.json": "496b0f545792e7f64bef67ee3e2fc9a0",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_556ad70d.json": "0c2fcec96ecd425a498594c693e21169",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_72fe3a17.json": "9cc6239d4a6ca9ea7556205a8a80d139",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_7c32a540.json": "90697dce6f9998b8cb66b0de1d1c128a",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_8838f4b3.json": "66db40d67bfd5e32552a8e44fd530ccb",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_a49c155f.json": "fd0e7d98ebff1e2d29acb62d4c473ba0",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_a970c19c.json": "0e1fd61104f7033823da919a81c512c1",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_b4cc0b2b.json": "d8bf6f592992a589d858dd1f01896192",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_b7149d5f.json": "32f0a9c934ceaf13b645443964cd0d33",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_c06ff1e8.json": "3178258ece7299758a487164d9bd297f",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_ca8cb17e.json": "7e4b54843505ed5d6bf441c7aae66836",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_cdae239d.json": "96a7a3274623671217992afb83d3a052",
-      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_e616936e.json": "f5ecab77fbb7a48befc49ae30e8c0c57",
-      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_113b36f8.py": "6db17a8e9f1435da58c46d4544c1af49",
-      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_1d5c9f7a.py": "a7204641eba1b2364eb36558ea9a462e",
-      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_3167cba6.py": "df43987656d1b6edfb9fee93156bfa41",
-      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_4a52cc44.py": "2f09419ce7723beb9dac5c0b1c130e3d",
-      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_4b448a82.py": "ec25d1c4987248edc54fdf18cd7db549",
-      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_530a4053.py": "830f16694f1664c832040bfe49b8e32a",
-      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_5ea978f7.py": "3106ee9512fcd70cf9a2078049bccdd9",
-      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_68be10c7.py": "92530c678152f5758ecb0ae252f17736",
-      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_6e724cca.py": "c3d407285223debfcafbc0f18c032678",
-      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_6fd0f7de.py": "0d25bd628682799afbb4206e02c27dad",
-      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_7a3f4fe2.py": "753bd58f6b658469ee98ec01a04b95f7",
-      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_82fcd8bb.py": "922edccb694665b601d311d4dcf27027",
-      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_8a38cca4.py": "f4c31ef9d25bfe7b97ee0bea2529df4f",
-      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_a05fe951.py": "716dcdc7c5e67f025bd1f3370463c560",
-      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_a672ed3a.py": "b393f00bce843401eb66e4e8eced46a5",
-      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_b3e8da99.py": "f9079bb36af9a7b14bb47b674f68f69f",
-      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_f81dbcda.py": "8d57e1b0b0dd0638d3bbcf23aa0d6cc5",
-      "session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py": "1338985525d36cf42b105bc8952f3036",
-      "ui/data/board_view_public.js": "7edcfc19d6ebeb78ad8b08ff758ea864",
-      "ui/data/board_view_working.js": "e5a407c709c1e6e33631355352b9f8f3",
-      "ui/data/club_valuation.js": "9d3dc5e07d722b51f37a0278ee5b6166",
-      "ui/data/movers.js": "ee0afbb7e4f666fc6ac6d1e621fc5024",
-      "ui/data/movers_transition.js": "2fe0edca98be0e542820155eac061e1d",
-      "ui/data/ownership.js": "c1bf5f269b0cd146391960dfe3e1afbc"
-    },
-    "restored": [
-      {
-        "action": "rewrite",
-        "path": "data/season_state.json"
-      },
-      {
-        "action": "rewrite",
-        "path": "engine/rl_after/rl_model_data.json"
-      }
-    ]
-  },
-  "commits": [],
-  "error": "THE MOVERS ARE NOT THE MOVERS THIS ACT DECLARED.\n    UNEXPECTED MOVER(S): aaron-naughton 1189 -> 1415, adam-saad 431 -> 429, adam-treloar 828 -> 827, andrew-brayshaw 2896 -> 2894, andrew-mcgrath 1105 -> 1104, angus-anderson 276 -> 264, archer-day-wicks 354 -> 353, archie-roberts 3825 -> 3822, arthur-jones 208 -> 322, ash-johnson 8 -> 7, bailey-dale 2051 -> 1990, bailey-humphrey 2381 -> 2380, bailey-laurie 125 -> 115, bailey-smith 5947 -> 5943, bailey-williams-wb 596 -> 541, ben-ainsworth 256 -> 346, ben-miller 978 -> 980, billy-wilson 956 -> 840, blake-acres 172 -> 130, blake-hardwick 625 -> 624, bodhi-uwland 4133 -> 4131, brandon-zerk-thatcher 79 -> 78, brayden-maynard 544 -> 543, brodie-grundy 4033 -> 4032, brodie-kemp 720 -> 767, buku-khamis 155 -> 154, caleb-daniel 1251 -> 1250, caleb-serong 4537 -> 4533, caleb-windsor 1126 -> 995, callum-mills 1964 -> 1963, callum-wilkie 3506 -> 3508, cameron-mackenzie 1770 -> 1769, chad-warner 3981 -> 3978, charlie-comben 659 -> 658, charlie-west 318 -> 331, christian-petracca 1763 -> 1762, clayton-oliver 2282 -> 2280, cody-weightman 186 -> 183, colby-mckercher 4264 -> 4265, connor-budarick 253 -> 221, connor-idun 2376 -> 2374, connor-macdonald 2939 -> 2938, connor-o-sullivan 2640 -> 2645, connor-rozee 3190 -> 3187, cooper-duff-tytler 1796 -> 1795, cooper-hynes 1073 -> 1072, daniel-mcstay 293 -> 341, daniel-turner 1554 -> 1732, darcy-fogarty 822 -> 824, darcy-jones 1496 -> 1495, darcy-parish 621 -> 620, darcy-wilmot 3114 -> 3113, darcy-wilson 2716 -> 2715, dylan-patterson 1134 -> 1133, dyson-sharp 3081 -> 3080, ed-richards 4108 -> 4083, edward-allan 851 -> 812, errol-gulden 7524 -> 7518, ethan-read 555 -> 554, finn-callaghan 5548 -> 5544, francis-evans 793 -> 798, george-hewett 1944 -> 1809, harley-reid 3859 -> 3856, harris-andrews 1600 -> 1601, harrison-petty 422 -> 382, harry-sheezel 11169 -> 11161, harvey-langford 1804 -> 1912, harvey-thomas 2017 -> 2016, hugh-bond 132 -> 131, hugh-mccluggage 1591 -> 1589, hugo-garcia 2895 -> 2893, hussien-el-achkar 421 -> 420, isaac-heeney 3774 -> 3770, izak-rankine 5029 -> 5028, jack-gunston 683 -> 682, jack-lukosius 543 -> 542, jack-ross 2425 -> 2423, jack-silvagni 697 -> 698, jack-sinclair 3149 -> 3148, jack-steele 1124 -> 1109, jack-whitlock 1009 -> 1008, jacob-farrow 2066 -> 2065, jacob-van-rooyen 1814 -> 1820, jacob-weitering 1069 -> 1239, jagga-smith 4880 -> 5029, jai-newcombe 4719 -> 4715, jake-bowey 3980 -> 3979, jake-lever 191 -> 192, james-sicily 1201 -> 1200, jase-burgoyne 2614 -> 2613, jason-horne-francis 5559 -> 5554, jaspa-fletcher 2752 -> 2751, jed-walter 1036 -> 1035, jeremy-howe 181 -> 165, joel-fitzgerald 305 -> 288, joel-freijah 2512 -> 2870, joel-jeffrey 1449 -> 1448, john-noble 2339 -> 2338, jordan-clark 3197 -> 3196, jordan-dawson 2950 -> 2948, jordon-sweet 2564 -> 2563, joseph-fonti 493 -> 492, josh-battle 1870 -> 1871, josh-daicos 2143 -> 2125, josh-dolan 318 -> 330, josh-draper 261 -> 260, josh-dunkley 1310 -> 1309, josh-treacy 5875 -> 5874, josh-ward 2691 -> 2689, josh-worrell 2792 -> 2790, justin-mcinerney 1907 -> 1906, jy-simpkin 1223 -> 1222, kane-farrell 1321 -> 1320, kieren-briggs 1970 -> 1969, koltyn-tholstrup 1739 -> 1695, kyle-langford 486 -> 485, kysaiah-pickett 4433 -> 4435, lachie-neale 2181 -> 2180, lachlan-ash 5390 -> 5387, lawson-humphries 1695 -> 1693, leo-lombard 1779 -> 1778, levi-ashcroft 3598 -> 3597, luke-davies-uniacke 3101 -> 3098, luke-jackson 9453 -> 9450, luke-kennedy 168 -> 277, luke-parker 1175 -> 1173, mac-andrew 3882 -> 3884, marcus-bontempelli 3626 -> 3702, marcus-herbert 850 -> 848, mark-keane 1491 -> 1493, matt-cottrell 131 -> 164, matt-rowell 4927 -> 4923, max-gawn 3377 -> 3345, max-holmes 8466 -> 8459, michael-sellwood 306 -> 296, miles-bergman 999 -> 998, mitchell-lewis 769 -> 771, mitchito-owens 1980 -> 1985, murphy-reid 3396 -> 3395, nasiah-wanganeen-milera 9461 -> 9453, ned-long 1290 -> 1353, nicholas-martin 3896 -> 3893, nick-blakey 4061 -> 4060, nick-bryan 714 -> 713, nick-daicos 10655 -> 10636, nick-haynes 117 -> 156, nick-madden 1214 -> 1213, nick-watson 3611 -> 3610, noah-anderson 5600 -> 5595, noah-mraz 816 -> 819, oliver-florent 1053 -> 1074, oliver-francou 403 -> 402, oliver-henry 262 -> 261, oliver-hollands 1533 -> 1565, ollie-dempsey 2468 -> 2466, patrick-cripps 1526 -> 1465, peter-wright 1270 -> 1269, reilly-o-brien 994 -> 993, reuben-ginbey 2244 -> 2248, rhylee-west 212 -> 270, riley-hamilton 218 -> 217, riley-thilthorpe 4289 -> 4288, robert-hansen 107 -> 106, rowan-marshall 2052 -> 2051, sam-berry 2821 -> 2818, sam-cumming 2313 -> 2312, sam-darcy 5339 -> 5341, sam-davidson 115 -> 116, sam-de-koning 851 -> 850, sam-durham 2482 -> 2481, sam-flanders 2554 -> 2552, sam-lalor 3514 -> 3513, sam-taylor 1139 -> 1142, sam-walsh 3073 -> 3118, samuel-swadling 1069 -> 1240, tanner-bruhn 2010 -> 2009, thomas-stewart 903 -> 902, tim-kelly 1212 -> 1210, tim-taranto 2447 -> 2445, timothy-english 3350 -> 3405, toby-greene 747 -> 746, toby-murray 225 -> 224, tom-de-koning 1611 -> 1610, tom-green 5255 -> 5250, tom-mccarthy 1359 -> 1357, tom-mccartin 1433 -> 1434, tom-sparrow 1568 -> 1506, trent-rivers 1517 -> 1466, tristan-xerri 7211 -> 7209, wil-parker 66 -> 65, wil-powell 852 -> 850, will-ashcroft 7058 -> 7053, will-day 1861 -> 1860, will-hayward 281 -> 280, will-setterfield 987 -> 986, xavier-duursma 240 -> 239, xavier-lindsay 1279 -> 1388, xavier-taylor 873 -> 841, zac-bailey 3179 -> 3178, zachary-merrett 2408 -> 2407, zak-butters 6386 -> 6381\n    DECLARED AND ABSENT: aaron-naughton 1189 -> 1413, angus-anderson 276 -> 266, arthur-jones 208 -> 316, bailey-dale 2051 -> 1991, bailey-laurie 125 -> 118, bailey-williams-wb 596 -> 542, ben-ainsworth 256 -> 344, billy-wilson 956 -> 841, blake-acres 172 -> 131, brodie-kemp 720 -> 765, caleb-windsor 1126 -> 998, charlie-west 318 -> 338, cody-weightman 186 -> 184, connor-budarick 253 -> 222, cooper-hynes 1073 -> 1067, daniel-mcstay 293 -> 339, daniel-turner 1554 -> 1731, ed-richards 4108 -> 4086, edward-allan 851 -> 815, francis-evans 793 -> 799, george-hewett 1944 -> 1812, harrison-petty 422 -> 383, harvey-langford 1804 -> 1901, jack-steele 1124 -> 1110, jacob-weitering 1069 -> 1237, jagga-smith 4880 -> 5030, jeremy-howe 181 -> 166, joel-fitzgerald 305 -> 306, joel-freijah 2512 -> 2871, josh-daicos 2143 -> 2126, josh-dolan 318 -> 332, koltyn-tholstrup 1739 -> 1696, kysaiah-pickett 4433 -> 4436, luke-kennedy 168 -> 276, marcus-bontempelli 3626 -> 3705, matt-cottrell 131 -> 161, max-gawn 3377 -> 3346, michael-sellwood 306 -> 309, ned-long 1290 -> 1354, nick-daicos 10655 -> 10644, nick-haynes 117 -> 155, oliver-florent 1053 -> 1075, oliver-hollands 1533 -> 1562, patrick-cripps 1526 -> 1466, rhylee-west 212 -> 269, sam-walsh 3073 -> 3121, samuel-swadling 1069 -> 1241, timothy-english 3350 -> 3406, tom-sparrow 1568 -> 1507, trent-rivers 1517 -> 1469, will-hayes-b 234 -> 237, xavier-lindsay 1279 -> 1379, xavier-taylor 873 -> 860\nA store edit predicts who moves; a second mover means the edit did something the act did not say it would, and that is an abort.",
+  "abort": null,
+  "commits": [
+    "30169351ddbf7682ace1bdda7adad2d22d8ec630"
+  ],
+  "error": null,
   "facts": {
     "base": {
       "carriers": {
@@ -473,7 +233,7 @@
         "ui/data/movers_transition.js": "2fe0edca98be0e542820155eac061e1d",
         "ui/data/ownership.js": "c1bf5f269b0cd146391960dfe3e1afbc"
       },
-      "commit": "a9b819b2e065ed14dfc623c6d0763136f0f75c80",
+      "commit": "0e199da9af189e961820b5bb9097c03611fbef87",
       "expected_boot": {
         "as_of_round": 24,
         "balanced_board_md5": "cdae239d5865be9463c4ef461daf0a35",
@@ -495,11 +255,2100 @@
         "v0surf": "d9f5d15d9606edcdd5708233197dd951"
       }
     },
+    "build_proofs": {
+      "board_built": "c8c2f2b6f99445484fadaa8c44afe609",
+      "build_elapsed_s": 1181.7,
+      "day0_rebase": "off",
+      "edit": {
+        "movers": [
+          {
+            "after": 1415,
+            "before": 1189,
+            "delta": 226,
+            "key": "aaron-naughton",
+            "name": "Aaron Naughton",
+            "section": "active"
+          },
+          {
+            "after": 1022,
+            "before": 1005,
+            "delta": 17,
+            "key": "adam-cerra",
+            "name": "Adam Cerra",
+            "section": "active"
+          },
+          {
+            "after": 429,
+            "before": 431,
+            "delta": -2,
+            "key": "adam-saad",
+            "name": "Adam Saad",
+            "section": "active"
+          },
+          {
+            "after": 827,
+            "before": 828,
+            "delta": -1,
+            "key": "adam-treloar",
+            "name": "Adam Treloar",
+            "section": "active"
+          },
+          {
+            "after": 2894,
+            "before": 2896,
+            "delta": -2,
+            "key": "andrew-brayshaw",
+            "name": "Andrew Brayshaw",
+            "section": "active"
+          },
+          {
+            "after": 1104,
+            "before": 1105,
+            "delta": -1,
+            "key": "andrew-mcgrath",
+            "name": "Andrew McGrath",
+            "section": "active"
+          },
+          {
+            "after": 264,
+            "before": 276,
+            "delta": -12,
+            "key": "angus-anderson",
+            "name": "Angus Anderson",
+            "section": "active"
+          },
+          {
+            "after": 353,
+            "before": 354,
+            "delta": -1,
+            "key": "archer-day-wicks",
+            "name": "Archer Day-Wicks",
+            "section": "active"
+          },
+          {
+            "after": 3822,
+            "before": 3825,
+            "delta": -3,
+            "key": "archie-roberts",
+            "name": "Archie Roberts",
+            "section": "active"
+          },
+          {
+            "after": 322,
+            "before": 208,
+            "delta": 114,
+            "key": "arthur-jones",
+            "name": "Arthur Jones",
+            "section": "active"
+          },
+          {
+            "after": 7,
+            "before": 8,
+            "delta": -1,
+            "key": "ash-johnson",
+            "name": "Ash Johnson",
+            "section": "back"
+          },
+          {
+            "after": 1990,
+            "before": 2051,
+            "delta": -61,
+            "key": "bailey-dale",
+            "name": "Bailey Dale",
+            "section": "active"
+          },
+          {
+            "after": 2380,
+            "before": 2381,
+            "delta": -1,
+            "key": "bailey-humphrey",
+            "name": "Bailey Humphrey",
+            "section": "active"
+          },
+          {
+            "after": 115,
+            "before": 125,
+            "delta": -10,
+            "key": "bailey-laurie",
+            "name": "Bailey Laurie",
+            "section": "active"
+          },
+          {
+            "after": 5943,
+            "before": 5947,
+            "delta": -4,
+            "key": "bailey-smith",
+            "name": "Bailey Smith",
+            "section": "active"
+          },
+          {
+            "after": 541,
+            "before": 596,
+            "delta": -55,
+            "key": "bailey-williams-wb",
+            "name": "Bailey Williams",
+            "section": "active"
+          },
+          {
+            "after": 281,
+            "before": 304,
+            "delta": -23,
+            "key": "bayley-fritsch",
+            "name": "Bayley Fritsch",
+            "section": "active"
+          },
+          {
+            "after": 228,
+            "before": 226,
+            "delta": 2,
+            "key": "beau-mccreery",
+            "name": "Beau McCreery",
+            "section": "active"
+          },
+          {
+            "after": 346,
+            "before": 256,
+            "delta": 90,
+            "key": "ben-ainsworth",
+            "name": "Ben Ainsworth",
+            "section": "active"
+          },
+          {
+            "after": 980,
+            "before": 978,
+            "delta": 2,
+            "key": "ben-miller",
+            "name": "Ben Miller",
+            "section": "active"
+          },
+          {
+            "after": 840,
+            "before": 956,
+            "delta": -116,
+            "key": "billy-wilson",
+            "name": "Billy Wilson",
+            "section": "active"
+          },
+          {
+            "after": 130,
+            "before": 172,
+            "delta": -42,
+            "key": "blake-acres",
+            "name": "Blake Acres",
+            "section": "active"
+          },
+          {
+            "after": 624,
+            "before": 625,
+            "delta": -1,
+            "key": "blake-hardwick",
+            "name": "Blake Hardwick",
+            "section": "active"
+          },
+          {
+            "after": 4131,
+            "before": 4133,
+            "delta": -2,
+            "key": "bodhi-uwland",
+            "name": "Bodhi Uwland",
+            "section": "active"
+          },
+          {
+            "after": 78,
+            "before": 79,
+            "delta": -1,
+            "key": "brandon-zerk-thatcher",
+            "name": "Brandon Zerk-Thatcher",
+            "section": "active"
+          },
+          {
+            "after": 543,
+            "before": 544,
+            "delta": -1,
+            "key": "brayden-maynard",
+            "name": "Brayden Maynard",
+            "section": "active"
+          },
+          {
+            "after": 4032,
+            "before": 4033,
+            "delta": -1,
+            "key": "brodie-grundy",
+            "name": "Brodie Grundy",
+            "section": "active"
+          },
+          {
+            "after": 767,
+            "before": 720,
+            "delta": 47,
+            "key": "brodie-kemp",
+            "name": "Brodie Kemp",
+            "section": "active"
+          },
+          {
+            "after": 154,
+            "before": 155,
+            "delta": -1,
+            "key": "buku-khamis",
+            "name": "Buku Khamis",
+            "section": "active"
+          },
+          {
+            "after": 1250,
+            "before": 1251,
+            "delta": -1,
+            "key": "caleb-daniel",
+            "name": "Caleb Daniel",
+            "section": "active"
+          },
+          {
+            "after": 4533,
+            "before": 4537,
+            "delta": -4,
+            "key": "caleb-serong",
+            "name": "Caleb Serong",
+            "section": "active"
+          },
+          {
+            "after": 995,
+            "before": 1126,
+            "delta": -131,
+            "key": "caleb-windsor",
+            "name": "Caleb Windsor",
+            "section": "active"
+          },
+          {
+            "after": 1963,
+            "before": 1964,
+            "delta": -1,
+            "key": "callum-mills",
+            "name": "Callum Mills",
+            "section": "active"
+          },
+          {
+            "after": 3508,
+            "before": 3506,
+            "delta": 2,
+            "key": "callum-wilkie",
+            "name": "Callum Wilkie",
+            "section": "active"
+          },
+          {
+            "after": 1769,
+            "before": 1770,
+            "delta": -1,
+            "key": "cameron-mackenzie",
+            "name": "Cameron Mackenzie",
+            "section": "active"
+          },
+          {
+            "after": 3978,
+            "before": 3981,
+            "delta": -3,
+            "key": "chad-warner",
+            "name": "Chad Warner",
+            "section": "active"
+          },
+          {
+            "after": 66,
+            "before": 63,
+            "delta": 3,
+            "key": "changkuoth-jiath",
+            "name": "Changkuoth Jiath",
+            "section": "active"
+          },
+          {
+            "after": 658,
+            "before": 659,
+            "delta": -1,
+            "key": "charlie-comben",
+            "name": "Charlie Comben",
+            "section": "active"
+          },
+          {
+            "after": 331,
+            "before": 318,
+            "delta": 13,
+            "key": "charlie-west",
+            "name": "Charlie West",
+            "section": "active"
+          },
+          {
+            "after": 1762,
+            "before": 1763,
+            "delta": -1,
+            "key": "christian-petracca",
+            "name": "Christian Petracca",
+            "section": "active"
+          },
+          {
+            "after": 2280,
+            "before": 2282,
+            "delta": -2,
+            "key": "clayton-oliver",
+            "name": "Clayton Oliver",
+            "section": "active"
+          },
+          {
+            "after": 183,
+            "before": 186,
+            "delta": -3,
+            "key": "cody-weightman",
+            "name": "Cody Weightman",
+            "section": "active"
+          },
+          {
+            "after": 4265,
+            "before": 4264,
+            "delta": 1,
+            "key": "colby-mckercher",
+            "name": "Colby McKercher",
+            "section": "active"
+          },
+          {
+            "after": 221,
+            "before": 253,
+            "delta": -32,
+            "key": "connor-budarick",
+            "name": "Connor Budarick",
+            "section": "active"
+          },
+          {
+            "after": 2374,
+            "before": 2376,
+            "delta": -2,
+            "key": "connor-idun",
+            "name": "Connor Idun",
+            "section": "active"
+          },
+          {
+            "after": 2938,
+            "before": 2939,
+            "delta": -1,
+            "key": "connor-macdonald",
+            "name": "Connor MacDonald",
+            "section": "active"
+          },
+          {
+            "after": 2645,
+            "before": 2640,
+            "delta": 5,
+            "key": "connor-o-sullivan",
+            "name": "Connor O'Sullivan",
+            "section": "active"
+          },
+          {
+            "after": 3187,
+            "before": 3190,
+            "delta": -3,
+            "key": "connor-rozee",
+            "name": "Connor Rozee",
+            "section": "active"
+          },
+          {
+            "after": 1795,
+            "before": 1796,
+            "delta": -1,
+            "key": "cooper-duff-tytler",
+            "name": "Cooper Duff-Tytler",
+            "section": "active"
+          },
+          {
+            "after": 1072,
+            "before": 1073,
+            "delta": -1,
+            "key": "cooper-hynes",
+            "name": "Cooper Hynes",
+            "section": "active"
+          },
+          {
+            "after": 1158,
+            "before": 975,
+            "delta": 183,
+            "key": "cooper-lord",
+            "name": "Cooper Lord",
+            "section": "active"
+          },
+          {
+            "after": 1055,
+            "before": 1127,
+            "delta": -72,
+            "key": "dan-houston",
+            "name": "Dan Houston",
+            "section": "active"
+          },
+          {
+            "after": 341,
+            "before": 293,
+            "delta": 48,
+            "key": "daniel-mcstay",
+            "name": "Daniel McStay",
+            "section": "active"
+          },
+          {
+            "after": 1732,
+            "before": 1554,
+            "delta": 178,
+            "key": "daniel-turner",
+            "name": "Daniel Turner",
+            "section": "active"
+          },
+          {
+            "after": 1557,
+            "before": 1522,
+            "delta": 35,
+            "key": "darcy-cameron",
+            "name": "Darcy Cameron",
+            "section": "active"
+          },
+          {
+            "after": 824,
+            "before": 822,
+            "delta": 2,
+            "key": "darcy-fogarty",
+            "name": "Darcy Fogarty",
+            "section": "active"
+          },
+          {
+            "after": 1495,
+            "before": 1496,
+            "delta": -1,
+            "key": "darcy-jones",
+            "name": "Darcy Jones",
+            "section": "active"
+          },
+          {
+            "after": 620,
+            "before": 621,
+            "delta": -1,
+            "key": "darcy-parish",
+            "name": "Darcy Parish",
+            "section": "active"
+          },
+          {
+            "after": 3113,
+            "before": 3114,
+            "delta": -1,
+            "key": "darcy-wilmot",
+            "name": "Darcy Wilmot",
+            "section": "active"
+          },
+          {
+            "after": 2715,
+            "before": 2716,
+            "delta": -1,
+            "key": "darcy-wilson",
+            "name": "Darcy Wilson",
+            "section": "active"
+          },
+          {
+            "after": 1133,
+            "before": 1134,
+            "delta": -1,
+            "key": "dylan-patterson",
+            "name": "Dylan Patterson",
+            "section": "active"
+          },
+          {
+            "after": 3080,
+            "before": 3081,
+            "delta": -1,
+            "key": "dyson-sharp",
+            "name": "Dyson Sharp",
+            "section": "active"
+          },
+          {
+            "after": 612,
+            "before": 631,
+            "delta": -19,
+            "key": "ed-langdon",
+            "name": "Ed Langdon",
+            "section": "active"
+          },
+          {
+            "after": 4083,
+            "before": 4108,
+            "delta": -25,
+            "key": "ed-richards",
+            "name": "Ed Richards",
+            "section": "active"
+          },
+          {
+            "after": 812,
+            "before": 851,
+            "delta": -39,
+            "key": "edward-allan",
+            "name": "Edward Allan",
+            "section": "active"
+          },
+          {
+            "after": 7518,
+            "before": 7524,
+            "delta": -6,
+            "key": "errol-gulden",
+            "name": "Errol Gulden",
+            "section": "active"
+          },
+          {
+            "after": 554,
+            "before": 555,
+            "delta": -1,
+            "key": "ethan-read",
+            "name": "Ethan Read",
+            "section": "active"
+          },
+          {
+            "after": 5544,
+            "before": 5548,
+            "delta": -4,
+            "key": "finn-callaghan",
+            "name": "Finn Callaghan",
+            "section": "active"
+          },
+          {
+            "after": 798,
+            "before": 793,
+            "delta": 5,
+            "key": "francis-evans",
+            "name": "Francis Evans",
+            "section": "active"
+          },
+          {
+            "after": 1809,
+            "before": 1944,
+            "delta": -135,
+            "key": "george-hewett",
+            "name": "George Hewett",
+            "section": "active"
+          },
+          {
+            "after": 3856,
+            "before": 3859,
+            "delta": -3,
+            "key": "harley-reid",
+            "name": "Harley Reid",
+            "section": "active"
+          },
+          {
+            "after": 1601,
+            "before": 1600,
+            "delta": 1,
+            "key": "harris-andrews",
+            "name": "Harris Andrews",
+            "section": "active"
+          },
+          {
+            "after": 382,
+            "before": 422,
+            "delta": -40,
+            "key": "harrison-petty",
+            "name": "Harrison Petty",
+            "section": "active"
+          },
+          {
+            "after": 3035,
+            "before": 2806,
+            "delta": 229,
+            "key": "harry-dean",
+            "name": "Harry Dean",
+            "section": "active"
+          },
+          {
+            "after": 1658,
+            "before": 1643,
+            "delta": 15,
+            "key": "harry-mckay",
+            "name": "Harry McKay",
+            "section": "active"
+          },
+          {
+            "after": 98,
+            "before": 105,
+            "delta": -7,
+            "key": "harry-sharp",
+            "name": "Harry Sharp",
+            "section": "active"
+          },
+          {
+            "after": 11161,
+            "before": 11169,
+            "delta": -8,
+            "key": "harry-sheezel",
+            "name": "Harry Sheezel",
+            "section": "active"
+          },
+          {
+            "after": 85,
+            "before": 87,
+            "delta": -2,
+            "key": "harvey-harrison",
+            "name": "Harvey Harrison",
+            "section": "active"
+          },
+          {
+            "after": 1912,
+            "before": 1804,
+            "delta": 108,
+            "key": "harvey-langford",
+            "name": "Harvey Langford",
+            "section": "active"
+          },
+          {
+            "after": 2016,
+            "before": 2017,
+            "delta": -1,
+            "key": "harvey-thomas",
+            "name": "Harvey Thomas",
+            "section": "active"
+          },
+          {
+            "after": 131,
+            "before": 132,
+            "delta": -1,
+            "key": "hugh-bond",
+            "name": "Hugh Bond",
+            "section": "active"
+          },
+          {
+            "after": 1589,
+            "before": 1591,
+            "delta": -2,
+            "key": "hugh-mccluggage",
+            "name": "Hugh McCluggage",
+            "section": "active"
+          },
+          {
+            "after": 2893,
+            "before": 2895,
+            "delta": -2,
+            "key": "hugo-garcia",
+            "name": "Hugo Garcia",
+            "section": "active"
+          },
+          {
+            "after": 420,
+            "before": 421,
+            "delta": -1,
+            "key": "hussien-el-achkar",
+            "name": "Hussien El Achkar",
+            "section": "active"
+          },
+          {
+            "after": 3770,
+            "before": 3774,
+            "delta": -4,
+            "key": "isaac-heeney",
+            "name": "Isaac Heeney",
+            "section": "active"
+          },
+          {
+            "after": 624,
+            "before": 608,
+            "delta": 16,
+            "key": "isaac-quaynor",
+            "name": "Isaac Quaynor",
+            "section": "active"
+          },
+          {
+            "after": 5028,
+            "before": 5029,
+            "delta": -1,
+            "key": "izak-rankine",
+            "name": "Izak Rankine",
+            "section": "active"
+          },
+          {
+            "after": 355,
+            "before": 347,
+            "delta": 8,
+            "key": "jack-crisp",
+            "name": "Jack Crisp",
+            "section": "active"
+          },
+          {
+            "after": 682,
+            "before": 683,
+            "delta": -1,
+            "key": "jack-gunston",
+            "name": "Jack Gunston",
+            "section": "active"
+          },
+          {
+            "after": 542,
+            "before": 543,
+            "delta": -1,
+            "key": "jack-lukosius",
+            "name": "Jack Lukosius",
+            "section": "active"
+          },
+          {
+            "after": 2423,
+            "before": 2425,
+            "delta": -2,
+            "key": "jack-ross",
+            "name": "Jack Ross",
+            "section": "active"
+          },
+          {
+            "after": 698,
+            "before": 697,
+            "delta": 1,
+            "key": "jack-silvagni",
+            "name": "Jack Silvagni",
+            "section": "active"
+          },
+          {
+            "after": 3148,
+            "before": 3149,
+            "delta": -1,
+            "key": "jack-sinclair",
+            "name": "Jack Sinclair",
+            "section": "active"
+          },
+          {
+            "after": 1109,
+            "before": 1124,
+            "delta": -15,
+            "key": "jack-steele",
+            "name": "Jack Steele",
+            "section": "active"
+          },
+          {
+            "after": 312,
+            "before": 527,
+            "delta": -215,
+            "key": "jack-viney",
+            "name": "Jack Viney",
+            "section": "active"
+          },
+          {
+            "after": 1008,
+            "before": 1009,
+            "delta": -1,
+            "key": "jack-whitlock",
+            "name": "Jack Whitlock",
+            "section": "active"
+          },
+          {
+            "after": 2065,
+            "before": 2066,
+            "delta": -1,
+            "key": "jacob-farrow",
+            "name": "Jacob Farrow",
+            "section": "active"
+          },
+          {
+            "after": 1820,
+            "before": 1814,
+            "delta": 6,
+            "key": "jacob-van-rooyen",
+            "name": "Jacob Van Rooyen",
+            "section": "active"
+          },
+          {
+            "after": 1239,
+            "before": 1069,
+            "delta": 170,
+            "key": "jacob-weitering",
+            "name": "Jacob Weitering",
+            "section": "active"
+          },
+          {
+            "after": 5029,
+            "before": 4880,
+            "delta": 149,
+            "key": "jagga-smith",
+            "name": "Jagga Smith",
+            "section": "active"
+          },
+          {
+            "after": 4715,
+            "before": 4719,
+            "delta": -4,
+            "key": "jai-newcombe",
+            "name": "Jai Newcombe",
+            "section": "active"
+          },
+          {
+            "after": 3979,
+            "before": 3980,
+            "delta": -1,
+            "key": "jake-bowey",
+            "name": "Jake Bowey",
+            "section": "active"
+          },
+          {
+            "after": 192,
+            "before": 191,
+            "delta": 1,
+            "key": "jake-lever",
+            "name": "Jake Lever",
+            "section": "active"
+          },
+          {
+            "after": 466,
+            "before": 474,
+            "delta": -8,
+            "key": "james-o-donnell",
+            "name": "James O'Donnell",
+            "section": "active"
+          },
+          {
+            "after": 1200,
+            "before": 1201,
+            "delta": -1,
+            "key": "james-sicily",
+            "name": "James Sicily",
+            "section": "active"
+          },
+          {
+            "after": 2613,
+            "before": 2614,
+            "delta": -1,
+            "key": "jase-burgoyne",
+            "name": "Jase Burgoyne",
+            "section": "active"
+          },
+          {
+            "after": 5554,
+            "before": 5559,
+            "delta": -5,
+            "key": "jason-horne-francis",
+            "name": "Jason Horne-Francis",
+            "section": "active"
+          },
+          {
+            "after": 2751,
+            "before": 2752,
+            "delta": -1,
+            "key": "jaspa-fletcher",
+            "name": "Jaspa Fletcher",
+            "section": "active"
+          },
+          {
+            "after": 1035,
+            "before": 1036,
+            "delta": -1,
+            "key": "jed-walter",
+            "name": "Jed Walter",
+            "section": "active"
+          },
+          {
+            "after": 165,
+            "before": 181,
+            "delta": -16,
+            "key": "jeremy-howe",
+            "name": "Jeremy Howe",
+            "section": "active"
+          },
+          {
+            "after": 288,
+            "before": 305,
+            "delta": -17,
+            "key": "joel-fitzgerald",
+            "name": "Joel Fitzgerald",
+            "section": "active"
+          },
+          {
+            "after": 2870,
+            "before": 2512,
+            "delta": 358,
+            "key": "joel-freijah",
+            "name": "Joel Freijah",
+            "section": "active"
+          },
+          {
+            "after": 1448,
+            "before": 1449,
+            "delta": -1,
+            "key": "joel-jeffrey",
+            "name": "Joel Jeffrey",
+            "section": "active"
+          },
+          {
+            "after": 2338,
+            "before": 2339,
+            "delta": -1,
+            "key": "john-noble",
+            "name": "John Noble",
+            "section": "active"
+          },
+          {
+            "after": 3196,
+            "before": 3197,
+            "delta": -1,
+            "key": "jordan-clark",
+            "name": "Jordan Clark",
+            "section": "active"
+          },
+          {
+            "after": 2948,
+            "before": 2950,
+            "delta": -2,
+            "key": "jordan-dawson",
+            "name": "Jordan Dawson",
+            "section": "active"
+          },
+          {
+            "after": 1307,
+            "before": 1398,
+            "delta": -91,
+            "key": "jordan-de-goey",
+            "name": "Jordan De Goey",
+            "section": "active"
+          },
+          {
+            "after": 2563,
+            "before": 2564,
+            "delta": -1,
+            "key": "jordon-sweet",
+            "name": "Jordon Sweet",
+            "section": "active"
+          },
+          {
+            "after": 492,
+            "before": 493,
+            "delta": -1,
+            "key": "joseph-fonti",
+            "name": "Joseph Fonti",
+            "section": "active"
+          },
+          {
+            "after": 1871,
+            "before": 1870,
+            "delta": 1,
+            "key": "josh-battle",
+            "name": "Josh Battle",
+            "section": "active"
+          },
+          {
+            "after": 2125,
+            "before": 2143,
+            "delta": -18,
+            "key": "josh-daicos",
+            "name": "Josh Daicos",
+            "section": "active"
+          },
+          {
+            "after": 330,
+            "before": 318,
+            "delta": 12,
+            "key": "josh-dolan",
+            "name": "Josh Dolan",
+            "section": "active"
+          },
+          {
+            "after": 260,
+            "before": 261,
+            "delta": -1,
+            "key": "josh-draper",
+            "name": "Josh Draper",
+            "section": "active"
+          },
+          {
+            "after": 1309,
+            "before": 1310,
+            "delta": -1,
+            "key": "josh-dunkley",
+            "name": "Josh Dunkley",
+            "section": "active"
+          },
+          {
+            "after": 5874,
+            "before": 5875,
+            "delta": -1,
+            "key": "josh-treacy",
+            "name": "Josh Treacy",
+            "section": "active"
+          },
+          {
+            "after": 2689,
+            "before": 2691,
+            "delta": -2,
+            "key": "josh-ward",
+            "name": "Josh Ward",
+            "section": "active"
+          },
+          {
+            "after": 2790,
+            "before": 2792,
+            "delta": -2,
+            "key": "josh-worrell",
+            "name": "Josh Worrell",
+            "section": "active"
+          },
+          {
+            "after": 1906,
+            "before": 1907,
+            "delta": -1,
+            "key": "justin-mcinerney",
+            "name": "Justin McInerney",
+            "section": "active"
+          },
+          {
+            "after": 1222,
+            "before": 1223,
+            "delta": -1,
+            "key": "jy-simpkin",
+            "name": "Jy Simpkin",
+            "section": "active"
+          },
+          {
+            "after": 1117,
+            "before": 1122,
+            "delta": -5,
+            "key": "kade-chandler",
+            "name": "Kade Chandler",
+            "section": "active"
+          },
+          {
+            "after": 1320,
+            "before": 1321,
+            "delta": -1,
+            "key": "kane-farrell",
+            "name": "Kane Farrell",
+            "section": "active"
+          },
+          {
+            "after": 1969,
+            "before": 1970,
+            "delta": -1,
+            "key": "kieren-briggs",
+            "name": "Kieren Briggs",
+            "section": "active"
+          },
+          {
+            "after": 1695,
+            "before": 1739,
+            "delta": -44,
+            "key": "koltyn-tholstrup",
+            "name": "Koltyn Tholstrup",
+            "section": "active"
+          },
+          {
+            "after": 485,
+            "before": 486,
+            "delta": -1,
+            "key": "kyle-langford",
+            "name": "Kyle Langford",
+            "section": "active"
+          },
+          {
+            "after": 4435,
+            "before": 4433,
+            "delta": 2,
+            "key": "kysaiah-pickett",
+            "name": "Kysaiah Pickett",
+            "section": "active"
+          },
+          {
+            "after": 2180,
+            "before": 2181,
+            "delta": -1,
+            "key": "lachie-neale",
+            "name": "Lachie Neale",
+            "section": "active"
+          },
+          {
+            "after": 5387,
+            "before": 5390,
+            "delta": -3,
+            "key": "lachlan-ash",
+            "name": "Lachlan Ash",
+            "section": "active"
+          },
+          {
+            "after": 155,
+            "before": 119,
+            "delta": 36,
+            "key": "lachlan-bramble",
+            "name": "Lachlan Bramble",
+            "section": "active"
+          },
+          {
+            "after": 598,
+            "before": 594,
+            "delta": 4,
+            "key": "lachlan-cowan",
+            "name": "Lachlan Cowan",
+            "section": "active"
+          },
+          {
+            "after": 658,
+            "before": 672,
+            "delta": -14,
+            "key": "lachlan-schultz",
+            "name": "Lachlan Schultz",
+            "section": "active"
+          },
+          {
+            "after": 1693,
+            "before": 1695,
+            "delta": -2,
+            "key": "lawson-humphries",
+            "name": "Lawson Humphries",
+            "section": "active"
+          },
+          {
+            "after": 1778,
+            "before": 1779,
+            "delta": -1,
+            "key": "leo-lombard",
+            "name": "Leo Lombard",
+            "section": "active"
+          },
+          {
+            "after": 3597,
+            "before": 3598,
+            "delta": -1,
+            "key": "levi-ashcroft",
+            "name": "Levi Ashcroft",
+            "section": "active"
+          },
+          {
+            "after": 148,
+            "before": 223,
+            "delta": -75,
+            "key": "lewis-young",
+            "name": "Lewis Young",
+            "section": "active"
+          },
+          {
+            "after": 3098,
+            "before": 3101,
+            "delta": -3,
+            "key": "luke-davies-uniacke",
+            "name": "Luke Davies-Uniacke",
+            "section": "active"
+          },
+          {
+            "after": 9450,
+            "before": 9453,
+            "delta": -3,
+            "key": "luke-jackson",
+            "name": "Luke Jackson",
+            "section": "active"
+          },
+          {
+            "after": 277,
+            "before": 168,
+            "delta": 109,
+            "key": "luke-kennedy",
+            "name": "Luke Kennedy",
+            "section": "active"
+          },
+          {
+            "after": 1173,
+            "before": 1175,
+            "delta": -2,
+            "key": "luke-parker",
+            "name": "Luke Parker",
+            "section": "active"
+          },
+          {
+            "after": 3884,
+            "before": 3882,
+            "delta": 2,
+            "key": "mac-andrew",
+            "name": "Mac Andrew",
+            "section": "active"
+          },
+          {
+            "after": 525,
+            "before": 527,
+            "delta": -2,
+            "key": "marc-pittonet",
+            "name": "Marc Pittonet",
+            "section": "active"
+          },
+          {
+            "after": 3702,
+            "before": 3626,
+            "delta": 76,
+            "key": "marcus-bontempelli",
+            "name": "Marcus Bontempelli",
+            "section": "active"
+          },
+          {
+            "after": 848,
+            "before": 850,
+            "delta": -2,
+            "key": "marcus-herbert",
+            "name": "Marcus Herbert",
+            "section": "active"
+          },
+          {
+            "after": 1493,
+            "before": 1491,
+            "delta": 2,
+            "key": "mark-keane",
+            "name": "Mark Keane",
+            "section": "active"
+          },
+          {
+            "after": 164,
+            "before": 131,
+            "delta": 33,
+            "key": "matt-cottrell",
+            "name": "Matt Cottrell",
+            "section": "active"
+          },
+          {
+            "after": 4923,
+            "before": 4927,
+            "delta": -4,
+            "key": "matt-rowell",
+            "name": "Matt Rowell",
+            "section": "active"
+          },
+          {
+            "after": 706,
+            "before": 668,
+            "delta": 38,
+            "key": "matthew-kennedy-1",
+            "name": "Matthew Kennedy",
+            "section": "active"
+          },
+          {
+            "after": 3345,
+            "before": 3377,
+            "delta": -32,
+            "key": "max-gawn",
+            "name": "Max Gawn",
+            "section": "active"
+          },
+          {
+            "after": 8459,
+            "before": 8466,
+            "delta": -7,
+            "key": "max-holmes",
+            "name": "Max Holmes",
+            "section": "active"
+          },
+          {
+            "after": 296,
+            "before": 306,
+            "delta": -10,
+            "key": "michael-sellwood",
+            "name": "Michael Sellwood",
+            "section": "active"
+          },
+          {
+            "after": 998,
+            "before": 999,
+            "delta": -1,
+            "key": "miles-bergman",
+            "name": "Miles Bergman",
+            "section": "active"
+          },
+          {
+            "after": 37,
+            "before": 44,
+            "delta": -7,
+            "key": "mitch-mcgovern",
+            "name": "Mitch McGovern",
+            "section": "active"
+          },
+          {
+            "after": 771,
+            "before": 769,
+            "delta": 2,
+            "key": "mitchell-lewis",
+            "name": "Mitchell Lewis",
+            "section": "active"
+          },
+          {
+            "after": 1985,
+            "before": 1980,
+            "delta": 5,
+            "key": "mitchito-owens",
+            "name": "Mitchito Owens",
+            "section": "active"
+          },
+          {
+            "after": 3395,
+            "before": 3396,
+            "delta": -1,
+            "key": "murphy-reid",
+            "name": "Murphy Reid",
+            "section": "active"
+          },
+          {
+            "after": 9453,
+            "before": 9461,
+            "delta": -8,
+            "key": "nasiah-wanganeen-milera",
+            "name": "Nasiah Wanganeen-Milera",
+            "section": "active"
+          },
+          {
+            "after": 1353,
+            "before": 1290,
+            "delta": 63,
+            "key": "ned-long",
+            "name": "Ned Long",
+            "section": "active"
+          },
+          {
+            "after": 3893,
+            "before": 3896,
+            "delta": -3,
+            "key": "nicholas-martin",
+            "name": "Nicholas Martin",
+            "section": "active"
+          },
+          {
+            "after": 4060,
+            "before": 4061,
+            "delta": -1,
+            "key": "nick-blakey",
+            "name": "Nick Blakey",
+            "section": "active"
+          },
+          {
+            "after": 713,
+            "before": 714,
+            "delta": -1,
+            "key": "nick-bryan",
+            "name": "Nick Bryan",
+            "section": "active"
+          },
+          {
+            "after": 10636,
+            "before": 10655,
+            "delta": -19,
+            "key": "nick-daicos",
+            "name": "Nick Daicos",
+            "section": "active"
+          },
+          {
+            "after": 156,
+            "before": 117,
+            "delta": 39,
+            "key": "nick-haynes",
+            "name": "Nick Haynes",
+            "section": "active"
+          },
+          {
+            "after": 1213,
+            "before": 1214,
+            "delta": -1,
+            "key": "nick-madden",
+            "name": "Nick Madden",
+            "section": "active"
+          },
+          {
+            "after": 3610,
+            "before": 3611,
+            "delta": -1,
+            "key": "nick-watson",
+            "name": "Nick Watson",
+            "section": "active"
+          },
+          {
+            "after": 5595,
+            "before": 5600,
+            "delta": -5,
+            "key": "noah-anderson",
+            "name": "Noah Anderson",
+            "section": "active"
+          },
+          {
+            "after": 819,
+            "before": 816,
+            "delta": 3,
+            "key": "noah-mraz",
+            "name": "Noah Mraz",
+            "section": "active"
+          },
+          {
+            "after": 1074,
+            "before": 1053,
+            "delta": 21,
+            "key": "oliver-florent",
+            "name": "Oliver Florent",
+            "section": "active"
+          },
+          {
+            "after": 402,
+            "before": 403,
+            "delta": -1,
+            "key": "oliver-francou",
+            "name": "Oliver Francou",
+            "section": "active"
+          },
+          {
+            "after": 261,
+            "before": 262,
+            "delta": -1,
+            "key": "oliver-henry",
+            "name": "Oliver Henry",
+            "section": "active"
+          },
+          {
+            "after": 1565,
+            "before": 1533,
+            "delta": 32,
+            "key": "oliver-hollands",
+            "name": "Oliver Hollands",
+            "section": "active"
+          },
+          {
+            "after": 2466,
+            "before": 2468,
+            "delta": -2,
+            "key": "ollie-dempsey",
+            "name": "Ollie Dempsey",
+            "section": "active"
+          },
+          {
+            "after": 1465,
+            "before": 1526,
+            "delta": -61,
+            "key": "patrick-cripps",
+            "name": "Patrick Cripps",
+            "section": "active"
+          },
+          {
+            "after": 707,
+            "before": 758,
+            "delta": -51,
+            "key": "patrick-lipinski",
+            "name": "Patrick Lipinski",
+            "section": "active"
+          },
+          {
+            "after": 1269,
+            "before": 1270,
+            "delta": -1,
+            "key": "peter-wright",
+            "name": "Peter Wright",
+            "section": "active"
+          },
+          {
+            "after": 993,
+            "before": 994,
+            "delta": -1,
+            "key": "reilly-o-brien",
+            "name": "Reilly O'Brien",
+            "section": "active"
+          },
+          {
+            "after": 2248,
+            "before": 2244,
+            "delta": 4,
+            "key": "reuben-ginbey",
+            "name": "Reuben Ginbey",
+            "section": "active"
+          },
+          {
+            "after": 270,
+            "before": 212,
+            "delta": 58,
+            "key": "rhylee-west",
+            "name": "Rhylee West",
+            "section": "active"
+          },
+          {
+            "after": 217,
+            "before": 218,
+            "delta": -1,
+            "key": "riley-hamilton",
+            "name": "Riley Hamilton",
+            "section": "active"
+          },
+          {
+            "after": 4288,
+            "before": 4289,
+            "delta": -1,
+            "key": "riley-thilthorpe",
+            "name": "Riley Thilthorpe",
+            "section": "active"
+          },
+          {
+            "after": 85,
+            "before": 84,
+            "delta": 1,
+            "key": "roan-steele",
+            "name": "Roan Steele",
+            "section": "active"
+          },
+          {
+            "after": 106,
+            "before": 107,
+            "delta": -1,
+            "key": "robert-hansen",
+            "name": "Robert Hansen",
+            "section": "active"
+          },
+          {
+            "after": 265,
+            "before": 295,
+            "delta": -30,
+            "key": "rory-lobb",
+            "name": "Rory Lobb",
+            "section": "active"
+          },
+          {
+            "after": 2051,
+            "before": 2052,
+            "delta": -1,
+            "key": "rowan-marshall",
+            "name": "Rowan Marshall",
+            "section": "active"
+          },
+          {
+            "after": 6,
+            "before": 7,
+            "delta": -1,
+            "key": "ryan-gardner",
+            "name": "Ryan Gardner",
+            "section": "active"
+          },
+          {
+            "after": 3771,
+            "before": 3769,
+            "delta": 2,
+            "key": "ryley-sanders",
+            "name": "Ryley Sanders",
+            "section": "active"
+          },
+          {
+            "after": 2818,
+            "before": 2821,
+            "delta": -3,
+            "key": "sam-berry",
+            "name": "Sam Berry",
+            "section": "active"
+          },
+          {
+            "after": 2312,
+            "before": 2313,
+            "delta": -1,
+            "key": "sam-cumming",
+            "name": "Sam Cumming",
+            "section": "active"
+          },
+          {
+            "after": 5341,
+            "before": 5339,
+            "delta": 2,
+            "key": "sam-darcy",
+            "name": "Sam Darcy",
+            "section": "active"
+          },
+          {
+            "after": 116,
+            "before": 115,
+            "delta": 1,
+            "key": "sam-davidson",
+            "name": "Sam Davidson",
+            "section": "active"
+          },
+          {
+            "after": 850,
+            "before": 851,
+            "delta": -1,
+            "key": "sam-de-koning",
+            "name": "Sam De Koning",
+            "section": "active"
+          },
+          {
+            "after": 2481,
+            "before": 2482,
+            "delta": -1,
+            "key": "sam-durham",
+            "name": "Sam Durham",
+            "section": "active"
+          },
+          {
+            "after": 2552,
+            "before": 2554,
+            "delta": -2,
+            "key": "sam-flanders",
+            "name": "Sam Flanders",
+            "section": "active"
+          },
+          {
+            "after": 3513,
+            "before": 3514,
+            "delta": -1,
+            "key": "sam-lalor",
+            "name": "Sam Lalor",
+            "section": "active"
+          },
+          {
+            "after": 1142,
+            "before": 1139,
+            "delta": 3,
+            "key": "sam-taylor",
+            "name": "Sam Taylor",
+            "section": "active"
+          },
+          {
+            "after": 3118,
+            "before": 3073,
+            "delta": 45,
+            "key": "sam-walsh",
+            "name": "Sam Walsh",
+            "section": "active"
+          },
+          {
+            "after": 1240,
+            "before": 1069,
+            "delta": 171,
+            "key": "samuel-swadling",
+            "name": "Samuel Swadling",
+            "section": "active"
+          },
+          {
+            "after": 642,
+            "before": 659,
+            "delta": -17,
+            "key": "talor-byrne",
+            "name": "Talor Byrne",
+            "section": "active"
+          },
+          {
+            "after": 2009,
+            "before": 2010,
+            "delta": -1,
+            "key": "tanner-bruhn",
+            "name": "Tanner Bruhn",
+            "section": "active"
+          },
+          {
+            "after": 902,
+            "before": 903,
+            "delta": -1,
+            "key": "thomas-stewart",
+            "name": "Thomas Stewart",
+            "section": "active"
+          },
+          {
+            "after": 1210,
+            "before": 1212,
+            "delta": -2,
+            "key": "tim-kelly",
+            "name": "Tim Kelly",
+            "section": "active"
+          },
+          {
+            "after": 108,
+            "before": 98,
+            "delta": 10,
+            "key": "tim-membrey",
+            "name": "Tim Membrey",
+            "section": "active"
+          },
+          {
+            "after": 2445,
+            "before": 2447,
+            "delta": -2,
+            "key": "tim-taranto",
+            "name": "Tim Taranto",
+            "section": "active"
+          },
+          {
+            "after": 3405,
+            "before": 3350,
+            "delta": 55,
+            "key": "timothy-english",
+            "name": "Timothy English",
+            "section": "active"
+          },
+          {
+            "after": 746,
+            "before": 747,
+            "delta": -1,
+            "key": "toby-greene",
+            "name": "Toby Greene",
+            "section": "active"
+          },
+          {
+            "after": 224,
+            "before": 225,
+            "delta": -1,
+            "key": "toby-murray",
+            "name": "Toby Murray",
+            "section": "active"
+          },
+          {
+            "after": 1610,
+            "before": 1611,
+            "delta": -1,
+            "key": "tom-de-koning",
+            "name": "Tom De Koning",
+            "section": "active"
+          },
+          {
+            "after": 5250,
+            "before": 5255,
+            "delta": -5,
+            "key": "tom-green",
+            "name": "Tom Green",
+            "section": "active"
+          },
+          {
+            "after": 1357,
+            "before": 1359,
+            "delta": -2,
+            "key": "tom-mccarthy",
+            "name": "Tom McCarthy",
+            "section": "active"
+          },
+          {
+            "after": 1434,
+            "before": 1433,
+            "delta": 1,
+            "key": "tom-mccartin",
+            "name": "Tom McCartin",
+            "section": "active"
+          },
+          {
+            "after": 26,
+            "before": 59,
+            "delta": -33,
+            "key": "tom-mcdonald",
+            "name": "Tom McDonald",
+            "section": "active"
+          },
+          {
+            "after": 1506,
+            "before": 1568,
+            "delta": -62,
+            "key": "tom-sparrow",
+            "name": "Tom Sparrow",
+            "section": "active"
+          },
+          {
+            "after": 1466,
+            "before": 1517,
+            "delta": -51,
+            "key": "trent-rivers",
+            "name": "Trent Rivers",
+            "section": "active"
+          },
+          {
+            "after": 7209,
+            "before": 7211,
+            "delta": -2,
+            "key": "tristan-xerri",
+            "name": "Tristan Xerri",
+            "section": "active"
+          },
+          {
+            "after": 65,
+            "before": 66,
+            "delta": -1,
+            "key": "wil-parker",
+            "name": "Wil Parker",
+            "section": "active"
+          },
+          {
+            "after": 850,
+            "before": 852,
+            "delta": -2,
+            "key": "wil-powell",
+            "name": "Wil Powell",
+            "section": "active"
+          },
+          {
+            "after": 7053,
+            "before": 7058,
+            "delta": -5,
+            "key": "will-ashcroft",
+            "name": "Will Ashcroft",
+            "section": "active"
+          },
+          {
+            "after": 1860,
+            "before": 1861,
+            "delta": -1,
+            "key": "will-day",
+            "name": "Will Day",
+            "section": "active"
+          },
+          {
+            "after": 280,
+            "before": 281,
+            "delta": -1,
+            "key": "will-hayward",
+            "name": "Will Hayward",
+            "section": "active"
+          },
+          {
+            "after": 986,
+            "before": 987,
+            "delta": -1,
+            "key": "will-setterfield",
+            "name": "Will Setterfield",
+            "section": "active"
+          },
+          {
+            "after": 239,
+            "before": 240,
+            "delta": -1,
+            "key": "xavier-duursma",
+            "name": "Xavier Duursma",
+            "section": "active"
+          },
+          {
+            "after": 1388,
+            "before": 1279,
+            "delta": 109,
+            "key": "xavier-lindsay",
+            "name": "Xavier Lindsay",
+            "section": "active"
+          },
+          {
+            "after": 841,
+            "before": 873,
+            "delta": -32,
+            "key": "xavier-taylor",
+            "name": "Xavier Taylor",
+            "section": "active"
+          },
+          {
+            "after": 3178,
+            "before": 3179,
+            "delta": -1,
+            "key": "zac-bailey",
+            "name": "Zac Bailey",
+            "section": "active"
+          },
+          {
+            "after": 2407,
+            "before": 2408,
+            "delta": -1,
+            "key": "zachary-merrett",
+            "name": "Zachary Merrett",
+            "section": "active"
+          },
+          {
+            "after": 6381,
+            "before": 6386,
+            "delta": -5,
+            "key": "zak-butters",
+            "name": "Zak Butters",
+            "section": "active"
+          }
+        ],
+        "n_movers": 234,
+        "pool_after": 703913,
+        "pool_before": 702917,
+        "pool_delta": 996,
+        "rows_added": [],
+        "rows_compared": 1002,
+        "rows_removed": [],
+        "store_read_by_build": "415929d3c9d561cc58bef00ae63432b2"
+      },
+      "installed": true,
+      "kill_switch": null,
+      "predicted_board": null,
+      "reference_board": null
+    },
+    "claims": {
+      "activation": {
+        "day0_rebase": {
+          "_doc": "off by default; the M1b ruling \u2014 automation never re-bases itself green",
+          "state": "off"
+        }
+      },
+      "claims_path": "/home/user/afl-rl-engine/docs/evidence/finals_fw1_2026-08-30/CLAIMS.json",
+      "n_claims": 13,
+      "verified": true
+    },
+    "commit": {
+      "commit": "30169351ddbf7682ace1bdda7adad2d22d8ec630",
+      "committed": true,
+      "paths": [
+        "data/expected_boot.json",
+        "data/release_contract.json",
+        "data/release_lineage.json",
+        "data/rl_build/rl_app_data.json",
+        "data/rl_build/rl_app_data.json.srcmd5",
+        "data/season_state.json",
+        "docs/STATE.md",
+        "docs/evidence/finals_fw1_2026-08-30/CLAIMS.json",
+        "docs/evidence/finals_fw1_2026-08-30/build_LANDING.txt",
+        "docs/evidence/finals_fw1_2026-08-30/claims_check.txt",
+        "docs/evidence/finals_fw1_2026-08-30/gate_acceptance_runner.txt",
+        "docs/evidence/finals_fw1_2026-08-30/gate_acceptance_runner_evidence/",
+        "docs/evidence/finals_fw1_2026-08-30/gate_movers_transition.txt",
+        "docs/evidence/finals_fw1_2026-08-30/gate_movers_ui.txt",
+        "docs/evidence/finals_fw1_2026-08-30/gate_release_contract_check.txt",
+        "docs/evidence/finals_fw1_2026-08-30/gate_release_manifest_check.txt",
+        "engine/rl_after/ingestion/pos_rank_history.json",
+        "engine/rl_after/ingestion/rank_history.json",
+        "engine/rl_after/ingestion/sibling_repin_state.json",
+        "engine/rl_after/ingestion/value_history.json",
+        "engine/rl_after/rl_app_data.json",
+        "engine/rl_after/rl_app_data.json.srcmd5",
+        "engine/rl_after/rl_model_data.json",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_c8c2f2b6.json",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_e4bc3be2.json",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_c8c2f2b6.py",
+        "session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py",
+        "ui/data/board_view_public.js",
+        "ui/data/board_view_working.js",
+        "ui/data/club_valuation.js",
+        "ui/data/movers.js",
+        "ui/data/movers_transition.js",
+        "ui/data/ownership.js"
+      ]
+    },
+    "contract": {
+      "check": "PASS",
+      "seal_after": "81c9612973666ee65f052fd38497f7a57810a023eba4a0f3108554365cac6714",
+      "seal_before": "86c597e01e6786b28d2331447fb252ef8a4559e605d83d86544b88574235522e",
+      "trailing_newline_in_committed_file": false
+    },
+    "gates": {
+      "all_pass": true,
+      "gates": [
+        {
+          "argv": [
+            "python3",
+            "release_manifest_check.py"
+          ],
+          "elapsed_s": 0.1,
+          "exit": 0,
+          "name": "release_manifest_check",
+          "ok": true
+        },
+        {
+          "argv": [
+            "python3",
+            "release_contract.py",
+            "check"
+          ],
+          "elapsed_s": 0.1,
+          "exit": 0,
+          "name": "release_contract_check",
+          "ok": true
+        },
+        {
+          "argv": [
+            "python3",
+            "-m",
+            "acceptance.runner",
+            "--profile",
+            "in-transaction",
+            "--evidence",
+            "/home/user/afl-rl-engine/docs/evidence/finals_fw1_2026-08-30/gate_acceptance_runner_evidence"
+          ],
+          "elapsed_s": 43.5,
+          "exit": 0,
+          "name": "acceptance_runner",
+          "ok": true
+        },
+        {
+          "argv": [
+            "python3",
+            "engine/rl_after/ingestion/test_movers_transition.py"
+          ],
+          "elapsed_s": 2.2,
+          "exit": 0,
+          "name": "movers_transition",
+          "ok": true
+        },
+        {
+          "argv": [
+            "node",
+            "ui/tests/movers.test.js"
+          ],
+          "elapsed_s": 0.7,
+          "exit": 0,
+          "name": "movers_ui",
+          "ok": true
+        }
+      ]
+    },
+    "lineage": {
+      "column": {
+        "board": "c8c2f2b6f99445484fadaa8c44afe609",
+        "event": null,
+        "id": "fw1-finals-week-1-30-8"
+      },
+      "entry": {
+        "appended": true,
+        "boundary": [
+          "24",
+          "fw1-finals-week-1-30-8"
+        ],
+        "bridged_by_round": null,
+        "destination": {
+          "as_of_round": 24,
+          "balanced_board_md5": "cdae239d5865be9463c4ef461daf0a35",
+          "board": "c8c2f2b6f99445484fadaa8c44afe609",
+          "config": "d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4",
+          "engine_head": "17243c16277842e0a30470cfbdb5b196",
+          "fv": "123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345",
+          "register": "652d83e87780e415a01a2de6d8b3cc57",
+          "release_version": "v2.11-final-rc1-PROVISIONAL",
+          "rl_model": "6fe7c4155866d80e8045bed2d3bf2802",
+          "store": "415929d3c9d561cc58bef00ae63432b2",
+          "v0surf": "d9f5d15d9606edcdd5708233197dd951"
+        },
+        "entries": 20,
+        "moved": [
+          "board",
+          "store"
+        ],
+        "source": {
+          "as_of_round": 24,
+          "balanced_board_md5": "cdae239d5865be9463c4ef461daf0a35",
+          "board": "f81dbcda220110ad0113ae0633b6c34e",
+          "config": "d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4",
+          "engine_head": "17243c16277842e0a30470cfbdb5b196",
+          "fv": "123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345",
+          "register": "652d83e87780e415a01a2de6d8b3cc57",
+          "release_version": "v2.11-final-rc1-PROVISIONAL",
+          "rl_model": "6fe7c4155866d80e8045bed2d3bf2802",
+          "store": "a9dec7e4785c6861a84f3beaae2f020e",
+          "v0surf": "d9f5d15d9606edcdd5708233197dd951"
+        }
+      }
+    },
+    "pins": {
+      "board": "c8c2f2b6f99445484fadaa8c44afe609",
+      "moved": [
+        "store",
+        "board"
+      ],
+      "store": "415929d3c9d561cc58bef00ae63432b2",
+      "unmoved_checked": 6
+    },
     "preflight": {
-      "base_commit": "a9b819b2e065ed14dfc623c6d0763136f0f75c80",
+      "base_commit": "0e199da9af189e961820b5bb9097c03611fbef87",
       "board_before": "f81dbcda220110ad0113ae0633b6c34e",
       "carriers_captured": 225,
-      "lock": "land-edit-20215"
+      "lock": "land-edit-20523"
+    },
+    "sibling": {
+      "balanced_board_md5": "e4bc3be2efc12e75e107f26bbda91c0a",
+      "committed_targets": [
+        "board_view_public",
+        "board_view_working",
+        "forward_oracle",
+        "forward_vector",
+        "fv_test",
+        "manifest",
+        "reference_vector",
+        "release_contract",
+        "sidecar"
+      ],
+      "fails_after": 0,
+      "fails_before": 10,
+      "reconciled": true
+    },
+    "state": {
+      "changed": true,
+      "md5": "446b2e26d1ce9973e161e0737a529c44",
+      "path": "docs/STATE.md",
+      "stamp_commit": "0e199da9af189e961820b5bb9097c03611fbef87",
+      "written": true
     },
     "store_edit": {
       "bytes_after": 1978024,
@@ -3276,25 +5125,89 @@
       "store_after": "415929d3c9d561cc58bef00ae63432b2",
       "store_before": "a9dec7e4785c6861a84f3beaae2f020e",
       "written": true
+    },
+    "ui": {
+      "bundle_md5": "a35da4df331ea2b1cc99c6524d738165",
+      "club_valuation_md5": "6ed27016f1d0dc28e97711aa709a1749",
+      "club_valuation_moved": true,
+      "club_valuation_pin": "c8c2f2b6",
+      "embedded_board": "c8c2f2b6f99445484fadaa8c44afe609",
+      "mirror_md5": "9a67aa16da1e36be7cef17ca795c9e90",
+      "mirror_moved": true,
+      "model_changes": 17,
+      "movers_md5": "a98897fc5aa3872124b62b641047264c",
+      "movers_moved": true,
+      "n_picks": 240,
+      "ownership_md5": "df802447cbc1e178646e068a545399d9",
+      "ownership_moved": true,
+      "ownership_pin": "415929d3",
+      "public_md5": "e9196c64583dfc83678be6b7892a172b",
+      "register_entries": 20,
+      "writers": 6
     }
   },
-  "failed_step": "build_proofs",
-  "ok": false,
+  "failed_step": null,
+  "ok": true,
   "timings": [
     {
-      "seconds": 0.15,
+      "seconds": 0.11,
       "step": "preflight",
       "verdict": "OK"
     },
     {
-      "seconds": 23.85,
+      "seconds": 22.68,
       "step": "store_edit",
       "verdict": "OK"
     },
     {
-      "seconds": 1225.61,
+      "seconds": 1181.75,
       "step": "build_proofs",
-      "verdict": "FAIL"
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.02,
+      "step": "pins",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.24,
+      "step": "lineage",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.09,
+      "step": "contract",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 2295.89,
+      "step": "sibling",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 2.8,
+      "step": "ui",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 1.65,
+      "step": "state",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 46.58,
+      "step": "gates",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 17.51,
+      "step": "claims",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.54,
+      "step": "commit",
+      "verdict": "OK"
     }
   ]
 }

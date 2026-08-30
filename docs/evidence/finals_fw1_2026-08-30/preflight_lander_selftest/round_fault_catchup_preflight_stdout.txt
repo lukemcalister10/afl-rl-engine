@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
-  tree      : /tmp/landing_selftest_18480/sandbox
+  tree      : /tmp/landing_selftest_20523/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board f81dbcda220110ad0113ae0633b6c34e
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,8 +9,8 @@ LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
 
 --- STEP 0/14  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-round-19501 (pid 19501) — single writer for the shared workspace.
-base commit        807d51ad4662ec01d525f6ec66cebfd128a977f4
+build-lock: HELD by land-round-21559 (pid 21559) — single writer for the shared workspace.
+base commit        c8d3473fcb136c12dc7792b9b6bbf4634a51f841
 board pin (before) f81dbcda220110ad0113ae0633b6c34e
 store pin (before) a9dec7e4785c6861a84f3beaae2f020e
 restore point      128 carrier(s) captured, 128 present on disk
@@ -41,7 +41,7 @@ injured=Y players listed in R24: 0 []
   
   About to apply rounds [24] — each as its own sequential transaction, committed in order.
   NOT APPROVED — nothing applied. Re-run with --approve (or answer `yes`).
-    [catchup_preflight FAILED  0.16s]
+    [catchup_preflight FAILED  0.17s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'catchup_preflight'
@@ -62,6 +62,6 @@ improvised manual landing under pressure.
     preflight          0.09s  OK
     sheet              0.00s  OK
     scores             0.00s  OK
-    catchup_preflight     0.16s  FAIL
-    TOTAL              0.25s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_19501
+    catchup_preflight     0.17s  FAIL
+    TOTAL              0.26s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_21559

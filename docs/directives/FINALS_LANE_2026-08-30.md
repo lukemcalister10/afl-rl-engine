@@ -1,4 +1,4 @@
-# THE FINALS LANE — how FW1..GF reach the engine · design, 2026-08-30
+# THE FINALS LANE — how FW1..GF reach the engine · design, 2026-08-30  **SUPERSEDED IN PART — see the AMENDMENT at the foot of this file: finals land through `land edit`, not `land round`.**
 
 **Owner rulings this is built on, verbatim:**
 
@@ -91,3 +91,54 @@ pace is computed on feed rounds ≤ 24 so eight clubs cannot move a league-wide 
 * The movers report's own counts: `played + dnp + unrecorded == the active board`, with `unrecorded`
   equal to the players at clubs that did not play. A finals week where that identity does not hold
   has mis-scoped its fixture, and the count is the proof.
+
+---
+
+## AMENDMENT, 2026-08-30 (late) — THE LANE CHANGED, ON THE OWNER'S WORD
+
+Everything above describes finals as **a round that holds the calendar**. That design shipped, was
+flown three times, and was wrong. This section supersedes it; the text above is kept because the
+rulings it is built on are still the rulings, and because the reasoning that produced a wrong lane
+is worth being able to read.
+
+**The owner, 2026-08-30:** *"We're literally just updating player averages and game counts. Before
+round 14 we didn't add games one by one, we just priced based off averages and total season game
+counts. It really shouldn't be that hard."*
+
+He is right, and the store has always agreed with him. Marcus Bontempelli's own rows:
+
+    2016   avg 108.7    games 26      22 home-and-away + 4 finals
+    2021   avg 119.5    games 26      a Grand Final year
+
+A finals game has never been a calendar event in this store. It is two numbers on a season row.
+
+**What modelling it as a round cost.** "A round" drags in the dedup ledger, finalization state,
+round history points, movers keyed by round — and a recomputation of `season_state`. That last one
+produced the defect: `calendar_progress` fell from 1.00 to **0.83**, because the calendar hold put
+the numerator at 24 and left the denominator on the FEED bound of 29. `calendar_progress` is a live
+pricing dial (`rl_model.SEASON_PROG`, `conditional_prior._SFE`, `_merged_recover.M3_FE`; 1.0 turns
+the lever OFF), so it would have re-opened every completed season in the competition — the exact
+punishment of non-finalists the owner ruled against, and the exact number three separate comments in
+this repository warn about. It was found by reading a running transaction's journal, not by a check.
+
+**The lane now.** A finals week lands through **`land edit`**, as `act_kind: store-edit`:
+
+* two fields per player, `scoring[<season>].games` (+1) and `scoring[<season>].avg` (re-averaged
+  through the ingestor's own `_mean` at its own `ROUND_DECIMALS`), and nothing else;
+* the career `games` field is NOT touched, because `_merge_into_store` does not touch it either;
+* `season_state` is not recomputed at all — it is held, so non-finalists are untouched **by
+  construction** rather than by a hold applied correctly in eleven places;
+* the act earns an out-of-round column and a lineage entry, exactly as this document already said;
+* `edit.expected_movers` declares every mover by key and both values, so an undeclared mover is an
+  abort naming the player — a stronger falsifier than the round lane ever offered;
+* re-applying the same week halts on `old` no longer matching the store, which is the protection the
+  dedup ledger was providing.
+
+**What survives from the round lane.** The three-state participation rule (played / DNP / not
+scheduled) and the finals week NAMES are about reading a result and are right either way. The
+round-advance lane keeps a corrected calendar hold and an assertion that a finals week may not move
+`calendar_progress`, `as_of_round` or `season_total_rounds` at all — it is no longer the finals path,
+but it must not carry a known defect.
+
+**What the reader should do.** Land a finals week with `land edit` and a spec built from the score
+file by the emitter in the act's evidence directory. Do not use `land round` for finals.

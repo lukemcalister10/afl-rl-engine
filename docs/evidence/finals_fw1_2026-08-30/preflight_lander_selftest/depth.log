@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the synthetic board move
-  tree      : /tmp/landing_selftest_18480/sandbox
+  tree      : /tmp/landing_selftest_20523/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 89bf05a99b8bb439e7d1454312228d38
   mode      : APPLY (SELFTEST) builder=selftest-moved
@@ -8,8 +8,8 @@ LAND LEVER-LANDING — SELF-TEST — the synthetic board move
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-lever-19317 (pid 19317) — single writer for the shared workspace.
-base commit        807d51ad4662ec01d525f6ec66cebfd128a977f4
+build-lock: HELD by land-lever-21366 (pid 21366) — single writer for the shared workspace.
+base commit        c8d3473fcb136c12dc7792b9b6bbf4634a51f841
 board pin (before) f81dbcda220110ad0113ae0633b6c34e
 store pin (before) a9dec7e4785c6861a84f3beaae2f020e
 restore point      76 carrier(s) captured, 76 present on disk
@@ -41,7 +41,7 @@ chain OK: register tail destination == this entry's source on board and store
 append-only OK: 19 prior entries byte-verbatim; top-level baseline 06d8af60b679a12db07c064c60c065f9 / v2.11-present-lens-baseline UNMOVED
 MOVED by this transition: ['board'] (of 11 identities)
 re-read OK: round-trips at indent=1; prior entries still byte-verbatim.
-    [lineage OK  0.20s]
+    [lineage OK  0.22s]
 
 --- STEP 4/10  contract       restamp_dynamic + the bake-lane repin + check ---
 contract seal self-consistent before the act: 86c597e01e67
@@ -71,7 +71,7 @@ LANDING ABORTED AT STEP 'sibling'
 carriers that moved before the failure: 11
     data/expected_boot.json                                          530ac275f5d5 -> f86ab873c619
     data/release_contract.json                                       64c2f4781105 -> 8f76cc06a562
-    data/release_lineage.json                                        4c641ddbf6b6 -> c08388f1a93e
+    data/release_lineage.json                                        4c641ddbf6b6 -> 868f07013c74
     data/rl_build/rl_app_data.json                                   f81dbcda2201 -> 89bf05a99b8b
     data/rl_build/rl_app_data.json.srcmd5                            be84fa93abdb -> b595d670eebb
     engine/rl_after/ingestion/pos_rank_history.json                  2dce67877051 -> 15e22e5e8a03
@@ -104,8 +104,8 @@ improvised manual landing under pressure.
     preflight          0.09s  OK
     build_proofs       0.01s  OK
     pins               0.02s  OK
-    lineage            0.20s  OK
+    lineage            0.22s  OK
     contract           0.09s  OK
     sibling            0.04s  FAIL
-    TOTAL              0.45s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_19317
+    TOTAL              0.47s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_21366
