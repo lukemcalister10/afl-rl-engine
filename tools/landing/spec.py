@@ -27,6 +27,12 @@ SCHEMA_VERSION = 1
 ACT_KINDS = ('lever-landing', 'round-advance', 'store-edit')
 #: the home-and-away season; a feed round above it is a finals week, which HOLDS the calendar
 HOME_AND_AWAY_ROUNDS = 24
+#: ...and the finals end. Feed rounds 25-29 are FW1/FW2/SF/PF/GF; there is no round 30. The ceiling
+#: is load-bearing, not decoration: without it `min(n, HOME_AND_AWAY_ROUNDS)` reads ANY round above
+#: 24 as "a finals week holding the calendar at 24", so a spec claiming round 99 describes a tree
+#: standing at 24 and passes. Named week-by-week in round_movers.FINALS_WEEK_NAMES, which this must
+#: agree with (tools/landing/test_finals_bounds.py asserts they do).
+FINALS_FEED_CEILING = 29
 
 #: Every identity the lander tracks in `data/expected_boot.json`. `moves`/`unmoved` must partition it.
 TRACKED_IDENTITIES = ('board', 'store', 'engine_head', 'rl_model', 'fv', 'config', 'register',
@@ -124,6 +130,11 @@ def _validate_round(doc):
         except (TypeError, ValueError):
             _feed = None
     _is_finals = _feed is not None and _feed > HOME_AND_AWAY_ROUNDS
+    if _feed is not None and _feed > FINALS_FEED_CEILING:
+        bad.append('the act declares feed round %d. The season ends at the Grand Final (feed round '
+                   '%d); there is no week past it for the calendar hold to hold FOR, and reading '
+                   'one as a finals week would let any number at all name a tree standing at %d.'
+                   % (_feed, FINALS_FEED_CEILING, HOME_AND_AWAY_ROUNDS))
 
     if 'sheet' not in doc:
         bad.append('the `sheet` slot must be PRESENT on a round-advance spec — null when this '

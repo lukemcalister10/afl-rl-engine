@@ -102,7 +102,7 @@ DELEGATED_PINS = {
 # class. That table is only honest while it equals what THIS file actually filters out, so the
 # relationship is asserted here, at import, rather than each side carrying this month's list.
 from . import spec as _SPEC_TABLES
-from .spec import HOME_AND_AWAY_ROUNDS
+from .spec import HOME_AND_AWAY_ROUNDS, FINALS_FEED_CEILING
 assert set(_SPEC_TABLES.NO_WRITER_IDENTITIES) == \
        set(_SPEC_TABLES.TRACKED_IDENTITIES) - set(PIN_MEASURERS) - set(DELEGATED_PINS), \
     ('spec.NO_WRITER_IDENTITIES has drifted from steps.PIN_MEASURERS/DELEGATED_PINS — update the '
@@ -2642,6 +2642,17 @@ def advance(ctx):
     ctx.fault_point('advance')
     rnd = ctx.spec['round']
     n = int(rnd['number'])
+    # THE CEILING, ASSERTED AT THE DOOR OF THE ADVANCE AND NOT ONLY IN THE VALIDATOR. The calendar
+    # hold reads every feed round above 24 as a finals week and prices the tree at 24 — which is
+    # right for FW1..GF and nonsense for round 99, and round 99 is precisely what the self-test's
+    # `round_mismatch` fault injects INTO A VALIDATED SPEC, mid-flight. Without this the fault is
+    # no longer a mismatch at all: min(99, 24) is 24, the tree is at 24, and the postcondition
+    # below happily agrees. The step that owns the round asserts the round.
+    if n > FINALS_FEED_CEILING or n < 1:
+        raise StepError('the act declares round %d. The season runs to feed round %d (the Grand '
+                        'Final); there is no week past it, and the calendar hold must never be '
+                        'read as licence for any number above %d to name a tree standing at %d.'
+                        % (n, FINALS_FEED_CEILING, HOME_AND_AWAY_ROUNDS, HOME_AND_AWAY_ROUNDS))
     boot_before = ctx.facts['base']['expected_boot']
     sc = rnd.get('scores')
 

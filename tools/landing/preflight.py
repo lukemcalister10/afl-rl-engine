@@ -200,6 +200,19 @@ def run_preflight(root, spec_path, out=print):
                ('FAIL', ([l for l in o.splitlines() if 'FAIL' in l] or [o.strip()[:200]])[0][:200])
     check('store_edit_paths', _store_edit)
 
+    # 8e · THE TWO NUMBERS THAT BOUND A FINALS WEEK (2026-08-30). `min(n, 24)` reads every feed
+    #      round above the home-and-away season as a finals week holding the calendar — true of
+    #      FW1..GF and nonsense for round 99, which is exactly what the lander's own
+    #      `round_mismatch` fault injects. The bound lives in spec.py and the week NAMES live in
+    #      round_movers, two files with two callers and no import between them, so their agreement
+    #      is asserted rather than assumed. Six assertions, ten milliseconds.
+    def _finals_bounds():
+        rc, o = _run([sys.executable, 'tools/landing/test_finals_bounds.py'], root)
+        return ('PASS', 'finals-bound tests green (spec.py and round_movers agree)') if rc == 0 else \
+               ('FAIL', ([l for l in o.splitlines() if 'FAIL' in l or 'Error' in l]
+                         or [o.strip()[:200]])[0][:200])
+    check('finals_bounds', _finals_bounds)
+
     # 8b · CLEAN TREE, before the selftest instead of after it (shrink review S11, 2026-08-28).
     #      Step 0 asserts this too — but step 0 runs after the pre-transaction selftest (minutes),
     #      and two takes of the combined-build landing paid that price to discover dirt knowable
