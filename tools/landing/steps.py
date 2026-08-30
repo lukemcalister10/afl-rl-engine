@@ -540,7 +540,21 @@ def store_edit(ctx):
         raise StepError('the store row count moved %d -> %d across a field edit'
                         % (rows_before, len(spans)))
     for a in applied:
-        got = spans[a['key']][2].get(a['field'])
+        # RE-READ AT THE LEVEL THE EDIT WAS MADE. A season path (`scoring[2017].games`) is not a key
+        # on the row, so a flat `row.get(field)` reads null and this check fails an edit that in fact
+        # applied perfectly — which is exactly what it did on the first flight of the season path.
+        # The verification has to resolve the path the same way the editor did, or it is asserting
+        # about a field nobody wrote.
+        sm = _SEASON_FIELD.match(str(a['field']))
+        if sm:
+            yr, sub = int(sm.group(1)), sm.group(2)
+            srows = [x for x in (spans[a['key']][2].get('scoring') or []) if x.get('year') == yr]
+            if len(srows) != 1:
+                raise StepError('re-read: row %r has %d scoring rows for %d, expected exactly one'
+                                % (a['key'], len(srows), yr))
+            got = srows[0].get(sub)
+        else:
+            got = spans[a['key']][2].get(a['field'])
         if json.dumps(got, sort_keys=True) != json.dumps(a['new'], sort_keys=True):
             raise StepError('re-read: row %r field %r is %s, not the written %s'
                             % (a['key'], a['field'], json.dumps(got), json.dumps(a['new'])))

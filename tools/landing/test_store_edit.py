@@ -135,6 +135,27 @@ def main():
     ok(got, 'declaring the whole `scoring` list is still REFUSED as a container, even with a '
             'correct `old`  (%s)' % why)
 
+    # ---- THE RE-READ RESOLVES A SEASON PATH TOO ---------------------------------------------
+    # The first real flight of the season path aborted here and nowhere else: the edit applied
+    # perfectly, and the step's post-write verification then read `row['scoring[2017].games']` — not
+    # a key on the row — got null, and refused its own correct work. A verification that resolves a
+    # path differently from the editor is asserting about a field nobody wrote.
+    out5, ap5 = ST.apply_store_edits(STORE, [
+        {'key': 'a-player', 'field': 'scoring[2017].games', 'old': 61, 'new': 11},
+        {'key': 'a-player', 'field': 'games', 'old': 40, 'new': 48}])
+    spans = ST.store_row_spans(out5)
+    checked = []
+    for ap in ap5:
+        m = ST._SEASON_FIELD.match(str(ap['field']))
+        if m:
+            yr, sub = int(m.group(1)), m.group(2)
+            srows = [x for x in spans[ap['key']][2]['scoring'] if x.get('year') == yr]
+            checked.append(len(srows) == 1 and srows[0].get(sub) == ap['new'])
+        else:
+            checked.append(spans[ap['key']][2].get(ap['field']) == ap['new'])
+    ok(all(checked) and len(checked) == 2,
+       'the post-write re-read resolves BOTH a season path and a flat field to the written value')
+
     print('  ' + '-' * 70)
     print('STORE-EDIT TESTS: %s' % ('ALL %d PASS' % n if not fails else '%d FAIL / %d' % (fails, n)))
     return 1 if fails else 0

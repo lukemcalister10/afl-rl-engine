@@ -1,0 +1,70 @@
+======================================================================================================
+DAY-0 PRINT REFERENCE — REGENERATED FROM THIS TREE  (tools/landing/day0_emit.py)
+======================================================================================================
+  board      4a52cc4490f950c7b7856fc28ddcb949   data/rl_build/rl_app_data.json
+  store      b4d23810ebb6b53f07a0ae40a3c24b97
+  engine     17243c16277842e0a30470cfbdb5b196   (READ-ONLY: no engine file is touched, no board is built)
+  predicate  _entry30b_price   BASE_REF 2026
+  activated  SELF-TEST FIXTURE — no owner word exists or is claimed.
+  reference  docs/evidence/landing_selftest/DAY0_DOCTORED_REF.json
+  writing    docs/evidence/landing_selftest/DAY0_SELFTEST.json
+
+  A1  printed day-0 identity on the board being read : 86 of 86 at tolerance 0  (fresh ND 44, pool 42)
+
+  THE MANDATORY ROW DIFF vs docs/evidence/landing_selftest/DAY0_DOCTORED_REF.json
+    population  0 row(s) added    0 row(s) dropped 
+    printed day-0 MOVED on 49 of 86 rows in common — every one printed, no truncation:
+      adam-sweid                         242 -> 250   (+8)
+      aiden-riddle                       211 -> 260   (+49)
+      avery-thomas                       254 -> 250   (-4)
+      ben-camporeale                     114 -> 179   (+65)
+      brayden-george                     169 -> 175   (+6)
+      charlie-nicholls                   211 -> 341   (+130)
+      cody-anderson                      15 -> 31   (+16)
+      cooper-bell                        129 -> 263   (+134)
+      finnegan-davis                     79 -> 78   (-1)
+      harley-barker                      481 -> 484   (+3)
+      harry-demattia                     340 -> 342   (+2)
+      hugo-mikunda                       131 -> 133   (+2)
+      hunter-holmes                      338 -> 337   (-1)
+      iliro-smit                         254 -> 314   (+60)
+      jacob-molier                       83 -> 177   (+94)
+      jacob-moss                         52 -> 64   (+12)
+      jaime-uhr-henry                    45 -> 56   (+11)
+      james-barrat                       213 -> 332   (+119)
+      jaren-carr                         16 -> 31   (+15)
+      jevan-phillipou                    214 -> 209   (-5)
+      joe-pike                           211 -> 260   (+49)
+      joel-cochran                       133 -> 264   (+131)
+      josh-smillie                       747 -> 933   (+186)
+      kalani-white                       52 -> 65   (+13)
+      kayle-gerreyn                      177 -> 300   (+123)
+      koby-evans                         207 -> 199   (-8)
+      kye-fincher                        136 -> 135   (-1)
+      liam-hetherton                     66 -> 82   (+16)
+      logan-smith                        321 -> 396   (+75)
+      luke-lloyd                         195 -> 193   (-2)
+      luke-urquhart                      36 -> 67   (+31)
+      matthew-leray                      104 -> 103   (-1)
+      max-king-syd                       129 -> 131   (+2)
+      max-knobel                         317 -> 313   (-4)
+      mitchell-marsh                     539 -> 534   (-5)
+      ned-bowman                         117 -> 175   (+58)
+      ollie-murphy                       200 -> 198   (-2)
+      oskar-taylor                       575 -> 624   (+49)
+      patrick-carr                       45 -> 56   (+11)
+      patrick-said                       25 -> 50   (+25)
+      patrick-snell                      167 -> 166   (-1)
+      riak-andrew                        118 -> 259   (+141)
+      sam-allen                          428 -> 423   (-5)
+      thomas-matthews                    226 -> 228   (+2)
+      tyan-prindable                     356 -> 355   (-1)
+      tylah-williams                     205 -> 195   (-10)
+      tyler-welsh                        64 -> 146   (+82)
+      will-darcy                         216 -> 257   (+41)
+      zac-mccarthy                       128 -> 149   (+21)
+    derived_v0 (the matrix year-0 column) moved on 42 row(s): ['adam-sweid', 'avery-thomas', 'ben-camporeale', 'blake-thredgold', 'brayden-george', 'charlie-nicholls', 'cooper-bell', 'finnegan-davis', 'harley-barker', 'harry-demattia', 'hugo-mikunda', 'hunter-holmes', 'jacob-molier', 'james-barrat', 'jaren-carr', 'jevan-phillipou', 'joel-cochran', 'josh-smillie', 'kayle-gerreyn', 'koby-coulson', 'koby-evans', 'kye-fincher', 'luke-lloyd', 'luke-urquhart', 'matthew-leray', 'max-king-syd', 'max-knobel', 'mitchell-marsh', 'ned-bowman', 'ollie-murphy', 'oskar-taylor', 'patrick-said', 'patrick-snell', 'riak-andrew', 'sam-allen', 'tai-hayes', 'thomas-matthews', 'tyan-prindable', 'tylah-williams', 'tyler-welsh', 'will-darcy', 'zac-mccarthy']
+
+  WRITTEN  docs/evidence/landing_selftest/DAY0_SELFTEST.json   md5 7d7fa3df3333d9ab3f52d63c5f58f854
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.

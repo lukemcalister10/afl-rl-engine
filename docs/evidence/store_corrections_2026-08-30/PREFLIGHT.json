@@ -1,0 +1,87 @@
+[
+ {
+  "check": "spec_validate",
+  "verdict": "PASS",
+  "detail": "act 'THE FOUR IMPOSSIBLE-GAMES ROWS AND THREE STALE CLUBS CORRECTED \u2014 jesse-joyce 2017/2018/2019 games and avg transposed; nathan-lovett-murray 2008 games 40 -> 20; both career-games fields re-derived; schultz/membrey/sharp moved to the club they actually play for', kind store-edit, 2 moves"
+ },
+ {
+  "check": "declared_paths",
+  "verdict": "PASS",
+  "detail": "prereg + evidence paths resolve"
+ },
+ {
+  "check": "coherent_base",
+  "verdict": "SKIP",
+  "detail": "no coherent_base declared (sandbox cuts from HEAD)"
+ },
+ {
+  "check": "pins_vs_tree",
+  "verdict": "PASS",
+  "detail": "6 unmoved pins == tree"
+ },
+ {
+  "check": "release_contract",
+  "verdict": "PASS",
+  "detail": "release_contract check PASS"
+ },
+ {
+  "check": "release_manifest",
+  "verdict": "PASS",
+  "detail": "release_manifest_check PASS"
+ },
+ {
+  "check": "mirror_parity",
+  "verdict": "PASS",
+  "detail": "acceptance mirror_parity GREEN"
+ },
+ {
+  "check": "movers_ui",
+  "verdict": "PASS",
+  "detail": "movers.test.js green"
+ },
+ {
+  "check": "proof_stash",
+  "verdict": "PASS",
+  "detail": "proof-stash tests green"
+ },
+ {
+  "check": "identity_stamps",
+  "verdict": "PASS",
+  "detail": "ALL 5 STAMPS AGREE WITH THE TREE"
+ },
+ {
+  "check": "store_sanity",
+  "verdict": "PASS",
+  "detail": "PASS \u2014 11484 season rows, none impossible."
+ },
+ {
+  "check": "store_edit_paths",
+  "verdict": "PASS",
+  "detail": "store-edit season-path tests green"
+ },
+ {
+  "check": "clean_tree",
+  "verdict": "PASS",
+  "detail": "tree clean up to declared inputs"
+ },
+ {
+  "check": "picks_curve",
+  "verdict": "PASS",
+  "detail": "picks/curve halt battery clean (read-only)"
+ },
+ {
+  "check": "movers_py",
+  "verdict": "PASS",
+  "detail": "test_movers_transition.py green"
+ },
+ {
+  "check": "shared_pickles",
+  "verdict": "PASS",
+  "detail": "shared pickles == tree pickles"
+ },
+ {
+  "check": "build_lock",
+  "verdict": "PASS",
+  "detail": "build-lock: FREE (last holder record: land-edit-3073 3073 2026-08-30T03:48:46Z)"
+ }
+]
