@@ -38,15 +38,37 @@ STORE = os.path.join('engine', 'rl_after', 'rl_model_data.json')
 SEASON_GAMES_CEILING = 29
 
 
-def rows(root):
+def rows(root, spec_path=None):
+    """The store's rows — AS THE ACT WOULD LEAVE THEM when a store-edit spec is given.
+
+    A CORRECTING ACT MUST NOT BE BLOCKED BY THE THING IT CORRECTS. The first wiring of this check
+    ran against the tree as it stands, and the immediate consequence was that the landing which
+    fixes the four impossible rows could not launch, because four impossible rows were present.
+    That is the same self-reference shrink S4 removed for PREFLIGHT.json, and it makes a guard into
+    an obstacle.
+
+    So the bar is on the OUTPUT: given a store-edit spec, the declared edits are applied in memory
+    first — through `apply_store_edits`, the one implementation, with every assertion it makes — and
+    the check asks whether the act LEAVES an impossible row. An act that corrects them passes; an
+    act that introduces or preserves one does not, which is the property actually worth having.
+    """
     with open(os.path.join(root, STORE), encoding='utf-8') as f:
-        d = json.load(f)
+        text = f.read()
+    if spec_path:
+        with open(spec_path, encoding='utf-8') as f:
+            spec = json.load(f)
+        edits = list((spec.get('edit') or {}).get('store') or ())
+        if edits:
+            sys.path.insert(0, root)
+            from tools.landing.steps import apply_store_edits
+            text, _applied = apply_store_edits(text, edits)
+    d = json.loads(text)
     return d['players'] if isinstance(d, dict) and 'players' in d else d
 
 
-def offenders(root):
+def offenders(root, spec_path=None):
     out = []
-    for r in rows(root):
+    for r in rows(root, spec_path):
         for s in (r.get('scoring') or []):
             g = int(s.get('games', 0) or 0)
             if g > SEASON_GAMES_CEILING:
@@ -61,14 +83,19 @@ def offenders(root):
 
 
 def main(argv=None):
-    root = ROOT
-    if argv and len(argv) > 1 and argv[1] == '--root':
-        root = os.path.abspath(argv[2])
-    bad = offenders(root)
-    print('STORE SANITY — a season cannot contain more than %d games (24 H&A + 5 finals)'
-          % SEASON_GAMES_CEILING)
+    argv = list(argv or sys.argv)
+    root, spec_path = ROOT, None
+    if '--root' in argv:
+        root = os.path.abspath(argv[argv.index('--root') + 1])
+    if '--spec' in argv:
+        spec_path = os.path.abspath(argv[argv.index('--spec') + 1])
+    bad = offenders(root, spec_path)
+    print('STORE SANITY — a season cannot contain more than %d games (24 H&A + 5 finals)%s'
+          % (SEASON_GAMES_CEILING,
+             '\n  (judged on the tree THIS ACT WOULD LEAVE: its declared store edits applied first)'
+             if spec_path else ''))
     if not bad:
-        n = sum(len(r.get('scoring') or []) for r in rows(root))
+        n = sum(len(r.get('scoring') or []) for r in rows(root, spec_path))
         print('  PASS — %d season rows, none impossible.' % n)
         return 0
     print('  %d IMPOSSIBLE SEASON ROW(S):' % len(bad))

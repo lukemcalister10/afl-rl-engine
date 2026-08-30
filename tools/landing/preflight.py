@@ -180,7 +180,12 @@ def run_preflight(root, spec_path, out=print):
     #      hashes green forever. jesse-joyce carried 61/60/60 games for 2017-2019 from the initial
     #      seed onward, through owner corrections that never reached the store. Milliseconds here.
     def _store_sanity():
-        rc, o = _run([sys.executable, 'tools/store_sanity.py'], root)
+        # THE BAR IS ON WHAT THIS ACT LEAVES BEHIND, not on what it starts from — otherwise the
+        # landing that corrects an impossible row is the one landing this check forbids, which is
+        # exactly what happened the first time it was wired (the PREFLIGHT.json self-reference,
+        # again). The spec is passed so a store-edit act is judged on its own output.
+        rc, o = _run([sys.executable, 'tools/store_sanity.py', '--spec',
+                      os.path.abspath(spec_path)], root)
         if rc == 0:
             return ('PASS', ([l.strip() for l in o.splitlines() if 'PASS' in l] or ['store rows sane'])[0][:120])
         return ('FAIL', ([l.strip() for l in o.splitlines() if 'IMPOSSIBLE' in l] or [o.strip()[:200]])[0][:200])
