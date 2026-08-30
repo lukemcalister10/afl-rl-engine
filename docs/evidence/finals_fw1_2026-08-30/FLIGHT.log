@@ -7,17 +7,467 @@ LAND STORE-EDIT — FINALS WEEK 1 APPLIED AS A STORE EDIT — 92 players at four
 ======================================================================================================
 
 --- STEP 0/11  preflight      clean tree, build lock, the restore point ---
-    [preflight FAILED  0.03s]
+RL_/PAR_ environment  RL_VENV
+build-lock: HELD by land-edit-20215 (pid 20215) — single writer for the shared workspace.
+base commit        a9b819b2e065ed14dfc623c6d0763136f0f75c80
+board pin (before) f81dbcda220110ad0113ae0633b6c34e
+store pin (before) a9dec7e4785c6861a84f3beaae2f020e
+restore point      225 carrier(s) captured, 225 present on disk
+    [preflight OK  0.15s]
+
+--- STEP 1/11  store_edit     THE SURGICAL STORE EDIT, applied in the work dir ---
+store BEFORE  a9dec7e4785c6861a84f3beaae2f020e   (1978019 bytes)
+              == expected_boot.store, so the tree is the one this act was written for.
+THE EDIT — surgical, inside the named row's span; `old` asserted, never repaired:
+    aaron-naughton               scoring[2026].games 22 -> 23   (row span 612390..612445, at char 612419)
+    aaron-naughton               scoring[2026].avg  68.55 -> 70.35   (row span 612390..612445, at char 612405)
+    adam-cerra                   scoring[2026].games 19 -> 20   (row span 608287..608342, at char 608316)
+    adam-cerra                   scoring[2026].avg  80.73 -> 82.04   (row span 608287..608342, at char 608302)
+    angus-anderson               scoring[2026].games 15 -> 16   (row span 37229..37287, at char 37258)
+    angus-anderson               scoring[2026].avg  57.44 -> 56.79   (row span 37229..37287, at char 37244)
+    arthur-jones                 scoring[2026].games 18 -> 19   (row span 319817..319875, at char 319846)
+    arthur-jones                 scoring[2026].avg  55.85 -> 58.65   (row span 319817..319875, at char 319832)
+    bailey-dale                  scoring[2026].games 18 -> 19   (row span 917605..917660, at char 917635)
+    bailey-dale                  scoring[2026].avg  102.23 -> 101.74   (row span 917605..917660, at char 917620)
+    bailey-laurie                scoring[2026].games 16 -> 17   (row span 381108..381162, at char 381137)
+    bailey-laurie                scoring[2026].avg  51.48 -> 49.63   (row span 381108..381162, at char 381123)
+    bailey-williams-wb           scoring[2026].games 17 -> 18   (row span 836666..836724, at char 836695)
+    bailey-williams-wb           scoring[2026].avg  83.76 -> 82.88   (row span 836666..836724, at char 836681)
+    bayley-fritsch               scoring[2026].games 21 -> 22   (row span 634632..634685, at char 634660)
+    bayley-fritsch               scoring[2026].avg  73.8 -> 73.04   (row span 634632..634685, at char 634647)
+    beau-mccreery                scoring[2026].games 22 -> 23   (row span 398112..398166, at char 398141)
+    beau-mccreery                scoring[2026].avg  66.48 -> 66.55   (row span 398112..398166, at char 398127)
+    ben-ainsworth                scoring[2026].games 23 -> 24   (row span 692956..693010, at char 692985)
+    ben-ainsworth                scoring[2026].avg  68.94 -> 70.48   (row span 692956..693010, at char 692971)
+    billy-frampton               scoring[2026].games 23 -> 24   (row span 938671..938726, at char 938700)
+    billy-frampton               scoring[2026].avg  62.48 -> 62.75   (row span 938671..938726, at char 938686)
+    billy-wilson                 scoring[2026].games 15 -> 16   (row span 170198..170252, at char 170227)
+    billy-wilson                 scoring[2026].avg  76.27 -> 74.75   (row span 170198..170252, at char 170213)
+    blake-acres                  scoring[2026].games 10 -> 11   (row span 992208..992262, at char 992236)
+    blake-acres                  scoring[2026].avg  80.1 -> 78.0   (row span 992208..992262, at char 992223)
+    brodie-kemp                  scoring[2026].games 23 -> 24   (row span 454279..454333, at char 454307)
+    brodie-kemp                  scoring[2026].avg  65.7 -> 65.96   (row span 454279..454333, at char 454294)
+    buku-khamis                  scoring[2026].games 23 -> 24   (row span 591995..592054, at char 592024)
+    buku-khamis                  scoring[2026].avg  59.77 -> 58.99   (row span 591995..592054, at char 592010)
+    caleb-windsor                scoring[2026].games 20 -> 21   (row span 150420..150475, at char 150449)
+    caleb-windsor                scoring[2026].avg  59.83 -> 59.31   (row span 150420..150475, at char 150435)
+    changkuoth-jiath             scoring[2026].games 15 -> 16   (row span 686686..686740, at char 686715)
+    changkuoth-jiath             scoring[2026].avg  66.34 -> 66.32   (row span 686686..686740, at char 686701)
+    charlie-west                 scoring[2026].games 8 -> 9   (row span 98937..98991, at char 98966)
+    charlie-west                 scoring[2026].avg  38.24 -> 35.32   (row span 98937..98991, at char 98952)
+    cody-weightman               scoring[2026].games 9 -> 10   (row span 452874..452927, at char 452903)
+    cody-weightman               scoring[2026].avg  54.44 -> 54.3   (row span 452874..452928, at char 452889)
+    connor-budarick              scoring[2026].games 13 -> 14   (row span 497873..497927, at char 497902)
+    connor-budarick              scoring[2026].avg  71.57 -> 69.17   (row span 497873..497927, at char 497888)
+    cooper-hynes                 scoring[2026].games 21 -> 22   (row span 78054..78111, at char 78082)
+    cooper-hynes                 scoring[2026].avg  52.3 -> 52.79   (row span 78054..78111, at char 78069)
+    cooper-lord                  scoring[2026].games 9 -> 10   (row span 210282..210336, at char 210311)
+    cooper-lord                  scoring[2026].avg  76.23 -> 75.61   (row span 210282..210337, at char 210297)
+    dan-houston                  scoring[2026].games 23 -> 24   (row span 869889..869943, at char 869918)
+    dan-houston                  scoring[2026].avg  84.31 -> 83.76   (row span 869889..869943, at char 869904)
+    daniel-mcstay                scoring[2026].games 23 -> 24   (row span 998544..998599, at char 998573)
+    daniel-mcstay                scoring[2026].avg  68.36 -> 69.34   (row span 998544..998599, at char 998559)
+    daniel-turner                scoring[2026].games 18 -> 19   (row span 438272..438327, at char 438301)
+    daniel-turner                scoring[2026].avg  76.23 -> 77.11   (row span 438272..438327, at char 438287)
+    darcy-cameron                scoring[2026].games 22 -> 23   (row span 734137..734193, at char 734166)
+    darcy-cameron                scoring[2026].avg  93.95 -> 94.56   (row span 734137..734193, at char 734152)
+    ed-langdon                   scoring[2026].games 23 -> 24   (row span 925818..925876, at char 925847)
+    ed-langdon                   scoring[2026].avg  79.38 -> 78.99   (row span 925818..925876, at char 925833)
+    ed-richards                  scoring[2026].games 22 -> 23   (row span 618642..618698, at char 618672)
+    ed-richards                  scoring[2026].avg  111.14 -> 110.39   (row span 618642..618698, at char 618657)
+    edward-allan                 scoring[2026].games 18 -> 19   (row span 231507..231561, at char 231535)
+    edward-allan                 scoring[2026].avg  69.4 -> 68.54   (row span 231507..231561, at char 231522)
+    francis-evans                scoring[2026].games 21 -> 22   (row span 474699..474753, at char 474728)
+    francis-evans                scoring[2026].avg  74.19 -> 73.86   (row span 474699..474753, at char 474714)
+    george-hewett                scoring[2026].games 18 -> 19   (row span 1005912..1005968, at char 1005942)
+    george-hewett                scoring[2026].avg  104.67 -> 102.95   (row span 1005912..1005968, at char 1005927)
+    harrison-petty               scoring[2026].games 19 -> 20   (row span 639182..639237, at char 639211)
+    harrison-petty               scoring[2026].avg  72.24 -> 70.78   (row span 639182..639237, at char 639197)
+    harry-dean                   scoring[2026].games 19 -> 20   (row span 1498..1553, at char 1527)
+    harry-dean                   scoring[2026].avg  59.52 -> 61.49   (row span 1498..1553, at char 1513)
+    harry-mckay                  scoring[2026].games 20 -> 21   (row span 802656..802711, at char 802685)
+    harry-mckay                  scoring[2026].avg  75.69 -> 75.8   (row span 802656..802711, at char 802671)
+    harry-sharp                  scoring[2026].games 23 -> 24   (row span 397085..397139, at char 397114)
+    harry-sharp                  scoring[2026].avg  63.29 -> 62.32   (row span 397085..397139, at char 397100)
+    harvey-harrison              scoring[2026].games 11 -> 12   (row span 325262..325316, at char 325291)
+    harvey-harrison              scoring[2026].avg  45.63 -> 45.58   (row span 325262..325316, at char 325277)
+    harvey-langford              scoring[2026].games 23 -> 24   (row span 68251..68306, at char 68280)
+    harvey-langford              scoring[2026].avg  65.39 -> 66.42   (row span 68251..68306, at char 68266)
+    isaac-quaynor                scoring[2026].games 20 -> 21   (row span 519715..519769, at char 519744)
+    isaac-quaynor                scoring[2026].avg  75.68 -> 75.22   (row span 519715..519769, at char 519730)
+    jack-crisp                   scoring[2026].games 23 -> 24   (row span 1227474..1227529, at char 1227503)
+    jack-crisp                   scoring[2026].avg  83.03 -> 83.24   (row span 1227474..1227529, at char 1227489)
+    jack-steele                  scoring[2026].games 23 -> 24   (row span 899139..899193, at char 899167)
+    jack-steele                  scoring[2026].avg  94.5 -> 94.31   (row span 899139..899193, at char 899154)
+    jack-viney                   scoring[2026].games 0 -> 1   (row span 1069715..1069767, at char 1069742)
+    jack-viney                   scoring[2026].avg  0.0 -> 55.0   (row span 1069715..1069767, at char 1069730)
+    jacob-weitering              scoring[2026].games 12 -> 13   (row span 792661..792716, at char 792690)
+    jacob-weitering              scoring[2026].avg  77.67 -> 80.62   (row span 792661..792716, at char 792676)
+    jagga-smith                  scoring[2026].games 22 -> 23   (row span 66091..66149, at char 66120)
+    jagga-smith                  scoring[2026].avg  88.05 -> 89.61   (row span 66091..66149, at char 66106)
+    jake-bowey                   scoring[2026].games 15 -> 16   (row span 380283..380338, at char 380313)
+    jake-bowey                   scoring[2026].avg  102.41 -> 102.38   (row span 380283..380338, at char 380298)
+    jake-melksham                scoring[2026].games 6 -> 7   (row span 1368230..1368284, at char 1368259)
+    jake-melksham                scoring[2026].avg  42.02 -> 39.73   (row span 1368230..1368284, at char 1368245)
+    james-o-donnell              scoring[2026].games 19 -> 20   (row span 264731..264786, at char 264760)
+    james-o-donnell              scoring[2026].avg  63.16 -> 62.8   (row span 264731..264786, at char 264746)
+    jeremy-howe                  scoring[2026].games 17 -> 18   (row span 1285649..1285703, at char 1285678)
+    jeremy-howe                  scoring[2026].avg  81.29 -> 80.5   (row span 1285649..1285703, at char 1285664)
+    joel-fitzgerald              scoring[2026].games 10 -> 11   (row span 62610..62664, at char 62638)
+    joel-fitzgerald              scoring[2026].avg  68.6 -> 67.36   (row span 62610..62664, at char 62625)
+    joel-freijah                 scoring[2026].games 23 -> 24   (row span 177986..178044, at char 178015)
+    joel-freijah                 scoring[2026].avg  77.59 -> 79.02   (row span 177986..178044, at char 178001)
+    jordan-de-goey               scoring[2026].games 21 -> 22   (row span 883943..884001, at char 883972)
+    jordan-de-goey               scoring[2026].avg  89.69 -> 88.39   (row span 883943..884001, at char 883958)
+    josh-daicos                  scoring[2026].games 23 -> 24   (row span 741493..741547, at char 741522)
+    josh-daicos                  scoring[2026].avg  95.45 -> 95.47   (row span 741493..741547, at char 741508)
+    josh-dolan                   scoring[2026].games 11 -> 12   (row span 85812..85866, at char 85841)
+    josh-dolan                   scoring[2026].avg  49.62 -> 48.73   (row span 85812..85866, at char 85827)
+    kade-chandler                scoring[2026].games 22 -> 23   (row span 572989..573043, at char 573018)
+    kade-chandler                scoring[2026].avg  78.94 -> 78.81   (row span 572989..573043, at char 573004)
+    koltyn-tholstrup             scoring[2026].games 23 -> 24   (row span 154939..154992, at char 154967)
+    koltyn-tholstrup             scoring[2026].avg  73.4 -> 72.63   (row span 154939..154992, at char 154954)
+    kysaiah-pickett              scoring[2026].games 23 -> 24   (row span 449901..449958, at char 449929)
+    kysaiah-pickett              scoring[2026].avg  97.5 -> 96.44   (row span 449901..449958, at char 449916)
+    lachlan-bramble              scoring[2026].games 23 -> 24   (row span 202520..202574, at char 202549)
+    lachlan-bramble              scoring[2026].avg  64.98 -> 66.36   (row span 202520..202574, at char 202535)
+    lachlan-cowan                scoring[2026].games 22 -> 23   (row span 238746..238800, at char 238775)
+    lachlan-cowan                scoring[2026].avg  66.62 -> 66.64   (row span 238746..238800, at char 238761)
+    lachlan-schultz              scoring[2026].games 20 -> 21   (row span 552702..552756, at char 552731)
+    lachlan-schultz              scoring[2026].avg  77.71 -> 77.34   (row span 552702..552756, at char 552717)
+    lewis-young                  scoring[2026].games 12 -> 13   (row span 735253..735308, at char 735282)
+    lewis-young                  scoring[2026].avg  58.26 -> 57.16   (row span 735253..735308, at char 735268)
+    luke-kennedy                 scoring[2026].games 6 -> 7   (row span 107191..107244, at char 107219)
+    luke-kennedy                 scoring[2026].avg  42.0 -> 43.29   (row span 107191..107244, at char 107206)
+    marc-pittonet                scoring[2026].games 20 -> 21   (row span 921795..921851, at char 921824)
+    marc-pittonet                scoring[2026].avg  82.23 -> 82.22   (row span 921795..921851, at char 921810)
+    marcus-bontempelli           scoring[2026].games 22 -> 23   (row span 977826..977882, at char 977856)
+    marcus-bontempelli           scoring[2026].avg  117.17 -> 117.9   (row span 977826..977882, at char 977841)
+    matt-cottrell                scoring[2026].games 12 -> 13   (row span 593027..593085, at char 593056)
+    matt-cottrell                scoring[2026].avg  62.83 -> 65.46   (row span 593027..593085, at char 593042)
+    matthew-kennedy-1            scoring[2026].games 23 -> 24   (row span 806209..806264, at char 806238)
+    matthew-kennedy-1            scoring[2026].avg  85.71 -> 86.43   (row span 806209..806264, at char 806224)
+    max-gawn                     scoring[2026].games 23 -> 24   (row span 1388319..1388376, at char 1388349)
+    max-gawn                     scoring[2026].avg  128.05 -> 127.67   (row span 1388319..1388376, at char 1388334)
+    michael-sellwood             scoring[2026].games 22 -> 23   (row span 136386..136440, at char 136415)
+    michael-sellwood             scoring[2026].avg  61.99 -> 60.6   (row span 136386..136440, at char 136401)
+    mitch-mcgovern               scoring[2026].games 23 -> 24   (row span 915686..915741, at char 915715)
+    mitch-mcgovern               scoring[2026].avg  64.35 -> 63.42   (row span 915686..915741, at char 915701)
+    ned-long                     scoring[2026].games 21 -> 22   (row span 336037..336095, at char 336066)
+    ned-long                     scoring[2026].avg  69.17 -> 70.16   (row span 336037..336095, at char 336052)
+    nick-daicos                  scoring[2026].games 22 -> 23   (row span 287495..287551, at char 287525)
+    nick-daicos                  scoring[2026].avg  119.48 -> 119.76   (row span 287495..287551, at char 287510)
+    nick-haynes                  scoring[2026].games 18 -> 19   (row span 1144082..1144136, at char 1144111)
+    nick-haynes                  scoring[2026].avg  77.01 -> 78.33   (row span 1144082..1144136, at char 1144097)
+    oliver-florent               scoring[2026].games 23 -> 24   (row span 700463..700518, at char 700492)
+    oliver-florent               scoring[2026].avg  89.35 -> 89.13   (row span 700463..700518, at char 700478)
+    oliver-hollands              scoring[2026].games 12 -> 13   (row span 225152..225210, at char 225181)
+    oliver-hollands              scoring[2026].avg  68.95 -> 70.18   (row span 225152..225210, at char 225167)
+    patrick-cripps               scoring[2026].games 23 -> 24   (row span 986774..986829, at char 986803)
+    patrick-cripps               scoring[2026].avg  99.13 -> 98.37   (row span 986774..986829, at char 986789)
+    patrick-lipinski             scoring[2026].games 19 -> 20   (row span 718043..718101, at char 718072)
+    patrick-lipinski             scoring[2026].avg  77.62 -> 76.74   (row span 718043..718101, at char 718058)
+    rhylee-west                  scoring[2026].games 22 -> 23   (row span 530619..530673, at char 530648)
+    rhylee-west                  scoring[2026].avg  63.98 -> 65.02   (row span 530619..530673, at char 530634)
+    roan-steele                  scoring[2026].games 18 -> 19   (row span 137818..137873, at char 137847)
+    roan-steele                  scoring[2026].avg  59.41 -> 59.28   (row span 137818..137873, at char 137833)
+    rory-lobb                    scoring[2026].games 20 -> 21   (row span 1003225..1003280, at char 1003254)
+    rory-lobb                    scoring[2026].avg  72.02 -> 70.64   (row span 1003225..1003280, at char 1003240)
+    ryan-gardner                 scoring[2026].games 2 -> 3   (row span 845058..845111, at char 845086)
+    ryan-gardner                 scoring[2026].avg  32.0 -> 29.33   (row span 845058..845111, at char 845073)
+    ryley-sanders                scoring[2026].games 21 -> 22   (row span 149629..149687, at char 149658)
+    ryley-sanders                scoring[2026].avg  87.24 -> 87.23   (row span 149629..149687, at char 149644)
+    sam-davidson                 scoring[2026].games 16 -> 17   (row span 99655..99710, at char 99684)
+    sam-davidson                 scoring[2026].avg  54.83 -> 55.6   (row span 99655..99710, at char 99670)
+    sam-walsh                    scoring[2026].games 23 -> 24   (row span 507494..507550, at char 507524)
+    sam-walsh                    scoring[2026].avg  101.24 -> 102.23   (row span 507494..507550, at char 507509)
+    samuel-swadling              scoring[2026].games 8 -> 9   (row span 24023..24077, at char 24052)
+    samuel-swadling              scoring[2026].avg  70.75 -> 74.0   (row span 24023..24077, at char 24038)
+    steele-sidebottom            scoring[2026].games 20 -> 21   (row span 1464527..1464582, at char 1464556)
+    steele-sidebottom            scoring[2026].avg  63.05 -> 62.1   (row span 1464527..1464582, at char 1464542)
+    talor-byrne                  scoring[2026].games 17 -> 18   (row span 29287..29345, at char 29316)
+    talor-byrne                  scoring[2026].avg  56.57 -> 55.98   (row span 29287..29345, at char 29302)
+    tim-membrey                  scoring[2026].games 19 -> 20   (row span 1094795..1094850, at char 1094824)
+    tim-membrey                  scoring[2026].avg  63.67 -> 63.99   (row span 1094795..1094850, at char 1094810)
+    timothy-english              scoring[2026].games 15 -> 16   (row span 708743..708800, at char 708773)
+    timothy-english              scoring[2026].avg  100.07 -> 100.82   (row span 708743..708800, at char 708758)
+    tom-mcdonald                 scoring[2026].games 10 -> 11   (row span 1301526..1301580, at char 1301554)
+    tom-mcdonald                 scoring[2026].avg  60.3 -> 57.18   (row span 1301526..1301580, at char 1301541)
+    tom-sparrow                  scoring[2026].games 23 -> 24   (row span 531705..531760, at char 531734)
+    tom-sparrow                  scoring[2026].avg  89.04 -> 87.5   (row span 531705..531760, at char 531720)
+    trent-rivers                 scoring[2026].games 16 -> 17   (row span 467650..467704, at char 467679)
+    trent-rivers                 scoring[2026].avg  79.03 -> 78.85   (row span 467650..467704, at char 467665)
+    will-hayes-b                 scoring[2026].games 9 -> 10   (row span 103137..103190, at char 103166)
+    will-hayes-b                 scoring[2026].avg  37.87 -> 36.78   (row span 103137..103191, at char 103152)
+    xavier-lindsay               scoring[2026].games 6 -> 7   (row span 71771..71825, at char 71800)
+    xavier-lindsay               scoring[2026].avg  61.17 -> 61.86   (row span 71771..71825, at char 71786)
+    xavier-taylor                scoring[2026].games 2 -> 3   (row span 6812..6864, at char 6840)
+    xavier-taylor                scoring[2026].avg  42.0 -> 37.0   (row span 6812..6864, at char 6827)
+store AFTER   415929d3c9d561cc58bef00ae63432b2   (1978024 bytes, +5)
+byte check: reversing every declared replacement reproduces the store byte-for-byte — the ONLY bytes that differ are the declared field values.
+WRITTEN and re-read: 184 row(s) edited, 2650 rows in the store, every other row untouched.
+season clock  re-derived from the edited store by season_state.derive (the sole deriver)
+    source_store_md5  a9dec7e4785c -> 415929d3c9d5
+    every derived VALUE asserted unchanged (10 field(s) checked); WRITTEN and re-read.
+    [store_edit OK  23.85s]
+
+--- STEP 2/11  build_proofs   bare build, predicted identity, switch leg, day-0 ---
+build         rc=0 board=c8c2f2b6f99445484fadaa8c44afe609  (1225.6s)
+built FROM the edited store: sidecar source_md5 415929d3c9d5 == the store this act wrote
+MOVERS — EVERY ONE, WITH VALUES  (234 of 1002 valued row(s) moved)
+    aaron-naughton               Aaron Naughton             1189 -> 1415   (+226)  [active]
+    adam-cerra                   Adam Cerra                 1005 -> 1022   (+17)  [active]
+    adam-saad                    Adam Saad                  431 -> 429   (-2)  [active]
+    adam-treloar                 Adam Treloar               828 -> 827   (-1)  [active]
+    andrew-brayshaw              Andrew Brayshaw            2896 -> 2894   (-2)  [active]
+    andrew-mcgrath               Andrew McGrath             1105 -> 1104   (-1)  [active]
+    angus-anderson               Angus Anderson             276 -> 264   (-12)  [active]
+    archer-day-wicks             Archer Day-Wicks           354 -> 353   (-1)  [active]
+    archie-roberts               Archie Roberts             3825 -> 3822   (-3)  [active]
+    arthur-jones                 Arthur Jones               208 -> 322   (+114)  [active]
+    ash-johnson                  Ash Johnson                8 -> 7   (-1)  [back]
+    bailey-dale                  Bailey Dale                2051 -> 1990   (-61)  [active]
+    bailey-humphrey              Bailey Humphrey            2381 -> 2380   (-1)  [active]
+    bailey-laurie                Bailey Laurie              125 -> 115   (-10)  [active]
+    bailey-smith                 Bailey Smith               5947 -> 5943   (-4)  [active]
+    bailey-williams-wb           Bailey Williams            596 -> 541   (-55)  [active]
+    bayley-fritsch               Bayley Fritsch             304 -> 281   (-23)  [active]
+    beau-mccreery                Beau McCreery              226 -> 228   (+2)  [active]
+    ben-ainsworth                Ben Ainsworth              256 -> 346   (+90)  [active]
+    ben-miller                   Ben Miller                 978 -> 980   (+2)  [active]
+    billy-wilson                 Billy Wilson               956 -> 840   (-116)  [active]
+    blake-acres                  Blake Acres                172 -> 130   (-42)  [active]
+    blake-hardwick               Blake Hardwick             625 -> 624   (-1)  [active]
+    bodhi-uwland                 Bodhi Uwland               4133 -> 4131   (-2)  [active]
+    brandon-zerk-thatcher        Brandon Zerk-Thatcher      79 -> 78   (-1)  [active]
+    brayden-maynard              Brayden Maynard            544 -> 543   (-1)  [active]
+    brodie-grundy                Brodie Grundy              4033 -> 4032   (-1)  [active]
+    brodie-kemp                  Brodie Kemp                720 -> 767   (+47)  [active]
+    buku-khamis                  Buku Khamis                155 -> 154   (-1)  [active]
+    caleb-daniel                 Caleb Daniel               1251 -> 1250   (-1)  [active]
+    caleb-serong                 Caleb Serong               4537 -> 4533   (-4)  [active]
+    caleb-windsor                Caleb Windsor              1126 -> 995   (-131)  [active]
+    callum-mills                 Callum Mills               1964 -> 1963   (-1)  [active]
+    callum-wilkie                Callum Wilkie              3506 -> 3508   (+2)  [active]
+    cameron-mackenzie            Cameron Mackenzie          1770 -> 1769   (-1)  [active]
+    chad-warner                  Chad Warner                3981 -> 3978   (-3)  [active]
+    changkuoth-jiath             Changkuoth Jiath           63 -> 66   (+3)  [active]
+    charlie-comben               Charlie Comben             659 -> 658   (-1)  [active]
+    charlie-west                 Charlie West               318 -> 331   (+13)  [active]
+    christian-petracca           Christian Petracca         1763 -> 1762   (-1)  [active]
+    clayton-oliver               Clayton Oliver             2282 -> 2280   (-2)  [active]
+    cody-weightman               Cody Weightman             186 -> 183   (-3)  [active]
+    colby-mckercher              Colby McKercher            4264 -> 4265   (+1)  [active]
+    connor-budarick              Connor Budarick            253 -> 221   (-32)  [active]
+    connor-idun                  Connor Idun                2376 -> 2374   (-2)  [active]
+    connor-macdonald             Connor MacDonald           2939 -> 2938   (-1)  [active]
+    connor-o-sullivan            Connor O'Sullivan          2640 -> 2645   (+5)  [active]
+    connor-rozee                 Connor Rozee               3190 -> 3187   (-3)  [active]
+    cooper-duff-tytler           Cooper Duff-Tytler         1796 -> 1795   (-1)  [active]
+    cooper-hynes                 Cooper Hynes               1073 -> 1072   (-1)  [active]
+    cooper-lord                  Cooper Lord                975 -> 1158   (+183)  [active]
+    dan-houston                  Dan Houston                1127 -> 1055   (-72)  [active]
+    daniel-mcstay                Daniel McStay              293 -> 341   (+48)  [active]
+    daniel-turner                Daniel Turner              1554 -> 1732   (+178)  [active]
+    darcy-cameron                Darcy Cameron              1522 -> 1557   (+35)  [active]
+    darcy-fogarty                Darcy Fogarty              822 -> 824   (+2)  [active]
+    darcy-jones                  Darcy Jones                1496 -> 1495   (-1)  [active]
+    darcy-parish                 Darcy Parish               621 -> 620   (-1)  [active]
+    darcy-wilmot                 Darcy Wilmot               3114 -> 3113   (-1)  [active]
+    darcy-wilson                 Darcy Wilson               2716 -> 2715   (-1)  [active]
+    dylan-patterson              Dylan Patterson            1134 -> 1133   (-1)  [active]
+    dyson-sharp                  Dyson Sharp                3081 -> 3080   (-1)  [active]
+    ed-langdon                   Ed Langdon                 631 -> 612   (-19)  [active]
+    ed-richards                  Ed Richards                4108 -> 4083   (-25)  [active]
+    edward-allan                 Edward Allan               851 -> 812   (-39)  [active]
+    errol-gulden                 Errol Gulden               7524 -> 7518   (-6)  [active]
+    ethan-read                   Ethan Read                 555 -> 554   (-1)  [active]
+    finn-callaghan               Finn Callaghan             5548 -> 5544   (-4)  [active]
+    francis-evans                Francis Evans              793 -> 798   (+5)  [active]
+    george-hewett                George Hewett              1944 -> 1809   (-135)  [active]
+    harley-reid                  Harley Reid                3859 -> 3856   (-3)  [active]
+    harris-andrews               Harris Andrews             1600 -> 1601   (+1)  [active]
+    harrison-petty               Harrison Petty             422 -> 382   (-40)  [active]
+    harry-dean                   Harry Dean                 2806 -> 3035   (+229)  [active]
+    harry-mckay                  Harry McKay                1643 -> 1658   (+15)  [active]
+    harry-sharp                  Harry Sharp                105 -> 98   (-7)  [active]
+    harry-sheezel                Harry Sheezel              11169 -> 11161   (-8)  [active]
+    harvey-harrison              Harvey Harrison            87 -> 85   (-2)  [active]
+    harvey-langford              Harvey Langford            1804 -> 1912   (+108)  [active]
+    harvey-thomas                Harvey Thomas              2017 -> 2016   (-1)  [active]
+    hugh-bond                    Hugh Bond                  132 -> 131   (-1)  [active]
+    hugh-mccluggage              Hugh McCluggage            1591 -> 1589   (-2)  [active]
+    hugo-garcia                  Hugo Garcia                2895 -> 2893   (-2)  [active]
+    hussien-el-achkar            Hussien El Achkar          421 -> 420   (-1)  [active]
+    isaac-heeney                 Isaac Heeney               3774 -> 3770   (-4)  [active]
+    isaac-quaynor                Isaac Quaynor              608 -> 624   (+16)  [active]
+    izak-rankine                 Izak Rankine               5029 -> 5028   (-1)  [active]
+    jack-crisp                   Jack Crisp                 347 -> 355   (+8)  [active]
+    jack-gunston                 Jack Gunston               683 -> 682   (-1)  [active]
+    jack-lukosius                Jack Lukosius              543 -> 542   (-1)  [active]
+    jack-ross                    Jack Ross                  2425 -> 2423   (-2)  [active]
+    jack-silvagni                Jack Silvagni              697 -> 698   (+1)  [active]
+    jack-sinclair                Jack Sinclair              3149 -> 3148   (-1)  [active]
+    jack-steele                  Jack Steele                1124 -> 1109   (-15)  [active]
+    jack-viney                   Jack Viney                 527 -> 312   (-215)  [active]
+    jack-whitlock                Jack Whitlock              1009 -> 1008   (-1)  [active]
+    jacob-farrow                 Jacob Farrow               2066 -> 2065   (-1)  [active]
+    jacob-van-rooyen             Jacob Van Rooyen           1814 -> 1820   (+6)  [active]
+    jacob-weitering              Jacob Weitering            1069 -> 1239   (+170)  [active]
+    jagga-smith                  Jagga Smith                4880 -> 5029   (+149)  [active]
+    jai-newcombe                 Jai Newcombe               4719 -> 4715   (-4)  [active]
+    jake-bowey                   Jake Bowey                 3980 -> 3979   (-1)  [active]
+    jake-lever                   Jake Lever                 191 -> 192   (+1)  [active]
+    james-o-donnell              James O'Donnell            474 -> 466   (-8)  [active]
+    james-sicily                 James Sicily               1201 -> 1200   (-1)  [active]
+    jase-burgoyne                Jase Burgoyne              2614 -> 2613   (-1)  [active]
+    jason-horne-francis          Jason Horne-Francis        5559 -> 5554   (-5)  [active]
+    jaspa-fletcher               Jaspa Fletcher             2752 -> 2751   (-1)  [active]
+    jed-walter                   Jed Walter                 1036 -> 1035   (-1)  [active]
+    jeremy-howe                  Jeremy Howe                181 -> 165   (-16)  [active]
+    joel-fitzgerald              Joel Fitzgerald            305 -> 288   (-17)  [active]
+    joel-freijah                 Joel Freijah               2512 -> 2870   (+358)  [active]
+    joel-jeffrey                 Joel Jeffrey               1449 -> 1448   (-1)  [active]
+    john-noble                   John Noble                 2339 -> 2338   (-1)  [active]
+    jordan-clark                 Jordan Clark               3197 -> 3196   (-1)  [active]
+    jordan-dawson                Jordan Dawson              2950 -> 2948   (-2)  [active]
+    jordan-de-goey               Jordan De Goey             1398 -> 1307   (-91)  [active]
+    jordon-sweet                 Jordon Sweet               2564 -> 2563   (-1)  [active]
+    joseph-fonti                 Joseph Fonti               493 -> 492   (-1)  [active]
+    josh-battle                  Josh Battle                1870 -> 1871   (+1)  [active]
+    josh-daicos                  Josh Daicos                2143 -> 2125   (-18)  [active]
+    josh-dolan                   Josh Dolan                 318 -> 330   (+12)  [active]
+    josh-draper                  Josh Draper                261 -> 260   (-1)  [active]
+    josh-dunkley                 Josh Dunkley               1310 -> 1309   (-1)  [active]
+    josh-treacy                  Josh Treacy                5875 -> 5874   (-1)  [active]
+    josh-ward                    Josh Ward                  2691 -> 2689   (-2)  [active]
+    josh-worrell                 Josh Worrell               2792 -> 2790   (-2)  [active]
+    justin-mcinerney             Justin McInerney           1907 -> 1906   (-1)  [active]
+    jy-simpkin                   Jy Simpkin                 1223 -> 1222   (-1)  [active]
+    kade-chandler                Kade Chandler              1122 -> 1117   (-5)  [active]
+    kane-farrell                 Kane Farrell               1321 -> 1320   (-1)  [active]
+    kieren-briggs                Kieren Briggs              1970 -> 1969   (-1)  [active]
+    koltyn-tholstrup             Koltyn Tholstrup           1739 -> 1695   (-44)  [active]
+    kyle-langford                Kyle Langford              486 -> 485   (-1)  [active]
+    kysaiah-pickett              Kysaiah Pickett            4433 -> 4435   (+2)  [active]
+    lachie-neale                 Lachie Neale               2181 -> 2180   (-1)  [active]
+    lachlan-ash                  Lachlan Ash                5390 -> 5387   (-3)  [active]
+    lachlan-bramble              Lachlan Bramble            119 -> 155   (+36)  [active]
+    lachlan-cowan                Lachlan Cowan              594 -> 598   (+4)  [active]
+    lachlan-schultz              Lachlan Schultz            672 -> 658   (-14)  [active]
+    lawson-humphries             Lawson Humphries           1695 -> 1693   (-2)  [active]
+    leo-lombard                  Leo Lombard                1779 -> 1778   (-1)  [active]
+    levi-ashcroft                Levi Ashcroft              3598 -> 3597   (-1)  [active]
+    lewis-young                  Lewis Young                223 -> 148   (-75)  [active]
+    luke-davies-uniacke          Luke Davies-Uniacke        3101 -> 3098   (-3)  [active]
+    luke-jackson                 Luke Jackson               9453 -> 9450   (-3)  [active]
+    luke-kennedy                 Luke Kennedy               168 -> 277   (+109)  [active]
+    luke-parker                  Luke Parker                1175 -> 1173   (-2)  [active]
+    mac-andrew                   Mac Andrew                 3882 -> 3884   (+2)  [active]
+    marc-pittonet                Marc Pittonet              527 -> 525   (-2)  [active]
+    marcus-bontempelli           Marcus Bontempelli         3626 -> 3702   (+76)  [active]
+    marcus-herbert               Marcus Herbert             850 -> 848   (-2)  [active]
+    mark-keane                   Mark Keane                 1491 -> 1493   (+2)  [active]
+    matt-cottrell                Matt Cottrell              131 -> 164   (+33)  [active]
+    matt-rowell                  Matt Rowell                4927 -> 4923   (-4)  [active]
+    matthew-kennedy-1            Matthew Kennedy            668 -> 706   (+38)  [active]
+    max-gawn                     Max Gawn                   3377 -> 3345   (-32)  [active]
+    max-holmes                   Max Holmes                 8466 -> 8459   (-7)  [active]
+    michael-sellwood             Michael Sellwood           306 -> 296   (-10)  [active]
+    miles-bergman                Miles Bergman              999 -> 998   (-1)  [active]
+    mitch-mcgovern               Mitch McGovern             44 -> 37   (-7)  [active]
+    mitchell-lewis               Mitchell Lewis             769 -> 771   (+2)  [active]
+    mitchito-owens               Mitchito Owens             1980 -> 1985   (+5)  [active]
+    murphy-reid                  Murphy Reid                3396 -> 3395   (-1)  [active]
+    nasiah-wanganeen-milera      Nasiah Wanganeen-Milera    9461 -> 9453   (-8)  [active]
+    ned-long                     Ned Long                   1290 -> 1353   (+63)  [active]
+    nicholas-martin              Nicholas Martin            3896 -> 3893   (-3)  [active]
+    nick-blakey                  Nick Blakey                4061 -> 4060   (-1)  [active]
+    nick-bryan                   Nick Bryan                 714 -> 713   (-1)  [active]
+    nick-daicos                  Nick Daicos                10655 -> 10636   (-19)  [active]
+    nick-haynes                  Nick Haynes                117 -> 156   (+39)  [active]
+    nick-madden                  Nick Madden                1214 -> 1213   (-1)  [active]
+    nick-watson                  Nick Watson                3611 -> 3610   (-1)  [active]
+    noah-anderson                Noah Anderson              5600 -> 5595   (-5)  [active]
+    noah-mraz                    Noah Mraz                  816 -> 819   (+3)  [active]
+    oliver-florent               Oliver Florent             1053 -> 1074   (+21)  [active]
+    oliver-francou               Oliver Francou             403 -> 402   (-1)  [active]
+    oliver-henry                 Oliver Henry               262 -> 261   (-1)  [active]
+    oliver-hollands              Oliver Hollands            1533 -> 1565   (+32)  [active]
+    ollie-dempsey                Ollie Dempsey              2468 -> 2466   (-2)  [active]
+    patrick-cripps               Patrick Cripps             1526 -> 1465   (-61)  [active]
+    patrick-lipinski             Patrick Lipinski           758 -> 707   (-51)  [active]
+    peter-wright                 Peter Wright               1270 -> 1269   (-1)  [active]
+    reilly-o-brien               Reilly O'Brien             994 -> 993   (-1)  [active]
+    reuben-ginbey                Reuben Ginbey              2244 -> 2248   (+4)  [active]
+    rhylee-west                  Rhylee West                212 -> 270   (+58)  [active]
+    riley-hamilton               Riley Hamilton             218 -> 217   (-1)  [active]
+    riley-thilthorpe             Riley Thilthorpe           4289 -> 4288   (-1)  [active]
+    roan-steele                  Roan Steele                84 -> 85   (+1)  [active]
+    robert-hansen                Robert Hansen              107 -> 106   (-1)  [active]
+    rory-lobb                    Rory Lobb                  295 -> 265   (-30)  [active]
+    rowan-marshall               Rowan Marshall             2052 -> 2051   (-1)  [active]
+    ryan-gardner                 Ryan Gardner               7 -> 6   (-1)  [active]
+    ryley-sanders                Ryley Sanders              3769 -> 3771   (+2)  [active]
+    sam-berry                    Sam Berry                  2821 -> 2818   (-3)  [active]
+    sam-cumming                  Sam Cumming                2313 -> 2312   (-1)  [active]
+    sam-darcy                    Sam Darcy                  5339 -> 5341   (+2)  [active]
+    sam-davidson                 Sam Davidson               115 -> 116   (+1)  [active]
+    sam-de-koning                Sam De Koning              851 -> 850   (-1)  [active]
+    sam-durham                   Sam Durham                 2482 -> 2481   (-1)  [active]
+    sam-flanders                 Sam Flanders               2554 -> 2552   (-2)  [active]
+    sam-lalor                    Sam Lalor                  3514 -> 3513   (-1)  [active]
+    sam-taylor                   Sam Taylor                 1139 -> 1142   (+3)  [active]
+    sam-walsh                    Sam Walsh                  3073 -> 3118   (+45)  [active]
+    samuel-swadling              Samuel Swadling            1069 -> 1240   (+171)  [active]
+    talor-byrne                  Talor Byrne                659 -> 642   (-17)  [active]
+    tanner-bruhn                 Tanner Bruhn               2010 -> 2009   (-1)  [active]
+    thomas-stewart               Thomas Stewart             903 -> 902   (-1)  [active]
+    tim-kelly                    Tim Kelly                  1212 -> 1210   (-2)  [active]
+    tim-membrey                  Tim Membrey                98 -> 108   (+10)  [active]
+    tim-taranto                  Tim Taranto                2447 -> 2445   (-2)  [active]
+    timothy-english              Timothy English            3350 -> 3405   (+55)  [active]
+    toby-greene                  Toby Greene                747 -> 746   (-1)  [active]
+    toby-murray                  Toby Murray                225 -> 224   (-1)  [active]
+    tom-de-koning                Tom De Koning              1611 -> 1610   (-1)  [active]
+    tom-green                    Tom Green                  5255 -> 5250   (-5)  [active]
+    tom-mccarthy                 Tom McCarthy               1359 -> 1357   (-2)  [active]
+    tom-mccartin                 Tom McCartin               1433 -> 1434   (+1)  [active]
+    tom-mcdonald                 Tom McDonald               59 -> 26   (-33)  [active]
+    tom-sparrow                  Tom Sparrow                1568 -> 1506   (-62)  [active]
+    trent-rivers                 Trent Rivers               1517 -> 1466   (-51)  [active]
+    tristan-xerri                Tristan Xerri              7211 -> 7209   (-2)  [active]
+    wil-parker                   Wil Parker                 66 -> 65   (-1)  [active]
+    wil-powell                   Wil Powell                 852 -> 850   (-2)  [active]
+    will-ashcroft                Will Ashcroft              7058 -> 7053   (-5)  [active]
+    will-day                     Will Day                   1861 -> 1860   (-1)  [active]
+    will-hayward                 Will Hayward               281 -> 280   (-1)  [active]
+    will-setterfield             Will Setterfield           987 -> 986   (-1)  [active]
+    xavier-duursma               Xavier Duursma             240 -> 239   (-1)  [active]
+    xavier-lindsay               Xavier Lindsay             1279 -> 1388   (+109)  [active]
+    xavier-taylor                Xavier Taylor              873 -> 841   (-32)  [active]
+    zac-bailey                   Zac Bailey                 3179 -> 3178   (-1)  [active]
+    zachary-merrett              Zachary Merrett            2408 -> 2407   (-1)  [active]
+    zak-butters                  Zak Butters                6386 -> 6381   (-5)  [active]
+pool (sum of active v)  702917 -> 703913  (+996)
+    [build_proofs FAILED  1225.61s]
 
 ======================================================================================================
-LANDING ABORTED AT STEP 'preflight'
+LANDING ABORTED AT STEP 'build_proofs'
 ======================================================================================================
-  THE TREE IS NOT CLEAN. A landing transaction starts from a committed tree, or its abort restores a state nobody chose:
-      ?? docs/evidence/finals_fw1_2026-08-30/ACT_SPEC_FW1_EDIT.json
-      ?? docs/evidence/finals_fw1_2026-08-30/FW1_EDIT_PLAN.json
-      ?? docs/evidence/finals_fw1_2026-08-30/PREREG.md
+  THE MOVERS ARE NOT THE MOVERS THIS ACT DECLARED.
+      UNEXPECTED MOVER(S): aaron-naughton 1189 -> 1415, adam-saad 431 -> 429, adam-treloar 828 -> 827, andrew-brayshaw 2896 -> 2894, andrew-mcgrath 1105 -> 1104, angus-anderson 276 -> 264, archer-day-wicks 354 -> 353, archie-roberts 3825 -> 3822, arthur-jones 208 -> 322, ash-johnson 8 -> 7, bailey-dale 2051 -> 1990, bailey-humphrey 2381 -> 2380, bailey-laurie 125 -> 115, bailey-smith 5947 -> 5943, bailey-williams-wb 596 -> 541, ben-ainsworth 256 -> 346, ben-miller 978 -> 980, billy-wilson 956 -> 840, blake-acres 172 -> 130, blake-hardwick 625 -> 624, bodhi-uwland 4133 -> 4131, brandon-zerk-thatcher 79 -> 78, brayden-maynard 544 -> 543, brodie-grundy 4033 -> 4032, brodie-kemp 720 -> 767, buku-khamis 155 -> 154, caleb-daniel 1251 -> 1250, caleb-serong 4537 -> 4533, caleb-windsor 1126 -> 995, callum-mills 1964 -> 1963, callum-wilkie 3506 -> 3508, cameron-mackenzie 1770 -> 1769, chad-warner 3981 -> 3978, charlie-comben 659 -> 658, charlie-west 318 -> 331, christian-petracca 1763 -> 1762, clayton-oliver 2282 -> 2280, cody-weightman 186 -> 183, colby-mckercher 4264 -> 4265, connor-budarick 253 -> 221, connor-idun 2376 -> 2374, connor-macdonald 2939 -> 2938, connor-o-sullivan 2640 -> 2645, connor-rozee 3190 -> 3187, cooper-duff-tytler 1796 -> 1795, cooper-hynes 1073 -> 1072, daniel-mcstay 293 -> 341, daniel-turner 1554 -> 1732, darcy-fogarty 822 -> 824, darcy-jones 1496 -> 1495, darcy-parish 621 -> 620, darcy-wilmot 3114 -> 3113, darcy-wilson 2716 -> 2715, dylan-patterson 1134 -> 1133, dyson-sharp 3081 -> 3080, ed-richards 4108 -> 4083, edward-allan 851 -> 812, errol-gulden 7524 -> 7518, ethan-read 555 -> 554, finn-callaghan 5548 -> 5544, francis-evans 793 -> 798, george-hewett 1944 -> 1809, harley-reid 3859 -> 3856, harris-andrews 1600 -> 1601, harrison-petty 422 -> 382, harry-sheezel 11169 -> 11161, harvey-langford 1804 -> 1912, harvey-thomas 2017 -> 2016, hugh-bond 132 -> 131, hugh-mccluggage 1591 -> 1589, hugo-garcia 2895 -> 2893, hussien-el-achkar 421 -> 420, isaac-heeney 3774 -> 3770, izak-rankine 5029 -> 5028, jack-gunston 683 -> 682, jack-lukosius 543 -> 542, jack-ross 2425 -> 2423, jack-silvagni 697 -> 698, jack-sinclair 3149 -> 3148, jack-steele 1124 -> 1109, jack-whitlock 1009 -> 1008, jacob-farrow 2066 -> 2065, jacob-van-rooyen 1814 -> 1820, jacob-weitering 1069 -> 1239, jagga-smith 4880 -> 5029, jai-newcombe 4719 -> 4715, jake-bowey 3980 -> 3979, jake-lever 191 -> 192, james-sicily 1201 -> 1200, jase-burgoyne 2614 -> 2613, jason-horne-francis 5559 -> 5554, jaspa-fletcher 2752 -> 2751, jed-walter 1036 -> 1035, jeremy-howe 181 -> 165, joel-fitzgerald 305 -> 288, joel-freijah 2512 -> 2870, joel-jeffrey 1449 -> 1448, john-noble 2339 -> 2338, jordan-clark 3197 -> 3196, jordan-dawson 2950 -> 2948, jordon-sweet 2564 -> 2563, joseph-fonti 493 -> 492, josh-battle 1870 -> 1871, josh-daicos 2143 -> 2125, josh-dolan 318 -> 330, josh-draper 261 -> 260, josh-dunkley 1310 -> 1309, josh-treacy 5875 -> 5874, josh-ward 2691 -> 2689, josh-worrell 2792 -> 2790, justin-mcinerney 1907 -> 1906, jy-simpkin 1223 -> 1222, kane-farrell 1321 -> 1320, kieren-briggs 1970 -> 1969, koltyn-tholstrup 1739 -> 1695, kyle-langford 486 -> 485, kysaiah-pickett 4433 -> 4435, lachie-neale 2181 -> 2180, lachlan-ash 5390 -> 5387, lawson-humphries 1695 -> 1693, leo-lombard 1779 -> 1778, levi-ashcroft 3598 -> 3597, luke-davies-uniacke 3101 -> 3098, luke-jackson 9453 -> 9450, luke-kennedy 168 -> 277, luke-parker 1175 -> 1173, mac-andrew 3882 -> 3884, marcus-bontempelli 3626 -> 3702, marcus-herbert 850 -> 848, mark-keane 1491 -> 1493, matt-cottrell 131 -> 164, matt-rowell 4927 -> 4923, max-gawn 3377 -> 3345, max-holmes 8466 -> 8459, michael-sellwood 306 -> 296, miles-bergman 999 -> 998, mitchell-lewis 769 -> 771, mitchito-owens 1980 -> 1985, murphy-reid 3396 -> 3395, nasiah-wanganeen-milera 9461 -> 9453, ned-long 1290 -> 1353, nicholas-martin 3896 -> 3893, nick-blakey 4061 -> 4060, nick-bryan 714 -> 713, nick-daicos 10655 -> 10636, nick-haynes 117 -> 156, nick-madden 1214 -> 1213, nick-watson 3611 -> 3610, noah-anderson 5600 -> 5595, noah-mraz 816 -> 819, oliver-florent 1053 -> 1074, oliver-francou 403 -> 402, oliver-henry 262 -> 261, oliver-hollands 1533 -> 1565, ollie-dempsey 2468 -> 2466, patrick-cripps 1526 -> 1465, peter-wright 1270 -> 1269, reilly-o-brien 994 -> 993, reuben-ginbey 2244 -> 2248, rhylee-west 212 -> 270, riley-hamilton 218 -> 217, riley-thilthorpe 4289 -> 4288, robert-hansen 107 -> 106, rowan-marshall 2052 -> 2051, sam-berry 2821 -> 2818, sam-cumming 2313 -> 2312, sam-darcy 5339 -> 5341, sam-davidson 115 -> 116, sam-de-koning 851 -> 850, sam-durham 2482 -> 2481, sam-flanders 2554 -> 2552, sam-lalor 3514 -> 3513, sam-taylor 1139 -> 1142, sam-walsh 3073 -> 3118, samuel-swadling 1069 -> 1240, tanner-bruhn 2010 -> 2009, thomas-stewart 903 -> 902, tim-kelly 1212 -> 1210, tim-taranto 2447 -> 2445, timothy-english 3350 -> 3405, toby-greene 747 -> 746, toby-murray 225 -> 224, tom-de-koning 1611 -> 1610, tom-green 5255 -> 5250, tom-mccarthy 1359 -> 1357, tom-mccartin 1433 -> 1434, tom-sparrow 1568 -> 1506, trent-rivers 1517 -> 1466, tristan-xerri 7211 -> 7209, wil-parker 66 -> 65, wil-powell 852 -> 850, will-ashcroft 7058 -> 7053, will-day 1861 -> 1860, will-hayward 281 -> 280, will-setterfield 987 -> 986, xavier-duursma 240 -> 239, xavier-lindsay 1279 -> 1388, xavier-taylor 873 -> 841, zac-bailey 3179 -> 3178, zachary-merrett 2408 -> 2407, zak-butters 6386 -> 6381
+      DECLARED AND ABSENT: aaron-naughton 1189 -> 1413, angus-anderson 276 -> 266, arthur-jones 208 -> 316, bailey-dale 2051 -> 1991, bailey-laurie 125 -> 118, bailey-williams-wb 596 -> 542, ben-ainsworth 256 -> 344, billy-wilson 956 -> 841, blake-acres 172 -> 131, brodie-kemp 720 -> 765, caleb-windsor 1126 -> 998, charlie-west 318 -> 338, cody-weightman 186 -> 184, connor-budarick 253 -> 222, cooper-hynes 1073 -> 1067, daniel-mcstay 293 -> 339, daniel-turner 1554 -> 1731, ed-richards 4108 -> 4086, edward-allan 851 -> 815, francis-evans 793 -> 799, george-hewett 1944 -> 1812, harrison-petty 422 -> 383, harvey-langford 1804 -> 1901, jack-steele 1124 -> 1110, jacob-weitering 1069 -> 1237, jagga-smith 4880 -> 5030, jeremy-howe 181 -> 166, joel-fitzgerald 305 -> 306, joel-freijah 2512 -> 2871, josh-daicos 2143 -> 2126, josh-dolan 318 -> 332, koltyn-tholstrup 1739 -> 1696, kysaiah-pickett 4433 -> 4436, luke-kennedy 168 -> 276, marcus-bontempelli 3626 -> 3705, matt-cottrell 131 -> 161, max-gawn 3377 -> 3346, michael-sellwood 306 -> 309, ned-long 1290 -> 1354, nick-daicos 10655 -> 10644, nick-haynes 117 -> 155, oliver-florent 1053 -> 1075, oliver-hollands 1533 -> 1562, patrick-cripps 1526 -> 1466, rhylee-west 212 -> 269, sam-walsh 3073 -> 3121, samuel-swadling 1069 -> 1241, timothy-english 3350 -> 3406, tom-sparrow 1568 -> 1507, trent-rivers 1517 -> 1469, will-hayes-b 234 -> 237, xavier-lindsay 1279 -> 1379, xavier-taylor 873 -> 860
+  A store edit predicts who moves; a second mover means the edit did something the act did not say it would, and that is an abort.
 
-NO RESTORE POINT EXISTS: the failure precedes step 0's capture, so nothing was written by this landing and there is nothing to restore. The tree is as the landing found it.
+carriers that moved before the failure: 2
+    data/season_state.json                                           a59358138884 -> 04e9d68f67ce
+    engine/rl_after/rl_model_data.json                               a9dec7e4785c -> 415929d3c9d5
+RESTORING 2 carrier(s):
+    rewrite  data/season_state.json
+    rewrite  engine/rl_after/rl_model_data.json
+
+ABORT PROOF: every carrier is BYTE-EXACT to the identity captured at step 0.
 
 THE RECOVERY LADDER: abort-then-retry is the recovery. A landing this lander cannot
 complete after abort+retry is a round that SLIPS, on the owner's call — never an
@@ -25,6 +475,8 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.03s  FAIL
-    TOTAL              0.03s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_18480
+    preflight          0.15s  OK
+    store_edit        23.85s  OK
+    build_proofs    1225.61s  FAIL
+    TOTAL           1249.61s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_20215

@@ -40,21 +40,39 @@ The averages come from the ingestor's own `_mean` at the ingestor's own `ROUND_D
 called rather than restated. **The earlier preview rounded to one decimal and was wrong to**; its
 mover list is superseded by the one below.
 
-## The prediction, measured
+## The prediction, measured — REVISED after the first flight
 
-Priced on a loaded engine, in memory, then restored:
+The first flight priced the edit IN MEMORY on a loaded engine and predicted **86 movers, all of
+them players who played, none who did not**. The builder disagreed, and aborted on the declaration
+before touching anything: **234 movers**. The in-memory path cannot reproduce the **load-time
+calibration refit** — move 92 players' averages and the population statistics the model prices
+against move with them, so every valued row shifts a little. The first prediction was wrong in the
+interesting direction: it claimed a ripple of zero, and there is one.
 
-* **CONTROL PASS** — the untouched board repriced to the live board, **0 diffs**, before anything
-  was changed. A prediction measured against a board that does not reproduce is worthless.
-* **86 movers**: 86 who played, 0 who did not.
-* Pool **702,917 -> 704,163 (+1,246)**.
-* Restored and re-priced: the board returned to its pre-edit values exactly.
+That flight built the board, measured every mover, and restored the tree byte-exact. What is
+declared below is therefore what the REAL builder produced from these exact 184 edits on this exact
+store, and the re-flight asserts determinism rather than prediction.
 
-Largest rises: Joel Freijah +359 (112), Harry Dean +229 (99), Aaron Naughton +224 (110).
-Largest falls: Jack Viney -215 (55), George Hewett -132 (72), Caleb Windsor -128 (49).
+    234 movers of 1002 valued rows
+      88 of the 92 players who played FW1   (4 of them priced unchanged)
+      146 who did not play — the calibration ripple
+    pool  702,917 -> 703,913  (+996)
 
-`expected_movers` declares every one of them by key and both values. A second, undeclared mover is
-an abort with the mover named — which is a stronger falsifier than the round lane ever offered.
+Largest rises: Joel Freijah +358, Harry Dean +229, Aaron Naughton +226.
+Largest falls: Jack Viney -215, George Hewett -135, Caleb Windsor -131.
+
+### The ripple, measured — because "doesn't punish non finalist sides" is the ruling
+
+    median  1 point   (0.082% of value)
+    mean    1.9 points
+    90th    4 points  (0.331%)
+    max     8 points  (Harry Sheezel)
+    moved by more than 5 points: 5 of 146
+
+It is noise, not a penalty, and it is not one-directional — some non-finalists gain. This is the
+same re-calibration any store edit or round advance produces, and it is a different animal from the
+`calendar_progress` stretch the round lane would have applied: that one moved every completed
+season's pricing systematically, which is what the owner ruled against.
 
 ## What must hold
 

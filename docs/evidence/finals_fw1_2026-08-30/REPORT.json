@@ -1,21 +1,3299 @@
 {
   "abort": {
-    "byte_exact": "n/a",
+    "byte_exact": true,
     "commits_rewound": [],
-    "error": "THE TREE IS NOT CLEAN. A landing transaction starts from a committed tree, or its abort restores a state nobody chose:\n    ?? docs/evidence/finals_fw1_2026-08-30/ACT_SPEC_FW1_EDIT.json\n    ?? docs/evidence/finals_fw1_2026-08-30/FW1_EDIT_PLAN.json\n    ?? docs/evidence/finals_fw1_2026-08-30/PREREG.md",
-    "failed_step": "preflight",
-    "restore_point": null,
-    "restored": "n/a \u2014 failure precedes the restore point"
+    "error": "THE MOVERS ARE NOT THE MOVERS THIS ACT DECLARED.\n    UNEXPECTED MOVER(S): aaron-naughton 1189 -> 1415, adam-saad 431 -> 429, adam-treloar 828 -> 827, andrew-brayshaw 2896 -> 2894, andrew-mcgrath 1105 -> 1104, angus-anderson 276 -> 264, archer-day-wicks 354 -> 353, archie-roberts 3825 -> 3822, arthur-jones 208 -> 322, ash-johnson 8 -> 7, bailey-dale 2051 -> 1990, bailey-humphrey 2381 -> 2380, bailey-laurie 125 -> 115, bailey-smith 5947 -> 5943, bailey-williams-wb 596 -> 541, ben-ainsworth 256 -> 346, ben-miller 978 -> 980, billy-wilson 956 -> 840, blake-acres 172 -> 130, blake-hardwick 625 -> 624, bodhi-uwland 4133 -> 4131, brandon-zerk-thatcher 79 -> 78, brayden-maynard 544 -> 543, brodie-grundy 4033 -> 4032, brodie-kemp 720 -> 767, buku-khamis 155 -> 154, caleb-daniel 1251 -> 1250, caleb-serong 4537 -> 4533, caleb-windsor 1126 -> 995, callum-mills 1964 -> 1963, callum-wilkie 3506 -> 3508, cameron-mackenzie 1770 -> 1769, chad-warner 3981 -> 3978, charlie-comben 659 -> 658, charlie-west 318 -> 331, christian-petracca 1763 -> 1762, clayton-oliver 2282 -> 2280, cody-weightman 186 -> 183, colby-mckercher 4264 -> 4265, connor-budarick 253 -> 221, connor-idun 2376 -> 2374, connor-macdonald 2939 -> 2938, connor-o-sullivan 2640 -> 2645, connor-rozee 3190 -> 3187, cooper-duff-tytler 1796 -> 1795, cooper-hynes 1073 -> 1072, daniel-mcstay 293 -> 341, daniel-turner 1554 -> 1732, darcy-fogarty 822 -> 824, darcy-jones 1496 -> 1495, darcy-parish 621 -> 620, darcy-wilmot 3114 -> 3113, darcy-wilson 2716 -> 2715, dylan-patterson 1134 -> 1133, dyson-sharp 3081 -> 3080, ed-richards 4108 -> 4083, edward-allan 851 -> 812, errol-gulden 7524 -> 7518, ethan-read 555 -> 554, finn-callaghan 5548 -> 5544, francis-evans 793 -> 798, george-hewett 1944 -> 1809, harley-reid 3859 -> 3856, harris-andrews 1600 -> 1601, harrison-petty 422 -> 382, harry-sheezel 11169 -> 11161, harvey-langford 1804 -> 1912, harvey-thomas 2017 -> 2016, hugh-bond 132 -> 131, hugh-mccluggage 1591 -> 1589, hugo-garcia 2895 -> 2893, hussien-el-achkar 421 -> 420, isaac-heeney 3774 -> 3770, izak-rankine 5029 -> 5028, jack-gunston 683 -> 682, jack-lukosius 543 -> 542, jack-ross 2425 -> 2423, jack-silvagni 697 -> 698, jack-sinclair 3149 -> 3148, jack-steele 1124 -> 1109, jack-whitlock 1009 -> 1008, jacob-farrow 2066 -> 2065, jacob-van-rooyen 1814 -> 1820, jacob-weitering 1069 -> 1239, jagga-smith 4880 -> 5029, jai-newcombe 4719 -> 4715, jake-bowey 3980 -> 3979, jake-lever 191 -> 192, james-sicily 1201 -> 1200, jase-burgoyne 2614 -> 2613, jason-horne-francis 5559 -> 5554, jaspa-fletcher 2752 -> 2751, jed-walter 1036 -> 1035, jeremy-howe 181 -> 165, joel-fitzgerald 305 -> 288, joel-freijah 2512 -> 2870, joel-jeffrey 1449 -> 1448, john-noble 2339 -> 2338, jordan-clark 3197 -> 3196, jordan-dawson 2950 -> 2948, jordon-sweet 2564 -> 2563, joseph-fonti 493 -> 492, josh-battle 1870 -> 1871, josh-daicos 2143 -> 2125, josh-dolan 318 -> 330, josh-draper 261 -> 260, josh-dunkley 1310 -> 1309, josh-treacy 5875 -> 5874, josh-ward 2691 -> 2689, josh-worrell 2792 -> 2790, justin-mcinerney 1907 -> 1906, jy-simpkin 1223 -> 1222, kane-farrell 1321 -> 1320, kieren-briggs 1970 -> 1969, koltyn-tholstrup 1739 -> 1695, kyle-langford 486 -> 485, kysaiah-pickett 4433 -> 4435, lachie-neale 2181 -> 2180, lachlan-ash 5390 -> 5387, lawson-humphries 1695 -> 1693, leo-lombard 1779 -> 1778, levi-ashcroft 3598 -> 3597, luke-davies-uniacke 3101 -> 3098, luke-jackson 9453 -> 9450, luke-kennedy 168 -> 277, luke-parker 1175 -> 1173, mac-andrew 3882 -> 3884, marcus-bontempelli 3626 -> 3702, marcus-herbert 850 -> 848, mark-keane 1491 -> 1493, matt-cottrell 131 -> 164, matt-rowell 4927 -> 4923, max-gawn 3377 -> 3345, max-holmes 8466 -> 8459, michael-sellwood 306 -> 296, miles-bergman 999 -> 998, mitchell-lewis 769 -> 771, mitchito-owens 1980 -> 1985, murphy-reid 3396 -> 3395, nasiah-wanganeen-milera 9461 -> 9453, ned-long 1290 -> 1353, nicholas-martin 3896 -> 3893, nick-blakey 4061 -> 4060, nick-bryan 714 -> 713, nick-daicos 10655 -> 10636, nick-haynes 117 -> 156, nick-madden 1214 -> 1213, nick-watson 3611 -> 3610, noah-anderson 5600 -> 5595, noah-mraz 816 -> 819, oliver-florent 1053 -> 1074, oliver-francou 403 -> 402, oliver-henry 262 -> 261, oliver-hollands 1533 -> 1565, ollie-dempsey 2468 -> 2466, patrick-cripps 1526 -> 1465, peter-wright 1270 -> 1269, reilly-o-brien 994 -> 993, reuben-ginbey 2244 -> 2248, rhylee-west 212 -> 270, riley-hamilton 218 -> 217, riley-thilthorpe 4289 -> 4288, robert-hansen 107 -> 106, rowan-marshall 2052 -> 2051, sam-berry 2821 -> 2818, sam-cumming 2313 -> 2312, sam-darcy 5339 -> 5341, sam-davidson 115 -> 116, sam-de-koning 851 -> 850, sam-durham 2482 -> 2481, sam-flanders 2554 -> 2552, sam-lalor 3514 -> 3513, sam-taylor 1139 -> 1142, sam-walsh 3073 -> 3118, samuel-swadling 1069 -> 1240, tanner-bruhn 2010 -> 2009, thomas-stewart 903 -> 902, tim-kelly 1212 -> 1210, tim-taranto 2447 -> 2445, timothy-english 3350 -> 3405, toby-greene 747 -> 746, toby-murray 225 -> 224, tom-de-koning 1611 -> 1610, tom-green 5255 -> 5250, tom-mccarthy 1359 -> 1357, tom-mccartin 1433 -> 1434, tom-sparrow 1568 -> 1506, trent-rivers 1517 -> 1466, tristan-xerri 7211 -> 7209, wil-parker 66 -> 65, wil-powell 852 -> 850, will-ashcroft 7058 -> 7053, will-day 1861 -> 1860, will-hayward 281 -> 280, will-setterfield 987 -> 986, xavier-duursma 240 -> 239, xavier-lindsay 1279 -> 1388, xavier-taylor 873 -> 841, zac-bailey 3179 -> 3178, zachary-merrett 2408 -> 2407, zak-butters 6386 -> 6381\n    DECLARED AND ABSENT: aaron-naughton 1189 -> 1413, angus-anderson 276 -> 266, arthur-jones 208 -> 316, bailey-dale 2051 -> 1991, bailey-laurie 125 -> 118, bailey-williams-wb 596 -> 542, ben-ainsworth 256 -> 344, billy-wilson 956 -> 841, blake-acres 172 -> 131, brodie-kemp 720 -> 765, caleb-windsor 1126 -> 998, charlie-west 318 -> 338, cody-weightman 186 -> 184, connor-budarick 253 -> 222, cooper-hynes 1073 -> 1067, daniel-mcstay 293 -> 339, daniel-turner 1554 -> 1731, ed-richards 4108 -> 4086, edward-allan 851 -> 815, francis-evans 793 -> 799, george-hewett 1944 -> 1812, harrison-petty 422 -> 383, harvey-langford 1804 -> 1901, jack-steele 1124 -> 1110, jacob-weitering 1069 -> 1237, jagga-smith 4880 -> 5030, jeremy-howe 181 -> 166, joel-fitzgerald 305 -> 306, joel-freijah 2512 -> 2871, josh-daicos 2143 -> 2126, josh-dolan 318 -> 332, koltyn-tholstrup 1739 -> 1696, kysaiah-pickett 4433 -> 4436, luke-kennedy 168 -> 276, marcus-bontempelli 3626 -> 3705, matt-cottrell 131 -> 161, max-gawn 3377 -> 3346, michael-sellwood 306 -> 309, ned-long 1290 -> 1354, nick-daicos 10655 -> 10644, nick-haynes 117 -> 155, oliver-florent 1053 -> 1075, oliver-hollands 1533 -> 1562, patrick-cripps 1526 -> 1466, rhylee-west 212 -> 269, sam-walsh 3073 -> 3121, samuel-swadling 1069 -> 1241, timothy-english 3350 -> 3406, tom-sparrow 1568 -> 1507, trent-rivers 1517 -> 1469, will-hayes-b 234 -> 237, xavier-lindsay 1279 -> 1379, xavier-taylor 873 -> 860\nA store edit predicts who moves; a second mover means the edit did something the act did not say it would, and that is an abort.",
+    "failed_step": "build_proofs",
+    "restore_point": {
+      "data/expected_boot.json": "530ac275f5d56edbb41e3468f8e996d7",
+      "data/release_contract.json": "64c2f478110517df1244d13e246d27ed",
+      "data/release_lineage.json": "4c641ddbf6b62361a02221d108a90d7b",
+      "data/rl_build/rl_app_data.json": "f81dbcda220110ad0113ae0633b6c34e",
+      "data/rl_build/rl_app_data.json.srcmd5": "be84fa93abdb7cfa9b444963476dab03",
+      "data/season_state.json": "a59358138884adba1063f27228845fc1",
+      "data/sheet_pins.json": "226b73ff64e6a6967103bfee788848a0",
+      "docs/STATE.md": "26f555342db67a4889ecefcf8914c090",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/journal.jsonl": "a46befc7100f100bed9155415f20979c",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/manifest.json": "23c861fc7a85ec058fc8a3f156d25121",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/board_view_public": "12c5c49dd5767ad69a20b8cf3d46916f",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/board_view_working": "4743500a347270b113e502b7a4028b3b",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/forward_oracle.ABSENT": "bf2ec1aa4c8591141230715a1e6366f4",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/forward_vector.ABSENT": "cde5f7ec44e5c9856cebd9711b856c7a",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/fv_test": "abf604e83cd865181a5ecff64a407b2d",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/manifest": "d434bd6db56db6d827812a7de9e2e87a",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/reference_vector.ABSENT": "152a0ae2540d8293709e3b8ba4e7b132",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/release_contract": "8abfe0aed071c013c56809874fc7f87b",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/sidecar": "08a08072a1f26f805b9dfd55e0e88ac1",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/board_view_public": "a619df779393f05ca899db857b7e7502",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/board_view_working": "477ed8a784af4b6ebc53dcbb63608c4f",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/forward_oracle": "3106ee9512fcd70cf9a2078049bccdd9",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/forward_vector": "0b6474a17eaf3413504e7a2f7290f732",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/fv_test": "8e1da70941cb36223e0927632e94391e",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/manifest": "202604b0cd27597a1758c1546be77f40",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/reference_vector": "fd0e7d98ebff1e2d29acb62d4c473ba0",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/release_contract": "6907c766aa94657f3b54b514d0a015eb",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/sidecar": "305ca65cddb9919e88b861e9af908dc0",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/journal.jsonl": "27c1fa381561a78bf78859f15976d0fb",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/manifest.json": "a1d3c708f283a9e28a499fe995a2c984",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/board_view_public": "a619df779393f05ca899db857b7e7502",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/board_view_working": "268057da531f01f925bfbef5552c20be",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/forward_oracle.ABSENT": "42fe4fa2202f5978598a270e21b97beb",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/forward_vector.ABSENT": "d00819b41ac37bfcac7bc5edc4301e9c",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/fv_test": "8e1da70941cb36223e0927632e94391e",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/manifest": "d0c942eb3411f750b2a04c0043e44c4f",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/reference_vector.ABSENT": "3a9d4031b760e688c354b36c48e92128",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/release_contract": "ef01ef50e0caf32a6af32fb6d0372a36",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/sidecar": "305ca65cddb9919e88b861e9af908dc0",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/board_view_public": "cbb075d0ffbd80da97d5cdd73bf23f87",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/board_view_working": "162df5a42224d8489cefd76d93139748",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/forward_oracle": "a7204641eba1b2364eb36558ea9a462e",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/forward_vector": "0efe6eac94eb68f1c42b681069b7d12f",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/fv_test": "0e822a3854cfe4d9154e89a3483946a9",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/manifest": "c619e7a19dce296dc715db3a449d9ea3",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/reference_vector": "f5ecab77fbb7a48befc49ae30e8c0c57",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/release_contract": "85daa5d704a2cf142f5153e93260e56a",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/sidecar": "fdbac2a4d1015c9c11470f81719bfb61",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/journal.jsonl": "ec876a9ebce8b521a7258e9dbee90fbd",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/manifest.json": "e214641bcd46b294316d1aece758da93",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/board_view_public": "540bcdb444fbd5375c048cc8a26ba291",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/board_view_working": "f2af9df4f7157a24a76e6759ec933f1e",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/forward_oracle.ABSENT": "1d95b600a3c767e4fd52317a0910ea26",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/forward_vector.ABSENT": "91f190ac11a825521312a675fe423cad",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/fv_test": "3cff43704b8f395aa5ab81cddec6ac64",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/manifest": "908e767782dfcf2923f0120149b2c9f6",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/reference_vector.ABSENT": "305d7f7cd133ebb571c684c27aba58b3",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/release_contract": "e892a476b3396a1443f5dc7f878fff36",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/sidecar": "d04865c11366d05a1b9bcc25552abb38",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/board_view_public": "540bcdb444fbd5375c048cc8a26ba291",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/board_view_working": "2a8a4aa8aef82c858b3e803b4b9b16d2",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/forward_oracle": "92530c678152f5758ecb0ae252f17736",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/forward_vector": "6c7c809d3b6c6b33f2d5b398cf3d62bd",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/fv_test": "a3cdbc3cd37fdb74f0af77e399b2f43f",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/manifest": "5ec041aaa0875c1bc2efbe50fb72927f",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/reference_vector": "0c2fcec96ecd425a498594c693e21169",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/release_contract": "45b7fb095c8a0bfb9812164d10b9b692",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/sidecar": "600ead8b4269cd54764840c6bc42097a",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/journal.jsonl": "4b0426ee2f80c75a52ac4303285c58ff",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/manifest.json": "ea616391e6a1200da3faf6cb2bf92893",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/sidecar": "f9771c9aabcad4975755bdf9eceaf755",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/sidecar": "899998a830f6abc7dbd65e1a96a1dd08",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/journal.jsonl": "dc7330ba1cdafe65c0111599087c6110",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/manifest.json": "bb2fcad20c4fa667c910a04710721855",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/board_view_public": "ccfd4bf0f363173d6a5c9c68991e299d",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/board_view_working": "a6fae4c8c53ff904bb26dac329d25b99",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/forward_oracle.ABSENT": "32fe8a46187bb4a899222a2860a072cb",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/forward_vector.ABSENT": "d2b736610a600d87493e15d406f33c2b",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/fv_test": "fc4a7be3a85e614cb1ad564b30575139",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/manifest": "f8b0351f5f27fb9990d74c52843254c5",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/reference_vector.ABSENT": "84a490978f81c8d6ffe65723b042c45a",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/release_contract": "9122036aa0c08eaf5db9be0770f69f95",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/sidecar": "177490d12af523009c06776d3e4ff797",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/board_view_public": "a54d68e7023ac8d1288183f32b35073e",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/board_view_working": "4d73b9a638cbe892f485be5381247925",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/forward_oracle": "2f09419ce7723beb9dac5c0b1c130e3d",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/forward_vector": "75e6ff721fc5993162b4a2e4654ca5c5",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/fv_test": "51e14ae58a174b099baa4fc3378470b4",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/manifest": "8538fc1057ce1bfbdb8dc43aedb742b3",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/reference_vector": "d29d67c6b61f783493ddba18e571afa4",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/release_contract": "dc293e6dd710108c7b01dc492dca19d6",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/sidecar": "706db9cf06cab038da231e0e88ba0762",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/journal.jsonl": "7adecc694211985f8e333ac863a80afc",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/manifest.json": "fe60735297e4f403917574291ea171bb",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/board_view_public": "0d9089ecb6de834818958f0d9e2472fc",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/board_view_working": "6a611cf9bd70b306799c37d14fc61bf9",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/forward_oracle.ABSENT": "f99474d51b6cfded234e4b2aac26dff4",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/forward_vector.ABSENT": "a45357d154e500c3da82fa5c06c8e7d2",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/fv_test": "22af7f0d638ca885940fbbf194c3b207",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/manifest": "ad7d41ff5c4b0b395ff5c6e6dc74f61a",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/reference_vector.ABSENT": "8d44e6269cda798f3b60049c39751a15",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/release_contract": "f690187c05bb40331a31403eac863964",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/sidecar": "29e2ff0c3c98120779347fbd2690f067",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/board_view_public": "70bab90bcf5d0fb354f50efe3f142b57",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/board_view_working": "05b7257da6299707c76955b539ab6f8e",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/forward_oracle": "922edccb694665b601d311d4dcf27027",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/forward_vector": "24383eee944015a3274c7c2addb941dc",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/fv_test": "0222f8be2f41cff0f45c6d82878dd89a",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/manifest": "94a7fecb975a169ddebd8a45796fcf4f",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/reference_vector": "66db40d67bfd5e32552a8e44fd530ccb",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/release_contract": "b0fb2ae36034747f8966736cef20cce7",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/sidecar": "fe3115454f9de2b6f64a39a647cde62a",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/journal.jsonl": "003892c02f323707a7d44fdff6359480",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/manifest.json": "a0433726714c6bbc814303b3bc69899a",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/board_view_public": "70bab90bcf5d0fb354f50efe3f142b57",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/board_view_working": "cccc8c8f933b7ef891a0787c17f10b4f",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/forward_oracle.ABSENT": "c2b527db1de349a471dd8fb5b94c638c",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/forward_vector.ABSENT": "9138f299d5b68d4cfee7a491792a8c06",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/fv_test": "0222f8be2f41cff0f45c6d82878dd89a",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/manifest": "0f3c7d418653bb9aef14d76f152f4560",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/reference_vector.ABSENT": "8ddf6eb1877c3c5e88f684d1468280a5",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/release_contract": "3c3e6e280fe150a1e4ea67be4fd07b28",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/sidecar": "fe3115454f9de2b6f64a39a647cde62a",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/board_view_public": "ffe0eb7aff32ac3d1f13562fc0bc7b5e",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/board_view_working": "4525eba210774ef0cdc0578065c94c84",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/forward_oracle": "df43987656d1b6edfb9fee93156bfa41",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/forward_vector": "37df29274baa5187b034b620a46ef0cc",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/fv_test": "837ba4bc313a2d4f238453dbf179583a",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/manifest": "7c68771e1930e50b7e76ee30a7fd977b",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/reference_vector": "32f0a9c934ceaf13b645443964cd0d33",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/release_contract": "055b55b37691eacc14aa2e252fd79d2a",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/sidecar": "b33d74d33af1c7fa78b705ef77d45587",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_c06ff1e8/journal.jsonl": "b8987dd883b50eadbcc2dfcfff352369",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_c06ff1e8/manifest.json": "c1b46056c1fe23938c51f36a0d72600f",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_c06ff1e8/originals/sidecar": "b2b411cd27f30c861630185bc87f786a",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_c06ff1e8/staged/sidecar": "7974155c2c9dc8d2f9c11392d213cbe4",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/journal.jsonl": "597a1096cb18f03fa0a8f687d415e42e",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/manifest.json": "07d07b3206bda0283b1ca0537c3c5bea",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/board_view_public": "9274e0dd9892b205424fb5970451d53e",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/board_view_working": "f382e51a009ff2e4ae548f30cc6aabf0",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/forward_oracle.ABSENT": "6446baa6aee4b30c39852398b61456a6",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/forward_vector.ABSENT": "d656e3fd9ccb689cfba22d0b10e2d1d6",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/fv_test": "51e14ae58a174b099baa4fc3378470b4",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/manifest": "b97504a40b4ebea120ba9d44373df5a3",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/reference_vector.ABSENT": "06a090fe5e1a23ce05c96162c3eca4f6",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/release_contract": "5c62603bb4ac460a3eb66689fb40a39b",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/sidecar": "706db9cf06cab038da231e0e88ba0762",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/board_view_public": "f7b53936acbe16ef7059d93479b28790",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/board_view_working": "d876f5da8a1c8e513a9a7a411281b032",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/forward_oracle": "8d57e1b0b0dd0638d3bbcf23aa0d6cc5",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/forward_vector": "188634a5052d274ba138db570e2161eb",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/fv_test": "1338985525d36cf42b105bc8952f3036",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/manifest": "530ac275f5d56edbb41e3468f8e996d7",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/reference_vector": "96a7a3274623671217992afb83d3a052",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/release_contract": "64c2f478110517df1244d13e246d27ed",
+      "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/sidecar": "6e8797940d9033d670bff207e593baf4",
+      "engine/rl_after/ingestion/pos_rank_history.json": "2dce6787705123d7488fb48ef1c68d97",
+      "engine/rl_after/ingestion/rank_history.json": "028d28ddc4aff5a854b53e638f467984",
+      "engine/rl_after/ingestion/sibling_repin_state.json": "6e8797940d9033d670bff207e593baf4",
+      "engine/rl_after/ingestion/value_history.json": "45ab462c19eb216a090c1a9d269021ad",
+      "engine/rl_after/rl_app_data.json": "f81dbcda220110ad0113ae0633b6c34e",
+      "engine/rl_after/rl_app_data.json.srcmd5": "be84fa93abdb7cfa9b444963476dab03",
+      "engine/rl_after/rl_model_data.json": "a9dec7e4785c6861a84f3beaae2f020e",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/accepted_board_06d8af60.json": "81822b2baf9c8270034ac9f1f54995fb",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_113b36f8.json": "666dc8969c5f960ae6bac8c7e66f2a3d",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_1d5c9f7a.json": "0efe6eac94eb68f1c42b681069b7d12f",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_3167cba6.json": "37df29274baa5187b034b620a46ef0cc",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_4a52cc44.json": "75e6ff721fc5993162b4a2e4654ca5c5",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_4b448a82.json": "7fa4ddd72e47bd67b06678cf2e12a2b4",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_530a4053.json": "61955fb0abe8d9d934bbb923c2b3614d",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_5ea978f7.json": "0b6474a17eaf3413504e7a2f7290f732",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_68be10c7.json": "6c7c809d3b6c6b33f2d5b398cf3d62bd",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_6e724cca.json": "42f2b19f22e6bb4d367af7bfc98ba0c0",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_6fd0f7de.json": "b0c8835ef321da1768b630f0f7a3a8d7",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_7a3f4fe2.json": "c729a6d84866e33e360b1468614514d8",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_82fcd8bb.json": "24383eee944015a3274c7c2addb941dc",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_8a38cca4.json": "00295dec394462dbc6370032c2cd5f7a",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_a05fe951.json": "f0454ed594c204f45aaee1ca38a51e7b",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_a672ed3a.json": "15d3765ed047c52c481021766fab728d",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_b3e8da99.json": "94809f0693e27a254994cd3332b824e7",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_f81dbcda.json": "188634a5052d274ba138db570e2161eb",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_06d8af60.json": "6565a4ef51d67bdf6adfaaaf15fd3976",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_123deccb.json": "bc290a0b557b046c7608543dc096239b",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_1373e824.json": "4fcd55c9b5708e791be26e5e157b425e",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_1ad6a04b.json": "d29d67c6b61f783493ddba18e571afa4",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_234c3414.json": "143680d49a1d0888120a38b91ececa5b",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_3970156c.json": "252e619d44451c5f54bc42afce9aa334",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_4939d740.json": "ba88c83d58a617265fedc5f31083c888",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_5546f278.json": "496b0f545792e7f64bef67ee3e2fc9a0",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_556ad70d.json": "0c2fcec96ecd425a498594c693e21169",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_72fe3a17.json": "9cc6239d4a6ca9ea7556205a8a80d139",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_7c32a540.json": "90697dce6f9998b8cb66b0de1d1c128a",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_8838f4b3.json": "66db40d67bfd5e32552a8e44fd530ccb",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_a49c155f.json": "fd0e7d98ebff1e2d29acb62d4c473ba0",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_a970c19c.json": "0e1fd61104f7033823da919a81c512c1",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_b4cc0b2b.json": "d8bf6f592992a589d858dd1f01896192",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_b7149d5f.json": "32f0a9c934ceaf13b645443964cd0d33",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_c06ff1e8.json": "3178258ece7299758a487164d9bd297f",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_ca8cb17e.json": "7e4b54843505ed5d6bf441c7aae66836",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_cdae239d.json": "96a7a3274623671217992afb83d3a052",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_e616936e.json": "f5ecab77fbb7a48befc49ae30e8c0c57",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_113b36f8.py": "6db17a8e9f1435da58c46d4544c1af49",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_1d5c9f7a.py": "a7204641eba1b2364eb36558ea9a462e",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_3167cba6.py": "df43987656d1b6edfb9fee93156bfa41",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_4a52cc44.py": "2f09419ce7723beb9dac5c0b1c130e3d",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_4b448a82.py": "ec25d1c4987248edc54fdf18cd7db549",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_530a4053.py": "830f16694f1664c832040bfe49b8e32a",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_5ea978f7.py": "3106ee9512fcd70cf9a2078049bccdd9",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_68be10c7.py": "92530c678152f5758ecb0ae252f17736",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_6e724cca.py": "c3d407285223debfcafbc0f18c032678",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_6fd0f7de.py": "0d25bd628682799afbb4206e02c27dad",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_7a3f4fe2.py": "753bd58f6b658469ee98ec01a04b95f7",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_82fcd8bb.py": "922edccb694665b601d311d4dcf27027",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_8a38cca4.py": "f4c31ef9d25bfe7b97ee0bea2529df4f",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_a05fe951.py": "716dcdc7c5e67f025bd1f3370463c560",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_a672ed3a.py": "b393f00bce843401eb66e4e8eced46a5",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_b3e8da99.py": "f9079bb36af9a7b14bb47b674f68f69f",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_f81dbcda.py": "8d57e1b0b0dd0638d3bbcf23aa0d6cc5",
+      "session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py": "1338985525d36cf42b105bc8952f3036",
+      "ui/data/board_view_public.js": "7edcfc19d6ebeb78ad8b08ff758ea864",
+      "ui/data/board_view_working.js": "e5a407c709c1e6e33631355352b9f8f3",
+      "ui/data/club_valuation.js": "9d3dc5e07d722b51f37a0278ee5b6166",
+      "ui/data/movers.js": "ee0afbb7e4f666fc6ac6d1e621fc5024",
+      "ui/data/movers_transition.js": "2fe0edca98be0e542820155eac061e1d",
+      "ui/data/ownership.js": "c1bf5f269b0cd146391960dfe3e1afbc"
+    },
+    "restored": [
+      {
+        "action": "rewrite",
+        "path": "data/season_state.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/rl_model_data.json"
+      }
+    ]
   },
   "commits": [],
-  "error": "THE TREE IS NOT CLEAN. A landing transaction starts from a committed tree, or its abort restores a state nobody chose:\n    ?? docs/evidence/finals_fw1_2026-08-30/ACT_SPEC_FW1_EDIT.json\n    ?? docs/evidence/finals_fw1_2026-08-30/FW1_EDIT_PLAN.json\n    ?? docs/evidence/finals_fw1_2026-08-30/PREREG.md",
-  "facts": {},
-  "failed_step": "preflight",
+  "error": "THE MOVERS ARE NOT THE MOVERS THIS ACT DECLARED.\n    UNEXPECTED MOVER(S): aaron-naughton 1189 -> 1415, adam-saad 431 -> 429, adam-treloar 828 -> 827, andrew-brayshaw 2896 -> 2894, andrew-mcgrath 1105 -> 1104, angus-anderson 276 -> 264, archer-day-wicks 354 -> 353, archie-roberts 3825 -> 3822, arthur-jones 208 -> 322, ash-johnson 8 -> 7, bailey-dale 2051 -> 1990, bailey-humphrey 2381 -> 2380, bailey-laurie 125 -> 115, bailey-smith 5947 -> 5943, bailey-williams-wb 596 -> 541, ben-ainsworth 256 -> 346, ben-miller 978 -> 980, billy-wilson 956 -> 840, blake-acres 172 -> 130, blake-hardwick 625 -> 624, bodhi-uwland 4133 -> 4131, brandon-zerk-thatcher 79 -> 78, brayden-maynard 544 -> 543, brodie-grundy 4033 -> 4032, brodie-kemp 720 -> 767, buku-khamis 155 -> 154, caleb-daniel 1251 -> 1250, caleb-serong 4537 -> 4533, caleb-windsor 1126 -> 995, callum-mills 1964 -> 1963, callum-wilkie 3506 -> 3508, cameron-mackenzie 1770 -> 1769, chad-warner 3981 -> 3978, charlie-comben 659 -> 658, charlie-west 318 -> 331, christian-petracca 1763 -> 1762, clayton-oliver 2282 -> 2280, cody-weightman 186 -> 183, colby-mckercher 4264 -> 4265, connor-budarick 253 -> 221, connor-idun 2376 -> 2374, connor-macdonald 2939 -> 2938, connor-o-sullivan 2640 -> 2645, connor-rozee 3190 -> 3187, cooper-duff-tytler 1796 -> 1795, cooper-hynes 1073 -> 1072, daniel-mcstay 293 -> 341, daniel-turner 1554 -> 1732, darcy-fogarty 822 -> 824, darcy-jones 1496 -> 1495, darcy-parish 621 -> 620, darcy-wilmot 3114 -> 3113, darcy-wilson 2716 -> 2715, dylan-patterson 1134 -> 1133, dyson-sharp 3081 -> 3080, ed-richards 4108 -> 4083, edward-allan 851 -> 812, errol-gulden 7524 -> 7518, ethan-read 555 -> 554, finn-callaghan 5548 -> 5544, francis-evans 793 -> 798, george-hewett 1944 -> 1809, harley-reid 3859 -> 3856, harris-andrews 1600 -> 1601, harrison-petty 422 -> 382, harry-sheezel 11169 -> 11161, harvey-langford 1804 -> 1912, harvey-thomas 2017 -> 2016, hugh-bond 132 -> 131, hugh-mccluggage 1591 -> 1589, hugo-garcia 2895 -> 2893, hussien-el-achkar 421 -> 420, isaac-heeney 3774 -> 3770, izak-rankine 5029 -> 5028, jack-gunston 683 -> 682, jack-lukosius 543 -> 542, jack-ross 2425 -> 2423, jack-silvagni 697 -> 698, jack-sinclair 3149 -> 3148, jack-steele 1124 -> 1109, jack-whitlock 1009 -> 1008, jacob-farrow 2066 -> 2065, jacob-van-rooyen 1814 -> 1820, jacob-weitering 1069 -> 1239, jagga-smith 4880 -> 5029, jai-newcombe 4719 -> 4715, jake-bowey 3980 -> 3979, jake-lever 191 -> 192, james-sicily 1201 -> 1200, jase-burgoyne 2614 -> 2613, jason-horne-francis 5559 -> 5554, jaspa-fletcher 2752 -> 2751, jed-walter 1036 -> 1035, jeremy-howe 181 -> 165, joel-fitzgerald 305 -> 288, joel-freijah 2512 -> 2870, joel-jeffrey 1449 -> 1448, john-noble 2339 -> 2338, jordan-clark 3197 -> 3196, jordan-dawson 2950 -> 2948, jordon-sweet 2564 -> 2563, joseph-fonti 493 -> 492, josh-battle 1870 -> 1871, josh-daicos 2143 -> 2125, josh-dolan 318 -> 330, josh-draper 261 -> 260, josh-dunkley 1310 -> 1309, josh-treacy 5875 -> 5874, josh-ward 2691 -> 2689, josh-worrell 2792 -> 2790, justin-mcinerney 1907 -> 1906, jy-simpkin 1223 -> 1222, kane-farrell 1321 -> 1320, kieren-briggs 1970 -> 1969, koltyn-tholstrup 1739 -> 1695, kyle-langford 486 -> 485, kysaiah-pickett 4433 -> 4435, lachie-neale 2181 -> 2180, lachlan-ash 5390 -> 5387, lawson-humphries 1695 -> 1693, leo-lombard 1779 -> 1778, levi-ashcroft 3598 -> 3597, luke-davies-uniacke 3101 -> 3098, luke-jackson 9453 -> 9450, luke-kennedy 168 -> 277, luke-parker 1175 -> 1173, mac-andrew 3882 -> 3884, marcus-bontempelli 3626 -> 3702, marcus-herbert 850 -> 848, mark-keane 1491 -> 1493, matt-cottrell 131 -> 164, matt-rowell 4927 -> 4923, max-gawn 3377 -> 3345, max-holmes 8466 -> 8459, michael-sellwood 306 -> 296, miles-bergman 999 -> 998, mitchell-lewis 769 -> 771, mitchito-owens 1980 -> 1985, murphy-reid 3396 -> 3395, nasiah-wanganeen-milera 9461 -> 9453, ned-long 1290 -> 1353, nicholas-martin 3896 -> 3893, nick-blakey 4061 -> 4060, nick-bryan 714 -> 713, nick-daicos 10655 -> 10636, nick-haynes 117 -> 156, nick-madden 1214 -> 1213, nick-watson 3611 -> 3610, noah-anderson 5600 -> 5595, noah-mraz 816 -> 819, oliver-florent 1053 -> 1074, oliver-francou 403 -> 402, oliver-henry 262 -> 261, oliver-hollands 1533 -> 1565, ollie-dempsey 2468 -> 2466, patrick-cripps 1526 -> 1465, peter-wright 1270 -> 1269, reilly-o-brien 994 -> 993, reuben-ginbey 2244 -> 2248, rhylee-west 212 -> 270, riley-hamilton 218 -> 217, riley-thilthorpe 4289 -> 4288, robert-hansen 107 -> 106, rowan-marshall 2052 -> 2051, sam-berry 2821 -> 2818, sam-cumming 2313 -> 2312, sam-darcy 5339 -> 5341, sam-davidson 115 -> 116, sam-de-koning 851 -> 850, sam-durham 2482 -> 2481, sam-flanders 2554 -> 2552, sam-lalor 3514 -> 3513, sam-taylor 1139 -> 1142, sam-walsh 3073 -> 3118, samuel-swadling 1069 -> 1240, tanner-bruhn 2010 -> 2009, thomas-stewart 903 -> 902, tim-kelly 1212 -> 1210, tim-taranto 2447 -> 2445, timothy-english 3350 -> 3405, toby-greene 747 -> 746, toby-murray 225 -> 224, tom-de-koning 1611 -> 1610, tom-green 5255 -> 5250, tom-mccarthy 1359 -> 1357, tom-mccartin 1433 -> 1434, tom-sparrow 1568 -> 1506, trent-rivers 1517 -> 1466, tristan-xerri 7211 -> 7209, wil-parker 66 -> 65, wil-powell 852 -> 850, will-ashcroft 7058 -> 7053, will-day 1861 -> 1860, will-hayward 281 -> 280, will-setterfield 987 -> 986, xavier-duursma 240 -> 239, xavier-lindsay 1279 -> 1388, xavier-taylor 873 -> 841, zac-bailey 3179 -> 3178, zachary-merrett 2408 -> 2407, zak-butters 6386 -> 6381\n    DECLARED AND ABSENT: aaron-naughton 1189 -> 1413, angus-anderson 276 -> 266, arthur-jones 208 -> 316, bailey-dale 2051 -> 1991, bailey-laurie 125 -> 118, bailey-williams-wb 596 -> 542, ben-ainsworth 256 -> 344, billy-wilson 956 -> 841, blake-acres 172 -> 131, brodie-kemp 720 -> 765, caleb-windsor 1126 -> 998, charlie-west 318 -> 338, cody-weightman 186 -> 184, connor-budarick 253 -> 222, cooper-hynes 1073 -> 1067, daniel-mcstay 293 -> 339, daniel-turner 1554 -> 1731, ed-richards 4108 -> 4086, edward-allan 851 -> 815, francis-evans 793 -> 799, george-hewett 1944 -> 1812, harrison-petty 422 -> 383, harvey-langford 1804 -> 1901, jack-steele 1124 -> 1110, jacob-weitering 1069 -> 1237, jagga-smith 4880 -> 5030, jeremy-howe 181 -> 166, joel-fitzgerald 305 -> 306, joel-freijah 2512 -> 2871, josh-daicos 2143 -> 2126, josh-dolan 318 -> 332, koltyn-tholstrup 1739 -> 1696, kysaiah-pickett 4433 -> 4436, luke-kennedy 168 -> 276, marcus-bontempelli 3626 -> 3705, matt-cottrell 131 -> 161, max-gawn 3377 -> 3346, michael-sellwood 306 -> 309, ned-long 1290 -> 1354, nick-daicos 10655 -> 10644, nick-haynes 117 -> 155, oliver-florent 1053 -> 1075, oliver-hollands 1533 -> 1562, patrick-cripps 1526 -> 1466, rhylee-west 212 -> 269, sam-walsh 3073 -> 3121, samuel-swadling 1069 -> 1241, timothy-english 3350 -> 3406, tom-sparrow 1568 -> 1507, trent-rivers 1517 -> 1469, will-hayes-b 234 -> 237, xavier-lindsay 1279 -> 1379, xavier-taylor 873 -> 860\nA store edit predicts who moves; a second mover means the edit did something the act did not say it would, and that is an abort.",
+  "facts": {
+    "base": {
+      "carriers": {
+        "data/expected_boot.json": "530ac275f5d56edbb41e3468f8e996d7",
+        "data/release_contract.json": "64c2f478110517df1244d13e246d27ed",
+        "data/release_lineage.json": "4c641ddbf6b62361a02221d108a90d7b",
+        "data/rl_build/rl_app_data.json": "f81dbcda220110ad0113ae0633b6c34e",
+        "data/rl_build/rl_app_data.json.srcmd5": "be84fa93abdb7cfa9b444963476dab03",
+        "data/season_state.json": "a59358138884adba1063f27228845fc1",
+        "data/sheet_pins.json": "226b73ff64e6a6967103bfee788848a0",
+        "docs/STATE.md": "26f555342db67a4889ecefcf8914c090",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/journal.jsonl": "a46befc7100f100bed9155415f20979c",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/manifest.json": "23c861fc7a85ec058fc8a3f156d25121",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/board_view_public": "12c5c49dd5767ad69a20b8cf3d46916f",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/board_view_working": "4743500a347270b113e502b7a4028b3b",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/forward_oracle.ABSENT": "bf2ec1aa4c8591141230715a1e6366f4",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/forward_vector.ABSENT": "cde5f7ec44e5c9856cebd9711b856c7a",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/fv_test": "abf604e83cd865181a5ecff64a407b2d",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/manifest": "d434bd6db56db6d827812a7de9e2e87a",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/reference_vector.ABSENT": "152a0ae2540d8293709e3b8ba4e7b132",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/release_contract": "8abfe0aed071c013c56809874fc7f87b",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/sidecar": "08a08072a1f26f805b9dfd55e0e88ac1",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/board_view_public": "a619df779393f05ca899db857b7e7502",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/board_view_working": "477ed8a784af4b6ebc53dcbb63608c4f",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/forward_oracle": "3106ee9512fcd70cf9a2078049bccdd9",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/forward_vector": "0b6474a17eaf3413504e7a2f7290f732",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/fv_test": "8e1da70941cb36223e0927632e94391e",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/manifest": "202604b0cd27597a1758c1546be77f40",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/reference_vector": "fd0e7d98ebff1e2d29acb62d4c473ba0",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/release_contract": "6907c766aa94657f3b54b514d0a015eb",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/sidecar": "305ca65cddb9919e88b861e9af908dc0",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/journal.jsonl": "27c1fa381561a78bf78859f15976d0fb",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/manifest.json": "a1d3c708f283a9e28a499fe995a2c984",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/board_view_public": "a619df779393f05ca899db857b7e7502",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/board_view_working": "268057da531f01f925bfbef5552c20be",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/forward_oracle.ABSENT": "42fe4fa2202f5978598a270e21b97beb",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/forward_vector.ABSENT": "d00819b41ac37bfcac7bc5edc4301e9c",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/fv_test": "8e1da70941cb36223e0927632e94391e",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/manifest": "d0c942eb3411f750b2a04c0043e44c4f",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/reference_vector.ABSENT": "3a9d4031b760e688c354b36c48e92128",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/release_contract": "ef01ef50e0caf32a6af32fb6d0372a36",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/sidecar": "305ca65cddb9919e88b861e9af908dc0",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/board_view_public": "cbb075d0ffbd80da97d5cdd73bf23f87",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/board_view_working": "162df5a42224d8489cefd76d93139748",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/forward_oracle": "a7204641eba1b2364eb36558ea9a462e",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/forward_vector": "0efe6eac94eb68f1c42b681069b7d12f",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/fv_test": "0e822a3854cfe4d9154e89a3483946a9",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/manifest": "c619e7a19dce296dc715db3a449d9ea3",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/reference_vector": "f5ecab77fbb7a48befc49ae30e8c0c57",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/release_contract": "85daa5d704a2cf142f5153e93260e56a",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/sidecar": "fdbac2a4d1015c9c11470f81719bfb61",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/journal.jsonl": "ec876a9ebce8b521a7258e9dbee90fbd",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/manifest.json": "e214641bcd46b294316d1aece758da93",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/board_view_public": "540bcdb444fbd5375c048cc8a26ba291",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/board_view_working": "f2af9df4f7157a24a76e6759ec933f1e",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/forward_oracle.ABSENT": "1d95b600a3c767e4fd52317a0910ea26",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/forward_vector.ABSENT": "91f190ac11a825521312a675fe423cad",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/fv_test": "3cff43704b8f395aa5ab81cddec6ac64",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/manifest": "908e767782dfcf2923f0120149b2c9f6",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/reference_vector.ABSENT": "305d7f7cd133ebb571c684c27aba58b3",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/release_contract": "e892a476b3396a1443f5dc7f878fff36",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/sidecar": "d04865c11366d05a1b9bcc25552abb38",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/board_view_public": "540bcdb444fbd5375c048cc8a26ba291",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/board_view_working": "2a8a4aa8aef82c858b3e803b4b9b16d2",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/forward_oracle": "92530c678152f5758ecb0ae252f17736",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/forward_vector": "6c7c809d3b6c6b33f2d5b398cf3d62bd",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/fv_test": "a3cdbc3cd37fdb74f0af77e399b2f43f",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/manifest": "5ec041aaa0875c1bc2efbe50fb72927f",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/reference_vector": "0c2fcec96ecd425a498594c693e21169",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/release_contract": "45b7fb095c8a0bfb9812164d10b9b692",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/sidecar": "600ead8b4269cd54764840c6bc42097a",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/journal.jsonl": "4b0426ee2f80c75a52ac4303285c58ff",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/manifest.json": "ea616391e6a1200da3faf6cb2bf92893",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/sidecar": "f9771c9aabcad4975755bdf9eceaf755",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/sidecar": "899998a830f6abc7dbd65e1a96a1dd08",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/journal.jsonl": "dc7330ba1cdafe65c0111599087c6110",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/manifest.json": "bb2fcad20c4fa667c910a04710721855",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/board_view_public": "ccfd4bf0f363173d6a5c9c68991e299d",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/board_view_working": "a6fae4c8c53ff904bb26dac329d25b99",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/forward_oracle.ABSENT": "32fe8a46187bb4a899222a2860a072cb",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/forward_vector.ABSENT": "d2b736610a600d87493e15d406f33c2b",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/fv_test": "fc4a7be3a85e614cb1ad564b30575139",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/manifest": "f8b0351f5f27fb9990d74c52843254c5",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/reference_vector.ABSENT": "84a490978f81c8d6ffe65723b042c45a",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/release_contract": "9122036aa0c08eaf5db9be0770f69f95",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/originals/sidecar": "177490d12af523009c06776d3e4ff797",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/board_view_public": "a54d68e7023ac8d1288183f32b35073e",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/board_view_working": "4d73b9a638cbe892f485be5381247925",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/forward_oracle": "2f09419ce7723beb9dac5c0b1c130e3d",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/forward_vector": "75e6ff721fc5993162b4a2e4654ca5c5",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/fv_test": "51e14ae58a174b099baa4fc3378470b4",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/manifest": "8538fc1057ce1bfbdb8dc43aedb742b3",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/reference_vector": "d29d67c6b61f783493ddba18e571afa4",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/release_contract": "dc293e6dd710108c7b01dc492dca19d6",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_1ad6a04b/staged/sidecar": "706db9cf06cab038da231e0e88ba0762",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/journal.jsonl": "7adecc694211985f8e333ac863a80afc",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/manifest.json": "fe60735297e4f403917574291ea171bb",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/board_view_public": "0d9089ecb6de834818958f0d9e2472fc",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/board_view_working": "6a611cf9bd70b306799c37d14fc61bf9",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/forward_oracle.ABSENT": "f99474d51b6cfded234e4b2aac26dff4",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/forward_vector.ABSENT": "a45357d154e500c3da82fa5c06c8e7d2",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/fv_test": "22af7f0d638ca885940fbbf194c3b207",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/manifest": "ad7d41ff5c4b0b395ff5c6e6dc74f61a",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/reference_vector.ABSENT": "8d44e6269cda798f3b60049c39751a15",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/release_contract": "f690187c05bb40331a31403eac863964",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/originals/sidecar": "29e2ff0c3c98120779347fbd2690f067",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/board_view_public": "70bab90bcf5d0fb354f50efe3f142b57",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/board_view_working": "05b7257da6299707c76955b539ab6f8e",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/forward_oracle": "922edccb694665b601d311d4dcf27027",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/forward_vector": "24383eee944015a3274c7c2addb941dc",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/fv_test": "0222f8be2f41cff0f45c6d82878dd89a",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/manifest": "94a7fecb975a169ddebd8a45796fcf4f",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/reference_vector": "66db40d67bfd5e32552a8e44fd530ccb",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/release_contract": "b0fb2ae36034747f8966736cef20cce7",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_8838f4b3/staged/sidecar": "fe3115454f9de2b6f64a39a647cde62a",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/journal.jsonl": "003892c02f323707a7d44fdff6359480",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/manifest.json": "a0433726714c6bbc814303b3bc69899a",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/board_view_public": "70bab90bcf5d0fb354f50efe3f142b57",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/board_view_working": "cccc8c8f933b7ef891a0787c17f10b4f",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/forward_oracle.ABSENT": "c2b527db1de349a471dd8fb5b94c638c",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/forward_vector.ABSENT": "9138f299d5b68d4cfee7a491792a8c06",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/fv_test": "0222f8be2f41cff0f45c6d82878dd89a",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/manifest": "0f3c7d418653bb9aef14d76f152f4560",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/reference_vector.ABSENT": "8ddf6eb1877c3c5e88f684d1468280a5",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/release_contract": "3c3e6e280fe150a1e4ea67be4fd07b28",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/originals/sidecar": "fe3115454f9de2b6f64a39a647cde62a",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/board_view_public": "ffe0eb7aff32ac3d1f13562fc0bc7b5e",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/board_view_working": "4525eba210774ef0cdc0578065c94c84",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/forward_oracle": "df43987656d1b6edfb9fee93156bfa41",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/forward_vector": "37df29274baa5187b034b620a46ef0cc",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/fv_test": "837ba4bc313a2d4f238453dbf179583a",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/manifest": "7c68771e1930e50b7e76ee30a7fd977b",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/reference_vector": "32f0a9c934ceaf13b645443964cd0d33",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/release_contract": "055b55b37691eacc14aa2e252fd79d2a",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_b7149d5f/staged/sidecar": "b33d74d33af1c7fa78b705ef77d45587",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_c06ff1e8/journal.jsonl": "b8987dd883b50eadbcc2dfcfff352369",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_c06ff1e8/manifest.json": "c1b46056c1fe23938c51f36a0d72600f",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_c06ff1e8/originals/sidecar": "b2b411cd27f30c861630185bc87f786a",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_c06ff1e8/staged/sidecar": "7974155c2c9dc8d2f9c11392d213cbe4",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/journal.jsonl": "597a1096cb18f03fa0a8f687d415e42e",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/manifest.json": "07d07b3206bda0283b1ca0537c3c5bea",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/board_view_public": "9274e0dd9892b205424fb5970451d53e",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/board_view_working": "f382e51a009ff2e4ae548f30cc6aabf0",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/forward_oracle.ABSENT": "6446baa6aee4b30c39852398b61456a6",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/forward_vector.ABSENT": "d656e3fd9ccb689cfba22d0b10e2d1d6",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/fv_test": "51e14ae58a174b099baa4fc3378470b4",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/manifest": "b97504a40b4ebea120ba9d44373df5a3",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/reference_vector.ABSENT": "06a090fe5e1a23ce05c96162c3eca4f6",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/release_contract": "5c62603bb4ac460a3eb66689fb40a39b",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/originals/sidecar": "706db9cf06cab038da231e0e88ba0762",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/board_view_public": "f7b53936acbe16ef7059d93479b28790",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/board_view_working": "d876f5da8a1c8e513a9a7a411281b032",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/forward_oracle": "8d57e1b0b0dd0638d3bbcf23aa0d6cc5",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/forward_vector": "188634a5052d274ba138db570e2161eb",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/fv_test": "1338985525d36cf42b105bc8952f3036",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/manifest": "530ac275f5d56edbb41e3468f8e996d7",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/reference_vector": "96a7a3274623671217992afb83d3a052",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/release_contract": "64c2f478110517df1244d13e246d27ed",
+        "engine/rl_after/ingestion/.sibling_txn/txn_24_cdae239d/staged/sidecar": "6e8797940d9033d670bff207e593baf4",
+        "engine/rl_after/ingestion/pos_rank_history.json": "2dce6787705123d7488fb48ef1c68d97",
+        "engine/rl_after/ingestion/rank_history.json": "028d28ddc4aff5a854b53e638f467984",
+        "engine/rl_after/ingestion/sibling_repin_state.json": "6e8797940d9033d670bff207e593baf4",
+        "engine/rl_after/ingestion/value_history.json": "45ab462c19eb216a090c1a9d269021ad",
+        "engine/rl_after/rl_app_data.json": "f81dbcda220110ad0113ae0633b6c34e",
+        "engine/rl_after/rl_app_data.json.srcmd5": "be84fa93abdb7cfa9b444963476dab03",
+        "engine/rl_after/rl_model_data.json": "a9dec7e4785c6861a84f3beaae2f020e",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/accepted_board_06d8af60.json": "81822b2baf9c8270034ac9f1f54995fb",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_113b36f8.json": "666dc8969c5f960ae6bac8c7e66f2a3d",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_1d5c9f7a.json": "0efe6eac94eb68f1c42b681069b7d12f",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_3167cba6.json": "37df29274baa5187b034b620a46ef0cc",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_4a52cc44.json": "75e6ff721fc5993162b4a2e4654ca5c5",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_4b448a82.json": "7fa4ddd72e47bd67b06678cf2e12a2b4",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_530a4053.json": "61955fb0abe8d9d934bbb923c2b3614d",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_5ea978f7.json": "0b6474a17eaf3413504e7a2f7290f732",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_68be10c7.json": "6c7c809d3b6c6b33f2d5b398cf3d62bd",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_6e724cca.json": "42f2b19f22e6bb4d367af7bfc98ba0c0",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_6fd0f7de.json": "b0c8835ef321da1768b630f0f7a3a8d7",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_7a3f4fe2.json": "c729a6d84866e33e360b1468614514d8",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_82fcd8bb.json": "24383eee944015a3274c7c2addb941dc",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_8a38cca4.json": "00295dec394462dbc6370032c2cd5f7a",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_a05fe951.json": "f0454ed594c204f45aaee1ca38a51e7b",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_a672ed3a.json": "15d3765ed047c52c481021766fab728d",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_b3e8da99.json": "94809f0693e27a254994cd3332b824e7",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_f81dbcda.json": "188634a5052d274ba138db570e2161eb",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_06d8af60.json": "6565a4ef51d67bdf6adfaaaf15fd3976",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_123deccb.json": "bc290a0b557b046c7608543dc096239b",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_1373e824.json": "4fcd55c9b5708e791be26e5e157b425e",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_1ad6a04b.json": "d29d67c6b61f783493ddba18e571afa4",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_234c3414.json": "143680d49a1d0888120a38b91ececa5b",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_3970156c.json": "252e619d44451c5f54bc42afce9aa334",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_4939d740.json": "ba88c83d58a617265fedc5f31083c888",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_5546f278.json": "496b0f545792e7f64bef67ee3e2fc9a0",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_556ad70d.json": "0c2fcec96ecd425a498594c693e21169",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_72fe3a17.json": "9cc6239d4a6ca9ea7556205a8a80d139",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_7c32a540.json": "90697dce6f9998b8cb66b0de1d1c128a",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_8838f4b3.json": "66db40d67bfd5e32552a8e44fd530ccb",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_a49c155f.json": "fd0e7d98ebff1e2d29acb62d4c473ba0",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_a970c19c.json": "0e1fd61104f7033823da919a81c512c1",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_b4cc0b2b.json": "d8bf6f592992a589d858dd1f01896192",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_b7149d5f.json": "32f0a9c934ceaf13b645443964cd0d33",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_c06ff1e8.json": "3178258ece7299758a487164d9bd297f",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_ca8cb17e.json": "7e4b54843505ed5d6bf441c7aae66836",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_cdae239d.json": "96a7a3274623671217992afb83d3a052",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_e616936e.json": "f5ecab77fbb7a48befc49ae30e8c0c57",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_113b36f8.py": "6db17a8e9f1435da58c46d4544c1af49",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_1d5c9f7a.py": "a7204641eba1b2364eb36558ea9a462e",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_3167cba6.py": "df43987656d1b6edfb9fee93156bfa41",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_4a52cc44.py": "2f09419ce7723beb9dac5c0b1c130e3d",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_4b448a82.py": "ec25d1c4987248edc54fdf18cd7db549",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_530a4053.py": "830f16694f1664c832040bfe49b8e32a",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_5ea978f7.py": "3106ee9512fcd70cf9a2078049bccdd9",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_68be10c7.py": "92530c678152f5758ecb0ae252f17736",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_6e724cca.py": "c3d407285223debfcafbc0f18c032678",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_6fd0f7de.py": "0d25bd628682799afbb4206e02c27dad",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_7a3f4fe2.py": "753bd58f6b658469ee98ec01a04b95f7",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_82fcd8bb.py": "922edccb694665b601d311d4dcf27027",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_8a38cca4.py": "f4c31ef9d25bfe7b97ee0bea2529df4f",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_a05fe951.py": "716dcdc7c5e67f025bd1f3370463c560",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_a672ed3a.py": "b393f00bce843401eb66e4e8eced46a5",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_b3e8da99.py": "f9079bb36af9a7b14bb47b674f68f69f",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_f81dbcda.py": "8d57e1b0b0dd0638d3bbcf23aa0d6cc5",
+        "session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py": "1338985525d36cf42b105bc8952f3036",
+        "ui/data/board_view_public.js": "7edcfc19d6ebeb78ad8b08ff758ea864",
+        "ui/data/board_view_working.js": "e5a407c709c1e6e33631355352b9f8f3",
+        "ui/data/club_valuation.js": "9d3dc5e07d722b51f37a0278ee5b6166",
+        "ui/data/movers.js": "ee0afbb7e4f666fc6ac6d1e621fc5024",
+        "ui/data/movers_transition.js": "2fe0edca98be0e542820155eac061e1d",
+        "ui/data/ownership.js": "c1bf5f269b0cd146391960dfe3e1afbc"
+      },
+      "commit": "a9b819b2e065ed14dfc623c6d0763136f0f75c80",
+      "expected_boot": {
+        "as_of_round": 24,
+        "balanced_board_md5": "cdae239d5865be9463c4ef461daf0a35",
+        "band": "f39c7b96603a6d1483a8f3295fad1a29",
+        "board": "f81dbcda220110ad0113ae0633b6c34e",
+        "bust_prior": "ff87e42e502a476a90e453bad90825b0",
+        "config": "d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4",
+        "engine_head": "17243c16277842e0a30470cfbdb5b196",
+        "fv": "123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345",
+        "peak_model": "8329ff9379cf6066c0e7cd73dd6cd2e0",
+        "pvc_snapshot": "4704b8296008f81e7bb5407424229e85",
+        "q97m": "5ea7546d9a4897114597a7d8ea1596db",
+        "register": "652d83e87780e415a01a2de6d8b3cc57",
+        "register_note": "LTI_REGISTER.md \u2014 owner-authored availability sidecar, pinned as a versioned input (R-REG=R2, Chapter-3 2026-07-09). Guard 5 asserts it on entry like the store; bootstrap seeds it to the workspace; the lookalike tripwire (single_source.py) keeps it single. Owner edits it -> this pin moves in the same commit (a curation edit, NOT a store bake).",
+        "release_version": "v2.11-final-rc1-PROVISIONAL",
+        "rl_model": "6fe7c4155866d80e8045bed2d3bf2802",
+        "store": "a9dec7e4785c6861a84f3beaae2f020e",
+        "tag": "ID-PRIMARY MIGRATION candidate (clean scope) 2026-07-12 \u2014 NOT A BAKE PROMOTION (no tag, no main merge; owner word required). base = v2.8 (store 04f38dad, board 9ecbe0fa). Store MOVED 04f38dad -> b0c39d78: 804 stable_player_id (afl-player-v1-<20hex>) + affl_team + eligibilities attached (identity fields, not read by ev(), 0 board movers); 5 named DOB corrections (onley/kickett/rodriguez/driscoll _by 2000->2007/2006; mcandrew _by 1999->2000); taylor-adams marked _retired (mid-season retirement). RE-ENTRY TRIO (perez/mcandrew/keane -> pickless SSP) DEFERRED to the v2.9 lever build (owner-ruled 2026-07-12; register v11 item 11a) \u2014 it reprices 657 non-named rows via the load-time calibration refit. luke-nankervis NO-import (store PSD pick 2 stands). Engine code UNTOUCHED at the store migration (head 7a07e369) -> board de4baef9; book RE-SEALED for the new store (n re-counted). [v2.9 REFIT+BAKE 2026-07-13 rides ON this store: engine 7a07e369->2030e5df (6 env-gated levers, default-ON), board de4baef9->8a66b4ba->f2d6e3f5->81e48293 (refit -> export/display -> L7 num\u00e9raire+override BAKE, display-only), store b0c39d78 UNCHANGED; cohort gate PASS 126.8/125.2/116.1; see _engine_head_note.] Board movers vs 9ecbe0fa: 94 = 5 DOB + adams removed + 88 hairline retirement ripple (<=+/-2 SCAR, owner-declared expected). Two Max Kings remain separately keyed (collision sentry GREEN). Lineage: v2.8 (9bd0cfd) -> this candidate. Tag push + main promote are owner-only. [ITEM 20 STORE-IDENTITY JOB 2026-07-13 (first job post-v2.9-tag) MOVED the store b0c39d78 -> 340a7a32 and the board 81e48293 -> 3dc19fbb: see _item20_note above. Engine ev()/config/band/rl_model UNCHANGED; the ONLY v mover is bramble (+1); everything else is identity/display. v2.9 tag (9f8ae76) is unmoved and remains canonical; this is the next chapter's first store write, no re-tag.]",
+        "v0surf": "d9f5d15d9606edcdd5708233197dd951"
+      }
+    },
+    "preflight": {
+      "base_commit": "a9b819b2e065ed14dfc623c6d0763136f0f75c80",
+      "board_before": "f81dbcda220110ad0113ae0633b6c34e",
+      "carriers_captured": 225,
+      "lock": "land-edit-20215"
+    },
+    "store_edit": {
+      "bytes_after": 1978024,
+      "bytes_before": 1978019,
+      "edits": [
+        {
+          "at": 612419,
+          "chars_after": 1978019,
+          "chars_before": 1978019,
+          "field": "scoring[2026].games",
+          "key": "aaron-naughton",
+          "new": 23,
+          "new_text": "\"games\": 23",
+          "old": 22,
+          "old_text": "\"games\": 22",
+          "row_span": [
+            612390,
+            612445
+          ]
+        },
+        {
+          "at": 612405,
+          "chars_after": 1978019,
+          "chars_before": 1978019,
+          "field": "scoring[2026].avg",
+          "key": "aaron-naughton",
+          "new": 70.35,
+          "new_text": "\"avg\": 70.35",
+          "old": 68.55,
+          "old_text": "\"avg\": 68.55",
+          "row_span": [
+            612390,
+            612445
+          ]
+        },
+        {
+          "at": 608316,
+          "chars_after": 1978019,
+          "chars_before": 1978019,
+          "field": "scoring[2026].games",
+          "key": "adam-cerra",
+          "new": 20,
+          "new_text": "\"games\": 20",
+          "old": 19,
+          "old_text": "\"games\": 19",
+          "row_span": [
+            608287,
+            608342
+          ]
+        },
+        {
+          "at": 608302,
+          "chars_after": 1978019,
+          "chars_before": 1978019,
+          "field": "scoring[2026].avg",
+          "key": "adam-cerra",
+          "new": 82.04,
+          "new_text": "\"avg\": 82.04",
+          "old": 80.73,
+          "old_text": "\"avg\": 80.73",
+          "row_span": [
+            608287,
+            608342
+          ]
+        },
+        {
+          "at": 37258,
+          "chars_after": 1978019,
+          "chars_before": 1978019,
+          "field": "scoring[2026].games",
+          "key": "angus-anderson",
+          "new": 16,
+          "new_text": "\"games\": 16",
+          "old": 15,
+          "old_text": "\"games\": 15",
+          "row_span": [
+            37229,
+            37287
+          ]
+        },
+        {
+          "at": 37244,
+          "chars_after": 1978019,
+          "chars_before": 1978019,
+          "field": "scoring[2026].avg",
+          "key": "angus-anderson",
+          "new": 56.79,
+          "new_text": "\"avg\": 56.79",
+          "old": 57.44,
+          "old_text": "\"avg\": 57.44",
+          "row_span": [
+            37229,
+            37287
+          ]
+        },
+        {
+          "at": 319846,
+          "chars_after": 1978019,
+          "chars_before": 1978019,
+          "field": "scoring[2026].games",
+          "key": "arthur-jones",
+          "new": 19,
+          "new_text": "\"games\": 19",
+          "old": 18,
+          "old_text": "\"games\": 18",
+          "row_span": [
+            319817,
+            319875
+          ]
+        },
+        {
+          "at": 319832,
+          "chars_after": 1978019,
+          "chars_before": 1978019,
+          "field": "scoring[2026].avg",
+          "key": "arthur-jones",
+          "new": 58.65,
+          "new_text": "\"avg\": 58.65",
+          "old": 55.85,
+          "old_text": "\"avg\": 55.85",
+          "row_span": [
+            319817,
+            319875
+          ]
+        },
+        {
+          "at": 917635,
+          "chars_after": 1978019,
+          "chars_before": 1978019,
+          "field": "scoring[2026].games",
+          "key": "bailey-dale",
+          "new": 19,
+          "new_text": "\"games\": 19",
+          "old": 18,
+          "old_text": "\"games\": 18",
+          "row_span": [
+            917605,
+            917660
+          ]
+        },
+        {
+          "at": 917620,
+          "chars_after": 1978019,
+          "chars_before": 1978019,
+          "field": "scoring[2026].avg",
+          "key": "bailey-dale",
+          "new": 101.74,
+          "new_text": "\"avg\": 101.74",
+          "old": 102.23,
+          "old_text": "\"avg\": 102.23",
+          "row_span": [
+            917605,
+            917660
+          ]
+        },
+        {
+          "at": 381137,
+          "chars_after": 1978019,
+          "chars_before": 1978019,
+          "field": "scoring[2026].games",
+          "key": "bailey-laurie",
+          "new": 17,
+          "new_text": "\"games\": 17",
+          "old": 16,
+          "old_text": "\"games\": 16",
+          "row_span": [
+            381108,
+            381162
+          ]
+        },
+        {
+          "at": 381123,
+          "chars_after": 1978019,
+          "chars_before": 1978019,
+          "field": "scoring[2026].avg",
+          "key": "bailey-laurie",
+          "new": 49.63,
+          "new_text": "\"avg\": 49.63",
+          "old": 51.48,
+          "old_text": "\"avg\": 51.48",
+          "row_span": [
+            381108,
+            381162
+          ]
+        },
+        {
+          "at": 836695,
+          "chars_after": 1978019,
+          "chars_before": 1978019,
+          "field": "scoring[2026].games",
+          "key": "bailey-williams-wb",
+          "new": 18,
+          "new_text": "\"games\": 18",
+          "old": 17,
+          "old_text": "\"games\": 17",
+          "row_span": [
+            836666,
+            836724
+          ]
+        },
+        {
+          "at": 836681,
+          "chars_after": 1978019,
+          "chars_before": 1978019,
+          "field": "scoring[2026].avg",
+          "key": "bailey-williams-wb",
+          "new": 82.88,
+          "new_text": "\"avg\": 82.88",
+          "old": 83.76,
+          "old_text": "\"avg\": 83.76",
+          "row_span": [
+            836666,
+            836724
+          ]
+        },
+        {
+          "at": 634660,
+          "chars_after": 1978019,
+          "chars_before": 1978019,
+          "field": "scoring[2026].games",
+          "key": "bayley-fritsch",
+          "new": 22,
+          "new_text": "\"games\": 22",
+          "old": 21,
+          "old_text": "\"games\": 21",
+          "row_span": [
+            634632,
+            634685
+          ]
+        },
+        {
+          "at": 634647,
+          "chars_after": 1978020,
+          "chars_before": 1978019,
+          "field": "scoring[2026].avg",
+          "key": "bayley-fritsch",
+          "new": 73.04,
+          "new_text": "\"avg\": 73.04",
+          "old": 73.8,
+          "old_text": "\"avg\": 73.8",
+          "row_span": [
+            634632,
+            634685
+          ]
+        },
+        {
+          "at": 398141,
+          "chars_after": 1978020,
+          "chars_before": 1978020,
+          "field": "scoring[2026].games",
+          "key": "beau-mccreery",
+          "new": 23,
+          "new_text": "\"games\": 23",
+          "old": 22,
+          "old_text": "\"games\": 22",
+          "row_span": [
+            398112,
+            398166
+          ]
+        },
+        {
+          "at": 398127,
+          "chars_after": 1978020,
+          "chars_before": 1978020,
+          "field": "scoring[2026].avg",
+          "key": "beau-mccreery",
+          "new": 66.55,
+          "new_text": "\"avg\": 66.55",
+          "old": 66.48,
+          "old_text": "\"avg\": 66.48",
+          "row_span": [
+            398112,
+            398166
+          ]
+        },
+        {
+          "at": 692985,
+          "chars_after": 1978020,
+          "chars_before": 1978020,
+          "field": "scoring[2026].games",
+          "key": "ben-ainsworth",
+          "new": 24,
+          "new_text": "\"games\": 24",
+          "old": 23,
+          "old_text": "\"games\": 23",
+          "row_span": [
+            692956,
+            693010
+          ]
+        },
+        {
+          "at": 692971,
+          "chars_after": 1978020,
+          "chars_before": 1978020,
+          "field": "scoring[2026].avg",
+          "key": "ben-ainsworth",
+          "new": 70.48,
+          "new_text": "\"avg\": 70.48",
+          "old": 68.94,
+          "old_text": "\"avg\": 68.94",
+          "row_span": [
+            692956,
+            693010
+          ]
+        },
+        {
+          "at": 938700,
+          "chars_after": 1978020,
+          "chars_before": 1978020,
+          "field": "scoring[2026].games",
+          "key": "billy-frampton",
+          "new": 24,
+          "new_text": "\"games\": 24",
+          "old": 23,
+          "old_text": "\"games\": 23",
+          "row_span": [
+            938671,
+            938726
+          ]
+        },
+        {
+          "at": 938686,
+          "chars_after": 1978020,
+          "chars_before": 1978020,
+          "field": "scoring[2026].avg",
+          "key": "billy-frampton",
+          "new": 62.75,
+          "new_text": "\"avg\": 62.75",
+          "old": 62.48,
+          "old_text": "\"avg\": 62.48",
+          "row_span": [
+            938671,
+            938726
+          ]
+        },
+        {
+          "at": 170227,
+          "chars_after": 1978020,
+          "chars_before": 1978020,
+          "field": "scoring[2026].games",
+          "key": "billy-wilson",
+          "new": 16,
+          "new_text": "\"games\": 16",
+          "old": 15,
+          "old_text": "\"games\": 15",
+          "row_span": [
+            170198,
+            170252
+          ]
+        },
+        {
+          "at": 170213,
+          "chars_after": 1978020,
+          "chars_before": 1978020,
+          "field": "scoring[2026].avg",
+          "key": "billy-wilson",
+          "new": 74.75,
+          "new_text": "\"avg\": 74.75",
+          "old": 76.27,
+          "old_text": "\"avg\": 76.27",
+          "row_span": [
+            170198,
+            170252
+          ]
+        },
+        {
+          "at": 992236,
+          "chars_after": 1978020,
+          "chars_before": 1978020,
+          "field": "scoring[2026].games",
+          "key": "blake-acres",
+          "new": 11,
+          "new_text": "\"games\": 11",
+          "old": 10,
+          "old_text": "\"games\": 10",
+          "row_span": [
+            992208,
+            992262
+          ]
+        },
+        {
+          "at": 992223,
+          "chars_after": 1978020,
+          "chars_before": 1978020,
+          "field": "scoring[2026].avg",
+          "key": "blake-acres",
+          "new": 78.0,
+          "new_text": "\"avg\": 78.0",
+          "old": 80.1,
+          "old_text": "\"avg\": 80.1",
+          "row_span": [
+            992208,
+            992262
+          ]
+        },
+        {
+          "at": 454307,
+          "chars_after": 1978020,
+          "chars_before": 1978020,
+          "field": "scoring[2026].games",
+          "key": "brodie-kemp",
+          "new": 24,
+          "new_text": "\"games\": 24",
+          "old": 23,
+          "old_text": "\"games\": 23",
+          "row_span": [
+            454279,
+            454333
+          ]
+        },
+        {
+          "at": 454294,
+          "chars_after": 1978021,
+          "chars_before": 1978020,
+          "field": "scoring[2026].avg",
+          "key": "brodie-kemp",
+          "new": 65.96,
+          "new_text": "\"avg\": 65.96",
+          "old": 65.7,
+          "old_text": "\"avg\": 65.7",
+          "row_span": [
+            454279,
+            454333
+          ]
+        },
+        {
+          "at": 592024,
+          "chars_after": 1978021,
+          "chars_before": 1978021,
+          "field": "scoring[2026].games",
+          "key": "buku-khamis",
+          "new": 24,
+          "new_text": "\"games\": 24",
+          "old": 23,
+          "old_text": "\"games\": 23",
+          "row_span": [
+            591995,
+            592054
+          ]
+        },
+        {
+          "at": 592010,
+          "chars_after": 1978021,
+          "chars_before": 1978021,
+          "field": "scoring[2026].avg",
+          "key": "buku-khamis",
+          "new": 58.99,
+          "new_text": "\"avg\": 58.99",
+          "old": 59.77,
+          "old_text": "\"avg\": 59.77",
+          "row_span": [
+            591995,
+            592054
+          ]
+        },
+        {
+          "at": 150449,
+          "chars_after": 1978021,
+          "chars_before": 1978021,
+          "field": "scoring[2026].games",
+          "key": "caleb-windsor",
+          "new": 21,
+          "new_text": "\"games\": 21",
+          "old": 20,
+          "old_text": "\"games\": 20",
+          "row_span": [
+            150420,
+            150475
+          ]
+        },
+        {
+          "at": 150435,
+          "chars_after": 1978021,
+          "chars_before": 1978021,
+          "field": "scoring[2026].avg",
+          "key": "caleb-windsor",
+          "new": 59.31,
+          "new_text": "\"avg\": 59.31",
+          "old": 59.83,
+          "old_text": "\"avg\": 59.83",
+          "row_span": [
+            150420,
+            150475
+          ]
+        },
+        {
+          "at": 686715,
+          "chars_after": 1978021,
+          "chars_before": 1978021,
+          "field": "scoring[2026].games",
+          "key": "changkuoth-jiath",
+          "new": 16,
+          "new_text": "\"games\": 16",
+          "old": 15,
+          "old_text": "\"games\": 15",
+          "row_span": [
+            686686,
+            686740
+          ]
+        },
+        {
+          "at": 686701,
+          "chars_after": 1978021,
+          "chars_before": 1978021,
+          "field": "scoring[2026].avg",
+          "key": "changkuoth-jiath",
+          "new": 66.32,
+          "new_text": "\"avg\": 66.32",
+          "old": 66.34,
+          "old_text": "\"avg\": 66.34",
+          "row_span": [
+            686686,
+            686740
+          ]
+        },
+        {
+          "at": 98966,
+          "chars_after": 1978021,
+          "chars_before": 1978021,
+          "field": "scoring[2026].games",
+          "key": "charlie-west",
+          "new": 9,
+          "new_text": "\"games\": 9",
+          "old": 8,
+          "old_text": "\"games\": 8",
+          "row_span": [
+            98937,
+            98991
+          ]
+        },
+        {
+          "at": 98952,
+          "chars_after": 1978021,
+          "chars_before": 1978021,
+          "field": "scoring[2026].avg",
+          "key": "charlie-west",
+          "new": 35.32,
+          "new_text": "\"avg\": 35.32",
+          "old": 38.24,
+          "old_text": "\"avg\": 38.24",
+          "row_span": [
+            98937,
+            98991
+          ]
+        },
+        {
+          "at": 452903,
+          "chars_after": 1978022,
+          "chars_before": 1978021,
+          "field": "scoring[2026].games",
+          "key": "cody-weightman",
+          "new": 10,
+          "new_text": "\"games\": 10",
+          "old": 9,
+          "old_text": "\"games\": 9",
+          "row_span": [
+            452874,
+            452927
+          ]
+        },
+        {
+          "at": 452889,
+          "chars_after": 1978021,
+          "chars_before": 1978022,
+          "field": "scoring[2026].avg",
+          "key": "cody-weightman",
+          "new": 54.3,
+          "new_text": "\"avg\": 54.3",
+          "old": 54.44,
+          "old_text": "\"avg\": 54.44",
+          "row_span": [
+            452874,
+            452928
+          ]
+        },
+        {
+          "at": 497902,
+          "chars_after": 1978021,
+          "chars_before": 1978021,
+          "field": "scoring[2026].games",
+          "key": "connor-budarick",
+          "new": 14,
+          "new_text": "\"games\": 14",
+          "old": 13,
+          "old_text": "\"games\": 13",
+          "row_span": [
+            497873,
+            497927
+          ]
+        },
+        {
+          "at": 497888,
+          "chars_after": 1978021,
+          "chars_before": 1978021,
+          "field": "scoring[2026].avg",
+          "key": "connor-budarick",
+          "new": 69.17,
+          "new_text": "\"avg\": 69.17",
+          "old": 71.57,
+          "old_text": "\"avg\": 71.57",
+          "row_span": [
+            497873,
+            497927
+          ]
+        },
+        {
+          "at": 78082,
+          "chars_after": 1978021,
+          "chars_before": 1978021,
+          "field": "scoring[2026].games",
+          "key": "cooper-hynes",
+          "new": 22,
+          "new_text": "\"games\": 22",
+          "old": 21,
+          "old_text": "\"games\": 21",
+          "row_span": [
+            78054,
+            78111
+          ]
+        },
+        {
+          "at": 78069,
+          "chars_after": 1978022,
+          "chars_before": 1978021,
+          "field": "scoring[2026].avg",
+          "key": "cooper-hynes",
+          "new": 52.79,
+          "new_text": "\"avg\": 52.79",
+          "old": 52.3,
+          "old_text": "\"avg\": 52.3",
+          "row_span": [
+            78054,
+            78111
+          ]
+        },
+        {
+          "at": 210311,
+          "chars_after": 1978023,
+          "chars_before": 1978022,
+          "field": "scoring[2026].games",
+          "key": "cooper-lord",
+          "new": 10,
+          "new_text": "\"games\": 10",
+          "old": 9,
+          "old_text": "\"games\": 9",
+          "row_span": [
+            210282,
+            210336
+          ]
+        },
+        {
+          "at": 210297,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].avg",
+          "key": "cooper-lord",
+          "new": 75.61,
+          "new_text": "\"avg\": 75.61",
+          "old": 76.23,
+          "old_text": "\"avg\": 76.23",
+          "row_span": [
+            210282,
+            210337
+          ]
+        },
+        {
+          "at": 869918,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].games",
+          "key": "dan-houston",
+          "new": 24,
+          "new_text": "\"games\": 24",
+          "old": 23,
+          "old_text": "\"games\": 23",
+          "row_span": [
+            869889,
+            869943
+          ]
+        },
+        {
+          "at": 869904,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].avg",
+          "key": "dan-houston",
+          "new": 83.76,
+          "new_text": "\"avg\": 83.76",
+          "old": 84.31,
+          "old_text": "\"avg\": 84.31",
+          "row_span": [
+            869889,
+            869943
+          ]
+        },
+        {
+          "at": 998573,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].games",
+          "key": "daniel-mcstay",
+          "new": 24,
+          "new_text": "\"games\": 24",
+          "old": 23,
+          "old_text": "\"games\": 23",
+          "row_span": [
+            998544,
+            998599
+          ]
+        },
+        {
+          "at": 998559,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].avg",
+          "key": "daniel-mcstay",
+          "new": 69.34,
+          "new_text": "\"avg\": 69.34",
+          "old": 68.36,
+          "old_text": "\"avg\": 68.36",
+          "row_span": [
+            998544,
+            998599
+          ]
+        },
+        {
+          "at": 438301,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].games",
+          "key": "daniel-turner",
+          "new": 19,
+          "new_text": "\"games\": 19",
+          "old": 18,
+          "old_text": "\"games\": 18",
+          "row_span": [
+            438272,
+            438327
+          ]
+        },
+        {
+          "at": 438287,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].avg",
+          "key": "daniel-turner",
+          "new": 77.11,
+          "new_text": "\"avg\": 77.11",
+          "old": 76.23,
+          "old_text": "\"avg\": 76.23",
+          "row_span": [
+            438272,
+            438327
+          ]
+        },
+        {
+          "at": 734166,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].games",
+          "key": "darcy-cameron",
+          "new": 23,
+          "new_text": "\"games\": 23",
+          "old": 22,
+          "old_text": "\"games\": 22",
+          "row_span": [
+            734137,
+            734193
+          ]
+        },
+        {
+          "at": 734152,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].avg",
+          "key": "darcy-cameron",
+          "new": 94.56,
+          "new_text": "\"avg\": 94.56",
+          "old": 93.95,
+          "old_text": "\"avg\": 93.95",
+          "row_span": [
+            734137,
+            734193
+          ]
+        },
+        {
+          "at": 925847,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].games",
+          "key": "ed-langdon",
+          "new": 24,
+          "new_text": "\"games\": 24",
+          "old": 23,
+          "old_text": "\"games\": 23",
+          "row_span": [
+            925818,
+            925876
+          ]
+        },
+        {
+          "at": 925833,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].avg",
+          "key": "ed-langdon",
+          "new": 78.99,
+          "new_text": "\"avg\": 78.99",
+          "old": 79.38,
+          "old_text": "\"avg\": 79.38",
+          "row_span": [
+            925818,
+            925876
+          ]
+        },
+        {
+          "at": 618672,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].games",
+          "key": "ed-richards",
+          "new": 23,
+          "new_text": "\"games\": 23",
+          "old": 22,
+          "old_text": "\"games\": 22",
+          "row_span": [
+            618642,
+            618698
+          ]
+        },
+        {
+          "at": 618657,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].avg",
+          "key": "ed-richards",
+          "new": 110.39,
+          "new_text": "\"avg\": 110.39",
+          "old": 111.14,
+          "old_text": "\"avg\": 111.14",
+          "row_span": [
+            618642,
+            618698
+          ]
+        },
+        {
+          "at": 231535,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].games",
+          "key": "edward-allan",
+          "new": 19,
+          "new_text": "\"games\": 19",
+          "old": 18,
+          "old_text": "\"games\": 18",
+          "row_span": [
+            231507,
+            231561
+          ]
+        },
+        {
+          "at": 231522,
+          "chars_after": 1978024,
+          "chars_before": 1978023,
+          "field": "scoring[2026].avg",
+          "key": "edward-allan",
+          "new": 68.54,
+          "new_text": "\"avg\": 68.54",
+          "old": 69.4,
+          "old_text": "\"avg\": 69.4",
+          "row_span": [
+            231507,
+            231561
+          ]
+        },
+        {
+          "at": 474728,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].games",
+          "key": "francis-evans",
+          "new": 22,
+          "new_text": "\"games\": 22",
+          "old": 21,
+          "old_text": "\"games\": 21",
+          "row_span": [
+            474699,
+            474753
+          ]
+        },
+        {
+          "at": 474714,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].avg",
+          "key": "francis-evans",
+          "new": 73.86,
+          "new_text": "\"avg\": 73.86",
+          "old": 74.19,
+          "old_text": "\"avg\": 74.19",
+          "row_span": [
+            474699,
+            474753
+          ]
+        },
+        {
+          "at": 1005942,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].games",
+          "key": "george-hewett",
+          "new": 19,
+          "new_text": "\"games\": 19",
+          "old": 18,
+          "old_text": "\"games\": 18",
+          "row_span": [
+            1005912,
+            1005968
+          ]
+        },
+        {
+          "at": 1005927,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].avg",
+          "key": "george-hewett",
+          "new": 102.95,
+          "new_text": "\"avg\": 102.95",
+          "old": 104.67,
+          "old_text": "\"avg\": 104.67",
+          "row_span": [
+            1005912,
+            1005968
+          ]
+        },
+        {
+          "at": 639211,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].games",
+          "key": "harrison-petty",
+          "new": 20,
+          "new_text": "\"games\": 20",
+          "old": 19,
+          "old_text": "\"games\": 19",
+          "row_span": [
+            639182,
+            639237
+          ]
+        },
+        {
+          "at": 639197,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].avg",
+          "key": "harrison-petty",
+          "new": 70.78,
+          "new_text": "\"avg\": 70.78",
+          "old": 72.24,
+          "old_text": "\"avg\": 72.24",
+          "row_span": [
+            639182,
+            639237
+          ]
+        },
+        {
+          "at": 1527,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].games",
+          "key": "harry-dean",
+          "new": 20,
+          "new_text": "\"games\": 20",
+          "old": 19,
+          "old_text": "\"games\": 19",
+          "row_span": [
+            1498,
+            1553
+          ]
+        },
+        {
+          "at": 1513,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].avg",
+          "key": "harry-dean",
+          "new": 61.49,
+          "new_text": "\"avg\": 61.49",
+          "old": 59.52,
+          "old_text": "\"avg\": 59.52",
+          "row_span": [
+            1498,
+            1553
+          ]
+        },
+        {
+          "at": 802685,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].games",
+          "key": "harry-mckay",
+          "new": 21,
+          "new_text": "\"games\": 21",
+          "old": 20,
+          "old_text": "\"games\": 20",
+          "row_span": [
+            802656,
+            802711
+          ]
+        },
+        {
+          "at": 802671,
+          "chars_after": 1978023,
+          "chars_before": 1978024,
+          "field": "scoring[2026].avg",
+          "key": "harry-mckay",
+          "new": 75.8,
+          "new_text": "\"avg\": 75.8",
+          "old": 75.69,
+          "old_text": "\"avg\": 75.69",
+          "row_span": [
+            802656,
+            802711
+          ]
+        },
+        {
+          "at": 397114,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].games",
+          "key": "harry-sharp",
+          "new": 24,
+          "new_text": "\"games\": 24",
+          "old": 23,
+          "old_text": "\"games\": 23",
+          "row_span": [
+            397085,
+            397139
+          ]
+        },
+        {
+          "at": 397100,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].avg",
+          "key": "harry-sharp",
+          "new": 62.32,
+          "new_text": "\"avg\": 62.32",
+          "old": 63.29,
+          "old_text": "\"avg\": 63.29",
+          "row_span": [
+            397085,
+            397139
+          ]
+        },
+        {
+          "at": 325291,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].games",
+          "key": "harvey-harrison",
+          "new": 12,
+          "new_text": "\"games\": 12",
+          "old": 11,
+          "old_text": "\"games\": 11",
+          "row_span": [
+            325262,
+            325316
+          ]
+        },
+        {
+          "at": 325277,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].avg",
+          "key": "harvey-harrison",
+          "new": 45.58,
+          "new_text": "\"avg\": 45.58",
+          "old": 45.63,
+          "old_text": "\"avg\": 45.63",
+          "row_span": [
+            325262,
+            325316
+          ]
+        },
+        {
+          "at": 68280,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].games",
+          "key": "harvey-langford",
+          "new": 24,
+          "new_text": "\"games\": 24",
+          "old": 23,
+          "old_text": "\"games\": 23",
+          "row_span": [
+            68251,
+            68306
+          ]
+        },
+        {
+          "at": 68266,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].avg",
+          "key": "harvey-langford",
+          "new": 66.42,
+          "new_text": "\"avg\": 66.42",
+          "old": 65.39,
+          "old_text": "\"avg\": 65.39",
+          "row_span": [
+            68251,
+            68306
+          ]
+        },
+        {
+          "at": 519744,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].games",
+          "key": "isaac-quaynor",
+          "new": 21,
+          "new_text": "\"games\": 21",
+          "old": 20,
+          "old_text": "\"games\": 20",
+          "row_span": [
+            519715,
+            519769
+          ]
+        },
+        {
+          "at": 519730,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].avg",
+          "key": "isaac-quaynor",
+          "new": 75.22,
+          "new_text": "\"avg\": 75.22",
+          "old": 75.68,
+          "old_text": "\"avg\": 75.68",
+          "row_span": [
+            519715,
+            519769
+          ]
+        },
+        {
+          "at": 1227503,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].games",
+          "key": "jack-crisp",
+          "new": 24,
+          "new_text": "\"games\": 24",
+          "old": 23,
+          "old_text": "\"games\": 23",
+          "row_span": [
+            1227474,
+            1227529
+          ]
+        },
+        {
+          "at": 1227489,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].avg",
+          "key": "jack-crisp",
+          "new": 83.24,
+          "new_text": "\"avg\": 83.24",
+          "old": 83.03,
+          "old_text": "\"avg\": 83.03",
+          "row_span": [
+            1227474,
+            1227529
+          ]
+        },
+        {
+          "at": 899167,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].games",
+          "key": "jack-steele",
+          "new": 24,
+          "new_text": "\"games\": 24",
+          "old": 23,
+          "old_text": "\"games\": 23",
+          "row_span": [
+            899139,
+            899193
+          ]
+        },
+        {
+          "at": 899154,
+          "chars_after": 1978024,
+          "chars_before": 1978023,
+          "field": "scoring[2026].avg",
+          "key": "jack-steele",
+          "new": 94.31,
+          "new_text": "\"avg\": 94.31",
+          "old": 94.5,
+          "old_text": "\"avg\": 94.5",
+          "row_span": [
+            899139,
+            899193
+          ]
+        },
+        {
+          "at": 1069742,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].games",
+          "key": "jack-viney",
+          "new": 1,
+          "new_text": "\"games\": 1",
+          "old": 0,
+          "old_text": "\"games\": 0",
+          "row_span": [
+            1069715,
+            1069767
+          ]
+        },
+        {
+          "at": 1069730,
+          "chars_after": 1978025,
+          "chars_before": 1978024,
+          "field": "scoring[2026].avg",
+          "key": "jack-viney",
+          "new": 55.0,
+          "new_text": "\"avg\": 55.0",
+          "old": 0.0,
+          "old_text": "\"avg\": 0.0",
+          "row_span": [
+            1069715,
+            1069767
+          ]
+        },
+        {
+          "at": 792690,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].games",
+          "key": "jacob-weitering",
+          "new": 13,
+          "new_text": "\"games\": 13",
+          "old": 12,
+          "old_text": "\"games\": 12",
+          "row_span": [
+            792661,
+            792716
+          ]
+        },
+        {
+          "at": 792676,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].avg",
+          "key": "jacob-weitering",
+          "new": 80.62,
+          "new_text": "\"avg\": 80.62",
+          "old": 77.67,
+          "old_text": "\"avg\": 77.67",
+          "row_span": [
+            792661,
+            792716
+          ]
+        },
+        {
+          "at": 66120,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].games",
+          "key": "jagga-smith",
+          "new": 23,
+          "new_text": "\"games\": 23",
+          "old": 22,
+          "old_text": "\"games\": 22",
+          "row_span": [
+            66091,
+            66149
+          ]
+        },
+        {
+          "at": 66106,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].avg",
+          "key": "jagga-smith",
+          "new": 89.61,
+          "new_text": "\"avg\": 89.61",
+          "old": 88.05,
+          "old_text": "\"avg\": 88.05",
+          "row_span": [
+            66091,
+            66149
+          ]
+        },
+        {
+          "at": 380313,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].games",
+          "key": "jake-bowey",
+          "new": 16,
+          "new_text": "\"games\": 16",
+          "old": 15,
+          "old_text": "\"games\": 15",
+          "row_span": [
+            380283,
+            380338
+          ]
+        },
+        {
+          "at": 380298,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].avg",
+          "key": "jake-bowey",
+          "new": 102.38,
+          "new_text": "\"avg\": 102.38",
+          "old": 102.41,
+          "old_text": "\"avg\": 102.41",
+          "row_span": [
+            380283,
+            380338
+          ]
+        },
+        {
+          "at": 1368259,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].games",
+          "key": "jake-melksham",
+          "new": 7,
+          "new_text": "\"games\": 7",
+          "old": 6,
+          "old_text": "\"games\": 6",
+          "row_span": [
+            1368230,
+            1368284
+          ]
+        },
+        {
+          "at": 1368245,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].avg",
+          "key": "jake-melksham",
+          "new": 39.73,
+          "new_text": "\"avg\": 39.73",
+          "old": 42.02,
+          "old_text": "\"avg\": 42.02",
+          "row_span": [
+            1368230,
+            1368284
+          ]
+        },
+        {
+          "at": 264760,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].games",
+          "key": "james-o-donnell",
+          "new": 20,
+          "new_text": "\"games\": 20",
+          "old": 19,
+          "old_text": "\"games\": 19",
+          "row_span": [
+            264731,
+            264786
+          ]
+        },
+        {
+          "at": 264746,
+          "chars_after": 1978024,
+          "chars_before": 1978025,
+          "field": "scoring[2026].avg",
+          "key": "james-o-donnell",
+          "new": 62.8,
+          "new_text": "\"avg\": 62.8",
+          "old": 63.16,
+          "old_text": "\"avg\": 63.16",
+          "row_span": [
+            264731,
+            264786
+          ]
+        },
+        {
+          "at": 1285678,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].games",
+          "key": "jeremy-howe",
+          "new": 18,
+          "new_text": "\"games\": 18",
+          "old": 17,
+          "old_text": "\"games\": 17",
+          "row_span": [
+            1285649,
+            1285703
+          ]
+        },
+        {
+          "at": 1285664,
+          "chars_after": 1978023,
+          "chars_before": 1978024,
+          "field": "scoring[2026].avg",
+          "key": "jeremy-howe",
+          "new": 80.5,
+          "new_text": "\"avg\": 80.5",
+          "old": 81.29,
+          "old_text": "\"avg\": 81.29",
+          "row_span": [
+            1285649,
+            1285703
+          ]
+        },
+        {
+          "at": 62638,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].games",
+          "key": "joel-fitzgerald",
+          "new": 11,
+          "new_text": "\"games\": 11",
+          "old": 10,
+          "old_text": "\"games\": 10",
+          "row_span": [
+            62610,
+            62664
+          ]
+        },
+        {
+          "at": 62625,
+          "chars_after": 1978024,
+          "chars_before": 1978023,
+          "field": "scoring[2026].avg",
+          "key": "joel-fitzgerald",
+          "new": 67.36,
+          "new_text": "\"avg\": 67.36",
+          "old": 68.6,
+          "old_text": "\"avg\": 68.6",
+          "row_span": [
+            62610,
+            62664
+          ]
+        },
+        {
+          "at": 178015,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].games",
+          "key": "joel-freijah",
+          "new": 24,
+          "new_text": "\"games\": 24",
+          "old": 23,
+          "old_text": "\"games\": 23",
+          "row_span": [
+            177986,
+            178044
+          ]
+        },
+        {
+          "at": 178001,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].avg",
+          "key": "joel-freijah",
+          "new": 79.02,
+          "new_text": "\"avg\": 79.02",
+          "old": 77.59,
+          "old_text": "\"avg\": 77.59",
+          "row_span": [
+            177986,
+            178044
+          ]
+        },
+        {
+          "at": 883972,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].games",
+          "key": "jordan-de-goey",
+          "new": 22,
+          "new_text": "\"games\": 22",
+          "old": 21,
+          "old_text": "\"games\": 21",
+          "row_span": [
+            883943,
+            884001
+          ]
+        },
+        {
+          "at": 883958,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].avg",
+          "key": "jordan-de-goey",
+          "new": 88.39,
+          "new_text": "\"avg\": 88.39",
+          "old": 89.69,
+          "old_text": "\"avg\": 89.69",
+          "row_span": [
+            883943,
+            884001
+          ]
+        },
+        {
+          "at": 741522,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].games",
+          "key": "josh-daicos",
+          "new": 24,
+          "new_text": "\"games\": 24",
+          "old": 23,
+          "old_text": "\"games\": 23",
+          "row_span": [
+            741493,
+            741547
+          ]
+        },
+        {
+          "at": 741508,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].avg",
+          "key": "josh-daicos",
+          "new": 95.47,
+          "new_text": "\"avg\": 95.47",
+          "old": 95.45,
+          "old_text": "\"avg\": 95.45",
+          "row_span": [
+            741493,
+            741547
+          ]
+        },
+        {
+          "at": 85841,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].games",
+          "key": "josh-dolan",
+          "new": 12,
+          "new_text": "\"games\": 12",
+          "old": 11,
+          "old_text": "\"games\": 11",
+          "row_span": [
+            85812,
+            85866
+          ]
+        },
+        {
+          "at": 85827,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].avg",
+          "key": "josh-dolan",
+          "new": 48.73,
+          "new_text": "\"avg\": 48.73",
+          "old": 49.62,
+          "old_text": "\"avg\": 49.62",
+          "row_span": [
+            85812,
+            85866
+          ]
+        },
+        {
+          "at": 573018,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].games",
+          "key": "kade-chandler",
+          "new": 23,
+          "new_text": "\"games\": 23",
+          "old": 22,
+          "old_text": "\"games\": 22",
+          "row_span": [
+            572989,
+            573043
+          ]
+        },
+        {
+          "at": 573004,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].avg",
+          "key": "kade-chandler",
+          "new": 78.81,
+          "new_text": "\"avg\": 78.81",
+          "old": 78.94,
+          "old_text": "\"avg\": 78.94",
+          "row_span": [
+            572989,
+            573043
+          ]
+        },
+        {
+          "at": 154967,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].games",
+          "key": "koltyn-tholstrup",
+          "new": 24,
+          "new_text": "\"games\": 24",
+          "old": 23,
+          "old_text": "\"games\": 23",
+          "row_span": [
+            154939,
+            154992
+          ]
+        },
+        {
+          "at": 154954,
+          "chars_after": 1978025,
+          "chars_before": 1978024,
+          "field": "scoring[2026].avg",
+          "key": "koltyn-tholstrup",
+          "new": 72.63,
+          "new_text": "\"avg\": 72.63",
+          "old": 73.4,
+          "old_text": "\"avg\": 73.4",
+          "row_span": [
+            154939,
+            154992
+          ]
+        },
+        {
+          "at": 449929,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].games",
+          "key": "kysaiah-pickett",
+          "new": 24,
+          "new_text": "\"games\": 24",
+          "old": 23,
+          "old_text": "\"games\": 23",
+          "row_span": [
+            449901,
+            449958
+          ]
+        },
+        {
+          "at": 449916,
+          "chars_after": 1978026,
+          "chars_before": 1978025,
+          "field": "scoring[2026].avg",
+          "key": "kysaiah-pickett",
+          "new": 96.44,
+          "new_text": "\"avg\": 96.44",
+          "old": 97.5,
+          "old_text": "\"avg\": 97.5",
+          "row_span": [
+            449901,
+            449958
+          ]
+        },
+        {
+          "at": 202549,
+          "chars_after": 1978026,
+          "chars_before": 1978026,
+          "field": "scoring[2026].games",
+          "key": "lachlan-bramble",
+          "new": 24,
+          "new_text": "\"games\": 24",
+          "old": 23,
+          "old_text": "\"games\": 23",
+          "row_span": [
+            202520,
+            202574
+          ]
+        },
+        {
+          "at": 202535,
+          "chars_after": 1978026,
+          "chars_before": 1978026,
+          "field": "scoring[2026].avg",
+          "key": "lachlan-bramble",
+          "new": 66.36,
+          "new_text": "\"avg\": 66.36",
+          "old": 64.98,
+          "old_text": "\"avg\": 64.98",
+          "row_span": [
+            202520,
+            202574
+          ]
+        },
+        {
+          "at": 238775,
+          "chars_after": 1978026,
+          "chars_before": 1978026,
+          "field": "scoring[2026].games",
+          "key": "lachlan-cowan",
+          "new": 23,
+          "new_text": "\"games\": 23",
+          "old": 22,
+          "old_text": "\"games\": 22",
+          "row_span": [
+            238746,
+            238800
+          ]
+        },
+        {
+          "at": 238761,
+          "chars_after": 1978026,
+          "chars_before": 1978026,
+          "field": "scoring[2026].avg",
+          "key": "lachlan-cowan",
+          "new": 66.64,
+          "new_text": "\"avg\": 66.64",
+          "old": 66.62,
+          "old_text": "\"avg\": 66.62",
+          "row_span": [
+            238746,
+            238800
+          ]
+        },
+        {
+          "at": 552731,
+          "chars_after": 1978026,
+          "chars_before": 1978026,
+          "field": "scoring[2026].games",
+          "key": "lachlan-schultz",
+          "new": 21,
+          "new_text": "\"games\": 21",
+          "old": 20,
+          "old_text": "\"games\": 20",
+          "row_span": [
+            552702,
+            552756
+          ]
+        },
+        {
+          "at": 552717,
+          "chars_after": 1978026,
+          "chars_before": 1978026,
+          "field": "scoring[2026].avg",
+          "key": "lachlan-schultz",
+          "new": 77.34,
+          "new_text": "\"avg\": 77.34",
+          "old": 77.71,
+          "old_text": "\"avg\": 77.71",
+          "row_span": [
+            552702,
+            552756
+          ]
+        },
+        {
+          "at": 735282,
+          "chars_after": 1978026,
+          "chars_before": 1978026,
+          "field": "scoring[2026].games",
+          "key": "lewis-young",
+          "new": 13,
+          "new_text": "\"games\": 13",
+          "old": 12,
+          "old_text": "\"games\": 12",
+          "row_span": [
+            735253,
+            735308
+          ]
+        },
+        {
+          "at": 735268,
+          "chars_after": 1978026,
+          "chars_before": 1978026,
+          "field": "scoring[2026].avg",
+          "key": "lewis-young",
+          "new": 57.16,
+          "new_text": "\"avg\": 57.16",
+          "old": 58.26,
+          "old_text": "\"avg\": 58.26",
+          "row_span": [
+            735253,
+            735308
+          ]
+        },
+        {
+          "at": 107219,
+          "chars_after": 1978026,
+          "chars_before": 1978026,
+          "field": "scoring[2026].games",
+          "key": "luke-kennedy",
+          "new": 7,
+          "new_text": "\"games\": 7",
+          "old": 6,
+          "old_text": "\"games\": 6",
+          "row_span": [
+            107191,
+            107244
+          ]
+        },
+        {
+          "at": 107206,
+          "chars_after": 1978027,
+          "chars_before": 1978026,
+          "field": "scoring[2026].avg",
+          "key": "luke-kennedy",
+          "new": 43.29,
+          "new_text": "\"avg\": 43.29",
+          "old": 42.0,
+          "old_text": "\"avg\": 42.0",
+          "row_span": [
+            107191,
+            107244
+          ]
+        },
+        {
+          "at": 921824,
+          "chars_after": 1978027,
+          "chars_before": 1978027,
+          "field": "scoring[2026].games",
+          "key": "marc-pittonet",
+          "new": 21,
+          "new_text": "\"games\": 21",
+          "old": 20,
+          "old_text": "\"games\": 20",
+          "row_span": [
+            921795,
+            921851
+          ]
+        },
+        {
+          "at": 921810,
+          "chars_after": 1978027,
+          "chars_before": 1978027,
+          "field": "scoring[2026].avg",
+          "key": "marc-pittonet",
+          "new": 82.22,
+          "new_text": "\"avg\": 82.22",
+          "old": 82.23,
+          "old_text": "\"avg\": 82.23",
+          "row_span": [
+            921795,
+            921851
+          ]
+        },
+        {
+          "at": 977856,
+          "chars_after": 1978027,
+          "chars_before": 1978027,
+          "field": "scoring[2026].games",
+          "key": "marcus-bontempelli",
+          "new": 23,
+          "new_text": "\"games\": 23",
+          "old": 22,
+          "old_text": "\"games\": 22",
+          "row_span": [
+            977826,
+            977882
+          ]
+        },
+        {
+          "at": 977841,
+          "chars_after": 1978026,
+          "chars_before": 1978027,
+          "field": "scoring[2026].avg",
+          "key": "marcus-bontempelli",
+          "new": 117.9,
+          "new_text": "\"avg\": 117.9",
+          "old": 117.17,
+          "old_text": "\"avg\": 117.17",
+          "row_span": [
+            977826,
+            977882
+          ]
+        },
+        {
+          "at": 593056,
+          "chars_after": 1978026,
+          "chars_before": 1978026,
+          "field": "scoring[2026].games",
+          "key": "matt-cottrell",
+          "new": 13,
+          "new_text": "\"games\": 13",
+          "old": 12,
+          "old_text": "\"games\": 12",
+          "row_span": [
+            593027,
+            593085
+          ]
+        },
+        {
+          "at": 593042,
+          "chars_after": 1978026,
+          "chars_before": 1978026,
+          "field": "scoring[2026].avg",
+          "key": "matt-cottrell",
+          "new": 65.46,
+          "new_text": "\"avg\": 65.46",
+          "old": 62.83,
+          "old_text": "\"avg\": 62.83",
+          "row_span": [
+            593027,
+            593085
+          ]
+        },
+        {
+          "at": 806238,
+          "chars_after": 1978026,
+          "chars_before": 1978026,
+          "field": "scoring[2026].games",
+          "key": "matthew-kennedy-1",
+          "new": 24,
+          "new_text": "\"games\": 24",
+          "old": 23,
+          "old_text": "\"games\": 23",
+          "row_span": [
+            806209,
+            806264
+          ]
+        },
+        {
+          "at": 806224,
+          "chars_after": 1978026,
+          "chars_before": 1978026,
+          "field": "scoring[2026].avg",
+          "key": "matthew-kennedy-1",
+          "new": 86.43,
+          "new_text": "\"avg\": 86.43",
+          "old": 85.71,
+          "old_text": "\"avg\": 85.71",
+          "row_span": [
+            806209,
+            806264
+          ]
+        },
+        {
+          "at": 1388349,
+          "chars_after": 1978026,
+          "chars_before": 1978026,
+          "field": "scoring[2026].games",
+          "key": "max-gawn",
+          "new": 24,
+          "new_text": "\"games\": 24",
+          "old": 23,
+          "old_text": "\"games\": 23",
+          "row_span": [
+            1388319,
+            1388376
+          ]
+        },
+        {
+          "at": 1388334,
+          "chars_after": 1978026,
+          "chars_before": 1978026,
+          "field": "scoring[2026].avg",
+          "key": "max-gawn",
+          "new": 127.67,
+          "new_text": "\"avg\": 127.67",
+          "old": 128.05,
+          "old_text": "\"avg\": 128.05",
+          "row_span": [
+            1388319,
+            1388376
+          ]
+        },
+        {
+          "at": 136415,
+          "chars_after": 1978026,
+          "chars_before": 1978026,
+          "field": "scoring[2026].games",
+          "key": "michael-sellwood",
+          "new": 23,
+          "new_text": "\"games\": 23",
+          "old": 22,
+          "old_text": "\"games\": 22",
+          "row_span": [
+            136386,
+            136440
+          ]
+        },
+        {
+          "at": 136401,
+          "chars_after": 1978025,
+          "chars_before": 1978026,
+          "field": "scoring[2026].avg",
+          "key": "michael-sellwood",
+          "new": 60.6,
+          "new_text": "\"avg\": 60.6",
+          "old": 61.99,
+          "old_text": "\"avg\": 61.99",
+          "row_span": [
+            136386,
+            136440
+          ]
+        },
+        {
+          "at": 915715,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].games",
+          "key": "mitch-mcgovern",
+          "new": 24,
+          "new_text": "\"games\": 24",
+          "old": 23,
+          "old_text": "\"games\": 23",
+          "row_span": [
+            915686,
+            915741
+          ]
+        },
+        {
+          "at": 915701,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].avg",
+          "key": "mitch-mcgovern",
+          "new": 63.42,
+          "new_text": "\"avg\": 63.42",
+          "old": 64.35,
+          "old_text": "\"avg\": 64.35",
+          "row_span": [
+            915686,
+            915741
+          ]
+        },
+        {
+          "at": 336066,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].games",
+          "key": "ned-long",
+          "new": 22,
+          "new_text": "\"games\": 22",
+          "old": 21,
+          "old_text": "\"games\": 21",
+          "row_span": [
+            336037,
+            336095
+          ]
+        },
+        {
+          "at": 336052,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].avg",
+          "key": "ned-long",
+          "new": 70.16,
+          "new_text": "\"avg\": 70.16",
+          "old": 69.17,
+          "old_text": "\"avg\": 69.17",
+          "row_span": [
+            336037,
+            336095
+          ]
+        },
+        {
+          "at": 287525,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].games",
+          "key": "nick-daicos",
+          "new": 23,
+          "new_text": "\"games\": 23",
+          "old": 22,
+          "old_text": "\"games\": 22",
+          "row_span": [
+            287495,
+            287551
+          ]
+        },
+        {
+          "at": 287510,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].avg",
+          "key": "nick-daicos",
+          "new": 119.76,
+          "new_text": "\"avg\": 119.76",
+          "old": 119.48,
+          "old_text": "\"avg\": 119.48",
+          "row_span": [
+            287495,
+            287551
+          ]
+        },
+        {
+          "at": 1144111,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].games",
+          "key": "nick-haynes",
+          "new": 19,
+          "new_text": "\"games\": 19",
+          "old": 18,
+          "old_text": "\"games\": 18",
+          "row_span": [
+            1144082,
+            1144136
+          ]
+        },
+        {
+          "at": 1144097,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].avg",
+          "key": "nick-haynes",
+          "new": 78.33,
+          "new_text": "\"avg\": 78.33",
+          "old": 77.01,
+          "old_text": "\"avg\": 77.01",
+          "row_span": [
+            1144082,
+            1144136
+          ]
+        },
+        {
+          "at": 700492,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].games",
+          "key": "oliver-florent",
+          "new": 24,
+          "new_text": "\"games\": 24",
+          "old": 23,
+          "old_text": "\"games\": 23",
+          "row_span": [
+            700463,
+            700518
+          ]
+        },
+        {
+          "at": 700478,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].avg",
+          "key": "oliver-florent",
+          "new": 89.13,
+          "new_text": "\"avg\": 89.13",
+          "old": 89.35,
+          "old_text": "\"avg\": 89.35",
+          "row_span": [
+            700463,
+            700518
+          ]
+        },
+        {
+          "at": 225181,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].games",
+          "key": "oliver-hollands",
+          "new": 13,
+          "new_text": "\"games\": 13",
+          "old": 12,
+          "old_text": "\"games\": 12",
+          "row_span": [
+            225152,
+            225210
+          ]
+        },
+        {
+          "at": 225167,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].avg",
+          "key": "oliver-hollands",
+          "new": 70.18,
+          "new_text": "\"avg\": 70.18",
+          "old": 68.95,
+          "old_text": "\"avg\": 68.95",
+          "row_span": [
+            225152,
+            225210
+          ]
+        },
+        {
+          "at": 986803,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].games",
+          "key": "patrick-cripps",
+          "new": 24,
+          "new_text": "\"games\": 24",
+          "old": 23,
+          "old_text": "\"games\": 23",
+          "row_span": [
+            986774,
+            986829
+          ]
+        },
+        {
+          "at": 986789,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].avg",
+          "key": "patrick-cripps",
+          "new": 98.37,
+          "new_text": "\"avg\": 98.37",
+          "old": 99.13,
+          "old_text": "\"avg\": 99.13",
+          "row_span": [
+            986774,
+            986829
+          ]
+        },
+        {
+          "at": 718072,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].games",
+          "key": "patrick-lipinski",
+          "new": 20,
+          "new_text": "\"games\": 20",
+          "old": 19,
+          "old_text": "\"games\": 19",
+          "row_span": [
+            718043,
+            718101
+          ]
+        },
+        {
+          "at": 718058,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].avg",
+          "key": "patrick-lipinski",
+          "new": 76.74,
+          "new_text": "\"avg\": 76.74",
+          "old": 77.62,
+          "old_text": "\"avg\": 77.62",
+          "row_span": [
+            718043,
+            718101
+          ]
+        },
+        {
+          "at": 530648,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].games",
+          "key": "rhylee-west",
+          "new": 23,
+          "new_text": "\"games\": 23",
+          "old": 22,
+          "old_text": "\"games\": 22",
+          "row_span": [
+            530619,
+            530673
+          ]
+        },
+        {
+          "at": 530634,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].avg",
+          "key": "rhylee-west",
+          "new": 65.02,
+          "new_text": "\"avg\": 65.02",
+          "old": 63.98,
+          "old_text": "\"avg\": 63.98",
+          "row_span": [
+            530619,
+            530673
+          ]
+        },
+        {
+          "at": 137847,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].games",
+          "key": "roan-steele",
+          "new": 19,
+          "new_text": "\"games\": 19",
+          "old": 18,
+          "old_text": "\"games\": 18",
+          "row_span": [
+            137818,
+            137873
+          ]
+        },
+        {
+          "at": 137833,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].avg",
+          "key": "roan-steele",
+          "new": 59.28,
+          "new_text": "\"avg\": 59.28",
+          "old": 59.41,
+          "old_text": "\"avg\": 59.41",
+          "row_span": [
+            137818,
+            137873
+          ]
+        },
+        {
+          "at": 1003254,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].games",
+          "key": "rory-lobb",
+          "new": 21,
+          "new_text": "\"games\": 21",
+          "old": 20,
+          "old_text": "\"games\": 20",
+          "row_span": [
+            1003225,
+            1003280
+          ]
+        },
+        {
+          "at": 1003240,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].avg",
+          "key": "rory-lobb",
+          "new": 70.64,
+          "new_text": "\"avg\": 70.64",
+          "old": 72.02,
+          "old_text": "\"avg\": 72.02",
+          "row_span": [
+            1003225,
+            1003280
+          ]
+        },
+        {
+          "at": 845086,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].games",
+          "key": "ryan-gardner",
+          "new": 3,
+          "new_text": "\"games\": 3",
+          "old": 2,
+          "old_text": "\"games\": 2",
+          "row_span": [
+            845058,
+            845111
+          ]
+        },
+        {
+          "at": 845073,
+          "chars_after": 1978026,
+          "chars_before": 1978025,
+          "field": "scoring[2026].avg",
+          "key": "ryan-gardner",
+          "new": 29.33,
+          "new_text": "\"avg\": 29.33",
+          "old": 32.0,
+          "old_text": "\"avg\": 32.0",
+          "row_span": [
+            845058,
+            845111
+          ]
+        },
+        {
+          "at": 149658,
+          "chars_after": 1978026,
+          "chars_before": 1978026,
+          "field": "scoring[2026].games",
+          "key": "ryley-sanders",
+          "new": 22,
+          "new_text": "\"games\": 22",
+          "old": 21,
+          "old_text": "\"games\": 21",
+          "row_span": [
+            149629,
+            149687
+          ]
+        },
+        {
+          "at": 149644,
+          "chars_after": 1978026,
+          "chars_before": 1978026,
+          "field": "scoring[2026].avg",
+          "key": "ryley-sanders",
+          "new": 87.23,
+          "new_text": "\"avg\": 87.23",
+          "old": 87.24,
+          "old_text": "\"avg\": 87.24",
+          "row_span": [
+            149629,
+            149687
+          ]
+        },
+        {
+          "at": 99684,
+          "chars_after": 1978026,
+          "chars_before": 1978026,
+          "field": "scoring[2026].games",
+          "key": "sam-davidson",
+          "new": 17,
+          "new_text": "\"games\": 17",
+          "old": 16,
+          "old_text": "\"games\": 16",
+          "row_span": [
+            99655,
+            99710
+          ]
+        },
+        {
+          "at": 99670,
+          "chars_after": 1978025,
+          "chars_before": 1978026,
+          "field": "scoring[2026].avg",
+          "key": "sam-davidson",
+          "new": 55.6,
+          "new_text": "\"avg\": 55.6",
+          "old": 54.83,
+          "old_text": "\"avg\": 54.83",
+          "row_span": [
+            99655,
+            99710
+          ]
+        },
+        {
+          "at": 507524,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].games",
+          "key": "sam-walsh",
+          "new": 24,
+          "new_text": "\"games\": 24",
+          "old": 23,
+          "old_text": "\"games\": 23",
+          "row_span": [
+            507494,
+            507550
+          ]
+        },
+        {
+          "at": 507509,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].avg",
+          "key": "sam-walsh",
+          "new": 102.23,
+          "new_text": "\"avg\": 102.23",
+          "old": 101.24,
+          "old_text": "\"avg\": 101.24",
+          "row_span": [
+            507494,
+            507550
+          ]
+        },
+        {
+          "at": 24052,
+          "chars_after": 1978025,
+          "chars_before": 1978025,
+          "field": "scoring[2026].games",
+          "key": "samuel-swadling",
+          "new": 9,
+          "new_text": "\"games\": 9",
+          "old": 8,
+          "old_text": "\"games\": 8",
+          "row_span": [
+            24023,
+            24077
+          ]
+        },
+        {
+          "at": 24038,
+          "chars_after": 1978024,
+          "chars_before": 1978025,
+          "field": "scoring[2026].avg",
+          "key": "samuel-swadling",
+          "new": 74.0,
+          "new_text": "\"avg\": 74.0",
+          "old": 70.75,
+          "old_text": "\"avg\": 70.75",
+          "row_span": [
+            24023,
+            24077
+          ]
+        },
+        {
+          "at": 1464556,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].games",
+          "key": "steele-sidebottom",
+          "new": 21,
+          "new_text": "\"games\": 21",
+          "old": 20,
+          "old_text": "\"games\": 20",
+          "row_span": [
+            1464527,
+            1464582
+          ]
+        },
+        {
+          "at": 1464542,
+          "chars_after": 1978023,
+          "chars_before": 1978024,
+          "field": "scoring[2026].avg",
+          "key": "steele-sidebottom",
+          "new": 62.1,
+          "new_text": "\"avg\": 62.1",
+          "old": 63.05,
+          "old_text": "\"avg\": 63.05",
+          "row_span": [
+            1464527,
+            1464582
+          ]
+        },
+        {
+          "at": 29316,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].games",
+          "key": "talor-byrne",
+          "new": 18,
+          "new_text": "\"games\": 18",
+          "old": 17,
+          "old_text": "\"games\": 17",
+          "row_span": [
+            29287,
+            29345
+          ]
+        },
+        {
+          "at": 29302,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].avg",
+          "key": "talor-byrne",
+          "new": 55.98,
+          "new_text": "\"avg\": 55.98",
+          "old": 56.57,
+          "old_text": "\"avg\": 56.57",
+          "row_span": [
+            29287,
+            29345
+          ]
+        },
+        {
+          "at": 1094824,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].games",
+          "key": "tim-membrey",
+          "new": 20,
+          "new_text": "\"games\": 20",
+          "old": 19,
+          "old_text": "\"games\": 19",
+          "row_span": [
+            1094795,
+            1094850
+          ]
+        },
+        {
+          "at": 1094810,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].avg",
+          "key": "tim-membrey",
+          "new": 63.99,
+          "new_text": "\"avg\": 63.99",
+          "old": 63.67,
+          "old_text": "\"avg\": 63.67",
+          "row_span": [
+            1094795,
+            1094850
+          ]
+        },
+        {
+          "at": 708773,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].games",
+          "key": "timothy-english",
+          "new": 16,
+          "new_text": "\"games\": 16",
+          "old": 15,
+          "old_text": "\"games\": 15",
+          "row_span": [
+            708743,
+            708800
+          ]
+        },
+        {
+          "at": 708758,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].avg",
+          "key": "timothy-english",
+          "new": 100.82,
+          "new_text": "\"avg\": 100.82",
+          "old": 100.07,
+          "old_text": "\"avg\": 100.07",
+          "row_span": [
+            708743,
+            708800
+          ]
+        },
+        {
+          "at": 1301554,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].games",
+          "key": "tom-mcdonald",
+          "new": 11,
+          "new_text": "\"games\": 11",
+          "old": 10,
+          "old_text": "\"games\": 10",
+          "row_span": [
+            1301526,
+            1301580
+          ]
+        },
+        {
+          "at": 1301541,
+          "chars_after": 1978024,
+          "chars_before": 1978023,
+          "field": "scoring[2026].avg",
+          "key": "tom-mcdonald",
+          "new": 57.18,
+          "new_text": "\"avg\": 57.18",
+          "old": 60.3,
+          "old_text": "\"avg\": 60.3",
+          "row_span": [
+            1301526,
+            1301580
+          ]
+        },
+        {
+          "at": 531734,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].games",
+          "key": "tom-sparrow",
+          "new": 24,
+          "new_text": "\"games\": 24",
+          "old": 23,
+          "old_text": "\"games\": 23",
+          "row_span": [
+            531705,
+            531760
+          ]
+        },
+        {
+          "at": 531720,
+          "chars_after": 1978023,
+          "chars_before": 1978024,
+          "field": "scoring[2026].avg",
+          "key": "tom-sparrow",
+          "new": 87.5,
+          "new_text": "\"avg\": 87.5",
+          "old": 89.04,
+          "old_text": "\"avg\": 89.04",
+          "row_span": [
+            531705,
+            531760
+          ]
+        },
+        {
+          "at": 467679,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].games",
+          "key": "trent-rivers",
+          "new": 17,
+          "new_text": "\"games\": 17",
+          "old": 16,
+          "old_text": "\"games\": 16",
+          "row_span": [
+            467650,
+            467704
+          ]
+        },
+        {
+          "at": 467665,
+          "chars_after": 1978023,
+          "chars_before": 1978023,
+          "field": "scoring[2026].avg",
+          "key": "trent-rivers",
+          "new": 78.85,
+          "new_text": "\"avg\": 78.85",
+          "old": 79.03,
+          "old_text": "\"avg\": 79.03",
+          "row_span": [
+            467650,
+            467704
+          ]
+        },
+        {
+          "at": 103166,
+          "chars_after": 1978024,
+          "chars_before": 1978023,
+          "field": "scoring[2026].games",
+          "key": "will-hayes-b",
+          "new": 10,
+          "new_text": "\"games\": 10",
+          "old": 9,
+          "old_text": "\"games\": 9",
+          "row_span": [
+            103137,
+            103190
+          ]
+        },
+        {
+          "at": 103152,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].avg",
+          "key": "will-hayes-b",
+          "new": 36.78,
+          "new_text": "\"avg\": 36.78",
+          "old": 37.87,
+          "old_text": "\"avg\": 37.87",
+          "row_span": [
+            103137,
+            103191
+          ]
+        },
+        {
+          "at": 71800,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].games",
+          "key": "xavier-lindsay",
+          "new": 7,
+          "new_text": "\"games\": 7",
+          "old": 6,
+          "old_text": "\"games\": 6",
+          "row_span": [
+            71771,
+            71825
+          ]
+        },
+        {
+          "at": 71786,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].avg",
+          "key": "xavier-lindsay",
+          "new": 61.86,
+          "new_text": "\"avg\": 61.86",
+          "old": 61.17,
+          "old_text": "\"avg\": 61.17",
+          "row_span": [
+            71771,
+            71825
+          ]
+        },
+        {
+          "at": 6840,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].games",
+          "key": "xavier-taylor",
+          "new": 3,
+          "new_text": "\"games\": 3",
+          "old": 2,
+          "old_text": "\"games\": 2",
+          "row_span": [
+            6812,
+            6864
+          ]
+        },
+        {
+          "at": 6827,
+          "chars_after": 1978024,
+          "chars_before": 1978024,
+          "field": "scoring[2026].avg",
+          "key": "xavier-taylor",
+          "new": 37.0,
+          "new_text": "\"avg\": 37.0",
+          "old": 42.0,
+          "old_text": "\"avg\": 42.0",
+          "row_span": [
+            6812,
+            6864
+          ]
+        }
+      ],
+      "rows": 2650,
+      "season_state": {
+        "calendar_progress": 1.0,
+        "exposure_pace": 0.909,
+        "fields_checked": 10,
+        "source_store_md5": "415929d3c9d561cc58bef00ae63432b2"
+      },
+      "store_after": "415929d3c9d561cc58bef00ae63432b2",
+      "store_before": "a9dec7e4785c6861a84f3beaae2f020e",
+      "written": true
+    }
+  },
+  "failed_step": "build_proofs",
   "ok": false,
   "timings": [
     {
-      "seconds": 0.03,
+      "seconds": 0.15,
       "step": "preflight",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 23.85,
+      "step": "store_edit",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 1225.61,
+      "step": "build_proofs",
       "verdict": "FAIL"
     }
   ]
