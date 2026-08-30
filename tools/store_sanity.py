@@ -15,8 +15,8 @@ corrected it more than once and each correction died somewhere before the store:
 establishes by looking, not by remembering. A guard that costs milliseconds is the difference
 between a correction that sticks and one that has to be made a fourth time.
 
-THE BAR: a season cannot contain more games than a season has. 24 home-and-away rounds plus a
-maximum of 5 finals (FW1 / FW2 / SF / PF / GF, the owner's structure) = 29. The ceiling is deliberately generous — it is not trying to detect a
+THE BAR: a season cannot contain more games than a season has. 23 home-and-away GAMES (24
+rounds, less every club's bye) plus at most 5 finals (FW1 / FW2 / SF / PF / GF) = 28. The ceiling is deliberately generous — it is not trying to detect a
 player who missed a week, it is trying to make an IMPOSSIBLE row impossible to ignore. Historic
 seasons ran to 22 or 23 rounds, so a tighter per-year table would catch more; it would also be one
 more thing to maintain each season, and the failure this exists for is off by a factor of two.
@@ -28,14 +28,23 @@ import sys
 ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 STORE = os.path.join('engine', 'rl_after', 'rl_model_data.json')
 
-#: 24 home-and-away rounds + at most 5 finals. A season with more games than this did not happen.
+#: 23 home-and-away GAMES + at most 5 finals. A season with more games than this did not happen.
+#:
+#: ROUNDS ARE NOT GAMES, and that distinction is the whole of this number (owner, 2026-08-30: "28 is
+#: the max games, as 23 is the max in the regular season"). The calendar carries 24 rounds — which
+#: is what `season_state.season_total_rounds` means and what calendar progress divides by — but
+#: every club has a bye, so no player can play more than 23 of them. A ceiling built from the ROUND
+#: count would be one game too generous and would let a genuinely impossible 24-game home-and-away
+#: season through.
 #:
 #: THE FIVE IS THE OWNER'S FINALS STRUCTURE, NOT AN ASSUMPTION (2026-08-30, verbatim): "FW1 is 4
-#: teams playing / FW2 is 8 teams / SF is 4 teams / PF is 4 teams / GF is 2 teams". A club that
-#: enters at FW1 and reaches the Grand Final plays all five, so 24 + 5 = 29. This ceiling was 28 in
-#: its first draft, written against a four-week finals series I assumed rather than asked about —
-#: which would have red-flagged a legitimate 29-game season the first time one appeared.
-SEASON_GAMES_CEILING = 29
+#: teams playing / FW2 is 8 teams / SF is 4 teams / PF is 4 teams / GF is 2 teams". A club entering
+#: at FW1 and reaching the Grand Final plays all five. So 23 + 5 = 28.
+#:
+#: Both halves were wrong in earlier drafts, in opposite directions and for the same reason —
+#: assuming rather than asking. The first draft used a four-week finals series (28 by luck, from
+#: 24+4); the second corrected the finals to five and carried the round-count error into 29.
+SEASON_GAMES_CEILING = 28
 
 
 def rows(root, spec_path=None):
@@ -90,7 +99,7 @@ def main(argv=None):
     if '--spec' in argv:
         spec_path = os.path.abspath(argv[argv.index('--spec') + 1])
     bad = offenders(root, spec_path)
-    print('STORE SANITY — a season cannot contain more than %d games (24 H&A + 5 finals)%s'
+    print('STORE SANITY — a season cannot contain more than %d games (23 H&A games + 5 finals)%s'
           % (SEASON_GAMES_CEILING,
              '\n  (judged on the tree THIS ACT WOULD LEAVE: its declared store edits applied first)'
              if spec_path else ''))
