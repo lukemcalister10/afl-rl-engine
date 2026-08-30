@@ -57,4 +57,25 @@ that is stated rather than passed off.
 applier yet, and a seat predicting it would be copying it out of a build already run. The preview
 above is the expectation the movers are read against, not a byte-exact prediction.
 
+### Addendum, 2026-08-30 — what flight #11 measured, and what the re-fly must reproduce
+
+Flight #11 reached the end of the advance and was rejected by a POSTCONDITION, not by the football.
+The armed catch-up itself completed and is on the record in `09_armed_r25.txt`:
+
+    R25  store a9dec7e4->415929d3  board f81dbcda->083406f7  players=92  guard5=True
+         hist=[14..25]  final=FINALIZED  movers->UI=804
+
+The abort then restored all 276 carriers **byte-exact**, so the tree the re-fly starts from is the
+tree that produced those numbers. This is therefore no longer a pricing prediction — it is a
+DETERMINISM claim, and it is worth stating as one: the re-fly must land on board `083406f7…` and
+store `415929d3…` or something that is not the football has changed.
+
+It stays out of `prereg.board_after` because only the 12-hex prefixes survive in the flight record
+and a full md5 written from a prefix would be a guess dressed as a measurement. The prefixes are the
+claim; the flight log is where it is checked.
+
+The commits between #11 and the re-fly are the lander's own postconditions, `previous_point`, the
+movers-page labels and `ui/app/movers.js`. None of them is on the pricing path, which is exactly why
+a moved board would be a finding rather than an inconvenience.
+
 `as_of_round` is declared UNMOVED. If it moves, the act has failed at its central purpose.
