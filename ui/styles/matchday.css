@@ -66,7 +66,13 @@ header.mast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px
 
 /* ---- item 4: column headings (grid-aligned to the row templates) ---- */
 .rowhead{display:grid;gap:12px;align-items:end;padding:14px 16px 6px;border-bottom:1px solid var(--edge)}
-.rowhead.working{grid-template-columns:48px 1fr 62px 154px 88px 122px 106px 74px}
+/* OWNER ITEM 9 (2026-08-31). The rank block starts further left and the PLAYER column comes with it;
+   the width that frees up goes to the RIGHT of the board. See the .row.working note below — the head
+   exists only to label that grid, so the two templates and the two left paddings must stay identical.
+   (They are written out twice because the head is a sibling of the rows, not their container; there
+   is no shared box to hang one template off.) */
+.rowhead.working{grid-template-columns:40px minmax(0,clamp(9rem,20vw,17rem)) 62px 154px 88px 1fr 106px 80px;
+  padding-left:10px}
 /* #274 item 3 — over-free lens. `belowfree` is the standing delist-candidate flag: it must not rely
    on colour alone (the Matchday LOCK), so the figure itself is always printed and carries a tooltip. */
 .ofree{font-family:var(--mono);font-size:12px;color:var(--faint)}
@@ -83,7 +89,32 @@ header.mast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px
 .rows{margin-top:8px;display:flex;flex-direction:column;gap:8px}
 .row{display:grid;gap:12px;align-items:center;background:var(--card);border:1px solid var(--edge);
   padding:10px 16px;cursor:pointer;text-align:left;width:100%;font:inherit;color:inherit}
-.row.working{grid-template-columns:48px 1fr 62px 154px 88px 122px 106px 74px}
+/* OWNER ITEM 9 (2026-08-31): "move the # column a bit further left, and pull the player with it,
+   leaving more space to the right — there is a lot of dead space between the end of a name and the
+   position."  Two causes, both fixed here and nowhere else (this is display only; no row markup and
+   no value changes):
+
+   1. THE LEFT EDGE. The rank track was 48px inside 16px of row padding, so the rank sat 64px in.
+      40px inside 10px puts it 50px in and carries the name column 14px left with it.
+
+   2. THE DEAD SPACE. The name track was `1fr` — it took EVERYTHING left over, ~374px in the 1180px
+      shell, while the longest name on the board ("Nasiah Wanganeen-Milera", 23 chars at 19px
+      condensed) draws about 230px and a typical name barely half that. The gap the owner is looking
+      at is that unused remainder, printed between the name and Pos on every row.
+      The name track is now bounded — it grows to fit a long name and stops (17rem clears the longest
+      name in the bundle with room for the fallback faces, which are wider than Arial Narrow), and it
+      shrinks with the viewport instead of gaining width the names cannot use.
+      `1fr` moves to the VALUE LINE, so the reclaimed width goes where the owner asked for it: the
+      share-of-top line roughly doubles and reads as a comparison again rather than a stub.
+
+   Deliberately `1fr` and not `minmax(120px,1fr)` on that line: an fr track with an auto minimum can
+   absorb the squeeze all the way to zero, so no width between the 920px breakpoint and the shell cap
+   can push this grid into horizontal overflow. The line is the one element here that degrades safely
+   — it carries no text, and the figure beside it always states the same fact.
+   The last track is the draft pathway; it is 80px rather than 74px because the pathway now renders as
+   a three-part grid centred on its separator (see .meta.pathway) instead of one ragged string. */
+.row.working{grid-template-columns:40px minmax(0,clamp(9rem,20vw,17rem)) 62px 154px 88px 1fr 106px 80px;
+  padding-left:10px}
 .row.public{grid-template-columns:52px 1fr 82px 154px 92px 130px 120px}
 .row:hover{background:var(--card-2);border-color:#2c3446}
 /* #139 item 16: a public row with no joinable profile is not a navigation target and must not pretend
@@ -120,6 +151,18 @@ header.mast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px
 .pill.flat{background:var(--edge);color:var(--faint)}
 .pill.na{background:transparent;color:var(--faint);border:1px dashed var(--edge)}
 .row .meta{font-family:var(--mono);font-size:11px;color:var(--faint);text-align:right}
+/* OWNER ITEM 8 (2026-08-31) — the draft pathway, "ND pick · Year" / "STREAM · Year", with the "·"
+   CENTRED ACROSS ALL ROWS (his words). That alignment is why this is a grid and not a joined string:
+   the middle track is sized to the separator alone and the two 1fr tracks either side are equal on
+   every row, so the dot lands on the same x down the whole board no matter whether its left half
+   reads "#3", "#77" or "MSD". A string join would put the dot wherever the left half happened to end.
+   The halves face the separator (slot right-aligned, year left-aligned) so the pair reads as one
+   token; minmax(0,1fr) lets either half shrink rather than widen the column. */
+.row .meta.pathway{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
+  gap:0 4px;align-items:baseline}
+.row .meta.pathway .pw-s{text-align:right;overflow-wrap:anywhere}
+.row .meta.pathway .pw-d{text-align:center;color:var(--dim)}
+.row .meta.pathway .pw-y{text-align:left}
 
 /* ---- item 2: team-context lens (group/filter by AFFL club, ΣSCAR totals) ---- */
 .strip select.boardsel{background:var(--pitch);color:var(--text);border:1px solid var(--edge);
@@ -256,12 +299,32 @@ h2.sec .meta{color:var(--faint);font-family:var(--mono);letter-spacing:0;text-tr
 .csm-name{font-family:var(--cond);font-weight:900;font-size:21px;letter-spacing:.04em;
   text-transform:uppercase;color:var(--text)}
 .csm-sub{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.04em}
-.csm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr));gap:10px 14px}
-.csm{border-left:2px solid var(--edge);padding-left:10px}
-.csm-k{font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--faint)}
-.csm-v{font-family:var(--cond);font-weight:900;font-size:19px;color:var(--text);line-height:1.25}
-.csm-r{font-family:var(--mono);font-size:10.5px;color:var(--faint)}
+/* OWNER ITEM 1 (2026-08-31): "depth is its own row — that looks clunky. Can that please be all on
+   one row?"  It was `auto-fit, minmax(9.5rem,1fr)`: seven tiles at a 152px floor plus gaps need
+   ~1148px, more than the 1180px shell has inside its padding, so the seventh tile — Depth — always
+   fell to a line of its own and read as a separate, lesser metric instead of the last of one set.
+
+   ONE ROW, AT EVERY WIDTH. The track count is `--csm-n`, set by board.js from SUMMARY_METRICS.length
+   (see clubSummary): the stylesheet is never told SEVEN, it is told "one track per metric", so the
+   row follows the metric list and a stale count is unreachable. If the property is ever absent the
+   declaration is invalid at computed-value time and the tiles stack one per line — degraded and
+   obviously so, never clipped and never a wrong-looking half-row.
+
+   Seven fit by SHRINKING, not by wrapping: type clamps down with the viewport, min-width:0 lets a
+   tile be narrower than its content wants, and the label is allowed to take a second line at the
+   narrowest widths (PLAYER / VALUE) — which keeps the seven-across row intact instead of breaking it.
+   overflow-wrap on the figure is the last line of defence: a long value breaks inside its own tile
+   rather than pushing the row wider than the panel. */
+.csm-grid{display:grid;grid-template-columns:repeat(var(--csm-n),minmax(0,1fr));
+  gap:10px clamp(6px,1vw,14px)}
+.csm{border-left:2px solid var(--edge);padding-left:clamp(6px,.9vw,10px);min-width:0}
+/* .16em of tracking on a 12-character label ("PLAYER VALUE") is ~19px of pure spacing — the first
+   thing to give up when seven labels share the row. .1em still reads as the same small-caps label. */
+.csm-k{font-family:var(--cond);font-weight:700;font-size:clamp(8.5px,.85vw,10px);letter-spacing:.1em;
+  text-transform:uppercase;color:var(--faint);overflow-wrap:break-word}
+.csm-v{font-family:var(--cond);font-weight:900;font-size:clamp(13px,1.7vw,19px);color:var(--text);
+  line-height:1.25;overflow-wrap:anywhere}
+.csm-r{font-family:var(--mono);font-size:clamp(9px,.95vw,10.5px);color:var(--faint)}
 .csm:first-child{border-left-color:var(--volt)}
 .csm:first-child .csm-v{color:var(--volt)}
 
@@ -321,7 +384,10 @@ footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--
   .row.public{grid-template-columns:42px 1fr 120px 96px 120px}   /* + club (item 9) */
   /* #274 item 3: the over-free lens folds away with pos/meta at narrow widths — it is a desktop
      comparison column, and the phone layout is a named-area grid with no room for a tenth track. */
-  .row .pos,.row .meta,.row .ofree,.vline{display:none}
+  /* `.meta.pathway` (owner item 8) is a two-selector rule, so it OUT-SPECIFIES a bare `.row .meta`
+     and would keep display:grid here — it is named explicitly so the pathway folds away with the
+     rest of the desktop-only columns instead of overflowing this five-track grid. */
+  .row .pos,.row .meta,.row .meta.pathway,.row .ofree,.vline{display:none}
   .rowhead{display:none} /* headings track the wide grid; the narrow layout collapses columns */
   .desk{grid-template-columns:1fr}
 }
@@ -369,6 +435,18 @@ footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--
 
   /* masthead identity: let the long board-id hex wrap instead of forcing document overflow. */
   .mast .stamp{overflow-wrap:anywhere}
+
+  /* club summary (owner item 1): the seven tiles STAY on one row on a phone. The room for that is
+     bought back from chrome, not from the figures — panel padding, tile padding and the column gap
+     all come in, and the type floors drop a step. Below ~400px the labels take a second line; that
+     is the intended give, because a wrapped label still reads as one row of seven while a wrapped
+     GRID reintroduces exactly the orphaned Depth tile this item removed. */
+  .clubsummary{padding:10px 10px}
+  .csm-grid{gap:8px 4px}
+  .csm{border-left-width:1px;padding-left:4px}
+  .csm-k{font-size:clamp(7.5px,2vw,10px);letter-spacing:.04em}
+  .csm-v{font-size:clamp(11px,3.2vw,19px)}
+  .csm-r{font-size:clamp(8px,2.2vw,10.5px)}
 }
 
 /* board — smallest phones (<=360px): at 320px the condensed uppercase name column is only ~171px, where a

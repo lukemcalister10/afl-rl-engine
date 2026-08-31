@@ -7,7 +7,8 @@
    decorates the screen. The record of what was removed and why lives in ui/MAINTAINER.md.
 
    What renders: one transparent board — rank · player · position · clubs · value · share-of-top ·
-   ROUND CHANGE (this round vs the round before, from the weekly report) · draft pick/year — with
+   ROUND CHANGE (this round vs the round before, from the weekly report) · draft pathway (ND pick,
+   or the stream, with its year) — with
    the filters that answer the owner's questions (position, eligibility, cohort, age, club). A club
    view opens with the club profile, the roster, and ALWAYS the club's held picks. */
 window.MD = window.MD || {};
@@ -177,6 +178,17 @@ MD.board = (function () {
         '<span class="csm-sub">' + fmt.n(c.nRoster) + " players · " +
         (ct.picksAvailable ? fmt.n(c.nPicks) + " picks" : "picks unavailable") + "</span></div>" +
       '<div class="csm-grid">' + cells + "</div>";
+    /* OWNER ITEM 1 (2026-08-31): the summary tiles sit on ONE row. Depth used to fall through to a
+       second line on its own, which read as a lesser, separate metric rather than the seventh of
+       seven — the owner called it clunky and he is right: these are one comparable set.
+
+       The stylesheet is told HOW MANY tracks to cut, and it is told BY THE METRIC LIST rather than by
+       a number typed into the CSS. SUMMARY_METRICS is the single definition of what the panel shows,
+       so a metric added or dropped here re-lays the row by itself and a stale column count is not a
+       state this code can reach. (The fitting — shrinking type rather than wrapping — is the
+       stylesheet's job; see .csm-grid.) */
+    const grid = el.querySelector(".csm-grid");
+    if (grid) grid.style.setProperty("--csm-n", String(SUMMARY_METRICS.length));
     return el;
   }
 
@@ -222,6 +234,48 @@ MD.board = (function () {
     return wrap;
   }
 
+  /* ---- DRAFT PATHWAY — how the player entered the competition, and when (owner item 8, 2026-08-31)
+     The board used to print "pk N · ’YY" on EVERY row, which reads as a NATIONAL-DRAFT slot. It is
+     wrong wherever the player did not come through the national draft: Jai Newcombe showed as "pk 2
+     · ’21" when he is a mid-season rookie — pick 2 of the MSD is nothing like pick 2 of the ND, and
+     the owner read the row exactly as it was written.
+
+     Nothing new has to be published to say this truthfully. The row already carries the pathway:
+     `ty` is the draft stream, and `pk`/`yr` are the store's stream_pick / stream_year (verified: on
+     all 2650 store rows stream_pick == pick and stream_year == year, so the numbers already on the
+     board ARE the stream's own pick and year — only the LABEL around them was wrong).
+
+     THE RULE. ND is the one stream where a pick NUMBER is the identifying fact, because national
+     draft slots are the ladder everyone compares against: "#3 · 2022". Every other pathway is
+     identified by the pathway itself: "MSD · 2021". A rookie/mid-season/supplemental pick number is
+     not comparable to an ND slot, so printing it would just re-create the misreading.
+
+     The stream is printed VERBATIM rather than folded into a coarse bucket — the bundle carries the
+     true intake (ND/RD/MSD/SSP and the minor pathways), and an owner reading "IRE" is told more than
+     one reading "OTHER". The vocabulary is the store's, not a list maintained here, so a new intake
+     code appears on the board the day it appears in the data. */
+  const ND_STREAM = "ND";                 // the one stream identified by its pick number, not its name
+  function pathwayCell(p) {
+    const stream = (p && p.ty != null && p.ty !== "") ? String(p.ty) : null;
+    const pick = p ? p.pk : null;
+    const year = p ? p.yr : null;
+    // FAIL CLOSED on either side independently, and never fabricate: an ND row missing its pick
+    // number degrades to the stream name (still true) instead of printing "#—"; a row missing the
+    // stream or the year prints an em dash in that half alone, so the other half is still readable.
+    const slot = (stream === ND_STREAM && pick != null && pick !== "")
+      ? "#" + fmt.esc(pick)
+      : (stream ? fmt.esc(stream) : "—");
+    const when = (year != null && year !== "") ? fmt.esc(year) : "—";
+    // Three ELEMENTS, not a joined string: the separator owns its own grid track, so it lands on the
+    // same x on every row of the board (owner's word: the "·" centred across all rows). A string
+    // join would drift with the width of whatever sits either side of it.
+    return '<span class="meta pathway">' +
+        '<span class="pw-s">' + slot + "</span>" +
+        '<span class="pw-d">·</span>' +
+        '<span class="pw-y">' + when + "</span>" +
+      "</span>";
+  }
+
   function boardHead() {
     const el = fmt.el("div", "rowhead working");
     el.innerHTML =
@@ -229,7 +283,9 @@ MD.board = (function () {
       '<span class="h">Pos</span><span class="h">Club <small>AFFL · AFL</small></span>' +
       '<span class="h r">Value</span><span class="h">vs top</span>' +
       '<span class="h r">Round Δ</span>' +
-      '<span class="h r">Pick · Yr</span>';
+      // centred, because the column beneath it is centred on its separator, not right-ragged.
+      '<span class="h c" title="National-draft players show their pick number; every other pathway ' +
+        'shows the stream it came through. The year is the stream\'s own draft year.">Draft</span>';
     return el;
   }
 
@@ -245,7 +301,7 @@ MD.board = (function () {
       '<span class="val num">' + fmt.n(r.val) + "</span>" +
       MD.valueLine(r.val, maxV) +
       roundDeltaPill(p) +
-      '<span class="meta">' + (p.pk ? "pk " + p.pk : "—") + " · ’" + String(p.yr || "").slice(2) + "</span>";
+      pathwayCell(p);
     b.addEventListener("click", function () { MD.go("card", p.key); });
     return b;
   }
@@ -372,5 +428,7 @@ MD.board = (function () {
   return { render: render, focusClub: focusClub,
            snapshot: snapshot, restore: restore,
            cohortYear: cohortYear, ageMatches: ageMatches, eligMatches: eligMatches,
-           roundDeltas: roundDeltas, AGE_BANDS: AGE_BANDS };
+           roundDeltas: roundDeltas, AGE_BANDS: AGE_BANDS,
+           // display-only, exported for the suites: the exact pathway markup the board ships.
+           pathwayCell: pathwayCell, SUMMARY_METRICS: SUMMARY_METRICS };
 })();
