@@ -226,6 +226,88 @@ console.log("v2.11 UI/RELEASE-SEAM — UI proof (real config.js / seam.js / main
     "board.js hardcodes neither 968de0c7 nor 06d8af60");
 })();
 
+/* ================================================================================================
+   THE OWNER'S DISPLAY OVERRIDE — DECLARED AT THE SEAM, AND CHECKED HERE
+
+   The pool pick level exists in two copies: the board's baked PVC index, and what the app publishes.
+   The owner ruled the DISPLAYED figure to 150 and ruled the derived one (237.2 in the curve
+   artifact, 237 as the board rounds it) correct and left standing — verbatim, 2026-08-31: "Yes,
+   237.2 is accurate so fine to stay, just good for the cosmetic override on the trade desk."
+
+   So the two copies now legitimately differ, and THAT is the thing worth guarding. Before this,
+   nothing asserted any relationship between them at all; a divergence could have appeared from a
+   bug and nobody would have known. The law asserted below is:
+
+       published pool == the board's own derived pool,
+       UNLESS the bundle declares an override, and then it == the override's value,
+       and the override must name the derived figure it superseded, correctly.
+
+   That makes a silent drift impossible in both directions: an undeclared change fails, and a
+   declared one that misdescribes what it replaced fails too. */
+(function () {
+  var boardPath = path.join(__dirname, "..", "..", "data", "rl_build", "rl_app_data.json");
+  var bundlePath = path.join(__dirname, "..", "data", "board_view_working.js");
+  var bsrc = fs.readFileSync(bundlePath, "utf8");
+  var bundle = JSON.parse(bsrc.slice(bsrc.indexOf("{"), bsrc.lastIndexOf("}") + 1));
+  var pvc = bundle.pvc || {};
+  var ov = (bundle.stamp || {}).pvcPoolOverride || null;
+
+  /* The pool is the LAST index of the published curve, derived rather than written as 65 — the same
+     way ui/app/pickvalue.js and ui/app/trade.js find it. A curve that grew a real 65th ordinal would
+     move this on its own instead of leaving a constant pointing at the wrong cell. */
+  var poolKey = String(Math.max.apply(null, Object.keys(pvc).map(Number)));
+
+  if (!fs.existsSync(boardPath)) {
+    check(true, "the board file is not in this checkout — the override law is not asserted here");
+  } else {
+    var boardPvc = (JSON.parse(fs.readFileSync(boardPath, "utf8")).PVC) || {};
+    var derived = boardPvc[poolKey];
+    check(derived != null, "the board publishes a pool index to compare against", poolKey);
+    if (ov && ov.applied === false) {
+      /* A DECLARED SKIP. The override exists but this board does not derive the figure it was ruled
+         against (or carries no curve at all), so it is NOT applied — and the bundle says so rather
+         than going quiet, which is the whole reason `applied` is a field instead of an inference. */
+      check(pvc[poolKey] === derived,
+        "the override is declared UNAPPLIED, so the published pool level is the board's own figure",
+        pvc[poolKey] + " vs " + derived);
+      check(!!ov.why_skipped,
+        "…and it says WHY it was not applied — a skip nobody can see is the defect, not the skip",
+        ov.why_skipped);
+    } else if (ov) {
+      check(ov.applied === true,
+        "an applied override says so explicitly (`applied: true`), so a reader never has to infer it");
+      check(pvc[poolKey] === ov.value,
+        "…and the published pool level IS the override's value",
+        pvc[poolKey] + " vs " + ov.value);
+      check(Number(ov.derived) === Number(derived),
+        "…and the override correctly names the derived figure it supersedes — a ruling made against " +
+        "a number that has since moved must not be re-applied silently",
+        ov.derived + " vs board " + derived);
+      check(!!ov.owner_word && !!ov.authority && !!ov.date,
+        "…and it carries whose override it is, in whose words, and when — an undocumented override " +
+        "on a served figure cannot be told apart from a bug", JSON.stringify(Object.keys(ov)));
+      check(String(ov.source || "").indexOf("docs/inputs/") === 0,
+        "…and it names the owner input it came from, so it can be found and deleted", ov.source);
+      check(pvc[poolKey] !== derived,
+        "…and it is actually doing something (if it were a no-op it should be deleted, not kept)",
+        pvc[poolKey] + " vs " + derived);
+    } else {
+      check(pvc[poolKey] === derived,
+        "NO override is declared, so the published pool level is the board's own derived figure",
+        pvc[poolKey] + " vs " + derived);
+    }
+    /* THE FENCE: the override reaches the pool index and NOTHING ELSE. Every real ordinal must still
+       be the board's own number, or a "display override" has quietly become a re-pricing. */
+    var moved = Object.keys(pvc).filter(function (k) {
+      return k !== poolKey && Number(pvc[k]) !== Number(boardPvc[k]);
+    });
+    check(moved.length === 0,
+      "and NO curve ordinal other than the pool differs from the board — the override is display-only " +
+      "at one index, not a re-priced curve",
+      moved.length ? moved.slice(0, 6).join(",") : "0 moved of " + (Object.keys(pvc).length - 1));
+  }
+})();
+
 console.log("  " + "-".repeat(66));
 console.log("  " + (n - fails) + "/" + n + " passed" + (fails ? "  (" + fails + " FAILED)" : ""));
 process.exit(fails ? 1 : 0);

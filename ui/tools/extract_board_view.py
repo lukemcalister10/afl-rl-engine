@@ -144,6 +144,124 @@ def v0_of(by_key, key):
     return rec["v0"], rec.get("origin") or "unrecoverable"
 
 
+#: The owner's display overrides, couriered like his other inputs (docs/inputs/). Absent file =
+#: no overrides, which is the ordinary case and must never be an error.
+OWNER_OVERRIDES = os.path.join("docs", "inputs", "OWNER_DISPLAY_OVERRIDES.json")
+
+
+def _apply_pool_override(pvc, repo):
+    """Publish the owner's ruled pool-pick figure over the board's derived one. DISPLAY ONLY.
+
+    WHY THIS IS A PUBLISH-TIME OVERRIDE AND NOT AN EDIT TO THE NUMBER
+    ----------------------------------------------------------------
+    The pool level exists in two copies: `engine/rl_after/pvc_curve_v2.json` -> `pool_value` (237.2,
+    which the engine loads as MA.PVC[65]) and `data/rl_build/rl_app_data.json` -> PVC["65"] (237,
+    baked into the board). The owner ruled the DISPLAYED figure to 150 and, asked directly, ruled the
+    derived one correct and left standing:
+
+        "Yes, 237.2 is accurate so fine to stay, just good for the cosmetic override on the trade
+         desk."   (2026-08-31)
+
+    So the engine keeps deriving what it derives. Only what the app SHOWS moves, and it moves here,
+    at the seam between the two — which is the one place that touches neither the engine artifact nor
+    the board.
+
+    THE ALTERNATIVE, AND WHY IT WAS NOT TAKEN. Editing PVC["65"] in the board changes the board md5,
+    and that md5 IS the board identity — pinned in data/expected_boot.json, data/release_contract.json,
+    both UI bundles and Guard 5. It is a full landing for a figure no player price reads. Worse, it
+    would also have to touch the curve artifact to stay coherent, and THAT copy is the one the engine
+    loads: `draftval(p) = MA.PVC[min(effpk(p), KMAX))` with KMAX 70 reads index 65 for a pool
+    entrant. `pool_value` is retired from pricing (owner ruling, _merged_recover.py:3342, with a hard
+    assert that every pool entrant's anchor is his own division level) so the expectation is zero
+    movers — but an expectation is not a measurement, and the only way to MEASURE it is the rebuild
+    this override exists to avoid. Overriding at publish time makes the question moot instead of
+    answering it expensively.
+
+    WHAT IT REACHES: `ui/data/board_view_working.js` and its public sibling, and nothing else. The
+    two consumers are the trade desk's pool item (ui/app/trade.js) and the Pick value page's pool
+    line (ui/app/pickvalue.js). It does not reach the club ratings: those price picks through
+    ui/tools/ingest_inputs.price_pick off the CURVE ARTIFACT, and in a 16-club league rounds 1-4 are
+    picks 1-64 exactly while round 5 (65-80) prices 0 before the pool value is ever consulted —
+    measured on the shipped ledger, 48 of 240 picks reach past 64 and all 48 are round-5 zeroes.
+
+    TWO DIFFERENT FAILURES, TWO DIFFERENT ANSWERS. A MALFORMED override — no owner_word, or a value
+    that is not a positive number — HALTS the publish: that is a broken input, and an undocumented
+    override on a served figure is indistinguishable from a bug. A board that does not derive the
+    figure the ruling superseded is NOT a broken input; it is a different board, and the extractor
+    must be able to publish any board. That case SKIPS and says so in the stamp. A missing file is
+    neither — it is the ordinary case, and it is silent.
+    """
+    path = os.path.join(repo, OWNER_OVERRIDES)
+    if not os.path.exists(path):
+        return pvc, None
+    with open(path, encoding="utf-8") as fh:
+        doc = json.load(fh)
+    entry = doc.get("pool_pick_value")
+    if entry is None:
+        return pvc, None
+
+    # A BOARD WITH NO CURVE IS NOT A BROKEN INPUT EITHER — it is a board with no curve, and the
+    # extractor publishes it. (The synthetic movement board in ui/tests/extract_seam.test.py is
+    # exactly that, and the first cut of this halted on it too.) Nothing is invented; the override
+    # is declared unapplied, with its reason, and the bundle ships without a pool index.
+    pool_key = str(max(int(k) for k in pvc)) if pvc else None
+    if pool_key is None:
+        return pvc, {"index": None, "applied": False, "value": entry.get("value"), "derived": None,
+                     "date": entry.get("date"), "authority": entry.get("authority"),
+                     "owner_word": entry.get("owner_word"),
+                     "source": OWNER_OVERRIDES.replace(os.sep, "/"),
+                     "why_skipped": "this board publishes no pick-value curve, so there is no pool "
+                                    "index to override — nothing is invented in its place"}
+    derived = pvc.get(pool_key)
+    value = entry.get("value")
+    if not isinstance(value, (int, float)) or value <= 0:
+        raise SystemExit("HALT: the owner pool override's value is %r, which is not a positive "
+                         "number." % (value,))
+    if not entry.get("owner_word"):
+        raise SystemExit("HALT: the owner pool override carries no owner_word. An override on a "
+                         "served figure must say whose it is and in whose words; an undocumented "
+                         "one cannot be told apart from a defect.")
+    # THE SUPERSEDED FIGURE IS ASSERTED, AND A MISMATCH SKIPS RATHER THAN HALTS.
+    #
+    # An owner display ruling is about a SPECIFIC NUMBER he was shown — here, "the pool reads 237
+    # and pick 64 reads 177, that can't be right". If the board no longer derives that number, the
+    # ruling was made about something that no longer exists and applying it would be putting his
+    # name to a decision he did not take.
+    #
+    # THE FIRST CUT OF THIS RAISED. It halted the publish, and it was wrong within the hour:
+    # ui/tests/extract_seam.test.py runs this extractor against a schema FIXTURE whose pool index is
+    # 463, and the whole seam proof died on an owner ruling that had nothing to do with that board.
+    # The extractor must be able to publish ANY board — that is what it is for.
+    #
+    # But the two obvious repairs are both worse. Applying it anyway puts 150 on a board that never
+    # derived 237. Skipping it quietly is the failure this whole session has been closing: a thing
+    # that stops working and says nothing. So it SKIPS AND DECLARES — the bundle carries the
+    # override with `applied: false` and the reason, the published figure is the board's own, and
+    # ui/tests/release_seam.test.js asserts that exact pairing. A skip is visible in the artifact
+    # that skipped it.
+    #
+    # Deliberately NOT pinned to a board md5: that would drop the override at the next landing, on a
+    # board that still derives 237, which is the "goes dark on a landing" defect this estate has now
+    # been bitten by three times. It is pinned to the NUMBER, which is what he actually ruled about.
+    claimed = entry.get("supersedes_derived")
+    if claimed is not None and derived is not None and float(claimed) != float(derived):
+        return pvc, {"index": pool_key, "applied": False, "value": value, "derived": derived,
+                     "date": entry.get("date"), "authority": entry.get("authority"),
+                     "owner_word": entry.get("owner_word"),
+                     "source": OWNER_OVERRIDES.replace(os.sep, "/"),
+                     "why_skipped": "the override supersedes %s but this board derives %s — the "
+                                    "ruling was made about a figure this board does not carry, so "
+                                    "it is NOT applied and the derived figure is published"
+                                    % (claimed, derived)}
+
+    out = dict(pvc)
+    out[pool_key] = value
+    return out, {"index": pool_key, "applied": True, "value": value, "derived": derived,
+                 "date": entry.get("date"), "authority": entry.get("authority"),
+                 "owner_word": entry.get("owner_word"),
+                 "source": OWNER_OVERRIDES.replace(os.sep, "/")}
+
+
 def main():
     raw = open(SRC, "rb").read()
     srcmd5 = hashlib.md5(raw).hexdigest()
@@ -270,6 +388,7 @@ def main():
 
     picks = d.get("picks", [])
     pvc = d.get("PVC", {})
+    pvc, pool_override = _apply_pool_override(pvc, REPO)
     # items 12/14: future-lens phantom pick lines (+1/+2 lenses only) + the lens-conservation diagnostic.
     # Working-tier only; passed through verbatim. The current/-1/-2 player ladder never reads these (the
     # phantom picks stand in for the future player on the forward lenses; item-14 ladder exclusion holds).
@@ -334,6 +453,10 @@ def main():
             "maxV": max_v,
             "guard5": "pass",
             "real": True,
+            # THE OWNER'S DISPLAY OVERRIDE, DECLARED IN THE BUNDLE ITSELF (None when there is none).
+            # A published figure that differs from what the engine derived must SAY SO where the
+            # figure is served, not only in a document nobody loads with the app.
+            "pvcPoolOverride": pool_override,
         },
         "lensYears": [d.get("BASE_YEAR", 2026) + off for off in (-2, -1, 0, 1, 2)],
         "players": working_rows,

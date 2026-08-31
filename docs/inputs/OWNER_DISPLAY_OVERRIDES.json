@@ -1,0 +1,14 @@
+{
+  "_what": "OWNER DISPLAY OVERRIDES — figures the owner has ruled the app should SHOW, knowingly differing from what the engine derived. Read by ui/tools/extract_board_view.py at publish time. It reaches the UI bundle and NOTHING ELSE: no engine artifact, no board, no store, no valuation. Deleting an entry reverts the app to the derived figure with no rebuild.",
+  "_law": "Every entry MUST carry the owner's own words and the derived figure it supersedes. An override with no owner_word is refused at publish, because an undocumented override is indistinguishable from a bug.",
+  "pool_pick_value": {
+    "value": 150,
+    "supersedes_derived": 237,
+    "derived_source": "data/rl_build/rl_app_data.json PVC[\"65\"] (the board's baked pool index; the curve artifact carries 237.2, which the board rounds)",
+    "date": "2026-08-31",
+    "authority": "OWNER OVERRIDE — knowingly NOT derived",
+    "owner_word": "override it to 150 please, noting it's an owner override and knowingly isn't derived.",
+    "scope": "the trade desk's pool item and the Pick value page's pool line — the only two surfaces that read this index",
+    "why_the_derived_figure_stays": "237.2 is correct and the owner has said so: the pool is not pick 65, it is the whole population off the national curve (national 65+, the rookie draft, the pre-season draft, every pickless mechanism) valued by position with order of selection carrying no value, so it legitimately beats the last national pick at 177.8. The engine keeps deriving it; only the display is overridden."
+  }
+}

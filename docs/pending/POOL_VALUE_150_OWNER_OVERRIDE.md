@@ -1,6 +1,25 @@
 # PENDING ACT — POOL PICK VALUE 237.2 → 150, OWNER OVERRIDE
 
-**Status:** ruled, not yet applied. Rides on the next act that rebuilds the board (FW2 expected).
+**Status: APPLIED, 2026-08-31, as a DISPLAY OVERRIDE at the publish seam. The board and the curve
+artifact are untouched and stay at 237 / 237.2.**
+
+The owner settled the remaining question directly, verbatim: *"Yes, 237.2 is accurate so fine to
+stay, just good for the cosmetic override on the trade desk."* So the engine keeps deriving what it
+derives, and only what the app SHOWS moves.
+
+* Declared in `docs/inputs/OWNER_DISPLAY_OVERRIDES.json`, couriered like his other inputs. Deleting
+  the entry reverts the app with no rebuild.
+* Applied by `ui/tools/extract_board_view.py:_apply_pool_override` at publish time and carried in
+  the bundle stamp as `pvcPoolOverride` (with `applied`, `derived`, the authority, his own words and
+  the file it came from), so the divergence is declared where the figure is served.
+* Guarded by `ui/tests/release_seam.test.js`: published pool == the board's derived pool UNLESS an
+  override is declared applied, and then == the override's value, and the override must correctly
+  name the figure it superseded, and NO other ordinal may differ from the board.
+* A board that does not derive 237 (a fixture, a candidate, a future rebuild) SKIPS the override and
+  says so in the stamp rather than applying a ruling made about a different number — and rather than
+  halting, because the extractor must be able to publish any board.
+
+The full-act route below is retained as the record of what was NOT done and why.
 
 ## The ruling, verbatim
 
