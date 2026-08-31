@@ -396,8 +396,19 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   // — the same source the bundle derives from — so the equality holds in BOTH worlds by
   // construction, and a bundle/register drift still fails loudly in either direction. The thirteen
   // bump notes above stand as history; no future landing edits this file for the count again.
+  // ...AND FOOTBALL IS NOT A BOUNDARY (2026-08-30). A finals week lands as a store edit, so it earns
+  // a lineage entry and an out-of-round column exactly as a dial flip does — but it changes no model,
+  // and `round_movers.model_changes()` now skips it. The RELATIONSHIP is unchanged and still derived,
+  // not pinned: every declared boundary beyond the pre-register restructure corresponds to a
+  // boundary-bearing register entry THAT IS NOT A WEEK OF FOOTBALL. Filtered on the column id the
+  // entry itself carries, which is the same key model_changes() filters on, so the two cannot drift.
+  var FINALS_PRE = ["fw1-", "fw2-", "sf-", "pf-", "gf-"];
   var regB = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "..", "data", "release_lineage.json"), "utf8"))
-      .release_transition_register.filter(function (e) { return e && e.applies_to && e.applies_to.boundary; }).length;
+      .release_transition_register.filter(function (e) {
+        if (!(e && e.applies_to && e.applies_to.boundary)) return false;
+        var to = String((e.applies_to.boundary || [])[1] || "");
+        return !FINALS_PRE.some(function (k) { return to.indexOf(k) === 0; });
+      }).length;
   ok(mc.length === regB + 1, "out-of-round boundary count DERIVED from the lineage register (P4): " +
      regB + " boundary-bearing register entries + the pre-register restructure = " + (regB + 1) +
      " (bundle declares " + mc.length + ")");

@@ -725,9 +725,28 @@
 
     /* Display name for a stored point: rounds as themselves, out-of-round boards as their MC-N id
        (the ledger behind each ID is ui/MAINTAINER.md — the verbose labels render nowhere). */
+    /* THE FINALS WEEKS, BY NAME — the browser's half of round_movers.FINALS_COLUMN_PREFIXES.
+       A finals week lands as a store edit, so it arrives here as an out-of-round column, and every
+       out-of-round column fell through to the literal string "Model change". The owner opened the
+       tab after FW1 landed and reported that FW1 "doesn't even appear in the movers list": it did,
+       as "Model change (MC-17)", which is unfindable and wrong twice over — it is a week of
+       football, and it is not a change to the model. Keyed on the id, which the act declares and
+       the validator checks, not on the label, which is prose. Model changes keep the de-bloated
+       label they were given: this adds a name for football, it does not put process back on the
+       page. */
+    const FINALS_COLUMNS = {"fw1-": "Finals Week 1", "fw2-": "Finals Week 2",
+                            "sf-": "Semi-Final", "pf-": "Preliminary Final", "gf-": "Grand Final"};
+    function finalsName(id) {
+      const s = String(id || "");
+      const hit = Object.keys(FINALS_COLUMNS).filter(function (k) { return s.indexOf(k) === 0; })[0];
+      return hit ? FINALS_COLUMNS[hit] : null;
+    }
+
     function pointLabel(b, p) {
       if (p.kind === "retro") return p.label || ("R" + p.after_round + " · current model");
       if (p.kind === "round" || /^\d+$/.test(String(p.id))) return "Round " + p.id;
+      const fin = finalsName(p.id);
+      if (fin) return fin;
       const list = (b || {}).model_changes || [];
       for (let i = 0; i < list.length; i++) {
         if (String((list[i].between || [])[1]) === String(p.id)) return "Model change (MC-" + (i + 1) + ")";

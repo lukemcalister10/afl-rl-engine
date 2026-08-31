@@ -272,6 +272,42 @@ FINALS_WEEK_NAMES = {
     29: 'GRAND FINAL',
 }
 
+#: THE COLUMN-ID PREFIX EACH FINALS WEEK REGISTERS UNDER. A finals week lands as a store edit, so it
+#: earns an out-of-round column exactly as a dial flip does — and `model_changes()` used to read
+#: EVERY out-of-round column as a model change, "by definition". That definition was true right up
+#: until football started arriving through one. FW1 was labelled "Model change (MC-17)" in the
+#: owner's own tab, which is both unfindable and false: the tab raises a banner saying part of the
+#: difference is the model rather than the players, and for a finals week every bit of it is players.
+#: One table, two readers — the prefix marks the column and the name renders it.
+FINALS_COLUMN_PREFIXES = {
+    'fw1-': 'FINALS WEEK 1',
+    'fw2-': 'FINALS WEEK 2',
+    'sf-': 'SEMI-FINAL',
+    'pf-': 'PRELIMINARY FINAL',
+    'gf-': 'GRAND FINAL',
+}
+
+
+def football_column(point_or_id):
+    """Is this out-of-round column a week of FOOTBALL rather than a change to the model?
+
+    Reads the column id, which the act declares and the spec validator checks, rather than sniffing
+    the label — a label is prose and gets rewritten; the id is the key everything else joins on.
+    """
+    pid = point_or_id.get('id') if isinstance(point_or_id, dict) else point_or_id
+    pid = str(pid or '')
+    return any(pid.startswith(pre) for pre in FINALS_COLUMN_PREFIXES)
+
+
+def football_column_name(point_or_id):
+    """The week's name for a football column, or None. The renderer's half of the same table."""
+    pid = point_or_id.get('id') if isinstance(point_or_id, dict) else point_or_id
+    pid = str(pid or '')
+    for pre, name in FINALS_COLUMN_PREFIXES.items():
+        if pid.startswith(pre):
+            return name
+    return None
+
 
 def round_label(round_n):
     """The human name for a round. `round 24` for the season proper, `FINALS WEEK 1` above it.
@@ -797,6 +833,14 @@ def model_changes(repo_root):
     out = []
     for idx, p in enumerate(points):
         if p['kind'] != 'out_of_round' or idx == 0:
+            continue
+        # A FINALS WEEK IS NOT A MODEL CHANGE. The docstring above says an out-of-round column is one
+        # "by definition", and that held while the only way to move the board outside a round was to
+        # move the model. A finals week moves the board by adding a game and a re-averaged season row
+        # to 92 players — the model is untouched, and every point of the difference is football. Left
+        # in, it renders as "Model change (MC-17)" in the owner's tab and arms a banner telling him
+        # part of what he is reading is the model. Both statements are false.
+        if football_column(p):
             continue
         prev = points[idx - 1]
         tr = declared.get(p.get('board'))
