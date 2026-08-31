@@ -264,39 +264,53 @@ if (B) {
    what makes "a key forward at pick 5" and "a key defender at pick 5" comparable at all, so the
    properties below are the ones the whole surface rests on.
    ================================================================================================ */
-console.log("\n  the value frame (replacement, the star bar) and the midfield yardstick");
+console.log("\n  the BAKED bars (rl_model REPL / PEAK) and the midfield yardstick");
 
-var VST = { seasonNow: 2026, maturitySeasons: 4, starBar: 100,
-            repl: { MID: { repl: 75 }, KPF: { repl: 62 }, RUCK: { repl: null } } };
+/* THE BARS ARE THE MODEL'S, NOT THIS PAGE'S — the property this block exists to pin.
+   rl_model.py:824 carries REPL per position (v3.3, rl_replacement_derive.py, owner dial on KPF
+   2026-07-04) and PEAK beside it. They have been baked for months and every surface measures
+   against them.
 
-ok(core.replOf(VST, "MID") === 75, "a replacement level is read off the stamp, per position");
-ok(core.replOf(VST, "RUCK") === null,
-   "a position whose level could not be measured reads null — never a stand-in number");
-ok(core.replOf(VST, "NOPE") === null, "and an unknown position is null rather than a throw");
+   THIS SUITE PREVIOUSLY ASSERTED A FRAME THIS APP DERIVED FOR ITSELF, and that is what it was
+   wrong to do. Twice: first off the best-23 slot law (a roster-shape rule, not a replacement
+   level), then off the passmark. Both disagreed with the baked bar and the SF row — a derived 57.7
+   against 70.9 — was enough to invert the small-forward reading on the board. What is asserted now
+   is that NOTHING is derived: the bars arrive from the board, and a board that does not publish
+   them yields no frame at all rather than a substitute. */
 
-/* VOR counts BUSTS AT ZERO, which is the property that makes it an expectation rather than a
-   highlight reel: a position producing one star and nine nothings must score below one producing
-   ten useful players, or the board would recommend lottery tickets. */
+var BOARD = { REPL: { MID: 80.1, KPF: 66.8 }, PEAK: { MID: 92, KPF: 72 } };
+
+ok(core.replOf(BOARD, "MID") === 80.1, "a replacement bar is READ off the board, per position");
+ok(core.replOf(BOARD, "RUCK") === null,
+   "a position the board does not publish a bar for reads null — never a stand-in number");
+ok(core.replOf({}, "MID") === null && core.replOf(null, "MID") === null,
+   "no board, no bar — and no throw");
+
+/* VOR counts BUSTS AT ZERO, which is what makes it an expectation rather than a highlight reel: a
+   position producing one star and nine nothings must score below one producing ten useful players,
+   or the board would recommend lottery tickets. */
 function pk(v, key) { return row({ k: key || ("x" + v), p: 10, y: 2010, g: 100, dl: 1, pk: v }); }
-var oneStar = [pk(155), pk(null, "a"), pk(null, "b"), pk(null, "c"), pk(null, "d")];
-var allOk = [pk(90), pk(90), pk(90), pk(90), pk(90)];
-var fStar = core.frame(oneStar, VST, "MID"), fOk = core.frame(allOk, VST, "MID");
-ok(fStar.vor === 16 && fOk.vor === 15,
-   "VOR averages over EVERY selection with busts at zero  (" + fStar.vor + " vs " + fOk.vor + ")");
+var oneStar = [pk(160), pk(null, "a"), pk(null, "b"), pk(null, "c"), pk(null, "d")];
+var allOk = [pk(95), pk(95), pk(95), pk(95), pk(95)];
+var fStar = core.frame(oneStar, BOARD, "MID"), fOk = core.frame(allOk, BOARD, "MID");
+ok(Math.abs(fStar.vor - 15.98) < 1e-9 && Math.abs(fOk.vor - 14.9) < 1e-9,
+   "VOR averages over EVERY selection with busts at zero, against the BAKED bar of 80.1",
+   fStar.vor.toFixed(2) + " vs " + fOk.vor.toFixed(2));
 ok(fStar.startable === 0.2 && fOk.startable === 1,
-   "…so a one-star-in-five position is barely startable while a five-useful one always is",
-   fStar.startable + " vs " + fOk.startable);
-ok(fStar.star === 0.2 && fOk.star === 0,
-   "…and the STAR share separates them the other way — the two figures answer different questions",
-   fStar.star + " vs " + fOk.star);
-ok(core.frame([pk(90)], { seasonNow: 2026, repl: {} }, "MID") === null,
-   "no replacement level, no frame — the page shows nothing rather than a VOR against an invented bar");
-ok(core.frame([], VST, "MID") === null, "and no careers, no frame");
+   "…so a one-star-in-five position is barely startable while a five-useful one always is");
+/* THERE IS NO STAR FIGURE, and its absence is asserted. PEAK was briefly read as a star bar and
+   is not one: SF's PEAK is 70 against a REPL of 70.9, a ceiling below the floor. Rather than hunt
+   for a third bar, the page reports against the one baked bar that IS a replacement bar. */
+ok(fStar.star === undefined && fOk.star === undefined,
+   "the frame carries NO star figure — PEAK is not a star bar (SF's 70 sits below its own REPL of " +
+   "70.9), and no baked constant has been named as one");
+ok(core.frame([pk(95)], { REPL: {} }, "MID") === null,
+   "no baked bar, no frame — the page shows nothing rather than measuring against something invented");
+ok(core.frame([], BOARD, "MID") === null, "and no careers, no frame");
 
-/* a player exactly AT replacement is startable and contributes nothing — the boundary both ways. */
-var atRepl = core.frame([pk(75)], VST, "MID");
+var atRepl = core.frame([pk(80.1)], BOARD, "MID");
 ok(atRepl.vor === 0 && atRepl.startable === 1,
-   "a player exactly at replacement counts as startable and adds ZERO value over it", 
+   "a player exactly at the bar counts as startable and adds ZERO value over it",
    atRepl.vor + " / " + atRepl.startable);
 
 /* THE YARDSTICK. Nearest match, and honest at both ends rather than clamping in silence. */
@@ -312,6 +326,7 @@ ok(core.midEquivalent([], 10) === null && core.midEquivalent(CURVE, null) === nu
    "no curve or no value yields no equivalence");
 
 /* the careers selector the board's cells are cut with — the window is a control, never a smoothing */
+var VST = { seasonNow: 2026, maturitySeasons: 4 };
 var WROWS = [row({ k: "m1", p: 10, y: 2010, g: 50, pk: 90 }),
              row({ k: "m2", p: 18, y: 2010, g: 50, pk: 90 }),
              row({ k: "m3", p: 10, y: 2025, g: 0 }),
@@ -323,43 +338,75 @@ ok(core.careers(WROWS, VST, "MID", 10, 8, true).every(function (r) { return r.dp
 ok(core.careers(WROWS, VST, "MID", 10, 8, false).length === 3,
    "with every class in, the still-running rows join the window too");
 
-/* ---- the SHIPPED value frame: derived from the league's own law, not chosen ------------------- */
-if (B) {
-  var vst = B.stamp;
-  ok(vst.clubs > 0 && vst.startingSlots,
-     "the record publishes the league's club count and the owner's ruled starting slots",
-     vst.clubs + " clubs");
-  var slotSum = Object.keys(vst.startingSlots).reduce(
-    function (a, k) { return a + vst.startingSlots[k]; }, 0);
-  ok(slotSum === 18,
-     "the slots are the owner's best-23 law — 18 starters — so replacement is derived from HIS " +
-     "rule and not from a number somebody picked", String(slotSum));
-  Object.keys(vst.repl).forEach(function (pos) {
-    var e = vst.repl[pos];
-    ok(e.slotsLeague === e.slots * vst.clubs,
-       "replacement for " + pos + " is measured at slot " + e.slotsLeague + " = " + e.slots +
-       " per club x " + vst.clubs + " clubs — the last man holding a starting slot");
-  });
-  ok(Object.keys(vst.repl).every(function (p) { return vst.repl[p].repl > 0; }),
-     "every position resolved a replacement level off the current season");
-  ok(vst.starBar > Math.max.apply(null, Object.keys(vst.repl).map(function (p) { return vst.repl[p].repl; })),
-     "the star bar sits ABOVE every replacement level — a difference-maker must beat a fill-in at " +
-     "any position, or 'star' would mean nothing", String(vst.starBar));
+/* ---- THE SHIPPED BARS: the board publishes them, and NOTHING derives them --------------------- */
+(function () {
+  var bsrc = fs.readFileSync(path.join(__dirname, "..", "data", "board_view_working.js"), "utf8");
+  var bd = JSON.parse(bsrc.slice(bsrc.indexOf("{"), bsrc.lastIndexOf("}") + 1));
+  var POS6 = ["MID", "RUCK", "SF", "KPF", "SD", "KPD"];
+  ok(bd.REPL && bd.PEAK, "the shipped bundle publishes the baked REPL and PEAK");
+  ok(POS6.every(function (p) { return typeof bd.REPL[p] === "number" && bd.REPL[p] > 0; }),
+     "…for all six positions", JSON.stringify(bd.REPL));
+  /* AGAINST THE ENGINE ITSELF, not against a copy. If rl_model's REPL is ever re-derived, this
+     goes red until the board is rebuilt and republished — which is the whole point of not holding
+     a second copy anywhere. */
+  var eng = fs.readFileSync(path.join(__dirname, "..", "..", "engine", "rl_after", "rl_model.py"), "utf8");
+  var m = /^REPL=\{([^}]*)\}/m.exec(eng);
+  ok(!!m, "rl_model.py declares REPL as a literal this test can read");
+  if (m) {
+    var engRepl = {};
+    m[1].split(",").forEach(function (kv) {
+      var pr = kv.split(":");
+      engRepl[pr[0].replace(/['"\s]/g, "")] = parseFloat(pr[1]);
+    });
+    ok(POS6.every(function (p) { return Math.abs(engRepl[p] - bd.REPL[p]) < 1e-9; }),
+       "and the SHIPPED bars are byte-equal to the engine's own REPL — the app holds no second copy",
+       JSON.stringify(engRepl));
+  }
+  /* MEASURED, AND IT IS WHY PEAK IS NOT USED AS A CEILING: at SF (70 vs 70.9) and SD (78 vs 78.3)
+     the published PEAK sits BELOW the published REPL. They are not two ends of one scale, and any
+     surface reading PEAK as "star level" is wrong at two of six positions. Asserted so the next
+     reader meets the fact rather than the temptation. */
+  var inverted = POS6.filter(function (p) { return bd.PEAK[p] < bd.REPL[p]; });
+  ok(inverted.length > 0,
+     "PEAK is NOT a ceiling above REPL — it sits below it at " + inverted.join(", ") +
+     ", which is why no star metric is derived from it");
 
-  /* the shipped board must actually be readable: a yardstick exists and the six positions price
-     against it. This is the assertion that fails if the record ever stops supporting the page. */
-  var shippedCurve = core.midCurve(B.rows, vst, 8, true);
-  ok(shippedCurve.length > 50,
-     "the shipped record supports a midfield yardstick across the curve", shippedCurve.length + " ordinals");
-  var mono = shippedCurve.every(function (c, i, a) { return i === 0 || a[i - 1].vor >= c.vor - 3; });
-  ok(mono,
-     "…and it descends with the ordinal (within noise) — a yardstick that rose late would not be a ruler");
-  var priced = ["MID", "RUCK", "SF", "KPF", "SD", "KPD"].filter(function (pos) {
-    var f = core.frame(core.careers(B.rows, vst, pos, 10, 8, true), vst, pos);
-    return f && core.midEquivalent(shippedCurve, f.vor);
-  });
-  ok(priced.length === 6, "all six positions price against the yardstick at pick 10", priced.join(","));
-}
+  /* MEASURED, AND IT IS WHY PEAK IS NOT USED AS A CEILING: at SF (70 against a REPL of 70.9) and SD
+     (78 against 78.3) the published PEAK sits BELOW the published replacement bar. They are not two
+     ends of one scale, and any surface reading PEAK as "star level" is wrong at two of six
+     positions. This was very nearly shipped as a star metric. Asserted so the next reader meets the
+     fact rather than the temptation — and if a future bake makes PEAK a true ceiling everywhere,
+     this goes red and the question can be re-opened deliberately. */
+  var inverted = POS6.filter(function (p) { return bd.PEAK[p] < bd.REPL[p]; });
+  ok(inverted.length > 0,
+     "PEAK is NOT a ceiling above REPL — it sits BELOW it at " + inverted.join(", ") +
+     ", which is why this page derives no star metric from it");
+
+  if (B) {
+    var shippedCurve = core.midCurve(B.rows, B.stamp, bd, 8, true);
+    ok(shippedCurve.length > 50,
+       "the shipped record supports a midfield yardstick across the curve", shippedCurve.length + " ordinals");
+    ok(shippedCurve.every(function (c, i, a) { return i === 0 || a[i - 1].vor >= c.vor - 3; }),
+       "…and it descends with the ordinal (within noise) — a yardstick that rose late is not a ruler");
+    var priced = POS6.filter(function (pos) {
+      var f = core.frame(core.careers(B.rows, B.stamp, pos, 10, 8, true), bd, pos);
+      return f && core.midEquivalent(shippedCurve, f.vor);
+    });
+    ok(priced.length === 6, "all six positions price against the yardstick at pick 10", priced.join(","));
+  }
+})();
+
+/* THE GENERATOR HOLDS NO BAR EITHER. The outcome record emits career facts only; the moment it
+   starts publishing a replacement level again, this goes red. */
+(function () {
+  var gen = fs.readFileSync(path.join(__dirname, "..", "tools", "gen_draft_outcomes.py"), "utf8");
+  var code = gen.replace(/"""[\s\S]*?"""/g, "").replace(/^\s*#.*$/gm, "");
+  ok(!/STARTING_SLOTS|STAR_RANK|_repl_levels|_star_bar/.test(code),
+     "the outcome generator derives NO replacement level and NO star bar — it emits career facts " +
+     "only, and the measuring happens where the baked bars live");
+  ok(B && B.stamp.repl === undefined && B.stamp.starBar === undefined,
+     "…and the shipped record carries no such field either");
+})();
 
 console.log("\n  " + "-".repeat(70));
 console.log(fails ? "DRAFT DAY TESTS: " + fails + " FAILED of " + n

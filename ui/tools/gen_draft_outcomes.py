@@ -73,26 +73,20 @@ SIG_VERSION = 'draft-outcomes-inputs-1'
 #: reading; it is declared here, not buried, because it is the one judgement in the file.
 REAL_SEASON_GAMES = 10
 
-#: THE LEAGUE'S OWN STARTING SLOTS, verbatim from ui/app/club_totals.js:37 — the owner's ruled
-#: best-23 shape (18 starters + 5 bench). They are what makes a REPLACEMENT LEVEL derivable rather
-#: than invented: with 16 clubs, the league starts 5x16 = 80 midfielders and 1x16 = 16 rucks, so the
-#: 80th-best midfielder and the 16th-best ruck are, by definition, the last men holding a starting
-#: slot at their position. That is replacement level, and it is the anchor every "value over
-#: replacement" figure on the Draft day board is measured from.
-STARTING_SLOTS = {'KPD': 2, 'SD': 4, 'MID': 5, 'SF': 4, 'KPF': 2, 'RUCK': 1}
-
-#: The club count is COUNTED from the store, not written here — see _club_count().
-
-#: A season needs this many games before it counts toward a replacement level. Lower than
-#: REAL_SEASON_GAMES because a replacement level is about who is AVAILABLE to fill a slot, and a
-#: part-season fill-in is exactly that; 5 keeps a two-game cameo out without demanding a full year.
-REPL_SEASON_GAMES = 5
-
-#: "A difference-maker" is defined once, league-wide, as a season inside the top N by average. 40 is
-#: about two and a half per club — the players who decide a season rather than fill a side. It is
-#: deliberately POSITION-BLIND: a star is a star, and defining it per position would hand every
-#: position the same star rate by construction and delete the very finding the board exists to show.
-STAR_RANK = 40
+#: NO REPLACEMENT LEVEL, NO STAR BAR, AND NO POSITION CONSTANT IS DEFINED IN THIS FILE.
+#:
+#: An earlier cut of this generator derived both — a replacement level off the owner's best-23 slot
+#: law, and a "star" bar off the 40th-best season in the league. Both were defensible constructions
+#: and both were WRONG TO EXIST. The model has carried `REPL` (the replacement bar per position) and
+#: `PEAK` (the peak level per position) for months: rl_model.py:824, v3.3, derived by
+#: rl_replacement_derive.py with the owner's own 2026-07-04 dial on KPF. They are baked, they are
+#: what every other surface measures against, and the derived stand-ins disagreed with them badly
+#: — SF read 57.7 against the baked 70.9, which was enough to invert the small-forward reading.
+#:
+#: They now reach the app the way they should have all along: passed through from the board by
+#: ui/tools/extract_board_view.py into the bundle's `REPL` / `PEAK`, and read there. This file emits
+#: CAREER FACTS ONLY — games, debut lag, best season — and takes no view on what any of them is
+#: worth. The measuring is done where the bars live.
 
 
 def outcome_inputs_sig(store_rows):
@@ -158,94 +152,12 @@ def _peak(row):
     return best
 
 
-def _club_count(store_rows):
-    """The league's club count, COUNTED rather than written as 16.
-
-    The Free-Agents pool is not a club and never enters a league denominator (item 191); it is
-    matched case-insensitively because the store carries both spellings ("Free Agents" and "Free
-    agents"), exactly as ui/app/club_totals.js:isFree folds them. A league that grows moves every
-    replacement level with it, with no edit here.
-    """
-    teams = set()
-    for row in store_rows:
-        if not row.get('stable_player_id'):
-            continue
-        t = (row.get('affl_team') or '').strip()
-        if t and t.lower() != 'free agents':
-            teams.add(t)
-    return len(teams)
-
-
-def _repl_levels(store_rows, season_now, clubs):
-    """REPLACEMENT LEVEL PER POSITION, derived from the league's own ruled slots.
-
-    A "value over replacement" figure is only as honest as its replacement level, and the usual sin
-    is to pick one. This does not: the owner's best-23 law starts 5 midfielders, 4 general defenders,
-    4 general forwards, 2 key defenders, 2 key forwards and 1 ruck per club, and the league has 16
-    clubs. So it starts 80 midfielders and 16 rucks, and the 80th-best midfielder is — by the
-    league's own definition — the last man holding a midfield slot. That is replacement.
-
-    Measured on the CURRENT season across the tracked roster, keyed on `future_position` (the single
-    axis a player is modelled and slotted on), with a five-game qualifier so a two-match fill-in does
-    not set the level.
-
-    IT MOVES WITH THE LEAGUE, ON PURPOSE. A season where midfield scoring inflates raises the bar a
-    draftee must clear to be worth anything, which is correct: value over replacement is a claim
-    about THIS league, not an absolute. It is recomputed every run and published in the stamp with
-    the pool size behind it, so a level resting on too few players is visible rather than silent.
-    """
-    out = {}
-    for pos, slots in sorted(STARTING_SLOTS.items()):
-        avgs = []
-        for row in store_rows:
-            if not row.get('stable_player_id') or row.get('future_position') != pos:
-                continue
-            for s in _seasons(row):
-                if s.get('year') == season_now and (s.get('games') or 0) >= REPL_SEASON_GAMES \
-                        and s.get('avg') is not None:
-                    avgs.append(float(s['avg']))
-        avgs.sort(reverse=True)
-        need = slots * clubs
-        # Too few players to reach the slot count is a REAL state, not an error: the level is the
-        # weakest man available and the shortfall is published so the figure is read with it.
-        level = avgs[need - 1] if len(avgs) >= need else (avgs[-1] if avgs else None)
-        out[pos] = {'repl': round(level, 2) if level is not None else None,
-                    'slots': slots, 'slotsLeague': need, 'pool': len(avgs),
-                    'short': max(0, need - len(avgs))}
-    return out
-
-
-def _star_bar(store_rows, season_now):
-    """"A difference-maker", defined ONCE and league-wide rather than per position.
-
-    A star is a star: the bar is the STAR_RANK-th best season average in the league this year, about
-    two and a half per club. Defining it per position would hand every position the same star rate by
-    construction and delete the finding the whole board exists to show — that the positions convert
-    to genuine difference-makers at wildly different rates.
-    """
-    avgs = []
-    for row in store_rows:
-        if not row.get('stable_player_id'):
-            continue
-        for s in _seasons(row):
-            if s.get('year') == season_now and (s.get('games') or 0) >= REPL_SEASON_GAMES \
-                    and s.get('avg') is not None:
-                avgs.append(float(s['avg']))
-    avgs.sort(reverse=True)
-    if not avgs:
-        return None, 0
-    return round(avgs[min(STAR_RANK, len(avgs)) - 1], 2), len(avgs)
-
-
 def build(store_rows):
     nd = [r for r in store_rows
           if r.get('draft_stream') == 'ND' and r.get('stream_pick') and r.get('stream_year')]
     nd.sort(key=lambda r: (r['stream_year'], r['stream_pick']))
 
     season_now = max((s.get('year') or 0) for r in store_rows for s in _seasons(r))
-    clubs = _club_count(store_rows)
-    repl = _repl_levels(store_rows, season_now, clubs)
-    star_bar, star_pool = _star_bar(store_rows, season_now)
 
     rows = []
     for r in nd:
@@ -310,17 +222,7 @@ def build(store_rows):
         'nNeverPlayed': sum(1 for r in rows if r['g'] == 0),
         'realSeasonGames': REAL_SEASON_GAMES,
         'maturitySeasons': maturity,
-        # ---- THE VALUE FRAME: replacement per position, and one league-wide star bar -------------
-        # Both are DERIVED (the owner's own ruled starting slots x the counted club count, measured
-        # on the current season) and both are published with the pool behind them, so a level
-        # standing on too few players is visible instead of silent.
-        'clubs': clubs,
-        'startingSlots': STARTING_SLOTS,
-        'replSeasonGames': REPL_SEASON_GAMES,
-        'repl': repl,
-        'starBar': star_bar,
-        'starRank': STAR_RANK,
-        'starPool': star_pool,
+        # No value frame here — REPL and PEAK ride the board bundle. See the note at the top.
         'debutLagTable': table,
         'debutLagN': n_debut,
         'perClass': {str(k): v for k, v in sorted(per_class.items())},
@@ -359,11 +261,6 @@ def main():
           % (s['maturitySeasons'],
              round(100 * [t['cum'] for t in s['debutLagTable'] if t['lag'] == s['maturitySeasons']][0]),
              s['debutLagN']))
-    print('  clubs           %d (free-agent pool excluded)' % s['clubs'])
-    print('  replacement     %s' % ('  '.join(
-        '%s %.1f' % (k, v['repl']) for k, v in sorted(s['repl'].items()) if v['repl'] is not None)))
-    print('  star bar        %.1f  (the #%d season average in the league, off %d qualifying seasons)'
-          % (s['starBar'], s['starRank'], s['starPool']))
     print('  store           %s' % s['store'][:8])
     return 0
 

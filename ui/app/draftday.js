@@ -211,25 +211,44 @@
       });
     }
 
-    function replOf(stamp, pos) {
-      var e = ((stamp || {}).repl || {})[pos];
-      return e && e.repl != null ? e.repl : null;
+    /* THE REPLACEMENT BAR IS THE MODEL'S OWN, READ OFF THE BOARD. rl_model.py:824 —
+       REPL = {MID 80.1, SD 78.3, RUCK 78.5, KPD 68.4, SF 70.9, KPF 66.8}, v3.3 derived by
+       rl_replacement_derive.py with the owner's 2026-07-04 dial on KPF. It has been baked into this
+       model for months and it is what every other surface measures against.
+
+       THIS FUNCTION USED TO READ A LEVEL THIS APP DERIVED FOR ITSELF, and that was the defect. The
+       first version came off the best-23 slot law, which is a roster-shape rule and not a
+       replacement level; when told not to derive, the second version reached for the passmark, which
+       was still this seat choosing. Both disagreed with the baked bar, worst at SF — a derived 57.7
+       against 70.9 — and that single row was enough to invert the small-forward reading on the
+       board. `frame` is now handed the number the engine prices against, and the frame refuses when
+       the board does not publish one rather than substituting anything. */
+    function replOf(board, pos) {
+      var v = ((board || {}).REPL || {})[pos];
+      return typeof v === "number" ? v : null;
     }
 
+    /* THERE IS NO "STAR" FIGURE ON THIS PAGE, AND THAT IS A DECISION.
+       The board publishes PEAK beside REPL and it is tempting to read it as a star bar. It is not
+       the same kind of object: SF's PEAK is 70 against a REPL of 70.9, and SD's 78 against 78.3 —
+       a "star" bar BELOW the replacement bar at two positions, which no ceiling can be. Reading it
+       that way would have been the third bar this page invented for itself in a day.
+       So the page measures against the ONE baked bar that is a replacement bar, and reports no
+       ceiling at all. If a star line is wanted it needs a baked constant that is one; until such a
+       constant is named, an absent figure is the honest one. */
+
     /* the three figures for one set of careers, against that position's own replacement level. */
-    function frame(set, stamp, pos) {
-      var repl = replOf(stamp, pos), star = (stamp || {}).starBar;
+    function frame(set, board, pos) {
+      var repl = replOf(board, pos);
       if (!set.length || repl == null) return null;
-      var vor = 0, nStart = 0, nStar = 0;
+      var vor = 0, nStart = 0;
       set.forEach(function (r) {
         var pk = r.pk;
         if (pk != null && pk > repl) vor += (pk - repl);
         if (pk != null && pk >= repl) nStart++;
-        if (star != null && pk != null && pk >= star) nStar++;
       });
       return { n: set.length, vor: vor / set.length,
-               startable: nStart / set.length, star: nStar / set.length,
-               repl: repl, starBar: star };
+               startable: nStart / set.length, repl: repl };
     }
 
     /* THE MIDFIELD YARDSTICK. The midfielder curve is the ruler every other cell is read against, so
@@ -239,10 +258,10 @@
        you will do with it. On the clock the question is never "is this worth 530 points", it is
        "would I rather have this key forward or a midfielder later" — and the midfielder is the only
        position deep and star-rich enough to be a stable ruler across the whole board. */
-    function midCurve(rows, stamp, half, mature) {
+    function midCurve(rows, stamp, board, half, mature) {
       var out = [];
       for (var p = 1; p <= 64; p++) {
-        var f = frame(careers(rows, stamp, "MID", p, half, mature), stamp, "MID");
+        var f = frame(careers(rows, stamp, "MID", p, half, mature), board, "MID");
         if (f && f.n) out.push({ p: p, vor: f.vor, n: f.n });
       }
       return out;
@@ -303,6 +322,10 @@
 
   function rows() { var b = bundle(); return (b && b.rows) || []; }
   function stamp() { var b = bundle(); return (b && b.stamp) || {}; }
+  /* THE BOARD, for its baked position constants (REPL / PEAK). The outcome record carries careers;
+     the board carries what a career is measured against. Two sources, two jobs, and the split is
+     the whole point — this page must never hold a bar of its own. */
+  function board() { return (MD.seam && MD.seam.working) || {}; }
   function isMature(y) { return core.isMature(stamp(), y); }
   /* The detail panel below the board reads the SAME window the board's cells do, so a cell you
      clicked and the careers listed under it cannot disagree about which men they are. */
@@ -444,12 +467,16 @@
   }
 
   function boardCell(pos, pick, curve) {
+    /* careers() takes the OUTCOME RECORD's stamp (it needs seasonNow / maturitySeasons to decide
+       which classes have settled); frame() takes the BOARD (it needs the baked REPL bar). Two
+       different objects for two different jobs, and getting them the wrong way round is silent —
+       careers returns nothing and every cell reads n=0, which is exactly what happened here. */
     var set = core.careers(rows(), stamp(), pos, pick, state.half, state.mature);
-    var f = core.frame(set, stamp(), pos);
+    var f = core.frame(set, board(), pos);
     if (!f) return { empty: true, n: set.length };
     var eq = core.midEquivalent(curve, f.vor);
     if (!eq) return { empty: true, n: f.n };
-    return { n: f.n, vor: f.vor, startable: f.startable, star: f.star,
+    return { n: f.n, vor: f.vor, startable: f.startable,
              equiv: eq.p, beyond: eq.beyond, thin: f.n <= THIN_MAX,
              tier: tierOf(eq.p), steal: isSteal(eq.p, pick, f.n) };
   }
@@ -457,9 +484,18 @@
   function boardSection(page, curve) {
     var wrap = fmt.el("div", "ddboard");
     var head = fmt.el("div", "ddbhead");
+    /* THE HEADER NAMES THE BAR, because a "value over replacement" figure means nothing until the
+       reader knows whose replacement level it is. It is the model's own — rl_model REPL, baked and
+       unchanged for months — and each position is measured against its own, which is why a key
+       forward and a midfielder can be compared at all. */
+    var bars = POS_ORDER.map(function (p) {
+      var v = core.replOf(board(), p);
+      return v == null ? null : POS_SHORT[p] + " " + v.toFixed(1);
+    }).filter(Boolean).join(" · ");
     head.innerHTML = '<h2>The full board</h2><p>Each cell is <b>the midfielder pick it is worth</b>' +
-      ' — then its expected value over replacement, and the share who ever reach a startable ' +
-      'season. <span class="thin">●</span> marks a thin sample.</p>';
+      ' — then its expected value over <b>the model\'s own replacement bar</b> for that position, ' +
+      'and the share who ever clear it. <span class="thin">●</span> marks a thin sample.</p>' +
+      (bars ? '<p class="bars">Bars: ' + bars + '</p>' : "");
     wrap.appendChild(head);
 
     var tbl = fmt.el("table", "ddgrid");
@@ -498,8 +534,8 @@
             '<span class="sub">' + c.vor.toFixed(1) + " · " + Math.round(c.startable * 100) + "%</span>";
           td.title = POS_LABEL[pos] + " at pick " + p + ": worth a midfielder at pick " + c.equiv +
             ". Expected value over replacement " + c.vor.toFixed(1) + "; " +
-            Math.round(c.startable * 100) + "% ever reach a startable season, " +
-            Math.round(c.star * 100) + "% a difference-maker season. " + c.n + " careers" +
+            Math.round(c.startable * 100) + "% ever reach a season at or above the bar. " +
+            c.n + " careers" +
             (c.thin ? " — a thin sample." : ".") +
             (c.steal ? " STEAL: worth far more than the pick costs." : "");
           td.addEventListener("click", function () {
@@ -530,9 +566,9 @@
      at all. */
   function sideCard(which) {
     var side = state[which];
-    var curve = core.midCurve(rows(), stamp(), state.half, state.mature);
+    var curve = core.midCurve(rows(), stamp(), board(), state.half, state.mature);
     var f = core.frame(core.careers(rows(), stamp(), side.pos, side.pick, state.half, state.mature),
-                       stamp(), side.pos);
+                       board(), side.pos);
     var el = fmt.el("div", "ddside");
     var h = '<div class="k">Option ' + which.toUpperCase() + "</div>" +
             '<div class="lbl">Position the AFL drafted him as</div><div class="posgrid">';
@@ -555,8 +591,7 @@
            '<div class="lbl">' + fmt.esc(POS_LABEL[side.pos]) + " at pick " + side.pick + "</div>" +
            '<div class="worth">worth <b>a midfielder at pick ' + eq.p + "</b></div>" +
            '<div class="trio"><span><i>exp. VOR</i>' + f.vor.toFixed(1) + "</span>" +
-           "<span><i>startable</i>" + Math.round(f.startable * 100) + "%</span>" +
-           "<span><i>star</i>" + Math.round(f.star * 100) + "%</span>" +
+           "<span><i>clears bar</i>" + Math.round(f.startable * 100) + "%</span>" +
            '<span><i>careers</i>' + f.n + (f.n <= THIN_MAX ? " ●" : "") + "</span></div>";
     }
     el.innerHTML = h;
@@ -571,9 +606,9 @@
   /* THE VERDICT: at what pick does B match A? Not a winner declaration — a break-even, because the
      two options are almost never far apart and the honest answer is where the line sits. */
   function verdict() {
-    var curve = core.midCurve(rows(), stamp(), state.half, state.mature);
-    var fa = core.frame(core.careers(rows(), stamp(), state.a.pos, state.a.pick, state.half, state.mature), stamp(), state.a.pos);
-    var fb = core.frame(core.careers(rows(), stamp(), state.b.pos, state.b.pick, state.half, state.mature), stamp(), state.b.pos);
+    var curve = core.midCurve(rows(), stamp(), board(), state.half, state.mature);
+    var fa = core.frame(core.careers(rows(), stamp(), state.a.pos, state.a.pick, state.half, state.mature), board(), state.a.pos);
+    var fb = core.frame(core.careers(rows(), stamp(), state.b.pos, state.b.pick, state.half, state.mature), board(), state.b.pos);
     var el = fmt.el("div", "ddverdict");
     if (!fa || !fb) {
       el.innerHTML = "<b>No verdict.</b> One side has no settled careers to read, and a comparison " +
@@ -584,7 +619,7 @@
        sentence worth printing: "a key forward at 5 is worth a key defender at 7." */
     var bestP = null, bestD = null;
     for (var p = 1; p <= 64; p++) {
-      var f = core.frame(core.careers(rows(), stamp(), state.b.pos, p, state.half, state.mature), stamp(), state.b.pos);
+      var f = core.frame(core.careers(rows(), stamp(), state.b.pos, p, state.half, state.mature), board(), state.b.pos);
       if (!f) continue;
       var d = Math.abs(f.vor - fa.vor);
       if (bestD === null || d < bestD) { bestD = d; bestP = p; }
@@ -647,7 +682,7 @@
   function startableCliff(pos) {
     var cliff = null;
     for (var p = 64; p >= 1; p--) {
-      var f = core.frame(core.careers(rows(), stamp(), pos, p, state.half, state.mature), stamp(), pos);
+      var f = core.frame(core.careers(rows(), stamp(), pos, p, state.half, state.mature), board(), pos);
       if (!f || f.n <= THIN_MAX) continue;
       if (f.startable < 0.5) cliff = p; else break;
     }
@@ -659,7 +694,7 @@
     var best = null;
     POS_ORDER.forEach(function (pos) {
       for (var p = 8; p <= 58; p++) {
-        var f = core.frame(core.careers(rows(), stamp(), pos, p, state.half, state.mature), stamp(), pos);
+        var f = core.frame(core.careers(rows(), stamp(), pos, p, state.half, state.mature), board(), pos);
         if (!f || f.n <= THIN_MAX) continue;
         var eq = core.midEquivalent(curve, f.vor);
         if (!eq) continue;
@@ -670,17 +705,23 @@
     return best;
   }
 
-  /* star conversion per position over the whole settled population — the ceiling question. */
-  function starRates() {
+  /* WHICH POSITIONS CLEAR THEIR OWN BAR, over the whole settled population.
+
+     This replaced a "star conversion" card that measured against a bar this page had no business
+     owning. Each position is now measured against ITS OWN BAKED REPLACEMENT BAR — MID 80.1, KPF
+     66.8, and so on — so the reading is not "who scores most" but "who, relative to what the model
+     demands of that position, actually delivers". That is the comparison the draft presents,
+     because the pick costs the same whoever you take with it. */
+  function clearRates() {
     var out = [];
     POS_ORDER.forEach(function (pos) {
       var set = (rows() || []).filter(function (r) {
         return r.dp === pos && r.p <= 64 && (!state.mature || isMature(r.y));
       });
-      var f = core.frame(set, stamp(), pos);
-      if (f && f.n) out.push({ pos: pos, star: f.star, startable: f.startable, n: f.n });
+      var f = core.frame(set, board(), pos);
+      if (f && f.n) out.push({ pos: pos, startable: f.startable, n: f.n, repl: f.repl });
     });
-    return out.sort(function (a, b) { return b.star - a.star; });
+    return out.sort(function (a, b) { return b.startable - a.startable; });
   }
 
   /* A DEPTH CLAIM NEEDS MORE THAN A CELL. THIN_MAX is the right bar for marking one cell with a dot;
@@ -695,7 +736,7 @@
   function holdsUntil(pos, midBar, curve) {
     var last = null, run = 0;
     for (var p = 1; p <= 64; p++) {
-      var f = core.frame(core.careers(rows(), stamp(), pos, p, state.half, state.mature), stamp(), pos);
+      var f = core.frame(core.careers(rows(), stamp(), pos, p, state.half, state.mature), board(), pos);
       var eq = f ? core.midEquivalent(curve, f.vor) : null;
       // A cell off the bottom of the yardstick is not "worth a mid 64" — it is worth less than the
       // ruler can express, and counting it would let a worthless row claim depth it does not have.
@@ -730,18 +771,19 @@
         "board (" + st.n + " careers).", "steal");
     }
 
-    // 2. where the stars come from
-    var sr = starRates();
-    if (sr.length >= 3) {
-      var top = sr.slice(0, 2), bot = sr.slice(-2);
-      card("Stars come from the spine",
+    // 2. which positions clear the bar the model sets them
+    var cr = clearRates();
+    if (cr.length >= 3) {
+      var top = cr.slice(0, 2), bot = cr.slice(-2);
+      card("Who clears their own bar",
         top.map(function (x) { return "<b>" + fmt.esc(POS_LABEL[x.pos].toLowerCase()) + "s " +
-          Math.round(x.star * 100) + "%</b>"; }).join(" and ") +
-        " reach a difference-maker season. " +
+          Math.round(x.startable * 100) + "%</b>"; }).join(" and ") +
+        " ever reach a season at or above the replacement bar the model sets for them (" +
+        top.map(function (x) { return x.repl.toFixed(1); }).join(" and ") + "). Against " +
         bot.map(function (x) { return fmt.esc(POS_LABEL[x.pos].toLowerCase()) + "s " +
-          Math.round(x.star * 100) + "%"; }).join(" and ") +
-        ". Spend your ceiling picks where the ceilings are; everywhere else you are buying a body, " +
-        "not a league-winner.", "star");
+          Math.round(x.startable * 100) + "%"; }).join(" and ") + ". Each position is measured " +
+        "against its OWN bar, which is the comparison the draft presents — the pick costs the same " +
+        "whoever you take with it.", "star");
     }
 
     // 3. the startable cliff, per position, ordered
@@ -768,8 +810,8 @@
     // 5. tall vs small forward, decided by the data rather than asserted
     var cross = null;
     for (var p = 1; p <= 64; p++) {
-      var fs = core.frame(core.careers(rows(), stamp(), "SF", p, state.half, state.mature), stamp(), "SF");
-      var fk = core.frame(core.careers(rows(), stamp(), "KPF", p, state.half, state.mature), stamp(), "KPF");
+      var fs = core.frame(core.careers(rows(), stamp(), "SF", p, state.half, state.mature), board(), "SF");
+      var fk = core.frame(core.careers(rows(), stamp(), "KPF", p, state.half, state.mature), board(), "KPF");
       if (!fs || !fk || fs.n <= THIN_MAX || fk.n <= THIN_MAX) continue;
       if (fs.vor > fk.vor) cross = p;
     }
@@ -941,7 +983,7 @@
     /* THE MIDFIELD YARDSTICK IS BUILT ONCE PER RENDER and handed to everything that needs it. It is
        64 frames over the whole population; rebuilding it inside each of the 54 board cells would be
        the same work 54 times, and the page would stutter on every control change. */
-    var curve = core.midCurve(rows(), stamp(), state.half, state.mature);
+    var curve = core.midCurve(rows(), stamp(), board(), state.half, state.mature);
     if (!curve.length) {
       halt(page, "No midfield yardstick.", "The record carries no settled midfield careers, so " +
         "there is no ruler to price the other positions against and no board is drawn.");

@@ -388,6 +388,18 @@ def main():
 
     picks = d.get("picks", [])
     pvc = d.get("PVC", {})
+    # THE BAKED POSITION CONSTANTS, PASSED THROUGH VERBATIM. `REPL` is the engine's REPLACEMENT BAR
+    # per position (rl_model.py:824, v3.3 derived by rl_replacement_derive.py with the owner's
+    # 2026-07-04 KPF dial) and `PEAK` its peak level. They have been baked into this model for
+    # months and they are what every surface must measure against.
+    #
+    # THEY WERE ON THE BOARD AND NOT ON THE BUNDLE, which is how a UI surface came to DERIVE its own
+    # replacement level — twice, both times wrong, and worst on SF (a derived 57.7 against the baked
+    # 70.9, which was enough to invert the small-forward reading on the Draft day board). A constant
+    # the app must not choose for itself has to be reachable by the app, or somebody chooses it.
+    repl = d.get("REPL", {})
+    peak = d.get("PEAK", {})
+    peak_age = d.get("PEAK_AGE", {})
     pvc, pool_override = _apply_pool_override(pvc, REPO)
     # items 12/14: future-lens phantom pick lines (+1/+2 lenses only) + the lens-conservation diagnostic.
     # Working-tier only; passed through verbatim. The current/-1/-2 player ladder never reads these (the
@@ -463,6 +475,9 @@ def main():
         "back": back_rows,
         "picks": picks,
         "pvc": pvc,
+        "REPL": repl,
+        "PEAK": peak,
+        "PEAK_AGE": peak_age,
         "lensPicks": lens_picks,
         "lensConservation": lens_conservation,
         # Leg-F entrant/phantom layer (working-tier only; see pass-through note above).
