@@ -24,7 +24,7 @@ written to be read.
 | 10 | cleaner font on value numbers | DONE — owner chose the system sans; `--fig` split from `--mono` |
 | 11 | "vs Pick 1" bar with a ratio | DONE — `MD.valueLine` + the pick-1 tick |
 | 12 | Pick Value tab | DONE — `ui/app/pickvalue.js` |
-| 13 | draft-day translator | DONE — the Draft day tab, its generator and its writer of record |
+| 13 | draft-day translator | DONE — rebuilt as a decision tool: the board in one currency, the comparator, derived findings |
 | — | entry price missing on player cards | DONE — `ui/tools/v0_identity.py` |
 | — | FW1 absent from the movers list | DONE — it was labelled "Model change (MC-17)" |
 

@@ -257,6 +257,110 @@ if (B) {
      "nor can more careers carry a best season than played a game");
 }
 
+/* ================================================================================================
+   7. THE VALUE FRAME AND THE MIDFIELD YARDSTICK — the half that turns a table into a decision
+
+   The board reads every cell in ONE currency: the midfielder pick it is worth. That conversion is
+   what makes "a key forward at pick 5" and "a key defender at pick 5" comparable at all, so the
+   properties below are the ones the whole surface rests on.
+   ================================================================================================ */
+console.log("\n  the value frame (replacement, the star bar) and the midfield yardstick");
+
+var VST = { seasonNow: 2026, maturitySeasons: 4, starBar: 100,
+            repl: { MID: { repl: 75 }, KPF: { repl: 62 }, RUCK: { repl: null } } };
+
+ok(core.replOf(VST, "MID") === 75, "a replacement level is read off the stamp, per position");
+ok(core.replOf(VST, "RUCK") === null,
+   "a position whose level could not be measured reads null — never a stand-in number");
+ok(core.replOf(VST, "NOPE") === null, "and an unknown position is null rather than a throw");
+
+/* VOR counts BUSTS AT ZERO, which is the property that makes it an expectation rather than a
+   highlight reel: a position producing one star and nine nothings must score below one producing
+   ten useful players, or the board would recommend lottery tickets. */
+function pk(v, key) { return row({ k: key || ("x" + v), p: 10, y: 2010, g: 100, dl: 1, pk: v }); }
+var oneStar = [pk(155), pk(null, "a"), pk(null, "b"), pk(null, "c"), pk(null, "d")];
+var allOk = [pk(90), pk(90), pk(90), pk(90), pk(90)];
+var fStar = core.frame(oneStar, VST, "MID"), fOk = core.frame(allOk, VST, "MID");
+ok(fStar.vor === 16 && fOk.vor === 15,
+   "VOR averages over EVERY selection with busts at zero  (" + fStar.vor + " vs " + fOk.vor + ")");
+ok(fStar.startable === 0.2 && fOk.startable === 1,
+   "…so a one-star-in-five position is barely startable while a five-useful one always is",
+   fStar.startable + " vs " + fOk.startable);
+ok(fStar.star === 0.2 && fOk.star === 0,
+   "…and the STAR share separates them the other way — the two figures answer different questions",
+   fStar.star + " vs " + fOk.star);
+ok(core.frame([pk(90)], { seasonNow: 2026, repl: {} }, "MID") === null,
+   "no replacement level, no frame — the page shows nothing rather than a VOR against an invented bar");
+ok(core.frame([], VST, "MID") === null, "and no careers, no frame");
+
+/* a player exactly AT replacement is startable and contributes nothing — the boundary both ways. */
+var atRepl = core.frame([pk(75)], VST, "MID");
+ok(atRepl.vor === 0 && atRepl.startable === 1,
+   "a player exactly at replacement counts as startable and adds ZERO value over it", 
+   atRepl.vor + " / " + atRepl.startable);
+
+/* THE YARDSTICK. Nearest match, and honest at both ends rather than clamping in silence. */
+var CURVE = [{ p: 1, vor: 20 }, { p: 10, vor: 15 }, { p: 30, vor: 8 }, { p: 60, vor: 3 }];
+eq(core.midEquivalent(CURVE, 15), { p: 10, beyond: null, vor: 15 },
+   "a value on the curve reads its own pick");
+ok(core.midEquivalent(CURVE, 14).p === 10, "and a value between two picks reads the nearer one");
+ok(core.midEquivalent(CURVE, 25).beyond === "above",
+   "a value richer than the best midfielder says it is ABOVE the scale, not 'mid 0'");
+ok(core.midEquivalent(CURVE, 1).beyond === "below",
+   "and one poorer than the deepest says it is BELOW it, rather than being clamped in silence");
+ok(core.midEquivalent([], 10) === null && core.midEquivalent(CURVE, null) === null,
+   "no curve or no value yields no equivalence");
+
+/* the careers selector the board's cells are cut with — the window is a control, never a smoothing */
+var WROWS = [row({ k: "m1", p: 10, y: 2010, g: 50, pk: 90 }),
+             row({ k: "m2", p: 18, y: 2010, g: 50, pk: 90 }),
+             row({ k: "m3", p: 10, y: 2025, g: 0 }),
+             row({ k: "f1", p: 10, y: 2010, g: 50, pk: 90, dp: "KPF" })];
+ok(core.careers(WROWS, VST, "MID", 10, 0, true).length === 1, "a zero-width window is exactly the ordinal");
+ok(core.careers(WROWS, VST, "MID", 10, 8, true).length === 2, "…and widening it pools the neighbours");
+ok(core.careers(WROWS, VST, "MID", 10, 8, true).every(function (r) { return r.dp === "MID"; }),
+   "…and never crosses positions");
+ok(core.careers(WROWS, VST, "MID", 10, 8, false).length === 3,
+   "with every class in, the still-running rows join the window too");
+
+/* ---- the SHIPPED value frame: derived from the league's own law, not chosen ------------------- */
+if (B) {
+  var vst = B.stamp;
+  ok(vst.clubs > 0 && vst.startingSlots,
+     "the record publishes the league's club count and the owner's ruled starting slots",
+     vst.clubs + " clubs");
+  var slotSum = Object.keys(vst.startingSlots).reduce(
+    function (a, k) { return a + vst.startingSlots[k]; }, 0);
+  ok(slotSum === 18,
+     "the slots are the owner's best-23 law — 18 starters — so replacement is derived from HIS " +
+     "rule and not from a number somebody picked", String(slotSum));
+  Object.keys(vst.repl).forEach(function (pos) {
+    var e = vst.repl[pos];
+    ok(e.slotsLeague === e.slots * vst.clubs,
+       "replacement for " + pos + " is measured at slot " + e.slotsLeague + " = " + e.slots +
+       " per club x " + vst.clubs + " clubs — the last man holding a starting slot");
+  });
+  ok(Object.keys(vst.repl).every(function (p) { return vst.repl[p].repl > 0; }),
+     "every position resolved a replacement level off the current season");
+  ok(vst.starBar > Math.max.apply(null, Object.keys(vst.repl).map(function (p) { return vst.repl[p].repl; })),
+     "the star bar sits ABOVE every replacement level — a difference-maker must beat a fill-in at " +
+     "any position, or 'star' would mean nothing", String(vst.starBar));
+
+  /* the shipped board must actually be readable: a yardstick exists and the six positions price
+     against it. This is the assertion that fails if the record ever stops supporting the page. */
+  var shippedCurve = core.midCurve(B.rows, vst, 8, true);
+  ok(shippedCurve.length > 50,
+     "the shipped record supports a midfield yardstick across the curve", shippedCurve.length + " ordinals");
+  var mono = shippedCurve.every(function (c, i, a) { return i === 0 || a[i - 1].vor >= c.vor - 3; });
+  ok(mono,
+     "…and it descends with the ordinal (within noise) — a yardstick that rose late would not be a ruler");
+  var priced = ["MID", "RUCK", "SF", "KPF", "SD", "KPD"].filter(function (pos) {
+    var f = core.frame(core.careers(B.rows, vst, pos, 10, 8, true), vst, pos);
+    return f && core.midEquivalent(shippedCurve, f.vor);
+  });
+  ok(priced.length === 6, "all six positions price against the yardstick at pick 10", priced.join(","));
+}
+
 console.log("\n  " + "-".repeat(70));
 console.log(fails ? "DRAFT DAY TESTS: " + fails + " FAILED of " + n
                   : "DRAFT DAY TESTS: ALL " + n + " PASS");

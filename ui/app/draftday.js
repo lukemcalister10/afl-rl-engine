@@ -175,15 +175,122 @@
       return { lo: Math.min.apply(null, vals), hi: Math.max.apply(null, vals), n: vals.length };
     }
 
+    /* ============================ THE VALUE FRAME ==============================================
+       Everything below converts a (position, pick) into ONE currency: THE MIDFIELDER PICK IT IS
+       WORTH. That is the whole point of the board — "a key forward at pick 5 is worth a midfielder
+       at pick 17" is a sentence you can act on at the clock; "expected peak 75.3" is not.
+
+       THREE FIGURES PER CELL, and each answers a different question:
+
+         VOR      — expected value OVER REPLACEMENT. Mean of max(0, best season - replacement) over
+                    EVERY selection at that position and pick neighbourhood, busts included at zero.
+                    That is what makes it an expectation and not a highlight reel: a position that
+                    produces one star and nine nothings scores far below one that produces ten
+                    useful players, which is the correct ordering for a keeper draft.
+         STARTABLE— the share who ever reach a season at or above replacement. The floor.
+         STAR     — the share who ever reach a difference-maker season, on the league-wide bar. The
+                    ceiling.
+
+       A position can be strong on one and weak on another and that is the finding, not a defect:
+       key defenders are startable astonishingly deep and almost never stars; midfielders own the
+       stars. Showing all three is what stops the board being read as one number.
+
+       REPLACEMENT IS NOT CHOSEN. It comes off the owner's own ruled starting slots (5 mids, 1 ruck,
+       ... per club) times the counted club count, measured on the current season — so the 80th-best
+       midfielder and the 16th-best ruck ARE, by the league's own definition, the last men holding a
+       slot. The generator publishes it with the pool behind it. */
+
+    /* The careers behind one (position, pick) cell. `half` widens the neighbourhood because a single
+       ordinal is at most one career per class; it is a control on the page, never a hidden smoothing,
+       and every cell reports the n it stands on. */
+    function careers(rows, stamp, pos, pick, half, mature) {
+      var lo = pick - half, hi = pick + half;
+      return (rows || []).filter(function (r) {
+        if (r.dp !== pos || r.p < lo || r.p > hi) return false;
+        return !mature || isMature(stamp, r.y);
+      });
+    }
+
+    function replOf(stamp, pos) {
+      var e = ((stamp || {}).repl || {})[pos];
+      return e && e.repl != null ? e.repl : null;
+    }
+
+    /* the three figures for one set of careers, against that position's own replacement level. */
+    function frame(set, stamp, pos) {
+      var repl = replOf(stamp, pos), star = (stamp || {}).starBar;
+      if (!set.length || repl == null) return null;
+      var vor = 0, nStart = 0, nStar = 0;
+      set.forEach(function (r) {
+        var pk = r.pk;
+        if (pk != null && pk > repl) vor += (pk - repl);
+        if (pk != null && pk >= repl) nStart++;
+        if (star != null && pk != null && pk >= star) nStar++;
+      });
+      return { n: set.length, vor: vor / set.length,
+               startable: nStart / set.length, star: nStar / set.length,
+               repl: repl, starBar: star };
+    }
+
+    /* THE MIDFIELD YARDSTICK. The midfielder curve is the ruler every other cell is read against, so
+       it is built once over every ordinal and then searched for the pick whose VOR is nearest.
+
+       WHY A MIDFIELDER AND NOT A DOLLAR. The pick-value curve prices a pick; it does not know what
+       you will do with it. On the clock the question is never "is this worth 530 points", it is
+       "would I rather have this key forward or a midfielder later" — and the midfielder is the only
+       position deep and star-rich enough to be a stable ruler across the whole board. */
+    function midCurve(rows, stamp, half, mature) {
+      var out = [];
+      for (var p = 1; p <= 64; p++) {
+        var f = frame(careers(rows, stamp, "MID", p, half, mature), stamp, "MID");
+        if (f && f.n) out.push({ p: p, vor: f.vor, n: f.n });
+      }
+      return out;
+    }
+
+    /* the midfielder pick whose VOR is closest to `v`. Returns null past the ruler's own range
+       rather than extrapolating: a cell worth more than a pick-1 midfielder has no answer on this
+       scale and must say so, not print "mid 0". */
+    function midEquivalent(curve, v) {
+      if (!curve.length || v == null) return null;
+      var best = null;
+      curve.forEach(function (c) {
+        var d = Math.abs(c.vor - v);
+        if (best === null || d < best.d) best = { p: c.p, d: d, vor: c.vor };
+      });
+      if (!best) return null;
+      var top = curve[0], tail = curve[curve.length - 1];
+      // OFF THE SCALE, both ends, said rather than clamped silently.
+      if (v > top.vor) return { p: top.p, beyond: "above", vor: best.vor };
+      if (v < tail.vor) return { p: tail.p, beyond: "below", vor: best.vor };
+      return { p: best.p, beyond: null, vor: best.vor };
+    }
+
     return { classAge: classAge, isMature: isMature, maturityFromLags: maturityFromLags,
              select: select, quantile: quantile, rates: rates, pinOf: pinOf,
-             priceRange: priceRange, THIN_MAX: THIN_MAX };
+             priceRange: priceRange, THIN_MAX: THIN_MAX,
+             careers: careers, replOf: replOf, frame: frame,
+             midCurve: midCurve, midEquivalent: midEquivalent };
   })();
 
   function makeView(MD) {
   var fmt = MD.fmt;
 
-  var state = { pick: 1, spread: 0, pos: null, mature: true, roll: false };
+  var state = { pick: 1, spread: 0, pos: null, mature: true, roll: false,
+                half: 8, view: "board",
+                a: { pos: "KPF", pick: 5 }, b: { pos: "KPD", pick: 5 } };
+
+  /* THE SIX POSITIONS, IN THE OWNER'S OWN ORDER AND HIS OWN WORDS. The store's codes are terse
+     modelling labels; these are what the positions are called when you are talking about a draft. */
+  var POS_ORDER = ["MID", "RUCK", "SF", "KPF", "SD", "KPD"];
+  var POS_LABEL = { MID: "MIDFIELDER", RUCK: "RUCK", SF: "GEN / SMALL FWD",
+                    KPF: "KEY FORWARD", SD: "GEN / REBOUND DEF", KPD: "KEY DEFENDER" };
+  var POS_SHORT = { MID: "MID", RUCK: "RUC", SF: "G FWD", KPF: "K FWD", SD: "G DEF", KPD: "K DEF" };
+
+  /* The columns of the board. Dense early where the curve is steep and every ordinal matters,
+     sparse late where it is flat — the same spacing the owner's own board used, and the reason it
+     fits on one screen without a scroll. */
+  var BOARD_PICKS = [1, 3, 6, 10, 15, 21, 30, 42, 58];
 
   function bundle() {
     return (typeof window !== "undefined" && window.__DRAFT_OUTCOMES__) || null;
@@ -197,7 +304,12 @@
   function rows() { var b = bundle(); return (b && b.rows) || []; }
   function stamp() { var b = bundle(); return (b && b.stamp) || {}; }
   function isMature(y) { return core.isMature(stamp(), y); }
-  function select() { return core.select(rows(), stamp(), state); }
+  /* The detail panel below the board reads the SAME window the board's cells do, so a cell you
+     clicked and the careers listed under it cannot disagree about which men they are. */
+  function select() {
+    return core.select(rows(), stamp(),
+      { pick: state.pick, spread: state.half, pos: state.pos, mature: state.mature });
+  }
   var quantile = core.quantile;
 
   function ordinals() {
@@ -265,7 +377,7 @@
       return '<option value="' + n + '"' + (n === state.pick ? " selected" : "") + ">" + n + "</option>";
     }).join("");
     sel.addEventListener("change", function () {
-      state.pick = parseInt(sel.value, 10); render(container);
+      state.pick = parseInt(sel.value, 10); renderAll();
     });
     bar.appendChild(sel);
 
@@ -274,7 +386,7 @@
       b.title = (d < 0 ? "Previous" : "Next") + " pick";
       b.addEventListener("click", function () {
         var i = ords.indexOf(state.pick) + d;
-        if (i >= 0 && i < ords.length) { state.pick = ords[i]; render(container); }
+        if (i >= 0 && i < ords.length) { state.pick = ords[i]; renderAll(); }
       });
       return b;
     };
@@ -282,21 +394,412 @@
     bar.appendChild(step(1));
     bar.appendChild(fmt.el("span", "spacer"));
 
-    bar.appendChild(seg("Neighbourhood",
-      [[0, "this pick"], [2, "±2"], [5, "±5"]], state.spread,
-      function (v) { state.spread = v; render(container); }));
+    /* THE NEIGHBOURHOOD IS ONE CONTROL FOR THE WHOLE PAGE. A single ordinal carries at most one
+       career per class, so every cell on the board pools a window around its pick — and the width
+       of that window is the single biggest lever on how noisy the grid looks. It is a control the
+       owner turns, not a constant buried in the code, and every cell reports the n it landed on. */
+    bar.appendChild(seg("Pool",
+      [[4, "±4"], [8, "±8"], [12, "±12"]], state.half,
+      function (v) { state.half = v; renderAll(); }));
 
     var positions = {};
     rows().forEach(function (r) { if (r.dp) positions[r.dp] = 1; });
     var posOpts = [[null, "all"]].concat(Object.keys(positions).sort().map(function (p) { return [p, p]; }));
     bar.appendChild(seg("Drafted as", posOpts, state.pos,
-      function (v) { state.pos = v; render(container); }));
+      function (v) { state.pos = v; renderAll(); }));
 
     bar.appendChild(seg("Classes",
       [[true, "settled only"], [false, "every class"]], state.mature,
-      function (v) { state.mature = v; render(container); }));
+      function (v) { state.mature = v; renderAll(); }));
 
     container.appendChild(bar);
+  }
+
+  // =============================================== THE BOARD (positions x picks, one currency) ===
+  /* Every cell reads "mid N" — the midfielder pick this position at this pick is worth — with the
+     expected value over replacement and the startable share beneath it. One currency across the
+     whole grid is what turns six separate outcome tables into a decision you can take at the clock.
+
+     THE TIERS ARE DERIVED FROM THE YARDSTICK ITSELF, not from the raw figures: a cell is elite when
+     it is worth a top-5 midfielder, strong at a first-rounder, useful mid-board, filler past that.
+     A STEAL is the one tier that is not about level at all — it is about the GAP between what the
+     cell is worth and what the pick costs you. A ruck at pick 30 worth a top-10 midfielder is the
+     same quality as a mid-teens pick and costs a thirty. That gap is the edge, and it is the only
+     thing on this page that tells you to do something rather than telling you what happened. */
+  var TIERS = [
+    { key: "elite",  label: "Elite — top of your board",   at: 5 },
+    { key: "strong", label: "Strong — first-round keeper",  at: 15 },
+    { key: "useful", label: "Useful — mid-board",           at: 30 },
+    { key: "filler", label: "Filler — late / punt",         at: 999 },
+  ];
+  function tierOf(equivPick) {
+    for (var i = 0; i < TIERS.length; i++) if (equivPick <= TIERS[i].at) return TIERS[i].key;
+    return "filler";
+  }
+  /* A steal needs the cell to be worth MATERIALLY more than the pick costs, and needs enough
+     careers behind it to mean anything — a thin cell drifting high is noise, not an edge. */
+  var STEAL_RATIO = 0.6, STEAL_FROM_PICK = 10;
+  function isSteal(equivPick, pick, n) {
+    return n > THIN_MAX && pick >= STEAL_FROM_PICK && equivPick <= pick * STEAL_RATIO;
+  }
+
+  function boardCell(pos, pick, curve) {
+    var set = core.careers(rows(), stamp(), pos, pick, state.half, state.mature);
+    var f = core.frame(set, stamp(), pos);
+    if (!f) return { empty: true, n: set.length };
+    var eq = core.midEquivalent(curve, f.vor);
+    if (!eq) return { empty: true, n: f.n };
+    return { n: f.n, vor: f.vor, startable: f.startable, star: f.star,
+             equiv: eq.p, beyond: eq.beyond, thin: f.n <= THIN_MAX,
+             tier: tierOf(eq.p), steal: isSteal(eq.p, pick, f.n) };
+  }
+
+  function boardSection(page, curve) {
+    var wrap = fmt.el("div", "ddboard");
+    var head = fmt.el("div", "ddbhead");
+    head.innerHTML = '<h2>The full board</h2><p>Each cell is <b>the midfielder pick it is worth</b>' +
+      ' — then its expected value over replacement, and the share who ever reach a startable ' +
+      'season. <span class="thin">●</span> marks a thin sample.</p>';
+    wrap.appendChild(head);
+
+    var tbl = fmt.el("table", "ddgrid");
+    var thead = fmt.el("thead");
+    var hr = fmt.el("tr");
+    hr.appendChild(fmt.el("th", "corner", ""));
+    BOARD_PICKS.forEach(function (p) {
+      var th = fmt.el("th", "", "Pick " + p);
+      th.addEventListener("click", function () { state.pick = p; renderAll(); });
+      th.title = "Show the careers behind pick " + p + " below.";
+      hr.appendChild(th);
+    });
+    thead.appendChild(hr);
+    tbl.appendChild(thead);
+
+    var tb = fmt.el("tbody");
+    POS_ORDER.forEach(function (pos) {
+      var tr = fmt.el("tr");
+      var repl = core.replOf(stamp(), pos);
+      var rh = fmt.el("th", "rowh");
+      rh.innerHTML = "<b>" + fmt.esc(POS_LABEL[pos]) + "</b>" +
+        (repl == null ? "" : '<span>repl ' + repl.toFixed(0) + "</span>");
+      rh.title = "Replacement level " + (repl == null ? "unavailable" : repl.toFixed(1)) +
+        " — the last man holding a starting slot at this position across the league.";
+      tr.appendChild(rh);
+      BOARD_PICKS.forEach(function (p) {
+        var c = boardCell(pos, p, curve);
+        var td = fmt.el("td", "ddcell " + (c.empty ? "empty" : c.tier + (c.steal ? " steal" : "")));
+        if (c.empty) {
+          td.innerHTML = '<span class="none">n=' + c.n + "</span>";
+          td.title = "Too few careers at " + POS_LABEL[pos] + " near pick " + p +
+            " to read anything — nothing is interpolated in its place.";
+        } else {
+          td.innerHTML = '<span class="eq">' + (c.beyond === "above" ? "&gt;" : c.beyond === "below" ? "&lt;" : "") +
+            "mid " + c.equiv + (c.thin ? ' <span class="thin">●</span>' : "") + "</span>" +
+            '<span class="sub">' + c.vor.toFixed(1) + " · " + Math.round(c.startable * 100) + "%</span>";
+          td.title = POS_LABEL[pos] + " at pick " + p + ": worth a midfielder at pick " + c.equiv +
+            ". Expected value over replacement " + c.vor.toFixed(1) + "; " +
+            Math.round(c.startable * 100) + "% ever reach a startable season, " +
+            Math.round(c.star * 100) + "% a difference-maker season. " + c.n + " careers" +
+            (c.thin ? " — a thin sample." : ".") +
+            (c.steal ? " STEAL: worth far more than the pick costs." : "");
+          td.addEventListener("click", function () {
+            state.pick = p; state.pos = pos; state.view = "board"; renderAll();
+          });
+        }
+        tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+    tbl.appendChild(tb);
+    var scroll = fmt.el("div", "tablewrap");
+    scroll.appendChild(tbl);
+    wrap.appendChild(scroll);
+
+    var leg = fmt.el("div", "ddlegend");
+    leg.innerHTML = TIERS.map(function (t) {
+      return '<span class="lg ' + t.key + '"><i></i>' + fmt.esc(t.label) + "</span>";
+    }).join("") + '<span class="lg steal"><i></i>Scarcity steal — worth far more than the pick costs</span>';
+    wrap.appendChild(leg);
+    page.appendChild(wrap);
+  }
+
+  // =========================================================== THE COMPARATOR (A against B) ======
+  /* Two hypotheticals, side by side, in the midfield currency, with a verdict that names the pick
+     at which they break even. This is the question actually asked on the clock — "this key forward
+     here, or a key defender?" — and the currency is what lets two different positions be compared
+     at all. */
+  function sideCard(which) {
+    var side = state[which];
+    var curve = core.midCurve(rows(), stamp(), state.half, state.mature);
+    var f = core.frame(core.careers(rows(), stamp(), side.pos, side.pick, state.half, state.mature),
+                       stamp(), side.pos);
+    var el = fmt.el("div", "ddside");
+    var h = '<div class="k">Option ' + which.toUpperCase() + "</div>" +
+            '<div class="lbl">Position the AFL drafted him as</div><div class="posgrid">';
+    POS_ORDER.forEach(function (p) {
+      h += '<button data-pos="' + p + '" class="' + (p === side.pos ? "on" : "") + '">' +
+           fmt.esc(POS_SHORT[p]) + "</button>";
+    });
+    h += "</div>" +
+      '<div class="lbl">Real national-draft pick</div>' +
+      '<div class="pickrow2"><span class="num pk">' + side.pick + "</span>" +
+      '<input type="range" min="1" max="64" value="' + side.pick + '"></div>';
+    if (!f) {
+      h += '<div class="verdictline none">No settled careers at ' + fmt.esc(POS_LABEL[side.pos]) +
+           " near pick " + side.pick + " — nothing is estimated in its place.</div>";
+    } else {
+      var eq = core.midEquivalent(curve, f.vor);
+      h += '<div class="tierchip ' + tierOf(eq.p) + '">' +
+           fmt.esc(TIERS.filter(function (t) { return t.key === tierOf(eq.p); })[0].label.split(" —")[0]) +
+           "</div>" +
+           '<div class="lbl">' + fmt.esc(POS_LABEL[side.pos]) + " at pick " + side.pick + "</div>" +
+           '<div class="worth">worth <b>a midfielder at pick ' + eq.p + "</b></div>" +
+           '<div class="trio"><span><i>exp. VOR</i>' + f.vor.toFixed(1) + "</span>" +
+           "<span><i>startable</i>" + Math.round(f.startable * 100) + "%</span>" +
+           "<span><i>star</i>" + Math.round(f.star * 100) + "%</span>" +
+           '<span><i>careers</i>' + f.n + (f.n <= THIN_MAX ? " ●" : "") + "</span></div>";
+    }
+    el.innerHTML = h;
+    el.querySelectorAll(".posgrid button").forEach(function (b) {
+      b.addEventListener("click", function () { side.pos = b.getAttribute("data-pos"); renderAll(); });
+    });
+    var rng = el.querySelector("input[type=range]");
+    if (rng) rng.addEventListener("input", function () { side.pick = parseInt(rng.value, 10); renderAll(); });
+    return el;
+  }
+
+  /* THE VERDICT: at what pick does B match A? Not a winner declaration — a break-even, because the
+     two options are almost never far apart and the honest answer is where the line sits. */
+  function verdict() {
+    var curve = core.midCurve(rows(), stamp(), state.half, state.mature);
+    var fa = core.frame(core.careers(rows(), stamp(), state.a.pos, state.a.pick, state.half, state.mature), stamp(), state.a.pos);
+    var fb = core.frame(core.careers(rows(), stamp(), state.b.pos, state.b.pick, state.half, state.mature), stamp(), state.b.pos);
+    var el = fmt.el("div", "ddverdict");
+    if (!fa || !fb) {
+      el.innerHTML = "<b>No verdict.</b> One side has no settled careers to read, and a comparison " +
+        "against nothing is not a comparison.";
+      return el;
+    }
+    /* Walk B's own position down the ordinals for the pick whose value matches A. That is the
+       sentence worth printing: "a key forward at 5 is worth a key defender at 7." */
+    var bestP = null, bestD = null;
+    for (var p = 1; p <= 64; p++) {
+      var f = core.frame(core.careers(rows(), stamp(), state.b.pos, p, state.half, state.mature), stamp(), state.b.pos);
+      if (!f) continue;
+      var d = Math.abs(f.vor - fa.vor);
+      if (bestD === null || d < bestD) { bestD = d; bestP = p; }
+    }
+    var ea = core.midEquivalent(curve, fa.vor), eb = core.midEquivalent(curve, fb.vor);
+    /* THE GAP IS TAKEN OFF THE FIGURES ON SCREEN, not off the full-precision ones behind them. The
+       two cards print VOR to one decimal; subtracting the unrounded values gave 1.5 under a pair
+       reading 16.3 and 14.7, which is a page doing arithmetic the reader can see is wrong. Round
+       first, then subtract — the visible numbers are the ones that have to add up. */
+    var va = Math.round(fa.vor * 10) / 10, vb = Math.round(fb.vor * 10) / 10;
+    var gap = vb - va;
+    var near = Math.abs(gap) < 1.0;
+    el.innerHTML = "<div class=\"k\">Verdict</div>" +
+      "<div class=\"say\">A <b>" + fmt.esc(POS_LABEL[state.a.pos].toLowerCase()) + " at pick " +
+      state.a.pick + "</b> is worth a <b>" + fmt.esc(POS_LABEL[state.b.pos].toLowerCase()) +
+      " at pick " + (bestP == null ? "—" : bestP) + "</b>.</div>" +
+      "<div class=\"why\">" +
+      (near
+        ? "<b>Line ball.</b> Your " + fmt.esc(POS_LABEL[state.b.pos].toLowerCase()) + " at pick " +
+          state.b.pick + " is right around that break-even — split it on roster need, development " +
+          "timing and floor (lean higher-floor if you are contending)."
+        : "<b>" + (gap > 0 ? "Option B" : "Option A") + " is ahead</b> by " + Math.abs(gap).toFixed(1) +
+          " of expected value over replacement at the picks you have set.") +
+      "</div>" +
+      "<div class=\"yard\">Against the midfield yardstick — A ≈ mid " + (ea ? ea.p : "—") +
+      " · B ≈ mid " + (eb ? eb.p : "—") + "</div>";
+    return el;
+  }
+
+  function comparatorSection(page) {
+    var wrap = fmt.el("div", "ddcompare");
+    var h = fmt.el("div", "ddbhead");
+    h.innerHTML = "<h2>This or that</h2><p>Two options in one currency, with the pick at which they " +
+      "break even.</p>";
+    wrap.appendChild(h);
+    var pair = fmt.el("div", "ddpair");
+    pair.appendChild(sideCard("a"));
+    pair.appendChild(sideCard("b"));
+    wrap.appendChild(pair);
+    wrap.appendChild(verdict());
+    page.appendChild(wrap);
+  }
+
+  // ================================================== THE FINDINGS (derived, never written) =====
+  /* EVERY SENTENCE BELOW IS COMPUTED FROM THE BOARD ABOVE, ON EVERY LOAD. None is a paragraph
+     somebody typed once and left to go stale — which is the failure mode of every "insights" panel
+     ever shipped. If the data changes, these change; if a finding stops being true, it stops being
+     printed rather than sitting there being wrong.
+
+     Each one carries the figures it rests on, so it can be checked against the grid rather than
+     believed. */
+
+  /* THE CLIFF IS THE LAST CROSSING, NOT THE FIRST. A first-dip definition looked right and was
+     wrong the moment it met a noisy row: ruck dips under a coin-flip at pick 15, climbs back to 55%
+     at pick 30, and the card printed "ruck ~16" beside a steal card recommending a ruck at 40. Both
+     were computed correctly and together they were nonsense.
+     A cliff is a place you do not come back from, so this walks BACKWARDS and returns the pick from
+     which the position never again clears the bar. A row that stays above it all the way has no
+     cliff and says nothing rather than inventing one at 64. */
+  function startableCliff(pos) {
+    var cliff = null;
+    for (var p = 64; p >= 1; p--) {
+      var f = core.frame(core.careers(rows(), stamp(), pos, p, state.half, state.mature), stamp(), pos);
+      if (!f || f.n <= THIN_MAX) continue;
+      if (f.startable < 0.5) cliff = p; else break;
+    }
+    return cliff;
+  }
+
+  /* the biggest gap between what a cell is worth and what the pick costs — the single best steal. */
+  function bestSteal(curve) {
+    var best = null;
+    POS_ORDER.forEach(function (pos) {
+      for (var p = 8; p <= 58; p++) {
+        var f = core.frame(core.careers(rows(), stamp(), pos, p, state.half, state.mature), stamp(), pos);
+        if (!f || f.n <= THIN_MAX) continue;
+        var eq = core.midEquivalent(curve, f.vor);
+        if (!eq) continue;
+        var gain = p - eq.p;
+        if (best === null || gain > best.gain) best = { pos: pos, pick: p, equiv: eq.p, gain: gain, n: f.n };
+      }
+    });
+    return best;
+  }
+
+  /* star conversion per position over the whole settled population — the ceiling question. */
+  function starRates() {
+    var out = [];
+    POS_ORDER.forEach(function (pos) {
+      var set = (rows() || []).filter(function (r) {
+        return r.dp === pos && r.p <= 64 && (!state.mature || isMature(r.y));
+      });
+      var f = core.frame(set, stamp(), pos);
+      if (f && f.n) out.push({ pos: pos, star: f.star, startable: f.startable, n: f.n });
+    });
+    return out.sort(function (a, b) { return b.star - a.star; });
+  }
+
+  /* A DEPTH CLAIM NEEDS MORE THAN A CELL. THIN_MAX is the right bar for marking one cell with a dot;
+     it is far too permissive for a sentence like "you can wait on this position until pick 58",
+     which is a claim about a whole tail. The first cut used it and said RUCK holds to pick 64 — off
+     15 careers in a window whose neighbour, two picks earlier and on a different 19, read as worth
+     LESS than a pick-64 midfielder. One good late ruck was carrying the entire finding.
+
+     So a depth claim requires a real sample AND a RUN: the position must clear the bar at three
+     consecutive ordinals, so a single lucky window cannot produce a recommendation. */
+  var DEPTH_MIN_N = 25, DEPTH_RUN = 3;
+  function holdsUntil(pos, midBar, curve) {
+    var last = null, run = 0;
+    for (var p = 1; p <= 64; p++) {
+      var f = core.frame(core.careers(rows(), stamp(), pos, p, state.half, state.mature), stamp(), pos);
+      var eq = f ? core.midEquivalent(curve, f.vor) : null;
+      // A cell off the bottom of the yardstick is not "worth a mid 64" — it is worth less than the
+      // ruler can express, and counting it would let a worthless row claim depth it does not have.
+      var holds = !!(f && f.n >= DEPTH_MIN_N && eq && !eq.beyond && eq.p <= midBar);
+      run = holds ? run + 1 : 0;
+      if (run >= DEPTH_RUN) last = p;
+    }
+    return last;
+  }
+
+  function findingsSection(page, curve) {
+    var wrap = fmt.el("div", "ddfindings");
+    var h = fmt.el("div", "ddbhead");
+    h.innerHTML = "<h2>What the board says</h2><p>Every line here is computed from the grid above on " +
+      "this load — none is a paragraph anybody typed. A finding that stops being true stops being " +
+      "printed.</p>";
+    wrap.appendChild(h);
+
+    var cards = fmt.el("div", "ddcards");
+    function card(title, html, cls) {
+      var c = fmt.el("div", "ddcard " + (cls || ""));
+      c.innerHTML = "<h3>" + title + "</h3><p>" + html + "</p>";
+      cards.appendChild(c);
+    }
+
+    // 1. the single best steal on the board
+    var st = bestSteal(curve);
+    if (st && st.gain > 4) {
+      card("The steal", "A <b>" + fmt.esc(POS_LABEL[st.pos].toLowerCase()) + "</b> at <b>pick " +
+        st.pick + "</b> is worth a midfielder at <b>pick " + st.equiv + "</b> — " + st.gain +
+        " ordinals of value the pick does not cost you, and the widest such gap anywhere on the " +
+        "board (" + st.n + " careers).", "steal");
+    }
+
+    // 2. where the stars come from
+    var sr = starRates();
+    if (sr.length >= 3) {
+      var top = sr.slice(0, 2), bot = sr.slice(-2);
+      card("Stars come from the spine",
+        top.map(function (x) { return "<b>" + fmt.esc(POS_LABEL[x.pos].toLowerCase()) + "s " +
+          Math.round(x.star * 100) + "%</b>"; }).join(" and ") +
+        " reach a difference-maker season. " +
+        bot.map(function (x) { return fmt.esc(POS_LABEL[x.pos].toLowerCase()) + "s " +
+          Math.round(x.star * 100) + "%"; }).join(" and ") +
+        ". Spend your ceiling picks where the ceilings are; everywhere else you are buying a body, " +
+        "not a league-winner.", "star");
+    }
+
+    // 3. the startable cliff, per position, ordered
+    var cliffs = POS_ORDER.map(function (p) { return { pos: p, at: startableCliff(p) }; })
+                          .filter(function (c) { return c.at != null; })
+                          .sort(function (a, b) { return a.at - b.at; });
+    if (cliffs.length >= 3) {
+      card("Mind the startable cliff",
+        "The pick where a position drops below a coin-flip to produce even a starter: " +
+        cliffs.map(function (c) { return fmt.esc(POS_LABEL[c.pos].toLowerCase()) + " <b>~" + c.at + "</b>"; })
+              .join(", ") + ". Take the early ones <b>early or not at all</b>; you can comfortably " +
+        "<b>wait</b> on the late ones.");
+    }
+
+    // 4. how deep the midfield holds
+    var midHold = holdsUntil("MID", 20, curve);
+    if (midHold) {
+      card("Ride mids deep",
+        "A midfielder is still worth a top-20 midfielder's return as deep as <b>pick " + midHold +
+        "</b>. They hold value longest and own the stars — which is why the yardstick is a " +
+        "midfielder and not a dollar.");
+    }
+
+    // 5. tall vs small forward, decided by the data rather than asserted
+    var cross = null;
+    for (var p = 1; p <= 64; p++) {
+      var fs = core.frame(core.careers(rows(), stamp(), "SF", p, state.half, state.mature), stamp(), "SF");
+      var fk = core.frame(core.careers(rows(), stamp(), "KPF", p, state.half, state.mature), stamp(), "KPF");
+      if (!fs || !fk || fs.n <= THIN_MAX || fk.n <= THIN_MAX) continue;
+      if (fs.vor > fk.vor) cross = p;
+    }
+    if (cross) {
+      /* "down to ~64" is a silly way to say "everywhere", and the first cut printed exactly that.
+         When the crossing runs to the end of the curve the finding is stronger, not weaker, and it
+         should read that way. */
+      card("Take the small forward over the tall",
+        "A small or general forward out-returns a key forward " +
+        (cross >= 58 ? "<b>at every pick on the board</b>" : "at every pick down to <b>~" + cross + "</b>") +
+        ". Same shape of upside, fewer busts, and it costs you less to find out.");
+    }
+
+    // 6. where you can punt — EVERY position that holds, not one fragile winner
+    /* Named as a set rather than a single deepest position on purpose: the top two are usually
+       within a few ordinals of each other, and picking one by a margin the sample cannot support
+       would turn a robust finding into a coin toss dressed as advice. */
+    var deep = POS_ORDER.map(function (pos) { return { pos: pos, at: holdsUntil(pos, 40, curve) }; })
+                        .filter(function (d) { return d.at && d.at >= 45; })
+                        .sort(function (a, b) { return b.at - a.at; });
+    if (deep.length) {
+      card("Where you can punt",
+        deep.map(function (d) {
+          return "<b>" + fmt.esc(POS_LABEL[d.pos].toLowerCase()) + "</b> to <b>pick " + d.at + "</b>";
+        }).join(", ") + " — still worth a top-40 midfielder that deep. These are the positions you " +
+        "can leave until late without losing much, so spend your early picks elsewhere.");
+    }
+
+    wrap.appendChild(cards);
+    page.appendChild(wrap);
   }
 
   // ---------------------------------------------------------------- the panels
@@ -410,6 +913,7 @@
   }
 
   function render(container) {
+    _container = container;
     container.innerHTML = "";
     /* Wears the clubs page's class as well as its own, the same way ui/app/pickvalue.js does: the
        stylesheet is visual law and a view may not amend it, so the intro / halt / table vocabulary
@@ -434,6 +938,26 @@
 
     controls(page);
 
+    /* THE MIDFIELD YARDSTICK IS BUILT ONCE PER RENDER and handed to everything that needs it. It is
+       64 frames over the whole population; rebuilding it inside each of the 54 board cells would be
+       the same work 54 times, and the page would stutter on every control change. */
+    var curve = core.midCurve(rows(), stamp(), state.half, state.mature);
+    if (!curve.length) {
+      halt(page, "No midfield yardstick.", "The record carries no settled midfield careers, so " +
+        "there is no ruler to price the other positions against and no board is drawn.");
+      return;
+    }
+
+    boardSection(page, curve);
+    findingsSection(page, curve);
+    comparatorSection(page);
+
+    var detail = fmt.el("div", "ddbhead");
+    detail.innerHTML = "<h2>The careers behind a pick</h2><p>Click a cell above, or use the " +
+      "selector, to see who this rests on. Nothing on this page is interpolated — every figure " +
+      "stands on named careers.</p>";
+    page.appendChild(detail);
+
     var sel = select();
     if (!sel.set.length) {
       halt(page, "No settled careers in this set.", "Widen the neighbourhood, clear the position " +
@@ -447,10 +971,16 @@
 
     var more = fmt.el("button", "ddmore",
       (state.roll ? "Hide" : "Show") + " the " + fmt.n(sel.set.length) + " careers behind these figures");
-    more.addEventListener("click", function () { state.roll = !state.roll; render(container); });
+    more.addEventListener("click", function () { state.roll = !state.roll; renderAll(); });
     page.appendChild(more);
     if (state.roll) page.appendChild(roll(sel.set));
   }
+
+  /* One re-entry point for every control on the page. The container is remembered from the last
+     real render so a nested handler does not have to carry it, and a control that fires before the
+     first render is a no-op rather than a throw. */
+  var _container = null;
+  function renderAll() { if (_container) render(_container); }
 
   return { render: render, pin: pin, select: select, rates: rates, isMature: isMature,
            bundle: bundle, stamp: stamp, state: state, core: core, THIN_MAX: THIN_MAX };

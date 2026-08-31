@@ -717,3 +717,92 @@ footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--
 @media(max-width:1040px){.ddstats{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:620px){.ddstats{grid-template-columns:repeat(2,minmax(0,1fr))}
   .ddstat .v{font-size:22px}.ddstat .k{min-height:0}}
+
+/* ---- DRAFT DAY: the board, the comparator, the findings (owner item 13, rebuilt 2026-08-31) ---
+   Modelled on the owner's own earlier tool, which read every cell in ONE currency — the midfielder
+   pick it is worth. The tiers are colour AND text (the LOCK: colour is never the sole carrier), and
+   every cell carries its figures beneath the headline so the grid is skimmable without being thin. */
+.ddbhead{margin:22px 0 10px}
+.ddbhead h2{font-family:var(--cond);font-weight:900;font-size:20px;letter-spacing:.06em;
+  text-transform:uppercase;margin:0}
+.ddbhead p{margin:5px 0 0;font-size:12px;color:var(--dim);line-height:1.6;max-width:70ch}
+.ddbhead p b{color:var(--text)}
+.ddgrid{width:100%;border-collapse:separate;border-spacing:5px;font-size:12px}
+.ddgrid th{font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);padding:2px 4px;text-align:center}
+.ddgrid th:not(.corner):not(.rowh){cursor:pointer}
+.ddgrid th:not(.corner):not(.rowh):hover{color:var(--volt)}
+.ddgrid th.rowh{text-align:left;white-space:nowrap;padding-right:12px}
+.ddgrid th.rowh b{display:block;color:var(--text);font-size:11px;letter-spacing:.1em}
+.ddgrid th.rowh span{display:block;font-family:var(--mono);font-size:9.5px;color:var(--faint);
+  letter-spacing:0;text-transform:none;margin-top:2px}
+.ddcell{border:1px solid var(--edge);border-radius:3px;padding:9px 6px;text-align:center;
+  cursor:pointer;background:var(--card);min-width:86px}
+.ddcell:hover{border-color:var(--volt)}
+.ddcell .eq{display:block;font-family:var(--fig);font-variant-numeric:tabular-nums lining-nums;
+  font-weight:700;font-size:15px;line-height:1.1}
+.ddcell .sub{display:block;font-family:var(--fig);font-variant-numeric:tabular-nums lining-nums;
+  font-size:10.5px;color:var(--faint);margin-top:3px}
+.ddcell .none{color:var(--faint);font-family:var(--mono);font-size:10px}
+.ddcell.empty{background:transparent;border-style:dashed;cursor:default}
+.ddcell .thin{color:var(--volt);font-size:11px}
+/* the four tiers + the steal. Each is a border AND a text colour, never colour alone. */
+.ddcell.elite{border-color:#e8c65a;background:rgba(232,198,90,.07)}   .ddcell.elite .eq{color:#e8c65a}
+.ddcell.strong{border-color:#e08a4a;background:rgba(224,138,74,.06)}  .ddcell.strong .eq{color:#e08a4a}
+.ddcell.useful{border-color:#3fb6c8;background:rgba(63,182,200,.05)}  .ddcell.useful .eq{color:#4cc7d8}
+.ddcell.filler{border-color:#33465e}                                   .ddcell.filler .eq{color:#7f93ad}
+.ddcell.steal{border-color:var(--up);background:rgba(74,222,128,.09);box-shadow:inset 0 0 0 1px rgba(74,222,128,.25)}
+.ddcell.steal .eq{color:var(--up)}
+.ddlegend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:11px;color:var(--dim)}
+.ddlegend .lg{display:inline-flex;align-items:center;gap:7px}
+.ddlegend .lg i{width:10px;height:10px;border-radius:2px;display:inline-block}
+.ddlegend .elite i{background:#e8c65a}.ddlegend .strong i{background:#e08a4a}
+.ddlegend .useful i{background:#3fb6c8}.ddlegend .filler i{background:#33465e}
+.ddlegend .steal i{background:var(--up)}
+/* the comparator */
+.ddpair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ddside{background:var(--card);border:1px solid var(--edge);padding:14px 16px}
+.ddside .k{font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--volt)}
+.ddside .lbl{font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);margin:12px 0 6px}
+.ddside .posgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.ddside .posgrid button{background:transparent;border:1px solid var(--edge);color:var(--dim);
+  font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  padding:8px 4px;cursor:pointer}
+.ddside .posgrid button:hover{border-color:var(--volt);color:var(--text)}
+.ddside .posgrid button.on{background:#e8c65a;border-color:#e8c65a;color:#0b0e13}
+.pickrow2{display:flex;align-items:center;gap:12px}
+.pickrow2 .pk{font-family:var(--fig);font-variant-numeric:tabular-nums lining-nums;font-weight:700;
+  font-size:22px;border:1px solid var(--edge);padding:5px 12px;min-width:56px;text-align:center}
+.pickrow2 input[type=range]{flex:1;accent-color:#e8c65a}
+.tierchip{display:inline-block;font-family:var(--cond);font-weight:700;font-size:10px;
+  letter-spacing:.18em;text-transform:uppercase;border:1px solid;padding:3px 10px;margin-top:14px}
+.tierchip.elite{color:#e8c65a;border-color:#e8c65a}.tierchip.strong{color:#e08a4a;border-color:#e08a4a}
+.tierchip.useful{color:#4cc7d8;border-color:#4cc7d8}.tierchip.filler{color:#7f93ad;border-color:#33465e}
+.ddside .worth{font-family:var(--cond);font-weight:700;font-size:22px;line-height:1.25;margin-top:2px}
+.ddside .worth b{color:#e8c65a}
+.ddside .trio{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:12px;font-family:var(--fig);
+  font-variant-numeric:tabular-nums lining-nums;font-weight:700;font-size:15px}
+.ddside .trio i{display:block;font-family:var(--cond);font-style:normal;font-weight:700;font-size:9.5px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:2px}
+.ddside .verdictline.none{margin-top:14px;font-size:12px;color:var(--faint)}
+.ddverdict{background:var(--card-2);border:1px solid var(--edge);border-left:4px solid #e8c65a;
+  padding:14px 16px;margin-top:14px}
+.ddverdict .k{font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--faint)}
+.ddverdict .say{font-size:16px;margin-top:6px;line-height:1.5}
+.ddverdict .say b{color:#e8c65a}
+.ddverdict .why{font-size:12.5px;color:var(--dim);margin-top:10px;line-height:1.6}
+.ddverdict .why b{color:var(--text)}
+.ddverdict .yard{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:10px;font-style:italic}
+/* the findings */
+.ddcards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ddcard{background:var(--card);border:1px solid var(--edge);padding:14px 16px}
+.ddcard h3{font-family:var(--cond);font-weight:900;font-size:13px;letter-spacing:.1em;
+  text-transform:uppercase;margin:0 0 7px;color:#4cc7d8}
+.ddcard.steal{border-color:rgba(74,222,128,.4)} .ddcard.steal h3{color:var(--up)}
+.ddcard.star{border-color:rgba(232,198,90,.4)}  .ddcard.star h3{color:#e8c65a}
+.ddcard p{margin:0;font-size:12.5px;color:var(--dim);line-height:1.65}
+.ddcard p b{color:var(--text)}
+@media(max-width:900px){.ddpair,.ddcards{grid-template-columns:1fr}}
