@@ -149,6 +149,59 @@ def v0_of(by_key, key):
 OWNER_OVERRIDES = os.path.join("docs", "inputs", "OWNER_DISPLAY_OVERRIDES.json")
 
 
+#: The declared model config the board was built under. `config_sha256` in data/release_contract.json
+#: pins it, so it is the AUTHORITY for the dials this board carries — not the code defaults, which
+#: can drift from what any given board was actually built with.
+MODEL_CONFIG = os.path.join("data", "model_config.json")
+
+
+def _effective_repl(repl):
+    """THE REPLACEMENT BAR THE ENGINE ACTUALLY PRICES AGAINST = REPL minus the uniform drop.
+
+    `rl_model.REPL` is the raw literal (MID 80.1, KPF 66.8, ...). It is NOT the bar a player is
+    measured against: the pricing core lowers every one of them by a uniform dial before use —
+
+        engine/forward_valuation/dist_redesign.py:35   REPL_DROP_PTS = float(env RL_REPL_DROP, '3')
+        engine/forward_valuation/dist_redesign.py:39   REPL_DROP = {g: REPL_DROP_PTS for g in <the six>}
+        engine/rl_after/_merged_recover.py:495         MA.REPL[g] = sav[g] - rd.REPL_DROP.get(g, 0)
+
+    so the live bars are three points lower than the literal, uniformly: MID 77.1, SD 75.3,
+    RUCK 75.5, KPD 65.4, SF 67.9, KPF 63.8. The owner said so directly, and this is where the code
+    says it too. A surface that measured against the raw literal would sit three points above every
+    real bar at every position.
+
+    THE DIAL IS READ FROM THE DECLARED CONFIG, NOT FROM THE CODE DEFAULT. data/model_config.json is
+    the manifest this board was built under and is pinned by the release contract's config_sha256;
+    dist_redesign's '3' is only what you get when the env is unset. Reading the code default would
+    publish the right answer today for the wrong reason, and the wrong answer the first time a board
+    is built with the dial moved.
+
+    A config that declares no drop yields a drop of 0 and REPL_BAR == REPL — stated rather than
+    assumed, so the absence is visible in the bundle instead of silently reproducing the literal.
+    """
+    path = os.path.join(REPO, MODEL_CONFIG)
+    drop = 0.0
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as fh:
+            cfg = json.load(fh)
+        # The manifest keeps its dials under `vars` (its other top-level keys are the manifest's own
+        # metadata — config_sha256, baked_state, var_notes). Read there, and NOT from the top level:
+        # a top-level read returns None, silently yields a drop of 0, and republishes the raw literal
+        # as though it were the bar. Which is exactly what the first cut of this did.
+        raw = (cfg.get("vars") or {}).get("RL_REPL_DROP")
+        if raw is not None:
+            try:
+                drop = float(raw)
+            except (TypeError, ValueError):
+                raise SystemExit("HALT: data/model_config.json declares RL_REPL_DROP=%r, which is "
+                                 "not a number. The replacement bar cannot be computed and no "
+                                 "stand-in is invented." % (raw,))
+    bar = {}
+    for pos, v in (repl or {}).items():
+        bar[pos] = round(float(v) - drop, 10) if isinstance(v, (int, float)) else v
+    return drop, bar
+
+
 def _apply_pool_override(pvc, repo):
     """Publish the owner's ruled pool-pick figure over the board's derived one. DISPLAY ONLY.
 
@@ -400,6 +453,7 @@ def main():
     repl = d.get("REPL", {})
     peak = d.get("PEAK", {})
     peak_age = d.get("PEAK_AGE", {})
+    repl_drop, repl_bar = _effective_repl(repl)
     pvc, pool_override = _apply_pool_override(pvc, REPO)
     # items 12/14: future-lens phantom pick lines (+1/+2 lenses only) + the lens-conservation diagnostic.
     # Working-tier only; passed through verbatim. The current/-1/-2 player ladder never reads these (the
@@ -475,7 +529,11 @@ def main():
         "back": back_rows,
         "picks": picks,
         "pvc": pvc,
+        # THE RAW LITERAL, THE DIAL, AND THE BAR THE ENGINE ACTUALLY PRICES AGAINST — all three, so
+        # a reader can see where the number came from instead of being handed a figure to trust.
         "REPL": repl,
+        "REPL_DROP": repl_drop,
+        "REPL_BAR": repl_bar,
         "PEAK": peak,
         "PEAK_AGE": peak_age,
         "lensPicks": lens_picks,

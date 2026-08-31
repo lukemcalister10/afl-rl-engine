@@ -224,8 +224,27 @@
        board. `frame` is now handed the number the engine prices against, and the frame refuses when
        the board does not publish one rather than substituting anything. */
     function replOf(board, pos) {
-      var v = ((board || {}).REPL || {})[pos];
+      /* REPL_BAR, NOT REPL. The raw literal is not the bar a player is measured against: the pricing
+         core lowers every one of them by a uniform dial before use (RL_REPL_DROP = 3 in the declared
+         config; dist_redesign.py:35-39, applied at _merged_recover.py:495). So the live bars are
+         MID 77.1, SD 75.3, RUCK 75.5, KPD 65.4, SF 67.9, KPF 63.8 — three points below the literal
+         at every position.
+
+         Reading REPL would sit this whole board three points above every real bar. It is a small
+         number and it is not a small error: it shifts every "clears the bar" share and every value
+         over replacement on the page, in the same direction, at once.
+
+         The fallback to REPL is deliberate and narrow: a bundle published before REPL_BAR existed
+         carries only the literal, and showing it is better than showing nothing — but it is the
+         literal, and `replBarIsEffective` below lets the page say so rather than imply otherwise. */
+      var b = (board || {}).REPL_BAR;
+      var v = (b && b[pos] != null) ? b[pos] : ((board || {}).REPL || {})[pos];
       return typeof v === "number" ? v : null;
+    }
+
+    /* whether the bar in use is the one the engine prices against, or the un-dropped literal. */
+    function replBarIsEffective(board) {
+      return !!((board || {}).REPL_BAR) && typeof (board || {}).REPL_DROP === "number";
     }
 
     /* THERE IS NO "STAR" FIGURE ON THIS PAGE, AND THAT IS A DECISION.
@@ -288,7 +307,8 @@
     return { classAge: classAge, isMature: isMature, maturityFromLags: maturityFromLags,
              select: select, quantile: quantile, rates: rates, pinOf: pinOf,
              priceRange: priceRange, THIN_MAX: THIN_MAX,
-             careers: careers, replOf: replOf, frame: frame,
+             careers: careers, replOf: replOf, replBarIsEffective: replBarIsEffective,
+             frame: frame,
              midCurve: midCurve, midEquivalent: midEquivalent };
   })();
 
@@ -495,7 +515,13 @@
     head.innerHTML = '<h2>The full board</h2><p>Each cell is <b>the midfielder pick it is worth</b>' +
       ' — then its expected value over <b>the model\'s own replacement bar</b> for that position, ' +
       'and the share who ever clear it. <span class="thin">●</span> marks a thin sample.</p>' +
-      (bars ? '<p class="bars">Bars: ' + bars + '</p>' : "");
+      (bars ? '<p class="bars">Bars: ' + bars +
+        (core.replBarIsEffective(board())
+          ? '  <span class="drop">— the literal REPL less the ' + board().REPL_DROP +
+            '-point drop the pricing core applies (RL_REPL_DROP)</span>'
+          : '  <span class="drop warn">— the RAW literal. This bundle publishes no REPL_BAR, so the ' +
+            'drop the pricing core applies is NOT reflected and every figure below sits above the ' +
+            'real bar.</span>') + '</p>' : "");
     wrap.appendChild(head);
 
     var tbl = fmt.el("table", "ddgrid");

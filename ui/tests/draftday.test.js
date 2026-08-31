@@ -278,9 +278,21 @@ console.log("\n  the BAKED bars (rl_model REPL / PEAK) and the midfield yardstic
    is that NOTHING is derived: the bars arrive from the board, and a board that does not publish
    them yields no frame at all rather than a substitute. */
 
-var BOARD = { REPL: { MID: 80.1, KPF: 66.8 }, PEAK: { MID: 92, KPF: 72 } };
+/* THE BAR IN USE IS REPL_BAR — the literal LESS the uniform drop the pricing core applies. The raw
+   REPL is not what a player is measured against: dist_redesign.py:35-39 lowers every position by
+   RL_REPL_DROP (3 in the declared config) and _merged_recover.py:495 applies it. Measuring against
+   the literal would sit this page three points above every real bar, at every position, in the
+   same direction — a small number and not a small error. */
+var BOARD = { REPL: { MID: 80.1, KPF: 66.8 }, REPL_DROP: 3,
+              REPL_BAR: { MID: 77.1, KPF: 63.8 }, PEAK: { MID: 92, KPF: 72 } };
 
-ok(core.replOf(BOARD, "MID") === 80.1, "a replacement bar is READ off the board, per position");
+ok(core.replOf(BOARD, "MID") === 77.1,
+   "the bar is REPL_BAR — the literal 80.1 LESS the 3-point drop the pricing core applies");
+ok(core.replBarIsEffective(BOARD) === true, "…and the page can tell that it is the effective bar");
+ok(core.replOf({ REPL: { MID: 80.1 } }, "MID") === 80.1 &&
+   core.replBarIsEffective({ REPL: { MID: 80.1 } }) === false,
+   "a bundle predating REPL_BAR falls back to the literal AND reports that it is not effective, so " +
+   "the page says so rather than implying the drop was applied");
 ok(core.replOf(BOARD, "RUCK") === null,
    "a position the board does not publish a bar for reads null — never a stand-in number");
 ok(core.replOf({}, "MID") === null && core.replOf(null, "MID") === null,
@@ -293,8 +305,8 @@ function pk(v, key) { return row({ k: key || ("x" + v), p: 10, y: 2010, g: 100, 
 var oneStar = [pk(160), pk(null, "a"), pk(null, "b"), pk(null, "c"), pk(null, "d")];
 var allOk = [pk(95), pk(95), pk(95), pk(95), pk(95)];
 var fStar = core.frame(oneStar, BOARD, "MID"), fOk = core.frame(allOk, BOARD, "MID");
-ok(Math.abs(fStar.vor - 15.98) < 1e-9 && Math.abs(fOk.vor - 14.9) < 1e-9,
-   "VOR averages over EVERY selection with busts at zero, against the BAKED bar of 80.1",
+ok(Math.abs(fStar.vor - 16.58) < 1e-9 && Math.abs(fOk.vor - 17.9) < 1e-9,
+   "VOR averages over EVERY selection with busts at zero, against the EFFECTIVE bar of 77.1",
    fStar.vor.toFixed(2) + " vs " + fOk.vor.toFixed(2));
 ok(fStar.startable === 0.2 && fOk.startable === 1,
    "…so a one-star-in-five position is barely startable while a five-useful one always is");
@@ -304,11 +316,11 @@ ok(fStar.startable === 0.2 && fOk.startable === 1,
 ok(fStar.star === undefined && fOk.star === undefined,
    "the frame carries NO star figure — PEAK is not a star bar (SF's 70 sits below its own REPL of " +
    "70.9), and no baked constant has been named as one");
-ok(core.frame([pk(95)], { REPL: {} }, "MID") === null,
+ok(core.frame([pk(95)], { REPL: {}, REPL_BAR: {} }, "MID") === null,
    "no baked bar, no frame — the page shows nothing rather than measuring against something invented");
 ok(core.frame([], BOARD, "MID") === null, "and no careers, no frame");
 
-var atRepl = core.frame([pk(80.1)], BOARD, "MID");
+var atRepl = core.frame([pk(77.1)], BOARD, "MID");
 ok(atRepl.vor === 0 && atRepl.startable === 1,
    "a player exactly at the bar counts as startable and adds ZERO value over it",
    atRepl.vor + " / " + atRepl.startable);
@@ -346,6 +358,24 @@ ok(core.careers(WROWS, VST, "MID", 10, 8, false).length === 3,
   ok(bd.REPL && bd.PEAK, "the shipped bundle publishes the baked REPL and PEAK");
   ok(POS6.every(function (p) { return typeof bd.REPL[p] === "number" && bd.REPL[p] > 0; }),
      "…for all six positions", JSON.stringify(bd.REPL));
+
+  /* THE DROP COMES FROM THE DECLARED CONFIG, NOT A CODE DEFAULT. data/model_config.json is the
+     manifest this board was built under (pinned by the release contract's config_sha256);
+     dist_redesign's literal '3' is only what an unset environment gives you. Reading the default
+     would be right today for the wrong reason and wrong the first time a board moves the dial. */
+  var cfgPath = path.join(__dirname, "..", "..", "data", "model_config.json");
+  var cfg = JSON.parse(fs.readFileSync(cfgPath, "utf8"));
+  var declaredDrop = parseFloat((cfg.vars || {}).RL_REPL_DROP);
+  ok(!isNaN(declaredDrop),
+     "the declared model config publishes RL_REPL_DROP under `vars`", String(declaredDrop));
+  ok(bd.REPL_DROP === declaredDrop,
+     "the bundle's drop IS the declared one — not the code default, not a typed 3",
+     bd.REPL_DROP + " vs " + declaredDrop);
+  ok(POS6.every(function (p) { return Math.abs(bd.REPL_BAR[p] - (bd.REPL[p] - declaredDrop)) < 1e-9; }),
+     "and REPL_BAR is exactly REPL minus that drop at every position",
+     JSON.stringify(bd.REPL_BAR));
+  ok(POS6.every(function (p) { return core.replOf(bd, p) === bd.REPL_BAR[p]; }),
+     "…and the page measures against REPL_BAR, never the raw literal");
   /* AGAINST THE ENGINE ITSELF, not against a copy. If rl_model's REPL is ever re-derived, this
      goes red until the board is rebuilt and republished — which is the whole point of not holding
      a second copy anywhere. */
