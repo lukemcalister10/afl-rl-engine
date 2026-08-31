@@ -82,7 +82,16 @@ def label_pos(code):
 # THE REFUSAL REASON CARRIES NO IDENTITY. The detail (which md5 disagreed with which) is printed by
 # this generator to the operator's terminal; what rides the public bundle is the state in words. The
 # public bundle carries no provenance identity today and this feature does not become the exception.
-def join_v0(board_md5, store_md5):
+def _entry_inputs_sig_of_store():
+    """The signature of the live store's v0-determining fields — the reader's half of the one
+    function shared with the generator. No engine: it reads raw JSON, which is exactly why one
+    definition can serve both sides instead of a mirrored pair."""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from v0_identity import entry_inputs_sig_of_store
+    return entry_inputs_sig_of_store(STORE)
+
+
+def join_v0(board_md5, store_md5, active_keys=()):
     """-> (by_key, note). `by_key` empty == refused; `note` is the reason, in identity-free words."""
     if not os.path.exists(V0_SIDECAR):
         return {}, "The v0 sidecar was not present when this bundle was generated."
@@ -93,11 +102,35 @@ def join_v0(board_md5, store_md5):
         stamp = bundle.get("stamp") or {}
     except Exception as exc:                                          # noqa: BLE001 - reported, never silent
         return {}, "The v0 sidecar could not be read (%s), so no entry price is published." % type(exc).__name__
-    if not stamp.get("board") or not stamp.get("store"):
-        return {}, "The v0 sidecar names no board/store identity, so it cannot be authenticated."
-    if stamp["board"] != board_md5 or stamp["store"] != store_md5:
-        return {}, ("The v0 sidecar was generated from a different board/store identity than this "
-                    "bundle, so no entry price is published.")
+    # AUTHENTICATE ON THE INPUTS, NOT THE CALENDAR (2026-08-31).
+    #
+    # This used to compare the sidecar's stamped board and store md5 against the bundle's. Both move
+    # on every round advance, and an entry price does not: v0 is a draft-time constant off a frozen
+    # surface whose slot key depends only on (future position, draft age, pick), which the
+    # generator's own docstring states. The gate therefore contradicted the invariant of the file it
+    # was guarding, and the contradiction had teeth — FW1 moved the store, this refused, and all 804
+    # rows published v0:null for a day. Measured across that same move: 804 of 804 entry prices were
+    # byte-identical. The refusal protected nothing.
+    #
+    # It is replaced by two checks that are about whether this sidecar can answer for THIS board:
+    #   (1) the v0-determining store fields are the ones it was cut from (v0_identity, one function
+    #       shared with the generator so the writer and the reader cannot drift apart), and
+    #   (2) it covers every active row — a roster addition is the one way a sidecar can be complete
+    #       for its own cut and incomplete for this one.
+    # Both are milliseconds. Regenerating instead would be 580 seconds, measured, on every landing.
+    if not stamp.get("entryInputsSig"):
+        return {}, ("The v0 sidecar predates entry-input authentication (no entryInputsSig), so it "
+                    "cannot be authenticated against this store. Re-run ui/tools/gen_v0_sidecar.py.")
+    want_sig = _entry_inputs_sig_of_store()
+    if stamp["entryInputsSig"] != want_sig:
+        return {}, ("The v0 sidecar was cut from a store whose entry-price inputs (pick / dob / "
+                    "future position / type / roster) differ from this one, so no entry price is "
+                    "published. Re-run ui/tools/gen_v0_sidecar.py.")
+    missing = [k for k in active_keys if k not in by_key]
+    if missing:
+        return {}, ("The v0 sidecar does not cover %d row(s) on this board (e.g. %s), so no entry "
+                    "price is published. Re-run ui/tools/gen_v0_sidecar.py."
+                    % (len(missing), ", ".join(missing[:3])))
     return by_key, None
 
 
@@ -201,7 +234,9 @@ def main():
             "dRoundRank": p.get("dRoundRank"),
         }
 
-    v0_by_key, v0_note = join_v0(srcmd5, store_md5)
+    # the active keys are passed so the join can prove COVERAGE — a sidecar can be complete for the
+    # roster it was cut on and incomplete for this one, which is the one staleness that still matters
+    v0_by_key, v0_note = join_v0(srcmd5, store_md5, [p.get("key") for p in active])
 
     def row_public(p):
         # Sanitised: no key/slug, no ids, no owner-rule machinery, no pathway/mech. Value + movement only.

@@ -145,6 +145,10 @@ def build(board_md5, store_md5):
     v0_start = ns['v0_start']
 
     board = json.load(open(BOARDP))
+    # read for the entry-inputs signature below — the raw store, not the engine's view of it, so the
+    # reader can recompute the same digest without paying an engine load
+    with open(STOREP, encoding='utf-8') as _sf:
+        store_rows = json.load(_sf)
     active_keys = [r['key'] for r in board.get('active', [])]
     active_set = set(active_keys)
 
@@ -186,7 +190,18 @@ def build(board_md5, store_md5):
         counts['absent'] += 1
         absent_rows.append((k, 'no engine record joins this board key'))
 
+    # THE IDENTITY THAT AUTHENTICATES THIS FILE is entryInputsSig, NOT board/store. Those two move
+    # on every round advance and v0 does not (see the module docstring's own statement of the
+    # invariant), so gating the join on them refused a perfectly good sidecar the moment any football
+    # landed — measured at FW1: 804 of 804 entry prices byte-identical across the store move, and
+    # every player card lost its entry price anyway. board/store stay in the stamp as PROVENANCE:
+    # what this file was cut on, which is worth recording and is not what makes it valid.
+    import sys as _sys
+    _sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from v0_identity import entry_inputs_sig, SIG_VERSION
     stamp = {
+        'entryInputsSig': entry_inputs_sig(store_rows),
+        'entryInputsSigVersion': SIG_VERSION,
         'board': board_md5,
         'store': store_md5,
         'generatedFromStore': store_md5,
