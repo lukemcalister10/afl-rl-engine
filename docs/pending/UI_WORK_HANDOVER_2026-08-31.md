@@ -86,8 +86,15 @@ mean.
 5. **Chromium IS available** despite what `playwright-core` reports. `ui_222_items.test.mjs` and
    `responsive_layout.test.mjs` drive a real browser — layout work can and should be render-verified.
 6. **Cost discipline, at the owner's prompt.** Run the full suite once per work block, not per edit.
-   Batch shell calls. Prefer one agent with a wide brief over three narrow ones; each agent re-reads
-   the codebase from scratch, and four of them cost ~610k tokens in this block.
+   Batch shell calls. Four subagents cost ~610k tokens in this block because each re-reads the
+   codebase from scratch, and the owner noticed: 67% of a five-hour allowance in 24 minutes.
+
+   **HIS RULING, 2026-08-31, verbatim: "for now inline, but subagents are a resource we can and
+   should use if the situation suits it."** So the default is inline. A subagent is justified when a
+   task genuinely needs its own large context and is well isolated by file — #13, the draft
+   translator, is the one remaining item that qualifies. Three narrow agents editing neighbouring
+   files is the pattern to avoid: it triples the reading cost and produced two collisions in this
+   block. Ask before spending it, rather than after.
 
 ## The suites, and what green looks like
 
