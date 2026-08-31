@@ -340,7 +340,7 @@
         // assert is about the newest point of the RECORD, so retro points are excluded; including
         // them would make the newest point a re-pricing and fail-close the tab the moment the
         // retrospective was emitted, which is the opposite of what the assert is for.
-        var pts = core.points(bundle).filter(function (p) { return p.kind !== "retro"; });
+        var pts = core.allPoints(bundle).filter(function (p) { return p.kind !== "retro"; });
         var newestBoard = null;
         if (pts.length) {
           var np = pts[pts.length - 1];
@@ -365,7 +365,21 @@
        staged_apply's RL_CALENDAR_ROUNDS, and this is the browser's copy of the same number. */
     HOME_AND_AWAY_ROUNDS: 24,
 
-    points: function (bundle) { return ((bundle || {}).points || []).slice(); },
+    /* THE SELECTOR OFFERS THE ACTIVE UNIVERSE (owner ruling 2026-08-31). `MD.universe` owns which
+       points are on screen so this tab and the player card cannot disagree about what world the
+       reader is in. In node — where the tests load this file with require and there is no MD — the
+       whole point list is returned, which is what every existing assertion was written against, so
+       the universe switch adds behaviour in the browser without moving the suite's ground. */
+    points: function (bundle) {
+      var U = (typeof window !== "undefined" && window.MD && window.MD.universe) || null;
+      if (U) return U.points(bundle || (window.__MATCHDAY_MOVERS__ || null)).slice();
+      return ((bundle || {}).points || []).slice();
+    },
+
+    /* The RAW list, universe-blind. The integrity asserts below must always see every stored point:
+       "the newest stored point is the board the app serves" is a fact about the bundle, not about
+       what this viewer chose to look at. */
+    allPoints: function (bundle) { return ((bundle || {}).points || []).slice(); },
 
     /* ---- THE SCOPE, LIFTED (owner word 2026-08-28) --------------------------------------------
        The 2026-08-21 scope pinned the tab to R22 → R23 "while the model is under ruling". The owner
@@ -386,7 +400,7 @@
        pair when the series is present, and the newest stored report's own pair when it is not.
        Every stored point remains selectable; a user-chosen mixed pair still gets the banner. */
     defaultPair: function (bundle) {
-      var pts = core.points(bundle);
+      var pts = core.allPoints(bundle);
       /* AND THE RETRO DEFAULT EXPIRES THE MOMENT NEW FOOTBALL LANDS. The paragraph above chose the
          retro pair on a stated condition — "because R24 re-priced reproduces the live board
          exactly, the `to` end IS the board the app is serving". Land a finals week and that

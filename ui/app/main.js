@@ -55,6 +55,7 @@ window.MD = window.MD || {};
     ["card",   "Player card",   "Player Profiles"],
     ["trade",  "Trade desk",    "Trade Desk"],
     ["movers", "Movers",        "Weekly Review"],
+    ["config", "Config",         "Settings"],
   ];
   MD.TABS = TABS;
 
@@ -121,6 +122,7 @@ window.MD = window.MD || {};
 
     if (s.view === "board") MD.board.render(holder);
     else if (s.view === "clubs") MD.clubs.render(holder);
+    else if (s.view === "config") MD.configview.render(holder);
     else if (s.view === "card") MD.card.render(holder);
     else if (s.view === "trade") MD.trade.render(holder);
     else if (s.view === "movers") MD.movers.render(holder);

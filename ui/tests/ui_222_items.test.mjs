@@ -110,6 +110,19 @@ check(poolSel.n > 0 && poolSel.n === poolSel.wantN,
 
 /* ------------------------------------------------------------------ CLUSTER 1: the player card */
 section('CLUSTER 1 — the player card (items 3, 17, 18)');
+
+/* TWO UNIVERSES, AND THIS CLUSTER IS ABOUT THE RECORD (owner ruling 2026-08-31). The card now
+   DEFAULTS to the current-model universe — the retrospective series plus everything since the last
+   model change — because the owner asked for "the player's progression over the rounds since 14
+   under the live model". Every assertion below is about the ALL-IN universe: the stored record as
+   the app served it, model changes and all. So the mode is set explicitly rather than assumed, which
+   is the honest form either way — a test that silently depended on the default was going to break
+   the first time the default moved, and did.
+   The DEFAULT is asserted straight after this block, so neither universe is left unexercised. */
+const DEFAULT_UNIVERSE = await page.evaluate(() => MD.universe.mode());
+const DEFAULT_SERIES = await page.evaluate(() => MD.history.series('aaron-cadman').map(r => String(r.id)));
+await page.evaluate(() => MD.universe.setMode(MD.universe.ALL));
+
 const HIST = await page.evaluate(() => {
   const cov = MD.history.coverage();
   const key = 'aaron-cadman';
@@ -176,11 +189,32 @@ const HONESTY = await page.evaluate(() => {
     MD.history.series(k).forEach(r => {
       const b = r.score.state === 'dnp' ? dnpByPoint : r.score.state === 'unrecorded' ? unrecByPoint
               : r.score.state === 'score' ? scoreByPoint : null;
-      if (b) b[r.id] = (b[r.id] || 0) + 1;
+      /* KEYED ON THE ROUND, NOT THE POINT ID (2026-08-31). A retro point is round N's football
+         re-priced, so its coverage, its DNP truth and its score all belong to round N — its own id
+         is "retro-r21" and coverage is keyed "21". Joining on the point id would report DNP against
+         a round it cannot find and call a correct card wrong. `roundKey` is what history.js itself
+         joins on, so the test asks the same question the view does. */
+      const rk = r.roundKey || (String(r.id).indexOf("retro-r") === 0 ? String(r.id).slice(7) : String(r.id));
+      if (b) b[rk] = (b[rk] || 0) + 1;
     });
   });
   return { cov, dnpByPoint, unrecByPoint, scoreByPoint, n: keys.length };
 });
+/* THE DEFAULT, asserted on its own terms: one model throughout, no model change inside it, and it
+   reaches from R14 to the newest stored point — which is the whole of what the owner asked for. */
+const MC_IDS = await page.evaluate(() =>
+  ((window.__MATCHDAY_MOVERS__.model_changes) || []).map(c => String(c.between[1])));
+check(DEFAULT_UNIVERSE === 'current', 'item 3 — the card DEFAULTS to the current-model universe',
+  DEFAULT_UNIVERSE);
+check(DEFAULT_SERIES.length > 0 && DEFAULT_SERIES.every(id => !MC_IDS.includes(id)),
+  'item 3 — the default series contains NO model change',
+  DEFAULT_SERIES.filter(id => MC_IDS.includes(id)).join(',') || 'none');
+check(DEFAULT_SERIES[0] === 'retro-r14',
+  'item 3 — the default series starts at R14 under the current model', DEFAULT_SERIES[0]);
+check(DEFAULT_SERIES.length < HIST.series.length,
+  'item 3 — the default is a STRICT subset of the all-in record (' + DEFAULT_SERIES.length +
+  ' vs ' + HIST.series.length + ') — the switch is not vacuous');
+
 const completeRounds = Object.keys(HONESTY.cov.rounds).filter(r => HONESTY.cov.rounds[r].complete);
 const partialRounds = Object.keys(HONESTY.cov.rounds).filter(r => !HONESTY.cov.rounds[r].complete);
 /* Deliberately NOT asserted as the literal list "17,18,19,20": that would have to be re-pinned by hand

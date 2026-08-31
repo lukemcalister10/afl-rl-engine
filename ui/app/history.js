@@ -112,11 +112,26 @@ MD.history = (function () {
     // Retro points are the current model's re-pricing of old rounds — a second world, offered in the
     // movers selector where a comparison names its own two endpoints. Interleaving them here would
     // double every card's history and read as movement that never happened.
-    return b.points.filter(function (pt) { return pt.kind !== "retro"; }).map(function (pt) {
+    /* THE UNIVERSE DECIDES, NOT THIS FUNCTION (owner ruling 2026-08-31). The card used to be the
+       stored record only, and the comment below still explains why retro points were excluded from
+       it: interleaving both would double every history. That reasoning is intact — what changed is
+       that the two are now offered as ALTERNATIVES rather than one being dropped. MD.universe owns
+       the choice so the card and the movers tab cannot disagree about which world is on screen. */
+    return MD.universe.points(b).map(function (pt) {
+      /* A RETRO POINT IS A ROUND. It is that round's football re-priced under the current model, so
+         it has a score map, a DNP truth and a coverage record — all keyed on the ROUND, not on the
+         retro point's own id. Treating it as "not a round" would print "no football was played at
+         this point" against a round of football, which is the opposite of true. `roundKey` is what
+         the score and coverage lookups join on; it is the point's own id for a stored round and the
+         round number for a retro one. */
+      const isRetro = pt.kind === "retro";
+      const isRound = pt.kind === "round" || isRetro;
       return {
         id: String(pt.id),
-        label: pt.label,
-        isRound: pt.kind === "round",
+        roundKey: isRetro ? String(pt.after_round) : String(pt.id),
+        label: isRetro ? ("Round " + pt.after_round) : pt.label,
+        isRound: isRound,
+        isRetro: isRetro,
         modelChange: changes[String(pt.id)] || null,
       };
     });
@@ -132,7 +147,7 @@ MD.history = (function () {
       return { state: "not-a-round", score: null,
                why: "Not a round — " + (pt.label || "a model change") + ". No football was played at this point." };
     }
-    const cov = coverage().rounds[pt.id];
+    const cov = coverage().rounds[pt.roundKey || pt.id];
     if (!cov) {
       return { state: "unrecorded", score: null,
                why: "No scores were recorded for " + (pt.label || "this round") + " — the round carries no score map at all." };
@@ -164,7 +179,8 @@ MD.history = (function () {
     return pts.map(function (pt) {
       const at = (rec.byPoint || {})[pt.id] || {};
       const row = {
-        id: pt.id, label: pt.label, isRound: pt.isRound, modelChange: pt.modelChange,
+        id: pt.id, roundKey: pt.roundKey, label: pt.label, isRound: pt.isRound,
+        isRetro: !!pt.isRetro, modelChange: pt.modelChange,
         v: at.v == null ? null : at.v,
         rank: at.rank == null ? null : at.rank,
         posRank: at.pos_rank == null ? null : at.pos_rank,
