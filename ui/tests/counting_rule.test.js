@@ -157,6 +157,41 @@ eqWeights(C.positionWeights(["SF", "SF"]), { SF: 1 },
   assert(map.stamp && map.stamp.n === Object.keys(mapKeys).length,
     "SHIPPED map: its stamp's own count is the number of players it actually carries",
     String(Object.keys(mapKeys).length), String(map.stamp && map.stamp.n));
+
+  /* ---- THE STAMP NAMES ITS REAL DEPENDENCIES, AND THIS SIDE RECOMPUTES THEM -------------------
+     The stamp used to name a BOARD, which this map does not depend on: it is values-free, so a
+     price move or a round advance moves the board md5 and leaves every position code where it was.
+     It now names the two things that CAN stale it — the roster (the board's player-key set) and the
+     owner's CSV — and both are recomputed here from the same raw bytes the writer used.
+
+     Recomputed in node rather than trusted, and deliberately NOT by re-implementing the CSV's name
+     join: the signature is over the key SET and the CSV's md5, both of which two languages can
+     agree on exactly. A normalisation implemented twice is a normalisation that disagrees
+     eventually. ui/tools/positions_identity.py carries the definition and the reasoning. */
+  var crypto = require("crypto");
+  var st = map.stamp || {};
+  var sig = crypto.createHash("sha256");
+  sig.update(st.rosterSigVersion + "\u001e", "utf8");
+  Object.keys(boardKeys).sort().forEach(function (k) { sig.update(k + "\u001e", "utf8"); });
+  assert(st.rosterSig === sig.digest("hex"),
+    "SHIPPED map: its stamped ROSTER signature is the board's own player-key set, recomputed here " +
+      "— so a player joining or leaving the league stales it loudly instead of silently",
+    "recomputed match", String(st.rosterSig).slice(0, 12));
+
+  var csvPath = path.join(__dirname, "..", "..", "docs", "inputs", "AFFL_Player_Locations.csv");
+  assert(st.locationsCsvMd5 === crypto.createHash("md5").update(fs.readFileSync(csvPath)).digest("hex"),
+    "SHIPPED map: and its stamped CSV md5 is the owner's locations file as committed — a re-cut CSV " +
+      "changes the codes with no board movement at all, so it is the other real dependency",
+    "recomputed match", String(st.locationsCsvMd5).slice(0, 12));
+
+  assert(st.board === undefined && st.expectedBoard === undefined,
+    "SHIPPED map: the stamp no longer claims a BOARD — that was the wrong dependency, and the " +
+      "obvious 'fix' for the mismatch it produced (a board pin in the reader) would have taken the " +
+      "pocket panel dark on every landing",
+    "no board keys", JSON.stringify(Object.keys(st).filter(function (k) { return /board/i.test(k); })));
+  assert(/PROVENANCE ONLY/.test(st._builtAgainstBoard_note || ""),
+    "SHIPPED map: the board it was built against is retained but LABELLED as provenance, not a " +
+      "dependency, so nobody checks it by mistake", "labelled", st._builtAgainstBoard_note || "(absent)");
 })();
 
 console.log("  " + "-".repeat(60));

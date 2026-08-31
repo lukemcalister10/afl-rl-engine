@@ -6,8 +6,8 @@ because it lived only in a working tree.
 
 ## Where things stand
 
-The owner filed thirteen UI requests plus two bugs he found. **TWELVE plus both bugs are landed
-and pushed; only #4 remains**, and it is ruled rather than open — it rides the next board rebuild. What each of them decided is in its own commit message; the commits are the record and are
+The owner filed thirteen UI requests plus two bugs he found. **ALL THIRTEEN, both bugs and both
+standing flags are landed and pushed.** What each of them decided is in its own commit message; the commits are the record and are
 written to be read.
 
 | # | ask | state |
@@ -15,7 +15,7 @@ written to be read.
 | 1 | club summary depth on one row | DONE |
 | 2 | config tab, model changes on/off | DONE — `ui/app/universe.js` |
 | 3 | player card: weekly value graph since R14 | DONE — `ui/app/card.js` weeklyValueChart |
-| 4 | pool pick value -> 150 | **RULED, PENDING A BUILD** — see POOL_VALUE_150_OWNER_OVERRIDE.md |
+| 4 | pool pick value -> 150 | DONE — a display override at the publish seam, board untouched |
 | 5 | search dropdown >= 5 rows | DONE (see caveat below) |
 | 6 | "pick 62" searchable | DONE |
 | 7 | future picks searchable | DONE — rebuilt after his correction |
@@ -28,14 +28,19 @@ written to be read.
 | — | entry price missing on player cards | DONE — `ui/tools/v0_identity.py` |
 | — | FW1 absent from the movers list | DONE — it was labelled "Model change (MC-17)" |
 
-## What remains: ONE item, and it is ruled rather than open
+## What remained, and how it closed
 
-### #4 — the pool pick value -> 150
-The owner's word, verbatim: *"override it to 150 please, noting it's an owner override and knowingly
-isn't derived."* The ruling, what it overrides, its blast radius, the exact edit and its falsifier
-are all in `docs/pending/POOL_VALUE_150_OWNER_OVERRIDE.md`. It touches `pvc`, which is published in
-the board bundle, so it is a carrier move and therefore an ACT — it rides the next board rebuild
-(FW2) rather than being a text edit anyone can make. Nothing else is waiting on it.
+### ~~#4 — the pool pick value -> 150~~ — DONE 2026-08-31, as a DISPLAY OVERRIDE
+He then settled the remaining question directly: *"Yes, 237.2 is accurate so fine to stay, just good
+for the cosmetic override on the trade desk."* So it landed WITHOUT a board rebuild — declared in
+`docs/inputs/OWNER_DISPLAY_OVERRIDES.json`, applied at publish time by
+`extract_board_view._apply_pool_override`, carried in the bundle stamp as `pvcPoolOverride`, and
+guarded by `release_seam.test.js`. The engine keeps deriving 237.2; only the display moved. Full
+record in `docs/pending/POOL_VALUE_150_OWNER_OVERRIDE.md`, including the full-act route that was
+NOT taken and why.
+
+**NOTHING IN THIS DOCUMENT IS OUTSTANDING.** All thirteen UI items, both bugs and both flags are
+closed. What follows is the record.
 
 ## What the other twelve decided — the notes worth keeping
 
@@ -105,9 +110,9 @@ the board bundle, so it is a carrier move and therefore an ACT — it rides the 
 ## The suites, and what green looks like
 
     node ui/tests/movers.test.js                 87
-    node ui/tests/release_seam.test.js           33
+    node ui/tests/release_seam.test.js           41
     node ui/tests/ui_defects_2026-08-21.test.js  180
-    node ui/tests/counting_rule.test.js          27
+    node ui/tests/counting_rule.test.js          31
     node ui/tests/club_totals_parity.test.js     41
     node ui/tests/universe.test.js               13
     node ui/tests/pickvalue.test.js              90
@@ -125,21 +130,27 @@ matches the store its old-value assertions were written against.
 
 ## Open flags
 
-* **`ui/app/positions_data.js` — investigated, and the earlier wording here was wrong.** It is not
-  the same class as the entry-price defect. The map is VALUES-FREE (player key to position codes,
-  off the owner's locations CSV), so it does not depend on the board and a price move cannot stale
-  it; the board md5 in its stamp is simply the wrong pin rather than a failed one. And the reader is
-  already honest about a miss: `pocket.js` accumulates an uncovered player's value into an
-  alarm-coloured **"Unlisted"** row with its share of the club, which is a better guard than a board
-  md5 would have been. Coverage measured 804/804 with no stragglers.
-  WHAT WAS ACTUALLY MISSING, now closed: a gap went to a row on screen rather than red in a suite.
-  `counting_rule.test.js` now asserts set equality both ways and names the offending keys.
-  STILL OPEN, and small: the stamp should name what the file actually derives from (the roster key
-  set and the CSV) instead of a board. That means touching `ui/tools/extract_positions.py`, a writer
-  of record, so it belongs in an act rather than in a UI block.
-* ~~2027 late-round picks can price above the same round's 2026 picks.~~ **RULED INTENDED, owner,
-  2026-08-31, verbatim: "The 2027 late round picks thing is fine, a chance at a higher pick is worth
-  more than a #64 this year."** The flag is closed. The mechanism is his year rule pricing an unknown
-  2027 pick off the ROUND AVERAGE rather than off a known finishing position, and that average
-  legitimately beats a known-late 2026 pick, because an unresolved pick still carries the chance of
-  landing early. Do not "fix" this.
+**Both flags in this section are now closed.** They are kept, with their answers, because a closed
+flag deleted is a question somebody re-asks.
+
+* **`ui/app/positions_data.js`'s stamp — CLOSED 2026-08-31.** The earlier wording here called it the
+  same class as the entry-price defect. It was not. The map is values-free (player key to position
+  codes, off the owner's locations CSV), so a price move or a round advance moves the board md5 and
+  leaves every code where it was; the stamp named the wrong dependency rather than failing. Measured
+  at investigation: stamp said board `f2df6e0a`, live bundle `c8c2f2b6`, coverage 804/804 with no
+  stragglers — a stamp claiming a staleness that did not exist.
+  The stamp now names its REAL dependencies — the roster (the board's player-key set) and the CSV's
+  md5 — via `ui/tools/positions_identity.py`, and `counting_rule.test.js` recomputes both in node
+  from the same raw bytes. The board it was built against is retained as `builtAgainstBoard` and
+  LABELLED provenance-not-dependency in the artifact itself, because the obvious "fix" for the
+  mismatch — a board pin in the reader — would have taken the pocket panel dark on every landing.
+  **DELIBERATELY NOT a landing writer.** It could be one, and it would be idempotent, but
+  `extract_positions.py` HALTS on a join gap: a landing that adds a player before the CSV is
+  re-couriered would abort on it. The suite catching a roster drift is the right guard; an abort
+  path added unprompted is not. Revisit only if a roster change ever ships stale in practice.
+* **2027 late-round picks pricing above the same round's 2026 picks — RULED INTENDED**, owner,
+  2026-08-31, verbatim: *"The 2027 late round picks thing is fine, a chance at a higher pick is
+  worth more than a #64 this year."* The mechanism is his year rule pricing an unresolved 2027 pick
+  off the ROUND AVERAGE rather than a known finishing position, and that average legitimately beats
+  a known-late 2026 pick, because an unresolved pick still carries the chance of landing early. Do
+  not "fix" this.
