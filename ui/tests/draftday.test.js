@@ -643,6 +643,76 @@ if (B) {
      "is the fully-run population: the bias runs in the direction of the trade-down decision");
 }
 
+/* ================================================================================================
+   9. THE HOUSE'S OWN PARAMETERS — pinned against their source, not retyped
+
+   The owner asked whether this work had looked at what the estate already derived, or invented its
+   own. It had invented its own. The ruled pick curve's evidence panel carries a declared basis for
+   nearly every choice this page had made independently:
+
+       session_2026-07-30/item279/panel/harness_pvc.py
+         YR_LO       = 2004   the class floor — the store's earliest season is 2005, so the 2003
+                              class has no observable year one and every lag measured on it is late
+         QUAL_GAMES  = 6      the establishment threshold, and never_established() is the estate's
+                              own bust definition — the one the curve was TAUGHT with
+         MIN_STRATUM = 20     the size below which a cell is not a stratum worth reading
+
+   Measured cost of having chosen instead of looked: a 10-game establishment bar called 32.4% of
+   selections busts where the house's 6-game bar calls 23.7% — nine points on a headline figure.
+
+   These assertions READ THE HOUSE FILE. If the estate moves a parameter, this suite goes red and
+   the board is brought back into line, instead of the two drifting apart in silence.
+   ================================================================================================ */
+console.log("\n  the house's ruled parameters, read from their source");
+(function () {
+  var hp = path.join(__dirname, "..", "..", "session_2026-07-30", "item279", "panel", "harness_pvc.py");
+  if (!fs.existsSync(hp)) {
+    ok(true, "the #279 evidence panel is not in this checkout — the house parameters cannot be pinned here");
+    return;
+  }
+  var src = fs.readFileSync(hp, "utf8");
+  function decl(name) {
+    var m = new RegExp("^" + name + "\\s*=\\s*(\\d+)", "m").exec(src);
+    return m ? parseInt(m[1], 10) : null;
+  }
+  var YR_LO = decl("YR_LO"), QUAL = decl("QUAL_GAMES"), STRAT = decl("MIN_STRATUM");
+  ok(YR_LO === 2004, "the house declares YR_LO = 2004 (the 2003 class has no observable year one)", String(YR_LO));
+  ok(QUAL === 6, "the house declares QUAL_GAMES = 6 as its establishment threshold", String(QUAL));
+  ok(STRAT === 20, "the house declares MIN_STRATUM = 20", String(STRAT));
+
+  /* and the page must be USING them, not merely aware of them */
+  ok(core.THIN_MAX === STRAT,
+     "the board's thin-sample bar IS the house's minimum stratum, not a number this page picked",
+     core.THIN_MAX + " vs " + STRAT);
+
+  var gen = fs.readFileSync(path.join(__dirname, "..", "tools", "gen_draft_outcomes.py"), "utf8");
+  var m = /^REAL_SEASON_GAMES = (\d+)/m.exec(gen);
+  ok(m && parseInt(m[1], 10) === QUAL,
+     "the record's establishment threshold IS the house's QUAL_GAMES, so a season counts here " +
+     "exactly when it counts for the curve that taught the prices",
+     m && m[1]);
+
+  var app = fs.readFileSync(path.join(__dirname, "..", "app", "draftday.js"), "utf8");
+  var y = /var YR_LO = (\d+);/.exec(app);
+  ok(y && parseInt(y[1], 10) === YR_LO,
+     "and the board's class floor IS the house's YR_LO", y && y[1]);
+})();
+
+/* THE RULED BUST EXCLUSION — measured, reported, and deliberately NOT applied without a word.
+   ENGINE_PRIMER §4.5: "Paddy McCartin and Tom Boyd (pick-1 KPF busts, force majeure) are excluded
+   by owner ruling; every player in their drafts slides up one pick." That ruling governs the CURVE'S
+   TEACHING. This page is a descriptive record of what picks became, and those two careers happened,
+   so removing them is a judgement the owner has not been asked for on THIS surface. The test
+   asserts the state of play rather than a decision: both men are present, at pick 1, unslid. */
+if (B) {
+  var excl = B.rows.filter(function (r) { return r.k === "thomas-boyd" || r.k === "paddy-mccartin"; });
+  ok(excl.length === 2 && excl.every(function (r) { return r.p === 1 && r.dp === "KPF"; }),
+     "the two force-majeure pick-1 KPF busts are IN this record at pick 1 — the curve's exclusion " +
+     "is not applied here, and the KPF top-of-draft cells carry them (measured: VOR 15.6 with, " +
+     "17.0 without; star 36% with, 40% without). An owner ruling for this surface would change it",
+     excl.map(function (r) { return r.n + " #" + r.p; }).join(", "));
+}
+
 console.log("\n  " + "-".repeat(70));
 console.log(fails ? "DRAFT DAY TESTS: " + fails + " FAILED of " + n
                   : "DRAFT DAY TESTS: ALL " + n + " PASS");

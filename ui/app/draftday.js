@@ -25,10 +25,19 @@
    A 2025 draftee who has not played is nineteen. Counting him as a bust would poison every recent
    class — 2025 currently reads 44.8% "never played" against a mature-class norm near 12%. So the
    classes are split, and the boundary is MEASURED, not chosen: among classes with time to settle,
-   99% of eventual debutants had debuted within four completed seasons, so four is the line. The
-   younger classes are not hidden — they are reported on their own line, with how many have already
-   debuted — but they are kept out of the rates. The threshold comes off the bundle
-   (`stamp.maturitySeasons`) with the table it was measured from; it is not a constant in this file.
+   99% of eventual debutants had debuted within four completed seasons, so four is the DEBUT line.
+   It is not the line this board runs on — see TWO DIFFERENT QUESTIONS below — because a peak takes
+   far longer to arrive than a debut; the default is eleven seasons, where 93% of first-star seasons
+   have landed. The younger classes are not hidden — they are reported on their own line, with how
+   many have already debuted — but they are kept out of the rates. The debut threshold comes off the
+   bundle (`stamp.maturitySeasons`) with the table it was measured from; the peak threshold is
+   measured in this file, from the same kind of evidence, because it needs the star lines.
+
+   AND THE OLD END IS CUT TOO. The class of 2003 is excluded outright (YR_LO), not for being
+   unsettled but because the store holds no 2004 seasons: its year one is unobservable. The house's
+   own pick-value harness (session_2026-07-30/item279/panel/harness_pvc.py) draws the same floor.
+   There is no era adjustment at either end and none is wanted: SuperCoach assigns a fixed 3,300
+   points a match, so averages are comparable across seasons by construction (ENGINE_PRIMER 4.10).
 
    THE PAGE PASSES NO JUDGEMENT
    ----------------------------
@@ -49,7 +58,12 @@
 
   /* A set resting on this many careers or fewer is marked. Same marker and same intent as the Pick
      Value page's dot: it does not hide the figure, it warns what the figure is standing on. */
-  var THIN_MAX = 8;
+  /* THE MINIMUM STRATUM, TAKEN FROM THE HOUSE. This was 8 — chosen here, in ignorance. The ruled
+     curve's evidence panel declares MIN_STRATUM = 20 (session_2026-07-30/item279/panel/
+     harness_pvc.py:27), which is the size below which the estate does not treat a cell as a
+     stratum worth reading. Raising 8 to 20 marks a great many more cells on this board, and that
+     is the point: they were always thin and the old bar said otherwise. */
+  var THIN_MAX = 20;
 
   /* ============================== THE PURE CORE ==============================================
      Every selection and every rate on this page is computed HERE, off arguments, with no globals
@@ -144,6 +158,7 @@
       (rows || []).forEach(function (r) {
         if (r.p < lo || r.p > hi) return;
         if (state.pos && r.dp !== state.pos) return;
+        if (state.yrLo && r.y < state.yrLo) return;      // the class floor: 2003 has no year one
         if (!hasRun(stamp, r.y, state.minSeasons)) young.push(r);
         else picked.push(r);
       });
@@ -262,10 +277,11 @@
     /* The careers behind one (position, pick) cell. `half` widens the neighbourhood because a single
        ordinal is at most one career per class; it is a control on the page, never a hidden smoothing,
        and every cell reports the n it stands on. */
-    function careers(rows, stamp, pos, pick, half, minSeasons) {
+    function careers(rows, stamp, pos, pick, half, minSeasons, yrLo) {
       var lo = pick - half, hi = pick + half;
       return (rows || []).filter(function (r) {
         if (r.dp !== pos || r.p < lo || r.p > hi) return false;
+        if (yrLo && r.y < yrLo) return false;
         return hasRun(stamp, r.y, minSeasons);
       });
     }
@@ -423,10 +439,10 @@
        you will do with it. On the clock the question is never "is this worth 530 points", it is
        "would I rather have this key forward or a midfielder later" — and the midfielder is the only
        position deep and star-rich enough to be a stable ruler across the whole board. */
-    function midCurve(rows, stamp, board, half, minSeasons) {
+    function midCurve(rows, stamp, board, half, minSeasons, yrLo) {
       var out = [];
       for (var p = 1; p <= 64; p++) {
-        var f = frame(careers(rows, stamp, "MID", p, half, minSeasons), board, "MID");
+        var f = frame(careers(rows, stamp, "MID", p, half, minSeasons, yrLo), board, "MID");
         if (f && f.n) out.push({ p: p, vor: f.vor, n: f.n });
       }
       return out;
@@ -479,6 +495,12 @@
   /* The columns of the board. Dense early where the curve is steep and every ordinal matters,
      sparse late where it is flat — the same spacing the owner's own board used, and the reason it
      fits on one screen without a scroll. */
+  /* THE COLUMNS ARE POINT PICKS, NOT THE HOUSE'S BANDS. harness_pvc.py strata the draft into
+     RANGES = [(1,10),(11,20),(21,30),(31,45),(46,64)] and that is right for FITTING a curve, where
+     the question is "how does this stretch of the draft behave". It is the wrong shape for draft
+     day, where the question is "I hold pick 15" — a band that runs 11-20 answers a pick 11 and a
+     pick 20 with the same number, and those are not the same pick. So the columns are picks, each
+     read over a +/-8 window (adjustable), and thinness is marked rather than hidden by widening. */
   var BOARD_PICKS = [1, 3, 6, 10, 15, 21, 30, 42, 58];
 
   function bundle() {
@@ -496,12 +518,28 @@
      the board carries what a career is measured against. Two sources, two jobs, and the split is
      the whole point — this page must never hold a bar of its own. */
   function board() { return (MD.seam && MD.seam.working) || {}; }
+
+  /* THE CLASS FLOOR, AND WHY IT IS 2004 AND NOT 2003.
+     The store's earliest recorded season is 2005, so the 2003 class has NO observable year one —
+     every one of its debut lags reads a year late and every "how long did this take" measured on it
+     is wrong. The owner caught this; the house had already ruled it, and the ruled curve's own
+     evidence panel carries the same floor:
+
+         session_2026-07-30/item279/panel/harness_pvc.py:31   YR_LO = 2004
+
+     Measured on the debut lags, including 2003 moved the derived debut threshold from 5 to 4 across
+     a 0.05% margin — a knife-edge answer resting on a class whose first year cannot be seen. */
+  var YR_LO = 2004;
+  function inWindow(r) {
+    return r.y >= YR_LO && core.hasRun(stamp(), r.y, state.minSeasons);
+  }
   function inRun(y) { return core.hasRun(stamp(), y, state.minSeasons); }
   /* The detail panel below the board reads the SAME window the board's cells do, so a cell you
      clicked and the careers listed under it cannot disagree about which men they are. */
   function select() {
     return core.select(rows(), stamp(),
-      { pick: state.pick, spread: state.half, pos: state.pos, minSeasons: state.minSeasons });
+      { pick: state.pick, spread: state.half, pos: state.pos, minSeasons: state.minSeasons,
+        yrLo: YR_LO });
   }
   var quantile = core.quantile;
 
@@ -510,7 +548,12 @@
   var _dev = null;
   function developedThreshold() {
     if (_dev) return _dev;
-    var r = core.developedFromRows(rows(), stamp(), board(), 0.9, core.seasonStar);
+    /* DERIVED ON THE SAME WINDOW THE BOARD READS. The threshold measures how long careers take;
+       measuring it on a class whose first year is unobservable makes every one of its lags a year
+       long. Including 2003 gave 10 seasons, excluding it gives 11 — and the board would then have
+       been filtered on one number while its own evidence supported another. */
+    var r = core.developedFromRows(rows().filter(function (x) { return x.y >= YR_LO; }),
+                                   stamp(), board(), 0.9, core.seasonStar);
     /* No star lines, or no fully-run class to measure — fall back to the debut threshold and say so
        rather than inventing a number. */
     _dev = r || { lag: stamp().maturitySeasons || 4, n: 0, cum: null, fallback: true };
@@ -601,12 +644,15 @@
          midfielders on star rate at four seasons, midfielders lead at twelve.
        EVERY CLASS — everything, including this year's teenagers.
 
-       THE DEFAULT IS FULLY RUN, and it is a trade rather than a free win: it costs a third of the
-       sample (901 selections against 1377) and confines the evidence to 2003-2015 football. The
-       trade is taken because a board that systematically understates late picks is actively
-       misleading on the trade-down decision, while a thinner board is merely less certain — and
-       thinness is marked on every cell it affects, where bias is invisible. Both other populations
-       are one click away and the page says what each costs. */
+       THE DEFAULT IS FULLY RUN, and it is a trade rather than a free win: it costs 44% of the
+       sample (840 selections against 1,509 from 2004 on) and confines the evidence to the classes
+       of 2004-2015. What it does NOT cost is comparability across eras — SuperCoach assigns a fixed
+       3,300 points a match, so a 2006 average and a 2024 average are the same unit by construction
+       and no era normalisation is applied anywhere in this model. The trade is taken because a
+       board that systematically understates late picks is actively misleading on the trade-down
+       decision, while a thinner board is merely less certain — and thinness is marked on every cell
+       it affects, where bias is invisible. Both other populations are one click away and the page
+       says what each costs. */
     var dev = developedThreshold();
     bar.appendChild(seg("Classes",
       [[dev.lag, "fully run"], [stamp().maturitySeasons || 4, "settled"], [0, "every class"]],
@@ -616,11 +662,11 @@
     /* THE POPULATION ON SCREEN, NAMED. Which classes are in, how many selections that is, and what
        the threshold rests on — because "fully run" is a word and the reader is entitled to the
        number behind it. */
-    var inSet = rows().filter(function (r) { return core.hasRun(stamp(), r.y, state.minSeasons); });
+    var inSet = rows().filter(inWindow);
     var note = fmt.el("span", "ddpop");
     var newest = stamp().seasonNow - state.minSeasons;
     note.innerHTML = fmt.n(inSet.length) + " selections" +
-      (state.minSeasons ? ", classes " + stamp().classFrom + "–" + newest : ", every class") +
+      (state.minSeasons ? ", classes " + YR_LO + "–" + newest : ", classes from " + YR_LO) +
       (state.minSeasons === dev.lag && !dev.fallback
         ? ' <span class="why">— ' + dev.lag + " seasons, where " + Math.round(dev.cum * 100) +
           "% of first-star seasons have landed</span>"
@@ -667,7 +713,7 @@
        which classes have settled); frame() takes the BOARD (it needs the baked REPL bar). Two
        different objects for two different jobs, and getting them the wrong way round is silent —
        careers returns nothing and every cell reads n=0, which is exactly what happened here. */
-    var set = core.careers(rows(), stamp(), pos, pick, state.half, state.minSeasons);
+    var set = core.careers(rows(), stamp(), pos, pick, state.half, state.minSeasons, YR_LO);
     var f = core.frame(set, board(), pos);
     if (!f) return { empty: true, n: set.length };
     var eq = core.midEquivalent(curve, f.vor);
@@ -784,8 +830,8 @@
      at all. */
   function sideCard(which) {
     var side = state[which];
-    var curve = core.midCurve(rows(), stamp(), board(), state.half, state.minSeasons);
-    var f = core.frame(core.careers(rows(), stamp(), side.pos, side.pick, state.half, state.minSeasons),
+    var curve = core.midCurve(rows(), stamp(), board(), state.half, state.minSeasons, YR_LO);
+    var f = core.frame(core.careers(rows(), stamp(), side.pos, side.pick, state.half, state.minSeasons, YR_LO),
                        board(), side.pos);
     var el = fmt.el("div", "ddside");
     var h = '<div class="k">Option ' + which.toUpperCase() + "</div>" +
@@ -827,9 +873,9 @@
   /* THE VERDICT: at what pick does B match A? Not a winner declaration — a break-even, because the
      two options are almost never far apart and the honest answer is where the line sits. */
   function verdict() {
-    var curve = core.midCurve(rows(), stamp(), board(), state.half, state.minSeasons);
-    var fa = core.frame(core.careers(rows(), stamp(), state.a.pos, state.a.pick, state.half, state.minSeasons), board(), state.a.pos);
-    var fb = core.frame(core.careers(rows(), stamp(), state.b.pos, state.b.pick, state.half, state.minSeasons), board(), state.b.pos);
+    var curve = core.midCurve(rows(), stamp(), board(), state.half, state.minSeasons, YR_LO);
+    var fa = core.frame(core.careers(rows(), stamp(), state.a.pos, state.a.pick, state.half, state.minSeasons, YR_LO), board(), state.a.pos);
+    var fb = core.frame(core.careers(rows(), stamp(), state.b.pos, state.b.pick, state.half, state.minSeasons, YR_LO), board(), state.b.pos);
     var el = fmt.el("div", "ddverdict");
     if (!fa || !fb) {
       el.innerHTML = "<b>No verdict.</b> One side has no settled careers to read, and a comparison " +
@@ -840,7 +886,7 @@
        sentence worth printing: "a key forward at 5 is worth a key defender at 7." */
     var bestP = null, bestD = null;
     for (var p = 1; p <= 64; p++) {
-      var f = core.frame(core.careers(rows(), stamp(), state.b.pos, p, state.half, state.minSeasons), board(), state.b.pos);
+      var f = core.frame(core.careers(rows(), stamp(), state.b.pos, p, state.half, state.minSeasons, YR_LO), board(), state.b.pos);
       if (!f) continue;
       var d = Math.abs(f.vor - fa.vor);
       if (bestD === null || d < bestD) { bestD = d; bestP = p; }
@@ -903,7 +949,7 @@
   function startableCliff(pos) {
     var cliff = null;
     for (var p = 64; p >= 1; p--) {
-      var f = core.frame(core.careers(rows(), stamp(), pos, p, state.half, state.minSeasons), board(), pos);
+      var f = core.frame(core.careers(rows(), stamp(), pos, p, state.half, state.minSeasons, YR_LO), board(), pos);
       if (!f || f.n <= THIN_MAX) continue;
       if (f.startable < 0.5) cliff = p; else break;
     }
@@ -915,7 +961,7 @@
     var best = null;
     POS_ORDER.forEach(function (pos) {
       for (var p = 8; p <= 58; p++) {
-        var f = core.frame(core.careers(rows(), stamp(), pos, p, state.half, state.minSeasons), board(), pos);
+        var f = core.frame(core.careers(rows(), stamp(), pos, p, state.half, state.minSeasons, YR_LO), board(), pos);
         if (!f || f.n <= THIN_MAX) continue;
         var eq = core.midEquivalent(curve, f.vor);
         if (!eq) continue;
@@ -937,7 +983,7 @@
     var out = [];
     POS_ORDER.forEach(function (pos) {
       var set = (rows() || []).filter(function (r) {
-        return r.dp === pos && r.p <= 64 && inRun(r.y);
+        return r.dp === pos && r.p <= 64 && inWindow(r);
       });
       var f = core.frame(set, board(), pos);
       if (f && f.n) out.push({ pos: pos, startable: f.startable, n: f.n, repl: f.repl,
@@ -958,7 +1004,7 @@
   function holdsUntil(pos, midBar, curve) {
     var last = null, run = 0;
     for (var p = 1; p <= 64; p++) {
-      var f = core.frame(core.careers(rows(), stamp(), pos, p, state.half, state.minSeasons), board(), pos);
+      var f = core.frame(core.careers(rows(), stamp(), pos, p, state.half, state.minSeasons, YR_LO), board(), pos);
       var eq = f ? core.midEquivalent(curve, f.vor) : null;
       // A cell off the bottom of the yardstick is not "worth a mid 64" — it is worth less than the
       // ruler can express, and counting it would let a worthless row claim depth it does not have.
@@ -1046,8 +1092,8 @@
     // 5. tall vs small forward, decided by the data rather than asserted
     var cross = null;
     for (var p = 1; p <= 64; p++) {
-      var fs = core.frame(core.careers(rows(), stamp(), "SF", p, state.half, state.minSeasons), board(), "SF");
-      var fk = core.frame(core.careers(rows(), stamp(), "KPF", p, state.half, state.minSeasons), board(), "KPF");
+      var fs = core.frame(core.careers(rows(), stamp(), "SF", p, state.half, state.minSeasons, YR_LO), board(), "SF");
+      var fk = core.frame(core.careers(rows(), stamp(), "KPF", p, state.half, state.minSeasons, YR_LO), board(), "KPF");
       if (!fs || !fk || fs.n <= THIN_MAX || fk.n <= THIN_MAX) continue;
       if (fs.vor > fk.vor) cross = p;
     }
@@ -1126,17 +1172,37 @@
       st.classFrom + "–" + st.classTo + "), of which <b>" + fmt.n(st.nNeverPlayed) + "</b> (" +
       pct(st.nNeverPlayed, st.nRows) + ") never played a senior game. Busts are in the population, " +
       "which is the only basis on which the rates above mean anything.");
+
+    /* THE CLASS FLOOR, NAMED SEPARATELY FROM THE YOUNG END. The 2003 class is not held out for
+       being unsettled — it is held out because its first season is unobservable: the store carries
+       zero 2004 seasons for it, so every 2003 man's year one is missing rather than bad. The
+       house's own pick-value harness sets the same floor (YR_LO = 2004). */
+    var nFloor = (rows() || []).filter(function (r) {
+      return r.y < YR_LO && r.p >= sel.lo && r.p <= sel.hi && (!state.pos || r.dp === state.pos);
+    }).length;
+    if (nFloor) {
+      parts.push("<b>The " + (YR_LO - 1) + " class is out of every figure above</b> (" +
+        fmt.n(nFloor) + " selection" + (nFloor === 1 ? "" : "s") + " in this window) — the record " +
+        "holds no " + YR_LO + " seasons for it, so its year one cannot be observed rather than " +
+        "merely being poor. The pick-value harness draws the same line.");
+    }
+
     if (sel.young.length) {
       var debuted = sel.young.filter(function (r) { return r.g > 0; }).length;
+      var devT = developedThreshold();
+      var onDev = (state.minSeasons === devT.lag && !devT.fallback);
       parts.push("<b>" + fmt.n(sel.young.length) + " selection" + (sel.young.length === 1 ? "" : "s") +
         " from classes still running are excluded</b> from every figure above — " +
         fmt.n(debuted) + " of them " + (debuted === 1 ? "has" : "have") + " already debuted. A class " +
-        "counts once it has had <b>" + st.maturitySeasons + " completed seasons</b>, and that line " +
-        "is measured rather than chosen: " + pct(
-          Math.round(1000 * (((st.debutLagTable || []).filter(function (t) {
-            return t.lag === st.maturitySeasons; })[0] || {}).cum || 0)) / 10, 100) +
-        " of the " + fmt.n(st.debutLagN) + " eventual debutants in the settled classes had debuted " +
-        "by then. Switch to <b>every class</b> to fold them in.");
+        "counts once it has had <b>" + state.minSeasons + " completed seasons</b>, and that line " +
+        "is measured rather than chosen: " + (onDev
+          ? Math.round(devT.cum * 100) + "% of first-star seasons in fully-run classes have landed " +
+            "by then, which is the question this board asks"
+          : pct(Math.round(1000 * (((st.debutLagTable || []).filter(function (t) {
+              return t.lag === state.minSeasons; })[0] || {}).cum || 0)) / 10, 100) +
+            " of the " + fmt.n(st.debutLagN) + " eventual debutants in the settled classes had " +
+            "debuted by then — a DEBUT line, which settles years before a peak does") +
+        ". Switch to <b>every class</b> to fold them in.");
     } else if (!state.minSeasons) {
       parts.push("<b>Every class is in, including the ones still running.</b> A player from a recent " +
         "class who has not debuted is counted here as never having played, which is true today and " +
@@ -1244,8 +1310,8 @@
     var intro = fmt.el("div", "cintro");
     intro.innerHTML =
       "What a pick has <b>become</b> — not what it is worth. Every national-draft selection " +
-      "since " + stamp().classFrom + ", complete classes from pick 1, so the men who never played " +
-      "are in the count. The Pick value tab carries the price; this one carries the outcome.";
+      "from the class of " + YR_LO + " on, complete classes from pick 1, so the men who never " +
+      "played are in the count. The Pick value tab carries the price; this one carries the outcome.";
     page.appendChild(intro);
 
     controls(page);
@@ -1253,7 +1319,7 @@
     /* THE MIDFIELD YARDSTICK IS BUILT ONCE PER RENDER and handed to everything that needs it. It is
        64 frames over the whole population; rebuilding it inside each of the 54 board cells would be
        the same work 54 times, and the page would stutter on every control change. */
-    var curve = core.midCurve(rows(), stamp(), board(), state.half, state.minSeasons);
+    var curve = core.midCurve(rows(), stamp(), board(), state.half, state.minSeasons, YR_LO);
     if (!curve.length) {
       halt(page, "No midfield yardstick.", "The record carries no settled midfield careers, so " +
         "there is no ruler to price the other positions against and no board is drawn.");

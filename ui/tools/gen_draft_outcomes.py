@@ -67,11 +67,23 @@ OUTCOME_INPUT_FIELDS = ('draft_stream', 'stream_pick', 'stream_year', 'games', '
                         'player', 'drafted_position', 'future_position', '_draft_club', '_retired')
 SIG_VERSION = 'draft-outcomes-inputs-1'
 
-#: A season counts as a real season for the "best season" figure at this many games or more. Below
-#: it, an average is one or two matches of noise and would put a 130 cameo on the board as a career
-#: peak. 10 is the same bar the engine's own thin-evidence discussions use for a season to be worth
-#: reading; it is declared here, not buried, because it is the one judgement in the file.
-REAL_SEASON_GAMES = 10
+#: THE ESTABLISHMENT THRESHOLD, TAKEN FROM THE HOUSE RATHER THAN CHOSEN HERE.
+#:
+#: This was 10 — a number this file picked, with a reasoned comment, in ignorance of the fact that
+#: the estate already had one. The ruled pick curve's evidence panel declares it:
+#:
+#:     session_2026-07-30/item279/panel/harness_pvc.py:32
+#:     QUAL_GAMES = 6      # the matrix's own establishment threshold (derive_271 QUAL_GAMES)
+#:     def never_established(r): return not any(s['games'] >= QUAL_GAMES for s in r['seasons'])
+#:
+#: and `never_established` is the estate's own definition of a bust — the one the curve was taught
+#: with. Measured, the difference is not cosmetic: on the same population my 10-game bar called
+#: 32.4% of national-draft selections busts where the house's 6-game bar calls 23.7%. Nine points,
+#: on a headline figure of a draft-day tool.
+#:
+#: ui/tests/draftday.test.js reads harness_pvc.py and asserts this constant still matches it, so a
+#: future change to the house threshold surfaces here instead of drifting apart in silence.
+REAL_SEASON_GAMES = 6
 
 #: NO REPLACEMENT LEVEL, NO STAR BAR, AND NO POSITION CONSTANT IS DEFINED IN THIS FILE.
 #:
