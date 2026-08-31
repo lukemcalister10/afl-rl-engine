@@ -78,8 +78,21 @@ MD.card = (function () {
     }
     return (mc && _mcIds[JSON.stringify(mc.between)]) || "MC";
   }
+  /* A FINALS WEEK IS FOOTBALL, NOT A MODEL CHANGE — the browser's copy of
+     round_movers.FINALS_COLUMN_PREFIXES, keyed on the column id the act declares. It lands as a
+     store edit, so it arrives here as a non-round row and fell through to "Model change (MC-N)":
+     unfindable, and a claim about the model that is false about a week of scores. */
+  const FINALS_COLUMNS = { "fw1-": "Finals Week 1", "fw2-": "Finals Week 2",
+                           "sf-": "Semi-Final", "pf-": "Preliminary Final", "gf-": "Grand Final" };
+  function finalsName(id) {
+    const s = String(id || "");
+    const hit = Object.keys(FINALS_COLUMNS).filter(function (k) { return s.indexOf(k) === 0; })[0];
+    return hit ? FINALS_COLUMNS[hit] : null;
+  }
   function eventLabel(r) {
     if (r.isRound) return fmt.esc(r.label || r.id);
+    const fin = finalsName(r.id);
+    if (fin) return '<span class="finalsev">' + fmt.esc(fin) + "</span>";
     return 'Model change <span class="mcid">(' + fmt.esc(mcId(r.modelChange)) + ")</span>";
   }
 

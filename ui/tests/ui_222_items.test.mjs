@@ -131,7 +131,11 @@ const HIST = await page.evaluate(() => {
 // 30/8 store correction added its column. That is what this pin is FOR: a point count that changed
 // without anyone noticing would mean the card had silently gained or lost an event. Restate it in
 // the same commit as the act that moved it, and never to make a red go away.
-check(HIST.series && HIST.series.length === 27, 'item 3 — the history has all 27 points',
+// RESTATED 2026-08-31: FINALS WEEK 1 landed (fw1-finals-week-1-30-8), 27 -> 28. The sentinel did
+// its job and caught it — late, because the FW1 act should have restated it in its own commit and
+// did not. The count moving for a landed act is the sentinel working; it moving unexplained is the
+// thing it exists to catch.
+check(HIST.series && HIST.series.length === 28, 'item 3 — the history has all 28 points',
   HIST.series ? String(HIST.series.length) : 'null');
 check(HIST.series.every(r => r.v != null && r.rank != null && r.posRank != null),
   'item 3 — value, rank and positional rank are present at EVERY point (no participation gate)');
@@ -149,11 +153,17 @@ check(modelPt && modelPt.score.state === 'not-a-round' && modelPt.v != null,
 /* RESTATED 2026-08-28: fourteen model changes have landed, so the two-name literal became a
    derivation — the out-of-round columns must be EXACTLY the bundle's model_changes, in order.
    (The bundle list is the same one the card's MC-N ids index; see ui/MAINTAINER.md.) */
-const wantMcIds = await page.evaluate(() =>
-  (window.__MATCHDAY_MOVERS__.model_changes || []).map(c => String(c.between[1])));
-check(modelPts.map(r => String(r.id)).join(',') === wantMcIds.join(',') && wantMcIds.length >= 2,
+/* AMENDED 2026-08-31: the derivation read `model_changes` as the list of out-of-round columns,
+   because until FW1 those were the same set — every board move outside a round was a model change.
+   A finals week is a board move outside a round that changes NO model, so it is a column and is
+   deliberately not a model change (round_movers.football_column). The card must still show EVERY
+   non-round point in bundle order; the expectation is now derived from the bundle's own points,
+   which is the set the card renders, rather than from a list that no longer means the same thing. */
+const wantOorIds = await page.evaluate(() =>
+  ((window.__MATCHDAY_MOVERS__.points || []).filter(p => p.kind === "out_of_round")).map(p => String(p.id)));
+check(modelPts.map(r => String(r.id)).join(',') === wantOorIds.join(',') && wantOorIds.length >= 2,
   'item 3 — every out-of-round column is present, in bundle order, flagged not-a-round',
-  modelPts.map(r => r.id).join(',') + ' vs ' + wantMcIds.join(','));
+  modelPts.map(r => r.id).join(',') + ' vs ' + wantOorIds.join(','));
 check(modelPts.every(r => r.score.state === 'not-a-round' && r.v != null),
   'item 3 — every out-of-round column carries value/rank movement but never a score');
 
@@ -213,9 +223,23 @@ check(await page.locator('.histtbl').count() === 1, 'item 3 — the card renders
    retired to ui/MAINTAINER.md. */
 check(await page.locator('.histtbl tbody tr').count() === HIST.series.length,
   'item 3 — one row per point, no more and no fewer');
+/* AMENDED 2026-08-31, on the owner's word ("FW1 doesn't even appear in the movers list?"). Every
+   non-round row used to be "Model change (MC-N)". A finals week now carries its own name, so the
+   MC-N chips cover the MODEL-CHANGE rows only and the football rows are asserted separately —
+   NOT loosened: both halves must account for every non-round row, so a row that is neither still
+   fails, and a model change that lost its id still fails. */
 const mcidTexts = await page.locator('.histtbl .mcid').allTextContents();
-check(mcidTexts.length === modelPts.length && mcidTexts.every(t => /^\(MC-\d+\)$/.test(t.trim())),
-  'item 3 — every model-change row is ONE line: "Model change (MC-N)", ids sequential over the bundle',
+const finalsTexts = await page.locator('.histtbl .finalsev').allTextContents();
+const nFootball = await page.evaluate(() =>
+  ((window.__MATCHDAY_MOVERS__.points || [])
+    .filter(p => p.kind === "out_of_round" &&
+                 ["fw1-", "fw2-", "sf-", "pf-", "gf-"].some(k => String(p.id).indexOf(k) === 0))).length);
+check(mcidTexts.length + finalsTexts.length === modelPts.length
+      && mcidTexts.length === modelPts.length - nFootball
+      && mcidTexts.every(t => /^\(MC-\d+\)$/.test(t.trim()))
+      && finalsTexts.length === nFootball
+      && finalsTexts.every(t => /Final|Finals Week/.test(t.trim())),
+  'item 3 — every model-change row is ONE line "Model change (MC-N)", every football row is its week name, and together they account for every non-round row',
   JSON.stringify(mcidTexts.slice(0, 4)));
 check(await page.locator('.reserved:has-text("weekly-loop phase")').count() === 0,
   'item 3 — the "reserved · wired in the weekly-loop phase" placeholder is gone');
