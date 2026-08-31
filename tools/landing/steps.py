@@ -1585,16 +1585,40 @@ def _cv_stamp(path):
         return {}
 
 
+def _do_stamp(path):
+    """The draft outcome record's `stamp` — the block `ui/app/draftday.js:pin()` authenticates.
+
+    Same crude slice and the same fail-soft rule as `_own_stamp` and `_cv_stamp`, for the same
+    reason: a bundle the browser cannot parse is a bundle the browser refuses, and writer 7's
+    predicate must report that as a refusal rather than as a traceback. `_js_obj` reads the object
+    after the first `=`, which is what this file is — one `window.__DRAFT_OUTCOMES__ = {...};`.
+    """
+    try:
+        return _js_obj(path).get('stamp') or {}
+    except (OSError, ValueError):
+        return {}
+
+
 def ui(ctx):
-    """ALL SIX UI writers. The thrice-proven trap, now code — and it keeps proving there is one more.
+    """ALL SEVEN UI writers. The thrice-proven trap, now code — and it keeps proving there is one more.
 
     THE CLASS, CLOSED ONE CARRIER AT A TIME: the UI bundles this estate ships are all written in this
     transaction now — `board_view_working.js` and `board_view_public.js` (writers 1-2),
     `movers_transition.js` (writer 3, the lineage's mirror), `movers.js` (writer 4, the blocks DERIVED
-    from that mirror), `ownership.js` (writer 5, the store's ownership mirror) and
-    `club_valuation.js` (writer 6, the owner's PICK LOCATIONS priced off the engine's curve). Each was
-    found the same way: a landing moved a record or an identity, shipped a reader that could not see
-    it, and a standing gate said so.
+    from that mirror), `ownership.js` (writer 5, the store's ownership mirror),
+    `club_valuation.js` (writer 6, the owner's PICK LOCATIONS priced off the engine's curve) and
+    `draft_outcomes.js` (writer 7, the draft-day career record). Six of the seven were found the same
+    way: a landing moved a record or an identity, shipped a reader that could not see it, and a
+    standing gate said so.
+
+    THE SEVENTH IS THE FIRST ONE WIRED BEFORE IT BROKE, which is the only thing about it worth
+    noting. `ui/data_aux/draft_outcomes.js` carries a career fact per national-draft selection, and a
+    career GROWS — so every round advance and every store edit legitimately moves it, faster than any
+    bundle above it. Its reader pins it to the store it was generated from, so the failure would have
+    been a dark tab rather than a wrong number; the tab shipped and this writer shipped in the same
+    act. The habit it comes from is expensive: the v0 sidecar had no writer of record, the Finals
+    Week 1 store edit staled it, and every player card lost its entry price for a day (2026-08-30).
+    Writers 5 and 6 were each wired AFTER a stale bundle had already shipped. This one is not.
 
     THE FIFTH TIME, AND THE ONE THAT SAID IT OUT LOUD. Writer 5's own note below records that "closed
     by exhaustion" was wrong once; it was wrong twice. `ui/data/club_valuation.js` is the picks
@@ -1679,6 +1703,7 @@ def ui(ctx):
     movers = _p(ctx, 'ui', 'data', 'movers.js')
     own = _p(ctx, 'ui', 'data', 'ownership.js')
     clubval = _p(ctx, 'ui', 'data', 'club_valuation.js')
+    draftout = _p(ctx, 'ui', 'data_aux', 'draft_outcomes.js')
     ctx.log('BEFORE  working %s  release-block=%s' % (md5(bundle), has_release(bundle)))
     ctx.log('BEFORE  public  %s  release-block=%s' % (md5(public), has_release(public)))
     ctx.log('BEFORE  mirror  %s  register=%d entr(ies)'
@@ -1692,11 +1717,13 @@ def ui(ctx):
             % (md5(clubval), str(_cv_stamp(clubval).get('board', '?'))[:8],
                str(_cv_stamp(clubval).get('store', '?'))[:8],
                _cv_stamp(clubval).get('asOfRound', '?')))
+    ctx.log('BEFORE  draft  %s  stamped store=%s'
+            % (md5(draftout), str(_do_stamp(draftout).get('store', '?'))[:8]))
     if ctx.opts.dry_run:
-        ctx.log('--dry-run: none of the six writers is run.')
+        ctx.log('--dry-run: none of the seven writers is run.')
         return {'writers': 0, 'dry_run': True}
 
-    ctx.log('WRITER 1/6: ui/tools/extract_board_view.py')
+    ctx.log('WRITER 1/7: ui/tools/extract_board_view.py')
     rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'extract_board_view.py')], timeout=900)
     if rc != 0:
         raise StepError('extract_board_view failed:\n%s' % out[-2000:])
@@ -1704,15 +1731,15 @@ def ui(ctx):
             % (md5(bundle), has_release(bundle)))
 
     if not ctx.skip_second_ui_writer:
-        ctx.log('WRITER 2/6: round_movers.inject_release_contract(bundle, root, %s)' % boot['as_of_round'])
+        ctx.log('WRITER 2/7: round_movers.inject_release_contract(bundle, root, %s)' % boot['as_of_round'])
         rm = _load(ctx, 'round_movers', 'engine/rl_after/ingestion/round_movers.py')
         rel = rm.inject_release_contract(bundle, ctx.root, int(boot['as_of_round']))
         ctx.log('  release block: %s' % json.dumps(rel, sort_keys=True)[:200])
     else:
-        ctx.log('WRITER 2/6: SKIPPED BY FAULT INJECTION — the trap is live in this transaction.')
+        ctx.log('WRITER 2/7: SKIPPED BY FAULT INJECTION — the trap is live in this transaction.')
 
     mirror_before = md5(mirror)
-    ctx.log('WRITER 3/6: ui/tools/generate_movers_transition.py  '
+    ctx.log('WRITER 3/7: ui/tools/generate_movers_transition.py  '
             '(the lineage projection — supervisor ruling on F-9)')
     rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'generate_movers_transition.py')],
                       timeout=300)
@@ -1763,7 +1790,7 @@ def ui(ctx):
     # That landing passed this suite after registering a column. The recipe was already in the tree;
     # what was missing was the lander running it.
     movers_before = md5(movers)
-    ctx.log('WRITER 4/6: ui/tools/rebuild_movers_derived.py  '
+    ctx.log('WRITER 4/7: ui/tools/rebuild_movers_derived.py  '
             '(points / values / model_changes — supervisor ruling on F-10)')
     rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'rebuild_movers_derived.py')],
                       timeout=900)
@@ -1816,7 +1843,7 @@ def ui(ctx):
     # fence stands unchanged and is why both lanes exist at all.
     own_before = md5(own)
     if not ctx.skip_ownership_writer:
-        ctx.log('WRITER 5/6: ui/tools/ingest_inputs.py --mirror-only  '
+        ctx.log('WRITER 5/7: ui/tools/ingest_inputs.py --mirror-only  '
                 '(the ownership mirror, re-pinned to the landed board + store)')
         rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'ingest_inputs.py'),
                            '--mirror-only'], timeout=900)
@@ -1833,7 +1860,7 @@ def ui(ctx):
         ctx.log('  drift guard: %s'
                 % (_lines_with(out, 'MIRROR DRIFT GUARD') or ['(no verdict line)'])[-1])
     else:
-        ctx.log('WRITER 5/6: SKIPPED BY FAULT INJECTION — the mirror keeps the pin of a store this '
+        ctx.log('WRITER 5/7: SKIPPED BY FAULT INJECTION — the mirror keeps the pin of a store this '
                 'landing is replacing.')
 
     # THE READER'S OWN PREDICATE, ASSERTED HERE: this is `ui/app/ownership.js:pin()`, which compares
@@ -1880,7 +1907,7 @@ def ui(ctx):
     # read and never written, and an un-couriered CSV edit HALTs the step by name instead.
     clubval_before = md5(clubval)
     if not ctx.skip_clubs_writer:
-        ctx.log('WRITER 6/6: ui/tools/ingest_inputs.py --clubs-only  '
+        ctx.log('WRITER 6/7: ui/tools/ingest_inputs.py --clubs-only  '
                 '(the picks bundle, re-stamped to the landed board + store)')
         rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'ingest_inputs.py'),
                            '--clubs-only'], timeout=900)
@@ -1897,7 +1924,7 @@ def ui(ctx):
         ctx.log('  drift guard: %s'
                 % (_lines_with(out, 'PICKS DRIFT GUARD') or ['(no verdict line)'])[-1])
     else:
-        ctx.log('WRITER 6/6: SKIPPED BY FAULT INJECTION — the picks bundle keeps the stamp of a board '
+        ctx.log('WRITER 6/7: SKIPPED BY FAULT INJECTION — the picks bundle keeps the stamp of a board '
                 'this landing is replacing.')
 
     # THE READER'S OWN PREDICATE, ASSERTED HERE: this is `ui/app/club_totals.js:pin()`, which compares
@@ -1926,6 +1953,52 @@ def ui(ctx):
             % (str(cst.get('board'))[:8], str(cst.get('store'))[:8], cst.get('asOfRound'),
                cst.get('nPicks'), cst.get('pvcCurveMd5')))
 
+    # ---- WRITER 7/7 — THE DRAFT OUTCOME RECORD (ui/data_aux/draft_outcomes.js) ------------------
+    # THE SEVENTH BUNDLE, AND THE ONE THAT WOULD HAVE GONE STALE FASTEST. It carries a career fact
+    # per national-draft selection — games, debut lag, best season — and a career GROWS, so every
+    # round advance and every store edit legitimately moves it. Its reader pins it to the store it
+    # was generated from (`MD.draftday.pin()`), so a landing that moves the store and does not
+    # rewrite this file does not ship stale outcomes: it ships a DARK TAB, refusing by design.
+    #
+    # That is exactly the shape of the defect this session opened with — the v0 sidecar had no
+    # writer of record, FW1 moved the store, and every player card lost its entry price for a day.
+    # The lesson was written down; this is it being applied BEFORE the same thing happens rather
+    # than after. It is also cheap enough that there is no argument for deferring it: the generator
+    # loads no engine and reads one JSON file, so it costs about a second against the hour a landing
+    # already takes.
+    draftout_before = md5(draftout)
+    ctx.log('WRITER 7/7: ui/tools/gen_draft_outcomes.py  '
+            '(the draft outcome record, re-stamped to the landed store)')
+    rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'gen_draft_outcomes.py')], timeout=300)
+    if rc != 0:
+        raise StepError('the draft outcome record regeneration failed (exit %s):\n%s' % (rc, out[-2000:]))
+    for ln in _lines_with(out, 'rows', 'never played', 'maturity rule'):
+        ctx.log('  %s' % ln.strip())
+
+    # THE READER'S OWN PREDICATE, ASSERTED IN-STEP, exactly as writers 5 and 6 assert theirs: "the
+    # writer ran" is not the claim worth making, "the browser will honour what the writer wrote" is.
+    dst = _do_stamp(draftout)
+    do_fails = []
+    if str(dst.get('store')) != str(boot['store']):
+        do_fails.append('stamp.store (%s != %s)' % (str(dst.get('store'))[:8], boot['store'][:8]))
+    if not dst.get('nRows'):
+        do_fails.append('stamp.nRows is %r — the record ships no selections' % dst.get('nRows'))
+    # The population claim the whole surface rests on. A record with no gameless selections is a
+    # survivor list, and every base rate drawn off it would be fiction; the page says so in words,
+    # so the landing refuses to ship one rather than let the words become false.
+    if not dst.get('nNeverPlayed'):
+        do_fails.append('stamp.nNeverPlayed is %r — the population would be survivor-filtered, and '
+                        'every rate the Draft day page prints would be fiction' % dst.get('nNeverPlayed'))
+    if do_fails:
+        raise StepError('THE DRAFT OUTCOME RECORD WOULD BE REFUSED BY ui/app/draftday.js:pin(), or '
+                        'would be dishonest if it were not — %s. The Draft day tab would ship DARK '
+                        '(or, worse, ship a survivor list), and it must hold BEFORE the gates step.'
+                        % do_fails)
+    ctx.log('  draft stamp == the landed store %s: %s selections, %s never played, maturity %s '
+            'season(s) (pin() would ACCEPT it)'
+            % (str(dst.get('store'))[:8], dst.get('nRows'), dst.get('nNeverPlayed'),
+               dst.get('maturitySeasons')))
+
     ctx.log('AFTER   working %s  release-block=%s' % (md5(bundle), has_release(bundle)))
     ctx.log('AFTER   public  %s  release-block=%s' % (md5(public), has_release(public)))
     ctx.log('AFTER   movers  %s  %s' % (md5(movers),
@@ -1949,6 +2022,11 @@ def ui(ctx):
                                        if md5(clubval) == clubval_before else
                                        'MOVED %s -> %s, tracking the landed board + store'
                                        % (clubval_before[:12], md5(clubval)[:12])))
+    ctx.log('AFTER   draft  %s  %s' % (md5(draftout),
+                                       'UNMOVED (no career fact in the store moved)'
+                                       if md5(draftout) == draftout_before else
+                                       'MOVED %s -> %s, tracking the landed store'
+                                       % (draftout_before[:12], md5(draftout)[:12])))
 
     src = open(bundle, encoding='utf-8').read()
     m = re.search(r'window\.__MATCHDAY_WORKING__\s*=\s*(\{.*)\n?', src, re.S)
@@ -1988,11 +2066,11 @@ def ui(ctx):
             fails.append('stamp.release.%s (%s != %s)' % (k, relb.get(k), exp))
     if fails:
         raise StepError('THE UI BUNDLE IDENTITY IS WRONG: %s' % fails)
-    ctx.log("THE HTML APP'S EMBEDDED BOARD IDENTITY IS %s. All six writers ran; the release block "
+    ctx.log("THE HTML APP'S EMBEDDED BOARD IDENTITY IS %s. All seven writers ran; the release block "
             "is back, the reader can see the transition that produced this board, the ownership "
             "mirror is pinned to it rather than to the store it replaced, and the pick surface is "
             "stamped to it rather than to the board before it." % boot['board'])
-    return {'writers': 6, 'bundle_md5': md5(bundle), 'public_md5': md5(public),
+    return {'writers': 7, 'bundle_md5': md5(bundle), 'public_md5': md5(public),
             'embedded_board': st.get('board_md5'),
             'mirror_md5': md5(mirror), 'mirror_moved': md5(mirror) != mirror_before,
             'register_entries': len(lin_reg or []),
@@ -2002,7 +2080,10 @@ def ui(ctx):
             'ownership_pin': str(ost.get('generatedFromStore'))[:8],
             'club_valuation_md5': md5(clubval),
             'club_valuation_moved': md5(clubval) != clubval_before,
-            'club_valuation_pin': str(cst.get('board'))[:8], 'n_picks': cst.get('nPicks')}
+            'club_valuation_pin': str(cst.get('board'))[:8], 'n_picks': cst.get('nPicks'),
+            'draft_outcomes_md5': md5(draftout),
+            'draft_outcomes_moved': md5(draftout) != draftout_before,
+            'draft_outcomes_pin': str(dst.get('store'))[:8], 'n_selections': dst.get('nRows')}
 
 
 # ================================================================================= STEP 7 — GATES
@@ -3274,7 +3355,7 @@ LEVER_SEQUENCE = (
     ('lineage',      'the out-of-round column and the append-only entry',    lineage),
     ('contract',     'restamp_dynamic + the bake-lane repin + check',        contract),
     ('sibling',      'the balanced sibling, rebuilt and reconciled if moved', sibling),
-    ('ui',           'ALL SIX UI writers, and the identity read back out',   ui),
+    ('ui',           'ALL SEVEN UI writers, and the identity read back out', ui),
     ('state',        'docs/STATE.md regenerated from the carriers (3c)',     state),
     ('gates',        'the landing gate set, verdicts off exit codes',        gates),
     ('claims',       'emit the claims file and verify it against the tree',  claims),
@@ -3321,7 +3402,7 @@ ROUND_SEQUENCE = (
     ('day0',              'the day-0 reference — regenerated AT the advance, only', day0),
     ('contract',          'restamp_dynamic + the bake-lane repin + check',          contract),
     ('sibling',           'the balanced sibling: verify (the repin ran in-txn)',    sibling),
-    ('ui',                'ALL SIX UI writers, and the identity read back out',     ui),
+    ('ui',                'ALL SEVEN UI writers, and the identity read back out',   ui),
     ('movers_page',       "the owner's movers page, through the frozen template",   movers_page),
     ('state',             'docs/STATE.md regenerated from the carriers (3c)',       state),
     ('gates',             'the landing gate set, verdicts off exit codes',          gates),

@@ -196,6 +196,21 @@ LEVER_CARRIERS = (
       'transaction writes it (its target T8) when the OWNER moves a club, and the lander writes it '
       'when a LANDING moves the board or the store'),
 
+    F('ui/data_aux/draft_outcomes.js',
+      'steps.ui writer 7 (ui/tools/gen_draft_outcomes.py)',
+      'THE DRAFT OUTCOME RECORD — the seventh UI bundle, and the one that would have gone stale '
+      'fastest. It carries a career fact per national-draft selection (games, debut lag, best '
+      'season) and a career GROWS, so every round advance and every store edit legitimately moves '
+      'it. `MD.draftday.pin()` refuses a record whose stamped store is not the loaded board\'s, so '
+      'a landing that moves the store and does not rewrite this file does not ship stale outcomes — '
+      'it ships a DARK TAB, by design. This entry exists BEFORE that has ever happened, which is '
+      'the one difference between it and every carrier above it: the v0 sidecar had no writer of '
+      'record, the FW1 store edit staled it, and every player card lost its entry price for a day '
+      '(2026-08-30). The same class was then found in the ownership mirror and the picks bundle, '
+      'each after it had already shipped wrong. ONE WRITER, not two: nothing but this generator '
+      'writes the file, and it reads the store and nothing else. It costs about a second — it loads '
+      'no engine — so there is no efficiency argument for deferring it to a later act.'),
+
     # ---- the sibling repin's own targets ----------------------------------------------------------
     F('engine/rl_after/ingestion/sibling_repin_state.json', 'sibling_repin.reconcile',
       'the sibling provenance sidecar'),
