@@ -116,6 +116,49 @@ eqWeights(C.positionWeights(["SF", "SF"]), { SF: 1 },
     "0 offenders", offenders.length ? offenders.slice(0, 8).join(" | ") : "0 offenders");
 })();
 
+/* ================================================================================================
+   THE POSITION MAP'S REAL INVARIANT: IT COVERS THE ROSTER, EXACTLY.
+
+   ui/app/positions_data.js carries a stamp naming a BOARD md5 (`f2df6e0a` at the time of writing,
+   against a working bundle of `c8c2f2b6`), and nothing checks it. That stamp is the wrong pin and
+   the mismatch is not the defect it looks like: the map is VALUES-FREE — a player key to position
+   codes, off the owner's locations CSV — so it does not depend on the board at all. A price move
+   cannot stale it. What CAN stale it is the ROSTER changing, and that is what is asserted here.
+
+   The reader is already honest about a miss. ui/app/pocket.js accumulates an uncovered player's
+   value into an `unlisted` bucket and renders it as an alarm-coloured "Unlisted" row with its share
+   of the club — so a gap shows on screen rather than vanishing. That is a better guard than a board
+   md5 would have been, and it is why this file was never in the same class as the v0 sidecar or the
+   picks bundle, both of which shipped silently wrong.
+
+   What was missing is this: a gap should go RED IN A SUITE, not wait for somebody to notice a row.
+   Set equality both ways, so a player who joins the league and a player who leaves both fail — and
+   the failure names them, because "the map is stale" is not an actionable sentence and
+   "these three keys are on the board and not in the map" is. */
+(function () {
+  var src = fs.readFileSync(path.join(__dirname, "..", "app", "positions_data.js"), "utf8");
+  var map = JSON.parse(src.slice(src.indexOf("{"), src.lastIndexOf("}") + 1));
+  var bsrc = fs.readFileSync(path.join(__dirname, "..", "data", "board_view_working.js"), "utf8");
+  var board = JSON.parse(bsrc.slice(bsrc.indexOf("{"), bsrc.lastIndexOf("}") + 1));
+  var mapKeys = map.byKey || {};
+  var boardKeys = {};
+  (board.players || []).forEach(function (p) { boardKeys[p.key] = 1; });
+  var missing = Object.keys(boardKeys).filter(function (k) { return !mapKeys[k]; });
+  var extra = Object.keys(mapKeys).filter(function (k) { return !boardKeys[k]; });
+  assert(missing.length === 0,
+    "SHIPPED map: every board player has position codes (" + Object.keys(boardKeys).length +
+      " on the board) — an uncovered player's value falls into pocket.js's alarm-coloured " +
+      "\"Unlisted\" row, which is honest but should never have to fire",
+    "0 uncovered", missing.length ? missing.slice(0, 8).join(", ") : "0 uncovered");
+  assert(extra.length === 0,
+    "SHIPPED map: and it carries NOBODY who is not on the board — a departed player left in it is " +
+      "the same staleness in the other direction, and nothing on screen would show it",
+    "0 stragglers", extra.length ? extra.slice(0, 8).join(", ") : "0 stragglers");
+  assert(map.stamp && map.stamp.n === Object.keys(mapKeys).length,
+    "SHIPPED map: its stamp's own count is the number of players it actually carries",
+    String(Object.keys(mapKeys).length), String(map.stamp && map.stamp.n));
+})();
+
 console.log("  " + "-".repeat(60));
 console.log("  " + (n - fails) + "/" + n + " passed" + (fails ? "  (" + fails + " FAILED)" : ""));
 process.exit(fails ? 1 : 0);

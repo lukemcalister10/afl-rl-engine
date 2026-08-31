@@ -6,68 +6,59 @@ because it lived only in a working tree.
 
 ## Where things stand
 
-The owner filed thirteen UI requests plus two bugs he found. NINE plus both bugs are landed and
-pushed. What each of them decided is in its own commit message; the commits are the record and are
+The owner filed thirteen UI requests plus two bugs he found. **TWELVE plus both bugs are landed
+and pushed; only #4 remains**, and it is ruled rather than open — it rides the next board rebuild. What each of them decided is in its own commit message; the commits are the record and are
 written to be read.
 
 | # | ask | state |
 |---|---|---|
 | 1 | club summary depth on one row | DONE |
 | 2 | config tab, model changes on/off | DONE — `ui/app/universe.js` |
-| 3 | player card: weekly value graph since R14 | **TODO** |
+| 3 | player card: weekly value graph since R14 | DONE — `ui/app/card.js` weeklyValueChart |
 | 4 | pool pick value -> 150 | **RULED, PENDING A BUILD** — see POOL_VALUE_150_OWNER_OVERRIDE.md |
 | 5 | search dropdown >= 5 rows | DONE (see caveat below) |
 | 6 | "pick 62" searchable | DONE |
 | 7 | future picks searchable | DONE — rebuilt after his correction |
 | 8 | draft pathway display (`MSD · 2021`) | DONE |
 | 9 | rank/name column further left | DONE |
-| 10 | cleaner font on value numbers | **TODO** |
-| 11 | "vs Pick 1" bar with a ratio | **TODO** |
+| 10 | cleaner font on value numbers | DONE — owner chose the system sans; `--fig` split from `--mono` |
+| 11 | "vs Pick 1" bar with a ratio | DONE — `MD.valueLine` + the pick-1 tick |
 | 12 | Pick Value tab | DONE — `ui/app/pickvalue.js` |
-| 13 | draft-day translator | **TODO** — the only one that is new analysis, not new display |
+| 13 | draft-day translator | DONE — the Draft day tab, its generator and its writer of record |
 | — | entry price missing on player cards | DONE — `ui/tools/v0_identity.py` |
 | — | FW1 absent from the movers list | DONE — it was labelled "Model change (MC-17)" |
 
-## The remaining four, with what has already been settled
+## What remains: ONE item, and it is ruled rather than open
 
-### #3 — the weekly value graph
-Replace "recent form" on the player card with a value-over-time chart since R14, x and y axes
-labelled. The data is `MD.history.series(key)` — it already returns one row per point with `v`, and
-it now respects the universe (below), so the default chart is the current-model progression, which is
-what the owner asked for. Do NOT re-derive the series; read it.
+### #4 — the pool pick value -> 150
+The owner's word, verbatim: *"override it to 150 please, noting it's an owner override and knowingly
+isn't derived."* The ruling, what it overrides, its blast radius, the exact edit and its falsifier
+are all in `docs/pending/POOL_VALUE_150_OWNER_OVERRIDE.md`. It touches `pvc`, which is published in
+the board bundle, so it is a carrier move and therefore an ACT — it rides the next board rebuild
+(FW2) rather than being a text edit anyone can make. Nothing else is waiting on it.
 
-### #10 — the font on value numbers
-Owner: "something that looks a little cleaner and less mechanical". Needs a choice put to him — offer
-two, do not pick silently. Tabular figures matter (columns of numbers must align).
+## What the other twelve decided — the notes worth keeping
 
-### #11 — "vs Pick 1"
-Owner: the "vs top" bar becomes "vs Pick 1" with a ratio to two decimal places rendered ON the bar
-and legible against it. Pick 1 = 3000 in the shipped `pvc`, so 9000 reads 3.00x and 300 reads 0.10x.
-Read the curve; do not hardcode 3000.
-
-### #13 — the draft-day translator
-Feasibility was checked and it is real: the store carries 1570 ND-drafted rows of which 232 (15%)
-NEVER played a game, so busts are represented and base rates would not be survivorship-inflated.
-Per-year counts (67-78) are about a full national draft class. Two things to build in rather than
-paper over: thin samples at individual picks, and an age cutoff for recent classes (19 of 71 from
-2024 have not debuted — that is youth, not failure).
-
-## THE ONE CORRECTION OWED (owner ruling, 2026-08-31)
-
-`ui/app/pickvalue.js` carries a provenance line framing the v0-vs-pvc divergence as a caveat about
-two artifacts that "do not reconcile". **The owner has ruled that the divergence is BY DESIGN and the
-wording must say so:**
-
-> "They are linked, but shouldn't average out strictly, as that weights each position equally. (i.e.
-> Ruck + SD + SF + MID + KPF + KPD v0 for pick 1 should not strictly = 6 x pick 1 pvc) There are way
-> less rucks drafted than midfielders, so the weighting is different. And mids and rucks provide
-> better returns on investments than the average pick, so it makes sense they're > the all in curve.
-> That's by design."
-
-So MID at 1.15-1.42x and KPD at 0.64-0.90x is the model working. Reword the page to give the design
-reason — position mix is not uniform, and mids/rucks genuinely return more per pick — instead of
-implying an unresolved gap. Do NOT delete the numbers; they are useful. Change what they are said to
-mean.
+* **#3 · the weekly value graph.** Reads `MD.history.series`; derives nothing, because that function
+  already owns which universe is on screen, what each point is, and the fact that the value trace is
+  complete for every player at every point (so the line needs no did-not-play handling — score
+  coverage is the patchy column, value is not). The y axis is not zero-based and the chart says so.
+  The season scores the retired "recent form" line drew survive per round in the history table's
+  Score column, where each carries its own played / DNP / not-recorded truth.
+* **#10 · the figure face.** Two were rendered and put to him; he chose the system sans. The change
+  is a token split, not a font sweep: `--fig` is a VALUE (price, delta, ratio, rank, score) and
+  `--mono` is an IDENTIFIER or caption (club name, pick slug, stamp, footnote). What monospace was
+  actually buying was column alignment, and `tabular-nums lining-nums` keeps it — the suite asserts
+  the property (same digit count renders at the same measured width) and not the family name, which
+  is his to change.
+* **#11 · "vs Pick 1".** The FILL stays anchored 0..top-of-board so the column still ranks the page;
+  the NUMBER is the ratio to pick 1; the TICK at pick 1's own position on that track reconciles the
+  two. Pick 1 is read off the board's own curve, never hardcoded. Found by looking at the rendered
+  page: the foot of the board printed a column of `0.00x` for players worth single digits, which
+  reads as "worth nothing" and is false — it says `<0.01x` now, and the suite fails if `0.00x` ever
+  returns.
+* **#13 · Draft day.** A generator (`ui/tools/gen_draft_outcomes.py`), a tab (`ui/app/draftday.js`),
+  63 tests, and a writer of record in the landing. Its two hard-won facts are below.
 
 ## Things learned the expensive way this session — do not re-learn them
 
@@ -96,24 +87,55 @@ mean.
    files is the pattern to avoid: it triples the reading cost and produced two collisions in this
    block. Ask before spending it, rather than after.
 
+## Two facts the Draft day build turned up, both of which outlive it
+
+7. **THE STORE'S TOP-LEVEL `games` IS STALE for every player with a live season.** Measured: all 981
+   national-draft players with no 2026 season have `games` equal to the sum of their own `scoring`
+   rows; only 196 of the 589 with one do. Six read `games == 0` while their season rows recorded
+   football this year. The season rows are what the weekly ingest writes — the FW1 edit moved them
+   and left the scalar where it was — so **career games is the sum of the seasons, and the scalar is
+   a copy that lags**. Anything computing a career total from `row['games']` is wrong for a third of
+   the population. Found by an assertion, not by reading.
+8. **The tab strip could not hold eight tabs.** It was a non-wrapping inline-flex row with
+   `overflow:hidden`, so the eighth clipped off the end at 720px with no scroll affordance to
+   recover it. It wraps now. `responsive_layout`'s clipping probe caught it, which is what that
+   probe is for. Related: `ui_222_items`'s runtime loop is now driven off `MD.TABS` instead of a
+   hand-kept list of five view names — that list had already fallen behind twice.
+
 ## The suites, and what green looks like
 
-    cd ui/tests
-    node movers.test.js                 87
-    node release_seam.test.js           33
-    node ui_defects_2026-08-21.test.js  180
-    node counting_rule.test.js          24
-    node club_totals_parity.test.js     41
-    node universe.test.js               13
-    node pickvalue.test.js              90
-    node ui_222_items.test.mjs          72   (browser)
-    node responsive_layout.test.mjs     72   (browser, six widths)
-    python3 tools/restamp.py check           ALL 5 STAMPS AGREE
+    node ui/tests/movers.test.js                 87
+    node ui/tests/release_seam.test.js           33
+    node ui/tests/ui_defects_2026-08-21.test.js  180
+    node ui/tests/counting_rule.test.js          27
+    node ui/tests/club_totals_parity.test.js     41
+    node ui/tests/universe.test.js               13
+    node ui/tests/pickvalue.test.js              90
+    node ui/tests/draftday.test.js               63   (new)
+    node ui/tests/ui_222_items.test.mjs          87   (browser)
+    node ui/tests/responsive_layout.test.mjs     72   (browser, six widths)
+    python3 tools/landing/test_finals_bounds.py  OK
+    python3 tools/landing/test_store_edit.py     15
+    python3 tools/landing/test_proofstash.py     23
+    python3 tools/restamp.py check                    ALL 5 STAMPS AGREE
 
-## Two open flags nobody has actioned
+Preflight against a SPENT spec shows two reds that are not regressions: `clean_tree` on any
+uncommitted work, and `store_sanity`, because a spec whose edits have already flown no longer
+matches the store its old-value assertions were written against.
 
-* `ui/app/positions_data.js` is pinned to board `f2df6e0a` while the working bundle is `c8c2f2b6`,
-  and `pocket.js:12` reads it with NO pin check. Same class of defect as the entry-price one: a file
-  pinned to a board nobody re-checks.
+## Open flags
+
+* **`ui/app/positions_data.js` — investigated, and the earlier wording here was wrong.** It is not
+  the same class as the entry-price defect. The map is VALUES-FREE (player key to position codes,
+  off the owner's locations CSV), so it does not depend on the board and a price move cannot stale
+  it; the board md5 in its stamp is simply the wrong pin rather than a failed one. And the reader is
+  already honest about a miss: `pocket.js` accumulates an uncovered player's value into an
+  alarm-coloured **"Unlisted"** row with its share of the club, which is a better guard than a board
+  md5 would have been. Coverage measured 804/804 with no stragglers.
+  WHAT WAS ACTUALLY MISSING, now closed: a gap went to a row on screen rather than red in a suite.
+  `counting_rule.test.js` now asserts set equality both ways and names the offending keys.
+  STILL OPEN, and small: the stamp should name what the file actually derives from (the roster key
+  set and the CSV) instead of a board. That means touching `ui/tools/extract_positions.py`, a writer
+  of record, so it belongs in an act rather than in a UI block.
 * 2027 late-round picks can price above the same round's 2026 picks. It falls out of the owner's own
   year rule lifting late picks via the round average. He has seen it; it may be intended.
