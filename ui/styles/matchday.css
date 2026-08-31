@@ -13,12 +13,23 @@
   --cond:"Arial Narrow","Helvetica Neue Condensed","Roboto Condensed",Arial,sans-serif;
   --sans:"Helvetica Neue",Arial,sans-serif;
   --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  /* OWNER ITEM 10 (2026-08-31), his choice of two put to him: "something that looks a little
+     cleaner and less mechanical" on the value rating numbers. --fig is the FIGURE face and it is
+     now separate from --mono, because the two were doing different jobs under one token:
+       --fig  = a VALUE. A price, a delta, a ratio, a rank, a score. Set in the system sans.
+       --mono = an IDENTIFIER or a caption. A club name, a pick slug, a stamp, a footnote.
+     Monospace earned its place on the second and was only ever borrowed for the first, where its
+     slab figures are what read as mechanical. The alignment that made it worth borrowing is kept
+     without it: tabular-nums pins every digit to one advance width, so columns of figures still
+     line up exactly as they did. Lining figures are asked for explicitly so no fallback face
+     substitutes old-style (dropping-tail) numerals into a table. */
+  --fig:"Helvetica Neue",Helvetica,Arial,"Segoe UI",Roboto,system-ui,sans-serif;
 }
 *{box-sizing:border-box}
 html,body{margin:0}
 body{background:var(--pitch);color:var(--text);font-family:var(--sans);font-size:14px;line-height:1.4;
   -webkit-font-smoothing:antialiased}
-.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.num{font-family:var(--fig);font-variant-numeric:tabular-nums lining-nums}
 a{color:var(--volt)}
 
 /* ---- pitch banner (the "invented figures" line becomes the live board stamp line) ---- */
@@ -135,7 +146,7 @@ header.mast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px
 .row .club{display:flex;flex-direction:column;gap:1px;min-width:0;line-height:1.15}
 .row .club .affl{font-family:var(--cond);font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--volt);overflow-wrap:break-word}
 .row .club .afl{font-family:var(--mono);font-size:10px;letter-spacing:0;text-transform:none;color:var(--faint);overflow-wrap:break-word}
-.row .val{font-family:var(--mono);font-weight:700;font-size:19px;text-align:right}
+.row .val{font-family:var(--fig);font-weight:600;font-size:21px;text-align:right;letter-spacing:-.005em}
 /* item 3 (register item 163, owner-worded amendment to the LOCK, 2026-07-15): the CONTINUOUS value line.
    The spectrum is painted on the track (anchored 0..top price); .vmask covers the unfilled remainder, so
    the fill reveals the spectrum from the cool end up to the player's value — colour shifts as it fills.
@@ -153,12 +164,12 @@ header.mast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px
 .vline.vline-r{height:16px}
 .vline .vp1{position:absolute;top:0;bottom:0;width:0;border-left:1px dashed rgba(11,14,19,.75);
   box-shadow:1px 0 0 rgba(242,245,249,.35);pointer-events:none}
-.vline .vratio{position:absolute;top:50%;transform:translateY(-50%);font-family:var(--mono);
+.vline .vratio{position:absolute;top:50%;transform:translateY(-50%);font-family:var(--fig);
   font-size:10px;font-weight:700;letter-spacing:.01em;line-height:1;white-space:nowrap;
   pointer-events:none;font-variant-numeric:tabular-nums}
 .vline .vratio.out{margin-left:5px;color:var(--dim)}
 .vline .vratio.in{transform:translate(-100%,-50%);margin-left:-5px;color:#0b0e13}
-.pill{justify-self:end;font-family:var(--mono);font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.pill{justify-self:end;font-family:var(--fig);font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;white-space:nowrap}
 .pill.up{background:rgba(74,222,128,.14);color:var(--up)}
 .pill.dn{background:rgba(240,101,94,.14);color:var(--dn)}
 .pill.flat{background:var(--edge);color:var(--faint)}
@@ -192,7 +203,7 @@ header.mast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px
   padding:12px 16px 8px;margin-top:12px;border-bottom:2px solid var(--volt)}
 .clubhead .crank{font-family:var(--cond);font-weight:900;font-size:22px;color:var(--volt);text-align:right}
 .clubhead .cname{font-family:var(--cond);font-weight:900;font-size:18px;letter-spacing:.03em;text-transform:uppercase;color:var(--text)}
-.clubhead .csig{font-family:var(--mono);font-weight:700;font-size:16px;color:var(--volt)}
+.clubhead .csig{font-family:var(--fig);font-weight:700;font-size:16px;color:var(--volt)}
 .clubhead .csig small{font-size:10px;color:var(--faint);font-weight:400}
 .clubhead .ccount{font-family:var(--mono);font-size:11px;color:var(--faint)}
 .clubmore{font-family:var(--mono);font-size:11px;color:var(--faint);padding:6px 16px;border:1px dashed var(--edge);
@@ -212,7 +223,7 @@ header.mast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px
 .card .body{padding:20px 24px 34px}
 .statrow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
 .k{font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
-.v{font-family:var(--mono);font-weight:700;font-size:24px;margin-top:3px}
+.v{font-family:var(--fig);font-weight:600;font-size:25px;margin-top:3px;letter-spacing:-.005em}
 .v.volt{color:var(--volt)} .v.flat{color:var(--faint);font-size:20px}
 .v.up{color:var(--up)} .v.dn{color:var(--dn)} .v small{font-size:13px;color:var(--faint)}
 h2.sec{font-family:var(--cond);font-weight:700;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--text);
@@ -229,11 +240,11 @@ h2.sec .meta{color:var(--faint);font-family:var(--mono);letter-spacing:0;text-tr
 .wf .bar.up{left:50%;background:var(--up)} .wf .bar.dn{right:50%;background:var(--dn)}
 .wf .bar.rule{right:50%;background:transparent;border:1px solid var(--volt)}
 .wf .bar.resid{left:50%;background:var(--alarm)}
-.wf .fig{font-family:var(--mono);font-weight:700;font-size:13px;text-align:right}
+.wf .fig{font-family:var(--fig);font-weight:700;font-size:13px;text-align:right}
 .wf .fig.up{color:var(--up)} .wf .fig.dn{color:var(--dn)} .wf .fig.zero{color:var(--faint);font-weight:400}
 .wf .fig.rule{color:var(--volt)} .wf .fig.resid{color:var(--alarm)}
 .wf .totals{font-family:var(--cond);font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
-.wf .totals b{font-family:var(--mono);color:var(--text);font-size:15px;letter-spacing:0}
+.wf .totals b{font-family:var(--fig);color:var(--text);font-size:15px;letter-spacing:0}
 .wf .rowline{grid-column:1/4;border-bottom:1px solid var(--edge)}
 .note{margin-top:12px;font-size:12px;color:var(--dim);line-height:1.6}
 .note b{color:var(--volt)}
@@ -255,13 +266,13 @@ h2.sec .meta{color:var(--faint);font-family:var(--mono);letter-spacing:0;text-tr
 .wchart .wcd{fill:var(--volt);stroke:none}
 .wchart .wcd.ev{fill:var(--pitch);stroke:var(--volt);stroke-width:1.5}
 .wchart .wcd.now{fill:#f2f5f9}
-.wchart .wcy{fill:var(--dim);font-family:var(--mono);font-size:10px;text-anchor:end;dominant-baseline:middle}
-.wchart .wcx{fill:var(--dim);font-family:var(--mono);font-size:10px;text-anchor:middle}
+.wchart .wcy{fill:var(--dim);font-family:var(--fig);font-size:10px;text-anchor:end;dominant-baseline:middle}
+.wchart .wcx{fill:var(--dim);font-family:var(--fig);font-size:10px;text-anchor:middle}
 .wchart .wcx.ev{fill:var(--volt)}
 .wchart .wcat{fill:var(--faint);font-family:var(--cond);font-weight:700;font-size:10px;
   letter-spacing:.22em;text-anchor:middle}
 .wcfoot{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;padding:8px 4px 4px;
-  font-family:var(--mono);font-size:11px;color:var(--dim)}
+  font-family:var(--fig);font-size:11.5px;color:var(--dim)}
 .wcfoot b{color:var(--text);font-variant-numeric:tabular-nums}
 .wcfoot .up{color:var(--up)}.wcfoot .dn{color:var(--dn)}.wcfoot .flat{color:var(--faint)}
 .wcfoot .axnote{margin-left:auto;color:var(--faint);font-family:var(--cond);letter-spacing:.06em;
@@ -278,13 +289,13 @@ h2.sec .meta{color:var(--faint);font-family:var(--mono);letter-spacing:0;text-tr
 .trow{display:flex;align-items:center;gap:10px;padding:0 16px;height:42px;border-bottom:1px solid var(--edge)}
 .trow .tnm{font-family:var(--cond);font-weight:700;font-size:15px;letter-spacing:.02em;text-transform:uppercase;flex:1;overflow-wrap:anywhere}
 .trow .tnm i{color:var(--faint);font-style:normal;font-family:var(--mono);font-size:11px;margin-left:8px;text-transform:none;letter-spacing:0}
-.trow .tfig{font-family:var(--mono);font-weight:700;font-size:14px}
+.trow .tfig{font-family:var(--fig);font-weight:700;font-size:14px}
 .trow .tpin{color:var(--volt)}
 .pickchip{display:inline-block;font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.1em;
   text-transform:uppercase;color:var(--volt);border:1px solid var(--volt);padding:1px 6px;margin-right:6px}
 .ttotal{display:flex;justify-content:space-between;align-items:baseline;padding:12px 16px;background:var(--card-2)}
 .ttotal .k{font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
-.ttotal .tfig{font-family:var(--mono);font-size:19px;font-weight:800;color:var(--volt)}
+.ttotal .tfig{font-family:var(--fig);font-size:19px;font-weight:800;color:var(--volt)}
 /* item 6: type-ahead combobox — dropdown font matched to the board's condensed type style. */
 .combo{position:relative;padding:9px 16px}
 .combo input.tradesearch{width:100%;background:var(--pitch);color:var(--text);border:1px solid var(--edge);
@@ -297,14 +308,14 @@ h2.sec .meta{color:var(--faint);font-family:var(--mono);letter-spacing:0;text-tr
   text-align:left;background:transparent;border:0;border-bottom:1px solid var(--edge);padding:8px 12px;cursor:pointer;
   font-family:var(--cond);font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--text)}
 .combo .results button:hover{background:var(--volt);color:#0a0c10}
-.combo .results button .rv{font-family:var(--mono);font-weight:700;color:var(--faint)}
+.combo .results button .rv{font-family:var(--fig);font-weight:700;color:var(--faint)}
 .combo .results button:hover .rv{color:#0a0c10}
 .combo .results .rpick{color:var(--volt)}
 .combo .results .rpick small{font-family:var(--mono);font-weight:400;font-size:10px;color:var(--faint);letter-spacing:0}
 .combo .results button:hover .rpick,.combo .results button:hover .rpick small{color:#0a0c10}
 .combo .results .rnone{padding:9px 12px;color:var(--faint);font-family:var(--mono);font-size:12px}
 .verdict{margin-top:16px;background:var(--card);border:1px solid var(--edge);border-left:4px solid var(--volt);padding:18px 20px}
-.verdict .gap{font-family:var(--mono);font-size:24px;font-weight:800}
+.verdict .gap{font-family:var(--fig);font-size:24px;font-weight:800}
 .verdict .gap.up{color:var(--up)} .verdict .gap.dn{color:var(--dn)} .verdict .gap.flat{color:var(--faint)}
 .verdict .line{margin-top:8px;font-size:15px;line-height:1.5}
 .verdict .line b{color:var(--text)}
@@ -391,7 +402,7 @@ h2.sec .meta{color:var(--faint);font-family:var(--mono);letter-spacing:0;text-tr
 .mctag{display:inline-block;margin-left:8px;font-family:var(--cond);font-weight:700;font-size:9px;
   letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--volt);color:var(--volt);
   padding:1px 6px;cursor:help}
-.hm{font-family:var(--mono);font-size:11px}
+.hm{font-family:var(--fig);font-size:11.5px}
 .hm.up{color:var(--up)} .hm.dn{color:var(--dn)} .hm.flat,.hm.na{color:var(--faint)}
 /* a score that exists; a proven DNP; and a blank that makes no claim either way */
 .histtbl .hsc{font-variant-numeric:tabular-nums}
@@ -526,7 +537,7 @@ footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--
 .pickrow{display:grid;grid-template-columns:72px 1fr 72px;gap:10px;align-items:baseline;
   padding:6px 16px;border-bottom:1px solid rgba(35,41,54,.5)}
 .pickrow:last-child{border-bottom:0}
-.pickrow .pkband{font-family:var(--mono);font-weight:700;font-size:13px;color:var(--text)}
+.pickrow .pkband{font-family:var(--fig);font-weight:700;font-size:13px;color:var(--text)}
 .pickrow .pkmeta{font-family:var(--cond);font-size:12px;letter-spacing:.03em;color:var(--dim);text-transform:uppercase}
 .pickrow .pkval{text-align:right;font-size:14px;color:var(--volt)}
 .pickspanel .picknone{padding:10px 16px;color:var(--faint);font-size:12px}
@@ -551,7 +562,7 @@ footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--
   text-transform:uppercase;color:var(--text)}
 .ctable td.club a{color:var(--text);text-decoration:none;border-bottom:1px dotted var(--edge)}
 .ctable td.club a:hover{color:var(--volt);border-bottom-color:var(--volt)}
-.ctable td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--text)}
+.ctable td.num{font-family:var(--fig);font-variant-numeric:tabular-nums lining-nums;color:var(--text)}
 .ctable td.overall{color:var(--volt);font-weight:700}
 .ctable td.picks{color:var(--dim)}
 .ctable tbody tr:hover{background:var(--card-2)}
@@ -584,11 +595,11 @@ footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--
   color:var(--faint);border-bottom:1px solid var(--edge)}
 .pocketpanel .pk-tbl td.pk-lbl{text-align:left;font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.06em;
   text-transform:uppercase;color:var(--dim)}
-.pocketpanel .pk-tbl td.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.pocketpanel .pk-tbl td.num{font-family:var(--fig);font-variant-numeric:tabular-nums lining-nums}
 .pocketpanel .pk-tbl td.pk-abs{color:var(--text);font-weight:700}
 .pocketpanel .pk-tbl td.pk-pct{color:var(--dim)}
 .pocketpanel .pk-tbl tbody tr:hover{background:var(--card-2)}
-.pocketpanel .pk-vs{font-family:var(--mono);font-size:11px;font-weight:700}
+.pocketpanel .pk-vs{font-family:var(--fig);font-size:11px;font-weight:700}
 .pocketpanel .pk-vs small{font-weight:400;color:var(--faint);margin-left:3px}
 .pocketpanel .pk-vs.up{color:var(--up)} .pocketpanel .pk-vs.dn{color:var(--dn)} .pocketpanel .pk-vs.flat{color:var(--faint)}
 .pocketpanel .pk-foot{font-size:10px;line-height:1.5;color:var(--faint);padding:9px 14px 4px;border-top:1px solid var(--edge);margin-top:4px}
@@ -606,7 +617,7 @@ footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--
   text-transform:uppercase;color:var(--faint)}
 .movercard .mcn{font-family:var(--cond);font-weight:900;font-size:18px;letter-spacing:.02em;
   text-transform:uppercase;color:var(--text);line-height:1.05;overflow-wrap:anywhere}
-.movercard .mcv{font-family:var(--mono);font-weight:700;font-size:16px}
+.movercard .mcv{font-family:var(--fig);font-weight:700;font-size:16px}
 .movercard .mcv.up{color:var(--up)} .movercard .mcv.dn{color:var(--dn)}
 .movercard .mcv.flat,.movercard .mcv.na{color:var(--faint)}
 .movercard .mcs{font-size:10.5px;color:var(--dim)}
@@ -632,9 +643,9 @@ footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--
 .moverrow .mr.who .nm{font-family:var(--cond);font-weight:700;font-size:16px;letter-spacing:.02em;
   text-transform:uppercase;color:var(--text);overflow-wrap:anywhere;line-height:1.05}
 .moverrow .mr.who .sub{font-family:var(--mono);font-size:10px;color:var(--faint)}
-.moverrow .mr.val{font-family:var(--mono);font-weight:700;font-size:15px;text-align:right}
+.moverrow .mr.val{font-family:var(--fig);font-weight:700;font-size:15px;text-align:right}
 .moverrow .mr.dv,.moverrow .mr.dr{justify-self:end}
-.moverrow .mr.dvp,.moverrow .mr.dpr{font-family:var(--mono);font-size:12px;text-align:right}
+.moverrow .mr.dvp,.moverrow .mr.dpr{font-family:var(--fig);font-size:12px;text-align:right}
 .moverrow .mr.dvp.up,.moverrow .mr.dpr.up{color:var(--up)}
 .moverrow .mr.dvp.dn,.moverrow .mr.dpr.dn{color:var(--dn)}
 .moverrow .mr.dvp.flat,.moverrow .mr.dpr.flat,.moverrow .mr.dvp.na,.moverrow .mr.dpr.na{color:var(--faint)}

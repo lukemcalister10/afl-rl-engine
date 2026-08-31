@@ -378,6 +378,47 @@ check(ratioCheck.floored > 0 && (await page.evaluate(() =>
   'item 11 — a ratio too small for two decimals reads "<0.01x", and NO row prints the false "0.00x"',
   ratioCheck.floored + ' floored');
 
+/* ------------------------------------------------- OWNER ITEM 10 (2026-08-31): the figure face
+   "Something that looks a little cleaner and less mechanical" on the value rating numbers. He was
+   shown two and chose the system sans. The thing worth pinning is not which family name won — that
+   is taste and he can change it — but the PROPERTY the change had to preserve to be allowed at all:
+   monospace was carrying the column alignment, and dropping it without tabular figures would have
+   left every column of numbers ragged. So the assertions are: the figures are no longer monospaced,
+   they ask for tabular lining figures, and two values with the same digit count actually MEASURE the
+   same width on the rendered page — which is the alignment itself, not a proxy for it. */
+section('OWNER ITEM 10 (2026-08-31) — the value figures are set in the figure face, still tabular');
+await go('board');
+const figFace = await page.evaluate(() => {
+  const el = document.querySelector('.rows .row.working .val');
+  const cs = getComputedStyle(el);
+  return { family: cs.fontFamily, variant: cs.fontVariantNumeric };
+});
+check(!/mono/i.test(figFace.family),
+  'item 10 — the board value is no longer set in the monospace stack', figFace.family);
+check(/tabular-nums/.test(figFace.variant),
+  'item 10 — it asks for tabular figures, which is what kept the column aligned without the monospace',
+  figFace.variant);
+const widths = await page.evaluate(() => {
+  const by = {};
+  [...document.querySelectorAll('.rows .row.working .val')].forEach(el => {
+    const d = el.textContent.replace(/[^0-9]/g, '').length;
+    (by[d] = by[d] || []).push(Math.round(el.getBoundingClientRect().width * 100) / 100);
+  });
+  // the widest digit-count bucket that has more than one member is the one worth measuring
+  const k = Object.keys(by).filter(k => by[k].length > 1).sort((a, b) => by[b].length - by[a].length)[0];
+  return { digits: k, n: by[k].length, distinct: [...new Set(by[k])].length };
+});
+check(widths.distinct === 1 && widths.n > 50,
+  'item 10 — every value with the same digit count renders at the SAME width, so the column is still a column',
+  JSON.stringify(widths));
+/* And the separation the token exists for: an IDENTIFIER is still monospaced. If a later sweep
+   swapped --mono wholesale this goes red, which is the point — the change was to the figures. */
+const idFace = await page.evaluate(() =>
+  getComputedStyle(document.querySelector('.rows .row.working .club .afl')).fontFamily);
+check(/mono/i.test(idFace),
+  'item 10 — identifiers (the AFL club line) keep the monospace: the swap was scoped to values, not to everything',
+  idFace);
+
 /* ------------------------------------------------------------------ CLUSTER 2: navigation */
 section('CLUSTER 2 — navigation (items 12, 16, 15, 9, 11)');
 await go('board');
