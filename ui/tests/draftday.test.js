@@ -364,6 +364,61 @@ ok(mixed.nCross === 1 && mixed.nMeasured === 2,
    "the frame reports how many careers included a season outside the drafted position",
    mixed.nCross + " of " + mixed.nMeasured);
 
+/* ================== THE STAR LINE — the owner's ruled figure, and the bust count ==============
+   His reasoning, 2026-08-31, and it is why the line is needed at all: value over replacement
+   already carries magnitude continuously — "a great, say, 110 ppg mid, contributes 6x more to the
+   retrospective value of their pick than an 85 mid does (if the bar was 80) as 30 is 6x 5". What a
+   MEAN destroys is the shape. "What we probably don't get from that is bust % and bar clear % - we
+   just get averaged results."
+
+   His lines: 105 mid, 105 ruck, 97 SD, 92 SF, 85 KPD and KPF. A DECLARATION, not a derivation —
+   published from docs/inputs/OWNER_STAR_SEASONS.json and read, never inferred. */
+var STARBOARD = {
+  REPL_BAR: { MID: 77.1, SF: 67.9, KPF: 63.8, SD: 75.3, KPD: 65.4, RUCK: 75.5 }, REPL_DROP: 3,
+  REPL: { MID: 80.1, SF: 70.9, KPF: 66.8, SD: 78.3, KPD: 68.4, RUCK: 78.5 },
+  STAR_BAR: { MID: 105, RUCK: 105, SD: 97, SF: 92, KPD: 85, KPF: 85 },
+};
+ok(core.starOf(STARBOARD, "MID") === 105 && core.starOf(STARBOARD, "KPF") === 85,
+   "the star line is READ off the board, per position");
+ok(core.starOf({}, "MID") === null, "no declaration, no star line");
+
+/* THE OWNER'S POSITION RULE APPLIES TO THE CEILING EXACTLY AS IT DOES TO THE FLOOR: "a player who
+   changes positions is measured against that season's bar, and if they clear it, it credits their
+   original draft position for the success." */
+var midStarredAsFwd = core.frame([pk(95, "s1", "SF")], STARBOARD, "MID");
+ok(midStarredAsFwd.star === 1,
+   "a MID-drafted player scoring 95 while playing SF STARS — 95 clears SF's line of 92 — and the " +
+   "star is credited to the MIDFIELD row, not to the forwards");
+var midNotStar = core.frame([pk(95, "s2", "MID")], STARBOARD, "MID");
+ok(midNotStar.star === 0,
+   "…while the same 95 played as a midfielder is NOT a star, because MID's line is 105. The same " +
+   "score is a star in one role and ordinary in another, which is the entire point of per-position lines");
+
+/* one star season is enough — a career is starred by its best year, not its average */
+var oneGoodYear = core.frame([{ k: "g", p: 10, y: 2010, dp: "MID", g: 100,
+                                s: [[70, "MID"], [108, "MID"], [72, "MID"]] }], STARBOARD, "MID");
+ok(oneGoodYear.star === 1 && oneGoodYear.vor > 0,
+   "one star season is enough — a career is starred by its best year, not by its mean");
+
+/* BUST is "never produced a measurable season", NOT "never cleared the bar" — the latter is just
+   the complement of the clear rate and would say nothing the clear rate does not. */
+var mixedBust = core.frame([pk(95, "b1", "MID"), pk(null, "b2"), pk(50, "b3", "MID")], STARBOARD, "MID");
+ok(Math.abs(mixedBust.bust - 1 / 3) < 1e-9,
+   "bust is the share who never produced a measurable season — one of three here",
+   mixedBust.bust.toFixed(3));
+ok(mixedBust.startable === 1 / 3 && mixedBust.bust === 1 / 3,
+   "…and it is NOT the complement of the clear rate: the 50-scorer played and did not clear, so he " +
+   "is neither a bust nor a clear", mixedBust.startable + " / " + mixedBust.bust);
+
+/* a dual season takes the LOWER star line, matching the lower floor — one job, one story */
+ok(core.seasonStar(STARBOARD, "SF/MID") === 92 && core.seasonBar(STARBOARD, "SF/MID") === 67.9,
+   "a dual season takes the LOWER star line as well as the lower floor, so both describe one job");
+
+/* with no declaration the board draws NO star column rather than a default */
+var noStar = core.frame([pk(95, "n1", "MID")], { REPL_BAR: { MID: 77.1 } }, "MID");
+ok(noStar.star === null && noStar.bust === 0,
+   "with no star line declared the frame reports null — the column disappears, it does not default");
+
 ok(core.frame([pk(95)], { REPL: {}, REPL_BAR: {} }, "MID") === null,
    "no baked bar, no frame — the page shows nothing rather than measuring against something invented");
 ok(core.frame([], BOARD, "MID") === null, "and no careers, no frame");
@@ -467,6 +522,21 @@ ok(core.careers(WROWS, VST, "MID", 10, 8, false).length === 3,
   ok(degenerate.length > 0,
      "…but the elite onset (0.97 x PEAK, rl_model.py:1170) collapses onto the bar at " +
      degenerate.join(", ") + ", which is why no star line is drawn from it without a ruling");
+
+  /* THE SHIPPED STAR LINE IS THE OWNER'S DECLARED ONE, byte-for-byte — no default, no rounding,
+     no second copy in the app. If the declaration moves, this goes red until the bundle is
+     republished, which is the only way a ruled constant stays ruled. */
+  var starPath = path.join(__dirname, "..", "..", "docs", "inputs", "OWNER_STAR_SEASONS.json");
+  ok(fs.existsSync(starPath), "the owner's star declaration is committed");
+  if (fs.existsSync(starPath)) {
+    var starDoc = JSON.parse(fs.readFileSync(starPath, "utf8"));
+    ok(!!starDoc.owner_word,
+       "…and it carries his own words, so a ruled constant cannot be told apart from a guess");
+    ok(POS6.every(function (p) { return bd.STAR_BAR[p] === starDoc.star[p]; }),
+       "…and the bundle publishes exactly those figures", JSON.stringify(bd.STAR_BAR));
+    ok(POS6.every(function (p) { return bd.STAR_BAR[p] > barOf(p); }),
+       "every star line sits above its own replacement bar — unlike PEAK, which does not");
+  }
 
   if (B) {
     var shippedCurve = core.midCurve(B.rows, B.stamp, bd, 8, true);

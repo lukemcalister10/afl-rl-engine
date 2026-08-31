@@ -274,6 +274,14 @@
        A DUAL SEASON ("SF/MID", "KPF/RUCK") TAKES THE LOWER BAR, which is the engine's own rule for a
        dual declaration — rl_model.py:85, `min(es, key=lambda g: REPL[g])`, "the LOWER REPL = more
        valuable for him". Not a choice made here; the collapse the model already performs. */
+    /* THE STAR LINE per position — the owner's ruled figure, published from
+       docs/inputs/OWNER_STAR_SEASONS.json. Returns null when no line is declared, and the board
+       then draws no star column at all rather than inventing one. */
+    function starOf(board, pos) {
+      var v = ((board || {}).STAR_BAR || {})[pos];
+      return typeof v === "number" ? v : null;
+    }
+
     function seasonBar(board, seasonPos) {
       var codes = String(seasonPos || "").split("/");
       var best = null;
@@ -284,17 +292,32 @@
       return best;
     }
 
+    /* THE STAR LINE FOR A SEASON, collapsed the same way the floor is: a dual season takes the
+       LOWER line, because it takes the lower floor and the two must describe the same job. Reading
+       the higher star line against the lower floor would make a dual season simultaneously the
+       easiest to clear and the hardest to star in, which is not one position's story. */
+    function seasonStar(board, seasonPos) {
+      var codes = String(seasonPos || "").split("/");
+      var best = null;
+      for (var i = 0; i < codes.length; i++) {
+        var v = starOf(board, codes[i].trim());
+        if (v != null && (best === null || v < best)) best = v;
+      }
+      return best;
+    }
+
     function frame(set, board, pos) {
       var repl = replOf(board, pos);
       if (!set.length || repl == null) return null;
-      var vor = 0, nStart = 0, nMeasured = 0, nCross = 0;
+      var vor = 0, nStart = 0, nMeasured = 0, nCross = 0, nStar = 0, nBust = 0;
+      var hasStar = !!(board || {}).STAR_BAR;
       set.forEach(function (r) {
         /* A player's value is his BEST season's excess over THAT SEASON'S bar. Best-season is the
            unchanged semantic; which bar applies is what the ruling changed. A season the board
            publishes no bar for is skipped rather than measured against the drafted position's — an
            unresolvable position is missing evidence, not evidence of nothing. */
         var seasons = r.s || [];
-        var bestExcess = null, measured = false, crossed = false;
+        var bestExcess = null, measured = false, crossed = false, starred = false;
         for (var i = 0; i < seasons.length; i++) {
           var bar = seasonBar(board, seasons[i][1]);
           if (bar == null) continue;
@@ -302,9 +325,24 @@
           if (seasons[i][1] !== pos) crossed = true;
           var e = seasons[i][0] - bar;
           if (bestExcess === null || e > bestExcess) bestExcess = e;
+          /* A STAR SEASON IS ONE CLEARING THE LINE FOR THE POSITION HE PLAYED — and the credit
+             lands on the row of the position he was DRAFTED as. Exactly the owner's rule for the
+             floor, applied to the ceiling: "a player who changes positions is measured against that
+             season's bar, and if they clear it, it credits their original draft position for the
+             success." One star season is enough; a career is starred by its best year, not its
+             average, which is the point of having the line at all. */
+          var sb = seasonStar(board, seasons[i][1]);
+          if (sb != null && seasons[i][0] >= sb) starred = true;
         }
         if (measured) nMeasured++;
         if (crossed) nCross++;
+        if (starred) nStar++;
+        /* BUST = never produced a measurable season at all. Deliberately NOT "never cleared the
+           bar", which is just the complement of the clear rate and would say nothing new. This is
+           the harder failure the owner asked to see: the pick that returned no football worth
+           measuring. It is a share of EVERY selection, busts included in the denominator, which is
+           the whole reason this record carries the men who never played. */
+        if (!measured) nBust++;
         /* A player with NO measurable season still counts in the denominator at zero — he is a
            selection that returned nothing, and dropping him would turn every rate into a survivor
            rate. That is the whole reason this record carries the men who never played. */
@@ -313,6 +351,9 @@
       });
       return { n: set.length, vor: vor / set.length,
                startable: nStart / set.length, repl: repl,
+               star: hasStar ? nStar / set.length : null,
+               starBar: starOf(board, pos),
+               bust: nBust / set.length,
                nMeasured: nMeasured, nCross: nCross };
     }
 
@@ -354,7 +395,7 @@
              select: select, quantile: quantile, rates: rates, pinOf: pinOf,
              priceRange: priceRange, THIN_MAX: THIN_MAX,
              careers: careers, replOf: replOf, replBarIsEffective: replBarIsEffective,
-             seasonBar: seasonBar, frame: frame,
+             seasonBar: seasonBar, seasonStar: seasonStar, starOf: starOf, frame: frame,
              midCurve: midCurve, midEquivalent: midEquivalent };
   })();
 
@@ -542,7 +583,8 @@
     if (!f) return { empty: true, n: set.length };
     var eq = core.midEquivalent(curve, f.vor);
     if (!eq) return { empty: true, n: f.n };
-    return { n: f.n, vor: f.vor, startable: f.startable,
+    return { n: f.n, vor: f.vor, startable: f.startable, star: f.star, bust: f.bust,
+             starBar: f.starBar, repl: f.repl,
              equiv: eq.p, beyond: eq.beyond, thin: f.n <= THIN_MAX,
              tier: tierOf(eq.p), steal: isSteal(eq.p, pick, f.n) };
   }
@@ -559,8 +601,11 @@
       return v == null ? null : POS_SHORT[p] + " " + v.toFixed(1);
     }).filter(Boolean).join(" · ");
     head.innerHTML = '<h2>The full board</h2><p>Each cell is <b>the midfielder pick it is worth</b>' +
-      ' — then its expected value over <b>the model\'s own replacement bar</b> for that position, ' +
-      'and the share who ever clear it. <span class="thin">●</span> marks a thin sample.</p>' +
+      ' — then <b>expected value over the bar</b>, the share who ever <b>clear</b> it, and the ' +
+      'share who produce a <b>star season</b>. The value already carries how great: a 110 ' +
+      'midfielder over a 77 bar is worth six times an 85 one. The two rates carry what an average ' +
+      'hides — how often a pick returns nothing, and how often it returns someone great. ' +
+      '<span class="thin">●</span> marks a thin sample; hover a cell for its bust rate.</p>' +
       (bars ? '<p class="bars">Bars: ' + bars +
         (core.replBarIsEffective(board())
           ? '  <span class="drop">— the literal REPL less the ' + board().REPL_DROP +
@@ -603,10 +648,22 @@
         } else {
           td.innerHTML = '<span class="eq">' + (c.beyond === "above" ? "&gt;" : c.beyond === "below" ? "&lt;" : "") +
             "mid " + c.equiv + (c.thin ? ' <span class="thin">●</span>' : "") + "</span>" +
-            '<span class="sub">' + c.vor.toFixed(1) + " · " + Math.round(c.startable * 100) + "%</span>";
+            /* THREE NUMBERS, THREE QUESTIONS. The VOR is the magnitude and already carries
+               "great" continuously — a 110 mid over a 77 bar is worth six times an 85 one. What a
+               mean cannot tell you is the SHAPE, so the two rates sit beside it: how often this
+               cell clears the bar at all, and how often it produces a star. +12 could be one star
+               and four failures or five useful players, and on draft day those are opposite
+               propositions. */
+            '<span class="sub">' + c.vor.toFixed(1) + " · " + Math.round(c.startable * 100) + "%" +
+              (c.star == null ? "" : ' · <b class="st">' + Math.round(c.star * 100) + "%</b>") +
+            "</span>";
           td.title = POS_LABEL[pos] + " at pick " + p + ": worth a midfielder at pick " + c.equiv +
-            ". Expected value over replacement " + c.vor.toFixed(1) + "; " +
-            Math.round(c.startable * 100) + "% ever reach a season at or above the bar. " +
+            ". Expected value over replacement " + c.vor.toFixed(1) +
+            " (bar " + c.repl.toFixed(1) + "); " +
+            Math.round(c.startable * 100) + "% ever clear it" +
+            (c.star == null ? "" : ", " + Math.round(c.star * 100) + "% produce a STAR season (" +
+              c.starBar + "+)") +
+            ", " + Math.round(c.bust * 100) + "% never played a measurable season. " +
             c.n + " careers" +
             (c.thin ? " — a thin sample." : ".") +
             (c.steal ? " STEAL: worth far more than the pick costs." : "");
@@ -664,6 +721,9 @@
            '<div class="worth">worth <b>a midfielder at pick ' + eq.p + "</b></div>" +
            '<div class="trio"><span><i>exp. VOR</i>' + f.vor.toFixed(1) + "</span>" +
            "<span><i>clears bar</i>" + Math.round(f.startable * 100) + "%</span>" +
+           (f.star == null ? "" :
+             "<span><i>star " + f.starBar + "+</i>" + Math.round(f.star * 100) + "%</span>") +
+           "<span><i>bust</i>" + Math.round(f.bust * 100) + "%</span>" +
            '<span><i>careers</i>' + f.n + (f.n <= THIN_MAX ? " ●" : "") + "</span></div>";
     }
     el.innerHTML = h;
@@ -791,7 +851,8 @@
         return r.dp === pos && r.p <= 64 && (!state.mature || isMature(r.y));
       });
       var f = core.frame(set, board(), pos);
-      if (f && f.n) out.push({ pos: pos, startable: f.startable, n: f.n, repl: f.repl });
+      if (f && f.n) out.push({ pos: pos, startable: f.startable, n: f.n, repl: f.repl,
+                               star: f.star, starBar: f.starBar, bust: f.bust });
     });
     return out.sort(function (a, b) { return b.startable - a.startable; });
   }
@@ -843,19 +904,33 @@
         "board (" + st.n + " careers).", "steal");
     }
 
-    // 2. which positions clear the bar the model sets them
+    // 2. the shape a mean hides: floor, ceiling and failure, side by side
+    /* The three are deliberately reported TOGETHER, because separately each one misleads. Key
+       defenders clear their bar more often than anyone and star least — a high floor and no
+       ceiling. Midfielders clear it about as often and star at twice the rate. Reading either
+       column alone would recommend the wrong position. */
     var cr = clearRates();
     if (cr.length >= 3) {
-      var top = cr.slice(0, 2), bot = cr.slice(-2);
-      card("Who clears their own bar",
-        top.map(function (x) { return "<b>" + fmt.esc(POS_LABEL[x.pos].toLowerCase()) + "s " +
-          Math.round(x.startable * 100) + "%</b>"; }).join(" and ") +
-        " ever reach a season at or above the replacement bar the model sets for them (" +
-        top.map(function (x) { return x.repl.toFixed(1); }).join(" and ") + "). Against " +
-        bot.map(function (x) { return fmt.esc(POS_LABEL[x.pos].toLowerCase()) + "s " +
-          Math.round(x.startable * 100) + "%"; }).join(" and ") + ". Each position is measured " +
-        "against its OWN bar, which is the comparison the draft presents — the pick costs the same " +
-        "whoever you take with it.", "star");
+      var byStar = cr.slice().sort(function (a, b) { return (b.star || 0) - (a.star || 0); });
+      var byFloor = cr.slice().sort(function (a, b) { return b.startable - a.startable; });
+      var byBust = cr.slice().sort(function (a, b) { return a.bust - b.bust; });
+      var say = "";
+      if (byStar[0].star != null) {
+        say += "<b>Ceiling:</b> " + byStar.slice(0, 2).map(function (x) {
+          return fmt.esc(POS_LABEL[x.pos].toLowerCase()) + "s <b>" + Math.round(x.star * 100) +
+                 "%</b> produce a star season (" + x.starBar + "+)"; }).join(", ") +
+          " against " + fmt.esc(POS_LABEL[byStar[byStar.length - 1].pos].toLowerCase()) + "s " +
+          Math.round(byStar[byStar.length - 1].star * 100) + "%. ";
+      }
+      say += "<b>Floor:</b> " + fmt.esc(POS_LABEL[byFloor[0].pos].toLowerCase()) + "s clear their " +
+        "bar most often (" + Math.round(byFloor[0].startable * 100) + "%). " +
+        "<b>Failure:</b> " + fmt.esc(POS_LABEL[byBust[0].pos].toLowerCase()) + "s bust least (" +
+        Math.round(byBust[0].bust * 100) + "% never played a measurable season) and " +
+        fmt.esc(POS_LABEL[byBust[byBust.length - 1].pos].toLowerCase()) + "s most (" +
+        Math.round(byBust[byBust.length - 1].bust * 100) + "%). " +
+        "Each is measured against its OWN bars, and a position can lead one column and trail another " +
+        "— which is the whole reason all three are here.";
+      card("Floor, ceiling and failure", say, "star");
     }
 
     // 3. the startable cliff, per position, ordered

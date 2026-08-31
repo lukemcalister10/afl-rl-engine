@@ -1,0 +1,10 @@
+{
+  "_what": "THE STAR LINE per position — the season average at which a player is a genuine difference-maker in this league. AN OWNER DECLARATION, not a derived figure and not an override of one: no such constant existed in the model. Read by ui/tools/extract_board_view.py and published to the UI bundle as STAR_BAR.",
+  "_why_it_is_needed": "Value over replacement already carries MAGNITUDE continuously — the owner's own point: a 110 midfielder over an 80 bar contributes six times what an 85 midfielder does, because 30 is six times 5. Great, good and barely-clearing are all in there with the right severity. What averaging DESTROYS is the shape: how often a pick returns nothing at all, and how often it returns someone great. A mean of +12 could be one star and four failures or five useful players, and those are completely different picks. The star line and the bust count are what separate them.",
+  "_not_PEAK": "params.json PEAK (MID 92, SF 70, ...) is NOT this. Owner, 2026-08-31: 'Those peak numbers definitely aren't what elite is though.' It is the denominator of the age-curve elite ramp (rl_model.py:1170) and at SF it sits on the replacement bar to the decimal. Measured against what players actually reach, the top decile of SF seasons averages 96 against a PEAK of 70. It is not a ceiling and is not used as one.",
+  "owner_word": "Star seasons = 105 mid, 105 ruck, 97 SD, 92 SF, 85 KPD and KPF",
+  "date": "2026-08-31",
+  "authority": "OWNER DECLARATION — a ruled line, knowingly not derived",
+  "_position_rule": "A player who changes positions is measured against THAT SEASON'S bar, and if he clears it the success credits his ORIGINAL DRAFT POSITION. Same rule as the replacement bar; see ui/app/draftday.js.",
+  "star": { "MID": 105, "RUCK": 105, "SD": 97, "SF": 92, "KPD": 85, "KPF": 85 }
+}

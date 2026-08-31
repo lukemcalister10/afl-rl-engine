@@ -202,6 +202,47 @@ def _effective_repl(repl):
     return drop, bar
 
 
+#: The owner's ruled star line per position, couriered like his other inputs.
+OWNER_STARS = os.path.join("docs", "inputs", "OWNER_STAR_SEASONS.json")
+
+
+def _star_bars():
+    """THE STAR LINE — an owner DECLARATION, published, never derived and never inferred.
+
+    No such constant existed in the model, and the near-miss is worth recording: params.json PEAK
+    looks like a ceiling and is not one. It is the denominator of the age-curve elite ramp
+    (rl_model.py:1170) and at SF it sits ON the replacement bar to the decimal, so drawing a star
+    line from it would have called every useful small forward a star. The owner's word, directly:
+    "Those peak numbers definitely aren't what elite is though."
+
+    WHY A LINE IS NEEDED AT ALL, in the owner's own reasoning: value over replacement already
+    carries magnitude continuously — a 110 midfielder over an 80 bar contributes six times what an
+    85 one does. What a MEAN destroys is the shape. +12 could be one star and four failures or five
+    useful players, and on draft day those are opposite propositions. The star line and the bust
+    count are what tell them apart.
+
+    ABSENT FILE = NO STAR LINE, and the board simply draws no star column. Not a default, not a
+    guess: this figure exists only because somebody ruled it, so it disappears if the ruling does.
+    """
+    path = os.path.join(REPO, OWNER_STARS)
+    if not os.path.exists(path):
+        return {}
+    with open(path, encoding="utf-8") as fh:
+        doc = json.load(fh)
+    stars = doc.get("star") or {}
+    if not doc.get("owner_word"):
+        raise SystemExit("HALT: %s declares a star line with no owner_word. A ruled constant that "
+                         "does not say whose ruling it is cannot be told apart from a guess."
+                         % OWNER_STARS)
+    out = {}
+    for pos, v in stars.items():
+        if not isinstance(v, (int, float)) or v <= 0:
+            raise SystemExit("HALT: the star line for %s is %r, which is not a positive number."
+                             % (pos, v))
+        out[pos] = float(v)
+    return out
+
+
 def _apply_pool_override(pvc, repo):
     """Publish the owner's ruled pool-pick figure over the board's derived one. DISPLAY ONLY.
 
@@ -454,6 +495,7 @@ def main():
     peak = d.get("PEAK", {})
     peak_age = d.get("PEAK_AGE", {})
     repl_drop, repl_bar = _effective_repl(repl)
+    star_bar = _star_bars()
     pvc, pool_override = _apply_pool_override(pvc, REPO)
     # items 12/14: future-lens phantom pick lines (+1/+2 lenses only) + the lens-conservation diagnostic.
     # Working-tier only; passed through verbatim. The current/-1/-2 player ladder never reads these (the
@@ -534,6 +576,7 @@ def main():
         "REPL": repl,
         "REPL_DROP": repl_drop,
         "REPL_BAR": repl_bar,
+        "STAR_BAR": star_bar,
         "PEAK": peak,
         "PEAK_AGE": peak_age,
         "lensPicks": lens_picks,

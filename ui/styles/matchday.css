@@ -750,6 +750,9 @@ footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--
 .ddcell .sub{display:block;font-family:var(--fig);font-variant-numeric:tabular-nums lining-nums;
   font-size:10.5px;color:var(--faint);margin-top:3px}
 .ddcell .none{color:var(--faint);font-family:var(--mono);font-size:10px}
+/* the star share sits inside the sub-line and is the one figure there worth picking out: it is the
+   half a mean cannot tell you (how often this pick produces someone great, not merely useful). */
+.ddcell .sub .st{color:#e8c65a;font-weight:700}
 .ddcell.empty{background:transparent;border-style:dashed;cursor:default}
 .ddcell .thin{color:var(--volt);font-size:11px}
 /* the four tiers + the steal. Each is a border AND a text colour, never colour alone. */
