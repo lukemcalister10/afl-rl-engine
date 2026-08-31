@@ -63,7 +63,66 @@
        draft happens after the season it is named for, so class Y's first playing season is Y+1 and
        seasonNow - Y is exactly the number of seasons it has had. */
     function classAge(stamp, y) { return (stamp.seasonNow || 0) - y; }
-    function isMature(stamp, y) { return classAge(stamp, y) >= (stamp.maturitySeasons || 0); }
+
+    /* HOW LONG A CLASS HAS HAD, AGAINST AN EXPLICIT MINIMUM. This used to be `isMature`, a boolean
+       that silently meant "four seasons" — the bundle's debut threshold — and that silence is what
+       let a debut rule gate the PEAK questions for a day. The minimum is now always passed in, so
+       every caller has to say which question it is asking. 0 means every class. */
+    function hasRun(stamp, y, minSeasons) {
+      return classAge(stamp, y) >= (minSeasons || 0);
+    }
+    // kept for the maturity-rule tests and any caller genuinely asking the DEBUT question
+    function isMature(stamp, y) { return hasRun(stamp, y, stamp.maturitySeasons || 0); }
+
+    /* ================= TWO DIFFERENT QUESTIONS SETTLE AT TWO DIFFERENT TIMES ==================
+       The bundle's `maturitySeasons` (4) was derived for ONE question — has he debuted — and 99% of
+       eventual debutants have by then. It was then reused to gate the PEAK questions (value over
+       the bar, star rate), and that was wrong. Measured on classes with a full run: only 31% of
+       first-star seasons have arrived by four seasons. 45% by five, 60% by six, 93% by ten.
+
+       WHAT IT COST, measured: star rate 15.3% on the 4-season population against 17.0% on a
+       fully-run one, and the error is not uniform — picks 41-64 read 7.4% against 9.7% (a third
+       understated) while picks 1-10 read 42.5% against 45.0%. Late picks develop slower, so the
+       immature classes penalise exactly the picks the board is used to judge. It also FLIPPED the
+       headline: rucks lead midfielders on star rate at four seasons, midfielders lead rucks at
+       twelve.
+
+       So the peak questions get their own threshold, derived the same way and from the same kind of
+       evidence — the lag by which most first-star seasons have landed. It is computed here rather
+       than in the generator because it needs the STAR LINES, which live on the board; the generator
+       still holds no bar. */
+    function developedFromRows(rows, stamp, board, want, seasonStarFn) {
+      var need = (want == null) ? 0.9 : want;
+      var lags = {}, total = 0;
+      (rows || []).forEach(function (r) {
+        /* Only classes with a long run may TEACH the threshold, or the measurement is contaminated
+           by the very immaturity it exists to detect. Ten seasons is the same discipline the debut
+           lag uses (seven there), scaled to a question that takes longer to answer. */
+        if ((stamp.seasonNow || 0) - r.y < 14) return;
+        var first = null;
+        (r.s || []).forEach(function (sn) {
+          var sb = seasonStarFn(board, sn[1]);
+          if (sb == null || sn[0] < sb || sn[2] == null) return;
+          var lag = sn[2] - r.y;                       // SEASONS SINCE THE DRAFT, exactly
+          if (first === null || lag < first) first = lag;
+        });
+        if (first === null) return;
+        lags[first] = (lags[first] || 0) + 1;
+        total++;
+      });
+      if (!total) return null;
+      /* THE LAG IS THE THRESHOLD, WITH NO +1. A star arriving four seasons after the draft happened
+         when that class was four seasons old, so admitting it needs classAge >= 4. The +1 that
+         stood here was carried over from an earlier version that counted seasons of FOOTBALL rather
+         than seasons since the draft, where it was right; once the lag became exact it made the
+         threshold a year too strict and cost a whole draft class of evidence for nothing. */
+      var cum = 0, keys = Object.keys(lags).map(Number).sort(function (a, b) { return a - b; });
+      for (var i = 0; i < keys.length; i++) {
+        cum += lags[keys[i]];
+        if (cum / total >= need) return { lag: keys[i], n: total, cum: cum / total };
+      }
+      return { lag: keys[keys.length - 1], n: total, cum: 1 };
+    }
 
     /* THE MATURITY THRESHOLD, RE-DERIVED FROM THE TABLE THE BUNDLE SHIPS. The generator computes it
        and the bundle carries it; this recomputes it from the bundle's own evidence, so a stamp
@@ -85,7 +144,7 @@
       (rows || []).forEach(function (r) {
         if (r.p < lo || r.p > hi) return;
         if (state.pos && r.dp !== state.pos) return;
-        if (state.mature && !isMature(stamp, r.y)) young.push(r);
+        if (!hasRun(stamp, r.y, state.minSeasons)) young.push(r);
         else picked.push(r);
       });
       return { set: picked, young: young, lo: Math.max(lo, 1), hi: hi };
@@ -203,11 +262,11 @@
     /* The careers behind one (position, pick) cell. `half` widens the neighbourhood because a single
        ordinal is at most one career per class; it is a control on the page, never a hidden smoothing,
        and every cell reports the n it stands on. */
-    function careers(rows, stamp, pos, pick, half, mature) {
+    function careers(rows, stamp, pos, pick, half, minSeasons) {
       var lo = pick - half, hi = pick + half;
       return (rows || []).filter(function (r) {
         if (r.dp !== pos || r.p < lo || r.p > hi) return false;
-        return !mature || isMature(stamp, r.y);
+        return hasRun(stamp, r.y, minSeasons);
       });
     }
 
@@ -364,10 +423,10 @@
        you will do with it. On the clock the question is never "is this worth 530 points", it is
        "would I rather have this key forward or a midfielder later" — and the midfielder is the only
        position deep and star-rich enough to be a stable ruler across the whole board. */
-    function midCurve(rows, stamp, board, half, mature) {
+    function midCurve(rows, stamp, board, half, minSeasons) {
       var out = [];
       for (var p = 1; p <= 64; p++) {
-        var f = frame(careers(rows, stamp, "MID", p, half, mature), board, "MID");
+        var f = frame(careers(rows, stamp, "MID", p, half, minSeasons), board, "MID");
         if (f && f.n) out.push({ p: p, vor: f.vor, n: f.n });
       }
       return out;
@@ -392,17 +451,21 @@
     }
 
     return { classAge: classAge, isMature: isMature, maturityFromLags: maturityFromLags,
-             select: select, quantile: quantile, rates: rates, pinOf: pinOf,
+             select: select, quantile: quantile, rates: rates, pinOf: pinOf, hasRun: hasRun,
              priceRange: priceRange, THIN_MAX: THIN_MAX,
              careers: careers, replOf: replOf, replBarIsEffective: replBarIsEffective,
              seasonBar: seasonBar, seasonStar: seasonStar, starOf: starOf, frame: frame,
+             developedFromRows: developedFromRows,
              midCurve: midCurve, midEquivalent: midEquivalent };
   })();
 
   function makeView(MD) {
   var fmt = MD.fmt;
 
-  var state = { pick: 1, spread: 0, pos: null, mature: true, roll: false,
+  /* minSeasons DEFAULTS TO null AND IS RESOLVED AT FIRST RENDER to the DEVELOPED threshold — the
+     one derived for the peak questions, not the debut one. See classFilter() for why the default is
+     the strict population despite costing sample. */
+  var state = { pick: 1, spread: 0, pos: null, minSeasons: null, roll: false,
                 half: 8, view: "board",
                 a: { pos: "KPF", pick: 5 }, b: { pos: "KPD", pick: 5 } };
 
@@ -433,14 +496,26 @@
      the board carries what a career is measured against. Two sources, two jobs, and the split is
      the whole point — this page must never hold a bar of its own. */
   function board() { return (MD.seam && MD.seam.working) || {}; }
-  function isMature(y) { return core.isMature(stamp(), y); }
+  function inRun(y) { return core.hasRun(stamp(), y, state.minSeasons); }
   /* The detail panel below the board reads the SAME window the board's cells do, so a cell you
      clicked and the careers listed under it cannot disagree about which men they are. */
   function select() {
     return core.select(rows(), stamp(),
-      { pick: state.pick, spread: state.half, pos: state.pos, mature: state.mature });
+      { pick: state.pick, spread: state.half, pos: state.pos, minSeasons: state.minSeasons });
   }
   var quantile = core.quantile;
+
+  /* THE PEAK-MATURITY THRESHOLD, derived once per load from the record's own first-star lags and
+     the board's star lines. Memoised because it walks every row and the controls re-render often. */
+  var _dev = null;
+  function developedThreshold() {
+    if (_dev) return _dev;
+    var r = core.developedFromRows(rows(), stamp(), board(), 0.9, core.seasonStar);
+    /* No star lines, or no fully-run class to measure — fall back to the debut threshold and say so
+       rather than inventing a number. */
+    _dev = r || { lag: stamp().maturitySeasons || 4, n: 0, cum: null, fallback: true };
+    return _dev;
+  }
 
   function ordinals() {
     var seen = {};
@@ -496,33 +571,14 @@
     return wrap;
   }
 
+  /* EVERY CONTROL IN THIS BAR CHANGES THE BOARD. That is the whole rule, and it was broken: the
+     pick selector and the "Drafted as" filter sat here, looking exactly like the two that do, and
+     changed nothing above the fold — the position filter only ever cut the detail table hundreds of
+     pixels below. On draft day you would click RUCK, watch the grid not move, and stop trusting the
+     page. They now live WITH the detail panel they drive, and this bar holds only what it says it
+     holds. */
   function controls(container) {
     var bar = fmt.el("div", "strip ddstrip");
-    var ords = ordinals();
-
-    bar.appendChild(fmt.el("span", "lbl", "Pick"));
-    var sel = document.createElement("select");
-    sel.className = "boardsel";
-    sel.innerHTML = ords.map(function (n) {
-      return '<option value="' + n + '"' + (n === state.pick ? " selected" : "") + ">" + n + "</option>";
-    }).join("");
-    sel.addEventListener("change", function () {
-      state.pick = parseInt(sel.value, 10); renderAll();
-    });
-    bar.appendChild(sel);
-
-    var step = function (d) {
-      var b = fmt.el("button", "ddstep", d < 0 ? "‹" : "›");
-      b.title = (d < 0 ? "Previous" : "Next") + " pick";
-      b.addEventListener("click", function () {
-        var i = ords.indexOf(state.pick) + d;
-        if (i >= 0 && i < ords.length) { state.pick = ords[i]; renderAll(); }
-      });
-      return b;
-    };
-    bar.appendChild(step(-1));
-    bar.appendChild(step(1));
-    bar.appendChild(fmt.el("span", "spacer"));
 
     /* THE NEIGHBOURHOOD IS ONE CONTROL FOR THE WHOLE PAGE. A single ordinal carries at most one
        career per class, so every cell on the board pools a window around its pick — and the width
@@ -532,15 +588,48 @@
       [[4, "±4"], [8, "±8"], [12, "±12"]], state.half,
       function (v) { state.half = v; renderAll(); }));
 
-    var positions = {};
-    rows().forEach(function (r) { if (r.dp) positions[r.dp] = 1; });
-    var posOpts = [[null, "all"]].concat(Object.keys(positions).sort().map(function (p) { return [p, p]; }));
-    bar.appendChild(seg("Drafted as", posOpts, state.pos,
-      function (v) { state.pos = v; renderAll(); }));
+    /* THREE POPULATIONS, THREE QUESTIONS, AND THE DEFAULT IS THE STRICT ONE.
 
+       FULLY RUN — classes with enough seasons for their PEAKS to have landed. The threshold is
+         derived here from the record's own first-star lags (see core.developedFromRows); on this
+         store it is 11 seasons, at which 91% of first-star seasons have arrived.
+       SETTLED — the bundle's debut threshold, 4 seasons, at which 99% of eventual DEBUTS have
+         happened. Right for "did he ever play", wrong for "was he any good": measured, star rate
+         reads 15.3% on this population against 17.0% on a fully-run one, and the error is worst
+         exactly where the board is most used — picks 41-64 read 7.4% against 9.7%, a third
+         understated, because late picks develop slowly. It also flips the headline: rucks lead
+         midfielders on star rate at four seasons, midfielders lead at twelve.
+       EVERY CLASS — everything, including this year's teenagers.
+
+       THE DEFAULT IS FULLY RUN, and it is a trade rather than a free win: it costs a third of the
+       sample (901 selections against 1377) and confines the evidence to 2003-2015 football. The
+       trade is taken because a board that systematically understates late picks is actively
+       misleading on the trade-down decision, while a thinner board is merely less certain — and
+       thinness is marked on every cell it affects, where bias is invisible. Both other populations
+       are one click away and the page says what each costs. */
+    var dev = developedThreshold();
     bar.appendChild(seg("Classes",
-      [[true, "settled only"], [false, "every class"]], state.mature,
-      function (v) { state.mature = v; renderAll(); }));
+      [[dev.lag, "fully run"], [stamp().maturitySeasons || 4, "settled"], [0, "every class"]],
+      state.minSeasons,
+      function (v) { state.minSeasons = v; renderAll(); }));
+
+    /* THE POPULATION ON SCREEN, NAMED. Which classes are in, how many selections that is, and what
+       the threshold rests on — because "fully run" is a word and the reader is entitled to the
+       number behind it. */
+    var inSet = rows().filter(function (r) { return core.hasRun(stamp(), r.y, state.minSeasons); });
+    var note = fmt.el("span", "ddpop");
+    var newest = stamp().seasonNow - state.minSeasons;
+    note.innerHTML = fmt.n(inSet.length) + " selections" +
+      (state.minSeasons ? ", classes " + stamp().classFrom + "–" + newest : ", every class") +
+      (state.minSeasons === dev.lag && !dev.fallback
+        ? ' <span class="why">— ' + dev.lag + " seasons, where " + Math.round(dev.cum * 100) +
+          "% of first-star seasons have landed</span>"
+        : state.minSeasons === (stamp().maturitySeasons || 4)
+          ? ' <span class="why warn">— the DEBUT threshold: peaks have not landed, late picks read low</span>'
+          : state.minSeasons === 0
+            ? ' <span class="why warn">— includes classes still running; their peaks are ahead of them</span>'
+            : "");
+    bar.appendChild(note);
 
     container.appendChild(bar);
   }
@@ -578,7 +667,7 @@
        which classes have settled); frame() takes the BOARD (it needs the baked REPL bar). Two
        different objects for two different jobs, and getting them the wrong way round is silent —
        careers returns nothing and every cell reads n=0, which is exactly what happened here. */
-    var set = core.careers(rows(), stamp(), pos, pick, state.half, state.mature);
+    var set = core.careers(rows(), stamp(), pos, pick, state.half, state.minSeasons);
     var f = core.frame(set, board(), pos);
     if (!f) return { empty: true, n: set.length };
     var eq = core.midEquivalent(curve, f.vor);
@@ -695,8 +784,8 @@
      at all. */
   function sideCard(which) {
     var side = state[which];
-    var curve = core.midCurve(rows(), stamp(), board(), state.half, state.mature);
-    var f = core.frame(core.careers(rows(), stamp(), side.pos, side.pick, state.half, state.mature),
+    var curve = core.midCurve(rows(), stamp(), board(), state.half, state.minSeasons);
+    var f = core.frame(core.careers(rows(), stamp(), side.pos, side.pick, state.half, state.minSeasons),
                        board(), side.pos);
     var el = fmt.el("div", "ddside");
     var h = '<div class="k">Option ' + which.toUpperCase() + "</div>" +
@@ -738,9 +827,9 @@
   /* THE VERDICT: at what pick does B match A? Not a winner declaration — a break-even, because the
      two options are almost never far apart and the honest answer is where the line sits. */
   function verdict() {
-    var curve = core.midCurve(rows(), stamp(), board(), state.half, state.mature);
-    var fa = core.frame(core.careers(rows(), stamp(), state.a.pos, state.a.pick, state.half, state.mature), board(), state.a.pos);
-    var fb = core.frame(core.careers(rows(), stamp(), state.b.pos, state.b.pick, state.half, state.mature), board(), state.b.pos);
+    var curve = core.midCurve(rows(), stamp(), board(), state.half, state.minSeasons);
+    var fa = core.frame(core.careers(rows(), stamp(), state.a.pos, state.a.pick, state.half, state.minSeasons), board(), state.a.pos);
+    var fb = core.frame(core.careers(rows(), stamp(), state.b.pos, state.b.pick, state.half, state.minSeasons), board(), state.b.pos);
     var el = fmt.el("div", "ddverdict");
     if (!fa || !fb) {
       el.innerHTML = "<b>No verdict.</b> One side has no settled careers to read, and a comparison " +
@@ -751,7 +840,7 @@
        sentence worth printing: "a key forward at 5 is worth a key defender at 7." */
     var bestP = null, bestD = null;
     for (var p = 1; p <= 64; p++) {
-      var f = core.frame(core.careers(rows(), stamp(), state.b.pos, p, state.half, state.mature), board(), state.b.pos);
+      var f = core.frame(core.careers(rows(), stamp(), state.b.pos, p, state.half, state.minSeasons), board(), state.b.pos);
       if (!f) continue;
       var d = Math.abs(f.vor - fa.vor);
       if (bestD === null || d < bestD) { bestD = d; bestP = p; }
@@ -814,7 +903,7 @@
   function startableCliff(pos) {
     var cliff = null;
     for (var p = 64; p >= 1; p--) {
-      var f = core.frame(core.careers(rows(), stamp(), pos, p, state.half, state.mature), board(), pos);
+      var f = core.frame(core.careers(rows(), stamp(), pos, p, state.half, state.minSeasons), board(), pos);
       if (!f || f.n <= THIN_MAX) continue;
       if (f.startable < 0.5) cliff = p; else break;
     }
@@ -826,7 +915,7 @@
     var best = null;
     POS_ORDER.forEach(function (pos) {
       for (var p = 8; p <= 58; p++) {
-        var f = core.frame(core.careers(rows(), stamp(), pos, p, state.half, state.mature), board(), pos);
+        var f = core.frame(core.careers(rows(), stamp(), pos, p, state.half, state.minSeasons), board(), pos);
         if (!f || f.n <= THIN_MAX) continue;
         var eq = core.midEquivalent(curve, f.vor);
         if (!eq) continue;
@@ -848,7 +937,7 @@
     var out = [];
     POS_ORDER.forEach(function (pos) {
       var set = (rows() || []).filter(function (r) {
-        return r.dp === pos && r.p <= 64 && (!state.mature || isMature(r.y));
+        return r.dp === pos && r.p <= 64 && inRun(r.y);
       });
       var f = core.frame(set, board(), pos);
       if (f && f.n) out.push({ pos: pos, startable: f.startable, n: f.n, repl: f.repl,
@@ -869,7 +958,7 @@
   function holdsUntil(pos, midBar, curve) {
     var last = null, run = 0;
     for (var p = 1; p <= 64; p++) {
-      var f = core.frame(core.careers(rows(), stamp(), pos, p, state.half, state.mature), board(), pos);
+      var f = core.frame(core.careers(rows(), stamp(), pos, p, state.half, state.minSeasons), board(), pos);
       var eq = f ? core.midEquivalent(curve, f.vor) : null;
       // A cell off the bottom of the yardstick is not "worth a mid 64" — it is worth less than the
       // ruler can express, and counting it would let a worthless row claim depth it does not have.
@@ -957,8 +1046,8 @@
     // 5. tall vs small forward, decided by the data rather than asserted
     var cross = null;
     for (var p = 1; p <= 64; p++) {
-      var fs = core.frame(core.careers(rows(), stamp(), "SF", p, state.half, state.mature), board(), "SF");
-      var fk = core.frame(core.careers(rows(), stamp(), "KPF", p, state.half, state.mature), board(), "KPF");
+      var fs = core.frame(core.careers(rows(), stamp(), "SF", p, state.half, state.minSeasons), board(), "SF");
+      var fk = core.frame(core.careers(rows(), stamp(), "KPF", p, state.half, state.minSeasons), board(), "KPF");
       if (!fs || !fk || fs.n <= THIN_MAX || fk.n <= THIN_MAX) continue;
       if (fs.vor > fk.vor) cross = p;
     }
@@ -1048,7 +1137,7 @@
             return t.lag === st.maturitySeasons; })[0] || {}).cum || 0)) / 10, 100) +
         " of the " + fmt.n(st.debutLagN) + " eventual debutants in the settled classes had debuted " +
         "by then. Switch to <b>every class</b> to fold them in.");
-    } else if (!state.mature) {
+    } else if (!state.minSeasons) {
       parts.push("<b>Every class is in, including the ones still running.</b> A player from a recent " +
         "class who has not debuted is counted here as never having played, which is true today and " +
         "may not be true in two years. Switch to <b>settled only</b> for rates that are not " +
@@ -1095,6 +1184,38 @@
     return wrap;
   }
 
+  /* the detail panel's own controls, rendered WITH it so their scope is obvious from where they are */
+  function detailControls(container) {
+    var bar = fmt.el("div", "strip ddstrip dddetail");
+    var ords = ordinals();
+    bar.appendChild(fmt.el("span", "lbl", "Pick"));
+    var sel = document.createElement("select");
+    sel.className = "boardsel";
+    sel.innerHTML = ords.map(function (n) {
+      return '<option value="' + n + '"' + (n === state.pick ? " selected" : "") + ">" + n + "</option>";
+    }).join("");
+    sel.addEventListener("change", function () { state.pick = parseInt(sel.value, 10); renderAll(); });
+    bar.appendChild(sel);
+    var step = function (d) {
+      var b = fmt.el("button", "ddstep", d < 0 ? "‹" : "›");
+      b.title = (d < 0 ? "Previous" : "Next") + " pick";
+      b.addEventListener("click", function () {
+        var i = ords.indexOf(state.pick) + d;
+        if (i >= 0 && i < ords.length) { state.pick = ords[i]; renderAll(); }
+      });
+      return b;
+    };
+    bar.appendChild(step(-1));
+    bar.appendChild(step(1));
+    bar.appendChild(fmt.el("span", "spacer"));
+    var positions = {};
+    rows().forEach(function (r) { if (r.dp) positions[r.dp] = 1; });
+    var posOpts = [[null, "all"]].concat(Object.keys(positions).sort().map(function (p) { return [p, p]; }));
+    bar.appendChild(seg("Drafted as", posOpts, state.pos,
+      function (v) { state.pos = v; renderAll(); }));
+    container.appendChild(bar);
+  }
+
   function halt(page, head, why) {
     var d = fmt.el("div", "reserved");
     d.innerHTML = "<b>" + head + "</b> " + why;
@@ -1109,6 +1230,8 @@
        is BORROWED rather than a second unstyled one being invented for the same three things. */
     var page = fmt.el("div", "clubspage draftpage");
     container.appendChild(page);
+
+    if (state.minSeasons == null) state.minSeasons = developedThreshold().lag;
 
     var pn = pin();
     if (!pn.ok) {
@@ -1130,7 +1253,7 @@
     /* THE MIDFIELD YARDSTICK IS BUILT ONCE PER RENDER and handed to everything that needs it. It is
        64 frames over the whole population; rebuilding it inside each of the 54 board cells would be
        the same work 54 times, and the page would stutter on every control change. */
-    var curve = core.midCurve(rows(), stamp(), board(), state.half, state.mature);
+    var curve = core.midCurve(rows(), stamp(), board(), state.half, state.minSeasons);
     if (!curve.length) {
       halt(page, "No midfield yardstick.", "The record carries no settled midfield careers, so " +
         "there is no ruler to price the other positions against and no board is drawn.");
@@ -1146,6 +1269,7 @@
       "selector, to see who this rests on. Nothing on this page is interpolated — every figure " +
       "stands on named careers.</p>";
     page.appendChild(detail);
+    detailControls(page);
 
     var sel = select();
     if (!sel.set.length) {
@@ -1171,7 +1295,7 @@
   var _container = null;
   function renderAll() { if (_container) render(_container); }
 
-  return { render: render, pin: pin, select: select, rates: rates, isMature: isMature,
+  return { render: render, pin: pin, select: select, rates: rates, inRun: inRun,
            bundle: bundle, stamp: stamp, state: state, core: core, THIN_MAX: THIN_MAX };
   }
 

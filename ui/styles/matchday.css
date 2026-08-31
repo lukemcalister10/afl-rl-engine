@@ -687,6 +687,12 @@ footer.foot{margin-top:24px;color:var(--faint);font-size:11px;font-family:var(--
 
 /* ---- OWNER ITEM 13 (2026-08-31): DRAFT DAY — what a pick has become ------------------------- */
 .draftpage .ddstrip{flex-wrap:wrap;row-gap:10px}
+/* the population line: which classes are on screen and what the threshold rests on. A word like
+   "fully run" is not evidence; the number behind it is. */
+.ddpop{flex-basis:100%;font-family:var(--fig);font-variant-numeric:tabular-nums lining-nums;
+  font-size:11px;color:var(--dim)}
+.ddpop .why{font-family:var(--sans);font-variant-numeric:normal;color:var(--faint)}
+.ddpop .why.warn{color:var(--alarm)}
 .draftpage .ddseg{display:inline-flex;align-items:center;gap:8px}
 .draftpage .ddstep{background:transparent;border:1px solid var(--edge);color:var(--dim);
   font:inherit;font-size:14px;line-height:1;padding:6px 10px;cursor:pointer}

@@ -79,11 +79,11 @@ var FIX = [
   row({ k: "f", p: 30, y: 2012, g: 120, dl: 1, pk: 90, dp: "RUCK" }),
 ];
 
-var s1 = core.select(FIX, ST, { pick: 10, spread: 0, pos: null, mature: true });
+var s1 = core.select(FIX, ST, { pick: 10, spread: 0, pos: null, minSeasons: 4 });
 eq(s1.set.map(function (r) { return r.k; }), ["a", "b"], "an exact pick selects only that ordinal");
 eq([s1.lo, s1.hi], [10, 10], "and reports the ordinal window it actually used");
 
-var s2 = core.select(FIX, ST, { pick: 11, spread: 2, pos: null, mature: true });
+var s2 = core.select(FIX, ST, { pick: 11, spread: 2, pos: null, minSeasons: 4 });
 eq(s2.set.map(function (r) { return r.k; }), ["a", "b", "c"], "a neighbourhood widens the window");
 eq(s2.young.map(function (r) { return r.k; }), ["d", "e"],
    "and the still-running classes inside that window are HELD OUT, not dropped");
@@ -91,14 +91,14 @@ ok(s2.set.length + s2.young.length ===
    FIX.filter(function (r) { return r.p >= 9 && r.p <= 13; }).length,
    "the two halves account for EVERY row in the window — the selection partitions, it never loses one");
 
-var s3 = core.select(FIX, ST, { pick: 11, spread: 2, pos: null, mature: false });
+var s3 = core.select(FIX, ST, { pick: 11, spread: 2, pos: null, minSeasons: 0 });
 eq(s3.set.map(function (r) { return r.k; }), ["a", "b", "c", "d", "e"],
    "with every class in, the young rows join the set rather than appearing twice");
 ok(s3.young.length === 0, "and nothing is held out, so the two modes cannot double-count");
 
-var s4 = core.select(FIX, ST, { pick: 30, spread: 5, pos: "RUCK", mature: true });
+var s4 = core.select(FIX, ST, { pick: 30, spread: 5, pos: "RUCK", minSeasons: 4 });
 eq(s4.set.map(function (r) { return r.k; }), ["f"], "a position filter keys on the DRAFTED position");
-var s5 = core.select(FIX, ST, { pick: 30, spread: 0, pos: "MID", mature: true });
+var s5 = core.select(FIX, ST, { pick: 30, spread: 0, pos: "MID", minSeasons: 4 });
 ok(s5.set.length === 0 && s5.young.length === 0,
    "a filter with no matching career yields an EMPTY set — nothing is pooled in to fill it");
 
@@ -244,7 +244,7 @@ if (B) {
      }), "and no ordinal is duplicated inside a class");
 
   /* the shipped record, driven through the same selection the page uses */
-  var shipped = core.select(rows, st, { pick: 1, spread: 0, pos: null, mature: true });
+  var shipped = core.select(rows, st, { pick: 1, spread: 0, pos: null, minSeasons: 4 });
   ok(shipped.set.length + shipped.young.length ===
      rows.filter(function (r) { return r.p === 1; }).length,
      "on the shipped record too, the selection partitions pick 1 exactly");
@@ -446,11 +446,11 @@ var WROWS = [row({ k: "m1", p: 10, y: 2010, g: 50, pk: 90 }),
              row({ k: "m2", p: 18, y: 2010, g: 50, pk: 90 }),
              row({ k: "m3", p: 10, y: 2025, g: 0 }),
              row({ k: "f1", p: 10, y: 2010, g: 50, pk: 90, dp: "KPF" })];
-ok(core.careers(WROWS, VST, "MID", 10, 0, true).length === 1, "a zero-width window is exactly the ordinal");
-ok(core.careers(WROWS, VST, "MID", 10, 8, true).length === 2, "…and widening it pools the neighbours");
-ok(core.careers(WROWS, VST, "MID", 10, 8, true).every(function (r) { return r.dp === "MID"; }),
+ok(core.careers(WROWS, VST, "MID", 10, 0, 4).length === 1, "a zero-width window is exactly the ordinal");
+ok(core.careers(WROWS, VST, "MID", 10, 8, 4).length === 2, "…and widening it pools the neighbours");
+ok(core.careers(WROWS, VST, "MID", 10, 8, 4).every(function (r) { return r.dp === "MID"; }),
    "…and never crosses positions");
-ok(core.careers(WROWS, VST, "MID", 10, 8, false).length === 3,
+ok(core.careers(WROWS, VST, "MID", 10, 8, 0).length === 3,
    "with every class in, the still-running rows join the window too");
 
 /* ---- THE SHIPPED BARS: the board publishes them, and NOTHING derives them --------------------- */
@@ -539,13 +539,13 @@ ok(core.careers(WROWS, VST, "MID", 10, 8, false).length === 3,
   }
 
   if (B) {
-    var shippedCurve = core.midCurve(B.rows, B.stamp, bd, 8, true);
+    var shippedCurve = core.midCurve(B.rows, B.stamp, bd, 8, 4);
     ok(shippedCurve.length > 50,
        "the shipped record supports a midfield yardstick across the curve", shippedCurve.length + " ordinals");
     ok(shippedCurve.every(function (c, i, a) { return i === 0 || a[i - 1].vor >= c.vor - 3; }),
        "…and it descends with the ordinal (within noise) — a yardstick that rose late is not a ruler");
     var priced = POS6.filter(function (pos) {
-      var f = core.frame(core.careers(B.rows, B.stamp, pos, 10, 8, true), bd, pos);
+      var f = core.frame(core.careers(B.rows, B.stamp, pos, 10, 8, 4), bd, pos);
       return f && core.midEquivalent(shippedCurve, f.vor);
     });
     ok(priced.length === 6, "all six positions price against the yardstick at pick 10", priced.join(","));
@@ -563,6 +563,85 @@ ok(core.careers(WROWS, VST, "MID", 10, 8, false).length === 3,
   ok(B && B.stamp.repl === undefined && B.stamp.starBar === undefined,
      "…and the shipped record carries no such field either");
 })();
+
+/* ================================================================================================
+   8. TWO QUESTIONS, TWO THRESHOLDS — the defect this suite exists to prevent recurring
+
+   The bundle's `maturitySeasons` (4) was derived for ONE question: has he debuted. 99% of eventual
+   debutants have by then. It was then reused to gate the PEAK questions, and that was wrong —
+   measured on this record, only 31% of first-star seasons have arrived by four seasons, 91% by
+   eleven. The cost was not academic: star rate read 15.3% against a fully-run 17.0%, the error was
+   three times worse at picks 41-64 than at 1-10 (late picks develop slowly), and it INVERTED the
+   headline — rucks lead midfielders on star rate at four seasons, midfielders lead at twelve.
+
+   So the peak threshold is derived separately, from first-star lags rather than debut lags, and
+   `careers` now takes an explicit minimum instead of a boolean that silently meant four.
+   ================================================================================================ */
+console.log("\n  the peak threshold — a debut rule must never gate a peak question again");
+
+var RUNSTAMP = { seasonNow: 2026, maturitySeasons: 4 };
+ok(core.hasRun(RUNSTAMP, 2015, 11) === true, "a class with eleven seasons has had a full run");
+ok(core.hasRun(RUNSTAMP, 2016, 11) === false, "…and one with ten has not");
+ok(core.hasRun(RUNSTAMP, 2025, 0) === true, "a minimum of zero admits every class");
+
+/* the threshold is DERIVED from first-star lags, and it moves with the coverage asked for */
+var STARROWS = [];
+for (var q = 0; q < 20; q++) {
+  // ten careers starring at +4, ten at +10 — so 50% coverage lands at 4 and 100% at 10
+  STARROWS.push({ k: "e" + q, p: 10, y: 2005, dp: "MID",
+                  s: [[110, "MID", 2005 + (q < 10 ? 4 : 10)]] });
+}
+var d90 = core.developedFromRows(STARROWS, RUNSTAMP, { STAR_BAR: { MID: 105 } }, 0.9, core.seasonStar);
+var d50 = core.developedFromRows(STARROWS, RUNSTAMP, { STAR_BAR: { MID: 105 } }, 0.5, core.seasonStar);
+ok(d90.lag === 10 && d50.lag === 4,
+   "the threshold is the lag by which the asked-for share of first-star seasons has landed — 90% " +
+   "needs ten seasons here, 50% needs four", d50.lag + " / " + d90.lag);
+ok(d90.n === 20, "…measured over the careers that actually starred", String(d90.n));
+ok(core.developedFromRows([], RUNSTAMP, { STAR_BAR: {} }, 0.9, core.seasonStar) === null,
+   "no star seasons to measure yields NO threshold — the page falls back and says so rather than " +
+   "inventing a number");
+/* classes without a long run may not TEACH the threshold, or the measurement is contaminated by
+   the very immaturity it exists to detect. */
+var YOUNG = [{ k: "y", p: 10, y: 2024, dp: "MID", s: [[110, "MID", 2025]] }];
+ok(core.developedFromRows(YOUNG, RUNSTAMP, { STAR_BAR: { MID: 105 } }, 0.9, core.seasonStar) === null,
+   "and a class too young to have finished cannot teach the threshold it would bias");
+
+/* THE DEFECT ITSELF, on the shipped record: the two thresholds must differ, and the peak one must
+   be the longer. If a future store makes them equal this goes red and the reasoning gets re-read. */
+if (B) {
+  var bsrc2 = fs.readFileSync(path.join(__dirname, "..", "data", "board_view_working.js"), "utf8");
+  var bd2 = JSON.parse(bsrc2.slice(bsrc2.indexOf("{"), bsrc2.lastIndexOf("}") + 1));
+  var dev = core.developedFromRows(B.rows, B.stamp, bd2, 0.9, core.seasonStar);
+  ok(dev && dev.lag > B.stamp.maturitySeasons,
+     "on the shipped record the PEAK threshold (" + (dev && dev.lag) + " seasons) is longer than " +
+     "the DEBUT threshold (" + B.stamp.maturitySeasons + ") — a peak takes longer to arrive than a " +
+     "debut, and gating one with the other is the defect this block prevents");
+
+  /* and the bias is real and directional: measured on the shipped record, the loose population
+     understates late picks more than early ones. Asserted as a RELATIONSHIP, not a figure. */
+  function starRate(minSeasons, lo, hi) {
+    var set = (B.rows || []).filter(function (r) {
+      return r.p >= lo && r.p <= hi && core.hasRun(B.stamp, r.y, minSeasons) && bd2.REPL_BAR[r.dp];
+    });
+    var f = null, tot = 0, n = 0;
+    ["MID", "RUCK", "SF", "KPF", "SD", "KPD"].forEach(function (pos) {
+      var sub = set.filter(function (r) { return r.dp === pos; });
+      if (!sub.length) return;
+      f = core.frame(sub, bd2, pos);
+      tot += f.star * sub.length; n += sub.length;
+    });
+    return n ? tot / n : 0;
+  }
+  var lateLoose = starRate(B.stamp.maturitySeasons, 41, 64), lateRun = starRate(dev.lag, 41, 64);
+  var earlyLoose = starRate(B.stamp.maturitySeasons, 1, 10), earlyRun = starRate(dev.lag, 1, 10);
+  ok(lateRun > lateLoose && earlyRun > earlyLoose,
+     "the loose population understates the star rate at BOTH ends of the draft",
+     (100 * lateLoose).toFixed(1) + "->" + (100 * lateRun).toFixed(1) + " late, " +
+     (100 * earlyLoose).toFixed(1) + "->" + (100 * earlyRun).toFixed(1) + " early");
+  ok((lateRun - lateLoose) / lateLoose > (earlyRun - earlyLoose) / earlyLoose,
+     "…and it understates LATE picks proportionally more than early ones, which is why the default " +
+     "is the fully-run population: the bias runs in the direction of the trade-down decision");
+}
 
 console.log("\n  " + "-".repeat(70));
 console.log(fails ? "DRAFT DAY TESTS: " + fails + " FAILED of " + n

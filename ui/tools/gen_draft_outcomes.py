@@ -180,7 +180,11 @@ def _real_seasons(row):
     out = []
     for s in _seasons(row):
         if (s.get('games') or 0) >= REAL_SEASON_GAMES and s.get('avg') is not None and s.get('pos'):
-            out.append([round(float(s['avg']), 2), str(s['pos'])])
+            # THE YEAR RIDES ALONG so a reader can compute seasons-since-draft EXACTLY. Without
+            # it the only available proxy is the index within this list, which silently treats a
+            # missed season as no time passing — and the whole point of the peak-maturity threshold
+            # is measuring how long a career takes.
+            out.append([round(float(s['avg']), 2), str(s['pos']), int(s['year'])])
     return out
 
 
