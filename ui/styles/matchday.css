@@ -145,6 +145,19 @@ header.mast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px
 .vline .vmask{position:absolute;top:0;bottom:0;right:0;background:var(--edge);
   border-left:1px solid rgba(242,245,249,.4)}
 .vline-m{height:8px;border-radius:2px}
+/* OWNER ITEM 11 (2026-08-31) — "vs Pick 1". The bar carries a ratio to 2dp and a tick at pick 1.
+   The bar grows to 16px ONLY where the ratio is drawn: a label needs a line box to sit in, and the
+   mini rail on the trade desk carries no label so it keeps its 8px. The label is absolutely
+   positioned at the fill boundary and flips side and colour there (see MD.valueLine), which is what
+   makes it readable on both a dark remainder and a bright warm fill instead of on average neither. */
+.vline.vline-r{height:16px}
+.vline .vp1{position:absolute;top:0;bottom:0;width:0;border-left:1px dashed rgba(11,14,19,.75);
+  box-shadow:1px 0 0 rgba(242,245,249,.35);pointer-events:none}
+.vline .vratio{position:absolute;top:50%;transform:translateY(-50%);font-family:var(--mono);
+  font-size:10px;font-weight:700;letter-spacing:.01em;line-height:1;white-space:nowrap;
+  pointer-events:none;font-variant-numeric:tabular-nums}
+.vline .vratio.out{margin-left:5px;color:var(--dim)}
+.vline .vratio.in{transform:translate(-100%,-50%);margin-left:-5px;color:#0b0e13}
 .pill{justify-self:end;font-family:var(--mono);font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;white-space:nowrap}
 .pill.up{background:rgba(74,222,128,.14);color:var(--up)}
 .pill.dn{background:rgba(240,101,94,.14);color:var(--dn)}
@@ -230,6 +243,30 @@ h2.sec .meta{color:var(--faint);font-family:var(--mono);letter-spacing:0;text-tr
 /* charts / reserved */
 .chart{background:var(--pitch);border:1px solid var(--edge);padding:12px 10px 6px}
 .chart svg{display:block;width:100%;height:auto}
+/* OWNER ITEM 3 (2026-08-31) — the weekly value graph that replaces "recent form" on the player card.
+   Axes are labelled (his ask); the grid is quiet so the line, not the furniture, carries the eye.
+   A hollow marker means the step was NOT a normal round — a finals week or a model change — which
+   is why .ev exists on both the dot and its x tick. */
+.wchart{background:var(--pitch);border:1px solid var(--edge);padding:10px 8px 4px}
+.wchart svg{display:block;width:100%;height:auto}
+.wchart .wcg{stroke:var(--edge);stroke-width:1}
+.wchart .wca{stroke:#333b4b;stroke-width:1}
+.wchart .wcl{fill:none;stroke:var(--volt);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.wchart .wcd{fill:var(--volt);stroke:none}
+.wchart .wcd.ev{fill:var(--pitch);stroke:var(--volt);stroke-width:1.5}
+.wchart .wcd.now{fill:#f2f5f9}
+.wchart .wcy{fill:var(--dim);font-family:var(--mono);font-size:10px;text-anchor:end;dominant-baseline:middle}
+.wchart .wcx{fill:var(--dim);font-family:var(--mono);font-size:10px;text-anchor:middle}
+.wchart .wcx.ev{fill:var(--volt)}
+.wchart .wcat{fill:var(--faint);font-family:var(--cond);font-weight:700;font-size:10px;
+  letter-spacing:.22em;text-anchor:middle}
+.wcfoot{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;padding:8px 4px 4px;
+  font-family:var(--mono);font-size:11px;color:var(--dim)}
+.wcfoot b{color:var(--text);font-variant-numeric:tabular-nums}
+.wcfoot .up{color:var(--up)}.wcfoot .dn{color:var(--dn)}.wcfoot .flat{color:var(--faint)}
+.wcfoot .axnote{margin-left:auto;color:var(--faint);font-family:var(--cond);letter-spacing:.06em;
+  text-transform:uppercase;font-size:10px}
+@media(max-width:720px){.wcfoot .axnote{margin-left:0;flex-basis:100%}}
 .reserved{border:1px dashed var(--edge);padding:16px;color:var(--faint);font-size:12px;margin-top:8px}
 .reserved b{color:var(--dim);font-family:var(--cond);font-weight:700;letter-spacing:.12em;text-transform:uppercase}
 

@@ -28,15 +28,31 @@
              #232 hit. One reader, one pin, inherited.
 
    THESE ARE TWO DIFFERENT ARTIFACTS AND THE PAGE SAYS SO. v0 is the FROZEN YEAR-ZERO entry surface;
-   `pvc` is the CURRENTLY ADOPTED curve. docs/ENGINE_PRIMER.md is explicit that position/age
-   "redistribute around the anchor and never inflate it" — but the anchor there is year-zero's own
-   position-blind level, which no bundle this page loads publishes. So the delta below is an honest
-   comparison ACROSS the two artifacts and it is NOT a decomposition of the all-in curve: the
-   position columns do not, and are not claimed to, average back to it. Measured on the shipped
-   bundles the positional surface sits systematically off the adopted curve (MID and RUCK above it at
-   almost every ordinal, the other four below), which is a real reading and not an artefact — but a
-   reader who thinks he is looking at a partition of one number would misread it, so the page states
-   the provenance of each column in words rather than leaving it to be inferred.
+   `pvc` is the CURRENTLY ADOPTED curve. The delta below is an honest comparison ACROSS the two and it
+   is NOT a decomposition of the all-in curve: the position columns do not, and are not meant to,
+   average back to it.
+
+   THE DIVERGENCE IS BY DESIGN, AND THIS IS THE OWNER'S OWN RULING ON IT (2026-08-31), because an
+   earlier draft of this file framed it as an unresolved gap between two artifacts that "do not
+   reconcile" — which was wrong, and is the correction this comment carries:
+
+       "They are linked, but shouldn't average out strictly, as that weights each position equally.
+        (i.e. Ruck + SD + SF + MID + KPF + KPD v0 for pick 1 should not strictly = 6 x pick 1 pvc)
+        There are way less rucks drafted than midfielders, so the weighting is different. And mids
+        and rucks provide better returns on investments than the average pick, so it makes sense
+        theyre > the all in curve. That's by design."
+
+   Two independent reasons, both of them football and neither of them a defect:
+     · THE MIX IS NOT UNIFORM. A straight average across the six positions weights each equally; the
+       draft does not. Far fewer rucks are taken than midfielders, so the all-in curve is dominated
+       by the positions that fill it, not by the mean of the six.
+     · THE RETURNS ARE NOT EQUAL. Mids and rucks return more per pick than the average selection, so
+       sitting ABOVE the position-blind curve is the surface pricing them correctly.
+
+   Measured on the shipped bundles: MID runs 1.15-1.42x the all-in curve and KPD 0.64-0.90x, with
+   RUCK also above and the other three below. That is the expected shape, not a discrepancy — the
+   page says so in words so a reader who takes it for a partition of one number is corrected on
+   sight, rather than left to infer a problem that is not there.
 
    ------------------------------------------------------------------------------------------------
    THE SLOT KEY — VERIFIED, NOT ASSUMED
@@ -540,18 +556,27 @@
 
       // ---- provenance line: what each column is, always, whether or not a position is selected ----
       var prov = fmt.el("div", "cintro");
-      /* The second sentence explains a column that only exists when the v0 side resolved, so it is
+      /* The second half explains a column that only exists when the v0 side resolved, so it is
          withheld when that side is refused: a standing caveat about a comparison the page is not
-         making would read as though it were making it. */
+         making would read as though it were making it.
+
+         THE WORDING IS THE OWNER'S RULING (2026-08-31). It used to end on the two artifacts not
+         reconciling, which reads as an admission of a gap. The gap is the design: the mix of
+         positions drafted is not uniform and the returns per pick are not equal, so a position
+         sitting above or below the all-in curve is the surface working. Say the reason, not the
+         disclaimer. */
       prov.innerHTML =
         "<b>All-in value</b> is the adopted, position-blind pick value curve published by the loaded " +
         "board (<b>pvc</b>, ordinals 1–" + CURVE_MAX + "). " +
         (v0why ? "" :
           "<b>Position v0</b> is the frozen year-zero <i>entry price</i> of the board's own players, " +
           "read through the pinned v0 sidecar and keyed by the entry position the surface itself uses " +
-          "— not a player's current eligibility. These are two different artifacts: the Δ is a " +
-          "<b>comparison</b> between them and not a breakdown of the all-in curve, so the position " +
-          "columns are not expected to average back to it.");
+          "— not a player's current eligibility. The two are linked, but the position columns are " +
+          "<b>not meant to average back</b> to the all-in curve, and it would be wrong if they did: " +
+          "that would weight every position equally, and the draft does not — far fewer rucks are " +
+          "taken than midfielders. Mids and rucks also return more per pick than the average " +
+          "selection, so their sitting above the all-in curve is the intended shape rather than a " +
+          "discrepancy. The Δ reads as <b>how this position is priced against the field</b>.");
       page.appendChild(prov);
 
       if (v0why) {

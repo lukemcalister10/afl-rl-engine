@@ -282,13 +282,101 @@ check(await page.locator('.histnote').count() === 0,
 
 /* items 17 + 18 — the substance survives on THE card (one transparent tier) */
 const cardText = await page.locator('.card').innerText();
-check(/recent form/i.test(cardText), 'item 17 — Recent form is exposed on the card');
+/* AMENDED 2026-08-31 ON THE OWNER'S WORD (item 3 of his UI list): "recent form" comes OFF the card
+   and a weekly value graph since R14 goes on, x and y axes labelled. The old assertion here was
+   `/recent form/i` — it encoded the section he has now retired, so it is replaced by the assertion
+   the new requirement earns, NOT deleted and not weakened:
+     · the retired section must actually be gone (a rename that left both would pass a mere
+       "graph exists" check),
+     · the graph must draw a real line with one point per point in the series — not an empty frame,
+     · BOTH axis titles must render, because "labelled axes" was half of what he asked for.
+   The season scores the old line drew are not lost: they remain per-round in the history table's
+   Score column, where each carries its own played / DNP / not-recorded truth. */
+check(!/recent form/i.test(cardText), 'item 3 (2026-08-31) — the "Recent form" season-score line is retired from the card');
+check(/weekly value/i.test(cardText) && await page.locator('.wchart svg .wcl').count() === 1,
+  'item 3 (2026-08-31) — the weekly value graph replaces it and draws a line');
+const wcPts = await page.evaluate(() => {
+  const poly = document.querySelector('.wchart .wcl');
+  return poly ? poly.getAttribute('points').trim().split(/\s+/).length : 0;
+});
+const wcSeries = await page.evaluate(() =>
+  (MD.history.series(MD.state.cardKey) || []).filter(r => r.v != null).length);
+check(wcPts === wcSeries && wcPts >= 2,
+  'item 3 (2026-08-31) — the line carries one vertex per point in MD.history.series, no more and no fewer',
+  wcPts + ' vs ' + wcSeries);
+const axisTitles = (await page.locator('.wchart .wcat').allTextContents()).map(t => t.trim()).sort();
+check(JSON.stringify(axisTitles) === JSON.stringify(['ROUND', 'VALUE']),
+  'item 3 (2026-08-31) — both axes are labelled (his ask), not just ticked',
+  JSON.stringify(axisTitles));
 check(/pick\s*\d+/i.test(cardText), 'item 18 — the card shows the draft pick');
 check(/\/\s*804/.test(cardText), 'item 18 — the card shows rank WITH its denominator');
 check(!/guard 5|board <b>|engine <b>/i.test(cardText), 'item 18 — no build provenance on the card');
 check(!/per-lever|why the price/i.test(cardText), 'item 18 — no attribution panel on the card');
 const steady = await page.locator('.statrow').first().innerText();
 check(!/—\s*steady/i.test(steady), 'item 18 — the hardcoded "— steady" movement is gone');
+
+/* ---------------------------------------------------- OWNER ITEM 11 (2026-08-31): "vs Pick 1"
+   His word: the "vs top" bar becomes "vs Pick 1", carrying a ratio to two decimals rendered ON the
+   bar and legible against it. Four things are worth asserting and one is worth NOT asserting:
+     · the column is renamed (a ratio under a heading that still says "vs top" is a contradiction);
+     · every board row carries a ratio, and each is exactly 2dp — the format IS the requirement;
+     · the ratio is the row's value over PICK 1 off the loaded board's own curve, checked against
+       the bundle rather than against 3000, so a re-anchored curve moves the expectation with it;
+     · the label flips to the inside of the fill on long bars, which is what keeps it readable
+       against the bright warm end instead of vanishing into it.
+   NOT asserted: that the fill is anchored to pick 1. It deliberately is not — it stays on the
+   0..top-of-board track so the column still ranks the page, and the dashed tick is what ties the
+   two readings together. */
+section('OWNER ITEM 11 (2026-08-31) — the value line reads vs Pick 1');
+await go('board');
+check((await page.locator('.rowhead.working .h').allTextContents()).some(t => /vs pick 1/i.test(t)),
+  'item 11 — the column heading is "vs Pick 1", not "vs top"');
+const p1 = await page.evaluate(() => MD.pick1());
+check(typeof p1 === 'number' && p1 > 0,
+  'item 11 — pick 1 is READ off the loaded board curve (pvc), not hardcoded', String(p1));
+const ratioCheck = await page.evaluate(() => {
+  const rows = [...document.querySelectorAll('.rows .row.working')];
+  const out = { n: 0, bad2dp: 0, wrong: 0, inside: 0, outside: 0, ticks: 0, floored: 0 };
+  const p1 = MD.pick1();
+  rows.forEach(r => {
+    const lab = r.querySelector('.vline .vratio');
+    if (!lab) return;
+    out.n++;
+    const txt = lab.textContent.trim();
+    /* "<0.01x" is the floor form: at the foot of the board a single-digit value against a pick 1 in
+       the thousands rounds to 0.00, and printing that would say a player is worth nothing. Both
+       forms are accepted HERE, and the two are pinned to their own cases just below, so accepting
+       the floor cannot be used to smuggle a wrong number through. */
+    if (!/^(\d+\.\d{2}|<0\.01)\u00d7$/.test(txt)) out.bad2dp++;
+    const val = Number(r.querySelector('.val').textContent.replace(/[^0-9.-]/g, ''));
+    const rr = val / p1;
+    const want = (rr > 0 && rr < 0.005) ? '<0.01' : rr.toFixed(2);
+    if (txt.replace('\u00d7', '') !== want) out.wrong++;
+    if (txt.indexOf('<') === 0) out.floored++;
+    if (lab.classList.contains('in')) out.inside++; else out.outside++;
+    if (r.querySelector('.vline .vp1')) out.ticks++;
+  });
+  return out;
+});
+check(ratioCheck.n === 804 && ratioCheck.bad2dp === 0,
+  'item 11 — every board row carries a ratio, and every one of them is to two decimals',
+  JSON.stringify(ratioCheck));
+check(ratioCheck.wrong === 0,
+  'item 11 — each ratio is that row\'s own value divided by pick 1 off the curve', JSON.stringify(ratioCheck));
+check(ratioCheck.inside > 0 && ratioCheck.outside > 0,
+  'item 11 — the label sits inside the fill on long bars and outside it on short ones, so it is legible on both',
+  JSON.stringify(ratioCheck));
+check(ratioCheck.ticks === 804,
+  'item 11 — the pick-1 tick is drawn on every bar, which is what makes "past the line = worth more than pick 1" readable',
+  String(ratioCheck.ticks));
+/* The floor is asserted to be IN USE, not merely tolerated. It was found on the rendered page: the
+   foot of the board printed a column of "0.00x" against players who are not worth zero. If a future
+   change removes the floor this goes red rather than silently restoring the false reading. */
+check(ratioCheck.floored > 0 && (await page.evaluate(() =>
+  [...document.querySelectorAll('.rows .row.working .vline .vratio')]
+    .filter(l => l.textContent.trim() === '0.00\u00d7').length)) === 0,
+  'item 11 — a ratio too small for two decimals reads "<0.01x", and NO row prints the false "0.00x"',
+  ratioCheck.floored + ' floored');
 
 /* ------------------------------------------------------------------ CLUSTER 2: navigation */
 section('CLUSTER 2 — navigation (items 12, 16, 15, 9, 11)');

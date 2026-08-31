@@ -281,7 +281,14 @@ MD.board = (function () {
     el.innerHTML =
       '<span class="h r">#</span><span class="h">Player</span>' +
       '<span class="h">Pos</span><span class="h">Club <small>AFFL · AFL</small></span>' +
-      '<span class="h r">Value</span><span class="h">vs top</span>' +
+      '<span class="h r">Value</span>' +
+      // OWNER ITEM 11 (2026-08-31): "vs top" becomes "vs Pick 1". The fill is still drawn on the
+      // 0..top-of-board track so the column ranks the page; the figure and the tick are the pick-1
+      // reading. MD.valueLine carries the whole explanation and reads pick 1 off the board's curve.
+      '<span class="h" title="Each player\'s value as a multiple of pick 1, to two decimals. The bar ' +
+        'is drawn on the same 0-to-top-of-board track for every row, and the dashed tick marks where ' +
+        'pick 1 sits on it: past the tick is worth more than pick 1, short of it is worth less.">' +
+        'vs Pick 1</span>' +
       '<span class="h r">Round Δ</span>' +
       // centred, because the column beneath it is centred on its separator, not right-ragged.
       '<span class="h c" title="National-draft players show their pick number; every other pathway ' +

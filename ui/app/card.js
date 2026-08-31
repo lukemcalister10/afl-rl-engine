@@ -48,6 +48,131 @@ MD.card = (function () {
       dots + labels + "</svg></div>";
   }
 
+  /* ================== OWNER ITEM 3 (2026-08-31): THE WEEKLY VALUE GRAPH ==================
+     His word: "recent form" comes off the card and a graph of the player's value each week since
+     R14 goes on, with the x and y axes labelled.
+
+     IT READS `MD.history.series`, IT DOES NOT DERIVE. That function already owns three things this
+     chart must not re-decide and could easily get wrong on its own:
+       · WHICH UNIVERSE IS ON SCREEN. Current-model-only or all-in, per the Config tab. The card and
+         the movers tab share that choice through MD.universe precisely so they cannot disagree, and
+         a chart that walked the bundle itself would be the third opinion.
+       · WHAT EACH POINT IS. A round, a retro re-pricing of a round, a finals week, a model change.
+       · THAT THE TRACE IS COMPLETE. Every player carries a value at every point — a player who did
+         not play still moves, because everyone else did — so this line NEVER has participation gaps
+         and needs no "did not play" handling. Score coverage is the patchy column; value is not.
+
+     THE AXES ARE LABELLED BECAUSE HE ASKED, AND THE Y AXIS IS NOT ZERO-BASED. A keeper board's
+     weekly movement is a few per cent of a four-figure price; anchoring the axis at zero would draw
+     every player as the same flat line. The axis therefore spans the player's own range with a
+     margin, and SAYS SO on the axis title, so nobody reads a steep line as a collapse. */
+
+  /* the x tick for one point: short enough to sit under a dense axis, still unambiguous. */
+  function shortPointLabel(r) {
+    if (r.isRound) {
+      const m = /(\d+)\s*$/.exec(String(r.label || ""));
+      return m ? m[1] : String(r.label || r.id);
+    }
+    const fin = finalsName(r.id);
+    if (fin) return fin.replace(/[^A-Z0-9]/g, "");     // "Finals Week 1" -> "FW1"
+    return mcId(r.modelChange);
+  }
+  function longPointLabel(r) {
+    if (r.isRound) return (r.label || String(r.id)) + (r.isRetro ? " (re-priced under the current model)" : "");
+    return finalsName(r.id) || ("Model change " + mcId(r.modelChange));
+  }
+
+  /* a human y-axis: 4-ish ticks on a round step covering [lo,hi], never a step of zero. */
+  function niceTicks(lo, hi, want) {
+    const span = (hi - lo) || 1;
+    const raw = span / Math.max(1, want);
+    const mag = Math.pow(10, Math.floor(Math.log(raw) / Math.LN10));
+    const norm = raw / mag;
+    const step = (norm <= 1 ? 1 : norm <= 2 ? 2 : norm <= 5 ? 5 : 10) * mag;
+    const out = [];
+    for (let t = Math.ceil(lo / step) * step; t <= hi + step * 0.001; t += step) out.push(Math.round(t));
+    return out.length >= 2 ? out : [Math.round(lo), Math.round(hi)];
+  }
+
+  const WCHART = { w: 640, h: 260, l: 58, r: 14, t: 16, b: 52 };
+
+  function weeklyValueChart(key) {
+    const rows = (MD.history.series(key) || []).filter(function (r) { return r.v != null; });
+    if (rows.length < 2) {
+      return '<div class="reserved">Not enough weekly points to draw a line' +
+             (rows.length === 1 ? " — this player carries a value at one point only." : ".") + "</div>";
+    }
+    const vals = rows.map(function (r) { return r.v; });
+    let lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals);
+    const pad = ((hi - lo) || Math.max(1, hi * 0.02)) * 0.18;
+    lo -= pad; hi += pad;
+    const ticks = niceTicks(lo, hi, 4);
+    lo = Math.min(lo, ticks[0]); hi = Math.max(hi, ticks[ticks.length - 1]);
+
+    const g = WCHART;
+    const iw = g.w - g.l - g.r, ih = g.h - g.t - g.b;
+    const X = function (i) { return g.l + (rows.length === 1 ? iw / 2 : (i * iw) / (rows.length - 1)); };
+    const Y = function (v) { return g.t + ih - ((v - lo) / ((hi - lo) || 1)) * ih; };
+
+    // grid + y labels
+    let grid = "", ylab = "";
+    ticks.forEach(function (t) {
+      const y = Y(t).toFixed(1);
+      grid += '<line x1="' + g.l + '" x2="' + (g.w - g.r) + '" y1="' + y + '" y2="' + y + '" class="wcg"/>';
+      ylab += '<text x="' + (g.l - 8) + '" y="' + y + '" class="wcy">' + fmt.n(t) + "</text>";
+    });
+
+    /* X LABELS THIN THEMSELVES rather than overlapping. With a long season the ticks would collide,
+       so every nth is drawn — but the FIRST and the LAST are always drawn whatever n works out to,
+       because "since when" and "as at when" are the two readings the axis exists to give. */
+    const every = Math.max(1, Math.ceil(rows.length / 12));
+    let xlab = "", poly = "", dots = "";
+    rows.forEach(function (r, i) {
+      const x = X(i), y = Y(r.v);
+      poly += (poly ? " " : "") + x.toFixed(1) + "," + y.toFixed(1);
+      const last = i === rows.length - 1;
+      if (i % every === 0 || last || i === 0) {
+        xlab += '<text x="' + x.toFixed(1) + '" y="' + (g.t + ih + 16) + '" class="wcx' +
+          (r.isRound ? "" : " ev") + '">' + fmt.esc(shortPointLabel(r)) + "</text>";
+      }
+      // A NON-ROUND POINT IS MARKED DIFFERENTLY because it is not a week of football: a finals week
+      // and a model change both land as their own column, and a hollow marker says "this step was
+      // not a normal round" without needing a legend nobody reads.
+      dots += '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + (last ? 4.5 : 3) +
+        '" class="wcd' + (last ? " now" : "") + (r.isRound ? "" : " ev") + '">' +
+        "<title>" + fmt.esc(longPointLabel(r)) + ": " + fmt.n(r.v) +
+        (r.dv == null ? "" : " (" + fmt.signed(r.dv) + ")") + "</title></circle>";
+    });
+
+    const first = rows[0], last = rows[rows.length - 1];
+    const net = last.v - first.v;
+
+    return '<div class="wchart"><svg viewBox="0 0 ' + g.w + " " + g.h + '" preserveAspectRatio="xMidYMid meet">' +
+      grid +
+      '<line x1="' + g.l + '" x2="' + g.l + '" y1="' + g.t + '" y2="' + (g.t + ih) + '" class="wca"/>' +
+      '<line x1="' + g.l + '" x2="' + (g.w - g.r) + '" y1="' + (g.t + ih) + '" y2="' + (g.t + ih) + '" class="wca"/>' +
+      '<polyline points="' + poly + '" class="wcl"/>' + dots + ylab + xlab +
+      // the axis TITLES — the half of his ask that a bare tick row does not satisfy
+      '<text x="' + (g.l + iw / 2) + '" y="' + (g.h - 8) + '" class="wcat">ROUND</text>' +
+      '<text transform="translate(14,' + (g.t + ih / 2) + ') rotate(-90)" class="wcat">VALUE</text>' +
+      "</svg>" +
+      '<div class="wcfoot"><span>' + fmt.esc(longPointLabel(first)) + " <b>" + fmt.n(first.v) +
+        "</b></span><span>" + fmt.esc(longPointLabel(last)) + " <b>" + fmt.n(last.v) + "</b></span>" +
+        '<span class="' + fmt.cls(net) + '">net ' + fmt.signed(net) + "</span>" +
+        '<span class="axnote">Vertical axis spans this player\u2019s own range, not zero.</span></div>' +
+      "</div>";
+  }
+
+  /* the section's own subtitle — "Round 14 - Finals Week 1" — READ off the series rather than
+     written as "since Round 14". The series begins where the bundle begins; the day it begins
+     somewhere else this heading follows it, and a hardcoded "since Round 14" would quietly lie. */
+  function weeklySpan(key) {
+    const rows = (MD.history.series(key) || []).filter(function (r) { return r.v != null; });
+    if (!rows.length) return "";
+    if (rows.length === 1) return longPointLabel(rows[0]);
+    return longPointLabel(rows[0]) + " \u2013 " + longPointLabel(rows[rows.length - 1]);
+  }
+
   function movePill(d) {
     if (d == null) return '<span class="hm na">—</span>';
     return '<span class="hm ' + fmt.cls(d) + '">' + fmt.signed(d) + "</span>";
@@ -164,8 +289,6 @@ MD.card = (function () {
     // +1/+2 projections are ruled off and render nowhere (owner word 2026-08-28).
     const years = (w.lensYears || [2024, 2025, 2026]).slice(0, 3);
     const lensPts = (p.lens || []).slice(0, 3).map(function (v) { return { v: v }; });
-    const trackPts = (p.track || []).map(function (t) { return { v: t.a }; });
-    const trackYears = (p.track || []).map(function (t) { return "s" + t.s; });
 
     let ovTag = "";
     if (p.owner_rule) ovTag = '<span class="tag" title="Your rule holds this price.">Owner rule</span>';
@@ -188,9 +311,13 @@ MD.card = (function () {
         v0Section(p) +
         '<h2 class="sec"><span>Value by year</span><span class="meta">' + years[0] + "–" + years[years.length - 1] + "</span></h2>" +
         lineChart(lensPts, years, years.length - 1, true) +
-        '<h2 class="sec"><span>Recent form</span><span class="meta">season score</span></h2>' +
-        (trackPts.length ? lineChart(trackPts, trackYears, trackPts.length - 1, true)
-          : '<div class="reserved">No recent-form series.</div>') +
+        // OWNER ITEM 3 (2026-08-31): the season-score "Recent form" line is replaced by the weekly
+        // value graph. The scores it drew are not lost — they remain, per round, in the Score
+        // column of the weekly history table directly below, where each one carries its own
+        // played / did-not-play / not-recorded truth instead of being smoothed into a line.
+        '<h2 class="sec"><span>Weekly value</span><span class="meta">' +
+          fmt.esc(weeklySpan(p.key)) + "</span></h2>" +
+        weeklyValueChart(p.key) +
         '<h2 class="sec"><span>Weekly history</span></h2>' +
         historySection(p) +
       "</div></div>";
