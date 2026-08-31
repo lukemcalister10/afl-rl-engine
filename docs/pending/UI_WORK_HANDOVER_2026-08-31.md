@@ -137,5 +137,9 @@ matches the store its old-value assertions were written against.
   STILL OPEN, and small: the stamp should name what the file actually derives from (the roster key
   set and the CSV) instead of a board. That means touching `ui/tools/extract_positions.py`, a writer
   of record, so it belongs in an act rather than in a UI block.
-* 2027 late-round picks can price above the same round's 2026 picks. It falls out of the owner's own
-  year rule lifting late picks via the round average. He has seen it; it may be intended.
+* ~~2027 late-round picks can price above the same round's 2026 picks.~~ **RULED INTENDED, owner,
+  2026-08-31, verbatim: "The 2027 late round picks thing is fine, a chance at a higher pick is worth
+  more than a #64 this year."** The flag is closed. The mechanism is his year rule pricing an unknown
+  2027 pick off the ROUND AVERAGE rather than off a known finishing position, and that average
+  legitimately beats a known-late 2026 pick, because an unresolved pick still carries the chance of
+  landing early. Do not "fix" this.
