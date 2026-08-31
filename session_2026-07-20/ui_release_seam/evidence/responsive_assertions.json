@@ -309,7 +309,7 @@
     "width": 720,
     "name": "names usable width (>=50px, not one-char column)",
     "ok": true,
-    "detail": "Harry Shee:262px Nick Daico:262px Nasiah Wan:262px Luke Jacks:262px Max Holmes:262px"
+    "detail": "Harry Shee:268px Nick Daico:268px Nasiah Wan:268px Luke Jacks:268px Max Holmes:268px"
   },
   {
     "width": 720,
@@ -381,13 +381,13 @@
     "width": 1440,
     "name": "names usable width (>=50px, not one-char column)",
     "ok": true,
-    "detail": "Harry Shee:372px Nick Daico:372px Nasiah Wan:372px Luke Jacks:372px Max Holmes:372px"
+    "detail": "Harry Shee:272px Nick Daico:272px Nasiah Wan:272px Luke Jacks:272px Max Holmes:272px"
   },
   {
     "width": 1440,
     "name": "names render in <= 2 text lines (never char-by-char)",
     "ok": true,
-    "detail": "1L 1L 1L 1L 1L"
+    "detail": "1L 1L 2L 1L 1L"
   },
   {
     "width": 1440,
