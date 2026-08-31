@@ -215,14 +215,21 @@ section("(b) trade — describePick has a ceiling as well as a floor");
     "with an incomplete curve the round rung is SKIPPED, not guessed", d(9000));
 })();
 
-/* =============== (b2) TRADE SEARCH — items 5, 6 and 7 (owner word 2026-08-31) ================== */
-section("(b2) trade — the desk search: length (5), 'pick xx' (6), and future years (7)");
+/* =============== (b2) TRADE SEARCH — items 5, 6 and 7, AS THE OWNER CORRECTED THEM ============= */
+section("(b2) trade — future picks are club + year + round, never an ordinal (owner correction 2026-08-31)");
 (function () {
   /* THE SHIPPED FILES, WIRED AS THE PAGE WIRES THEM (index.html order): the board bundle, the picks
      ledger, then config/format/seam/club_totals under the trade desk. The search is the one thing
-     standing between what the owner types and what the desk offers him, so it is exercised against the
-     real curve and the real ledger — a synthetic fixture would prove only that a fixture agrees with
-     itself. matchItems reads no DOM, exactly as describePick above does not. */
+     standing between what the owner types and what the desk offers him, and the namer is the one thing
+     between what he clicked and what the chip reads, so both are exercised against the real curve and
+     the real ledger — a synthetic fixture would prove only that a fixture agrees with itself. Neither
+     reads the DOM, exactly as describePick above does not.
+
+     THE OWNER'S CORRECTION, which is what this block is now about: "2027 pick 62 isn't pick 62. It's a
+     fourth round pick. 2027 and 2028 picks don't have numbers. They exist as concepts — Hawthorn's
+     future 1st round pick — we don't know what pick that will be yet. … You'd search for Hawthorn 2027
+     4th — or 4th round 27 Hawthorn etc." Every assertion here is a RELATIONSHIP against the shipped
+     ledger, never this month's figure. */
   var ctx = makeCtx();
   loadData(ctx, path.join("data", "board_view_working.js"));
   loadData(ctx, path.join("data", "club_valuation.js"));
@@ -234,81 +241,197 @@ section("(b2) trade — the desk search: length (5), 'pick xx' (6), and future y
 
   var T = ctx.MD.trade, W = ctx.window.__MATCHDAY_WORKING__ || {}, CV = ctx.window.__CLUB_VALUATION__ || {};
   var pvc = W.pvc || {}, base = (W.stamp || {}).baseYear;
-  check(typeof T.matchItems === "function" && typeof T.pickYears === "function",
-    "the desk exposes its search for exercise (no DOM read anywhere in it)");
+  check(typeof T.matchItems === "function" && typeof T.pickYears === "function" &&
+        typeof T.pickRounds === "function" && typeof T.pickName === "function",
+    "the desk exposes its search AND its namer for exercise (no DOM read anywhere in either)");
   check(ctx.MD.seam.clubHalt() === null,
-    "…and the shipped picks ledger authenticates against this board, so the future-year path is LIVE",
+    "…and the shipped picks ledger authenticates against this board, so the future-pick path is LIVE",
     JSON.stringify(ctx.MD.seam.clubHalt()));
 
-  // the ledger, read here independently of the desk: "year|ordinal" -> the ruled, year-weighted value
-  var ledger = {}, years = {};
+  /* THE LEDGER, READ HERE INDEPENDENTLY OF THE DESK. A pick asset's identity is (origin club, year,
+     round); `value` is the ruled, year-weighted price; `low`/`high` is the PROJECTED BAND, which is a
+     pricing input and must never surface as a name. */
+  var rows = [], priced = [], byId = {};
   Object.keys(CV.picksByTeam || {}).forEach(function (team) {
     (CV.picksByTeam[team] || []).forEach(function (p) {
-      if (p.low !== p.high) return;                 // a band is not an ordinal
-      ledger[p.year + "|" + p.low] = p.value;
-      if (p.low >= 1 && p.low <= 64) years[p.year] = 1;
+      if (!p || !p.origin || !(p.year > 0) || !(p.round > 0)) return;
+      rows.push(p);
+      if (typeof p.value === "number" && p.value > 0) {
+        priced.push(p);
+        byId[p.origin + "|" + p.year + "|" + p.round] = p;
+      }
     });
   });
-  var issued = Object.keys(years).map(Number).sort(function (a, b) { return a - b; });
-  check(issued.length > 1, "the shipped ledger issues more than one draft year (" + issued.join("/") + ")");
+  function uniq(a) { var s = {}; a.forEach(function (x) { s[x] = 1; });
+                     return Object.keys(s).map(Number).sort(function (x, y) { return x - y; }); }
+  var issued = uniq(priced.map(function (p) { return p.year; }));
+  var ledgerRounds = uniq(priced.map(function (p) { return p.round; }));
+  var futureYears = issued.filter(function (y) { return y !== base; });
+  check(rows.length > 0 && issued.length > 1 && ledgerRounds.length > 1 && futureYears.length > 0,
+    "the shipped ledger prices more than one year (" + issued.join("/") + ") over more than one round (" +
+    ledgerRounds.join("/") + ") — so nothing below is vacuous");
 
-  /* ---- item 7: FUTURE PICKS ARE SEARCHABLE, AT THE RULED PRICE ------------------------------- */
+  // the desk's own spelling of a round, rebuilt here from the ledger's round number alone
+  function ord(n) {
+    var t = n % 100, u = n % 10;
+    return n + ((t >= 11 && t <= 13) ? "th" : u === 1 ? "st" : u === 2 ? "nd" : u === 3 ? "rd" : "th");
+  }
+  function picksIn(q) { return T.matchItems(q).filter(function (r) { return r.t === "pick" && !r.pool; }); }
+  function futureIn(q) { return picksIn(q).filter(function (r) { return r.year !== base; }); }
+  function idOf(r) { return r.club + "|" + r.year + "|" + r.round; }
+
+  /* ---- THE YEARS AND ROUNDS OFFERED ARE THE YEARS AND ROUNDS THE LEDGER PRICES ---------------- */
   check(T.pickYears().join() === issued.join(),
-    "the desk offers exactly the years the ledger prices, base year first",
+    "the years the desk offers ARE the years the ledger prices, base year first",
     T.pickYears().join() + " vs " + issued.join());
   check(T.pickYears()[0] === base, "…and the first of them is the BOARD's base year, not a literal", String(base));
+  check(T.pickRounds().join() === ledgerRounds.join(),
+    "the rounds the desk offers ARE the rounds the ledger PRICES", T.pickRounds().join() + " vs " + ledgerRounds.join());
 
-  var rows62 = T.matchItems("62").filter(function (r) { return r.t === "pick" && !r.pool; });
-  check(rows62.length === issued.length,
-    "searching an ordinal answers with that pick in EVERY issued year", JSON.stringify(rows62.map(function (r) { return r.year; })));
-  check(rows62.every(function (r) { return r.n === 62; }), "…and every one of them is that ordinal");
-  check(rows62.every(function (r) { return r.year === base ? r.val === pvc["62"] : r.val === ledger[r.year + "|62"]; }),
-    "…each priced by the SOURCE THAT OWNS THAT YEAR — base year off the PVC, later years off the " +
-    "ledger's already-ruled value (2027 = (1/3 own + 2/3 round avg) x 0.9, 2028 = round avg x 0.8). " +
-    "The desk re-derives no year rule; it could not honestly, the Ladder projection is in no bundle here",
-    JSON.stringify(rows62.map(function (r) { return r.year + ":" + r.val; })));
-  // NON-VACUITY: a later year really is a different price, so the assertion above is not comparing
-  // one number with itself.
-  check(rows62.some(function (r) { return r.year !== base && r.val !== pvc["62"]; }),
-    "…and a future year's figure genuinely differs from the base year's",
-    JSON.stringify(rows62.map(function (r) { return r.year + ":" + r.val; })));
+  /* ---- REQUIREMENT 3: THE ROUND-5 ROWS ARE A LEDGER CONVENTION, NOT AN ASSET ------------------ */
+  var zeroRounds = uniq(rows.filter(function (p) { return p.value === 0; }).map(function (p) { return p.round; }));
+  check(zeroRounds.length > 0,
+    "the ledger really does carry a whole round at value 0 (round " + zeroRounds.join("/") + ") in every year — " +
+    "a ledger convention recording that the round exists, not a price");
+  check(zeroRounds.every(function (r) { return T.pickRounds().indexOf(r) === -1; }),
+    "…and NOT ONE of those rounds is offered as a pickable asset, in any year — the desk declines them, " +
+    "it is not merely missing them", T.pickRounds().join());
+  check(zeroRounds.every(function (r) {
+    return ["", "hawthorn ", "hawthorn 2027 "].every(function (pre) {
+      return T.matchItems(pre + ord(r)).filter(function (x) { return x.t === "pick"; }).length === 0;
+    });
+  }), "…and asking for one by name offers nothing rather than a 0-SCAR row — the round is not even " +
+      "search vocabulary", JSON.stringify(zeroRounds.map(function (r) { return ord(r); })));
 
-  var pinned = T.matchItems("62 2027");
-  check(pinned.length === 1 && pinned[0].n === 62 && pinned[0].year === 2027,
-    "naming the year narrows to that one pick", JSON.stringify(pinned));
-  check(!pinned.some(function (r) { return r.pool; }),
-    "…and a year-pinned query is given NO pool item — the pool level is a base-year committed figure");
-
-  /* THE POOL IS STILL THE POOL. Law 4: there is no ordinal 65, so a number past the curve resolves to
-     the pool and never to a phantom ordinal — in any year. The ledger carries round-5 rows at 0, which
-     is a ledger convention and not a pick price; reading them would put a 0-SCAR "Pick 70" on the desk. */
-  var past = T.matchItems("70");
-  check(past.length === 1 && past[0].pool === true,
-    "a number past the curve's end is THE POOL, not a phantom ordinal", JSON.stringify(past));
-  check(ledger["2026|70"] === 0 && ledger["2027|70"] === 0,
-    "…and the ledger really does carry those rows (at 0), so the desk is declining them, not missing them");
-  var allPickRows = [];
-  ["", "5", "62", "pick", "2027", "2028", "70", "pool"].forEach(function (q) {
-    T.matchItems(q).forEach(function (r) { if (r.t === "pick" && !r.pool) allPickRows.push(r); });
+  /* ---- THE CORRECTION: NO LATER YEAR CARRIES AN ORDINAL, ANYWHERE ---------------------------- */
+  var probes = ["", "5", "62", "27", "pick", "2026", "2027", "2028", "1st", "4th round 27 hawthorn",
+                "hawthorn", "hawthorn 2027", "2027 1st", "70", "pool", "north melbourne 2028 2nd"];
+  var allPicks = [], allFuture = [];
+  probes.forEach(function (q) {
+    picksIn(q).forEach(function (r) { allPicks.push(r); if (r.year !== base) allFuture.push(r); });
   });
-  check(allPickRows.length > 0 && allPickRows.every(function (r) { return r.n >= 1 && r.n <= 64; }),
-    "NO query offers an ordinal outside 1-64, in any year (" + allPickRows.length + " pick rows scanned)");
-  check(allPickRows.every(function (r) { return typeof r.val === "number" && isFinite(r.val) && r.val > 0; }),
-    "…and the desk offers no pick it cannot price — every offered row carries a real figure");
+  check(allFuture.length > 0, "the probe battery reaches the future assets at all (" + allFuture.length + " rows)");
+  check(allFuture.every(function (r) { return r.n == null; }),
+    "NOT ONE offered later-year pick carries an ordinal — a 2027 pick has no number, so the desk gives it none");
+  check(allFuture.every(function (r) { return !/pick\s*\d/i.test(String(r.label)) && String(r.label).indexOf("#") < 0; }),
+    "…and not one of their names says 'Pick 62' or '#62' — the owner's exact complaint, closed",
+    JSON.stringify(allFuture.slice(0, 3).map(function (r) { return r.label; })));
+  check(allPicks.filter(function (r) { return r.year === base; }).every(function (r) { return r.n >= 1 && r.n <= 64; }),
+    "…while a BASE-YEAR pick still is its number, 1-64 and nothing else — that year is unchanged");
 
-  /* ---- item 6: "PICK XX" FINDS THE PICK, AND "PICK" LISTS PICKS ------------------------------ */
-  var asWords = T.matchItems("pick 62"), asDigits = T.matchItems("62");
-  check(JSON.stringify(asWords) === JSON.stringify(asDigits),
-    "'pick 62' and '62' are the SAME query — the phrasing cannot change the answer");
-  check(T.matchItems("pick 62 2028").length === 1 && T.matchItems("pick 62 2028")[0].year === 2028,
-    "'pick 62 2028' reads all three parts");
-  var bare = T.matchItems("pick").filter(function (r) { return r.t === "pick"; });
-  check(bare.length > 0, "'pick' on its own LISTS picks (it used to return two Picketts and no pick)");
-  // and it must not have eaten the name search on the way past
-  var pk = T.matchItems("pickett");
-  check(pk.length > 0 && pk.every(function (r) { return r.t === "player"; }),
-    "'pickett' is still a NAME search — the keyword is stripped, 'ett' is not digits, the parse declines",
-    JSON.stringify(pk.map(function (r) { return r.label; })));
+  /* THE BAND IS A PRICING INPUT AND IS NEVER SURFACED. The ledger's 2027 row for the asset the owner
+     called "2027 pick 62" carries low=high=62; the desk must name it by its ROUND. Tested over every
+     future row the battery reached, against that row's own band. */
+  var banded = allFuture.filter(function (r) { return byId[idOf(r)] && byId[idOf(r)].low != null; });
+  check(banded.length > 0, "the future rows the desk offers do have a projected band in the ledger (" +
+    banded.length + " rows) — so the assertion below has something to catch");
+  check(banded.every(function (r) {
+    var b = byId[idOf(r)], lab = String(r.label);
+    // the round token is trimmed off first — "…2027 1st" legitimately carries the round's own digit,
+    // and the year legitimately carries four of them; what must not appear is the BAND.
+    var head = lab.slice(0, lab.length - ord(r.round).length);
+    return !new RegExp("(^|[^0-9])" + b.low + "([^0-9]|$)").test(head);
+  }), "…and NOT ONE name contains its projected band — the band prices the pick, it does not name it",
+     JSON.stringify(banded.slice(0, 2).map(function (r) { return r.label + " <- band #" + byId[idOf(r)].low; })));
+  check(banded.every(function (r) { return String(r.label).indexOf(ord(byId[idOf(r)].round)) > 0; }),
+    "…each is named by its ROUND instead ('… 2027 4th')");
+
+  /* ---- REQUIREMENT 1: THE DISPLAY FORM IS CLUB + YEAR + ROUND -------------------------------- */
+  check(allFuture.every(function (r) {
+    var b = byId[idOf(r)];
+    return b && r.label === (b.originDisplay || b.origin) + " " + r.year + " " + ord(r.round);
+  }), "every future pick reads as its club, its year and its round — and the club spelling is the " +
+      "LEDGER's own display name, not a second spelling rule invented in the view",
+      JSON.stringify(allFuture.slice(0, 2).map(function (r) { return r.label; })));
+  // the DROPDOWN row and the BASKET chip must be one namer, or a pick loses its ordinal on one surface
+  // and keeps it on the other — which is exactly how this defect got in.
+  check(allFuture.every(function (r) {
+    return T.pickName({ t: "pick", club: r.club, year: r.year, round: r.round }) === r.label;
+  }), "…and the basket chip is the SAME namer the dropdown row used — one name per asset, not two");
+  check(T.pickName({ t: "pick", n: 24, year: base }) === "Pick 24" &&
+        T.pickName({ t: "pick", pool: true, year: base }) === "Pool pick",
+    "…while a base-year pick still names itself by number and the pool still names itself the pool",
+    T.pickName({ t: "pick", n: 24, year: base }));
+  /* THE RETIRED FORM CANNOT BE RESURRECTED BY A HAND-SET BASKET. The search cannot build one and no
+     basket is persisted, but a later-year ordinal is not an asset, so the namer refuses to spell it. */
+  check(futureYears.every(function (y) { return T.pickName({ t: "pick", n: 62, year: y }) !== "Pick 62"; }),
+    "a later-year ordinal gets NO name at all — 'Pick 62 · 2027 ND' cannot be put back on the desk by " +
+    "hand", futureYears.map(function (y) { return y + ":" + T.pickName({ t: "pick", n: 62, year: y }); }).join(" "));
+
+  /* ---- REQUIREMENT 2: CLUB, YEAR AND ROUND IN ANY ORDER, TOLERANT OF SHORTHAND --------------- */
+  var target = futureIn("hawthorn 2027 4th");
+  check(target.length === 1 && target[0].year === 2027 && target[0].round === 4 &&
+        /hawthorn/i.test(target[0].club),
+    "the owner's own phrasing — 'Hawthorn 2027 4th' — lands on exactly that one asset",
+    JSON.stringify(target.map(function (r) { return r.label; })));
+  var forms = ["hawthorn 2027 4th", "4th round 27 hawthorn", "2027 4th hawthorn", "hawthorn 4th 2027",
+               "hawthorn r4 27", "hawthorn fourth 2027", "round 4 hawthorn 2027", "hawthorn's 2027 4th",
+               "pick hawthorn 2027 4th"];
+  check(forms.every(function (q) { return futureIn(q).map(idOf).join() === target.map(idOf).join(); }),
+    "…and so does every reordering and shorthand of it — club/year/round in any order, '27' for 2027, " +
+    "'4th'/'fourth'/'r4'/'round 4' for the round",
+    forms.filter(function (q) { return futureIn(q).map(idOf).join() !== target.map(idOf).join(); }).join(" | "));
+
+  // each named part NARROWS; an unnamed part matches everything.
+  check(futureIn("hawthorn 2027").length === ledgerRounds.filter(function (r) {
+      return zeroRounds.indexOf(r) === -1; }).length,
+    "'hawthorn 2027' is the club's whole priced 2027 holding — one row per priced round",
+    JSON.stringify(futureIn("hawthorn 2027").map(function (r) { return r.label; })));
+  check(futureIn("hawthorn 2027").every(function (r) { return r.year === 2027 && /hawthorn/i.test(r.club); }),
+    "…and every row of it is that club in that year");
+  var r1s = futureIn("2027 1st");
+  check(r1s.length > 1 && r1s.every(function (r) { return r.year === 2027 && r.round === 1; }),
+    "'2027 1st' is every club's 2027 first — the club is the part left unnamed", String(r1s.length));
+  check(uniq(r1s.map(function (r) { return r.club.length; })).length >= 1 &&
+        Object.keys(r1s.reduce(function (s, r) { s[r.club] = 1; return s; }, {})).length === r1s.length,
+    "…one row per club, no club listed twice");
+
+  // PARTIAL CLUB NAMES WORK LIKE THE PLAYER SEARCH — a substring, not a whole-name match.
+  check(futureIn("hawth 2027 4th").map(idOf).join() === target.map(idOf).join(),
+    "a partial club name resolves exactly as a partial player name does (substring)");
+  var mel = futureIn("melbourne 2028 1st");
+  check(mel.length > 1 && mel.every(function (r) { return /melbourne/i.test(r.club); }),
+    "…and a substring that names two clubs answers with both, rather than picking one",
+    JSON.stringify(mel.map(function (r) { return r.club; })));
+
+  /* ---- THE PRICES ARE THE LEDGER'S OWN. The desk computes nothing. -------------------------- */
+  check(allFuture.every(function (r) { return byId[idOf(r)] && r.val === byId[idOf(r)].value; }),
+    "every future pick is offered at the LEDGER's own year-weighted value — the desk re-derives no " +
+    "price (2027 = (1/3 own + 2/3 round avg) x 0.9, 2028 = round avg x 0.8, enforced in the ingest)");
+  check(allPicks.every(function (r) { return typeof r.val === "number" && isFinite(r.val) && r.val > 0; }),
+    "…and the desk offers no asset it cannot price — every offered row carries a real figure");
+  check(picksIn("12").every(function (r) { return r.year === base && r.val === pvc[String(r.n)]; }),
+    "…while a base-year pick is still priced straight off the shipped PVC, this desk's founding source");
+
+  /* ---- THE OWNER'S YEAR RULE, VISIBLE IN THE ROWS THE DESK OFFERS --------------------------- */
+  /* "2028 picks are all worth the same for each round — it's too far away to use 2026 finishing
+     positions to value them. 2027 is close enough you can infer some value from how the teams went
+     this year, but not the full value of the pick." Asserted as the SHAPE of the pricing, never as a
+     figure: the furthest year is flat within a round, the nearer one is not. */
+  var far = futureYears[futureYears.length - 1], near = futureYears[0];
+  function spread(y, r) {
+    return Object.keys(priced.filter(function (p) { return p.year === y && p.round === r; })
+      .reduce(function (s, p) { s[p.value] = 1; return s; }, {})).length;
+  }
+  var offeredRounds = T.pickRounds();
+  check(offeredRounds.every(function (r) { return spread(far, r) === 1; }),
+    "the FURTHEST year prices every pick in a round identically — the owner's rule, measured " +
+    "(" + far + ": " + offeredRounds.map(function (r) { return "r" + r + "=" + spread(far, r); }).join(" ") + ")");
+  check(offeredRounds.some(function (r) { return spread(near, r) > 1; }),
+    "…and the NEARER year does not, so this year's finishing positions still move it " +
+    "(" + near + ": " + offeredRounds.map(function (r) { return "r" + r + "=" + spread(near, r); }).join(" ") + ")");
+  // ONE PRICE IS NOT ONE ASSET. Two clubs' furthest-year firsts cost the same and are still two rows.
+  var flat = futureIn(far + " 1st");
+  check(flat.length > 1 && uniq(flat.map(function (r) { return r.val; })).length === 1,
+    "two clubs' " + far + " firsts really do carry one price…", JSON.stringify(uniq(flat.map(function (r) { return r.val; }))));
+  check(Object.keys(flat.reduce(function (s, r) { s[r.club] = 1; return s; }, {})).length === flat.length,
+    "…and they are STILL one row per club — equal prices are never folded into one asset");
+
+  /* ---- THE POOL IS UNTOUCHED (law 4) -------------------------------------------------------- */
+  check(T.matchItems("70").length === 1 && T.matchItems("70")[0].pool === true,
+    "a number past the curve's end is THE POOL, not a phantom ordinal", JSON.stringify(T.matchItems("70")));
+  check(T.matchItems("1000").length === 1 && T.matchItems("1000")[0].pool === true,
+    "…and so is a number far past it");
   check(T.matchItems("pool").length === 1 && T.matchItems("pool")[0].pool === true,
     "'pool' still names the pool item");
   check(T.matchItems("pick pool").length === 1 && T.matchItems("pick pool")[0].pool === true,
@@ -316,17 +439,38 @@ section("(b2) trade — the desk search: length (5), 'pick xx' (6), and future y
   check(T.matchItems("2029")[0] && T.matchItems("2029")[0].pool === true,
     "a four-digit number that is NOT an issued year stays a number, so it resolves to the pool",
     JSON.stringify(T.matchItems("2029")));
+  check(!futureIn("2027 1st").some(function (r) { return r.pool; }) &&
+        !T.matchItems("2027 1st").some(function (r) { return r.pool; }),
+    "…and a later-year query is given NO pool item — the pool level is a base-year committed figure");
+
+  /* THE ONE GENUINE AMBIGUITY, resolved by context and never by preference: "27" is both the owner's
+     shorthand for 2027 and the ordinal pick 27, which this desk has answered since it opened. */
+  var bare27 = picksIn("27");
+  check(bare27.length === 1 && bare27[0].n === 27 && bare27[0].year === base,
+    "bare '27' KEEPS its established meaning — ordinal pick 27 of the base year", JSON.stringify(bare27));
+  check(futureIn("hawthorn 27").length > 0 &&
+        futureIn("hawthorn 27").every(function (r) { return r.year === 2027; }),
+    "…but '27' beside a club is the year, because nothing else it could be is on offer");
+
+  /* ---- item 6: "PICK XX" FINDS THE PICK, AND "PICK" LISTS PICKS ------------------------------ */
+  var asWords = T.matchItems("pick 62"), asDigits = T.matchItems("62");
+  check(JSON.stringify(asWords) === JSON.stringify(asDigits),
+    "'pick 62' and '62' are the SAME query — the phrasing cannot change the answer");
+  var bare = T.matchItems("pick").filter(function (r) { return r.t === "pick"; });
+  check(bare.length > 0, "'pick' on its own LISTS picks (it used to return two Picketts and no pick)");
+  var pk = T.matchItems("pickett");
+  check(pk.length > 0 && pk.every(function (r) { return r.t === "player"; }),
+    "'pickett' is still a NAME search — the keyword is stripped, 'ett' names no club and is not digits, " +
+    "so the parse declines the query", JSON.stringify(pk.map(function (r) { return r.label; })));
+  var nobody = T.matchItems("zzz 2027 1st");
+  check(nobody.length === 0,
+    "a word that names no club declines the WHOLE query rather than half-answering it", JSON.stringify(nobody));
+  check(T.matchItems("hawthorn 2027 62").length === 0,
+    "…and so does a query that mixes the two asset languages: a later year has no ordinal to mix in");
 
   /* ---- item 5: THE LIST IS AS LONG AS THE MATCHES, AND NOT TRUNCATED SHORTER ----------------- */
   check(typeof T.MIN_ROWS === "number" && T.MIN_ROWS >= 5,
     "the desk publishes the owner's floor (" + T.MIN_ROWS + " rows) rather than a number retyped here");
-  // THE DEFECT, verbatim: "currently it's only 2 items come up in the search". That was Pick 62 + the
-  // pool, because one ordinal in one year is all the desk could match.
-  check(T.matchItems("62").length === issued.length + 1,
-    "the owner's own case ('62') is now one row per issued year plus the pool, not two rows",
-    String(T.matchItems("62").length));
-  check(T.matchItems("62").length > 2, "…which is strictly more than the two he counted");
-  // the OTHER half of the shortness: a prefix query used to stop at six rows, silently dropping picks
   var five = T.matchItems("5"), ords5 = {};
   five.forEach(function (r) { if (r.t === "pick" && !r.pool) ords5[r.n] = 1; });
   check(five.length >= T.MIN_ROWS,
@@ -335,16 +479,23 @@ section("(b2) trade — the desk search: length (5), 'pick xx' (6), and future y
     "…and the ordinal breadth of the old scan survives (exact match first, then the prefix run)",
     Object.keys(ords5).join(","));
   check(five[0] && five[0].n === 5, "the EXACT ordinal leads the list — typing '5' means pick 5, not pick 50");
-  // a floor is not a pad: a query with fewer true matches returns fewer rows, inventing nothing
-  check(T.matchItems("62 2027").length === 1,
-    "…but the floor pads nothing — a query with one true match returns one row");
+  check(T.matchItems("hawthorn").length >= T.MIN_ROWS,
+    "a bare club clears the floor too — the club's whole holding, every year", String(T.matchItems("hawthorn").length));
+  /* A FLOOR IS NOT A PAD, and the owner's correction narrowed one query on purpose: "62" is Pick 62 and
+     the pool again, because under his own ruling there is no 2027 pick 62 to be a third row. Nothing is
+     invented to reach five. This is recorded as behaviour, not smuggled past. */
+  check(T.matchItems("62").length === 2 && T.matchItems("62")[1].pool === true,
+    "'62' is the base-year pick and the pool — a bare ordinal has no later-year sibling any more, and " +
+    "the floor pads nothing to hide that", JSON.stringify(T.matchItems("62").map(function (r) { return r.label; })));
+  check(T.matchItems("hawthorn 2027 4th").length === 1,
+    "…and a query with exactly one true match returns exactly one row");
 
   /* THE YEAR ON A CHIP IS THE BOARD'S, not a string typed into the view — asserted by MOVING the base
      year rather than by grepping for the retired "2026 ND" literal (a text search cannot tell a live
      literal from the comment that records its retirement). The same move proves the ledger guard: with
      the desk's base year shifted, the ledger's base-year rows no longer agree with the PVC ordinal-for-
      ordinal, so it is no longer evidence that the ledger's other years are in these units — and NO
-     future year is offered, rather than a row the desk cannot honestly compare. */
+     future asset is offered, rather than a row the desk cannot honestly compare. */
   var moved = makeCtx();
   loadData(moved, path.join("data", "board_view_working.js"));
   moved.window.__MATCHDAY_WORKING__.stamp.baseYear = base + 1;
@@ -354,12 +505,14 @@ section("(b2) trade — the desk search: length (5), 'pick xx' (6), and future y
   check(moved.MD.trade.pickYears()[0] === base + 1,
     "move the bundle's base year and the desk's first year moves with it — no year is written into the view",
     JSON.stringify(moved.MD.trade.pickYears()));
-  check(moved.MD.trade.pickYears().length === 1,
-    "…and with the ledger no longer agreeing with the PVC on the base year, NO future year is offered",
-    JSON.stringify(moved.MD.trade.pickYears()));
+  check(moved.MD.trade.pickYears().length === 1 && moved.MD.trade.pickRounds().length === 0,
+    "…and with the ledger no longer agreeing with the PVC on the base year, NO later year and NO round " +
+    "is offered", JSON.stringify(moved.MD.trade.pickYears()) + " / " + JSON.stringify(moved.MD.trade.pickRounds()));
+  check(moved.MD.trade.matchItems("hawthorn 2027 1st").every(function (r) { return r.t === "player"; }),
+    "…so the club search itself goes quiet rather than pricing a ledger it cannot vouch for");
   check(moved.MD.trade.matchItems("5").filter(function (r) { return r.t === "pick" && !r.pool; })
         .every(function (r) { return r.year === base + 1; }),
-    "…so every pick the moved desk offers wears the moved year");
+    "…while every pick the moved desk still offers wears the moved year");
 })();
 
 /* =============== (c) dRound — the dead assertions and the bridge are gone ====================== */
