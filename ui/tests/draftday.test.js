@@ -301,26 +301,74 @@ ok(core.replOf({}, "MID") === null && core.replOf(null, "MID") === null,
 /* VOR counts BUSTS AT ZERO, which is what makes it an expectation rather than a highlight reel: a
    position producing one star and nine nothings must score below one producing ten useful players,
    or the board would recommend lottery tickets. */
-function pk(v, key) { return row({ k: key || ("x" + v), p: 10, y: 2010, g: 100, dl: 1, pk: v }); }
+/* A fixture player: one real season at `v`, played in position `at` (defaulting to his drafted
+   position). `s` is what frame() measures — (average, position played) per season. */
+function pk(v, key, at) {
+  var r = row({ k: key || ("x" + v + (at || "")), p: 10, y: 2010, g: 100, dl: 1, pk: v });
+  r.s = (v == null) ? [] : [[v, at || "MID"]];
+  return r;
+}
 var oneStar = [pk(160), pk(null, "a"), pk(null, "b"), pk(null, "c"), pk(null, "d")];
-var allOk = [pk(95), pk(95), pk(95), pk(95), pk(95)];
+var allOk = [pk(95), pk(95, "o2"), pk(95, "o3"), pk(95, "o4"), pk(95, "o5")];
 var fStar = core.frame(oneStar, BOARD, "MID"), fOk = core.frame(allOk, BOARD, "MID");
 ok(Math.abs(fStar.vor - 16.58) < 1e-9 && Math.abs(fOk.vor - 17.9) < 1e-9,
    "VOR averages over EVERY selection with busts at zero, against the EFFECTIVE bar of 77.1",
    fStar.vor.toFixed(2) + " vs " + fOk.vor.toFixed(2));
 ok(fStar.startable === 0.2 && fOk.startable === 1,
-   "…so a one-star-in-five position is barely startable while a five-useful one always is");
-/* THERE IS NO STAR FIGURE, and its absence is asserted. PEAK was briefly read as a star bar and
-   is not one: SF's PEAK is 70 against a REPL of 70.9, a ceiling below the floor. Rather than hunt
-   for a third bar, the page reports against the one baked bar that IS a replacement bar. */
-ok(fStar.star === undefined && fOk.star === undefined,
-   "the frame carries NO star figure — PEAK is not a star bar (SF's 70 sits below its own REPL of " +
-   "70.9), and no baked constant has been named as one");
+   "…so a one-star-in-five position is barely startable while a five-useful one always is",
+   fStar.startable + " vs " + fOk.startable);
+
+/* ===================== THE OWNER'S BAR RULE, IN HIS OWN TWO EXAMPLES =========================
+   2026-08-31, verbatim: "A player drafted as a mid who then switched to SF mid career and scored
+   95 over a 67 bar is +28, and that's credited to the midfield role he was drafted to. A player
+   drafted as a KPF who switched to a mid mid career and scores 75 that season over a 77 bar
+   doesn't contribute much even though the KPF bar is lower than his average."
+
+   The bar is the position he PLAYED. The credit is the position he was DRAFTED as. These two cases
+   are the whole rule, and the second is the one that catches a naive implementation: measured
+   against his drafted KPF bar he would look eleven points clear; measured against the bar for the
+   job he actually did, he is below it. */
+var SIXBAR = { REPL_BAR: { MID: 77.1, SF: 67.9, KPF: 63.8, SD: 75.3, KPD: 65.4, RUCK: 75.5 },
+               REPL_DROP: 3, REPL: { MID: 80.1, SF: 70.9, KPF: 66.8, SD: 78.3, KPD: 68.4, RUCK: 78.5 } };
+
+var midPlayedFwd = core.frame([pk(95, "m1", "SF")], SIXBAR, "MID");
+ok(Math.abs(midPlayedFwd.vor - 27.1) < 1e-9,
+   "his case 1 — a MID-drafted player scoring 95 while playing SF is measured against SF's 67.9, " +
+   "not MID's 77.1, and the +27.1 is credited to the MIDFIELD row",
+   midPlayedFwd.vor.toFixed(1));
+ok(midPlayedFwd.startable === 1, "…and he clears the bar he was actually playing against");
+
+var kpfPlayedMid = core.frame([pk(75, "k1", "MID")], SIXBAR, "KPF");
+ok(kpfPlayedMid.vor === 0 && kpfPlayedMid.startable === 0,
+   "his case 2 — a KPF-drafted player scoring 75 while playing MID is BELOW MID's 77.1 and " +
+   "contributes nothing, even though his own drafted KPF bar of 63.8 sits well under his average",
+   kpfPlayedMid.vor + " / " + kpfPlayedMid.startable);
+/* The naive implementation, stated so the difference is on the record rather than implied. */
+var naive = 75 - SIXBAR.REPL_BAR.KPF;
+ok(naive > 11 && kpfPlayedMid.vor === 0,
+   "…where measuring him against his DRAFTED bar would have scored him +" + naive.toFixed(1) +
+   " — the exact error the ruling exists to prevent");
+
+/* A DUAL SEASON TAKES THE LOWER BAR — the engine's own collapse for a dual declaration
+   (rl_model.py:85, min by REPL, "the LOWER REPL = more valuable for him"). */
+ok(core.seasonBar(SIXBAR, "SF/MID") === 67.9, "a dual season takes the LOWER of the two bars (SF over MID)");
+ok(core.seasonBar(SIXBAR, "KPF/RUCK") === 63.8, "…and again where the tall side is the cheaper one");
+ok(core.seasonBar(SIXBAR, "MID") === 77.1, "a single-position season is just its own bar");
+ok(core.seasonBar(SIXBAR, "NOPE") === null && core.seasonBar(SIXBAR, "") === null,
+   "an unresolvable position yields NO bar, and the season is skipped rather than measured against " +
+   "the drafted position's — missing evidence is not evidence of nothing");
+
+/* cross-position seasons are COUNTED, so a row can say how much of it rests on the rule at all. */
+var mixed = core.frame([pk(95, "a1", "SF"), pk(90, "a2", "MID")], SIXBAR, "MID");
+ok(mixed.nCross === 1 && mixed.nMeasured === 2,
+   "the frame reports how many careers included a season outside the drafted position",
+   mixed.nCross + " of " + mixed.nMeasured);
+
 ok(core.frame([pk(95)], { REPL: {}, REPL_BAR: {} }, "MID") === null,
    "no baked bar, no frame — the page shows nothing rather than measuring against something invented");
 ok(core.frame([], BOARD, "MID") === null, "and no careers, no frame");
 
-var atRepl = core.frame([pk(77.1)], BOARD, "MID");
+var atRepl = core.frame([pk(77.1, "atbar", "MID")], BOARD, "MID");
 ok(atRepl.vor === 0 && atRepl.startable === 1,
    "a player exactly at the bar counts as startable and adds ZERO value over it",
    atRepl.vor + " / " + atRepl.startable);
@@ -392,25 +440,33 @@ ok(core.careers(WROWS, VST, "MID", 10, 8, false).length === 3,
        "and the SHIPPED bars are byte-equal to the engine's own REPL — the app holds no second copy",
        JSON.stringify(engRepl));
   }
-  /* MEASURED, AND IT IS WHY PEAK IS NOT USED AS A CEILING: at SF (70 vs 70.9) and SD (78 vs 78.3)
-     the published PEAK sits BELOW the published REPL. They are not two ends of one scale, and any
-     surface reading PEAK as "star level" is wrong at two of six positions. Asserted so the next
-     reader meets the fact rather than the temptation. */
-  var inverted = POS6.filter(function (p) { return bd.PEAK[p] < bd.REPL[p]; });
-  ok(inverted.length > 0,
-     "PEAK is NOT a ceiling above REPL — it sits below it at " + inverted.join(", ") +
-     ", which is why no star metric is derived from it");
+  /* A CORRECTION I OWE THE RECORD. This block previously asserted that PEAK sits BELOW REPL at two
+     positions and concluded PEAK could not be a ceiling. That comparison was against the RAW
+     LITERAL. Against the bar the engine actually prices with — REPL_BAR, the literal less the
+     3-point drop — PEAK is above at EVERY position:
 
-  /* MEASURED, AND IT IS WHY PEAK IS NOT USED AS A CEILING: at SF (70 against a REPL of 70.9) and SD
-     (78 against 78.3) the published PEAK sits BELOW the published replacement bar. They are not two
-     ends of one scale, and any surface reading PEAK as "star level" is wrong at two of six
-     positions. This was very nearly shipped as a star metric. Asserted so the next reader meets the
-     fact rather than the temptation — and if a future bake makes PEAK a true ceiling everywhere,
-     this goes red and the question can be re-opened deliberately. */
-  var inverted = POS6.filter(function (p) { return bd.PEAK[p] < bd.REPL[p]; });
-  ok(inverted.length > 0,
-     "PEAK is NOT a ceiling above REPL — it sits BELOW it at " + inverted.join(", ") +
-     ", which is why this page derives no star metric from it");
+         MID  bar 77.1  PEAK 92     RUCK bar 75.5  PEAK 92
+         SD   bar 75.3  PEAK 78     SF   bar 67.9  PEAK 70
+         KPD  bar 65.4  PEAK 70     KPF  bar 63.8  PEAK 72
+
+     So the "ceiling below the floor" finding was an artefact of my own wrong bar, and it is
+     asserted the right way round here instead. PEAK is a reference peak level per position — the
+     denominator of the elite ramp at rl_model.py:1170, `elite = clamp((lp/PEAK[g] - 0.97)/0.30)`
+     — and it lives in params.json beside PEAK_AGE as part of the age-curve machinery.
+
+     It is STILL not used as a star bar on this page, but for a different and better reason: at SF
+     the elite onset (0.97 x 70 = 67.9) is EXACTLY the replacement bar (67.9), and at SD it is 0.4
+     above it. For two of six positions "elite" would begin at the floor. Pending an owner ruling,
+     no ceiling is drawn. */
+  var barOf = function (p) { return bd.REPL_BAR ? bd.REPL_BAR[p] : bd.REPL[p]; };
+  ok(POS6.every(function (p) { return bd.PEAK[p] > barOf(p); }),
+     "PEAK sits ABOVE the EFFECTIVE bar at every position — the earlier 'ceiling below the floor' " +
+     "reading compared it against the raw literal and was wrong",
+     POS6.map(function (p) { return p + " " + barOf(p) + "/" + bd.PEAK[p]; }).join(" "));
+  var degenerate = POS6.filter(function (p) { return 0.97 * bd.PEAK[p] - barOf(p) < 1; });
+  ok(degenerate.length > 0,
+     "…but the elite onset (0.97 x PEAK, rl_model.py:1170) collapses onto the bar at " +
+     degenerate.join(", ") + ", which is why no star line is drawn from it without a ruling");
 
   if (B) {
     var shippedCurve = core.midCurve(B.rows, B.stamp, bd, 8, true);

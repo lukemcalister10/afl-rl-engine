@@ -152,6 +152,38 @@ def _peak(row):
     return best
 
 
+def _real_seasons(row):
+    """EVERY REAL SEASON AS (average, POSITION PLAYED), which is what the owner's rule needs.
+
+    HIS RULING, 2026-08-31, and it is not the obvious one:
+
+        "A player drafted as a mid who then switched to SF mid career and scored 95 over a 67 bar
+         is +28, and that's credited to the midfield role he was drafted to. A player drafted as a
+         KPF who switched to a mid mid career and scores 75 that season over a 77 bar doesn't
+         contribute much even though the KPF bar is lower than his average."
+
+    So the BAR is the bar for the position he was PLAYING that season, and the CREDIT goes to the
+    position he was DRAFTED as. Two different axes doing two different jobs, and the reason it is
+    right: what you buy on draft day is the midfield selection, so the midfield row owns the result
+    — but what the result IS depends on the job he actually did, and a mid playing forward is
+    measured as a forward.
+
+    The naive version (measure everyone against his drafted position's bar for life) would have
+    credited that KPF-turned-mid with clearing a 63.8 bar by eleven points while the owner's rule
+    correctly scores him BELOW his 77.1 one. 272 of 1377 settled selections — one in five — change
+    position, so this is not an edge case.
+
+    Emitted as (avg, position) pairs because the bars live on the BOARD, not here: this file still
+    holds no bar and takes no view on what any season was worth. Positions are emitted verbatim,
+    duals included ("SF/MID", "KPF/RUCK"), for the reader to resolve with the engine's own rule.
+    """
+    out = []
+    for s in _seasons(row):
+        if (s.get('games') or 0) >= REAL_SEASON_GAMES and s.get('avg') is not None and s.get('pos'):
+            out.append([round(float(s['avg']), 2), str(s['pos'])])
+    return out
+
+
 def build(store_rows):
     nd = [r for r in store_rows
           if r.get('draft_stream') == 'ND' and r.get('stream_pick') and r.get('stream_year')]
@@ -178,6 +210,8 @@ def build(store_rows):
             'ly': _last_year(r),
             'pk': round(peak[0], 1) if peak else None,
             'py': peak[1] if peak else None,
+            # every real season as (average, position PLAYED) — the owner's bar rule needs both
+            's': _real_seasons(r),
             'ret': bool(r.get('_retired')),
         })
 

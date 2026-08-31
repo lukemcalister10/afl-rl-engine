@@ -257,17 +257,63 @@
        constant is named, an absent figure is the honest one. */
 
     /* the three figures for one set of careers, against that position's own replacement level. */
+    /* THE SEASON'S BAR IS THE POSITION HE PLAYED, THE CREDIT IS THE POSITION HE WAS DRAFTED AS.
+       The owner's ruling, 2026-08-31, verbatim:
+
+         "A player drafted as a mid who then switched to SF mid career and scored 95 over a 67 bar
+          is +28, and that's credited to the midfield role he was drafted to. A player drafted as a
+          KPF who switched to a mid mid career and scores 75 that season over a 77 bar doesn't
+          contribute much even though the KPF bar is lower than his average."
+
+       Two axes, two jobs. What you buy on draft day is the midfield selection, so the MIDFIELD row
+       owns the outcome. But what the outcome IS depends on the job he actually did — a mid playing
+       forward is measured as a forward. Measuring everyone against his drafted bar for life would
+       have scored that KPF-turned-mid as eleven points clear of a 63.8 bar instead of below a 77.1
+       one, and one in five settled selections changes position.
+
+       A DUAL SEASON ("SF/MID", "KPF/RUCK") TAKES THE LOWER BAR, which is the engine's own rule for a
+       dual declaration — rl_model.py:85, `min(es, key=lambda g: REPL[g])`, "the LOWER REPL = more
+       valuable for him". Not a choice made here; the collapse the model already performs. */
+    function seasonBar(board, seasonPos) {
+      var codes = String(seasonPos || "").split("/");
+      var best = null;
+      for (var i = 0; i < codes.length; i++) {
+        var v = replOf(board, codes[i].trim());
+        if (v != null && (best === null || v < best)) best = v;   // LOWER bar, the engine's rule
+      }
+      return best;
+    }
+
     function frame(set, board, pos) {
       var repl = replOf(board, pos);
       if (!set.length || repl == null) return null;
-      var vor = 0, nStart = 0;
+      var vor = 0, nStart = 0, nMeasured = 0, nCross = 0;
       set.forEach(function (r) {
-        var pk = r.pk;
-        if (pk != null && pk > repl) vor += (pk - repl);
-        if (pk != null && pk >= repl) nStart++;
+        /* A player's value is his BEST season's excess over THAT SEASON'S bar. Best-season is the
+           unchanged semantic; which bar applies is what the ruling changed. A season the board
+           publishes no bar for is skipped rather than measured against the drafted position's — an
+           unresolvable position is missing evidence, not evidence of nothing. */
+        var seasons = r.s || [];
+        var bestExcess = null, measured = false, crossed = false;
+        for (var i = 0; i < seasons.length; i++) {
+          var bar = seasonBar(board, seasons[i][1]);
+          if (bar == null) continue;
+          measured = true;
+          if (seasons[i][1] !== pos) crossed = true;
+          var e = seasons[i][0] - bar;
+          if (bestExcess === null || e > bestExcess) bestExcess = e;
+        }
+        if (measured) nMeasured++;
+        if (crossed) nCross++;
+        /* A player with NO measurable season still counts in the denominator at zero — he is a
+           selection that returned nothing, and dropping him would turn every rate into a survivor
+           rate. That is the whole reason this record carries the men who never played. */
+        if (bestExcess != null && bestExcess > 0) vor += bestExcess;
+        if (bestExcess != null && bestExcess >= 0) nStart++;
       });
       return { n: set.length, vor: vor / set.length,
-               startable: nStart / set.length, repl: repl };
+               startable: nStart / set.length, repl: repl,
+               nMeasured: nMeasured, nCross: nCross };
     }
 
     /* THE MIDFIELD YARDSTICK. The midfielder curve is the ruler every other cell is read against, so
@@ -308,7 +354,7 @@
              select: select, quantile: quantile, rates: rates, pinOf: pinOf,
              priceRange: priceRange, THIN_MAX: THIN_MAX,
              careers: careers, replOf: replOf, replBarIsEffective: replBarIsEffective,
-             frame: frame,
+             seasonBar: seasonBar, frame: frame,
              midCurve: midCurve, midEquivalent: midEquivalent };
   })();
 
