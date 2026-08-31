@@ -596,7 +596,14 @@ check(RD.agree, 'every rendered delta is the report\'s own value_change — comp
 
 /* ------------------------------------------------------------------ no runtime errors anywhere */
 section('RUNTIME');
-for (const v of ['board', 'clubs', 'card', 'trade', 'movers']) {
+/* DRIVEN OFF MD.TABS, not a hand-kept list. The list here used to be five names and had already
+   fallen behind the app twice — Pick value and Config both shipped without ever being visited by
+   this check, and Draft day would have been the third. A new tab now gets its runtime check by
+   existing, which is the only way this assertion stays true of the app rather than of 2026. */
+const ALL_VIEWS = await page.evaluate(() => (MD.TABS || []).map(t => t[0]));
+check(ALL_VIEWS.length >= 5, 'the tab list is readable, so this loop covers the whole app',
+  ALL_VIEWS.join(','));
+for (const v of ALL_VIEWS) {
   await go(v);
 }
 check(pageErrors.length === 0, 'every view renders with no page errors',

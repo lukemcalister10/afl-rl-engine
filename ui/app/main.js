@@ -56,6 +56,11 @@ window.MD = window.MD || {};
     ["trade",  "Trade desk",    "Trade Desk"],
     ["movers", "Movers",        "Weekly Review"],
     ["pickvalue", "Pick value",  "Pick & Pathway Values"],
+    // OWNER ITEM 13 (2026-08-31) — the draft-day translator. It sits next to Pick value on purpose
+    // and is deliberately NOT folded into it: that tab answers what a pick is WORTH, this one what
+    // a pick has BECOME. A price and an outcome are different objects and one table showing both
+    // would invite the reader to treat the second as a justification of the first.
+    ["draft",  "Draft day",     "Pick Outcome History"],
     ["config", "Config",         "Settings"],
   ];
   MD.TABS = TABS;
@@ -125,6 +130,7 @@ window.MD = window.MD || {};
     else if (s.view === "clubs") MD.clubs.render(holder);
     else if (s.view === "config") MD.configview.render(holder);
     else if (s.view === "pickvalue") MD.pickvalue.render(holder);
+    else if (s.view === "draft") MD.draftday.render(holder);
     else if (s.view === "card") MD.card.render(holder);
     else if (s.view === "trade") MD.trade.render(holder);
     else if (s.view === "movers") MD.movers.render(holder);
