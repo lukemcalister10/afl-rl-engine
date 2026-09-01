@@ -779,12 +779,32 @@ console.log("\n  the house's ruled parameters, read from their source");
   ok(JSON.stringify(engKeys) === JSON.stringify(keys),
      "and the engine's list is EXACTLY the owner's declaration — one ruling, two files, bound here so " +
      "they cannot drift", engKeys.join(", ") + "  vs  " + keys.join(", "));
-  ok(/_pvc_exclude'?\]\s*=\s*True|_pvc_exclude['"]\]\s*=\s*True/.test(eng) ||
-     /for _p in _bx: _p\['_pvc_exclude'\]=True/.test(eng),
+  ok(/for _p in _bx: _p\['_pvc_exclude'\]=True/.test(eng),
      "  and it actually SETS the flag rather than only naming the men — the defect being closed was a " +
      "flag nothing set");
-  ok(/BUST-EXCLUSION HALT/.test(eng),
-     "  with a HALT if the cohort stops carrying them, so a rename cannot silently restore the old state");
+  ok(/BUST_EXCLUDE_APPLIED\s*=/.test(eng),
+     "  and RECORDS what it set the flag on, so this test can read the engine's own answer rather " +
+     "than re-deriving it (the re-implemented-assertion class)");
+  ok(/if _bx and len\(_bx\)!=len\(BUST_EXCLUDE_KEYS\)/.test(eng),
+     "  and HALTS on a PARTIAL exclusion — one man's draft sliding and the other's not is incoherent " +
+     "under any store — while allowing zero, which is what a legacy scratch store legitimately is");
+
+  /* THE LIVE-STORE ASSERTION, WHICH IS THE ONE THAT MATTERS. The engine deliberately does NOT halt
+     when a store carries neither man: the first cut did, and it made the engine unable to load
+     against the R15 proof's legacy R14 scratch, which a landing gate caught within the hour. So the
+     "it must actually apply on the board we ship" half is asserted HERE, over the live store, where
+     a scratch fixture cannot reach it. Both men must be in the cohort the curve builders read:
+     first-time national/rookie selections, 2003-2021, in a position group the engine knows. */
+  var storeRows = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "..", "engine", "rl_after",
+    "rl_model_data.json"), "utf8"));
+  var GRPOK = { MID: 1, SF: 1, KPF: 1, SD: 1, KPD: 1, RUCK: 1 };
+  keys.forEach(function (k) {
+    var row = storeRows.filter(function (r) { return r.key === k; })[0];
+    ok(!!row, "  the live store carries " + k);
+    ok(row && row.year >= 2003 && row.year <= 2021 && GRPOK[row.drafted_position],
+       "  and he is inside the cohort the curve builders read, so the engine's flag reaches him",
+       row && (row.year + " " + row.drafted_position));
+  });
 
   if (!B) return;
   keys.forEach(function (k) {

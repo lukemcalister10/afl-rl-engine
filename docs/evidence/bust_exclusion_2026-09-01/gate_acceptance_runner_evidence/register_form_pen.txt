@@ -1,0 +1,8 @@
+$ python3 tools/seat/pen.py verify
+(cwd /home/user/afl-rl-engine)
+
+pen verify: frozen 219021ac sealed-ok=True · 76 new-form entries · newest v888
+pen verify: FAIL — INDEX.md stale — regenerate: pen.py index
+pen verify: FAIL — index.json stale — regenerate: pen.py index
+
+[exit 1]

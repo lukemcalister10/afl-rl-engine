@@ -1,0 +1,52 @@
+======================================================================================================
+LAND ROUND-ADVANCE — SELF-TEST — the synthetic sheet re-cut
+  tree      : /tmp/landing_selftest_3227/sandbox
+  owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
+  prereg    : tools/landing/selftest.py (fixture)   predicts board c8c2f2b6f99445484fadaa8c44afe609
+  mode      : APPLY (SELFTEST) builder=selftest
+  NOTE      : this act is a DECLARED NO-OP REHEARSAL — it predicts the board it already has and moves no identity.
+======================================================================================================
+
+--- STEP 0/14  preflight      clean tree, build lock, the restore point ---
+DECLARED DIRT (2 path(s), and ONLY these): owner inputs this act is contracted to COMMIT ITSELF, and which are therefore expected uncommitted at step 0:
+    docs/owner_annotations/SITTER_2026_v1.csv                  (committed by the `sheet` step)
+    docs/evidence/landing_selftest/SELFTEST_PREREG_LITE.md     (committed by the `sheet` step)
+RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
+build-lock: HELD by land-round-4381 (pid 4381) — single writer for the shared workspace.
+base commit        1a6959e306d2c59fc2093aef192ed7ae0e15cee0
+board pin (before) c8c2f2b6f99445484fadaa8c44afe609
+store pin (before) 415929d3c9d561cc58bef00ae63432b2
+restore point      132 carrier(s) captured, 132 present on disk
+    [preflight OK  0.12s]
+
+--- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
+sheet         docs/owner_annotations/SITTER_2026_v1.csv
+  MEASURED (never typed): md5=01161960cb15eac0617cc02a7a15e49d rows=219 injured_y=34
+  PINNED                : md5=61ef3e61a685909784c1d6eb23859788 rows=219 injured_y=34
+  PREDICTED (prereg-lite docs/evidence/landing_selftest/SELFTEST_PREREG_LITE.md): md5=00000000000000000000000000000000 rows=219 injured_y=34
+  owner word: SELF-TEST FIXTURE — no owner word exists or is claimed.
+  disclosed movers: nobody: this re-cut appends one byte to a notes cell.
+    [sheet FAILED  0.00s]
+
+======================================================================================================
+LANDING ABORTED AT STEP 'sheet'
+======================================================================================================
+  THE RE-CUT IS NOT THE RE-CUT THAT WAS PREDICTED:
+      sheet_md5: predicted 00000000000000000000000000000000, measured 01161960cb15eac0617cc02a7a15e49d
+  The prereg-lite is corrected against the tree, never the tree against the prereg-lite, and a re-cut whose measured facts are not the disclosed ones is a HALT AND A REPORT.
+
+carriers that moved before the failure: 0
+RESTORING 0 carrier(s):
+
+ABORT PROOF: every carrier is BYTE-EXACT to the identity captured at step 0.
+
+THE RECOVERY LADDER: abort-then-retry is the recovery. A landing this lander cannot
+complete after abort+retry is a round that SLIPS, on the owner's call — never an
+improvised manual landing under pressure.
+======================================================================================================
+
+--- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
+    preflight          0.12s  OK
+    sheet              0.00s  FAIL
+    TOTAL              0.12s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_4381

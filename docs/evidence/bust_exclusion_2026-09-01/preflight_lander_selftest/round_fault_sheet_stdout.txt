@@ -1,0 +1,48 @@
+======================================================================================================
+LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
+  tree      : /tmp/landing_selftest_3227/sandbox
+  owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
+  prereg    : tools/landing/selftest.py (fixture)   predicts board c8c2f2b6f99445484fadaa8c44afe609
+  mode      : APPLY (SELFTEST) builder=selftest
+  NOTE      : this act is a DECLARED NO-OP REHEARSAL — it predicts the board it already has and moves no identity.
+======================================================================================================
+
+--- STEP 0/14  preflight      clean tree, build lock, the restore point ---
+RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
+build-lock: HELD by land-round-4226 (pid 4226) — single writer for the shared workspace.
+base commit        1a6959e306d2c59fc2093aef192ed7ae0e15cee0
+board pin (before) c8c2f2b6f99445484fadaa8c44afe609
+store pin (before) 415929d3c9d561cc58bef00ae63432b2
+restore point      132 carrier(s) captured, 132 present on disk
+    [preflight OK  0.11s]
+
+--- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
+*** FAULT INJECTED at step 'sheet': sheet_pin_drift — the owner sheet moves and its ONE pin declaration does not — the drift that halts ORDER 41 inside the staged transaction
+sheet         docs/owner_annotations/SITTER_2026_v1.csv
+  MEASURED (never typed): md5=b06d9d7b1157aab2783204bd7ecf3eac rows=219 injured_y=34
+  PINNED                : md5=61ef3e61a685909784c1d6eb23859788 rows=219 injured_y=34
+    [sheet FAILED  0.00s]
+
+======================================================================================================
+LANDING ABORTED AT STEP 'sheet'
+======================================================================================================
+  THE SHEET AND ITS DECLARATION DISAGREE ON ['sheet_md5'], and this act declares no re-cut.
+  A drifted sheet HALTS the board regen inside the staged transaction — ORDER 41 first, then ORDER 42 — so it halts HERE instead, before anything is armed. Either declare the re-cut (spec.sheet, with its prereg-lite) or find out who moved the sheet without moving its pins.
+
+carriers that moved before the failure: 1
+    docs/owner_annotations/SITTER_2026_v1.csv                        61ef3e61a685 -> b06d9d7b1157
+RESTORING 1 carrier(s):
+    rewrite  docs/owner_annotations/SITTER_2026_v1.csv
+
+ABORT PROOF: every carrier is BYTE-EXACT to the identity captured at step 0.
+
+THE RECOVERY LADDER: abort-then-retry is the recovery. A landing this lander cannot
+complete after abort+retry is a round that SLIPS, on the owner's call — never an
+improvised manual landing under pressure.
+======================================================================================================
+
+--- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
+    preflight          0.11s  OK
+    sheet              0.00s  FAIL
+    TOTAL              0.11s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_4226

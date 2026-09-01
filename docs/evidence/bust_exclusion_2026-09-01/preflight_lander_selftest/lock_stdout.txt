@@ -1,0 +1,31 @@
+======================================================================================================
+LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
+  tree      : /tmp/landing_selftest_3227/sandbox
+  owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
+  prereg    : tools/landing/selftest.py (fixture)   predicts board c8c2f2b6f99445484fadaa8c44afe609
+  mode      : APPLY (SELFTEST) builder=selftest
+  NOTE      : this act is a DECLARED NO-OP REHEARSAL — it predicts the board it already has and moves no identity.
+======================================================================================================
+
+--- STEP 0/10  preflight      clean tree, build lock, the restore point ---
+RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
+waiting for lock held by other-seat since 2026-08-20T00:00:00Z
+  (lock /tmp/landing_selftest_3227/selftest.lock; waiting up to 0s; this landing will not start until that act finishes — two engine acts through one workspace void both.)
+    [preflight FAILED  0.04s]
+
+======================================================================================================
+LANDING ABORTED AT STEP 'preflight'
+======================================================================================================
+  BUILD-LOCK HALT: timed out after 0s waiting for lock held by other-seat 1 2026-08-20T00:00:00Z host /elsewhere. Refusing to become a second writer against the shared workspace.
+
+NO RESTORE POINT EXISTS: the failure precedes step 0's capture, so nothing was written by this landing and there is nothing to restore. The tree is as the landing found it.
+
+THE RECOVERY LADDER: abort-then-retry is the recovery. A landing this lander cannot
+complete after abort+retry is a round that SLIPS, on the owner's call — never an
+improvised manual landing under pressure.
+======================================================================================================
+
+--- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
+    preflight          0.04s  FAIL
+    TOTAL              0.04s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_3520

@@ -1,0 +1,102 @@
+{
+  "_doc": "SELF-TEST FIXTURE \u2014 tools/landing/selftest.py writes this file into a sandbox. It is not an act spec for any real act, it lands nothing, and the owner_word slot says so rather than quoting a word that was never given.",
+  "schema_version": 1,
+  "act_kind": "round-advance",
+  "date": "2026-08-20",
+  "owner_word": "SELF-TEST FIXTURE \u2014 no owner word; this spec never lands anything.",
+  "authority": "tools/landing/selftest.py (PLAN_v6 2a.3)",
+  "evidence_dir": "docs/evidence/landing_selftest",
+  "claims_file": "SELFTEST_CLAIMS.json",
+  "day0_rebase": {
+    "state": "off"
+  },
+  "gates": [
+    {
+      "name": "release_manifest_check",
+      "argv": [
+        "python3",
+        "release_manifest_check.py"
+      ],
+      "must_contain": "PASS"
+    },
+    {
+      "name": "release_contract_check",
+      "argv": [
+        "python3",
+        "release_contract.py",
+        "check"
+      ],
+      "must_contain": "PASS"
+    }
+  ],
+  "act": "SELF-TEST \u2014 the input-commit pincer (R24 rehearsal \u00a73.1 RUN A + RUN C)",
+  "prereg": {
+    "path": "tools/landing/selftest.py (fixture)",
+    "board_before": "c8c2f2b6f99445484fadaa8c44afe609",
+    "board_after": "c8c2f2b6f99445484fadaa8c44afe609",
+    "round_expected": {
+      "round": 25,
+      "listed": 408,
+      "resolved": 408,
+      "absent_dnp": 92,
+      "scores_sha256": "7f59c535a8cf0217c529a1aa6b353e3780f2f5fd1af778a5edf8cde07f2e5db1",
+      "ledger_before": 0,
+      "ledger_delta": 408
+    }
+  },
+  "round": {
+    "number": 25,
+    "scores": {
+      "path": "scores/R25.csv",
+      "md5": "00dcccf02fd61d2ef761c2915b8bfeb9",
+      "sha256": "7f59c535a8cf0217c529a1aa6b353e3780f2f5fd1af778a5edf8cde07f2e5db1"
+    },
+    "identity_overrides": [],
+    "arming": {
+      "env": {
+        "INGEST_SCORE_APPLY_ARMED": "1",
+        "INGEST_SCORE_APPLY": "selftest-never-armed"
+      },
+      "owner_word": "SELF-TEST FIXTURE \u2014 no owner word exists or is claimed, and this flight stops before the advance."
+    },
+    "clubs_played": [
+      "Adelaide",
+      "Brisbane",
+      "Carlton",
+      "Collingwood"
+    ]
+  },
+  "sheet": null,
+  "identities": {
+    "moves": [],
+    "unmoved": [
+      "board",
+      "store",
+      "engine_head",
+      "rl_model",
+      "fv",
+      "config",
+      "register",
+      "as_of_round"
+    ]
+  },
+  "column": {
+    "id": "selftest-finals-25",
+    "label": "SELF-TEST FIXTURE \u2014 the input-commit pincer at finals feed round 25",
+    "after_round": 24
+  },
+  "lineage": {
+    "doc": "SELF-TEST FIXTURE",
+    "owner_ruling_id": [
+      "SELFTEST_FIXTURE"
+    ],
+    "owner_ruling": "SELF-TEST FIXTURE \u2014 no owner ruling exists or is claimed.",
+    "authority": "self-test",
+    "invariants": {}
+  },
+  "movers_page": {
+    "output": "",
+    "boundary_note": ""
+  },
+  "commit_message": "SELF-TEST sandbox commit (never on main)"
+}

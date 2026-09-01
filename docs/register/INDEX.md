@@ -1,8 +1,9 @@
 <!-- GENERATED-ONLY — regenerate: python3 tools/seat/pen.py index ; assert current: python3 tools/seat/pen.py verify -->
 # REGISTER ADDRESS INDEX — generated
 
-Newest entry: **v887**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
+Newest entry: **v888**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
 
+- **v888** (2026-08-30) — `docs/register/entries/v888.md` — **FINALS WEEK 1 IS LANDED — AS A STORE EDIT, NOT A ROUND. The owner cut the design down and was right to.** Owner word: *"We're literally ju
 - **v887** (2026-08-30) — `docs/register/entries/v887.md` — **SHRINK S6 IS LANDED — one stamped carrier, every other stamp derived from the tree and checked against it; THE CUT LIST IS NOW COMPLETE.**
 - **v886** (2026-08-30) — `docs/register/entries/v886.md` — **THE PICK YEAR RULE IS COMPLETE AND HIS TWO OUTPUT CHECKS ARE NOW ASSERTED — and the incident is that the supervisor got it wrong twice in 
 - **v885** (2026-08-30) — `docs/register/entries/v885.md` — **THE PICK YEAR RULE IS THE OWNER'S WORKBOOK AGAIN — 2027 ×0.9 and 2028 ×0.8 on the pick's OWN projected band, the multipliers read from his

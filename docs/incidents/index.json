@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 266,
+  "coverage_entries": 267,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-30",
+      "headline": "**FINALS WEEK 1 IS LANDED \u2014 AS A STORE EDIT, NOT A ROUND. The owner cut the design down and was right to.** Owner word: *\"We're literally just updatin\u2026",
+      "hits": {
+        "DECLARED": [
+          "**FINALS WEEK 1 IS LANDED \u2014 AS A STORE EDIT, NOT A ROUND. The owner cut the design down and was right to.** Owner word: *\"We're literally just updating player averages and game counts. Before round 14 we didn't add games\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 888
+    },
     {
       "by": "explicit",
       "date": "2026-08-30",
@@ -2298,7 +2312,7 @@
       "version": 622
     }
   ],
-  "incidents": 137,
+  "incidents": 138,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",

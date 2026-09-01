@@ -360,14 +360,27 @@ hist=[p for p in data if p.get('_ft') and p.get('_grp') in ('ND','RD') and 2003<
 # McCartin and Boyd, and everyone adjusts accordingly."
 BUST_EXCLUDE_KEYS=('paddy-mccartin','thomas-boyd')      # owner ruling; ENGINE_PRIMER 4.5
 _bx=[_p for _p in hist if _p.get('key') in BUST_EXCLUDE_KEYS]
-# HALT RATHER THAN NO-OP. The defect this replaces was silence: a flag nothing set, read by machinery
-# that ran clean and excluded nobody. A rename, a re-key or a cohort-window move must fail the build
-# LOUDLY here rather than quietly restore the very state the owner ruled out.
-if len(_bx)!=len(BUST_EXCLUDE_KEYS):
-    raise SystemExit("BUST-EXCLUSION HALT: the owner ruling names %d players and the cohort carries %d "
-                     "of them (%s). The exclusion cannot run silently — ENGINE_PRIMER 4.5."
-                     %(len(BUST_EXCLUDE_KEYS),len(_bx),sorted(_p.get('key') for _p in _bx)))
 for _p in _bx: _p['_pvc_exclude']=True
+BUST_EXCLUDE_APPLIED=tuple(sorted(_p.get('key') for _p in _bx))   # what the flag was ACTUALLY set on
+# PARTIAL IS A BUG; ZERO IS A DIFFERENT STORE. The first cut of this guard halted whenever the cohort
+# did not carry BOTH men, on the reasoning that a ruling nothing applies is the defect being fixed. It
+# was too strict, and a landing gate proved it within the hour: the R15 ladder proof materialises a
+# legacy R14 scratch whose position vocabulary predates item 262, so neither man survives `pos in GRP`,
+# so the halt fired and the engine could not load against a historical store at all. The ledger caught
+# it as a DRIFTED red — the recorded failure signature had changed underneath the ruling — which is
+# exactly what that instrument is for.
+#
+# The rule is now the one that is actually true. Striking out ONE of two named men is incoherent under
+# any store and stays a halt. Striking out NEITHER means this store does not carry them in the cohort,
+# which is a legitimate thing for a scratch or a historical rewind to be, and is not this module's
+# business to refuse. What must never happen silently is the LIVE board shipping without the ruling, and
+# that is asserted where it belongs — over the live store, in ui/tests/draftday.test.js, against
+# BUST_EXCLUDE_APPLIED above rather than against a re-derivation of it.
+if _bx and len(_bx)!=len(BUST_EXCLUDE_KEYS):
+    raise SystemExit("BUST-EXCLUSION HALT: the owner ruling names %d players and this cohort carries "
+                     "%d of them (%s). A PARTIAL exclusion is incoherent — one man's draft slides and "
+                     "the other's does not. ENGINE_PRIMER 4.5."
+                     %(len(BUST_EXCLUDE_KEYS),len(_bx),list(BUST_EXCLUDE_APPLIED)))
 from collections import defaultdict as _dd
 _pvc_excl_eff=_dd(list)
 for _p in hist:
