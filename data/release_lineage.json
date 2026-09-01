@@ -1223,6 +1223,67 @@
    ],
    "invariants": {},
    "_measured_note": "moved/unchanged are MEASURED by tools/landing (steps._measure_sides), not asserted: every `source` identity is re-hashed from the committed tree at 0e199da via git show, every `destination` identity from the live tree, and each side is cross-checked against THAT TREE'S OWN data/expected_boot.json before the entry is composed."
+  },
+  {
+   "_doc": "docs/evidence/bust_exclusion_2026-09-01/PREREG_LANDING.md",
+   "kind": "movers_release_transition",
+   "schema_version": 2,
+   "owner_approved": true,
+   "owner_ruling_id": [
+    "BUST_EXCLUSION_LIVE_FIT_2026-09-01_if_it_works_it_works"
+   ],
+   "owner_ruling": "The force-majeure exclusion of Paddy McCartin and Tom Boyd, ruled in ENGINE_PRIMER \u00a74.5 and never once applied to the live fit, is applied.",
+   "authority": "owner word 2026-09-01",
+   "applies_to": {
+    "bundle": "ui/data/movers.js",
+    "boundary": [
+     "24",
+     "bust-exclusion-live-fit-1-9"
+    ]
+   },
+   "source": {
+    "release_version": "v2.11-final-rc1-PROVISIONAL",
+    "board": "c8c2f2b6f99445484fadaa8c44afe609",
+    "store": "415929d3c9d561cc58bef00ae63432b2",
+    "rl_model": "aa1541d8ebb93868907b24daab5dbed1",
+    "engine_head": "17243c16277842e0a30470cfbdb5b196",
+    "fv": "123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345",
+    "config": "d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4",
+    "register": "652d83e87780e415a01a2de6d8b3cc57",
+    "balanced_board_md5": "e4bc3be2efc12e75e107f26bbda91c0a",
+    "v0surf": "d9f5d15d9606edcdd5708233197dd951",
+    "as_of_round": 24
+   },
+   "destination": {
+    "release_version": "v2.11-final-rc1-PROVISIONAL",
+    "board": "b005096b5e78014425922cae3f28f6c9",
+    "store": "415929d3c9d561cc58bef00ae63432b2",
+    "rl_model": "aa1541d8ebb93868907b24daab5dbed1",
+    "engine_head": "17243c16277842e0a30470cfbdb5b196",
+    "fv": "123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345",
+    "config": "d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4",
+    "register": "652d83e87780e415a01a2de6d8b3cc57",
+    "balanced_board_md5": "e4bc3be2efc12e75e107f26bbda91c0a",
+    "v0surf": "d9f5d15d9606edcdd5708233197dd951",
+    "as_of_round": 24
+   },
+   "moved_by_transition": [
+    "board"
+   ],
+   "unchanged_across_transition": [
+    "as_of_round",
+    "balanced_board_md5",
+    "config",
+    "engine_head",
+    "fv",
+    "register",
+    "release_version",
+    "rl_model",
+    "store",
+    "v0surf"
+   ],
+   "invariants": {},
+   "_measured_note": "moved/unchanged are MEASURED by tools/landing (steps._measure_sides), not asserted: every `source` identity is re-hashed from the committed tree at b313971 via git show, every `destination` identity from the live tree, and each side is cross-checked against THAT TREE'S OWN data/expected_boot.json before the entry is composed."
   }
  ]
 }

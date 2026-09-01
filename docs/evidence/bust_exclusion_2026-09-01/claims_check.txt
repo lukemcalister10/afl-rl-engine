@@ -1,0 +1,25 @@
+====================================================================================================
+CLAIMS CHECK — THE FORCE-MAJEURE BUST EXCLUSION APPLIED TO THE LIVE PICK-VALUE FIT — Paddy McCartin and Tom Boyd are struck from the curve builders' cohort and the 197 selections behind them in their own drafts slide up one, so the v3.4 head that sets the player/pick exchange rate is measured on the population the owner ruled
+  act type   : lever-landing
+  date       : 2026-09-01   base: b313971d9ad27fbeb6a9ce3f98223bed10f0ce95
+  owner word : "McCartin and Boyd should be excluded from everything. It's as if they weren't picked. So when looking at the value of pick 1 for the PVC, they didn't happen. For looking at KPF value for v0, they didn't happen. For your draft day analytics, they didn't happen." Then, on being shown the measured cost and my recommendation against: "If it works, it works though. So surely we just recalculate the old number by removing mccartin and boyd, and everyone adjusts accordingly. That seems reasonable to me?"
+  tree       : /home/user/afl-rl-engine
+====================================================================================================
+  ACTIVATION  day0_rebase                              off
+
+  OK   file_md5     the published board of record                  md5 b005096b5e78014425922cae3f28f6c9 (claimed b005096b5e78014425922cae3f28f6c9)
+  OK   file_md5     the store                                      md5 415929d3c9d561cc58bef00ae63432b2 (claimed 415929d3c9d561cc58bef00ae63432b2)
+  OK   json_field   expected_boot.board                            board = 'b005096b5e78014425922cae3f28f6c9' (claimed 'b005096b5e78014425922cae3f28f6c9')
+  OK   json_field   expected_boot.engine_head                      engine_head = '17243c16277842e0a30470cfbdb5b196' (claimed '17243c16277842e0a30470cfbdb5b196')
+  OK   json_field   the round, HELD by a lever landing             as_of_round = 24 (claimed 24)
+  OK   json_field   the release seal                               contract_sha256 = '3e334b3d5e60705de80d9357520419112882eb4dc8e7c861e20e93bd488f28cd' (claimed '3e334b3d5e60705de80d9357520419112882eb4dc8e7c861e20e93bd488f28cd')
+  OK   board_count  board rows                                     active.rows = 804 (claimed 804)
+  OK   gate         release_manifest_check                         exit 0 (expected PASS)
+  OK   gate         release_contract_check                         exit 0 (expected PASS)
+  OK   gate         acceptance_runner                              exit 0 (expected PASS)
+  OK   gate         movers_transition                              exit 0 (expected PASS)
+  OK   gate         movers_ui                                      exit 0 (expected PASS)
+  OK   unmoved      BYTE-UNMOVED by this lever-landing             md5 415929d3c9d561cc58bef00ae63432b2 (claimed 415929d3c9d561cc58bef00ae63432b2)
+
+CLAIMS: 13 of 13 verified against the tree; 0 shape problem(s)
+VERDICT: GREEN — every claim recomputed and held

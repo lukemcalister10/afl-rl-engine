@@ -32,9 +32,9 @@
   },
   "held_checks": [],
   "identities": {
-    "balanced_board_md5": "e4bc3be2efc12e75e107f26bbda91c0a",
+    "balanced_board_md5": "c0afa5d869ce0ac490dde4105f6008c9",
     "band": "f39c7b96603a6d1483a8f3295fad1a29",
-    "board": "c8c2f2b6f99445484fadaa8c44afe609",
+    "board": "b005096b5e78014425922cae3f28f6c9",
     "engine_head": "17243c16277842e0a30470cfbdb5b196",
     "fv": "123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345",
     "register": "652d83e87780e415a01a2de6d8b3cc57",
@@ -48,9 +48,9 @@
   ],
   "present_lens_baseline": {
     "active": 804,
-    "balanced_board_md5": "e4bc3be2efc12e75e107f26bbda91c0a",
-    "note": "ITEM 411 D1 (LANDED 2026-07-27 on the owner landing word \u2014 the second word): balanced/strict reference e4bc3be2; present_value_total 764021 is the LANDED present-v sum (build-and-compare = data/rl_build/rl_app_data.json md5 fa172ac1, 804 active). D1 applied the owner's ITEM 411 change manifest to the store (f37d9716 -> c120cfd5) and deterministically regenerated the board, so board of record 6f07f7cb is REPLACED by fa172ac1 \u2014 it is no longer frozen. Forward-lens repair remains deferred. SUPERSEDES, truth preserved as history: the ITEM 408 STOP-1 statement of this baseline (owner-approved 2026-07-22) recorded balanced/strict advanced 06d8af60->1373e824, present_value_total 760253 as the R19 candidate present-v sum (build-and-compare = board of record 6f07f7cb, 0 movers) and board of record 6f07f7cb NOT replaced; it also corrected a prior 757608 (that value added the +5181 D8 present-board delta to the FV present-lens baseline 752427 instead of the correction's present baseline 755072; the present_board_correction/summary.json present_total_after is 760253).",
-    "present_value_total": 703913
+    "balanced_board_md5": "c0afa5d869ce0ac490dde4105f6008c9",
+    "note": "ITEM 411 D1 (LANDED 2026-07-27 on the owner landing word \u2014 the second word): balanced/strict reference c0afa5d8; present_value_total 764021 is the LANDED present-v sum (build-and-compare = data/rl_build/rl_app_data.json md5 fa172ac1, 804 active). D1 applied the owner's ITEM 411 change manifest to the store (f37d9716 -> c120cfd5) and deterministically regenerated the board, so board of record 6f07f7cb is REPLACED by fa172ac1 \u2014 it is no longer frozen. Forward-lens repair remains deferred. SUPERSEDES, truth preserved as history: the ITEM 408 STOP-1 statement of this baseline (owner-approved 2026-07-22) recorded balanced/strict advanced 06d8af60->1373e824, present_value_total 760253 as the R19 candidate present-v sum (build-and-compare = board of record 6f07f7cb, 0 movers) and board of record 6f07f7cb NOT replaced; it also corrected a prior 757608 (that value added the +5181 D8 present-board delta to the FV present-lens baseline 752427 instead of the correction's present baseline 755072; the present_board_correction/summary.json present_total_after is 760253).",
+    "present_value_total": 689275
   },
   "pvc_provenance": {
     "_note": "#328 re-closure (owner word 2026-08-05, OPTION A): the corrected-store derived ladder installed as the adopted ruled curve from surface e4215093 on store f1e8c9fe. Adoption remains the owner's separate click.",
@@ -89,5 +89,5 @@
     "RL_LEGF": "1",
     "RL_PVC2": "1"
   },
-  "contract_sha256": "8beb787e6f8c241b31d384bf5f614f2c1751dea2bdf57edf938afeedc4e10881"
+  "contract_sha256": "3e334b3d5e60705de80d9357520419112882eb4dc8e7c861e20e93bd488f28cd"
 }

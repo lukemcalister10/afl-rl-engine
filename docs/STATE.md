@@ -19,16 +19,16 @@ measurement made while this file was written, not a claim carried over from the 
 
 | identity | pinned value | carrier | re-hashed from | verdict |
 |---|---|---|---|---|
-| board | `c8c2f2b6f99445484fadaa8c44afe609` | data/expected_boot.json | data/rl_build/rl_app_data.json | agrees |
+| board | `b005096b5e78014425922cae3f28f6c9` | data/expected_boot.json | data/rl_build/rl_app_data.json | agrees |
 | store | `415929d3c9d561cc58bef00ae63432b2` | data/expected_boot.json | engine/rl_after/rl_model_data.json | agrees |
 | engine_head | `17243c16277842e0a30470cfbdb5b196` | data/expected_boot.json | engine/rl_after/_merged_recover.py | agrees |
-| rl_model | `6fe7c4155866d80e8045bed2d3bf2802` | data/expected_boot.json | engine/rl_after/rl_model.py | agrees |
-| balanced_board_md5 | `e4bc3be2efc12e75e107f26bbda91c0a` | data/expected_boot.json | (no in-tree artifact) | not in tree |
+| rl_model | `aa1541d8ebb93868907b24daab5dbed1` | data/expected_boot.json | engine/rl_after/rl_model.py | agrees |
+| balanced_board_md5 | `c0afa5d869ce0ac490dde4105f6008c9` | data/expected_boot.json | (no in-tree artifact) | not in tree |
 | config | `d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4` | data/expected_boot.json | config_manifest.manifest_hash | agrees |
 
 | release fact | value | carrier |
 |---|---|---|
-| contract seal | `f17fa61ecea685095f5a2da4905af7440edee9d854bf6fe58827f29f837ed126` | data/release_contract.json:contract_sha256 |
+| contract seal | `3e334b3d5e60705de80d9357520419112882eb4dc8e7c861e20e93bd488f28cd` | data/release_contract.json:contract_sha256 |
 | config seal | `d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4` | data/release_contract.json:config_sha256 |
 | release version | v2.11-final-rc1-PROVISIONAL | data/release_contract.json:release_version |
 | round (as_of_round) | 24 | data/release_contract.json:as_of_round |
@@ -50,28 +50,28 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v887 2026-08-30 · **SHRINK S6 IS LANDED — one stamped carrier, every other stamp derived from the tree and checked against it; THE CUT LIST IS NOW COMPLETE.** Owner word 2026-08-29 then 2026-08-30: "S6 we can do after this is all locked away", then "Alright, so now s6?". S6 CHANGED SHAPE ONCE IT WAS SCOPED, AND THAT IS THE FINDING. The cut list called for collapsing the ide
+  > # OPEN ITEMS REGISTER · v888 2026-08-30 · **FINALS WEEK 1 IS LANDED — AS A STORE EDIT, NOT A ROUND. The owner cut the design down and was right to.** Owner word: *"We're literally just updating player averages and game counts. Before round 14 we didn't add games one by one, we just priced based off averages and total season game counts. It really shouldn't be that hard."*
 
-- new-form entries under `docs/register/entries/`: 75
+- new-form entries under `docs/register/entries/`: 76
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
 
-`data/release_lineage.json` — the append-only out-of-round transition register, 20 entries.
+`data/release_lineage.json` — the append-only out-of-round transition register, 21 entries.
 
 | field | value |
 |---|---|
-| column | fw1-finals-week-1-30-8 |
+| column | bust-exclusion-live-fit-1-9 |
 | after round | 24 |
-| board moved | `f81dbcda220110ad0113ae0633b6c34e` → `c8c2f2b6f99445484fadaa8c44afe609` |
-| identities moved | board, store |
-| owner ruling id | FW1_2026-08-30_explicit_word_given, FINALS_LANE_2026-08-30_averages_and_game_counts_not_a_round |
+| board moved | `c8c2f2b6f99445484fadaa8c44afe609` → `b005096b5e78014425922cae3f28f6c9` |
+| identities moved | board |
+| owner ruling id | BUST_EXCLUSION_LIVE_FIT_2026-09-01_if_it_works_it_works |
 
 ## GENERATION STAMP
 
 | field | value |
 |---|---|
-| generated at commit | `0e199da9af189e961820b5bb9097c03611fbef87` |
+| generated at commit | `b313971d9ad27fbeb6a9ce3f98223bed10f0ce95` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |
