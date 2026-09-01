@@ -36,10 +36,10 @@ RELEASE MANIFEST — carrier coherence over the full identity set
     -> 5 carriers, COHERENT
 
   RL_MODEL  [computed md5 engine/rl_after/rl_model.py]
-    (truth)                                       f669674ce70e1def77feecdd5c533a0a                                 
-    expected_boot.rl_model                        f669674ce70e1def77feecdd5c533a0a                                 OK
-    release_contract.identities.rl_model          f669674ce70e1def77feecdd5c533a0a                                 OK
-    board_view_working.stamp.release.rl_model     f669674ce70e1def77feecdd5c533a0a                                 OK
+    (truth)                                       aa1541d8ebb93868907b24daab5dbed1                                 
+    expected_boot.rl_model                        aa1541d8ebb93868907b24daab5dbed1                                 OK
+    release_contract.identities.rl_model          aa1541d8ebb93868907b24daab5dbed1                                 OK
+    board_view_working.stamp.release.rl_model     aa1541d8ebb93868907b24daab5dbed1                                 OK
     -> 3 carriers, COHERENT
 
   FV  [computed fv tree hash (fv_provenance)]
