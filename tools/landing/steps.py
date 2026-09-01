@@ -1839,8 +1839,20 @@ def ui(ctx):
     # tree; what was missing was the lander running it").
     #
     # A MISSING BANK IS A HALT, NOT A SKIP. The emitter reads values_rN.json banked by
-    # retro_walkforward.py. If a bank is absent the series cannot be honestly rebuilt, and shipping a
-    # bundle with the block silently missing is the defect this writer exists to close.
+    # pass_retro_series.py. If a bank is absent the series cannot be rebuilt, and shipping a bundle
+    # with the block silently missing is the defect this writer exists to close.
+    #
+    # THIS WRITER PRESERVES THE SERIES; IT DOES NOT RE-PRICE IT, and the two are deliberately separate
+    # because of an ordering that cannot be collapsed. The retrospective's own CONTROL is that R24's
+    # truncation is a no-op, so its prices must reproduce THE LIVE BOARD exactly — which means the
+    # series can only be honestly re-priced AFTER the board it is measured against is the live one.
+    # Inside this transaction the live board is still the pre-act board, so a re-price here would be
+    # validated against the very board this act replaces. An act that moves the board therefore ships
+    # the series at its previous scale and owes an immediate follow-up: run pass_retro_series.py (ONE
+    # engine load for all eleven rounds — the owner's "load things once"; retro_walkforward.py's
+    # per-round subprocess builds are SUPERSEDED and cost a full load each), then re-emit and commit.
+    # That window is short, disclosed in the act's own commit, and strictly better than the
+    # alternative this writer replaces, which was shipping no series at all.
     _retro = _p(ctx, 'docs', 'evidence', 'walkforward_retro_2026-08-29', 'emit_retro_series.py')
     if os.path.exists(_retro):
         ctx.log('WRITER 4b/7: emit_retro_series.py  (the R14-R24 walk-forward series writer 4 drops)')
