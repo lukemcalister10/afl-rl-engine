@@ -738,21 +738,43 @@ console.log("\n  the house's ruled parameters, read from their source");
      "the generator READS that declaration and keeps no copy of its own — one source, so the list " +
      "cannot be changed in one place and honoured in another");
 
-  /* THE ENGINE HOLE, PINNED OPEN. The `_pvc_exclude` machinery in rl_model.py has read a flag for
-     months that nothing sets, and the v0 pick surface's population applies the pool gate only. Both
-     are owed acts, and both would be easy to forget. These two assertions FAIL THE DAY EITHER IS
-     FIXED, which is the point: the fix must come with this test being updated to match, so the
-     estate cannot half-apply an owner ruling twice. */
+  /* WHERE THE RULING IS ALREADY APPLIED, ASSERTED SO IT CANNOT QUIETLY STOP BEING TRUE.
+     The v0 pick surface's shipped lane (#306, RL_V0_LENS default '1') does not fit over the roster —
+     it fits over a declared basis that inherits "McCartin/Boyd exclusions and one-pick slides as the
+     committed matrix carries them". This was reported wrongly once, by reading the A/B control lane
+     (RL_V0_LENS=0, the pre-#306 free fit) as if it shipped. The assertion below is the check that
+     should have been run then: it reads the basis and asserts BOTH the absence and the slide. */
+  var basis = null;
+  try {
+    basis = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "..", "docs", "evidence",
+      "exec_306_zlaarm", "basis", "structural_basis_279.json"), "utf8"));
+  } catch (e) { basis = null; }
+  ok(!!basis, "the v0 lens basis artifact is present — it is what teaches the shipped v0 surface");
+  if (basis) {
+    var bk = {};
+    basis.rows.forEach(function (r) { bk[r.key] = r; });
+    keys.forEach(function (k) {
+      ok(!bk[k], "  " + k + " is absent from the v0 lens basis, so the v0 KPF surface does not learn " +
+         "from him", basis.rows.length + " rows");
+    });
+    /* AND THE SLIDE IS IN THE BASIS TOO, which is the half that proves it is the ruling being applied
+       rather than two rows happening to be missing. Josh Kelly was the second name called in 2013 and
+       Petracca the second in 2014; with the first struck out, both are pick 1 in the basis. */
+    [["joshua-kelly", 1], ["christian-petracca", 1], ["marcus-bontempelli", 3]].forEach(function (t) {
+      ok(bk[t[0]] && bk[t[0]].pick === t[1],
+         "  " + t[0] + " sits at pick " + t[1] + " in the v0 basis — the same one-pick slide this " +
+         "board applies", bk[t[0]] && bk[t[0]].pick);
+    });
+  }
+
+  /* THE ONE HOLE THAT IS STILL OPEN, PINNED OPEN. rl_model.py has read `_pvc_exclude` for months and
+     nothing sets it, so the live v3.4 fit is the last place the ruling is not applied. This assertion
+     FAILS THE DAY IT IS FIXED, which is the point: the fix must come with this test updated to match,
+     so the estate cannot half-apply an owner ruling twice. */
   var eng = fs.readFileSync(path.join(__dirname, "..", "..", "engine", "rl_after", "rl_model.py"), "utf8");
-  ok(!/BUST_EXCLUDE_KEYS|_pvc_exclude'\]\s*=\s*True/.test(eng),
-     "rl_model.py still SETS `_pvc_exclude` nowhere — the live fit and the adopted curve are on " +
-     "different populations, and this assertion is the reminder (see FINDINGS.md §2)");
-  var mrPath = path.join(__dirname, "..", "..", "engine", "rl_after", "_merged_recover.py");
-  var mr = fs.readFileSync(mrPath, "utf8");
-  var kernel = /_curve_sample\('v0_kernel'[\s\S]{0,300}?\]\)/.exec(mr);
-  ok(kernel && !/_in_pvc|_teaches_curve/.test(kernel[0]),
-     "the v0 kernel population still applies the POOL gate only, so both men still teach the v0 KPF " +
-     "surface — the one clause of the owner's ruling that is not true today (FINDINGS.md §3)");
+  ok(!/BUST_EXCLUDE_KEYS/.test(eng),
+     "rl_model.py still SETS `_pvc_exclude` nowhere — the live fit is on a different population from " +
+     "the adopted curve, and this is the reminder (FINDINGS.md §2; costs 266 order crossings to close)");
 
   if (!B) return;
   keys.forEach(function (k) {

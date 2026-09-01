@@ -15,7 +15,7 @@ This restates and widens ENGINE_PRIMER §4.5, which has carried the ruling for m
 > player in their drafts slides up one pick. If a KPF number looks bust-driven, check the exclusion
 > applied before theorizing."
 
-## THE FINDING, in three parts — and the first part is good news
+## THE FINDING, in three parts — and only the middle one is a defect
 
 ### 1. The shipped pick curve ALREADY excludes them. "For the PVC, they didn't happen" is true today.
 
@@ -64,25 +64,47 @@ that head, so `BOARD_FACTOR` falls and `SCALE` with it — a whole-board reprice
 effect of a draft-record correction. Measured in RESULT.md: −2.08% across the board and 266 real
 order crossings, so it is NOT the clean rescale the surrounding comments assume.
 
-### 3. v0 DOES still learn from both of them. This is the real hole.
+### 3. v0 does NOT learn from either of them either. (CORRECTED 2026-09-01 — I had this wrong.)
 
-`_merged_recover.py:2237` builds the v0 pick surface's population:
+**What I reported first, and why it was wrong.** I read `_merged_recover.py:2237`, saw the v0 kernel's
+population built with the pool gate and not the exclusion gate, and reported that both men still teach
+the v0 KPF surface. The owner pushed back: *"Given the pick curve doesn't, and v0 across positions is
+mean to = pick curve pvc, then surely the KPF v0 doesn't learn from those two?"* He was right.
+
+**The `real` list I quoted does not teach the shipped surface.** `RL_V0_LENS` defaults to `'1'` and is
+not overridden in `data/model_config.json`, so the lane that ships is the #306 LENS. It does not fit
+over the roster at all — it fits over a DECLARED EXTERNAL BASIS, and refuses to fall back:
 
 ```python
-real = MA._curve_sample('v0_kernel', 0,
-    [p for p in MA.data if _isreal(p) and p.get('type')=='ND' and p.get('pick') is not None
-     and not MA.is_pool(p)])
+_lensf = .../docs/evidence/exec_306_zlaarm/basis/structural_basis_279.json
+if not os.path.exists(_lensf):
+    raise SystemExit("v0 LENS BASIS MISSING: ... There is deliberately no fallback: fitting
+                      the lens from the surface's own prior is the barred, self-referential lineage.")
 ```
 
-The comment above it says *"Same gate as every other fit site"*. It is not: it applies the POOL gate
-and not the exclusion gate. And `_isreal(p)` is `p['key'] in set(every store key)` — it does not mean
-"currently playing", so retirement does not remove them either.
+`real` is used for two things, neither of which is teaching: the freeze signature `_v0surf_sig`, and
+the **pre-#306 free fit retained behind `RL_V0_LENS=0` as the declared A/B control**. That control lane
+is the code I read and reported as if it shipped.
 
-Both men are ND rows with picks, so both currently teach the v0 KPF pick surface. That is precisely
-what the owner ruled out — *"for looking at KPF value for v0, they didn't happen"* — and it is not
-true today. The fix is one filter. The cost is that `_v0surf_sig` hashes the roster, so the signature
-moves, the frozen surface no longer matches its key, and `data/v0surf.pkl` must be re-baked
-(`RL_BAKE_V0SURF=1 … refit_v0surf.py --bake`) on a clean instance and re-pinned.
+**And the basis carries the exclusion by construction.** `emit_structural_basis.py` imports
+`harness_pvc.load_matrix` + `structural_values` unmodified and lists what it inherits wholesale —
+*"McCartin/Boyd exclusions and one-pick slides as the committed matrix carries them"*. Verified
+directly against the artifact's 1,197 rows:
+
+```
+paddy-mccartin      ABSENT
+thomas-boyd         ABSENT
+joshua-kelly        store pick 2  ->  basis pick 1
+christian-petracca  store pick 2  ->  basis pick 1
+jack-billings       store pick 3  ->  basis pick 2
+marcus-bontempelli  store pick 4  ->  basis pick 3
+```
+
+The same two men struck out and the same one-pick slide the draft-day board now applies. The chain is
+matrix → `structural_values` → `structural_basis_279.json` → the v0 lens → `v0surf.pkl` → the board's
+v0. Both men are out of every link of it.
+
+**So all three of the owner's clauses are true.** No v0surf re-bake is owed.
 
 ## The slide was verified against the estate's own, not just against itself
 
@@ -121,20 +143,32 @@ Measured on the shipped board, fully-run population, key forward:
 Other columns move a little too, because the slide moves real men between ordinals — small forward at
 pick 3 reads *worse* (12.1 against 13.2), which is what an honest slide looks like.
 
-**OWED — two acts, each of which reprices, so each is put to the owner rather than taken:**
+**OWED — ONE act, and it reprices, so it is put to the owner rather than taken:**
 
-1. **The v0_kernel gate** (`_merged_recover.py:2237`) — one filter, plus a `v0surf.pkl` re-bake on a
-   clean instance and a re-pin. **This is the one clause of the ruling that is not true today.**
-2. **The live engine flag.** `BUST_EXCLUDE_KEYS` in `rl_model.py`, setting `_pvc_exclude` on the two
-   `hist` rows. Correct in itself — the live fit should see the population the adopted curve was
-   derived on — but **built and measured, and it is not the cosmetic rescale the code implied**:
-   board `c8c2f2b6` → `b005096b`, 622 of 804 players down, none up, sum −2.08%, and **266 true order
-   crossings** (pairs strictly distinct on both boards that swap). See RESULT.md. That reorders the
-   board, so it is a repricing with trade consequences, not a restatement. Held for the owner's word.
+**The live engine flag.** `BUST_EXCLUDE_KEYS` in `rl_model.py`, setting `_pvc_exclude` on the two
+`hist` rows. It is now the ONLY place on the estate where the ruling is not applied: the adopted pick
+curve excludes them, the v0 lens basis excludes them, the draft-day board excludes them, and the live
+v3.4 import fit is the last hold-out. That is a good argument for closing it.
 
-Both were written, built and measured, then **reverted pending word**; the engine tree is byte-exact
-to its pin and `restamp check` agrees on all five stamps. `ui/tests/draftday.test.js` pins BOTH holes
-OPEN with assertions that fail the day either is fixed, so the fix cannot land without this record
-being updated to match — the estate does not get to half-apply the same ruling twice.
+Against it: built and measured, it is not the cosmetic rescale the surrounding comments assume. Board
+`c8c2f2b6` → `b005096b`, 622 of 804 players down, none up, sum −2.08%, and **266 true order crossings**
+(pairs strictly distinct on both boards that swap). See RESULT.md. It reorders the board, so it is a
+repricing with trade consequences, and it changes no pick price at all — the pick curve is the frozen
+artifact and already correct.
 
-**NOT owed:** a `derive_pvc2.py` re-derivation. The adopted curve already excludes them.
+It was written, built, measured and then **reverted pending word**. The engine tree is byte-exact to
+its pin and `restamp check` agrees on all five stamps. `ui/tests/draftday.test.js` pins the hole open
+with an assertion that fails the day it is fixed, so the next attempt starts from a failing test
+rather than a rediscovery.
+
+**NOT owed:** a `derive_pvc2.py` re-derivation, or a `v0surf.pkl` re-bake. Both already exclude them.
+
+## The correction, recorded
+
+The first version of this note claimed v0 still learned from both men and that a v0surf re-bake was
+owed. That was wrong, and it was wrong in a specific way worth naming: I read the code lane that is
+retained as a declared A/B control (`RL_V0_LENS=0`, the pre-#306 free fit over the roster) and reported
+it as the lane that ships. The shipped lane fits from a declared external basis that inherits the
+exclusion by construction. The owner caught it by reasoning from the model rather than the code —
+if the pick curve excludes them, and v0 is denominated in the pick curve, then v0 excludes them — which
+is the check I should have run before filing.

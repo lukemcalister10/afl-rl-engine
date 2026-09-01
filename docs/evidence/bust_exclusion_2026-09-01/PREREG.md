@@ -42,8 +42,14 @@ prediction is wrong and this act does not land — it would mean the flag reache
 somewhere other than the scalar, which is not what the code says.
 
 **v0 does not move**, because `v0surf.pkl` is frozen and its signature covers `_PVC0` (the adopted
-artifact) and the roster, neither of which this change touches. That is also the finding that makes
-the owner's v0 clause NOT yet satisfied — see FINDINGS.md §3.
+artifact) and the roster, neither of which this change touches.
+
+> **Written here at the time, and WRONG:** *"That is also the finding that makes the owner's v0 clause
+> NOT yet satisfied — see FINDINGS.md §3."* The v0 clause was already satisfied. The shipped v0 lens
+> fits from a declared basis that excludes both men and applies the slide; the roster list I was
+> reading feeds the freeze signature and the `RL_V0_LENS=0` A/B control, not the shipped fit. The
+> sentence is left standing rather than edited out, because a prereg that gets quietly corrected after
+> the fact is not a prereg. See FINDINGS.md §3 as corrected.
 
 ## Board identities
 

@@ -103,12 +103,15 @@ REAL_SEASON_GAMES = 6
 #: anything: no rule this file could apply would identify a career ended by force majeure rather than
 #: by failing, which is exactly why it is a declaration and not a filter.
 #:
-#: THE ENGINE DOES NOT YET READ IT, and that is recorded rather than glossed. `rl_model.py` has read a
-#: `_pvc_exclude` flag with a same-draft slide for months; measured 2026-09-01, NOTHING has ever set it
-#: (0 of 2650 store rows). Setting it moves BOARD_FACTOR and reprices every player, so it is owed an
-#: owner-worded landing. The adopted pick curve, separately, ALREADY excluded both men at derivation
-#: time and slid the same 135 rows — verified row-for-row against its own per-entrant basis, so this
-#: file and the curve that sets the prices agree today about who was picked where.
+#: THE REST OF THE ESTATE ALREADY AGREES, which is why this file could be brought into line on its own.
+#: The adopted pick curve excluded both men at derivation time and slid the same 135 rows (verified
+#: row-for-row against its own per-entrant basis), and the v0 pick surface's lens basis inherits the
+#: same exclusion and slide from the committed matrix. So this file, the Pick value tab and v0 now
+#: agree about who was picked where.
+#:
+#: ONE HOLE REMAINS AND IS RECORDED RATHER THAN GLOSSED: `rl_model.py` has read a `_pvc_exclude` flag
+#: with a same-draft slide for months and NOTHING has ever set it (measured 2026-09-01, 0 of 2650 store
+#: rows). Setting it moves BOARD_FACTOR and reprices the board, so it is owed an owner-worded landing.
 #: See docs/evidence/bust_exclusion_2026-09-01/FINDINGS.md.
 #:
 #: It HALTS if the declaration is missing or empty. A draft-day board that silently stopped excluding
