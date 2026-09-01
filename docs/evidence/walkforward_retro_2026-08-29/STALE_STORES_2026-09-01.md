@@ -93,3 +93,32 @@ the pre-override value is what keeps the retro points consistent with every othe
 The one thing still owed on this: retro points are read through the movers bundle's own `byPoint`
 values, so they need to reach `seam.js`'s accessor like every other value does, or Brodie will show
 117 on a retro point and 58 everywhere else. That is a UI wiring question, not a pricing one.
+
+## ADDENDUM — the movers page shows Brodie at 117, and always has
+
+Chasing the override through the app, the retro points turned out not to be the exception. Measured
+on the shipped bundle:
+
+```
+will-brodie byPoint     retro-r19 121 · r20 121 · r21 121 · r22 121 · r23 121 · retro-r24 117
+board                   v 117    ov.dispv 58
+```
+
+`MD.dispVal` (ui/app/seam.js:112) is the single accessor that substitutes `ov.dispv`, and it is
+called from `board.js`, `card.js`, `draftday.js` and `v0.js` — **not** from `movers.js`, which reads
+`byPoint` values directly (`a.v`, `b.v` at movers.js:489). So the movers page shows the pre-override
+engine value at EVERY point, stored and retro alike. This predates the retrospective: the stored
+points carry the board's `v` as recorded each week, and the override was ruled 2026-07-08.
+
+**THIS IS PUT TO THE OWNER RATHER THAN CHANGED**, because it is a question about his own ruling and
+not a defect with an obvious answer. The ruling reads *"substitutes the overridden display figure
+WHEREVER the board shows his value, and ordering follows the display. MECHANICS stay on the engine
+value `v` (Δ-vs-bake, lens, attribution, all guards)."* Whether a movers series is a DISPLAY of value
+or a MECHANIC over it is exactly the line that decides this, and it is his line to draw:
+
+* if DISPLAY — `movers.js` should read through `MD.dispVal`, and Brodie's whole series scales by
+  0.5 (a constant factor, so the shape and every percentage change are unaffected);
+* if MECHANIC — it is correct as it stands, and the 117 is the engine value doing its job.
+
+Nothing about this is affected by the bust exclusion or the FW1 store refresh; it is simply the first
+time anyone has followed the override across every surface.
