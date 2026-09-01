@@ -242,3 +242,70 @@ it as the lane that ships. The shipped lane fits from a declared external basis 
 exclusion by construction. The owner caught it by reasoning from the model rather than the code —
 if the pick curve excludes them, and v0 is denominated in the pick curve, then v0 excludes them — which
 is the check I should have run before filing.
+
+## §2 FOLLOW-UP — why the new curve's head cannot simply replace the old one, and what should
+
+The owner: *"the superseded fit of pick 1 including McCartin and Boyd is redundant, as that superseded
+fit should have no contribution towards the scaling … Shouldn't this be bypassed entirely? The only
+scaling that should happen is from the new curve's true pick 1 to 3000, and then every player scaled
+accordingly?"* And: *"if the old curve is 3784, why are you saying it should be 3877?"*
+
+### 3877 is not a truer number for anything
+
+It is the SAME relic, recomputed with the two men struck out. The narrow act keeps the v3.4 head as
+the anchor and only fixes the population it is measured on. The owner's objection — why polish a relic
+— stands.
+
+### The two heads are in DIFFERENT UNITS, and that is why `s` alone cannot do it
+
+```
+v3.4 head 3784      fitted from _nv_bwd(p) = posval(best2 + capt_prem - REPL)     -> PLAYER money
+adopted head 3191.18  pooled_head_pre_scale, the #279 structural career value      -> STRUCTURAL/VOR
+                      (same unit as the basis rows: aaron-cadman value 1566.53)
+```
+
+The v3.4 curve is not just an old pick curve. It is the only object in the engine that states **what a
+pick is worth in player money** — a translation table. `s = 3000 / 3191.18` correctly scales the PICK
+LADDER from its own measured head to the published pin, and that is the whole of the owner's
+"scale from the new curve's true pick 1 to 3000". But "and then every player scaled accordingly" needs
+an exchange rate between player money and pick money, and `s` does not contain one. `rl_model.py:1548`
+says exactly this: *"NOT `_P1/H`, which would mix two different fits' currencies … they are not
+commensurate."* On that narrow point the code is right.
+
+### But the owner's instinct holds in a sharper form
+
+The defect is not that a translation is needed. It is WHICH curve supplies it. The estate's own comment
+concedes the position: *"the two sides are anchored on DIFFERENT CURVES and agree today only because
+RL_PICK1 and the artifact pin are both 3000 — **a coincidence of the pin's value, not a property of the
+construction**."*
+
+The adopted curve CAN supply the translation, because its basis is per-player: 1,197 named rows with
+values (`structural_basis_279.json`). Measure those same men in board currency and the structural →
+player conversion is derivable from the ruled population directly. Then the v3.4 head is retired, the
+two sides are anchored on ONE curve, and the McCartin/Boyd question disappears with the relic rather
+than being answered inside it.
+
+### AND ONE THING FOUND WHILE CHECKING THIS, NOT YET RESOLVED
+
+```
+BOARD_FACTOR = (3000 / 3784) x 0.940091 = 0.745316
+```
+
+If 3784 is already "pick 1 in player money", then `3000 / 3784` alone puts pick 1 at 3000 on both
+sides. The extra `x 0.940091` shrinks the player side a further 6%: a player the model rates at exactly
+the v3.4 pick-1 level lands at **2,820** against a pick 1 priced **3,000**.
+
+The code defends it — *"the installed ladder is already raw x s; the player side must take THE SAME s"*
+— and it may well be a deliberate neutral co-move that cancels in every comparison. **It has not been
+traced and is NOT asserted here as an error.** But it is the same class of question, it is larger than
+the McCartin/Boyd item, and it is what should be checked first.
+
+### Disposition
+
+The narrow act (fixing the relic's population) is NOT recommended: it moves the whole board 2.4% to
+polish a number that should not be load-bearing. The order of work is:
+
+1. settle whether the `x s` is neutral or a 6% wedge between the player and pick sides;
+2. if a wedge, derive the player/pick exchange rate from the adopted curve's own per-player basis and
+   retire the v3.4 head;
+3. the exclusion question is then answered by construction — a retired head cannot carry two busts.
