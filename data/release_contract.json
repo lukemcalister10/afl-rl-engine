@@ -38,7 +38,7 @@
     "engine_head": "17243c16277842e0a30470cfbdb5b196",
     "fv": "123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345",
     "register": "652d83e87780e415a01a2de6d8b3cc57",
-    "rl_model": "6fe7c4155866d80e8045bed2d3bf2802",
+    "rl_model": "f669674ce70e1def77feecdd5c533a0a",
     "store": "415929d3c9d561cc58bef00ae63432b2"
   },
   "must_be_unset": [
@@ -89,5 +89,5 @@
     "RL_LEGF": "1",
     "RL_PVC2": "1"
   },
-  "contract_sha256": "f17fa61ecea685095f5a2da4905af7440edee9d854bf6fe58827f29f837ed126"
+  "contract_sha256": "ae378f1e149037db2cac4c5e7f6e32a7afe20d45064ba76bc1dbb158654f0c89"
 }
