@@ -767,14 +767,24 @@ console.log("\n  the house's ruled parameters, read from their source");
     });
   }
 
-  /* THE ONE HOLE THAT IS STILL OPEN, PINNED OPEN. rl_model.py has read `_pvc_exclude` for months and
-     nothing sets it, so the live v3.4 fit is the last place the ruling is not applied. This assertion
-     FAILS THE DAY IT IS FIXED, which is the point: the fix must come with this test updated to match,
-     so the estate cannot half-apply an owner ruling twice. */
+  /* AND THE LAST HOLE, NOW CLOSED (landed 2026-09-01 on the owner's word). rl_model.py had read
+     `_pvc_exclude` for months with nothing setting it; the live v3.4 fit was the only place on the
+     estate where the ruling was not applied. It now sets the flag, and the engine's list must be the
+     SAME LIST as the owner's declaration — the two live in different files for a reason (rl_model.py
+     is md5-pinned and carries the value path; the JSON is the owner's word), so this binds them. */
   var eng = fs.readFileSync(path.join(__dirname, "..", "..", "engine", "rl_after", "rl_model.py"), "utf8");
-  ok(!/BUST_EXCLUDE_KEYS/.test(eng),
-     "rl_model.py still SETS `_pvc_exclude` nowhere — the live fit is on a different population from " +
-     "the adopted curve, and this is the reminder (FINDINGS.md §2; costs 266 order crossings to close)");
+  var m = /^BUST_EXCLUDE_KEYS\s*=\s*\(([^)]*)\)/m.exec(eng);
+  ok(!!m, "the engine declares BUST_EXCLUDE_KEYS — the live pick-value fit applies the ruling");
+  var engKeys = m ? (m[1].match(/'([^']+)'/g) || []).map(function (q) { return q.slice(1, -1); }).sort() : [];
+  ok(JSON.stringify(engKeys) === JSON.stringify(keys),
+     "and the engine's list is EXACTLY the owner's declaration — one ruling, two files, bound here so " +
+     "they cannot drift", engKeys.join(", ") + "  vs  " + keys.join(", "));
+  ok(/_pvc_exclude'?\]\s*=\s*True|_pvc_exclude['"]\]\s*=\s*True/.test(eng) ||
+     /for _p in _bx: _p\['_pvc_exclude'\]=True/.test(eng),
+     "  and it actually SETS the flag rather than only naming the men — the defect being closed was a " +
+     "flag nothing set");
+  ok(/BUST-EXCLUSION HALT/.test(eng),
+     "  with a HALT if the cohort stops carrying them, so a rename cannot silently restore the old state");
 
   if (!B) return;
   keys.forEach(function (k) {

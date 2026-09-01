@@ -4,11 +4,9 @@
   "_standing_ruling": "ENGINE_PRIMER.md §4.5 — 'Paddy McCartin and Tom Boyd (pick-1 KPF busts, force majeure) are excluded by owner ruling; every player in their drafts slides up one pick.'",
   "_why_a_file_and_not_a_store_field": "The lander's store-edit verb refuses to CREATE a field by design ('a field that is not there is not a field that is wrong'), and a bespoke store writer to add one would bypass the only sanctioned store lane. So the declaration lives here, beside the owner's other declarations, and the surfaces that honour it read it from here.",
   "_who_reads_this": [
+    "engine/rl_after/rl_model.py — BUST_EXCLUDE_KEYS sets `_pvc_exclude` on the curve builders' cohort (landed 2026-09-01). ui/tests/draftday.test.js asserts the engine's list IS this list.",
     "ui/tools/gen_draft_outcomes.py — drops both selections and slides the rest of their draft up one"
   ],
-  "_who_does_NOT_yet_read_this_and_why": {
-    "engine/rl_after/rl_model.py": "THE ONE REMAINING HOLE. The `_pvc_exclude` machinery exists and has read that flag for months; NOTHING has ever set it (measured 2026-09-01: 0 of 2650 store rows). It is now the only place on the estate where the ruling is not applied. Setting it moves BOARD_FACTOR: measured, board c8c2f2b6 -> b005096b, 622 of 804 players down, sum -2.08%, 266 true order crossings. That reprices the board, so it is owed an owner-worded landing rather than taken. FINDINGS.md section 2."
-  },
   "date": "2026-09-01",
   "exclude": [
     {
@@ -26,7 +24,7 @@
       "pos": "KPF"
     }
   ],
-  "_already_applied_elsewhere_do_not_re_apply": {
+  "_already_applied_at_derivation_do_not_re_apply": {
     "engine/rl_after/pvc_curve_v2.json (the shipped pick curve)": "Its derivation basis carries force_majeure: [paddy-mccartin, thomas-boyd], slide_years [2013, 2014], 135 rows slid. Both men absent. Nothing owed.",
     "the v0 pick surface (data/v0surf.pkl, via the #306 lens)": "The shipped lens (RL_V0_LENS default '1') fits from docs/evidence/exec_306_zlaarm/basis/structural_basis_279.json, which inherits 'McCartin/Boyd exclusions and one-pick slides as the committed matrix carries them'. Verified: both keys absent from its 1197 rows, and the slide is there (joshua-kelly store pick 2 -> basis pick 1). Nothing owed. The roster list at _merged_recover.py:2237 feeds the FREEZE SIGNATURE and the RL_V0_LENS=0 A/B control, not the shipped fit — misreading that is what produced a wrong finding on 2026-09-01."
   }

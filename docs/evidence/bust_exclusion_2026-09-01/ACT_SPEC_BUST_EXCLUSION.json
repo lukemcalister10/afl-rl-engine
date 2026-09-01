@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "act_kind": "lever-landing",
+  "act": "THE FORCE-MAJEURE BUST EXCLUSION APPLIED TO THE LIVE PICK-VALUE FIT — Paddy McCartin and Tom Boyd are struck from the curve builders' cohort and the 197 selections behind them in their own drafts slide up one, so the v3.4 head that sets the player/pick exchange rate is measured on the population the owner ruled",
+  "date": "2026-09-01",
+  "owner_word": "\"McCartin and Boyd should be excluded from everything. It's as if they weren't picked. So when looking at the value of pick 1 for the PVC, they didn't happen. For looking at KPF value for v0, they didn't happen. For your draft day analytics, they didn't happen.\" Then, on being shown the measured cost and my recommendation against: \"If it works, it works though. So surely we just recalculate the old number by removing mccartin and boyd, and everyone adjusts accordingly. That seems reasonable to me?\"",
+  "authority": "owner word 2026-09-01, applying the standing ruling ENGINE_PRIMER.md §4.5",
+  "prereg": {
+    "path": "docs/evidence/bust_exclusion_2026-09-01/PREREG_LANDING.md",
+    "board_before": "c8c2f2b6f99445484fadaa8c44afe609",
+    "board_after": "b005096b5e78014425922cae3f28f6c9",
+    "reference_board": null,
+    "kill_switch": null
+  },
+  "identities": {
+    "moves": ["board"],
+    "unmoved": ["store", "engine_head", "rl_model", "fv", "config", "register", "as_of_round"]
+  },
+  "column": {
+    "id": "bust-exclusion-live-fit-1-9",
+    "label": "1/9 THE BUST EXCLUSION REACHES THE LIVE FIT — McCartin and Boyd out of the curve builders' cohort, 197 selections slid up one; the v3.4 head that sets the player/pick exchange rate moves 3784 -> 3877, so every player priced on his own football falls ~2.3% against picks while a player priced on his draft pedigree does not move. No pick price changes.",
+    "after_round": 24
+  },
+  "lineage": {
+    "doc": "docs/evidence/bust_exclusion_2026-09-01/PREREG_LANDING.md",
+    "owner_ruling_id": ["BUST_EXCLUSION_LIVE_FIT_2026-09-01_if_it_works_it_works"],
+    "owner_ruling": "The force-majeure exclusion of Paddy McCartin and Tom Boyd, ruled in ENGINE_PRIMER §4.5 and never once applied to the live fit, is applied.",
+    "authority": "owner word 2026-09-01",
+    "invariants": {}
+  },
+  "day0_rebase": { "state": "off" },
+  "evidence_dir": "docs/evidence/bust_exclusion_2026-09-01",
+  "gates": null
+}

@@ -330,6 +330,44 @@ hist=[p for p in data if p.get('_ft') and p.get('_grp') in ('ND','RD') and 2003<
 # (build_pvc / build_pvc_v34 / _natcv34) ONLY; they stay in hist for BASEPK_REG, establishment, and forward valuation,
 # so the forward/Now board is byte-identical and they still appear. In the same draft year, remaining players slide UP
 # to fill each vacated slot (curve attribution only -- stored pick/effpk untouched). Uses _epk in the curve pools only.
+# THE TWO NAMES, DECLARED. ENGINE_PRIMER 4.5 has carried this ruling for months — "Paddy McCartin and
+# Tom Boyd (pick-1 KPF busts, force majeure) are excluded by owner ruling; every player in their drafts
+# slides up one pick" — and the machinery below has read `_pvc_exclude` for just as long. NOTHING EVER
+# SET IT: measured 2026-09-01, zero store rows carried the flag. The adopted pick curve and the v0 lens
+# basis both applied the ruling at derivation time; this import fit was the last hold-out.
+#
+# WHAT IT REACHES, AND IT IS NOT THE PICK PRICES. build_pvc_v34's output no longer ships as the curve —
+# pvc_curve_v2.json does. What survives is its HEAD, at the anchor line below: BOARD_FACTOR =
+# (RL_PICK1/PVC[1]) * s. PVC[1] is the only object in the engine that states what a pick is worth in
+# PLAYER money, so it is the exchange rate between the two sides of the board. Measured 2026-09-01 it
+# was 3784 with these two men in the pick-1 sample and 3877 with them out, so the ruling being unapplied
+# here was mispricing every player against every pick by 2.4%.
+#
+# WHAT MOVES, AND WHY IT IS NOT UNIFORM. A player priced on his own football takes the full move; a
+# player with no football is priced off his draft pedigree, which reads the ADOPTED curve, and does not
+# move at all. Measured by career games: 0 games 0.00%, 1-10 -1.19%, 10-30 -1.74%, 30-80 -2.15%,
+# 80-200 -2.30%, 200+ -2.32%. That gradient is the act's own definition — the exchange rate between
+# football and pedigree — not a defect, and 83% of the board's 266 order crossings involve a player
+# with under ten games.
+#
+# The list is a CONSTANT HERE rather than a docs/ input because rl_model.py is md5-pinned and a docs/
+# file on the value path is not covered by Guard 5. docs/inputs/OWNER_BUST_EXCLUSION.json is the owner's
+# declaration and ui/tests/draftday.test.js asserts the two agree, so they cannot drift apart.
+#
+# OWNER WORD 2026-09-01: "McCartin and Boyd should be excluded from everything. It's as if they weren't
+# picked. So when looking at the value of pick 1 for the PVC, they didn't happen." And, on being shown
+# the cost: "If it works, it works though. So surely we just recalculate the old number by removing
+# McCartin and Boyd, and everyone adjusts accordingly."
+BUST_EXCLUDE_KEYS=('paddy-mccartin','thomas-boyd')      # owner ruling; ENGINE_PRIMER 4.5
+_bx=[_p for _p in hist if _p.get('key') in BUST_EXCLUDE_KEYS]
+# HALT RATHER THAN NO-OP. The defect this replaces was silence: a flag nothing set, read by machinery
+# that ran clean and excluded nobody. A rename, a re-key or a cohort-window move must fail the build
+# LOUDLY here rather than quietly restore the very state the owner ruled out.
+if len(_bx)!=len(BUST_EXCLUDE_KEYS):
+    raise SystemExit("BUST-EXCLUSION HALT: the owner ruling names %d players and the cohort carries %d "
+                     "of them (%s). The exclusion cannot run silently — ENGINE_PRIMER 4.5."
+                     %(len(BUST_EXCLUDE_KEYS),len(_bx),sorted(_p.get('key') for _p in _bx)))
+for _p in _bx: _p['_pvc_exclude']=True
 from collections import defaultdict as _dd
 _pvc_excl_eff=_dd(list)
 for _p in hist:
