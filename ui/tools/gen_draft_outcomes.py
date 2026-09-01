@@ -12,10 +12,14 @@ A "what does pick 12 become" tool is normally worthless because the underlying l
 players who MADE IT. Base rates computed on survivors say every pick is a good pick. This store is
 not that list. MEASURED HERE, and re-measured on every run into the stamp:
 
-  · 1570 national-draft selections, draft classes 2003-2025, EVERY class complete from pick 1;
+  · 1568 national-draft selections, draft classes 2003-2025, EVERY class complete from pick 1;
   · exactly 23 observations at every ordinal 1-58 (one per class), tapering only where the real
     drafts were shorter;
   · 226 of them (14.4%) NEVER PLAYED A SENIOR GAME.
+
+1568 rather than 1570 because of the owner's bust exclusion — see BUST_EXCLUDE_KEYS below. Two
+selections are struck out by ruling and the 135 behind them slide up one, so the ordinal counts are
+unchanged: this is a removal of two names, not a thinning of two columns.
 
 Busts are in the population. That is the whole basis on which this tool is allowed to exist, so the
 never-played count is recomputed every run and carried in the stamp where it cannot be lost.
@@ -45,8 +49,10 @@ left to the reader to join against the live board, where the count of how many s
 is visible beside it.
 """
 import hashlib
+import io
 import json
 import os
+import re
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -65,7 +71,7 @@ OUT = os.path.join(REPO, 'ui', 'data_aux', 'draft_outcomes.js')
 #: exact inconsistency measured above. Removing it would make the gate blind to that case.
 OUTCOME_INPUT_FIELDS = ('draft_stream', 'stream_pick', 'stream_year', 'games', 'scoring',
                         'player', 'drafted_position', 'future_position', '_draft_club', '_retired')
-SIG_VERSION = 'draft-outcomes-inputs-1'
+SIG_VERSION = 'draft-outcomes-inputs-2'
 
 #: THE ESTABLISHMENT THRESHOLD, TAKEN FROM THE HOUSE RATHER THAN CHOSEN HERE.
 #:
@@ -85,6 +91,83 @@ SIG_VERSION = 'draft-outcomes-inputs-1'
 #: future change to the house threshold surfaces here instead of drifting apart in silence.
 REAL_SEASON_GAMES = 6
 
+#: THE BUST EXCLUSION — AN OWNER DECLARATION, READ FROM THE DECLARATION FILE.
+#:
+#: ENGINE_PRIMER §4.5: "Paddy McCartin and Tom Boyd (pick-1 KPF busts, force majeure) are excluded by
+#: owner ruling; every player in their drafts slides up one pick." Owner, 2026-09-01, on being shown
+#: they were still in this tool's record at pick 1 unslid: "McCartin and Boyd should be excluded from
+#: everything. It's as if they weren't picked ... For your draft day analytics, they didn't happen."
+#:
+#: The names are DECLARED IN ONE PLACE — docs/inputs/OWNER_BUST_EXCLUSION.json, beside the owner's
+#: other declarations — and read from there. They are not restated here and they are not derived from
+#: anything: no rule this file could apply would identify a career ended by force majeure rather than
+#: by failing, which is exactly why it is a declaration and not a filter.
+#:
+#: THE ENGINE DOES NOT YET READ IT, and that is recorded rather than glossed. `rl_model.py` has read a
+#: `_pvc_exclude` flag with a same-draft slide for months; measured 2026-09-01, NOTHING has ever set it
+#: (0 of 2650 store rows). Setting it moves BOARD_FACTOR and reprices every player, so it is owed an
+#: owner-worded landing. The adopted pick curve, separately, ALREADY excluded both men at derivation
+#: time and slid the same 135 rows — verified row-for-row against its own per-entrant basis, so this
+#: file and the curve that sets the prices agree today about who was picked where.
+#: See docs/evidence/bust_exclusion_2026-09-01/FINDINGS.md.
+#:
+#: It HALTS if the declaration is missing or empty. A draft-day board that silently stopped excluding
+#: them would read exactly like one that never started, which is the defect being fixed.
+OWNER_BUST_EXCLUSION = os.path.join(REPO, 'docs', 'inputs', 'OWNER_BUST_EXCLUSION.json')
+
+
+def bust_exclude_keys(path=OWNER_BUST_EXCLUSION):
+    """The owner's excluded draftees, read from his declaration. Never guessed, never local."""
+    try:
+        doc = json.load(io.open(path, encoding='utf-8'))
+    except (OSError, ValueError) as e:
+        raise SystemExit(
+            'BUST-EXCLUSION HALT: cannot read the owner declaration at %s (%s). This generator does '
+            'not keep its own copy of the exclusion list on purpose — see the note above — so it '
+            'cannot proceed without it. (ENGINE_PRIMER §4.5)' % (path, e))
+    keys = tuple(e['key'] for e in (doc.get('exclude') or ()) if e.get('key'))
+    if not keys:
+        raise SystemExit('BUST-EXCLUSION HALT: %s declares no `exclude` entries.' % path)
+    return keys
+
+
+def apply_bust_exclusion(nd, keys):
+    """Drop the excluded selections and SLIDE the rest of their own draft up one pick each.
+
+    -> (kept_rows, [{key, year, pick}], slid_count). The slide is the owner's ruling in the primer's
+    own words: "every player in their drafts slides up one pick". Dropping them WITHOUT sliding would
+    leave a hole at pick 1 of 2013 and 2014 and quietly shrink those two ordinals' denominators by one
+    each, which is a different and worse distortion than the one being removed — pick 2 of 2013 really
+    was the second name called, and with the first struck out it is the first.
+
+    The slide is applied to `stream_pick` on a COPY of the row: nothing about the store moves, and the
+    engine performs the identical slide on its own side (`_pvc_eff`, rl_model.py) over its own copy.
+    """
+    excluded = [r for r in nd if r.get('key') in keys]
+    if len(excluded) != len(keys):
+        raise SystemExit(
+            'BUST-EXCLUSION HALT: the engine names %d excluded draftees and this store\'s national '
+            'draft carries %d of them (%s). The exclusion cannot run silently.'
+            % (len(keys), len(excluded), sorted(r.get('key') for r in excluded)))
+    vacated = {}
+    for r in excluded:
+        vacated.setdefault(int(r['stream_year']), []).append(int(r['stream_pick']))
+    kept, slid, record = [], 0, []
+    for r in nd:
+        if r.get('key') in keys:
+            record.append({'key': r.get('key'), 'name': r.get('player'),
+                           'year': int(r['stream_year']), 'pick': int(r['stream_pick'])})
+            continue
+        holes = vacated.get(int(r['stream_year']))
+        if holes:
+            up = sum(1 for h in holes if h < int(r['stream_pick']))
+            if up:
+                r = dict(r, stream_pick=int(r['stream_pick']) - up)
+                slid += 1
+        kept.append(r)
+    record.sort(key=lambda d: (d['year'], d['pick']))
+    return kept, record, slid
+
 #: NO REPLACEMENT LEVEL, NO STAR BAR, AND NO POSITION CONSTANT IS DEFINED IN THIS FILE.
 #:
 #: An earlier cut of this generator derived both — a replacement level off the owner's best-23 slot
@@ -101,8 +184,14 @@ REAL_SEASON_GAMES = 6
 #: worth. The measuring is done where the bars live.
 
 
-def outcome_inputs_sig(store_rows):
-    """A digest over every national-draft row's outcome-determining inputs, sorted by key."""
+def outcome_inputs_sig(store_rows, excluded=()):
+    """A digest over every national-draft row's outcome-determining inputs, sorted by key.
+
+    THE EXCLUSION LIST IS PART OF THE INPUTS. It is not a store field, so a change to it moves no
+    store byte — and a signature that did not cover it would report "up to date" over a bundle built
+    under a superseded ruling. That is the same silent-drift class the version tag exists for, so the
+    list is hashed alongside the rows.
+    """
     parts = []
     for row in store_rows:
         key = row.get('key')
@@ -113,6 +202,7 @@ def outcome_inputs_sig(store_rows):
     parts.sort()
     h = hashlib.sha256()
     h.update((SIG_VERSION + '\x1e').encode('utf-8'))
+    h.update(('|'.join(sorted(excluded)) + '\x1e').encode('utf-8'))
     for p in parts:
         h.update(p.encode('utf-8'))
         h.update(b'\x1e')
@@ -203,6 +293,12 @@ def _real_seasons(row):
 def build(store_rows):
     nd = [r for r in store_rows
           if r.get('draft_stream') == 'ND' and r.get('stream_pick') and r.get('stream_year')]
+    # THE OWNER'S EXCLUSION, APPLIED BEFORE ANYTHING IS COUNTED — before the sort, before the maturity
+    # measurement, before the per-class never-played census. Every figure this file emits is computed
+    # over `nd`, so applying it here is what makes "they didn't happen" true of all of them at once
+    # rather than of whichever ones a later filter remembered.
+    bust_keys = bust_exclude_keys()
+    nd, bust_record, bust_slid = apply_bust_exclusion(nd, bust_keys)
     nd.sort(key=lambda r: (r['stream_year'], r['stream_pick']))
 
     season_now = max((s.get('year') or 0) for r in store_rows for s in _seasons(r))
@@ -261,7 +357,7 @@ def build(store_rows):
     stamp = {
         'generator': 'ui/tools/gen_draft_outcomes.py',
         'store': hashlib.md5(open(STORE, 'rb').read()).hexdigest(),
-        'outcomeInputsSig': outcome_inputs_sig(store_rows),
+        'outcomeInputsSig': outcome_inputs_sig(store_rows, bust_keys),
         'outcomeInputsSigVersion': SIG_VERSION,
         'seasonNow': season_now,
         'nRows': len(rows),
@@ -275,6 +371,12 @@ def build(store_rows):
         # No value frame here — REPL and PEAK ride the board bundle. See the note at the top.
         'debutLagTable': table,
         'debutLagN': n_debut,
+        # THE EXCLUSION, DECLARED IN THE BUNDLE so the page can say it on its own face rather than the
+        # reader having to know. `bustExcluded` names who was struck out and where he was taken;
+        # `bustSlid` counts how many selections moved up to close the holes.
+        'bustExcluded': bust_record,
+        'bustSlid': bust_slid,
+        'bustExcludeSource': 'engine/rl_after/rl_model.py BUST_EXCLUDE_KEYS',
         'perClass': {str(k): v for k, v in sorted(per_class.items())},
     }
     return {'rows': rows, 'stamp': stamp}

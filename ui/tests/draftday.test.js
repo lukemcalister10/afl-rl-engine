@@ -193,9 +193,24 @@ if (B) {
   var storePath = path.join(__dirname, "..", "..", "engine", "rl_after", "rl_model_data.json");
   var store = JSON.parse(fs.readFileSync(storePath, "utf8"));
   var ndStore = store.filter(function (r) { return r.draft_stream === "ND" && r.stream_pick && r.stream_year; });
-  ok(ndStore.length === rows.length,
-     "the record holds EVERY national-draft selection in the store, not a filtered subset  (" +
-     ndStore.length + " in the store, " + rows.length + " shipped)");
+  /* EVERY SELECTION, LESS EXACTLY THE OWNER'S DECLARED EXCLUSIONS AND NOTHING ELSE. The bare
+     equality this replaces was the stronger statement and would be the better test if the record
+     were unfiltered — but it is filtered now, by an owner ruling, and a test loosened to `<=` would
+     stop catching the thing it exists to catch. So the arithmetic is exact and the MISSING KEYS ARE
+     NAMED: the shortfall must be the declared list, member for member. A survivor filter that crept
+     in later would drop somebody who is not on that list, and this fails by name. */
+  var declared = ((st.bustExcluded || []).map(function (e) { return e.key; })).sort();
+  ok(ndStore.length - declared.length === rows.length,
+     "the record holds EVERY national-draft selection in the store less the " + declared.length +
+     " the owner struck out, and no others  (" + ndStore.length + " in the store, " +
+     declared.length + " excluded, " + rows.length + " shipped)");
+  var shipped = {};
+  rows.forEach(function (r) { shipped[r.k] = 1; });
+  var missing = ndStore.filter(function (r) { return !shipped[r.key]; })
+                       .map(function (r) { return r.key; }).sort();
+  ok(JSON.stringify(missing) === JSON.stringify(declared),
+     "and the men who are missing are EXACTLY the men the ruling names — nobody has been quietly " +
+     "filtered out alongside them", missing.join(", ") || "(none)");
   /* THE RECOUNT SUMS THE SEASON ROWS, NOT THE TOP-LEVEL `games` FIELD, and that distinction is the
      defect this suite found. The scalar is a snapshot that stops being maintained once a player has
      a live season: every one of the store's players WITHOUT a 2026 season has games == the sum of
@@ -698,20 +713,80 @@ console.log("\n  the house's ruled parameters, read from their source");
      "and the board's class floor IS the house's YR_LO", y && y[1]);
 })();
 
-/* THE RULED BUST EXCLUSION — measured, reported, and deliberately NOT applied without a word.
-   ENGINE_PRIMER §4.5: "Paddy McCartin and Tom Boyd (pick-1 KPF busts, force majeure) are excluded
-   by owner ruling; every player in their drafts slides up one pick." That ruling governs the CURVE'S
-   TEACHING. This page is a descriptive record of what picks became, and those two careers happened,
-   so removing them is a judgement the owner has not been asked for on THIS surface. The test
-   asserts the state of play rather than a decision: both men are present, at pick 1, unslid. */
-if (B) {
-  var excl = B.rows.filter(function (r) { return r.k === "thomas-boyd" || r.k === "paddy-mccartin"; });
-  ok(excl.length === 2 && excl.every(function (r) { return r.p === 1 && r.dp === "KPF"; }),
-     "the two force-majeure pick-1 KPF busts are IN this record at pick 1 — the curve's exclusion " +
-     "is not applied here, and the KPF top-of-draft cells carry them (measured: VOR 15.6 with, " +
-     "17.0 without; star 36% with, 40% without). An owner ruling for this surface would change it",
-     excl.map(function (r) { return r.n + " #" + r.p; }).join(", "));
-}
+/* THE RULED BUST EXCLUSION — NOW APPLIED, ON THE OWNER'S WORD.
+   ENGINE_PRIMER §4.5 has carried it for months: "Paddy McCartin and Tom Boyd (pick-1 KPF busts,
+   force majeure) are excluded by owner ruling; every player in their drafts slides up one pick."
+   Nothing ever applied it — measured 2026-09-01, no store row carried `_pvc_exclude` and both men
+   sat in this record at pick 1 unslid. Owner, on being shown that: "McCartin and Boyd should be
+   excluded from everything. It's as if they weren't picked ... For your draft day analytics, they
+   didn't happen."
+
+   THE LIST IS DECLARED ONCE, in engine/rl_after/rl_model.py, and read from there by the generator.
+   These assertions read the ENGINE'S declaration too, so a test that agreed with a stale local copy
+   is not possible: if the curve's exclusion list moves, this test moves with it or fails. */
+(function () {
+  var declPath = path.join(__dirname, "..", "..", "docs", "inputs", "OWNER_BUST_EXCLUSION.json");
+  var decl = null;
+  try { decl = JSON.parse(fs.readFileSync(declPath, "utf8")); } catch (e) { decl = null; }
+  ok(!!decl, "the owner's exclusion declaration exists at docs/inputs/OWNER_BUST_EXCLUSION.json");
+  var keys = ((decl || {}).exclude || []).map(function (e) { return e.key; }).sort();
+  ok(keys.length === 2 && keys.indexOf("thomas-boyd") >= 0 && keys.indexOf("paddy-mccartin") >= 0,
+     "and it names the two force-majeure pick-1 KPF busts of ENGINE_PRIMER §4.5", keys.join(", "));
+
+  var gen = fs.readFileSync(path.join(__dirname, "..", "tools", "gen_draft_outcomes.py"), "utf8");
+  ok(/OWNER_BUST_EXCLUSION/.test(gen) && !/'paddy-mccartin'/.test(gen),
+     "the generator READS that declaration and keeps no copy of its own — one source, so the list " +
+     "cannot be changed in one place and honoured in another");
+
+  /* THE ENGINE HOLE, PINNED OPEN. The `_pvc_exclude` machinery in rl_model.py has read a flag for
+     months that nothing sets, and the v0 pick surface's population applies the pool gate only. Both
+     are owed acts, and both would be easy to forget. These two assertions FAIL THE DAY EITHER IS
+     FIXED, which is the point: the fix must come with this test being updated to match, so the
+     estate cannot half-apply an owner ruling twice. */
+  var eng = fs.readFileSync(path.join(__dirname, "..", "..", "engine", "rl_after", "rl_model.py"), "utf8");
+  ok(!/BUST_EXCLUDE_KEYS|_pvc_exclude'\]\s*=\s*True/.test(eng),
+     "rl_model.py still SETS `_pvc_exclude` nowhere — the live fit and the adopted curve are on " +
+     "different populations, and this assertion is the reminder (see FINDINGS.md §2)");
+  var mrPath = path.join(__dirname, "..", "..", "engine", "rl_after", "_merged_recover.py");
+  var mr = fs.readFileSync(mrPath, "utf8");
+  var kernel = /_curve_sample\('v0_kernel'[\s\S]{0,300}?\]\)/.exec(mr);
+  ok(kernel && !/_in_pvc|_teaches_curve/.test(kernel[0]),
+     "the v0 kernel population still applies the POOL gate only, so both men still teach the v0 KPF " +
+     "surface — the one clause of the owner's ruling that is not true today (FINDINGS.md §3)");
+
+  if (!B) return;
+  keys.forEach(function (k) {
+    ok(B.rows.filter(function (r) { return r.k === k; }).length === 0,
+       "  " + k + " is gone from the record entirely — not zeroed, not flagged: not picked", "0 rows");
+  });
+
+  /* AND THE SLIDE, which is the half that is easy to forget. Striking a man out WITHOUT sliding
+     leaves a hole at pick 1 of his class and quietly shrinks that ordinal's denominator — a
+     different distortion, not the removal of one. Every ordinal must still carry one observation
+     per class it existed in. */
+  var st = B.stamp || {};
+  ok(Array.isArray(st.bustExcluded) && st.bustExcluded.length === 2,
+     "the bundle DECLARES who was struck out and from where",
+     (st.bustExcluded || []).map(function (e) { return e.name + " " + e.year + " #" + e.pick; }).join(", "));
+  ok(st.bustSlid > 0, "and how many selections slid up to close the holes", st.bustSlid);
+
+  var byYear = {};
+  B.rows.forEach(function (r) { (byYear[r.y] = byYear[r.y] || []).push(r.p); });
+  (st.bustExcluded || []).forEach(function (e) {
+    var picks = (byYear[e.year] || []).slice().sort(function (a, b) { return a - b; });
+    ok(picks[0] === 1, "  the " + e.year + " class still starts at pick 1 — no hole where " +
+       e.name + " stood", "first pick " + picks[0]);
+    var dup = picks.filter(function (p, i) { return i && p === picks[i - 1]; });
+    ok(dup.length === 0, "  and the " + e.year + " slide collided with nothing", dup.join(","));
+  });
+
+  var counts = {};
+  B.rows.forEach(function (r) { counts[r.p] = (counts[r.p] || 0) + 1; });
+  var nClasses = st.nClasses;
+  ok(counts[1] === nClasses && counts[2] === nClasses,
+     "picks 1 and 2 still carry one observation per class — the slide closed the holes rather than " +
+     "shrinking the denominators", counts[1] + ", " + counts[2] + " of " + nClasses);
+})();
 
 console.log("\n  " + "-".repeat(70));
 console.log(fails ? "DRAFT DAY TESTS: " + fails + " FAILED of " + n

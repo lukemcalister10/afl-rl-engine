@@ -1173,6 +1173,23 @@
       pct(st.nNeverPlayed, st.nRows) + ") never played a senior game. Busts are in the population, " +
       "which is the only basis on which the rates above mean anything.");
 
+    /* THE OWNER'S EXCLUSION, ON THE PAGE'S OWN FACE. Two men were struck out of the record by a
+       ruling, and a board that silently omits two pick-1 selections while claiming to hold every one
+       of them is lying by omission — the more so because they are the two whose absence most flatters
+       the number above. So it is named, with who and from where. */
+    var bx = st.bustExcluded || [];
+    if (bx.length) {
+      parts.push("<b>" + bx.map(function (e) { return e.name; }).join(" and ") + " are struck out " +
+        "of this record by owner ruling</b> — " +
+        bx.map(function (e) { return e.year + " pick " + e.pick; }).join(" and ") +
+        ", careers ended by force majeure rather than by failing. They are not zeroed or flagged: " +
+        "they did not happen, and the " + fmt.n(st.bustSlid) + " selections behind them slid up one " +
+        "to close the holes, so no ordinal lost an observation. The pick curve that sets the prices " +
+        "struck out the same two men and slid the same " + fmt.n(st.bustSlid) + " — checked row for " +
+        "row — so this page and the Pick value tab agree about who was picked where. It flatters " +
+        "the top of the key-forward column and nothing else.");
+    }
+
     /* THE CLASS FLOOR, NAMED SEPARATELY FROM THE YOUNG END. The 2003 class is not held out for
        being unsettled — it is held out because its first season is unobservable: the store carries
        zero 2004 seasons for it, so every 2003 man's year one is missing rather than bad. The
