@@ -12,8 +12,57 @@
   23,
   24
  ],
- "control_diffs": 0,
+ "control_diffs": 87,
  "control_missing": 0,
- "control_pass": true,
- "sample_diffs": {}
+ "control_pass": false,
+ "sample_diffs": {
+  "nick-daicos": [
+   10396,
+   10384
+  ],
+  "jake-bowey": [
+   3884,
+   3885
+  ],
+  "harry-dean": [
+   2769,
+   2992
+  ],
+  "sam-walsh": [
+   3001,
+   3047
+  ],
+  "ryley-sanders": [
+   3690,
+   3692
+  ],
+  "marcus-bontempelli": [
+   3537,
+   3615
+  ],
+  "joel-freijah": [
+   2454,
+   2805
+  ],
+  "max-gawn": [
+   3295,
+   3265
+  ],
+  "jagga-smith": [
+   4795,
+   4942
+  ],
+  "ed-richards": [
+   4006,
+   3986
+  ],
+  "kysaiah-pickett": [
+   4326,
+   4329
+  ],
+  "timothy-english": [
+   3269,
+   3324
+  ]
+ }
 }
