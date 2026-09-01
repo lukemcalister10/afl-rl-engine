@@ -211,6 +211,18 @@ LEVER_CARRIERS = (
       'writes the file, and it reads the store and nothing else. It costs about a second — it loads '
       'no engine — so there is no efficiency argument for deferring it to a later act.'),
 
+    F('ui/data_aux/v0.js',
+      'steps.ui writer 8 (ui/tools/gen_v0_sidecar.py)',
+      'THE v0 SIDECAR — the entry price per player, and the one the entry above already named as the '
+      'cautionary case: "the v0 sidecar had no writer of record, the FW1 store edit staled it, and '
+      'every player card lost its entry price for a day (2026-08-30)". It was written down and then '
+      'not acted on, so it happened AGAIN at the bust-exclusion landing (2026-09-01): the sidecar '
+      'still named board c8c2f2b6 on a tree serving b005096b, its own identity check said so by name, '
+      'and four more assertions fell with it — an INACTIVE sidecar resolves no row, so neither the '
+      'absolute (live - v0) nor the ratio (live / v0) can be computed. Twice is a writer, not a '
+      'coincidence. It is LAST among the writers because it is the only one that loads an engine; '
+      'everything cheaper has already run and failed fast by then.'),
+
     # ---- the sibling repin's own targets ----------------------------------------------------------
     F('engine/rl_after/ingestion/sibling_repin_state.json', 'sibling_repin.reconcile',
       'the sibling provenance sidecar'),

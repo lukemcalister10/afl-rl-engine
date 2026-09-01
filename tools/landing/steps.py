@@ -130,6 +130,26 @@ DEFAULT_GATES = (
      'must_contain': 'GREEN'},
     {'name': 'movers_transition', 'argv': ['python3', 'engine/rl_after/ingestion/test_movers_transition.py']},
     {'name': 'movers_ui', 'argv': ['node', 'ui/tests/movers.test.js']},
+    # THE UI SUITE, ADDED 2026-09-01. movers.test.js was the ONLY ui/tests file in the gate set, so
+    # every other surface's suite ran on nobody's schedule. Measured cost of that: the point-count
+    # sentinel in ui_222_items.test.mjs was missed by TWO CONSECUTIVE ACTS (finals week 1, then the
+    # bust exclusion), each time discovered by a hand-run afterwards; and the v0 sidecar's own
+    # identity check — which names its remedy in the failure text — went red on a landed board with
+    # nothing to report it. Both are seconds of node. The gate set is where they belong.
+    {'name': 'ui_222_items', 'argv': ['node', 'ui/tests/ui_222_items.test.mjs']},
+    {'name': 'ui_defects_2026_08_21', 'argv': ['node', 'ui/tests/ui_defects_2026-08-21.test.js']},
+    {'name': 'universe', 'argv': ['node', 'ui/tests/universe.test.js']},
+    {'name': 'draftday', 'argv': ['node', 'ui/tests/draftday.test.js']},
+    {'name': 'pickvalue', 'argv': ['node', 'ui/tests/pickvalue.test.js']},
+    {'name': 'release_seam', 'argv': ['node', 'ui/tests/release_seam.test.js']},
+    {'name': 'adoption_gate', 'argv': ['node', 'ui/tests/adoption_gate.test.js']},
+    {'name': 'club_totals_parity', 'argv': ['node', 'ui/tests/club_totals_parity.test.js']},
+    {'name': 'counting_rule', 'argv': ['node', 'ui/tests/counting_rule.test.js']},
+    {'name': 'ownership_sidecar', 'argv': ['node', 'ui/tests/ownership_sidecar.test.js']},
+    {'name': 'ownership_single_source', 'argv': ['node', 'ui/tests/ownership_single_source.test.js']},
+    {'name': 'responsive_layout', 'argv': ['node', 'ui/tests/responsive_layout.test.mjs']},
+    {'name': 'extract_seam', 'argv': ['python3', 'ui/tests/extract_seam.test.py']},
+    {'name': 'club_curve_provenance', 'argv': ['python3', 'ui/tests/club_curve_provenance.test.py']},
 )
 
 
@@ -1723,7 +1743,7 @@ def ui(ctx):
         ctx.log('--dry-run: none of the seven writers is run.')
         return {'writers': 0, 'dry_run': True}
 
-    ctx.log('WRITER 1/7: ui/tools/extract_board_view.py')
+    ctx.log('WRITER 1/8: ui/tools/extract_board_view.py')
     rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'extract_board_view.py')], timeout=900)
     if rc != 0:
         raise StepError('extract_board_view failed:\n%s' % out[-2000:])
@@ -1731,15 +1751,15 @@ def ui(ctx):
             % (md5(bundle), has_release(bundle)))
 
     if not ctx.skip_second_ui_writer:
-        ctx.log('WRITER 2/7: round_movers.inject_release_contract(bundle, root, %s)' % boot['as_of_round'])
+        ctx.log('WRITER 2/8: round_movers.inject_release_contract(bundle, root, %s)' % boot['as_of_round'])
         rm = _load(ctx, 'round_movers', 'engine/rl_after/ingestion/round_movers.py')
         rel = rm.inject_release_contract(bundle, ctx.root, int(boot['as_of_round']))
         ctx.log('  release block: %s' % json.dumps(rel, sort_keys=True)[:200])
     else:
-        ctx.log('WRITER 2/7: SKIPPED BY FAULT INJECTION — the trap is live in this transaction.')
+        ctx.log('WRITER 2/8: SKIPPED BY FAULT INJECTION — the trap is live in this transaction.')
 
     mirror_before = md5(mirror)
-    ctx.log('WRITER 3/7: ui/tools/generate_movers_transition.py  '
+    ctx.log('WRITER 3/8: ui/tools/generate_movers_transition.py  '
             '(the lineage projection — supervisor ruling on F-9)')
     rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'generate_movers_transition.py')],
                       timeout=300)
@@ -1790,7 +1810,7 @@ def ui(ctx):
     # That landing passed this suite after registering a column. The recipe was already in the tree;
     # what was missing was the lander running it.
     movers_before = md5(movers)
-    ctx.log('WRITER 4/7: ui/tools/rebuild_movers_derived.py  '
+    ctx.log('WRITER 4/8: ui/tools/rebuild_movers_derived.py  '
             '(points / values / model_changes — supervisor ruling on F-10)')
     rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'rebuild_movers_derived.py')],
                       timeout=900)
@@ -1855,7 +1875,35 @@ def ui(ctx):
     # alternative this writer replaces, which was shipping no series at all.
     _retro = _p(ctx, 'docs', 'evidence', 'walkforward_retro_2026-08-29', 'emit_retro_series.py')
     if os.path.exists(_retro):
-        ctx.log('WRITER 4b/7: emit_retro_series.py  (the R14-R24 walk-forward series writer 4 drops)')
+        # THE CONTROL RUNS HERE, AND IT COSTS MILLISECONDS. MAINTAINER.md has always said "Re-run that
+        # control before trusting any re-emission" and nothing ever ran it, so the series was trusted
+        # for three days while it was measurably wrong (2026-09-01: 233 of 804 rows adrift, because the
+        # truncated stores predated Finals Week 1 — the owner spotted it from four player names).
+        #
+        # It was never re-run because it LOOKS expensive: the control lives beside an engine harness.
+        # It is not. `retro_walkforward.py control-check` loads two JSON files and compares them —
+        # the banked r24 against the live board, whose truncation is a no-op by construction. No
+        # engine, no store, no build. There is no reason it should not run on every landing, and one
+        # very good reason it must: a board move is exactly what invalidates it.
+        _ctl = _p(ctx, 'docs', 'evidence', 'walkforward_retro_2026-08-29', 'retro_walkforward.py')
+        ctx.log('WRITER 4b/8: the retro CONTROL first (engine-free: banked r24 vs the live board)')
+        rc, out = ctx.run([sys.executable, _ctl, 'control-check'], timeout=120)
+        for ln in out.strip().splitlines()[-2:]:
+            ctx.log('  %s' % ln.strip())
+        if rc != 0:
+            raise StepError(
+                'THE RETROSPECTIVE IS STALE AGAINST THE BOARD THIS ACT LANDS and must not be shipped '
+                'as if it were current (exit %s). r24\'s truncation is a no-op, so it MUST reproduce '
+                'the live board exactly; it does not.\n\n'
+                'THE REMEDY, in order, and the first is engine-free:\n'
+                '  1. python3 docs/evidence/walkforward_retro_2026-08-29/retro_walkforward.py '
+                'emit-stores      # rebuilds the truncated stores from the CURRENT store\n'
+                '  2. rm docs/evidence/walkforward_retro_2026-08-29/values_r*.json\n'
+                '  3. bash tools/harness docs/evidence/walkforward_retro_2026-08-29/'
+                'pass_retro_series.py   # ONE engine load, all eleven rounds\n\n'
+                'Step 1 alone fixes staleness caused by APPLIED FOOTBALL (the FW1 class). Steps 2-3 '
+                'are needed when the BOARD moved, which is this case.\n\n%s' % (rc, out[-1500:]))
+        ctx.log('WRITER 4b/8: emit_retro_series.py  (the R14-R24 walk-forward series writer 4 drops)')
         rc, out = ctx.run([sys.executable, _retro], timeout=900)
         if rc != 0:
             raise StepError('the retrospective re-emission failed (exit %s). Writer 4 has already '
@@ -1896,7 +1944,7 @@ def ui(ctx):
     # fence stands unchanged and is why both lanes exist at all.
     own_before = md5(own)
     if not ctx.skip_ownership_writer:
-        ctx.log('WRITER 5/7: ui/tools/ingest_inputs.py --mirror-only  '
+        ctx.log('WRITER 5/8: ui/tools/ingest_inputs.py --mirror-only  '
                 '(the ownership mirror, re-pinned to the landed board + store)')
         rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'ingest_inputs.py'),
                            '--mirror-only'], timeout=900)
@@ -1913,7 +1961,7 @@ def ui(ctx):
         ctx.log('  drift guard: %s'
                 % (_lines_with(out, 'MIRROR DRIFT GUARD') or ['(no verdict line)'])[-1])
     else:
-        ctx.log('WRITER 5/7: SKIPPED BY FAULT INJECTION — the mirror keeps the pin of a store this '
+        ctx.log('WRITER 5/8: SKIPPED BY FAULT INJECTION — the mirror keeps the pin of a store this '
                 'landing is replacing.')
 
     # THE READER'S OWN PREDICATE, ASSERTED HERE: this is `ui/app/ownership.js:pin()`, which compares
@@ -1960,7 +2008,7 @@ def ui(ctx):
     # read and never written, and an un-couriered CSV edit HALTs the step by name instead.
     clubval_before = md5(clubval)
     if not ctx.skip_clubs_writer:
-        ctx.log('WRITER 6/7: ui/tools/ingest_inputs.py --clubs-only  '
+        ctx.log('WRITER 6/8: ui/tools/ingest_inputs.py --clubs-only  '
                 '(the picks bundle, re-stamped to the landed board + store)')
         rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'ingest_inputs.py'),
                            '--clubs-only'], timeout=900)
@@ -1977,7 +2025,7 @@ def ui(ctx):
         ctx.log('  drift guard: %s'
                 % (_lines_with(out, 'PICKS DRIFT GUARD') or ['(no verdict line)'])[-1])
     else:
-        ctx.log('WRITER 6/7: SKIPPED BY FAULT INJECTION — the picks bundle keeps the stamp of a board '
+        ctx.log('WRITER 6/8: SKIPPED BY FAULT INJECTION — the picks bundle keeps the stamp of a board '
                 'this landing is replacing.')
 
     # THE READER'S OWN PREDICATE, ASSERTED HERE: this is `ui/app/club_totals.js:pin()`, which compares
@@ -2020,7 +2068,7 @@ def ui(ctx):
     # loads no engine and reads one JSON file, so it costs about a second against the hour a landing
     # already takes.
     draftout_before = md5(draftout)
-    ctx.log('WRITER 7/7: ui/tools/gen_draft_outcomes.py  '
+    ctx.log('WRITER 7/8: ui/tools/gen_draft_outcomes.py  '
             '(the draft outcome record, re-stamped to the landed store)')
     rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'gen_draft_outcomes.py')], timeout=300)
     if rc != 0:
@@ -2051,6 +2099,42 @@ def ui(ctx):
             'season(s) (pin() would ACCEPT it)'
             % (str(dst.get('store'))[:8], dst.get('nRows'), dst.get('nNeverPlayed'),
                dst.get('maturitySeasons')))
+
+    # ---- WRITER 8: THE v0 SIDECAR, re-stamped to the landed board --------------------------------
+    # ui/data_aux/v0.js CARRIES THE BOARD IT WAS BUILT FROM and refuses to be read on a different one.
+    # It was not a writer of this step, so the bust-exclusion landing shipped a board the sidecar did
+    # not recognise, and its own identity check said so by name:
+    #
+    #     the v0 sidecar was generated from board c8c2f2b6 but the app is loaded on board b005096b
+    #     — regenerate with ui/tools/gen_v0_sidecar.py
+    #
+    # which then took four more assertions with it: the sidecar reads INACTIVE, so no row resolves to
+    # a v0, so neither the absolute (live − v0) nor the ratio (live ÷ v0) can be computed. One stale
+    # stamp, five reds, found by a hand-run after the landing had already committed.
+    #
+    # It costs an engine load, which is why it is LAST: every cheaper writer and every in-step
+    # predicate has already run and failed fast if it was going to. Same three-part pattern as writers
+    # 5, 6 and 7 — run it unconditionally, then assert the READER'S predicate here, in-step. A landing
+    # that moved no board regenerates a byte-identical file and moves no carrier.
+    v0side = _p(ctx, 'ui', 'data_aux', 'v0.js')
+    v0_before = md5(v0side)
+    ctx.log('WRITER 8/8: ui/tools/gen_v0_sidecar.py  (the v0 sidecar, re-stamped to the landed board)')
+    rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'gen_v0_sidecar.py')], timeout=3600)
+    if rc != 0:
+        raise StepError('the v0 sidecar regeneration failed (exit %s):\n%s' % (rc, out[-2000:]))
+    for ln in _lines_with(out, 'v0 sidecar', 'wrote'):
+        ctx.log('  %s' % ln.strip())
+
+    v0st = _do_stamp(v0side)
+    v0_board = str(v0st.get('board') or '')
+    if v0_board and v0_board != str(boot['board']):
+        raise StepError('THE v0 SIDECAR STILL NAMES A DIFFERENT BOARD after regeneration: sidecar %s, '
+                        'landed %s. ui/tests/ui_defects_2026-08-21.test.js refuses it and the card '
+                        'ships without a v0 column.' % (v0_board[:8], str(boot['board'])[:8]))
+    ctx.log('  v0 sidecar == the landed board %s (the card\'s v0 column will resolve)'
+            % str(boot['board'])[:8])
+    if md5(v0side) != v0_before:
+        ctx.log('  carrier moved: ui/data_aux/v0.js  %s -> %s' % (v0_before[:12], md5(v0side)[:12]))
 
     ctx.log('AFTER   working %s  release-block=%s' % (md5(bundle), has_release(bundle)))
     ctx.log('AFTER   public  %s  release-block=%s' % (md5(public), has_release(public)))
