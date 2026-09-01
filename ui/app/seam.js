@@ -113,6 +113,37 @@ MD.dispVal = function (p) {
   return (p && p.ov && p.ov.dispv != null) ? p.ov.dispv : (p ? p.v : null);
 };
 
+/* THE SAME RULING, REACHABLE BY KEY (owner word 2026-09-01). `MD.dispVal` needs a board ROW, which is
+   fine for every surface that holds one. The movers page does not: it reads historical values out of
+   movers.js `byPoint`, keyed by player, with no board row in hand — which is why it showed Brodie at his
+   pre-override 117 at every point, stored and retro alike, while board, card, draft day and v0 all showed
+   58. Owner ruling: "Display 58 for Brodie."
+
+   ONE SOURCE STILL. This reads the factor off the SAME `ov` block `MD.dispVal` substitutes, so the
+   override lives in exactly one place (data/owner_overrides.json -> owner_overrides.apply_to_board ->
+   the board row's `ov`) and a future row, or a changed factor, reaches both accessors with no edit here.
+   Returns 1 for every non-overridden player and whenever the board is not loaded, so callers can
+   multiply unconditionally. */
+MD.ovFactor = function (key) {
+  var idx = null;
+  try { idx = MD.seam && MD.seam.indexed && MD.seam.indexed(); } catch (e) { return 1; }
+  var row = idx && idx.byKey ? idx.byKey[key] : null;
+  var f = row && row.ov ? row.ov.factor : null;
+  return (typeof f === "number" && f > 0) ? f : 1;
+};
+
+/* PYTHON'S ROUNDING, NOT JAVASCRIPT'S, and the difference is visible on the one player this exists for.
+   owner_overrides.py computes `dispv = int(round(v * factor))`, and Python 3 rounds a .5 tie to EVEN:
+   round(58.5) = 58. `Math.round(58.5)` is 59. Brodie is 117 x 0.5 = 58.5 exactly, so using Math.round
+   here would print 59 on the movers page against 58 on his card — the very inconsistency this ruling
+   closes, reintroduced one decimal further down. */
+MD.ovRound = function (x) {
+  var f = Math.floor(x), d = x - f;
+  if (d > 0.5) return f + 1;
+  if (d < 0.5) return f;
+  return (f % 2 === 0) ? f : f + 1;
+};
+
 /* THE LENS GATE (owner word 2026-08-21; ruling register v46 — see MD.config.LENS_DISABLED).
    A disabled lens must be UNREACHABLE, not merely unclicked: the board's filter state is snapshotted
    and restored by the universal Back, and MD.state is a plain object any future caller can set. So the

@@ -629,6 +629,61 @@ Object.keys(shipped.values || {}).forEach(function (k) {
 ok(retroReadings > 8000,
    "the shipped retro points carry their per-player readings (" + retroReadings + " values)");
 
+/* ---- THE OWNER OVERRIDE ON THIS PAGE (owner ruling 2026-09-01: "Display 58 for Brodie") ----------
+   This module read `byPoint` straight out of the bundle, so it was the only surface not going through
+   the override: Brodie showed 117 here against 58 on board, card, draft day and v0, at every point,
+   stored and retro alike. It now scales on the way out of compare() — so RENDERING AND SORTING both
+   follow the display, which is what the seam's own ruling requires ("ordering follows the display").
+
+   The module is dual-target: no `window` means no MD.ovFactor, which must mean no scaling. Both halves
+   are asserted, because a scaler that silently no-ops in node would make every test above it blind. */
+(function () {
+  var bundle = { values: {
+    "will-brodie":  { name: "Will Brodie",  byPoint: { a: { v: 147, rank: 10 }, b: { v: 117, rank: 12 } } },
+    "someone-else": { name: "Someone Else", byPoint: { a: { v: 200, rank: 1 },  b: { v: 210, rank: 1 } } } } };
+
+  var plain = core.compare(bundle, "a", "b");
+  var pb = plain.players.filter(function (p) { return p.key === "will-brodie"; })[0];
+  eq([pb.prev_value, pb.cur_value, pb.value_change], [147, 117, -30],
+     "no window -> no MD.ovFactor -> the engine values pass through untouched");
+
+  global.window = { MD: {
+    ovFactor: function (k) { return k === "will-brodie" ? 0.5 : 1; },
+    ovRound: function (x) { var f = Math.floor(x), d = x - f;
+      return d > 0.5 ? f + 1 : d < 0.5 ? f : (f % 2 === 0 ? f : f + 1); } } };
+  var over = core.compare(bundle, "a", "b");
+  var ob = over.players.filter(function (p) { return p.key === "will-brodie"; })[0];
+  var oc = over.players.filter(function (p) { return p.key === "someone-else"; })[0];
+
+  eq([ob.prev_value, ob.cur_value], [74, 58],
+     "the overridden player is shown at his DISPLAY value at BOTH ends of the range");
+  ok(ob.value_change === -16 && ob.cur_value - ob.prev_value === ob.value_change,
+     "and the row is internally consistent on screen: cur - prev == the printed change");
+  eq([oc.prev_value, oc.cur_value, oc.value_change], [200, 210, 10],
+     "every non-overridden player is byte-untouched (an override cannot move another player)");
+
+  /* THE ROUNDING IS PYTHON'S, NOT JAVASCRIPT'S. owner_overrides.py computes int(round(v*factor)) and
+     Python rounds a .5 tie to EVEN, so 117 x 0.5 = 58.5 -> 58. Math.round(58.5) is 59, which would
+     print 59 here against 58 on his card — the exact inconsistency this ruling closes, reintroduced
+     one decimal further down. 147 x 0.5 = 73.5 -> 74 by the same rule. */
+  ok(ob.cur_value === 58 && ob.prev_value === 74,
+     "  ties round half-to-EVEN, matching owner_overrides.py — not Math.round, which would give 59");
+
+  /* AND THE COST, STATED. Both ends round independently, and 73.5/58.5 round in OPPOSITE directions,
+     so the percentage is NOT invariant: -20.41% on the engine values, -21.62% displayed. Deriving the
+     change from unrounded halves instead would print a change that does not equal cur minus prev on
+     screen, which is worse. Internal consistency wins; the drift is recorded here so it is a known
+     property rather than a future bug report. */
+  ok(ob.value_change_pct === -21.62,
+     "  the percentage moves with the rounding (-20.41 -> -21.62) and that is the accepted trade");
+
+  delete global.window;
+  var after = core.compare(bundle, "a", "b");
+  var ab = after.players.filter(function (p) { return p.key === "will-brodie"; })[0];
+  eq([ab.prev_value, ab.cur_value], [147, 117],
+     "and the bundle was never mutated — a second call without the override reads the engine values");
+})();
+
 console.log("  " + "-".repeat(60));
 if (fails) { console.log("MOVERS TESTS: " + fails + " FAIL / " + n); process.exit(1); }
 console.log("MOVERS TESTS: ALL " + n + " PASS");

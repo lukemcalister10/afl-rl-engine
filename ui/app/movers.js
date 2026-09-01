@@ -37,6 +37,58 @@
   }
 
   /* ---- pure, dual-target logic (unit-tested under node) ------------------------------------ */
+  /* THE OWNER OVERRIDE REACHES THIS PAGE TOO (owner ruling 2026-09-01: "Display 58 for Brodie").
+   This module read `byPoint` values straight out of the bundle, so it was the ONLY surface not going
+   through the override — board, card, draft day and v0 all substitute via MD.dispVal, and Brodie read
+   117 here against 58 everywhere else, at every point, stored and retro alike.
+
+   APPLIED IN compare(), NOT AT RENDER, because the owner's seam ruling says "ordering follows the
+   display": scaling at render would leave every sort and filter on the engine value while the printed
+   figure moved. Doing it here means the report object IS the displayed report and everything
+   downstream — views, sorts, the CSV, the card link — follows with no further edit.
+
+   THE BOOK IS UNTOUCHED. `byPoint` still stores the engine value at every point; this scales on the
+   way out, exactly as the board stores `v` and displays `ov.dispv`. That keeps faith with the other
+   half of the override's own scope note: "NEVER touches ... the walk-forward book".
+
+   PERCENTAGES AND SHAPE DO NOT MOVE. Both ends scale by the same constant, so value_change_pct is
+   arithmetically identical and only the absolute figures change. */
+function ovFactor(key) {
+  var f = (typeof window !== "undefined" && window.MD && window.MD.ovFactor) || null;
+  try { return f ? f(key) : 1; } catch (e) { return 1; }
+}
+function ovScale(v, f) {
+  if (v == null) return null;
+  if (!f || f === 1) return v;
+  var r = (typeof window !== "undefined" && window.MD && window.MD.ovRound) || null;
+  return r ? r(v * f) : Math.round(v * f);
+}
+/* A STORED ROUND REPORT is returned as-is by compare() because it carries played/score facts a bare
+   value diff cannot know. It also carries raw values, so it gets the same treatment — copied, never
+   mutated: the bundle is shared and a report scaled in place would compound on the next call. */
+function ovApply(report) {
+  var rows = (report && report.players) || null;
+  if (!rows || !rows.length) return report;
+  var touched = false;
+  var out = rows.map(function (r) {
+    var f = ovFactor(r.key);
+    if (!f || f === 1) return r;
+    touched = true;
+    var pv = ovScale(r.prev_value, f), cv = ovScale(r.cur_value, f);
+    var dv = (pv != null && cv != null) ? (cv - pv) : r.value_change;
+    var o = {};
+    for (var k in r) { if (Object.prototype.hasOwnProperty.call(r, k)) o[k] = r[k]; }
+    o.prev_value = pv; o.cur_value = cv; o.value_change = dv;
+    o.value_change_pct = (dv != null && pv) ? Math.round(dv / pv * 10000) / 100 : r.value_change_pct;
+    return o;
+  });
+  if (!touched) return report;
+  var copy = {};
+  for (var k2 in report) { if (Object.prototype.hasOwnProperty.call(report, k2)) copy[k2] = report[k2]; }
+  copy.players = out;
+  return copy;
+}
+
   var core = {
     /* Fail-closed integrity of ONE report: it must carry a committed board identity, a unique + full
        active-player set, and a release identity.
@@ -365,7 +417,7 @@
        staged_apply's RL_CALENDAR_ROUNDS, and this is the browser's copy of the same number. */
     HOME_AND_AWAY_ROUNDS: 24,
 
-    /* THE SELECTOR OFFERS THE ACTIVE UNIVERSE (owner ruling 2026-08-31). `MD.universe` owns which
+  /* THE SELECTOR OFFERS THE ACTIVE UNIVERSE (owner ruling 2026-08-31). `MD.universe` owns which
        points are on screen so this tab and the player card cannot disagree about what world the
        reader is in. In node — where the tests load this file with require and there is no MD — the
        whole point list is returned, which is what every existing assertion was written against, so
@@ -478,7 +530,7 @@
     compare: function (bundle, fromId, toId) {
       bundle = bundle || {};
       var stored = (bundle.reports || {})[String(toId)];
-      if (stored && String(stored.previous_round) === String(fromId)) return stored;
+      if (stored && String(stored.previous_round) === String(fromId)) return ovApply(stored);
 
       var values = bundle.values || {}, players = [];
       for (var key in values) {
@@ -486,7 +538,9 @@
         var rec = values[key], bp = rec.byPoint || {};
         var a = bp[String(fromId)], b = bp[String(toId)];
         if (!a || !b) continue;
-        var dv = (a.v != null && b.v != null) ? (b.v - a.v) : null;
+        var _f = ovFactor(key);
+        var av = ovScale(a.v, _f), bvv = ovScale(b.v, _f);
+        var dv = (av != null && bvv != null) ? (bvv - av) : null;
         players.push({
           key: key, name: rec.name, club: rec.club, affl_team: rec.affl_team,
           pos: rec.pos, posCode: rec.posCode,
@@ -499,8 +553,8 @@
              rule against itself in ui/app/history.js:49 — "it fails SAFE — an unrecognised shape yields
              'not recorded', never a DNP." */
           played: null, dnp: null, score: null,
-          prev_value: a.v, cur_value: b.v, value_change: dv,
-          value_change_pct: (dv != null && a.v) ? Math.round(dv / a.v * 10000) / 100 : null,
+          prev_value: av, cur_value: bvv, value_change: dv,
+          value_change_pct: (dv != null && av) ? Math.round(dv / av * 10000) / 100 : null,
           prev_rank: a.rank, cur_rank: b.rank,
           rank_change: (a.rank != null && b.rank != null) ? (a.rank - b.rank) : null,
           prev_pos_rank: a.pos_rank, cur_pos_rank: b.pos_rank,
