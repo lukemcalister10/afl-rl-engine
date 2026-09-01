@@ -105,3 +105,56 @@ and every club rating (56 assets, both kinds). It would be a level error, not a 
 relativity among players moves, and no relativity among picks moves.
 
 **No action taken. Nothing changed. This is for the owner's ruling.**
+
+---
+
+# CORRECTION, same day: the missing instrument was found, and it tests the thing I said it did not
+
+A background search finished after this note was filed and turned up a file I had not opened:
+`session_2026-07-30/item279_step4/out/G5_s_invariance_instrument.txt`.
+
+```
+committed: s=0.977688  pooled head=3068.4647  ladder=54722
+SINGLE application (ruled) relativities preserved: True   (0 of 12 moved)
+DOUBLE application (bug)   relativities preserved: False  (12 of 12 moved)
+     e.g. pick1/star: 0.428571 -> 0.438352  (x1.022822)
+NON-VACUITY: instrument passes the correct case and FAILS the named failure mode: True
+conservation s-invariance: 0.9998 -> 0.9998 (both sides rescale identically)
+```
+
+## What this changes
+
+**§3 above is wrong on its central point.** I wrote that "0/12 relativities moved" was a statement
+about ratios that "a level error of exactly `s` survives untouched", and that I could not tell whether
+any of the twelve spanned a player and a pick. The instrument names one: **`pick1/star`** — a PICK over
+a PLAYER. It is exactly the cross-side ratio I said was missing, and it is the worked example.
+
+It also shows the instrument is NON-VACUOUS: it passes the ruled case and FAILS the named failure mode,
+which is the discipline this estate applies to every check that matters. The failure mode it fails on is
+called, in as many words, **"DOUBLE application (bug)"** — the very thing I was alleging.
+
+## Where my algebra went wrong
+
+I treated `_P1` as dimensionally carrying an `s`, on the grounds that a halt asserts `_P1 ==
+published_pin == H·s`. That is a COHERENCE requirement between two pinned numbers, not a statement that
+the symbol `_P1` is an s-scaled quantity in this expression. Operationally the two factors are:
+
+* `_P1 / PVC[1]` — the BASE map, putting the v3.4 curve's pick 1 onto the owner's pin;
+* `· s` — ONE application of the numéraire scale on the player side, matching the ONE the ladder takes
+  when it is published as `raw · s`.
+
+One per side. That is the "SINGLE application (ruled)" the instrument certifies, and it is why the
+cross-side ratio holds still as `s` moves. Reading it as `s²` counts the ladder's own application
+against the player side.
+
+## What I still cannot close, stated smaller than before
+
+The instrument proves **s-INVARIANCE** — that relativities do not move as `s` moves, both sides
+rescaling identically, with a conservation quantity at 0.9998. It is a strong result and it is the one
+the act needed. It does not, on its own, fix the LEVEL at a particular `s`; that still rests on which
+curve defines "a player worth pick 1". But the burden has flipped: the construction is certified
+coherent and non-vacuous by an instrument that fails when it should, and I have no measurement against
+it — only a dimensional reading I have now shown to be mistaken.
+
+**Standing recommendation: no action, and no re-anchoring.** My §2 claim of a 5.99% error should not be
+relied on. If the anchor is ever revisited it should start from this instrument, not from this note.
