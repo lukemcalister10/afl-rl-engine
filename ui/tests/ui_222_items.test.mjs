@@ -148,7 +148,11 @@ const HIST = await page.evaluate(() => {
 // its job and caught it — late, because the FW1 act should have restated it in its own commit and
 // did not. The count moving for a landed act is the sentinel working; it moving unexplained is the
 // thing it exists to catch.
-check(HIST.series && HIST.series.length === 28, 'item 3 — the history has all 28 points',
+// RESTATED 2026-09-01: THE BUST EXCLUSION landed (bust-exclusion-live-fit-1-9), 28 -> 29 — McCartin
+// and Boyd struck from the live pick-value fit, board c8c2f2b6 -> b005096b. Caught late again, and
+// for the same reason: the act's own commit did not restate it, because the landing's gate set does
+// not run this file. That is the gap, not the count.
+check(HIST.series && HIST.series.length === 29, 'item 3 — the history has all 29 points',
   HIST.series ? String(HIST.series.length) : 'null');
 check(HIST.series.every(r => r.v != null && r.rank != null && r.posRank != null),
   'item 3 — value, rank and positional rank are present at EVERY point (no participation gate)');
