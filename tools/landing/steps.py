@@ -1819,6 +1819,47 @@ def ui(ctx):
     ctx.log('  shipped model_changes == live-derived: %d boundar(ies), EQUAL  (the F-10 predicate holds)'
             % len(shipped_mc))
 
+    # ---- WRITER 4b: THE WALK-FORWARD RETROSPECTIVE, RE-EMITTED AFTER THE REBUILD -----------------
+    # WRITER 4 REGENERATES ui/data/movers.js FROM THE STORED WEEKLY REPORTS, and a retro point is not
+    # one of those, so writer 4 DROPS the whole R14-R24 series every time it runs. Measured 2026-09-01
+    # on the first landing since that series was added: the shipped bundle came out of writer 4 with
+    # `points` carrying zero retro entries, and movers.test.js red the gates step with
+    #     [FAIL] the SHIPPED bundle carries the whole retrospective series R14-R24  (got [])
+    # after 40 minutes of building. Nothing about that was act-specific — ANY landing wiped it, and
+    # the only reason it had never been seen is that no landing had run since the series landed.
+    #
+    # SO THE EMITTER RUNS HERE, one carrier along, in writers 3/4/5's own pattern: unconditionally,
+    # then its own predicate asserted in-step before any gate asserts it. It is idempotent by
+    # construction (it replaces existing retro points rather than appending), so a landing that did
+    # not disturb the series rewrites it byte-identically and moves no carrier.
+    #
+    # IT IS NOT A NEW INSTRUMENT. emit_retro_series.py is the series' writer of record and has been
+    # since 2026-08-29; what was missing is the lander running it, which is exactly the finding
+    # writer 4's own note records about rebuild_movers_derived.py ("the recipe was already in the
+    # tree; what was missing was the lander running it").
+    #
+    # A MISSING BANK IS A HALT, NOT A SKIP. The emitter reads values_rN.json banked by
+    # retro_walkforward.py. If a bank is absent the series cannot be honestly rebuilt, and shipping a
+    # bundle with the block silently missing is the defect this writer exists to close.
+    _retro = _p(ctx, 'docs', 'evidence', 'walkforward_retro_2026-08-29', 'emit_retro_series.py')
+    if os.path.exists(_retro):
+        ctx.log('WRITER 4b/7: emit_retro_series.py  (the R14-R24 walk-forward series writer 4 drops)')
+        rc, out = ctx.run([sys.executable, _retro], timeout=900)
+        if rc != 0:
+            raise StepError('the retrospective re-emission failed (exit %s). Writer 4 has already '
+                            'dropped the series, so the bundle would ship without it:\n%s'
+                            % (rc, out[-2000:]))
+        for ln in out.strip().splitlines()[-3:]:
+            ctx.log('  %s' % ln.strip())
+        _pts = [q.get('id') for q in (_js_obj(movers).get('points') or [])
+                if q.get('kind') == 'retro']
+        if len(_pts) != 11:
+            raise StepError('the shipped movers bundle carries %d retro point(s) after the '
+                            're-emission, expected the whole R14-R24 series (11). movers.test.js '
+                            'asserts this at the gates step; asserting it here costs a second '
+                            'instead of forty minutes.' % len(_pts))
+        ctx.log('  retro series present: %d points, %s .. %s' % (len(_pts), _pts[0], _pts[-1]))
+
     # ---- WRITER 5: the ownership mirror, re-pinned to the board and store this landing lands ------
     # THE SAME LAW AGAIN, ONE CARRIER ALONG, AND THE SAME THREE-PART PATTERN writers 3 and 4 use:
     # run the writer UNCONDITIONALLY, run the writer's OWN checker, then assert the reader's own
