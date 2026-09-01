@@ -5,6 +5,8 @@
   "date": "2026-09-01",
   "owner_word": "\"McCartin and Boyd should be excluded from everything. It's as if they weren't picked. So when looking at the value of pick 1 for the PVC, they didn't happen. For looking at KPF value for v0, they didn't happen. For your draft day analytics, they didn't happen.\" Then, on being shown the measured cost and my recommendation against: \"If it works, it works though. So surely we just recalculate the old number by removing mccartin and boyd, and everyone adjusts accordingly. That seems reasonable to me?\"",
   "authority": "owner word 2026-09-01, applying the standing ruling ENGINE_PRIMER.md §4.5",
+  "coherent_base": "5abeb08",
+  "_doc_coherent_base": "the commit immediately BEFORE the flip (ce1fe05), where the pins and the source still agree. The sandbox the LANDER is exercised against is cut from here; it changes no prediction and no identity (cli.py _preflight_selftest).",
   "prereg": {
     "path": "docs/evidence/bust_exclusion_2026-09-01/PREREG_LANDING.md",
     "board_before": "c8c2f2b6f99445484fadaa8c44afe609",
@@ -13,8 +15,18 @@
     "kill_switch": null
   },
   "identities": {
-    "moves": ["board"],
-    "unmoved": ["store", "engine_head", "rl_model", "fv", "config", "register", "as_of_round"]
+    "moves": [
+      "board"
+    ],
+    "unmoved": [
+      "store",
+      "engine_head",
+      "rl_model",
+      "fv",
+      "config",
+      "register",
+      "as_of_round"
+    ]
   },
   "column": {
     "id": "bust-exclusion-live-fit-1-9",
@@ -23,12 +35,16 @@
   },
   "lineage": {
     "doc": "docs/evidence/bust_exclusion_2026-09-01/PREREG_LANDING.md",
-    "owner_ruling_id": ["BUST_EXCLUSION_LIVE_FIT_2026-09-01_if_it_works_it_works"],
+    "owner_ruling_id": [
+      "BUST_EXCLUSION_LIVE_FIT_2026-09-01_if_it_works_it_works"
+    ],
     "owner_ruling": "The force-majeure exclusion of Paddy McCartin and Tom Boyd, ruled in ENGINE_PRIMER §4.5 and never once applied to the live fit, is applied.",
     "authority": "owner word 2026-09-01",
     "invariants": {}
   },
-  "day0_rebase": { "state": "off" },
+  "day0_rebase": {
+    "state": "off"
+  },
   "evidence_dir": "docs/evidence/bust_exclusion_2026-09-01",
   "gates": null
 }
