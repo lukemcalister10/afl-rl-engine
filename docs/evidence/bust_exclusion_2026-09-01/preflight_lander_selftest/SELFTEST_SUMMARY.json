@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-01T09:05:25Z",
+  "generated": "2026-09-01T14:30:29Z",
   "results": [
     {
       "case": "control_clean_run",
@@ -8,7 +8,7 @@
     },
     {
       "case": "commit_explicit_paths",
-      "detail": "7 path(s) committed, all declared: data/release_contract.json, docs/STATE.md, docs/evidence/landing_selftest/SELFTEST_CLAIMS.json, docs/evidence/landing_selftest/claims_check.txt",
+      "detail": "6 path(s) committed, all declared: data/release_contract.json, docs/STATE.md, docs/evidence/landing_selftest/SELFTEST_CLAIMS.json, docs/evidence/landing_selftest/claims_check.txt",
       "ok": true
     },
     {
@@ -98,7 +98,7 @@
     },
     {
       "case": "round_commit_explicit_paths",
-      "detail": "8 path(s) committed, all declared: data/release_contract.json, docs/STATE.md, docs/evidence/landing_selftest/MOVERS_R24.html, docs/evidence/landing_selftest/SELFTEST_CLAIMS.json",
+      "detail": "7 path(s) committed, all declared: data/release_contract.json, docs/STATE.md, docs/evidence/landing_selftest/MOVERS_R24.html, docs/evidence/landing_selftest/SELFTEST_CLAIMS.json",
       "ok": true
     },
     {
@@ -143,12 +143,12 @@
     },
     {
       "case": "sheet_recut_writer",
-      "detail": "exit 0; the declaration now reads md5=01161960cb15 rows=219 injured_y=34; sheet commit e61662b07192; engine_head asserted UNMOVED",
-      "ok": "e61662b07192c067cf1e845253ea2ec0270e5213"
+      "detail": "exit 0; the declaration now reads md5=01161960cb15 rows=219 injured_y=34; sheet commit 0756bb182a5a; engine_head asserted UNMOVED",
+      "ok": "0756bb182a5a1078e12bf30edff5b053e8e8bb1d"
     },
     {
       "case": "round_input_commit_pincer",
-      "detail": "step 0 DECLARED the score file + the override record as expected dirt (yes); catchup_preflight committed the inputs itself at 190b4b60d6e6; the flight reached failed_step='advance' (the door of the armed advance, by request)",
+      "detail": "step 0 DECLARED the score file + the override record as expected dirt (yes); catchup_preflight committed the inputs itself at d17ec7244703; the flight reached failed_step='advance' (the door of the armed advance, by request)",
       "ok": true
     },
     {

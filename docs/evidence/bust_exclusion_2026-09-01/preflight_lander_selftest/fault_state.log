@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_3227/sandbox
+  tree      : /tmp/landing_selftest_12166/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board c8c2f2b6f99445484fadaa8c44afe609
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,8 +9,8 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-lever-3724 (pid 3724) — single writer for the shared workspace.
-base commit        1a6959e306d2c59fc2093aef192ed7ae0e15cee0
+build-lock: HELD by land-lever-12678 (pid 12678) — single writer for the shared workspace.
+base commit        df82e96da7dc2d2bd39a030563f2bf93870ae8b9
 board pin (before) c8c2f2b6f99445484fadaa8c44afe609
 store pin (before) 415929d3c9d561cc58bef00ae63432b2
 restore point      80 carrier(s) captured, 80 present on disk
@@ -80,13 +80,18 @@ WRITER 4/7: ui/tools/rebuild_movers_derived.py  (points / values / model_changes
   derived blocks changed: points, values
   drift guard: derived blocks OK — committed == rebuilt (4497829 bytes, latest report R24)
   shipped model_changes == live-derived: 16 boundar(ies), EQUAL  (the F-10 predicate holds)
+WRITER 4b/7: emit_retro_series.py  (the R14-R24 walk-forward series writer 4 drops)
+  retro-r23   804 players  board in-proce
+  retro-r24   804 players  board in-proce
+  emitted 11 retro points covering up to 804 players -> ui/data/movers.js
+  retro series present: 11 points, retro-r14 .. retro-r24
 WRITER 5/7: ui/tools/ingest_inputs.py --mirror-only  (the ownership mirror, re-pinned to the landed board + store)
-  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_3227/sandbox/ui/data/ownership.js
+  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_12166/sandbox/ui/data/ownership.js
   MIRROR-ONLY    — the club-valuation bundle was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
   drift guard: MIRROR DRIFT GUARD — ui/data/ownership.js is byte-identical to what this tree projects (74727 bytes).
   mirror pin == the landed identity: board c8c2f2b6 store 415929d3 R24, 804 player(s) mirrored (pin() would ACTIVATE it)
 WRITER 6/7: ui/tools/ingest_inputs.py --clubs-only  (the picks bundle, re-stamped to the landed board + store)
-  CLEAN INGEST — 240 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: /tmp/landing_selftest_3227/sandbox/ui/data/club_valuation.js
+  CLEAN INGEST — 240 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: /tmp/landing_selftest_12166/sandbox/ui/data/club_valuation.js
   CLUBS-ONLY     — the ownership mirror was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
   drift guard: PICKS DRIFT GUARD — ui/data/club_valuation.js is byte-identical to what this tree projects (58319 bytes).
   picks stamp == the landed identity: board c8c2f2b6 store 415929d3 R24, 240 pick(s) priced off 1c3b22d1 (pin() would ACCEPT it)
@@ -97,7 +102,7 @@ WRITER 7/7: ui/tools/gen_draft_outcomes.py  (the draft outcome record, re-stampe
   draft stamp == the landed store 415929d3: 1568 selections, 226 never played, maturity 4 season(s) (pin() would ACCEPT it)
 AFTER   working 83389e5c3a4a37c8965da911250f8e45  release-block=True
 AFTER   public  49b75fe9af5986fb1764c3cb769c6dda  release-block=False
-AFTER   movers  aaa7c14a09e544e5be095ea3055a3d58  MOVED 0718b48cf84c -> aaa7c14a09e5, tracking the register append
+AFTER   movers  0718b48cf84c917d761f189a5010a9ce  UNMOVED (nothing it derives from moved)
 AFTER   mirror  9a67aa16da1e36be7cef17ca795c9e90  UNMOVED (the lineage did not move)
 AFTER   owners df802447cbc1e178646e068a545399d9  UNMOVED (neither the board nor the store moved)
 AFTER   picks  6ed27016f1d0dc28e97711aa709a1749  UNMOVED (neither the board, the store, the pick workbook nor the curve moved)
@@ -109,24 +114,22 @@ AFTER   draft  4537576e98ee245072c15bc1a7a0ce2c  UNMOVED (no career fact in the 
   stamp.balanced_board_md5   e4bc3be2efc12e75e107f26bbda91c0a   OK
   stamp.asOfRound            24                                 OK
 THE HTML APP'S EMBEDDED BOARD IDENTITY IS c8c2f2b6f99445484fadaa8c44afe609. All seven writers ran; the release block is back, the reader can see the transition that produced this board, the ownership mirror is pinned to it rather than to the store it replaced, and the pick surface is stamped to it rather than to the board before it.
-    [ui OK  2.34s]
+    [ui OK  3.09s]
     build-lock: RELEASED after 'ui' — the remaining steps write nothing and the one gate that builds takes the lock itself.
 
 --- STEP 7/10  state          docs/STATE.md regenerated from the carriers (3c) ---
 *** FAULT INJECTED at step 'state': state_ungeneratable — a carrier the state file must READ is gone, so the file cannot be generated
-    [state FAILED  0.06s]
+    [state FAILED  0.07s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'state'
 ======================================================================================================
   the state file CANNOT be generated from this tree: docs/register/LATEST.md is not in the tree — the record pointer cannot be generated
 
-carriers that moved before the failure: 2
+carriers that moved before the failure: 1
     data/release_contract.json                                       584b49807598 -> b2076108a6fb
-    ui/data/movers.js                                                0718b48cf84c -> aaa7c14a09e5
-RESTORING 2 carrier(s):
+RESTORING 1 carrier(s):
     rewrite  data/release_contract.json
-    rewrite  ui/data/movers.js
 
 ABORT PROOF: every carrier is BYTE-EXACT to the identity captured at step 0.
 
@@ -142,7 +145,7 @@ improvised manual landing under pressure.
     lineage            0.00s  OK
     contract           0.08s  OK
     sibling            0.11s  OK
-    ui                 2.34s  OK
-    state              0.06s  FAIL
-    TOTAL              2.72s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_3724
+    ui                 3.09s  OK
+    state              0.07s  FAIL
+    TOTAL              3.48s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_12678

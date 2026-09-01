@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND STORE-EDIT — SELF-TEST — the surgical store edit
-  tree      : /tmp/landing_selftest_3227/sandbox
+  tree      : /tmp/landing_selftest_12166/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board ffba839cafc552401b37a09e145e7300
   mode      : APPLY (SELFTEST) builder=selftest-moved
@@ -8,12 +8,12 @@ LAND STORE-EDIT — SELF-TEST — the surgical store edit
 
 --- STEP 0/11  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-edit-4866 (pid 4866) — single writer for the shared workspace.
-base commit        1a6959e306d2c59fc2093aef192ed7ae0e15cee0
+build-lock: HELD by land-edit-13896 (pid 13896) — single writer for the shared workspace.
+base commit        df82e96da7dc2d2bd39a030563f2bf93870ae8b9
 board pin (before) c8c2f2b6f99445484fadaa8c44afe609
 store pin (before) 415929d3c9d561cc58bef00ae63432b2
 restore point      81 carrier(s) captured, 81 present on disk
-    [preflight OK  0.07s]
+    [preflight OK  0.08s]
 
 --- STEP 1/11  store_edit     THE SURGICAL STORE EDIT, applied in the work dir ---
 store BEFORE  415929d3c9d561cc58bef00ae63432b2   (1978024 bytes)
@@ -26,7 +26,7 @@ WRITTEN and re-read: 1 row(s) edited, 2650 rows in the store, every other row un
 season clock  re-derived from the edited store by season_state.derive (the sole deriver)
     source_store_md5  415929d3c9d5 -> 4cc3c33ab29b
     every derived VALUE asserted unchanged (10 field(s) checked); WRITTEN and re-read.
-    [store_edit OK  0.15s]
+    [store_edit OK  0.16s]
 
 --- STEP 2/11  build_proofs   bare build, predicted identity, switch leg, day-0 ---
 *** FAULT INJECTED at step 'build_proofs': second_mover — a SECOND board row moves and the act declared one — the undeclared mover must be NAMED, not merely implied by a board md5 that is not the predicted one
@@ -36,7 +36,7 @@ MOVERS — EVERY ONE, WITH VALUES  (2 of 1002 valued row(s) moved)
     harry-sheezel                Harry Sheezel              11161 -> 11160   (-1)  [active]
     nick-daicos                  Nick Daicos                10636 -> 10635   (-1)  [active]
 pool (sum of active v)  703913 -> 703911  (-2)
-    [build_proofs FAILED  0.08s]
+    [build_proofs FAILED  0.09s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'build_proofs'
@@ -61,8 +61,8 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.07s  OK
-    store_edit         0.15s  OK
-    build_proofs       0.08s  FAIL
-    TOTAL              0.30s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_4866
+    preflight          0.08s  OK
+    store_edit         0.16s  OK
+    build_proofs       0.09s  FAIL
+    TOTAL              0.33s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_13896

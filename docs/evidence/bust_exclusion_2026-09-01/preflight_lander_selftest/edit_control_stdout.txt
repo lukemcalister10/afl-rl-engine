@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND STORE-EDIT — SELF-TEST — the surgical store edit
-  tree      : /tmp/landing_selftest_3227/sandbox
+  tree      : /tmp/landing_selftest_12166/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board ffba839cafc552401b37a09e145e7300
   mode      : APPLY (SELFTEST) builder=selftest-moved
@@ -8,12 +8,12 @@ LAND STORE-EDIT — SELF-TEST — the surgical store edit
 
 --- STEP 0/11  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-edit-4818 (pid 4818) — single writer for the shared workspace.
-base commit        1a6959e306d2c59fc2093aef192ed7ae0e15cee0
+build-lock: HELD by land-edit-13848 (pid 13848) — single writer for the shared workspace.
+base commit        df82e96da7dc2d2bd39a030563f2bf93870ae8b9
 board pin (before) c8c2f2b6f99445484fadaa8c44afe609
 store pin (before) 415929d3c9d561cc58bef00ae63432b2
 restore point      81 carrier(s) captured, 81 present on disk
-    [preflight OK  0.06s]
+    [preflight OK  0.07s]
 
 --- STEP 1/11  store_edit     THE SURGICAL STORE EDIT, applied in the work dir ---
 store BEFORE  415929d3c9d561cc58bef00ae63432b2   (1978024 bytes)
@@ -26,7 +26,7 @@ WRITTEN and re-read: 1 row(s) edited, 2650 rows in the store, every other row un
 season clock  re-derived from the edited store by season_state.derive (the sole deriver)
     source_store_md5  415929d3c9d5 -> 4cc3c33ab29b
     every derived VALUE asserted unchanged (10 field(s) checked); WRITTEN and re-read.
-    [store_edit OK  0.15s]
+    [store_edit OK  0.16s]
 
 --- STEP 2/11  build_proofs   bare build, predicted identity, switch leg, day-0 ---
 build         rc=0 board=ffba839cafc552401b37a09e145e7300  (0.0s)
@@ -61,7 +61,7 @@ chain OK: register tail destination == this entry's source on board and store
 append-only OK: 20 prior entries byte-verbatim; top-level baseline 06d8af60b679a12db07c064c60c065f9 / v2.11-present-lens-baseline UNMOVED
 MOVED by this transition: ['board', 'store'] (of 11 identities)
 re-read OK: round-trips at indent=1; prior entries still byte-verbatim.
-    [lineage OK  0.15s]
+    [lineage OK  0.16s]
 
 --- STEP 5/11  contract       restamp_dynamic + the bake-lane repin + check ---
 contract seal self-consistent before the act: f17fa61ecea6
@@ -77,11 +77,11 @@ WRITER 2: the bake-lane identities restamp_dynamic does not touch (release_contr
   contract_sha256             2c2202a6ec94 -> 2c2202a6ec94
   frozen fields asserted unmoved: 10 checked, 0 moved
 RE-STAMPED, re-read, and release_contract.py check PASSES.
-    [contract OK  0.07s]
+    [contract OK  0.08s]
 
 --- STEP 6/11  sibling        the balanced sibling, rebuilt and reconciled if moved ---
 *** FAULT INJECTED at step 'sibling': sidecar_corrupt — the sibling provenance sidecar is unreadable
-    [sibling FAILED  0.03s]
+    [sibling FAILED  0.04s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'sibling'
@@ -91,7 +91,7 @@ LANDING ABORTED AT STEP 'sibling'
 carriers that moved before the failure: 13
     data/expected_boot.json                                          4a93e6eadaee -> 15269081c0bb
     data/release_contract.json                                       584b49807598 -> 94922ad0d267
-    data/release_lineage.json                                        21b2dbd02e69 -> 0007243072cf
+    data/release_lineage.json                                        21b2dbd02e69 -> 76cc1261d026
     data/rl_build/rl_app_data.json                                   c8c2f2b6f994 -> ffba839cafc5
     data/rl_build/rl_app_data.json.srcmd5                            23ff7611ea60 -> 390d88ca56fc
     data/season_state.json                                           04e9d68f67ce -> 1e20c6bd53b4
@@ -125,12 +125,12 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.06s  OK
-    store_edit         0.15s  OK
+    preflight          0.07s  OK
+    store_edit         0.16s  OK
     build_proofs       0.05s  OK
     pins               0.02s  OK
-    lineage            0.15s  OK
-    contract           0.07s  OK
-    sibling            0.03s  FAIL
-    TOTAL              0.53s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_4818
+    lineage            0.16s  OK
+    contract           0.08s  OK
+    sibling            0.04s  FAIL
+    TOTAL              0.58s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_13848

@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND STORE-EDIT — SELF-TEST — the surgical store edit
-  tree      : /tmp/landing_selftest_3227/sandbox
+  tree      : /tmp/landing_selftest_12166/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board ffba839cafc552401b37a09e145e7300
   mode      : APPLY (SELFTEST) builder=selftest-moved
@@ -8,8 +8,8 @@ LAND STORE-EDIT — SELF-TEST — the surgical store edit
 
 --- STEP 0/11  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-edit-4846 (pid 4846) — single writer for the shared workspace.
-base commit        1a6959e306d2c59fc2093aef192ed7ae0e15cee0
+build-lock: HELD by land-edit-13876 (pid 13876) — single writer for the shared workspace.
+base commit        df82e96da7dc2d2bd39a030563f2bf93870ae8b9
 board pin (before) c8c2f2b6f99445484fadaa8c44afe609
 store pin (before) 415929d3c9d561cc58bef00ae63432b2
 restore point      81 carrier(s) captured, 81 present on disk
@@ -19,7 +19,7 @@ restore point      81 carrier(s) captured, 81 present on disk
 *** FAULT INJECTED at step 'store_edit': store_old_mismatch — the store already carries the NEW value, so the `old` the spec asserts is not there — an ABORT, never a repair (the exact-string law)
 store BEFORE  4cc3c33ab29be5423267ed79e2c995f2   (1978024 bytes)
               == expected_boot.store, so the tree is the one this act was written for.
-    [store_edit FAILED  0.10s]
+    [store_edit FAILED  0.11s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'store_edit'
@@ -49,6 +49,6 @@ improvised manual landing under pressure.
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
     preflight          0.09s  OK
-    store_edit         0.10s  FAIL
-    TOTAL              0.19s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_4846
+    store_edit         0.11s  FAIL
+    TOTAL              0.20s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_13876

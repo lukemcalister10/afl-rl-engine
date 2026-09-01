@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_3227/sandbox
+  tree      : /tmp/landing_selftest_12166/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board c8c2f2b6f99445484fadaa8c44afe609
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,12 +9,12 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-lever-3891 (pid 3891) — single writer for the shared workspace.
-base commit        1a6959e306d2c59fc2093aef192ed7ae0e15cee0
+build-lock: HELD by land-lever-12850 (pid 12850) — single writer for the shared workspace.
+base commit        df82e96da7dc2d2bd39a030563f2bf93870ae8b9
 board pin (before) c8c2f2b6f99445484fadaa8c44afe609
 store pin (before) 415929d3c9d561cc58bef00ae63432b2
 restore point      80 carrier(s) captured, 80 present on disk
-    [preflight OK  0.08s]
+    [preflight OK  0.07s]
 
 --- STEP 1/10  build_proofs   bare build, predicted identity, switch leg, day-0 ---
 build         rc=0 board=c8c2f2b6f99445484fadaa8c44afe609  (0.0s)
@@ -56,7 +56,7 @@ RE-STAMPED, re-read, and release_contract.py check PASSES.
 --- STEP 5/10  sibling        the balanced sibling, rebuilt and reconciled if moved ---
 verify BEFORE : ok=True balanced=e4bc3be2efc1 fails=0
 the sibling is CURRENT — nothing to reconcile, and this step writes nothing.
-    [sibling OK  0.11s]
+    [sibling OK  0.12s]
 
 --- STEP 6/10  ui             ALL SEVEN UI writers, and the identity read back out ---
 *** FAULT INJECTED at step 'ui': stale_ownership_mirror — WRITER 5 never runs and the shipped ownership mirror keeps a foreign store pin — the live ownership lane ships SWITCHED OFF, silently
@@ -81,21 +81,24 @@ WRITER 4/7: ui/tools/rebuild_movers_derived.py  (points / values / model_changes
   derived blocks changed: points, values
   drift guard: derived blocks OK — committed == rebuilt (4497829 bytes, latest report R24)
   shipped model_changes == live-derived: 16 boundar(ies), EQUAL  (the F-10 predicate holds)
+WRITER 4b/7: emit_retro_series.py  (the R14-R24 walk-forward series writer 4 drops)
+  retro-r23   804 players  board in-proce
+  retro-r24   804 players  board in-proce
+  emitted 11 retro points covering up to 804 players -> ui/data/movers.js
+  retro series present: 11 points, retro-r14 .. retro-r24
 WRITER 5/7: SKIPPED BY FAULT INJECTION — the mirror keeps the pin of a store this landing is replacing.
-    [ui FAILED  1.54s]
+    [ui FAILED  2.09s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'ui'
 ======================================================================================================
   THE OWNERSHIP MIRROR WOULD BE REFUSED BY ui/app/ownership.js:pin() — ['stamp.generatedFromStore (cccccccccccccccccccccccccccccccc != 415929d3c9d561cc58bef00ae63432b2)', 'stamp.store (cccccccc != 415929d3)']. The live ownership lane would ship SWITCHED OFF, which is what happened between the R23 advance and 2026-08-21, and it must hold BEFORE the gates step.
 
-carriers that moved before the failure: 3
+carriers that moved before the failure: 2
     data/release_contract.json                                       584b49807598 -> b2076108a6fb
-    ui/data/movers.js                                                0718b48cf84c -> aaa7c14a09e5
     ui/data/ownership.js                                             df802447cbc1 -> 10a8da55a035
-RESTORING 3 carrier(s):
+RESTORING 2 carrier(s):
     rewrite  data/release_contract.json
-    rewrite  ui/data/movers.js
     rewrite  ui/data/ownership.js
 
 ABORT PROOF: every carrier is BYTE-EXACT to the identity captured at step 0.
@@ -106,12 +109,12 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.08s  OK
+    preflight          0.07s  OK
     build_proofs       0.01s  OK
     pins               0.02s  OK
     lineage            0.00s  OK
     contract           0.08s  OK
-    sibling            0.11s  OK
-    ui                 1.54s  FAIL
-    TOTAL              1.84s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_3891
+    sibling            0.12s  OK
+    ui                 2.09s  FAIL
+    TOTAL              2.39s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_12850

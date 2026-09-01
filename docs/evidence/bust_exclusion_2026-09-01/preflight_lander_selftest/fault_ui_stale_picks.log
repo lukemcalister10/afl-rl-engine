@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_3227/sandbox
+  tree      : /tmp/landing_selftest_12166/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board c8c2f2b6f99445484fadaa8c44afe609
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,8 +9,8 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO, RL_VENV
-build-lock: HELD by land-lever-3918 (pid 3918) — single writer for the shared workspace.
-base commit        1a6959e306d2c59fc2093aef192ed7ae0e15cee0
+build-lock: HELD by land-lever-12879 (pid 12879) — single writer for the shared workspace.
+base commit        df82e96da7dc2d2bd39a030563f2bf93870ae8b9
 board pin (before) c8c2f2b6f99445484fadaa8c44afe609
 store pin (before) 415929d3c9d561cc58bef00ae63432b2
 restore point      80 carrier(s) captured, 80 present on disk
@@ -56,7 +56,7 @@ RE-STAMPED, re-read, and release_contract.py check PASSES.
 --- STEP 5/10  sibling        the balanced sibling, rebuilt and reconciled if moved ---
 verify BEFORE : ok=True balanced=e4bc3be2efc1 fails=0
 the sibling is CURRENT — nothing to reconcile, and this step writes nothing.
-    [sibling OK  0.12s]
+    [sibling OK  0.14s]
 
 --- STEP 6/10  ui             ALL SEVEN UI writers, and the identity read back out ---
 *** FAULT INJECTED at step 'ui': stale_picks_bundle — WRITER 6 never runs and the shipped picks bundle keeps a foreign board + store stamp — the pick surface ships STALE (and, before v827, silently)
@@ -81,27 +81,30 @@ WRITER 4/7: ui/tools/rebuild_movers_derived.py  (points / values / model_changes
   derived blocks changed: points, values
   drift guard: derived blocks OK — committed == rebuilt (4497829 bytes, latest report R24)
   shipped model_changes == live-derived: 16 boundar(ies), EQUAL  (the F-10 predicate holds)
+WRITER 4b/7: emit_retro_series.py  (the R14-R24 walk-forward series writer 4 drops)
+  retro-r23   804 players  board in-proce
+  retro-r24   804 players  board in-proce
+  emitted 11 retro points covering up to 804 players -> ui/data/movers.js
+  retro series present: 11 points, retro-r14 .. retro-r24
 WRITER 5/7: ui/tools/ingest_inputs.py --mirror-only  (the ownership mirror, re-pinned to the landed board + store)
-  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_3227/sandbox/ui/data/ownership.js
+  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_12166/sandbox/ui/data/ownership.js
   MIRROR-ONLY    — the club-valuation bundle was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
   drift guard: MIRROR DRIFT GUARD — ui/data/ownership.js is byte-identical to what this tree projects (74727 bytes).
   mirror pin == the landed identity: board c8c2f2b6 store 415929d3 R24, 804 player(s) mirrored (pin() would ACTIVATE it)
 WRITER 6/7: SKIPPED BY FAULT INJECTION — the picks bundle keeps the stamp of a board this landing is replacing.
-    [ui FAILED  1.82s]
+    [ui FAILED  2.76s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'ui'
 ======================================================================================================
   THE PICKS BUNDLE WOULD BE REFUSED BY ui/app/club_totals.js:pin() — ['stamp.board (aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa != c8c2f2b6f99445484fadaa8c44afe609)', 'stamp.store (cccccccc != 415929d3)', 'stamp.expectedBoard (aaaaaaaa != c8c2f2b6)']. The pick surface would ship UNAVAILABLE (or, before v827, ship SILENTLY STALE, which is what happened between the R23 advance and 2026-08-21), and it must hold BEFORE the gates step.
 
-carriers that moved before the failure: 3
+carriers that moved before the failure: 2
     data/release_contract.json                                       584b49807598 -> b2076108a6fb
     ui/data/club_valuation.js                                        6ed27016f1d0 -> 2ee5918dba68
-    ui/data/movers.js                                                0718b48cf84c -> aaa7c14a09e5
-RESTORING 3 carrier(s):
+RESTORING 2 carrier(s):
     rewrite  data/release_contract.json
     rewrite  ui/data/club_valuation.js
-    rewrite  ui/data/movers.js
 
 ABORT PROOF: every carrier is BYTE-EXACT to the identity captured at step 0.
 
@@ -116,7 +119,7 @@ improvised manual landing under pressure.
     pins               0.02s  OK
     lineage            0.00s  OK
     contract           0.08s  OK
-    sibling            0.12s  OK
-    ui                 1.82s  FAIL
-    TOTAL              2.14s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_3918
+    sibling            0.14s  OK
+    ui                 2.76s  FAIL
+    TOTAL              3.10s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_12879

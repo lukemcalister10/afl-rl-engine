@@ -2,7 +2,7 @@
   "abort": {
     "byte_exact": true,
     "commits_rewound": [],
-    "error": "gate release_manifest_check did not pass (exit 1; 'PASS' absent from output):\n          24                                                               OK\n    release_contract.as_of_round                  24                                                               OK\n    season_state.as_of_round                      24                                                               OK\n    board_view_working.stamp.asOfRound            24                                                               OK\n    board_view_working.stamp.release.as_of_round  24                                                               OK\n    -> 5 carriers, COHERENT\n\n  SHEET  [computed md5 docs/owner_annotations/SITTER_2026_v1.csv]\n    (truth)                                       61ef3e61a685909784c1d6eb23859788                                 \n    sheet_pins.sheet_md5                          61ef3e61a685909784c1d6eb23859788                                 OK\n    -> 1 carriers, COHERENT\n\n  SHEET_ROWS  [computed csv row count docs/owner_annotations/SITTER_2026_v1.csv]\n    (truth)                                       219                                                              \n    sheet_pins.sheet_rows                         219                                                              OK\n    -> 1 carriers, COHERENT\n\n  SHEET_INJURED_Y  [computed injured=Y count docs/owner_annotations/SITTER_2026_v1.csv]\n    (truth)                                       34                                                               \n    sheet_pins.sheet_injured_y                    34                                                               OK\n    -> 1 carriers, COHERENT\n\n  43 carrier fields across 11 identities and 8 files: 41 coherent, 1 incoherent, 1 sealed-lag\n\n  SEALED-LAG \u2014 a freeze-stamp naming the state it was SEALED against, not the\n  state the tree is in. Legitimate between seals; reported, never gating:\n    book_stable_seal.store_md5                   sealed against b4d23810, tree is now 415929d3\n    (i.e. the artifact these stamps belong to has not been re-sealed since the\n     tree last moved. That is information, not a defect \u2014 but a gate that\n     consumes the seal as a baseline is comparing against the older state.)\n\n  HALTED CARRIERS \u2014 the blocked-once law reports each of these ONCE, and every\n  downstream check that reads one is marked BLOCKED rather than failing again:\n    expected_boot:board\n        expected_boot.board = aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa (expected c8c2f2b6f99445484fadaa8c44afe609)\n\n  RELEASE MANIFEST COHERENCE: FAIL\n\n\nPER-CHECK RAW OUTPUT: /tmp/landing_selftest_3227/sandbox/docs/evidence/landing_selftest/gate_release_manifest_check.txt",
+    "error": "gate release_manifest_check did not pass (exit 1; 'PASS' absent from output):\n          24                                                               OK\n    release_contract.as_of_round                  24                                                               OK\n    season_state.as_of_round                      24                                                               OK\n    board_view_working.stamp.asOfRound            24                                                               OK\n    board_view_working.stamp.release.as_of_round  24                                                               OK\n    -> 5 carriers, COHERENT\n\n  SHEET  [computed md5 docs/owner_annotations/SITTER_2026_v1.csv]\n    (truth)                                       61ef3e61a685909784c1d6eb23859788                                 \n    sheet_pins.sheet_md5                          61ef3e61a685909784c1d6eb23859788                                 OK\n    -> 1 carriers, COHERENT\n\n  SHEET_ROWS  [computed csv row count docs/owner_annotations/SITTER_2026_v1.csv]\n    (truth)                                       219                                                              \n    sheet_pins.sheet_rows                         219                                                              OK\n    -> 1 carriers, COHERENT\n\n  SHEET_INJURED_Y  [computed injured=Y count docs/owner_annotations/SITTER_2026_v1.csv]\n    (truth)                                       34                                                               \n    sheet_pins.sheet_injured_y                    34                                                               OK\n    -> 1 carriers, COHERENT\n\n  43 carrier fields across 11 identities and 8 files: 41 coherent, 1 incoherent, 1 sealed-lag\n\n  SEALED-LAG \u2014 a freeze-stamp naming the state it was SEALED against, not the\n  state the tree is in. Legitimate between seals; reported, never gating:\n    book_stable_seal.store_md5                   sealed against b4d23810, tree is now 415929d3\n    (i.e. the artifact these stamps belong to has not been re-sealed since the\n     tree last moved. That is information, not a defect \u2014 but a gate that\n     consumes the seal as a baseline is comparing against the older state.)\n\n  HALTED CARRIERS \u2014 the blocked-once law reports each of these ONCE, and every\n  downstream check that reads one is marked BLOCKED rather than failing again:\n    expected_boot:board\n        expected_boot.board = aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa (expected c8c2f2b6f99445484fadaa8c44afe609)\n\n  RELEASE MANIFEST COHERENCE: FAIL\n\n\nPER-CHECK RAW OUTPUT: /tmp/landing_selftest_12166/sandbox/docs/evidence/landing_selftest/gate_release_manifest_check.txt",
     "failed_step": "gates",
     "restore_point": {
       "data/expected_boot.json": "4a93e6eadaeed7798d05f6932cad99ef",
@@ -98,15 +98,11 @@
       {
         "action": "rewrite",
         "path": "docs/STATE.md"
-      },
-      {
-        "action": "rewrite",
-        "path": "ui/data/movers.js"
       }
     ]
   },
   "commits": [],
-  "error": "gate release_manifest_check did not pass (exit 1; 'PASS' absent from output):\n          24                                                               OK\n    release_contract.as_of_round                  24                                                               OK\n    season_state.as_of_round                      24                                                               OK\n    board_view_working.stamp.asOfRound            24                                                               OK\n    board_view_working.stamp.release.as_of_round  24                                                               OK\n    -> 5 carriers, COHERENT\n\n  SHEET  [computed md5 docs/owner_annotations/SITTER_2026_v1.csv]\n    (truth)                                       61ef3e61a685909784c1d6eb23859788                                 \n    sheet_pins.sheet_md5                          61ef3e61a685909784c1d6eb23859788                                 OK\n    -> 1 carriers, COHERENT\n\n  SHEET_ROWS  [computed csv row count docs/owner_annotations/SITTER_2026_v1.csv]\n    (truth)                                       219                                                              \n    sheet_pins.sheet_rows                         219                                                              OK\n    -> 1 carriers, COHERENT\n\n  SHEET_INJURED_Y  [computed injured=Y count docs/owner_annotations/SITTER_2026_v1.csv]\n    (truth)                                       34                                                               \n    sheet_pins.sheet_injured_y                    34                                                               OK\n    -> 1 carriers, COHERENT\n\n  43 carrier fields across 11 identities and 8 files: 41 coherent, 1 incoherent, 1 sealed-lag\n\n  SEALED-LAG \u2014 a freeze-stamp naming the state it was SEALED against, not the\n  state the tree is in. Legitimate between seals; reported, never gating:\n    book_stable_seal.store_md5                   sealed against b4d23810, tree is now 415929d3\n    (i.e. the artifact these stamps belong to has not been re-sealed since the\n     tree last moved. That is information, not a defect \u2014 but a gate that\n     consumes the seal as a baseline is comparing against the older state.)\n\n  HALTED CARRIERS \u2014 the blocked-once law reports each of these ONCE, and every\n  downstream check that reads one is marked BLOCKED rather than failing again:\n    expected_boot:board\n        expected_boot.board = aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa (expected c8c2f2b6f99445484fadaa8c44afe609)\n\n  RELEASE MANIFEST COHERENCE: FAIL\n\n\nPER-CHECK RAW OUTPUT: /tmp/landing_selftest_3227/sandbox/docs/evidence/landing_selftest/gate_release_manifest_check.txt",
+  "error": "gate release_manifest_check did not pass (exit 1; 'PASS' absent from output):\n          24                                                               OK\n    release_contract.as_of_round                  24                                                               OK\n    season_state.as_of_round                      24                                                               OK\n    board_view_working.stamp.asOfRound            24                                                               OK\n    board_view_working.stamp.release.as_of_round  24                                                               OK\n    -> 5 carriers, COHERENT\n\n  SHEET  [computed md5 docs/owner_annotations/SITTER_2026_v1.csv]\n    (truth)                                       61ef3e61a685909784c1d6eb23859788                                 \n    sheet_pins.sheet_md5                          61ef3e61a685909784c1d6eb23859788                                 OK\n    -> 1 carriers, COHERENT\n\n  SHEET_ROWS  [computed csv row count docs/owner_annotations/SITTER_2026_v1.csv]\n    (truth)                                       219                                                              \n    sheet_pins.sheet_rows                         219                                                              OK\n    -> 1 carriers, COHERENT\n\n  SHEET_INJURED_Y  [computed injured=Y count docs/owner_annotations/SITTER_2026_v1.csv]\n    (truth)                                       34                                                               \n    sheet_pins.sheet_injured_y                    34                                                               OK\n    -> 1 carriers, COHERENT\n\n  43 carrier fields across 11 identities and 8 files: 41 coherent, 1 incoherent, 1 sealed-lag\n\n  SEALED-LAG \u2014 a freeze-stamp naming the state it was SEALED against, not the\n  state the tree is in. Legitimate between seals; reported, never gating:\n    book_stable_seal.store_md5                   sealed against b4d23810, tree is now 415929d3\n    (i.e. the artifact these stamps belong to has not been re-sealed since the\n     tree last moved. That is information, not a defect \u2014 but a gate that\n     consumes the seal as a baseline is comparing against the older state.)\n\n  HALTED CARRIERS \u2014 the blocked-once law reports each of these ONCE, and every\n  downstream check that reads one is marked BLOCKED rather than failing again:\n    expected_boot:board\n        expected_boot.board = aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa (expected c8c2f2b6f99445484fadaa8c44afe609)\n\n  RELEASE MANIFEST COHERENCE: FAIL\n\n\nPER-CHECK RAW OUTPUT: /tmp/landing_selftest_12166/sandbox/docs/evidence/landing_selftest/gate_release_manifest_check.txt",
   "facts": {
     "base": {
       "carriers": {
@@ -191,7 +187,7 @@
         "ui/data/ownership.js": "df802447cbc1e178646e068a545399d9",
         "ui/data_aux/draft_outcomes.js": "4537576e98ee245072c15bc1a7a0ce2c"
       },
-      "commit": "1a6959e306d2c59fc2093aef192ed7ae0e15cee0",
+      "commit": "df82e96da7dc2d2bd39a030563f2bf93870ae8b9",
       "expected_boot": {
         "as_of_round": 24,
         "balanced_board_md5": "e4bc3be2efc12e75e107f26bbda91c0a",
@@ -239,10 +235,10 @@
       "unmoved_checked": 7
     },
     "preflight": {
-      "base_commit": "1a6959e306d2c59fc2093aef192ed7ae0e15cee0",
+      "base_commit": "df82e96da7dc2d2bd39a030563f2bf93870ae8b9",
       "board_before": "c8c2f2b6f99445484fadaa8c44afe609",
       "carriers_captured": 80,
-      "lock": "land-lever-3757"
+      "lock": "land-lever-12712"
     },
     "sibling": {
       "balanced_board_md5": "e4bc3be2efc12e75e107f26bbda91c0a",
@@ -252,9 +248,9 @@
     },
     "state": {
       "changed": true,
-      "md5": "e83b93487755369c938c31ddb991edf7",
+      "md5": "018409917555855de23fa26ce285378b",
       "path": "docs/STATE.md",
-      "stamp_commit": "1a6959e306d2c59fc2093aef192ed7ae0e15cee0",
+      "stamp_commit": "df82e96da7dc2d2bd39a030563f2bf93870ae8b9",
       "written": true
     },
     "ui": {
@@ -269,8 +265,8 @@
       "mirror_md5": "9a67aa16da1e36be7cef17ca795c9e90",
       "mirror_moved": false,
       "model_changes": 16,
-      "movers_md5": "aaa7c14a09e544e5be095ea3055a3d58",
-      "movers_moved": true,
+      "movers_md5": "0718b48cf84c917d761f189a5010a9ce",
+      "movers_moved": false,
       "n_picks": 240,
       "n_selections": 1568,
       "ownership_md5": "df802447cbc1e178646e068a545399d9",
@@ -285,7 +281,7 @@
   "ok": false,
   "timings": [
     {
-      "seconds": 0.08,
+      "seconds": 0.09,
       "step": "preflight",
       "verdict": "OK"
     },
@@ -305,22 +301,22 @@
       "verdict": "OK"
     },
     {
-      "seconds": 0.07,
+      "seconds": 0.12,
       "step": "contract",
       "verdict": "OK"
     },
     {
-      "seconds": 0.11,
+      "seconds": 0.13,
       "step": "sibling",
       "verdict": "OK"
     },
     {
-      "seconds": 2.37,
+      "seconds": 3.01,
       "step": "ui",
       "verdict": "OK"
     },
     {
-      "seconds": 0.14,
+      "seconds": 0.16,
       "step": "state",
       "verdict": "OK"
     },
