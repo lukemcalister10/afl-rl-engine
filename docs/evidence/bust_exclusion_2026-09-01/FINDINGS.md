@@ -106,6 +106,70 @@ v0. Both men are out of every link of it.
 
 **So all three of the owner's clauses are true.** No v0surf re-bake is owed.
 
+## §2 RE-MEASURED — the head is 3784, not 4441, and this is a mis-scaling not a side effect
+
+The owner asked the right question: *"Pick 1 = 3000 is the scaler … so knowing the true worth of pick 1
+is important. However, you're telling me that the scaling is based on the OLD curve? … I assume 4441 is
+a relic of the old system?"*
+
+Both halves are right, and one number I gave was wrong.
+
+### 4441 was quoted from a stale comment. Measured, it is 3784.
+
+`rl_model.py:1540` says *"measured 4441"*. It is not 4441 today. Measured live
+(`measure_anchor_head.py`, output beside it):
+
+```
+BOARD_FACTOR                  0.7453156150     (from the module itself)
+numeraire s                   0.9400914291     ( = 3000 / 3191.178972 )
+=> head the anchor used       3000 * s / BOARD_FACTOR  =  3784.0000
+re-measured directly                              3784        (agrees exactly)
+```
+
+Re-calling `build_pvc_v34()` after import does NOT give this number — it gives 2821 — because step 5
+anchors to `build_pvc(ALPHA)`, which reads `SCALE`, and the module MUTATES `SCALE` at the anchor line.
+2821 = 3784 x BOARD_FACTOR: the same head, restated in the currency the anchor just created. Restoring
+the pre-anchor `SCALE` reproduces 3784 exactly. Worth writing down, because the naive re-call is the
+obvious way to measure this and it is off by 25%.
+
+### The two heads are different numbers from different fits
+
+```
+the ADOPTED curve's own measured head    3191.18   published at 3000, s = 0.940091
+the v3.4 kernel's pre-anchor head        3784      a superseded fit
+```
+
+`BOARD_FACTOR = (3000 / 3784) x 0.940091 = 0.745316`. The `s` term is the adopted curve's. The
+`3000 / 3784` term is the OLD curve's head. So the PLAYER side's absolute level is set by a superseded
+fit's opinion of pick 1, and that opinion is measured on a pick-1 population that STILL CONTAINS
+McCartin and Boyd.
+
+`_load_numeraire`'s own docstring says E6 existed to stop the player side *"silently falling back to the
+v3.4 pre-anchor head"*; the formula still divides by it, and `rl_model.py:1548` defends that as the
+player side's *"own natural scale"*. Whichever reading is right, the population that head is measured on
+should be the ruled one.
+
+### What the exclusion does to it
+
+```
+v3.4 pre-anchor head   3784 -> 3877     (+2.458%)   two pick-1 busts removed, 197 cohort rows slid
+BOARD_FACTOR       0.745316 -> 0.727437  (-2.399%)
+```
+
+That is the whole of the board's -2.08% move, and it reframes it. **This is not a cosmetic side effect
+to be avoided. It says players are currently priced about 2.4% expensive relative to picks, because the
+exchange rate between them was measured on a pick-1 sample containing two men the owner ruled out.**
+
+### One thing still unexplained
+
+A single scalar should move every value by one ratio, and it does not: 266 true order crossings, and the
+1000-3000 band spans ratios 0.9757-0.9930. The likely mechanism is the ISO correction table
+(`_merged_recover.py:1092-1098`), which is rebuilt from `raw_ev(synth(...))` and is therefore
+SCALE-dependent, so a change in SCALE reshapes the per-position multipliers rather than passing through.
+**That is a hypothesis, not a measurement** — it has not been traced, and it should be before the act
+lands.
+
+
 ## The slide was verified against the estate's own, not just against itself
 
 The draft-day slide is not a second opinion about who moves up: it reproduces the curve derivation's
@@ -148,13 +212,19 @@ pick 3 reads *worse* (12.1 against 13.2), which is what an honest slide looks li
 **The live engine flag.** `BUST_EXCLUDE_KEYS` in `rl_model.py`, setting `_pvc_exclude` on the two
 `hist` rows. It is now the ONLY place on the estate where the ruling is not applied: the adopted pick
 curve excludes them, the v0 lens basis excludes them, the draft-day board excludes them, and the live
-v3.4 import fit is the last hold-out. That is a good argument for closing it.
+v3.4 import fit is the last hold-out.
 
-Against it: built and measured, it is not the cosmetic rescale the surrounding comments assume. Board
-`c8c2f2b6` → `b005096b`, 622 of 804 players down, none up, sum −2.08%, and **266 true order crossings**
-(pairs strictly distinct on both boards that swap). See RESULT.md. It reorders the board, so it is a
-repricing with trade consequences, and it changes no pick price at all — the pick curve is the frozen
-artifact and already correct.
+**Re-framed after the anchor head was measured (§2 RE-MEASURED, below).** This is not a cosmetic
+rescale to be avoided. The v3.4 head is the exchange rate between players and picks, it is measured on
+a pick-1 sample that still contains both men, and correcting it moves that head 3784 → 3877. So the
+board's −2.08% is the size of a live mis-scaling: **players are currently about 2.4% expensive relative
+to picks.** That is an argument FOR the act, not against it.
+
+The cost is still real and still unexplained in one respect: 622 of 804 players down, none up, and
+**266 true order crossings** (pairs strictly distinct on both boards that swap), where a single scalar
+should produce none. The likely cause is the SCALE-dependent ISO table, but that is a hypothesis and
+has not been traced. No pick price moves either way — the pick curve is the frozen artifact and is
+already correct.
 
 It was written, built, measured and then **reverted pending word**. The engine tree is byte-exact to
 its pin and `restamp check` agrees on all five stamps. `ui/tests/draftday.test.js` pins the hole open

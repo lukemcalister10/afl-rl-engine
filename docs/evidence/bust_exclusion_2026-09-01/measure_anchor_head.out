@@ -1,0 +1,19 @@
+MEASURED FROM THE MODULE ITSELF
+  BOARD_FACTOR                 = 0.7453156150
+  numeraire s                  = 0.9400914291   (= 3000 / 3191.178972)
+  => the head the anchor used  = 3000 * s / BOARD_FACTOR = 3784.0000
+
+RE-MEASURED WITH THE PRE-ANCHOR SCALE RESTORED
+  v3.4 pre-anchor head PVC[1]  = 3784
+  picks 1-6                    = [3784, 3148, 2826, 2618, 2468, 2351]
+
+WITH THE TWO EXCLUDED (flagged 2, slid 197 in the cohort)
+  v3.4 pre-anchor head PVC[1]  = 3877   (+2.458%)
+  picks 1-6                    = [3877, 3178, 2829, 2605, 2444, 2319]
+
+  BOARD_FACTOR  0.745315615 -> 0.727437268  (-2.399%)
+  (module BOARD_FACTOR 0.745315615 — agrees with bf1 to 0.00e+00)
+
+THE ADOPTED CURVE, for comparison
+  its own measured head        = 3191.1790  published at 3000  (s = 0.940091)
+  shipped picks 1-6            = [3000, 2733, 2435, 2074, 1791, 1571]
