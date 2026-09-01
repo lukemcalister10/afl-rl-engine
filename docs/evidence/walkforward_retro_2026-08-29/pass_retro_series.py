@@ -42,17 +42,23 @@ def run(ns):
     live_v = {r['key']: r['v'] for r in live['active']}
     active_keys = set(live_v)
 
-    # the display-layer owner overrides the export applies after the numéraire re-base
+    # THE OWNER DISPLAY OVERRIDES ARE DELIBERATELY NOT APPLIED HERE (2026-09-01). This block used to
+    # re-read data/owner_overrides.json and multiply the priced value by the row's factor. It never
+    # worked — it looked for `key` where that file writes `player_key`, so it reported "0 overrides"
+    # with one on file (will-brodie x0.5, DECISIONS v85 §20) and applied nothing.
+    #
+    # AND IT MUST NOT BE FIXED, because it contradicts this pass's own control. `live_v` above reads
+    # r['v'] — the PRE-override engine value (Brodie 117). The export writes the override as an `ov`
+    # block beside it (`{factor: 0.5, dispv: 58}`) and never touches `v`, exactly as
+    # data/owner_overrides.json says: "Applied LAST at the export/display layer ... NEVER touches the
+    # engine value `v`". So a working multiplication here would bank 58 against a control expecting
+    # 117 and red the control by one row, forever.
+    #
+    # The override has ONE application site and it is the display layer — ui/app/seam.js:113,
+    # `(p.ov && p.ov.dispv != null) ? p.ov.dispv : p.v`, which substitutes it wherever the board
+    # shows his value, ordering included. A second site here is the duplicated-assertion class this
+    # estate keeps paying for. Banking the pre-override value is what keeps the two consistent.
     ovr = {}
-    op = os.path.join(REPO, 'data', 'owner_overrides.json')
-    if os.path.exists(op):
-        try:
-            _o = json.load(open(op))
-            for row in (_o.get('overrides') or _o if isinstance(_o, list) else []):
-                if isinstance(row, dict) and row.get('key') and row.get('factor'):
-                    ovr[row['key']] = float(row['factor'])
-        except Exception:
-            pass
 
     rows = [p for p in MA.data if p.get('key') in active_keys and not p.get('_retired')]
     ns['T']('retro: %d active rows, %d overrides, F=%.4f' % (len(rows), len(ovr), F))

@@ -69,7 +69,27 @@ MAINTAINER.md's "re-run that control before trusting any re-emission" has no run
 stale TRUNCATED STORES rather than stale prices, and the remedy is that `emit-stores` must re-run
 whenever football is applied — not only the pricing.
 
-**ALSO STILL STANDS.** `pass_retro_series.py` reads the owner display overrides with `row.get('key')`
-while `data/owner_overrides.json` writes them under `player_key`, so it reports "0 overrides" when
-there is one and never applies it (will-brodie, factor 0.5, DECISIONS v85 §20). Unrelated to the
-above; one row, not eighty-seven.
+**AMENDED — the override finding was half right.** `pass_retro_series.py` did read the owner display
+overrides with `row.get('key')` while `data/owner_overrides.json` writes them under `player_key`, so it
+reported "0 overrides" with one on file and applied nothing. But the remedy is NOT to fix the key name.
+
+The override IS applied on the live board. The export writes it as an `ov` block beside the engine
+value and never touches `v`, exactly as the file itself declares — *"Applied LAST at the
+export/display layer … NEVER touches the engine value `v`"*:
+
+```
+will-brodie   v 117   ov {factor: 0.5, dispv: 58, mark: "OWNER OVERRIDE ×0.50"}
+```
+
+and `ui/app/seam.js:113` substitutes `ov.dispv` wherever the board shows his value, ordering included.
+So the owner sees 58 everywhere.
+
+A WORKING multiplication in the harness would therefore CONTRADICT THIS PASS'S OWN CONTROL: `live_v`
+reads `r['v']`, the pre-override 117, so banking 58 would red the control by one row forever. The
+block is not a bug to repair, it is a second application site for something the display layer already
+owns — the duplicated-assertion class. It has been DELETED, with the reasoning in place, and banking
+the pre-override value is what keeps the retro points consistent with every other surface.
+
+The one thing still owed on this: retro points are read through the movers bundle's own `byPoint`
+values, so they need to reach `seam.js`'s accessor like every other value does, or Brodie will show
+117 on a retro point and 58 everywhere else. That is a UI wiring question, not a pricing one.
