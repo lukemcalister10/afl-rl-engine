@@ -27,7 +27,7 @@ import json, os
 HERE = '/home/user/afl-rl-engine/docs/evidence/walkforward_retro_2026-08-29'
 REPO = '/home/user/afl-rl-engine'
 WORK = '/home/claude/retro_walkforward'
-ROUNDS = list(range(14, 25))
+ROUNDS = list(range(14, 26))   # 25 = FINALS WEEK 1 (feed round above the H&A season)
 
 
 def run(ns):
@@ -132,13 +132,20 @@ def run(ns):
                 % (R, len(vals), st['calendar_progress'], st['exposure_pace'], R))
 
     # THE CONTROL, asserted immediately on the same load
-    got = json.load(open(os.path.join(HERE, 'values_r24.json')))['values']
+    # THE CONTROL IS THE LAST POINT, WHICH IS THE ONE WHOSE TRUNCATION IS A NO-OP. It was r24 while
+    # r24 was the last football; once FINALS WEEK 1 landed, r24 legitimately EXCLUDES the finals game
+    # and can no longer reproduce a live board that includes it. Leaving the control on r24 is what
+    # made the series wrong: on 2026-09-01 it failed, and the fix applied was to push the finals game
+    # back into every round until it passed — the data bent to satisfy a stale check. The check was
+    # the thing that was stale. It now names the last round in the window, whatever that is.
+    _ctl = ROUNDS[-1]
+    got = json.load(open(os.path.join(HERE, 'values_r%d.json' % _ctl)))['values']
     diff = {k: (got[k], live_v[k]) for k in live_v if k in got and got[k] != live_v[k]}
     missing = [k for k in live_v if k not in got]
     verdict = {'rounds': banked, 'control_diffs': len(diff), 'control_missing': len(missing),
                'control_pass': not diff and not missing,
                'sample_diffs': dict(list(diff.items())[:12])}
     json.dump(verdict, open(os.path.join(HERE, 'RETRO_ONELOAD_VERDICT.json'), 'w'), indent=1)
-    ns['T']('CONTROL %s — r24 vs live board: %d diffs, %d missing'
-            % ('PASS' if verdict['control_pass'] else 'FAIL', len(diff), len(missing)))
+    ns['T']('CONTROL %s — r%d vs live board: %d diffs, %d missing'
+            % ('PASS' if verdict['control_pass'] else 'FAIL', _ctl, len(diff), len(missing)))
     return verdict

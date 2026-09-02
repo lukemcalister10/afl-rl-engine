@@ -53,7 +53,56 @@ re-calibration. A systematic move — every completed season repriced, one direc
 Once declared, the re-flight asserts DETERMINISM: identical inputs, identical board, or an abort
 naming the player. Say so in the spec's own doc field; do not present a measurement as a forecast.
 
-## 5. Close the act
+## 5. MAKE THE WEEK A POINT ON THE MOVERS LIST  (added 2026-09-02)
+
+FW1 was landed without this step and the week vanished: the board moved, the store carried the
+scores, and the movers list ended at R24 as if the week had not been played. The store edit is not
+self-announcing. Two things have to be written by hand.
+
+**(a) The weekly report.** A round becomes a point on the movers list because
+`round_movers.py` writes a report into `ui/data/movers.js`. The finals lane does not run that path,
+so emit the report yourself at the FEED round (FW1 = 25, FW2 = 26, ...) from the edit that was
+actually flown:
+
+    python3 docs/evidence/fw<N>_report_<date>/emit_fw<N>_report.py
+
+Copy `docs/evidence/fw1_report_2026-09-02/emit_fw1_report.py` and change the four constants at the
+top (`FEED_ROUND`, `PREV_POINT`, `THIS_POINT`, and the two store md5s). It RECONCILES rather than
+restates: for every player it recomputes `score = games_new * avg_new - games_old * avg_old` from
+the landed spec and refuses to emit if any score disagrees by more than 0.6, or if `games` did not
+increment by exactly one. That check is the whole value of the step — it is the only thing standing
+between a typo in a score file and a board nobody can audit.
+
+The report's `release_identity` is read from the LANDING COMMIT's `data/expected_boot.json`, not
+from the working tree, with `as_of_round` set to the FEED round. The engine contract holds at 24
+while a finals week is played; the report names the week, and `ui/app/movers.js` reads the feed
+round. Do not "fix" the app to clamp it — `ui/tests/movers.test.js` already has the fixture that
+proves the app is right.
+
+**(b) The retro window.** Extend `ROUNDS` / `APPLIED` by the new feed round in all three of
+`retro_walkforward.py`, `pass_retro_series.py` and `emit_retro_series.py`, and add the week to
+`FINALS_NAMES`. The calendar must NOT advance: `derive_season_state` clamps with
+`min(R, HOME_AND_AWAY_ROUNDS)`, so a finals round prices at `cal 1.00` exactly as the live board
+does. Then re-emit the truncated stores and re-price:
+
+    ./tools/harness docs/evidence/walkforward_retro_2026-08-29/pass_retro_series.py
+
+ONE engine load for the whole series (~8 min load, ~2 min a round). Never the per-round subprocess
+path, and never `resume` under a timer — `resume` skips only BANKED rounds, so a timer around it
+starts a second build on the same workspace and the two rmtree each other.
+
+The control is the last round in the window: re-pricing the finals week from the truncated store
+must reproduce the LIVE board exactly, 0 diffs. If it does not, the retro is wrong, not the board.
+
+**The three checks that must hold before this is done:**
+
+1. The weekly report reproduces the store's counts exactly (a played finalist's `games` goes up one).
+2. Every round's game count is the true as-at count — a finalist at R14 must NOT carry the finals
+   game. This is the failure the 2026-09-01 re-price introduced: the finals game was pushed back
+   into every retro round because the control was stale and the data was bent to satisfy it.
+3. The finals point reproduces the live board exactly.
+
+## 6. Close the act
 
     python3 docs/evidence/walkforward_retro_2026-08-29/emit_retro_series.py
     node docs/evidence/<act>/verify_movers_history.js <baseline-movers.js> ui/data/movers.js

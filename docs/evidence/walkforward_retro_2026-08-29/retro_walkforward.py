@@ -46,8 +46,13 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, '..', '..', '..'))
 WS = '/home/claude/rl_workspace/rl_after'
 WORK = '/home/claude/retro_walkforward'
-ROUNDS = list(range(14, 25))
-APPLIED = list(range(15, 25))
+# FEED ROUND 25 IS FINALS WEEK 1 — round_movers.FINALS_WEEK_NAMES[25], above HOME_AND_AWAY_ROUNDS=24.
+# It is real football and it is APPLIED, so every earlier round must subtract it. Before it was in this
+# list the finals game could not be subtracted and was carried backwards into all eleven rounds:
+# Harry Dean's round-14 store read 11 games against a truth of 10 (measured 2026-09-02).
+ROUNDS = list(range(14, 26))
+APPLIED = list(range(15, 26))
+HOME_AND_AWAY_ROUNDS = 24        # round_movers.HOME_AND_AWAY_ROUNDS; a feed round above it is finals
 F = 1.0524
 
 
@@ -151,8 +156,21 @@ def derive_season_state(R, truncated_store_path):
                                                   os.path.join(REPO, 'season_state.py'))
     m = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(m)
-    st = m.derive(R, truncated_store_path)
-    st['_retro_note'] = 'AS-OF derivation on the truncated store (walk-forward retrospective)'
+    # THE CALENDAR HOLDS THROUGH A FINALS WEEK, so the policy is asked for the round the CALENDAR is
+    # at, not the feed round. This is the estate's own law, not a convenience: the live
+    # data/season_state.json reads calendar_progress 1.0 at as_of_round 24 WITH the finals game in the
+    # store, staged_apply carries RL_CALENDAR_ROUNDS, and movers.test.js asserts "a finals week is
+    # coherent: the loaded contract HOLDS at 24 while the report names feed round 25".
+    #
+    # Asking the policy for R=25 returns calendar_progress 1.04 (25/24), a board the app never served,
+    # and the finals point would then fail to reproduce the live board for a reason that has nothing to
+    # do with football. The STORE passed in is still the feed round's — so exposure_pace is measured on
+    # the games that were actually played, finals included. Only the calendar is held.
+    _cal_R = min(R, HOME_AND_AWAY_ROUNDS)
+    st = m.derive(_cal_R, truncated_store_path)
+    st['_retro_note'] = ('AS-OF derivation on the truncated store (walk-forward retrospective)'
+                         + ('; feed round %d, calendar HELD at %d (finals week)' % (R, _cal_R)
+                            if _cal_R != R else ''))
     return st
 
 

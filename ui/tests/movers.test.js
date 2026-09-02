@@ -172,9 +172,50 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   // lags or leads the live round still fails loudly in either direction.
   var expRounds = []; for (var rr = 15; rr <= Number(curApp.as_of_round); rr++) expRounds.push(rr);
   ok(expRounds.length >= 10, "the derived round range reaches at least R24 (it never shrinks below landed history)");
-  eq(prod.rounds, expRounds, "production ui/data/movers.js carries R15..the live round (DERIVED from the loaded app's as_of_round)");
+
+  /* ...PLUS EVERY FINALS WEEK THAT HAS LANDED ON THE BOARD, and this half is a real assertion rather
+     than an allowance. A finals week is football at a FEED round ABOVE the home-and-away season, so it
+     is never inside 15..as_of_round — the calendar holds at 24 while it is played. Deriving the
+     expectation from the COLUMNS the board actually carries makes the rule "a finals week that moved
+     the board must have a weekly report", which is exactly the defect this is being written against:
+     FW1 landed on 2026-08-30 through the store-edit lane, moved the board, and had NO report for three
+     days. Its scores appeared nowhere, and the retrospective could not subtract the finals game from
+     the rounds before it, so it was carried backwards into all eleven.
+
+     Both tables are READ from round_movers.py, never restated here, so a finals week the engine names
+     and this file does not cannot pass unnoticed. */
+  var rmSrc = fs.readFileSync(path.join(__dirname, "..", "..", "engine", "rl_after", "ingestion", "round_movers.py"), "utf8");
+  function pyMap(name) {
+    var m = new RegExp(name + "\\s*=\\s*\\{([\\s\\S]*?)\\}").exec(rmSrc);
+    var out = {};
+    if (m) {
+      var re = /(?:'([^']+)'|(\d+))\s*:\s*'([^']+)'/g, g;
+      while ((g = re.exec(m[1]))) out[g[1] !== undefined ? g[1] : g[2]] = g[3];
+    }
+    return out;
+  }
+  var finalsNames = pyMap("FINALS_WEEK_NAMES");      // 25 -> 'FINALS WEEK 1'
+  var finalsPrefix = pyMap("FINALS_COLUMN_PREFIXES"); // 'fw1-' -> 'FINALS WEEK 1'
+  ok(Object.keys(finalsNames).length > 0 && Object.keys(finalsPrefix).length > 0,
+     "round_movers.py declares the finals feed rounds and their column prefixes");
+  var nameToFeed = {};
+  Object.keys(finalsNames).forEach(function (fr) { nameToFeed[finalsNames[fr]] = Number(fr); });
+  var landedFinals = [];
+  (prod.points || []).forEach(function (pt) {
+    Object.keys(finalsPrefix).forEach(function (pre) {
+      if (String(pt.id).indexOf(pre) === 0) {
+        var fr = nameToFeed[finalsPrefix[pre]];
+        if (fr != null && landedFinals.indexOf(fr) < 0) landedFinals.push(fr);
+      }
+    });
+  });
+  landedFinals.sort(function (a, b) { return a - b; }).forEach(function (fr) { expRounds.push(fr); });
+  ok(landedFinals.length >= 1,
+     "at least one finals week has landed on the board (this check is not vacuous)", landedFinals.join(","));
+  eq(prod.rounds, expRounds,
+     "production ui/data/movers.js carries R15..the live round PLUS every landed finals week (DERIVED)");
   ok(prod.reports && Object.keys(prod.reports).length === expRounds.length,
-     "production bundle carries one report per round, count DERIVED (" + expRounds.length + ")");
+     "production bundle carries one report per round INCLUDING each landed finals week, count DERIVED (" + expRounds.length + ")");
   // the complete historical board/store chain (baseline R14 -> R15 -> ... -> R19) is exact + continuous
   var chainOk = true, prevB = prod.baseline.board, prevS = prod.baseline.store;
   [15, 16, 17, 18, 19].forEach(function (r) {
@@ -283,9 +324,18 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   // bundle takes the direct branch and reads "ok".
   var lastR = prod.reports[String(prod.rounds[prod.rounds.length - 1])];
   var relOwn = lastR.release_identity;
+  /* THE LOADED CONTRACT HOLDS AT THE CALENDAR ROUND, which is what makes this fixture honest for a
+     finals week: the terminal report names feed round 25, and a real tree serving that board carries
+     as_of_round 24, because the calendar does not advance through finals. Handing the fixture the
+     report's own 25 would build a loaded identity no tree ever has, and the assertion below would
+     fail on a correct bundle — which it did, the first time a finals report existed. min() is the
+     identity for every ordinary round, so this is the fixture it always was. */
+  var relOwnHeld = JSON.parse(JSON.stringify(relOwn));
+  if (relOwnHeld.as_of_round != null)
+    relOwnHeld.as_of_round = Math.min(Number(relOwnHeld.as_of_round), core.HOME_AND_AWAY_ROUNDS);
   var appOwn = { board: lastR.board_md5_after, store: lastR.source_store_md5_after,
                  balanced_board_md5: relOwn.balanced_board_md5, release_version: relOwn.release_version,
-                 release: relOwn };
+                 release: relOwnHeld };
   eq([core.lineage(prod, appOwn, trans).ok, core.lineage(prod, appOwn, trans).state], [true, "ok"],
      "NON-VACUITY: loaded at the bundle's own terminal identity the SAME bundle reads ok — bridged is a discriminating state");
   // THE HYGIENE ITEM (#271 A17) — RETIRED 2026-08-06, exactly as its own comment instructed ("if
@@ -613,8 +663,16 @@ eq(core.defaultPair(FIN2), { from: "fw1-baseline-col", to: "25" },
    ================================================================================================ */
 var shipped = readBundle(path.join(__dirname, "..", "data", "movers.js"));
 var shippedRetro = (shipped.points || []).filter(function (p) { return p.kind === "retro"; });
-eq(shippedRetro.map(function (p) { return p.after_round; }), [14,15,16,17,18,19,20,21,22,23,24],
-   "the SHIPPED bundle carries the whole retrospective series R14-R24");
+/* THE SERIES RUNS TO THE LAST FEED ROUND, NOT TO A NUMBER TYPED HERE. It was pinned at R24 and a
+   finals week (feed round 25) then had to argue with the test to get on the board. The window is
+   read off the bundle: 14 through the newest fed round, contiguous. A dropped series still fails
+   loudly (it reads []), and a series that stops short of the newest round fails too — which is the
+   FW1 defect itself. */
+var lastFed = Math.max.apply(null, (shipped.rounds || [24]).map(Number));
+var expectSeries = [];
+for (var rr = 14; rr <= lastFed; rr++) expectSeries.push(rr);
+eq(shippedRetro.map(function (p) { return p.after_round; }), expectSeries,
+   "the SHIPPED bundle carries the whole retrospective series R14-R" + lastFed);
 ok(shippedRetro.every(function (p) { return p.board && p.label; }),
    "every shipped retro point names the board it was priced on and carries its label");
 var shippedRounds = shipped.rounds || [];
