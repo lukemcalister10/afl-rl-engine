@@ -171,6 +171,16 @@ def derive_season_state(R, truncated_store_path):
     st['_retro_note'] = ('AS-OF derivation on the truncated store (walk-forward retrospective)'
                          + ('; feed round %d, calendar HELD at %d (finals week)' % (R, _cal_R)
                             if _cal_R != R else ''))
+    # THE LAW, ASSERTED WHERE IT IS COMPUTED (owner, 2026-09-02): "the calendar can never get above
+    # 1. It gets there at r24 and holds." The clamp above is the mechanism; this is the law. A clamp
+    # can be edited by someone who does not know why it is there — a HALT cannot be edited by
+    # accident. 1.04 is the number this catches, and it is the one that broke FW1.
+    if not (0 < st['calendar_progress'] <= 1.0):
+        raise SystemExit('CALENDAR HALT: feed round %d derived calendar_progress %.4f. The season '
+                         'clock reaches 1.00 at round %d and HOLDS there through the finals; a '
+                         'value above 1 is a season stretched past its own length and reprices '
+                         'every completed season in the competition.'
+                         % (R, st['calendar_progress'], HOME_AND_AWAY_ROUNDS))
     return st
 
 
