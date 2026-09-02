@@ -1,0 +1,126 @@
+==============================================================================================================
+TASK 1 -- THE POPULATION QUESTION (D8 iii): were pool rows inside retention surface R's derivation population?
+==============================================================================================================
+
+SOURCE OF THE POPULATION DEFINITION
+  producer : session_2026-07-03/d13/scripts/d13_norm_harvest.py   (BUILDS d13_normcells.json)
+  consumer : session_2026-07-03/d13/scripts/d13_derive.py         (reads it; the directive cites this one)
+  artefact : session_2026-07-03/d13/d13_normcells.json            -> ABSENT -- population RECONSTRUCTED by gate replay
+  matrix   : per_entrant_SHIP.json  n=2645 rows
+
+==============================================================================================================
+THE GATE, REPLAYED PER PATHWAY
+==============================================================================================================
+  pathway        n |  g1 pos g2 pk/ft  g3 year |      IN    share  gate-2 basis
+  ----------------------------------------------------------------------------------------------------------
+  ND 1-64     1443 |    1443     1443     1385 |    1385    96.0%  _ft=True + store pick 1443/1443
+  ND>64        122 |     122      122      122 |     122   100.0%  _ft=True + store pick 122/122
+  RD           691 |     691      691      685 |     685    99.1%  _ft=True + store pick 691/691
+  MSD          106 |     106      106       88 |      88    83.0%  _ft=False; store pick 106/106 -> IN on pick
+  SSP           52 |      52        0       43 |       0     0.0%  _ft=False; store pick 0/52 -> OUT
+  IRE           57 |      57        0       54 |       0     0.0%  _ft=False; store pick 0/57 -> OUT
+  PDA           51 |      51        0       48 |       0     0.0%  _ft=False; store pick 0/51 -> OUT
+  PDN           43 |      43        0       38 |       0     0.0%  _ft=False; store pick 0/43 -> OUT
+  PDS           21 |      21        0       21 |       0     0.0%  _ft=False; store pick 0/21 -> OUT
+  UNR           59 |      59        0       56 |       0     0.0%  _ft=False; store pick 0/59 -> OUT
+  ----------------------------------------------------------------------------------------------------------
+  ALL POOL    1202 |                           |     895    74.5%
+
+==============================================================================================================
+WHICH GATE EXCLUDES -- so every exclusion is attributable
+==============================================================================================================
+  pathway        n |   out:pos  out:pk/ft  out:year   out:any
+  ----------------------------------------------------------------------------------------------------------
+  ND 1-64     1443 |         0          0        58        58
+  ND>64        122 |         0          0         0         0
+  RD           691 |         0          0         6         6
+  MSD          106 |         0          0        18        18
+  SSP           52 |         0         52         9        52
+  IRE           57 |         0         57         3        57
+  PDA           51 |         0         51         3        51
+  PDN           43 |         0         43         5        43
+  PDS           21 |         0         21         0        21
+  UNR           59 |         0         59         3        59
+
+==============================================================================================================
+THE DIRECTIVE'S OWN SUB-QUESTION: the [1,90] clamp and 'the old 1-99 rookie ladder'
+==============================================================================================================
+  d13_derive.py clamps pick to [1,90] at :41 and :47. The clamp bites only on stored picks > 90.
+  Measured on the CURRENT store (d9a24282):
+
+  pathway     in-pop  min pick  max pick       >64 >90 CLAMPED
+  ----------------------------------------------------------------------------------------------------------
+  ND 1-64       1385         1        64         0           0
+  ND>64          122        65        81       122           0
+  RD             685         1        51         0           0
+  MSD             88         1        20         0           0
+  SSP              0         -         -         -           -
+  IRE              0         -         -         -           -
+  PDA              0         -         -         -           -
+  PDN              0         -         -         -           -
+  PDS              0         -         -         -           -
+  UNR              0         -         -         -           -
+
+  ROWS ACTUALLY CLAMPED BY [1,90], WHOLE STORE: 0
+  The rookie ladder in THIS store tops out at 51, so the clamp the directive worried about is INERT.
+  It is therefore not the reason the question was hard; gate (2) is.
+
+==============================================================================================================
+CELL-LEVEL CONTEXT (DECLARED APPROXIMATE)
+==============================================================================================================
+  The harvest emits one cell per (player, Y) over Y in [dy+1, min(listed_through, 2025)], and
+  d13_derive keeps complete-window cells (Y <= 2021). `listed_through` depends on `_last_listed`
+  and `_retired`, which the matrix does not carry, so CELL COUNTS ARE NOT EXACTLY RECONSTRUCTIBLE.
+  Player-level membership above IS exact and is what the question asks. No cell count is asserted.
+
+==============================================================================================================
+VERDICT
+==============================================================================================================
+
+  THE QUESTION IS DETERMINABLE, and it is settled by the PRODUCER script, which survives in the
+  repo. The directive's statement is correct about d13_derive.py and is not correct as a claim
+  about the record as a whole. The seat reports this as a correction to the directive, not as a
+  disagreement with its ruling.
+
+  THE ANSWER IS SPLIT BY PATHWAY. Neither of the directive's two stated possibilities is the whole
+  answer -- BOTH ARE TRUE AT ONCE, OF DIFFERENT PATHWAYS:
+
+    IN   ND>64   122 of 122 rows
+    IN   RD      685 of 691 rows
+    IN   MSD      88 of 106 rows
+    OUT  SSP       0 of  52 rows  (pickless mechanism, _ft=False)
+    OUT  IRE       0 of  57 rows  (pickless mechanism, _ft=False)
+    OUT  PDA       0 of  51 rows  (pickless mechanism, _ft=False)
+    OUT  PDN       0 of  43 rows  (pickless mechanism, _ft=False)
+    OUT  PDS       0 of  21 rows  (pickless mechanism, _ft=False)
+    OUT  UNR       0 of  59 rows  (pickless mechanism, _ft=False)
+
+    -> pool rows IN  R's derivation population: 895  (ND>64, RD, MSD)
+    -> pool rows OUT of it:                     283  (SSP, IRE, PDA, PDN, PDS, UNR)
+
+  CONSEQUENCE FOR H, in the directive's own framing:
+    - For RD, ND>64 and MSD (895 rows): pool rows WERE in R. `_h_cut` therefore charged the same
+      sit-out effect A SECOND TIME on rows R had already accounted for -- a DOUBLE CHARGE.
+    - For SSP/IRE/PDA/PDN/PDS/UNR (283 rows): they were NOT in R. `_h_cut` was a BOLT-ON to a
+      surface read outside its evaluated range (effpk=65 vs knots ending at 50).
+
+  WHAT THIS DECIDES FOR TASK 5 (the directive: 'the answer decides whether the pool retention is a
+  genuinely new object or a correction to a mis-scoped one'):
+    IT IS BOTH, AND THE SPLIT IS THE REASON A SINGLE POOL-WIDE RETENTION CANNOT INHERIT FROM R.
+    A replacement derived on pool history is a CORRECTION for the 895 rows R already saw and a NEW
+    OBJECT for the 283 it never saw. Deriving one object per pathway on pool history alone is the
+    only construction that is right for both halves -- which is what D8 ruled, and the split is a
+    positive reason for that ruling rather than merely a consistent one.
+
+  WHAT IS NOT DETERMINABLE, stated rather than papered over:
+    (i)   d13_normcells.json is ABSENT, so this is a GATE REPLAY, not a read-back. It reproduces
+          the gate exactly; it cannot prove the 2026-07-03 run met an identical roster.
+    (ii)  The harvest ran on engine af1fc6aa against a store that has since moved to d9a24282.
+          Row-level membership AT THAT ENGINE is not recoverable from here. The pathway-level
+          verdict is robust to this because it turns on `_ft` and on pick PRESENCE, both
+          structural, but individual row counts would differ.
+    (iii) `_double_count` is not carried on the matrix and is not reconstructible, so rows excluded
+          by that flag ALONE are invisible to this replay.
+    (iv)  Cell counts by depth are not reconstructible (listed_through unavailable) -- see above.
+
+wrote PHASE1_POPULATION.json
