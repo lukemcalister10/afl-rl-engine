@@ -742,6 +742,41 @@ ok(retroReadings > 8000,
      "and the bundle was never mutated — a second call without the override reads the engine values");
 })();
 
+/* ===============================================================================================
+   A FINALS WEEK IS NAMED, NOT NUMBERED — on the card as well as in the selector.
+
+   history.js turns a retro point's emitter label ("R14 · current model") into "Round 14" for the
+   card, because the card already says re-priced everywhere it matters. Applied to a finals week
+   that rule printed "Round 25" — a round that appears on no fixture — on the weekly-history row,
+   the chart subtitle and the axis. The owner saw it on the downloadable app.
+
+   The fix takes the NAME FROM THE POINT rather than adding a second finals table, so this asserts
+   the real function out of the shipped source rather than a copy of it.
+   =============================================================================================== */
+(function () {
+  var hsrc = fs.readFileSync(path.join(__dirname, "..", "app", "history.js"), "utf8");
+  var m = /function retroLabel\(pt\)\s*\{[\s\S]*?\n    \}/.exec(hsrc);
+  ok(!!m, "history.js carries retroLabel — the retro point's display name has one owner");
+  var retroLabel = new Function("return (" + m[0] + ")")();
+  eq(retroLabel({ label: "R14 · current model", after_round: 14 }), "Round 14",
+     "a numbered round still reads Round 14");
+  eq(retroLabel({ label: "Finals Week 1 · current model", after_round: 25 }), "Finals Week 1",
+     "a FINALS WEEK reads its name, not Round 25");
+  eq(retroLabel({ label: "Grand Final · current model", after_round: 29 }), "Grand Final",
+     "…and so will every later week, without another edit here");
+  eq(retroLabel({ label: "", after_round: 24 }), "Round 24",
+     "a point with no label falls back to its round rather than rendering blank");
+
+  /* AND THE SHIPPED BUNDLE ACTUALLY HAS ONE, so the assertions above are not describing a case
+     that never occurs. */
+  var finals = (shipped.points || []).filter(function (p) {
+    return p.kind === "retro" && Number(p.after_round) > core.HOME_AND_AWAY_ROUNDS;
+  });
+  ok(finals.length > 0 && finals.every(function (p) { return !/^R\d/.test(String(p.label)); }),
+     "every finals retro point on the SHIPPED bundle carries a named label (" +
+     finals.map(function (p) { return p.label.split(" · ")[0]; }).join(", ") + ")");
+})();
+
 console.log("  " + "-".repeat(60));
 if (fails) { console.log("MOVERS TESTS: " + fails + " FAIL / " + n); process.exit(1); }
 console.log("MOVERS TESTS: ALL " + n + " PASS");

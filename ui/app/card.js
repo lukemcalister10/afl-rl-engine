@@ -70,8 +70,11 @@ MD.card = (function () {
   /* the x tick for one point: short enough to sit under a dense axis, still unambiguous. */
   function shortPointLabel(r) {
     if (r.isRound) {
-      const m = /(\d+)\s*$/.exec(String(r.label || ""));
-      return m ? m[1] : String(r.label || r.id);
+      // "Round 24" -> "24". A NAMED week has no number to take: "Finals Week 1" ends in a 1 and the
+      // old rule printed "1" between 23 and 24, which reads as a round that already happened.
+      const m = /^Round\s+(\d+)\s*$/.exec(String(r.label || ""));
+      if (m) return m[1];
+      return String(r.label || r.id).replace(/[^A-Z0-9]/g, "") || String(r.id);
     }
     const fin = finalsName(r.id);
     if (fin) return fin.replace(/[^A-Z0-9]/g, "");     // "Finals Week 1" -> "FW1"

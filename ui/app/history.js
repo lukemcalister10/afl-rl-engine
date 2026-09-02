@@ -117,6 +117,17 @@ MD.history = (function () {
        it: interleaving both would double every history. That reasoning is intact — what changed is
        that the two are now offered as ALTERNATIVES rather than one being dropped. MD.universe owns
        the choice so the card and the movers tab cannot disagree about which world is on screen. */
+    /* A RETRO POINT'S DISPLAY NAME. A numbered round reads "Round 14" rather than the emitter's
+       "R14 · current model", because the card already says re-priced everywhere it matters and the
+       axis has no room. But A FINALS WEEK IS NAMED, NOT NUMBERED — "Round 25" is a round that
+       appears on no fixture, and the card printed exactly that until 2026-09-02. The emitter has
+       already named the week, so the name is TAKEN FROM THE POINT rather than kept in a second
+       finals table here that could drift out of step with it. */
+    function retroLabel(pt) {
+      var name = String(pt.label || "").split(" · ")[0];
+      if (!name || /^R\d+$/.test(name)) return "Round " + pt.after_round;
+      return name;
+    }
     return MD.universe.points(b).map(function (pt) {
       /* A RETRO POINT IS A ROUND. It is that round's football re-priced under the current model, so
          it has a score map, a DNP truth and a coverage record — all keyed on the ROUND, not on the
@@ -129,7 +140,7 @@ MD.history = (function () {
       return {
         id: String(pt.id),
         roundKey: isRetro ? String(pt.after_round) : String(pt.id),
-        label: isRetro ? ("Round " + pt.after_round) : pt.label,
+        label: isRetro ? retroLabel(pt) : pt.label,
         isRound: isRound,
         isRetro: isRetro,
         modelChange: changes[String(pt.id)] || null,
