@@ -1,0 +1,2905 @@
+{
+ "movers": [
+  {
+   "key": "aaron-cadman",
+   "name": "Aaron Cadman",
+   "before": 2077,
+   "after": 2075,
+   "delta": -2
+  },
+  {
+   "key": "aaron-naughton",
+   "name": "Aaron Naughton",
+   "before": 1382,
+   "after": 1454,
+   "delta": 72
+  },
+  {
+   "key": "adam-cerra",
+   "name": "Adam Cerra",
+   "before": 1000,
+   "after": 1064,
+   "delta": 64
+  },
+  {
+   "key": "adam-saad",
+   "name": "Adam Saad",
+   "before": 420,
+   "after": 419,
+   "delta": -1
+  },
+  {
+   "key": "adam-treloar",
+   "name": "Adam Treloar",
+   "before": 808,
+   "after": 807,
+   "delta": -1
+  },
+  {
+   "key": "alex-neal-bullen",
+   "name": "Alex Neal-Bullen",
+   "before": 411,
+   "after": 414,
+   "delta": 3
+  },
+  {
+   "key": "alex-pearce",
+   "name": "Alex Pearce",
+   "before": 14,
+   "after": 15,
+   "delta": 1
+  },
+  {
+   "key": "aliir-aliir",
+   "name": "Aliir Aliir",
+   "before": 750,
+   "after": 749,
+   "delta": -1
+  },
+  {
+   "key": "andrew-brayshaw",
+   "name": "Andrew Brayshaw",
+   "before": 2827,
+   "after": 2832,
+   "delta": 5
+  },
+  {
+   "key": "andrew-mcgrath",
+   "name": "Andrew McGrath",
+   "before": 1079,
+   "after": 1078,
+   "delta": -1
+  },
+  {
+   "key": "angus-clarke",
+   "name": "Angus Clarke",
+   "before": 567,
+   "after": 566,
+   "delta": -1
+  },
+  {
+   "key": "angus-sheldrick",
+   "name": "Angus Sheldrick",
+   "before": 663,
+   "after": 664,
+   "delta": 1
+  },
+  {
+   "key": "anthony-caminiti",
+   "name": "Anthony Caminiti",
+   "before": 822,
+   "after": 821,
+   "delta": -1
+  },
+  {
+   "key": "archer-day-wicks",
+   "name": "Archer Day-Wicks",
+   "before": 347,
+   "after": 346,
+   "delta": -1
+  },
+  {
+   "key": "archie-roberts",
+   "name": "Archie Roberts",
+   "before": 3732,
+   "after": 3725,
+   "delta": -7
+  },
+  {
+   "key": "arthur-jones",
+   "name": "Arthur Jones",
+   "before": 315,
+   "after": 288,
+   "delta": -27
+  },
+  {
+   "key": "bailey-dale",
+   "name": "Bailey Dale",
+   "before": 1943,
+   "after": 1791,
+   "delta": -152
+  },
+  {
+   "key": "bailey-humphrey",
+   "name": "Bailey Humphrey",
+   "before": 2327,
+   "after": 2324,
+   "delta": -3
+  },
+  {
+   "key": "bailey-macdonald",
+   "name": "Bailey Macdonald",
+   "before": 147,
+   "after": 131,
+   "delta": -16
+  },
+  {
+   "key": "bailey-smith",
+   "name": "Bailey Smith",
+   "before": 5802,
+   "after": 5816,
+   "delta": 14
+  },
+  {
+   "key": "bailey-williams-wb",
+   "name": "Bailey Williams",
+   "before": 528,
+   "after": 598,
+   "delta": 70
+  },
+  {
+   "key": "bailey-williams-wc",
+   "name": "Bailey J. Williams",
+   "before": 2405,
+   "after": 2402,
+   "delta": -3
+  },
+  {
+   "key": "balyn-o-brien",
+   "name": "Balyn O'Brien",
+   "before": 248,
+   "after": 247,
+   "delta": -1
+  },
+  {
+   "key": "bayley-fritsch",
+   "name": "Bayley Fritsch",
+   "before": 275,
+   "after": 277,
+   "delta": 2
+  },
+  {
+   "key": "beau-addinsall",
+   "name": "Beau Addinsall",
+   "before": 1216,
+   "after": 1215,
+   "delta": -1
+  },
+  {
+   "key": "ben-ainsworth",
+   "name": "Ben Ainsworth",
+   "before": 338,
+   "after": 384,
+   "delta": 46
+  },
+  {
+   "key": "ben-keays",
+   "name": "Ben Keays",
+   "before": 420,
+   "after": 424,
+   "delta": 4
+  },
+  {
+   "key": "ben-king",
+   "name": "Ben King",
+   "before": 215,
+   "after": 214,
+   "delta": -1
+  },
+  {
+   "key": "ben-miller",
+   "name": "Ben Miller",
+   "before": 957,
+   "after": 954,
+   "delta": -3
+  },
+  {
+   "key": "billy-cootee",
+   "name": "Billy Cootee",
+   "before": 174,
+   "after": 166,
+   "delta": -8
+  },
+  {
+   "key": "billy-wilson",
+   "name": "Billy Wilson",
+   "before": 825,
+   "after": 964,
+   "delta": 139
+  },
+  {
+   "key": "blake-acres",
+   "name": "Blake Acres",
+   "before": 127,
+   "after": 74,
+   "delta": -53
+  },
+  {
+   "key": "blake-hardwick",
+   "name": "Blake Hardwick",
+   "before": 609,
+   "after": 594,
+   "delta": -15
+  },
+  {
+   "key": "blake-leidler",
+   "name": "Blake Leidler",
+   "before": 11,
+   "after": 10,
+   "delta": -1
+  },
+  {
+   "key": "bo-allan",
+   "name": "Bo Allan",
+   "before": 647,
+   "after": 646,
+   "delta": -1
+  },
+  {
+   "key": "bodhi-uwland",
+   "name": "Bodhi Uwland",
+   "before": 4036,
+   "after": 4029,
+   "delta": -7
+  },
+  {
+   "key": "bradley-close",
+   "name": "Bradley Close",
+   "before": 25,
+   "after": 26,
+   "delta": 1
+  },
+  {
+   "key": "bradley-hill",
+   "name": "Bradley Hill",
+   "before": 1403,
+   "after": 1405,
+   "delta": 2
+  },
+  {
+   "key": "braeden-campbell",
+   "name": "Braeden Campbell",
+   "before": 565,
+   "after": 567,
+   "delta": 2
+  },
+  {
+   "key": "brandon-walker",
+   "name": "Brandon Walker",
+   "before": 47,
+   "after": 53,
+   "delta": 6
+  },
+  {
+   "key": "brayden-cook",
+   "name": "Brayden Cook",
+   "before": 770,
+   "after": 820,
+   "delta": 50
+  },
+  {
+   "key": "brayden-fiorini",
+   "name": "Brayden Fiorini",
+   "before": 409,
+   "after": 408,
+   "delta": -1
+  },
+  {
+   "key": "brayden-maynard",
+   "name": "Brayden Maynard",
+   "before": 531,
+   "after": 529,
+   "delta": -2
+  },
+  {
+   "key": "brodie-grundy",
+   "name": "Brodie Grundy",
+   "before": 3936,
+   "after": 3931,
+   "delta": -5
+  },
+  {
+   "key": "brodie-kemp",
+   "name": "Brodie Kemp",
+   "before": 750,
+   "after": 680,
+   "delta": -70
+  },
+  {
+   "key": "buku-khamis",
+   "name": "Buku Khamis",
+   "before": 151,
+   "after": 149,
+   "delta": -2
+  },
+  {
+   "key": "caiden-cleary",
+   "name": "Caiden Cleary",
+   "before": 427,
+   "after": 445,
+   "delta": 18
+  },
+  {
+   "key": "caleb-daniel",
+   "name": "Caleb Daniel",
+   "before": 1221,
+   "after": 1218,
+   "delta": -3
+  },
+  {
+   "key": "caleb-lewis",
+   "name": "Caleb Lewis",
+   "before": 146,
+   "after": 145,
+   "delta": -1
+  },
+  {
+   "key": "caleb-serong",
+   "name": "Caleb Serong",
+   "before": 4426,
+   "after": 4377,
+   "delta": -49
+  },
+  {
+   "key": "caleb-windsor",
+   "name": "Caleb Windsor",
+   "before": 974,
+   "after": 973,
+   "delta": -1
+  },
+  {
+   "key": "callum-ah-chee",
+   "name": "Callum Ah Chee",
+   "before": 38,
+   "after": 34,
+   "delta": -4
+  },
+  {
+   "key": "callum-mills",
+   "name": "Callum Mills",
+   "before": 1918,
+   "after": 1914,
+   "delta": -4
+  },
+  {
+   "key": "callum-wilkie",
+   "name": "Callum Wilkie",
+   "before": 3425,
+   "after": 3419,
+   "delta": -6
+  },
+  {
+   "key": "cameron-mackenzie",
+   "name": "Cameron Mackenzie",
+   "before": 1732,
+   "after": 1746,
+   "delta": 14
+  },
+  {
+   "key": "cameron-rayner",
+   "name": "Cameron Rayner",
+   "before": 810,
+   "after": 671,
+   "delta": -139
+  },
+  {
+   "key": "cameron-zurhaar",
+   "name": "Cameron Zurhaar",
+   "before": 311,
+   "after": 310,
+   "delta": -1
+  },
+  {
+   "key": "campbell-gray",
+   "name": "Campbell Gray",
+   "before": 279,
+   "after": 278,
+   "delta": -1
+  },
+  {
+   "key": "chad-warner",
+   "name": "Chad Warner",
+   "before": 3883,
+   "after": 3877,
+   "delta": -6
+  },
+  {
+   "key": "changkuoth-jiath",
+   "name": "Changkuoth Jiath",
+   "before": 65,
+   "after": 64,
+   "delta": -1
+  },
+  {
+   "key": "charlie-ballard",
+   "name": "Charlie Ballard",
+   "before": 92,
+   "after": 91,
+   "delta": -1
+  },
+  {
+   "key": "charlie-cameron",
+   "name": "Charlie Cameron",
+   "before": 222,
+   "after": 167,
+   "delta": -55
+  },
+  {
+   "key": "charlie-comben",
+   "name": "Charlie Comben",
+   "before": 644,
+   "after": 643,
+   "delta": -1
+  },
+  {
+   "key": "charlie-curnow",
+   "name": "Charlie Curnow",
+   "before": 1227,
+   "after": 1325,
+   "delta": 98
+  },
+  {
+   "key": "charlie-west",
+   "name": "Charlie West",
+   "before": 326,
+   "after": 325,
+   "delta": -1
+  },
+  {
+   "key": "chris-scerri",
+   "name": "Chris Scerri",
+   "before": 277,
+   "after": 276,
+   "delta": -1
+  },
+  {
+   "key": "christian-moraes",
+   "name": "Christian Moraes",
+   "before": 664,
+   "after": 663,
+   "delta": -1
+  },
+  {
+   "key": "christian-petracca",
+   "name": "Christian Petracca",
+   "before": 1722,
+   "after": 1719,
+   "delta": -3
+  },
+  {
+   "key": "clayton-oliver",
+   "name": "Clayton Oliver",
+   "before": 2227,
+   "after": 2223,
+   "delta": -4
+  },
+  {
+   "key": "cody-weightman",
+   "name": "Cody Weightman",
+   "before": 179,
+   "after": 119,
+   "delta": -60
+  },
+  {
+   "key": "colby-mckercher",
+   "name": "Colby McKercher",
+   "before": 4179,
+   "after": 4175,
+   "delta": -4
+  },
+  {
+   "key": "connor-budarick",
+   "name": "Connor Budarick",
+   "before": 216,
+   "after": 206,
+   "delta": -10
+  },
+  {
+   "key": "connor-idun",
+   "name": "Connor Idun",
+   "before": 2318,
+   "after": 2313,
+   "delta": -5
+  },
+  {
+   "key": "connor-macdonald",
+   "name": "Connor MacDonald",
+   "before": 2868,
+   "after": 2880,
+   "delta": 12
+  },
+  {
+   "key": "connor-o-sullivan",
+   "name": "Connor O'Sullivan",
+   "before": 2589,
+   "after": 2437,
+   "delta": -152
+  },
+  {
+   "key": "connor-rozee",
+   "name": "Connor Rozee",
+   "before": 3113,
+   "after": 3108,
+   "delta": -5
+  },
+  {
+   "key": "conor-mckenna",
+   "name": "Conor McKenna",
+   "before": 5,
+   "after": 6,
+   "delta": 1
+  },
+  {
+   "key": "cooper-duff-tytler",
+   "name": "Cooper Duff-Tytler",
+   "before": 1771,
+   "after": 1770,
+   "delta": -1
+  },
+  {
+   "key": "cooper-harvey",
+   "name": "Cooper Harvey",
+   "before": 395,
+   "after": 394,
+   "delta": -1
+  },
+  {
+   "key": "cooper-hynes",
+   "name": "Cooper Hynes",
+   "before": 1050,
+   "after": 1166,
+   "delta": 116
+  },
+  {
+   "key": "cooper-lord",
+   "name": "Cooper Lord",
+   "before": 1137,
+   "after": 1194,
+   "delta": 57
+  },
+  {
+   "key": "cooper-trembath",
+   "name": "Cooper Trembath",
+   "before": 1637,
+   "after": 1635,
+   "delta": -2
+  },
+  {
+   "key": "dan-houston",
+   "name": "Dan Houston",
+   "before": 1032,
+   "after": 1031,
+   "delta": -1
+  },
+  {
+   "key": "daniel-curtin",
+   "name": "Daniel Curtin",
+   "before": 2358,
+   "after": 2314,
+   "delta": -44
+  },
+  {
+   "key": "daniel-mcstay",
+   "name": "Daniel McStay",
+   "before": 333,
+   "after": 335,
+   "delta": 2
+  },
+  {
+   "key": "daniel-rioli",
+   "name": "Daniel Rioli",
+   "before": 686,
+   "after": 685,
+   "delta": -1
+  },
+  {
+   "key": "daniel-turner",
+   "name": "Daniel Turner",
+   "before": 1694,
+   "after": 1690,
+   "delta": -4
+  },
+  {
+   "key": "dante-visentini",
+   "name": "Dante Visentini",
+   "before": 761,
+   "after": 760,
+   "delta": -1
+  },
+  {
+   "key": "darcy-byrne-jones",
+   "name": "Darcy Byrne-Jones",
+   "before": 599,
+   "after": 598,
+   "delta": -1
+  },
+  {
+   "key": "darcy-cameron",
+   "name": "Darcy Cameron",
+   "before": 1520,
+   "after": 1518,
+   "delta": -2
+  },
+  {
+   "key": "darcy-fogarty",
+   "name": "Darcy Fogarty",
+   "before": 805,
+   "after": 813,
+   "delta": 8
+  },
+  {
+   "key": "darcy-fort",
+   "name": "Darcy Fort",
+   "before": 94,
+   "after": 86,
+   "delta": -8
+  },
+  {
+   "key": "darcy-jones",
+   "name": "Darcy Jones",
+   "before": 1465,
+   "after": 1463,
+   "delta": -2
+  },
+  {
+   "key": "darcy-parish",
+   "name": "Darcy Parish",
+   "before": 607,
+   "after": 606,
+   "delta": -1
+  },
+  {
+   "key": "darcy-wilmot",
+   "name": "Darcy Wilmot",
+   "before": 3040,
+   "after": 2991,
+   "delta": -49
+  },
+  {
+   "key": "darcy-wilson",
+   "name": "Darcy Wilson",
+   "before": 2653,
+   "after": 2655,
+   "delta": 2
+  },
+  {
+   "key": "dayne-zorko",
+   "name": "Dayne Zorko",
+   "before": 946,
+   "after": 947,
+   "delta": 1
+  },
+  {
+   "key": "dylan-moore",
+   "name": "Dylan Moore",
+   "before": 1201,
+   "after": 1262,
+   "delta": 61
+  },
+  {
+   "key": "dylan-patterson",
+   "name": "Dylan Patterson",
+   "before": 1121,
+   "after": 1120,
+   "delta": -1
+  },
+  {
+   "key": "dylan-stephens",
+   "name": "Dylan Stephens",
+   "before": 605,
+   "after": 604,
+   "delta": -1
+  },
+  {
+   "key": "dyson-sharp",
+   "name": "Dyson Sharp",
+   "before": 3027,
+   "after": 3024,
+   "delta": -3
+  },
+  {
+   "key": "ed-langdon",
+   "name": "Ed Langdon",
+   "before": 598,
+   "after": 597,
+   "delta": -1
+  },
+  {
+   "key": "ed-richards",
+   "name": "Ed Richards",
+   "before": 3986,
+   "after": 3929,
+   "delta": -57
+  },
+  {
+   "key": "edward-allan",
+   "name": "Edward Allan",
+   "before": 795,
+   "after": 794,
+   "delta": -1
+  },
+  {
+   "key": "elijah-hollands",
+   "name": "Elijah Hollands",
+   "before": 637,
+   "after": 636,
+   "delta": -1
+  },
+  {
+   "key": "elijah-tsatas",
+   "name": "Elijah Tsatas",
+   "before": 812,
+   "after": 811,
+   "delta": -1
+  },
+  {
+   "key": "eric-hipwood",
+   "name": "Eric Hipwood",
+   "before": 64,
+   "after": 70,
+   "delta": 6
+  },
+  {
+   "key": "errol-gulden",
+   "name": "Errol Gulden",
+   "before": 7339,
+   "after": 7404,
+   "delta": 65
+  },
+  {
+   "key": "ethan-read",
+   "name": "Ethan Read",
+   "before": 544,
+   "after": 543,
+   "delta": -1
+  },
+  {
+   "key": "finn-callaghan",
+   "name": "Finn Callaghan",
+   "before": 5417,
+   "after": 5410,
+   "delta": -7
+  },
+  {
+   "key": "finn-o-sullivan",
+   "name": "Finn O'Sullivan",
+   "before": 2794,
+   "after": 2791,
+   "delta": -3
+  },
+  {
+   "key": "finnbar-maley",
+   "name": "Finnbar Maley",
+   "before": 170,
+   "after": 169,
+   "delta": -1
+  },
+  {
+   "key": "francis-evans",
+   "name": "Francis Evans",
+   "before": 781,
+   "after": 822,
+   "delta": 41
+  },
+  {
+   "key": "george-hewett",
+   "name": "George Hewett",
+   "before": 1767,
+   "after": 1774,
+   "delta": 7
+  },
+  {
+   "key": "george-wardlaw",
+   "name": "George Wardlaw",
+   "before": 3084,
+   "after": 3081,
+   "delta": -3
+  },
+  {
+   "key": "gryan-miers",
+   "name": "Gryan Miers",
+   "before": 1537,
+   "after": 1594,
+   "delta": 57
+  },
+  {
+   "key": "hamish-davis",
+   "name": "Hamish Davis",
+   "before": 665,
+   "after": 664,
+   "delta": -1
+  },
+  {
+   "key": "harley-reid",
+   "name": "Harley Reid",
+   "before": 3781,
+   "after": 3776,
+   "delta": -5
+  },
+  {
+   "key": "harris-andrews",
+   "name": "Harris Andrews",
+   "before": 1563,
+   "after": 1547,
+   "delta": -16
+  },
+  {
+   "key": "harrison-petty",
+   "name": "Harrison Petty",
+   "before": 374,
+   "after": 373,
+   "delta": -1
+  },
+  {
+   "key": "harry-armstrong",
+   "name": "Harry Armstrong",
+   "before": 502,
+   "after": 501,
+   "delta": -1
+  },
+  {
+   "key": "harry-cunningham",
+   "name": "Harry Cunningham",
+   "before": 2,
+   "after": 3,
+   "delta": 1
+  },
+  {
+   "key": "harry-dean",
+   "name": "Harry Dean",
+   "before": 2992,
+   "after": 2664,
+   "delta": -328
+  },
+  {
+   "key": "harry-kyle",
+   "name": "Harry Kyle",
+   "before": 790,
+   "after": 791,
+   "delta": 1
+  },
+  {
+   "key": "harry-mckay",
+   "name": "Harry McKay",
+   "before": 1619,
+   "after": 1621,
+   "delta": 2
+  },
+  {
+   "key": "harry-morrison",
+   "name": "Harry Morrison",
+   "before": 64,
+   "after": 66,
+   "delta": 2
+  },
+  {
+   "key": "harry-o-farrell",
+   "name": "Harry O'Farrell",
+   "before": 447,
+   "after": 446,
+   "delta": -1
+  },
+  {
+   "key": "harry-rowston",
+   "name": "Harry Rowston",
+   "before": 498,
+   "after": 497,
+   "delta": -1
+  },
+  {
+   "key": "harry-sheezel",
+   "name": "Harry Sheezel",
+   "before": 10900,
+   "after": 10884,
+   "delta": -16
+  },
+  {
+   "key": "harvey-langford",
+   "name": "Harvey Langford",
+   "before": 1876,
+   "after": 1875,
+   "delta": -1
+  },
+  {
+   "key": "harvey-thomas",
+   "name": "Harvey Thomas",
+   "before": 1969,
+   "after": 1966,
+   "delta": -3
+  },
+  {
+   "key": "hayden-mclean",
+   "name": "Hayden McLean",
+   "before": 229,
+   "after": 303,
+   "delta": 74
+  },
+  {
+   "key": "hayden-young",
+   "name": "Hayden Young",
+   "before": 1557,
+   "after": 1558,
+   "delta": 1
+  },
+  {
+   "key": "heath-chapman",
+   "name": "Heath Chapman",
+   "before": 370,
+   "after": 425,
+   "delta": 55
+  },
+  {
+   "key": "henry-smith",
+   "name": "Henry Smith",
+   "before": 122,
+   "after": 121,
+   "delta": -1
+  },
+  {
+   "key": "hugh-mccluggage",
+   "name": "Hugh McCluggage",
+   "before": 1553,
+   "after": 1446,
+   "delta": -107
+  },
+  {
+   "key": "hugo-garcia",
+   "name": "Hugo Garcia",
+   "before": 2827,
+   "after": 2823,
+   "delta": -4
+  },
+  {
+   "key": "hugo-hall-kahan",
+   "name": "Hugo Hall-Kahan",
+   "before": 541,
+   "after": 557,
+   "delta": 16
+  },
+  {
+   "key": "hussien-el-achkar",
+   "name": "Hussien El Achkar",
+   "before": 415,
+   "after": 414,
+   "delta": -1
+  },
+  {
+   "key": "isaac-cumming",
+   "name": "Isaac Cumming",
+   "before": 57,
+   "after": 62,
+   "delta": 5
+  },
+  {
+   "key": "isaac-heeney",
+   "name": "Isaac Heeney",
+   "before": 3682,
+   "after": 3676,
+   "delta": -6
+  },
+  {
+   "key": "isaac-kako",
+   "name": "Isaac Kako",
+   "before": 816,
+   "after": 815,
+   "delta": -1
+  },
+  {
+   "key": "isaac-quaynor",
+   "name": "Isaac Quaynor",
+   "before": 610,
+   "after": 609,
+   "delta": -1
+  },
+  {
+   "key": "isaiah-dudley",
+   "name": "Isaiah Dudley",
+   "before": 222,
+   "after": 194,
+   "delta": -28
+  },
+  {
+   "key": "izak-rankine",
+   "name": "Izak Rankine",
+   "before": 4910,
+   "after": 5021,
+   "delta": 111
+  },
+  {
+   "key": "jack-buckley",
+   "name": "Jack Buckley",
+   "before": 572,
+   "after": 571,
+   "delta": -1
+  },
+  {
+   "key": "jack-ginnivan",
+   "name": "Jack Ginnivan",
+   "before": 2148,
+   "after": 2145,
+   "delta": -3
+  },
+  {
+   "key": "jack-graham",
+   "name": "Jack Graham",
+   "before": 732,
+   "after": 731,
+   "delta": -1
+  },
+  {
+   "key": "jack-gunston",
+   "name": "Jack Gunston",
+   "before": 667,
+   "after": 589,
+   "delta": -78
+  },
+  {
+   "key": "jack-henry",
+   "name": "Jack Henry",
+   "before": 227,
+   "after": 219,
+   "delta": -8
+  },
+  {
+   "key": "jack-lukosius",
+   "name": "Jack Lukosius",
+   "before": 530,
+   "after": 529,
+   "delta": -1
+  },
+  {
+   "key": "jack-ross",
+   "name": "Jack Ross",
+   "before": 2366,
+   "after": 2363,
+   "delta": -3
+  },
+  {
+   "key": "jack-silvagni",
+   "name": "Jack Silvagni",
+   "before": 682,
+   "after": 680,
+   "delta": -2
+  },
+  {
+   "key": "jack-sinclair",
+   "name": "Jack Sinclair",
+   "before": 3075,
+   "after": 3070,
+   "delta": -5
+  },
+  {
+   "key": "jack-steele",
+   "name": "Jack Steele",
+   "before": 1083,
+   "after": 1082,
+   "delta": -1
+  },
+  {
+   "key": "jack-whitlock",
+   "name": "Jack Whitlock",
+   "before": 989,
+   "after": 988,
+   "delta": -1
+  },
+  {
+   "key": "jack-williams",
+   "name": "Jack Williams",
+   "before": 337,
+   "after": 336,
+   "delta": -1
+  },
+  {
+   "key": "jacob-blight",
+   "name": "Jacob Blight",
+   "before": 11,
+   "after": 10,
+   "delta": -1
+  },
+  {
+   "key": "jacob-farrow",
+   "name": "Jacob Farrow",
+   "before": 2033,
+   "after": 2032,
+   "delta": -1
+  },
+  {
+   "key": "jacob-van-rooyen",
+   "name": "Jacob Van Rooyen",
+   "before": 1779,
+   "after": 1786,
+   "delta": 7
+  },
+  {
+   "key": "jacob-weitering",
+   "name": "Jacob Weitering",
+   "before": 1211,
+   "after": 1152,
+   "delta": -59
+  },
+  {
+   "key": "jagga-smith",
+   "name": "Jagga Smith",
+   "before": 4942,
+   "after": 4916,
+   "delta": -26
+  },
+  {
+   "key": "jai-newcombe",
+   "name": "Jai Newcombe",
+   "before": 4607,
+   "after": 4330,
+   "delta": -277
+  },
+  {
+   "key": "jai-serong",
+   "name": "Jai Serong",
+   "before": 1199,
+   "after": 1194,
+   "delta": -5
+  },
+  {
+   "key": "jake-bowey",
+   "name": "Jake Bowey",
+   "before": 3885,
+   "after": 3878,
+   "delta": -7
+  },
+  {
+   "key": "jake-lever",
+   "name": "Jake Lever",
+   "before": 188,
+   "after": 186,
+   "delta": -2
+  },
+  {
+   "key": "jake-lloyd",
+   "name": "Jake Lloyd",
+   "before": 248,
+   "after": 306,
+   "delta": 58
+  },
+  {
+   "key": "jake-soligo",
+   "name": "Jake Soligo",
+   "before": 1822,
+   "after": 1841,
+   "delta": 19
+  },
+  {
+   "key": "jake-stringer",
+   "name": "Jake Stringer",
+   "before": 102,
+   "after": 101,
+   "delta": -1
+  },
+  {
+   "key": "jake-waterman",
+   "name": "Jake Waterman",
+   "before": 988,
+   "after": 987,
+   "delta": -1
+  },
+  {
+   "key": "james-borlase",
+   "name": "James Borlase",
+   "before": 359,
+   "after": 366,
+   "delta": 7
+  },
+  {
+   "key": "james-jordon",
+   "name": "James Jordon",
+   "before": 272,
+   "after": 271,
+   "delta": -1
+  },
+  {
+   "key": "james-o-donnell",
+   "name": "James O'Donnell",
+   "before": 455,
+   "after": 566,
+   "delta": 111
+  },
+  {
+   "key": "james-peatling",
+   "name": "James Peatling",
+   "before": 1010,
+   "after": 1009,
+   "delta": -1
+  },
+  {
+   "key": "james-rowbottom",
+   "name": "James Rowbottom",
+   "before": 1311,
+   "after": 1341,
+   "delta": 30
+  },
+  {
+   "key": "james-sicily",
+   "name": "James Sicily",
+   "before": 1172,
+   "after": 1213,
+   "delta": 41
+  },
+  {
+   "key": "jarman-impey",
+   "name": "Jarman Impey",
+   "before": 775,
+   "after": 679,
+   "delta": -96
+  },
+  {
+   "key": "jarrod-berry",
+   "name": "Jarrod Berry",
+   "before": 364,
+   "after": 363,
+   "delta": -1
+  },
+  {
+   "key": "jase-burgoyne",
+   "name": "Jase Burgoyne",
+   "before": 2550,
+   "after": 2546,
+   "delta": -4
+  },
+  {
+   "key": "jason-horne-francis",
+   "name": "Jason Horne-Francis",
+   "before": 5428,
+   "after": 5420,
+   "delta": -8
+  },
+  {
+   "key": "jaspa-fletcher",
+   "name": "Jaspa Fletcher",
+   "before": 2688,
+   "after": 2696,
+   "delta": 8
+  },
+  {
+   "key": "jasper-alger",
+   "name": "Jasper Alger",
+   "before": 240,
+   "after": 239,
+   "delta": -1
+  },
+  {
+   "key": "jaxon-prior",
+   "name": "Jaxon Prior",
+   "before": 400,
+   "after": 399,
+   "delta": -1
+  },
+  {
+   "key": "jay-polkinghorne",
+   "name": "Jay Polkinghorne",
+   "before": 252,
+   "after": 370,
+   "delta": 118
+  },
+  {
+   "key": "jayden-short",
+   "name": "Jayden Short",
+   "before": 878,
+   "after": 877,
+   "delta": -1
+  },
+  {
+   "key": "jed-walter",
+   "name": "Jed Walter",
+   "before": 1015,
+   "after": 1014,
+   "delta": -1
+  },
+  {
+   "key": "jedd-busslinger",
+   "name": "Jedd Busslinger",
+   "before": 783,
+   "after": 782,
+   "delta": -1
+  },
+  {
+   "key": "jeremy-cameron",
+   "name": "Jeremy Cameron",
+   "before": 836,
+   "after": 704,
+   "delta": -132
+  },
+  {
+   "key": "jesse-dattoli",
+   "name": "Jesse Dattoli",
+   "before": 450,
+   "after": 418,
+   "delta": -32
+  },
+  {
+   "key": "jesse-hogan",
+   "name": "Jesse Hogan",
+   "before": 321,
+   "after": 320,
+   "delta": -1
+  },
+  {
+   "key": "jhye-clark",
+   "name": "Jhye Clark",
+   "before": 765,
+   "after": 764,
+   "delta": -1
+  },
+  {
+   "key": "jobe-shanahan",
+   "name": "Jobe Shanahan",
+   "before": 1255,
+   "after": 1254,
+   "delta": -1
+  },
+  {
+   "key": "joe-berry",
+   "name": "Joe Berry",
+   "before": 1015,
+   "after": 1014,
+   "delta": -1
+  },
+  {
+   "key": "joe-richards",
+   "name": "Joe Richards",
+   "before": 933,
+   "after": 934,
+   "delta": 1
+  },
+  {
+   "key": "joel-amartey",
+   "name": "Joel Amartey",
+   "before": 114,
+   "after": 113,
+   "delta": -1
+  },
+  {
+   "key": "joel-fitzgerald",
+   "name": "Joel Fitzgerald",
+   "before": 286,
+   "after": 285,
+   "delta": -1
+  },
+  {
+   "key": "joel-freijah",
+   "name": "Joel Freijah",
+   "before": 2805,
+   "after": 2845,
+   "delta": 40
+  },
+  {
+   "key": "joel-jeffrey",
+   "name": "Joel Jeffrey",
+   "before": 1415,
+   "after": 1413,
+   "delta": -2
+  },
+  {
+   "key": "john-noble",
+   "name": "John Noble",
+   "before": 2285,
+   "after": 2281,
+   "delta": -4
+  },
+  {
+   "key": "jonty-faull",
+   "name": "Jonty Faull",
+   "before": 606,
+   "after": 605,
+   "delta": -1
+  },
+  {
+   "key": "jordan-clark",
+   "name": "Jordan Clark",
+   "before": 3120,
+   "after": 3778,
+   "delta": 658
+  },
+  {
+   "key": "jordan-dawson",
+   "name": "Jordan Dawson",
+   "before": 2877,
+   "after": 2879,
+   "delta": 2
+  },
+  {
+   "key": "jordan-de-goey",
+   "name": "Jordan De Goey",
+   "before": 1276,
+   "after": 1277,
+   "delta": 1
+  },
+  {
+   "key": "jordon-sweet",
+   "name": "Jordon Sweet",
+   "before": 2506,
+   "after": 2503,
+   "delta": -3
+  },
+  {
+   "key": "joseph-fonti",
+   "name": "Joseph Fonti",
+   "before": 483,
+   "after": 482,
+   "delta": -1
+  },
+  {
+   "key": "josh-battle",
+   "name": "Josh Battle",
+   "before": 1826,
+   "after": 1923,
+   "delta": 97
+  },
+  {
+   "key": "josh-daicos",
+   "name": "Josh Daicos",
+   "before": 2074,
+   "after": 2071,
+   "delta": -3
+  },
+  {
+   "key": "josh-dolan",
+   "name": "Josh Dolan",
+   "before": 324,
+   "after": 313,
+   "delta": -11
+  },
+  {
+   "key": "josh-draper",
+   "name": "Josh Draper",
+   "before": 256,
+   "after": 255,
+   "delta": -1
+  },
+  {
+   "key": "josh-dunkley",
+   "name": "Josh Dunkley",
+   "before": 1278,
+   "after": 1322,
+   "delta": 44
+  },
+  {
+   "key": "josh-lindsay",
+   "name": "Josh Lindsay",
+   "before": 1515,
+   "after": 1514,
+   "delta": -1
+  },
+  {
+   "key": "josh-rachele",
+   "name": "Josh Rachele",
+   "before": 1841,
+   "after": 1895,
+   "delta": 54
+  },
+  {
+   "key": "josh-treacy",
+   "name": "Josh Treacy",
+   "before": 5735,
+   "after": 5189,
+   "delta": -546
+  },
+  {
+   "key": "josh-ward",
+   "name": "Josh Ward",
+   "before": 2629,
+   "after": 2579,
+   "delta": -50
+  },
+  {
+   "key": "josh-worrell",
+   "name": "Josh Worrell",
+   "before": 2725,
+   "after": 2921,
+   "delta": 196
+  },
+  {
+   "key": "joshua-kelly",
+   "name": "Joshua Kelly",
+   "before": 717,
+   "after": 715,
+   "delta": -2
+  },
+  {
+   "key": "joshua-weddle",
+   "name": "Joshua Weddle",
+   "before": 1285,
+   "after": 1505,
+   "delta": 220
+  },
+  {
+   "key": "judd-mcvee",
+   "name": "Judd McVee",
+   "before": 286,
+   "after": 285,
+   "delta": -1
+  },
+  {
+   "key": "justin-mcinerney",
+   "name": "Justin McInerney",
+   "before": 1861,
+   "after": 1858,
+   "delta": -3
+  },
+  {
+   "key": "jy-simpkin",
+   "name": "Jy Simpkin",
+   "before": 1194,
+   "after": 1193,
+   "delta": -1
+  },
+  {
+   "key": "jye-amiss",
+   "name": "Jye Amiss",
+   "before": 1428,
+   "after": 1345,
+   "delta": -83
+  },
+  {
+   "key": "jye-caldwell",
+   "name": "Jye Caldwell",
+   "before": 1029,
+   "after": 1027,
+   "delta": -2
+  },
+  {
+   "key": "kai-lohmann",
+   "name": "Kai Lohmann",
+   "before": 758,
+   "after": 698,
+   "delta": -60
+  },
+  {
+   "key": "kane-farrell",
+   "name": "Kane Farrell",
+   "before": 1289,
+   "after": 1287,
+   "delta": -2
+  },
+  {
+   "key": "karl-amon",
+   "name": "Karl Amon",
+   "before": 301,
+   "after": 280,
+   "delta": -21
+  },
+  {
+   "key": "karl-worner",
+   "name": "Karl Worner",
+   "before": 1245,
+   "after": 1459,
+   "delta": 214
+  },
+  {
+   "key": "keidean-coleman",
+   "name": "Keidean Coleman",
+   "before": 691,
+   "after": 690,
+   "delta": -1
+  },
+  {
+   "key": "kieren-briggs",
+   "name": "Kieren Briggs",
+   "before": 1924,
+   "after": 1922,
+   "delta": -2
+  },
+  {
+   "key": "koltyn-tholstrup",
+   "name": "Koltyn Tholstrup",
+   "before": 1665,
+   "after": 1664,
+   "delta": -1
+  },
+  {
+   "key": "kysaiah-pickett",
+   "name": "Kysaiah Pickett",
+   "before": 4329,
+   "after": 4331,
+   "delta": 2
+  },
+  {
+   "key": "lachie-neale",
+   "name": "Lachie Neale",
+   "before": 2130,
+   "after": 2018,
+   "delta": -112
+  },
+  {
+   "key": "lachie-whitfield",
+   "name": "Lachie Whitfield",
+   "before": 2178,
+   "after": 2174,
+   "delta": -4
+  },
+  {
+   "key": "lachlan-ash",
+   "name": "Lachlan Ash",
+   "before": 5260,
+   "after": 5251,
+   "delta": -9
+  },
+  {
+   "key": "lachlan-bramble",
+   "name": "Lachlan Bramble",
+   "before": 151,
+   "after": 102,
+   "delta": -49
+  },
+  {
+   "key": "lachlan-cowan",
+   "name": "Lachlan Cowan",
+   "before": 586,
+   "after": 599,
+   "delta": 13
+  },
+  {
+   "key": "lachlan-mcandrew",
+   "name": "Lachlan McAndrew",
+   "before": 1146,
+   "after": 1167,
+   "delta": 21
+  },
+  {
+   "key": "lachlan-mcneil",
+   "name": "Lachlan McNeil",
+   "before": 44,
+   "after": 41,
+   "delta": -3
+  },
+  {
+   "key": "lachlan-sholl",
+   "name": "Lachlan Sholl",
+   "before": 91,
+   "after": 90,
+   "delta": -1
+  },
+  {
+   "key": "lachy-dovaston",
+   "name": "Lachy Dovaston",
+   "before": 646,
+   "after": 645,
+   "delta": -1
+  },
+  {
+   "key": "lawson-humphries",
+   "name": "Lawson Humphries",
+   "before": 1653,
+   "after": 1666,
+   "delta": 13
+  },
+  {
+   "key": "leo-lombard",
+   "name": "Leo Lombard",
+   "before": 1747,
+   "after": 1746,
+   "delta": -1
+  },
+  {
+   "key": "levi-ashcroft",
+   "name": "Levi Ashcroft",
+   "before": 3527,
+   "after": 3513,
+   "delta": -14
+  },
+  {
+   "key": "lewis-young",
+   "name": "Lewis Young",
+   "before": 145,
+   "after": 123,
+   "delta": -22
+  },
+  {
+   "key": "lloyd-meek",
+   "name": "Lloyd Meek",
+   "before": 1492,
+   "after": 1386,
+   "delta": -106
+  },
+  {
+   "key": "logan-evans",
+   "name": "Logan Evans",
+   "before": 1362,
+   "after": 1360,
+   "delta": -2
+  },
+  {
+   "key": "logan-mcdonald",
+   "name": "Logan McDonald",
+   "before": 828,
+   "after": 1184,
+   "delta": 356
+  },
+  {
+   "key": "logan-morris",
+   "name": "Logan Morris",
+   "before": 2972,
+   "after": 2933,
+   "delta": -39
+  },
+  {
+   "key": "louis-emmett",
+   "name": "Louis Emmett",
+   "before": 633,
+   "after": 632,
+   "delta": -1
+  },
+  {
+   "key": "luke-davies-uniacke",
+   "name": "Luke Davies-Uniacke",
+   "before": 3026,
+   "after": 3022,
+   "delta": -4
+  },
+  {
+   "key": "luke-jackson",
+   "name": "Luke Jackson",
+   "before": 9227,
+   "after": 9286,
+   "delta": 59
+  },
+  {
+   "key": "luke-kennedy",
+   "name": "Luke Kennedy",
+   "before": 271,
+   "after": 291,
+   "delta": 20
+  },
+  {
+   "key": "luke-nankervis",
+   "name": "Luke Nankervis",
+   "before": 341,
+   "after": 441,
+   "delta": 100
+  },
+  {
+   "key": "luke-parker",
+   "name": "Luke Parker",
+   "before": 1145,
+   "after": 1144,
+   "delta": -1
+  },
+  {
+   "key": "luke-ryan",
+   "name": "Luke Ryan",
+   "before": 1284,
+   "after": 1303,
+   "delta": 19
+  },
+  {
+   "key": "mabior-chol",
+   "name": "Mabior Chol",
+   "before": 258,
+   "after": 212,
+   "delta": -46
+  },
+  {
+   "key": "mac-andrew",
+   "name": "Mac Andrew",
+   "before": 3795,
+   "after": 3787,
+   "delta": -8
+  },
+  {
+   "key": "marc-pittonet",
+   "name": "Marc Pittonet",
+   "before": 513,
+   "after": 510,
+   "delta": -3
+  },
+  {
+   "key": "marcus-bontempelli",
+   "name": "Marcus Bontempelli",
+   "before": 3615,
+   "after": 3707,
+   "delta": 92
+  },
+  {
+   "key": "marcus-herbert",
+   "name": "Marcus Herbert",
+   "before": 834,
+   "after": 832,
+   "delta": -2
+  },
+  {
+   "key": "marcus-windhager",
+   "name": "Marcus Windhager",
+   "before": 1808,
+   "after": 1806,
+   "delta": -2
+  },
+  {
+   "key": "mark-blicavs",
+   "name": "Mark Blicavs",
+   "before": 59,
+   "after": 60,
+   "delta": 1
+  },
+  {
+   "key": "mark-keane",
+   "name": "Mark Keane",
+   "before": 1458,
+   "after": 1463,
+   "delta": 5
+  },
+  {
+   "key": "mark-o-connor",
+   "name": "Mark O'Connor",
+   "before": 19,
+   "after": 25,
+   "delta": 6
+  },
+  {
+   "key": "mason-cox",
+   "name": "Mason Cox",
+   "before": 3,
+   "after": 2,
+   "delta": -1
+  },
+  {
+   "key": "mason-redman",
+   "name": "Mason Redman",
+   "before": 941,
+   "after": 939,
+   "delta": -2
+  },
+  {
+   "key": "massimo-d-ambrosio",
+   "name": "Massimo D'Ambrosio",
+   "before": 1653,
+   "after": 1785,
+   "delta": 132
+  },
+  {
+   "key": "matt-carroll",
+   "name": "Matt Carroll",
+   "before": 638,
+   "after": 637,
+   "delta": -1
+  },
+  {
+   "key": "matt-cottrell",
+   "name": "Matt Cottrell",
+   "before": 161,
+   "after": 151,
+   "delta": -10
+  },
+  {
+   "key": "matt-johnson-1",
+   "name": "Matt Johnson",
+   "before": 1029,
+   "after": 1025,
+   "delta": -4
+  },
+  {
+   "key": "matt-rowell",
+   "name": "Matt Rowell",
+   "before": 4809,
+   "after": 4803,
+   "delta": -6
+  },
+  {
+   "key": "mattaes-phillipou",
+   "name": "Mattaes Phillipou",
+   "before": 1750,
+   "after": 1748,
+   "delta": -2
+  },
+  {
+   "key": "matthew-flynn",
+   "name": "Matthew Flynn",
+   "before": 590,
+   "after": 589,
+   "delta": -1
+  },
+  {
+   "key": "matthew-jefferson",
+   "name": "Matthew Jefferson",
+   "before": 395,
+   "after": 394,
+   "delta": -1
+  },
+  {
+   "key": "matthew-kennedy-1",
+   "name": "Matthew Kennedy",
+   "before": 690,
+   "after": 689,
+   "delta": -1
+  },
+  {
+   "key": "matthew-roberts",
+   "name": "Matthew Roberts",
+   "before": 1460,
+   "after": 1457,
+   "delta": -3
+  },
+  {
+   "key": "max-beattie",
+   "name": "Max Beattie",
+   "before": 166,
+   "after": 129,
+   "delta": -37
+  },
+  {
+   "key": "max-gawn",
+   "name": "Max Gawn",
+   "before": 3265,
+   "after": 3261,
+   "delta": -4
+  },
+  {
+   "key": "max-gruzewski",
+   "name": "Max Gruzewski",
+   "before": 430,
+   "after": 429,
+   "delta": -1
+  },
+  {
+   "key": "max-hall",
+   "name": "Max Hall",
+   "before": 2726,
+   "after": 2729,
+   "delta": 3
+  },
+  {
+   "key": "max-holmes",
+   "name": "Max Holmes",
+   "before": 8258,
+   "after": 7303,
+   "delta": -955
+  },
+  {
+   "key": "max-kondogiannis",
+   "name": "Max Kondogiannis",
+   "before": 406,
+   "after": 405,
+   "delta": -1
+  },
+  {
+   "key": "max-michalanney",
+   "name": "Max Michalanney",
+   "before": 529,
+   "after": 527,
+   "delta": -2
+  },
+  {
+   "key": "michael-frederick",
+   "name": "Michael Frederick",
+   "before": 116,
+   "after": 114,
+   "delta": -2
+  },
+  {
+   "key": "milan-murdock",
+   "name": "Milan Murdock",
+   "before": 348,
+   "after": 349,
+   "delta": 1
+  },
+  {
+   "key": "miles-bergman",
+   "name": "Miles Bergman",
+   "before": 976,
+   "after": 975,
+   "delta": -1
+  },
+  {
+   "key": "mitch-georgiades",
+   "name": "Mitch Georgiades",
+   "before": 1549,
+   "after": 1544,
+   "delta": -5
+  },
+  {
+   "key": "mitch-mcgovern",
+   "name": "Mitch McGovern",
+   "before": 36,
+   "after": 25,
+   "delta": -11
+  },
+  {
+   "key": "mitchell-edwards",
+   "name": "Mitchell Edwards",
+   "before": 1931,
+   "after": 2185,
+   "delta": 254
+  },
+  {
+   "key": "mitchell-lewis",
+   "name": "Mitchell Lewis",
+   "before": 755,
+   "after": 769,
+   "delta": 14
+  },
+  {
+   "key": "mitchito-owens",
+   "name": "Mitchito Owens",
+   "before": 1938,
+   "after": 1943,
+   "delta": 5
+  },
+  {
+   "key": "murphy-reid",
+   "name": "Murphy Reid",
+   "before": 3319,
+   "after": 3250,
+   "delta": -69
+  },
+  {
+   "key": "nasiah-wanganeen-milera",
+   "name": "Nasiah Wanganeen-Milera",
+   "before": 9230,
+   "after": 9217,
+   "delta": -13
+  },
+  {
+   "key": "nate-caddy",
+   "name": "Nate Caddy",
+   "before": 1608,
+   "after": 1607,
+   "delta": -1
+  },
+  {
+   "key": "nathan-o-driscoll",
+   "name": "Nathan O'Driscoll",
+   "before": 233,
+   "after": 225,
+   "delta": -8
+  },
+  {
+   "key": "ned-long",
+   "name": "Ned Long",
+   "before": 1323,
+   "after": 1321,
+   "delta": -2
+  },
+  {
+   "key": "ned-moyle",
+   "name": "Ned Moyle",
+   "before": 2090,
+   "after": 2088,
+   "delta": -2
+  },
+  {
+   "key": "neil-erasmus",
+   "name": "Neil Erasmus",
+   "before": 950,
+   "after": 1014,
+   "delta": 64
+  },
+  {
+   "key": "nicholas-coffield",
+   "name": "Nicholas Coffield",
+   "before": 111,
+   "after": 110,
+   "delta": -1
+  },
+  {
+   "key": "nicholas-martin",
+   "name": "Nicholas Martin",
+   "before": 3803,
+   "after": 3798,
+   "delta": -5
+  },
+  {
+   "key": "nick-blakey",
+   "name": "Nick Blakey",
+   "before": 3963,
+   "after": 3956,
+   "delta": -7
+  },
+  {
+   "key": "nick-daicos",
+   "name": "Nick Daicos",
+   "before": 10384,
+   "after": 10370,
+   "delta": -14
+  },
+  {
+   "key": "nick-larkey",
+   "name": "Nick Larkey",
+   "before": 538,
+   "after": 537,
+   "delta": -1
+  },
+  {
+   "key": "nick-madden",
+   "name": "Nick Madden",
+   "before": 1187,
+   "after": 1186,
+   "delta": -1
+  },
+  {
+   "key": "nick-murray",
+   "name": "Nick Murray",
+   "before": 409,
+   "after": 408,
+   "delta": -1
+  },
+  {
+   "key": "nick-watson",
+   "name": "Nick Watson",
+   "before": 3531,
+   "after": 3698,
+   "delta": 167
+  },
+  {
+   "key": "noah-anderson",
+   "name": "Noah Anderson",
+   "before": 5464,
+   "after": 5457,
+   "delta": -7
+  },
+  {
+   "key": "noah-answerth",
+   "name": "Noah Answerth",
+   "before": 18,
+   "after": 14,
+   "delta": -4
+  },
+  {
+   "key": "noah-balta",
+   "name": "Noah Balta",
+   "before": 413,
+   "after": 412,
+   "delta": -1
+  },
+  {
+   "key": "noah-mraz",
+   "name": "Noah Mraz",
+   "before": 804,
+   "after": 800,
+   "delta": -4
+  },
+  {
+   "key": "noah-roberts-thomson",
+   "name": "Noah Roberts-Thomson",
+   "before": 234,
+   "after": 233,
+   "delta": -1
+  },
+  {
+   "key": "oisin-mullin",
+   "name": "Oisin Mullin",
+   "before": 30,
+   "after": 28,
+   "delta": -2
+  },
+  {
+   "key": "oliver-florent",
+   "name": "Oliver Florent",
+   "before": 1049,
+   "after": 1032,
+   "delta": -17
+  },
+  {
+   "key": "oliver-hayes-brown",
+   "name": "Oliver Hayes-Brown",
+   "before": 102,
+   "after": 101,
+   "delta": -1
+  },
+  {
+   "key": "oliver-henry",
+   "name": "Oliver Henry",
+   "before": 255,
+   "after": 249,
+   "delta": -6
+  },
+  {
+   "key": "oliver-hollands",
+   "name": "Oliver Hollands",
+   "before": 1531,
+   "after": 1522,
+   "delta": -9
+  },
+  {
+   "key": "oliver-wiltshire",
+   "name": "Oliver Wiltshire",
+   "before": 61,
+   "after": 76,
+   "delta": 15
+  },
+  {
+   "key": "ollie-dempsey",
+   "name": "Ollie Dempsey",
+   "before": 2409,
+   "after": 2422,
+   "delta": 13
+  },
+  {
+   "key": "oscar-mcdonald",
+   "name": "Oscar McDonald",
+   "before": 82,
+   "after": 95,
+   "delta": 13
+  },
+  {
+   "key": "patrick-cripps",
+   "name": "Patrick Cripps",
+   "before": 1430,
+   "after": 1341,
+   "delta": -89
+  },
+  {
+   "key": "patrick-dangerfield",
+   "name": "Patrick Dangerfield",
+   "before": 83,
+   "after": 129,
+   "delta": 46
+  },
+  {
+   "key": "patrick-retschko",
+   "name": "Patrick Retschko",
+   "before": 822,
+   "after": 821,
+   "delta": -1
+  },
+  {
+   "key": "patrick-voss",
+   "name": "Patrick Voss",
+   "before": 1146,
+   "after": 1044,
+   "delta": -102
+  },
+  {
+   "key": "paul-curtis",
+   "name": "Paul Curtis",
+   "before": 1521,
+   "after": 1527,
+   "delta": 6
+  },
+  {
+   "key": "peter-wright",
+   "name": "Peter Wright",
+   "before": 1240,
+   "after": 1236,
+   "delta": -4
+  },
+  {
+   "key": "phoenix-gothard",
+   "name": "Phoenix Gothard",
+   "before": 1546,
+   "after": 1545,
+   "delta": -1
+  },
+  {
+   "key": "reilly-o-brien",
+   "name": "Reilly O'Brien",
+   "before": 972,
+   "after": 970,
+   "delta": -2
+  },
+  {
+   "key": "reuben-ginbey",
+   "name": "Reuben Ginbey",
+   "before": 2197,
+   "after": 2190,
+   "delta": -7
+  },
+  {
+   "key": "rhylee-west",
+   "name": "Rhylee West",
+   "before": 264,
+   "after": 267,
+   "delta": 3
+  },
+  {
+   "key": "riley-bice",
+   "name": "Riley Bice",
+   "before": 341,
+   "after": 340,
+   "delta": -1
+  },
+  {
+   "key": "riley-thilthorpe",
+   "name": "Riley Thilthorpe",
+   "before": 4190,
+   "after": 4267,
+   "delta": 77
+  },
+  {
+   "key": "roan-steele",
+   "name": "Roan Steele",
+   "before": 85,
+   "after": 84,
+   "delta": -1
+  },
+  {
+   "key": "robert-hansen",
+   "name": "Robert Hansen",
+   "before": 105,
+   "after": 104,
+   "delta": -1
+  },
+  {
+   "key": "rory-laird",
+   "name": "Rory Laird",
+   "before": 713,
+   "after": 700,
+   "delta": -13
+  },
+  {
+   "key": "rory-lobb",
+   "name": "Rory Lobb",
+   "before": 259,
+   "after": 281,
+   "delta": 22
+  },
+  {
+   "key": "rowan-marshall",
+   "name": "Rowan Marshall",
+   "before": 2005,
+   "after": 2003,
+   "delta": -2
+  },
+  {
+   "key": "ryan-lester",
+   "name": "Ryan Lester",
+   "before": 27,
+   "after": 28,
+   "delta": 1
+  },
+  {
+   "key": "ryan-maric",
+   "name": "Ryan Maric",
+   "before": 1363,
+   "after": 1361,
+   "delta": -2
+  },
+  {
+   "key": "ryley-sanders",
+   "name": "Ryley Sanders",
+   "before": 3692,
+   "after": 3526,
+   "delta": -166
+  },
+  {
+   "key": "sam-banks",
+   "name": "Sam Banks",
+   "before": 785,
+   "after": 784,
+   "delta": -1
+  },
+  {
+   "key": "sam-berry",
+   "name": "Sam Berry",
+   "before": 2752,
+   "after": 2776,
+   "delta": 24
+  },
+  {
+   "key": "sam-cumming",
+   "name": "Sam Cumming",
+   "before": 2274,
+   "after": 2273,
+   "delta": -1
+  },
+  {
+   "key": "sam-darcy",
+   "name": "Sam Darcy",
+   "before": 5228,
+   "after": 5219,
+   "delta": -9
+  },
+  {
+   "key": "sam-davidson",
+   "name": "Sam Davidson",
+   "before": 114,
+   "after": 110,
+   "delta": -4
+  },
+  {
+   "key": "sam-de-koning",
+   "name": "Sam De Koning",
+   "before": 831,
+   "after": 830,
+   "delta": -1
+  },
+  {
+   "key": "sam-draper",
+   "name": "Sam Draper",
+   "before": 1012,
+   "after": 1014,
+   "delta": 2
+  },
+  {
+   "key": "sam-durham",
+   "name": "Sam Durham",
+   "before": 2426,
+   "after": 2422,
+   "delta": -4
+  },
+  {
+   "key": "sam-flanders",
+   "name": "Sam Flanders",
+   "before": 2495,
+   "after": 2491,
+   "delta": -4
+  },
+  {
+   "key": "sam-lalor",
+   "name": "Sam Lalor",
+   "before": 3454,
+   "after": 3451,
+   "delta": -3
+  },
+  {
+   "key": "sam-switkowski",
+   "name": "Sam Switkowski",
+   "before": 27,
+   "after": 28,
+   "delta": 1
+  },
+  {
+   "key": "sam-taylor",
+   "name": "Sam Taylor",
+   "before": 1115,
+   "after": 1110,
+   "delta": -5
+  },
+  {
+   "key": "sam-walsh",
+   "name": "Sam Walsh",
+   "before": 3047,
+   "after": 3144,
+   "delta": 97
+  },
+  {
+   "key": "sam-wicks",
+   "name": "Sam Wicks",
+   "before": 29,
+   "after": 28,
+   "delta": -1
+  },
+  {
+   "key": "samuel-collins",
+   "name": "Samuel Collins",
+   "before": 576,
+   "after": 575,
+   "delta": -1
+  },
+  {
+   "key": "samuel-grlj",
+   "name": "Samuel Grlj",
+   "before": 1708,
+   "after": 1706,
+   "delta": -2
+  },
+  {
+   "key": "samuel-swadling",
+   "name": "Samuel Swadling",
+   "before": 1221,
+   "after": 1220,
+   "delta": -1
+  },
+  {
+   "key": "sandy-brock",
+   "name": "Sandy Brock",
+   "before": 160,
+   "after": 159,
+   "delta": -1
+  },
+  {
+   "key": "scott-pendlebury",
+   "name": "Scott Pendlebury",
+   "before": 332,
+   "after": 331,
+   "delta": -1
+  },
+  {
+   "key": "sean-darcy",
+   "name": "Sean Darcy",
+   "before": 734,
+   "after": 733,
+   "delta": -1
+  },
+  {
+   "key": "seth-campbell",
+   "name": "Seth Campbell",
+   "before": 818,
+   "after": 817,
+   "delta": -1
+  },
+  {
+   "key": "shai-bolton",
+   "name": "Shai Bolton",
+   "before": 2216,
+   "after": 2082,
+   "delta": -134
+  },
+  {
+   "key": "shannon-neale",
+   "name": "Shannon Neale",
+   "before": 2332,
+   "after": 2292,
+   "delta": -40
+  },
+  {
+   "key": "shaun-mannagh",
+   "name": "Shaun Mannagh",
+   "before": 870,
+   "after": 955,
+   "delta": 85
+  },
+  {
+   "key": "sid-draper",
+   "name": "Sid Draper",
+   "before": 906,
+   "after": 905,
+   "delta": -1
+  },
+  {
+   "key": "steely-green",
+   "name": "Steely Green",
+   "before": 115,
+   "after": 114,
+   "delta": -1
+  },
+  {
+   "key": "sullivan-robey",
+   "name": "Sullivan Robey",
+   "before": 3035,
+   "after": 3033,
+   "delta": -2
+  },
+  {
+   "key": "taj-hotton",
+   "name": "Taj Hotton",
+   "before": 1900,
+   "after": 1898,
+   "delta": -2
+  },
+  {
+   "key": "talor-byrne",
+   "name": "Talor Byrne",
+   "before": 631,
+   "after": 601,
+   "delta": -30
+  },
+  {
+   "key": "tanner-bruhn",
+   "name": "Tanner Bruhn",
+   "before": 1965,
+   "after": 1962,
+   "delta": -3
+  },
+  {
+   "key": "taylor-walker",
+   "name": "Taylor Walker",
+   "before": 214,
+   "after": 201,
+   "delta": -13
+  },
+  {
+   "key": "thomas-liberatore",
+   "name": "Thomas Liberatore",
+   "before": 1078,
+   "after": 1076,
+   "delta": -2
+  },
+  {
+   "key": "thomas-sims",
+   "name": "Thomas Sims",
+   "before": 596,
+   "after": 595,
+   "delta": -1
+  },
+  {
+   "key": "thomas-stewart",
+   "name": "Thomas Stewart",
+   "before": 881,
+   "after": 935,
+   "delta": 54
+  },
+  {
+   "key": "tim-kelly",
+   "name": "Tim Kelly",
+   "before": 1182,
+   "after": 1180,
+   "delta": -2
+  },
+  {
+   "key": "tim-taranto",
+   "name": "Tim Taranto",
+   "before": 2388,
+   "after": 2385,
+   "delta": -3
+  },
+  {
+   "key": "timothy-english",
+   "name": "Timothy English",
+   "before": 3324,
+   "after": 3109,
+   "delta": -215
+  },
+  {
+   "key": "toby-mcmullin",
+   "name": "Toby McMullin",
+   "before": 132,
+   "after": 131,
+   "delta": -1
+  },
+  {
+   "key": "toby-nankervis",
+   "name": "Toby Nankervis",
+   "before": 1997,
+   "after": 1994,
+   "delta": -3
+  },
+  {
+   "key": "tom-atkins",
+   "name": "Tom Atkins",
+   "before": 306,
+   "after": 290,
+   "delta": -16
+  },
+  {
+   "key": "tom-barrass",
+   "name": "Tom Barrass",
+   "before": 46,
+   "after": 43,
+   "delta": -3
+  },
+  {
+   "key": "tom-brown",
+   "name": "Tom Brown",
+   "before": 384,
+   "after": 383,
+   "delta": -1
+  },
+  {
+   "key": "tom-de-koning",
+   "name": "Tom De Koning",
+   "before": 1573,
+   "after": 1571,
+   "delta": -2
+  },
+  {
+   "key": "tom-green",
+   "name": "Tom Green",
+   "before": 5127,
+   "after": 5120,
+   "delta": -7
+  },
+  {
+   "key": "tom-hanily",
+   "name": "Tom Hanily",
+   "before": 152,
+   "after": 189,
+   "delta": 37
+  },
+  {
+   "key": "tom-mccarthy",
+   "name": "Tom McCarthy",
+   "before": 1329,
+   "after": 1327,
+   "delta": -2
+  },
+  {
+   "key": "tom-mccartin",
+   "name": "Tom McCartin",
+   "before": 1400,
+   "after": 1302,
+   "delta": -98
+  },
+  {
+   "key": "tom-papley",
+   "name": "Tom Papley",
+   "before": 344,
+   "after": 523,
+   "delta": 179
+  },
+  {
+   "key": "tom-powell",
+   "name": "Tom Powell",
+   "before": 1820,
+   "after": 1818,
+   "delta": -2
+  },
+  {
+   "key": "tom-sparrow",
+   "name": "Tom Sparrow",
+   "before": 1471,
+   "after": 1470,
+   "delta": -1
+  },
+  {
+   "key": "touk-miller",
+   "name": "Touk Miller",
+   "before": 2332,
+   "after": 2333,
+   "delta": 1
+  },
+  {
+   "key": "trent-rivers",
+   "name": "Trent Rivers",
+   "before": 1432,
+   "after": 1428,
+   "delta": -4
+  },
+  {
+   "key": "tristan-xerri",
+   "name": "Tristan Xerri",
+   "before": 7042,
+   "after": 7033,
+   "delta": -9
+  },
+  {
+   "key": "ty-gallop",
+   "name": "Ty Gallop",
+   "before": 1019,
+   "after": 1018,
+   "delta": -1
+  },
+  {
+   "key": "tyler-sonsie",
+   "name": "Tyler Sonsie",
+   "before": 769,
+   "after": 768,
+   "delta": -1
+  },
+  {
+   "key": "wade-derksen",
+   "name": "Wade Derksen",
+   "before": 214,
+   "after": 213,
+   "delta": -1
+  },
+  {
+   "key": "wayne-milera",
+   "name": "Wayne Milera",
+   "before": 1582,
+   "after": 1706,
+   "delta": 124
+  },
+  {
+   "key": "wil-powell",
+   "name": "Wil Powell",
+   "before": 831,
+   "after": 828,
+   "delta": -3
+  },
+  {
+   "key": "will-ashcroft",
+   "name": "Will Ashcroft",
+   "before": 6893,
+   "after": 7061,
+   "delta": 168
+  },
+  {
+   "key": "will-day",
+   "name": "Will Day",
+   "before": 1819,
+   "after": 1781,
+   "delta": -38
+  },
+  {
+   "key": "will-graham",
+   "name": "Will Graham",
+   "before": 1278,
+   "after": 1277,
+   "delta": -1
+  },
+  {
+   "key": "will-hayward",
+   "name": "Will Hayward",
+   "before": 275,
+   "after": 274,
+   "delta": -1
+  },
+  {
+   "key": "will-lewis",
+   "name": "Will Lewis",
+   "before": 100,
+   "after": 101,
+   "delta": 1
+  },
+  {
+   "key": "will-setterfield",
+   "name": "Will Setterfield",
+   "before": 966,
+   "after": 964,
+   "delta": -2
+  },
+  {
+   "key": "willem-drew",
+   "name": "Willem Drew",
+   "before": 590,
+   "after": 589,
+   "delta": -1
+  },
+  {
+   "key": "willem-duursma",
+   "name": "Willem Duursma",
+   "before": 3495,
+   "after": 3492,
+   "delta": -3
+  },
+  {
+   "key": "xavier-lindsay",
+   "name": "Xavier Lindsay",
+   "before": 1361,
+   "after": 1360,
+   "delta": -1
+  },
+  {
+   "key": "zac-bailey",
+   "name": "Zac Bailey",
+   "before": 3102,
+   "after": 2964,
+   "delta": -138
+  },
+  {
+   "key": "zac-taylor",
+   "name": "Zac Taylor",
+   "before": 243,
+   "after": 242,
+   "delta": -1
+  },
+  {
+   "key": "zach-guthrie",
+   "name": "Zach Guthrie",
+   "before": 326,
+   "after": 329,
+   "delta": 3
+  },
+  {
+   "key": "zach-reid",
+   "name": "Zach Reid",
+   "before": 1255,
+   "after": 1254,
+   "delta": -1
+  },
+  {
+   "key": "zachary-merrett",
+   "name": "Zachary Merrett",
+   "before": 2349,
+   "after": 2346,
+   "delta": -3
+  },
+  {
+   "key": "zachary-williams",
+   "name": "Zachary Williams",
+   "before": 335,
+   "after": 337,
+   "delta": 2
+  },
+  {
+   "key": "zak-butters",
+   "name": "Zak Butters",
+   "before": 6230,
+   "after": 6221,
+   "delta": -9
+  },
+  {
+   "key": "zak-johnson",
+   "name": "Zak Johnson",
+   "before": 397,
+   "after": 396,
+   "delta": -1
+  },
+  {
+   "key": "zeke-uwland",
+   "name": "Zeke Uwland",
+   "before": 1892,
+   "after": 1891,
+   "delta": -1
+  }
+ ],
+ "n": 414,
+ "n_played": 178,
+ "n_ripple": 236
+}

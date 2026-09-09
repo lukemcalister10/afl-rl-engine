@@ -76,9 +76,54 @@ zero; the builder found 234, of which 146 had not played. The first flight is th
 ABORT on the declaration and restore every carrier byte-exact. That is the falsifier working, and
 the measured list is declared for the re-flight, which asserts determinism instead.
 
-### Measured — filled after the first flight
+### Measured — `land edit --dry-run`, 1237s, wrote nothing
 
-*(pending)*
+    414 movers of 1002 valued rows
+      178 of the 183 who played   (5 priced unchanged)
+      236 who did not             — the calibration ripple
+    store  415929d3 -> a367386a      board  b005096b -> d3fb6b48
+    pool   689,275 -> 688,742  (-533)
+
+Largest rises: Jordan Clark +658, Logan McDonald +356, Mitchell Edwards +254.
+Largest falls: Max Holmes -955, Josh Treacy -546, Harry Dean -328.
+
+**The played cohort moves with the football, checked rather than assumed.** Of the 81 who scored
+ABOVE their season average, 72 rose; of the 97 who scored BELOW it, 75 fell. The largest movers are
+the largest score-vs-average gaps: Holmes 68 against a 114.77 average, Treacy 24 against 94.48,
+Clark 121 against 93.12.
+
+### The ripple — and the one way it differs from FW1
+
+    median  1 point   (0.157% of value)
+    mean    2.4 points
+    90th    5 points  (0.448%)
+    max     16 points
+    moved by more than 5 points: 23 of 236
+    DIRECTION: 222 down, 14 up
+
+FW1's ripple was mixed in direction. **This one is 94% downward**, and direction is one of the three
+things the runbook's HALT test names. The other two are not met — it is not every row (236 of ~819
+non-players moved, the rest not at all) and it is nowhere near percentage-scale (0.157% median). So
+it is not the named failure mode, and it is not left at "probably fine" either:
+
+**It is exposure, and the data says so.** FW2 put 183 more games into the season, so every player
+who did NOT play a final now holds a slightly smaller share of the football that has been played.
+If that is the mechanism, the effect must be largest for the players with the least football of
+their own. It is, monotonically:
+
+    2026 games   n     median |Δ|
+    0 games      13      0.279%
+    1-9          40      0.194%
+    10-17        56      0.162%
+    18+         127      0.145%
+
+That is the model saying something true about a season that got longer for 183 players and not for
+anyone else. It is one-directional BECAUSE the cause is one-directional, which is the opposite of a
+bug. FW1 was mixed because it added 92 games, not 183 — half the push, below the noise floor.
+
+A 1-point median on a four-figure scale is not the punishment of non-finalists the owner ruled
+against; that was `calendar_progress` moving 1.00 -> 0.83 and repricing every completed season by
+seventeen per cent.
 
 ## What must hold
 

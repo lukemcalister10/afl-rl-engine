@@ -2212,8 +2212,2079 @@
     "new": 70.53
    }
   ],
-  "expected_movers": null,
-  "_doc_expected_movers": "null = NOT DECLARED. The movers are printed and asserted against nothing, which is correct for the measuring pass: the plan's in-memory prediction (177 movers) cannot reproduce the engine's load-time calibration refit and is wrong by construction. Re-run with --declare once the dry run has measured them.",
+  "expected_movers": [
+   {
+    "key": "aaron-cadman",
+    "before": 2077,
+    "after": 2075
+   },
+   {
+    "key": "aaron-naughton",
+    "before": 1382,
+    "after": 1454
+   },
+   {
+    "key": "adam-cerra",
+    "before": 1000,
+    "after": 1064
+   },
+   {
+    "key": "adam-saad",
+    "before": 420,
+    "after": 419
+   },
+   {
+    "key": "adam-treloar",
+    "before": 808,
+    "after": 807
+   },
+   {
+    "key": "alex-neal-bullen",
+    "before": 411,
+    "after": 414
+   },
+   {
+    "key": "alex-pearce",
+    "before": 14,
+    "after": 15
+   },
+   {
+    "key": "aliir-aliir",
+    "before": 750,
+    "after": 749
+   },
+   {
+    "key": "andrew-brayshaw",
+    "before": 2827,
+    "after": 2832
+   },
+   {
+    "key": "andrew-mcgrath",
+    "before": 1079,
+    "after": 1078
+   },
+   {
+    "key": "angus-clarke",
+    "before": 567,
+    "after": 566
+   },
+   {
+    "key": "angus-sheldrick",
+    "before": 663,
+    "after": 664
+   },
+   {
+    "key": "anthony-caminiti",
+    "before": 822,
+    "after": 821
+   },
+   {
+    "key": "archer-day-wicks",
+    "before": 347,
+    "after": 346
+   },
+   {
+    "key": "archie-roberts",
+    "before": 3732,
+    "after": 3725
+   },
+   {
+    "key": "arthur-jones",
+    "before": 315,
+    "after": 288
+   },
+   {
+    "key": "bailey-dale",
+    "before": 1943,
+    "after": 1791
+   },
+   {
+    "key": "bailey-humphrey",
+    "before": 2327,
+    "after": 2324
+   },
+   {
+    "key": "bailey-macdonald",
+    "before": 147,
+    "after": 131
+   },
+   {
+    "key": "bailey-smith",
+    "before": 5802,
+    "after": 5816
+   },
+   {
+    "key": "bailey-williams-wb",
+    "before": 528,
+    "after": 598
+   },
+   {
+    "key": "bailey-williams-wc",
+    "before": 2405,
+    "after": 2402
+   },
+   {
+    "key": "balyn-o-brien",
+    "before": 248,
+    "after": 247
+   },
+   {
+    "key": "bayley-fritsch",
+    "before": 275,
+    "after": 277
+   },
+   {
+    "key": "beau-addinsall",
+    "before": 1216,
+    "after": 1215
+   },
+   {
+    "key": "ben-ainsworth",
+    "before": 338,
+    "after": 384
+   },
+   {
+    "key": "ben-keays",
+    "before": 420,
+    "after": 424
+   },
+   {
+    "key": "ben-king",
+    "before": 215,
+    "after": 214
+   },
+   {
+    "key": "ben-miller",
+    "before": 957,
+    "after": 954
+   },
+   {
+    "key": "billy-cootee",
+    "before": 174,
+    "after": 166
+   },
+   {
+    "key": "billy-wilson",
+    "before": 825,
+    "after": 964
+   },
+   {
+    "key": "blake-acres",
+    "before": 127,
+    "after": 74
+   },
+   {
+    "key": "blake-hardwick",
+    "before": 609,
+    "after": 594
+   },
+   {
+    "key": "blake-leidler",
+    "before": 11,
+    "after": 10
+   },
+   {
+    "key": "bo-allan",
+    "before": 647,
+    "after": 646
+   },
+   {
+    "key": "bodhi-uwland",
+    "before": 4036,
+    "after": 4029
+   },
+   {
+    "key": "bradley-close",
+    "before": 25,
+    "after": 26
+   },
+   {
+    "key": "bradley-hill",
+    "before": 1403,
+    "after": 1405
+   },
+   {
+    "key": "braeden-campbell",
+    "before": 565,
+    "after": 567
+   },
+   {
+    "key": "brandon-walker",
+    "before": 47,
+    "after": 53
+   },
+   {
+    "key": "brayden-cook",
+    "before": 770,
+    "after": 820
+   },
+   {
+    "key": "brayden-fiorini",
+    "before": 409,
+    "after": 408
+   },
+   {
+    "key": "brayden-maynard",
+    "before": 531,
+    "after": 529
+   },
+   {
+    "key": "brodie-grundy",
+    "before": 3936,
+    "after": 3931
+   },
+   {
+    "key": "brodie-kemp",
+    "before": 750,
+    "after": 680
+   },
+   {
+    "key": "buku-khamis",
+    "before": 151,
+    "after": 149
+   },
+   {
+    "key": "caiden-cleary",
+    "before": 427,
+    "after": 445
+   },
+   {
+    "key": "caleb-daniel",
+    "before": 1221,
+    "after": 1218
+   },
+   {
+    "key": "caleb-lewis",
+    "before": 146,
+    "after": 145
+   },
+   {
+    "key": "caleb-serong",
+    "before": 4426,
+    "after": 4377
+   },
+   {
+    "key": "caleb-windsor",
+    "before": 974,
+    "after": 973
+   },
+   {
+    "key": "callum-ah-chee",
+    "before": 38,
+    "after": 34
+   },
+   {
+    "key": "callum-mills",
+    "before": 1918,
+    "after": 1914
+   },
+   {
+    "key": "callum-wilkie",
+    "before": 3425,
+    "after": 3419
+   },
+   {
+    "key": "cameron-mackenzie",
+    "before": 1732,
+    "after": 1746
+   },
+   {
+    "key": "cameron-rayner",
+    "before": 810,
+    "after": 671
+   },
+   {
+    "key": "cameron-zurhaar",
+    "before": 311,
+    "after": 310
+   },
+   {
+    "key": "campbell-gray",
+    "before": 279,
+    "after": 278
+   },
+   {
+    "key": "chad-warner",
+    "before": 3883,
+    "after": 3877
+   },
+   {
+    "key": "changkuoth-jiath",
+    "before": 65,
+    "after": 64
+   },
+   {
+    "key": "charlie-ballard",
+    "before": 92,
+    "after": 91
+   },
+   {
+    "key": "charlie-cameron",
+    "before": 222,
+    "after": 167
+   },
+   {
+    "key": "charlie-comben",
+    "before": 644,
+    "after": 643
+   },
+   {
+    "key": "charlie-curnow",
+    "before": 1227,
+    "after": 1325
+   },
+   {
+    "key": "charlie-west",
+    "before": 326,
+    "after": 325
+   },
+   {
+    "key": "chris-scerri",
+    "before": 277,
+    "after": 276
+   },
+   {
+    "key": "christian-moraes",
+    "before": 664,
+    "after": 663
+   },
+   {
+    "key": "christian-petracca",
+    "before": 1722,
+    "after": 1719
+   },
+   {
+    "key": "clayton-oliver",
+    "before": 2227,
+    "after": 2223
+   },
+   {
+    "key": "cody-weightman",
+    "before": 179,
+    "after": 119
+   },
+   {
+    "key": "colby-mckercher",
+    "before": 4179,
+    "after": 4175
+   },
+   {
+    "key": "connor-budarick",
+    "before": 216,
+    "after": 206
+   },
+   {
+    "key": "connor-idun",
+    "before": 2318,
+    "after": 2313
+   },
+   {
+    "key": "connor-macdonald",
+    "before": 2868,
+    "after": 2880
+   },
+   {
+    "key": "connor-o-sullivan",
+    "before": 2589,
+    "after": 2437
+   },
+   {
+    "key": "connor-rozee",
+    "before": 3113,
+    "after": 3108
+   },
+   {
+    "key": "conor-mckenna",
+    "before": 5,
+    "after": 6
+   },
+   {
+    "key": "cooper-duff-tytler",
+    "before": 1771,
+    "after": 1770
+   },
+   {
+    "key": "cooper-harvey",
+    "before": 395,
+    "after": 394
+   },
+   {
+    "key": "cooper-hynes",
+    "before": 1050,
+    "after": 1166
+   },
+   {
+    "key": "cooper-lord",
+    "before": 1137,
+    "after": 1194
+   },
+   {
+    "key": "cooper-trembath",
+    "before": 1637,
+    "after": 1635
+   },
+   {
+    "key": "dan-houston",
+    "before": 1032,
+    "after": 1031
+   },
+   {
+    "key": "daniel-curtin",
+    "before": 2358,
+    "after": 2314
+   },
+   {
+    "key": "daniel-mcstay",
+    "before": 333,
+    "after": 335
+   },
+   {
+    "key": "daniel-rioli",
+    "before": 686,
+    "after": 685
+   },
+   {
+    "key": "daniel-turner",
+    "before": 1694,
+    "after": 1690
+   },
+   {
+    "key": "dante-visentini",
+    "before": 761,
+    "after": 760
+   },
+   {
+    "key": "darcy-byrne-jones",
+    "before": 599,
+    "after": 598
+   },
+   {
+    "key": "darcy-cameron",
+    "before": 1520,
+    "after": 1518
+   },
+   {
+    "key": "darcy-fogarty",
+    "before": 805,
+    "after": 813
+   },
+   {
+    "key": "darcy-fort",
+    "before": 94,
+    "after": 86
+   },
+   {
+    "key": "darcy-jones",
+    "before": 1465,
+    "after": 1463
+   },
+   {
+    "key": "darcy-parish",
+    "before": 607,
+    "after": 606
+   },
+   {
+    "key": "darcy-wilmot",
+    "before": 3040,
+    "after": 2991
+   },
+   {
+    "key": "darcy-wilson",
+    "before": 2653,
+    "after": 2655
+   },
+   {
+    "key": "dayne-zorko",
+    "before": 946,
+    "after": 947
+   },
+   {
+    "key": "dylan-moore",
+    "before": 1201,
+    "after": 1262
+   },
+   {
+    "key": "dylan-patterson",
+    "before": 1121,
+    "after": 1120
+   },
+   {
+    "key": "dylan-stephens",
+    "before": 605,
+    "after": 604
+   },
+   {
+    "key": "dyson-sharp",
+    "before": 3027,
+    "after": 3024
+   },
+   {
+    "key": "ed-langdon",
+    "before": 598,
+    "after": 597
+   },
+   {
+    "key": "ed-richards",
+    "before": 3986,
+    "after": 3929
+   },
+   {
+    "key": "edward-allan",
+    "before": 795,
+    "after": 794
+   },
+   {
+    "key": "elijah-hollands",
+    "before": 637,
+    "after": 636
+   },
+   {
+    "key": "elijah-tsatas",
+    "before": 812,
+    "after": 811
+   },
+   {
+    "key": "eric-hipwood",
+    "before": 64,
+    "after": 70
+   },
+   {
+    "key": "errol-gulden",
+    "before": 7339,
+    "after": 7404
+   },
+   {
+    "key": "ethan-read",
+    "before": 544,
+    "after": 543
+   },
+   {
+    "key": "finn-callaghan",
+    "before": 5417,
+    "after": 5410
+   },
+   {
+    "key": "finn-o-sullivan",
+    "before": 2794,
+    "after": 2791
+   },
+   {
+    "key": "finnbar-maley",
+    "before": 170,
+    "after": 169
+   },
+   {
+    "key": "francis-evans",
+    "before": 781,
+    "after": 822
+   },
+   {
+    "key": "george-hewett",
+    "before": 1767,
+    "after": 1774
+   },
+   {
+    "key": "george-wardlaw",
+    "before": 3084,
+    "after": 3081
+   },
+   {
+    "key": "gryan-miers",
+    "before": 1537,
+    "after": 1594
+   },
+   {
+    "key": "hamish-davis",
+    "before": 665,
+    "after": 664
+   },
+   {
+    "key": "harley-reid",
+    "before": 3781,
+    "after": 3776
+   },
+   {
+    "key": "harris-andrews",
+    "before": 1563,
+    "after": 1547
+   },
+   {
+    "key": "harrison-petty",
+    "before": 374,
+    "after": 373
+   },
+   {
+    "key": "harry-armstrong",
+    "before": 502,
+    "after": 501
+   },
+   {
+    "key": "harry-cunningham",
+    "before": 2,
+    "after": 3
+   },
+   {
+    "key": "harry-dean",
+    "before": 2992,
+    "after": 2664
+   },
+   {
+    "key": "harry-kyle",
+    "before": 790,
+    "after": 791
+   },
+   {
+    "key": "harry-mckay",
+    "before": 1619,
+    "after": 1621
+   },
+   {
+    "key": "harry-morrison",
+    "before": 64,
+    "after": 66
+   },
+   {
+    "key": "harry-o-farrell",
+    "before": 447,
+    "after": 446
+   },
+   {
+    "key": "harry-rowston",
+    "before": 498,
+    "after": 497
+   },
+   {
+    "key": "harry-sheezel",
+    "before": 10900,
+    "after": 10884
+   },
+   {
+    "key": "harvey-langford",
+    "before": 1876,
+    "after": 1875
+   },
+   {
+    "key": "harvey-thomas",
+    "before": 1969,
+    "after": 1966
+   },
+   {
+    "key": "hayden-mclean",
+    "before": 229,
+    "after": 303
+   },
+   {
+    "key": "hayden-young",
+    "before": 1557,
+    "after": 1558
+   },
+   {
+    "key": "heath-chapman",
+    "before": 370,
+    "after": 425
+   },
+   {
+    "key": "henry-smith",
+    "before": 122,
+    "after": 121
+   },
+   {
+    "key": "hugh-mccluggage",
+    "before": 1553,
+    "after": 1446
+   },
+   {
+    "key": "hugo-garcia",
+    "before": 2827,
+    "after": 2823
+   },
+   {
+    "key": "hugo-hall-kahan",
+    "before": 541,
+    "after": 557
+   },
+   {
+    "key": "hussien-el-achkar",
+    "before": 415,
+    "after": 414
+   },
+   {
+    "key": "isaac-cumming",
+    "before": 57,
+    "after": 62
+   },
+   {
+    "key": "isaac-heeney",
+    "before": 3682,
+    "after": 3676
+   },
+   {
+    "key": "isaac-kako",
+    "before": 816,
+    "after": 815
+   },
+   {
+    "key": "isaac-quaynor",
+    "before": 610,
+    "after": 609
+   },
+   {
+    "key": "isaiah-dudley",
+    "before": 222,
+    "after": 194
+   },
+   {
+    "key": "izak-rankine",
+    "before": 4910,
+    "after": 5021
+   },
+   {
+    "key": "jack-buckley",
+    "before": 572,
+    "after": 571
+   },
+   {
+    "key": "jack-ginnivan",
+    "before": 2148,
+    "after": 2145
+   },
+   {
+    "key": "jack-graham",
+    "before": 732,
+    "after": 731
+   },
+   {
+    "key": "jack-gunston",
+    "before": 667,
+    "after": 589
+   },
+   {
+    "key": "jack-henry",
+    "before": 227,
+    "after": 219
+   },
+   {
+    "key": "jack-lukosius",
+    "before": 530,
+    "after": 529
+   },
+   {
+    "key": "jack-ross",
+    "before": 2366,
+    "after": 2363
+   },
+   {
+    "key": "jack-silvagni",
+    "before": 682,
+    "after": 680
+   },
+   {
+    "key": "jack-sinclair",
+    "before": 3075,
+    "after": 3070
+   },
+   {
+    "key": "jack-steele",
+    "before": 1083,
+    "after": 1082
+   },
+   {
+    "key": "jack-whitlock",
+    "before": 989,
+    "after": 988
+   },
+   {
+    "key": "jack-williams",
+    "before": 337,
+    "after": 336
+   },
+   {
+    "key": "jacob-blight",
+    "before": 11,
+    "after": 10
+   },
+   {
+    "key": "jacob-farrow",
+    "before": 2033,
+    "after": 2032
+   },
+   {
+    "key": "jacob-van-rooyen",
+    "before": 1779,
+    "after": 1786
+   },
+   {
+    "key": "jacob-weitering",
+    "before": 1211,
+    "after": 1152
+   },
+   {
+    "key": "jagga-smith",
+    "before": 4942,
+    "after": 4916
+   },
+   {
+    "key": "jai-newcombe",
+    "before": 4607,
+    "after": 4330
+   },
+   {
+    "key": "jai-serong",
+    "before": 1199,
+    "after": 1194
+   },
+   {
+    "key": "jake-bowey",
+    "before": 3885,
+    "after": 3878
+   },
+   {
+    "key": "jake-lever",
+    "before": 188,
+    "after": 186
+   },
+   {
+    "key": "jake-lloyd",
+    "before": 248,
+    "after": 306
+   },
+   {
+    "key": "jake-soligo",
+    "before": 1822,
+    "after": 1841
+   },
+   {
+    "key": "jake-stringer",
+    "before": 102,
+    "after": 101
+   },
+   {
+    "key": "jake-waterman",
+    "before": 988,
+    "after": 987
+   },
+   {
+    "key": "james-borlase",
+    "before": 359,
+    "after": 366
+   },
+   {
+    "key": "james-jordon",
+    "before": 272,
+    "after": 271
+   },
+   {
+    "key": "james-o-donnell",
+    "before": 455,
+    "after": 566
+   },
+   {
+    "key": "james-peatling",
+    "before": 1010,
+    "after": 1009
+   },
+   {
+    "key": "james-rowbottom",
+    "before": 1311,
+    "after": 1341
+   },
+   {
+    "key": "james-sicily",
+    "before": 1172,
+    "after": 1213
+   },
+   {
+    "key": "jarman-impey",
+    "before": 775,
+    "after": 679
+   },
+   {
+    "key": "jarrod-berry",
+    "before": 364,
+    "after": 363
+   },
+   {
+    "key": "jase-burgoyne",
+    "before": 2550,
+    "after": 2546
+   },
+   {
+    "key": "jason-horne-francis",
+    "before": 5428,
+    "after": 5420
+   },
+   {
+    "key": "jaspa-fletcher",
+    "before": 2688,
+    "after": 2696
+   },
+   {
+    "key": "jasper-alger",
+    "before": 240,
+    "after": 239
+   },
+   {
+    "key": "jaxon-prior",
+    "before": 400,
+    "after": 399
+   },
+   {
+    "key": "jay-polkinghorne",
+    "before": 252,
+    "after": 370
+   },
+   {
+    "key": "jayden-short",
+    "before": 878,
+    "after": 877
+   },
+   {
+    "key": "jed-walter",
+    "before": 1015,
+    "after": 1014
+   },
+   {
+    "key": "jedd-busslinger",
+    "before": 783,
+    "after": 782
+   },
+   {
+    "key": "jeremy-cameron",
+    "before": 836,
+    "after": 704
+   },
+   {
+    "key": "jesse-dattoli",
+    "before": 450,
+    "after": 418
+   },
+   {
+    "key": "jesse-hogan",
+    "before": 321,
+    "after": 320
+   },
+   {
+    "key": "jhye-clark",
+    "before": 765,
+    "after": 764
+   },
+   {
+    "key": "jobe-shanahan",
+    "before": 1255,
+    "after": 1254
+   },
+   {
+    "key": "joe-berry",
+    "before": 1015,
+    "after": 1014
+   },
+   {
+    "key": "joe-richards",
+    "before": 933,
+    "after": 934
+   },
+   {
+    "key": "joel-amartey",
+    "before": 114,
+    "after": 113
+   },
+   {
+    "key": "joel-fitzgerald",
+    "before": 286,
+    "after": 285
+   },
+   {
+    "key": "joel-freijah",
+    "before": 2805,
+    "after": 2845
+   },
+   {
+    "key": "joel-jeffrey",
+    "before": 1415,
+    "after": 1413
+   },
+   {
+    "key": "john-noble",
+    "before": 2285,
+    "after": 2281
+   },
+   {
+    "key": "jonty-faull",
+    "before": 606,
+    "after": 605
+   },
+   {
+    "key": "jordan-clark",
+    "before": 3120,
+    "after": 3778
+   },
+   {
+    "key": "jordan-dawson",
+    "before": 2877,
+    "after": 2879
+   },
+   {
+    "key": "jordan-de-goey",
+    "before": 1276,
+    "after": 1277
+   },
+   {
+    "key": "jordon-sweet",
+    "before": 2506,
+    "after": 2503
+   },
+   {
+    "key": "joseph-fonti",
+    "before": 483,
+    "after": 482
+   },
+   {
+    "key": "josh-battle",
+    "before": 1826,
+    "after": 1923
+   },
+   {
+    "key": "josh-daicos",
+    "before": 2074,
+    "after": 2071
+   },
+   {
+    "key": "josh-dolan",
+    "before": 324,
+    "after": 313
+   },
+   {
+    "key": "josh-draper",
+    "before": 256,
+    "after": 255
+   },
+   {
+    "key": "josh-dunkley",
+    "before": 1278,
+    "after": 1322
+   },
+   {
+    "key": "josh-lindsay",
+    "before": 1515,
+    "after": 1514
+   },
+   {
+    "key": "josh-rachele",
+    "before": 1841,
+    "after": 1895
+   },
+   {
+    "key": "josh-treacy",
+    "before": 5735,
+    "after": 5189
+   },
+   {
+    "key": "josh-ward",
+    "before": 2629,
+    "after": 2579
+   },
+   {
+    "key": "josh-worrell",
+    "before": 2725,
+    "after": 2921
+   },
+   {
+    "key": "joshua-kelly",
+    "before": 717,
+    "after": 715
+   },
+   {
+    "key": "joshua-weddle",
+    "before": 1285,
+    "after": 1505
+   },
+   {
+    "key": "judd-mcvee",
+    "before": 286,
+    "after": 285
+   },
+   {
+    "key": "justin-mcinerney",
+    "before": 1861,
+    "after": 1858
+   },
+   {
+    "key": "jy-simpkin",
+    "before": 1194,
+    "after": 1193
+   },
+   {
+    "key": "jye-amiss",
+    "before": 1428,
+    "after": 1345
+   },
+   {
+    "key": "jye-caldwell",
+    "before": 1029,
+    "after": 1027
+   },
+   {
+    "key": "kai-lohmann",
+    "before": 758,
+    "after": 698
+   },
+   {
+    "key": "kane-farrell",
+    "before": 1289,
+    "after": 1287
+   },
+   {
+    "key": "karl-amon",
+    "before": 301,
+    "after": 280
+   },
+   {
+    "key": "karl-worner",
+    "before": 1245,
+    "after": 1459
+   },
+   {
+    "key": "keidean-coleman",
+    "before": 691,
+    "after": 690
+   },
+   {
+    "key": "kieren-briggs",
+    "before": 1924,
+    "after": 1922
+   },
+   {
+    "key": "koltyn-tholstrup",
+    "before": 1665,
+    "after": 1664
+   },
+   {
+    "key": "kysaiah-pickett",
+    "before": 4329,
+    "after": 4331
+   },
+   {
+    "key": "lachie-neale",
+    "before": 2130,
+    "after": 2018
+   },
+   {
+    "key": "lachie-whitfield",
+    "before": 2178,
+    "after": 2174
+   },
+   {
+    "key": "lachlan-ash",
+    "before": 5260,
+    "after": 5251
+   },
+   {
+    "key": "lachlan-bramble",
+    "before": 151,
+    "after": 102
+   },
+   {
+    "key": "lachlan-cowan",
+    "before": 586,
+    "after": 599
+   },
+   {
+    "key": "lachlan-mcandrew",
+    "before": 1146,
+    "after": 1167
+   },
+   {
+    "key": "lachlan-mcneil",
+    "before": 44,
+    "after": 41
+   },
+   {
+    "key": "lachlan-sholl",
+    "before": 91,
+    "after": 90
+   },
+   {
+    "key": "lachy-dovaston",
+    "before": 646,
+    "after": 645
+   },
+   {
+    "key": "lawson-humphries",
+    "before": 1653,
+    "after": 1666
+   },
+   {
+    "key": "leo-lombard",
+    "before": 1747,
+    "after": 1746
+   },
+   {
+    "key": "levi-ashcroft",
+    "before": 3527,
+    "after": 3513
+   },
+   {
+    "key": "lewis-young",
+    "before": 145,
+    "after": 123
+   },
+   {
+    "key": "lloyd-meek",
+    "before": 1492,
+    "after": 1386
+   },
+   {
+    "key": "logan-evans",
+    "before": 1362,
+    "after": 1360
+   },
+   {
+    "key": "logan-mcdonald",
+    "before": 828,
+    "after": 1184
+   },
+   {
+    "key": "logan-morris",
+    "before": 2972,
+    "after": 2933
+   },
+   {
+    "key": "louis-emmett",
+    "before": 633,
+    "after": 632
+   },
+   {
+    "key": "luke-davies-uniacke",
+    "before": 3026,
+    "after": 3022
+   },
+   {
+    "key": "luke-jackson",
+    "before": 9227,
+    "after": 9286
+   },
+   {
+    "key": "luke-kennedy",
+    "before": 271,
+    "after": 291
+   },
+   {
+    "key": "luke-nankervis",
+    "before": 341,
+    "after": 441
+   },
+   {
+    "key": "luke-parker",
+    "before": 1145,
+    "after": 1144
+   },
+   {
+    "key": "luke-ryan",
+    "before": 1284,
+    "after": 1303
+   },
+   {
+    "key": "mabior-chol",
+    "before": 258,
+    "after": 212
+   },
+   {
+    "key": "mac-andrew",
+    "before": 3795,
+    "after": 3787
+   },
+   {
+    "key": "marc-pittonet",
+    "before": 513,
+    "after": 510
+   },
+   {
+    "key": "marcus-bontempelli",
+    "before": 3615,
+    "after": 3707
+   },
+   {
+    "key": "marcus-herbert",
+    "before": 834,
+    "after": 832
+   },
+   {
+    "key": "marcus-windhager",
+    "before": 1808,
+    "after": 1806
+   },
+   {
+    "key": "mark-blicavs",
+    "before": 59,
+    "after": 60
+   },
+   {
+    "key": "mark-keane",
+    "before": 1458,
+    "after": 1463
+   },
+   {
+    "key": "mark-o-connor",
+    "before": 19,
+    "after": 25
+   },
+   {
+    "key": "mason-cox",
+    "before": 3,
+    "after": 2
+   },
+   {
+    "key": "mason-redman",
+    "before": 941,
+    "after": 939
+   },
+   {
+    "key": "massimo-d-ambrosio",
+    "before": 1653,
+    "after": 1785
+   },
+   {
+    "key": "matt-carroll",
+    "before": 638,
+    "after": 637
+   },
+   {
+    "key": "matt-cottrell",
+    "before": 161,
+    "after": 151
+   },
+   {
+    "key": "matt-johnson-1",
+    "before": 1029,
+    "after": 1025
+   },
+   {
+    "key": "matt-rowell",
+    "before": 4809,
+    "after": 4803
+   },
+   {
+    "key": "mattaes-phillipou",
+    "before": 1750,
+    "after": 1748
+   },
+   {
+    "key": "matthew-flynn",
+    "before": 590,
+    "after": 589
+   },
+   {
+    "key": "matthew-jefferson",
+    "before": 395,
+    "after": 394
+   },
+   {
+    "key": "matthew-kennedy-1",
+    "before": 690,
+    "after": 689
+   },
+   {
+    "key": "matthew-roberts",
+    "before": 1460,
+    "after": 1457
+   },
+   {
+    "key": "max-beattie",
+    "before": 166,
+    "after": 129
+   },
+   {
+    "key": "max-gawn",
+    "before": 3265,
+    "after": 3261
+   },
+   {
+    "key": "max-gruzewski",
+    "before": 430,
+    "after": 429
+   },
+   {
+    "key": "max-hall",
+    "before": 2726,
+    "after": 2729
+   },
+   {
+    "key": "max-holmes",
+    "before": 8258,
+    "after": 7303
+   },
+   {
+    "key": "max-kondogiannis",
+    "before": 406,
+    "after": 405
+   },
+   {
+    "key": "max-michalanney",
+    "before": 529,
+    "after": 527
+   },
+   {
+    "key": "michael-frederick",
+    "before": 116,
+    "after": 114
+   },
+   {
+    "key": "milan-murdock",
+    "before": 348,
+    "after": 349
+   },
+   {
+    "key": "miles-bergman",
+    "before": 976,
+    "after": 975
+   },
+   {
+    "key": "mitch-georgiades",
+    "before": 1549,
+    "after": 1544
+   },
+   {
+    "key": "mitch-mcgovern",
+    "before": 36,
+    "after": 25
+   },
+   {
+    "key": "mitchell-edwards",
+    "before": 1931,
+    "after": 2185
+   },
+   {
+    "key": "mitchell-lewis",
+    "before": 755,
+    "after": 769
+   },
+   {
+    "key": "mitchito-owens",
+    "before": 1938,
+    "after": 1943
+   },
+   {
+    "key": "murphy-reid",
+    "before": 3319,
+    "after": 3250
+   },
+   {
+    "key": "nasiah-wanganeen-milera",
+    "before": 9230,
+    "after": 9217
+   },
+   {
+    "key": "nate-caddy",
+    "before": 1608,
+    "after": 1607
+   },
+   {
+    "key": "nathan-o-driscoll",
+    "before": 233,
+    "after": 225
+   },
+   {
+    "key": "ned-long",
+    "before": 1323,
+    "after": 1321
+   },
+   {
+    "key": "ned-moyle",
+    "before": 2090,
+    "after": 2088
+   },
+   {
+    "key": "neil-erasmus",
+    "before": 950,
+    "after": 1014
+   },
+   {
+    "key": "nicholas-coffield",
+    "before": 111,
+    "after": 110
+   },
+   {
+    "key": "nicholas-martin",
+    "before": 3803,
+    "after": 3798
+   },
+   {
+    "key": "nick-blakey",
+    "before": 3963,
+    "after": 3956
+   },
+   {
+    "key": "nick-daicos",
+    "before": 10384,
+    "after": 10370
+   },
+   {
+    "key": "nick-larkey",
+    "before": 538,
+    "after": 537
+   },
+   {
+    "key": "nick-madden",
+    "before": 1187,
+    "after": 1186
+   },
+   {
+    "key": "nick-murray",
+    "before": 409,
+    "after": 408
+   },
+   {
+    "key": "nick-watson",
+    "before": 3531,
+    "after": 3698
+   },
+   {
+    "key": "noah-anderson",
+    "before": 5464,
+    "after": 5457
+   },
+   {
+    "key": "noah-answerth",
+    "before": 18,
+    "after": 14
+   },
+   {
+    "key": "noah-balta",
+    "before": 413,
+    "after": 412
+   },
+   {
+    "key": "noah-mraz",
+    "before": 804,
+    "after": 800
+   },
+   {
+    "key": "noah-roberts-thomson",
+    "before": 234,
+    "after": 233
+   },
+   {
+    "key": "oisin-mullin",
+    "before": 30,
+    "after": 28
+   },
+   {
+    "key": "oliver-florent",
+    "before": 1049,
+    "after": 1032
+   },
+   {
+    "key": "oliver-hayes-brown",
+    "before": 102,
+    "after": 101
+   },
+   {
+    "key": "oliver-henry",
+    "before": 255,
+    "after": 249
+   },
+   {
+    "key": "oliver-hollands",
+    "before": 1531,
+    "after": 1522
+   },
+   {
+    "key": "oliver-wiltshire",
+    "before": 61,
+    "after": 76
+   },
+   {
+    "key": "ollie-dempsey",
+    "before": 2409,
+    "after": 2422
+   },
+   {
+    "key": "oscar-mcdonald",
+    "before": 82,
+    "after": 95
+   },
+   {
+    "key": "patrick-cripps",
+    "before": 1430,
+    "after": 1341
+   },
+   {
+    "key": "patrick-dangerfield",
+    "before": 83,
+    "after": 129
+   },
+   {
+    "key": "patrick-retschko",
+    "before": 822,
+    "after": 821
+   },
+   {
+    "key": "patrick-voss",
+    "before": 1146,
+    "after": 1044
+   },
+   {
+    "key": "paul-curtis",
+    "before": 1521,
+    "after": 1527
+   },
+   {
+    "key": "peter-wright",
+    "before": 1240,
+    "after": 1236
+   },
+   {
+    "key": "phoenix-gothard",
+    "before": 1546,
+    "after": 1545
+   },
+   {
+    "key": "reilly-o-brien",
+    "before": 972,
+    "after": 970
+   },
+   {
+    "key": "reuben-ginbey",
+    "before": 2197,
+    "after": 2190
+   },
+   {
+    "key": "rhylee-west",
+    "before": 264,
+    "after": 267
+   },
+   {
+    "key": "riley-bice",
+    "before": 341,
+    "after": 340
+   },
+   {
+    "key": "riley-thilthorpe",
+    "before": 4190,
+    "after": 4267
+   },
+   {
+    "key": "roan-steele",
+    "before": 85,
+    "after": 84
+   },
+   {
+    "key": "robert-hansen",
+    "before": 105,
+    "after": 104
+   },
+   {
+    "key": "rory-laird",
+    "before": 713,
+    "after": 700
+   },
+   {
+    "key": "rory-lobb",
+    "before": 259,
+    "after": 281
+   },
+   {
+    "key": "rowan-marshall",
+    "before": 2005,
+    "after": 2003
+   },
+   {
+    "key": "ryan-lester",
+    "before": 27,
+    "after": 28
+   },
+   {
+    "key": "ryan-maric",
+    "before": 1363,
+    "after": 1361
+   },
+   {
+    "key": "ryley-sanders",
+    "before": 3692,
+    "after": 3526
+   },
+   {
+    "key": "sam-banks",
+    "before": 785,
+    "after": 784
+   },
+   {
+    "key": "sam-berry",
+    "before": 2752,
+    "after": 2776
+   },
+   {
+    "key": "sam-cumming",
+    "before": 2274,
+    "after": 2273
+   },
+   {
+    "key": "sam-darcy",
+    "before": 5228,
+    "after": 5219
+   },
+   {
+    "key": "sam-davidson",
+    "before": 114,
+    "after": 110
+   },
+   {
+    "key": "sam-de-koning",
+    "before": 831,
+    "after": 830
+   },
+   {
+    "key": "sam-draper",
+    "before": 1012,
+    "after": 1014
+   },
+   {
+    "key": "sam-durham",
+    "before": 2426,
+    "after": 2422
+   },
+   {
+    "key": "sam-flanders",
+    "before": 2495,
+    "after": 2491
+   },
+   {
+    "key": "sam-lalor",
+    "before": 3454,
+    "after": 3451
+   },
+   {
+    "key": "sam-switkowski",
+    "before": 27,
+    "after": 28
+   },
+   {
+    "key": "sam-taylor",
+    "before": 1115,
+    "after": 1110
+   },
+   {
+    "key": "sam-walsh",
+    "before": 3047,
+    "after": 3144
+   },
+   {
+    "key": "sam-wicks",
+    "before": 29,
+    "after": 28
+   },
+   {
+    "key": "samuel-collins",
+    "before": 576,
+    "after": 575
+   },
+   {
+    "key": "samuel-grlj",
+    "before": 1708,
+    "after": 1706
+   },
+   {
+    "key": "samuel-swadling",
+    "before": 1221,
+    "after": 1220
+   },
+   {
+    "key": "sandy-brock",
+    "before": 160,
+    "after": 159
+   },
+   {
+    "key": "scott-pendlebury",
+    "before": 332,
+    "after": 331
+   },
+   {
+    "key": "sean-darcy",
+    "before": 734,
+    "after": 733
+   },
+   {
+    "key": "seth-campbell",
+    "before": 818,
+    "after": 817
+   },
+   {
+    "key": "shai-bolton",
+    "before": 2216,
+    "after": 2082
+   },
+   {
+    "key": "shannon-neale",
+    "before": 2332,
+    "after": 2292
+   },
+   {
+    "key": "shaun-mannagh",
+    "before": 870,
+    "after": 955
+   },
+   {
+    "key": "sid-draper",
+    "before": 906,
+    "after": 905
+   },
+   {
+    "key": "steely-green",
+    "before": 115,
+    "after": 114
+   },
+   {
+    "key": "sullivan-robey",
+    "before": 3035,
+    "after": 3033
+   },
+   {
+    "key": "taj-hotton",
+    "before": 1900,
+    "after": 1898
+   },
+   {
+    "key": "talor-byrne",
+    "before": 631,
+    "after": 601
+   },
+   {
+    "key": "tanner-bruhn",
+    "before": 1965,
+    "after": 1962
+   },
+   {
+    "key": "taylor-walker",
+    "before": 214,
+    "after": 201
+   },
+   {
+    "key": "thomas-liberatore",
+    "before": 1078,
+    "after": 1076
+   },
+   {
+    "key": "thomas-sims",
+    "before": 596,
+    "after": 595
+   },
+   {
+    "key": "thomas-stewart",
+    "before": 881,
+    "after": 935
+   },
+   {
+    "key": "tim-kelly",
+    "before": 1182,
+    "after": 1180
+   },
+   {
+    "key": "tim-taranto",
+    "before": 2388,
+    "after": 2385
+   },
+   {
+    "key": "timothy-english",
+    "before": 3324,
+    "after": 3109
+   },
+   {
+    "key": "toby-mcmullin",
+    "before": 132,
+    "after": 131
+   },
+   {
+    "key": "toby-nankervis",
+    "before": 1997,
+    "after": 1994
+   },
+   {
+    "key": "tom-atkins",
+    "before": 306,
+    "after": 290
+   },
+   {
+    "key": "tom-barrass",
+    "before": 46,
+    "after": 43
+   },
+   {
+    "key": "tom-brown",
+    "before": 384,
+    "after": 383
+   },
+   {
+    "key": "tom-de-koning",
+    "before": 1573,
+    "after": 1571
+   },
+   {
+    "key": "tom-green",
+    "before": 5127,
+    "after": 5120
+   },
+   {
+    "key": "tom-hanily",
+    "before": 152,
+    "after": 189
+   },
+   {
+    "key": "tom-mccarthy",
+    "before": 1329,
+    "after": 1327
+   },
+   {
+    "key": "tom-mccartin",
+    "before": 1400,
+    "after": 1302
+   },
+   {
+    "key": "tom-papley",
+    "before": 344,
+    "after": 523
+   },
+   {
+    "key": "tom-powell",
+    "before": 1820,
+    "after": 1818
+   },
+   {
+    "key": "tom-sparrow",
+    "before": 1471,
+    "after": 1470
+   },
+   {
+    "key": "touk-miller",
+    "before": 2332,
+    "after": 2333
+   },
+   {
+    "key": "trent-rivers",
+    "before": 1432,
+    "after": 1428
+   },
+   {
+    "key": "tristan-xerri",
+    "before": 7042,
+    "after": 7033
+   },
+   {
+    "key": "ty-gallop",
+    "before": 1019,
+    "after": 1018
+   },
+   {
+    "key": "tyler-sonsie",
+    "before": 769,
+    "after": 768
+   },
+   {
+    "key": "wade-derksen",
+    "before": 214,
+    "after": 213
+   },
+   {
+    "key": "wayne-milera",
+    "before": 1582,
+    "after": 1706
+   },
+   {
+    "key": "wil-powell",
+    "before": 831,
+    "after": 828
+   },
+   {
+    "key": "will-ashcroft",
+    "before": 6893,
+    "after": 7061
+   },
+   {
+    "key": "will-day",
+    "before": 1819,
+    "after": 1781
+   },
+   {
+    "key": "will-graham",
+    "before": 1278,
+    "after": 1277
+   },
+   {
+    "key": "will-hayward",
+    "before": 275,
+    "after": 274
+   },
+   {
+    "key": "will-lewis",
+    "before": 100,
+    "after": 101
+   },
+   {
+    "key": "will-setterfield",
+    "before": 966,
+    "after": 964
+   },
+   {
+    "key": "willem-drew",
+    "before": 590,
+    "after": 589
+   },
+   {
+    "key": "willem-duursma",
+    "before": 3495,
+    "after": 3492
+   },
+   {
+    "key": "xavier-lindsay",
+    "before": 1361,
+    "after": 1360
+   },
+   {
+    "key": "zac-bailey",
+    "before": 3102,
+    "after": 2964
+   },
+   {
+    "key": "zac-taylor",
+    "before": 243,
+    "after": 242
+   },
+   {
+    "key": "zach-guthrie",
+    "before": 326,
+    "after": 329
+   },
+   {
+    "key": "zach-reid",
+    "before": 1255,
+    "after": 1254
+   },
+   {
+    "key": "zachary-merrett",
+    "before": 2349,
+    "after": 2346
+   },
+   {
+    "key": "zachary-williams",
+    "before": 335,
+    "after": 337
+   },
+   {
+    "key": "zak-butters",
+    "before": 6230,
+    "after": 6221
+   },
+   {
+    "key": "zak-johnson",
+    "before": 397,
+    "after": 396
+   },
+   {
+    "key": "zeke-uwland",
+    "before": 1892,
+    "after": 1891
+   }
+  ],
+  "_doc_expected_movers": "MEASURED, not forecast: 414 movers read off a real board built by `land edit --dry-run` in a scratch worktree from these exact edits on this exact store. The flight asserts DETERMINISM against it \u2014 identical inputs, identical board, or an abort naming the player.",
   "_doc": "366 edits over 183 players: scoring[2026].games +1 and a re-averaged scoring[2026].avg, and NOTHING else. The career `games` field is deliberately untouched \u2014 round_apply._merge_into_store does not touch it either, and an edit that also moved it would be a second writer inventing a rule the ingestor never had. Averages are round((avg*games + score)/(games+1), 2) through the ingestor's OWN `_mean` at the ingestor's OWN ROUND_DECIMALS=2, called rather than restated."
  },
  "identities": {
