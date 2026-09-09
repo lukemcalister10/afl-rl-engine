@@ -1911,14 +1911,31 @@ def ui(ctx):
                             % (rc, out[-2000:]))
         for ln in out.strip().splitlines()[-3:]:
             ctx.log('  %s' % ln.strip())
+        # THE SERIES IS COUNTED AGAINST THE BANKS, NOT AGAINST A TYPED NUMBER. This read `!= 11`
+        # and meant "the whole R14-R24 series", which stopped being the whole series the moment a
+        # finals week was banked — it refused the FW2 landing over a series that had correctly
+        # GROWN by one. The property actually worth protecting is that writer 4's rebuild did not
+        # DROP anything: every banked round must come back, contiguously from the first, with no
+        # hole in the middle. That holds at 11 points, at 12, and at whatever the Grand Final
+        # leaves behind, with no edit here.
+        _bank = sorted(int(_m.group(1)) for _m in
+                       (re.match(r'values_r(\d+)\.json$', _f)
+                        for _f in os.listdir(os.path.join(ctx.root, _RETRO_DIR)))
+                       if _m)
         _pts = [q.get('id') for q in (_js_obj(movers).get('points') or [])
                 if q.get('kind') == 'retro']
-        if len(_pts) != 11:
-            raise StepError('the shipped movers bundle carries %d retro point(s) after the '
-                            're-emission, expected the whole R14-R24 series (11). movers.test.js '
-                            'asserts this at the gates step; asserting it here costs a second '
-                            'instead of forty minutes.' % len(_pts))
-        ctx.log('  retro series present: %d points, %s .. %s' % (len(_pts), _pts[0], _pts[-1]))
+        _got = sorted(int(_i.split('-r')[-1]) for _i in _pts)
+        if _got != _bank:
+            _lost = [r for r in _bank if r not in _got]
+            raise StepError('the shipped movers bundle carries retro rounds %s after the '
+                            're-emission; the banked series is %s%s. Writer 4 drops the series and '
+                            '4b puts it back — anything missing here was LOST in that round trip. '
+                            'movers.test.js asserts this at the gates step; asserting it here costs '
+                            'a second instead of forty minutes.'
+                            % (_got or 'none', _bank,
+                               (' — missing %s' % _lost) if _lost else ''))
+        ctx.log('  retro series present: %d points, %s .. %s (every banked round, no gap)'
+                % (len(_pts), _pts[0], _pts[-1]))
 
     # ---- WRITER 5: the ownership mirror, re-pinned to the board and store this landing lands ------
     # THE SAME LAW AGAIN, ONE CARRIER ALONG, AND THE SAME THREE-PART PATTERN writers 3 and 4 use:
