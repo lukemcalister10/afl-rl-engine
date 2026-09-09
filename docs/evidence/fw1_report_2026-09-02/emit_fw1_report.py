@@ -196,6 +196,15 @@ def main():
     rep = {
         'kind': 'weekly_movers_report', 'schema_version': 1, 'season': 2026,
         'submitted_round': FEED_ROUND, 'previous_round': PREV_POINT,
+        # THE TRANSACTION ID, WITHOUT WHICH THE SAME-ROUND OVERWRITE GUARD IS OFF. round_movers
+        # identifies a report by (txn_id, board_md5_after, source_store_md5_after, submitted_round)
+        # and treats an INCOMPLETE identity as "not a conflict" — a repair is meant to be able to
+        # rebuild a corrupt report. The FW1 report shipped without one, so for that round the guard
+        # that refuses a different copy of an already-stored week was silently disabled. Caught by
+        # the FW2 preflight, 2026-09-09. A finals week has no round transaction to borrow an id
+        # from, so it takes the act's own column id — unique, stable, and naming the act that moved
+        # the board.
+        'txn_id': 'txn_' + THIS_POINT.replace('-', '_'),
         'board_md5_before': (prev_pt[0].get('board') if prev_pt else None),
         'board_md5_after': (this_pt[0].get('board') if this_pt else None),
         # the store the FW1 edit moved, from its own landing REPORT.json

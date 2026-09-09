@@ -203,8 +203,23 @@ def run_all():
     # bump commit and the landing"). The relationship worth holding: the manifest's round IS the
     # bundle's newest report — the advance regenerates both in one transaction, so this holds in
     # both worlds with no pre-bump, and a bundle lagging or leading the manifest fails loudly.
-    _ck(eb.get('as_of_round') == prod['rounds'][-1],
-        'manifest as_of_round == the bundle\'s newest report round (DERIVED: %s)' % eb.get('as_of_round'))
+    # ...AND A FINALS WEEK IS THE ONE PLACE THOSE TWO NUMBERS ARE ALLOWED TO DIFFER. A feed round
+    # above the home-and-away season is real football that does NOT advance the calendar (owner,
+    # 2026-09-02: "the calendar can never get above 1 — it gets there at r24 and holds"), so the
+    # bundle's newest report names feed round 25/26 while the manifest holds at 24. This assertion
+    # was written when every report round WAS a calendar round and went red the moment the FW1
+    # report shipped — caught by the FW2 preflight, which is the last place it could have been.
+    # The relationship is RESTATED, not loosened: inside the home-and-away season the two are still
+    # exactly equal, so a bundle lagging or leading the manifest fails as loudly as it always did.
+    # It is the same rule ui/app/movers.js core.lineage enforces and movers.test.js pins as "the
+    # loaded contract HOLDS at 24 while the report names feed round 25".
+    _newest = prod['rounds'][-1]
+    _ck(min(_newest, MV.HOME_AND_AWAY_ROUNDS) == eb.get('as_of_round'),
+        'manifest as_of_round == the bundle\'s newest report round, or HOLDS at %d through a finals '
+        'week (manifest %s, newest report %s)'
+        % (MV.HOME_AND_AWAY_ROUNDS, eb.get('as_of_round'), _newest))
+    _ck(eb.get('as_of_round') <= MV.HOME_AND_AWAY_ROUNDS,
+        'the manifest calendar round never exceeds the home-and-away season (the calendar ceiling)')
     _ck(eb.get('as_of_round') >= 24, 'the live round never shrinks below landed history (>= 24)')
 
     # ---- exactly the expected fields move; the rest are unchanged (same model pins) ----
