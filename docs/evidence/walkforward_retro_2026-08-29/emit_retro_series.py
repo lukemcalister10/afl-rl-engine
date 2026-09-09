@@ -2,7 +2,7 @@
 """EMIT THE RETROSPECTIVE SERIES into ui/data/movers.js.
 
 Reads the banked values_rN.json (one per round, priced by retro_walkforward.py through the real
-rl_export path under the LIVE engine) and appends, for each round R in 14..25 (25 = FINALS WEEK 1, named not numbered):
+rl_export path under the LIVE engine) and appends, for each round R in 14..26 (25, 26 = FINALS WEEKS 1 and 2, named not numbered):
 
   * a POINT  {id: 'retro-rN', label: 'R<N> · current model', kind: 'retro', after_round: N}
   * a byPoint entry {v, rank, pos_rank} on every player the round priced
@@ -22,7 +22,7 @@ import json, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, '..', '..', '..'))
 BUNDLE = os.path.join(REPO, 'ui', 'data', 'movers.js')
-ROUNDS = list(range(14, 26))   # 25 = FINALS WEEK 1
+ROUNDS = list(range(14, 27))   # 25, 26 = FINALS WEEKS 1 and 2
 FINALS_NAMES = {25: 'Finals Week 1', 26: 'Finals Week 2', 27: 'Semi-Final',
                 28: 'Preliminary Final', 29: 'Grand Final'}   # round_movers.FINALS_WEEK_NAMES
 
@@ -96,7 +96,7 @@ def main():
         print('%-10s %4d players  board %s' % (pid, n, banked[R]['board_md5'][:8]))
 
     mv['_retro_doc'] = ('Walk-forward retrospective (owner ask 2026-08-29, extended to the finals 2026-09-02): '
-                        'each round R14-R24 and FINALS WEEK 1 re-priced under the LIVE engine from the current corrected store with the '
+                        'each round R14-R24 and FINALS WEEKS 1-2 re-priced under the LIVE engine from the current corrected store with the '
                         '2026 season truncated to as-at-R (scores from the weekly reports of '
                         'record) and the season clock set as-of R. The kind:"round" points remain '
                         'the boards as they actually stood. A comparison mixing a retro point with '

@@ -46,12 +46,13 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, '..', '..', '..'))
 WS = '/home/claude/rl_workspace/rl_after'
 WORK = '/home/claude/retro_walkforward'
-# FEED ROUND 25 IS FINALS WEEK 1 — round_movers.FINALS_WEEK_NAMES[25], above HOME_AND_AWAY_ROUNDS=24.
+# FEED ROUNDS 25 AND 26 ARE FINALS WEEKS 1 AND 2 — round_movers.FINALS_WEEK_NAMES, above
+# HOME_AND_AWAY_ROUNDS=24.
 # It is real football and it is APPLIED, so every earlier round must subtract it. Before it was in this
 # list the finals game could not be subtracted and was carried backwards into all eleven rounds:
 # Harry Dean's round-14 store read 11 games against a truth of 10 (measured 2026-09-02).
-ROUNDS = list(range(14, 26))
-APPLIED = list(range(15, 26))
+ROUNDS = list(range(14, 27))
+APPLIED = list(range(15, 27))
 HOME_AND_AWAY_ROUNDS = 24        # round_movers.HOME_AND_AWAY_ROUNDS; a feed round above it is finals
 F = 1.0524
 
