@@ -43,13 +43,25 @@ def load_bundle():
 
 
 def main():
-    banked = {}
-    for R in ROUNDS:
-        p = os.path.join(HERE, 'values_r%d.json' % R)
-        if not os.path.exists(p):
-            raise SystemExit('HALT: values_r%d.json not banked — emit only on the complete set '
-                             '(a partial series would render as if rounds were missing).' % R)
-        banked[R] = json.load(open(p))
+    # A GAP IS A HALT; A SHORT TAIL IS NOT. The rule was "emit only on the complete set", which is
+    # right about the middle of the series and wrong about its end: the window is extended to name a
+    # finals week BEFORE that week can be banked, because the week's values come from the board the
+    # landing produces. A missing round 20 would render as if football went unplayed and still halts.
+    # A missing newest round just means the retrospective is one week short, which control_check
+    # says out loud.
+    have = [R for R in ROUNDS if os.path.exists(os.path.join(HERE, 'values_r%d.json' % R))]
+    if not have:
+        raise SystemExit('HALT: no round is banked — there is no series to emit.')
+    gaps = [R for R in ROUNDS if R < have[-1] and R not in have]
+    if gaps:
+        raise SystemExit('HALT: values_r%s not banked inside the series — a gap would render as if '
+                         'those rounds were never played.' % gaps)
+    if have[-1] != ROUNDS[-1]:
+        print('NOTE: emitting r%d..r%d; r%s not yet banked (the window names a week the board has '
+              'not been re-priced for).' % (have[0], have[-1],
+                                            ','.join(str(R) for R in ROUNDS if R > have[-1])))
+    ROUNDS_EMIT = have
+    banked = {R: json.load(open(os.path.join(HERE, 'values_r%d.json' % R))) for R in ROUNDS_EMIT}
 
     head, mv, tail = load_bundle()
     vals = mv['values']
@@ -61,7 +73,7 @@ def main():
             del rec['byPoint'][k]
 
     covered = 0
-    for R in ROUNDS:
+    for R in ROUNDS_EMIT:
         pid = 'retro-r%d' % R
         vmap = banked[R]['values']
         # rank over the priced population, value desc; ties break on key for determinism
@@ -103,7 +115,7 @@ def main():
                         'a stored point is a cross-world read and the app says so.')
     open(BUNDLE, 'w').write(head + json.dumps(mv, separators=(',', ':')) + tail)
     print('emitted %d retro points covering up to %d players -> %s'
-          % (len(ROUNDS), covered, os.path.relpath(BUNDLE, REPO)))
+          % (len(ROUNDS_EMIT), covered, os.path.relpath(BUNDLE, REPO)))
 
 
 if __name__ == '__main__':

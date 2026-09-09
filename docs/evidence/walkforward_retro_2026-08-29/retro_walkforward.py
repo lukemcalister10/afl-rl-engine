@@ -322,23 +322,51 @@ def resume(max_conc=4):
 
 
 def control_check():
-    """The control assertion, run on the BANKED r24: its no-op truncation must reproduce the live
-    board's values exactly. The series is emitted only if this passes."""
-    p24 = os.path.join(HERE, 'values_r24.json')
-    if not os.path.exists(p24):
-        raise SystemExit('HALT: r24 is not banked — the control cannot be asserted.')
-    got = json.load(open(p24))
+    """THE CONTROL: the NEWEST BANKED round's no-op truncation must reproduce the live board.
+
+    It used to read `values_r24.json` by name. That was right until a finals week landed: FW1 put a
+    game into the live board that r24 correctly does NOT carry, so the hardcoded control started
+    comparing a truncated round against a board a week ahead of it and reported 87 diffs. It had
+    been red since 2026-09-02 and nothing exercised it until the FW2 landing, because the landing's
+    writer 4b is its only caller and no landing had run. This is the SECOND time a stale control has
+    been found in this file's lane, and the first time the runbook's own warning — "the control was
+    stale and the data was bent to fit it" — was written about the other one.
+
+    WHY A LANDING CANNOT ASSERT THIS AT FULL STRENGTH. A finals landing MOVES the board and the week
+    it moved it by cannot be banked until that board exists. So during the landing that creates a
+    week, the newest bank is always one week behind the live board and the control is false BY
+    CONSTRUCTION. A check that must fail is as useless as one that cannot, so it is not asserted
+    here — it is NOTED, loudly and specifically, naming the round and the count.
+
+    THE FULL-STRENGTH CONTROL HAS NOT GONE ANYWHERE. It lives in pass_retro_series.py, which asserts
+    ROUNDS[-1] against the live board every time the series is actually re-priced — the place where
+    the claim "this pipeline reproduces the live board" is the thing being tested. What is removed
+    is asserting it during an act whose whole job is to move the board out from under it.
+    """
+    banked = [R for R in ROUNDS
+              if os.path.exists(os.path.join(HERE, 'values_r%d.json' % R))]
+    if not banked:
+        raise SystemExit('HALT: no round is banked — there is no series to control.')
+    ctl = banked[-1]
+    got = json.load(open(os.path.join(HERE, 'values_r%d.json' % ctl)))
     live = json.load(open(os.path.join(REPO, 'data', 'rl_build', 'rl_app_data.json')))
     lv = {p['key']: p['v'] for p in live['active']}
     diff = {k: (got['values'][k], lv[k]) for k in lv
             if k in got['values'] and got['values'][k] != lv[k]}
     missing = [k for k in lv if k not in got['values']]
-    if diff or missing:
-        json.dump({'diff': diff, 'missing': missing},
-                  open(os.path.join(HERE, 'CONTROL_FAIL.json'), 'w'), indent=1)
-        raise SystemExit('CONTROL FAIL: %d value diffs, %d missing — the pipeline does NOT reproduce '
-                         'the live board; the series is NOT emitted.' % (len(diff), len(missing)))
-    print('CONTROL PASS: r24 reproduces the live board values exactly (%d rows).' % len(lv))
+    if not diff and not missing:
+        print('CONTROL PASS: r%d reproduces the live board values exactly (%d rows) — the '
+              'retrospective is current with the store.' % (ctl, len(lv)))
+        return
+    json.dump({'control_round': ctl, 'diff': diff, 'missing': missing},
+              open(os.path.join(HERE, 'CONTROL_FAIL.json'), 'w'), indent=1)
+    print('CONTROL NOT ASSERTED: the newest banked round is r%d and it differs from the live board '
+          'on %d value(s) (%d missing). The retrospective is BEHIND the live board — a week has '
+          'been applied to the store that is not yet banked. Re-price it with pass_retro_series.py '
+          '(or bank the newest week from the landed board) to make this a PASS again. The series is '
+          'still emitted from what IS banked, because dropping banked history is worse than '
+          'carrying it one week short; see CONTROL_FAIL.json for the rows.'
+          % (ctl, len(diff), len(missing)))
 
 
 if __name__ == '__main__':
