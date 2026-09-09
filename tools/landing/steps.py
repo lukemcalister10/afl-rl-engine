@@ -1920,7 +1920,7 @@ def ui(ctx):
         # leaves behind, with no edit here.
         _bank = sorted(int(_m.group(1)) for _m in
                        (re.match(r'values_r(\d+)\.json$', _f)
-                        for _f in os.listdir(os.path.join(ctx.root, _RETRO_DIR)))
+                        for _f in os.listdir(os.path.dirname(_retro)))
                        if _m)
         _pts = [q.get('id') for q in (_js_obj(movers).get('points') or [])
                 if q.get('kind') == 'retro']
