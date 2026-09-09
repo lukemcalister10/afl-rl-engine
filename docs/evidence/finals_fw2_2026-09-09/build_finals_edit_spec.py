@@ -4,14 +4,28 @@
 Mechanical: no arithmetic of its own, no name resolution of its own. Everything numeric came from
 the pass that ran against the ingestor's own `_mean` and the ingestor's own `ROUND_DECIMALS`.
 """
-import json, os, sys
+import argparse, json, os, sys
 
 REPO = '/home/user/afl-rl-engine'
 EV = os.path.join(REPO, 'docs', 'evidence', 'finals_fw2_2026-09-09')
 PLAN = os.path.join(EV, 'FW2_EDIT_PLAN.json')
 OUT = os.path.join(EV, 'ACT_SPEC_FW2_EDIT.json')
 
+ap = argparse.ArgumentParser(description=__doc__)
+ap.add_argument('--declare', metavar='MOVERS.json',
+                help='the MEASURED mover list to declare (from `land edit --dry-run`). Omitted, the '
+                     'spec declares `expected_movers: null` — "not declared", which is what the '
+                     'dry-run pass wants: the plan\'s own in-memory prediction is wrong BY '
+                     'CONSTRUCTION (it cannot reproduce the load-time calibration refit) and '
+                     'declaring it would only buy a guaranteed abort.')
+args = ap.parse_args()
+
 plan = json.load(open(PLAN))
+declared = None
+if args.declare:
+    _m = json.load(open(args.declare))
+    declared = _m['movers'] if isinstance(_m, dict) and 'movers' in _m else _m
+    declared = [{'key': m['key'], 'before': m['before'], 'after': m['after']} for m in declared]
 
 # A NO-OP FIELD IS DROPPED, NOT DECLARED. The validator refuses `old == new` — rightly, since an
 # edit that changes nothing cannot be told from an edit that failed to apply. `games` always moves
@@ -67,7 +81,17 @@ spec = {
     },
     'edit': {
         'store': edits,
-        'expected_movers': plan['expected_movers'],
+        'expected_movers': declared,
+        '_doc_expected_movers': (
+            ('MEASURED, not forecast: %d movers read off a real board built by `land edit '
+             '--dry-run` in a scratch worktree from these exact edits on this exact store. The '
+             'flight asserts DETERMINISM against it — identical inputs, identical board, or an '
+             'abort naming the player.' % len(declared)) if declared else
+            ('null = NOT DECLARED. The movers are printed and asserted against nothing, which is '
+             'correct for the measuring pass: the plan\'s in-memory prediction (%d movers) cannot '
+             'reproduce the engine\'s load-time calibration refit and is wrong by construction. '
+             'Re-run with --declare once the dry run has measured them.'
+             % plan['n_movers'])),
         '_doc': ('%d edits over %d players: scoring[2026].games +1 and a re-averaged '
                  'scoring[2026].avg, and NOTHING else. The career `games` field is deliberately '
                  'untouched — round_apply._merge_into_store does not touch it either, and an edit '
@@ -109,7 +133,9 @@ print('wrote %s' % OUT)
 print('  %d edits over %d players (%d no-op field(s) dropped: %s)'
       % (len(edits), len(by_key), len(dropped),
          ', '.join('%s %s' % (d['key'], d['field']) for d in dropped[:4]) or 'none'))
-print('  %d expected movers declared' % len(plan['expected_movers']))
+print('  expected_movers: %s'
+      % ('%d MEASURED movers declared' % len(declared) if declared
+         else 'null (not declared) — measure with `land edit --dry-run` first'))
 
 sys.path.insert(0, os.path.join(REPO, 'tools'))
 from landing.spec import validate

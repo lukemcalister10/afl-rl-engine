@@ -1,0 +1,2254 @@
+{
+ "schema_version": 1,
+ "act_kind": "store-edit",
+ "act": "FINALS WEEK 2 APPLIED AS A STORE EDIT \u2014 183 players at eight clubs gain one game and a re-averaged 2026 season row. Same lane as FW1, second week: the calendar is not touched, because a finals week was never a calendar event \u2014 the store has always carried finals inside the season row (Bontempelli 2016 reads 26 games, 22 home-and-away plus four finals). This is the first finals week landed through the written runbook rather than discovered on the way.",
+ "date": "2026-09-09",
+ "owner_word": "The owner sent scores/FW2.csv on 2026-09-09 with one disambiguation \u2014 \"Bailey Williams is the Western Bulldogs one\" \u2014 which is the whole of the instruction: the lane itself was ruled at FW1 and is not re-opened here. That ruling stands: \"We're literally just updating player averages and game counts.\" And on scope: \"As long as it doesn't impact the movers list still being accurate as of each round since round 14.\" Plus the calendar law, 2026-09-02: \"The calendar can never get above 1. It gets there at r24 and holds.\"",
+ "authority": "owner word 2026-09-09 (the scores) on the lane ruled 2026-08-30",
+ "prereg": {
+  "path": "docs/evidence/finals_fw2_2026-09-09/PREREG.md",
+  "board_before": "b005096b5e78014425922cae3f28f6c9",
+  "board_after": null,
+  "_doc_board_after": "null: a board priced from scores nobody has put through the real builder cannot be predicted without running it, and copying it out of a build already run is not a prediction. The falsifier for this act is `expected_movers` below \u2014 every mover, by key and both values, measured on a loaded engine whose control pass reproduced the live board with 0 diffs.",
+  "reference_board": null,
+  "kill_switch": null
+ },
+ "edit": {
+  "store": [
+   {
+    "key": "aaron-naughton",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "aaron-naughton",
+    "field": "scoring[2026].avg",
+    "old": 70.35,
+    "new": 71.54
+   },
+   {
+    "key": "adam-cerra",
+    "field": "scoring[2026].games",
+    "old": 20,
+    "new": 21
+   },
+   {
+    "key": "adam-cerra",
+    "field": "scoring[2026].avg",
+    "old": 82.04,
+    "new": 83.09
+   },
+   {
+    "key": "alex-neal-bullen",
+    "field": "scoring[2026].games",
+    "old": 21,
+    "new": 22
+   },
+   {
+    "key": "alex-neal-bullen",
+    "field": "scoring[2026].avg",
+    "old": 72.9,
+    "new": 72.95
+   },
+   {
+    "key": "alex-pearce",
+    "field": "scoring[2026].games",
+    "old": 20,
+    "new": 21
+   },
+   {
+    "key": "alex-pearce",
+    "field": "scoring[2026].avg",
+    "old": 46.19,
+    "new": 47.85
+   },
+   {
+    "key": "andrew-brayshaw",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "andrew-brayshaw",
+    "field": "scoring[2026].avg",
+    "old": 99.33,
+    "new": 99.86
+   },
+   {
+    "key": "angus-sheldrick",
+    "field": "scoring[2026].games",
+    "old": 18,
+    "new": 19
+   },
+   {
+    "key": "angus-sheldrick",
+    "field": "scoring[2026].avg",
+    "old": 67.94,
+    "new": 67.47
+   },
+   {
+    "key": "arthur-jones",
+    "field": "scoring[2026].games",
+    "old": 19,
+    "new": 20
+   },
+   {
+    "key": "arthur-jones",
+    "field": "scoring[2026].avg",
+    "old": 58.65,
+    "new": 58.52
+   },
+   {
+    "key": "bailey-dale",
+    "field": "scoring[2026].games",
+    "old": 19,
+    "new": 20
+   },
+   {
+    "key": "bailey-dale",
+    "field": "scoring[2026].avg",
+    "old": 101.74,
+    "new": 99.35
+   },
+   {
+    "key": "bailey-macdonald",
+    "field": "scoring[2026].games",
+    "old": 12,
+    "new": 13
+   },
+   {
+    "key": "bailey-macdonald",
+    "field": "scoring[2026].avg",
+    "old": 55.17,
+    "new": 54.23
+   },
+   {
+    "key": "bailey-smith",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "bailey-smith",
+    "field": "scoring[2026].avg",
+    "old": 120.97,
+    "new": 120.23
+   },
+   {
+    "key": "bailey-williams-wb",
+    "field": "scoring[2026].games",
+    "old": 18,
+    "new": 19
+   },
+   {
+    "key": "bailey-williams-wb",
+    "field": "scoring[2026].avg",
+    "old": 82.88,
+    "new": 84.41
+   },
+   {
+    "key": "ben-ainsworth",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "ben-ainsworth",
+    "field": "scoring[2026].avg",
+    "old": 70.48,
+    "new": 70.54
+   },
+   {
+    "key": "ben-keays",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "ben-keays",
+    "field": "scoring[2026].avg",
+    "old": 69.83,
+    "new": 69.96
+   },
+   {
+    "key": "billy-cootee",
+    "field": "scoring[2026].games",
+    "old": 9,
+    "new": 10
+   },
+   {
+    "key": "billy-cootee",
+    "field": "scoring[2026].avg",
+    "old": 52.0,
+    "new": 53.2
+   },
+   {
+    "key": "billy-wilson",
+    "field": "scoring[2026].games",
+    "old": 16,
+    "new": 17
+   },
+   {
+    "key": "billy-wilson",
+    "field": "scoring[2026].avg",
+    "old": 74.75,
+    "new": 77.0
+   },
+   {
+    "key": "blake-acres",
+    "field": "scoring[2026].games",
+    "old": 11,
+    "new": 12
+   },
+   {
+    "key": "blake-acres",
+    "field": "scoring[2026].avg",
+    "old": 78.0,
+    "new": 75.92
+   },
+   {
+    "key": "blake-hardwick",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "blake-hardwick",
+    "field": "scoring[2026].avg",
+    "old": 83.31,
+    "new": 82.8
+   },
+   {
+    "key": "bradley-close",
+    "field": "scoring[2026].games",
+    "old": 16,
+    "new": 17
+   },
+   {
+    "key": "bradley-close",
+    "field": "scoring[2026].avg",
+    "old": 50.13,
+    "new": 52.12
+   },
+   {
+    "key": "braeden-campbell",
+    "field": "scoring[2026].games",
+    "old": 6,
+    "new": 7
+   },
+   {
+    "key": "braeden-campbell",
+    "field": "scoring[2026].avg",
+    "old": 76.67,
+    "new": 74.29
+   },
+   {
+    "key": "brandon-walker",
+    "field": "scoring[2026].games",
+    "old": 1,
+    "new": 2
+   },
+   {
+    "key": "brandon-walker",
+    "field": "scoring[2026].avg",
+    "old": 38.0,
+    "new": 48.0
+   },
+   {
+    "key": "brayden-cook",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "brayden-cook",
+    "field": "scoring[2026].avg",
+    "old": 71.63,
+    "new": 72.65
+   },
+   {
+    "key": "brodie-grundy",
+    "field": "scoring[2026].games",
+    "old": 21,
+    "new": 22
+   },
+   {
+    "key": "brodie-grundy",
+    "field": "scoring[2026].avg",
+    "old": 119.9,
+    "new": 118.68
+   },
+   {
+    "key": "brodie-kemp",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "brodie-kemp",
+    "field": "scoring[2026].avg",
+    "old": 65.96,
+    "new": 64.48
+   },
+   {
+    "key": "buku-khamis",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "buku-khamis",
+    "field": "scoring[2026].avg",
+    "old": 58.99,
+    "new": 57.71
+   },
+   {
+    "key": "caiden-cleary",
+    "field": "scoring[2026].games",
+    "old": 9,
+    "new": 10
+   },
+   {
+    "key": "caiden-cleary",
+    "field": "scoring[2026].avg",
+    "old": 54.22,
+    "new": 54.1
+   },
+   {
+    "key": "caleb-serong",
+    "field": "scoring[2026].games",
+    "old": 20,
+    "new": 21
+   },
+   {
+    "key": "caleb-serong",
+    "field": "scoring[2026].avg",
+    "old": 101.79,
+    "new": 101.37
+   },
+   {
+    "key": "callum-ah-chee",
+    "field": "scoring[2026].games",
+    "old": 7,
+    "new": 8
+   },
+   {
+    "key": "callum-ah-chee",
+    "field": "scoring[2026].avg",
+    "old": 56.17,
+    "new": 53.02
+   },
+   {
+    "key": "cameron-mackenzie",
+    "field": "scoring[2026].games",
+    "old": 21,
+    "new": 22
+   },
+   {
+    "key": "cameron-mackenzie",
+    "field": "scoring[2026].avg",
+    "old": 75.72,
+    "new": 75.46
+   },
+   {
+    "key": "cameron-rayner",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "cameron-rayner",
+    "field": "scoring[2026].avg",
+    "old": 71.79,
+    "new": 70.88
+   },
+   {
+    "key": "charlie-cameron",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "charlie-cameron",
+    "field": "scoring[2026].avg",
+    "old": 72.71,
+    "new": 70.35
+   },
+   {
+    "key": "charlie-curnow",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "charlie-curnow",
+    "field": "scoring[2026].avg",
+    "old": 73.04,
+    "new": 74.17
+   },
+   {
+    "key": "cody-weightman",
+    "field": "scoring[2026].games",
+    "old": 10,
+    "new": 11
+   },
+   {
+    "key": "cody-weightman",
+    "field": "scoring[2026].avg",
+    "old": 54.3,
+    "new": 52.18
+   },
+   {
+    "key": "connor-budarick",
+    "field": "scoring[2026].games",
+    "old": 14,
+    "new": 15
+   },
+   {
+    "key": "connor-budarick",
+    "field": "scoring[2026].avg",
+    "old": 69.17,
+    "new": 68.36
+   },
+   {
+    "key": "connor-macdonald",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "connor-macdonald",
+    "field": "scoring[2026].avg",
+    "old": 84.84,
+    "new": 84.56
+   },
+   {
+    "key": "connor-o-sullivan",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "connor-o-sullivan",
+    "field": "scoring[2026].avg",
+    "old": 73.53,
+    "new": 72.13
+   },
+   {
+    "key": "conor-mckenna",
+    "field": "scoring[2026].games",
+    "old": 17,
+    "new": 18
+   },
+   {
+    "key": "conor-mckenna",
+    "field": "scoring[2026].avg",
+    "old": 55.63,
+    "new": 57.32
+   },
+   {
+    "key": "cooper-hynes",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "cooper-hynes",
+    "field": "scoring[2026].avg",
+    "old": 52.79,
+    "new": 54.02
+   },
+   {
+    "key": "cooper-lord",
+    "field": "scoring[2026].games",
+    "old": 10,
+    "new": 11
+   },
+   {
+    "key": "cooper-lord",
+    "field": "scoring[2026].avg",
+    "old": 75.61,
+    "new": 75.83
+   },
+   {
+    "key": "dane-rampe",
+    "field": "scoring[2026].games",
+    "old": 15,
+    "new": 16
+   },
+   {
+    "key": "dane-rampe",
+    "field": "scoring[2026].avg",
+    "old": 59.67,
+    "new": 62.0
+   },
+   {
+    "key": "daniel-curtin",
+    "field": "scoring[2026].games",
+    "old": 16,
+    "new": 17
+   },
+   {
+    "key": "daniel-curtin",
+    "field": "scoring[2026].avg",
+    "old": 69.99,
+    "new": 69.34
+   },
+   {
+    "key": "darcy-fogarty",
+    "field": "scoring[2026].games",
+    "old": 14,
+    "new": 15
+   },
+   {
+    "key": "darcy-fogarty",
+    "field": "scoring[2026].avg",
+    "old": 72.91,
+    "new": 72.92
+   },
+   {
+    "key": "darcy-fort",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "darcy-fort",
+    "field": "scoring[2026].avg",
+    "old": 68.78,
+    "new": 67.66
+   },
+   {
+    "key": "darcy-gardiner",
+    "field": "scoring[2026].games",
+    "old": 12,
+    "new": 13
+   },
+   {
+    "key": "darcy-gardiner",
+    "field": "scoring[2026].avg",
+    "old": 47.43,
+    "new": 45.94
+   },
+   {
+    "key": "darcy-wilmot",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "darcy-wilmot",
+    "field": "scoring[2026].avg",
+    "old": 88.94,
+    "new": 88.11
+   },
+   {
+    "key": "dayne-zorko",
+    "field": "scoring[2026].games",
+    "old": 13,
+    "new": 14
+   },
+   {
+    "key": "dayne-zorko",
+    "field": "scoring[2026].avg",
+    "old": 103.45,
+    "new": 103.56
+   },
+   {
+    "key": "dylan-moore",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "dylan-moore",
+    "field": "scoring[2026].avg",
+    "old": 72.95,
+    "new": 74.73
+   },
+   {
+    "key": "ed-richards",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "ed-richards",
+    "field": "scoring[2026].avg",
+    "old": 110.39,
+    "new": 109.83
+   },
+   {
+    "key": "eric-hipwood",
+    "field": "scoring[2026].games",
+    "old": 10,
+    "new": 11
+   },
+   {
+    "key": "eric-hipwood",
+    "field": "scoring[2026].avg",
+    "old": 55.7,
+    "new": 59.09
+   },
+   {
+    "key": "errol-gulden",
+    "field": "scoring[2026].games",
+    "old": 11,
+    "new": 12
+   },
+   {
+    "key": "errol-gulden",
+    "field": "scoring[2026].avg",
+    "old": 116.64,
+    "new": 118.17
+   },
+   {
+    "key": "francis-evans",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "francis-evans",
+    "field": "scoring[2026].avg",
+    "old": 73.86,
+    "new": 73.95
+   },
+   {
+    "key": "george-hewett",
+    "field": "scoring[2026].games",
+    "old": 19,
+    "new": 20
+   },
+   {
+    "key": "george-hewett",
+    "field": "scoring[2026].avg",
+    "old": 102.95,
+    "new": 103.1
+   },
+   {
+    "key": "gryan-miers",
+    "field": "scoring[2026].games",
+    "old": 15,
+    "new": 16
+   },
+   {
+    "key": "gryan-miers",
+    "field": "scoring[2026].avg",
+    "old": 76.39,
+    "new": 78.05
+   },
+   {
+    "key": "harris-andrews",
+    "field": "scoring[2026].games",
+    "old": 20,
+    "new": 21
+   },
+   {
+    "key": "harris-andrews",
+    "field": "scoring[2026].avg",
+    "old": 85.02,
+    "new": 84.59
+   },
+   {
+    "key": "harry-cunningham",
+    "field": "scoring[2026].games",
+    "old": 12,
+    "new": 13
+   },
+   {
+    "key": "harry-cunningham",
+    "field": "scoring[2026].avg",
+    "old": 57.93,
+    "new": 60.55
+   },
+   {
+    "key": "harry-dean",
+    "field": "scoring[2026].games",
+    "old": 20,
+    "new": 21
+   },
+   {
+    "key": "harry-dean",
+    "field": "scoring[2026].avg",
+    "old": 61.49,
+    "new": 59.66
+   },
+   {
+    "key": "harry-kyle",
+    "field": "scoring[2026].games",
+    "old": 9,
+    "new": 10
+   },
+   {
+    "key": "harry-kyle",
+    "field": "scoring[2026].avg",
+    "old": 44.6,
+    "new": 45.64
+   },
+   {
+    "key": "harry-mckay",
+    "field": "scoring[2026].games",
+    "old": 21,
+    "new": 22
+   },
+   {
+    "key": "harry-mckay",
+    "field": "scoring[2026].avg",
+    "old": 75.8,
+    "new": 75.63
+   },
+   {
+    "key": "harry-morrison",
+    "field": "scoring[2026].games",
+    "old": 13,
+    "new": 14
+   },
+   {
+    "key": "harry-morrison",
+    "field": "scoring[2026].avg",
+    "old": 70.46,
+    "new": 71.14
+   },
+   {
+    "key": "hayden-mclean",
+    "field": "scoring[2026].games",
+    "old": 10,
+    "new": 11
+   },
+   {
+    "key": "hayden-mclean",
+    "field": "scoring[2026].avg",
+    "old": 53.68,
+    "new": 58.8
+   },
+   {
+    "key": "hayden-young",
+    "field": "scoring[2026].games",
+    "old": 13,
+    "new": 14
+   },
+   {
+    "key": "hayden-young",
+    "field": "scoring[2026].avg",
+    "old": 81.61,
+    "new": 80.07
+   },
+   {
+    "key": "heath-chapman",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "heath-chapman",
+    "field": "scoring[2026].avg",
+    "old": 69.01,
+    "new": 69.27
+   },
+   {
+    "key": "hugh-mccluggage",
+    "field": "scoring[2026].games",
+    "old": 13,
+    "new": 14
+   },
+   {
+    "key": "hugh-mccluggage",
+    "field": "scoring[2026].avg",
+    "old": 76.78,
+    "new": 74.37
+   },
+   {
+    "key": "hugo-hall-kahan",
+    "field": "scoring[2026].games",
+    "old": 11,
+    "new": 12
+   },
+   {
+    "key": "hugo-hall-kahan",
+    "field": "scoring[2026].avg",
+    "old": 74.0,
+    "new": 72.75
+   },
+   {
+    "key": "isaac-cumming",
+    "field": "scoring[2026].games",
+    "old": 16,
+    "new": 17
+   },
+   {
+    "key": "isaac-cumming",
+    "field": "scoring[2026].avg",
+    "old": 66.23,
+    "new": 67.1
+   },
+   {
+    "key": "isaiah-dudley",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "isaiah-dudley",
+    "field": "scoring[2026].avg",
+    "old": 57.84,
+    "new": 57.43
+   },
+   {
+    "key": "izak-rankine",
+    "field": "scoring[2026].games",
+    "old": 20,
+    "new": 21
+   },
+   {
+    "key": "izak-rankine",
+    "field": "scoring[2026].avg",
+    "old": 108.34,
+    "new": 108.47
+   },
+   {
+    "key": "jack-ginnivan",
+    "field": "scoring[2026].games",
+    "old": 21,
+    "new": 22
+   },
+   {
+    "key": "jack-ginnivan",
+    "field": "scoring[2026].avg",
+    "old": 80.77,
+    "new": 80.78
+   },
+   {
+    "key": "jack-gunston",
+    "field": "scoring[2026].games",
+    "old": 17,
+    "new": 18
+   },
+   {
+    "key": "jack-gunston",
+    "field": "scoring[2026].avg",
+    "old": 78.48,
+    "new": 76.9
+   },
+   {
+    "key": "jack-henry",
+    "field": "scoring[2026].games",
+    "old": 18,
+    "new": 19
+   },
+   {
+    "key": "jack-henry",
+    "field": "scoring[2026].avg",
+    "old": 58.78,
+    "new": 58.37
+   },
+   {
+    "key": "jacob-weitering",
+    "field": "scoring[2026].games",
+    "old": 13,
+    "new": 14
+   },
+   {
+    "key": "jacob-weitering",
+    "field": "scoring[2026].avg",
+    "old": 80.62,
+    "new": 79.65
+   },
+   {
+    "key": "jagga-smith",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "jagga-smith",
+    "field": "scoring[2026].avg",
+    "old": 89.61,
+    "new": 88.75
+   },
+   {
+    "key": "jai-newcombe",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "jai-newcombe",
+    "field": "scoring[2026].avg",
+    "old": 102.31,
+    "new": 101.38
+   },
+   {
+    "key": "jai-serong",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "jai-serong",
+    "field": "scoring[2026].avg",
+    "old": 76.46,
+    "new": 75.66
+   },
+   {
+    "key": "jake-lloyd",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "jake-lloyd",
+    "field": "scoring[2026].avg",
+    "old": 71.56,
+    "new": 73.58
+   },
+   {
+    "key": "jake-soligo",
+    "field": "scoring[2026].games",
+    "old": 20,
+    "new": 21
+   },
+   {
+    "key": "jake-soligo",
+    "field": "scoring[2026].avg",
+    "old": 67.69,
+    "new": 68.09
+   },
+   {
+    "key": "james-borlase",
+    "field": "scoring[2026].games",
+    "old": 17,
+    "new": 18
+   },
+   {
+    "key": "james-borlase",
+    "field": "scoring[2026].avg",
+    "old": 60.9,
+    "new": 60.02
+   },
+   {
+    "key": "james-o-donnell",
+    "field": "scoring[2026].games",
+    "old": 20,
+    "new": 21
+   },
+   {
+    "key": "james-o-donnell",
+    "field": "scoring[2026].avg",
+    "old": 62.8,
+    "new": 63.9
+   },
+   {
+    "key": "james-rowbottom",
+    "field": "scoring[2026].games",
+    "old": 20,
+    "new": 21
+   },
+   {
+    "key": "james-rowbottom",
+    "field": "scoring[2026].avg",
+    "old": 76.36,
+    "new": 76.15
+   },
+   {
+    "key": "james-sicily",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "james-sicily",
+    "field": "scoring[2026].avg",
+    "old": 93.04,
+    "new": 93.73
+   },
+   {
+    "key": "jarman-impey",
+    "field": "scoring[2026].games",
+    "old": 20,
+    "new": 21
+   },
+   {
+    "key": "jarman-impey",
+    "field": "scoring[2026].avg",
+    "old": 90.21,
+    "new": 88.34
+   },
+   {
+    "key": "jarrod-berry",
+    "field": "scoring[2026].games",
+    "old": 18,
+    "new": 19
+   },
+   {
+    "key": "jarrod-berry",
+    "field": "scoring[2026].avg",
+    "old": 76.61,
+    "new": 76.63
+   },
+   {
+    "key": "jaspa-fletcher",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "jaspa-fletcher",
+    "field": "scoring[2026].avg",
+    "old": 74.14,
+    "new": 74.13
+   },
+   {
+    "key": "jay-polkinghorne",
+    "field": "scoring[2026].games",
+    "old": 6,
+    "new": 7
+   },
+   {
+    "key": "jay-polkinghorne",
+    "field": "scoring[2026].avg",
+    "old": 49.5,
+    "new": 52.86
+   },
+   {
+    "key": "jeremy-cameron",
+    "field": "scoring[2026].games",
+    "old": 17,
+    "new": 18
+   },
+   {
+    "key": "jeremy-cameron",
+    "field": "scoring[2026].avg",
+    "old": 74.55,
+    "new": 72.52
+   },
+   {
+    "key": "jesse-dattoli",
+    "field": "scoring[2026].games",
+    "old": 3,
+    "new": 4
+   },
+   {
+    "key": "jesse-dattoli",
+    "field": "scoring[2026].avg",
+    "old": 85.0,
+    "new": 73.25
+   },
+   {
+    "key": "joel-freijah",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "joel-freijah",
+    "field": "scoring[2026].avg",
+    "old": 79.02,
+    "new": 79.42
+   },
+   {
+    "key": "joel-hamling",
+    "field": "scoring[2026].games",
+    "old": 9,
+    "new": 10
+   },
+   {
+    "key": "joel-hamling",
+    "field": "scoring[2026].avg",
+    "old": 52.21,
+    "new": 52.19
+   },
+   {
+    "key": "jordan-clark",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "jordan-clark",
+    "field": "scoring[2026].avg",
+    "old": 93.12,
+    "new": 94.28
+   },
+   {
+    "key": "jordan-dawson",
+    "field": "scoring[2026].games",
+    "old": 20,
+    "new": 21
+   },
+   {
+    "key": "jordan-dawson",
+    "field": "scoring[2026].avg",
+    "old": 111.36,
+    "new": 110.87
+   },
+   {
+    "key": "josh-battle",
+    "field": "scoring[2026].games",
+    "old": 21,
+    "new": 22
+   },
+   {
+    "key": "josh-battle",
+    "field": "scoring[2026].avg",
+    "old": 84.44,
+    "new": 84.83
+   },
+   {
+    "key": "josh-dolan",
+    "field": "scoring[2026].games",
+    "old": 12,
+    "new": 13
+   },
+   {
+    "key": "josh-dolan",
+    "field": "scoring[2026].avg",
+    "old": 48.73,
+    "new": 47.75
+   },
+   {
+    "key": "josh-dunkley",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "josh-dunkley",
+    "field": "scoring[2026].avg",
+    "old": 92.58,
+    "new": 93.39
+   },
+   {
+    "key": "josh-rachele",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "josh-rachele",
+    "field": "scoring[2026].avg",
+    "old": 74.66,
+    "new": 74.51
+   },
+   {
+    "key": "josh-treacy",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "josh-treacy",
+    "field": "scoring[2026].avg",
+    "old": 94.48,
+    "new": 91.54
+   },
+   {
+    "key": "josh-ward",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "josh-ward",
+    "field": "scoring[2026].avg",
+    "old": 86.34,
+    "new": 85.49
+   },
+   {
+    "key": "josh-worrell",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "josh-worrell",
+    "field": "scoring[2026].avg",
+    "old": 92.82,
+    "new": 94.99
+   },
+   {
+    "key": "joshua-weddle",
+    "field": "scoring[2026].games",
+    "old": 19,
+    "new": 20
+   },
+   {
+    "key": "joshua-weddle",
+    "field": "scoring[2026].avg",
+    "old": 69.94,
+    "new": 70.74
+   },
+   {
+    "key": "jye-amiss",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "jye-amiss",
+    "field": "scoring[2026].avg",
+    "old": 71.48,
+    "new": 69.76
+   },
+   {
+    "key": "kai-lohmann",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "kai-lohmann",
+    "field": "scoring[2026].avg",
+    "old": 68.65,
+    "new": 67.08
+   },
+   {
+    "key": "karl-amon",
+    "field": "scoring[2026].games",
+    "old": 18,
+    "new": 19
+   },
+   {
+    "key": "karl-amon",
+    "field": "scoring[2026].avg",
+    "old": 77.42,
+    "new": 77.24
+   },
+   {
+    "key": "karl-worner",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "karl-worner",
+    "field": "scoring[2026].avg",
+    "old": 83.63,
+    "new": 85.02
+   },
+   {
+    "key": "lachie-neale",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "lachie-neale",
+    "field": "scoring[2026].avg",
+    "old": 110.05,
+    "new": 108.76
+   },
+   {
+    "key": "lachlan-bramble",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "lachlan-bramble",
+    "field": "scoring[2026].avg",
+    "old": 66.36,
+    "new": 64.71
+   },
+   {
+    "key": "lachlan-cowan",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "lachlan-cowan",
+    "field": "scoring[2026].avg",
+    "old": 66.64,
+    "new": 66.7
+   },
+   {
+    "key": "lachlan-mcandrew",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "lachlan-mcandrew",
+    "field": "scoring[2026].avg",
+    "old": 89.65,
+    "new": 89.06
+   },
+   {
+    "key": "lachlan-mcneil",
+    "field": "scoring[2026].games",
+    "old": 10,
+    "new": 11
+   },
+   {
+    "key": "lachlan-mcneil",
+    "field": "scoring[2026].avg",
+    "old": 55.02,
+    "new": 53.11
+   },
+   {
+    "key": "lawson-humphries",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "lawson-humphries",
+    "field": "scoring[2026].avg",
+    "old": 83.8,
+    "new": 82.5
+   },
+   {
+    "key": "levi-ashcroft",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "levi-ashcroft",
+    "field": "scoring[2026].avg",
+    "old": 74.79,
+    "new": 74.51
+   },
+   {
+    "key": "lewis-young",
+    "field": "scoring[2026].games",
+    "old": 13,
+    "new": 14
+   },
+   {
+    "key": "lewis-young",
+    "field": "scoring[2026].avg",
+    "old": 57.16,
+    "new": 54.43
+   },
+   {
+    "key": "lloyd-meek",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "lloyd-meek",
+    "field": "scoring[2026].avg",
+    "old": 81.05,
+    "new": 80.26
+   },
+   {
+    "key": "logan-mcdonald",
+    "field": "scoring[2026].games",
+    "old": 21,
+    "new": 22
+   },
+   {
+    "key": "logan-mcdonald",
+    "field": "scoring[2026].avg",
+    "old": 65.67,
+    "new": 68.59
+   },
+   {
+    "key": "logan-morris",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "logan-morris",
+    "field": "scoring[2026].avg",
+    "old": 78.1,
+    "new": 77.44
+   },
+   {
+    "key": "luke-jackson",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "luke-jackson",
+    "field": "scoring[2026].avg",
+    "old": 117.5,
+    "new": 118.44
+   },
+   {
+    "key": "luke-kennedy",
+    "field": "scoring[2026].games",
+    "old": 7,
+    "new": 8
+   },
+   {
+    "key": "luke-kennedy",
+    "field": "scoring[2026].avg",
+    "old": 43.29,
+    "new": 44.5
+   },
+   {
+    "key": "luke-nankervis",
+    "field": "scoring[2026].games",
+    "old": 16,
+    "new": 17
+   },
+   {
+    "key": "luke-nankervis",
+    "field": "scoring[2026].avg",
+    "old": 64.67,
+    "new": 66.98
+   },
+   {
+    "key": "luke-ryan",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "luke-ryan",
+    "field": "scoring[2026].avg",
+    "old": 89.22,
+    "new": 89.82
+   },
+   {
+    "key": "mabior-chol",
+    "field": "scoring[2026].games",
+    "old": 18,
+    "new": 19
+   },
+   {
+    "key": "mabior-chol",
+    "field": "scoring[2026].avg",
+    "old": 64.37,
+    "new": 63.67
+   },
+   {
+    "key": "marc-pittonet",
+    "field": "scoring[2026].games",
+    "old": 21,
+    "new": 22
+   },
+   {
+    "key": "marc-pittonet",
+    "field": "scoring[2026].avg",
+    "old": 82.22,
+    "new": 82.39
+   },
+   {
+    "key": "marcus-bontempelli",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "marcus-bontempelli",
+    "field": "scoring[2026].avg",
+    "old": 117.9,
+    "new": 118.7
+   },
+   {
+    "key": "mark-blicavs",
+    "field": "scoring[2026].games",
+    "old": 18,
+    "new": 19
+   },
+   {
+    "key": "mark-blicavs",
+    "field": "scoring[2026].avg",
+    "old": 68.35,
+    "new": 68.7
+   },
+   {
+    "key": "mark-keane",
+    "field": "scoring[2026].games",
+    "old": 9,
+    "new": 10
+   },
+   {
+    "key": "mark-keane",
+    "field": "scoring[2026].avg",
+    "old": 69.89,
+    "new": 70.4
+   },
+   {
+    "key": "mark-o-connor",
+    "field": "scoring[2026].games",
+    "old": 20,
+    "new": 21
+   },
+   {
+    "key": "mark-o-connor",
+    "field": "scoring[2026].avg",
+    "old": 66.18,
+    "new": 66.89
+   },
+   {
+    "key": "mason-cox",
+    "field": "scoring[2026].games",
+    "old": 16,
+    "new": 17
+   },
+   {
+    "key": "mason-cox",
+    "field": "scoring[2026].avg",
+    "old": 47.93,
+    "new": 46.52
+   },
+   {
+    "key": "massimo-d-ambrosio",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "massimo-d-ambrosio",
+    "field": "scoring[2026].avg",
+    "old": 76.92,
+    "new": 77.76
+   },
+   {
+    "key": "matt-cottrell",
+    "field": "scoring[2026].games",
+    "old": 13,
+    "new": 14
+   },
+   {
+    "key": "matt-cottrell",
+    "field": "scoring[2026].avg",
+    "old": 65.46,
+    "new": 64.43
+   },
+   {
+    "key": "matt-johnson-1",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "matt-johnson-1",
+    "field": "scoring[2026].avg",
+    "old": 71.44,
+    "new": 70.77
+   },
+   {
+    "key": "matthew-roberts",
+    "field": "scoring[2026].games",
+    "old": 19,
+    "new": 20
+   },
+   {
+    "key": "matthew-roberts",
+    "field": "scoring[2026].avg",
+    "old": 71.02,
+    "new": 71.07
+   },
+   {
+    "key": "max-beattie",
+    "field": "scoring[2026].games",
+    "old": 2,
+    "new": 3
+   },
+   {
+    "key": "max-beattie",
+    "field": "scoring[2026].avg",
+    "old": 68.0,
+    "new": 52.67
+   },
+   {
+    "key": "max-holmes",
+    "field": "scoring[2026].games",
+    "old": 18,
+    "new": 19
+   },
+   {
+    "key": "max-holmes",
+    "field": "scoring[2026].avg",
+    "old": 114.77,
+    "new": 112.31
+   },
+   {
+    "key": "max-michalanney",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "max-michalanney",
+    "field": "scoring[2026].avg",
+    "old": 61.83,
+    "new": 61.46
+   },
+   {
+    "key": "michael-frederick",
+    "field": "scoring[2026].games",
+    "old": 18,
+    "new": 19
+   },
+   {
+    "key": "michael-frederick",
+    "field": "scoring[2026].avg",
+    "old": 64.02,
+    "new": 63.7
+   },
+   {
+    "key": "mitch-mcgovern",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "mitch-mcgovern",
+    "field": "scoring[2026].avg",
+    "old": 63.42,
+    "new": 61.72
+   },
+   {
+    "key": "mitchell-edwards",
+    "field": "scoring[2026].games",
+    "old": 18,
+    "new": 19
+   },
+   {
+    "key": "mitchell-edwards",
+    "field": "scoring[2026].avg",
+    "old": 55.77,
+    "new": 57.2
+   },
+   {
+    "key": "mitchell-lewis",
+    "field": "scoring[2026].games",
+    "old": 21,
+    "new": 22
+   },
+   {
+    "key": "mitchell-lewis",
+    "field": "scoring[2026].avg",
+    "old": 71.88,
+    "new": 72.25
+   },
+   {
+    "key": "murphy-reid",
+    "field": "scoring[2026].games",
+    "old": 21,
+    "new": 22
+   },
+   {
+    "key": "murphy-reid",
+    "field": "scoring[2026].avg",
+    "old": 87.82,
+    "new": 86.69
+   },
+   {
+    "key": "nathan-o-driscoll",
+    "field": "scoring[2026].games",
+    "old": 16,
+    "new": 17
+   },
+   {
+    "key": "nathan-o-driscoll",
+    "field": "scoring[2026].avg",
+    "old": 66.3,
+    "new": 65.81
+   },
+   {
+    "key": "neil-erasmus",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "neil-erasmus",
+    "field": "scoring[2026].avg",
+    "old": 70.15,
+    "new": 70.94
+   },
+   {
+    "key": "nick-watson",
+    "field": "scoring[2026].games",
+    "old": 20,
+    "new": 21
+   },
+   {
+    "key": "nick-watson",
+    "field": "scoring[2026].avg",
+    "old": 85.41,
+    "new": 85.34
+   },
+   {
+    "key": "noah-answerth",
+    "field": "scoring[2026].games",
+    "old": 15,
+    "new": 16
+   },
+   {
+    "key": "noah-answerth",
+    "field": "scoring[2026].avg",
+    "old": 51.06,
+    "new": 50.37
+   },
+   {
+    "key": "oisin-mullin",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "oisin-mullin",
+    "field": "scoring[2026].avg",
+    "old": 60.88,
+    "new": 59.51
+   },
+   {
+    "key": "oliver-florent",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "oliver-florent",
+    "field": "scoring[2026].avg",
+    "old": 89.13,
+    "new": 89.84
+   },
+   {
+    "key": "oliver-henry",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "oliver-henry",
+    "field": "scoring[2026].avg",
+    "old": 62.62,
+    "new": 61.9
+   },
+   {
+    "key": "oliver-hollands",
+    "field": "scoring[2026].games",
+    "old": 13,
+    "new": 14
+   },
+   {
+    "key": "oliver-hollands",
+    "field": "scoring[2026].avg",
+    "old": 70.18,
+    "new": 70.31
+   },
+   {
+    "key": "oliver-wiltshire",
+    "field": "scoring[2026].games",
+    "old": 13,
+    "new": 14
+   },
+   {
+    "key": "oliver-wiltshire",
+    "field": "scoring[2026].avg",
+    "old": 49.83,
+    "new": 54.13
+   },
+   {
+    "key": "ollie-dempsey",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "ollie-dempsey",
+    "field": "scoring[2026].avg",
+    "old": 87.74,
+    "new": 87.58
+   },
+   {
+    "key": "oscar-allen",
+    "field": "scoring[2026].games",
+    "old": 11,
+    "new": 12
+   },
+   {
+    "key": "oscar-allen",
+    "field": "scoring[2026].avg",
+    "old": 53.62,
+    "new": 54.4
+   },
+   {
+    "key": "oscar-mcdonald",
+    "field": "scoring[2026].games",
+    "old": 10,
+    "new": 11
+   },
+   {
+    "key": "oscar-mcdonald",
+    "field": "scoring[2026].avg",
+    "old": 66.6,
+    "new": 67.45
+   },
+   {
+    "key": "patrick-cripps",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "patrick-cripps",
+    "field": "scoring[2026].avg",
+    "old": 98.37,
+    "new": 97.24
+   },
+   {
+    "key": "patrick-dangerfield",
+    "field": "scoring[2026].games",
+    "old": 18,
+    "new": 19
+   },
+   {
+    "key": "patrick-dangerfield",
+    "field": "scoring[2026].avg",
+    "old": 66.83,
+    "new": 68.84
+   },
+   {
+    "key": "patrick-voss",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "patrick-voss",
+    "field": "scoring[2026].avg",
+    "old": 65.58,
+    "new": 64.21
+   },
+   {
+    "key": "rhylee-west",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "rhylee-west",
+    "field": "scoring[2026].avg",
+    "old": 65.02,
+    "new": 65.14
+   },
+   {
+    "key": "riley-thilthorpe",
+    "field": "scoring[2026].games",
+    "old": 20,
+    "new": 21
+   },
+   {
+    "key": "riley-thilthorpe",
+    "field": "scoring[2026].avg",
+    "old": 78.1,
+    "new": 78.48
+   },
+   {
+    "key": "rory-laird",
+    "field": "scoring[2026].games",
+    "old": 18,
+    "new": 19
+   },
+   {
+    "key": "rory-laird",
+    "field": "scoring[2026].avg",
+    "old": 86.58,
+    "new": 86.29
+   },
+   {
+    "key": "rory-lobb",
+    "field": "scoring[2026].games",
+    "old": 21,
+    "new": 22
+   },
+   {
+    "key": "rory-lobb",
+    "field": "scoring[2026].avg",
+    "old": 70.64,
+    "new": 71.7
+   },
+   {
+    "key": "ryan-gardner",
+    "field": "scoring[2026].games",
+    "old": 3,
+    "new": 4
+   },
+   {
+    "key": "ryan-gardner",
+    "field": "scoring[2026].avg",
+    "old": 29.33,
+    "new": 27.0
+   },
+   {
+    "key": "ryan-lester",
+    "field": "scoring[2026].games",
+    "old": 19,
+    "new": 20
+   },
+   {
+    "key": "ryan-lester",
+    "field": "scoring[2026].avg",
+    "old": 72.63,
+    "new": 72.8
+   },
+   {
+    "key": "ryley-sanders",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "ryley-sanders",
+    "field": "scoring[2026].avg",
+    "old": 87.23,
+    "new": 85.79
+   },
+   {
+    "key": "sam-berry",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "sam-berry",
+    "field": "scoring[2026].avg",
+    "old": 97.24,
+    "new": 95.71
+   },
+   {
+    "key": "sam-davidson",
+    "field": "scoring[2026].games",
+    "old": 17,
+    "new": 18
+   },
+   {
+    "key": "sam-davidson",
+    "field": "scoring[2026].avg",
+    "old": 55.6,
+    "new": 54.51
+   },
+   {
+    "key": "sam-draper",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "sam-draper",
+    "field": "scoring[2026].avg",
+    "old": 71.59,
+    "new": 71.83
+   },
+   {
+    "key": "sam-switkowski",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "sam-switkowski",
+    "field": "scoring[2026].avg",
+    "old": 61.0,
+    "new": 61.13
+   },
+   {
+    "key": "sam-walsh",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "sam-walsh",
+    "field": "scoring[2026].avg",
+    "old": 102.23,
+    "new": 101.94
+   },
+   {
+    "key": "sam-wicks",
+    "field": "scoring[2026].games",
+    "old": 18,
+    "new": 19
+   },
+   {
+    "key": "sam-wicks",
+    "field": "scoring[2026].avg",
+    "old": 62.0,
+    "new": 60.79
+   },
+   {
+    "key": "shai-bolton",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "shai-bolton",
+    "field": "scoring[2026].avg",
+    "old": 94.88,
+    "new": 92.89
+   },
+   {
+    "key": "shannon-neale",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "shannon-neale",
+    "field": "scoring[2026].avg",
+    "old": 78.63,
+    "new": 77.73
+   },
+   {
+    "key": "shaun-mannagh",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "shaun-mannagh",
+    "field": "scoring[2026].avg",
+    "old": 81.55,
+    "new": 83.44
+   },
+   {
+    "key": "talor-byrne",
+    "field": "scoring[2026].games",
+    "old": 18,
+    "new": 19
+   },
+   {
+    "key": "talor-byrne",
+    "field": "scoring[2026].avg",
+    "old": 55.98,
+    "new": 54.56
+   },
+   {
+    "key": "tanner-bruhn",
+    "field": "scoring[2026].games",
+    "old": 20,
+    "new": 21
+   },
+   {
+    "key": "tanner-bruhn",
+    "field": "scoring[2026].avg",
+    "old": 83.98,
+    "new": 84.12
+   },
+   {
+    "key": "taylor-walker",
+    "field": "scoring[2026].games",
+    "old": 16,
+    "new": 17
+   },
+   {
+    "key": "taylor-walker",
+    "field": "scoring[2026].avg",
+    "old": 69.49,
+    "new": 69.05
+   },
+   {
+    "key": "thomas-stewart",
+    "field": "scoring[2026].games",
+    "old": 21,
+    "new": 22
+   },
+   {
+    "key": "thomas-stewart",
+    "field": "scoring[2026].avg",
+    "old": 92.5,
+    "new": 93.43
+   },
+   {
+    "key": "timothy-english",
+    "field": "scoring[2026].games",
+    "old": 16,
+    "new": 17
+   },
+   {
+    "key": "timothy-english",
+    "field": "scoring[2026].avg",
+    "old": 100.82,
+    "new": 99.54
+   },
+   {
+    "key": "tom-atkins",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "tom-atkins",
+    "field": "scoring[2026].avg",
+    "old": 80.58,
+    "new": 80.22
+   },
+   {
+    "key": "tom-barrass",
+    "field": "scoring[2026].games",
+    "old": 19,
+    "new": 20
+   },
+   {
+    "key": "tom-barrass",
+    "field": "scoring[2026].avg",
+    "old": 57.67,
+    "new": 56.94
+   },
+   {
+    "key": "tom-hanily",
+    "field": "scoring[2026].games",
+    "old": 5,
+    "new": 6
+   },
+   {
+    "key": "tom-hanily",
+    "field": "scoring[2026].avg",
+    "old": 52.4,
+    "new": 52.0
+   },
+   {
+    "key": "tom-mccartin",
+    "field": "scoring[2026].games",
+    "old": 20,
+    "new": 21
+   },
+   {
+    "key": "tom-mccartin",
+    "field": "scoring[2026].avg",
+    "old": 81.07,
+    "new": 79.92
+   },
+   {
+    "key": "tom-papley",
+    "field": "scoring[2026].games",
+    "old": 18,
+    "new": 19
+   },
+   {
+    "key": "tom-papley",
+    "field": "scoring[2026].avg",
+    "old": 72.11,
+    "new": 75.79
+   },
+   {
+    "key": "wade-derksen",
+    "field": "scoring[2026].games",
+    "old": 13,
+    "new": 14
+   },
+   {
+    "key": "wade-derksen",
+    "field": "scoring[2026].avg",
+    "old": 59.07,
+    "new": 59.14
+   },
+   {
+    "key": "wayne-milera",
+    "field": "scoring[2026].games",
+    "old": 18,
+    "new": 19
+   },
+   {
+    "key": "wayne-milera",
+    "field": "scoring[2026].avg",
+    "old": 99.53,
+    "new": 101.45
+   },
+   {
+    "key": "will-ashcroft",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "will-ashcroft",
+    "field": "scoring[2026].avg",
+    "old": 106.07,
+    "new": 105.36
+   },
+   {
+    "key": "will-day",
+    "field": "scoring[2026].games",
+    "old": 11,
+    "new": 12
+   },
+   {
+    "key": "will-day",
+    "field": "scoring[2026].avg",
+    "old": 86.46,
+    "new": 85.84
+   },
+   {
+    "key": "will-lewis",
+    "field": "scoring[2026].games",
+    "old": 11,
+    "new": 12
+   },
+   {
+    "key": "will-lewis",
+    "field": "scoring[2026].avg",
+    "old": 46.93,
+    "new": 47.02
+   },
+   {
+    "key": "zac-bailey",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "zac-bailey",
+    "field": "scoring[2026].avg",
+    "old": 98.1,
+    "new": 97.18
+   },
+   {
+    "key": "zach-guthrie",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "zach-guthrie",
+    "field": "scoring[2026].avg",
+    "old": 70.2,
+    "new": 70.53
+   }
+  ],
+  "expected_movers": null,
+  "_doc_expected_movers": "null = NOT DECLARED. The movers are printed and asserted against nothing, which is correct for the measuring pass: the plan's in-memory prediction (177 movers) cannot reproduce the engine's load-time calibration refit and is wrong by construction. Re-run with --declare once the dry run has measured them.",
+  "_doc": "366 edits over 183 players: scoring[2026].games +1 and a re-averaged scoring[2026].avg, and NOTHING else. The career `games` field is deliberately untouched \u2014 round_apply._merge_into_store does not touch it either, and an edit that also moved it would be a second writer inventing a rule the ingestor never had. Averages are round((avg*games + score)/(games+1), 2) through the ingestor's OWN `_mean` at the ingestor's OWN ROUND_DECIMALS=2, called rather than restated."
+ },
+ "identities": {
+  "moves": [
+   "store",
+   "board"
+  ],
+  "unmoved": [
+   "engine_head",
+   "rl_model",
+   "fv",
+   "config",
+   "register",
+   "as_of_round"
+  ]
+ },
+ "column": {
+  "id": "fw2-finals-week-2-9-9",
+  "label": "9/9 FINALS WEEK 2 \u2014 8 clubs, 183 players, one game each added to the 2026 season row. The calendar round is UNTOUCHED at 24, so this is a board move outside a round.",
+  "after_round": 24
+ },
+ "lineage": {
+  "doc": "docs/evidence/finals_fw2_2026-09-09/PREREG.md",
+  "owner_ruling_id": [
+   "FW2_2026-09-09_scores_supplied",
+   "FINALS_LANE_2026-08-30_averages_and_game_counts_not_a_round",
+   "CALENDAR_CEILING_2026-09-02_never_above_one"
+  ],
+  "owner_ruling": "Finals scores are applied to the season row, not to the calendar. Owner, 2026-08-30. The calendar reaches 1.00 at round 24 and HOLDS. Owner, 2026-09-02.",
+  "authority": "owner word 2026-09-09 on the lane ruled 2026-08-30",
+  "invariants": {}
+ },
+ "day0_rebase": {
+  "state": "off"
+ },
+ "evidence_dir": "docs/evidence/finals_fw2_2026-09-09",
+ "gates": null
+}

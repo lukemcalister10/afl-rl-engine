@@ -1,0 +1,4694 @@
+{
+ "season": 2026,
+ "scores_file": "scores/FW2.csv",
+ "round_decimals": 2,
+ "listed": 183,
+ "resolved": 183,
+ "edits": [
+  {
+   "key": "aaron-naughton",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "aaron-naughton",
+   "field": "scoring[2026].avg",
+   "old": 70.35,
+   "new": 71.54
+  },
+  {
+   "key": "adam-cerra",
+   "field": "scoring[2026].games",
+   "old": 20,
+   "new": 21
+  },
+  {
+   "key": "adam-cerra",
+   "field": "scoring[2026].avg",
+   "old": 82.04,
+   "new": 83.09
+  },
+  {
+   "key": "alex-neal-bullen",
+   "field": "scoring[2026].games",
+   "old": 21,
+   "new": 22
+  },
+  {
+   "key": "alex-neal-bullen",
+   "field": "scoring[2026].avg",
+   "old": 72.9,
+   "new": 72.95
+  },
+  {
+   "key": "alex-pearce",
+   "field": "scoring[2026].games",
+   "old": 20,
+   "new": 21
+  },
+  {
+   "key": "alex-pearce",
+   "field": "scoring[2026].avg",
+   "old": 46.19,
+   "new": 47.85
+  },
+  {
+   "key": "andrew-brayshaw",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "andrew-brayshaw",
+   "field": "scoring[2026].avg",
+   "old": 99.33,
+   "new": 99.86
+  },
+  {
+   "key": "angus-sheldrick",
+   "field": "scoring[2026].games",
+   "old": 18,
+   "new": 19
+  },
+  {
+   "key": "angus-sheldrick",
+   "field": "scoring[2026].avg",
+   "old": 67.94,
+   "new": 67.47
+  },
+  {
+   "key": "arthur-jones",
+   "field": "scoring[2026].games",
+   "old": 19,
+   "new": 20
+  },
+  {
+   "key": "arthur-jones",
+   "field": "scoring[2026].avg",
+   "old": 58.65,
+   "new": 58.52
+  },
+  {
+   "key": "bailey-dale",
+   "field": "scoring[2026].games",
+   "old": 19,
+   "new": 20
+  },
+  {
+   "key": "bailey-dale",
+   "field": "scoring[2026].avg",
+   "old": 101.74,
+   "new": 99.35
+  },
+  {
+   "key": "bailey-macdonald",
+   "field": "scoring[2026].games",
+   "old": 12,
+   "new": 13
+  },
+  {
+   "key": "bailey-macdonald",
+   "field": "scoring[2026].avg",
+   "old": 55.17,
+   "new": 54.23
+  },
+  {
+   "key": "bailey-smith",
+   "field": "scoring[2026].games",
+   "old": 22,
+   "new": 23
+  },
+  {
+   "key": "bailey-smith",
+   "field": "scoring[2026].avg",
+   "old": 120.97,
+   "new": 120.23
+  },
+  {
+   "key": "bailey-williams-wb",
+   "field": "scoring[2026].games",
+   "old": 18,
+   "new": 19
+  },
+  {
+   "key": "bailey-williams-wb",
+   "field": "scoring[2026].avg",
+   "old": 82.88,
+   "new": 84.41
+  },
+  {
+   "key": "ben-ainsworth",
+   "field": "scoring[2026].games",
+   "old": 24,
+   "new": 25
+  },
+  {
+   "key": "ben-ainsworth",
+   "field": "scoring[2026].avg",
+   "old": 70.48,
+   "new": 70.54
+  },
+  {
+   "key": "ben-keays",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "ben-keays",
+   "field": "scoring[2026].avg",
+   "old": 69.83,
+   "new": 69.96
+  },
+  {
+   "key": "billy-cootee",
+   "field": "scoring[2026].games",
+   "old": 9,
+   "new": 10
+  },
+  {
+   "key": "billy-cootee",
+   "field": "scoring[2026].avg",
+   "old": 52.0,
+   "new": 53.2
+  },
+  {
+   "key": "billy-wilson",
+   "field": "scoring[2026].games",
+   "old": 16,
+   "new": 17
+  },
+  {
+   "key": "billy-wilson",
+   "field": "scoring[2026].avg",
+   "old": 74.75,
+   "new": 77.0
+  },
+  {
+   "key": "blake-acres",
+   "field": "scoring[2026].games",
+   "old": 11,
+   "new": 12
+  },
+  {
+   "key": "blake-acres",
+   "field": "scoring[2026].avg",
+   "old": 78.0,
+   "new": 75.92
+  },
+  {
+   "key": "blake-hardwick",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "blake-hardwick",
+   "field": "scoring[2026].avg",
+   "old": 83.31,
+   "new": 82.8
+  },
+  {
+   "key": "bradley-close",
+   "field": "scoring[2026].games",
+   "old": 16,
+   "new": 17
+  },
+  {
+   "key": "bradley-close",
+   "field": "scoring[2026].avg",
+   "old": 50.13,
+   "new": 52.12
+  },
+  {
+   "key": "braeden-campbell",
+   "field": "scoring[2026].games",
+   "old": 6,
+   "new": 7
+  },
+  {
+   "key": "braeden-campbell",
+   "field": "scoring[2026].avg",
+   "old": 76.67,
+   "new": 74.29
+  },
+  {
+   "key": "brandon-walker",
+   "field": "scoring[2026].games",
+   "old": 1,
+   "new": 2
+  },
+  {
+   "key": "brandon-walker",
+   "field": "scoring[2026].avg",
+   "old": 38.0,
+   "new": 48.0
+  },
+  {
+   "key": "brayden-cook",
+   "field": "scoring[2026].games",
+   "old": 22,
+   "new": 23
+  },
+  {
+   "key": "brayden-cook",
+   "field": "scoring[2026].avg",
+   "old": 71.63,
+   "new": 72.65
+  },
+  {
+   "key": "brodie-grundy",
+   "field": "scoring[2026].games",
+   "old": 21,
+   "new": 22
+  },
+  {
+   "key": "brodie-grundy",
+   "field": "scoring[2026].avg",
+   "old": 119.9,
+   "new": 118.68
+  },
+  {
+   "key": "brodie-kemp",
+   "field": "scoring[2026].games",
+   "old": 24,
+   "new": 25
+  },
+  {
+   "key": "brodie-kemp",
+   "field": "scoring[2026].avg",
+   "old": 65.96,
+   "new": 64.48
+  },
+  {
+   "key": "buku-khamis",
+   "field": "scoring[2026].games",
+   "old": 24,
+   "new": 25
+  },
+  {
+   "key": "buku-khamis",
+   "field": "scoring[2026].avg",
+   "old": 58.99,
+   "new": 57.71
+  },
+  {
+   "key": "caiden-cleary",
+   "field": "scoring[2026].games",
+   "old": 9,
+   "new": 10
+  },
+  {
+   "key": "caiden-cleary",
+   "field": "scoring[2026].avg",
+   "old": 54.22,
+   "new": 54.1
+  },
+  {
+   "key": "caleb-serong",
+   "field": "scoring[2026].games",
+   "old": 20,
+   "new": 21
+  },
+  {
+   "key": "caleb-serong",
+   "field": "scoring[2026].avg",
+   "old": 101.79,
+   "new": 101.37
+  },
+  {
+   "key": "callum-ah-chee",
+   "field": "scoring[2026].games",
+   "old": 7,
+   "new": 8
+  },
+  {
+   "key": "callum-ah-chee",
+   "field": "scoring[2026].avg",
+   "old": 56.17,
+   "new": 53.02
+  },
+  {
+   "key": "cameron-mackenzie",
+   "field": "scoring[2026].games",
+   "old": 21,
+   "new": 22
+  },
+  {
+   "key": "cameron-mackenzie",
+   "field": "scoring[2026].avg",
+   "old": 75.72,
+   "new": 75.46
+  },
+  {
+   "key": "cameron-rayner",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "cameron-rayner",
+   "field": "scoring[2026].avg",
+   "old": 71.79,
+   "new": 70.88
+  },
+  {
+   "key": "charlie-cameron",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "charlie-cameron",
+   "field": "scoring[2026].avg",
+   "old": 72.71,
+   "new": 70.35
+  },
+  {
+   "key": "charlie-curnow",
+   "field": "scoring[2026].games",
+   "old": 22,
+   "new": 23
+  },
+  {
+   "key": "charlie-curnow",
+   "field": "scoring[2026].avg",
+   "old": 73.04,
+   "new": 74.17
+  },
+  {
+   "key": "cody-weightman",
+   "field": "scoring[2026].games",
+   "old": 10,
+   "new": 11
+  },
+  {
+   "key": "cody-weightman",
+   "field": "scoring[2026].avg",
+   "old": 54.3,
+   "new": 52.18
+  },
+  {
+   "key": "connor-budarick",
+   "field": "scoring[2026].games",
+   "old": 14,
+   "new": 15
+  },
+  {
+   "key": "connor-budarick",
+   "field": "scoring[2026].avg",
+   "old": 69.17,
+   "new": 68.36
+  },
+  {
+   "key": "connor-macdonald",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "connor-macdonald",
+   "field": "scoring[2026].avg",
+   "old": 84.84,
+   "new": 84.56
+  },
+  {
+   "key": "connor-o-sullivan",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "connor-o-sullivan",
+   "field": "scoring[2026].avg",
+   "old": 73.53,
+   "new": 72.13
+  },
+  {
+   "key": "conor-mckenna",
+   "field": "scoring[2026].games",
+   "old": 17,
+   "new": 18
+  },
+  {
+   "key": "conor-mckenna",
+   "field": "scoring[2026].avg",
+   "old": 55.63,
+   "new": 57.32
+  },
+  {
+   "key": "cooper-hynes",
+   "field": "scoring[2026].games",
+   "old": 22,
+   "new": 23
+  },
+  {
+   "key": "cooper-hynes",
+   "field": "scoring[2026].avg",
+   "old": 52.79,
+   "new": 54.02
+  },
+  {
+   "key": "cooper-lord",
+   "field": "scoring[2026].games",
+   "old": 10,
+   "new": 11
+  },
+  {
+   "key": "cooper-lord",
+   "field": "scoring[2026].avg",
+   "old": 75.61,
+   "new": 75.83
+  },
+  {
+   "key": "dane-rampe",
+   "field": "scoring[2026].games",
+   "old": 15,
+   "new": 16
+  },
+  {
+   "key": "dane-rampe",
+   "field": "scoring[2026].avg",
+   "old": 59.67,
+   "new": 62.0
+  },
+  {
+   "key": "daniel-curtin",
+   "field": "scoring[2026].games",
+   "old": 16,
+   "new": 17
+  },
+  {
+   "key": "daniel-curtin",
+   "field": "scoring[2026].avg",
+   "old": 69.99,
+   "new": 69.34
+  },
+  {
+   "key": "darcy-fogarty",
+   "field": "scoring[2026].games",
+   "old": 14,
+   "new": 15
+  },
+  {
+   "key": "darcy-fogarty",
+   "field": "scoring[2026].avg",
+   "old": 72.91,
+   "new": 72.92
+  },
+  {
+   "key": "darcy-fort",
+   "field": "scoring[2026].games",
+   "old": 22,
+   "new": 23
+  },
+  {
+   "key": "darcy-fort",
+   "field": "scoring[2026].avg",
+   "old": 68.78,
+   "new": 67.66
+  },
+  {
+   "key": "darcy-gardiner",
+   "field": "scoring[2026].games",
+   "old": 12,
+   "new": 13
+  },
+  {
+   "key": "darcy-gardiner",
+   "field": "scoring[2026].avg",
+   "old": 47.43,
+   "new": 45.94
+  },
+  {
+   "key": "darcy-wilmot",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "darcy-wilmot",
+   "field": "scoring[2026].avg",
+   "old": 88.94,
+   "new": 88.11
+  },
+  {
+   "key": "dayne-zorko",
+   "field": "scoring[2026].games",
+   "old": 13,
+   "new": 14
+  },
+  {
+   "key": "dayne-zorko",
+   "field": "scoring[2026].avg",
+   "old": 103.45,
+   "new": 103.56
+  },
+  {
+   "key": "dylan-moore",
+   "field": "scoring[2026].games",
+   "old": 22,
+   "new": 23
+  },
+  {
+   "key": "dylan-moore",
+   "field": "scoring[2026].avg",
+   "old": 72.95,
+   "new": 74.73
+  },
+  {
+   "key": "ed-richards",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "ed-richards",
+   "field": "scoring[2026].avg",
+   "old": 110.39,
+   "new": 109.83
+  },
+  {
+   "key": "eric-hipwood",
+   "field": "scoring[2026].games",
+   "old": 10,
+   "new": 11
+  },
+  {
+   "key": "eric-hipwood",
+   "field": "scoring[2026].avg",
+   "old": 55.7,
+   "new": 59.09
+  },
+  {
+   "key": "errol-gulden",
+   "field": "scoring[2026].games",
+   "old": 11,
+   "new": 12
+  },
+  {
+   "key": "errol-gulden",
+   "field": "scoring[2026].avg",
+   "old": 116.64,
+   "new": 118.17
+  },
+  {
+   "key": "francis-evans",
+   "field": "scoring[2026].games",
+   "old": 22,
+   "new": 23
+  },
+  {
+   "key": "francis-evans",
+   "field": "scoring[2026].avg",
+   "old": 73.86,
+   "new": 73.95
+  },
+  {
+   "key": "george-hewett",
+   "field": "scoring[2026].games",
+   "old": 19,
+   "new": 20
+  },
+  {
+   "key": "george-hewett",
+   "field": "scoring[2026].avg",
+   "old": 102.95,
+   "new": 103.1
+  },
+  {
+   "key": "gryan-miers",
+   "field": "scoring[2026].games",
+   "old": 15,
+   "new": 16
+  },
+  {
+   "key": "gryan-miers",
+   "field": "scoring[2026].avg",
+   "old": 76.39,
+   "new": 78.05
+  },
+  {
+   "key": "harris-andrews",
+   "field": "scoring[2026].games",
+   "old": 20,
+   "new": 21
+  },
+  {
+   "key": "harris-andrews",
+   "field": "scoring[2026].avg",
+   "old": 85.02,
+   "new": 84.59
+  },
+  {
+   "key": "harry-cunningham",
+   "field": "scoring[2026].games",
+   "old": 12,
+   "new": 13
+  },
+  {
+   "key": "harry-cunningham",
+   "field": "scoring[2026].avg",
+   "old": 57.93,
+   "new": 60.55
+  },
+  {
+   "key": "harry-dean",
+   "field": "scoring[2026].games",
+   "old": 20,
+   "new": 21
+  },
+  {
+   "key": "harry-dean",
+   "field": "scoring[2026].avg",
+   "old": 61.49,
+   "new": 59.66
+  },
+  {
+   "key": "harry-kyle",
+   "field": "scoring[2026].games",
+   "old": 9,
+   "new": 10
+  },
+  {
+   "key": "harry-kyle",
+   "field": "scoring[2026].avg",
+   "old": 44.6,
+   "new": 45.64
+  },
+  {
+   "key": "harry-mckay",
+   "field": "scoring[2026].games",
+   "old": 21,
+   "new": 22
+  },
+  {
+   "key": "harry-mckay",
+   "field": "scoring[2026].avg",
+   "old": 75.8,
+   "new": 75.63
+  },
+  {
+   "key": "harry-morrison",
+   "field": "scoring[2026].games",
+   "old": 13,
+   "new": 14
+  },
+  {
+   "key": "harry-morrison",
+   "field": "scoring[2026].avg",
+   "old": 70.46,
+   "new": 71.14
+  },
+  {
+   "key": "hayden-mclean",
+   "field": "scoring[2026].games",
+   "old": 10,
+   "new": 11
+  },
+  {
+   "key": "hayden-mclean",
+   "field": "scoring[2026].avg",
+   "old": 53.68,
+   "new": 58.8
+  },
+  {
+   "key": "hayden-young",
+   "field": "scoring[2026].games",
+   "old": 13,
+   "new": 14
+  },
+  {
+   "key": "hayden-young",
+   "field": "scoring[2026].avg",
+   "old": 81.61,
+   "new": 80.07
+  },
+  {
+   "key": "heath-chapman",
+   "field": "scoring[2026].games",
+   "old": 22,
+   "new": 23
+  },
+  {
+   "key": "heath-chapman",
+   "field": "scoring[2026].avg",
+   "old": 69.01,
+   "new": 69.27
+  },
+  {
+   "key": "hugh-mccluggage",
+   "field": "scoring[2026].games",
+   "old": 13,
+   "new": 14
+  },
+  {
+   "key": "hugh-mccluggage",
+   "field": "scoring[2026].avg",
+   "old": 76.78,
+   "new": 74.37
+  },
+  {
+   "key": "hugo-hall-kahan",
+   "field": "scoring[2026].games",
+   "old": 11,
+   "new": 12
+  },
+  {
+   "key": "hugo-hall-kahan",
+   "field": "scoring[2026].avg",
+   "old": 74.0,
+   "new": 72.75
+  },
+  {
+   "key": "isaac-cumming",
+   "field": "scoring[2026].games",
+   "old": 16,
+   "new": 17
+  },
+  {
+   "key": "isaac-cumming",
+   "field": "scoring[2026].avg",
+   "old": 66.23,
+   "new": 67.1
+  },
+  {
+   "key": "isaiah-dudley",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "isaiah-dudley",
+   "field": "scoring[2026].avg",
+   "old": 57.84,
+   "new": 57.43
+  },
+  {
+   "key": "izak-rankine",
+   "field": "scoring[2026].games",
+   "old": 20,
+   "new": 21
+  },
+  {
+   "key": "izak-rankine",
+   "field": "scoring[2026].avg",
+   "old": 108.34,
+   "new": 108.47
+  },
+  {
+   "key": "jack-ginnivan",
+   "field": "scoring[2026].games",
+   "old": 21,
+   "new": 22
+  },
+  {
+   "key": "jack-ginnivan",
+   "field": "scoring[2026].avg",
+   "old": 80.77,
+   "new": 80.78
+  },
+  {
+   "key": "jack-gunston",
+   "field": "scoring[2026].games",
+   "old": 17,
+   "new": 18
+  },
+  {
+   "key": "jack-gunston",
+   "field": "scoring[2026].avg",
+   "old": 78.48,
+   "new": 76.9
+  },
+  {
+   "key": "jack-henry",
+   "field": "scoring[2026].games",
+   "old": 18,
+   "new": 19
+  },
+  {
+   "key": "jack-henry",
+   "field": "scoring[2026].avg",
+   "old": 58.78,
+   "new": 58.37
+  },
+  {
+   "key": "jacob-weitering",
+   "field": "scoring[2026].games",
+   "old": 13,
+   "new": 14
+  },
+  {
+   "key": "jacob-weitering",
+   "field": "scoring[2026].avg",
+   "old": 80.62,
+   "new": 79.65
+  },
+  {
+   "key": "jagga-smith",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "jagga-smith",
+   "field": "scoring[2026].avg",
+   "old": 89.61,
+   "new": 88.75
+  },
+  {
+   "key": "jai-newcombe",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "jai-newcombe",
+   "field": "scoring[2026].avg",
+   "old": 102.31,
+   "new": 101.38
+  },
+  {
+   "key": "jai-serong",
+   "field": "scoring[2026].games",
+   "old": 22,
+   "new": 23
+  },
+  {
+   "key": "jai-serong",
+   "field": "scoring[2026].avg",
+   "old": 76.46,
+   "new": 75.66
+  },
+  {
+   "key": "jake-lloyd",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "jake-lloyd",
+   "field": "scoring[2026].avg",
+   "old": 71.56,
+   "new": 73.58
+  },
+  {
+   "key": "jake-soligo",
+   "field": "scoring[2026].games",
+   "old": 20,
+   "new": 21
+  },
+  {
+   "key": "jake-soligo",
+   "field": "scoring[2026].avg",
+   "old": 67.69,
+   "new": 68.09
+  },
+  {
+   "key": "james-borlase",
+   "field": "scoring[2026].games",
+   "old": 17,
+   "new": 18
+  },
+  {
+   "key": "james-borlase",
+   "field": "scoring[2026].avg",
+   "old": 60.9,
+   "new": 60.02
+  },
+  {
+   "key": "james-o-donnell",
+   "field": "scoring[2026].games",
+   "old": 20,
+   "new": 21
+  },
+  {
+   "key": "james-o-donnell",
+   "field": "scoring[2026].avg",
+   "old": 62.8,
+   "new": 63.9
+  },
+  {
+   "key": "james-rowbottom",
+   "field": "scoring[2026].games",
+   "old": 20,
+   "new": 21
+  },
+  {
+   "key": "james-rowbottom",
+   "field": "scoring[2026].avg",
+   "old": 76.36,
+   "new": 76.15
+  },
+  {
+   "key": "james-sicily",
+   "field": "scoring[2026].games",
+   "old": 22,
+   "new": 23
+  },
+  {
+   "key": "james-sicily",
+   "field": "scoring[2026].avg",
+   "old": 93.04,
+   "new": 93.73
+  },
+  {
+   "key": "jarman-impey",
+   "field": "scoring[2026].games",
+   "old": 20,
+   "new": 21
+  },
+  {
+   "key": "jarman-impey",
+   "field": "scoring[2026].avg",
+   "old": 90.21,
+   "new": 88.34
+  },
+  {
+   "key": "jarrod-berry",
+   "field": "scoring[2026].games",
+   "old": 18,
+   "new": 19
+  },
+  {
+   "key": "jarrod-berry",
+   "field": "scoring[2026].avg",
+   "old": 76.61,
+   "new": 76.63
+  },
+  {
+   "key": "jaspa-fletcher",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "jaspa-fletcher",
+   "field": "scoring[2026].avg",
+   "old": 74.14,
+   "new": 74.13
+  },
+  {
+   "key": "jay-polkinghorne",
+   "field": "scoring[2026].games",
+   "old": 6,
+   "new": 7
+  },
+  {
+   "key": "jay-polkinghorne",
+   "field": "scoring[2026].avg",
+   "old": 49.5,
+   "new": 52.86
+  },
+  {
+   "key": "jeremy-cameron",
+   "field": "scoring[2026].games",
+   "old": 17,
+   "new": 18
+  },
+  {
+   "key": "jeremy-cameron",
+   "field": "scoring[2026].avg",
+   "old": 74.55,
+   "new": 72.52
+  },
+  {
+   "key": "jesse-dattoli",
+   "field": "scoring[2026].games",
+   "old": 3,
+   "new": 4
+  },
+  {
+   "key": "jesse-dattoli",
+   "field": "scoring[2026].avg",
+   "old": 85.0,
+   "new": 73.25
+  },
+  {
+   "key": "joel-freijah",
+   "field": "scoring[2026].games",
+   "old": 24,
+   "new": 25
+  },
+  {
+   "key": "joel-freijah",
+   "field": "scoring[2026].avg",
+   "old": 79.02,
+   "new": 79.42
+  },
+  {
+   "key": "joel-hamling",
+   "field": "scoring[2026].games",
+   "old": 9,
+   "new": 10
+  },
+  {
+   "key": "joel-hamling",
+   "field": "scoring[2026].avg",
+   "old": 52.21,
+   "new": 52.19
+  },
+  {
+   "key": "jordan-clark",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "jordan-clark",
+   "field": "scoring[2026].avg",
+   "old": 93.12,
+   "new": 94.28
+  },
+  {
+   "key": "jordan-dawson",
+   "field": "scoring[2026].games",
+   "old": 20,
+   "new": 21
+  },
+  {
+   "key": "jordan-dawson",
+   "field": "scoring[2026].avg",
+   "old": 111.36,
+   "new": 110.87
+  },
+  {
+   "key": "josh-battle",
+   "field": "scoring[2026].games",
+   "old": 21,
+   "new": 22
+  },
+  {
+   "key": "josh-battle",
+   "field": "scoring[2026].avg",
+   "old": 84.44,
+   "new": 84.83
+  },
+  {
+   "key": "josh-dolan",
+   "field": "scoring[2026].games",
+   "old": 12,
+   "new": 13
+  },
+  {
+   "key": "josh-dolan",
+   "field": "scoring[2026].avg",
+   "old": 48.73,
+   "new": 47.75
+  },
+  {
+   "key": "josh-dunkley",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "josh-dunkley",
+   "field": "scoring[2026].avg",
+   "old": 92.58,
+   "new": 93.39
+  },
+  {
+   "key": "josh-rachele",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "josh-rachele",
+   "field": "scoring[2026].avg",
+   "old": 74.66,
+   "new": 74.51
+  },
+  {
+   "key": "josh-treacy",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "josh-treacy",
+   "field": "scoring[2026].avg",
+   "old": 94.48,
+   "new": 91.54
+  },
+  {
+   "key": "josh-ward",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "josh-ward",
+   "field": "scoring[2026].avg",
+   "old": 86.34,
+   "new": 85.49
+  },
+  {
+   "key": "josh-worrell",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "josh-worrell",
+   "field": "scoring[2026].avg",
+   "old": 92.82,
+   "new": 94.99
+  },
+  {
+   "key": "joshua-weddle",
+   "field": "scoring[2026].games",
+   "old": 19,
+   "new": 20
+  },
+  {
+   "key": "joshua-weddle",
+   "field": "scoring[2026].avg",
+   "old": 69.94,
+   "new": 70.74
+  },
+  {
+   "key": "jye-amiss",
+   "field": "scoring[2026].games",
+   "old": 22,
+   "new": 23
+  },
+  {
+   "key": "jye-amiss",
+   "field": "scoring[2026].avg",
+   "old": 71.48,
+   "new": 69.76
+  },
+  {
+   "key": "kai-lohmann",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "kai-lohmann",
+   "field": "scoring[2026].avg",
+   "old": 68.65,
+   "new": 67.08
+  },
+  {
+   "key": "karl-amon",
+   "field": "scoring[2026].games",
+   "old": 18,
+   "new": 19
+  },
+  {
+   "key": "karl-amon",
+   "field": "scoring[2026].avg",
+   "old": 77.42,
+   "new": 77.24
+  },
+  {
+   "key": "karl-worner",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "karl-worner",
+   "field": "scoring[2026].avg",
+   "old": 83.63,
+   "new": 85.02
+  },
+  {
+   "key": "lachie-neale",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "lachie-neale",
+   "field": "scoring[2026].avg",
+   "old": 110.05,
+   "new": 108.76
+  },
+  {
+   "key": "lachlan-bramble",
+   "field": "scoring[2026].games",
+   "old": 24,
+   "new": 25
+  },
+  {
+   "key": "lachlan-bramble",
+   "field": "scoring[2026].avg",
+   "old": 66.36,
+   "new": 64.71
+  },
+  {
+   "key": "lachlan-cowan",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "lachlan-cowan",
+   "field": "scoring[2026].avg",
+   "old": 66.64,
+   "new": 66.7
+  },
+  {
+   "key": "lachlan-mcandrew",
+   "field": "scoring[2026].games",
+   "old": 22,
+   "new": 23
+  },
+  {
+   "key": "lachlan-mcandrew",
+   "field": "scoring[2026].avg",
+   "old": 89.65,
+   "new": 89.06
+  },
+  {
+   "key": "lachlan-mcneil",
+   "field": "scoring[2026].games",
+   "old": 10,
+   "new": 11
+  },
+  {
+   "key": "lachlan-mcneil",
+   "field": "scoring[2026].avg",
+   "old": 55.02,
+   "new": 53.11
+  },
+  {
+   "key": "lawson-humphries",
+   "field": "scoring[2026].games",
+   "old": 22,
+   "new": 23
+  },
+  {
+   "key": "lawson-humphries",
+   "field": "scoring[2026].avg",
+   "old": 83.8,
+   "new": 82.5
+  },
+  {
+   "key": "levi-ashcroft",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "levi-ashcroft",
+   "field": "scoring[2026].avg",
+   "old": 74.79,
+   "new": 74.51
+  },
+  {
+   "key": "lewis-young",
+   "field": "scoring[2026].games",
+   "old": 13,
+   "new": 14
+  },
+  {
+   "key": "lewis-young",
+   "field": "scoring[2026].avg",
+   "old": 57.16,
+   "new": 54.43
+  },
+  {
+   "key": "lloyd-meek",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "lloyd-meek",
+   "field": "scoring[2026].avg",
+   "old": 81.05,
+   "new": 80.26
+  },
+  {
+   "key": "logan-mcdonald",
+   "field": "scoring[2026].games",
+   "old": 21,
+   "new": 22
+  },
+  {
+   "key": "logan-mcdonald",
+   "field": "scoring[2026].avg",
+   "old": 65.67,
+   "new": 68.59
+  },
+  {
+   "key": "logan-morris",
+   "field": "scoring[2026].games",
+   "old": 22,
+   "new": 23
+  },
+  {
+   "key": "logan-morris",
+   "field": "scoring[2026].avg",
+   "old": 78.1,
+   "new": 77.44
+  },
+  {
+   "key": "luke-jackson",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "luke-jackson",
+   "field": "scoring[2026].avg",
+   "old": 117.5,
+   "new": 118.44
+  },
+  {
+   "key": "luke-kennedy",
+   "field": "scoring[2026].games",
+   "old": 7,
+   "new": 8
+  },
+  {
+   "key": "luke-kennedy",
+   "field": "scoring[2026].avg",
+   "old": 43.29,
+   "new": 44.5
+  },
+  {
+   "key": "luke-nankervis",
+   "field": "scoring[2026].games",
+   "old": 16,
+   "new": 17
+  },
+  {
+   "key": "luke-nankervis",
+   "field": "scoring[2026].avg",
+   "old": 64.67,
+   "new": 66.98
+  },
+  {
+   "key": "luke-ryan",
+   "field": "scoring[2026].games",
+   "old": 22,
+   "new": 23
+  },
+  {
+   "key": "luke-ryan",
+   "field": "scoring[2026].avg",
+   "old": 89.22,
+   "new": 89.82
+  },
+  {
+   "key": "mabior-chol",
+   "field": "scoring[2026].games",
+   "old": 18,
+   "new": 19
+  },
+  {
+   "key": "mabior-chol",
+   "field": "scoring[2026].avg",
+   "old": 64.37,
+   "new": 63.67
+  },
+  {
+   "key": "marc-pittonet",
+   "field": "scoring[2026].games",
+   "old": 21,
+   "new": 22
+  },
+  {
+   "key": "marc-pittonet",
+   "field": "scoring[2026].avg",
+   "old": 82.22,
+   "new": 82.39
+  },
+  {
+   "key": "marcus-bontempelli",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "marcus-bontempelli",
+   "field": "scoring[2026].avg",
+   "old": 117.9,
+   "new": 118.7
+  },
+  {
+   "key": "mark-blicavs",
+   "field": "scoring[2026].games",
+   "old": 18,
+   "new": 19
+  },
+  {
+   "key": "mark-blicavs",
+   "field": "scoring[2026].avg",
+   "old": 68.35,
+   "new": 68.7
+  },
+  {
+   "key": "mark-keane",
+   "field": "scoring[2026].games",
+   "old": 9,
+   "new": 10
+  },
+  {
+   "key": "mark-keane",
+   "field": "scoring[2026].avg",
+   "old": 69.89,
+   "new": 70.4
+  },
+  {
+   "key": "mark-o-connor",
+   "field": "scoring[2026].games",
+   "old": 20,
+   "new": 21
+  },
+  {
+   "key": "mark-o-connor",
+   "field": "scoring[2026].avg",
+   "old": 66.18,
+   "new": 66.89
+  },
+  {
+   "key": "mason-cox",
+   "field": "scoring[2026].games",
+   "old": 16,
+   "new": 17
+  },
+  {
+   "key": "mason-cox",
+   "field": "scoring[2026].avg",
+   "old": 47.93,
+   "new": 46.52
+  },
+  {
+   "key": "massimo-d-ambrosio",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "massimo-d-ambrosio",
+   "field": "scoring[2026].avg",
+   "old": 76.92,
+   "new": 77.76
+  },
+  {
+   "key": "matt-cottrell",
+   "field": "scoring[2026].games",
+   "old": 13,
+   "new": 14
+  },
+  {
+   "key": "matt-cottrell",
+   "field": "scoring[2026].avg",
+   "old": 65.46,
+   "new": 64.43
+  },
+  {
+   "key": "matt-johnson-1",
+   "field": "scoring[2026].games",
+   "old": 22,
+   "new": 23
+  },
+  {
+   "key": "matt-johnson-1",
+   "field": "scoring[2026].avg",
+   "old": 71.44,
+   "new": 70.77
+  },
+  {
+   "key": "matthew-roberts",
+   "field": "scoring[2026].games",
+   "old": 19,
+   "new": 20
+  },
+  {
+   "key": "matthew-roberts",
+   "field": "scoring[2026].avg",
+   "old": 71.02,
+   "new": 71.07
+  },
+  {
+   "key": "max-beattie",
+   "field": "scoring[2026].games",
+   "old": 2,
+   "new": 3
+  },
+  {
+   "key": "max-beattie",
+   "field": "scoring[2026].avg",
+   "old": 68.0,
+   "new": 52.67
+  },
+  {
+   "key": "max-holmes",
+   "field": "scoring[2026].games",
+   "old": 18,
+   "new": 19
+  },
+  {
+   "key": "max-holmes",
+   "field": "scoring[2026].avg",
+   "old": 114.77,
+   "new": 112.31
+  },
+  {
+   "key": "max-michalanney",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "max-michalanney",
+   "field": "scoring[2026].avg",
+   "old": 61.83,
+   "new": 61.46
+  },
+  {
+   "key": "michael-frederick",
+   "field": "scoring[2026].games",
+   "old": 18,
+   "new": 19
+  },
+  {
+   "key": "michael-frederick",
+   "field": "scoring[2026].avg",
+   "old": 64.02,
+   "new": 63.7
+  },
+  {
+   "key": "mitch-mcgovern",
+   "field": "scoring[2026].games",
+   "old": 24,
+   "new": 25
+  },
+  {
+   "key": "mitch-mcgovern",
+   "field": "scoring[2026].avg",
+   "old": 63.42,
+   "new": 61.72
+  },
+  {
+   "key": "mitchell-edwards",
+   "field": "scoring[2026].games",
+   "old": 18,
+   "new": 19
+  },
+  {
+   "key": "mitchell-edwards",
+   "field": "scoring[2026].avg",
+   "old": 55.77,
+   "new": 57.2
+  },
+  {
+   "key": "mitchell-lewis",
+   "field": "scoring[2026].games",
+   "old": 21,
+   "new": 22
+  },
+  {
+   "key": "mitchell-lewis",
+   "field": "scoring[2026].avg",
+   "old": 71.88,
+   "new": 72.25
+  },
+  {
+   "key": "murphy-reid",
+   "field": "scoring[2026].games",
+   "old": 21,
+   "new": 22
+  },
+  {
+   "key": "murphy-reid",
+   "field": "scoring[2026].avg",
+   "old": 87.82,
+   "new": 86.69
+  },
+  {
+   "key": "nathan-o-driscoll",
+   "field": "scoring[2026].games",
+   "old": 16,
+   "new": 17
+  },
+  {
+   "key": "nathan-o-driscoll",
+   "field": "scoring[2026].avg",
+   "old": 66.3,
+   "new": 65.81
+  },
+  {
+   "key": "neil-erasmus",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "neil-erasmus",
+   "field": "scoring[2026].avg",
+   "old": 70.15,
+   "new": 70.94
+  },
+  {
+   "key": "nick-watson",
+   "field": "scoring[2026].games",
+   "old": 20,
+   "new": 21
+  },
+  {
+   "key": "nick-watson",
+   "field": "scoring[2026].avg",
+   "old": 85.41,
+   "new": 85.34
+  },
+  {
+   "key": "noah-answerth",
+   "field": "scoring[2026].games",
+   "old": 15,
+   "new": 16
+  },
+  {
+   "key": "noah-answerth",
+   "field": "scoring[2026].avg",
+   "old": 51.06,
+   "new": 50.37
+  },
+  {
+   "key": "oisin-mullin",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "oisin-mullin",
+   "field": "scoring[2026].avg",
+   "old": 60.88,
+   "new": 59.51
+  },
+  {
+   "key": "oliver-florent",
+   "field": "scoring[2026].games",
+   "old": 24,
+   "new": 25
+  },
+  {
+   "key": "oliver-florent",
+   "field": "scoring[2026].avg",
+   "old": 89.13,
+   "new": 89.84
+  },
+  {
+   "key": "oliver-henry",
+   "field": "scoring[2026].games",
+   "old": 22,
+   "new": 23
+  },
+  {
+   "key": "oliver-henry",
+   "field": "scoring[2026].avg",
+   "old": 62.62,
+   "new": 61.9
+  },
+  {
+   "key": "oliver-hollands",
+   "field": "scoring[2026].games",
+   "old": 13,
+   "new": 14
+  },
+  {
+   "key": "oliver-hollands",
+   "field": "scoring[2026].avg",
+   "old": 70.18,
+   "new": 70.31
+  },
+  {
+   "key": "oliver-wiltshire",
+   "field": "scoring[2026].games",
+   "old": 13,
+   "new": 14
+  },
+  {
+   "key": "oliver-wiltshire",
+   "field": "scoring[2026].avg",
+   "old": 49.83,
+   "new": 54.13
+  },
+  {
+   "key": "ollie-dempsey",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "ollie-dempsey",
+   "field": "scoring[2026].avg",
+   "old": 87.74,
+   "new": 87.58
+  },
+  {
+   "key": "oscar-allen",
+   "field": "scoring[2026].games",
+   "old": 11,
+   "new": 12
+  },
+  {
+   "key": "oscar-allen",
+   "field": "scoring[2026].avg",
+   "old": 53.62,
+   "new": 54.4
+  },
+  {
+   "key": "oscar-mcdonald",
+   "field": "scoring[2026].games",
+   "old": 10,
+   "new": 11
+  },
+  {
+   "key": "oscar-mcdonald",
+   "field": "scoring[2026].avg",
+   "old": 66.6,
+   "new": 67.45
+  },
+  {
+   "key": "patrick-cripps",
+   "field": "scoring[2026].games",
+   "old": 24,
+   "new": 25
+  },
+  {
+   "key": "patrick-cripps",
+   "field": "scoring[2026].avg",
+   "old": 98.37,
+   "new": 97.24
+  },
+  {
+   "key": "patrick-dangerfield",
+   "field": "scoring[2026].games",
+   "old": 18,
+   "new": 19
+  },
+  {
+   "key": "patrick-dangerfield",
+   "field": "scoring[2026].avg",
+   "old": 66.83,
+   "new": 68.84
+  },
+  {
+   "key": "patrick-voss",
+   "field": "scoring[2026].games",
+   "old": 22,
+   "new": 23
+  },
+  {
+   "key": "patrick-voss",
+   "field": "scoring[2026].avg",
+   "old": 65.58,
+   "new": 64.21
+  },
+  {
+   "key": "rhylee-west",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "rhylee-west",
+   "field": "scoring[2026].avg",
+   "old": 65.02,
+   "new": 65.14
+  },
+  {
+   "key": "riley-thilthorpe",
+   "field": "scoring[2026].games",
+   "old": 20,
+   "new": 21
+  },
+  {
+   "key": "riley-thilthorpe",
+   "field": "scoring[2026].avg",
+   "old": 78.1,
+   "new": 78.48
+  },
+  {
+   "key": "rory-laird",
+   "field": "scoring[2026].games",
+   "old": 18,
+   "new": 19
+  },
+  {
+   "key": "rory-laird",
+   "field": "scoring[2026].avg",
+   "old": 86.58,
+   "new": 86.29
+  },
+  {
+   "key": "rory-lobb",
+   "field": "scoring[2026].games",
+   "old": 21,
+   "new": 22
+  },
+  {
+   "key": "rory-lobb",
+   "field": "scoring[2026].avg",
+   "old": 70.64,
+   "new": 71.7
+  },
+  {
+   "key": "ryan-gardner",
+   "field": "scoring[2026].games",
+   "old": 3,
+   "new": 4
+  },
+  {
+   "key": "ryan-gardner",
+   "field": "scoring[2026].avg",
+   "old": 29.33,
+   "new": 27.0
+  },
+  {
+   "key": "ryan-lester",
+   "field": "scoring[2026].games",
+   "old": 19,
+   "new": 20
+  },
+  {
+   "key": "ryan-lester",
+   "field": "scoring[2026].avg",
+   "old": 72.63,
+   "new": 72.8
+  },
+  {
+   "key": "ryley-sanders",
+   "field": "scoring[2026].games",
+   "old": 22,
+   "new": 23
+  },
+  {
+   "key": "ryley-sanders",
+   "field": "scoring[2026].avg",
+   "old": 87.23,
+   "new": 85.79
+  },
+  {
+   "key": "sam-berry",
+   "field": "scoring[2026].games",
+   "old": 22,
+   "new": 23
+  },
+  {
+   "key": "sam-berry",
+   "field": "scoring[2026].avg",
+   "old": 97.24,
+   "new": 95.71
+  },
+  {
+   "key": "sam-davidson",
+   "field": "scoring[2026].games",
+   "old": 17,
+   "new": 18
+  },
+  {
+   "key": "sam-davidson",
+   "field": "scoring[2026].avg",
+   "old": 55.6,
+   "new": 54.51
+  },
+  {
+   "key": "sam-draper",
+   "field": "scoring[2026].games",
+   "old": 22,
+   "new": 23
+  },
+  {
+   "key": "sam-draper",
+   "field": "scoring[2026].avg",
+   "old": 71.59,
+   "new": 71.83
+  },
+  {
+   "key": "sam-switkowski",
+   "field": "scoring[2026].games",
+   "old": 22,
+   "new": 23
+  },
+  {
+   "key": "sam-switkowski",
+   "field": "scoring[2026].avg",
+   "old": 61.0,
+   "new": 61.13
+  },
+  {
+   "key": "sam-walsh",
+   "field": "scoring[2026].games",
+   "old": 24,
+   "new": 25
+  },
+  {
+   "key": "sam-walsh",
+   "field": "scoring[2026].avg",
+   "old": 102.23,
+   "new": 101.94
+  },
+  {
+   "key": "sam-wicks",
+   "field": "scoring[2026].games",
+   "old": 18,
+   "new": 19
+  },
+  {
+   "key": "sam-wicks",
+   "field": "scoring[2026].avg",
+   "old": 62.0,
+   "new": 60.79
+  },
+  {
+   "key": "shai-bolton",
+   "field": "scoring[2026].games",
+   "old": 22,
+   "new": 23
+  },
+  {
+   "key": "shai-bolton",
+   "field": "scoring[2026].avg",
+   "old": 94.88,
+   "new": 92.89
+  },
+  {
+   "key": "shannon-neale",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "shannon-neale",
+   "field": "scoring[2026].avg",
+   "old": 78.63,
+   "new": 77.73
+  },
+  {
+   "key": "shaun-mannagh",
+   "field": "scoring[2026].games",
+   "old": 22,
+   "new": 23
+  },
+  {
+   "key": "shaun-mannagh",
+   "field": "scoring[2026].avg",
+   "old": 81.55,
+   "new": 83.44
+  },
+  {
+   "key": "talor-byrne",
+   "field": "scoring[2026].games",
+   "old": 18,
+   "new": 19
+  },
+  {
+   "key": "talor-byrne",
+   "field": "scoring[2026].avg",
+   "old": 55.98,
+   "new": 54.56
+  },
+  {
+   "key": "tanner-bruhn",
+   "field": "scoring[2026].games",
+   "old": 20,
+   "new": 21
+  },
+  {
+   "key": "tanner-bruhn",
+   "field": "scoring[2026].avg",
+   "old": 83.98,
+   "new": 84.12
+  },
+  {
+   "key": "taylor-walker",
+   "field": "scoring[2026].games",
+   "old": 16,
+   "new": 17
+  },
+  {
+   "key": "taylor-walker",
+   "field": "scoring[2026].avg",
+   "old": 69.49,
+   "new": 69.05
+  },
+  {
+   "key": "thomas-stewart",
+   "field": "scoring[2026].games",
+   "old": 21,
+   "new": 22
+  },
+  {
+   "key": "thomas-stewart",
+   "field": "scoring[2026].avg",
+   "old": 92.5,
+   "new": 93.43
+  },
+  {
+   "key": "timothy-english",
+   "field": "scoring[2026].games",
+   "old": 16,
+   "new": 17
+  },
+  {
+   "key": "timothy-english",
+   "field": "scoring[2026].avg",
+   "old": 100.82,
+   "new": 99.54
+  },
+  {
+   "key": "tom-atkins",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "tom-atkins",
+   "field": "scoring[2026].avg",
+   "old": 80.58,
+   "new": 80.22
+  },
+  {
+   "key": "tom-barrass",
+   "field": "scoring[2026].games",
+   "old": 19,
+   "new": 20
+  },
+  {
+   "key": "tom-barrass",
+   "field": "scoring[2026].avg",
+   "old": 57.67,
+   "new": 56.94
+  },
+  {
+   "key": "tom-hanily",
+   "field": "scoring[2026].games",
+   "old": 5,
+   "new": 6
+  },
+  {
+   "key": "tom-hanily",
+   "field": "scoring[2026].avg",
+   "old": 52.4,
+   "new": 52.0
+  },
+  {
+   "key": "tom-mccartin",
+   "field": "scoring[2026].games",
+   "old": 20,
+   "new": 21
+  },
+  {
+   "key": "tom-mccartin",
+   "field": "scoring[2026].avg",
+   "old": 81.07,
+   "new": 79.92
+  },
+  {
+   "key": "tom-papley",
+   "field": "scoring[2026].games",
+   "old": 18,
+   "new": 19
+  },
+  {
+   "key": "tom-papley",
+   "field": "scoring[2026].avg",
+   "old": 72.11,
+   "new": 75.79
+  },
+  {
+   "key": "wade-derksen",
+   "field": "scoring[2026].games",
+   "old": 13,
+   "new": 14
+  },
+  {
+   "key": "wade-derksen",
+   "field": "scoring[2026].avg",
+   "old": 59.07,
+   "new": 59.14
+  },
+  {
+   "key": "wayne-milera",
+   "field": "scoring[2026].games",
+   "old": 18,
+   "new": 19
+  },
+  {
+   "key": "wayne-milera",
+   "field": "scoring[2026].avg",
+   "old": 99.53,
+   "new": 101.45
+  },
+  {
+   "key": "will-ashcroft",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "will-ashcroft",
+   "field": "scoring[2026].avg",
+   "old": 106.07,
+   "new": 105.36
+  },
+  {
+   "key": "will-day",
+   "field": "scoring[2026].games",
+   "old": 11,
+   "new": 12
+  },
+  {
+   "key": "will-day",
+   "field": "scoring[2026].avg",
+   "old": 86.46,
+   "new": 85.84
+  },
+  {
+   "key": "will-lewis",
+   "field": "scoring[2026].games",
+   "old": 11,
+   "new": 12
+  },
+  {
+   "key": "will-lewis",
+   "field": "scoring[2026].avg",
+   "old": 46.93,
+   "new": 47.02
+  },
+  {
+   "key": "zac-bailey",
+   "field": "scoring[2026].games",
+   "old": 22,
+   "new": 23
+  },
+  {
+   "key": "zac-bailey",
+   "field": "scoring[2026].avg",
+   "old": 98.1,
+   "new": 97.18
+  },
+  {
+   "key": "zach-guthrie",
+   "field": "scoring[2026].games",
+   "old": 23,
+   "new": 24
+  },
+  {
+   "key": "zach-guthrie",
+   "field": "scoring[2026].avg",
+   "old": 70.2,
+   "new": 70.53
+  }
+ ],
+ "n_edits": 366,
+ "expected_movers": [
+  {
+   "key": "max-holmes",
+   "before": 8258,
+   "after": 7314
+  },
+  {
+   "key": "jordan-clark",
+   "before": 3120,
+   "after": 3785
+  },
+  {
+   "key": "josh-treacy",
+   "before": 5735,
+   "after": 5206
+  },
+  {
+   "key": "logan-mcdonald",
+   "before": 828,
+   "after": 1166
+  },
+  {
+   "key": "harry-dean",
+   "before": 2992,
+   "after": 2666
+  },
+  {
+   "key": "jai-newcombe",
+   "before": 4607,
+   "after": 4335
+  },
+  {
+   "key": "mitchell-edwards",
+   "before": 1931,
+   "after": 2175
+  },
+  {
+   "key": "joshua-weddle",
+   "before": 1285,
+   "after": 1507
+  },
+  {
+   "key": "karl-worner",
+   "before": 1245,
+   "after": 1463
+  },
+  {
+   "key": "timothy-english",
+   "before": 3324,
+   "after": 3114
+  },
+  {
+   "key": "josh-worrell",
+   "before": 2725,
+   "after": 2926
+  },
+  {
+   "key": "tom-papley",
+   "before": 344,
+   "after": 522
+  },
+  {
+   "key": "will-ashcroft",
+   "before": 6893,
+   "after": 7071
+  },
+  {
+   "key": "nick-watson",
+   "before": 3531,
+   "after": 3696
+  },
+  {
+   "key": "ryley-sanders",
+   "before": 3692,
+   "after": 3529
+  },
+  {
+   "key": "bailey-dale",
+   "before": 1943,
+   "after": 1794
+  },
+  {
+   "key": "cameron-rayner",
+   "before": 810,
+   "after": 669
+  },
+  {
+   "key": "connor-o-sullivan",
+   "before": 2589,
+   "after": 2448
+  },
+  {
+   "key": "billy-wilson",
+   "before": 825,
+   "after": 965
+  },
+  {
+   "key": "zac-bailey",
+   "before": 3102,
+   "after": 2962
+  },
+  {
+   "key": "shai-bolton",
+   "before": 2216,
+   "after": 2081
+  },
+  {
+   "key": "massimo-d-ambrosio",
+   "before": 1653,
+   "after": 1787
+  },
+  {
+   "key": "jeremy-cameron",
+   "before": 836,
+   "after": 706
+  },
+  {
+   "key": "wayne-milera",
+   "before": 1582,
+   "after": 1709
+  },
+  {
+   "key": "jay-polkinghorne",
+   "before": 252,
+   "after": 370
+  },
+  {
+   "key": "james-o-donnell",
+   "before": 455,
+   "after": 566
+  },
+  {
+   "key": "lachie-neale",
+   "before": 2130,
+   "after": 2020
+  },
+  {
+   "key": "izak-rankine",
+   "before": 4910,
+   "after": 5019
+  },
+  {
+   "key": "cooper-hynes",
+   "before": 1050,
+   "after": 1157
+  },
+  {
+   "key": "hugh-mccluggage",
+   "before": 1553,
+   "after": 1449
+  },
+  {
+   "key": "lloyd-meek",
+   "before": 1492,
+   "after": 1388
+  },
+  {
+   "key": "josh-battle",
+   "before": 1826,
+   "after": 1928
+  },
+  {
+   "key": "sam-walsh",
+   "before": 3047,
+   "after": 3149
+  },
+  {
+   "key": "charlie-curnow",
+   "before": 1227,
+   "after": 1328
+  },
+  {
+   "key": "patrick-voss",
+   "before": 1146,
+   "after": 1045
+  },
+  {
+   "key": "marcus-bontempelli",
+   "before": 3615,
+   "after": 3712
+  },
+  {
+   "key": "jarman-impey",
+   "before": 775,
+   "after": 680
+  },
+  {
+   "key": "luke-nankervis",
+   "before": 341,
+   "after": 436
+  },
+  {
+   "key": "tom-mccartin",
+   "before": 1400,
+   "after": 1305
+  },
+  {
+   "key": "riley-thilthorpe",
+   "before": 4190,
+   "after": 4280
+  },
+  {
+   "key": "patrick-cripps",
+   "before": 1430,
+   "after": 1344
+  },
+  {
+   "key": "shaun-mannagh",
+   "before": 870,
+   "after": 954
+  },
+  {
+   "key": "aaron-naughton",
+   "before": 1382,
+   "after": 1458
+  },
+  {
+   "key": "jack-gunston",
+   "before": 667,
+   "after": 591
+  },
+  {
+   "key": "jye-amiss",
+   "before": 1428,
+   "after": 1352
+  },
+  {
+   "key": "errol-gulden",
+   "before": 7339,
+   "after": 7414
+  },
+  {
+   "key": "hayden-mclean",
+   "before": 229,
+   "after": 302
+  },
+  {
+   "key": "murphy-reid",
+   "before": 3319,
+   "after": 3246
+  },
+  {
+   "key": "bailey-williams-wb",
+   "before": 528,
+   "after": 600
+  },
+  {
+   "key": "luke-jackson",
+   "before": 9227,
+   "after": 9298
+  },
+  {
+   "key": "adam-cerra",
+   "before": 1000,
+   "after": 1065
+  },
+  {
+   "key": "brodie-kemp",
+   "before": 750,
+   "after": 689
+  },
+  {
+   "key": "dylan-moore",
+   "before": 1201,
+   "after": 1262
+  },
+  {
+   "key": "neil-erasmus",
+   "before": 950,
+   "after": 1011
+  },
+  {
+   "key": "kai-lohmann",
+   "before": 758,
+   "after": 699
+  },
+  {
+   "key": "cody-weightman",
+   "before": 179,
+   "after": 121
+  },
+  {
+   "key": "cooper-lord",
+   "before": 1137,
+   "after": 1195
+  },
+  {
+   "key": "jake-lloyd",
+   "before": 248,
+   "after": 306
+  },
+  {
+   "key": "jacob-weitering",
+   "before": 1211,
+   "after": 1154
+  },
+  {
+   "key": "gryan-miers",
+   "before": 1537,
+   "after": 1593
+  },
+  {
+   "key": "thomas-stewart",
+   "before": 881,
+   "after": 937
+  },
+  {
+   "key": "heath-chapman",
+   "before": 370,
+   "after": 425
+  },
+  {
+   "key": "blake-acres",
+   "before": 127,
+   "after": 74
+  },
+  {
+   "key": "charlie-cameron",
+   "before": 222,
+   "after": 171
+  },
+  {
+   "key": "ed-richards",
+   "before": 3986,
+   "after": 3935
+  },
+  {
+   "key": "lachlan-bramble",
+   "before": 151,
+   "after": 102
+  },
+  {
+   "key": "josh-rachele",
+   "before": 1841,
+   "after": 1889
+  },
+  {
+   "key": "ben-ainsworth",
+   "before": 338,
+   "after": 384
+  },
+  {
+   "key": "josh-dunkley",
+   "before": 1278,
+   "after": 1324
+  },
+  {
+   "key": "brayden-cook",
+   "before": 770,
+   "after": 815
+  },
+  {
+   "key": "darcy-wilmot",
+   "before": 3040,
+   "after": 2996
+  },
+  {
+   "key": "josh-ward",
+   "before": 2629,
+   "after": 2585
+  },
+  {
+   "key": "mabior-chol",
+   "before": 258,
+   "after": 214
+  },
+  {
+   "key": "patrick-dangerfield",
+   "before": 83,
+   "after": 127
+  },
+  {
+   "key": "caleb-serong",
+   "before": 4426,
+   "after": 4383
+  },
+  {
+   "key": "james-sicily",
+   "before": 1172,
+   "after": 1215
+  },
+  {
+   "key": "joel-freijah",
+   "before": 2805,
+   "after": 2848
+  },
+  {
+   "key": "francis-evans",
+   "before": 781,
+   "after": 817
+  },
+  {
+   "key": "tom-hanily",
+   "before": 152,
+   "after": 188
+  },
+  {
+   "key": "will-day",
+   "before": 1819,
+   "after": 1784
+  },
+  {
+   "key": "shannon-neale",
+   "before": 2332,
+   "after": 2298
+  },
+  {
+   "key": "james-rowbottom",
+   "before": 1311,
+   "after": 1343
+  },
+  {
+   "key": "jesse-dattoli",
+   "before": 450,
+   "after": 419
+  },
+  {
+   "key": "logan-morris",
+   "before": 2972,
+   "after": 2941
+  },
+  {
+   "key": "talor-byrne",
+   "before": 631,
+   "after": 601
+  },
+  {
+   "key": "sam-berry",
+   "before": 2752,
+   "after": 2780
+  },
+  {
+   "key": "arthur-jones",
+   "before": 315,
+   "after": 288
+  },
+  {
+   "key": "isaiah-dudley",
+   "before": 222,
+   "after": 195
+  },
+  {
+   "key": "daniel-curtin",
+   "before": 2358,
+   "after": 2334
+  },
+  {
+   "key": "bailey-smith",
+   "before": 5802,
+   "after": 5824
+  },
+  {
+   "key": "lachlan-mcandrew",
+   "before": 1146,
+   "after": 1168
+  },
+  {
+   "key": "luke-ryan",
+   "before": 1284,
+   "after": 1306
+  },
+  {
+   "key": "rory-lobb",
+   "before": 259,
+   "after": 281
+  },
+  {
+   "key": "jagga-smith",
+   "before": 4942,
+   "after": 4921
+  },
+  {
+   "key": "jake-soligo",
+   "before": 1822,
+   "after": 1843
+  },
+  {
+   "key": "karl-amon",
+   "before": 301,
+   "after": 281
+  },
+  {
+   "key": "lewis-young",
+   "before": 145,
+   "after": 125
+  },
+  {
+   "key": "luke-kennedy",
+   "before": 271,
+   "after": 291
+  },
+  {
+   "key": "cameron-mackenzie",
+   "before": 1732,
+   "after": 1750
+  },
+  {
+   "key": "lawson-humphries",
+   "before": 1653,
+   "after": 1671
+  },
+  {
+   "key": "caiden-cleary",
+   "before": 427,
+   "after": 444
+  },
+  {
+   "key": "hugo-hall-kahan",
+   "before": 541,
+   "after": 558
+  },
+  {
+   "key": "ollie-dempsey",
+   "before": 2409,
+   "after": 2426
+  },
+  {
+   "key": "tom-atkins",
+   "before": 306,
+   "after": 290
+  },
+  {
+   "key": "bailey-macdonald",
+   "before": 147,
+   "after": 132
+  },
+  {
+   "key": "oliver-florent",
+   "before": 1049,
+   "after": 1034
+  },
+  {
+   "key": "lachlan-cowan",
+   "before": 586,
+   "after": 600
+  },
+  {
+   "key": "max-beattie",
+   "before": 166,
+   "after": 152
+  },
+  {
+   "key": "blake-hardwick",
+   "before": 609,
+   "after": 596
+  },
+  {
+   "key": "harris-andrews",
+   "before": 1563,
+   "after": 1550
+  },
+  {
+   "key": "mitchell-lewis",
+   "before": 755,
+   "after": 768
+  },
+  {
+   "key": "oscar-mcdonald",
+   "before": 82,
+   "after": 95
+  },
+  {
+   "key": "taylor-walker",
+   "before": 214,
+   "after": 201
+  },
+  {
+   "key": "harry-kyle",
+   "before": 790,
+   "after": 778
+  },
+  {
+   "key": "jaspa-fletcher",
+   "before": 2688,
+   "after": 2700
+  },
+  {
+   "key": "oliver-wiltshire",
+   "before": 61,
+   "after": 73
+  },
+  {
+   "key": "rory-laird",
+   "before": 713,
+   "after": 701
+  },
+  {
+   "key": "connor-macdonald",
+   "before": 2868,
+   "after": 2879
+  },
+  {
+   "key": "george-hewett",
+   "before": 1767,
+   "after": 1778
+  },
+  {
+   "key": "mitch-mcgovern",
+   "before": 36,
+   "after": 25
+  },
+  {
+   "key": "andrew-brayshaw",
+   "before": 2827,
+   "after": 2837
+  },
+  {
+   "key": "billy-cootee",
+   "before": 174,
+   "after": 164
+  },
+  {
+   "key": "connor-budarick",
+   "before": 216,
+   "after": 207
+  },
+  {
+   "key": "mark-keane",
+   "before": 1458,
+   "after": 1467
+  },
+  {
+   "key": "harry-mckay",
+   "before": 1619,
+   "after": 1627
+  },
+  {
+   "key": "james-borlase",
+   "before": 359,
+   "after": 367
+  },
+  {
+   "key": "josh-dolan",
+   "before": 324,
+   "after": 316
+  },
+  {
+   "key": "matt-cottrell",
+   "before": 161,
+   "after": 153
+  },
+  {
+   "key": "nathan-o-driscoll",
+   "before": 233,
+   "after": 225
+  },
+  {
+   "key": "hayden-young",
+   "before": 1557,
+   "after": 1564
+  },
+  {
+   "key": "jack-henry",
+   "before": 227,
+   "after": 220
+  },
+  {
+   "key": "oliver-hollands",
+   "before": 1531,
+   "after": 1524
+  },
+  {
+   "key": "brandon-walker",
+   "before": 47,
+   "after": 53
+  },
+  {
+   "key": "eric-hipwood",
+   "before": 64,
+   "after": 70
+  },
+  {
+   "key": "jordan-dawson",
+   "before": 2877,
+   "after": 2883
+  },
+  {
+   "key": "mark-o-connor",
+   "before": 19,
+   "after": 25
+  },
+  {
+   "key": "darcy-fogarty",
+   "before": 805,
+   "after": 810
+  },
+  {
+   "key": "oliver-henry",
+   "before": 255,
+   "after": 250
+  },
+  {
+   "key": "callum-ah-chee",
+   "before": 38,
+   "after": 34
+  },
+  {
+   "key": "darcy-fort",
+   "before": 94,
+   "after": 90
+  },
+  {
+   "key": "dayne-zorko",
+   "before": 946,
+   "after": 950
+  },
+  {
+   "key": "isaac-cumming",
+   "before": 57,
+   "after": 61
+  },
+  {
+   "key": "jack-ginnivan",
+   "before": 2148,
+   "after": 2144
+  },
+  {
+   "key": "jai-serong",
+   "before": 1199,
+   "after": 1195
+  },
+  {
+   "key": "noah-answerth",
+   "before": 18,
+   "after": 14
+  },
+  {
+   "key": "rhylee-west",
+   "before": 264,
+   "after": 268
+  },
+  {
+   "key": "sam-draper",
+   "before": 1012,
+   "after": 1016
+  },
+  {
+   "key": "angus-sheldrick",
+   "before": 663,
+   "after": 666
+  },
+  {
+   "key": "braeden-campbell",
+   "before": 565,
+   "after": 568
+  },
+  {
+   "key": "lachlan-mcneil",
+   "before": 44,
+   "after": 41
+  },
+  {
+   "key": "sam-davidson",
+   "before": 114,
+   "after": 111
+  },
+  {
+   "key": "tom-barrass",
+   "before": 46,
+   "after": 43
+  },
+  {
+   "key": "zach-guthrie",
+   "before": 326,
+   "after": 329
+  },
+  {
+   "key": "alex-neal-bullen",
+   "before": 411,
+   "after": 413
+  },
+  {
+   "key": "ben-keays",
+   "before": 420,
+   "after": 422
+  },
+  {
+   "key": "harry-morrison",
+   "before": 64,
+   "after": 66
+  },
+  {
+   "key": "marc-pittonet",
+   "before": 513,
+   "after": 511
+  },
+  {
+   "key": "mark-blicavs",
+   "before": 59,
+   "after": 61
+  },
+  {
+   "key": "matthew-roberts",
+   "before": 1460,
+   "after": 1458
+  },
+  {
+   "key": "oisin-mullin",
+   "before": 30,
+   "after": 28
+  },
+  {
+   "key": "alex-pearce",
+   "before": 14,
+   "after": 15
+  },
+  {
+   "key": "bradley-close",
+   "before": 25,
+   "after": 26
+  },
+  {
+   "key": "buku-khamis",
+   "before": 151,
+   "after": 150
+  },
+  {
+   "key": "conor-mckenna",
+   "before": 5,
+   "after": 6
+  },
+  {
+   "key": "harry-cunningham",
+   "before": 2,
+   "after": 3
+  },
+  {
+   "key": "jarrod-berry",
+   "before": 364,
+   "after": 363
+  },
+  {
+   "key": "levi-ashcroft",
+   "before": 3527,
+   "after": 3526
+  },
+  {
+   "key": "mason-cox",
+   "before": 3,
+   "after": 2
+  },
+  {
+   "key": "matt-johnson-1",
+   "before": 1029,
+   "after": 1028
+  },
+  {
+   "key": "max-michalanney",
+   "before": 529,
+   "after": 528
+  },
+  {
+   "key": "michael-frederick",
+   "before": 116,
+   "after": 115
+  },
+  {
+   "key": "ryan-gardner",
+   "before": 6,
+   "after": 7
+  },
+  {
+   "key": "ryan-lester",
+   "before": 27,
+   "after": 28
+  },
+  {
+   "key": "sam-switkowski",
+   "before": 27,
+   "after": 28
+  },
+  {
+   "key": "tanner-bruhn",
+   "before": 1965,
+   "after": 1964
+  },
+  {
+   "key": "wade-derksen",
+   "before": 214,
+   "after": 213
+  },
+  {
+   "key": "will-lewis",
+   "before": 100,
+   "after": 101
+  }
+ ],
+ "movers_detail": [
+  {
+   "key": "max-holmes",
+   "name": "Max Holmes",
+   "before": 8258,
+   "after": 7314,
+   "delta": -944,
+   "score": 68.0,
+   "played": true
+  },
+  {
+   "key": "jordan-clark",
+   "name": "Jordan Clark",
+   "before": 3120,
+   "after": 3785,
+   "delta": 665,
+   "score": 121.0,
+   "played": true
+  },
+  {
+   "key": "josh-treacy",
+   "name": "Josh Treacy",
+   "before": 5735,
+   "after": 5206,
+   "delta": -529,
+   "score": 24.0,
+   "played": true
+  },
+  {
+   "key": "logan-mcdonald",
+   "name": "Logan McDonald",
+   "before": 828,
+   "after": 1166,
+   "delta": 338,
+   "score": 130.0,
+   "played": true
+  },
+  {
+   "key": "harry-dean",
+   "name": "Harry Dean",
+   "before": 2992,
+   "after": 2666,
+   "delta": -326,
+   "score": 23.0,
+   "played": true
+  },
+  {
+   "key": "jai-newcombe",
+   "name": "Jai Newcombe",
+   "before": 4607,
+   "after": 4335,
+   "delta": -272,
+   "score": 80.0,
+   "played": true
+  },
+  {
+   "key": "mitchell-edwards",
+   "name": "Mitchell Edwards",
+   "before": 1931,
+   "after": 2175,
+   "delta": 244,
+   "score": 83.0,
+   "played": true
+  },
+  {
+   "key": "joshua-weddle",
+   "name": "Joshua Weddle",
+   "before": 1285,
+   "after": 1507,
+   "delta": 222,
+   "score": 86.0,
+   "played": true
+  },
+  {
+   "key": "karl-worner",
+   "name": "Karl Worner",
+   "before": 1245,
+   "after": 1463,
+   "delta": 218,
+   "score": 117.0,
+   "played": true
+  },
+  {
+   "key": "timothy-english",
+   "name": "Timothy English",
+   "before": 3324,
+   "after": 3114,
+   "delta": -210,
+   "score": 79.0,
+   "played": true
+  },
+  {
+   "key": "josh-worrell",
+   "name": "Josh Worrell",
+   "before": 2725,
+   "after": 2926,
+   "delta": 201,
+   "score": 145.0,
+   "played": true
+  },
+  {
+   "key": "tom-papley",
+   "name": "Tom Papley",
+   "before": 344,
+   "after": 522,
+   "delta": 178,
+   "score": 142.0,
+   "played": true
+  },
+  {
+   "key": "will-ashcroft",
+   "name": "Will Ashcroft",
+   "before": 6893,
+   "after": 7071,
+   "delta": 178,
+   "score": 89.0,
+   "played": true
+  },
+  {
+   "key": "nick-watson",
+   "name": "Nick Watson",
+   "before": 3531,
+   "after": 3696,
+   "delta": 165,
+   "score": 84.0,
+   "played": true
+  },
+  {
+   "key": "ryley-sanders",
+   "name": "Ryley Sanders",
+   "before": 3692,
+   "after": 3529,
+   "delta": -163,
+   "score": 54.0,
+   "played": true
+  },
+  {
+   "key": "bailey-dale",
+   "name": "Bailey Dale",
+   "before": 1943,
+   "after": 1794,
+   "delta": -149,
+   "score": 54.0,
+   "played": true
+  },
+  {
+   "key": "cameron-rayner",
+   "name": "Cameron Rayner",
+   "before": 810,
+   "after": 669,
+   "delta": -141,
+   "score": 50.0,
+   "played": true
+  },
+  {
+   "key": "connor-o-sullivan",
+   "name": "Connor O'Sullivan",
+   "before": 2589,
+   "after": 2448,
+   "delta": -141,
+   "score": 40.0,
+   "played": true
+  },
+  {
+   "key": "billy-wilson",
+   "name": "Billy Wilson",
+   "before": 825,
+   "after": 965,
+   "delta": 140,
+   "score": 113.0,
+   "played": true
+  },
+  {
+   "key": "zac-bailey",
+   "name": "Zac Bailey",
+   "before": 3102,
+   "after": 2962,
+   "delta": -140,
+   "score": 77.0,
+   "played": true
+  },
+  {
+   "key": "shai-bolton",
+   "name": "Shai Bolton",
+   "before": 2216,
+   "after": 2081,
+   "delta": -135,
+   "score": 49.0,
+   "played": true
+  },
+  {
+   "key": "massimo-d-ambrosio",
+   "name": "Massimo D'Ambrosio",
+   "before": 1653,
+   "after": 1787,
+   "delta": 134,
+   "score": 97.0,
+   "played": true
+  },
+  {
+   "key": "jeremy-cameron",
+   "name": "Jeremy Cameron",
+   "before": 836,
+   "after": 706,
+   "delta": -130,
+   "score": 38.0,
+   "played": true
+  },
+  {
+   "key": "wayne-milera",
+   "name": "Wayne Milera",
+   "before": 1582,
+   "after": 1709,
+   "delta": 127,
+   "score": 136.0,
+   "played": true
+  },
+  {
+   "key": "jay-polkinghorne",
+   "name": "Jay Polkinghorne",
+   "before": 252,
+   "after": 370,
+   "delta": 118,
+   "score": 73.0,
+   "played": true
+  },
+  {
+   "key": "james-o-donnell",
+   "name": "James O'Donnell",
+   "before": 455,
+   "after": 566,
+   "delta": 111,
+   "score": 86.0,
+   "played": true
+  },
+  {
+   "key": "lachie-neale",
+   "name": "Lachie Neale",
+   "before": 2130,
+   "after": 2020,
+   "delta": -110,
+   "score": 79.0,
+   "played": true
+  },
+  {
+   "key": "izak-rankine",
+   "name": "Izak Rankine",
+   "before": 4910,
+   "after": 5019,
+   "delta": 109,
+   "score": 111.0,
+   "played": true
+  },
+  {
+   "key": "cooper-hynes",
+   "name": "Cooper Hynes",
+   "before": 1050,
+   "after": 1157,
+   "delta": 107,
+   "score": 81.0,
+   "played": true
+  },
+  {
+   "key": "hugh-mccluggage",
+   "name": "Hugh McCluggage",
+   "before": 1553,
+   "after": 1449,
+   "delta": -104,
+   "score": 43.0,
+   "played": true
+  },
+  {
+   "key": "lloyd-meek",
+   "name": "Lloyd Meek",
+   "before": 1492,
+   "after": 1388,
+   "delta": -104,
+   "score": 62.0,
+   "played": true
+  },
+  {
+   "key": "josh-battle",
+   "name": "Josh Battle",
+   "before": 1826,
+   "after": 1928,
+   "delta": 102,
+   "score": 93.0,
+   "played": true
+  },
+  {
+   "key": "sam-walsh",
+   "name": "Sam Walsh",
+   "before": 3047,
+   "after": 3149,
+   "delta": 102,
+   "score": 95.0,
+   "played": true
+  },
+  {
+   "key": "charlie-curnow",
+   "name": "Charlie Curnow",
+   "before": 1227,
+   "after": 1328,
+   "delta": 101,
+   "score": 99.0,
+   "played": true
+  },
+  {
+   "key": "patrick-voss",
+   "name": "Patrick Voss",
+   "before": 1146,
+   "after": 1045,
+   "delta": -101,
+   "score": 34.0,
+   "played": true
+  },
+  {
+   "key": "marcus-bontempelli",
+   "name": "Marcus Bontempelli",
+   "before": 3615,
+   "after": 3712,
+   "delta": 97,
+   "score": 137.0,
+   "played": true
+  },
+  {
+   "key": "jarman-impey",
+   "name": "Jarman Impey",
+   "before": 775,
+   "after": 680,
+   "delta": -95,
+   "score": 51.0,
+   "played": true
+  },
+  {
+   "key": "luke-nankervis",
+   "name": "Luke Nankervis",
+   "before": 341,
+   "after": 436,
+   "delta": 95,
+   "score": 104.0,
+   "played": true
+  },
+  {
+   "key": "tom-mccartin",
+   "name": "Tom McCartin",
+   "before": 1400,
+   "after": 1305,
+   "delta": -95,
+   "score": 57.0,
+   "played": true
+  },
+  {
+   "key": "riley-thilthorpe",
+   "name": "Riley Thilthorpe",
+   "before": 4190,
+   "after": 4280,
+   "delta": 90,
+   "score": 86.0,
+   "played": true
+  },
+  {
+   "key": "patrick-cripps",
+   "name": "Patrick Cripps",
+   "before": 1430,
+   "after": 1344,
+   "delta": -86,
+   "score": 70.0,
+   "played": true
+  },
+  {
+   "key": "shaun-mannagh",
+   "name": "Shaun Mannagh",
+   "before": 870,
+   "after": 954,
+   "delta": 84,
+   "score": 125.0,
+   "played": true
+  },
+  {
+   "key": "aaron-naughton",
+   "name": "Aaron Naughton",
+   "before": 1382,
+   "after": 1458,
+   "delta": 76,
+   "score": 99.0,
+   "played": true
+  },
+  {
+   "key": "jack-gunston",
+   "name": "Jack Gunston",
+   "before": 667,
+   "after": 591,
+   "delta": -76,
+   "score": 50.0,
+   "played": true
+  },
+  {
+   "key": "jye-amiss",
+   "name": "Jye Amiss",
+   "before": 1428,
+   "after": 1352,
+   "delta": -76,
+   "score": 32.0,
+   "played": true
+  },
+  {
+   "key": "errol-gulden",
+   "name": "Errol Gulden",
+   "before": 7339,
+   "after": 7414,
+   "delta": 75,
+   "score": 135.0,
+   "played": true
+  },
+  {
+   "key": "hayden-mclean",
+   "name": "Hayden McLean",
+   "before": 229,
+   "after": 302,
+   "delta": 73,
+   "score": 110.0,
+   "played": true
+  },
+  {
+   "key": "murphy-reid",
+   "name": "Murphy Reid",
+   "before": 3319,
+   "after": 3246,
+   "delta": -73,
+   "score": 63.0,
+   "played": true
+  },
+  {
+   "key": "bailey-williams-wb",
+   "name": "Bailey Williams",
+   "before": 528,
+   "after": 600,
+   "delta": 72,
+   "score": 112.0,
+   "played": true
+  },
+  {
+   "key": "luke-jackson",
+   "name": "Luke Jackson",
+   "before": 9227,
+   "after": 9298,
+   "delta": 71,
+   "score": 140.0,
+   "played": true
+  },
+  {
+   "key": "adam-cerra",
+   "name": "Adam Cerra",
+   "before": 1000,
+   "after": 1065,
+   "delta": 65,
+   "score": 104.0,
+   "played": true
+  },
+  {
+   "key": "brodie-kemp",
+   "name": "Brodie Kemp",
+   "before": 750,
+   "after": 689,
+   "delta": -61,
+   "score": 29.0,
+   "played": true
+  },
+  {
+   "key": "dylan-moore",
+   "name": "Dylan Moore",
+   "before": 1201,
+   "after": 1262,
+   "delta": 61,
+   "score": 114.0,
+   "played": true
+  },
+  {
+   "key": "neil-erasmus",
+   "name": "Neil Erasmus",
+   "before": 950,
+   "after": 1011,
+   "delta": 61,
+   "score": 89.0,
+   "played": true
+  },
+  {
+   "key": "kai-lohmann",
+   "name": "Kai Lohmann",
+   "before": 758,
+   "after": 699,
+   "delta": -59,
+   "score": 31.0,
+   "played": true
+  },
+  {
+   "key": "cody-weightman",
+   "name": "Cody Weightman",
+   "before": 179,
+   "after": 121,
+   "delta": -58,
+   "score": 31.0,
+   "played": true
+  },
+  {
+   "key": "cooper-lord",
+   "name": "Cooper Lord",
+   "before": 1137,
+   "after": 1195,
+   "delta": 58,
+   "score": 78.0,
+   "played": true
+  },
+  {
+   "key": "jake-lloyd",
+   "name": "Jake Lloyd",
+   "before": 248,
+   "after": 306,
+   "delta": 58,
+   "score": 120.0,
+   "played": true
+  },
+  {
+   "key": "jacob-weitering",
+   "name": "Jacob Weitering",
+   "before": 1211,
+   "after": 1154,
+   "delta": -57,
+   "score": 67.0,
+   "played": true
+  },
+  {
+   "key": "gryan-miers",
+   "name": "Gryan Miers",
+   "before": 1537,
+   "after": 1593,
+   "delta": 56,
+   "score": 103.0,
+   "played": true
+  },
+  {
+   "key": "thomas-stewart",
+   "name": "Thomas Stewart",
+   "before": 881,
+   "after": 937,
+   "delta": 56,
+   "score": 113.0,
+   "played": true
+  },
+  {
+   "key": "heath-chapman",
+   "name": "Heath Chapman",
+   "before": 370,
+   "after": 425,
+   "delta": 55,
+   "score": 75.0,
+   "played": true
+  },
+  {
+   "key": "blake-acres",
+   "name": "Blake Acres",
+   "before": 127,
+   "after": 74,
+   "delta": -53,
+   "score": 53.0,
+   "played": true
+  },
+  {
+   "key": "charlie-cameron",
+   "name": "Charlie Cameron",
+   "before": 222,
+   "after": 171,
+   "delta": -51,
+   "score": 16.0,
+   "played": true
+  },
+  {
+   "key": "ed-richards",
+   "name": "Ed Richards",
+   "before": 3986,
+   "after": 3935,
+   "delta": -51,
+   "score": 97.0,
+   "played": true
+  },
+  {
+   "key": "lachlan-bramble",
+   "name": "Lachlan Bramble",
+   "before": 151,
+   "after": 102,
+   "delta": -49,
+   "score": 25.0,
+   "played": true
+  },
+  {
+   "key": "josh-rachele",
+   "name": "Josh Rachele",
+   "before": 1841,
+   "after": 1889,
+   "delta": 48,
+   "score": 71.0,
+   "played": true
+  },
+  {
+   "key": "ben-ainsworth",
+   "name": "Ben Ainsworth",
+   "before": 338,
+   "after": 384,
+   "delta": 46,
+   "score": 72.0,
+   "played": true
+  },
+  {
+   "key": "josh-dunkley",
+   "name": "Josh Dunkley",
+   "before": 1278,
+   "after": 1324,
+   "delta": 46,
+   "score": 112.0,
+   "played": true
+  },
+  {
+   "key": "brayden-cook",
+   "name": "Brayden Cook",
+   "before": 770,
+   "after": 815,
+   "delta": 45,
+   "score": 95.0,
+   "played": true
+  },
+  {
+   "key": "darcy-wilmot",
+   "name": "Darcy Wilmot",
+   "before": 3040,
+   "after": 2996,
+   "delta": -44,
+   "score": 69.0,
+   "played": true
+  },
+  {
+   "key": "josh-ward",
+   "name": "Josh Ward",
+   "before": 2629,
+   "after": 2585,
+   "delta": -44,
+   "score": 66.0,
+   "played": true
+  },
+  {
+   "key": "mabior-chol",
+   "name": "Mabior Chol",
+   "before": 258,
+   "after": 214,
+   "delta": -44,
+   "score": 51.0,
+   "played": true
+  },
+  {
+   "key": "patrick-dangerfield",
+   "name": "Patrick Dangerfield",
+   "before": 83,
+   "after": 127,
+   "delta": 44,
+   "score": 105.0,
+   "played": true
+  },
+  {
+   "key": "caleb-serong",
+   "name": "Caleb Serong",
+   "before": 4426,
+   "after": 4383,
+   "delta": -43,
+   "score": 93.0,
+   "played": true
+  },
+  {
+   "key": "james-sicily",
+   "name": "James Sicily",
+   "before": 1172,
+   "after": 1215,
+   "delta": 43,
+   "score": 109.0,
+   "played": true
+  },
+  {
+   "key": "joel-freijah",
+   "name": "Joel Freijah",
+   "before": 2805,
+   "after": 2848,
+   "delta": 43,
+   "score": 89.0,
+   "played": true
+  },
+  {
+   "key": "francis-evans",
+   "name": "Francis Evans",
+   "before": 781,
+   "after": 817,
+   "delta": 36,
+   "score": 76.0,
+   "played": true
+  },
+  {
+   "key": "tom-hanily",
+   "name": "Tom Hanily",
+   "before": 152,
+   "after": 188,
+   "delta": 36,
+   "score": 50.0,
+   "played": true
+  },
+  {
+   "key": "will-day",
+   "name": "Will Day",
+   "before": 1819,
+   "after": 1784,
+   "delta": -35,
+   "score": 79.0,
+   "played": true
+  },
+  {
+   "key": "shannon-neale",
+   "name": "Shannon Neale",
+   "before": 2332,
+   "after": 2298,
+   "delta": -34,
+   "score": 57.0,
+   "played": true
+  },
+  {
+   "key": "james-rowbottom",
+   "name": "James Rowbottom",
+   "before": 1311,
+   "after": 1343,
+   "delta": 32,
+   "score": 72.0,
+   "played": true
+  },
+  {
+   "key": "jesse-dattoli",
+   "name": "Jesse Dattoli",
+   "before": 450,
+   "after": 419,
+   "delta": -31,
+   "score": 38.0,
+   "played": true
+  },
+  {
+   "key": "logan-morris",
+   "name": "Logan Morris",
+   "before": 2972,
+   "after": 2941,
+   "delta": -31,
+   "score": 63.0,
+   "played": true
+  },
+  {
+   "key": "talor-byrne",
+   "name": "Talor Byrne",
+   "before": 631,
+   "after": 601,
+   "delta": -30,
+   "score": 29.0,
+   "played": true
+  },
+  {
+   "key": "sam-berry",
+   "name": "Sam Berry",
+   "before": 2752,
+   "after": 2780,
+   "delta": 28,
+   "score": 62.0,
+   "played": true
+  },
+  {
+   "key": "arthur-jones",
+   "name": "Arthur Jones",
+   "before": 315,
+   "after": 288,
+   "delta": -27,
+   "score": 56.0,
+   "played": true
+  },
+  {
+   "key": "isaiah-dudley",
+   "name": "Isaiah Dudley",
+   "before": 222,
+   "after": 195,
+   "delta": -27,
+   "score": 48.0,
+   "played": true
+  },
+  {
+   "key": "daniel-curtin",
+   "name": "Daniel Curtin",
+   "before": 2358,
+   "after": 2334,
+   "delta": -24,
+   "score": 59.0,
+   "played": true
+  },
+  {
+   "key": "bailey-smith",
+   "name": "Bailey Smith",
+   "before": 5802,
+   "after": 5824,
+   "delta": 22,
+   "score": 104.0,
+   "played": true
+  },
+  {
+   "key": "lachlan-mcandrew",
+   "name": "Lachlan McAndrew",
+   "before": 1146,
+   "after": 1168,
+   "delta": 22,
+   "score": 76.0,
+   "played": true
+  },
+  {
+   "key": "luke-ryan",
+   "name": "Luke Ryan",
+   "before": 1284,
+   "after": 1306,
+   "delta": 22,
+   "score": 103.0,
+   "played": true
+  },
+  {
+   "key": "rory-lobb",
+   "name": "Rory Lobb",
+   "before": 259,
+   "after": 281,
+   "delta": 22,
+   "score": 94.0,
+   "played": true
+  },
+  {
+   "key": "jagga-smith",
+   "name": "Jagga Smith",
+   "before": 4942,
+   "after": 4921,
+   "delta": -21,
+   "score": 69.0,
+   "played": true
+  },
+  {
+   "key": "jake-soligo",
+   "name": "Jake Soligo",
+   "before": 1822,
+   "after": 1843,
+   "delta": 21,
+   "score": 76.0,
+   "played": true
+  },
+  {
+   "key": "karl-amon",
+   "name": "Karl Amon",
+   "before": 301,
+   "after": 281,
+   "delta": -20,
+   "score": 74.0,
+   "played": true
+  },
+  {
+   "key": "lewis-young",
+   "name": "Lewis Young",
+   "before": 145,
+   "after": 125,
+   "delta": -20,
+   "score": 19.0,
+   "played": true
+  },
+  {
+   "key": "luke-kennedy",
+   "name": "Luke Kennedy",
+   "before": 271,
+   "after": 291,
+   "delta": 20,
+   "score": 53.0,
+   "played": true
+  },
+  {
+   "key": "cameron-mackenzie",
+   "name": "Cameron Mackenzie",
+   "before": 1732,
+   "after": 1750,
+   "delta": 18,
+   "score": 70.0,
+   "played": true
+  },
+  {
+   "key": "lawson-humphries",
+   "name": "Lawson Humphries",
+   "before": 1653,
+   "after": 1671,
+   "delta": 18,
+   "score": 54.0,
+   "played": true
+  },
+  {
+   "key": "caiden-cleary",
+   "name": "Caiden Cleary",
+   "before": 427,
+   "after": 444,
+   "delta": 17,
+   "score": 53.0,
+   "played": true
+  },
+  {
+   "key": "hugo-hall-kahan",
+   "name": "Hugo Hall-Kahan",
+   "before": 541,
+   "after": 558,
+   "delta": 17,
+   "score": 59.0,
+   "played": true
+  },
+  {
+   "key": "ollie-dempsey",
+   "name": "Ollie Dempsey",
+   "before": 2409,
+   "after": 2426,
+   "delta": 17,
+   "score": 84.0,
+   "played": true
+  },
+  {
+   "key": "tom-atkins",
+   "name": "Tom Atkins",
+   "before": 306,
+   "after": 290,
+   "delta": -16,
+   "score": 72.0,
+   "played": true
+  },
+  {
+   "key": "bailey-macdonald",
+   "name": "Bailey Macdonald",
+   "before": 147,
+   "after": 132,
+   "delta": -15,
+   "score": 43.0,
+   "played": true
+  },
+  {
+   "key": "oliver-florent",
+   "name": "Oliver Florent",
+   "before": 1049,
+   "after": 1034,
+   "delta": -15,
+   "score": 107.0,
+   "played": true
+  },
+  {
+   "key": "lachlan-cowan",
+   "name": "Lachlan Cowan",
+   "before": 586,
+   "after": 600,
+   "delta": 14,
+   "score": 68.0,
+   "played": true
+  },
+  {
+   "key": "max-beattie",
+   "name": "Max Beattie",
+   "before": 166,
+   "after": 152,
+   "delta": -14,
+   "score": 22.0,
+   "played": true
+  },
+  {
+   "key": "blake-hardwick",
+   "name": "Blake Hardwick",
+   "before": 609,
+   "after": 596,
+   "delta": -13,
+   "score": 71.0,
+   "played": true
+  },
+  {
+   "key": "harris-andrews",
+   "name": "Harris Andrews",
+   "before": 1563,
+   "after": 1550,
+   "delta": -13,
+   "score": 76.0,
+   "played": true
+  },
+  {
+   "key": "mitchell-lewis",
+   "name": "Mitchell Lewis",
+   "before": 755,
+   "after": 768,
+   "delta": 13,
+   "score": 80.0,
+   "played": true
+  },
+  {
+   "key": "oscar-mcdonald",
+   "name": "Oscar McDonald",
+   "before": 82,
+   "after": 95,
+   "delta": 13,
+   "score": 76.0,
+   "played": true
+  },
+  {
+   "key": "taylor-walker",
+   "name": "Taylor Walker",
+   "before": 214,
+   "after": 201,
+   "delta": -13,
+   "score": 62.0,
+   "played": true
+  },
+  {
+   "key": "harry-kyle",
+   "name": "Harry Kyle",
+   "before": 790,
+   "after": 778,
+   "delta": -12,
+   "score": 55.0,
+   "played": true
+  },
+  {
+   "key": "jaspa-fletcher",
+   "name": "Jaspa Fletcher",
+   "before": 2688,
+   "after": 2700,
+   "delta": 12,
+   "score": 74.0,
+   "played": true
+  },
+  {
+   "key": "oliver-wiltshire",
+   "name": "Oliver Wiltshire",
+   "before": 61,
+   "after": 73,
+   "delta": 12,
+   "score": 110.0,
+   "played": true
+  },
+  {
+   "key": "rory-laird",
+   "name": "Rory Laird",
+   "before": 713,
+   "after": 701,
+   "delta": -12,
+   "score": 81.0,
+   "played": true
+  },
+  {
+   "key": "connor-macdonald",
+   "name": "Connor MacDonald",
+   "before": 2868,
+   "after": 2879,
+   "delta": 11,
+   "score": 78.0,
+   "played": true
+  },
+  {
+   "key": "george-hewett",
+   "name": "George Hewett",
+   "before": 1767,
+   "after": 1778,
+   "delta": 11,
+   "score": 106.0,
+   "played": true
+  },
+  {
+   "key": "mitch-mcgovern",
+   "name": "Mitch McGovern",
+   "before": 36,
+   "after": 25,
+   "delta": -11,
+   "score": 21.0,
+   "played": true
+  },
+  {
+   "key": "andrew-brayshaw",
+   "name": "Andrew Brayshaw",
+   "before": 2827,
+   "after": 2837,
+   "delta": 10,
+   "score": 112.0,
+   "played": true
+  },
+  {
+   "key": "billy-cootee",
+   "name": "Billy Cootee",
+   "before": 174,
+   "after": 164,
+   "delta": -10,
+   "score": 64.0,
+   "played": true
+  },
+  {
+   "key": "connor-budarick",
+   "name": "Connor Budarick",
+   "before": 216,
+   "after": 207,
+   "delta": -9,
+   "score": 57.0,
+   "played": true
+  },
+  {
+   "key": "mark-keane",
+   "name": "Mark Keane",
+   "before": 1458,
+   "after": 1467,
+   "delta": 9,
+   "score": 75.0,
+   "played": true
+  },
+  {
+   "key": "harry-mckay",
+   "name": "Harry McKay",
+   "before": 1619,
+   "after": 1627,
+   "delta": 8,
+   "score": 72.0,
+   "played": true
+  },
+  {
+   "key": "james-borlase",
+   "name": "James Borlase",
+   "before": 359,
+   "after": 367,
+   "delta": 8,
+   "score": 45.0,
+   "played": true
+  },
+  {
+   "key": "josh-dolan",
+   "name": "Josh Dolan",
+   "before": 324,
+   "after": 316,
+   "delta": -8,
+   "score": 36.0,
+   "played": true
+  },
+  {
+   "key": "matt-cottrell",
+   "name": "Matt Cottrell",
+   "before": 161,
+   "after": 153,
+   "delta": -8,
+   "score": 51.0,
+   "played": true
+  },
+  {
+   "key": "nathan-o-driscoll",
+   "name": "Nathan O'Driscoll",
+   "before": 233,
+   "after": 225,
+   "delta": -8,
+   "score": 58.0,
+   "played": true
+  },
+  {
+   "key": "hayden-young",
+   "name": "Hayden Young",
+   "before": 1557,
+   "after": 1564,
+   "delta": 7,
+   "score": 60.0,
+   "played": true
+  },
+  {
+   "key": "jack-henry",
+   "name": "Jack Henry",
+   "before": 227,
+   "after": 220,
+   "delta": -7,
+   "score": 51.0,
+   "played": true
+  },
+  {
+   "key": "oliver-hollands",
+   "name": "Oliver Hollands",
+   "before": 1531,
+   "after": 1524,
+   "delta": -7,
+   "score": 72.0,
+   "played": true
+  },
+  {
+   "key": "brandon-walker",
+   "name": "Brandon Walker",
+   "before": 47,
+   "after": 53,
+   "delta": 6,
+   "score": 58.0,
+   "played": true
+  },
+  {
+   "key": "eric-hipwood",
+   "name": "Eric Hipwood",
+   "before": 64,
+   "after": 70,
+   "delta": 6,
+   "score": 93.0,
+   "played": true
+  },
+  {
+   "key": "jordan-dawson",
+   "name": "Jordan Dawson",
+   "before": 2877,
+   "after": 2883,
+   "delta": 6,
+   "score": 101.0,
+   "played": true
+  },
+  {
+   "key": "mark-o-connor",
+   "name": "Mark O'Connor",
+   "before": 19,
+   "after": 25,
+   "delta": 6,
+   "score": 81.0,
+   "played": true
+  },
+  {
+   "key": "darcy-fogarty",
+   "name": "Darcy Fogarty",
+   "before": 805,
+   "after": 810,
+   "delta": 5,
+   "score": 73.0,
+   "played": true
+  },
+  {
+   "key": "oliver-henry",
+   "name": "Oliver Henry",
+   "before": 255,
+   "after": 250,
+   "delta": -5,
+   "score": 46.0,
+   "played": true
+  },
+  {
+   "key": "callum-ah-chee",
+   "name": "Callum Ah Chee",
+   "before": 38,
+   "after": 34,
+   "delta": -4,
+   "score": 31.0,
+   "played": true
+  },
+  {
+   "key": "darcy-fort",
+   "name": "Darcy Fort",
+   "before": 94,
+   "after": 90,
+   "delta": -4,
+   "score": 43.0,
+   "played": true
+  },
+  {
+   "key": "dayne-zorko",
+   "name": "Dayne Zorko",
+   "before": 946,
+   "after": 950,
+   "delta": 4,
+   "score": 105.0,
+   "played": true
+  },
+  {
+   "key": "isaac-cumming",
+   "name": "Isaac Cumming",
+   "before": 57,
+   "after": 61,
+   "delta": 4,
+   "score": 81.0,
+   "played": true
+  },
+  {
+   "key": "jack-ginnivan",
+   "name": "Jack Ginnivan",
+   "before": 2148,
+   "after": 2144,
+   "delta": -4,
+   "score": 81.0,
+   "played": true
+  },
+  {
+   "key": "jai-serong",
+   "name": "Jai Serong",
+   "before": 1199,
+   "after": 1195,
+   "delta": -4,
+   "score": 58.0,
+   "played": true
+  },
+  {
+   "key": "noah-answerth",
+   "name": "Noah Answerth",
+   "before": 18,
+   "after": 14,
+   "delta": -4,
+   "score": 40.0,
+   "played": true
+  },
+  {
+   "key": "rhylee-west",
+   "name": "Rhylee West",
+   "before": 264,
+   "after": 268,
+   "delta": 4,
+   "score": 68.0,
+   "played": true
+  },
+  {
+   "key": "sam-draper",
+   "name": "Sam Draper",
+   "before": 1012,
+   "after": 1016,
+   "delta": 4,
+   "score": 77.0,
+   "played": true
+  },
+  {
+   "key": "angus-sheldrick",
+   "name": "Angus Sheldrick",
+   "before": 663,
+   "after": 666,
+   "delta": 3,
+   "score": 59.0,
+   "played": true
+  },
+  {
+   "key": "braeden-campbell",
+   "name": "Braeden Campbell",
+   "before": 565,
+   "after": 568,
+   "delta": 3,
+   "score": 60.0,
+   "played": true
+  },
+  {
+   "key": "lachlan-mcneil",
+   "name": "Lachlan McNeil",
+   "before": 44,
+   "after": 41,
+   "delta": -3,
+   "score": 34.0,
+   "played": true
+  },
+  {
+   "key": "sam-davidson",
+   "name": "Sam Davidson",
+   "before": 114,
+   "after": 111,
+   "delta": -3,
+   "score": 36.0,
+   "played": true
+  },
+  {
+   "key": "tom-barrass",
+   "name": "Tom Barrass",
+   "before": 46,
+   "after": 43,
+   "delta": -3,
+   "score": 43.0,
+   "played": true
+  },
+  {
+   "key": "zach-guthrie",
+   "name": "Zach Guthrie",
+   "before": 326,
+   "after": 329,
+   "delta": 3,
+   "score": 78.0,
+   "played": true
+  },
+  {
+   "key": "alex-neal-bullen",
+   "name": "Alex Neal-Bullen",
+   "before": 411,
+   "after": 413,
+   "delta": 2,
+   "score": 74.0,
+   "played": true
+  },
+  {
+   "key": "ben-keays",
+   "name": "Ben Keays",
+   "before": 420,
+   "after": 422,
+   "delta": 2,
+   "score": 73.0,
+   "played": true
+  },
+  {
+   "key": "harry-morrison",
+   "name": "Harry Morrison",
+   "before": 64,
+   "after": 66,
+   "delta": 2,
+   "score": 80.0,
+   "played": true
+  },
+  {
+   "key": "marc-pittonet",
+   "name": "Marc Pittonet",
+   "before": 513,
+   "after": 511,
+   "delta": -2,
+   "score": 86.0,
+   "played": true
+  },
+  {
+   "key": "mark-blicavs",
+   "name": "Mark Blicavs",
+   "before": 59,
+   "after": 61,
+   "delta": 2,
+   "score": 75.0,
+   "played": true
+  },
+  {
+   "key": "matthew-roberts",
+   "name": "Matthew Roberts",
+   "before": 1460,
+   "after": 1458,
+   "delta": -2,
+   "score": 72.0,
+   "played": true
+  },
+  {
+   "key": "oisin-mullin",
+   "name": "Oisin Mullin",
+   "before": 30,
+   "after": 28,
+   "delta": -2,
+   "score": 28.0,
+   "played": true
+  },
+  {
+   "key": "alex-pearce",
+   "name": "Alex Pearce",
+   "before": 14,
+   "after": 15,
+   "delta": 1,
+   "score": 81.0,
+   "played": true
+  },
+  {
+   "key": "bradley-close",
+   "name": "Bradley Close",
+   "before": 25,
+   "after": 26,
+   "delta": 1,
+   "score": 84.0,
+   "played": true
+  },
+  {
+   "key": "buku-khamis",
+   "name": "Buku Khamis",
+   "before": 151,
+   "after": 150,
+   "delta": -1,
+   "score": 27.0,
+   "played": true
+  },
+  {
+   "key": "conor-mckenna",
+   "name": "Conor McKenna",
+   "before": 5,
+   "after": 6,
+   "delta": 1,
+   "score": 86.0,
+   "played": true
+  },
+  {
+   "key": "harry-cunningham",
+   "name": "Harry Cunningham",
+   "before": 2,
+   "after": 3,
+   "delta": 1,
+   "score": 92.0,
+   "played": true
+  },
+  {
+   "key": "jarrod-berry",
+   "name": "Jarrod Berry",
+   "before": 364,
+   "after": 363,
+   "delta": -1,
+   "score": 77.0,
+   "played": true
+  },
+  {
+   "key": "levi-ashcroft",
+   "name": "Levi Ashcroft",
+   "before": 3527,
+   "after": 3526,
+   "delta": -1,
+   "score": 68.0,
+   "played": true
+  },
+  {
+   "key": "mason-cox",
+   "name": "Mason Cox",
+   "before": 3,
+   "after": 2,
+   "delta": -1,
+   "score": 24.0,
+   "played": true
+  },
+  {
+   "key": "matt-johnson-1",
+   "name": "Matt Johnson",
+   "before": 1029,
+   "after": 1028,
+   "delta": -1,
+   "score": 56.0,
+   "played": true
+  },
+  {
+   "key": "max-michalanney",
+   "name": "Max Michalanney",
+   "before": 529,
+   "after": 528,
+   "delta": -1,
+   "score": 53.0,
+   "played": true
+  },
+  {
+   "key": "michael-frederick",
+   "name": "Michael Frederick",
+   "before": 116,
+   "after": 115,
+   "delta": -1,
+   "score": 58.0,
+   "played": true
+  },
+  {
+   "key": "ryan-gardner",
+   "name": "Ryan Gardner",
+   "before": 6,
+   "after": 7,
+   "delta": 1,
+   "score": 20.0,
+   "played": true
+  },
+  {
+   "key": "ryan-lester",
+   "name": "Ryan Lester",
+   "before": 27,
+   "after": 28,
+   "delta": 1,
+   "score": 76.0,
+   "played": true
+  },
+  {
+   "key": "sam-switkowski",
+   "name": "Sam Switkowski",
+   "before": 27,
+   "after": 28,
+   "delta": 1,
+   "score": 64.0,
+   "played": true
+  },
+  {
+   "key": "tanner-bruhn",
+   "name": "Tanner Bruhn",
+   "before": 1965,
+   "after": 1964,
+   "delta": -1,
+   "score": 87.0,
+   "played": true
+  },
+  {
+   "key": "wade-derksen",
+   "name": "Wade Derksen",
+   "before": 214,
+   "after": 213,
+   "delta": -1,
+   "score": 60.0,
+   "played": true
+  },
+  {
+   "key": "will-lewis",
+   "name": "Will Lewis",
+   "before": 100,
+   "after": 101,
+   "delta": 1,
+   "score": 48.0,
+   "played": true
+  }
+ ],
+ "n_movers": 177,
+ "n_movers_who_played": 177,
+ "n_movers_who_did_not_play": 0,
+ "pool_before": 689275,
+ "pool_after": 689545,
+ "control_pass": true
+}
