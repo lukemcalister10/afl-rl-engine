@@ -1,8 +1,21 @@
 # LANDING A FINALS WEEK — the runbook, written from the one that worked
 
-FW2..GF are the same act as FW1 with a different score file. Four steps, two builds.
+FW2..GF are the same act as FW1 with a different score file. Two builds: one that MEASURES in a
+scratch worktree and one that lands. Neither is expected to fail.
 
-## 0. The score file
+## 0a. The names  (one second, no engine)
+
+    python3 docs/evidence/<act>/check_name_resolution.py
+
+Every listed name must land on exactly one non-retired store row, and the two alias maps — the
+plan's (CSV name -> store KEY) and the report emitter's (CSV name -> store DISPLAY NAME) — must land
+on THE SAME ROW. They are separate because the plan runs against store rows and the emitter runs
+against the shipped board bundle, which carries names and not keys; two maps of one fact is the
+drift the estate refuses everywhere else, so it is checked. Run it FIRST: a name that resolves two
+ways sails through both files and fails nothing until the report's reconciliation, at the end of a
+landing, on a tree that has already moved.
+
+## 0b. The score file
 
 `scores/FW2.csv` etc., in the FootyWire SC-column form `footywire_parser` reads. Declare which
 clubs played nowhere — a store edit does not need a fixture, because it does not describe absence.
@@ -25,33 +38,61 @@ and was wrong.
 Mechanical: drops no-op fields, halts if any player would carry no edit at all or if a played game
 fails to increment `games`, then validates.
 
-## 3. Fly it — AND EXPECT THE FIRST FLIGHT TO ABORT ON THE MOVERS
+## 3. MEASURE the movers — `--dry-run`, not a deliberate abort
 
-    ./tools/land edit --spec <spec> --log <log> --report <report>
+**Superseded 2026-09-09, on the owner's question: "you expected the first flight to abort — surely
+that's something we could have fixed in advance?" He is right, and this step used to say the
+opposite.** What follows is what it said and why it was wrong, because the reasoning matters more
+than the instruction.
 
-**The plan's mover prediction will be wrong, and this is not a bug in the plan.** Pricing in memory
-cannot reproduce the engine's LOAD-TIME CALIBRATION REFIT: move 92 players' season averages and the
-population statistics the model prices against move with them, so every valued row shifts a little.
-FW1 predicted 86 movers and a ripple of exactly zero; the builder found 234, of which 146 were
-players who did not play, moving by a median of 1 point (0.082% of value).
+The plan's mover prediction is wrong BY CONSTRUCTION. Pricing in memory cannot reproduce the
+engine's LOAD-TIME CALIBRATION REFIT: move 183 players' season averages and the population
+statistics the model prices against move with them, so every valued row shifts a little. FW1
+predicted 86 movers and a ripple of exactly zero; the builder found 234, of which 146 were players
+who did not play, moving by a median of 1 point.
 
-So the first flight builds the board, measures every mover, aborts on the declaration, and restores
-every carrier byte-exact. That is the falsifier working.
+The old step declared that known-wrong number, let the lander abort on it, read the true movers out
+of the abort log, declared THOSE, and re-flew. **A prediction you know will fail before you run it
+is not a falsifier. It is a ritual that costs a build.**
 
-## 4. READ the difference, then declare it and re-fly
+The tool for this already existed and the owner had already ruled it into being (2026-08-24: *"there
+needs to be a general edit option — that is user unfriendly as it stands"*):
 
-**Do not automate this step.** Parsing the true movers out of the flight log and writing them back
-into the spec is three lines of code, and making it automatic would turn the one assertion that
-catches a bad edit into a rubber stamp — it would have accepted the 0.83 `calendar_progress`
-disaster without comment. The judgement being made here is *"is this ripple the model
-re-calibrating, or is it the act doing something it should not?"*, and that judgement is the point.
+    ./tools/land edit --spec <spec> --dry-run
+
+It applies the edit in a SCRATCH GIT WORKTREE cut from HEAD, builds the board there, prints the
+store md5 old -> new, the board md5 old -> new, EVERY mover with both values, the pool and every
+declared identity — and writes nothing to any carrier, which is checked by hashing every carrier
+before and after rather than merely intended. The worktree is then removed.
+
+So: **measure, then declare the measurement, then fly once.** The tree must be clean — the worktree
+is cut from HEAD and uncommitted work is invisible to it, and the preview refuses rather than warns.
+
+## 4. READ the difference, then declare it and fly
+
+**Do not automate this step.** Parsing the movers out of the dry-run and writing them into the spec
+is three lines of code, and making it automatic would turn the one assertion that catches a bad edit
+into a rubber stamp — it would have accepted the 0.83 `calendar_progress` disaster without comment.
+The judgement being made here is *"is this ripple the model re-calibrating, or is it the act doing
+something it should not?"*, and that judgement is the point.
 
 The bar: the ripple is small (single points, sub-0.1% of value), mixed in direction, and confined to
 re-calibration. A systematic move — every completed season repriced, one direction, percentage-scale
-— is the finals lane's known failure mode and a HALT, not a thing to declare and re-fly.
+— is the finals lane's known failure mode and a HALT, not a thing to declare and fly.
 
-Once declared, the re-flight asserts DETERMINISM: identical inputs, identical board, or an abort
-naming the player. Say so in the spec's own doc field; do not present a measurement as a forecast.
+Once declared, the flight asserts DETERMINISM: identical inputs, identical board, or an abort naming
+the player. Say so in the spec's own doc field; do not present a measurement as a forecast.
+
+    ./tools/land edit --spec <spec> --log <log> --report <report>
+
+Take the baseline copy of `ui/data/movers.js` BEFORE flying.
+
+### What this means for step 1
+
+The plan pass exists to build the EDIT LIST — 366 lines of `{key, field, old, new}` arithmetic
+through the ingestor's own `_mean` — and to CONTROL that the untouched board reprices to the live
+board. Both are worth its engine load. Its `expected_movers` output is not: the dry run measures
+that properly. Emit it, ignore it, and declare what the dry run measured.
 
 ## 5. MAKE THE WEEK A POINT ON THE MOVERS LIST  (added 2026-09-02)
 
@@ -107,7 +148,7 @@ must reproduce the LIVE board exactly, 0 diffs. If it does not, the retro is wro
     python3 docs/evidence/walkforward_retro_2026-08-29/emit_retro_series.py
     node docs/evidence/<act>/verify_movers_history.js <baseline-movers.js> ui/data/movers.js
 
-Every act that rebuilds the bundle DROPS the R14-R24 retrospective — `points` is built from the
+Every act that rebuilds the bundle DROPS the retrospective — `points` is built from the
 value-history columns and a retro point is not one. Re-emit it (banked values, no re-pricing, so it
 is byte-exact) and verify. `ui/tests/movers.test.js` now fails if the shipped bundle is missing it,
 and gate 5 runs that file inside every landing, so this cannot go unnoticed again.

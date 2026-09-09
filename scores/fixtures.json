@@ -9,7 +9,8 @@
     "Collingwood",
     "Melbourne",
     "Carlton"
-   ]
+   ],
+   "_note": "Four clubs. Melbourne and Collingwood were eliminated here; Western Bulldogs and Carlton went through to FW2."
   },
   "26": {
    "label": "FW2",
@@ -23,7 +24,7 @@
     "Sydney",
     "Western Bulldogs"
    ],
-   "_note": "DERIVED FROM scores/FW2.csv, not typed: every listed name resolved to a store row and the clubs with a full side are these eight. THREE listed players sit at a ninth, tenth and eleventh club in the store and are NOT evidence those clubs played \u2014 Josh Battle (store: St Kilda), Jack Ginnivan (store: Collingwood) and Oscar Allen (store: West Coast) have all since moved to a club that IS in this list. The store's afl_club is an identity field, not a team sheet; it is stale for those three and nothing reads it to price them."
+   "_note": "Eight clubs, owner-declared and independently confirmed by resolving every name in scores/FW2.csv against the store. THREE listed players sit at a ninth, tenth and eleventh club in the store and are NOT evidence those clubs played \u2014 Josh Battle (store: St Kilda), Jack Ginnivan (store: Collingwood) and Oscar Allen (store: West Coast) have all since moved to a club that IS in this list. The store's afl_club is an identity field, not a team sheet; it is stale for those three and nothing reads it to price them."
   },
   "27": {
    "label": "SF",
@@ -37,5 +38,6 @@
    "label": "GF",
    "clubs": []
   }
- }
+ },
+ "_shape": "THE FINALS SHAPE, OWNER-DECLARED 2026-09-09: FW1 4 clubs, FW2 8, FW3 4, FW4 4, FW5/GF 2. Melbourne and Collingwood were eliminated in week 1; Western Bulldogs and Carlton in week 2. This is the league's own format and it is NOT the AFL's (where week 1 is the wide round) \u2014 the four-then-eight opening is why FW2 carries twice FW1's players, and it is recorded here so nobody re-derives it from a score file and concludes a week went missing."
 }
