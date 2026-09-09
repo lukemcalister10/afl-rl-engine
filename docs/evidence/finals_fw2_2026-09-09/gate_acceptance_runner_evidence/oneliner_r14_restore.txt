@@ -1,0 +1,36 @@
+$ /root/rl_venv312/bin/python3 /home/user/afl-rl-engine/engine/rl_after/ingestion/test_weekly_updater.py
+
+weekly-updater fast tests:
+  test_snapshot_identity PASS
+  test_bridge_preserves_score_meaning PASS
+  test_gate_off_by_default PASS
+  test_prestaging_refusals PASS
+  test_repo_root_resolves_or_fails_loudly PASS
+  test_movers_zero_report_seed_reanchors_to_first_report PASS
+  test_movers_populated_bundle_never_reanchors PASS
+  test_finalized_status_clears_stale_failure PASS
+R14 disposable-fixture fail-closed tests + negative controls:
+Traceback (most recent call last):
+  File "/home/user/afl-rl-engine/engine/rl_after/ingestion/test_weekly_updater.py", line 311, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/user/afl-rl-engine/engine/rl_after/ingestion/test_weekly_updater.py", line 213, in main
+    test_r14_fixture.run_all()
+  File "/home/user/afl-rl-engine/engine/rl_after/ingestion/test_r14_fixture.py", line 293, in run_all
+    t()
+  File "/home/user/afl-rl-engine/engine/rl_after/ingestion/test_r14_fixture.py", line 80, in test_positive_r14_baseline
+    scr = _good_r14_scratch()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/user/afl-rl-engine/engine/rl_after/ingestion/test_r14_fixture.py", line 63, in _good_r14_scratch
+    return FI.make_scratch('r14test')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/afl-rl-engine/session_2026-07-20/weekly_updater_hardening/failure_injection_proof.py", line 90, in make_scratch
+    SF.materialize_r14(dst, REPO)                 # ITEM 408 item 6: reconstruct the accepted R14 baseline
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/afl-rl-engine/engine/rl_after/ingestion/scratch_fixture.py", line 363, in materialize_r14
+    _anchor_present_ancestor(repo_root)
+  File "/home/user/afl-rl-engine/engine/rl_after/ingestion/scratch_fixture.py", line 177, in _anchor_present_ancestor
+    raise FixtureError(
+scratch_fixture.FixtureError: R14 anchor 93bd01af86db00c169714652714a364bd2635764 is NOT an ancestor of HEAD — refusing to restore historical state from an unrelated commit.
+
+[exit 1]

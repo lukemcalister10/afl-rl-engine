@@ -1,0 +1,9 @@
+{
+  "act": "SELF-TEST \u2014 the carried day-0 emitter",
+  "day0_rebase": {
+    "state": "off",
+    "reference": "docs/evidence/final_candidate_2026-08-19/DAY0_CP.json",
+    "new_reference": "docs/evidence/landing_selftest/DAY0_SELFTEST.json",
+    "activated_by": "SELF-TEST FIXTURE \u2014 no owner word exists or is claimed."
+  }
+}

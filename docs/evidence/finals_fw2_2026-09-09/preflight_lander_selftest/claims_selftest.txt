@@ -1,0 +1,14 @@
+THE NEGATIVE CONTROL — a deliberately false claim must FAIL
+  PASS  CONTROL: a true claims file verifies GREEN
+  PASS  a FALSE file hash fails (the flipped-hash control)
+  PASS  a FALSE identity field fails
+  PASS  a FALSE row count fails (recounted from the board, not read back)
+  PASS  a TRUE value total holds (1 + 2 == 3)
+  PASS  a FALSE value total fails
+  PASS  a gate claimed PASS that exits non-zero fails
+  PASS  a switch claimed ON with no owner word is a SHAPE failure (day-0 state is OFF)
+  PASS  a switch claimed ON that NAMES its owner word is accepted
+  PASS  a lever-landing missing its identity claims is a SHAPE failure (an unfilled slot is visible)
+  PASS  a claims file with no claims is refused
+
+CLAIMS SELF-TEST: 11 PASS / 0 FAIL
