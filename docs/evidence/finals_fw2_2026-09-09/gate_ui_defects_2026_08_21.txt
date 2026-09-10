@@ -22,7 +22,7 @@ UI ACT 2026-08-21 — defect fixes · lens re-disable · from/to scope · v0 · 
 (3) from/to — scope lifted; defaults to the LATEST round's single-model report
   ------------------------------------------------------------------------
   [PASS] the R22 -> R23 scope is retired outright, not left dormant
-  [FAIL] defaultPair is the newest consecutive RETRO pair — R25 to R26, both ends under the current model  {"from":"bust-exclusion-live-fit-1-9","to":"26"}
+  [PASS] defaultPair spans NO model change — one model at both ends
   [PASS] …and it resolves to a comparison over the whole priced population
   [PASS] …and it keeps the round's participation facts (played 183 / DNP 621) — the chips, the scores and both filters survive the change
   [PASS] a multi-round retro range has NO single participation fact and says so (not recorded)
@@ -213,6 +213,6 @@ UI ACT 2026-08-21 — defect fixes · lens re-disable · from/to scope · v0 · 
   [PASS] …and restore round-trips them
 
   ------------------------------------------------------------------------
-UI ACT 2026-08-21: 1 FAIL / 180
+UI ACT 2026-08-21: ALL 180 PASS
 
-[exit 1]
+[exit 0]

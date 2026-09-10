@@ -2,7 +2,7 @@
   "abort": {
     "byte_exact": true,
     "commits_rewound": [],
-    "error": "gate ui_defects_2026_08_21 did not pass (exit 1):\ns\n  [PASS] EVERY published entry price is the sidecar's own figure and origin for that player \u2014 the join invents nothing\n  [PASS] an unrecoverable entry price is NULL with its origin named \u2014 never 0, never silently omitted\n  [PASS] the public-tier card renderer is retired \u2014 one transparent tier\n  [PASS] the card renders the entry-price section\n  [PASS] the entry price and ratio notation are MD.v0's, not a second copy\n  [PASS] ui/app/v0.js records the owner's word verbatim, where the pending note used to stand\n  [PASS] status() no longer reports the public tier as a pending decision\n  [PASS] \u2026it names the word it ships on\n\n(5) board filters \u2014 cohort year \u00b7 age \u00b7 live eligibility\n  ------------------------------------------------------------------------\n  [PASS] the board exposes the cohort clock\n  [PASS] a 2024 ND entrant is in the 2024 cohort\n  [PASS] a 2024 RD entrant is in the 2024 cohort\n  [PASS] a 2024 SSP entrant is in the 2024 cohort\n  [PASS] AND a 2025 MSD selection is in the 2024 cohort \u2014 the owner's stated grouping\n  [PASS] \u2026so a 2024 MSD belongs to the 2023 cohort\n  [PASS] a row without a draft year has no cohort\n  [PASS] the shipped board carries both MSD and ND rows\n  [PASS] the 2024 cohort is non-empty on the shipped board (112 players)\n  [PASS] every MSD row inside the 2024 cohort carries draft year 2025 \u2014 the clock rule, on real rows\n  [PASS] a null age filter matches everything\n  [PASS] an exact age matches\n  [PASS] \u2026and only that age\n  [PASS] the 20-and-under band matches 19\n  [PASS] \u2026and not 21\n  [PASS] the 29-and-over band matches 34\n  [PASS] a row with NO age drops out while an age filter is on, rather than being bucketed\n  [PASS] the bands are well-formed and cover the range in order\n  [PASS] a null eligibility filter matches everything\n  [PASS] a dual player matches his KPF eligibility\n  [PASS] \u2026AND his MID eligibility\n  [PASS] a player without the eligibility does not match\n  [PASS] an empty eligibility set matches nothing\n  [PASS] \u2026and so does an absent one\n  [PASS] every shipped row carries an eligibility set\n  [PASS] and the board really has dual-eligible players (186) \u2014 the case the modelling Position axis cannot answer\n  [PASS] \"eligible to play KPF now\" is a superset of \"modelled as KPF\"\n  [PASS] the snapshot carries all five surviving filters, so Back restores the board you were on\n  [PASS] \u2026and restore round-trips them\n\n  ------------------------------------------------------------------------\nUI ACT 2026-08-21: 1 FAIL / 180\n\n\nPER-CHECK RAW OUTPUT: /home/user/afl-rl-engine/docs/evidence/finals_fw2_2026-09-09/gate_ui_defects_2026_08_21.txt",
+    "error": "gate universe did not pass (exit 1):\n  [PASS] the mode round-trips through storage\n  [PASS] ...and back\n  [PASS] NO model change is in the current-model universe (0 found)\n  [PASS] ...and the all-in universe DOES carry them \u2014 the switch is not vacuous\n  [PASS] the two universes are different point sets\n  [PASS] both universes are non-empty enough to compare across\n  [PASS] the current-model universe reaches back to R14\n  [PASS] ...and forward to the newest stored point (fw2-finals-week-2-9-9)\n  [PASS] no round's football appears twice in the current-model universe (0 duplicates)\n  [PASS] an out-of-round column DOES sit at the same after_round as a round point \u2014 which is why the check above is not a bare collision count\n  [PASS] the retro tail and the live head are comparable across the board (804 players)\n  [FAIL] ...and the handover carries real football, not a copy (0 of 804 moved)\n  [PASS] a localStorage that throws does not break the universe (it falls back in-page)\n  ------------------------------------------------------------\nUNIVERSE TESTS: 1 FAIL / 13\n\n\nPER-CHECK RAW OUTPUT: /home/user/afl-rl-engine/docs/evidence/finals_fw2_2026-09-09/gate_universe.txt",
     "failed_step": "gates",
     "restore_point": {
       "data/expected_boot.json": "4f24b38068ed51b4cc5764ab2f1dab00",
@@ -279,7 +279,7 @@
     ]
   },
   "commits": [],
-  "error": "gate ui_defects_2026_08_21 did not pass (exit 1):\ns\n  [PASS] EVERY published entry price is the sidecar's own figure and origin for that player \u2014 the join invents nothing\n  [PASS] an unrecoverable entry price is NULL with its origin named \u2014 never 0, never silently omitted\n  [PASS] the public-tier card renderer is retired \u2014 one transparent tier\n  [PASS] the card renders the entry-price section\n  [PASS] the entry price and ratio notation are MD.v0's, not a second copy\n  [PASS] ui/app/v0.js records the owner's word verbatim, where the pending note used to stand\n  [PASS] status() no longer reports the public tier as a pending decision\n  [PASS] \u2026it names the word it ships on\n\n(5) board filters \u2014 cohort year \u00b7 age \u00b7 live eligibility\n  ------------------------------------------------------------------------\n  [PASS] the board exposes the cohort clock\n  [PASS] a 2024 ND entrant is in the 2024 cohort\n  [PASS] a 2024 RD entrant is in the 2024 cohort\n  [PASS] a 2024 SSP entrant is in the 2024 cohort\n  [PASS] AND a 2025 MSD selection is in the 2024 cohort \u2014 the owner's stated grouping\n  [PASS] \u2026so a 2024 MSD belongs to the 2023 cohort\n  [PASS] a row without a draft year has no cohort\n  [PASS] the shipped board carries both MSD and ND rows\n  [PASS] the 2024 cohort is non-empty on the shipped board (112 players)\n  [PASS] every MSD row inside the 2024 cohort carries draft year 2025 \u2014 the clock rule, on real rows\n  [PASS] a null age filter matches everything\n  [PASS] an exact age matches\n  [PASS] \u2026and only that age\n  [PASS] the 20-and-under band matches 19\n  [PASS] \u2026and not 21\n  [PASS] the 29-and-over band matches 34\n  [PASS] a row with NO age drops out while an age filter is on, rather than being bucketed\n  [PASS] the bands are well-formed and cover the range in order\n  [PASS] a null eligibility filter matches everything\n  [PASS] a dual player matches his KPF eligibility\n  [PASS] \u2026AND his MID eligibility\n  [PASS] a player without the eligibility does not match\n  [PASS] an empty eligibility set matches nothing\n  [PASS] \u2026and so does an absent one\n  [PASS] every shipped row carries an eligibility set\n  [PASS] and the board really has dual-eligible players (186) \u2014 the case the modelling Position axis cannot answer\n  [PASS] \"eligible to play KPF now\" is a superset of \"modelled as KPF\"\n  [PASS] the snapshot carries all five surviving filters, so Back restores the board you were on\n  [PASS] \u2026and restore round-trips them\n\n  ------------------------------------------------------------------------\nUI ACT 2026-08-21: 1 FAIL / 180\n\n\nPER-CHECK RAW OUTPUT: /home/user/afl-rl-engine/docs/evidence/finals_fw2_2026-09-09/gate_ui_defects_2026_08_21.txt",
+  "error": "gate universe did not pass (exit 1):\n  [PASS] the mode round-trips through storage\n  [PASS] ...and back\n  [PASS] NO model change is in the current-model universe (0 found)\n  [PASS] ...and the all-in universe DOES carry them \u2014 the switch is not vacuous\n  [PASS] the two universes are different point sets\n  [PASS] both universes are non-empty enough to compare across\n  [PASS] the current-model universe reaches back to R14\n  [PASS] ...and forward to the newest stored point (fw2-finals-week-2-9-9)\n  [PASS] no round's football appears twice in the current-model universe (0 duplicates)\n  [PASS] an out-of-round column DOES sit at the same after_round as a round point \u2014 which is why the check above is not a bare collision count\n  [PASS] the retro tail and the live head are comparable across the board (804 players)\n  [FAIL] ...and the handover carries real football, not a copy (0 of 804 moved)\n  [PASS] a localStorage that throws does not break the universe (it falls back in-page)\n  ------------------------------------------------------------\nUNIVERSE TESTS: 1 FAIL / 13\n\n\nPER-CHECK RAW OUTPUT: /home/user/afl-rl-engine/docs/evidence/finals_fw2_2026-09-09/gate_universe.txt",
   "facts": {
     "base": {
       "carriers": {
@@ -369,7 +369,7 @@
         "ui/data_aux/draft_outcomes.js": "4537576e98ee245072c15bc1a7a0ce2c",
         "ui/data_aux/v0.js": "d8e6429ccb4c525a9072b8b0a644007f"
       },
-      "commit": "0ac6adda74f5f64cf67cb82997f3224970bd8e6b",
+      "commit": "e2d60a6b3971cfb6aaba6d04bed7f84776e58001",
       "expected_boot": {
         "as_of_round": 24,
         "balanced_board_md5": "c0afa5d869ce0ac490dde4105f6008c9",
@@ -393,7 +393,7 @@
     },
     "build_proofs": {
       "board_built": "d3fb6b4842ddd3bea57fbacc7a94e4d7",
-      "build_elapsed_s": 1242.1,
+      "build_elapsed_s": 1222.9,
       "day0_rebase": "off",
       "edit": {
         "movers": [
@@ -3786,10 +3786,10 @@
       "unmoved_checked": 6
     },
     "preflight": {
-      "base_commit": "0ac6adda74f5f64cf67cb82997f3224970bd8e6b",
+      "base_commit": "e2d60a6b3971cfb6aaba6d04bed7f84776e58001",
       "board_before": "b005096b5e78014425922cae3f28f6c9",
       "carriers_captured": 85,
-      "lock": "land-edit-23810"
+      "lock": "land-edit-24831"
     },
     "sibling": {
       "balanced_board_md5": "784e80ba61fe090830c2d641602d1553",
@@ -3810,9 +3810,9 @@
     },
     "state": {
       "changed": true,
-      "md5": "41ddb5a8c96bbf515d8c16ed6f03bce9",
+      "md5": "aceefa50d43837597875d3a6e1049436",
       "path": "docs/STATE.md",
-      "stamp_commit": "0ac6adda74f5f64cf67cb82997f3224970bd8e6b",
+      "stamp_commit": "e2d60a6b3971cfb6aaba6d04bed7f84776e58001",
       "written": true
     },
     "store_edit": {
@@ -9330,7 +9330,7 @@
       "draft_outcomes_moved": true,
       "draft_outcomes_pin": "a367386a",
       "embedded_board": "d3fb6b4842ddd3bea57fbacc7a94e4d7",
-      "mirror_md5": "e5a639285973f11207c8903a73075f48",
+      "mirror_md5": "30dd7030603a2c4d2270244da4e0c44c",
       "mirror_moved": true,
       "model_changes": 17,
       "movers_md5": "309024de472b862adcf71a24fb70aac5",
@@ -9349,17 +9349,17 @@
   "ok": false,
   "timings": [
     {
-      "seconds": 0.07,
+      "seconds": 0.1,
       "step": "preflight",
       "verdict": "OK"
     },
     {
-      "seconds": 44.74,
+      "seconds": 44.13,
       "step": "store_edit",
       "verdict": "OK"
     },
     {
-      "seconds": 1242.13,
+      "seconds": 1222.95,
       "step": "build_proofs",
       "verdict": "OK"
     },
@@ -9369,7 +9369,7 @@
       "verdict": "OK"
     },
     {
-      "seconds": 0.2,
+      "seconds": 0.19,
       "step": "lineage",
       "verdict": "OK"
     },
@@ -9379,22 +9379,22 @@
       "verdict": "OK"
     },
     {
-      "seconds": 0.82,
+      "seconds": 0.8,
       "step": "sibling",
       "verdict": "OK"
     },
     {
-      "seconds": 590.1,
+      "seconds": 595.61,
       "step": "ui",
       "verdict": "OK"
     },
     {
-      "seconds": 0.16,
+      "seconds": 0.17,
       "step": "state",
       "verdict": "OK"
     },
     {
-      "seconds": 29.13,
+      "seconds": 29.94,
       "step": "gates",
       "verdict": "FAIL"
     }

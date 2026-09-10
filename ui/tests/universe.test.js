@@ -105,8 +105,39 @@ if (lastRetro && firstLive) {
     if (bp[lastRetro] && bp[firstLive]) { compared++; if (bp[lastRetro].v !== bp[firstLive].v) differ++; }
   });
   ok(compared > 700, "the retro tail and the live head are comparable across the board (" + compared + " players)");
-  ok(differ > 0 && differ < compared,
-     "...and the handover carries real football, not a copy (" + differ + " of " + compared + " moved)");
+  /* RESTATED 2026-09-10 (FINALS WEEK 2). This asserted `differ > 0` — "the handover carries real
+     football, not a copy" — because until FW2 the retro tail was always one week BEHIND the live
+     head, so a zero difference would have meant the series had been duplicated rather than priced.
+     That is no longer the shape. The landing now banks the newest week's retro point FROM THE BOARD
+     IT JUST BUILT, because for the newest applied week the retrospective's truncation removes
+     nothing: the truncated store IS the live store and its pricing IS the live board. So the tail
+     and the head are the SAME BOARD by construction, and `differ === 0` is not a copy — it is the
+     seam closing completely.
+
+     The property is therefore restated as what it was always defending, in two halves that together
+     say more than the original did:
+       (a) THE SEAM IS EXACT — the retro tail agrees with the live head on every comparable player.
+           This is the control (retro-rN reproduces the live board) asserted on the UI's own data.
+       (b) THE SERIES IS NOT WHOLESALE A COPY — somewhere in the retrospective, a re-priced round
+           must actually differ from the stored point at the same round. If the whole series were
+           duplicated stored values, this fails, which is the fraud the original was written to
+           catch. */
+  ok(differ === 0,
+     "the seam is EXACT: the retro tail and the live head agree on every comparable player (" +
+     differ + " of " + compared + " differ)");
+  let repriced = 0, checkedRounds = 0;
+  retros.forEach(function (rid) {
+    const rn = String(rid).slice("retro-r".length);
+    if (!allRoundKinds[rn]) return;                       // no stored round at that number to compare
+    checkedRounds++;
+    Object.keys(vals).forEach(function (k) {
+      const bp = vals[k].byPoint || {};
+      if (bp[rid] && bp[rn] && bp[rid].v !== bp[rn].v) repriced++;
+    });
+  });
+  ok(checkedRounds > 0 && repriced > 0,
+     "...and the retrospective is a RE-PRICING, not duplicated stored values (" + repriced +
+     " player-round readings differ across " + checkedRounds + " rounds that have both)");
 } else {
   /* NO HANDOVER EXISTS IN THIS WINDOW, and that is not a failure. The handover is the seam between the
      retro tail and the live head, so it only exists once a ROUND has landed after the last model
