@@ -1,0 +1,80 @@
+$ node ui/tests/responsive_layout.test.mjs
+
+=== RESPONSIVE LAYOUT ACCEPTANCE ===
+    [PASS] 320px · no fail-closed / integrity alarm
+    [PASS] 320px · scrollWidth <= innerWidth  (scrollWidth=320 innerWidth=320)
+    [PASS] 320px · first five player names present  (5 names)
+    [PASS] 320px · names usable width (>=50px, not one-char column)  (Harry Shee:166px Nick Daico:166px Luke Jacks:166px Nasiah Wan:166px Errol Guld:166px)
+    [PASS] 320px · names render in <= 2 text lines (never char-by-char)  (1L 1L 1L 2L 1L)
+    [PASS] 320px · every nav destination reachable + in viewport  (AFFL R✓ Clubs✓ Player✓ Trade ✓ Movers✓ Pick v✓ Draft ✓ Config✓)
+    [PASS] 320px · nav strip not clipped behind inaccessible overflow
+    [PASS] 320px · rank+name+club+value visible in first five rows  ([rncvm][rncvm][rncvm][rncvm][rncvm])
+    [PASS] 320px · club valuation renders without HALT  (halted=false rows=16)
+    [PASS] 320px · club view: scrollWidth <= innerWidth  (scrollWidth=320 innerWidth=320)
+    [PASS] 320px · held-pick view renders (club focused on board)
+    [PASS] 320px · held-pick view: scrollWidth <= innerWidth  (scrollWidth=320 innerWidth=320)
+    [PASS] 360px · no fail-closed / integrity alarm
+    [PASS] 360px · scrollWidth <= innerWidth  (scrollWidth=360 innerWidth=360)
+    [PASS] 360px · first five player names present  (5 names)
+    [PASS] 360px · names usable width (>=50px, not one-char column)  (Harry Shee:206px Nick Daico:206px Luke Jacks:206px Nasiah Wan:206px Errol Guld:206px)
+    [PASS] 360px · names render in <= 2 text lines (never char-by-char)  (1L 1L 1L 2L 1L)
+    [PASS] 360px · every nav destination reachable + in viewport  (AFFL R✓ Clubs✓ Player✓ Trade ✓ Movers✓ Pick v✓ Draft ✓ Config✓)
+    [PASS] 360px · nav strip not clipped behind inaccessible overflow
+    [PASS] 360px · rank+name+club+value visible in first five rows  ([rncvm][rncvm][rncvm][rncvm][rncvm])
+    [PASS] 360px · club valuation renders without HALT  (halted=false rows=16)
+    [PASS] 360px · club view: scrollWidth <= innerWidth  (scrollWidth=360 innerWidth=360)
+    [PASS] 360px · held-pick view renders (club focused on board)
+    [PASS] 360px · held-pick view: scrollWidth <= innerWidth  (scrollWidth=360 innerWidth=360)
+    [PASS] 390px · no fail-closed / integrity alarm
+    [PASS] 390px · scrollWidth <= innerWidth  (scrollWidth=390 innerWidth=390)
+    [PASS] 390px · first five player names present  (5 names)
+    [PASS] 390px · names usable width (>=50px, not one-char column)  (Harry Shee:236px Nick Daico:236px Luke Jacks:236px Nasiah Wan:236px Errol Guld:236px)
+    [PASS] 390px · names render in <= 2 text lines (never char-by-char)  (1L 1L 1L 2L 1L)
+    [PASS] 390px · every nav destination reachable + in viewport  (AFFL R✓ Clubs✓ Player✓ Trade ✓ Movers✓ Pick v✓ Draft ✓ Config✓)
+    [PASS] 390px · nav strip not clipped behind inaccessible overflow
+    [PASS] 390px · rank+name+club+value visible in first five rows  ([rncvm][rncvm][rncvm][rncvm][rncvm])
+    [PASS] 390px · club valuation renders without HALT  (halted=false rows=16)
+    [PASS] 390px · club view: scrollWidth <= innerWidth  (scrollWidth=390 innerWidth=390)
+    [PASS] 390px · held-pick view renders (club focused on board)
+    [PASS] 390px · held-pick view: scrollWidth <= innerWidth  (scrollWidth=390 innerWidth=390)
+    [PASS] 430px · no fail-closed / integrity alarm
+    [PASS] 430px · scrollWidth <= innerWidth  (scrollWidth=430 innerWidth=430)
+    [PASS] 430px · first five player names present  (5 names)
+    [PASS] 430px · names usable width (>=50px, not one-char column)  (Harry Shee:276px Nick Daico:276px Luke Jacks:276px Nasiah Wan:276px Errol Guld:276px)
+    [PASS] 430px · names render in <= 2 text lines (never char-by-char)  (1L 1L 1L 1L 1L)
+    [PASS] 430px · every nav destination reachable + in viewport  (AFFL R✓ Clubs✓ Player✓ Trade ✓ Movers✓ Pick v✓ Draft ✓ Config✓)
+    [PASS] 430px · nav strip not clipped behind inaccessible overflow
+    [PASS] 430px · rank+name+club+value visible in first five rows  ([rncvm][rncvm][rncvm][rncvm][rncvm])
+    [PASS] 430px · club valuation renders without HALT  (halted=false rows=16)
+    [PASS] 430px · club view: scrollWidth <= innerWidth  (scrollWidth=430 innerWidth=430)
+    [PASS] 430px · held-pick view renders (club focused on board)
+    [PASS] 430px · held-pick view: scrollWidth <= innerWidth  (scrollWidth=430 innerWidth=430)
+    [PASS] 720px · no fail-closed / integrity alarm
+    [PASS] 720px · scrollWidth <= innerWidth  (scrollWidth=720 innerWidth=720)
+    [PASS] 720px · first five player names present  (5 names)
+    [PASS] 720px · names usable width (>=50px, not one-char column)  (Harry Shee:268px Nick Daico:268px Luke Jacks:268px Nasiah Wan:268px Errol Guld:268px)
+    [PASS] 720px · names render in <= 2 text lines (never char-by-char)  (1L 1L 1L 2L 1L)
+    [PASS] 720px · every nav destination reachable + in viewport  (AFFL R✓ Clubs✓ Player✓ Trade ✓ Movers✓ Pick v✓ Draft ✓ Config✓)
+    [PASS] 720px · nav strip not clipped behind inaccessible overflow
+    [PASS] 720px · rank+name+club+value visible in first five rows  ([rncvm][rncvm][rncvm][rncvm][rncvm])
+    [PASS] 720px · club valuation renders without HALT  (halted=false rows=16)
+    [PASS] 720px · club view: scrollWidth <= innerWidth  (scrollWidth=720 innerWidth=720)
+    [PASS] 720px · held-pick view renders (club focused on board)
+    [PASS] 720px · held-pick view: scrollWidth <= innerWidth  (scrollWidth=720 innerWidth=720)
+    [PASS] 1440px · no fail-closed / integrity alarm
+    [PASS] 1440px · scrollWidth <= innerWidth  (scrollWidth=1440 innerWidth=1440)
+    [PASS] 1440px · first five player names present  (5 names)
+    [PASS] 1440px · names usable width (>=50px, not one-char column)  (Harry Shee:272px Nick Daico:272px Luke Jacks:272px Nasiah Wan:272px Errol Guld:272px)
+    [PASS] 1440px · names render in <= 2 text lines (never char-by-char)  (1L 1L 1L 2L 1L)
+    [PASS] 1440px · every nav destination reachable + in viewport  (AFFL R✓ Clubs✓ Player✓ Trade ✓ Movers✓ Pick v✓ Draft ✓ Config✓)
+    [PASS] 1440px · nav strip not clipped behind inaccessible overflow
+    [PASS] 1440px · rank+name+club+value visible in first five rows  ([rncvm][rncvm][rncvm][rncvm][rncvm])
+    [PASS] 1440px · club valuation renders without HALT  (halted=false rows=16)
+    [PASS] 1440px · club view: scrollWidth <= innerWidth  (scrollWidth=1440 innerWidth=1440)
+    [PASS] 1440px · held-pick view renders (club focused on board)
+    [PASS] 1440px · held-pick view: scrollWidth <= innerWidth  (scrollWidth=1440 innerWidth=1440)
+
+  per-width: 320:12/12  360:12/12  390:12/12  430:12/12  720:12/12  1440:12/12
+  72/72 responsive assertions passed
+
+[exit 0]

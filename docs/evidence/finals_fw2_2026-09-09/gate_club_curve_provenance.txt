@@ -1,0 +1,44 @@
+$ python3 ui/tests/club_curve_provenance.test.py
+
+=== CLUB-VALUATION CURVE-PROVENANCE + conservation proof ===
+  [PASS] CASE1 accepted v2.11 curve: clean exit 0  (rc=0)
+  [PASS] CASE1 no HALT object in the bundle
+  [PASS] CASE1 16 clubs present  (16)
+  [PASS] CASE1 every ledger pick present (16x5xissued years = 240)  (picks=240)
+  [PASS] CASE1 pick-count conservation: Sum per-club nPicks == the ledger count
+  [PASS] CASE1 resolved pathway == RL_PVC2  (RL_PVC2)
+  [PASS] CASE1 resolved curve_md5 == release-active curve_md5 (1c3b22d1, derived)  (1c3b22d1)
+  [PASS] CASE1 stamp board id == current release manifest board d3fb6b48 (derived, not hardcoded)  (stamp d3fb6b48 vs manifest d3fb6b48)
+  [PASS] CASE1 stamp releaseVersion + asOfRound == current release manifest v2.11-final-rc1-PROVISIONAL / R24 (derived, not hardcoded)  (stamp v2.11-final-rc1-PROVISIONAL / R24 vs manifest v2.11-final-rc1-PROVISIONAL / R24)
+  [PASS] CASE1 no stale token '790136a3' carried forward
+  [PASS] CASE1 no stale token 'v2.10' carried forward
+  [PASS] CASE1 no stale token 'pvc_curve_L1b' carried forward
+  [PASS] CASE1 no stale token 'b1fd0bce' carried forward
+  [PASS] CASE1 no stale token 'fc7045d6' carried forward
+  [PASS] CASE1 the bundle stamp declares a distance multiplier for every discounted year  (stamp = {2027: 0.9, 2028: 0.8})
+  [PASS] CASE1 all pick values == the engine-curve year rule (no workbook value ingested)  (checked=240)
+  [PASS] CASE6 board_view_working.js byte-unchanged by the ingest (Board/Player/Trade views intact)
+  [PASS] CASE6 every club carries the fields the Club view reads (no shape regression)
+  [PASS] CASE2a L1b path under RL_PVC2 fires the pathway/filename conflict halt  (rc=2 halt=CONFLICTING curve-selection: adopted_pathway RL_PVC2 must load pvc_curve_v2.json but the contract points at pvc_curve_L1b.json (e.g. L1b supplied while RL_PVC2 is active) — HALT-AND-ASK)
+  [PASS] CASE2b L1b-PVC board under an RL_PVC2 contract fires the stale-curve byte-match halt  (rc=2 halt=STALE-CURVE GUARD: the board's PVC does not byte-match the release-active curve engine/rl_after/pvc_curve_v2.json (RL_PVC2, curve_md5 1c3b22d1) — provenance ambiguous (the S5 failure). HALT-AND-ASK.)
+  [PASS] CASE3a unknown adopted_pathway fires the unknown-pathway halt  (rc=2 halt=UNKNOWN curve-selection: adopted_pathway 'RL_BOGUS' is not a known pathway ['RL_PVC2', 'RL_PVCADOPT'] — refusing to guess (HALT-AND-ASK))
+  [PASS] CASE3b wrong curve_source_store_md5 fires the live curve-store-binding halt  (rc=2 halt=CONFLICTING curve-selection: pvc_curve_v2.json binds store f1e8c9fe != release store deadbeef (HALT-AND-ASK))
+  [PASS] CASE3c missing contract fires the contract-missing halt  (rc=2 halt=release pick-curve contract missing: /tmp/clubprov_ds5s4gk1/nope.json (HALT-AND-ASK on provenance))
+  [PASS] CASE3d engine curve file md5 drift fires the file-md5 CURVE DRIFT halt  (rc=2 halt=CURVE DRIFT: pvc_curve_v2.json md5 a744491e != contract 031ec76e — the engine curve file changed under the contract (HALT-AND-ASK))
+  [PASS] CASE4 board-id mismatch fires the ring-fence board-id halt  (rc=2 halt=board id mismatch — bundle aaaaaaaa != current release board d3fb6b48 (regenerate board_view))
+  [PASS] CASE5a board-stamp asOfRound mismatch vs expected_boot fires the live round halt  (rc=2 halt=board round mismatch — bundle R23 != current release R24)
+  [PASS] CASE5b missing expected_boot.as_of_round fires manifest-incomplete halt  (rc=2 halt=release manifest lacks current weekly identity fields: ['as_of_round'])
+  [PASS] CASE7 release_version mismatch fires its live halt  (rc=2 halt=CONFLICTING curve-selection: contract release_version v0-tampered != release v2.11-final-rc1-PROVISIONAL (HALT-AND-ASK))
+  [PASS] CASE7 pick_curve_curve_md5 mismatch fires its live halt  (rc=2 halt=CURVE DRIFT: pvc_curve_v2.json curve_md5 1c3b22d1 != contract deadbeef (HALT-AND-ASK))
+  [PASS] CASE7 numeraire_pin1 mismatch fires its live halt  (rc=2 halt=contract numeraire pin1 != 3000 — numeraire drift; refusing to resolve a drifted ruler)
+  [PASS] CASE7 board source-store mismatch fires its live halt  (rc=2 halt=board store mismatch — bundle bbbbbbbb != current release store a367386a)
+  [PASS] CASE7 missing pathway fires contract-incomplete halt  (rc=2 halt=release pick-curve contract is incomplete (missing ['adopted_pathway']) — cannot resolve the release-active curve (HALT-AND-ASK))
+  [PASS] CASE8 curve self-declared gate mismatch fires the gate/pathway halt  (rc=2 halt=CONFLICTING curve-selection: pvc_curve_v2.json self-declares gate 'RL_PVCADOPT' != adopted pathway 'RL_PVC2' — refusing to price on a curve from the wrong pathway (HALT-AND-ASK))
+  [PASS] CASE9 engine curve top-level pin != 3000 fires the engine-curve numeraire halt  (rc=2 halt=release-active curve pvc_curve_v2.json pin != 3000 — numeraire drift (HALT-AND-ASK))
+  [PASS] CASE10 board PVC pick-1 != 3000 fires the PVC pick-1 numeraire halt (byte-match cleared first)  (rc=2 halt=PVC pick1 != 3000 — numeraire drift; refusing to price picks against a drifted ruler)
+  [PASS] CASE11 board PVC non-monotone fires the monotonicity halt (byte-match + pick1 cleared first)  (rc=2 halt=PVC is not monotone non-increasing — not a valid pick ruler)
+
+  ------------------------------------------------------------------
+  36/36 passed
+
+[exit 0]

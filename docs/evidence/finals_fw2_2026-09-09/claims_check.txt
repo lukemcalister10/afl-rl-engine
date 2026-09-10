@@ -1,0 +1,40 @@
+====================================================================================================
+CLAIMS CHECK — FINALS WEEK 2 APPLIED AS A STORE EDIT — 183 players at eight clubs gain one game and a re-averaged 2026 season row. Same lane as FW1, second week: the calendar is not touched, because a finals week was never a calendar event — the store has always carried finals inside the season row (Bontempelli 2016 reads 26 games, 22 home-and-away plus four finals). This is the first finals week landed through the written runbook rather than discovered on the way.
+  act type   : store-edit
+  date       : 2026-09-09   base: afde0b52e8aa2981a4749f0bd7bd0cee4ff6a9cd
+  owner word : The owner sent scores/FW2.csv on 2026-09-09 with one disambiguation — "Bailey Williams is the Western Bulldogs one" — which is the whole of the instruction: the lane itself was ruled at FW1 and is not re-opened here. That ruling stands: "We're literally just updating player averages and game counts." And on scope: "As long as it doesn't impact the movers list still being accurate as of each round since round 14." Plus the calendar law, 2026-09-02: "The calendar can never get above 1. It gets there at r24 and holds."
+  tree       : /home/user/afl-rl-engine
+====================================================================================================
+  ACTIVATION  day0_rebase                              off
+
+  OK   file_md5     the published board of record                  md5 d3fb6b4842ddd3bea57fbacc7a94e4d7 (claimed d3fb6b4842ddd3bea57fbacc7a94e4d7)
+  OK   file_md5     the store                                      md5 a367386a6884bb6b10762fa30183bc47 (claimed a367386a6884bb6b10762fa30183bc47)
+  OK   json_field   expected_boot.board                            board = 'd3fb6b4842ddd3bea57fbacc7a94e4d7' (claimed 'd3fb6b4842ddd3bea57fbacc7a94e4d7')
+  OK   json_field   expected_boot.engine_head                      engine_head = '17243c16277842e0a30470cfbdb5b196' (claimed '17243c16277842e0a30470cfbdb5b196')
+  OK   json_field   the round, HELD by a store edit                as_of_round = 24 (claimed 24)
+  OK   json_field   the release seal                               contract_sha256 = '6a30db4249ab6ed780389ce7f0fed3d0f781d07c5c6a57348954a1b155e67ede' (claimed '6a30db4249ab6ed780389ce7f0fed3d0f781d07c5c6a57348954a1b155e67ede')
+  OK   board_count  board rows                                     active.rows = 804 (claimed 804)
+  OK   gate         release_manifest_check                         exit 0 (expected PASS)
+  OK   gate         release_contract_check                         exit 0 (expected PASS)
+  OK   gate         acceptance_runner                              exit 0 (expected PASS)
+  OK   gate         movers_transition                              exit 0 (expected PASS)
+  OK   gate         finals_report                                  exit 0 (expected PASS)
+  OK   gate         movers_ui                                      exit 0 (expected PASS)
+  OK   gate         ui_222_items                                   exit 0 (expected PASS)
+  OK   gate         ui_defects_2026_08_21                          exit 0 (expected PASS)
+  OK   gate         universe                                       exit 0 (expected PASS)
+  OK   gate         draftday                                       exit 0 (expected PASS)
+  OK   gate         pickvalue                                      exit 0 (expected PASS)
+  OK   gate         release_seam                                   exit 0 (expected PASS)
+  OK   gate         adoption_gate                                  exit 0 (expected PASS)
+  OK   gate         club_totals_parity                             exit 0 (expected PASS)
+  OK   gate         counting_rule                                  exit 0 (expected PASS)
+  OK   gate         ownership_sidecar                              exit 0 (expected PASS)
+  OK   gate         ownership_single_source                        exit 0 (expected PASS)
+  OK   gate         responsive_layout                              exit 0 (expected PASS)
+  OK   gate         extract_seam                                   exit 0 (expected PASS)
+  OK   gate         club_curve_provenance                          exit 0 (expected PASS)
+  OK   unmoved      BYTE-UNMOVED by this store-edit                md5 226b73ff64e6a6967103bfee788848a0 (claimed 226b73ff64e6a6967103bfee788848a0)
+
+CLAIMS: 28 of 28 verified against the tree; 0 shape problem(s)
+VERDICT: GREEN — every claim recomputed and held

@@ -1,0 +1,52 @@
+$ node ui/tests/club_totals_parity.test.js
+
+CLUB TOTALS PARITY — MD.clubTotals vs ingest_inputs.py build_clubs()
+------------------------------------------------------------------------
+  [PASS] MD.clubTotals returns the 16 ranked AFFL clubs
+  [PASS] oracle builds 16 clubs
+  [PASS] every club agrees on every metric AND on the Best-23 selection
+  [PASS] the Free-Agents pool is not ranked as a club
+  [PASS] Best-23 selects exactly 23 distinct players per club
+  [PASS] every club's Best-23 legally fills all 18 positional slots from the ELIGIBILITIES column
+  [PASS] NON-VACUITY: taking the top 23 by raw value is NOT slot-legal for every club, so legality is a real constraint  (9 of 16 clubs would be illegal)
+  [PASS] no club's Best-23 exceeds the top-23 upper bound
+  [PASS] where the top-23 is already legal, Best-23 equals that provable optimum  (7 of 7 such clubs)
+  [PASS] axis artifact resolved for Adelaide Crows — the modelling axis fills 16/18, the eligibility axis fills 18/18
+  [PASS] axis artifact resolved for Hawthorn Hawks — the modelling axis fills 17/18, the eligibility axis fills 18/18
+  [PASS] overall == (players - excluded) + (picks - cut) + phantom (56-asset conservation), and player == best23 + nonBest23
+  [PASS] they still agree after a player's value is moved
+  [PASS] moving a player's value CHANGES the computed totals (not a constant)
+  [PASS] a deliberately wrong Best-23 greedy is REJECTED (the check can fail)
+  [PASS] corrupting every baked club total in club_valuation.js changes NOTHING — the browser computes the player side from the board and never reads the baked block
+  [PASS] …and the computation is non-empty, so that assertion is not passing over an empty club list
+
+THE PICKS PIN (v827) — a bundle that is not this tree's must REFUSE, not whisper
+------------------------------------------------------------------------
+  [PASS] MATCHING STAMP: the shipped bundle authenticates against the loaded board + store
+  [PASS] MATCHING STAMP: picks are AVAILABLE
+  [PASS] MATCHING STAMP: picksSource carries the bundle's IDENTITY fields (board + store), not a wall clock
+  [PASS] MATCHING STAMP: picksSource carries NO `generated` timestamp — the field was dropped so the bundle could be byte-proved and become a landing carrier (writer 6)
+  [PASS] MATCHING STAMP: the seam reports no halt
+  [PASS] MATCHING STAMP: real pick figures reach the readers (non-vacuity — this is not a guard that always refuses)
+  [PASS] MISMATCHED STORE: the bundle is REFUSED
+  [PASS] MISMATCHED STORE: the reason NAMES BOTH identities — the one the bundle was generated from and the one the app is loaded on
+  [PASS] MISMATCHED STORE: picks go to the HALTED/unavailable path
+  [PASS] MISMATCHED STORE: the surface is handed the SAME reason (clubs.js prints it instead of 'the club-valuation bundle is absent')
+  [PASS] MISMATCHED STORE: no stale pick value survives into any club total (the readers show n/a, never 0-as-a-figure — clubs.js / pocket.js / board.js)
+  [PASS] MISMATCHED STORE: the SEAM refuses too, so the board's picks-included overlay disables with the reason on hover
+  [PASS] MISMATCHED STORE: MD.seam.picksFor yields nothing — the held-picks panel and the club headers cannot print a stale price
+  [PASS] MISMATCHED STORE: the player side is UNAFFECTED — 16 clubs, every player total identical (the refusal is scoped to the picks, not a collapse)
+  [PASS] MISMATCHED BOARD: the bundle is REFUSED
+  [PASS] MISMATCHED BOARD: the reason NAMES BOTH identities — the one the bundle was generated from and the one the app is loaded on
+  [PASS] MISMATCHED BOARD: picks go to the HALTED/unavailable path
+  [PASS] MISMATCHED BOARD: the surface is handed the SAME reason (clubs.js prints it instead of 'the club-valuation bundle is absent')
+  [PASS] MISMATCHED BOARD: no stale pick value survives into any club total (the readers show n/a, never 0-as-a-figure — clubs.js / pocket.js / board.js)
+  [PASS] MISMATCHED BOARD: the SEAM refuses too, so the board's picks-included overlay disables with the reason on hover
+  [PASS] MISMATCHED BOARD: MD.seam.picksFor yields nothing — the held-picks panel and the club headers cannot print a stale price
+  [PASS] MISMATCHED BOARD: the player side is UNAFFECTED — 16 clubs, every player total identical (the refusal is scoped to the picks, not a collapse)
+  [PASS] A BUNDLE WITH NO board/store STAMP is refused — it cannot be told apart from a stale one
+  [PASS] AN INGEST HALT still refuses, and still carries the ingest's OWN reason (the pin did not swallow it)
+------------------------------------------------------------------------
+41/41 passed
+
+[exit 0]

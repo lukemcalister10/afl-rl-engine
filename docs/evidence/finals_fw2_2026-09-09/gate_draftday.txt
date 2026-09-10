@@ -1,0 +1,190 @@
+$ node ui/tests/draftday.test.js
+
+DRAFT DAY TESTS
+  ----------------------------------------------------------------------
+
+  the maturity rule
+  [PASS] a class drafted in 2020 has had six seasons by 2026
+  [PASS] a class with exactly the threshold's worth of seasons counts
+  [PASS] a class one season short does not
+  [PASS] last year's class is not judged at all
+  [PASS] the threshold is the first lag reaching 99% of eventual debutants
+  [PASS] a different coverage bar moves the threshold, so it is genuinely derived
+  [PASS] no evidence yields no invented threshold
+
+  selection and the partition law
+  [PASS] an exact pick selects only that ordinal  (got ["a","b"])
+  [PASS] and reports the ordinal window it actually used  (got [10,10])
+  [PASS] a neighbourhood widens the window  (got ["a","b","c"])
+  [PASS] and the still-running classes inside that window are HELD OUT, not dropped  (got ["d","e"])
+  [PASS] the two halves account for EVERY row in the window — the selection partitions, it never loses one
+  [PASS] with every class in, the young rows join the set rather than appearing twice  (got ["a","b","c","d","e"])
+  [PASS] and nothing is held out, so the two modes cannot double-count
+  [PASS] a position filter keys on the DRAFTED position  (got ["f"])
+  [PASS] a filter with no matching career yields an EMPTY set — nothing is pooled in to fill it
+
+  the rates, and what they are rates OF
+  [PASS] n is the size of the set the figures were computed on
+  [PASS] never-played and played PARTITION the set exactly
+  [PASS] …and each side is the count it claims
+  [PASS] the games milestones are counts over that same n, not over the players who played
+  [PASS] the best-season figure reports how many rows carry one, because not every career does
+  [PASS] with no board values injected there is no survivorship figure at all — it is an argument, not a hidden read
+  [PASS] when board values ARE injected only the joined rows count, and the median is over those
+  [PASS] …and injecting them does not change the denominator of any other figure
+  [PASS] an empty set has no quantile, and does not return 0
+  [PASS] one observation is its own median
+  [PASS] an even count interpolates between the middle two
+  [PASS] and the quartiles interpolate the same way
+  [PASS] the ends are the ends
+  [PASS] no hit rate, bust flag or grade is computed anywhere in the view — a threshold is a ruling, and none exists
+
+  the pin (a mirror that does not name its identity is not a mirror)
+  [PASS] the same store passes
+  [PASS] a different store is refused
+  [PASS] …and the refusal says what to do about it, naming both stores
+  [PASS] the board's eight-character abbreviation is accepted as a prefix of the full digest
+  [PASS] …but only when it actually is one
+  [PASS] an absent record is refused, not treated as empty
+  [PASS] a record that names NO store is refused — it cannot be told apart from a stale one
+
+  the price, read off the adopted curve
+  [PASS] one ordinal reads that ordinal  (got {"lo":3000,"hi":3000,"n":1})
+  [PASS] a window reads the range across it  (got {"lo":2300,"hi":3000,"n":3})
+  [PASS] ordinals the curve does not carry yield NOTHING, never an extrapolation
+  [PASS] a partly-covered window reports only the ordinals that exist, and says how many they were  (got {"lo":2300,"hi":2600,"n":2})
+  [PASS] no curve, no price
+
+  the shipped record (ui/data_aux/draft_outcomes.js)
+  [PASS] the record is committed and loads
+  [PASS] the stamp's row count is the number of rows it ships
+  [PASS] every row carries a key, an ordinal and a class — there are no half-rows
+  [PASS] a debut lag exists exactly when the player played, and never otherwise
+  [PASS] no career begins before its own draft
+  [PASS] the stamp's never-played count is the number of gameless rows it actually ships
+  [PASS] the record holds EVERY national-draft selection in the store less the 2 the owner struck out, and no others  (1570 in the store, 2 excluded, 1568 shipped)
+  [PASS] and the men who are missing are EXACTLY the men the ruling names — nobody has been quietly filtered out alongside them
+  [PASS] and the never-played count matches a recount off the store's SEASON ROWS  (226)
+  [PASS] every shipped career-games figure is the sum of that player's own seasons
+  [PASS] the store's top-level `games` scalar DOES still disagree with the season rows for 395 players — this test exists because reading it instead was the bug, and it goes red if a future store makes the two agree, at which point this comment is what to read
+  [PASS] busts ARE in the population — without this every rate on the page is survivorship fiction
+  [PASS] the stamped maturity threshold is re-derivable from the stamped lag table  (4 seasons)
+  [PASS] the lag table is a cumulative distribution: non-decreasing, and it reaches the bar
+  [PASS] its own n is the sum of its buckets
+  [PASS] the stamp's class count is the number of classes present
+  [PASS] EVERY class starts at pick 1 — no class is a top-of-the-draft-only sample
+  [PASS] and no ordinal is duplicated inside a class
+  [PASS] on the shipped record too, the selection partitions pick 1 exactly
+  [PASS] everything held out is held out for being young, and for no other reason
+  [PASS] and its rates are coherent: the milestones cannot exceed the men who played
+  [PASS] nor can more careers carry a best season than played a game
+
+  the BAKED bars (rl_model REPL / PEAK) and the midfield yardstick
+  [PASS] the bar is REPL_BAR — the literal 80.1 LESS the 3-point drop the pricing core applies
+  [PASS] …and the page can tell that it is the effective bar
+  [PASS] a bundle predating REPL_BAR falls back to the literal AND reports that it is not effective, so the page says so rather than implying the drop was applied
+  [PASS] a position the board does not publish a bar for reads null — never a stand-in number
+  [PASS] no board, no bar — and no throw
+  [PASS] VOR averages over EVERY selection with busts at zero, against the EFFECTIVE bar of 77.1
+  [PASS] …so a one-star-in-five position is barely startable while a five-useful one always is
+  [PASS] his case 1 — a MID-drafted player scoring 95 while playing SF is measured against SF's 67.9, not MID's 77.1, and the +27.1 is credited to the MIDFIELD row
+  [PASS] …and he clears the bar he was actually playing against
+  [PASS] his case 2 — a KPF-drafted player scoring 75 while playing MID is BELOW MID's 77.1 and contributes nothing, even though his own drafted KPF bar of 63.8 sits well under his average
+  [PASS] …where measuring him against his DRAFTED bar would have scored him +11.2 — the exact error the ruling exists to prevent
+  [PASS] a dual season takes the LOWER of the two bars (SF over MID)
+  [PASS] …and again where the tall side is the cheaper one
+  [PASS] a single-position season is just its own bar
+  [PASS] an unresolvable position yields NO bar, and the season is skipped rather than measured against the drafted position's — missing evidence is not evidence of nothing
+  [PASS] the frame reports how many careers included a season outside the drafted position
+  [PASS] the star line is READ off the board, per position
+  [PASS] no declaration, no star line
+  [PASS] a MID-drafted player scoring 95 while playing SF STARS — 95 clears SF's line of 92 — and the star is credited to the MIDFIELD row, not to the forwards
+  [PASS] …while the same 95 played as a midfielder is NOT a star, because MID's line is 105. The same score is a star in one role and ordinary in another, which is the entire point of per-position lines
+  [PASS] one star season is enough — a career is starred by its best year, not by its mean
+  [PASS] bust is the share who never produced a measurable season — one of three here
+  [PASS] …and it is NOT the complement of the clear rate: the 50-scorer played and did not clear, so he is neither a bust nor a clear
+  [PASS] a dual season takes the LOWER star line as well as the lower floor, so both describe one job
+  [PASS] with no star line declared the frame reports null — the column disappears, it does not default
+  [PASS] no baked bar, no frame — the page shows nothing rather than measuring against something invented
+  [PASS] and no careers, no frame
+  [PASS] a player exactly at the bar counts as startable and adds ZERO value over it
+  [PASS] a value on the curve reads its own pick  (got {"p":10,"beyond":null,"vor":15})
+  [PASS] and a value between two picks reads the nearer one
+  [PASS] a value richer than the best midfielder says it is ABOVE the scale, not 'mid 0'
+  [PASS] and one poorer than the deepest says it is BELOW it, rather than being clamped in silence
+  [PASS] no curve or no value yields no equivalence
+  [PASS] a zero-width window is exactly the ordinal
+  [PASS] …and widening it pools the neighbours
+  [PASS] …and never crosses positions
+  [PASS] with every class in, the still-running rows join the window too
+  [PASS] the shipped bundle publishes the baked REPL and PEAK
+  [PASS] …for all six positions
+  [PASS] the declared model config publishes RL_REPL_DROP under `vars`
+  [PASS] the bundle's drop IS the declared one — not the code default, not a typed 3
+  [PASS] and REPL_BAR is exactly REPL minus that drop at every position
+  [PASS] …and the page measures against REPL_BAR, never the raw literal
+  [PASS] rl_model.py declares REPL as a literal this test can read
+  [PASS] and the SHIPPED bars are byte-equal to the engine's own REPL — the app holds no second copy
+  [PASS] PEAK sits ABOVE the EFFECTIVE bar at every position — the earlier 'ceiling below the floor' reading compared it against the raw literal and was wrong
+  [PASS] …but the elite onset (0.97 x PEAK, rl_model.py:1170) collapses onto the bar at SF, SD, which is why no star line is drawn from it without a ruling
+  [PASS] the owner's star declaration is committed
+  [PASS] …and it carries his own words, so a ruled constant cannot be told apart from a guess
+  [PASS] …and the bundle publishes exactly those figures
+  [PASS] every star line sits above its own replacement bar — unlike PEAK, which does not
+  [PASS] the shipped record supports a midfield yardstick across the curve
+  [PASS] …and it descends with the ordinal (within noise) — a yardstick that rose late is not a ruler
+  [PASS] all six positions price against the yardstick at pick 10
+  [PASS] the outcome generator derives NO replacement level and NO star bar — it emits career facts only, and the measuring happens where the baked bars live
+  [PASS] …and the shipped record carries no such field either
+
+  the peak threshold — a debut rule must never gate a peak question again
+  [PASS] a class with eleven seasons has had a full run
+  [PASS] …and one with ten has not
+  [PASS] a minimum of zero admits every class
+  [PASS] the threshold is the lag by which the asked-for share of first-star seasons has landed — 90% needs ten seasons here, 50% needs four
+  [PASS] …measured over the careers that actually starred
+  [PASS] no star seasons to measure yields NO threshold — the page falls back and says so rather than inventing a number
+  [PASS] and a class too young to have finished cannot teach the threshold it would bias
+  [PASS] on the shipped record the PEAK threshold (10 seasons) is longer than the DEBUT threshold (4) — a peak takes longer to arrive than a debut, and gating one with the other is the defect this block prevents
+  [PASS] the loose population understates the star rate at BOTH ends of the draft
+  [PASS] …and it understates LATE picks proportionally more than early ones, which is why the default is the fully-run population: the bias runs in the direction of the trade-down decision
+
+  the house's ruled parameters, read from their source
+  [PASS] the house declares YR_LO = 2004 (the 2003 class has no observable year one)
+  [PASS] the house declares QUAL_GAMES = 6 as its establishment threshold
+  [PASS] the house declares MIN_STRATUM = 20
+  [PASS] the board's thin-sample bar IS the house's minimum stratum, not a number this page picked
+  [PASS] the record's establishment threshold IS the house's QUAL_GAMES, so a season counts here exactly when it counts for the curve that taught the prices
+  [PASS] and the board's class floor IS the house's YR_LO
+  [PASS] the owner's exclusion declaration exists at docs/inputs/OWNER_BUST_EXCLUSION.json
+  [PASS] and it names the two force-majeure pick-1 KPF busts of ENGINE_PRIMER §4.5
+  [PASS] the generator READS that declaration and keeps no copy of its own — one source, so the list cannot be changed in one place and honoured in another
+  [PASS] the v0 lens basis artifact is present — it is what teaches the shipped v0 surface
+  [PASS]   paddy-mccartin is absent from the v0 lens basis, so the v0 KPF surface does not learn from him
+  [PASS]   thomas-boyd is absent from the v0 lens basis, so the v0 KPF surface does not learn from him
+  [PASS]   joshua-kelly sits at pick 1 in the v0 basis — the same one-pick slide this board applies
+  [PASS]   christian-petracca sits at pick 1 in the v0 basis — the same one-pick slide this board applies
+  [PASS]   marcus-bontempelli sits at pick 3 in the v0 basis — the same one-pick slide this board applies
+  [PASS] the engine declares BUST_EXCLUDE_KEYS — the live pick-value fit applies the ruling
+  [PASS] and the engine's list is EXACTLY the owner's declaration — one ruling, two files, bound here so they cannot drift
+  [PASS]   and it actually SETS the flag rather than only naming the men — the defect being closed was a flag nothing set
+  [PASS]   and RECORDS what it set the flag on, so this test can read the engine's own answer rather than re-deriving it (the re-implemented-assertion class)
+  [PASS]   and HALTS on a PARTIAL exclusion — one man's draft sliding and the other's not is incoherent under any store — while allowing zero, which is what a legacy scratch store legitimately is
+  [PASS]   the live store carries paddy-mccartin
+  [PASS]   and he is inside the cohort the curve builders read, so the engine's flag reaches him
+  [PASS]   the live store carries thomas-boyd
+  [PASS]   and he is inside the cohort the curve builders read, so the engine's flag reaches him
+  [PASS]   paddy-mccartin is gone from the record entirely — not zeroed, not flagged: not picked
+  [PASS]   thomas-boyd is gone from the record entirely — not zeroed, not flagged: not picked
+  [PASS] the bundle DECLARES who was struck out and from where
+  [PASS] and how many selections slid up to close the holes
+  [PASS]   the 2013 class still starts at pick 1 — no hole where Thomas Boyd stood
+  [PASS]   and the 2013 slide collided with nothing
+  [PASS]   the 2014 class still starts at pick 1 — no hole where Paddy McCartin stood
+  [PASS]   and the 2014 slide collided with nothing
+  [PASS] picks 1 and 2 still carry one observation per class — the slide closed the holes rather than shrinking the denominators
+
+  ----------------------------------------------------------------------
+DRAFT DAY TESTS: ALL 163 PASS
+
+[exit 0]

@@ -17,6 +17,7 @@
      - the Club-valuation and held-pick views render without HALT (and without document overflow).
    1440 additionally documents that the desktop layout is preserved. */
 import fs from 'fs';
+import os from 'os';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
@@ -34,7 +35,17 @@ const { chromium } = require(process.env.PLAYWRIGHT_CORE || 'playwright-core');
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = process.env.RL_REPO || path.resolve(__dirname, '..', '..');
 const URL = 'file://' + path.join(ROOT, 'ui', 'index.html');
-const OUT = path.join(ROOT, 'session_2026-07-20', 'ui_release_seam', 'evidence');
+// A GATE MUST NOT WRITE INTO THE TREE IT IS GATING. This wrote its screenshots straight into the
+// tracked July evidence dir, and the screenshots RENDER THE BOARD — so every act that moves a value
+// changes them, the tree ends up carrying changes the landing did not make, and the commit step
+// refuses ("declare them as carriers or take them out of the tree"). That is what stopped FW2's
+// flight 10 at step 11 of 11, with the gates and the claims already green.
+//
+// The committed PNGs are evidence of the July act and are not meant to track the live board, so the
+// default is now a scratch dir. Set RL_UI_EVIDENCE_DIR to refresh a real evidence directory on
+// purpose — which is the only way that should ever happen.
+const OUT = process.env.RL_UI_EVIDENCE_DIR ||
+  path.join(os.tmpdir(), 'rl_ui_responsive_' + process.pid);
 fs.mkdirSync(OUT, { recursive: true });
 
 function chromePath() {

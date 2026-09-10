@@ -2,8 +2,8 @@
   "abort": {
     "byte_exact": true,
     "commits_rewound": [],
-    "error": "gate universe did not pass (exit 1):\n  [PASS] the mode round-trips through storage\n  [PASS] ...and back\n  [PASS] NO model change is in the current-model universe (0 found)\n  [PASS] ...and the all-in universe DOES carry them \u2014 the switch is not vacuous\n  [PASS] the two universes are different point sets\n  [PASS] both universes are non-empty enough to compare across\n  [PASS] the current-model universe reaches back to R14\n  [PASS] ...and forward to the newest stored point (fw2-finals-week-2-9-9)\n  [PASS] no round's football appears twice in the current-model universe (0 duplicates)\n  [PASS] an out-of-round column DOES sit at the same after_round as a round point \u2014 which is why the check above is not a bare collision count\n  [PASS] the retro tail and the live head are comparable across the board (804 players)\n  [FAIL] ...and the handover carries real football, not a copy (0 of 804 moved)\n  [PASS] a localStorage that throws does not break the universe (it falls back in-page)\n  ------------------------------------------------------------\nUNIVERSE TESTS: 1 FAIL / 13\n\n\nPER-CHECK RAW OUTPUT: /home/user/afl-rl-engine/docs/evidence/finals_fw2_2026-09-09/gate_universe.txt",
-    "failed_step": "gates",
+    "error": "THE TREE CARRIES CHANGES THIS LANDING DID NOT MAKE, and an explicit-path commit will not sweep them up:\n    session_2026-07-20/ui_release_seam/evidence/board_390_fixed.png\n    session_2026-07-20/ui_release_seam/evidence/board_720_fixed.png\n    session_2026-07-20/ui_release_seam/evidence/clubs_390_fixed.png\n    session_2026-07-20/ui_release_seam/evidence/heldpicks_390_fixed.png\n    session_2026-07-20/ui_release_seam/evidence/responsive_assertions.json\nDeclare them as carriers or take them out of the tree.",
+    "failed_step": "commit",
     "restore_point": {
       "data/expected_boot.json": "4f24b38068ed51b4cc5764ab2f1dab00",
       "data/release_contract.json": "268fa566c16799c4e123e4c00c3f1211",
@@ -279,7 +279,7 @@
     ]
   },
   "commits": [],
-  "error": "gate universe did not pass (exit 1):\n  [PASS] the mode round-trips through storage\n  [PASS] ...and back\n  [PASS] NO model change is in the current-model universe (0 found)\n  [PASS] ...and the all-in universe DOES carry them \u2014 the switch is not vacuous\n  [PASS] the two universes are different point sets\n  [PASS] both universes are non-empty enough to compare across\n  [PASS] the current-model universe reaches back to R14\n  [PASS] ...and forward to the newest stored point (fw2-finals-week-2-9-9)\n  [PASS] no round's football appears twice in the current-model universe (0 duplicates)\n  [PASS] an out-of-round column DOES sit at the same after_round as a round point \u2014 which is why the check above is not a bare collision count\n  [PASS] the retro tail and the live head are comparable across the board (804 players)\n  [FAIL] ...and the handover carries real football, not a copy (0 of 804 moved)\n  [PASS] a localStorage that throws does not break the universe (it falls back in-page)\n  ------------------------------------------------------------\nUNIVERSE TESTS: 1 FAIL / 13\n\n\nPER-CHECK RAW OUTPUT: /home/user/afl-rl-engine/docs/evidence/finals_fw2_2026-09-09/gate_universe.txt",
+  "error": "THE TREE CARRIES CHANGES THIS LANDING DID NOT MAKE, and an explicit-path commit will not sweep them up:\n    session_2026-07-20/ui_release_seam/evidence/board_390_fixed.png\n    session_2026-07-20/ui_release_seam/evidence/board_720_fixed.png\n    session_2026-07-20/ui_release_seam/evidence/clubs_390_fixed.png\n    session_2026-07-20/ui_release_seam/evidence/heldpicks_390_fixed.png\n    session_2026-07-20/ui_release_seam/evidence/responsive_assertions.json\nDeclare them as carriers or take them out of the tree.",
   "facts": {
     "base": {
       "carriers": {
@@ -369,7 +369,7 @@
         "ui/data_aux/draft_outcomes.js": "4537576e98ee245072c15bc1a7a0ce2c",
         "ui/data_aux/v0.js": "d8e6429ccb4c525a9072b8b0a644007f"
       },
-      "commit": "e2d60a6b3971cfb6aaba6d04bed7f84776e58001",
+      "commit": "afde0b52e8aa2981a4749f0bd7bd0cee4ff6a9cd",
       "expected_boot": {
         "as_of_round": 24,
         "balanced_board_md5": "c0afa5d869ce0ac490dde4105f6008c9",
@@ -393,7 +393,7 @@
     },
     "build_proofs": {
       "board_built": "d3fb6b4842ddd3bea57fbacc7a94e4d7",
-      "build_elapsed_s": 1222.9,
+      "build_elapsed_s": 1213.7,
       "day0_rebase": "off",
       "edit": {
         "movers": [
@@ -3724,11 +3724,233 @@
       "predicted_board": null,
       "reference_board": null
     },
+    "claims": {
+      "activation": {
+        "day0_rebase": {
+          "_doc": "off by default; the M1b ruling \u2014 automation never re-bases itself green",
+          "state": "off"
+        }
+      },
+      "claims_path": "/home/user/afl-rl-engine/docs/evidence/finals_fw2_2026-09-09/CLAIMS.json",
+      "n_claims": 28,
+      "verified": true
+    },
     "contract": {
       "check": "PASS",
       "seal_after": "6dcc7713f682170bdc171e3a2e917717e46427aaa33f99428cbae84815fdf90a",
       "seal_before": "3e334b3d5e60705de80d9357520419112882eb4dc8e7c861e20e93bd488f28cd",
       "trailing_newline_in_committed_file": false
+    },
+    "gates": {
+      "all_pass": true,
+      "gates": [
+        {
+          "argv": [
+            "python3",
+            "release_manifest_check.py"
+          ],
+          "elapsed_s": 0.1,
+          "exit": 0,
+          "name": "release_manifest_check",
+          "ok": true
+        },
+        {
+          "argv": [
+            "python3",
+            "release_contract.py",
+            "check"
+          ],
+          "elapsed_s": 0.1,
+          "exit": 0,
+          "name": "release_contract_check",
+          "ok": true
+        },
+        {
+          "argv": [
+            "python3",
+            "-m",
+            "acceptance.runner",
+            "--profile",
+            "in-transaction",
+            "--evidence",
+            "/home/user/afl-rl-engine/docs/evidence/finals_fw2_2026-09-09/gate_acceptance_runner_evidence"
+          ],
+          "elapsed_s": 11.9,
+          "exit": 0,
+          "name": "acceptance_runner",
+          "ok": true
+        },
+        {
+          "argv": [
+            "python3",
+            "engine/rl_after/ingestion/test_movers_transition.py"
+          ],
+          "elapsed_s": 2.4,
+          "exit": 0,
+          "name": "movers_transition",
+          "ok": true
+        },
+        {
+          "argv": [
+            "python3",
+            "engine/rl_after/ingestion/test_finals_report.py"
+          ],
+          "elapsed_s": 0.6,
+          "exit": 0,
+          "name": "finals_report",
+          "ok": true
+        },
+        {
+          "argv": [
+            "node",
+            "ui/tests/movers.test.js"
+          ],
+          "elapsed_s": 0.8,
+          "exit": 0,
+          "name": "movers_ui",
+          "ok": true
+        },
+        {
+          "argv": [
+            "node",
+            "ui/tests/ui_222_items.test.mjs"
+          ],
+          "elapsed_s": 13.3,
+          "exit": 0,
+          "name": "ui_222_items",
+          "ok": true
+        },
+        {
+          "argv": [
+            "node",
+            "ui/tests/ui_defects_2026-08-21.test.js"
+          ],
+          "elapsed_s": 0.5,
+          "exit": 0,
+          "name": "ui_defects_2026_08_21",
+          "ok": true
+        },
+        {
+          "argv": [
+            "node",
+            "ui/tests/universe.test.js"
+          ],
+          "elapsed_s": 0.3,
+          "exit": 0,
+          "name": "universe",
+          "ok": true
+        },
+        {
+          "argv": [
+            "node",
+            "ui/tests/draftday.test.js"
+          ],
+          "elapsed_s": 0.2,
+          "exit": 0,
+          "name": "draftday",
+          "ok": true
+        },
+        {
+          "argv": [
+            "node",
+            "ui/tests/pickvalue.test.js"
+          ],
+          "elapsed_s": 0.2,
+          "exit": 0,
+          "name": "pickvalue",
+          "ok": true
+        },
+        {
+          "argv": [
+            "node",
+            "ui/tests/release_seam.test.js"
+          ],
+          "elapsed_s": 0.1,
+          "exit": 0,
+          "name": "release_seam",
+          "ok": true
+        },
+        {
+          "argv": [
+            "node",
+            "ui/tests/adoption_gate.test.js"
+          ],
+          "elapsed_s": 0.1,
+          "exit": 0,
+          "name": "adoption_gate",
+          "ok": true
+        },
+        {
+          "argv": [
+            "node",
+            "ui/tests/club_totals_parity.test.js"
+          ],
+          "elapsed_s": 0.4,
+          "exit": 0,
+          "name": "club_totals_parity",
+          "ok": true
+        },
+        {
+          "argv": [
+            "node",
+            "ui/tests/counting_rule.test.js"
+          ],
+          "elapsed_s": 0.1,
+          "exit": 0,
+          "name": "counting_rule",
+          "ok": true
+        },
+        {
+          "argv": [
+            "node",
+            "ui/tests/ownership_sidecar.test.js"
+          ],
+          "elapsed_s": 0.5,
+          "exit": 0,
+          "name": "ownership_sidecar",
+          "ok": true
+        },
+        {
+          "argv": [
+            "node",
+            "ui/tests/ownership_single_source.test.js"
+          ],
+          "elapsed_s": 0.2,
+          "exit": 0,
+          "name": "ownership_single_source",
+          "ok": true
+        },
+        {
+          "argv": [
+            "node",
+            "ui/tests/responsive_layout.test.mjs"
+          ],
+          "elapsed_s": 18.8,
+          "exit": 0,
+          "name": "responsive_layout",
+          "ok": true
+        },
+        {
+          "argv": [
+            "python3",
+            "ui/tests/extract_seam.test.py"
+          ],
+          "elapsed_s": 0.7,
+          "exit": 0,
+          "name": "extract_seam",
+          "ok": true
+        },
+        {
+          "argv": [
+            "python3",
+            "ui/tests/club_curve_provenance.test.py"
+          ],
+          "elapsed_s": 4.9,
+          "exit": 0,
+          "name": "club_curve_provenance",
+          "ok": true
+        }
+      ]
     },
     "lineage": {
       "column": {
@@ -3786,10 +4008,10 @@
       "unmoved_checked": 6
     },
     "preflight": {
-      "base_commit": "e2d60a6b3971cfb6aaba6d04bed7f84776e58001",
+      "base_commit": "afde0b52e8aa2981a4749f0bd7bd0cee4ff6a9cd",
       "board_before": "b005096b5e78014425922cae3f28f6c9",
       "carriers_captured": 85,
-      "lock": "land-edit-24831"
+      "lock": "land-edit-25761"
     },
     "sibling": {
       "balanced_board_md5": "784e80ba61fe090830c2d641602d1553",
@@ -3810,9 +4032,9 @@
     },
     "state": {
       "changed": true,
-      "md5": "aceefa50d43837597875d3a6e1049436",
+      "md5": "d05969d04867bf002cb06cb509284bf9",
       "path": "docs/STATE.md",
-      "stamp_commit": "e2d60a6b3971cfb6aaba6d04bed7f84776e58001",
+      "stamp_commit": "afde0b52e8aa2981a4749f0bd7bd0cee4ff6a9cd",
       "written": true
     },
     "store_edit": {
@@ -9330,7 +9552,7 @@
       "draft_outcomes_moved": true,
       "draft_outcomes_pin": "a367386a",
       "embedded_board": "d3fb6b4842ddd3bea57fbacc7a94e4d7",
-      "mirror_md5": "30dd7030603a2c4d2270244da4e0c44c",
+      "mirror_md5": "873797eaaf4b6a400abc31ce15f103b7",
       "mirror_moved": true,
       "model_changes": 17,
       "movers_md5": "309024de472b862adcf71a24fb70aac5",
@@ -9345,21 +9567,21 @@
       "writers": 7
     }
   },
-  "failed_step": "gates",
+  "failed_step": "commit",
   "ok": false,
   "timings": [
     {
-      "seconds": 0.1,
+      "seconds": 0.07,
       "step": "preflight",
       "verdict": "OK"
     },
     {
-      "seconds": 44.13,
+      "seconds": 45.77,
       "step": "store_edit",
       "verdict": "OK"
     },
     {
-      "seconds": 1222.95,
+      "seconds": 1213.81,
       "step": "build_proofs",
       "verdict": "OK"
     },
@@ -9369,7 +9591,7 @@
       "verdict": "OK"
     },
     {
-      "seconds": 0.19,
+      "seconds": 0.24,
       "step": "lineage",
       "verdict": "OK"
     },
@@ -9379,12 +9601,12 @@
       "verdict": "OK"
     },
     {
-      "seconds": 0.8,
+      "seconds": 0.85,
       "step": "sibling",
       "verdict": "OK"
     },
     {
-      "seconds": 595.61,
+      "seconds": 582.7,
       "step": "ui",
       "verdict": "OK"
     },
@@ -9394,8 +9616,18 @@
       "verdict": "OK"
     },
     {
-      "seconds": 29.94,
+      "seconds": 56.24,
       "step": "gates",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 55.56,
+      "step": "claims",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.03,
+      "step": "commit",
       "verdict": "FAIL"
     }
   ]

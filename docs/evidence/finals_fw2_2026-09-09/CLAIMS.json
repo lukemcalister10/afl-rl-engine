@@ -1,0 +1,396 @@
+{
+  "schema_version": 1,
+  "act_type": "store-edit",
+  "act": "FINALS WEEK 2 APPLIED AS A STORE EDIT \u2014 183 players at eight clubs gain one game and a re-averaged 2026 season row. Same lane as FW1, second week: the calendar is not touched, because a finals week was never a calendar event \u2014 the store has always carried finals inside the season row (Bontempelli 2016 reads 26 games, 22 home-and-away plus four finals). This is the first finals week landed through the written runbook rather than discovered on the way.",
+  "date": "2026-09-09",
+  "base_commit": "afde0b52e8aa2981a4749f0bd7bd0cee4ff6a9cd",
+  "owner_word": "The owner sent scores/FW2.csv on 2026-09-09 with one disambiguation \u2014 \"Bailey Williams is the Western Bulldogs one\" \u2014 which is the whole of the instruction: the lane itself was ruled at FW1 and is not re-opened here. That ruling stands: \"We're literally just updating player averages and game counts.\" And on scope: \"As long as it doesn't impact the movers list still being accurate as of each round since round 14.\" Plus the calendar law, 2026-09-02: \"The calendar can never get above 1. It gets there at r24 and holds.\"",
+  "activation": {
+    "day0_rebase": {
+      "state": "off",
+      "_doc": "off by default; the M1b ruling \u2014 automation never re-bases itself green"
+    }
+  },
+  "claims": [
+    {
+      "kind": "file_md5",
+      "path": "data/rl_build/rl_app_data.json",
+      "value": "d3fb6b4842ddd3bea57fbacc7a94e4d7",
+      "label": "the published board of record"
+    },
+    {
+      "kind": "file_md5",
+      "path": "engine/rl_after/rl_model_data.json",
+      "value": "a367386a6884bb6b10762fa30183bc47",
+      "label": "the store"
+    },
+    {
+      "kind": "json_field",
+      "path": "data/expected_boot.json",
+      "field": "board",
+      "value": "d3fb6b4842ddd3bea57fbacc7a94e4d7",
+      "label": "expected_boot.board"
+    },
+    {
+      "kind": "json_field",
+      "path": "data/expected_boot.json",
+      "field": "engine_head",
+      "value": "17243c16277842e0a30470cfbdb5b196",
+      "label": "expected_boot.engine_head"
+    },
+    {
+      "kind": "json_field",
+      "path": "data/expected_boot.json",
+      "field": "as_of_round",
+      "value": 24,
+      "label": "the round, HELD by a store edit"
+    },
+    {
+      "kind": "json_field",
+      "path": "data/release_contract.json",
+      "field": "contract_sha256",
+      "value": "6a30db4249ab6ed780389ce7f0fed3d0f781d07c5c6a57348954a1b155e67ede",
+      "label": "the release seal"
+    },
+    {
+      "kind": "board_count",
+      "path": "data/rl_build/rl_app_data.json",
+      "section": "active",
+      "metric": "rows",
+      "value": 804,
+      "label": "board rows"
+    },
+    {
+      "kind": "gate",
+      "name": "release_manifest_check",
+      "argv": [
+        "python3",
+        "release_manifest_check.py"
+      ],
+      "expect": "PASS",
+      "label": "release_manifest_check",
+      "timeout_s": 1800
+    },
+    {
+      "kind": "gate",
+      "name": "release_contract_check",
+      "argv": [
+        "python3",
+        "release_contract.py",
+        "check"
+      ],
+      "expect": "PASS",
+      "label": "release_contract_check",
+      "timeout_s": 1800
+    },
+    {
+      "kind": "gate",
+      "name": "acceptance_runner",
+      "argv": [
+        "python3",
+        "-m",
+        "acceptance.runner",
+        "--profile",
+        "in-transaction",
+        "--evidence",
+        "/home/user/afl-rl-engine/docs/evidence/finals_fw2_2026-09-09/gate_acceptance_runner_evidence"
+      ],
+      "expect": "PASS",
+      "label": "acceptance_runner",
+      "timeout_s": 1800
+    },
+    {
+      "kind": "gate",
+      "name": "movers_transition",
+      "argv": [
+        "python3",
+        "engine/rl_after/ingestion/test_movers_transition.py"
+      ],
+      "expect": "PASS",
+      "label": "movers_transition",
+      "timeout_s": 1800
+    },
+    {
+      "kind": "gate",
+      "name": "finals_report",
+      "argv": [
+        "python3",
+        "engine/rl_after/ingestion/test_finals_report.py"
+      ],
+      "expect": "PASS",
+      "label": "finals_report",
+      "timeout_s": 1800
+    },
+    {
+      "kind": "gate",
+      "name": "movers_ui",
+      "argv": [
+        "node",
+        "ui/tests/movers.test.js"
+      ],
+      "expect": "PASS",
+      "label": "movers_ui",
+      "timeout_s": 1800
+    },
+    {
+      "kind": "gate",
+      "name": "ui_222_items",
+      "argv": [
+        "node",
+        "ui/tests/ui_222_items.test.mjs"
+      ],
+      "expect": "PASS",
+      "label": "ui_222_items",
+      "timeout_s": 1800
+    },
+    {
+      "kind": "gate",
+      "name": "ui_defects_2026_08_21",
+      "argv": [
+        "node",
+        "ui/tests/ui_defects_2026-08-21.test.js"
+      ],
+      "expect": "PASS",
+      "label": "ui_defects_2026_08_21",
+      "timeout_s": 1800
+    },
+    {
+      "kind": "gate",
+      "name": "universe",
+      "argv": [
+        "node",
+        "ui/tests/universe.test.js"
+      ],
+      "expect": "PASS",
+      "label": "universe",
+      "timeout_s": 1800
+    },
+    {
+      "kind": "gate",
+      "name": "draftday",
+      "argv": [
+        "node",
+        "ui/tests/draftday.test.js"
+      ],
+      "expect": "PASS",
+      "label": "draftday",
+      "timeout_s": 1800
+    },
+    {
+      "kind": "gate",
+      "name": "pickvalue",
+      "argv": [
+        "node",
+        "ui/tests/pickvalue.test.js"
+      ],
+      "expect": "PASS",
+      "label": "pickvalue",
+      "timeout_s": 1800
+    },
+    {
+      "kind": "gate",
+      "name": "release_seam",
+      "argv": [
+        "node",
+        "ui/tests/release_seam.test.js"
+      ],
+      "expect": "PASS",
+      "label": "release_seam",
+      "timeout_s": 1800
+    },
+    {
+      "kind": "gate",
+      "name": "adoption_gate",
+      "argv": [
+        "node",
+        "ui/tests/adoption_gate.test.js"
+      ],
+      "expect": "PASS",
+      "label": "adoption_gate",
+      "timeout_s": 1800
+    },
+    {
+      "kind": "gate",
+      "name": "club_totals_parity",
+      "argv": [
+        "node",
+        "ui/tests/club_totals_parity.test.js"
+      ],
+      "expect": "PASS",
+      "label": "club_totals_parity",
+      "timeout_s": 1800
+    },
+    {
+      "kind": "gate",
+      "name": "counting_rule",
+      "argv": [
+        "node",
+        "ui/tests/counting_rule.test.js"
+      ],
+      "expect": "PASS",
+      "label": "counting_rule",
+      "timeout_s": 1800
+    },
+    {
+      "kind": "gate",
+      "name": "ownership_sidecar",
+      "argv": [
+        "node",
+        "ui/tests/ownership_sidecar.test.js"
+      ],
+      "expect": "PASS",
+      "label": "ownership_sidecar",
+      "timeout_s": 1800
+    },
+    {
+      "kind": "gate",
+      "name": "ownership_single_source",
+      "argv": [
+        "node",
+        "ui/tests/ownership_single_source.test.js"
+      ],
+      "expect": "PASS",
+      "label": "ownership_single_source",
+      "timeout_s": 1800
+    },
+    {
+      "kind": "gate",
+      "name": "responsive_layout",
+      "argv": [
+        "node",
+        "ui/tests/responsive_layout.test.mjs"
+      ],
+      "expect": "PASS",
+      "label": "responsive_layout",
+      "timeout_s": 1800
+    },
+    {
+      "kind": "gate",
+      "name": "extract_seam",
+      "argv": [
+        "python3",
+        "ui/tests/extract_seam.test.py"
+      ],
+      "expect": "PASS",
+      "label": "extract_seam",
+      "timeout_s": 1800
+    },
+    {
+      "kind": "gate",
+      "name": "club_curve_provenance",
+      "argv": [
+        "python3",
+        "ui/tests/club_curve_provenance.test.py"
+      ],
+      "expect": "PASS",
+      "label": "club_curve_provenance",
+      "timeout_s": 1800
+    },
+    {
+      "kind": "unmoved",
+      "path": "data/sheet_pins.json",
+      "value": "226b73ff64e6a6967103bfee788848a0",
+      "label": "BYTE-UNMOVED by this store-edit"
+    }
+  ],
+  "_restore_point": {
+    "data/expected_boot.json": "4f24b38068ed51b4cc5764ab2f1dab00",
+    "data/release_contract.json": "268fa566c16799c4e123e4c00c3f1211",
+    "data/release_lineage.json": "084a2b1c68a4695930ee401af1e716ba",
+    "data/rl_build/rl_app_data.json": "b005096b5e78014425922cae3f28f6c9",
+    "data/rl_build/rl_app_data.json.srcmd5": "72193a0d60b05f5e8f58a4a73e1f0d11",
+    "data/season_state.json": "04e9d68f67ceb062025d677a6eb62b49",
+    "data/sheet_pins.json": "226b73ff64e6a6967103bfee788848a0",
+    "docs/STATE.md": "0f3911b800c5e410086c66c54455f570",
+    "engine/rl_after/ingestion/pos_rank_history.json": "31fbbc9d8aee723d23c294507a98fbb2",
+    "engine/rl_after/ingestion/rank_history.json": "c066753cde2b64dce19d0599f1094835",
+    "engine/rl_after/ingestion/sibling_repin_state.json": "95f42ef7cf52fe5f12fbbfb8071fdf58",
+    "engine/rl_after/ingestion/value_history.json": "14ae937fb1c63ec76141ae804840ed6f",
+    "engine/rl_after/rl_app_data.json": "b005096b5e78014425922cae3f28f6c9",
+    "engine/rl_after/rl_app_data.json.srcmd5": "72193a0d60b05f5e8f58a4a73e1f0d11",
+    "engine/rl_after/rl_model_data.json": "415929d3c9d561cc58bef00ae63432b2",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/accepted_board_06d8af60.json": "81822b2baf9c8270034ac9f1f54995fb",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_113b36f8.json": "666dc8969c5f960ae6bac8c7e66f2a3d",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_1d5c9f7a.json": "0efe6eac94eb68f1c42b681069b7d12f",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_3167cba6.json": "37df29274baa5187b034b620a46ef0cc",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_4a52cc44.json": "75e6ff721fc5993162b4a2e4654ca5c5",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_4b448a82.json": "7fa4ddd72e47bd67b06678cf2e12a2b4",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_530a4053.json": "61955fb0abe8d9d934bbb923c2b3614d",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_5ea978f7.json": "0b6474a17eaf3413504e7a2f7290f732",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_68be10c7.json": "6c7c809d3b6c6b33f2d5b398cf3d62bd",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_6e724cca.json": "42f2b19f22e6bb4d367af7bfc98ba0c0",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_6fd0f7de.json": "b0c8835ef321da1768b630f0f7a3a8d7",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_7a3f4fe2.json": "c729a6d84866e33e360b1468614514d8",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_82fcd8bb.json": "24383eee944015a3274c7c2addb941dc",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_8a38cca4.json": "00295dec394462dbc6370032c2cd5f7a",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_a05fe951.json": "f0454ed594c204f45aaee1ca38a51e7b",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_a672ed3a.json": "15d3765ed047c52c481021766fab728d",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_b005096b.json": "4101e296370dbcdf3fab57e15a72917c",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_b3e8da99.json": "94809f0693e27a254994cd3332b824e7",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_c8c2f2b6.json": "ddffd45ba33ff1d69e8867aaa42aaad1",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_f81dbcda.json": "188634a5052d274ba138db570e2161eb",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_06d8af60.json": "6565a4ef51d67bdf6adfaaaf15fd3976",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_123deccb.json": "bc290a0b557b046c7608543dc096239b",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_1373e824.json": "4fcd55c9b5708e791be26e5e157b425e",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_1ad6a04b.json": "d29d67c6b61f783493ddba18e571afa4",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_234c3414.json": "143680d49a1d0888120a38b91ececa5b",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_3970156c.json": "252e619d44451c5f54bc42afce9aa334",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_4939d740.json": "ba88c83d58a617265fedc5f31083c888",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_5546f278.json": "496b0f545792e7f64bef67ee3e2fc9a0",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_556ad70d.json": "0c2fcec96ecd425a498594c693e21169",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_72fe3a17.json": "9cc6239d4a6ca9ea7556205a8a80d139",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_7c32a540.json": "90697dce6f9998b8cb66b0de1d1c128a",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_8838f4b3.json": "66db40d67bfd5e32552a8e44fd530ccb",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_a49c155f.json": "fd0e7d98ebff1e2d29acb62d4c473ba0",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_a970c19c.json": "0e1fd61104f7033823da919a81c512c1",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_b4cc0b2b.json": "d8bf6f592992a589d858dd1f01896192",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_b7149d5f.json": "32f0a9c934ceaf13b645443964cd0d33",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_c06ff1e8.json": "3178258ece7299758a487164d9bd297f",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_c0afa5d8.json": "855827fef81a5d4f4b45d9a87029f4b4",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_ca8cb17e.json": "7e4b54843505ed5d6bf441c7aae66836",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_cdae239d.json": "96a7a3274623671217992afb83d3a052",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_e4bc3be2.json": "5ea6489e0466ac0c0221c1698a807293",
+    "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_e616936e.json": "f5ecab77fbb7a48befc49ae30e8c0c57",
+    "session_2026-07-20/fv_provenance_remediation/test_forward_lens_113b36f8.py": "6db17a8e9f1435da58c46d4544c1af49",
+    "session_2026-07-20/fv_provenance_remediation/test_forward_lens_1d5c9f7a.py": "a7204641eba1b2364eb36558ea9a462e",
+    "session_2026-07-20/fv_provenance_remediation/test_forward_lens_3167cba6.py": "df43987656d1b6edfb9fee93156bfa41",
+    "session_2026-07-20/fv_provenance_remediation/test_forward_lens_4a52cc44.py": "2f09419ce7723beb9dac5c0b1c130e3d",
+    "session_2026-07-20/fv_provenance_remediation/test_forward_lens_4b448a82.py": "ec25d1c4987248edc54fdf18cd7db549",
+    "session_2026-07-20/fv_provenance_remediation/test_forward_lens_530a4053.py": "830f16694f1664c832040bfe49b8e32a",
+    "session_2026-07-20/fv_provenance_remediation/test_forward_lens_5ea978f7.py": "3106ee9512fcd70cf9a2078049bccdd9",
+    "session_2026-07-20/fv_provenance_remediation/test_forward_lens_68be10c7.py": "92530c678152f5758ecb0ae252f17736",
+    "session_2026-07-20/fv_provenance_remediation/test_forward_lens_6e724cca.py": "c3d407285223debfcafbc0f18c032678",
+    "session_2026-07-20/fv_provenance_remediation/test_forward_lens_6fd0f7de.py": "0d25bd628682799afbb4206e02c27dad",
+    "session_2026-07-20/fv_provenance_remediation/test_forward_lens_7a3f4fe2.py": "753bd58f6b658469ee98ec01a04b95f7",
+    "session_2026-07-20/fv_provenance_remediation/test_forward_lens_82fcd8bb.py": "922edccb694665b601d311d4dcf27027",
+    "session_2026-07-20/fv_provenance_remediation/test_forward_lens_8a38cca4.py": "f4c31ef9d25bfe7b97ee0bea2529df4f",
+    "session_2026-07-20/fv_provenance_remediation/test_forward_lens_a05fe951.py": "716dcdc7c5e67f025bd1f3370463c560",
+    "session_2026-07-20/fv_provenance_remediation/test_forward_lens_a672ed3a.py": "b393f00bce843401eb66e4e8eced46a5",
+    "session_2026-07-20/fv_provenance_remediation/test_forward_lens_b005096b.py": "1bdcd6676a56bba85bce286ae516b60a",
+    "session_2026-07-20/fv_provenance_remediation/test_forward_lens_b3e8da99.py": "f9079bb36af9a7b14bb47b674f68f69f",
+    "session_2026-07-20/fv_provenance_remediation/test_forward_lens_c8c2f2b6.py": "ac6bd04dd6ab96ae6de51f8e8c64246b",
+    "session_2026-07-20/fv_provenance_remediation/test_forward_lens_f81dbcda.py": "8d57e1b0b0dd0638d3bbcf23aa0d6cc5",
+    "session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py": "4da490aac7a4a3736ff3049a9fd7f415",
+    "ui/data/board_view_public.js": "889b523c7002ea8ae052f7eb7099c639",
+    "ui/data/board_view_working.js": "b47bee4b2dde34b7b58bc9b12a9653a4",
+    "ui/data/club_valuation.js": "0107edd88171d4f961cc20831a7577b4",
+    "ui/data/movers.js": "cc7e37a38453da86a75161721fb9e101",
+    "ui/data/movers_transition.js": "358b8b6ed14f60326bf0a3a0a0ced659",
+    "ui/data/ownership.js": "49a51f53143f4d0e8225e7e5a22783bf",
+    "ui/data_aux/draft_outcomes.js": "4537576e98ee245072c15bc1a7a0ce2c",
+    "ui/data_aux/v0.js": "d8e6429ccb4c525a9072b8b0a644007f"
+  },
+  "_step_timings_s": {
+    "preflight": 0.07,
+    "store_edit": 45.77,
+    "build_proofs": 1213.81,
+    "pins": 0.02,
+    "lineage": 0.24,
+    "contract": 0.09,
+    "sibling": 0.85,
+    "ui": 582.7,
+    "state": 0.17,
+    "gates": 56.24
+  },
+  "_landed_by": "tools/landing (`land edit`), THE EDIT VERB, directive 2026-08-24"
+}

@@ -11,9 +11,10 @@ $ node ui/tests/universe.test.js
   [PASS] no round's football appears twice in the current-model universe (0 duplicates)
   [PASS] an out-of-round column DOES sit at the same after_round as a round point — which is why the check above is not a bare collision count
   [PASS] the retro tail and the live head are comparable across the board (804 players)
-  [FAIL] ...and the handover carries real football, not a copy (0 of 804 moved)
+  [PASS] the seam is EXACT: the retro tail and the live head agree on every comparable player (0 of 804 differ)
+  [PASS] ...and the retrospective is a RE-PRICING, not duplicated stored values (8700 player-round readings differ across 11 rounds that have both)
   [PASS] a localStorage that throws does not break the universe (it falls back in-page)
   ------------------------------------------------------------
-UNIVERSE TESTS: 1 FAIL / 13
+UNIVERSE TESTS: ALL 14 PASS
 
-[exit 1]
+[exit 0]
