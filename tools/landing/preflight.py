@@ -243,6 +243,30 @@ def run_preflight(root, spec_path, out=print):
                 % ', '.join(foreign[:6])) if foreign else ('PASS', 'tree clean up to declared inputs')
     check('clean_tree', _clean)
 
+    # 8b-ii · THE INTERPRETER THE BUILD WILL ACTUALLY USE. The board is only reproducible on the
+    #         pinned numpy (item 391/392: off-pin combos reproducibly drift the prior-trained path —
+    #         SHAKEDOWN.md has Maric 1426 vs 1409). A landing launched with the pinned venv missing
+    #         from PATH does not fail here; it fails 45 SECONDS IN, at build_proofs, with
+    #         `BUILD LANDING mode=dev rc=1 board_md5=None (0.1s)` and nothing saying why. That is
+    #         FW2 flight 11, and `python3 -c "import numpy"` would have said so in two seconds.
+    #         Checked in milliseconds instead, and it names the fix.
+    def _interp():
+        rc, o = _run([sys.executable, '-c',
+                      'import numpy, scipy, sklearn; print(numpy.__version__)'], root)
+        if rc != 0:
+            missing = 'numpy' if 'numpy' in o else (o.strip().splitlines() or [''])[-1][:80]
+            return ('FAIL',
+                    'the build interpreter (%s) cannot import the pinned stack (%s). The board is '
+                    'only reproducible on the pin — run: export PATH="$HOME/rl_venv312/bin:$PATH"'
+                    % (sys.executable, missing))
+        got = o.strip().splitlines()[-1].strip()
+        want = '2.4.4'
+        if got != want:
+            return ('FAIL', 'numpy %s, not the pinned %s — the board does not reproduce off the pin '
+                            '(item 392)' % (got, want))
+        return ('PASS', 'build interpreter carries the pinned stack (numpy %s) — %s' % (got, sys.executable))
+    check('interpreter', _interp)
+
     # 8c · the picks/curve halt battery, read-only (S11; the take-8 class: a stale curve-mirror or
     #      contract pin died at ui writer 5, ~55 build-minutes in — the same standing checker runs
     #      here in --clubs-check mode, which writes NOTHING and fires every coherence halt).
