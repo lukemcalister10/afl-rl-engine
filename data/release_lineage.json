@@ -1284,6 +1284,69 @@
    ],
    "invariants": {},
    "_measured_note": "moved/unchanged are MEASURED by tools/landing (steps._measure_sides), not asserted: every `source` identity is re-hashed from the committed tree at b313971 via git show, every `destination` identity from the live tree, and each side is cross-checked against THAT TREE'S OWN data/expected_boot.json before the entry is composed."
+  },
+  {
+   "_doc": "docs/evidence/finals_fw2_2026-09-09/PREREG.md",
+   "kind": "movers_release_transition",
+   "schema_version": 2,
+   "owner_approved": true,
+   "owner_ruling_id": [
+    "FW2_2026-09-09_scores_supplied",
+    "FINALS_LANE_2026-08-30_averages_and_game_counts_not_a_round",
+    "CALENDAR_CEILING_2026-09-02_never_above_one"
+   ],
+   "owner_ruling": "Finals scores are applied to the season row, not to the calendar. Owner, 2026-08-30. The calendar reaches 1.00 at round 24 and HOLDS. Owner, 2026-09-02.",
+   "authority": "owner word 2026-09-09 on the lane ruled 2026-08-30",
+   "applies_to": {
+    "bundle": "ui/data/movers.js",
+    "boundary": [
+     "24",
+     "fw2-finals-week-2-9-9"
+    ]
+   },
+   "source": {
+    "release_version": "v2.11-final-rc1-PROVISIONAL",
+    "board": "b005096b5e78014425922cae3f28f6c9",
+    "store": "415929d3c9d561cc58bef00ae63432b2",
+    "rl_model": "aa1541d8ebb93868907b24daab5dbed1",
+    "engine_head": "17243c16277842e0a30470cfbdb5b196",
+    "fv": "123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345",
+    "config": "d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4",
+    "register": "652d83e87780e415a01a2de6d8b3cc57",
+    "balanced_board_md5": "c0afa5d869ce0ac490dde4105f6008c9",
+    "v0surf": "d9f5d15d9606edcdd5708233197dd951",
+    "as_of_round": 24
+   },
+   "destination": {
+    "release_version": "v2.11-final-rc1-PROVISIONAL",
+    "board": "d3fb6b4842ddd3bea57fbacc7a94e4d7",
+    "store": "a367386a6884bb6b10762fa30183bc47",
+    "rl_model": "aa1541d8ebb93868907b24daab5dbed1",
+    "engine_head": "17243c16277842e0a30470cfbdb5b196",
+    "fv": "123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345",
+    "config": "d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4",
+    "register": "652d83e87780e415a01a2de6d8b3cc57",
+    "balanced_board_md5": "c0afa5d869ce0ac490dde4105f6008c9",
+    "v0surf": "d9f5d15d9606edcdd5708233197dd951",
+    "as_of_round": 24
+   },
+   "moved_by_transition": [
+    "board",
+    "store"
+   ],
+   "unchanged_across_transition": [
+    "as_of_round",
+    "balanced_board_md5",
+    "config",
+    "engine_head",
+    "fv",
+    "register",
+    "release_version",
+    "rl_model",
+    "v0surf"
+   ],
+   "invariants": {},
+   "_measured_note": "moved/unchanged are MEASURED by tools/landing (steps._measure_sides), not asserted: every `source` identity is re-hashed from the committed tree at 868d989 via git show, every `destination` identity from the live tree, and each side is cross-checked against THAT TREE'S OWN data/expected_boot.json before the entry is composed."
   }
  ]
 }

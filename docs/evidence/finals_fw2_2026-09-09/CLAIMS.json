@@ -3,7 +3,7 @@
   "act_type": "store-edit",
   "act": "FINALS WEEK 2 APPLIED AS A STORE EDIT \u2014 183 players at eight clubs gain one game and a re-averaged 2026 season row. Same lane as FW1, second week: the calendar is not touched, because a finals week was never a calendar event \u2014 the store has always carried finals inside the season row (Bontempelli 2016 reads 26 games, 22 home-and-away plus four finals). This is the first finals week landed through the written runbook rather than discovered on the way.",
   "date": "2026-09-09",
-  "base_commit": "afde0b52e8aa2981a4749f0bd7bd0cee4ff6a9cd",
+  "base_commit": "868d9892174df7f43c65013b99240d7917afb706",
   "owner_word": "The owner sent scores/FW2.csv on 2026-09-09 with one disambiguation \u2014 \"Bailey Williams is the Western Bulldogs one\" \u2014 which is the whole of the instruction: the lane itself was ruled at FW1 and is not re-opened here. That ruling stands: \"We're literally just updating player averages and game counts.\" And on scope: \"As long as it doesn't impact the movers list still being accurate as of each round since round 14.\" Plus the calendar law, 2026-09-02: \"The calendar can never get above 1. It gets there at r24 and holds.\"",
   "activation": {
     "day0_rebase": {
@@ -382,15 +382,15 @@
   },
   "_step_timings_s": {
     "preflight": 0.07,
-    "store_edit": 45.77,
-    "build_proofs": 1213.81,
+    "store_edit": 45.8,
+    "build_proofs": 1276.83,
     "pins": 0.02,
-    "lineage": 0.24,
-    "contract": 0.09,
-    "sibling": 0.85,
-    "ui": 582.7,
-    "state": 0.17,
-    "gates": 56.24
+    "lineage": 0.23,
+    "contract": 0.1,
+    "sibling": 0.93,
+    "ui": 598.75,
+    "state": 0.16,
+    "gates": 55.97
   },
   "_landed_by": "tools/landing (`land edit`), THE EDIT VERB, directive 2026-08-24"
 }

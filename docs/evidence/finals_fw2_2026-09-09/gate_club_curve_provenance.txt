@@ -23,7 +23,7 @@ $ python3 ui/tests/club_curve_provenance.test.py
   [PASS] CASE2b L1b-PVC board under an RL_PVC2 contract fires the stale-curve byte-match halt  (rc=2 halt=STALE-CURVE GUARD: the board's PVC does not byte-match the release-active curve engine/rl_after/pvc_curve_v2.json (RL_PVC2, curve_md5 1c3b22d1) — provenance ambiguous (the S5 failure). HALT-AND-ASK.)
   [PASS] CASE3a unknown adopted_pathway fires the unknown-pathway halt  (rc=2 halt=UNKNOWN curve-selection: adopted_pathway 'RL_BOGUS' is not a known pathway ['RL_PVC2', 'RL_PVCADOPT'] — refusing to guess (HALT-AND-ASK))
   [PASS] CASE3b wrong curve_source_store_md5 fires the live curve-store-binding halt  (rc=2 halt=CONFLICTING curve-selection: pvc_curve_v2.json binds store f1e8c9fe != release store deadbeef (HALT-AND-ASK))
-  [PASS] CASE3c missing contract fires the contract-missing halt  (rc=2 halt=release pick-curve contract missing: /tmp/clubprov_ds5s4gk1/nope.json (HALT-AND-ASK on provenance))
+  [PASS] CASE3c missing contract fires the contract-missing halt  (rc=2 halt=release pick-curve contract missing: /tmp/clubprov_su2s02hi/nope.json (HALT-AND-ASK on provenance))
   [PASS] CASE3d engine curve file md5 drift fires the file-md5 CURVE DRIFT halt  (rc=2 halt=CURVE DRIFT: pvc_curve_v2.json md5 a744491e != contract 031ec76e — the engine curve file changed under the contract (HALT-AND-ASK))
   [PASS] CASE4 board-id mismatch fires the ring-fence board-id halt  (rc=2 halt=board id mismatch — bundle aaaaaaaa != current release board d3fb6b48 (regenerate board_view))
   [PASS] CASE5a board-stamp asOfRound mismatch vs expected_boot fires the live round halt  (rc=2 halt=board round mismatch — bundle R23 != current release R24)
