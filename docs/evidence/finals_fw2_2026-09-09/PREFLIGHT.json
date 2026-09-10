@@ -87,6 +87,6 @@
  {
   "check": "build_lock",
   "verdict": "PASS",
-  "detail": "build-lock: FREE (last holder record: land-edit-24831 24831 2026-09-10T05:37:46Z)"
+  "detail": "build-lock: FREE (last holder record: land-edit-28414 28414 2026-09-10T06:50:00Z)"
  }
 ]
