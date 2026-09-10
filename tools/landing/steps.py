@@ -129,6 +129,10 @@ DEFAULT_GATES = (
               '--profile', 'in-transaction', '--evidence', '@EVIDENCE@'],
      'must_contain': 'GREEN'},
     {'name': 'movers_transition', 'argv': ['python3', 'engine/rl_after/ingestion/test_movers_transition.py']},
+    # THE FINALS-REPORT WRITER'S OWN SUITE. Writer 4c writes the week's report during the landing;
+    # this rebuilds the FW1 report that shipped and asserts it comes back identical, so the writer
+    # is checked against real history on every act rather than only when a finals week happens.
+    {'name': 'finals_report', 'argv': ['python3', 'engine/rl_after/ingestion/test_finals_report.py']},
     {'name': 'movers_ui', 'argv': ['node', 'ui/tests/movers.test.js']},
     # THE UI SUITE, ADDED 2026-09-01. movers.test.js was the ONLY ui/tests file in the gate set, so
     # every other surface's suite ran on nobody's schedule. Measured cost of that: the point-count
@@ -1936,6 +1940,51 @@ def ui(ctx):
                                (' — missing %s' % _lost) if _lost else ''))
         ctx.log('  retro series present: %d points, %s .. %s (every banked round, no gap)'
                 % (len(_pts), _pts[0], _pts[-1]))
+
+    # ---- WRITER 4c: THE FINALS WEEK'S WEEKLY REPORT, WRITTEN BY THE ACT THAT LANDS THE WEEK -------
+    # A finals week lands as a STORE EDIT and that lane produces no weekly report. The report is what
+    # the movers page reads a week's scores from, and what the retrospective reads to decide which
+    # games to subtract. FW1 landed without one; both broke, and it cost a full re-price to repair.
+    #
+    # THE GUARD ADDED AFTER THAT THEN MADE THE ORDERING IMPOSSIBLE. movers.test.js derives its
+    # expected round list from the landed finals COLUMNS, so the moment a finals column lands the
+    # bundle owes a report for it — and during the landing that creates the week, no such report can
+    # exist yet. Flight 5 of FW2 aborted there. The guard is right; what was wrong is that the report
+    # was a manual step after the act. A step that must be remembered is a step that gets forgotten,
+    # and it was.
+    #
+    # So the act writes it, HERE, between the bundle rebuild and the gates — the bundle the gates
+    # inspect already carries the week. Nothing to fill in afterwards, nothing to remember, and the
+    # next finals week is one command.
+    _rmf = _load(ctx, 'round_movers', 'engine/rl_after/ingestion/round_movers.py')
+    _fr = _load(ctx, 'finals_report', 'engine/rl_after/ingestion/finals_report.py')
+    _col = (ctx.spec.get('column') or {}).get('id')
+    if _col and _fr.feed_round_of(_col, _rmf) is not None:
+        _ed = (ctx.spec.get('edit') or {}).get('store') or []
+        _seasons = sorted({int(_m.group(1)) for _m in
+                           (re.match(r'scoring\[(\d+)\]\.', str(_e.get('field', ''))) for _e in _ed)
+                           if _m})
+        if len(_seasons) != 1:
+            raise StepError('a finals act must edit exactly one season row; this one touches %s. '
+                            'The weekly report is a record of ONE week of football.' % (_seasons,))
+        _store_before = (ctx.snapshot.identities() or {}).get('engine/rl_after/rl_model_data.json')
+        if not _store_before:
+            raise StepError('the step-0 snapshot carries no identity for the store, so the report '
+                            'cannot name the store it moved from.')
+        ctx.log('WRITER 4c/8: the finals week\'s weekly report (the movers page reads its scores here)')
+        try:
+            _res = _fr.emit(ctx.root, _col, _ed, _seasons[0], _store_before,
+                            time.strftime('%Y-%m-%d'), _rmf)
+        except Exception as _e:                                    # noqa: BLE001 - reported, not swallowed
+            raise StepError('the finals weekly report could not be written, so the week would land '
+                            'with its scores nowhere on the movers page — the FW1 defect exactly:\n'
+                            '%s: %s' % (type(_e).__name__, _e))
+        if _res.get('already_present'):
+            ctx.log('  report %d already on the bundle — left alone' % _res['feed_round'])
+        else:
+            ctx.log('  %s written as feed round %d: %d players, %d played, %d DNP; store -> %s'
+                    % (_res['week'], _res['feed_round'], _res['player_count'], _res['played'],
+                       _res['dnp'], _res['store_after'][:8]))
 
     # ---- WRITER 5: the ownership mirror, re-pinned to the board and store this landing lands ------
     # THE SAME LAW AGAIN, ONE CARRIER ALONG, AND THE SAME THREE-PART PATTERN writers 3 and 4 use:
