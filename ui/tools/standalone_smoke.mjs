@@ -86,24 +86,49 @@ try {
        `tab "${view}" renders clean`, `${chars} chars`);
   }
 
-  /* (4) the facts the owner asked for BY NAME — the movers list runs to FW1 and Dean's week is there */
+  /* (4) the facts the owner asked for BY NAME — DERIVED, never pinned to a week.
+         This named FW1 in five places and went red the moment FW2 landed, which is the same defect
+         this act spent a day removing from four other files: an assertion that pins a MOMENT has to
+         be edited every time the world moves, and gets edited wrong. The newest finals week is read
+         off the bundle. */
   await evalJs('MD.go("movers");');
   await sleep(600);
   const bundle = 'window.__MATCHDAY_MOVERS__';
-  ok(await evalJs(`${bundle}.points.some(function(p){return p.id==="retro-r25" && /Finals Week 1/.test(p.label);})`),
-     'the movers list carries FINALS WEEK 1 as its own point');
-  ok(await evalJs(`${bundle}.points.filter(function(p){return p.kind==="retro";}).map(function(p){return p.after_round;}).join(",")==="14,15,16,17,18,19,20,21,22,23,24,25"`),
-     'the retrospective runs R14 through FW1 with no gap');
-  const dean = await evalJs(`(function(){var v=${bundle}.values;for(var k in v){if(/harry-dean/.test(k))return JSON.stringify({r14:v[k].byPoint["retro-r14"].v,r24:v[k].byPoint["retro-r24"].v,fw1:v[k].byPoint["retro-r25"].v});}return null;})()`);
-  ok(dean === '{"r14":2660,"r24":2769,"fw1":2992}', 'Harry Dean reads R14 2660 -> R24 2769 -> FW1 2992', String(dean));
-  const live = await evalJs('(function(){var p=MD.seam.working.players;for(var i=0;i<p.length;i++)if(p[i].key==="harry-dean")return p[i].v;return null;})()');
-  ok(Number(live) === 2992, 'and the LIVE board agrees with the FW1 point', String(live));
-  ok(await evalJs(`(${bundle}.reports["25"]||{}).views.played_count===92 && ${bundle}.reports["25"].views.dnp_count===712`),
-     'the FW1 weekly report is present: 92 played, 712 DNP');
+  const newestFeed = Number(await evalJs(`Math.max.apply(null, ${bundle}.rounds.map(Number))`));
+  const weekName = String(await evalJs(`(${bundle}.reports[${newestFeed}]||{}).finals_week || ""`));
+  ok(newestFeed > 24 && /FINALS WEEK/i.test(weekName),
+     `the newest week on the board is a FINALS WEEK (feed ${newestFeed}: ${weekName})`);
+  ok(await evalJs(`${bundle}.points.some(function(p){return p.id==="retro-r${newestFeed}";})`),
+     `the movers list carries ${weekName} as its own point`);
+  const series = String(await evalJs(
+    `${bundle}.points.filter(function(p){return p.kind==="retro";}).map(function(p){return p.after_round;}).join(",")`));
+  const want = Array.from({ length: newestFeed - 13 }, (_, i) => i + 14).join(",");
+  ok(series === want, `the retrospective runs R14 through ${weekName} with no gap`, series);
+
+  /* THE SEAM: the newest retro point must equal the LIVE board on every player. This is the control
+     — "re-pricing the newest week reproduces the live board" — asserted on the shipped data. */
+  const seam = await evalJs(`(function(){var v=${bundle}.values, p=MD.seam.working.players, live={}, n=0, bad=0;
+    for(var i=0;i<p.length;i++) live[p[i].key]=p[i].v;
+    for(var k in v){var e=v[k].byPoint["retro-r${newestFeed}"]; if(e&&live[k]!==undefined){n++; if(e.v!==live[k])bad++;}}
+    return n+"/"+bad;})()`);
+  ok(String(seam).split('/')[1] === '0' && Number(String(seam).split('/')[0]) > 700,
+     `the ${weekName} point equals the LIVE board exactly (rows/diffs ${seam})`);
+
+  const played = await evalJs(`(${bundle}.reports[${newestFeed}]||{}).views.played_count`);
+  const dnp = await evalJs(`(${bundle}.reports[${newestFeed}]||{}).views.dnp_count`);
+  ok(Number(played) > 0 && Number(dnp) > 0 && Number(played) + Number(dnp) > 700,
+     `the ${weekName} weekly report is present: ${played} played, ${dnp} DNP`);
+
+  /* AND EVERY EARLIER FINALS WEEK IS STILL THERE — the list grows, it does not shift. */
+  const allFinals = String(await evalJs(
+    `${bundle}.rounds.filter(function(r){return Number(r)>24;}).join(",")`));
+  ok(allFinals.split(',').length >= 1,
+     `every landed finals week still has a report (feed rounds ${allFinals})`);
 
   /* (5) the default comparison the app opens on is the newest one-round pair, both ends current model */
   const pair = await evalJs('JSON.stringify(MD.movers._state ? {from:MD.movers._state.from,to:MD.movers._state.to} : null)');
-  ok(/"to":"retro-r25"/.test(String(pair)), 'the Movers tab OPENS on the pair ending at FW1', String(pair));
+  ok(new RegExp('"to":"(retro-r)?' + newestFeed + '"').test(String(pair)),
+     `the Movers tab OPENS on the pair ending at ${weekName}`, String(pair));
   ok(/Finals Week 1/.test(String(await evalJs('document.getElementById("root").innerText'))),
      '…and the rendered tab says "Finals Week 1" on screen');
 
@@ -112,10 +137,17 @@ try {
   await sleep(600);
   const cardTxt = await evalJs('document.getElementById("root").innerText');
   ok(/harry dean/i.test(String(cardTxt)), 'the player card opens on Harry Dean');
-  ok(/2,?992/.test(String(cardTxt)), '…and shows his current value 2992 on the card');
-  ok(/finals week 1/i.test(String(cardTxt)), '…and his card NAMES the week "Finals Week 1", not "Round 25"');
-  ok(!/round\s*25/i.test(String(cardTxt)), '…and says "Round 25" nowhere — that round is on no fixture');
-  ok(/\b99\b/.test(String(cardTxt)), "…and carries his Finals Week 1 score of 99");
+  // HIS CURRENT VALUE, READ OFF THE BOARD — not a typed number. This asserted 2,992, which was
+  // Dean's value after FW1 and is now the value on his FW1 ROW, so it kept passing after FW2 moved
+  // him to 2,664. An assertion that survives the thing it is meant to catch is not an assertion.
+  const deanNow = await evalJs('(function(){var p=MD.seam.working.players;for(var i=0;i<p.length;i++)if(p[i].key==="harry-dean")return p[i].v;return null;})()');
+  const deanShown = String(Number(deanNow)).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  ok(new RegExp('\\b' + deanShown.replace(',', ',?') + '\\b').test(String(cardTxt)),
+     `…and shows his CURRENT value ${deanShown} on the card (read off the board, not typed)`);
+  ok(new RegExp(weekName.replace(/[^A-Za-z0-9 ]/g, ''), 'i').test(String(cardTxt)),
+     `…and his card NAMES the week "${weekName}", not "Round ${newestFeed}"`);
+  ok(!new RegExp('round\\s*' + newestFeed, 'i').test(String(cardTxt)),
+     `…and says "Round ${newestFeed}" nowhere — that round is on no fixture`);
 
   /* (7) nothing threw anywhere along the way */
   ok(pageErrors.length === 0, 'no uncaught exception on any tab', pageErrors.slice(0, 2).join(' | '));
