@@ -1,0 +1,1654 @@
+{
+ "control_round": 25,
+ "diff": {
+  "nick-daicos": [
+   10384,
+   10370
+  ],
+  "harry-sheezel": [
+   10900,
+   10884
+  ],
+  "luke-jackson": [
+   9227,
+   9286
+  ],
+  "nasiah-wanganeen-milera": [
+   9230,
+   9217
+  ],
+  "errol-gulden": [
+   7339,
+   7404
+  ],
+  "will-ashcroft": [
+   6893,
+   7061
+  ],
+  "bailey-smith": [
+   5802,
+   5816
+  ],
+  "max-holmes": [
+   8258,
+   7303
+  ],
+  "jason-horne-francis": [
+   5428,
+   5420
+  ],
+  "zak-butters": [
+   6230,
+   6221
+  ],
+  "noah-anderson": [
+   5464,
+   5457
+  ],
+  "finn-callaghan": [
+   5417,
+   5410
+  ],
+  "bodhi-uwland": [
+   4036,
+   4029
+  ],
+  "archie-roberts": [
+   3732,
+   3725
+  ],
+  "josh-treacy": [
+   5735,
+   5189
+  ],
+  "tristan-xerri": [
+   7042,
+   7033
+  ],
+  "riley-thilthorpe": [
+   4190,
+   4267
+  ],
+  "matt-rowell": [
+   4809,
+   4803
+  ],
+  "nick-watson": [
+   3531,
+   3698
+  ],
+  "mac-andrew": [
+   3795,
+   3787
+  ],
+  "lachlan-ash": [
+   5260,
+   5251
+  ],
+  "levi-ashcroft": [
+   3527,
+   3513
+  ],
+  "max-hall": [
+   2726,
+   2729
+  ],
+  "sam-darcy": [
+   5228,
+   5219
+  ],
+  "jake-bowey": [
+   3885,
+   3878
+  ],
+  "izak-rankine": [
+   4910,
+   5021
+  ],
+  "caleb-serong": [
+   4426,
+   4377
+  ],
+  "murphy-reid": [
+   3319,
+   3250
+  ],
+  "harry-dean": [
+   2992,
+   2664
+  ],
+  "willem-duursma": [
+   3495,
+   3492
+  ],
+  "sam-walsh": [
+   3047,
+   3144
+  ],
+  "jai-newcombe": [
+   4607,
+   4330
+  ],
+  "sam-lalor": [
+   3454,
+   3451
+  ],
+  "brodie-grundy": [
+   3936,
+   3931
+  ],
+  "harley-reid": [
+   3781,
+   3776
+  ],
+  "marcus-bontempelli": [
+   3615,
+   3707
+  ],
+  "chad-warner": [
+   3883,
+   3877
+  ],
+  "bailey-williams-wc": [
+   2405,
+   2402
+  ],
+  "logan-morris": [
+   2972,
+   2933
+  ],
+  "aaron-cadman": [
+   2077,
+   2075
+  ],
+  "darcy-wilson": [
+   2653,
+   2655
+  ],
+  "noah-mraz": [
+   804,
+   800
+  ],
+  "jagga-smith": [
+   4942,
+   4916
+  ],
+  "joel-freijah": [
+   2805,
+   2845
+  ],
+  "darcy-wilmot": [
+   3040,
+   2991
+  ],
+  "ryley-sanders": [
+   3692,
+   3526
+  ],
+  "max-gawn": [
+   3265,
+   3261
+  ],
+  "isaac-heeney": [
+   3682,
+   3676
+  ],
+  "callum-wilkie": [
+   3425,
+   3419
+  ],
+  "josh-ward": [
+   2629,
+   2579
+  ],
+  "hugo-garcia": [
+   2827,
+   2823
+  ],
+  "jed-walter": [
+   1015,
+   1014
+  ],
+  "george-wardlaw": [
+   3084,
+   3081
+  ],
+  "kieren-briggs": [
+   1924,
+   1922
+  ],
+  "jack-sinclair": [
+   3075,
+   3070
+  ],
+  "nate-caddy": [
+   1608,
+   1607
+  ],
+  "ed-richards": [
+   3986,
+   3929
+  ],
+  "tom-green": [
+   5127,
+   5120
+  ],
+  "finn-o-sullivan": [
+   2794,
+   2791
+  ],
+  "logan-mcdonald": [
+   828,
+   1184
+  ],
+  "kysaiah-pickett": [
+   4329,
+   4331
+  ],
+  "cooper-duff-tytler": [
+   1771,
+   1770
+  ],
+  "colby-mckercher": [
+   4179,
+   4175
+  ],
+  "connor-o-sullivan": [
+   2589,
+   2437
+  ],
+  "jordan-dawson": [
+   2877,
+   2879
+  ],
+  "luke-davies-uniacke": [
+   3026,
+   3022
+  ],
+  "nick-blakey": [
+   3963,
+   3956
+  ],
+  "jordan-clark": [
+   3120,
+   3778
+  ],
+  "sam-berry": [
+   2752,
+   2776
+  ],
+  "connor-macdonald": [
+   2868,
+   2880
+  ],
+  "sam-durham": [
+   2426,
+   2422
+  ],
+  "connor-rozee": [
+   3113,
+   3108
+  ],
+  "jordon-sweet": [
+   2506,
+   2503
+  ],
+  "timothy-english": [
+   3324,
+   3109
+  ],
+  "zeke-uwland": [
+   1892,
+   1891
+  ],
+  "daniel-curtin": [
+   2358,
+   2314
+  ],
+  "andrew-brayshaw": [
+   2827,
+   2832
+  ],
+  "nicholas-martin": [
+   3803,
+   3798
+  ],
+  "sam-flanders": [
+   2495,
+   2491
+  ],
+  "harvey-thomas": [
+   1969,
+   1966
+  ],
+  "jack-ross": [
+   2366,
+   2363
+  ],
+  "ollie-dempsey": [
+   2409,
+   2422
+  ],
+  "reuben-ginbey": [
+   2197,
+   2190
+  ],
+  "jye-amiss": [
+   1428,
+   1345
+  ],
+  "tim-taranto": [
+   2388,
+   2385
+  ],
+  "dylan-patterson": [
+   1121,
+   1120
+  ],
+  "zachary-merrett": [
+   2349,
+   2346
+  ],
+  "mitchito-owens": [
+   1938,
+   1943
+  ],
+  "harvey-langford": [
+   1876,
+   1875
+  ],
+  "sid-draper": [
+   906,
+   905
+  ],
+  "mitch-georgiades": [
+   1549,
+   1544
+  ],
+  "touk-miller": [
+   2332,
+   2333
+  ],
+  "josh-worrell": [
+   2725,
+   2921
+  ],
+  "rowan-marshall": [
+   2005,
+   2003
+  ],
+  "zac-bailey": [
+   3102,
+   2964
+  ],
+  "jaspa-fletcher": [
+   2688,
+   2696
+  ],
+  "tanner-bruhn": [
+   1965,
+   1962
+  ],
+  "toby-nankervis": [
+   1997,
+   1994
+  ],
+  "jacob-van-rooyen": [
+   1779,
+   1786
+  ],
+  "lachie-whitfield": [
+   2178,
+   2174
+  ],
+  "jacob-farrow": [
+   2033,
+   2032
+  ],
+  "jase-burgoyne": [
+   2550,
+   2546
+  ],
+  "shannon-neale": [
+   2332,
+   2292
+  ],
+  "clayton-oliver": [
+   2227,
+   2223
+  ],
+  "christian-petracca": [
+   1722,
+   1719
+  ],
+  "lachie-neale": [
+   2130,
+   2018
+  ],
+  "bailey-humphrey": [
+   2327,
+   2324
+  ],
+  "shai-bolton": [
+   2216,
+   2082
+  ],
+  "justin-mcinerney": [
+   1861,
+   1858
+  ],
+  "josh-battle": [
+   1826,
+   1923
+  ],
+  "john-noble": [
+   2285,
+   2281
+  ],
+  "will-day": [
+   1819,
+   1781
+  ],
+  "bailey-dale": [
+   1943,
+   1791
+  ],
+  "george-hewett": [
+   1767,
+   1774
+  ],
+  "leo-lombard": [
+   1747,
+   1746
+  ],
+  "wayne-milera": [
+   1582,
+   1706
+  ],
+  "josh-rachele": [
+   1841,
+   1895
+  ],
+  "connor-idun": [
+   2318,
+   2313
+  ],
+  "callum-mills": [
+   1918,
+   1914
+  ],
+  "mattaes-phillipou": [
+   1750,
+   1748
+  ],
+  "koltyn-tholstrup": [
+   1665,
+   1664
+  ],
+  "joshua-weddle": [
+   1285,
+   1505
+  ],
+  "caleb-windsor": [
+   974,
+   973
+  ],
+  "sam-cumming": [
+   2274,
+   2273
+  ],
+  "bradley-hill": [
+   1403,
+   1405
+  ],
+  "josh-daicos": [
+   2074,
+   2071
+  ],
+  "dyson-sharp": [
+   3027,
+   3024
+  ],
+  "sullivan-robey": [
+   3035,
+   3033
+  ],
+  "karl-worner": [
+   1245,
+   1459
+  ],
+  "harris-andrews": [
+   1563,
+   1547
+  ],
+  "samuel-grlj": [
+   1708,
+   1706
+  ],
+  "darcy-cameron": [
+   1520,
+   1518
+  ],
+  "tim-kelly": [
+   1182,
+   1180
+  ],
+  "xavier-lindsay": [
+   1361,
+   1360
+  ],
+  "tom-mccarthy": [
+   1329,
+   1327
+  ],
+  "jack-ginnivan": [
+   2148,
+   2145
+  ],
+  "ethan-read": [
+   544,
+   543
+  ],
+  "cameron-mackenzie": [
+   1732,
+   1746
+  ],
+  "patrick-cripps": [
+   1430,
+   1341
+  ],
+  "jordan-de-goey": [
+   1276,
+   1277
+  ],
+  "isaac-kako": [
+   816,
+   815
+  ],
+  "hugh-mccluggage": [
+   1553,
+   1446
+  ],
+  "jonty-faull": [
+   606,
+   605
+  ],
+  "lloyd-meek": [
+   1492,
+   1386
+  ],
+  "james-sicily": [
+   1172,
+   1213
+  ],
+  "trent-rivers": [
+   1432,
+   1428
+  ],
+  "tom-powell": [
+   1820,
+   1818
+  ],
+  "patrick-voss": [
+   1146,
+   1044
+  ],
+  "luke-parker": [
+   1145,
+   1144
+  ],
+  "josh-dunkley": [
+   1278,
+   1322
+  ],
+  "tom-sparrow": [
+   1471,
+   1470
+  ],
+  "mark-keane": [
+   1458,
+   1463
+  ],
+  "taj-hotton": [
+   1900,
+   1898
+  ],
+  "nick-madden": [
+   1187,
+   1186
+  ],
+  "phoenix-gothard": [
+   1546,
+   1545
+  ],
+  "caleb-daniel": [
+   1221,
+   1218
+  ],
+  "josh-lindsay": [
+   1515,
+   1514
+  ],
+  "dylan-moore": [
+   1201,
+   1262
+  ],
+  "massimo-d-ambrosio": [
+   1653,
+   1785
+  ],
+  "lachlan-mcandrew": [
+   1146,
+   1167
+  ],
+  "tom-mccartin": [
+   1400,
+   1302
+  ],
+  "harry-kyle": [
+   790,
+   791
+  ],
+  "jack-steele": [
+   1083,
+   1082
+  ],
+  "ned-moyle": [
+   2090,
+   2088
+  ],
+  "jy-simpkin": [
+   1194,
+   1193
+  ],
+  "charlie-curnow": [
+   1227,
+   1325
+  ],
+  "jake-soligo": [
+   1822,
+   1841
+  ],
+  "aaron-naughton": [
+   1382,
+   1454
+  ],
+  "shaun-mannagh": [
+   870,
+   955
+  ],
+  "jacob-weitering": [
+   1211,
+   1152
+  ],
+  "harry-mckay": [
+   1619,
+   1621
+  ],
+  "luke-ryan": [
+   1284,
+   1303
+  ],
+  "adam-cerra": [
+   1000,
+   1064
+  ],
+  "thomas-liberatore": [
+   1078,
+   1076
+  ],
+  "james-rowbottom": [
+   1311,
+   1341
+  ],
+  "gryan-miers": [
+   1537,
+   1594
+  ],
+  "peter-wright": [
+   1240,
+   1236
+  ],
+  "beau-addinsall": [
+   1216,
+   1215
+  ],
+  "thomas-stewart": [
+   881,
+   935
+  ],
+  "kai-lohmann": [
+   758,
+   698
+  ],
+  "harry-armstrong": [
+   502,
+   501
+  ],
+  "adam-treloar": [
+   808,
+   807
+  ],
+  "dayne-zorko": [
+   946,
+   947
+  ],
+  "joe-berry": [
+   1015,
+   1014
+  ],
+  "dan-houston": [
+   1032,
+   1031
+  ],
+  "zach-reid": [
+   1255,
+   1254
+  ],
+  "louis-emmett": [
+   633,
+   632
+  ],
+  "daniel-turner": [
+   1694,
+   1690
+  ],
+  "ned-long": [
+   1323,
+   1321
+  ],
+  "cooper-hynes": [
+   1050,
+   1166
+  ],
+  "reilly-o-brien": [
+   972,
+   970
+  ],
+  "oliver-hollands": [
+   1531,
+   1522
+  ],
+  "paul-curtis": [
+   1521,
+   1527
+  ],
+  "joe-richards": [
+   933,
+   934
+  ],
+  "lawson-humphries": [
+   1653,
+   1666
+  ],
+  "jobe-shanahan": [
+   1255,
+   1254
+  ],
+  "marcus-herbert": [
+   834,
+   832
+  ],
+  "elijah-tsatas": [
+   812,
+   811
+  ],
+  "mason-redman": [
+   941,
+   939
+  ],
+  "thomas-sims": [
+   596,
+   595
+  ],
+  "bo-allan": [
+   647,
+   646
+  ],
+  "jedd-busslinger": [
+   783,
+   782
+  ],
+  "marcus-windhager": [
+   1808,
+   1806
+  ],
+  "aliir-aliir": [
+   750,
+   749
+  ],
+  "darcy-jones": [
+   1465,
+   1463
+  ],
+  "lachy-dovaston": [
+   646,
+   645
+  ],
+  "jesse-dattoli": [
+   450,
+   418
+  ],
+  "oliver-florent": [
+   1049,
+   1032
+  ],
+  "jack-whitlock": [
+   989,
+   988
+  ],
+  "will-graham": [
+   1278,
+   1277
+  ],
+  "kane-farrell": [
+   1289,
+   1287
+  ],
+  "will-setterfield": [
+   966,
+   964
+  ],
+  "cooper-trembath": [
+   1637,
+   1635
+  ],
+  "hayden-young": [
+   1557,
+   1558
+  ],
+  "sam-draper": [
+   1012,
+   1014
+  ],
+  "jayden-short": [
+   878,
+   877
+  ],
+  "samuel-swadling": [
+   1221,
+   1220
+  ],
+  "riley-bice": [
+   341,
+   340
+  ],
+  "sam-taylor": [
+   1115,
+   1110
+  ],
+  "ty-gallop": [
+   1019,
+   1018
+  ],
+  "caiden-cleary": [
+   427,
+   445
+  ],
+  "jarman-impey": [
+   775,
+   679
+  ],
+  "darcy-fogarty": [
+   805,
+   813
+  ],
+  "harry-o-farrell": [
+   447,
+   446
+  ],
+  "max-michalanney": [
+   529,
+   527
+  ],
+  "darcy-byrne-jones": [
+   599,
+   598
+  ],
+  "jake-waterman": [
+   988,
+   987
+  ],
+  "andrew-mcgrath": [
+   1079,
+   1078
+  ],
+  "tom-de-koning": [
+   1573,
+   1571
+  ],
+  "jhye-clark": [
+   765,
+   764
+  ],
+  "joshua-kelly": [
+   717,
+   715
+  ],
+  "ed-langdon": [
+   598,
+   597
+  ],
+  "billy-wilson": [
+   825,
+   964
+  ],
+  "rory-laird": [
+   713,
+   700
+  ],
+  "joseph-fonti": [
+   483,
+   482
+  ],
+  "logan-evans": [
+   1362,
+   1360
+  ],
+  "willem-drew": [
+   590,
+   589
+  ],
+  "samuel-collins": [
+   576,
+   575
+  ],
+  "lachlan-cowan": [
+   586,
+   599
+  ],
+  "matthew-roberts": [
+   1460,
+   1457
+  ],
+  "wil-powell": [
+   831,
+   828
+  ],
+  "jye-caldwell": [
+   1029,
+   1027
+  ],
+  "christian-moraes": [
+   664,
+   663
+  ],
+  "mitchell-edwards": [
+   1931,
+   2185
+  ],
+  "max-kondogiannis": [
+   406,
+   405
+  ],
+  "jack-graham": [
+   732,
+   731
+  ],
+  "angus-clarke": [
+   567,
+   566
+  ],
+  "sean-darcy": [
+   734,
+   733
+  ],
+  "joel-jeffrey": [
+   1415,
+   1413
+  ],
+  "edward-allan": [
+   795,
+   794
+  ],
+  "josh-dolan": [
+   324,
+   313
+  ],
+  "jack-gunston": [
+   667,
+   589
+  ],
+  "matthew-kennedy-1": [
+   690,
+   689
+  ],
+  "matthew-jefferson": [
+   395,
+   394
+  ],
+  "darcy-parish": [
+   607,
+   606
+  ],
+  "neil-erasmus": [
+   950,
+   1014
+  ],
+  "jeremy-cameron": [
+   836,
+   704
+  ],
+  "brayden-maynard": [
+   531,
+   529
+  ],
+  "ben-miller": [
+   957,
+   954
+  ],
+  "james-peatling": [
+   1010,
+   1009
+  ],
+  "talor-byrne": [
+   631,
+   601
+  ],
+  "billy-cootee": [
+   174,
+   166
+  ],
+  "daniel-rioli": [
+   686,
+   685
+  ],
+  "miles-bergman": [
+   976,
+   975
+  ],
+  "jack-silvagni": [
+   682,
+   680
+  ],
+  "jack-buckley": [
+   572,
+   571
+  ],
+  "keidean-coleman": [
+   691,
+   690
+  ],
+  "mitchell-lewis": [
+   755,
+   769
+  ],
+  "bailey-williams-wb": [
+   528,
+   598
+  ],
+  "ben-king": [
+   215,
+   214
+  ],
+  "brodie-kemp": [
+   750,
+   680
+  ],
+  "max-gruzewski": [
+   430,
+   429
+  ],
+  "matt-johnson-1": [
+   1029,
+   1025
+  ],
+  "milan-murdock": [
+   348,
+   349
+  ],
+  "blake-hardwick": [
+   609,
+   594
+  ],
+  "francis-evans": [
+   781,
+   822
+  ],
+  "seth-campbell": [
+   818,
+   817
+  ],
+  "harry-rowston": [
+   498,
+   497
+  ],
+  "james-jordon": [
+   272,
+   271
+  ],
+  "jai-serong": [
+   1199,
+   1194
+  ],
+  "tom-papley": [
+   344,
+   523
+  ],
+  "charlie-west": [
+   326,
+   325
+  ],
+  "sam-davidson": [
+   114,
+   110
+  ],
+  "angus-sheldrick": [
+   663,
+   664
+  ],
+  "marc-pittonet": [
+   513,
+   510
+  ],
+  "patrick-retschko": [
+   822,
+   821
+  ],
+  "adam-saad": [
+   420,
+   419
+  ],
+  "jay-polkinghorne": [
+   252,
+   370
+  ],
+  "caleb-lewis": [
+   146,
+   145
+  ],
+  "jack-lukosius": [
+   530,
+   529
+  ],
+  "sam-banks": [
+   785,
+   784
+  ],
+  "cooper-lord": [
+   1137,
+   1194
+  ],
+  "matthew-flynn": [
+   590,
+   589
+  ],
+  "sam-de-koning": [
+   831,
+   830
+  ],
+  "isaac-quaynor": [
+   610,
+   609
+  ],
+  "tom-brown": [
+   384,
+   383
+  ],
+  "cameron-rayner": [
+   810,
+   671
+  ],
+  "brayden-cook": [
+   770,
+   820
+  ],
+  "hugo-hall-kahan": [
+   541,
+   557
+  ],
+  "isaiah-dudley": [
+   222,
+   194
+  ],
+  "scott-pendlebury": [
+   332,
+   331
+  ],
+  "hamish-davis": [
+   665,
+   664
+  ],
+  "zachary-williams": [
+   335,
+   337
+  ],
+  "brayden-fiorini": [
+   409,
+   408
+  ],
+  "charlie-comben": [
+   644,
+   643
+  ],
+  "tyler-sonsie": [
+   769,
+   768
+  ],
+  "braeden-campbell": [
+   565,
+   567
+  ],
+  "joel-fitzgerald": [
+   286,
+   285
+  ],
+  "ryan-maric": [
+   1363,
+   1361
+  ],
+  "alex-neal-bullen": [
+   411,
+   414
+  ],
+  "roan-steele": [
+   85,
+   84
+  ],
+  "matt-carroll": [
+   638,
+   637
+  ],
+  "hussien-el-achkar": [
+   415,
+   414
+  ],
+  "jake-lloyd": [
+   248,
+   306
+  ],
+  "rory-lobb": [
+   259,
+   281
+  ],
+  "james-o-donnell": [
+   455,
+   566
+  ],
+  "toby-mcmullin": [
+   132,
+   131
+  ],
+  "noah-roberts-thomson": [
+   234,
+   233
+  ],
+  "daniel-mcstay": [
+   333,
+   335
+  ],
+  "nick-larkey": [
+   538,
+   537
+  ],
+  "archer-day-wicks": [
+   347,
+   346
+  ],
+  "anthony-caminiti": [
+   822,
+   821
+  ],
+  "zak-johnson": [
+   397,
+   396
+  ],
+  "zac-taylor": [
+   243,
+   242
+  ],
+  "nick-murray": [
+   409,
+   408
+  ],
+  "balyn-o-brien": [
+   248,
+   247
+  ],
+  "chris-scerri": [
+   277,
+   276
+  ],
+  "noah-balta": [
+   413,
+   412
+  ],
+  "campbell-gray": [
+   279,
+   278
+  ],
+  "elijah-hollands": [
+   637,
+   636
+  ],
+  "max-beattie": [
+   166,
+   129
+  ],
+  "bayley-fritsch": [
+   275,
+   277
+  ],
+  "will-lewis": [
+   100,
+   101
+  ],
+  "arthur-jones": [
+   315,
+   288
+  ],
+  "oliver-hayes-brown": [
+   102,
+   101
+  ],
+  "taylor-walker": [
+   214,
+   201
+  ],
+  "jasper-alger": [
+   240,
+   239
+  ],
+  "steely-green": [
+   115,
+   114
+  ],
+  "ben-keays": [
+   420,
+   424
+  ],
+  "cameron-zurhaar": [
+   311,
+   310
+  ],
+  "cooper-harvey": [
+   395,
+   394
+  ],
+  "luke-kennedy": [
+   271,
+   291
+  ],
+  "tom-atkins": [
+   306,
+   290
+  ],
+  "heath-chapman": [
+   370,
+   425
+  ],
+  "karl-amon": [
+   301,
+   280
+  ],
+  "will-hayward": [
+   275,
+   274
+  ],
+  "harrison-petty": [
+   374,
+   373
+  ],
+  "ben-ainsworth": [
+   338,
+   384
+  ],
+  "jarrod-berry": [
+   364,
+   363
+  ],
+  "luke-nankervis": [
+   341,
+   441
+  ],
+  "tom-hanily": [
+   152,
+   189
+  ],
+  "bailey-macdonald": [
+   147,
+   131
+  ],
+  "oliver-henry": [
+   255,
+   249
+  ],
+  "judd-mcvee": [
+   286,
+   285
+  ],
+  "oliver-wiltshire": [
+   61,
+   76
+  ],
+  "finnbar-maley": [
+   170,
+   169
+  ],
+  "jesse-hogan": [
+   321,
+   320
+  ],
+  "josh-draper": [
+   256,
+   255
+  ],
+  "jake-lever": [
+   188,
+   186
+  ],
+  "dante-visentini": [
+   761,
+   760
+  ],
+  "hayden-mclean": [
+   229,
+   303
+  ],
+  "jack-henry": [
+   227,
+   219
+  ],
+  "oisin-mullin": [
+   30,
+   28
+  ],
+  "robert-hansen": [
+   105,
+   104
+  ],
+  "nathan-o-driscoll": [
+   233,
+   225
+  ],
+  "jack-williams": [
+   337,
+   336
+  ],
+  "patrick-dangerfield": [
+   83,
+   129
+  ],
+  "zach-guthrie": [
+   326,
+   329
+  ],
+  "charlie-cameron": [
+   222,
+   167
+  ],
+  "wade-derksen": [
+   214,
+   213
+  ],
+  "mabior-chol": [
+   258,
+   212
+  ],
+  "sandy-brock": [
+   160,
+   159
+  ],
+  "jake-stringer": [
+   102,
+   101
+  ],
+  "james-borlase": [
+   359,
+   366
+  ],
+  "lewis-young": [
+   145,
+   123
+  ],
+  "connor-budarick": [
+   216,
+   206
+  ],
+  "rhylee-west": [
+   264,
+   267
+  ],
+  "lachlan-bramble": [
+   151,
+   102
+  ],
+  "matt-cottrell": [
+   161,
+   151
+  ],
+  "blake-acres": [
+   127,
+   74
+  ],
+  "oscar-mcdonald": [
+   82,
+   95
+  ],
+  "dylan-stephens": [
+   605,
+   604
+  ],
+  "jaxon-prior": [
+   400,
+   399
+  ],
+  "lachlan-mcneil": [
+   44,
+   41
+  ],
+  "brandon-walker": [
+   47,
+   53
+  ],
+  "nicholas-coffield": [
+   111,
+   110
+  ],
+  "charlie-ballard": [
+   92,
+   91
+  ],
+  "eric-hipwood": [
+   64,
+   70
+  ],
+  "michael-frederick": [
+   116,
+   114
+  ],
+  "buku-khamis": [
+   151,
+   149
+  ],
+  "henry-smith": [
+   122,
+   121
+  ],
+  "ryan-lester": [
+   27,
+   28
+  ],
+  "joel-amartey": [
+   114,
+   113
+  ],
+  "harry-morrison": [
+   64,
+   66
+  ],
+  "sam-switkowski": [
+   27,
+   28
+  ],
+  "mitch-mcgovern": [
+   36,
+   25
+  ],
+  "tom-barrass": [
+   46,
+   43
+  ],
+  "mark-blicavs": [
+   59,
+   60
+  ],
+  "cody-weightman": [
+   179,
+   119
+  ],
+  "bradley-close": [
+   25,
+   26
+  ],
+  "darcy-fort": [
+   94,
+   86
+  ],
+  "changkuoth-jiath": [
+   65,
+   64
+  ],
+  "isaac-cumming": [
+   57,
+   62
+  ],
+  "mark-o-connor": [
+   19,
+   25
+  ],
+  "callum-ah-chee": [
+   38,
+   34
+  ],
+  "lachlan-sholl": [
+   91,
+   90
+  ],
+  "conor-mckenna": [
+   5,
+   6
+  ],
+  "noah-answerth": [
+   18,
+   14
+  ],
+  "sam-wicks": [
+   29,
+   28
+  ],
+  "mason-cox": [
+   3,
+   2
+  ],
+  "alex-pearce": [
+   14,
+   15
+  ],
+  "harry-cunningham": [
+   2,
+   3
+  ]
+ },
+ "missing": []
+}

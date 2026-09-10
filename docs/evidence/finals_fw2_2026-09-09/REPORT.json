@@ -2,7 +2,7 @@
   "abort": {
     "byte_exact": true,
     "commits_rewound": [],
-    "error": "gate movers_ui did not pass (exit 1):\n loaded contract ADVANCED the calendar to the feed round (the hold is the point)\n  [PASS] an ordinary round is unchanged: contract 16 == report 16\n  [PASS] an ordinary round still fails closed on a contract one round behind its latest report\n  [PASS] a store correction on top of the retrospective does not steal the default \u2014 no report produced that board  (got {\"from\":\"r23\",\"to\":\"r24\"})\n  [PASS] the retro block sits at the TAIL of points even when a later stored point exists (why 'newest' filters retro)\n  [PASS] once a finals week lands, the default is ITS pair \u2014 the `to` end is the board the app serves  (got {\"from\":\"fw1-baseline-col\",\"to\":\"25\"})\n  [PASS] the retro default EXPIRES when new football moves the board past it  (got {\"from\":\"fw1-baseline-col\",\"to\":\"25\"})\n  [PASS] the SHIPPED bundle carries the whole retrospective series R14-R25  (got [14,15,16,17,18,19,20,21,22,23,24,25])\n  [PASS] every shipped retro point names the board it was priced on and carries its label\n  [PASS] the SHIPPED bundle still carries every stored round report from R15 (got 11 starting at R15)\n  [PASS] the shipped retro points carry their per-player readings (9648 values)\n  [PASS] no window -> no MD.ovFactor -> the engine values pass through untouched  (got [147,117,-30])\n  [PASS] the overridden player is shown at his DISPLAY value at BOTH ends of the range  (got [74,58])\n  [PASS] and the row is internally consistent on screen: cur - prev == the printed change\n  [PASS] every non-overridden player is byte-untouched (an override cannot move another player)  (got [200,210,10])\n  [PASS]   ties round half-to-EVEN, matching owner_overrides.py \u2014 not Math.round, which would give 59\n  [PASS]   the percentage moves with the rounding (-20.41 -> -21.62) and that is the accepted trade\n  [PASS] and the bundle was never mutated \u2014 a second call without the override reads the engine values  (got [147,117])\n  [PASS] history.js carries retroLabel \u2014 the retro point's display name has one owner\n  [PASS] a numbered round still reads Round 14  (got \"Round 14\")\n  [PASS] a FINALS WEEK reads its name, not Round 25  (got \"Finals Week 1\")\n  [PASS] \u2026and so will every later week, without another edit here  (got \"Grand Final\")\n  [PASS] a point with no label falls back to its round rather than rendering blank  (got \"Round 24\")\n  [PASS] every finals retro point on the SHIPPED bundle carries a named label (Finals Week 1)\n  ------------------------------------------------------------\nMOVERS TESTS: 2 FAIL / 102\n\n\nPER-CHECK RAW OUTPUT: /home/user/afl-rl-engine/docs/evidence/finals_fw2_2026-09-09/gate_movers_ui.txt",
+    "error": "gate movers_ui did not pass (exit 1):\n loaded contract ADVANCED the calendar to the feed round (the hold is the point)\n  [PASS] an ordinary round is unchanged: contract 16 == report 16\n  [PASS] an ordinary round still fails closed on a contract one round behind its latest report\n  [PASS] a store correction on top of the retrospective does not steal the default \u2014 no report produced that board  (got {\"from\":\"r23\",\"to\":\"r24\"})\n  [PASS] the retro block sits at the TAIL of points even when a later stored point exists (why 'newest' filters retro)\n  [PASS] once a finals week lands, the default is ITS pair \u2014 the `to` end is the board the app serves  (got {\"from\":\"fw1-baseline-col\",\"to\":\"25\"})\n  [PASS] the retro default EXPIRES when new football moves the board past it  (got {\"from\":\"fw1-baseline-col\",\"to\":\"25\"})\n  [FAIL] the SHIPPED bundle carries the whole retrospective series R14-R26  (got [14,15,16,17,18,19,20,21,22,23,24,25])\n  [PASS] every shipped retro point names the board it was priced on and carries its label\n  [PASS] the SHIPPED bundle still carries every stored round report from R15 (got 12 starting at R15)\n  [PASS] the shipped retro points carry their per-player readings (9648 values)\n  [PASS] no window -> no MD.ovFactor -> the engine values pass through untouched  (got [147,117,-30])\n  [PASS] the overridden player is shown at his DISPLAY value at BOTH ends of the range  (got [74,58])\n  [PASS] and the row is internally consistent on screen: cur - prev == the printed change\n  [PASS] every non-overridden player is byte-untouched (an override cannot move another player)  (got [200,210,10])\n  [PASS]   ties round half-to-EVEN, matching owner_overrides.py \u2014 not Math.round, which would give 59\n  [PASS]   the percentage moves with the rounding (-20.41 -> -21.62) and that is the accepted trade\n  [PASS] and the bundle was never mutated \u2014 a second call without the override reads the engine values  (got [147,117])\n  [PASS] history.js carries retroLabel \u2014 the retro point's display name has one owner\n  [PASS] a numbered round still reads Round 14  (got \"Round 14\")\n  [PASS] a FINALS WEEK reads its name, not Round 25  (got \"Finals Week 1\")\n  [PASS] \u2026and so will every later week, without another edit here  (got \"Grand Final\")\n  [PASS] a point with no label falls back to its round rather than rendering blank  (got \"Round 24\")\n  [PASS] every finals retro point on the SHIPPED bundle carries a named label (Finals Week 1)\n  ------------------------------------------------------------\nMOVERS TESTS: 1 FAIL / 102\n\n\nPER-CHECK RAW OUTPUT: /home/user/afl-rl-engine/docs/evidence/finals_fw2_2026-09-09/gate_movers_ui.txt",
     "failed_step": "gates",
     "restore_point": {
       "data/expected_boot.json": "4f24b38068ed51b4cc5764ab2f1dab00",
@@ -279,7 +279,7 @@
     ]
   },
   "commits": [],
-  "error": "gate movers_ui did not pass (exit 1):\n loaded contract ADVANCED the calendar to the feed round (the hold is the point)\n  [PASS] an ordinary round is unchanged: contract 16 == report 16\n  [PASS] an ordinary round still fails closed on a contract one round behind its latest report\n  [PASS] a store correction on top of the retrospective does not steal the default \u2014 no report produced that board  (got {\"from\":\"r23\",\"to\":\"r24\"})\n  [PASS] the retro block sits at the TAIL of points even when a later stored point exists (why 'newest' filters retro)\n  [PASS] once a finals week lands, the default is ITS pair \u2014 the `to` end is the board the app serves  (got {\"from\":\"fw1-baseline-col\",\"to\":\"25\"})\n  [PASS] the retro default EXPIRES when new football moves the board past it  (got {\"from\":\"fw1-baseline-col\",\"to\":\"25\"})\n  [PASS] the SHIPPED bundle carries the whole retrospective series R14-R25  (got [14,15,16,17,18,19,20,21,22,23,24,25])\n  [PASS] every shipped retro point names the board it was priced on and carries its label\n  [PASS] the SHIPPED bundle still carries every stored round report from R15 (got 11 starting at R15)\n  [PASS] the shipped retro points carry their per-player readings (9648 values)\n  [PASS] no window -> no MD.ovFactor -> the engine values pass through untouched  (got [147,117,-30])\n  [PASS] the overridden player is shown at his DISPLAY value at BOTH ends of the range  (got [74,58])\n  [PASS] and the row is internally consistent on screen: cur - prev == the printed change\n  [PASS] every non-overridden player is byte-untouched (an override cannot move another player)  (got [200,210,10])\n  [PASS]   ties round half-to-EVEN, matching owner_overrides.py \u2014 not Math.round, which would give 59\n  [PASS]   the percentage moves with the rounding (-20.41 -> -21.62) and that is the accepted trade\n  [PASS] and the bundle was never mutated \u2014 a second call without the override reads the engine values  (got [147,117])\n  [PASS] history.js carries retroLabel \u2014 the retro point's display name has one owner\n  [PASS] a numbered round still reads Round 14  (got \"Round 14\")\n  [PASS] a FINALS WEEK reads its name, not Round 25  (got \"Finals Week 1\")\n  [PASS] \u2026and so will every later week, without another edit here  (got \"Grand Final\")\n  [PASS] a point with no label falls back to its round rather than rendering blank  (got \"Round 24\")\n  [PASS] every finals retro point on the SHIPPED bundle carries a named label (Finals Week 1)\n  ------------------------------------------------------------\nMOVERS TESTS: 2 FAIL / 102\n\n\nPER-CHECK RAW OUTPUT: /home/user/afl-rl-engine/docs/evidence/finals_fw2_2026-09-09/gate_movers_ui.txt",
+  "error": "gate movers_ui did not pass (exit 1):\n loaded contract ADVANCED the calendar to the feed round (the hold is the point)\n  [PASS] an ordinary round is unchanged: contract 16 == report 16\n  [PASS] an ordinary round still fails closed on a contract one round behind its latest report\n  [PASS] a store correction on top of the retrospective does not steal the default \u2014 no report produced that board  (got {\"from\":\"r23\",\"to\":\"r24\"})\n  [PASS] the retro block sits at the TAIL of points even when a later stored point exists (why 'newest' filters retro)\n  [PASS] once a finals week lands, the default is ITS pair \u2014 the `to` end is the board the app serves  (got {\"from\":\"fw1-baseline-col\",\"to\":\"25\"})\n  [PASS] the retro default EXPIRES when new football moves the board past it  (got {\"from\":\"fw1-baseline-col\",\"to\":\"25\"})\n  [FAIL] the SHIPPED bundle carries the whole retrospective series R14-R26  (got [14,15,16,17,18,19,20,21,22,23,24,25])\n  [PASS] every shipped retro point names the board it was priced on and carries its label\n  [PASS] the SHIPPED bundle still carries every stored round report from R15 (got 12 starting at R15)\n  [PASS] the shipped retro points carry their per-player readings (9648 values)\n  [PASS] no window -> no MD.ovFactor -> the engine values pass through untouched  (got [147,117,-30])\n  [PASS] the overridden player is shown at his DISPLAY value at BOTH ends of the range  (got [74,58])\n  [PASS] and the row is internally consistent on screen: cur - prev == the printed change\n  [PASS] every non-overridden player is byte-untouched (an override cannot move another player)  (got [200,210,10])\n  [PASS]   ties round half-to-EVEN, matching owner_overrides.py \u2014 not Math.round, which would give 59\n  [PASS]   the percentage moves with the rounding (-20.41 -> -21.62) and that is the accepted trade\n  [PASS] and the bundle was never mutated \u2014 a second call without the override reads the engine values  (got [147,117])\n  [PASS] history.js carries retroLabel \u2014 the retro point's display name has one owner\n  [PASS] a numbered round still reads Round 14  (got \"Round 14\")\n  [PASS] a FINALS WEEK reads its name, not Round 25  (got \"Finals Week 1\")\n  [PASS] \u2026and so will every later week, without another edit here  (got \"Grand Final\")\n  [PASS] a point with no label falls back to its round rather than rendering blank  (got \"Round 24\")\n  [PASS] every finals retro point on the SHIPPED bundle carries a named label (Finals Week 1)\n  ------------------------------------------------------------\nMOVERS TESTS: 1 FAIL / 102\n\n\nPER-CHECK RAW OUTPUT: /home/user/afl-rl-engine/docs/evidence/finals_fw2_2026-09-09/gate_movers_ui.txt",
   "facts": {
     "base": {
       "carriers": {
@@ -369,7 +369,7 @@
         "ui/data_aux/draft_outcomes.js": "4537576e98ee245072c15bc1a7a0ce2c",
         "ui/data_aux/v0.js": "d8e6429ccb4c525a9072b8b0a644007f"
       },
-      "commit": "d1ca6db89c440844ee3d702e01f99e7c5c22b882",
+      "commit": "9b967bbf5c67b09c781c4f415ae78bcbec37b05a",
       "expected_boot": {
         "as_of_round": 24,
         "balanced_board_md5": "c0afa5d869ce0ac490dde4105f6008c9",
@@ -393,7 +393,7 @@
     },
     "build_proofs": {
       "board_built": "d3fb6b4842ddd3bea57fbacc7a94e4d7",
-      "build_elapsed_s": 1241.0,
+      "build_elapsed_s": 1200.3,
       "day0_rebase": "off",
       "edit": {
         "movers": [
@@ -3786,10 +3786,10 @@
       "unmoved_checked": 6
     },
     "preflight": {
-      "base_commit": "d1ca6db89c440844ee3d702e01f99e7c5c22b882",
+      "base_commit": "9b967bbf5c67b09c781c4f415ae78bcbec37b05a",
       "board_before": "b005096b5e78014425922cae3f28f6c9",
       "carriers_captured": 85,
-      "lock": "land-edit-15537"
+      "lock": "land-edit-17983"
     },
     "sibling": {
       "balanced_board_md5": "784e80ba61fe090830c2d641602d1553",
@@ -3810,9 +3810,9 @@
     },
     "state": {
       "changed": true,
-      "md5": "e6b9cb869eae375221702783a648aa1c",
+      "md5": "c816fbd8fb31451ca939df03e21680c7",
       "path": "docs/STATE.md",
-      "stamp_commit": "d1ca6db89c440844ee3d702e01f99e7c5c22b882",
+      "stamp_commit": "9b967bbf5c67b09c781c4f415ae78bcbec37b05a",
       "written": true
     },
     "store_edit": {
@@ -9330,10 +9330,10 @@
       "draft_outcomes_moved": true,
       "draft_outcomes_pin": "a367386a",
       "embedded_board": "d3fb6b4842ddd3bea57fbacc7a94e4d7",
-      "mirror_md5": "1451fdca473ad35b3f73a782f309107a",
+      "mirror_md5": "43ac0ebe752243f9eaa833a1c56606ab",
       "mirror_moved": true,
       "model_changes": 17,
-      "movers_md5": "8d7812054499c15f4d80df2dcee2cc5d",
+      "movers_md5": "7d7f98d8bf8a8de53bfe274c0633f3a8",
       "movers_moved": true,
       "n_picks": 240,
       "n_selections": 1568,
@@ -9349,17 +9349,17 @@
   "ok": false,
   "timings": [
     {
-      "seconds": 398.26,
+      "seconds": 0.07,
       "step": "preflight",
       "verdict": "OK"
     },
     {
-      "seconds": 45.02,
+      "seconds": 44.25,
       "step": "store_edit",
       "verdict": "OK"
     },
     {
-      "seconds": 1241.11,
+      "seconds": 1200.4,
       "step": "build_proofs",
       "verdict": "OK"
     },
@@ -9369,22 +9369,22 @@
       "verdict": "OK"
     },
     {
-      "seconds": 0.21,
+      "seconds": 0.2,
       "step": "lineage",
       "verdict": "OK"
     },
     {
-      "seconds": 0.1,
+      "seconds": 0.09,
       "step": "contract",
       "verdict": "OK"
     },
     {
-      "seconds": 0.88,
+      "seconds": 0.86,
       "step": "sibling",
       "verdict": "OK"
     },
     {
-      "seconds": 593.41,
+      "seconds": 586.15,
       "step": "ui",
       "verdict": "OK"
     },
@@ -9394,7 +9394,7 @@
       "verdict": "OK"
     },
     {
-      "seconds": 15.73,
+      "seconds": 16.16,
       "step": "gates",
       "verdict": "FAIL"
     }

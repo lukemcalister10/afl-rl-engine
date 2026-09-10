@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_7349/sandbox
+  tree      : /tmp/landing_selftest_17983/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board b005096b5e78014425922cae3f28f6c9
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,12 +9,12 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO
-build-lock: HELD by land-lever-8537 (pid 8537) — single writer for the shared workspace.
-base commit        4ff6b159b620ecefaf38caf20f7a462061af85ee
+build-lock: HELD by land-lever-18934 (pid 18934) — single writer for the shared workspace.
+base commit        26b7891c010a8a95bb538a449ac51b413721c5c8
 board pin (before) b005096b5e78014425922cae3f28f6c9
 store pin (before) 415929d3c9d561cc58bef00ae63432b2
 restore point      84 carrier(s) captured, 84 present on disk
-    [preflight OK  0.11s]
+    [preflight OK  0.10s]
 
 --- STEP 1/10  build_proofs   bare build, predicted identity, switch leg, day-0 ---
 build         rc=0 board=b005096b5e78014425922cae3f28f6c9  (0.0s)
@@ -56,7 +56,7 @@ RE-STAMPED, re-read, and release_contract.py check PASSES.
 --- STEP 5/10  sibling        the balanced sibling, rebuilt and reconciled if moved ---
 verify BEFORE : ok=True balanced=c0afa5d869ce fails=0
 the sibling is CURRENT — nothing to reconcile, and this step writes nothing.
-    [sibling OK  0.16s]
+    [sibling OK  0.15s]
 
 --- STEP 6/10  ui             ALL SEVEN UI writers, and the identity read back out ---
 *** FAULT INJECTED at step 'ui': stale_picks_bundle — WRITER 6 never runs and the shipped picks bundle keeps a foreign board + store stamp — the pick surface ships STALE (and, before v827, silently)
@@ -89,12 +89,12 @@ WRITER 4b/8: emit_retro_series.py  (the R14-R24 walk-forward series writer 4 dro
   emitted 12 retro points covering up to 804 players -> ui/data/movers.js
   retro series present: 12 points, retro-r14 .. retro-r25 (every banked round, no gap)
 WRITER 5/8: ui/tools/ingest_inputs.py --mirror-only  (the ownership mirror, re-pinned to the landed board + store)
-  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_7349/sandbox/ui/data/ownership.js
+  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_17983/sandbox/ui/data/ownership.js
   MIRROR-ONLY    — the club-valuation bundle was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
   drift guard: MIRROR DRIFT GUARD — ui/data/ownership.js is byte-identical to what this tree projects (74727 bytes).
   mirror pin == the landed identity: board b005096b store 415929d3 R24, 804 player(s) mirrored (pin() would ACTIVATE it)
 WRITER 6/8: SKIPPED BY FAULT INJECTION — the picks bundle keeps the stamp of a board this landing is replacing.
-    [ui FAILED  3.37s]
+    [ui FAILED  3.35s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'ui'
@@ -118,12 +118,12 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.11s  OK
+    preflight          0.10s  OK
     build_proofs       0.01s  OK
     pins               0.02s  OK
     lineage            0.00s  OK
     contract           0.09s  OK
-    sibling            0.16s  OK
-    ui                 3.37s  FAIL
-    TOTAL              3.76s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_8537
+    sibling            0.15s  OK
+    ui                 3.35s  FAIL
+    TOTAL              3.72s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_18934

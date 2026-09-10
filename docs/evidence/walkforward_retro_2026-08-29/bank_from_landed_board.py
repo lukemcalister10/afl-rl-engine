@@ -43,9 +43,14 @@ def main():
                          'this way — an in-season round has football after it, so its truncation is '
                          'not a no-op and its values are NOT the live board.' % R)
     out = os.path.join(HERE, 'values_r%d.json' % R)
+    # RE-BANKING IS ALLOWED HERE, AND ONLY HERE. A finals feed round's bank IS the live board, so
+    # "already banked" and "banked from a different board" are the same question with one answer:
+    # take the board in front of you. It matters because an ABORTED flight leaves its bank behind —
+    # values_r*.json is evidence, not a landing carrier, so the abort ladder does not restore it —
+    # and a stale bank from a board that was rolled back is the one thing that must not survive.
+    prev_bank = None
     if os.path.exists(out):
-        raise SystemExit('HALT: %s already exists. Re-banking would overwrite a measured round.'
-                         % os.path.basename(out))
+        prev_bank = json.load(io.open(out, encoding='utf-8'))
     prev = os.path.join(HERE, 'values_r%d.json' % (R - 1))
     if not os.path.exists(prev):
         raise SystemExit('HALT: r%d is not banked. The series must be contiguous — banking r%d on a '
@@ -70,8 +75,16 @@ def main():
         'values': values,
     }
     json.dump(rec, io.open(out, 'w', encoding='utf-8'), indent=1)
-    print('banked r%d from the landed board: %d rows, store %s -> %s'
-          % (R, len(values), store_md5[:8], os.path.relpath(out, REPO)))
+    if prev_bank is None:
+        print('banked r%d from the landed board: %d rows, store %s -> %s'
+              % (R, len(values), store_md5[:8], os.path.relpath(out, REPO)))
+    else:
+        moved = sum(1 for k, v in values.items() if (prev_bank.get('values') or {}).get(k) != v)
+        print('re-banked r%d from the landed board: %d rows, store %s -> %s (previous bank was '
+              'store %s; %d value(s) differ — a bank left behind by an aborted flight is replaced, '
+              'never merged)'
+              % (R, len(values), store_md5[:8], os.path.relpath(out, REPO),
+                 str(prev_bank.get('store_md5'))[:8], moved))
 
 
 if __name__ == '__main__':

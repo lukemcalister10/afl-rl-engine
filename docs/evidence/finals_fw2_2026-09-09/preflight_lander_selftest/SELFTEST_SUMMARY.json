@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-09T07:17:38Z",
+  "generated": "2026-09-10T02:04:27Z",
   "results": [
     {
       "case": "control_clean_run",
@@ -143,12 +143,12 @@
     },
     {
       "case": "sheet_recut_writer",
-      "detail": "exit 0; the declaration now reads md5=01161960cb15 rows=219 injured_y=34; sheet commit b62af760580e; engine_head asserted UNMOVED",
-      "ok": "b62af760580e95f2c9b53b2e56851267663c5c99"
+      "detail": "exit 0; the declaration now reads md5=01161960cb15 rows=219 injured_y=34; sheet commit c0b02643b8c3; engine_head asserted UNMOVED",
+      "ok": "c0b02643b8c3187052b36d4b32cef708ce42da16"
     },
     {
       "case": "round_input_commit_pincer",
-      "detail": "step 0 DECLARED the score file + the override record as expected dirt (yes); catchup_preflight committed the inputs itself at 7f62193c3537; the flight reached failed_step='advance' (the door of the armed advance, by request)",
+      "detail": "step 0 DECLARED the score file + the override record as expected dirt (yes); catchup_preflight committed the inputs itself at 14b90986fb02; the flight reached failed_step='advance' (the door of the armed advance, by request)",
       "ok": true
     },
     {

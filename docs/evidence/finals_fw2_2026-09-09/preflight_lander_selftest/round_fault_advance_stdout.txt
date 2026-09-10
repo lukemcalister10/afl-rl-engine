@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
-  tree      : /tmp/landing_selftest_7349/sandbox
+  tree      : /tmp/landing_selftest_17983/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board b005096b5e78014425922cae3f28f6c9
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,8 +9,8 @@ LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
 
 --- STEP 0/14  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO
-build-lock: HELD by land-round-9016 (pid 9016) — single writer for the shared workspace.
-base commit        4ff6b159b620ecefaf38caf20f7a462061af85ee
+build-lock: HELD by land-round-19427 (pid 19427) — single writer for the shared workspace.
+base commit        26b7891c010a8a95bb538a449ac51b413721c5c8
 board pin (before) b005096b5e78014425922cae3f28f6c9
 store pin (before) 415929d3c9d561cc58bef00ae63432b2
 restore point      137 carrier(s) captured, 137 present on disk
@@ -57,4 +57,4 @@ improvised manual landing under pressure.
     catchup_preflight     0.00s  OK
     advance            0.00s  FAIL
     TOTAL              0.09s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_9016
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_19427

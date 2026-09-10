@@ -40,8 +40,8 @@ MOVERS-VIEW TESTS
   [PASS] the derived round range reaches at least R24 (it never shrinks below landed history)
   [PASS] round_movers.py declares the finals feed rounds and their column prefixes
   [PASS] at least one finals week has landed on the board (this check is not vacuous)
-  [FAIL] production ui/data/movers.js carries R15..the live round PLUS every landed finals week (DERIVED)  (got [15,16,17,18,19,20,21,22,23,24,25])
-  [FAIL] production bundle carries one report per round INCLUDING each landed finals week, count DERIVED (12)
+  [PASS] production ui/data/movers.js carries R15..the live round PLUS every landed finals week (DERIVED)  (got [15,16,17,18,19,20,21,22,23,24,25,26])
+  [PASS] production bundle carries one report per round INCLUDING each landed finals week, count DERIVED (12)
   [PASS] complete historical board/store chain R14->R19 is exact + continuous
   [PASS] latest report terminates at the R19 recovery-materialised store f37d9716 (history; superseded as the accepted store by ITEM 411 D1 c120cfd5)
   [PASS] transition record is an owner-approved movers_release_transition
@@ -88,9 +88,9 @@ MOVERS-VIEW TESTS
   [PASS] the retro block sits at the TAIL of points even when a later stored point exists (why 'newest' filters retro)
   [PASS] once a finals week lands, the default is ITS pair — the `to` end is the board the app serves  (got {"from":"fw1-baseline-col","to":"25"})
   [PASS] the retro default EXPIRES when new football moves the board past it  (got {"from":"fw1-baseline-col","to":"25"})
-  [PASS] the SHIPPED bundle carries the whole retrospective series R14-R25  (got [14,15,16,17,18,19,20,21,22,23,24,25])
+  [FAIL] the SHIPPED bundle carries the whole retrospective series R14-R26  (got [14,15,16,17,18,19,20,21,22,23,24,25])
   [PASS] every shipped retro point names the board it was priced on and carries its label
-  [PASS] the SHIPPED bundle still carries every stored round report from R15 (got 11 starting at R15)
+  [PASS] the SHIPPED bundle still carries every stored round report from R15 (got 12 starting at R15)
   [PASS] the shipped retro points carry their per-player readings (9648 values)
   [PASS] no window -> no MD.ovFactor -> the engine values pass through untouched  (got [147,117,-30])
   [PASS] the overridden player is shown at his DISPLAY value at BOTH ends of the range  (got [74,58])
@@ -106,6 +106,6 @@ MOVERS-VIEW TESTS
   [PASS] a point with no label falls back to its round rather than rendering blank  (got "Round 24")
   [PASS] every finals retro point on the SHIPPED bundle carries a named label (Finals Week 1)
   ------------------------------------------------------------
-MOVERS TESTS: 2 FAIL / 102
+MOVERS TESTS: 1 FAIL / 102
 
 [exit 1]

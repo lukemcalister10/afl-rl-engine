@@ -1986,6 +1986,48 @@ def ui(ctx):
                     % (_res['week'], _res['feed_round'], _res['player_count'], _res['played'],
                        _res['dnp'], _res['store_after'][:8]))
 
+        # ---- AND THE WEEK'S POINT ON THE MOVERS LIST, FROM THE BOARD THIS ACT JUST BUILT ---------
+        # The last thing the act owed and the last thing that was manual. For the NEWEST applied
+        # week the retrospective's truncation removes nothing, so the truncated store IS the live
+        # store and its pricing IS the live board — the identity pass_retro_series.py asserts as its
+        # control and which was measured at FW1 (r25 vs live: 0 diffs over 804 rows). So the point
+        # is a read of the board that step 2 built, not a 35-minute re-price of it. The owner,
+        # 2026-09-09: "We don't need to reprice previous rounds under the same model here... it's
+        # literally just adding a week, editing the players who played, and creating a single movers
+        # list entry."
+        #
+        # Rounds 14..R-1 are NOT touched: their football has not changed, and each was priced from a
+        # store that never contained this week's game.
+        _bank = _p(ctx, 'docs', 'evidence', 'walkforward_retro_2026-08-29',
+                   'bank_from_landed_board.py')
+        if os.path.exists(_bank) and not _res.get('already_present'):
+            ctx.log('WRITER 4c/8: the week\'s point on the movers list (read off the built board, '
+                    'not re-priced)')
+            rc, out = ctx.run([sys.executable, _bank, str(_res['feed_round'])], timeout=300)
+            if rc != 0:
+                raise StepError('the finals week\'s retro point could not be banked (exit %s), so '
+                                'the movers list would end at the week before the one this act '
+                                'lands:\n%s' % (rc, out[-1500:]))
+            for _ln in out.strip().splitlines()[-2:]:
+                ctx.log('  %s' % _ln.strip())
+            rc, out = ctx.run([sys.executable, _retro], timeout=900)
+            if rc != 0:
+                raise StepError('re-emitting the series with the new week failed (exit %s):\n%s'
+                                % (rc, out[-1500:]))
+            ctx.log('  %s' % out.strip().splitlines()[-1].strip())
+            _bank2 = sorted(int(_m.group(1)) for _m in
+                            (re.match(r'values_r(\d+)\.json$', _f)
+                             for _f in os.listdir(os.path.dirname(_retro)))
+                            if _m)
+            _got2 = sorted(int(_i.split('-r')[-1]) for _i in
+                           [q.get('id') for q in (_js_obj(movers).get('points') or [])
+                            if q.get('kind') == 'retro'])
+            if _got2 != _bank2:
+                raise StepError('after banking the finals week the shipped series is %s but the '
+                                'banks are %s.' % (_got2, _bank2))
+            ctx.log('  retro series now %s .. %s — the week this act lands is its last point'
+                    % (_got2[0], _got2[-1]))
+
     # ---- WRITER 5: the ownership mirror, re-pinned to the board and store this landing lands ------
     # THE SAME LAW AGAIN, ONE CARRIER ALONG, AND THE SAME THREE-PART PATTERN writers 3 and 4 use:
     # run the writer UNCONDITIONALLY, run the writer's OWN checker, then assert the reader's own
