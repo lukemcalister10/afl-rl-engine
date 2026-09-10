@@ -22,7 +22,7 @@ CLUSTER 3 — tabs and labels (items 2, 13, 14, 5)
 
 CLUSTER 1 — the player card (items 3, 17, 18)
 ---------------------------------------------
-  [FAIL] item 3 — the history has all 29 points — 30
+  [PASS] item 3 — the history has all 30 points
   [PASS] item 3 — value, rank and positional rank are present at EVERY point (no participation gate)
   [PASS] item 3 — the trace covers all 804 tracked players
   [PASS] item 3 — the restructure point is present and flagged as not-a-round
@@ -116,6 +116,6 @@ RUNTIME
   [PASS] every view renders with no page errors
 
 ------------------------------------------------------------
-FAIL 86/87 passed
+87/87 passed
 
-[exit 1]
+[exit 0]

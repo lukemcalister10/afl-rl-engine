@@ -1,0 +1,218 @@
+$ node ui/tests/ui_defects_2026-08-21.test.js
+
+UI ACT 2026-08-21 — defect fixes · lens re-disable · from/to scope · v0 · board filters
+
+(a) movers — participation is tri-state, never a truthiness test
+  ------------------------------------------------------------------------
+  [PASS] core exposes the single tri-state resolver
+  [PASS] played:true -> played
+  [PASS] played:false -> dnp
+  [PASS] played:null -> UNRECORDED, not DNP
+  [PASS] an absent field -> unrecorded
+  [PASS] an unstored pair yields a synthetic report
+  [PASS] both rows are present
+  [PASS] every synthetic row carries played:null AND dnp:null (the ABSENT sentinel, not false)
+  [PASS] so NOT ONE synthetic row resolves to DNP — the Phase-0 bug, closed
+  [PASS] status=played selects only the proven played row
+  [PASS] status=dnp selects ONLY the proven DNP row — an unrecorded row is not swept in
+  [PASS] status=unrecorded selects only the unrecorded row
+  [PASS] the renderer no longer branches on p.played truthiness
+  [PASS] the renderer resolves through the shared tri-state
+
+(3) from/to — scope lifted; defaults to the LATEST round's single-model report
+  ------------------------------------------------------------------------
+  [PASS] the R22 -> R23 scope is retired outright, not left dormant
+  [FAIL] defaultPair is the newest consecutive RETRO pair — R25 to R26, both ends under the current model  {"from":"bust-exclusion-live-fit-1-9","to":"26"}
+  [PASS] …and it resolves to a comparison over the whole priced population
+  [PASS] …and it keeps the round's participation facts (played 183 / DNP 621) — the chips, the scores and both filters survive the change
+  [PASS] a multi-round retro range has NO single participation fact and says so (not recorded)
+  [PASS] …and the default pair crosses NO model change (never a cross-model featured view)
+  [PASS] core.compare still answers for any stored pair — the selector is fully open again
+  [PASS] the retrospective (walk-forward) ask stays recorded in the code while the engine act is in flight
+
+(b) trade — describePick has a ceiling as well as a floor
+  ------------------------------------------------------------------------
+  [PASS] trade exposes describePick for exercise
+  [PASS] the shipped board carries the PVC the translator reads
+  [PASS] an amount AT pick 1 still reads as a top-1 pick
+  [PASS] an amount just under pick 1 still reads as a top-1 pick
+  [PASS] pick 2 reads as a top-2 pick
+  [PASS] the FLOOR clamp is untouched
+  [PASS] 11,376 no longer reads as 'a top-1 pick'
+  [PASS] it reads as MORE THAN pick 1 — the curve has no ordinal that can carry it
+  [PASS] and it states the size as a multiple of pick 1
+  [PASS] …and 11,376 really sits above pick 1 (3000) and below a whole first round (26929), so 'more than pick 1' is the honest rung
+  [PASS] an amount above the whole first round says so
+  [PASS] …and never names a pick
+  [PASS] with an incomplete curve the round rung is SKIPPED, not guessed
+
+(b2) trade — future picks are club + year + round, never an ordinal (owner correction 2026-08-31)
+  ------------------------------------------------------------------------
+  [PASS] the desk exposes its search AND its namer for exercise (no DOM read anywhere in either)
+  [PASS] …and the shipped picks ledger authenticates against this board, so the future-pick path is LIVE
+  [PASS] the shipped ledger prices more than one year (2026/2027/2028) over more than one round (1/2/3/4) — so nothing below is vacuous
+  [PASS] the years the desk offers ARE the years the ledger prices, base year first
+  [PASS] …and the first of them is the BOARD's base year, not a literal
+  [PASS] the rounds the desk offers ARE the rounds the ledger PRICES
+  [PASS] the ledger really does carry a whole round at value 0 (round 5) in every year — a ledger convention recording that the round exists, not a price
+  [PASS] …and NOT ONE of those rounds is offered as a pickable asset, in any year — the desk declines them, it is not merely missing them
+  [PASS] …and asking for one by name offers nothing rather than a 0-SCAR row — the round is not even search vocabulary
+  [PASS] the probe battery reaches the future assets at all (84 rows)
+  [PASS] NOT ONE offered later-year pick carries an ordinal — a 2027 pick has no number, so the desk gives it none
+  [PASS] …and not one of their names says 'Pick 62' or '#62' — the owner's exact complaint, closed
+  [PASS] …while a BASE-YEAR pick still is its number, 1-64 and nothing else — that year is unchanged
+  [PASS] the future rows the desk offers do have a projected band in the ledger (84 rows) — so the assertion below has something to catch
+  [PASS] …and NOT ONE name contains its projected band — the band prices the pick, it does not name it
+  [PASS] …each is named by its ROUND instead ('… 2027 4th')
+  [PASS] every future pick reads as its club, its year and its round — and the club spelling is the LEDGER's own display name, not a second spelling rule invented in the view
+  [PASS] …and the basket chip is the SAME namer the dropdown row used — one name per asset, not two
+  [PASS] …while a base-year pick still names itself by number and the pool still names itself the pool
+  [PASS] a later-year ordinal gets NO name at all — 'Pick 62 · 2027 ND' cannot be put back on the desk by hand
+  [PASS] the owner's own phrasing — 'Hawthorn 2027 4th' — lands on exactly that one asset
+  [PASS] …and so does every reordering and shorthand of it — club/year/round in any order, '27' for 2027, '4th'/'fourth'/'r4'/'round 4' for the round
+  [PASS] 'hawthorn 2027' is the club's whole priced 2027 holding — one row per priced round
+  [PASS] …and every row of it is that club in that year
+  [PASS] '2027 1st' is every club's 2027 first — the club is the part left unnamed
+  [PASS] …one row per club, no club listed twice
+  [PASS] a partial club name resolves exactly as a partial player name does (substring)
+  [PASS] …and a substring that names two clubs answers with both, rather than picking one
+  [PASS] every future pick is offered at the LEDGER's own year-weighted value — the desk re-derives no price (2027 = (1/3 own + 2/3 round avg) x 0.9, 2028 = round avg x 0.8, enforced in the ingest)
+  [PASS] …and the desk offers no asset it cannot price — every offered row carries a real figure
+  [PASS] …while a base-year pick is still priced straight off the shipped PVC, this desk's founding source
+  [PASS] the FURTHEST year prices every pick in a round identically — the owner's rule, measured (2028: r1=1 r2=1 r3=1 r4=1)
+  [PASS] …and the NEARER year does not, so this year's finishing positions still move it (2027: r1=16 r2=14 r3=16 r4=15)
+  [PASS] two clubs' 2028 firsts really do carry one price…
+  [PASS] …and they are STILL one row per club — equal prices are never folded into one asset
+  [PASS] a number past the curve's end is THE POOL, not a phantom ordinal
+  [PASS] …and so is a number far past it
+  [PASS] 'pool' still names the pool item
+  [PASS] …and so does 'pick pool', which is what a pool pick is actually called
+  [PASS] a four-digit number that is NOT an issued year stays a number, so it resolves to the pool
+  [PASS] …and a later-year query is given NO pool item — the pool level is a base-year committed figure
+  [PASS] bare '27' KEEPS its established meaning — ordinal pick 27 of the base year
+  [PASS] …but '27' beside a club is the year, because nothing else it could be is on offer
+  [PASS] 'pick 62' and '62' are the SAME query — the phrasing cannot change the answer
+  [PASS] 'pick' on its own LISTS picks (it used to return two Picketts and no pick)
+  [PASS] 'pickett' is still a NAME search — the keyword is stripped, 'ett' names no club and is not digits, so the parse declines the query
+  [PASS] a word that names no club declines the WHOLE query rather than half-answering it
+  [PASS] …and so does a query that mixes the two asset languages: a later year has no ordinal to mix in
+  [PASS] the desk publishes the owner's floor (5 rows) rather than a number retyped here
+  [PASS] a query with matches to spare clears the floor ('5' -> 7 rows)
+  [PASS] …and the ordinal breadth of the old scan survives (exact match first, then the prefix run)
+  [PASS] the EXACT ordinal leads the list — typing '5' means pick 5, not pick 50
+  [PASS] a bare club clears the floor too — the club's whole holding, every year
+  [PASS] '62' is the base-year pick and the pool — a bare ordinal has no later-year sibling any more, and the floor pads nothing to hide that
+  [PASS] …and a query with exactly one true match returns exactly one row
+  [PASS] move the bundle's base year and the desk's first year moves with it — no year is written into the view
+  [PASS] …and with the ledger no longer agreeing with the PVC on the base year, NO later year and NO round is offered
+  [PASS] …so the club search itself goes quiet rather than pricing a ledger it cannot vouch for
+  [PASS] …while every pick the moved desk still offers wears the moved year
+
+(c) dRound — the false comments and the bridge they justified are removed
+  ------------------------------------------------------------------------
+  [PASS] the name->key dRound bridge is DELETED, not left returning null
+  [PASS] the board's one movement column reads the weekly report of record (Round Δ)
+  [PASS] the card's Round Δ is the board's own figure — one source, not a second computation
+  [PASS] DELTA_BASE_DEFAULT is the populated basis
+  [PASS] vPrev IS carried on the shipped board (804 of 804)
+  [PASS] the DEFAULT Δ basis is fed on the shipped board — no column of dashes by default
+
+(d) attribution — the waterfall reads the SHIPPED {L1..L5} shape
+  ------------------------------------------------------------------------
+  [PASS] the waterfall panel is retired from the card (owner word 2026-08-28)
+  [PASS] …and no dial-map fragment survives on the surface
+  [PASS] …and no residual bar either — the removal is whole
+  [PASS] the export carries `levers` on the shipped board (804 of 804)
+  [PASS] …as a DICT, which is the shape the card now reads
+  [PASS] …keyed by dial code
+
+(2) the +1/+2 projection lenses are re-disabled and unreachable
+  ------------------------------------------------------------------------
+  [PASS] +1 (3) and +2 (4) are declared disabled
+  [PASS] -2, -1 and Now are NOT disabled — only the ruled-wrong forward lenses
+  [PASS] the short on-screen note names the rebuild
+  [PASS] the gate reports both forward lenses off
+  [PASS] …and reports Now on
+  [PASS] a disabled lens CLAMPS to the default — it cannot become the active lens
+  [PASS] …and the backward lenses pass through untouched
+  [PASS] the default lens is never a disabled one
+  [PASS] the board carries NO lens control — the picker is retired with the forward lenses
+  [PASS] the card truncates the lens series to the three backward entries — +1/+2 render nowhere
+
+(4) v0 — entry price, live rating, absolute and ratio; no ranking
+  ------------------------------------------------------------------------
+  [PASS] the generator exists at ui/tools/gen_v0_sidecar.py
+  [PASS] the sidecar is generated at ui/data_aux/v0.js (NOT under ui/data/, the landing's carriers)
+  [PASS] the bundle NAMES the board and store it was generated from
+  [PASS] …and that identity is the one the app is loaded on (the pin passes)
+  [PASS] so the sidecar is ACTIVE
+  [PASS] every active board player has a row
+  [PASS] and none is unrecoverable on this board
+  [PASS] POOL ENTRANTS CARRY A v0 — the owner's correction, honoured: 243 rows are priced off their signed entry anchor, not dashed
+  [PASS] the three origins partition the roster exactly
+  [PASS] a real row resolves to a v0 and a live rating
+  [PASS] the absolute is live − v0, a difference of two given figures
+  [PASS] the ratio is live ÷ v0
+  [PASS] the ratio prints in the owner's own notation
+  [PASS] the surface really does share slots (141 shared slots)
+  [PASS] and EVERY player in a shared slot carries the identical v0 — the primer's law, held
+  [PASS] spot-check: the pick-5 mids share one v0
+  [PASS] the module states the no-ranking rule
+  [PASS] no v0 rank is computed anywhere in the module
+  [PASS] and the card ships no entry rank
+  [PASS] a sidecar generated from another board is REFUSED
+  [PASS] …and the refusal names which identity broke
+  [PASS] a refused row yields NO figure — there is no fallback source for an entry price
+
+(4b) v0 on the public tier — joined at generation time, and NO key added to do it
+  ------------------------------------------------------------------------
+  [PASS] the public row still carries NO key and no internals — the join added a FACT, not an identifier
+  [PASS] the public bundle still carries every player
+  [PASS] every public row carries the entry price AND which entry price it is
+  [PASS] the public stamp records that the join was MADE, so a reader is never left inferring it
+  [PASS] …and its counts are the measured ones, partitioning the published rows
+  [PASS] EVERY published entry price is the sidecar's own figure and origin for that player — the join invents nothing
+  [PASS] an unrecoverable entry price is NULL with its origin named — never 0, never silently omitted
+  [PASS] the public-tier card renderer is retired — one transparent tier
+  [PASS] the card renders the entry-price section
+  [PASS] the entry price and ratio notation are MD.v0's, not a second copy
+  [PASS] ui/app/v0.js records the owner's word verbatim, where the pending note used to stand
+  [PASS] status() no longer reports the public tier as a pending decision
+  [PASS] …it names the word it ships on
+
+(5) board filters — cohort year · age · live eligibility
+  ------------------------------------------------------------------------
+  [PASS] the board exposes the cohort clock
+  [PASS] a 2024 ND entrant is in the 2024 cohort
+  [PASS] a 2024 RD entrant is in the 2024 cohort
+  [PASS] a 2024 SSP entrant is in the 2024 cohort
+  [PASS] AND a 2025 MSD selection is in the 2024 cohort — the owner's stated grouping
+  [PASS] …so a 2024 MSD belongs to the 2023 cohort
+  [PASS] a row without a draft year has no cohort
+  [PASS] the shipped board carries both MSD and ND rows
+  [PASS] the 2024 cohort is non-empty on the shipped board (112 players)
+  [PASS] every MSD row inside the 2024 cohort carries draft year 2025 — the clock rule, on real rows
+  [PASS] a null age filter matches everything
+  [PASS] an exact age matches
+  [PASS] …and only that age
+  [PASS] the 20-and-under band matches 19
+  [PASS] …and not 21
+  [PASS] the 29-and-over band matches 34
+  [PASS] a row with NO age drops out while an age filter is on, rather than being bucketed
+  [PASS] the bands are well-formed and cover the range in order
+  [PASS] a null eligibility filter matches everything
+  [PASS] a dual player matches his KPF eligibility
+  [PASS] …AND his MID eligibility
+  [PASS] a player without the eligibility does not match
+  [PASS] an empty eligibility set matches nothing
+  [PASS] …and so does an absent one
+  [PASS] every shipped row carries an eligibility set
+  [PASS] and the board really has dual-eligible players (186) — the case the modelling Position axis cannot answer
+  [PASS] "eligible to play KPF now" is a superset of "modelled as KPF"
+  [PASS] the snapshot carries all five surviving filters, so Back restores the board you were on
+  [PASS] …and restore round-trips them
+
+  ------------------------------------------------------------------------
+UI ACT 2026-08-21: 1 FAIL / 180
+
+[exit 1]

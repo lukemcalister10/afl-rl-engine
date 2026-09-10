@@ -2,7 +2,7 @@
   "abort": {
     "byte_exact": true,
     "commits_rewound": [],
-    "error": "gate ui_222_items did not pass (exit 1):\n---------------------------\n  [PASS] the board renders all rows\n  [PASS] item 9 \u2014 every row carries the AFFL/AFL club\n  [PASS] item 16 \u2014 clicking a player opens that player's profile\n  [PASS] item 12 \u2014 opening a club routes to the board WITH the club filter set\n  [PASS] item 12 \u2014 the board shows that club only, not the all-player list\n  [PASS] owner fix 2026-08-28 \u2014 a focused club shows its PICKS at the bottom of its board\n  [PASS] item 11 \u2014 the club page opens with the club profile summary\n  [PASS] item 11 \u2014 the summary carries the comparison-page metrics, each with its rank\n  [PASS] item 11 \u2014 the summary appears BEFORE the player list\n  [PASS] item 15 \u2014 club \u2192 player navigates to the card\n  [PASS] item 15 \u2014 a universal Back control is present\n  [PASS] item 15 \u2014 Back returns to the CLUB page, not the all-player list\n  [PASS] item 15 \u2014 the club filter is restored with the page\n  [PASS] item 15 \u2014 Back exists on the Clubs page too (it is not player-card-specific)\n  [PASS] item 15 \u2014 Back from Clubs returns to the board\n\nITEM 21 \u2014 club totals computed in the browser\n---------------------------------------------\n  [PASS] item 21 \u2014 16 clubs computed\n  [PASS] item 21 \u2014 every club total equals the sum of its players ON THE LIVE BOARD\n  [PASS] item 21 \u2014 the baked block IS present and readable for all 16 clubs (so independence is a real test, not one passing over an absent file)\n  [PASS] item 21 \u2014 and the computation is INDEPENDENT of it: corrupting every baked total changes nothing (the staleness this removes)\n  [PASS] item 21 \u2014 the ingest's PVC band-priced picks are kept, not recomputed\n  [PASS] item 21 \u2014 overall == player + picks and player == best23 + nonBest23\n  [PASS] item 21 \u2014 the totals name the board they were summed from\n  [PASS] owner word 2026-08-28 \u2014 the Clubs-page intro essay is retired (methodology lives in ui/MAINTAINER.md)\n\nREDESIGN \u2014 Round \u0394 is the one movement column; over-free is retired\n-------------------------------------------------------------------\n  [PASS] the over-free column is retired \u2014 no .ofree cell renders anywhere\n  [PASS] every board row carries the Round \u0394 cell\n  [PASS] Round \u0394 is the LATEST report's round vs the previous stored round\n  [PASS] every rendered delta is the report's own value_change \u2014 computed nowhere else\n\nRUNTIME\n-------\n  [PASS] the tab list is readable, so this loop covers the whole app\n  [PASS] every view renders with no page errors\n\n------------------------------------------------------------\nFAIL 86/87 passed\n\n\nPER-CHECK RAW OUTPUT: /home/user/afl-rl-engine/docs/evidence/finals_fw2_2026-09-09/gate_ui_222_items.txt",
+    "error": "gate ui_defects_2026_08_21 did not pass (exit 1):\ns\n  [PASS] EVERY published entry price is the sidecar's own figure and origin for that player \u2014 the join invents nothing\n  [PASS] an unrecoverable entry price is NULL with its origin named \u2014 never 0, never silently omitted\n  [PASS] the public-tier card renderer is retired \u2014 one transparent tier\n  [PASS] the card renders the entry-price section\n  [PASS] the entry price and ratio notation are MD.v0's, not a second copy\n  [PASS] ui/app/v0.js records the owner's word verbatim, where the pending note used to stand\n  [PASS] status() no longer reports the public tier as a pending decision\n  [PASS] \u2026it names the word it ships on\n\n(5) board filters \u2014 cohort year \u00b7 age \u00b7 live eligibility\n  ------------------------------------------------------------------------\n  [PASS] the board exposes the cohort clock\n  [PASS] a 2024 ND entrant is in the 2024 cohort\n  [PASS] a 2024 RD entrant is in the 2024 cohort\n  [PASS] a 2024 SSP entrant is in the 2024 cohort\n  [PASS] AND a 2025 MSD selection is in the 2024 cohort \u2014 the owner's stated grouping\n  [PASS] \u2026so a 2024 MSD belongs to the 2023 cohort\n  [PASS] a row without a draft year has no cohort\n  [PASS] the shipped board carries both MSD and ND rows\n  [PASS] the 2024 cohort is non-empty on the shipped board (112 players)\n  [PASS] every MSD row inside the 2024 cohort carries draft year 2025 \u2014 the clock rule, on real rows\n  [PASS] a null age filter matches everything\n  [PASS] an exact age matches\n  [PASS] \u2026and only that age\n  [PASS] the 20-and-under band matches 19\n  [PASS] \u2026and not 21\n  [PASS] the 29-and-over band matches 34\n  [PASS] a row with NO age drops out while an age filter is on, rather than being bucketed\n  [PASS] the bands are well-formed and cover the range in order\n  [PASS] a null eligibility filter matches everything\n  [PASS] a dual player matches his KPF eligibility\n  [PASS] \u2026AND his MID eligibility\n  [PASS] a player without the eligibility does not match\n  [PASS] an empty eligibility set matches nothing\n  [PASS] \u2026and so does an absent one\n  [PASS] every shipped row carries an eligibility set\n  [PASS] and the board really has dual-eligible players (186) \u2014 the case the modelling Position axis cannot answer\n  [PASS] \"eligible to play KPF now\" is a superset of \"modelled as KPF\"\n  [PASS] the snapshot carries all five surviving filters, so Back restores the board you were on\n  [PASS] \u2026and restore round-trips them\n\n  ------------------------------------------------------------------------\nUI ACT 2026-08-21: 1 FAIL / 180\n\n\nPER-CHECK RAW OUTPUT: /home/user/afl-rl-engine/docs/evidence/finals_fw2_2026-09-09/gate_ui_defects_2026_08_21.txt",
     "failed_step": "gates",
     "restore_point": {
       "data/expected_boot.json": "4f24b38068ed51b4cc5764ab2f1dab00",
@@ -279,7 +279,7 @@
     ]
   },
   "commits": [],
-  "error": "gate ui_222_items did not pass (exit 1):\n---------------------------\n  [PASS] the board renders all rows\n  [PASS] item 9 \u2014 every row carries the AFFL/AFL club\n  [PASS] item 16 \u2014 clicking a player opens that player's profile\n  [PASS] item 12 \u2014 opening a club routes to the board WITH the club filter set\n  [PASS] item 12 \u2014 the board shows that club only, not the all-player list\n  [PASS] owner fix 2026-08-28 \u2014 a focused club shows its PICKS at the bottom of its board\n  [PASS] item 11 \u2014 the club page opens with the club profile summary\n  [PASS] item 11 \u2014 the summary carries the comparison-page metrics, each with its rank\n  [PASS] item 11 \u2014 the summary appears BEFORE the player list\n  [PASS] item 15 \u2014 club \u2192 player navigates to the card\n  [PASS] item 15 \u2014 a universal Back control is present\n  [PASS] item 15 \u2014 Back returns to the CLUB page, not the all-player list\n  [PASS] item 15 \u2014 the club filter is restored with the page\n  [PASS] item 15 \u2014 Back exists on the Clubs page too (it is not player-card-specific)\n  [PASS] item 15 \u2014 Back from Clubs returns to the board\n\nITEM 21 \u2014 club totals computed in the browser\n---------------------------------------------\n  [PASS] item 21 \u2014 16 clubs computed\n  [PASS] item 21 \u2014 every club total equals the sum of its players ON THE LIVE BOARD\n  [PASS] item 21 \u2014 the baked block IS present and readable for all 16 clubs (so independence is a real test, not one passing over an absent file)\n  [PASS] item 21 \u2014 and the computation is INDEPENDENT of it: corrupting every baked total changes nothing (the staleness this removes)\n  [PASS] item 21 \u2014 the ingest's PVC band-priced picks are kept, not recomputed\n  [PASS] item 21 \u2014 overall == player + picks and player == best23 + nonBest23\n  [PASS] item 21 \u2014 the totals name the board they were summed from\n  [PASS] owner word 2026-08-28 \u2014 the Clubs-page intro essay is retired (methodology lives in ui/MAINTAINER.md)\n\nREDESIGN \u2014 Round \u0394 is the one movement column; over-free is retired\n-------------------------------------------------------------------\n  [PASS] the over-free column is retired \u2014 no .ofree cell renders anywhere\n  [PASS] every board row carries the Round \u0394 cell\n  [PASS] Round \u0394 is the LATEST report's round vs the previous stored round\n  [PASS] every rendered delta is the report's own value_change \u2014 computed nowhere else\n\nRUNTIME\n-------\n  [PASS] the tab list is readable, so this loop covers the whole app\n  [PASS] every view renders with no page errors\n\n------------------------------------------------------------\nFAIL 86/87 passed\n\n\nPER-CHECK RAW OUTPUT: /home/user/afl-rl-engine/docs/evidence/finals_fw2_2026-09-09/gate_ui_222_items.txt",
+  "error": "gate ui_defects_2026_08_21 did not pass (exit 1):\ns\n  [PASS] EVERY published entry price is the sidecar's own figure and origin for that player \u2014 the join invents nothing\n  [PASS] an unrecoverable entry price is NULL with its origin named \u2014 never 0, never silently omitted\n  [PASS] the public-tier card renderer is retired \u2014 one transparent tier\n  [PASS] the card renders the entry-price section\n  [PASS] the entry price and ratio notation are MD.v0's, not a second copy\n  [PASS] ui/app/v0.js records the owner's word verbatim, where the pending note used to stand\n  [PASS] status() no longer reports the public tier as a pending decision\n  [PASS] \u2026it names the word it ships on\n\n(5) board filters \u2014 cohort year \u00b7 age \u00b7 live eligibility\n  ------------------------------------------------------------------------\n  [PASS] the board exposes the cohort clock\n  [PASS] a 2024 ND entrant is in the 2024 cohort\n  [PASS] a 2024 RD entrant is in the 2024 cohort\n  [PASS] a 2024 SSP entrant is in the 2024 cohort\n  [PASS] AND a 2025 MSD selection is in the 2024 cohort \u2014 the owner's stated grouping\n  [PASS] \u2026so a 2024 MSD belongs to the 2023 cohort\n  [PASS] a row without a draft year has no cohort\n  [PASS] the shipped board carries both MSD and ND rows\n  [PASS] the 2024 cohort is non-empty on the shipped board (112 players)\n  [PASS] every MSD row inside the 2024 cohort carries draft year 2025 \u2014 the clock rule, on real rows\n  [PASS] a null age filter matches everything\n  [PASS] an exact age matches\n  [PASS] \u2026and only that age\n  [PASS] the 20-and-under band matches 19\n  [PASS] \u2026and not 21\n  [PASS] the 29-and-over band matches 34\n  [PASS] a row with NO age drops out while an age filter is on, rather than being bucketed\n  [PASS] the bands are well-formed and cover the range in order\n  [PASS] a null eligibility filter matches everything\n  [PASS] a dual player matches his KPF eligibility\n  [PASS] \u2026AND his MID eligibility\n  [PASS] a player without the eligibility does not match\n  [PASS] an empty eligibility set matches nothing\n  [PASS] \u2026and so does an absent one\n  [PASS] every shipped row carries an eligibility set\n  [PASS] and the board really has dual-eligible players (186) \u2014 the case the modelling Position axis cannot answer\n  [PASS] \"eligible to play KPF now\" is a superset of \"modelled as KPF\"\n  [PASS] the snapshot carries all five surviving filters, so Back restores the board you were on\n  [PASS] \u2026and restore round-trips them\n\n  ------------------------------------------------------------------------\nUI ACT 2026-08-21: 1 FAIL / 180\n\n\nPER-CHECK RAW OUTPUT: /home/user/afl-rl-engine/docs/evidence/finals_fw2_2026-09-09/gate_ui_defects_2026_08_21.txt",
   "facts": {
     "base": {
       "carriers": {
@@ -369,7 +369,7 @@
         "ui/data_aux/draft_outcomes.js": "4537576e98ee245072c15bc1a7a0ce2c",
         "ui/data_aux/v0.js": "d8e6429ccb4c525a9072b8b0a644007f"
       },
-      "commit": "bbd9789d697a7428249a25d973c62afe23216389",
+      "commit": "0ac6adda74f5f64cf67cb82997f3224970bd8e6b",
       "expected_boot": {
         "as_of_round": 24,
         "balanced_board_md5": "c0afa5d869ce0ac490dde4105f6008c9",
@@ -393,7 +393,7 @@
     },
     "build_proofs": {
       "board_built": "d3fb6b4842ddd3bea57fbacc7a94e4d7",
-      "build_elapsed_s": 1218.7,
+      "build_elapsed_s": 1242.1,
       "day0_rebase": "off",
       "edit": {
         "movers": [
@@ -3786,10 +3786,10 @@
       "unmoved_checked": 6
     },
     "preflight": {
-      "base_commit": "bbd9789d697a7428249a25d973c62afe23216389",
+      "base_commit": "0ac6adda74f5f64cf67cb82997f3224970bd8e6b",
       "board_before": "b005096b5e78014425922cae3f28f6c9",
       "carriers_captured": 85,
-      "lock": "land-edit-20995"
+      "lock": "land-edit-23810"
     },
     "sibling": {
       "balanced_board_md5": "784e80ba61fe090830c2d641602d1553",
@@ -3810,9 +3810,9 @@
     },
     "state": {
       "changed": true,
-      "md5": "66c0f80fabd575f7a6cb228e178693eb",
+      "md5": "41ddb5a8c96bbf515d8c16ed6f03bce9",
       "path": "docs/STATE.md",
-      "stamp_commit": "bbd9789d697a7428249a25d973c62afe23216389",
+      "stamp_commit": "0ac6adda74f5f64cf67cb82997f3224970bd8e6b",
       "written": true
     },
     "store_edit": {
@@ -9330,7 +9330,7 @@
       "draft_outcomes_moved": true,
       "draft_outcomes_pin": "a367386a",
       "embedded_board": "d3fb6b4842ddd3bea57fbacc7a94e4d7",
-      "mirror_md5": "a25a4edd8e66033a325854fa33e26aef",
+      "mirror_md5": "e5a639285973f11207c8903a73075f48",
       "mirror_moved": true,
       "model_changes": 17,
       "movers_md5": "309024de472b862adcf71a24fb70aac5",
@@ -9349,17 +9349,17 @@
   "ok": false,
   "timings": [
     {
-      "seconds": 0.08,
+      "seconds": 0.07,
       "step": "preflight",
       "verdict": "OK"
     },
     {
-      "seconds": 44.96,
+      "seconds": 44.74,
       "step": "store_edit",
       "verdict": "OK"
     },
     {
-      "seconds": 1218.79,
+      "seconds": 1242.13,
       "step": "build_proofs",
       "verdict": "OK"
     },
@@ -9369,22 +9369,22 @@
       "verdict": "OK"
     },
     {
-      "seconds": 0.21,
+      "seconds": 0.2,
       "step": "lineage",
       "verdict": "OK"
     },
     {
-      "seconds": 0.13,
+      "seconds": 0.09,
       "step": "contract",
       "verdict": "OK"
     },
     {
-      "seconds": 0.85,
+      "seconds": 0.82,
       "step": "sibling",
       "verdict": "OK"
     },
     {
-      "seconds": 579.59,
+      "seconds": 590.1,
       "step": "ui",
       "verdict": "OK"
     },
@@ -9394,7 +9394,7 @@
       "verdict": "OK"
     },
     {
-      "seconds": 28.43,
+      "seconds": 29.13,
       "step": "gates",
       "verdict": "FAIL"
     }

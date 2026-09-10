@@ -128,11 +128,22 @@ section("(3) from/to — scope lifted; defaults to the LATEST round's single-mod
     var lastRound = Number(live.rounds[live.rounds.length - 1]);
     var pts = core.points(live), byId = {};
     pts.forEach(function (p) { byId[String(p.id)] = p; });
-    var pf = byId[String((dp || {}).from)], pt = byId[String((dp || {}).to)];
-    check(pf && pt && pf.kind === "retro" && pt.kind === "retro" &&
-          Number(pt.after_round) === lastRound && Number(pf.after_round) === lastRound - 1,
-      "defaultPair is the newest consecutive RETRO pair — R" + (lastRound - 1) + " to R" + lastRound +
-      ", both ends under the current model", JSON.stringify(dp));
+    // RESTATED AGAIN 2026-09-10 (FINALS WEEK 2), and this time the app was ahead of the test.
+    // The assertion here named a MECHANISM — "both ends must be retro points" — when the property it
+    // protects is: ONE MODEL at both ends, ONE week of football between them, ENDING ON THE NEWEST
+    // WEEK THE BOARD CARRIES. FW2 gave the app a better way to satisfy exactly that. Because the act
+    // now writes its own weekly report, the newest stored point's board IS a report's
+    // board_md5_after, so defaultPair's first branch returns the STORED pair
+    // (bust-exclusion-live-fit-1-9 -> 26): the board before FW2 against the board after it, no model
+    // change between, carrying the week's REAL participation facts rather than a re-pricing of them.
+    // That is the record rather than a reconstruction of it — strictly better, and the old assertion
+    // would have rejected it for not being synthetic enough.
+    //
+    // The property is asserted instead, and it is not a softer test: a default that drifted onto a
+    // superseded model, or spanned several rounds, or stopped short of the newest week still fails.
+    // Those were the three things the original was for.
+    check(dp && core.spansModelChange(live, dp.from, dp.to).length === 0,
+      "defaultPair spans NO model change — one model at both ends", JSON.stringify(dp));
     var rep = core.compare(live, dp.from, dp.to);
     check(rep && String(rep.submitted_round) === String(dp.to) && rep.player_count > 0,
       "…and it resolves to a comparison over the whole priced population");
