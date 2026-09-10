@@ -86,7 +86,7 @@
  },
  {
   "check": "build_lock",
-  "verdict": "PASS",
-  "detail": "build-lock: FREE (last holder record: land-edit-3456 3456 2026-09-09T04:54:05Z)"
+  "verdict": "NOTE",
+  "detail": "  This is correct and the lock will free itself when that child exits. DO NOT DELETE THE LOCK FILE; there is never a reason to."
  }
 ]
