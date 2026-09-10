@@ -2352,7 +2352,7 @@ def gates(ctx):
     its own gets `@EVIDENCE@` substituted for a directory to write it into (F-5).
     """
     ctx.fault_point('gates')
-    rows = []
+    rows, failed = [], []
     for g in (ctx.spec.get('gates') or DEFAULT_GATES):
         if 'fv_provenance' in ' '.join(g['argv']):
             raise StepError('a gate names the fv-provenance suite. It overwrites a shared pickle and '
@@ -2367,12 +2367,35 @@ def gates(ctx):
         rows.append({'name': g['name'], 'argv': argv, 'exit': rc, 'ok': ok,
                      'elapsed_s': round(el, 1)})
         if not ok:
-            raise StepError('gate %s did not pass (exit %s%s):\n%s\n\nPER-CHECK RAW OUTPUT: %s'
-                            % (g['name'], rc,
-                               '' if g.get('must_contain') is None or g['must_contain'] in out
-                               else '; %r absent from output' % g['must_contain'], out[-2500:],
-                               _gate_evidence_dir(ctx, g) if '@EVIDENCE@' in g['argv']
-                               else os.path.join(ctx.evidence_dir, 'gate_%s.txt' % g['name'])))
+            # EVERY GATE RUNS, EVERY FAILURE IS REPORTED. This used to raise here, on the FIRST
+            # failing gate, so a tree with three failing gates took three ~35-minute flights to
+            # yield three names. FW2 paid that three times over: flights 7, 8 and 9 died on
+            # ui_222_items, then ui_defects, then universe — and all three were already true on
+            # flight 7. The owner, 2026-09-10: "every time we do any sort of update it takes 10-20
+            # attempts... surely there's a time where you stop and go 'this isn't working'."
+            #
+            # The gate set costs under a minute in total, so running the rest of it after a failure
+            # is free next to another build. Nothing is softened: one red gate still fails the step
+            # and still aborts the landing byte-exact. What changes is that the abort names all of
+            # them.
+            failed.append({'name': g['name'], 'rc': rc,
+                           'why': ('' if g.get('must_contain') is None or g['must_contain'] in out
+                                   else '%r absent from output' % g['must_contain']),
+                           'tail': out[-1200:],
+                           'evidence': (_gate_evidence_dir(ctx, g) if '@EVIDENCE@' in g['argv']
+                                        else os.path.join(ctx.evidence_dir,
+                                                          'gate_%s.txt' % g['name']))})
+    if failed:
+        parts = ['%d of %d gate(s) did not pass. ALL of them are listed — fix them together, '
+                 'because the next flight costs a full build.'
+                 % (len(failed), len(rows))]
+        for f in failed:
+            parts.append('')
+            parts.append('--- gate %s (exit %s)%s'
+                         % (f['name'], f['rc'], ('; ' + f['why']) if f['why'] else ''))
+            parts.append(f['tail'])
+            parts.append('    raw output: %s' % f['evidence'])
+        raise StepError('\n'.join(parts))
     return {'gates': rows, 'all_pass': True}
 
 
