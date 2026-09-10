@@ -152,7 +152,16 @@ const HIST = await page.evaluate(() => {
 // and Boyd struck from the live pick-value fit, board c8c2f2b6 -> b005096b. Caught late again, and
 // for the same reason: the act's own commit did not restate it, because the landing's gate set does
 // not run this file. That is the gap, not the count.
-check(HIST.series && HIST.series.length === 29, 'item 3 — the history has all 29 points',
+// RESTATED 2026-09-10, IN THE ACT'S OWN COMMIT AND BEFORE THE LANDING: FINALS WEEK 2 adds
+// fw2-finals-week-2-9-9, 29 -> 30. Third time this sentinel has moved for a finals-era act and the
+// FIRST time it is restated where the rule says to — the previous two were caught days late because
+// the landing's gate set did not run this file. It does now (added 2026-09-01), which is why this
+// one was caught DURING the flight instead of by a hand-run afterwards.
+// THE TREE IS DELIBERATELY RED ON THIS ONE ASSERTION between this commit and the landing: the
+// shipped bundle still carries 29 points until FW2 lands, and the sentinel is pinned to what the
+// act WILL produce. That window is the cost of a hand-moved pin, and it is the cost the pin is
+// worth — a count that moved unexplained would mean the card silently gained or lost an event.
+check(HIST.series && HIST.series.length === 30, 'item 3 — the history has all 30 points',
   HIST.series ? String(HIST.series.length) : 'null');
 check(HIST.series.every(r => r.v != null && r.rank != null && r.posRank != null),
   'item 3 — value, rank and positional rank are present at EVERY point (no participation gate)');

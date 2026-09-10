@@ -66,7 +66,7 @@ MOVERS-VIEW TESTS
   [PASS] retro vs retro is one model, two dates — a clean football read, not flagged
   [PASS] stored vs stored is the historical record — not flagged
   [PASS] an unknown endpoint never invents a flag
-  [PASS] every emitted retro point is round-keyed and names the board it was priced on (n=12)
+  [PASS] every emitted retro point is round-keyed and names the board it was priced on (n=13)
   [PASS] ONE ASSERT: newest stored point == loaded board passes
   [PASS] ONE ASSERT: newest stored point != loaded board fails closed
   [PASS] future report append preserves all R15-R19 reports byte-for-byte (historical digest unchanged)  (got "sha256:6aea584536c6cd98c7949947620687d549b6f6f54fcc44acf3ca6fd71aaf8c4d")
@@ -88,10 +88,10 @@ MOVERS-VIEW TESTS
   [PASS] the retro block sits at the TAIL of points even when a later stored point exists (why 'newest' filters retro)
   [PASS] once a finals week lands, the default is ITS pair — the `to` end is the board the app serves  (got {"from":"fw1-baseline-col","to":"25"})
   [PASS] the retro default EXPIRES when new football moves the board past it  (got {"from":"fw1-baseline-col","to":"25"})
-  [FAIL] the SHIPPED bundle carries the whole retrospective series R14-R26  (got [14,15,16,17,18,19,20,21,22,23,24,25])
+  [PASS] the SHIPPED bundle carries the whole retrospective series R14-R26  (got [14,15,16,17,18,19,20,21,22,23,24,25,26])
   [PASS] every shipped retro point names the board it was priced on and carries its label
   [PASS] the SHIPPED bundle still carries every stored round report from R15 (got 12 starting at R15)
-  [PASS] the shipped retro points carry their per-player readings (9648 values)
+  [PASS] the shipped retro points carry their per-player readings (10452 values)
   [PASS] no window -> no MD.ovFactor -> the engine values pass through untouched  (got [147,117,-30])
   [PASS] the overridden player is shown at his DISPLAY value at BOTH ends of the range  (got [74,58])
   [PASS] and the row is internally consistent on screen: cur - prev == the printed change
@@ -104,8 +104,8 @@ MOVERS-VIEW TESTS
   [PASS] a FINALS WEEK reads its name, not Round 25  (got "Finals Week 1")
   [PASS] …and so will every later week, without another edit here  (got "Grand Final")
   [PASS] a point with no label falls back to its round rather than rendering blank  (got "Round 24")
-  [PASS] every finals retro point on the SHIPPED bundle carries a named label (Finals Week 1)
+  [PASS] every finals retro point on the SHIPPED bundle carries a named label (Finals Week 1, Finals Week 2)
   ------------------------------------------------------------
-MOVERS TESTS: 1 FAIL / 102
+MOVERS TESTS: ALL 102 PASS
 
-[exit 1]
+[exit 0]

@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_17983/sandbox
+  tree      : /tmp/landing_selftest_20995/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board b005096b5e78014425922cae3f28f6c9
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,8 +9,8 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO
-build-lock: HELD by land-lever-18653 (pid 18653) — single writer for the shared workspace.
-base commit        26b7891c010a8a95bb538a449ac51b413721c5c8
+build-lock: HELD by land-lever-21642 (pid 21642) — single writer for the shared workspace.
+base commit        2967c9f980256eaeb6379636db0ba9e7458e7c1b
 board pin (before) b005096b5e78014425922cae3f28f6c9
 store pin (before) 415929d3c9d561cc58bef00ae63432b2
 restore point      84 carrier(s) captured, 84 present on disk
@@ -88,12 +88,12 @@ WRITER 4b/8: emit_retro_series.py  (the R14-R24 walk-forward series writer 4 dro
   emitted 12 retro points covering up to 804 players -> ui/data/movers.js
   retro series present: 12 points, retro-r14 .. retro-r25 (every banked round, no gap)
 WRITER 5/8: ui/tools/ingest_inputs.py --mirror-only  (the ownership mirror, re-pinned to the landed board + store)
-  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_17983/sandbox/ui/data/ownership.js
+  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_20995/sandbox/ui/data/ownership.js
   MIRROR-ONLY    — the club-valuation bundle was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
   drift guard: MIRROR DRIFT GUARD — ui/data/ownership.js is byte-identical to what this tree projects (74727 bytes).
   mirror pin == the landed identity: board b005096b store 415929d3 R24, 804 player(s) mirrored (pin() would ACTIVATE it)
 WRITER 6/8: ui/tools/ingest_inputs.py --clubs-only  (the picks bundle, re-stamped to the landed board + store)
-  CLEAN INGEST — 240 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: /tmp/landing_selftest_17983/sandbox/ui/data/club_valuation.js
+  CLEAN INGEST — 240 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: /tmp/landing_selftest_20995/sandbox/ui/data/club_valuation.js
   CLUBS-ONLY     — the ownership mirror was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
   drift guard: PICKS DRIFT GUARD — ui/data/club_valuation.js is byte-identical to what this tree projects (58317 bytes).
   picks stamp == the landed identity: board b005096b store 415929d3 R24, 240 pick(s) priced off 1c3b22d1 (pin() would ACCEPT it)
@@ -120,12 +120,12 @@ AFTER   draft  4537576e98ee245072c15bc1a7a0ce2c  UNMOVED (no career fact in the 
   stamp.balanced_board_md5   c0afa5d869ce0ac490dde4105f6008c9   OK
   stamp.asOfRound            24                                 OK
 THE HTML APP'S EMBEDDED BOARD IDENTITY IS b005096b5e78014425922cae3f28f6c9. All seven writers ran; the release block is back, the reader can see the transition that produced this board, the ownership mirror is pinned to it rather than to the store it replaced, and the pick surface is stamped to it rather than to the board before it.
-    [ui OK  596.80s]
+    [ui OK  591.12s]
     build-lock: RELEASED after 'ui' — the remaining steps write nothing and the one gate that builds takes the lock itself.
 
 --- STEP 7/10  state          docs/STATE.md regenerated from the carriers (3c) ---
-state: docs/STATE.md md5 c8969a70b134e4fe0c3d125fd7df6a9e (moved); regeneration verified
-    [state OK  0.17s]
+state: docs/STATE.md md5 63b86b3f2504b25394c5678fb4a91663 (moved); regeneration verified
+    [state OK  0.18s]
 
 --- STEP 8/10  gates          the landing gate set, verdicts off exit codes ---
 *** FAULT INJECTED at step 'gates': gate_red — a landed pin is wrong, so the manifest gate reds
@@ -175,12 +175,12 @@ LANDING ABORTED AT STEP 'gates'
     RELEASE MANIFEST COHERENCE: FAIL
   
   
-  PER-CHECK RAW OUTPUT: /tmp/landing_selftest_17983/sandbox/docs/evidence/landing_selftest/gate_release_manifest_check.txt
+  PER-CHECK RAW OUTPUT: /tmp/landing_selftest_20995/sandbox/docs/evidence/landing_selftest/gate_release_manifest_check.txt
 
 carriers that moved before the failure: 4
     data/expected_boot.json                                          4f24b38068ed -> 41cdaba63644
     data/release_contract.json                                       268fa566c167 -> bd74329aa21c
-    docs/STATE.md                                                    0f3911b800c5 -> c8969a70b134
+    docs/STATE.md                                                    0f3911b800c5 -> 63b86b3f2504
     ui/data/movers.js                                                cc7e37a38453 -> 7fffaf2c34b1
 RESTORING 4 carrier(s):
     rewrite  data/expected_boot.json
@@ -202,8 +202,8 @@ improvised manual landing under pressure.
     lineage            0.00s  OK
     contract           0.09s  OK
     sibling            0.14s  OK
-    ui               596.80s  OK
-    state              0.17s  OK
+    ui               591.12s  OK
+    state              0.18s  OK
     gates              0.08s  FAIL
-    TOTAL            597.42s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_18653
+    TOTAL            591.75s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_21642

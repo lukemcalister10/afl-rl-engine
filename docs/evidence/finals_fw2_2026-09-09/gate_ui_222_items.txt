@@ -1,0 +1,121 @@
+$ node ui/tests/ui_222_items.test.mjs
+
+
+PREREQUISITE — the board ring-fence
+-----------------------------------
+  [PASS] the app renders (the shipped bundle matches its board of record)
+  [PASS] the working board renders all 804 players
+
+CLUSTER 3 — tabs and labels (items 2, 13, 14, 5)
+------------------------------------------------
+  [PASS] item 2 — the Round review tab is gone
+  [PASS] item 2 — MD.review no longer exists
+  [PASS] item 13 — Board is renamed AFFL Rankings
+  [PASS] item 14 — board: "AFFL Rankings" / "Player Rankings"
+  [PASS] item 14 — clubs: "Clubs" / "Club Breakdown"
+  [PASS] item 14 — card: "Player card" / "Player Profiles"
+  [PASS] item 14 — trade: "Trade desk" / "Trade Desk"
+  [PASS] item 14 — movers: "Movers" / "Weekly Review"
+  [PASS] item 5 — the Movers club filter lists the Free-Agents pool exactly once
+  [PASS] item 5 — both authored spellings canonicalise to one key
+  [PASS] item 5 — selecting the pool returns exactly the live-store Free-Agents rows
+
+CLUSTER 1 — the player card (items 3, 17, 18)
+---------------------------------------------
+  [FAIL] item 3 — the history has all 29 points — 30
+  [PASS] item 3 — value, rank and positional rank are present at EVERY point (no participation gate)
+  [PASS] item 3 — the trace covers all 804 tracked players
+  [PASS] item 3 — the restructure point is present and flagged as not-a-round
+  [PASS] item 3 — the restructure carries value/rank movement but never a score
+  [PASS] item 3 — every out-of-round column is present, in bundle order, flagged not-a-round
+  [PASS] item 3 — every out-of-round column carries value/rank movement but never a score
+  [PASS] item 3 — the card DEFAULTS to the current-model universe
+  [PASS] item 3 — the default series contains NO model change
+  [PASS] item 3 — the default series starts at R14 under the current model
+  [PASS] item 3 — the default is a STRICT subset of the all-in record (14 vs 30) — the switch is not vacuous
+  [PASS] item 3 — every round judged complete really has all clubs at full-side strength
+  [PASS] item 3 — every round judged partial really is short of that bar
+  [PASS] item 3 — this bundle exercises BOTH branches (complete: 17,18,19,20,21,22,23,24 · partial: 15,16,25,26)
+  [PASS] item 3 — DNP is printed ONLY on completely-fed rounds
+  [PASS] item 3 — NO player is ever marked DNP in a partially-fed round
+  [PASS] item 3 — no DNP at the baseline point or the restructure point
+  [PASS] item 3 — DNP IS shown where it is warranted (the indicator is not simply switched off)
+  [PASS] item 3 — partial rounds and the R14 baseline read "not recorded" instead
+  [PASS] item 3 — every recorded score is shown
+  [PASS] item 3 — the card renders the history table
+  [PASS] item 3 — one row per point, no more and no fewer
+  [PASS] item 3 — every model-change row is ONE line "Model change (MC-N)", every football row is its week name, and together they account for every non-round row
+  [PASS] item 3 — the "reserved · wired in the weekly-loop phase" placeholder is gone
+  [PASS] item 3 — the coverage-caveat essay is off the card (maintainer doc, not screen furniture)
+  [PASS] item 3 (2026-08-31) — the "Recent form" season-score line is retired from the card
+  [PASS] item 3 (2026-08-31) — the weekly value graph replaces it and draws a line
+  [PASS] item 3 (2026-08-31) — the line carries one vertex per point in MD.history.series, no more and no fewer
+  [PASS] item 3 (2026-08-31) — both axes are labelled (his ask), not just ticked
+  [PASS] item 18 — the card shows the draft pick
+  [PASS] item 18 — the card shows rank WITH its denominator
+  [PASS] item 18 — no build provenance on the card
+  [PASS] item 18 — no attribution panel on the card
+  [PASS] item 18 — the hardcoded "— steady" movement is gone
+
+OWNER ITEM 11 (2026-08-31) — the value line reads vs Pick 1
+-----------------------------------------------------------
+  [PASS] item 11 — the column heading is "vs Pick 1", not "vs top"
+  [PASS] item 11 — pick 1 is READ off the loaded board curve (pvc), not hardcoded
+  [PASS] item 11 — every board row carries a ratio, and every one of them is to two decimals
+  [PASS] item 11 — each ratio is that row's own value divided by pick 1 off the curve
+  [PASS] item 11 — the label sits inside the fill on long bars and outside it on short ones, so it is legible on both
+  [PASS] item 11 — the pick-1 tick is drawn on every bar, which is what makes "past the line = worth more than pick 1" readable
+  [PASS] item 11 — a ratio too small for two decimals reads "<0.01x", and NO row prints the false "0.00x"
+
+OWNER ITEM 10 (2026-08-31) — the value figures are set in the figure face, still tabular
+----------------------------------------------------------------------------------------
+  [PASS] item 10 — the board value is no longer set in the monospace stack
+  [PASS] item 10 — it asks for tabular figures, which is what kept the column aligned without the monospace
+  [PASS] item 10 — every value with the same digit count renders at the SAME width, so the column is still a column
+  [PASS] item 10 — identifiers (the AFL club line) keep the monospace: the swap was scoped to values, not to everything
+
+CLUSTER 2 — navigation (items 12, 16, 15, 9, 11)
+------------------------------------------------
+  [PASS] the board renders all rows
+  [PASS] item 9 — every row carries the AFFL/AFL club
+  [PASS] item 16 — clicking a player opens that player's profile
+  [PASS] item 12 — opening a club routes to the board WITH the club filter set
+  [PASS] item 12 — the board shows that club only, not the all-player list
+  [PASS] owner fix 2026-08-28 — a focused club shows its PICKS at the bottom of its board
+  [PASS] item 11 — the club page opens with the club profile summary
+  [PASS] item 11 — the summary carries the comparison-page metrics, each with its rank
+  [PASS] item 11 — the summary appears BEFORE the player list
+  [PASS] item 15 — club → player navigates to the card
+  [PASS] item 15 — a universal Back control is present
+  [PASS] item 15 — Back returns to the CLUB page, not the all-player list
+  [PASS] item 15 — the club filter is restored with the page
+  [PASS] item 15 — Back exists on the Clubs page too (it is not player-card-specific)
+  [PASS] item 15 — Back from Clubs returns to the board
+
+ITEM 21 — club totals computed in the browser
+---------------------------------------------
+  [PASS] item 21 — 16 clubs computed
+  [PASS] item 21 — every club total equals the sum of its players ON THE LIVE BOARD
+  [PASS] item 21 — the baked block IS present and readable for all 16 clubs (so independence is a real test, not one passing over an absent file)
+  [PASS] item 21 — and the computation is INDEPENDENT of it: corrupting every baked total changes nothing (the staleness this removes)
+  [PASS] item 21 — the ingest's PVC band-priced picks are kept, not recomputed
+  [PASS] item 21 — overall == player + picks and player == best23 + nonBest23
+  [PASS] item 21 — the totals name the board they were summed from
+  [PASS] owner word 2026-08-28 — the Clubs-page intro essay is retired (methodology lives in ui/MAINTAINER.md)
+
+REDESIGN — Round Δ is the one movement column; over-free is retired
+-------------------------------------------------------------------
+  [PASS] the over-free column is retired — no .ofree cell renders anywhere
+  [PASS] every board row carries the Round Δ cell
+  [PASS] Round Δ is the LATEST report's round vs the previous stored round
+  [PASS] every rendered delta is the report's own value_change — computed nowhere else
+
+RUNTIME
+-------
+  [PASS] the tab list is readable, so this loop covers the whole app
+  [PASS] every view renders with no page errors
+
+------------------------------------------------------------
+FAIL 86/87 passed
+
+[exit 1]

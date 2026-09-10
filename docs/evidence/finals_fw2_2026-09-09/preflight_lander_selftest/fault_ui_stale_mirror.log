@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_17983/sandbox
+  tree      : /tmp/landing_selftest_20995/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board b005096b5e78014425922cae3f28f6c9
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,8 +9,8 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO
-build-lock: HELD by land-lever-18906 (pid 18906) — single writer for the shared workspace.
-base commit        26b7891c010a8a95bb538a449ac51b413721c5c8
+build-lock: HELD by land-lever-21871 (pid 21871) — single writer for the shared workspace.
+base commit        2967c9f980256eaeb6379636db0ba9e7458e7c1b
 board pin (before) b005096b5e78014425922cae3f28f6c9
 store pin (before) 415929d3c9d561cc58bef00ae63432b2
 restore point      84 carrier(s) captured, 84 present on disk
@@ -89,7 +89,7 @@ WRITER 4b/8: emit_retro_series.py  (the R14-R24 walk-forward series writer 4 dro
   emitted 12 retro points covering up to 804 players -> ui/data/movers.js
   retro series present: 12 points, retro-r14 .. retro-r25 (every banked round, no gap)
 WRITER 5/8: SKIPPED BY FAULT INJECTION — the mirror keeps the pin of a store this landing is replacing.
-    [ui FAILED  3.07s]
+    [ui FAILED  2.90s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'ui'
@@ -119,6 +119,6 @@ improvised manual landing under pressure.
     lineage            0.00s  OK
     contract           0.09s  OK
     sibling            0.14s  OK
-    ui                 3.07s  FAIL
-    TOTAL              3.43s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_18906
+    ui                 2.90s  FAIL
+    TOTAL              3.26s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_21871

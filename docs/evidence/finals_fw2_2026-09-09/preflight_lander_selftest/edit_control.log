@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND STORE-EDIT — SELF-TEST — the surgical store edit
-  tree      : /tmp/landing_selftest_17983/sandbox
+  tree      : /tmp/landing_selftest_20995/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 00103258b2d83a3c95504a803755c405
   mode      : APPLY (SELFTEST) builder=selftest-moved
@@ -8,8 +8,8 @@ LAND STORE-EDIT — SELF-TEST — the surgical store edit
 
 --- STEP 0/11  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO
-build-lock: HELD by land-edit-20196 (pid 20196) — single writer for the shared workspace.
-base commit        26b7891c010a8a95bb538a449ac51b413721c5c8
+build-lock: HELD by land-edit-23040 (pid 23040) — single writer for the shared workspace.
+base commit        2967c9f980256eaeb6379636db0ba9e7458e7c1b
 board pin (before) b005096b5e78014425922cae3f28f6c9
 store pin (before) 415929d3c9d561cc58bef00ae63432b2
 restore point      85 carrier(s) captured, 85 present on disk
@@ -61,7 +61,7 @@ chain OK: register tail destination == this entry's source on board and store
 append-only OK: 21 prior entries byte-verbatim; top-level baseline 06d8af60b679a12db07c064c60c065f9 / v2.11-present-lens-baseline UNMOVED
 MOVED by this transition: ['board', 'store'] (of 11 identities)
 re-read OK: round-trips at indent=1; prior entries still byte-verbatim.
-    [lineage OK  0.19s]
+    [lineage OK  0.20s]
 
 --- STEP 5/11  contract       restamp_dynamic + the bake-lane repin + check ---
 contract seal self-consistent before the act: 3e334b3d5e60
@@ -81,7 +81,7 @@ RE-STAMPED, re-read, and release_contract.py check PASSES.
 
 --- STEP 6/11  sibling        the balanced sibling, rebuilt and reconciled if moved ---
 *** FAULT INJECTED at step 'sibling': sidecar_corrupt — the sibling provenance sidecar is unreadable
-    [sibling FAILED  0.04s]
+    [sibling FAILED  0.05s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'sibling'
@@ -91,7 +91,7 @@ LANDING ABORTED AT STEP 'sibling'
 carriers that moved before the failure: 13
     data/expected_boot.json                                          4f24b38068ed -> 6a8cca5558b5
     data/release_contract.json                                       268fa566c167 -> aa77f93419c8
-    data/release_lineage.json                                        084a2b1c68a4 -> 82b7060055a2
+    data/release_lineage.json                                        084a2b1c68a4 -> ac2bace8a65a
     data/rl_build/rl_app_data.json                                   b005096b5e78 -> 00103258b2d8
     data/rl_build/rl_app_data.json.srcmd5                            72193a0d60b0 -> 213c74f75f6e
     data/season_state.json                                           04e9d68f67ce -> 1e20c6bd53b4
@@ -129,8 +129,8 @@ improvised manual landing under pressure.
     store_edit         0.19s  OK
     build_proofs       0.06s  OK
     pins               0.02s  OK
-    lineage            0.19s  OK
+    lineage            0.20s  OK
     contract           0.09s  OK
-    sibling            0.04s  FAIL
-    TOTAL              0.66s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_20196
+    sibling            0.05s  FAIL
+    TOTAL              0.68s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_23040

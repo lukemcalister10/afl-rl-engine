@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
-  tree      : /tmp/landing_selftest_17983/sandbox
+  tree      : /tmp/landing_selftest_20995/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board b005096b5e78014425922cae3f28f6c9
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,12 +9,12 @@ LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
 
 --- STEP 0/14  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_CM_PKL, RL_Q97M_PKL, RL_REPO
-build-lock: HELD by land-round-19366 (pid 19366) — single writer for the shared workspace.
-base commit        26b7891c010a8a95bb538a449ac51b413721c5c8
+build-lock: HELD by land-round-22276 (pid 22276) — single writer for the shared workspace.
+base commit        2967c9f980256eaeb6379636db0ba9e7458e7c1b
 board pin (before) b005096b5e78014425922cae3f28f6c9
 store pin (before) 415929d3c9d561cc58bef00ae63432b2
 restore point      137 carrier(s) captured, 137 present on disk
-    [preflight OK  0.11s]
+    [preflight OK  0.12s]
 
 --- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
 *** FAULT INJECTED at step 'sheet': sheet_pin_drift — the owner sheet moves and its ONE pin declaration does not — the drift that halts ORDER 41 inside the staged transaction
@@ -42,7 +42,7 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.11s  OK
+    preflight          0.12s  OK
     sheet              0.00s  FAIL
-    TOTAL              0.11s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_19366
+    TOTAL              0.12s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_22276
