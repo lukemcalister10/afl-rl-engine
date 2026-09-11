@@ -1,0 +1,175 @@
+======================================================================================================================
+ORDER 19 PART 2 -- DERIVED LEVELS, COHORT INSTRUMENTS, AND THE SECOND R SITE
+======================================================================================================================
+  pins asserted at entry: board 94f1fec5..  store d9a24282..  instrument 0f822035..
+
+======================================================================================================================
+4. THE DERIVED-LEVEL INTERACTION -- DOES THE PROFILE MEASURE READ H OR R?
+======================================================================================================================
+  VERDICT: YES, IT READS BOTH. THE DERIVED POOL ENTRY LEVELS DO CHANGE.
+
+  THE MECHANISM, from the code, before the numbers:
+      profile_X = SUM_X structural_value / SUM_X v0            (phase1_derive.py:87-90)
+      structural_value comes from harness.realised_full(r)     (harness:311-315)
+      realised_full  = realised_at(r, len(vpath))              (harness:298-309)
+                     = an evidence-weighted mean of r['vpath']
+      and vpath[i]   = ev(p, C+1+i), THE ENGINE'S OWN AS-OF PRICE (emitter:137-138,166)
+  A sit-out season's as-of price is exactly where R and H are applied. So the NUMERATOR of the
+  profile carries the sitter penalty; the DENOMINATOR (v0) does not. LIFTING THE PENALTY RAISES
+  MEASURED POOL RETURNS, WHICH RAISES EVERY DERIVED POOL LEVEL.
+
+  CONTROL 4: phase1_derive.py re-run on SHIP vs the committed PHASE1_DERIVE.json --
+      max |lambda delta| = 0,  nd_profile delta = 0  -> REPRODUCED
+
+  THE CALIBRATION TARGET (ND 1-64's own profile), which lambda is measured AGAINST:
+      nd_profile  TODAY      1.025217711
+      nd_profile  VARIANT A  1.024988839
+      nd_profile  VARIANT B  1.023229369
+      delta VARIANT A -0.000228872 (-0.0223%)   VARIANT B -0.001988342 (-0.1939%)
+
+  THE ND TARGET MOVES, AND IT SHOULD NOT HAVE. This is a CROSS-ARM CONTAMINATION and it is
+  reported because it was measured, not because it was asked for. NO ND ROW'S OWN PRICE MOVES
+  (verified below). The target moves because structural_values() builds its career-COMPLETION
+  strata S[(pos,t)] over THE WHOLE ELIGIBLE COHORT -- pool rows included (harness:337-350;
+  phase1_derive.py:79-80 passes `elig`, which is pool + national). A live ND career is completed
+  with a ratio taught partly by pool careers, so moving pool prices moves ND's completed values.
+  Magnitude: -0.1939% under the full lift. Small, but it is not zero and it is not noise.
+
+  VERIFICATION THAT NO NATIONAL ROW'S OWN PRICE MOVES:
+      non-pool records                                    1444
+      whose walk-forward price path changes, VARIANT A    1
+      whose walk-forward price path changes, VARIANT B    1
+      the exception, named: daniel-butler
+        daniel-butler -- matrix pick 64, stored pick 65, matrix is_pool False, ENGINE is_pool True.
+      This is the #338 Q-B SLIDE CROSSER the emitter itself already tracks
+      (emit_matrix_338.py:298 `crossers`). The ENGINE prices him as a pool row (effpk 65,
+      _pool True) and so the lift reaches him; the MATRIX records his SLID pick as 64 and
+      therefore admits him to the national teaching population. He is one row of 1197 and
+      he is the entire reason the 'no national row moves' statement needs this footnote.
+
+  LAYER 1 -- THE DERIVED PATHWAY LEVELS (lambda = shrunk pathway profile / nd_profile)
+  pathway       n |  prof NOW    prof A    prof B |   lam NOW     lam A     lam B |     A rel     B rel
+  ----------------------------------------------------------------------------------------------------------------
+  RD          688 |    0.5233    0.5269    0.5509 |    0.5104    0.5141    0.5384 |    +0.71%    +5.48%
+  SSP          52 |    1.0287    1.0499    1.0695 |    1.0034    1.0243    1.0453 |    +2.09%    +4.17%
+  MSD         106 |    0.9418    0.9422    0.9599 |    0.9187    0.9192    0.9381 |    +0.06%    +2.12%
+  IRE          57 |    0.2006    0.2142    0.2285 |    0.1956    0.2090    0.2233 |    +6.82%   +14.13%
+  PDA          51 |    0.4279    0.4329    0.4725 |    0.4174    0.4224    0.4618 |    +1.19%   +10.63%
+  PDN          43 |    0.1422    0.1448    0.1633 |    0.1387    0.1413    0.1596 |    +1.83%   +15.04%
+  PDS          21 |    0.1259    0.1287    0.1556 |    0.2837    0.2871    0.3123 |    +1.20%   +10.11%
+  UNR          59 |    0.3493    0.3546    0.3673 |    0.3408    0.3460    0.3590 |    +1.53%    +5.34%
+  ND>64       120 |    0.5477    0.5511    0.5736 |    0.5342    0.5377    0.5606 |    +0.64%    +4.93%
+  ----------------------------------------------------------------------------------------------------------------
+  TODAY      ALL-POOL profile 0.521756
+  VARIANT A  ALL-POOL profile 0.526011
+  VARIANT B  ALL-POOL profile 0.549172
+
+  ENTRY-WEIGHTED SUMMARY OF THE LEVEL MOVE (weights = phase 1's own `entry_now` per pathway):
+      VARIANT A  entry-weighted mean derived level moves +0.835% (from 0.5119 to 0.5161)
+      VARIANT B  entry-weighted mean derived level moves +5.426% (from 0.5119 to 0.5396)
+
+  WHAT THIS MEANS FOR THE ORDER OF OPERATIONS, stated plainly for the owner:
+      The pool REPRICING (phase 1) and the pool SITTER LIFT are NOT independent. The repricing
+      derives entry levels from measured pool returns, and those measured returns are recorded
+      NET of the sitter penalty. Lift the penalty and every pathway's measured return rises, so
+      the levels phase 1 would derive rise too -- by +2.12% to +15.04% on the full lift.
+      DERIVE THE LEVELS FIRST AND LIFT THE PENALTY SECOND AND THE LEVELS ARE TAUGHT ON A CHARGE
+      THAT NO LONGER EXISTS. The two acts have to be sequenced, or the repricing re-derived after
+      the lift. THAT IS A DESIGN RULING AND IS NOT MADE HERE.
+
+======================================================================================================================
+5. THE COHORT INSTRUMENTS
+======================================================================================================================
+  DISCOUNT / NO-ARB CONVENTION, carried from menu_table.py:126-141 unchanged: a NEGATIVE margin
+  is free money (the book grows faster than the engine discounts, so holding dominates). The
+  order names the 14% charge, so 14.00% is the bar every row below is judged against; the
+  shipped ladder's own 13.00% rate at draft age 18 is printed beside it, not instead of it.
+
+  5a. THE ALL-ARM COHORT INSTRUMENT (the owner's ruled cohort -- THE DECIDING INSTRUMENT)
+      noarb_table_allarm.py, canonical md5 asserted at run: 0f8220351c64c56ccfa90c60edcdfa5f
+
+      PRIMARY  cohorts 2005-2023
+      variant           n       yr0      yr1      yr2      yr3      yr4      yr5apprec 0->1     vs 14%     vs 13%    verdict
+      --------------------------------------------------------------------------------------------------------------
+      TODAY          2209    1.0000   0.8850   1.1051   1.2113   1.2859   1.2685    -11.50%     25.50%     24.50%     no arb
+      VARIANT A      2209    1.0000   0.8977   1.1104   1.2121   1.2873   1.2699    -10.23%     24.23%     23.23%     no arb
+      VARIANT B      2209    1.0000   0.9503   1.1795   1.2254   1.2930   1.2733     -4.97%     18.97%     17.97%     no arb
+      change in yr1 ratio: VARIANT A +0.0127   VARIANT B +0.0653
+
+      MODERN   cohorts 2019-2023
+      variant           n       yr0      yr1      yr2      yr3      yr4      yr5apprec 0->1     vs 14%     vs 13%    verdict
+      --------------------------------------------------------------------------------------------------------------
+      TODAY           540    1.0000   0.8862   1.0340   1.0932   1.0985   1.1690    -11.38%     25.38%     24.38%     no arb
+      VARIANT A       540    1.0000   0.8956   1.0382   1.0937   1.0990   1.1719    -10.44%     24.44%     23.44%     no arb
+      VARIANT B       540    1.0000   0.9310   1.0978   1.1040   1.1024   1.1737     -6.90%     20.90%     19.90%     no arb
+      change in yr1 ratio: VARIANT A +0.0094   VARIANT B +0.0448
+
+      BY ARM, PRIMARY window -- yr1 and yr4 pooled ratios per pathway
+      arm           n |  yr1 NOW    yr1 A    yr1 B |  yr4 NOW    yr4 A    yr4 B
+      ----------------------------------------------------------------------------
+      ND         1310 |   1.0447   1.0463   1.0539 |   1.5166   1.5170   1.5183
+      RD          620 |   0.4806   0.5218   0.7002 |   0.7214   0.7225   0.7377
+      MSD          55 |      nan      nan      nan |   0.9485   0.9549   0.9937
+      UNR          49 |   0.3276   0.4087   0.5456 |   0.7672   0.7679   0.7918
+      IRE          47 |   0.2537   0.2904   0.4328 |   0.2628   0.3166   0.3310
+      PDA          43 |   0.3681   0.4116   0.5914 |   0.7709   0.7719   0.7956
+      PDN          33 |   0.1475   0.1775   0.3094 |   0.2575   0.2635   0.2635
+      SSP          31 |   1.2499   1.3031   1.4753 |   1.3507   1.3507   1.3691
+      PDS          21 |   0.2165   0.2496   0.3782 |   0.1694   0.1727   0.2162
+
+  5b. THE LEGACY PICKS 1-64 INSTRUMENT (noarb_table_338.py, UNMODIFIED, md5 0f822035..)
+      population = harness load_matrix: teaches_curve & pick 1..64 & draft year 2004-2022, n=1197
+      variant            yr0      yr1      yr2      yr3      yr4      yr5apprec 0->1     vs 14%     vs 13%    verdict
+      --------------------------------------------------------------------------------------------------------
+      TODAY           1.0000   1.0884   1.3586   1.4941   1.5660   1.5500      8.84%      5.16%      4.16%     no arb
+      VARIANT A       1.0000   1.0884   1.3586   1.4941   1.5660   1.5500      8.84%      5.16%      4.16%     no arb
+      VARIANT B       1.0000   1.0885   1.3587   1.4941   1.5660   1.5500      8.85%      5.15%      4.15%     no arb
+      CONTROL 5: the SHIP re-run reproduces the COMMITTED table_SHIP.json groups exactly -> REPRODUCED
+
+      THE LEGACY INSTRUMENT IS ESSENTIALLY INERT, AND THE RESIDUE IS NAMED. Its population is
+      NATIONAL by construction (`_teaches_curve(p) = _in_pvc(p) and not is_pool(p)`), so a pool
+      lift has nothing to act on. It is not EXACTLY inert: yr1 moves +0.000100 under VARIANT B, and
+      that entire move is ONE ROW -- daniel-butler, the #338 slide crosser named in section 4.
+
+======================================================================================================================
+6. THE SECOND R SITE (_a_blend) -- DISCLOSED SENSITIVITY, NOT PART OF EITHER VARIANT
+======================================================================================================================
+  The order defines the R leg as `anch = R * entry_anchor(p)` INSIDE sitout_ev, and variant B is
+  scoped to exactly that. But _merged_recover.py:2178 reads the SAME retention surface a SECOND
+  time, in _a_blend, on the YEAR-1+ arm:  anch0 = R * entry_anchor(p). A pool player who has ever
+  had a qualifying season takes THAT site, never sitout_ev -- and variant B does not reach him.
+  A board with BOTH sites lifted for pool rows is built here so the residue is sized, not guessed.
+
+                                        board total         change   change %     rows
+  ------------------------------------------------------------------------------------
+  TODAY (shipped)                           745,888              0    +0.000%        0
+  VARIANT A  (H only)                       748,194          2,306    +0.309%       49
+  VARIANT B  (H + R at sitout_ev)           754,355          8,467    +1.135%       75
+  SENSITIVITY (H + R at BOTH sites)         754,977          9,089    +1.219%       88
+
+  ROWS THE SECOND SITE ADDS OVER VARIANT B: 19, worth 622 board points.
+  player                   pathway |    TODAY    VAR B     BOTH      extra
+  Mani Liddy               MSD     |      128      128      255        127
+  Robert Hansen            MSD     |       80       82      194        112
+  James Blanck             MSD     |       60       60      115         55
+  Andy Moniz-Wakefield     PDN     |       25       25       74         49
+  Will McLachlan           MSD     |      100      100      141         41
+  Darragh Joyce            IRE     |       21       21       61         40
+  Tyrell Dewar             PDN     |       68       82      121         39
+  Tom Hanily               MSD     |      142      142      172         30
+  Caleb Graham             ND>64   |       38       45       71         26
+  Shadeau Brain            PDA     |       78       78      104         26
+  Josh Draper              PDN     |      274      338      361         23
+  Harry Edwards            RD      |       92       92      105         13
+  Jordan Boyd              MSD     |       37       37       50         13
+  Peter Ladhams            RD      |      492      492      504         12
+  Nicholas Martin          SSP     |    2,828    3,517    3,523          6
+  Mitchell Hinge           RD      |      322      322      327          5
+  Tyson Stengle            RD      |      121      150      153          3
+  Brandon Zerk-Thatcher    ND>64   |       47       47       48          1
+  Toby Pink                RD      |       15       15       16          1
+  national 1-64 rows among them: 0  (the patch is pool-gated at both sites)
+
+======================================================================================================================
+PINS RE-ASSERTED AT EXIT -- board 94f1fec5..  store d9a24282..  instrument 0f822035..  UNMOVED.
+======================================================================================================================
