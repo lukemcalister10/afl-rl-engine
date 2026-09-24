@@ -1,0 +1,39 @@
+$ node ui/tests/counting_rule.test.js
+
+COUNTING-RULE TESTS (items 196(2), 216 — collapse-first)
+  ------------------------------------------------------------
+  [PASS] collapse: K-FWD absorbs G-FWD -> plain KPF
+  [PASS] collapse: K-DEF absorbs G-DEF -> plain KPD
+  [PASS] collapse: {G-FWD,K-FWD,MID} -> {K-FWD,MID} (Langford pattern)
+  [PASS] collapse: four-way swingman -> DPP {K-DEF,K-FWD}
+  [PASS] collapse: {RUCK,K-FWD,G-FWD} -> DPP {RUC,K-FWD} (ruck swingman)
+  [PASS] collapse: a bare G-FWD (no K) is UNTOUCHED — G stands alone
+  [PASS] collapse: cross-flank K-DEF + G-FWD do NOT collapse (different flanks)
+  [PASS] single position (non-mid) -> 1.0 to that position
+  [PASS] single position (MID-only) -> 1.0 to MID
+  [PASS] DPP, no mid -> 0.5 to each (Matt Whitlock, corrected pure-key)
+  [PASS] DPP-mid EXCEPTION -> non-mid counts 1, MID counts 0
+  [PASS] DPP-mid EXCEPTION (mid listed second) -> non-mid 1, MID 0
+  [PASS] RUCK/K-FWD swingman: collapse then DPP -> RUC 0.5, K-FWD 0.5
+  [PASS] four-way swingman: collapse then DPP -> K-DEF 0.5, K-FWD 0.5
+  [PASS] Langford (K-FWD/MID after collapse): DPP-mid exception -> K-FWD 1, MID 0
+  [PASS] corrected pure-general (Flanders/Baker/Langdon): DPP -> G-DEF 0.5, G-FWD 0.5
+  [PASS] weights sum to 1.0 (DPP)
+  [PASS] weights sum to 1.0 (DPP-mid)
+  [PASS] weights sum to 1.0 (collapsed swingman)
+  [PASS] no position -> empty (unattributed)
+  [PASS] duplicate token collapses -> 1.0 (no double count)
+  [PASS] 3+ effective positions after collapse THROWS (equal-split generalisation is dead)
+  [PASS] roster: Sigma positional value == Sigma player value (conservation)
+  [PASS] SHIPPED map: NO player exceeds 2 effective positions after collapse (804 players checked)
+  [PASS] SHIPPED map: every board player has position codes (804 on the board) — an uncovered player's value falls into pocket.js's alarm-coloured "Unlisted" row, which is honest but should never have to fire
+  [PASS] SHIPPED map: and it carries NOBODY who is not on the board — a departed player left in it is the same staleness in the other direction, and nothing on screen would show it
+  [PASS] SHIPPED map: its stamp's own count is the number of players it actually carries
+  [PASS] SHIPPED map: its stamped ROSTER signature is the board's own player-key set, recomputed here — so a player joining or leaving the league stales it loudly instead of silently
+  [PASS] SHIPPED map: and its stamped CSV md5 is the owner's locations file as committed — a re-cut CSV changes the codes with no board movement at all, so it is the other real dependency
+  [PASS] SHIPPED map: the stamp no longer claims a BOARD — that was the wrong dependency, and the obvious 'fix' for the mismatch it produced (a board pin in the reader) would have taken the pocket panel dark on every landing
+  [PASS] SHIPPED map: the board it was built against is retained but LABELLED as provenance, not a dependency, so nobody checks it by mistake
+  ------------------------------------------------------------
+  31/31 passed
+
+[exit 0]

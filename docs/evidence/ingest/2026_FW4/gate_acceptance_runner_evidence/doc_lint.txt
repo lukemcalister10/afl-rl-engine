@@ -1,0 +1,6 @@
+$ python3 doc_lint.py
+(cwd /home/user/afl-rl-engine)
+
+doc_lint: 0 FAIL, 0 WARN  (live=7 history=2)
+
+[exit 0]

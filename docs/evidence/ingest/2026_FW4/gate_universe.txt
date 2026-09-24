@@ -1,0 +1,22 @@
+$ node ui/tests/universe.test.js
+
+  [PASS] the mode round-trips through storage
+  [PASS] ...and back
+  [PASS] NO model change is in the current-model universe (0 found)
+  [PASS] ...and the all-in universe DOES carry them — the switch is not vacuous
+  [PASS] the two universes are different point sets
+  [PASS] both universes are non-empty enough to compare across
+  [PASS] the current-model universe reaches back to R14
+  [PASS] ...and forward to the newest stored point (fw4-finals-week-4-24-9)
+  [PASS] no round's football appears twice in the current-model universe (0 duplicates)
+  [PASS] an out-of-round column DOES sit at the same after_round as a round point — which is why the check above is not a bare collision count
+  [PASS] the retro tail and the live head are comparable across the board (804 players)
+  [PASS] the seam is EXACT: every banked week that is also a stored point is the same board (3 week(s), 0 player readings differ)
+  [PASS] no week appears twice in the current-model history ()
+  [PASS] the handover is seamless: retro-r25 is followed by week 26 (fw2-finals-week-2-9-9)
+  [PASS] ...and the retrospective is a RE-PRICING, not duplicated stored values (8700 player-round readings differ across 11 rounds that have both)
+  [PASS] a localStorage that throws does not break the universe (it falls back in-page)
+  ------------------------------------------------------------
+UNIVERSE TESTS: ALL 16 PASS
+
+[exit 0]
