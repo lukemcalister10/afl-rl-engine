@@ -1,0 +1,470 @@
+{
+ "season": 2026,
+ "week": "FINALS WEEK 3",
+ "feed_round": 27,
+ "source": "scores/FW3.csv",
+ "source_sha256": "e0ae3bd0fc5e84263223565b320bf580c377bb86702bb93b30018c3d13983735",
+ "rulings": {},
+ "players": [
+  {
+   "key": "alex-neal-bullen",
+   "listed_as": "Alex N-Bullen",
+   "score": 67.0
+  },
+  {
+   "key": "alex-pearce",
+   "listed_as": "Alex Pearce",
+   "score": 56.0
+  },
+  {
+   "key": "andrew-brayshaw",
+   "listed_as": "Andrew Brayshaw",
+   "score": 81.0
+  },
+  {
+   "key": "bailey-smith",
+   "listed_as": "Bailey Smith",
+   "score": 123.0
+  },
+  {
+   "key": "ben-keays",
+   "listed_as": "Ben Keays",
+   "score": 58.0
+  },
+  {
+   "key": "bradley-close",
+   "listed_as": "Bradley Close",
+   "score": 50.0
+  },
+  {
+   "key": "brayden-cook",
+   "listed_as": "Brayden Cook",
+   "score": 56.0
+  },
+  {
+   "key": "caleb-serong",
+   "listed_as": "Caleb Serong",
+   "score": 109.0
+  },
+  {
+   "key": "callum-ah-chee",
+   "listed_as": "Callum Ah Chee",
+   "score": 49.0
+  },
+  {
+   "key": "cameron-rayner",
+   "listed_as": "Cameron Rayner",
+   "score": 126.0
+  },
+  {
+   "key": "charlie-cameron",
+   "listed_as": "Charlie Cameron",
+   "score": 103.0
+  },
+  {
+   "key": "connor-o-sullivan",
+   "listed_as": "Connor O'Sullivan",
+   "score": 68.0
+  },
+  {
+   "key": "conor-mckenna",
+   "listed_as": "Conor McKenna",
+   "score": 58.0
+  },
+  {
+   "key": "corey-wagner",
+   "listed_as": "Corey Wagner",
+   "score": 61.0
+  },
+  {
+   "key": "daniel-curtin",
+   "listed_as": "Daniel Curtin",
+   "score": 72.0
+  },
+  {
+   "key": "darcy-fogarty",
+   "listed_as": "Darcy Fogarty",
+   "score": 44.0
+  },
+  {
+   "key": "darcy-fort",
+   "listed_as": "Darcy Fort",
+   "score": 48.0
+  },
+  {
+   "key": "darcy-gardiner",
+   "listed_as": "Darcy Gardiner",
+   "score": 47.0
+  },
+  {
+   "key": "darcy-wilmot",
+   "listed_as": "Darcy Wilmot",
+   "score": 87.0
+  },
+  {
+   "key": "dayne-zorko",
+   "listed_as": "Dayne Zorko",
+   "score": 103.0
+  },
+  {
+   "key": "eric-hipwood",
+   "listed_as": "Eric Hipwood",
+   "score": 83.0
+  },
+  {
+   "key": "gryan-miers",
+   "listed_as": "Gryan Miers",
+   "score": 83.0
+  },
+  {
+   "key": "harris-andrews",
+   "listed_as": "Harris Andrews",
+   "score": 60.0
+  },
+  {
+   "key": "hayden-young",
+   "listed_as": "Hayden Young",
+   "score": 97.0
+  },
+  {
+   "key": "heath-chapman",
+   "listed_as": "Heath Chapman",
+   "score": 55.0
+  },
+  {
+   "key": "hugh-mccluggage",
+   "listed_as": "Hugh McCluggage",
+   "score": 91.0
+  },
+  {
+   "key": "hugo-hall-kahan",
+   "listed_as": "Hugo H-Kahan",
+   "score": 100.0
+  },
+  {
+   "key": "isaiah-dudley",
+   "listed_as": "Isaiah Dudley",
+   "score": 51.0
+  },
+  {
+   "key": "izak-rankine",
+   "listed_as": "Izak Rankine",
+   "score": 63.0
+  },
+  {
+   "key": "jack-henry",
+   "listed_as": "Jack Henry",
+   "score": 61.0
+  },
+  {
+   "key": "jake-soligo",
+   "listed_as": "Jake Soligo",
+   "score": 49.0
+  },
+  {
+   "key": "james-borlase",
+   "listed_as": "James Borlase",
+   "score": 34.0
+  },
+  {
+   "key": "jarrod-berry",
+   "listed_as": "Jarrod Berry",
+   "score": 75.0
+  },
+  {
+   "key": "jaspa-fletcher",
+   "listed_as": "Jaspa Fletcher",
+   "score": 70.0
+  },
+  {
+   "key": "jay-polkinghorne",
+   "listed_as": "Jay Polkinghorne",
+   "score": 17.0
+  },
+  {
+   "key": "jeremy-cameron",
+   "listed_as": "Jeremy Cameron",
+   "score": 60.0
+  },
+  {
+   "key": "jordan-clark",
+   "listed_as": "Jordan Clark",
+   "score": 100.0
+  },
+  {
+   "key": "jordan-dawson",
+   "listed_as": "Jordan Dawson",
+   "score": 84.0
+  },
+  {
+   "key": "josh-dunkley",
+   "listed_as": "Josh Dunkley",
+   "score": 102.0
+  },
+  {
+   "key": "josh-rachele",
+   "listed_as": "Josh Rachele",
+   "score": 41.0
+  },
+  {
+   "key": "josh-treacy",
+   "listed_as": "Josh Treacy",
+   "score": 110.0
+  },
+  {
+   "key": "josh-worrell",
+   "listed_as": "Josh Worrell",
+   "score": 76.0
+  },
+  {
+   "key": "judd-mcvee",
+   "listed_as": "Judd McVee",
+   "score": 27.0
+  },
+  {
+   "key": "jye-amiss",
+   "listed_as": "Jye Amiss",
+   "score": 46.0
+  },
+  {
+   "key": "kai-lohmann",
+   "listed_as": "Kai Lohmann",
+   "score": 83.0
+  },
+  {
+   "key": "karl-worner",
+   "listed_as": "Karl Worner",
+   "score": 97.0
+  },
+  {
+   "key": "lachie-neale",
+   "listed_as": "Lachie Neale",
+   "score": 65.0
+  },
+  {
+   "key": "lachlan-mcandrew",
+   "listed_as": "Lachlan McAndrew",
+   "score": 79.0
+  },
+  {
+   "key": "lawson-humphries",
+   "listed_as": "Lawson Humphries",
+   "score": 97.0
+  },
+  {
+   "key": "levi-ashcroft",
+   "listed_as": "Levi Ashcroft",
+   "score": 77.0
+  },
+  {
+   "key": "logan-morris",
+   "listed_as": "Logan Morris",
+   "score": 59.0
+  },
+  {
+   "key": "luke-jackson",
+   "listed_as": "Luke Jackson",
+   "score": 156.0
+  },
+  {
+   "key": "luke-nankervis",
+   "listed_as": "Luke Nankervis",
+   "score": 74.0
+  },
+  {
+   "key": "luke-ryan",
+   "listed_as": "Luke Ryan",
+   "score": 75.0
+  },
+  {
+   "key": "mark-blicavs",
+   "listed_as": "Mark Blicavs",
+   "score": 42.0
+  },
+  {
+   "key": "mark-keane",
+   "listed_as": "Mark Keane",
+   "score": 25.0
+  },
+  {
+   "key": "mark-o-connor",
+   "listed_as": "Mark O'Connor",
+   "score": 62.0
+  },
+  {
+   "key": "mason-cox",
+   "listed_as": "Mason Cox",
+   "score": 47.0
+  },
+  {
+   "key": "matt-johnson-1",
+   "listed_as": "Matt Johnson",
+   "score": 67.0
+  },
+  {
+   "key": "max-holmes",
+   "listed_as": "Max Holmes",
+   "score": 62.0
+  },
+  {
+   "key": "max-michalanney",
+   "listed_as": "Max Michalanney",
+   "score": 62.0
+  },
+  {
+   "key": "michael-frederick",
+   "listed_as": "Michael Frederick",
+   "score": 53.0
+  },
+  {
+   "key": "mitchell-edwards",
+   "listed_as": "Mitchell Edwards",
+   "score": 28.0
+  },
+  {
+   "key": "murphy-reid",
+   "listed_as": "Murphy Reid",
+   "score": 88.0
+  },
+  {
+   "key": "neil-erasmus",
+   "listed_as": "Neil Erasmus",
+   "score": 62.0
+  },
+  {
+   "key": "oisin-mullin",
+   "listed_as": "Oisin Mullin",
+   "score": 69.0
+  },
+  {
+   "key": "oliver-henry",
+   "listed_as": "Oliver Henry",
+   "score": 139.0
+  },
+  {
+   "key": "oliver-wiltshire",
+   "listed_as": "Oliver Wiltshire",
+   "score": 44.0
+  },
+  {
+   "key": "ollie-dempsey",
+   "listed_as": "Ollie Dempsey",
+   "score": 65.0
+  },
+  {
+   "key": "oscar-allen",
+   "listed_as": "Oscar Allen",
+   "score": 44.0
+  },
+  {
+   "key": "oscar-mcdonald",
+   "listed_as": "Oscar McDonald",
+   "score": 44.0
+  },
+  {
+   "key": "patrick-dangerfield",
+   "listed_as": "Patrick Dangerfield",
+   "score": 100.0
+  },
+  {
+   "key": "patrick-voss",
+   "listed_as": "Patrick Voss",
+   "score": 81.0
+  },
+  {
+   "key": "riley-thilthorpe",
+   "listed_as": "Riley Thilthorpe",
+   "score": 71.0
+  },
+  {
+   "key": "rory-laird",
+   "listed_as": "Rory Laird",
+   "score": 90.0
+  },
+  {
+   "key": "ryan-lester",
+   "listed_as": "Ryan Lester",
+   "score": 89.0
+  },
+  {
+   "key": "sam-berry",
+   "listed_as": "Sam Berry",
+   "score": 99.0
+  },
+  {
+   "key": "sam-draper",
+   "listed_as": "Sam Draper",
+   "score": 48.0
+  },
+  {
+   "key": "sam-switkowski",
+   "listed_as": "Sam Switkowski",
+   "score": 45.0
+  },
+  {
+   "key": "shai-bolton",
+   "listed_as": "Shai Bolton",
+   "score": 122.0
+  },
+  {
+   "key": "shannon-neale",
+   "listed_as": "Shannon Neale",
+   "score": 53.0
+  },
+  {
+   "key": "shaun-mannagh",
+   "listed_as": "Shaun Mannagh",
+   "score": 61.0
+  },
+  {
+   "key": "tanner-bruhn",
+   "listed_as": "Tanner Bruhn",
+   "score": 71.0
+  },
+  {
+   "key": "taylor-walker",
+   "listed_as": "Taylor Walker",
+   "score": 44.0
+  },
+  {
+   "key": "thomas-stewart",
+   "listed_as": "Thomas Stewart",
+   "score": 66.0
+  },
+  {
+   "key": "tom-atkins",
+   "listed_as": "Tom Atkins",
+   "score": 61.0
+  },
+  {
+   "key": "ty-gallop",
+   "listed_as": "Ty Gallop",
+   "score": 48.0
+  },
+  {
+   "key": "wayne-milera",
+   "listed_as": "Wayne Milera",
+   "score": 53.0
+  },
+  {
+   "key": "will-ashcroft",
+   "listed_as": "Will Ashcroft",
+   "score": 127.0
+  },
+  {
+   "key": "zac-bailey",
+   "listed_as": "Zac Bailey",
+   "score": 142.0
+  },
+  {
+   "key": "zac-taylor",
+   "listed_as": "Zac Taylor",
+   "score": 76.0
+  },
+  {
+   "key": "zach-guthrie",
+   "listed_as": "Zach Guthrie",
+   "score": 87.0
+  }
+ ]
+}
