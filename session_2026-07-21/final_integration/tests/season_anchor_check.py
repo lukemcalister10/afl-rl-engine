@@ -122,6 +122,21 @@ def check_current_round(root=None):
 
     derived = S.derive(rnd, store, season_year=year, season_total_rounds=total)
     live_md5 = hashlib.md5(open(store, 'rb').read()).hexdigest()
+    # IN FINALS THE EXPOSURE CLOCK HOLDS AT THE HOME-AND-AWAY SEASON (owner ruling 2026-09-24): the
+    # store carries finals games inside the season row, so the stamp is re-derived from the store less
+    # every finals week played (the weekly reports of record name who played). Still a derivation —
+    # nothing typed — and a hand-edited stamp still fails.
+    try:
+        _src = open(os.path.join(root, 'ui', 'data', 'movers.js'), encoding='utf-8').read()
+        _reports = json.loads(_src[_src.index('{', _src.index('__MATCHDAY_MOVERS__')):]
+                              .strip().rstrip(';')).get('reports') or {}
+    except (OSError, ValueError):
+        _reports = {}
+    _played = S.finals_played(_reports, rnd)
+    if _played:
+        _rows = json.load(open(store, encoding='utf-8'))
+        derived = dict(derived)
+        derived['exposure_pace'] = S.exposure_pace(S.home_and_away_rows(_rows, _played, year), year)[0]
 
     checks.append(('current round R%d: re-deriving from the live store reproduces the stamped '
                    'calendar_progress' % rnd,

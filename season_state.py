@@ -64,6 +64,39 @@ def _games(row, year):
     return 0
 
 
+def finals_played(movers_reports, home_and_away_rounds=24):
+    """{player key: number of finals weeks played}, read off the weekly reports of record (feed rounds
+    above the home-and-away season). A finals week is folded into the season row, so the store alone
+    cannot say which of a row's games were finals; the reports can."""
+    out = {}
+    for rnd, rep in (movers_reports or {}).items():
+        if int(rnd) <= home_and_away_rounds:
+            continue
+        for p in (rep or {}).get('players') or []:
+            if p.get('played'):
+                out[p['key']] = out.get(p['key'], 0) + 1
+    return out
+
+
+def home_and_away_rows(store_rows, played, season_year):
+    """The store as it stood at the end of the home-and-away season: each row's `season_year` games
+    less the finals weeks it played. THE SEASON CLOCK HOLDS AT ROUND 24 IN FINALS (owner ruling
+    2026-09-02, "the calendar reaches 1.00 at round 24 and holds") — exposure_pace is the other half
+    of that clock, so in finals it is derived from this view, not from the live store. Pure: returns
+    copies, never edits `store_rows`."""
+    out = []
+    for r in store_rows:
+        n = played.get(r.get('key'), 0) if isinstance(r, dict) else 0
+        if not n:
+            out.append(r)
+            continue
+        r2 = dict(r)
+        r2['scoring'] = [dict(s, games=int(s.get('games') or 0) - n) if s.get('year') == season_year
+                         else s for s in (r.get('scoring') or [])]
+        out.append(r2)
+    return out
+
+
 def exposure_pace(store_rows, inprog_year, home_and_away_games=None):
     """Empirical exposure pace from the store: median current-season games of the durable population / EXPO_DEN.
     Returns (value, metadata). Capped at 1.0 (season complete). Independent of calendar progress.

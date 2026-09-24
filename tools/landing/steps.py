@@ -665,6 +665,9 @@ def season_state_rederive(ctx, store_md5):
     ctx.log('season clock  re-derived from the edited store by season_state.derive (the sole deriver)')
     ctx.log('    source_store_md5  %s -> %s' % (str(cur.get('source_store_md5'))[:12],
                                                 str(new.get('source_store_md5'))[:12]))
+    held = _finals_exposure_hold(ctx, SS, cur, new, moved, store_md5)
+    if held:
+        new, moved = held, ['source_store_md5']
     if moved != ['source_store_md5']:
         raise StepError(
             'THE SEASON CLOCK\'S DERIVED VALUES MOVE UNDER THIS EDIT: %s.\n'
@@ -691,6 +694,48 @@ def season_state_rederive(ctx, store_md5):
     return {'source_store_md5': store_md5, 'fields_checked': len(set(cur) | set(new)),
             'exposure_pace': new.get('exposure_pace'),
             'calendar_progress': new.get('calendar_progress')}
+
+
+def _finals_exposure_hold(ctx, SS, cur, new, moved, store_md5):
+    """A FINALS WEEK HOLDS THE EXPOSURE CLOCK AT ROUND 24 (owner ruling 2026-09-24, extending the
+    2026-09-02 calendar ruling to the clock's other half). FW4's first run stopped here: its games
+    lifted the durable median from 20 to 21, so exposure_pace re-derived 0.909 -> 0.955 — the season
+    clock advancing on finals football, which the calendar is ruled never to do. FW1-FW3 only passed
+    because the median happened not to cross.
+
+    Returns the season state to write (the live derivation with the exposure fields HELD), or None when
+    the hold does not apply. It applies only to a finals column, only when nothing but the exposure
+    fields and the provenance stamp moved, and only when the round-24 view — the edited store less
+    every finals week played (prior weeks from the reports of record, this week from the act's own
+    edits) — re-derives EXACTLY the held values. So the held number is re-derived, never trusted."""
+    if not set(moved) <= {'source_store_md5', 'exposure_pace', 'exposure_derivation'}:
+        return None
+    _rm = _load(ctx, 'round_movers', 'engine/rl_after/ingestion/round_movers.py')
+    _fr = _load(ctx, 'finals_report', 'engine/rl_after/ingestion/finals_report.py')
+    col = (ctx.spec.get('column') or {}).get('id')
+    if not col or _fr.feed_round_of(col, _rm) is None:
+        return None
+    year = int(cur['season_year'])
+    src = open(_p(ctx, 'ui/data/movers.js'), encoding='utf-8').read()
+    reports = json.loads(src[src.index('{', src.index('__MATCHDAY_MOVERS__')):].strip().rstrip(';'))
+    played = SS.finals_played(reports.get('reports') or {}, int(cur['as_of_round']))
+    gf = 'scoring[%d].games' % year
+    for e in (ctx.spec.get('edit') or {}).get('store') or []:
+        if e.get('field') == gf:
+            played[e['key']] = played.get(e['key'], 0) + int(e['new']) - int(e['old'])
+    rows = json.load(open(_p(ctx, STORE_REL), encoding='utf-8'))
+    ep, meta = SS.exposure_pace(SS.home_and_away_rows(rows, played, year), year)
+    if ep != cur.get('exposure_pace') or json.dumps(meta, sort_keys=True) != json.dumps(
+            cur.get('exposure_derivation'), sort_keys=True):
+        raise StepError('FINALS HOLD REFUSED: the round-24 view of the edited store re-derives '
+                        'exposure_pace %s, not the held %s — the finals subtraction does not reproduce '
+                        'the clock, so holding it would be a guess' % (ep, cur.get('exposure_pace')))
+    out = dict(new)
+    out['exposure_pace'], out['exposure_derivation'] = cur['exposure_pace'], cur['exposure_derivation']
+    ctx.log('    FINALS HOLD: live store derives exposure_pace %s; the round-24 view (%d finals '
+            'appearances subtracted) re-derives the held %s exactly — held.'
+            % (new.get('exposure_pace'), sum(played.values()), ep))
+    return out
 
 
 def board_values(path):
