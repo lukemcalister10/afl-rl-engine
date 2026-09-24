@@ -1,0 +1,4385 @@
+{
+ "schema_version": 1,
+ "act_kind": "store-edit",
+ "act": "FINALS WEEK 4 — 92 PLAYERS GAIN ONE GAME AND A RE-AVERAGED 2026 SEASON ROW",
+ "date": "2026-09-24",
+ "owner_word": "Weekly scores supplied by the owner: scores/FW4.csv (sha256 08b440540c92f20e), ingested with tools/ingest under the owner ruling of 2026-09-24 that weekly data takes its own path.",
+ "authority": "owner ruling 2026-09-24 (the weekly ingest path)",
+ "prereg": {
+  "path": "docs/evidence/ingest/2026_FW4/NOTE.md",
+  "board_before": "3e5b3454cd35d5990ae828909cc5ea60",
+  "board_after": null,
+  "reference_board": null,
+  "kill_switch": null
+ },
+ "edit": {
+  "store": [
+   {
+    "key": "alex-pearce",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "alex-pearce",
+    "field": "scoring[2026].avg",
+    "old": 48.22,
+    "new": 48.34
+   },
+   {
+    "key": "andrew-brayshaw",
+    "field": "scoring[2026].games",
+    "old": 25,
+    "new": 26
+   },
+   {
+    "key": "andrew-brayshaw",
+    "field": "scoring[2026].avg",
+    "old": 99.11,
+    "new": 99.26
+   },
+   {
+    "key": "angus-sheldrick",
+    "field": "scoring[2026].games",
+    "old": 19,
+    "new": 20
+   },
+   {
+    "key": "angus-sheldrick",
+    "field": "scoring[2026].avg",
+    "old": 67.47,
+    "new": 68.05
+   },
+   {
+    "key": "bailey-macdonald",
+    "field": "scoring[2026].games",
+    "old": 13,
+    "new": 14
+   },
+   {
+    "key": "bailey-macdonald",
+    "field": "scoring[2026].avg",
+    "old": 54.23,
+    "new": 52.14
+   },
+   {
+    "key": "billy-cootee",
+    "field": "scoring[2026].games",
+    "old": 10,
+    "new": 11
+   },
+   {
+    "key": "billy-cootee",
+    "field": "scoring[2026].avg",
+    "old": 53.2,
+    "new": 51.36
+   },
+   {
+    "key": "blake-hardwick",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "blake-hardwick",
+    "field": "scoring[2026].avg",
+    "old": 82.8,
+    "new": 80.97
+   },
+   {
+    "key": "braeden-campbell",
+    "field": "scoring[2026].games",
+    "old": 7,
+    "new": 8
+   },
+   {
+    "key": "braeden-campbell",
+    "field": "scoring[2026].avg",
+    "old": 74.29,
+    "new": 72.75
+   },
+   {
+    "key": "brodie-grundy",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "brodie-grundy",
+    "field": "scoring[2026].avg",
+    "old": 118.68,
+    "new": 115.87
+   },
+   {
+    "key": "caiden-cleary",
+    "field": "scoring[2026].games",
+    "old": 10,
+    "new": 11
+   },
+   {
+    "key": "caiden-cleary",
+    "field": "scoring[2026].avg",
+    "old": 54.1,
+    "new": 54.82
+   },
+   {
+    "key": "caleb-serong",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "caleb-serong",
+    "field": "scoring[2026].avg",
+    "old": 101.72,
+    "new": 101.73
+   },
+   {
+    "key": "cameron-mackenzie",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "cameron-mackenzie",
+    "field": "scoring[2026].avg",
+    "old": 75.46,
+    "new": 73.74
+   },
+   {
+    "key": "cameron-rayner",
+    "field": "scoring[2026].games",
+    "old": 25,
+    "new": 26
+   },
+   {
+    "key": "cameron-rayner",
+    "field": "scoring[2026].avg",
+    "old": 73.08,
+    "new": 72.73
+   },
+   {
+    "key": "charlie-cameron",
+    "field": "scoring[2026].games",
+    "old": 25,
+    "new": 26
+   },
+   {
+    "key": "charlie-cameron",
+    "field": "scoring[2026].avg",
+    "old": 71.66,
+    "new": 71.9
+   },
+   {
+    "key": "charlie-curnow",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "charlie-curnow",
+    "field": "scoring[2026].avg",
+    "old": 74.17,
+    "new": 73.7
+   },
+   {
+    "key": "connor-macdonald",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "connor-macdonald",
+    "field": "scoring[2026].avg",
+    "old": 84.56,
+    "new": 84.18
+   },
+   {
+    "key": "conor-mckenna",
+    "field": "scoring[2026].games",
+    "old": 19,
+    "new": 20
+   },
+   {
+    "key": "conor-mckenna",
+    "field": "scoring[2026].avg",
+    "old": 57.36,
+    "new": 59.24
+   },
+   {
+    "key": "corey-wagner",
+    "field": "scoring[2026].games",
+    "old": 14,
+    "new": 15
+   },
+   {
+    "key": "corey-wagner",
+    "field": "scoring[2026].avg",
+    "old": 68.53,
+    "new": 69.36
+   },
+   {
+    "key": "dane-rampe",
+    "field": "scoring[2026].games",
+    "old": 16,
+    "new": 17
+   },
+   {
+    "key": "dane-rampe",
+    "field": "scoring[2026].avg",
+    "old": 62.0,
+    "new": 63.47
+   },
+   {
+    "key": "darcy-fort",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "darcy-fort",
+    "field": "scoring[2026].avg",
+    "old": 66.84,
+    "new": 66.29
+   },
+   {
+    "key": "darcy-gardiner",
+    "field": "scoring[2026].games",
+    "old": 14,
+    "new": 15
+   },
+   {
+    "key": "darcy-gardiner",
+    "field": "scoring[2026].avg",
+    "old": 46.02,
+    "new": 45.95
+   },
+   {
+    "key": "darcy-wilmot",
+    "field": "scoring[2026].games",
+    "old": 25,
+    "new": 26
+   },
+   {
+    "key": "darcy-wilmot",
+    "field": "scoring[2026].avg",
+    "old": 88.07,
+    "new": 86.68
+   },
+   {
+    "key": "dayne-zorko",
+    "field": "scoring[2026].games",
+    "old": 15,
+    "new": 16
+   },
+   {
+    "key": "dayne-zorko",
+    "field": "scoring[2026].avg",
+    "old": 103.52,
+    "new": 101.49
+   },
+   {
+    "key": "dylan-moore",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "dylan-moore",
+    "field": "scoring[2026].avg",
+    "old": 74.73,
+    "new": 75.87
+   },
+   {
+    "key": "eric-hipwood",
+    "field": "scoring[2026].games",
+    "old": 12,
+    "new": 13
+   },
+   {
+    "key": "eric-hipwood",
+    "field": "scoring[2026].avg",
+    "old": 61.08,
+    "new": 61.69
+   },
+   {
+    "key": "errol-gulden",
+    "field": "scoring[2026].games",
+    "old": 12,
+    "new": 13
+   },
+   {
+    "key": "errol-gulden",
+    "field": "scoring[2026].avg",
+    "old": 118.17,
+    "new": 119.08
+   },
+   {
+    "key": "harris-andrews",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "harris-andrews",
+    "field": "scoring[2026].avg",
+    "old": 83.47,
+    "new": 83.71
+   },
+   {
+    "key": "harry-kyle",
+    "field": "scoring[2026].games",
+    "old": 10,
+    "new": 11
+   },
+   {
+    "key": "harry-kyle",
+    "field": "scoring[2026].avg",
+    "old": 45.64,
+    "new": 47.31
+   },
+   {
+    "key": "harry-morrison",
+    "field": "scoring[2026].games",
+    "old": 14,
+    "new": 15
+   },
+   {
+    "key": "harry-morrison",
+    "field": "scoring[2026].avg",
+    "old": 71.14,
+    "new": 69.13
+   },
+   {
+    "key": "hayden-mclean",
+    "field": "scoring[2026].games",
+    "old": 11,
+    "new": 12
+   },
+   {
+    "key": "hayden-mclean",
+    "field": "scoring[2026].avg",
+    "old": 58.8,
+    "new": 56.65
+   },
+   {
+    "key": "hayden-young",
+    "field": "scoring[2026].games",
+    "old": 15,
+    "new": 16
+   },
+   {
+    "key": "hayden-young",
+    "field": "scoring[2026].avg",
+    "old": 81.2,
+    "new": 84.0
+   },
+   {
+    "key": "heath-chapman",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "heath-chapman",
+    "field": "scoring[2026].avg",
+    "old": 68.68,
+    "new": 69.65
+   },
+   {
+    "key": "hugh-mccluggage",
+    "field": "scoring[2026].games",
+    "old": 15,
+    "new": 16
+   },
+   {
+    "key": "hugh-mccluggage",
+    "field": "scoring[2026].avg",
+    "old": 75.48,
+    "new": 78.45
+   },
+   {
+    "key": "isaiah-dudley",
+    "field": "scoring[2026].games",
+    "old": 25,
+    "new": 26
+   },
+   {
+    "key": "isaiah-dudley",
+    "field": "scoring[2026].avg",
+    "old": 57.17,
+    "new": 59.2
+   },
+   {
+    "key": "jack-ginnivan",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "jack-ginnivan",
+    "field": "scoring[2026].avg",
+    "old": 80.78,
+    "new": 79.4
+   },
+   {
+    "key": "jack-gunston",
+    "field": "scoring[2026].games",
+    "old": 18,
+    "new": 19
+   },
+   {
+    "key": "jack-gunston",
+    "field": "scoring[2026].avg",
+    "old": 76.9,
+    "new": 77.59
+   },
+   {
+    "key": "jai-newcombe",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "jai-newcombe",
+    "field": "scoring[2026].avg",
+    "old": 101.38,
+    "new": 100.64
+   },
+   {
+    "key": "jai-serong",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "jai-serong",
+    "field": "scoring[2026].avg",
+    "old": 75.66,
+    "new": 75.59
+   },
+   {
+    "key": "jake-lloyd",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "jake-lloyd",
+    "field": "scoring[2026].avg",
+    "old": 73.58,
+    "new": 74.76
+   },
+   {
+    "key": "james-rowbottom",
+    "field": "scoring[2026].games",
+    "old": 21,
+    "new": 22
+   },
+   {
+    "key": "james-rowbottom",
+    "field": "scoring[2026].avg",
+    "old": 76.15,
+    "new": 75.6
+   },
+   {
+    "key": "james-sicily",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "james-sicily",
+    "field": "scoring[2026].avg",
+    "old": 93.73,
+    "new": 92.95
+   },
+   {
+    "key": "jarman-impey",
+    "field": "scoring[2026].games",
+    "old": 21,
+    "new": 22
+   },
+   {
+    "key": "jarman-impey",
+    "field": "scoring[2026].avg",
+    "old": 88.34,
+    "new": 86.82
+   },
+   {
+    "key": "jarrod-berry",
+    "field": "scoring[2026].games",
+    "old": 20,
+    "new": 21
+   },
+   {
+    "key": "jarrod-berry",
+    "field": "scoring[2026].avg",
+    "old": 76.55,
+    "new": 76.38
+   },
+   {
+    "key": "jaspa-fletcher",
+    "field": "scoring[2026].games",
+    "old": 25,
+    "new": 26
+   },
+   {
+    "key": "jaspa-fletcher",
+    "field": "scoring[2026].avg",
+    "old": 73.96,
+    "new": 72.81
+   },
+   {
+    "key": "jesse-dattoli",
+    "field": "scoring[2026].games",
+    "old": 4,
+    "new": 5
+   },
+   {
+    "key": "jesse-dattoli",
+    "field": "scoring[2026].avg",
+    "old": 73.25,
+    "new": 63.6
+   },
+   {
+    "key": "joel-hamling",
+    "field": "scoring[2026].games",
+    "old": 10,
+    "new": 11
+   },
+   {
+    "key": "joel-hamling",
+    "field": "scoring[2026].avg",
+    "old": 52.19,
+    "new": 52.08
+   },
+   {
+    "key": "jordan-clark",
+    "field": "scoring[2026].games",
+    "old": 25,
+    "new": 26
+   },
+   {
+    "key": "jordan-clark",
+    "field": "scoring[2026].avg",
+    "old": 94.51,
+    "new": 92.76
+   },
+   {
+    "key": "josh-battle",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "josh-battle",
+    "field": "scoring[2026].avg",
+    "old": 84.83,
+    "new": 83.01
+   },
+   {
+    "key": "josh-dunkley",
+    "field": "scoring[2026].games",
+    "old": 25,
+    "new": 26
+   },
+   {
+    "key": "josh-dunkley",
+    "field": "scoring[2026].avg",
+    "old": 93.73,
+    "new": 93.51
+   },
+   {
+    "key": "josh-treacy",
+    "field": "scoring[2026].games",
+    "old": 25,
+    "new": 26
+   },
+   {
+    "key": "josh-treacy",
+    "field": "scoring[2026].avg",
+    "old": 92.28,
+    "new": 89.62
+   },
+   {
+    "key": "josh-ward",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "josh-ward",
+    "field": "scoring[2026].avg",
+    "old": 85.49,
+    "new": 87.59
+   },
+   {
+    "key": "joshua-weddle",
+    "field": "scoring[2026].games",
+    "old": 20,
+    "new": 21
+   },
+   {
+    "key": "joshua-weddle",
+    "field": "scoring[2026].avg",
+    "old": 70.74,
+    "new": 70.47
+   },
+   {
+    "key": "judd-mcvee",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "judd-mcvee",
+    "field": "scoring[2026].avg",
+    "old": 57.6,
+    "new": 58.1
+   },
+   {
+    "key": "justin-mcinerney",
+    "field": "scoring[2026].games",
+    "old": 13,
+    "new": 14
+   },
+   {
+    "key": "justin-mcinerney",
+    "field": "scoring[2026].avg",
+    "old": 91.8,
+    "new": 89.89
+   },
+   {
+    "key": "jye-amiss",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "jye-amiss",
+    "field": "scoring[2026].avg",
+    "old": 68.77,
+    "new": 67.82
+   },
+   {
+    "key": "kai-lohmann",
+    "field": "scoring[2026].games",
+    "old": 25,
+    "new": 26
+   },
+   {
+    "key": "kai-lohmann",
+    "field": "scoring[2026].avg",
+    "old": 67.72,
+    "new": 69.65
+   },
+   {
+    "key": "karl-amon",
+    "field": "scoring[2026].games",
+    "old": 19,
+    "new": 20
+   },
+   {
+    "key": "karl-amon",
+    "field": "scoring[2026].avg",
+    "old": 77.24,
+    "new": 76.08
+   },
+   {
+    "key": "karl-worner",
+    "field": "scoring[2026].games",
+    "old": 25,
+    "new": 26
+   },
+   {
+    "key": "karl-worner",
+    "field": "scoring[2026].avg",
+    "old": 85.5,
+    "new": 84.63
+   },
+   {
+    "key": "lachie-neale",
+    "field": "scoring[2026].games",
+    "old": 25,
+    "new": 26
+   },
+   {
+    "key": "lachie-neale",
+    "field": "scoring[2026].avg",
+    "old": 107.01,
+    "new": 107.47
+   },
+   {
+    "key": "levi-ashcroft",
+    "field": "scoring[2026].games",
+    "old": 25,
+    "new": 26
+   },
+   {
+    "key": "levi-ashcroft",
+    "field": "scoring[2026].avg",
+    "old": 74.61,
+    "new": 73.82
+   },
+   {
+    "key": "lewis-melican",
+    "field": "scoring[2026].games",
+    "old": 10,
+    "new": 11
+   },
+   {
+    "key": "lewis-melican",
+    "field": "scoring[2026].avg",
+    "old": 59.1,
+    "new": 56.36
+   },
+   {
+    "key": "lloyd-meek",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "lloyd-meek",
+    "field": "scoring[2026].avg",
+    "old": 80.26,
+    "new": 81.21
+   },
+   {
+    "key": "logan-mcdonald",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "logan-mcdonald",
+    "field": "scoring[2026].avg",
+    "old": 68.59,
+    "new": 69.91
+   },
+   {
+    "key": "logan-morris",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "logan-morris",
+    "field": "scoring[2026].avg",
+    "old": 76.67,
+    "new": 75.92
+   },
+   {
+    "key": "luke-jackson",
+    "field": "scoring[2026].games",
+    "old": 25,
+    "new": 26
+   },
+   {
+    "key": "luke-jackson",
+    "field": "scoring[2026].avg",
+    "old": 119.94,
+    "new": 120.9
+   },
+   {
+    "key": "luke-ryan",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "luke-ryan",
+    "field": "scoring[2026].avg",
+    "old": 89.2,
+    "new": 88.23
+   },
+   {
+    "key": "mabior-chol",
+    "field": "scoring[2026].games",
+    "old": 19,
+    "new": 20
+   },
+   {
+    "key": "mabior-chol",
+    "field": "scoring[2026].avg",
+    "old": 63.67,
+    "new": 61.64
+   },
+   {
+    "key": "mason-cox",
+    "field": "scoring[2026].games",
+    "old": 18,
+    "new": 19
+   },
+   {
+    "key": "mason-cox",
+    "field": "scoring[2026].avg",
+    "old": 46.55,
+    "new": 47.99
+   },
+   {
+    "key": "massimo-d-ambrosio",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "massimo-d-ambrosio",
+    "field": "scoring[2026].avg",
+    "old": 77.76,
+    "new": 78.69
+   },
+   {
+    "key": "matt-johnson-1",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "matt-johnson-1",
+    "field": "scoring[2026].avg",
+    "old": 70.61,
+    "new": 71.75
+   },
+   {
+    "key": "matthew-roberts",
+    "field": "scoring[2026].games",
+    "old": 20,
+    "new": 21
+   },
+   {
+    "key": "matthew-roberts",
+    "field": "scoring[2026].avg",
+    "old": 71.07,
+    "new": 70.97
+   },
+   {
+    "key": "max-beattie",
+    "field": "scoring[2026].games",
+    "old": 3,
+    "new": 4
+   },
+   {
+    "key": "max-beattie",
+    "field": "scoring[2026].avg",
+    "old": 52.67,
+    "new": 44.0
+   },
+   {
+    "key": "michael-frederick",
+    "field": "scoring[2026].games",
+    "old": 20,
+    "new": 21
+   },
+   {
+    "key": "michael-frederick",
+    "field": "scoring[2026].avg",
+    "old": 63.16,
+    "new": 63.3
+   },
+   {
+    "key": "mitchell-lewis",
+    "field": "scoring[2026].games",
+    "old": 22,
+    "new": 23
+   },
+   {
+    "key": "mitchell-lewis",
+    "field": "scoring[2026].avg",
+    "old": 72.25,
+    "new": 72.63
+   },
+   {
+    "key": "murphy-reid",
+    "field": "scoring[2026].games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "murphy-reid",
+    "field": "scoring[2026].avg",
+    "old": 86.75,
+    "new": 86.22
+   },
+   {
+    "key": "neil-erasmus",
+    "field": "scoring[2026].games",
+    "old": 25,
+    "new": 26
+   },
+   {
+    "key": "neil-erasmus",
+    "field": "scoring[2026].avg",
+    "old": 70.58,
+    "new": 70.4
+   },
+   {
+    "key": "nick-watson",
+    "field": "scoring[2026].games",
+    "old": 21,
+    "new": 22
+   },
+   {
+    "key": "nick-watson",
+    "field": "scoring[2026].avg",
+    "old": 85.34,
+    "new": 87.01
+   },
+   {
+    "key": "oscar-allen",
+    "field": "scoring[2026].games",
+    "old": 13,
+    "new": 14
+   },
+   {
+    "key": "oscar-allen",
+    "field": "scoring[2026].avg",
+    "old": 53.6,
+    "new": 52.2
+   },
+   {
+    "key": "oscar-mcdonald",
+    "field": "scoring[2026].games",
+    "old": 12,
+    "new": 13
+   },
+   {
+    "key": "oscar-mcdonald",
+    "field": "scoring[2026].avg",
+    "old": 65.5,
+    "new": 66.08
+   },
+   {
+    "key": "patrick-voss",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "patrick-voss",
+    "field": "scoring[2026].avg",
+    "old": 64.91,
+    "new": 64.63
+   },
+   {
+    "key": "ryan-lester",
+    "field": "scoring[2026].games",
+    "old": 21,
+    "new": 22
+   },
+   {
+    "key": "ryan-lester",
+    "field": "scoring[2026].avg",
+    "old": 73.57,
+    "new": 73.77
+   },
+   {
+    "key": "sam-draper",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "sam-draper",
+    "field": "scoring[2026].avg",
+    "old": 70.84,
+    "new": 70.45
+   },
+   {
+    "key": "sam-switkowski",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "sam-switkowski",
+    "field": "scoring[2026].avg",
+    "old": 60.46,
+    "new": 59.72
+   },
+   {
+    "key": "sam-wicks",
+    "field": "scoring[2026].games",
+    "old": 19,
+    "new": 20
+   },
+   {
+    "key": "sam-wicks",
+    "field": "scoring[2026].avg",
+    "old": 60.79,
+    "new": 59.75
+   },
+   {
+    "key": "shai-bolton",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "shai-bolton",
+    "field": "scoring[2026].avg",
+    "old": 94.1,
+    "new": 95.18
+   },
+   {
+    "key": "tom-barrass",
+    "field": "scoring[2026].games",
+    "old": 20,
+    "new": 21
+   },
+   {
+    "key": "tom-barrass",
+    "field": "scoring[2026].avg",
+    "old": 56.94,
+    "new": 56.99
+   },
+   {
+    "key": "tom-hanily",
+    "field": "scoring[2026].games",
+    "old": 6,
+    "new": 7
+   },
+   {
+    "key": "tom-hanily",
+    "field": "scoring[2026].avg",
+    "old": 52.0,
+    "new": 53.86
+   },
+   {
+    "key": "tom-mccartin",
+    "field": "scoring[2026].games",
+    "old": 21,
+    "new": 22
+   },
+   {
+    "key": "tom-mccartin",
+    "field": "scoring[2026].avg",
+    "old": 79.92,
+    "new": 79.83
+   },
+   {
+    "key": "tom-papley",
+    "field": "scoring[2026].games",
+    "old": 19,
+    "new": 20
+   },
+   {
+    "key": "tom-papley",
+    "field": "scoring[2026].avg",
+    "old": 75.79,
+    "new": 75.65
+   },
+   {
+    "key": "ty-gallop",
+    "field": "scoring[2026].games",
+    "old": 19,
+    "new": 20
+   },
+   {
+    "key": "ty-gallop",
+    "field": "scoring[2026].avg",
+    "old": 57.37,
+    "new": 57.85
+   },
+   {
+    "key": "will-ashcroft",
+    "field": "scoring[2026].games",
+    "old": 25,
+    "new": 26
+   },
+   {
+    "key": "will-ashcroft",
+    "field": "scoring[2026].avg",
+    "old": 106.23,
+    "new": 107.03
+   },
+   {
+    "key": "will-day",
+    "field": "scoring[2026].games",
+    "old": 12,
+    "new": 13
+   },
+   {
+    "key": "will-day",
+    "field": "scoring[2026].avg",
+    "old": 85.84,
+    "new": 84.24
+   },
+   {
+    "key": "zac-bailey",
+    "field": "scoring[2026].games",
+    "old": 24,
+    "new": 25
+   },
+   {
+    "key": "zac-bailey",
+    "field": "scoring[2026].avg",
+    "old": 99.05,
+    "new": 99.09
+   },
+   {
+    "key": "willem-duursma",
+    "field": "games",
+    "old": 17,
+    "new": 21
+   },
+   {
+    "key": "zeke-uwland",
+    "field": "games",
+    "old": 16,
+    "new": 17
+   },
+   {
+    "key": "harry-dean",
+    "field": "games",
+    "old": 15,
+    "new": 21
+   },
+   {
+    "key": "cooper-duff-tytler",
+    "field": "games",
+    "old": 11,
+    "new": 15
+   },
+   {
+    "key": "dylan-patterson",
+    "field": "games",
+    "old": 4,
+    "new": 5
+   },
+   {
+    "key": "daniel-annable",
+    "field": "games",
+    "old": 1,
+    "new": 3
+   },
+   {
+    "key": "sam-cumming",
+    "field": "games",
+    "old": 13,
+    "new": 14
+   },
+   {
+    "key": "samuel-grlj",
+    "field": "games",
+    "old": 17,
+    "new": 21
+   },
+   {
+    "key": "jacob-farrow",
+    "field": "games",
+    "old": 16,
+    "new": 20
+   },
+   {
+    "key": "xavier-taylor",
+    "field": "games",
+    "old": 2,
+    "new": 3
+   },
+   {
+    "key": "dyson-sharp",
+    "field": "games",
+    "old": 11,
+    "new": 15
+   },
+   {
+    "key": "harry-kyle",
+    "field": "games",
+    "old": 5,
+    "new": 11
+   },
+   {
+    "key": "jai-murray",
+    "field": "games",
+    "old": 7,
+    "new": 8
+   },
+   {
+    "key": "beau-addinsall",
+    "field": "games",
+    "old": 6,
+    "new": 9
+   },
+   {
+    "key": "josh-lindsay",
+    "field": "games",
+    "old": 12,
+    "new": 15
+   },
+   {
+    "key": "lachlan-carmichael",
+    "field": "games",
+    "old": 0,
+    "new": 2
+   },
+   {
+    "key": "aidan-schubert",
+    "field": "games",
+    "old": 0,
+    "new": 1
+   },
+   {
+    "key": "louis-emmett",
+    "field": "games",
+    "old": 5,
+    "new": 7
+   },
+   {
+    "key": "jack-dalton",
+    "field": "games",
+    "old": 4,
+    "new": 5
+   },
+   {
+    "key": "max-kondogiannis",
+    "field": "games",
+    "old": 7,
+    "new": 11
+   },
+   {
+    "key": "samuel-swadling",
+    "field": "games",
+    "old": 5,
+    "new": 9
+   },
+   {
+    "key": "tobyn-murray",
+    "field": "games",
+    "old": 0,
+    "new": 1
+   },
+   {
+    "key": "billy-cootee",
+    "field": "games",
+    "old": 5,
+    "new": 11
+   },
+   {
+    "key": "talor-byrne",
+    "field": "games",
+    "old": 13,
+    "new": 19
+   },
+   {
+    "key": "archie-ludowyke",
+    "field": "games",
+    "old": 0,
+    "new": 2
+   },
+   {
+    "key": "hussien-el-achkar",
+    "field": "games",
+    "old": 7,
+    "new": 9
+   },
+   {
+    "key": "angus-anderson",
+    "field": "games",
+    "old": 11,
+    "new": 16
+   },
+   {
+    "key": "jack-watkins",
+    "field": "games",
+    "old": 10,
+    "new": 11
+   },
+   {
+    "key": "ollie-greeves",
+    "field": "games",
+    "old": 3,
+    "new": 4
+   },
+   {
+    "key": "riley-hamilton",
+    "field": "games",
+    "old": 4,
+    "new": 8
+   },
+   {
+    "key": "tom-blamires",
+    "field": "games",
+    "old": 13,
+    "new": 16
+   },
+   {
+    "key": "paddy-cross",
+    "field": "games",
+    "old": 9,
+    "new": 10
+   },
+   {
+    "key": "will-lewis",
+    "field": "games",
+    "old": 11,
+    "new": 12
+   },
+   {
+    "key": "milan-murdock",
+    "field": "games",
+    "old": 15,
+    "new": 19
+   },
+   {
+    "key": "balyn-o-brien",
+    "field": "games",
+    "old": 2,
+    "new": 6
+   },
+   {
+    "key": "chris-scerri",
+    "field": "games",
+    "old": 7,
+    "new": 9
+   },
+   {
+    "key": "mitch-zadow",
+    "field": "games",
+    "old": 5,
+    "new": 9
+   },
+   {
+    "key": "jaxon-artemis",
+    "field": "games",
+    "old": 2,
+    "new": 6
+   },
+   {
+    "key": "kye-annand",
+    "field": "games",
+    "old": 7,
+    "new": 11
+   },
+   {
+    "key": "xavier-bamert",
+    "field": "games",
+    "old": 7,
+    "new": 10
+   },
+   {
+    "key": "campbell-lake",
+    "field": "games",
+    "old": 5,
+    "new": 9
+   },
+   {
+    "key": "max-beattie",
+    "field": "games",
+    "old": 0,
+    "new": 4
+   },
+   {
+    "key": "marcus-herbert",
+    "field": "games",
+    "old": 6,
+    "new": 10
+   },
+   {
+    "key": "alex-van-wyk",
+    "field": "games",
+    "old": 0,
+    "new": 3
+   },
+   {
+    "key": "liam-puncher",
+    "field": "games",
+    "old": 4,
+    "new": 8
+   },
+   {
+    "key": "joel-fitzgerald",
+    "field": "games",
+    "old": 6,
+    "new": 11
+   },
+   {
+    "key": "sam-lalor",
+    "field": "games",
+    "old": 20,
+    "new": 23
+   },
+   {
+    "key": "finn-o-sullivan",
+    "field": "games",
+    "old": 37,
+    "new": 41
+   },
+   {
+    "key": "jagga-smith",
+    "field": "games",
+    "old": 18,
+    "new": 24
+   },
+   {
+    "key": "levi-ashcroft",
+    "field": "games",
+    "old": 46,
+    "new": 53
+   },
+   {
+    "key": "harvey-langford",
+    "field": "games",
+    "old": 41,
+    "new": 46
+   },
+   {
+    "key": "tobie-travaglia",
+    "field": "games",
+    "old": 16,
+    "new": 19
+   },
+   {
+    "key": "leo-lombard",
+    "field": "games",
+    "old": 23,
+    "new": 27
+   },
+   {
+    "key": "alix-tauru",
+    "field": "games",
+    "old": 18,
+    "new": 19
+   },
+   {
+    "key": "xavier-lindsay",
+    "field": "games",
+    "old": 23,
+    "new": 25
+   },
+   {
+    "key": "taj-hotton",
+    "field": "games",
+    "old": 13,
+    "new": 17
+   },
+   {
+    "key": "isaac-kako",
+    "field": "games",
+    "old": 34,
+    "new": 38
+   },
+   {
+    "key": "joe-berry",
+    "field": "games",
+    "old": 31,
+    "new": 35
+   },
+   {
+    "key": "bo-allan",
+    "field": "games",
+    "old": 22,
+    "new": 25
+   },
+   {
+    "key": "murphy-reid",
+    "field": "games",
+    "old": 43,
+    "new": 48
+   },
+   {
+    "key": "cooper-hynes",
+    "field": "games",
+    "old": 25,
+    "new": 31
+   },
+   {
+    "key": "luke-trainor",
+    "field": "games",
+    "old": 29,
+    "new": 32
+   },
+   {
+    "key": "jesse-dattoli",
+    "field": "games",
+    "old": 3,
+    "new": 8
+   },
+   {
+    "key": "harry-armstrong",
+    "field": "games",
+    "old": 11,
+    "new": 12
+   },
+   {
+    "key": "cody-angove",
+    "field": "games",
+    "old": 4,
+    "new": 5
+   },
+   {
+    "key": "lachie-jaques",
+    "field": "games",
+    "old": 8,
+    "new": 10
+   },
+   {
+    "key": "jobe-shanahan",
+    "field": "games",
+    "old": 28,
+    "new": 32
+   },
+   {
+    "key": "josh-dolan",
+    "field": "games",
+    "old": 18,
+    "new": 24
+   },
+   {
+    "key": "jack-whitlock",
+    "field": "games",
+    "old": 23,
+    "new": 27
+   },
+   {
+    "key": "jack-ough",
+    "field": "games",
+    "old": 4,
+    "new": 5
+   },
+   {
+    "key": "christian-moraes",
+    "field": "games",
+    "old": 23,
+    "new": 26
+   },
+   {
+    "key": "angus-clarke",
+    "field": "games",
+    "old": 17,
+    "new": 19
+   },
+   {
+    "key": "riley-bice",
+    "field": "games",
+    "old": 33,
+    "new": 36
+   },
+   {
+    "key": "ty-gallop",
+    "field": "games",
+    "old": 23,
+    "new": 26
+   },
+   {
+    "key": "jay-polkinghorne",
+    "field": "games",
+    "old": 2,
+    "new": 8
+   },
+   {
+    "key": "hugh-boxshall",
+    "field": "games",
+    "old": 17,
+    "new": 21
+   },
+   {
+    "key": "tom-gross",
+    "field": "games",
+    "old": 9,
+    "new": 12
+   },
+   {
+    "key": "charlie-west",
+    "field": "games",
+    "old": 5,
+    "new": 10
+   },
+   {
+    "key": "sam-davidson",
+    "field": "games",
+    "old": 31,
+    "new": 37
+   },
+   {
+    "key": "will-hayes-b",
+    "field": "games",
+    "old": 8,
+    "new": 12
+   },
+   {
+    "key": "rhys-unwin",
+    "field": "games",
+    "old": 3,
+    "new": 7
+   },
+   {
+    "key": "luke-kennedy",
+    "field": "games",
+    "old": 4,
+    "new": 8
+   },
+   {
+    "key": "hamish-davis",
+    "field": "games",
+    "old": 26,
+    "new": 28
+   },
+   {
+    "key": "zak-johnson",
+    "field": "games",
+    "old": 14,
+    "new": 16
+   },
+   {
+    "key": "archer-day-wicks",
+    "field": "games",
+    "old": 22,
+    "new": 26
+   },
+   {
+    "key": "patrick-retschko",
+    "field": "games",
+    "old": 14,
+    "new": 18
+   },
+   {
+    "key": "josaia-delana",
+    "field": "games",
+    "old": 8,
+    "new": 12
+   },
+   {
+    "key": "lachlan-gulbin",
+    "field": "games",
+    "old": 9,
+    "new": 12
+   },
+   {
+    "key": "isaiah-dudley",
+    "field": "games",
+    "old": 35,
+    "new": 42
+   },
+   {
+    "key": "ben-jepson",
+    "field": "games",
+    "old": 5,
+    "new": 6
+   },
+   {
+    "key": "josh-lai",
+    "field": "games",
+    "old": 14,
+    "new": 18
+   },
+   {
+    "key": "tom-mccarthy",
+    "field": "games",
+    "old": 28,
+    "new": 32
+   },
+   {
+    "key": "zac-banch",
+    "field": "games",
+    "old": 8,
+    "new": 12
+   },
+   {
+    "key": "harrison-ramm",
+    "field": "games",
+    "old": 3,
+    "new": 7
+   },
+   {
+    "key": "michael-sellwood",
+    "field": "games",
+    "old": 18,
+    "new": 23
+   },
+   {
+    "key": "roan-steele",
+    "field": "games",
+    "old": 20,
+    "new": 24
+   },
+   {
+    "key": "cooper-trembath",
+    "field": "games",
+    "old": 22,
+    "new": 26
+   },
+   {
+    "key": "noah-howes",
+    "field": "games",
+    "old": 0,
+    "new": 2
+   },
+   {
+    "key": "harley-reid",
+    "field": "games",
+    "old": 58,
+    "new": 62
+   },
+   {
+    "key": "colby-mckercher",
+    "field": "games",
+    "old": 58,
+    "new": 62
+   },
+   {
+    "key": "jed-walter",
+    "field": "games",
+    "old": 44,
+    "new": 48
+   },
+   {
+    "key": "nick-watson",
+    "field": "games",
+    "old": 59,
+    "new": 65
+   },
+   {
+    "key": "ryley-sanders",
+    "field": "games",
+    "old": 52,
+    "new": 58
+   },
+   {
+    "key": "caleb-windsor",
+    "field": "games",
+    "old": 52,
+    "new": 57
+   },
+   {
+    "key": "daniel-curtin",
+    "field": "games",
+    "old": 44,
+    "new": 50
+   },
+   {
+    "key": "ethan-read",
+    "field": "games",
+    "old": 36,
+    "new": 40
+   },
+   {
+    "key": "nate-caddy",
+    "field": "games",
+    "old": 44,
+    "new": 48
+   },
+   {
+    "key": "connor-o-sullivan",
+    "field": "games",
+    "old": 45,
+    "new": 51
+   },
+   {
+    "key": "koltyn-tholstrup",
+    "field": "games",
+    "old": 38,
+    "new": 43
+   },
+   {
+    "key": "jake-rogers",
+    "field": "games",
+    "old": 23,
+    "new": 27
+   },
+   {
+    "key": "jordan-croft",
+    "field": "games",
+    "old": 16,
+    "new": 19
+   },
+   {
+    "key": "will-green",
+    "field": "games",
+    "old": 0,
+    "new": 3
+   },
+   {
+    "key": "darcy-wilson",
+    "field": "games",
+    "old": 59,
+    "new": 63
+   },
+   {
+    "key": "wil-dawson",
+    "field": "games",
+    "old": 14,
+    "new": 18
+   },
+   {
+    "key": "riley-hardeman",
+    "field": "games",
+    "old": 24,
+    "new": 27
+   },
+   {
+    "key": "caiden-cleary",
+    "field": "games",
+    "old": 25,
+    "new": 28
+   },
+   {
+    "key": "oscar-ryan",
+    "field": "games",
+    "old": 0,
+    "new": 2
+   },
+   {
+    "key": "logan-morris",
+    "field": "games",
+    "old": 63,
+    "new": 70
+   },
+   {
+    "key": "mitchell-edwards",
+    "field": "games",
+    "old": 15,
+    "new": 20
+   },
+   {
+    "key": "angus-hastie",
+    "field": "games",
+    "old": 19,
+    "new": 21
+   },
+   {
+    "key": "billy-wilson",
+    "field": "games",
+    "old": 15,
+    "new": 21
+   },
+   {
+    "key": "shaun-mannagh",
+    "field": "games",
+    "old": 53,
+    "new": 59
+   },
+   {
+    "key": "kane-mcauliffe",
+    "field": "games",
+    "old": 23,
+    "new": 24
+   },
+   {
+    "key": "joseph-fonti",
+    "field": "games",
+    "old": 40,
+    "new": 44
+   },
+   {
+    "key": "joel-freijah",
+    "field": "games",
+    "old": 55,
+    "new": 61
+   },
+   {
+    "key": "thomas-anastasopoulos",
+    "field": "games",
+    "old": 2,
+    "new": 5
+   },
+   {
+    "key": "harvey-johnston",
+    "field": "games",
+    "old": 13,
+    "new": 14
+   },
+   {
+    "key": "hugo-garcia",
+    "field": "games",
+    "old": 45,
+    "new": 49
+   },
+   {
+    "key": "archie-roberts",
+    "field": "games",
+    "old": 44,
+    "new": 48
+   },
+   {
+    "key": "will-lorenz",
+    "field": "games",
+    "old": 9,
+    "new": 11
+   },
+   {
+    "key": "harvey-thomas",
+    "field": "games",
+    "old": 58,
+    "new": 62
+   },
+   {
+    "key": "oliver-wiltshire",
+    "field": "games",
+    "old": 13,
+    "new": 17
+   },
+   {
+    "key": "lawson-humphries",
+    "field": "games",
+    "old": 54,
+    "new": 60
+   },
+   {
+    "key": "sam-clohesy",
+    "field": "games",
+    "old": 43,
+    "new": 46
+   },
+   {
+    "key": "vigo-visentini",
+    "field": "games",
+    "old": 2,
+    "new": 5
+   },
+   {
+    "key": "liam-o-connell",
+    "field": "games",
+    "old": 16,
+    "new": 20
+   },
+   {
+    "key": "bruce-reville",
+    "field": "games",
+    "old": 42,
+    "new": 43
+   },
+   {
+    "key": "lachlan-bramble",
+    "field": "games",
+    "old": 95,
+    "new": 101
+   },
+   {
+    "key": "mykelti-lefau",
+    "field": "games",
+    "old": 28,
+    "new": 32
+   },
+   {
+    "key": "lachie-sullivan",
+    "field": "games",
+    "old": 25,
+    "new": 26
+   },
+   {
+    "key": "max-hall",
+    "field": "games",
+    "old": 42,
+    "new": 46
+   },
+   {
+    "key": "toby-murray",
+    "field": "games",
+    "old": 11,
+    "new": 12
+   },
+   {
+    "key": "cooper-lord",
+    "field": "games",
+    "old": 28,
+    "new": 34
+   },
+   {
+    "key": "tom-hanily",
+    "field": "games",
+    "old": 12,
+    "new": 15
+   },
+   {
+    "key": "campbell-gray",
+    "field": "games",
+    "old": 12,
+    "new": 13
+   },
+   {
+    "key": "aaron-cadman",
+    "field": "games",
+    "old": 73,
+    "new": 77
+   },
+   {
+    "key": "will-ashcroft",
+    "field": "games",
+    "old": 77,
+    "new": 84
+   },
+   {
+    "key": "harry-sheezel",
+    "field": "games",
+    "old": 86,
+    "new": 88
+   },
+   {
+    "key": "george-wardlaw",
+    "field": "games",
+    "old": 52,
+    "new": 55
+   },
+   {
+    "key": "bailey-humphrey",
+    "field": "games",
+    "old": 79,
+    "new": 83
+   },
+   {
+    "key": "cameron-mackenzie",
+    "field": "games",
+    "old": 63,
+    "new": 69
+   },
+   {
+    "key": "jhye-clark",
+    "field": "games",
+    "old": 31,
+    "new": 35
+   },
+   {
+    "key": "mattaes-phillipou",
+    "field": "games",
+    "old": 61,
+    "new": 65
+   },
+   {
+    "key": "oliver-hollands",
+    "field": "games",
+    "old": 76,
+    "new": 79
+   },
+   {
+    "key": "jaspa-fletcher",
+    "field": "games",
+    "old": 87,
+    "new": 94
+   },
+   {
+    "key": "jedd-busslinger",
+    "field": "games",
+    "old": 14,
+    "new": 15
+   },
+   {
+    "key": "matthew-jefferson",
+    "field": "games",
+    "old": 19,
+    "new": 23
+   },
+   {
+    "key": "harry-rowston",
+    "field": "games",
+    "old": 25,
+    "new": 29
+   },
+   {
+    "key": "max-michalanney",
+    "field": "games",
+    "old": 85,
+    "new": 91
+   },
+   {
+    "key": "joshua-weddle",
+    "field": "games",
+    "old": 75,
+    "new": 81
+   },
+   {
+    "key": "edward-allan",
+    "field": "games",
+    "old": 29,
+    "new": 34
+   },
+   {
+    "key": "max-gruzewski",
+    "field": "games",
+    "old": 21,
+    "new": 25
+   },
+   {
+    "key": "lachlan-cowan",
+    "field": "games",
+    "old": 56,
+    "new": 62
+   },
+   {
+    "key": "toby-mcmullin",
+    "field": "games",
+    "old": 34,
+    "new": 36
+   },
+   {
+    "key": "billy-dowling",
+    "field": "games",
+    "old": 11,
+    "new": 13
+   },
+   {
+    "key": "joe-richards",
+    "field": "games",
+    "old": 49,
+    "new": 51
+   },
+   {
+    "key": "bailey-macdonald",
+    "field": "games",
+    "old": 17,
+    "new": 22
+   },
+   {
+    "key": "steely-green",
+    "field": "games",
+    "old": 42,
+    "new": 45
+   },
+   {
+    "key": "seth-campbell",
+    "field": "games",
+    "old": 62,
+    "new": 66
+   },
+   {
+    "key": "tylar-young",
+    "field": "games",
+    "old": 54,
+    "new": 58
+   },
+   {
+    "key": "james-o-donnell",
+    "field": "games",
+    "old": 63,
+    "new": 69
+   },
+   {
+    "key": "nick-madden",
+    "field": "games",
+    "old": 8,
+    "new": 12
+   },
+   {
+    "key": "will-edwards",
+    "field": "games",
+    "old": 12,
+    "new": 13
+   },
+   {
+    "key": "anthony-caminiti",
+    "field": "games",
+    "old": 72,
+    "new": 74
+   },
+   {
+    "key": "ryan-maric",
+    "field": "games",
+    "old": 62,
+    "new": 63
+   },
+   {
+    "key": "jason-horne-francis",
+    "field": "games",
+    "old": 98,
+    "new": 101
+   },
+   {
+    "key": "nick-daicos",
+    "field": "games",
+    "old": 113,
+    "new": 118
+   },
+   {
+    "key": "mac-andrew",
+    "field": "games",
+    "old": 84,
+    "new": 88
+   },
+   {
+    "key": "josh-rachele",
+    "field": "games",
+    "old": 89,
+    "new": 95
+   },
+   {
+    "key": "josh-ward",
+    "field": "games",
+    "old": 86,
+    "new": 92
+   },
+   {
+    "key": "jye-amiss",
+    "field": "games",
+    "old": 90,
+    "new": 96
+   },
+   {
+    "key": "neil-erasmus",
+    "field": "games",
+    "old": 58,
+    "new": 65
+   },
+   {
+    "key": "nasiah-wanganeen-milera",
+    "field": "games",
+    "old": 101,
+    "new": 102
+   },
+   {
+    "key": "darcy-wilmot",
+    "field": "games",
+    "old": 102,
+    "new": 109
+   },
+   {
+    "key": "tom-brown",
+    "field": "games",
+    "old": 56,
+    "new": 60
+   },
+   {
+    "key": "angus-sheldrick",
+    "field": "games",
+    "old": 46,
+    "new": 49
+   },
+   {
+    "key": "jacob-van-rooyen",
+    "field": "games",
+    "old": 76,
+    "new": 79
+   },
+   {
+    "key": "kai-lohmann",
+    "field": "games",
+    "old": 72,
+    "new": 79
+   },
+   {
+    "key": "matt-johnson-1",
+    "field": "games",
+    "old": 73,
+    "new": 80
+   },
+   {
+    "key": "josh-goater",
+    "field": "games",
+    "old": 16,
+    "new": 18
+   },
+   {
+    "key": "sam-butler-1",
+    "field": "games",
+    "old": 32,
+    "new": 33
+   },
+   {
+    "key": "connor-macdonald",
+    "field": "games",
+    "old": 109,
+    "new": 115
+   },
+   {
+    "key": "tyler-sonsie",
+    "field": "games",
+    "old": 53,
+    "new": 55
+   },
+   {
+    "key": "sam-banks",
+    "field": "games",
+    "old": 57,
+    "new": 60
+   },
+   {
+    "key": "judson-clarke",
+    "field": "games",
+    "old": 17,
+    "new": 20
+   },
+   {
+    "key": "brady-hough",
+    "field": "games",
+    "old": 94,
+    "new": 98
+   },
+   {
+    "key": "mitchito-owens",
+    "field": "games",
+    "old": 88,
+    "new": 92
+   },
+   {
+    "key": "matthew-roberts",
+    "field": "games",
+    "old": 63,
+    "new": 69
+   },
+   {
+    "key": "paul-curtis",
+    "field": "games",
+    "old": 94,
+    "new": 98
+   },
+   {
+    "key": "jake-soligo",
+    "field": "games",
+    "old": 102,
+    "new": 107
+   },
+   {
+    "key": "rhett-bazzo",
+    "field": "games",
+    "old": 38,
+    "new": 42
+   },
+   {
+    "key": "blake-howes",
+    "field": "games",
+    "old": 47,
+    "new": 48
+   },
+   {
+    "key": "arthur-jones",
+    "field": "games",
+    "old": 32,
+    "new": 38
+   },
+   {
+    "key": "zac-taylor",
+    "field": "games",
+    "old": 43,
+    "new": 47
+   },
+   {
+    "key": "marcus-windhager",
+    "field": "games",
+    "old": 94,
+    "new": 98
+   },
+   {
+    "key": "harvey-harrison",
+    "field": "games",
+    "old": 23,
+    "new": 28
+   },
+   {
+    "key": "jai-serong",
+    "field": "games",
+    "old": 28,
+    "new": 34
+   },
+   {
+    "key": "dante-visentini",
+    "field": "games",
+    "old": 25,
+    "new": 29
+   },
+   {
+    "key": "jack-williams",
+    "field": "games",
+    "old": 49,
+    "new": 53
+   },
+   {
+    "key": "jase-burgoyne",
+    "field": "games",
+    "old": 75,
+    "new": 79
+   },
+   {
+    "key": "luke-nankervis",
+    "field": "games",
+    "old": 44,
+    "new": 49
+   },
+   {
+    "key": "ned-long",
+    "field": "games",
+    "old": 54,
+    "new": 59
+   },
+   {
+    "key": "karl-worner",
+    "field": "games",
+    "old": 50,
+    "new": 57
+   },
+   {
+    "key": "patrick-voss",
+    "field": "games",
+    "old": 45,
+    "new": 52
+   },
+   {
+    "key": "ollie-dempsey",
+    "field": "games",
+    "old": 77,
+    "new": 83
+   },
+   {
+    "key": "judd-mcvee",
+    "field": "games",
+    "old": 83,
+    "new": 88
+   },
+   {
+    "key": "oisin-mullin",
+    "field": "games",
+    "old": 62,
+    "new": 68
+   },
+   {
+    "key": "sandy-brock",
+    "field": "games",
+    "old": 19,
+    "new": 20
+   },
+   {
+    "key": "bodhi-uwland",
+    "field": "games",
+    "old": 68,
+    "new": 72
+   },
+   {
+    "key": "massimo-d-ambrosio",
+    "field": "games",
+    "old": 85,
+    "new": 91
+   },
+   {
+    "key": "wade-derksen",
+    "field": "games",
+    "old": 9,
+    "new": 14
+   },
+   {
+    "key": "hugo-hall-kahan",
+    "field": "games",
+    "old": 7,
+    "new": 13
+   },
+   {
+    "key": "riley-thilthorpe",
+    "field": "games",
+    "old": 94,
+    "new": 100
+   },
+   {
+    "key": "logan-mcdonald",
+    "field": "games",
+    "old": 87,
+    "new": 93
+   },
+   {
+    "key": "braeden-campbell",
+    "field": "games",
+    "old": 96,
+    "new": 102
+   },
+   {
+    "key": "archie-perkins",
+    "field": "games",
+    "old": 114,
+    "new": 117
+   },
+   {
+    "key": "zach-reid",
+    "field": "games",
+    "old": 38,
+    "new": 42
+   },
+   {
+    "key": "tanner-bruhn",
+    "field": "games",
+    "old": 82,
+    "new": 88
+   },
+   {
+    "key": "heath-chapman",
+    "field": "games",
+    "old": 84,
+    "new": 90
+   },
+   {
+    "key": "conor-stone",
+    "field": "games",
+    "old": 28,
+    "new": 30
+   },
+   {
+    "key": "lachlan-jones",
+    "field": "games",
+    "old": 91,
+    "new": 94
+   },
+   {
+    "key": "oliver-henry",
+    "field": "games",
+    "old": 103,
+    "new": 109
+   },
+   {
+    "key": "ryan-angwin",
+    "field": "games",
+    "old": 46,
+    "new": 50
+   },
+   {
+    "key": "max-holmes",
+    "field": "games",
+    "old": 120,
+    "new": 122
+   },
+   {
+    "key": "jake-bowey",
+    "field": "games",
+    "old": 95,
+    "new": 100
+   },
+   {
+    "key": "bailey-laurie",
+    "field": "games",
+    "old": 24,
+    "new": 29
+   },
+   {
+    "key": "brayden-cook",
+    "field": "games",
+    "old": 48,
+    "new": 54
+   },
+   {
+    "key": "nathan-o-driscoll",
+    "field": "games",
+    "old": 50,
+    "new": 55
+   },
+   {
+    "key": "sam-berry",
+    "field": "games",
+    "old": 95,
+    "new": 100
+   },
+   {
+    "key": "joel-jeffrey",
+    "field": "games",
+    "old": 71,
+    "new": 75
+   },
+   {
+    "key": "errol-gulden",
+    "field": "games",
+    "old": 110,
+    "new": 116
+   },
+   {
+    "key": "shannon-neale",
+    "field": "games",
+    "old": 64,
+    "new": 70
+   },
+   {
+    "key": "corey-durdin",
+    "field": "games",
+    "old": 83,
+    "new": 87
+   },
+   {
+    "key": "samson-ryan",
+    "field": "games",
+    "old": 27,
+    "new": 30
+   },
+   {
+    "key": "harry-sharp",
+    "field": "games",
+    "old": 53,
+    "new": 58
+   },
+   {
+    "key": "beau-mccreery",
+    "field": "games",
+    "old": 114,
+    "new": 119
+   },
+   {
+    "key": "brandon-walker",
+    "field": "games",
+    "old": 67,
+    "new": 68
+   },
+   {
+    "key": "maurice-rioli-1",
+    "field": "games",
+    "old": 58,
+    "new": 59
+   },
+   {
+    "key": "jacob-wehr",
+    "field": "games",
+    "old": 53,
+    "new": 56
+   },
+   {
+    "key": "josh-treacy",
+    "field": "games",
+    "old": 99,
+    "new": 106
+   },
+   {
+    "key": "lachlan-mcneil",
+    "field": "games",
+    "old": 85,
+    "new": 86
+   },
+   {
+    "key": "jack-ginnivan",
+    "field": "games",
+    "old": 108,
+    "new": 113
+   },
+   {
+    "key": "james-borlase",
+    "field": "games",
+    "old": 30,
+    "new": 35
+   },
+   {
+    "key": "jai-newcombe",
+    "field": "games",
+    "old": 121,
+    "new": 127
+   },
+   {
+    "key": "ned-moyle",
+    "field": "games",
+    "old": 25,
+    "new": 29
+   },
+   {
+    "key": "james-peatling",
+    "field": "games",
+    "old": 87,
+    "new": 89
+   },
+   {
+    "key": "sam-durham",
+    "field": "games",
+    "old": 109,
+    "new": 111
+   },
+   {
+    "key": "lachlan-mcandrew",
+    "field": "games",
+    "old": 21,
+    "new": 26
+   },
+   {
+    "key": "cooper-sharman",
+    "field": "games",
+    "old": 88,
+    "new": 91
+   },
+   {
+    "key": "daniel-turner",
+    "field": "games",
+    "old": 52,
+    "new": 56
+   },
+   {
+    "key": "matt-rowell",
+    "field": "games",
+    "old": 124,
+    "new": 128
+   },
+   {
+    "key": "noah-anderson",
+    "field": "games",
+    "old": 147,
+    "new": 151
+   },
+   {
+    "key": "luke-jackson",
+    "field": "games",
+    "old": 138,
+    "new": 145
+   },
+   {
+    "key": "lachlan-ash",
+    "field": "games",
+    "old": 144,
+    "new": 148
+   },
+   {
+    "key": "dylan-stephens",
+    "field": "games",
+    "old": 100,
+    "new": 104
+   },
+   {
+    "key": "hayden-young",
+    "field": "games",
+    "old": 98,
+    "new": 105
+   },
+   {
+    "key": "caleb-serong",
+    "field": "games",
+    "old": 143,
+    "new": 150
+   },
+   {
+    "key": "kysaiah-pickett",
+    "field": "games",
+    "old": 145,
+    "new": 150
+   },
+   {
+    "key": "will-day",
+    "field": "games",
+    "old": 83,
+    "new": 89
+   },
+   {
+    "key": "miles-bergman",
+    "field": "games",
+    "old": 114,
+    "new": 118
+   },
+   {
+    "key": "cody-weightman",
+    "field": "games",
+    "old": 82,
+    "new": 87
+   },
+   {
+    "key": "brodie-kemp",
+    "field": "games",
+    "old": 68,
+    "new": 74
+   },
+   {
+    "key": "mitch-georgiades",
+    "field": "games",
+    "old": 109,
+    "new": 112
+   },
+   {
+    "key": "sam-de-koning",
+    "field": "games",
+    "old": 96,
+    "new": 98
+   },
+   {
+    "key": "jackson-mead",
+    "field": "games",
+    "old": 73,
+    "new": 74
+   },
+   {
+    "key": "josh-worrell",
+    "field": "games",
+    "old": 74,
+    "new": 80
+   },
+   {
+    "key": "finn-maginness",
+    "field": "games",
+    "old": 63,
+    "new": 64
+   },
+   {
+    "key": "harrison-jones",
+    "field": "games",
+    "old": 63,
+    "new": 66
+   },
+   {
+    "key": "charlie-comben",
+    "field": "games",
+    "old": 66,
+    "new": 70
+   },
+   {
+    "key": "trent-rivers",
+    "field": "games",
+    "old": 135,
+    "new": 140
+   },
+   {
+    "key": "nick-bryan",
+    "field": "games",
+    "old": 33,
+    "new": 36
+   },
+   {
+    "key": "chad-warner",
+    "field": "games",
+    "old": 127,
+    "new": 130
+   },
+   {
+    "key": "francis-evans",
+    "field": "games",
+    "old": 61,
+    "new": 67
+   },
+   {
+    "key": "hugo-ralphsmith",
+    "field": "games",
+    "old": 71,
+    "new": 75
+   },
+   {
+    "key": "ryan-byrnes",
+    "field": "games",
+    "old": 91,
+    "new": 95
+   },
+   {
+    "key": "jaxon-prior",
+    "field": "games",
+    "old": 80,
+    "new": 84
+   },
+   {
+    "key": "jy-farrar",
+    "field": "games",
+    "old": 44,
+    "new": 45
+   },
+   {
+    "key": "michael-frederick",
+    "field": "games",
+    "old": 116,
+    "new": 123
+   },
+   {
+    "key": "bradley-close",
+    "field": "games",
+    "old": 139,
+    "new": 145
+   },
+   {
+    "key": "connor-budarick",
+    "field": "games",
+    "old": 67,
+    "new": 70
+   },
+   {
+    "key": "malcolm-rosas",
+    "field": "games",
+    "old": 64,
+    "new": 65
+   },
+   {
+    "key": "sam-walsh",
+    "field": "games",
+    "old": 152,
+    "new": 158
+   },
+   {
+    "key": "izak-rankine",
+    "field": "games",
+    "old": 121,
+    "new": 127
+   },
+   {
+    "key": "ben-king",
+    "field": "games",
+    "old": 139,
+    "new": 143
+   },
+   {
+    "key": "bailey-smith",
+    "field": "games",
+    "old": 144,
+    "new": 150
+   },
+   {
+    "key": "nick-blakey",
+    "field": "games",
+    "old": 170,
+    "new": 173
+   },
+   {
+    "key": "jye-caldwell",
+    "field": "games",
+    "old": 103,
+    "new": 106
+   },
+   {
+    "key": "isaac-quaynor",
+    "field": "games",
+    "old": 150,
+    "new": 154
+   },
+   {
+    "key": "jordan-clark",
+    "field": "games",
+    "old": 145,
+    "new": 152
+   },
+   {
+    "key": "liam-stocker",
+    "field": "games",
+    "old": 98,
+    "new": 102
+   },
+   {
+    "key": "xavier-o-halloran",
+    "field": "games",
+    "old": 101,
+    "new": 104
+   },
+   {
+    "key": "james-rowbottom",
+    "field": "games",
+    "old": 159,
+    "new": 162
+   },
+   {
+    "key": "rhylee-west",
+    "field": "games",
+    "old": 99,
+    "new": 105
+   },
+   {
+    "key": "tom-sparrow",
+    "field": "games",
+    "old": 136,
+    "new": 141
+   },
+   {
+    "key": "james-jordon",
+    "field": "games",
+    "old": 133,
+    "new": 136
+   },
+   {
+    "key": "kieren-briggs",
+    "field": "games",
+    "old": 84,
+    "new": 88
+   },
+   {
+    "key": "bailey-williams-wc",
+    "field": "games",
+    "old": 102,
+    "new": 106
+   },
+   {
+    "key": "laitham-vandermeer",
+    "field": "games",
+    "old": 88,
+    "new": 89
+   },
+   {
+    "key": "jack-ross",
+    "field": "games",
+    "old": 107,
+    "new": 111
+   },
+   {
+    "key": "justin-mcinerney",
+    "field": "games",
+    "old": 122,
+    "new": 123
+   },
+   {
+    "key": "bailey-scott",
+    "field": "games",
+    "old": 115,
+    "new": 116
+   },
+   {
+    "key": "noah-answerth",
+    "field": "games",
+    "old": 99,
+    "new": 104
+   },
+   {
+    "key": "lachlan-schultz",
+    "field": "games",
+    "old": 142,
+    "new": 147
+   },
+   {
+    "key": "connor-idun",
+    "field": "games",
+    "old": 136,
+    "new": 140
+   },
+   {
+    "key": "darcy-fort",
+    "field": "games",
+    "old": 75,
+    "new": 82
+   },
+   {
+    "key": "toby-bedford",
+    "field": "games",
+    "old": 98,
+    "new": 99
+   },
+   {
+    "key": "callum-wilkie",
+    "field": "games",
+    "old": 174,
+    "new": 178
+   },
+   {
+    "key": "tom-atkins",
+    "field": "games",
+    "old": 172,
+    "new": 178
+   },
+   {
+    "key": "kade-chandler",
+    "field": "games",
+    "old": 98,
+    "new": 102
+   },
+   {
+    "key": "jordon-sweet",
+    "field": "games",
+    "old": 65,
+    "new": 69
+   },
+   {
+    "key": "callum-brown-ire",
+    "field": "games",
+    "old": 74,
+    "new": 78
+   },
+   {
+    "key": "mark-keane",
+    "field": "games",
+    "old": 61,
+    "new": 67
+   },
+   {
+    "key": "sam-wicks",
+    "field": "games",
+    "old": 102,
+    "new": 107
+   },
+   {
+    "key": "buku-khamis",
+    "field": "games",
+    "old": 60,
+    "new": 66
+   },
+   {
+    "key": "matt-cottrell",
+    "field": "games",
+    "old": 82,
+    "new": 88
+   },
+   {
+    "key": "hayden-mclean",
+    "field": "games",
+    "old": 106,
+    "new": 110
+   },
+   {
+    "key": "ned-reeves",
+    "field": "games",
+    "old": 57,
+    "new": 58
+   },
+   {
+    "key": "john-noble",
+    "field": "games",
+    "old": 156,
+    "new": 160
+   },
+   {
+    "key": "cameron-rayner",
+    "field": "games",
+    "old": 186,
+    "new": 193
+   },
+   {
+    "key": "andrew-brayshaw",
+    "field": "games",
+    "old": 189,
+    "new": 196
+   },
+   {
+    "key": "luke-davies-uniacke",
+    "field": "games",
+    "old": 149,
+    "new": 153
+   },
+   {
+    "key": "adam-cerra",
+    "field": "games",
+    "old": 163,
+    "new": 169
+   },
+   {
+    "key": "hunter-clark",
+    "field": "games",
+    "old": 116,
+    "new": 118
+   },
+   {
+    "key": "nicholas-coffield",
+    "field": "games",
+    "old": 75,
+    "new": 77
+   },
+   {
+    "key": "aaron-naughton",
+    "field": "games",
+    "old": 185,
+    "new": 190
+   },
+   {
+    "key": "darcy-fogarty",
+    "field": "games",
+    "old": 138,
+    "new": 142
+   },
+   {
+    "key": "zac-bailey",
+    "field": "games",
+    "old": 184,
+    "new": 191
+   },
+   {
+    "key": "ed-richards",
+    "field": "games",
+    "old": 166,
+    "new": 172
+   },
+   {
+    "key": "jack-higgins",
+    "field": "games",
+    "old": 158,
+    "new": 161
+   },
+   {
+    "key": "brandon-starcevich",
+    "field": "games",
+    "old": 139,
+    "new": 143
+   },
+   {
+    "key": "wil-powell",
+    "field": "games",
+    "old": 147,
+    "new": 150
+   },
+   {
+    "key": "oscar-allen",
+    "field": "games",
+    "old": 112,
+    "new": 119
+   },
+   {
+    "key": "tim-kelly",
+    "field": "games",
+    "old": 181,
+    "new": 185
+   },
+   {
+    "key": "liam-ryan",
+    "field": "games",
+    "old": 139,
+    "new": 142
+   },
+   {
+    "key": "sam-taylor",
+    "field": "games",
+    "old": 139,
+    "new": 142
+   },
+   {
+    "key": "charlie-spargo",
+    "field": "games",
+    "old": 123,
+    "new": 127
+   },
+   {
+    "key": "tom-de-koning",
+    "field": "games",
+    "old": 111,
+    "new": 115
+   },
+   {
+    "key": "bayley-fritsch",
+    "field": "games",
+    "old": 188,
+    "new": 193
+   },
+   {
+    "key": "tom-mccartin",
+    "field": "games",
+    "old": 168,
+    "new": 174
+   },
+   {
+    "key": "harrison-petty",
+    "field": "games",
+    "old": 116,
+    "new": 121
+   },
+   {
+    "key": "charlie-ballard",
+    "field": "games",
+    "old": 141,
+    "new": 145
+   },
+   {
+    "key": "james-worpel",
+    "field": "games",
+    "old": 156,
+    "new": 159
+   },
+   {
+    "key": "gryan-miers",
+    "field": "games",
+    "old": 166,
+    "new": 172
+   },
+   {
+    "key": "ben-miller",
+    "field": "games",
+    "old": 86,
+    "new": 90
+   },
+   {
+    "key": "dylan-moore",
+    "field": "games",
+    "old": 144,
+    "new": 150
+   },
+   {
+    "key": "lloyd-meek",
+    "field": "games",
+    "old": 96,
+    "new": 102
+   },
+   {
+    "key": "tristan-xerri",
+    "field": "games",
+    "old": 91,
+    "new": 95
+   },
+   {
+    "key": "sam-switkowski",
+    "field": "games",
+    "old": 124,
+    "new": 130
+   },
+   {
+    "key": "bailey-banfield",
+    "field": "games",
+    "old": 118,
+    "new": 119
+   },
+   {
+    "key": "liam-baker",
+    "field": "games",
+    "old": 168,
+    "new": 171
+   },
+   {
+    "key": "changkuoth-jiath",
+    "field": "games",
+    "old": 87,
+    "new": 92
+   },
+   {
+    "key": "andrew-mcgrath",
+    "field": "games",
+    "old": 196,
+    "new": 200
+   },
+   {
+    "key": "tim-taranto",
+    "field": "games",
+    "old": 190,
+    "new": 194
+   },
+   {
+    "key": "hugh-mccluggage",
+    "field": "games",
+    "old": 221,
+    "new": 225
+   },
+   {
+    "key": "ben-ainsworth",
+    "field": "games",
+    "old": 177,
+    "new": 183
+   },
+   {
+    "key": "will-setterfield",
+    "field": "games",
+    "old": 91,
+    "new": 95
+   },
+   {
+    "key": "griffin-logue",
+    "field": "games",
+    "old": 109,
+    "new": 113
+   },
+   {
+    "key": "will-brodie",
+    "field": "games",
+    "old": 55,
+    "new": 56
+   },
+   {
+    "key": "oliver-florent",
+    "field": "games",
+    "old": 203,
+    "new": 209
+   },
+   {
+    "key": "jy-simpkin",
+    "field": "games",
+    "old": 192,
+    "new": 196
+   },
+   {
+    "key": "todd-marshall",
+    "field": "games",
+    "old": 127,
+    "new": 131
+   },
+   {
+    "key": "jarrod-berry",
+    "field": "games",
+    "old": 198,
+    "new": 205
+   },
+   {
+    "key": "timothy-english",
+    "field": "games",
+    "old": 167,
+    "new": 171
+   },
+   {
+    "key": "isaac-cumming",
+    "field": "games",
+    "old": 117,
+    "new": 122
+   },
+   {
+    "key": "will-hayward",
+    "field": "games",
+    "old": 202,
+    "new": 205
+   },
+   {
+    "key": "ben-long",
+    "field": "games",
+    "old": 152,
+    "new": 156
+   },
+   {
+    "key": "patrick-lipinski",
+    "field": "games",
+    "old": 159,
+    "new": 161
+   },
+   {
+    "key": "shai-bolton",
+    "field": "games",
+    "old": 176,
+    "new": 183
+   },
+   {
+    "key": "willem-drew",
+    "field": "games",
+    "old": 149,
+    "new": 152
+   },
+   {
+    "key": "josh-battle",
+    "field": "games",
+    "old": 166,
+    "new": 172
+   },
+   {
+    "key": "thomas-stewart",
+    "field": "games",
+    "old": 208,
+    "new": 214
+   },
+   {
+    "key": "brennan-cox",
+    "field": "games",
+    "old": 150,
+    "new": 152
+   },
+   {
+    "key": "darcy-cameron",
+    "field": "games",
+    "old": 138,
+    "new": 143
+   },
+   {
+    "key": "lewis-young",
+    "field": "games",
+    "old": 88,
+    "new": 93
+   },
+   {
+    "key": "jack-graham",
+    "field": "games",
+    "old": 158,
+    "new": 162
+   },
+   {
+    "key": "josh-daicos",
+    "field": "games",
+    "old": 170,
+    "new": 175
+   },
+   {
+    "key": "luke-ryan",
+    "field": "games",
+    "old": 197,
+    "new": 204
+   },
+   {
+    "key": "nick-larkey",
+    "field": "games",
+    "old": 153,
+    "new": 157
+   },
+   {
+    "key": "harry-morrison",
+    "field": "games",
+    "old": 132,
+    "new": 138
+   },
+   {
+    "key": "mitchell-lewis",
+    "field": "games",
+    "old": 96,
+    "new": 101
+   },
+   {
+    "key": "jake-waterman",
+    "field": "games",
+    "old": 131,
+    "new": 135
+   },
+   {
+    "key": "sam-draper",
+    "field": "games",
+    "old": 96,
+    "new": 103
+   },
+   {
+    "key": "rowan-marshall",
+    "field": "games",
+    "old": 173,
+    "new": 177
+   },
+   {
+    "key": "cameron-zurhaar",
+    "field": "games",
+    "old": 162,
+    "new": 166
+   },
+   {
+    "key": "jack-henry",
+    "field": "games",
+    "old": 178,
+    "new": 184
+   },
+   {
+    "key": "zach-guthrie",
+    "field": "games",
+    "old": 147,
+    "new": 153
+   },
+   {
+    "key": "mark-o-connor",
+    "field": "games",
+    "old": 163,
+    "new": 169
+   },
+   {
+    "key": "jacob-weitering",
+    "field": "games",
+    "old": 214,
+    "new": 218
+   },
+   {
+    "key": "callum-mills",
+    "field": "games",
+    "old": 192,
+    "new": 196
+   },
+   {
+    "key": "clayton-oliver",
+    "field": "games",
+    "old": 224,
+    "new": 228
+   },
+   {
+    "key": "callum-ah-chee",
+    "field": "games",
+    "old": 173,
+    "new": 178
+   },
+   {
+    "key": "harry-mckay",
+    "field": "games",
+    "old": 156,
+    "new": 162
+   },
+   {
+    "key": "wayne-milera",
+    "field": "games",
+    "old": 140,
+    "new": 143
+   },
+   {
+    "key": "charlie-curnow",
+    "field": "games",
+    "old": 167,
+    "new": 173
+   },
+   {
+    "key": "matthew-kennedy-1",
+    "field": "games",
+    "old": 160,
+    "new": 165
+   },
+   {
+    "key": "eric-hipwood",
+    "field": "games",
+    "old": 205,
+    "new": 212
+   },
+   {
+    "key": "daniel-rioli",
+    "field": "games",
+    "old": 218,
+    "new": 222
+   },
+   {
+    "key": "harrison-himmelberg",
+    "field": "games",
+    "old": 220,
+    "new": 224
+   },
+   {
+    "key": "ben-keays",
+    "field": "games",
+    "old": 180,
+    "new": 186
+   },
+   {
+    "key": "josh-dunkley",
+    "field": "games",
+    "old": 213,
+    "new": 220
+   },
+   {
+    "key": "mason-redman",
+    "field": "games",
+    "old": 155,
+    "new": 159
+   },
+   {
+    "key": "tom-cole",
+    "field": "games",
+    "old": 144,
+    "new": 148
+   },
+   {
+    "key": "corey-wagner",
+    "field": "games",
+    "old": 70,
+    "new": 72
+   },
+   {
+    "key": "blake-hardwick",
+    "field": "games",
+    "old": 217,
+    "new": 223
+   },
+   {
+    "key": "bailey-williams-wb",
+    "field": "games",
+    "old": 187,
+    "new": 193
+   },
+   {
+    "key": "jack-silvagni",
+    "field": "games",
+    "old": 147,
+    "new": 151
+   },
+   {
+    "key": "samuel-collins",
+    "field": "games",
+    "old": 168,
+    "new": 169
+   },
+   {
+    "key": "jordan-dawson",
+    "field": "games",
+    "old": 172,
+    "new": 178
+   },
+   {
+    "key": "ryan-gardner",
+    "field": "games",
+    "old": 55,
+    "new": 58
+   },
+   {
+    "key": "nathan-broad",
+    "field": "games",
+    "old": 188,
+    "new": 191
+   },
+   {
+    "key": "tom-papley",
+    "field": "games",
+    "old": 210,
+    "new": 216
+   },
+   {
+    "key": "mabior-chol",
+    "field": "games",
+    "old": 122,
+    "new": 128
+   },
+   {
+    "key": "dan-houston",
+    "field": "games",
+    "old": 208,
+    "new": 213
+   },
+   {
+    "key": "christian-petracca",
+    "field": "games",
+    "old": 229,
+    "new": 232
+   },
+   {
+    "key": "isaac-heeney",
+    "field": "games",
+    "old": 241,
+    "new": 244
+   },
+   {
+    "key": "jordan-de-goey",
+    "field": "games",
+    "old": 200,
+    "new": 204
+   },
+   {
+    "key": "peter-wright",
+    "field": "games",
+    "old": 166,
+    "new": 170
+   },
+   {
+    "key": "liam-duggan",
+    "field": "games",
+    "old": 219,
+    "new": 222
+   },
+   {
+    "key": "jake-lever",
+    "field": "games",
+    "old": 204,
+    "new": 208
+   },
+   {
+    "key": "kyle-langford",
+    "field": "games",
+    "old": 177,
+    "new": 181
+   },
+   {
+    "key": "jayden-laverde",
+    "field": "games",
+    "old": 162,
+    "new": 163
+   },
+   {
+    "key": "jack-steele",
+    "field": "games",
+    "old": 221,
+    "new": 226
+   },
+   {
+    "key": "touk-miller",
+    "field": "games",
+    "old": 233,
+    "new": 237
+   },
+   {
+    "key": "alex-neal-bullen",
+    "field": "games",
+    "old": 219,
+    "new": 224
+   },
+   {
+    "key": "mitch-mcgovern",
+    "field": "games",
+    "old": 164,
+    "new": 170
+   },
+   {
+    "key": "bailey-dale",
+    "field": "games",
+    "old": 195,
+    "new": 198
+   },
+   {
+    "key": "caleb-daniel",
+    "field": "games",
+    "old": 234,
+    "new": 238
+   },
+   {
+    "key": "marc-pittonet",
+    "field": "games",
+    "old": 96,
+    "new": 102
+   },
+   {
+    "key": "oscar-mcdonald",
+    "field": "games",
+    "old": 100,
+    "new": 107
+   },
+   {
+    "key": "ed-langdon",
+    "field": "games",
+    "old": 221,
+    "new": 226
+   },
+   {
+    "key": "dougal-howard",
+    "field": "games",
+    "old": 144,
+    "new": 145
+   },
+   {
+    "key": "harris-andrews",
+    "field": "games",
+    "old": 255,
+    "new": 262
+   },
+   {
+    "key": "daniel-butler",
+    "field": "games",
+    "old": 159,
+    "new": 161
+   },
+   {
+    "key": "billy-frampton",
+    "field": "games",
+    "old": 93,
+    "new": 98
+   },
+   {
+    "key": "reilly-o-brien",
+    "field": "games",
+    "old": 147,
+    "new": 148
+   },
+   {
+    "key": "jayden-short",
+    "field": "games",
+    "old": 207,
+    "new": 211
+   },
+   {
+    "key": "lewis-melican",
+    "field": "games",
+    "old": 110,
+    "new": 112
+   },
+   {
+    "key": "conor-mckenna",
+    "field": "games",
+    "old": 141,
+    "new": 148
+   },
+   {
+    "key": "mason-cox",
+    "field": "games",
+    "old": 151,
+    "new": 158
+   },
+   {
+    "key": "marcus-bontempelli",
+    "field": "games",
+    "old": 277,
+    "new": 282
+   },
+   {
+    "key": "luke-mcdonald",
+    "field": "games",
+    "old": 235,
+    "new": 236
+   },
+   {
+    "key": "christian-salem",
+    "field": "games",
+    "old": 204,
+    "new": 208
+   },
+   {
+    "key": "patrick-cripps",
+    "field": "games",
+    "old": 249,
+    "new": 255
+   },
+   {
+    "key": "blake-acres",
+    "field": "games",
+    "old": 193,
+    "new": 199
+   },
+   {
+    "key": "jarman-impey",
+    "field": "games",
+    "old": 237,
+    "new": 243
+   },
+   {
+    "key": "darcy-gardiner",
+    "field": "games",
+    "old": 192,
+    "new": 198
+   },
+   {
+    "key": "daniel-mcstay",
+    "field": "games",
+    "old": 217,
+    "new": 222
+   },
+   {
+    "key": "zachary-merrett",
+    "field": "games",
+    "old": 270,
+    "new": 274
+   },
+   {
+    "key": "rory-lobb",
+    "field": "games",
+    "old": 215,
+    "new": 221
+   },
+   {
+    "key": "george-hewett",
+    "field": "games",
+    "old": 216,
+    "new": 222
+   },
+   {
+    "key": "toby-nankervis",
+    "field": "games",
+    "old": 187,
+    "new": 191
+   },
+   {
+    "key": "alex-pearce",
+    "field": "games",
+    "old": 155,
+    "new": 161
+   },
+   {
+    "key": "tom-barrass",
+    "field": "games",
+    "old": 190,
+    "new": 196
+   },
+   {
+    "key": "aliir-aliir",
+    "field": "games",
+    "old": 197,
+    "new": 199
+   },
+   {
+    "key": "nicholas-holman",
+    "field": "games",
+    "old": 153,
+    "new": 154
+   },
+   {
+    "key": "darcy-byrne-jones",
+    "field": "games",
+    "old": 240,
+    "new": 243
+   },
+   {
+    "key": "james-sicily",
+    "field": "games",
+    "old": 197,
+    "new": 203
+   },
+   {
+    "key": "karl-amon",
+    "field": "games",
+    "old": 210,
+    "new": 215
+   },
+   {
+    "key": "charlie-cameron",
+    "field": "games",
+    "old": 273,
+    "new": 280
+   },
+   {
+    "key": "lachie-whitfield",
+    "field": "games",
+    "old": 273,
+    "new": 277
+   },
+   {
+    "key": "jack-martin",
+    "field": "games",
+    "old": 179,
+    "new": 182
+   },
+   {
+    "key": "jake-stringer",
+    "field": "games",
+    "old": 246,
+    "new": 250
+   },
+   {
+    "key": "jackson-macrae",
+    "field": "games",
+    "old": 280,
+    "new": 282
+   },
+   {
+    "key": "oliver-wines",
+    "field": "games",
+    "old": 288,
+    "new": 292
+   },
+   {
+    "key": "nick-vlastuin",
+    "field": "games",
+    "old": 273,
+    "new": 277
+   },
+   {
+    "key": "jack-viney",
+    "field": "games",
+    "old": 237,
+    "new": 238
+   },
+   {
+    "key": "aidan-corr",
+    "field": "games",
+    "old": 184,
+    "new": 187
+   },
+   {
+    "key": "brodie-grundy",
+    "field": "games",
+    "old": 260,
+    "new": 265
+   },
+   {
+    "key": "mason-wood",
+    "field": "games",
+    "old": 174,
+    "new": 175
+   },
+   {
+    "key": "tim-membrey",
+    "field": "games",
+    "old": 217,
+    "new": 222
+   },
+   {
+    "key": "jake-lloyd",
+    "field": "games",
+    "old": 290,
+    "new": 296
+   },
+   {
+    "key": "dane-rampe",
+    "field": "games",
+    "old": 284,
+    "new": 289
+   },
+   {
+    "key": "stephen-coniglio",
+    "field": "games",
+    "old": 244,
+    "new": 248
+   },
+   {
+    "key": "nick-haynes",
+    "field": "games",
+    "old": 249,
+    "new": 253
+   },
+   {
+    "key": "jeremy-cameron",
+    "field": "games",
+    "old": 296,
+    "new": 299
+   },
+   {
+    "key": "toby-greene",
+    "field": "games",
+    "old": 278,
+    "new": 281
+   },
+   {
+    "key": "elliot-yeo",
+    "field": "games",
+    "old": 229,
+    "new": 233
+   },
+   {
+    "key": "joel-hamling",
+    "field": "games",
+    "old": 111,
+    "new": 116
+   },
+   {
+    "key": "bradley-hill",
+    "field": "games",
+    "old": 296,
+    "new": 300
+   },
+   {
+    "key": "lachie-neale",
+    "field": "games",
+    "old": 313,
+    "new": 320
+   },
+   {
+    "key": "jarrod-witts",
+    "field": "games",
+    "old": 217,
+    "new": 218
+   },
+   {
+    "key": "rory-laird",
+    "field": "games",
+    "old": 284,
+    "new": 289
+   },
+   {
+    "key": "jack-crisp",
+    "field": "games",
+    "old": 293,
+    "new": 298
+   },
+   {
+    "key": "harry-cunningham",
+    "field": "games",
+    "old": 230,
+    "new": 232
+   },
+   {
+    "key": "mark-blicavs",
+    "field": "games",
+    "old": 310,
+    "new": 315
+   },
+   {
+    "key": "dion-prestia",
+    "field": "games",
+    "old": 251,
+    "new": 254
+   },
+   {
+    "key": "tom-lynch-1",
+    "field": "games",
+    "old": 240,
+    "new": 244
+   },
+   {
+    "key": "thomas-liberatore",
+    "field": "games",
+    "old": 265,
+    "new": 268
+   },
+   {
+    "key": "jack-darling",
+    "field": "games",
+    "old": 338,
+    "new": 342
+   },
+   {
+    "key": "ryan-lester",
+    "field": "games",
+    "old": 248,
+    "new": 255
+   },
+   {
+    "key": "jeremy-howe",
+    "field": "games",
+    "old": 286,
+    "new": 289
+   },
+   {
+    "key": "luke-parker",
+    "field": "games",
+    "old": 334,
+    "new": 338
+   },
+   {
+    "key": "tom-mcdonald",
+    "field": "games",
+    "old": 255,
+    "new": 260
+   },
+   {
+    "key": "jake-melksham",
+    "field": "games",
+    "old": 254,
+    "new": 255
+   },
+   {
+    "key": "jack-gunston",
+    "field": "games",
+    "old": 296,
+    "new": 302
+   },
+   {
+    "key": "max-gawn",
+    "field": "games",
+    "old": 266,
+    "new": 271
+   },
+   {
+    "key": "steele-sidebottom",
+    "field": "games",
+    "old": 371,
+    "new": 375
+   },
+   {
+    "key": "patrick-dangerfield",
+    "field": "games",
+    "old": 376,
+    "new": 380
+   },
+   {
+    "key": "taylor-walker",
+    "field": "games",
+    "old": 314,
+    "new": 319
+   },
+   {
+    "key": "dayne-zorko",
+    "field": "games",
+    "old": 314,
+    "new": 320
+   },
+   {
+    "key": "scott-pendlebury",
+    "field": "games",
+    "old": 406,
+    "new": 408
+   }
+  ],
+  "expected_movers": null,
+  "_doc_expected_movers": "not declared: a week of scores is checked by tools/ingest_bounds.py (a gate) instead of a mover list that could only be measured by building twice."
+ },
+ "identities": {
+  "moves": [
+   "store",
+   "board"
+  ],
+  "unmoved": [
+   "engine_head",
+   "rl_model",
+   "fv",
+   "config",
+   "register",
+   "as_of_round"
+  ]
+ },
+ "column": {
+  "id": "fw4-finals-week-4-24-9",
+  "label": "24/9 FINALS WEEK 4 — 92 players, one game each on the 2026 season row",
+  "after_round": 24
+ },
+ "lineage": {
+  "doc": "docs/evidence/ingest/2026_FW4/NOTE.md",
+  "owner_ruling_id": [
+   "WEEKLY_INGEST_2026-09-24",
+   "FINALS_LANE_2026-08-30_averages_and_game_counts_not_a_round",
+   "CALENDAR_CEILING_2026-09-02_never_above_one"
+  ],
+  "owner_ruling": "Finals scores are applied to the season row and the calendar holds at round 24; weekly data goes through tools/ingest.",
+  "authority": "owner ruling 2026-09-24",
+  "invariants": {}
+ },
+ "day0_rebase": {
+  "state": "off"
+ },
+ "evidence_dir": "docs/evidence/ingest/2026_FW4",
+ "gates": [
+  {
+   "name": "release_manifest_check",
+   "argv": [
+    "python3",
+    "release_manifest_check.py"
+   ],
+   "must_contain": "PASS"
+  },
+  {
+   "name": "release_contract_check",
+   "argv": [
+    "python3",
+    "release_contract.py",
+    "check"
+   ],
+   "must_contain": "PASS"
+  },
+  {
+   "name": "acceptance_runner",
+   "argv": [
+    "python3",
+    "-m",
+    "acceptance.runner",
+    "--profile",
+    "in-transaction",
+    "--evidence",
+    "@EVIDENCE@"
+   ],
+   "must_contain": "GREEN"
+  },
+  {
+   "name": "movers_transition",
+   "argv": [
+    "python3",
+    "engine/rl_after/ingestion/test_movers_transition.py"
+   ]
+  },
+  {
+   "name": "finals_report",
+   "argv": [
+    "python3",
+    "engine/rl_after/ingestion/test_finals_report.py"
+   ]
+  },
+  {
+   "name": "movers_ui",
+   "argv": [
+    "node",
+    "ui/tests/movers.test.js"
+   ]
+  },
+  {
+   "name": "ui_222_items",
+   "argv": [
+    "node",
+    "ui/tests/ui_222_items.test.mjs"
+   ]
+  },
+  {
+   "name": "ui_defects_2026_08_21",
+   "argv": [
+    "node",
+    "ui/tests/ui_defects_2026-08-21.test.js"
+   ]
+  },
+  {
+   "name": "universe",
+   "argv": [
+    "node",
+    "ui/tests/universe.test.js"
+   ]
+  },
+  {
+   "name": "draftday",
+   "argv": [
+    "node",
+    "ui/tests/draftday.test.js"
+   ]
+  },
+  {
+   "name": "pickvalue",
+   "argv": [
+    "node",
+    "ui/tests/pickvalue.test.js"
+   ]
+  },
+  {
+   "name": "release_seam",
+   "argv": [
+    "node",
+    "ui/tests/release_seam.test.js"
+   ]
+  },
+  {
+   "name": "adoption_gate",
+   "argv": [
+    "node",
+    "ui/tests/adoption_gate.test.js"
+   ]
+  },
+  {
+   "name": "club_totals_parity",
+   "argv": [
+    "node",
+    "ui/tests/club_totals_parity.test.js"
+   ]
+  },
+  {
+   "name": "counting_rule",
+   "argv": [
+    "node",
+    "ui/tests/counting_rule.test.js"
+   ]
+  },
+  {
+   "name": "ownership_sidecar",
+   "argv": [
+    "node",
+    "ui/tests/ownership_sidecar.test.js"
+   ]
+  },
+  {
+   "name": "ownership_single_source",
+   "argv": [
+    "node",
+    "ui/tests/ownership_single_source.test.js"
+   ]
+  },
+  {
+   "name": "responsive_layout",
+   "argv": [
+    "node",
+    "ui/tests/responsive_layout.test.mjs"
+   ]
+  },
+  {
+   "name": "extract_seam",
+   "argv": [
+    "python3",
+    "ui/tests/extract_seam.test.py"
+   ]
+  },
+  {
+   "name": "club_curve_provenance",
+   "argv": [
+    "python3",
+    "ui/tests/club_curve_provenance.test.py"
+   ]
+  },
+  {
+   "name": "ingest_bounds",
+   "argv": [
+    "python3",
+    "tools/ingest_bounds.py",
+    "scores/resolved/2026_FW4.json"
+   ]
+  }
+ ],
+ "commit_message": "Finals Week 4 applied (tools/ingest) — 92 players, 695 store edits"
+}
