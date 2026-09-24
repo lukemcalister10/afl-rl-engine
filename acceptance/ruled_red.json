@@ -7,24 +7,6 @@
   "_how_to_add": "An entry may be added ONLY when the fork is already presented in writing to the owner or supervisor, and `presented` must name the document that presents it. A red that is merely inconvenient, or that a seat believes is fine, is a FAIL. RULED-RED is not a snooze button — a drift nobody has presented reds the run, and that is the whole point. A red the record calls a one-line repair is REPAIRED, not entered here: PLAN_v6 1f carries all three recorded one-liners for exactly that reason.",
   "entries": [
     {
-      "id": "FI1-generated-bundle-equality",
-      "steps": [
-        "final-integration.yml::Season-state anchors (fixed R14 historical + current round) + generated-bundle equality"
-      ],
-      "reason": "the step asserts a fresh extract_board_view.py run reproduces BOTH committed UI bundles byte-for-byte. board_view_public.js does (105512 bytes, byte-exact). board_view_working.js does NOT: the regenerated file is 557956 bytes against the committed 558536 and drops the entire release{} block (release_version / balanced_board_md5 / engine_head / …). The extractor is not the sole writer of the working bundle — the landing act's UI writer adds the release block after extraction — so the step's premise is true of one bundle and false of the other.",
-      "presented": "docs/proposals/process_plan/PLAN_v6.md 1a:47-53 ('final-integration's recorded reds INCLUDING the bundle-cmp step (repaired or ruled-red IN P1)') · REVIEW_COLD_OPUS.md F3/F4",
-      "expires_when": "one writer owns the release block, or the step compares the surface the extractor actually owns. The repair is a decision about writer ownership (PLAN_v6 2a.1's 'BOTH UI writers'), not a one-liner, and it is not this package's to make.",
-      "probe": {
-        "argv": [
-          "python3",
-          "tools/probe_bundle_equality.py"
-        ],
-        "match": "board_view_working.js",
-        "cost": "cheap",
-        "timeout_s": 300
-      }
-    },
-    {
       "id": "R15-ladder-proof-GFWD",
       "steps": [
         "script::session_2026-07-21/final_integration/tests/r15_ladder_survival_proof.py"
@@ -55,12 +37,12 @@
         "argv": [
           "bash",
           "-c",
-          "cd /home/claude/rl_workspace/rl_after && python3 one_source_selftest.py"
+          "cd /home/claude/rl_workspace/rl_after && PYTHONPATH=/home/claude/rl_workspace/rl_after:/home/claude/rl_vendor python3 one_source_selftest.py"
         ],
-        "match": "suite:",
+        "match": "SELF-TEST FAILED",
         "cost": "heavy",
-        "last_probed": "2026-08-20",
-        "last_result": "suite: PASS=124 FAIL=15, measured in an isolated workspace seeded from the checkout (docs/evidence/m1a_2026-08-20/oneliner_c_f1lens.txt, AFTER section)",
+        "last_probed": "2026-09-24",
+        "last_result": "SELF-TEST FAILED: 17 check(s), 121 PASS — re-measured 2026-09-24 on a freshly bootstrapped workspace (was 124/15 on 2026-08-20). 12 of the 17 are the #326 pool-level checks: \"0 of N live entrants re-price when the level moves\". They fail IDENTICALLY with the new prediction cache emptied before every price (harness pass, same process), so they predate it — pool value was retired from pricing. The rest: two file-mode checks and the s4_matrix stamp (workspace artefacts), the book numeraire display (the book is stale against the board), LEG A fade.",
         "probe_max_age_days": 30,
         "timeout_s": 900,
         "_why_heavy": "the suite needs a bootstrapped workspace AND a board built from it — ci-guards.yml runs it only after setup_env.sh + bootstrap.sh + rl_export.py + s4_matrix. It cannot run on a bare checkout, so it cannot run on every runner invocation, so the ledger demands a DATED measurement instead and reds when the date leaves the window.",
@@ -69,7 +51,8 @@
           "RL_CONFIG_MODE": "gate",
           "PYTHONHASHSEED": "0"
         },
-        "_probe_environment": "MEASURED 2026-08-20, with ACCEPT_HEAVY_PROBES=1 on the P1 box: the probe reports DRIFTED here, because /home/claude/rl_workspace is the STALE shared workspace (pre-D8 engine, pre-R23 store) and the suite dies at import on a missing vendor module before printing its 'suite:' summary line. That is the ledger working: the signature really is absent, and a probe that cannot start must not be read as a probe that failed the recorded way. The env above mirrors ci-guards.yml's step exactly; the suite still needs bootstrap.sh + a board built from it, which no P1 act will do on a shared box other seats are live against (M1a refused the same thing for the same reason). Hence cost=heavy and a DATED measurement, and hence the runner does NOT run heavy probes unless ACCEPT_HEAVY_PROBES=1 is set deliberately."
+        "_probe_environment": "MEASURED 2026-08-20, with ACCEPT_HEAVY_PROBES=1 on the P1 box: the probe reports DRIFTED here, because /home/claude/rl_workspace is the STALE shared workspace (pre-D8 engine, pre-R23 store) and the suite dies at import on a missing vendor module before printing its 'suite:' summary line. That is the ledger working: the signature really is absent, and a probe that cannot start must not be read as a probe that failed the recorded way. The env above mirrors ci-guards.yml's step exactly; the suite still needs bootstrap.sh + a board built from it, which no P1 act will do on a shared box other seats are live against (M1a refused the same thing for the same reason). Hence cost=heavy and a DATED measurement, and hence the runner does NOT run heavy probes unless ACCEPT_HEAVY_PROBES=1 is set deliberately.",
+        "_2026_09_24_fixes": "The probe could never match on a real run: its match string was \"suite:\", which this suite never prints (it prints \"SELF-TEST FAILED: N check(s)\"), and its argv lacked the vendored unidecode on PYTHONPATH, so it died on import. Both fixed; the measurement above used the corrected command."
       }
     }
   ],
@@ -111,6 +94,26 @@
       "retired_on": "2026-08-20",
       "retired_because": "EXPIRED BY ITS OWN TERMS, on the owner's word. `expires_when` read: \"the owner signs the 1b diff: either the two laws enter PART 1 (parity restored) or the twin is removed (no derived view to lint).\" The owner signed it — verbatim, in chat 2026-08-20: \"Okay agree to the laws updated.\" — and the second branch is what he chose: docs/acceptance_v2_0.json is REMOVED from the tree in the v3 amendment act, its per-law check prose and thresholds folded into RULEBOOK PART 3 so no measurement detail died with it. Measured, not asserted: this entry's own probe (`python3 tools/rulebook_lint.py`) now EXITS 0 where it recorded \"R5 TWIN PARITY\", which under _probe_contract is EXPIRED -> retire the entry, and leaving it here would have FAILED the runner on a stale ruling. RULEBOOK PART 1 numbers TWELVE laws (G-Y0 entered as law 12; G-COHORT was STRUCK, not enacted — owner, same session: \"That cohort rail again was retired. Weeks ago.\"), so the register's standing law-count flag is closed by count as well as by signature.",
       "_note": "Retired in the same act that removed its subject. The lint rules that produced this finding did not go away with it: tools/rulebook_lint.py R5/R6 reversed polarity and now red on a derived laws view REAPPEARING (RULEBOOK PART 4, P10). `retired` is never read by known_red.py — only `entries` is — so this can never go on excusing a red."
+    },
+    {
+      "id": "FI1-generated-bundle-equality",
+      "steps": [
+        "final-integration.yml::Season-state anchors (fixed R14 historical + current round) + generated-bundle equality"
+      ],
+      "reason": "the step asserts a fresh extract_board_view.py run reproduces BOTH committed UI bundles byte-for-byte. board_view_public.js does (105512 bytes, byte-exact). board_view_working.js does NOT: the regenerated file is 557956 bytes against the committed 558536 and drops the entire release{} block (release_version / balanced_board_md5 / engine_head / …). The extractor is not the sole writer of the working bundle — the landing act's UI writer adds the release block after extraction — so the step's premise is true of one bundle and false of the other.",
+      "presented": "docs/proposals/process_plan/PLAN_v6.md 1a:47-53 ('final-integration's recorded reds INCLUDING the bundle-cmp step (repaired or ruled-red IN P1)') · REVIEW_COLD_OPUS.md F3/F4",
+      "expires_when": "one writer owns the release block, or the step compares the surface the extractor actually owns. The repair is a decision about writer ownership (PLAN_v6 2a.1's 'BOTH UI writers'), not a one-liner, and it is not this package's to make.",
+      "probe": {
+        "argv": [
+          "python3",
+          "tools/probe_bundle_equality.py"
+        ],
+        "match": "board_view_working.js",
+        "cost": "cheap",
+        "timeout_s": 300
+      },
+      "retired": "2026-09-24",
+      "retired_because": "Its own expiry condition was met: \"one writer owns the release block\". ui/tools/extract_board_view.py now writes stamp.release itself (via round_movers.release_identity), so a fresh extraction reproduces BOTH committed bundles byte-exact — probe_bundle_equality exits 0 (559128 + 132985 bytes). Found during the 2026-09-24 ingest review: tools/restamp.py ran the extractor alone and shipped release:null, the same trap the lander papered over with a second writer."
     }
   ]
 }

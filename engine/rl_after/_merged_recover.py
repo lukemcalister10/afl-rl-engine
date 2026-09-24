@@ -476,8 +476,26 @@ def _b6_core(p,Y):
     # ORDER 44 RETIRED (above): the two lines below are the band, unmediated. They were the
     # `dial OFF` path and they are now the only path — _b6_core is byte-identical to what
     # RL_O44_LVLMONO=0 always produced, on forests that no longer need the repair.
-    with contextlib.redirect_stdout(io.StringIO()): b=np.asarray(cp.cond_prior_band(p,cm,Y))
-    return np.append(b,max(float(q97m.predict(np.array([cp._feat(p,Y)]))[0]),b[4]))
+    b,q=_b6_predict(p,Y)
+    return np.append(b,max(q,b[4]))
+# THE PREDICTION CACHE (owner word 2026-09-24). Pricing asks the band models and q97m the same
+# question over and over: 71,710 single-row predictions per engine load, 68% of them exact repeats
+# of an earlier call, and that one behaviour was 86% of the load (profiled 374s of 432s). The answer
+# to a question depends ONLY on the question — the feature row — and on which fitted model is asked,
+# so both are the key: the exact feature bytes, and the identity of cm and q97m (module globals held
+# for the life of the process, so an id can never be reused while its entries exist). A refit binds a
+# NEW model object and therefore misses; nothing here can return an answer from a different model.
+# MEASURED BEFORE ADOPTION: 2,499 cache hits recomputed and compared, 0 mismatches; all 804 players
+# priced against the live board, 0 diffs. Value-neutral by construction and by measurement.
+_B6_PRED={}
+def _b6_predict(p,Y):
+    f=np.array([cp._feat(p,Y)])
+    k=(id(cm),id(q97m),f.dtype.str,f.tobytes())
+    hit=_B6_PRED.get(k)
+    if hit is None:
+        with contextlib.redirect_stdout(io.StringIO()): b=np.asarray(cp.cond_prior_band(p,cm,Y))
+        hit=(b,float(q97m.predict(f)[0])); _B6_PRED[k]=hit
+    return hit[0].copy(),hit[1]
 def b6(p,Y=2026):
     b_age=_b6_core(p,Y)
     # LEG F4 §2.vii: temper this band's AGE_REF advance to r_pop(age) — read #1 of the two granted sites.

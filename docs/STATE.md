@@ -21,14 +21,14 @@ measurement made while this file was written, not a claim carried over from the 
 |---|---|---|---|---|
 | board | `d3fb6b4842ddd3bea57fbacc7a94e4d7` | data/expected_boot.json | data/rl_build/rl_app_data.json | agrees |
 | store | `a367386a6884bb6b10762fa30183bc47` | data/expected_boot.json | engine/rl_after/rl_model_data.json | agrees |
-| engine_head | `17243c16277842e0a30470cfbdb5b196` | data/expected_boot.json | engine/rl_after/_merged_recover.py | agrees |
+| engine_head | `384e05f54288606ee0d16c11ad93023f` | data/expected_boot.json | engine/rl_after/_merged_recover.py | agrees |
 | rl_model | `aa1541d8ebb93868907b24daab5dbed1` | data/expected_boot.json | engine/rl_after/rl_model.py | agrees |
 | balanced_board_md5 | `784e80ba61fe090830c2d641602d1553` | data/expected_boot.json | (no in-tree artifact) | not in tree |
 | config | `d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4` | data/expected_boot.json | config_manifest.manifest_hash | agrees |
 
 | release fact | value | carrier |
 |---|---|---|
-| contract seal | `6a30db4249ab6ed780389ce7f0fed3d0f781d07c5c6a57348954a1b155e67ede` | data/release_contract.json:contract_sha256 |
+| contract seal | `9d356137a16817b0369eec3abdfe22908bbe8eb84de8a4cd5fa4068b2f83dce1` | data/release_contract.json:contract_sha256 |
 | config seal | `d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4` | data/release_contract.json:config_sha256 |
 | release version | v2.11-final-rc1-PROVISIONAL | data/release_contract.json:release_version |
 | round (as_of_round) | 24 | data/release_contract.json:as_of_round |
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `868d9892174df7f43c65013b99240d7917afb706` |
+| generated at commit | `3bee213179a51193ff103926e7fab94acd2d1cbf` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

@@ -621,6 +621,21 @@ def main():
             fh.write(";\n")
         return path
 
+    # THE RELEASE BLOCK IS WRITTEN HERE, BY THE WRITER OF RECORD, NOT BY A SECOND STEP. This file used
+    # to emit the working bundle WITHOUT `stamp.release` and rely on every caller running
+    # round_movers.inject_release_contract afterwards. The trap is documented in steps.py as caught
+    # three times, and tools/restamp.py still fell into it (2026-09-24): it ran this writer alone and
+    # shipped a bundle with `release: null`, which reds release_manifest_check and movers.test.js.
+    # Writing it here makes every caller correct by construction. inject_release_contract stays
+    # idempotent and writes the identical block (same function, same position, same serialisation),
+    # so the lander's pair still produces byte-identical output.
+    sys.path.insert(0, os.path.join(REPO, "engine", "rl_after", "ingestion"))
+    import round_movers as _RM
+    # Only when the manifest THIS RUN READ names a round — a manifest without one (the extract_seam
+    # test's scenario B) must stay neutral rather than borrow the live tree's release identity.
+    if boot.get("as_of_round") is not None and boot.get("release_version"):
+        working["stamp"]["release"] = _RM.release_identity(REPO, int(boot["as_of_round"]), boot=boot)
+
     p1 = emit("board_view_working.js", "__MATCHDAY_WORKING__", working)
     p2 = emit("board_view_public.js", "__MATCHDAY_PUBLIC__", public)
 
