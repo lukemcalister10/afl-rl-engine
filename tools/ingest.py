@@ -267,6 +267,24 @@ def compute_edits(resolved, store):
         if rows[0]['avg'] != a1:             # a no-op field is dropped, not declared (validator rule)
             edits.append({'key': key, 'field': 'scoring[%d].avg' % SEASON,
                           'old': rows[0]['avg'], 'new': a1})
+    # CAREER GAMES IS THE SUM OF THE SEASON ROWS (owner ruling 2026-09-24). Every weekly write since
+    # R19 updated the season rows and not the career field, so 509 players fell 1-7 games short and
+    # the young-player floor on the +1/+2 year views read them as less proven than they are. Every
+    # week re-asserts it for EVERY row, so it cannot drift again. Short is the known cause (a write
+    # that missed the career field) and is corrected; career ABOVE the season sum has no known
+    # cause, so it halts the week and is named.
+    for p in store:
+        key = p.get('key')
+        if not key or not isinstance(p.get('games'), int):
+            continue
+        seasons = sum(int(s.get('games') or 0) for s in p.get('scoring') or [])
+        if key in resolved:
+            seasons += 1                     # this week's game, added to the season row above
+        if p['games'] > seasons:
+            problems.append('%s: career games %d is ABOVE the sum of its season rows (%d) — no known '
+                            'cause; the week stops until it is explained' % (key, p['games'], seasons))
+        elif p['games'] != seasons:
+            edits.append({'key': key, 'field': 'games', 'old': p['games'], 'new': seasons})
     return edits, problems
 
 
@@ -443,8 +461,10 @@ def main():
     if odd:
         say('  also          %s — store club differs from the side they played for; harmless'
             % ', '.join(odd))
+    n_career = sum(1 for e in edits if e['field'] == 'games')
     say('  edits         %d on %d players (games +1, average re-worked at 2 decimals)'
-        % (len(edits), len(resolved)))
+        % (len(edits) - n_career, len(resolved)))
+    say('  career games  %d row(s) set to the sum of their seasons' % n_career)
     if a.check:
         say('\n--check: nothing written.')
         return 0

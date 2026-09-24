@@ -18,7 +18,9 @@ the go-ahead; nothing else needs arming.
    an exact name. If any name is ambiguous (two active Bailey Williams) or unknown, it stops before
    touching anything and lists every problem in one pass.
 3. **Edits.** Each player who played gets games +1, and their average is re-averaged with the
-   ingestor's own `_mean`. Players not in the file are untouched.
+   ingestor's own `_mean`. Career games is kept equal to the sum of the season rows for EVERY
+   player (owner ruling 2026-09-24): a row that is short is corrected; a row ABOVE its season sum
+   has no known cause and stops the week, named.
 4. **Inputs commit.** `scores/<WEEK>.csv`, `scores/resolved/2026_<WEEK>.json` and
    `docs/evidence/ingest/2026_<WEEK>/` are committed first, so a failed run leaves nothing half-done
    and running the same command again is safe.

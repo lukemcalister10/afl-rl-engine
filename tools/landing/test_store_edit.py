@@ -126,6 +126,22 @@ def main():
     a4 = [r for r in json.loads(out4)['players'] if r['key'] == 'a-player'][0]
     ok(a4['games'] == 48 and a4['scoring'][0]['games'] == 61,
        'the FLAT path is unchanged: a top-level scalar moves and the seasons do not')
+    # A TOP-LEVEL VALUE THAT A SEASON ALSO CARRIES (2026-09-24). Career games kept equal to the season
+    # sum makes `"games": N` at the top of a row and inside a season the COMMON case (every one-season
+    # player). The flat path must edit the row's own field and leave the season alone, not refuse.
+    same = json.dumps({'players': [{'key': 'e', 'games': 21, 'scoring': [
+        {'year': 2026, 'avg': 60.0, 'games': 21}]}]})
+    out6, _ = ST.apply_store_edits(same, [{'key': 'e', 'field': 'games', 'old': 21, 'new': 22},
+                                          {'key': 'e', 'field': 'scoring[2026].games',
+                                           'old': 21, 'new': 22}])
+    e6 = json.loads(out6)['players'][0]
+    ok(e6['games'] == 22 and e6['scoring'][0]['games'] == 22,
+       'a top-level field whose value a season also carries: each path edits its OWN field')
+    out7, _ = ST.apply_store_edits(same, [{'key': 'e', 'field': 'games', 'old': 21, 'new': 30}])
+    e7 = json.loads(out7)['players'][0]
+    ok(e7['games'] == 30 and e7['scoring'][0]['games'] == 21,
+       '...and the flat edit alone leaves the equal-valued season untouched')
+
     # declared with the row's TRUE list, so the refusal is the container guard itself and not an
     # `old` mismatch arriving first — the distinction matters, because only one of those two is the
     # law being tested.

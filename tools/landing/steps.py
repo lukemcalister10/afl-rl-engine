@@ -276,6 +276,28 @@ def store_row_spans(text, keys=None):
     return found
 
 
+def _depth_at(text, pos):
+    """Brace/bracket depth of `text` at offset `pos`, ignoring anything inside JSON strings. A row's
+    span opens with its own `{`, so a top-level field of the row sits at depth 1 and a season
+    row's field at depth 3 (row -> scoring list -> season object)."""
+    depth, in_str, esc = 0, False, False
+    for ch in text[:pos]:
+        if in_str:
+            if esc:
+                esc = False
+            elif ch == '\\':
+                esc = True
+            elif ch == '"':
+                in_str = False
+        elif ch == '"':
+            in_str = True
+        elif ch in '{[':
+            depth += 1
+        elif ch in '}]':
+            depth -= 1
+    return depth
+
+
 def _scalar_json(v):
     """The two encodings a scalar can wear on disk, ascii-escaped and not. Containers are refused.
 
@@ -423,6 +445,12 @@ def apply_store_edits(text, edits):
         for enc in _scalar_json(old):
             pat = re.compile(r'("%s"\s*:\s*)%s' % (re.escape(field), re.escape(enc)))
             found = list(pat.finditer(span))
+            if season is None:
+                # A FLAT path names the row's OWN field. `"games": 21` at the top of a row and
+                # `"games": 21` inside one of its seasons are different fields that share a name
+                # (career games vs a season's games — measured common once career games is kept
+                # equal to the season sum), so only a depth-1 occurrence is a candidate.
+                found = [m for m in found if _depth_at(span, m.start()) == 1]
             if found:
                 hits = found
                 new_enc = _scalar_json(new)[0] if enc == _scalar_json(old)[0] \
