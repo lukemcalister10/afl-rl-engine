@@ -318,6 +318,18 @@ def build_spec(week, csv_rel, csv_sha, resolved, edits, resolved_rel, ev_rel):
     }
 
 
+def WEEK_CARRIERS(CA):
+    """The two files a week's movers point writes that `land edit` never declared. FW2 got past this
+    only because its bank (values_r26.json) had been committed by hand during a failed flight; FW3's
+    third run passed all 21 gates and was refused at the commit step for these two. A file the landing
+    writes must be one it commits (and, on abort, puts back)."""
+    retro = 'docs/evidence/walkforward_retro_2026-08-29/'
+    return (CA.G(retro + 'values_r*.json', 'finals_report / bank_from_landed_board (writer 4c)',
+                 "the week's point on the movers list, banked from the landed board"),
+            CA.F(retro + 'CONTROL_FAIL.json', 'emit_retro_series control (writer 4b)',
+                 'the retro control report: which rows the newest bank and the live board disagree on'))
+
+
 def run_landing(spec_path, ev_dir):
     """The lander's own step functions, driven without the self-test and the claims echo. Every file
     is put back exactly as it was if any step fails."""
@@ -328,7 +340,8 @@ def run_landing(spec_path, ev_dir):
                               report=os.path.join(ev_dir, 'REPORT.json'),
                               log=os.path.join(ev_dir, 'FLIGHT.log'), keep_work=False)
     pf = CLI._run_cheap_preflight(a, doc)
-    ctx = TX.Ctx(REPO, doc, TX.Options(), builder=TX.RealBuilder(), carriers=CA.EDIT_CARRIERS)
+    ctx = TX.Ctx(REPO, doc, TX.Options(), builder=TX.RealBuilder(),
+                 carriers=CA.EDIT_CARRIERS + WEEK_CARRIERS(CA))
     seq = tuple(s for s in ST.EDIT_SEQUENCE if s[0] != 'claims')
     res = TX.run(ctx, seq)
     CLI._file_cheap_preflight(pf, ctx.evidence_dir)
