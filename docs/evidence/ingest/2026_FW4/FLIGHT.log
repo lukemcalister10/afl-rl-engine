@@ -1,0 +1,1274 @@
+======================================================================================================
+LAND STORE-EDIT — FINALS WEEK 4 — 92 PLAYERS GAIN ONE GAME AND A RE-AVERAGED 2026 SEASON ROW
+  tree      : /home/user/afl-rl-engine
+  owner word: Weekly scores supplied by the owner: scores/FW4.csv (sha256 08b440540c92f20e), ingested with tools/ingest under the owner ruling of 2026-09-24 that weekly data takes its own path.
+  prereg    : docs/evidence/ingest/2026_FW4/NOTE.md   predicts board None
+  mode      : APPLY builder=real
+======================================================================================================
+
+--- STEP 0/10  preflight      clean tree, build lock, the restore point ---
+RL_/PAR_ environment  (none)
+build-lock: HELD by land-edit-13711 (pid 13711) — single writer for the shared workspace.
+base commit        57dcebfacc76eb6485d007af726bbbbbfbcb36fb
+board pin (before) 3e5b3454cd35d5990ae828909cc5ea60
+store pin (before) 35d68904b770b9ee65da2471e7d8ebbb
+restore point      146 carrier(s) captured, 146 present on disk
+    [preflight OK  0.07s]
+
+--- STEP 1/10  store_edit     THE SURGICAL STORE EDIT, applied in the work dir ---
+store BEFORE  35d68904b770b9ee65da2471e7d8ebbb   (1978025 bytes)
+              == expected_boot.store, so the tree is the one this act was written for.
+THE EDIT — surgical, inside the named row's span; `old` asserted, never repaired:
+    alex-pearce                  scoring[2026].games 22 -> 23   (row span 1010697..1010752, at char 1010726)
+    alex-pearce                  scoring[2026].avg  48.22 -> 48.34   (row span 1010697..1010752, at char 1010712)
+    andrew-brayshaw              scoring[2026].games 25 -> 26   (row span 605020..605075, at char 605049)
+    andrew-brayshaw              scoring[2026].avg  99.11 -> 99.26   (row span 605020..605075, at char 605035)
+    angus-sheldrick              scoring[2026].games 19 -> 20   (row span 299299..299354, at char 299328)
+    angus-sheldrick              scoring[2026].avg  67.47 -> 68.05   (row span 299299..299354, at char 299314)
+    bailey-macdonald             scoring[2026].games 13 -> 14   (row span 252064..252118, at char 252093)
+    bailey-macdonald             scoring[2026].avg  54.23 -> 52.14   (row span 252064..252118, at char 252079)
+    billy-cootee                 scoring[2026].games 10 -> 11   (row span 27343..27397, at char 27371)
+    billy-cootee                 scoring[2026].avg  53.2 -> 51.36   (row span 27343..27397, at char 27358)
+    blake-hardwick               scoring[2026].games 24 -> 25   (row span 833943..833996, at char 833971)
+    blake-hardwick               scoring[2026].avg  82.8 -> 80.97   (row span 833943..833996, at char 833958)
+    braeden-campbell             scoring[2026].games 7 -> 8   (row span 364649..364702, at char 364678)
+    braeden-campbell             scoring[2026].avg  74.29 -> 72.75   (row span 364649..364702, at char 364664)
+    brodie-grundy                scoring[2026].games 22 -> 23   (row span 1076638..1076695, at char 1076668)
+    brodie-grundy                scoring[2026].avg  118.68 -> 115.87   (row span 1076638..1076695, at char 1076653)
+    caiden-cleary                scoring[2026].games 10 -> 11   (row span 162932..162985, at char 162960)
+    caiden-cleary                scoring[2026].avg  54.1 -> 54.82   (row span 162932..162985, at char 162947)
+    caleb-serong                 scoring[2026].games 22 -> 23   (row span 445831..445887, at char 445861)
+    caleb-serong                 scoring[2026].avg  101.72 -> 101.73   (row span 445831..445887, at char 445846)
+    cameron-mackenzie            scoring[2026].games 22 -> 23   (row span 221825..221880, at char 221854)
+    cameron-mackenzie            scoring[2026].avg  75.46 -> 73.74   (row span 221825..221880, at char 221840)
+    cameron-rayner               scoring[2026].games 25 -> 26   (row span 603909..603963, at char 603938)
+    cameron-rayner               scoring[2026].avg  73.08 -> 72.73   (row span 603909..603963, at char 603924)
+    charlie-cameron              scoring[2026].games 25 -> 26   (row span 1034921..1034975, at char 1034950)
+    charlie-cameron              scoring[2026].avg  71.66 -> 71.9   (row span 1034921..1034975, at char 1034936)
+    charlie-curnow               scoring[2026].games 23 -> 24   (row span 804983..805038, at char 805012)
+    charlie-curnow               scoring[2026].avg  74.17 -> 73.7   (row span 804983..805038, at char 804998)
+    connor-macdonald             scoring[2026].games 24 -> 25   (row span 306179..306233, at char 306208)
+    connor-macdonald             scoring[2026].avg  84.56 -> 84.18   (row span 306179..306233, at char 306194)
+    conor-mckenna                scoring[2026].games 19 -> 20   (row span 969126..969180, at char 969155)
+    conor-mckenna                scoring[2026].avg  57.36 -> 59.24   (row span 969126..969180, at char 969141)
+    corey-wagner                 scoring[2026].games 14 -> 15   (row span 832601..832659, at char 832630)
+    corey-wagner                 scoring[2026].avg  68.53 -> 69.36   (row span 832601..832659, at char 832616)
+    dane-rampe                   scoring[2026].games 16 -> 17   (row span 1123604..1123657, at char 1123632)
+    dane-rampe                   scoring[2026].avg  62.0 -> 63.47   (row span 1123604..1123657, at char 1123619)
+    darcy-fort                   scoring[2026].games 24 -> 25   (row span 558071..558127, at char 558100)
+    darcy-fort                   scoring[2026].avg  66.84 -> 66.29   (row span 558071..558127, at char 558086)
+    darcy-gardiner               scoring[2026].games 14 -> 15   (row span 995538..995593, at char 995567)
+    darcy-gardiner               scoring[2026].avg  46.02 -> 45.95   (row span 995538..995593, at char 995553)
+    darcy-wilmot                 scoring[2026].games 25 -> 26   (row span 297665..297719, at char 297694)
+    darcy-wilmot                 scoring[2026].avg  88.07 -> 86.68   (row span 297665..297719, at char 297680)
+    dayne-zorko                  scoring[2026].games 15 -> 16   (row span 1739619..1739674, at char 1739649)
+    dayne-zorko                  scoring[2026].avg  103.52 -> 101.49   (row span 1739619..1739674, at char 1739634)
+    dylan-moore                  scoring[2026].games 23 -> 24   (row span 660676..660730, at char 660705)
+    dylan-moore                  scoring[2026].avg  74.73 -> 75.87   (row span 660676..660730, at char 660691)
+    eric-hipwood                 scoring[2026].games 12 -> 13   (row span 807441..807496, at char 807470)
+    eric-hipwood                 scoring[2026].avg  61.08 -> 61.69   (row span 807441..807496, at char 807456)
+    errol-gulden                 scoring[2026].games 12 -> 13   (row span 389596..389652, at char 389626)
+    errol-gulden                 scoring[2026].avg  118.17 -> 119.08   (row span 389596..389652, at char 389611)
+    harris-andrews               scoring[2026].games 22 -> 23   (row span 930351..930406, at char 930380)
+    harris-andrews               scoring[2026].avg  83.47 -> 83.71   (row span 930351..930406, at char 930366)
+    harry-kyle                   scoring[2026].games 10 -> 11   (row span 8788..8846, at char 8817)
+    harry-kyle                   scoring[2026].avg  45.64 -> 47.31   (row span 8788..8846, at char 8803)
+    harry-morrison               scoring[2026].games 14 -> 15   (row span 752333..752388, at char 752362)
+    harry-morrison               scoring[2026].avg  71.14 -> 69.13   (row span 752333..752388, at char 752348)
+    hayden-mclean                scoring[2026].games 11 -> 12   (row span 595659..595713, at char 595687)
+    hayden-mclean                scoring[2026].avg  58.8 -> 56.65   (row span 595659..595713, at char 595674)
+    hayden-young                 scoring[2026].games 15 -> 16   (row span 444834..444888, at char 444862)
+    hayden-young                 scoring[2026].avg  81.2 -> 84.0   (row span 444834..444888, at char 444849)
+    heath-chapman                scoring[2026].games 24 -> 25   (row span 372813..372867, at char 372842)
+    heath-chapman                scoring[2026].avg  68.68 -> 69.65   (row span 372813..372867, at char 372828)
+    hugh-mccluggage              scoring[2026].games 15 -> 16   (row span 691805..691860, at char 691834)
+    hugh-mccluggage              scoring[2026].avg  75.48 -> 78.45   (row span 691805..691860, at char 691820)
+    isaiah-dudley                scoring[2026].games 25 -> 26   (row span 129799..129853, at char 129828)
+    isaiah-dudley                scoring[2026].avg  57.17 -> 59.2   (row span 129799..129853, at char 129814)
+    jack-ginnivan                scoring[2026].games 22 -> 23   (row span 413563..413617, at char 413592)
+    jack-ginnivan                scoring[2026].avg  80.78 -> 79.4   (row span 413563..413617, at char 413578)
+    jack-gunston                 scoring[2026].games 18 -> 19   (row span 1385293..1385347, at char 1385321)
+    jack-gunston                 scoring[2026].avg  76.9 -> 77.59   (row span 1385293..1385347, at char 1385308)
+    jai-newcombe                 scoring[2026].games 24 -> 25   (row span 425022..425078, at char 425052)
+    jai-newcombe                 scoring[2026].avg  101.38 -> 100.64   (row span 425022..425078, at char 425037)
+    jai-serong                   scoring[2026].games 23 -> 24   (row span 326092..326147, at char 326121)
+    jai-serong                   scoring[2026].avg  75.66 -> 75.59   (row span 326092..326147, at char 326107)
+    jake-lloyd                   scoring[2026].games 24 -> 25   (row span 1118356..1118411, at char 1118385)
+    jake-lloyd                   scoring[2026].avg  73.58 -> 74.76   (row span 1118356..1118411, at char 1118371)
+    james-rowbottom              scoring[2026].games 21 -> 22   (row span 529580..529638, at char 529609)
+    james-rowbottom              scoring[2026].avg  76.15 -> 75.6   (row span 529580..529638, at char 529595)
+    james-sicily                 scoring[2026].games 23 -> 24   (row span 1023665..1023719, at char 1023694)
+    james-sicily                 scoring[2026].avg  93.73 -> 92.95   (row span 1023665..1023719, at char 1023680)
+    jarman-impey                 scoring[2026].games 21 -> 22   (row span 994198..994252, at char 994227)
+    jarman-impey                 scoring[2026].avg  88.34 -> 86.82   (row span 994198..994252, at char 994213)
+    jarrod-berry                 scoring[2026].games 20 -> 21   (row span 706282..706337, at char 706311)
+    jarrod-berry                 scoring[2026].avg  76.55 -> 76.38   (row span 706282..706337, at char 706297)
+    jaspa-fletcher               scoring[2026].games 25 -> 26   (row span 226093..226147, at char 226122)
+    jaspa-fletcher               scoring[2026].avg  73.96 -> 72.81   (row span 226093..226147, at char 226108)
+    jesse-dattoli                scoring[2026].games 4 -> 5   (row span 79507..79560, at char 79536)
+    jesse-dattoli                scoring[2026].avg  73.25 -> 63.6   (row span 79507..79560, at char 79522)
+    joel-hamling                 scoring[2026].games 10 -> 11   (row span 1171599..1171654, at char 1171628)
+    joel-hamling                 scoring[2026].avg  52.19 -> 52.08   (row span 1171599..1171654, at char 1171614)
+    jordan-clark                 scoring[2026].games 25 -> 26   (row span 521443..521497, at char 521472)
+    jordan-clark                 scoring[2026].avg  94.51 -> 92.76   (row span 521443..521497, at char 521458)
+    josh-battle                  scoring[2026].games 22 -> 23   (row span 726841..726896, at char 726870)
+    josh-battle                  scoring[2026].avg  84.83 -> 83.01   (row span 726841..726896, at char 726856)
+    josh-dunkley                 scoring[2026].games 25 -> 26   (row span 819202..819257, at char 819231)
+    josh-dunkley                 scoring[2026].avg  93.73 -> 93.51   (row span 819202..819257, at char 819217)
+    josh-treacy                  scoring[2026].games 25 -> 26   (row span 410166..410221, at char 410195)
+    josh-treacy                  scoring[2026].avg  92.28 -> 89.62   (row span 410166..410221, at char 410181)
+    josh-ward                    scoring[2026].games 24 -> 25   (row span 290148..290203, at char 290177)
+    josh-ward                    scoring[2026].avg  85.49 -> 87.59   (row span 290148..290203, at char 290163)
+    joshua-weddle                scoring[2026].games 20 -> 21   (row span 230743..230798, at char 230772)
+    joshua-weddle                scoring[2026].avg  70.74 -> 70.47   (row span 230743..230798, at char 230758)
+    judd-mcvee                   scoring[2026].games 22 -> 23   (row span 340832..340885, at char 340860)
+    judd-mcvee                   scoring[2026].avg  57.6 -> 58.1   (row span 340832..340885, at char 340847)
+    justin-mcinerney             scoring[2026].games 13 -> 14   (row span 543802..543859, at char 543830)
+    justin-mcinerney             scoring[2026].avg  91.8 -> 89.89   (row span 543802..543859, at char 543817)
+    jye-amiss                    scoring[2026].games 24 -> 25   (row span 291021..291076, at char 291050)
+    jye-amiss                    scoring[2026].avg  68.77 -> 67.82   (row span 291021..291076, at char 291036)
+    kai-lohmann                  scoring[2026].games 25 -> 26   (row span 301003..301057, at char 301032)
+    kai-lohmann                  scoring[2026].avg  67.72 -> 69.65   (row span 301003..301057, at char 301018)
+    karl-amon                    scoring[2026].games 19 -> 20   (row span 1029420..1029474, at char 1029449)
+    karl-amon                    scoring[2026].avg  77.24 -> 76.08   (row span 1029420..1029474, at char 1029435)
+    karl-worner                  scoring[2026].games 25 -> 26   (row span 336963..337016, at char 336991)
+    karl-worner                  scoring[2026].avg  85.5 -> 84.63   (row span 336963..337016, at char 336978)
+    lachie-neale                 scoring[2026].games 25 -> 26   (row span 1190204..1190260, at char 1190234)
+    lachie-neale                 scoring[2026].avg  107.01 -> 107.47   (row span 1190204..1190260, at char 1190219)
+    levi-ashcroft                scoring[2026].games 25 -> 26   (row span 67530..67585, at char 67559)
+    levi-ashcroft                scoring[2026].avg  74.61 -> 73.82   (row span 67530..67585, at char 67545)
+    lewis-melican                scoring[2026].games 10 -> 11   (row span 964906..964960, at char 964934)
+    lewis-melican                scoring[2026].avg  59.1 -> 56.36   (row span 964906..964960, at char 964921)
+    lloyd-meek                   scoring[2026].games 24 -> 25   (row span 662067..662123, at char 662096)
+    lloyd-meek                   scoring[2026].avg  80.26 -> 81.21   (row span 662067..662123, at char 662082)
+    logan-mcdonald               scoring[2026].games 22 -> 23   (row span 363704..363759, at char 363733)
+    logan-mcdonald               scoring[2026].avg  68.59 -> 69.91   (row span 363704..363759, at char 363719)
+    logan-morris                 scoring[2026].games 24 -> 25   (row span 168063..168118, at char 168092)
+    logan-morris                 scoring[2026].avg  76.67 -> 75.92   (row span 168063..168118, at char 168078)
+    luke-jackson                 scoring[2026].games 25 -> 26   (row span 441407..441464, at char 441437)
+    luke-jackson                 scoring[2026].avg  119.94 -> 120.9   (row span 441407..441464, at char 441422)
+    luke-ryan                    scoring[2026].games 24 -> 25   (row span 747051..747104, at char 747079)
+    luke-ryan                    scoring[2026].avg  89.2 -> 88.23   (row span 747051..747104, at char 747066)
+    mabior-chol                  scoring[2026].games 19 -> 20   (row span 866244..866299, at char 866273)
+    mabior-chol                  scoring[2026].avg  63.67 -> 61.64   (row span 866244..866299, at char 866259)
+    mason-cox                    scoring[2026].games 18 -> 19   (row span 973405..973465, at char 973434)
+    mason-cox                    scoring[2026].avg  46.55 -> 47.99   (row span 973405..973465, at char 973420)
+    massimo-d-ambrosio           scoring[2026].games 24 -> 25   (row span 352257..352312, at char 352286)
+    massimo-d-ambrosio           scoring[2026].avg  77.76 -> 78.69   (row span 352257..352312, at char 352272)
+    matt-johnson-1               scoring[2026].games 24 -> 25   (row span 301831..301886, at char 301860)
+    matt-johnson-1               scoring[2026].avg  70.61 -> 71.75   (row span 301831..301886, at char 301846)
+    matthew-roberts              scoring[2026].games 20 -> 21   (row span 312642..312697, at char 312671)
+    matthew-roberts              scoring[2026].avg  71.07 -> 70.97   (row span 312642..312697, at char 312657)
+    max-beattie                  scoring[2026].games 3 -> 4   (row span 59841..59894, at char 59870)
+    max-beattie                  scoring[2026].avg  52.67 -> 44.0   (row span 59841..59894, at char 59856)
+    michael-frederick            scoring[2026].games 20 -> 21   (row span 489495..489553, at char 489524)
+    michael-frederick            scoring[2026].avg  63.16 -> 63.3   (row span 489495..489553, at char 489510)
+    mitchell-lewis               scoring[2026].games 22 -> 23   (row span 754136..754191, at char 754165)
+    mitchell-lewis               scoring[2026].avg  72.25 -> 72.63   (row span 754136..754191, at char 754151)
+    murphy-reid                  scoring[2026].games 23 -> 24   (row span 76040..76098, at char 76069)
+    murphy-reid                  scoring[2026].avg  86.75 -> 86.22   (row span 76040..76098, at char 76055)
+    neil-erasmus                 scoring[2026].games 25 -> 26   (row span 292725..292780, at char 292754)
+    neil-erasmus                 scoring[2026].avg  70.58 -> 70.4   (row span 292725..292780, at char 292740)
+    nick-watson                  scoring[2026].games 21 -> 22   (row span 148861..148915, at char 148890)
+    nick-watson                  scoring[2026].avg  85.34 -> 87.01   (row span 148861..148915, at char 148876)
+    oscar-allen                  scoring[2026].games 13 -> 14   (row span 624150..624204, at char 624178)
+    oscar-allen                  scoring[2026].avg  53.6 -> 52.2   (row span 624150..624204, at char 624165)
+    oscar-mcdonald               scoring[2026].games 12 -> 13   (row span 924548..924602, at char 924576)
+    oscar-mcdonald               scoring[2026].avg  65.5 -> 66.08   (row span 924548..924602, at char 924563)
+    patrick-voss                 scoring[2026].games 24 -> 25   (row span 337834..337889, at char 337863)
+    patrick-voss                 scoring[2026].avg  64.91 -> 64.63   (row span 337834..337889, at char 337849)
+    ryan-lester                  scoring[2026].games 21 -> 22   (row span 1280341..1280395, at char 1280370)
+    ryan-lester                  scoring[2026].avg  73.57 -> 73.77   (row span 1280341..1280395, at char 1280356)
+    sam-draper                   scoring[2026].games 24 -> 25   (row span 756267..756327, at char 756296)
+    sam-draper                   scoring[2026].avg  70.84 -> 70.45   (row span 756267..756327, at char 756282)
+    sam-switkowski               scoring[2026].games 24 -> 25   (row span 665073..665127, at char 665102)
+    sam-switkowski               scoring[2026].avg  60.46 -> 59.72   (row span 665073..665127, at char 665088)
+    sam-wicks                    scoring[2026].games 19 -> 20   (row span 589020..589074, at char 589049)
+    sam-wicks                    scoring[2026].avg  60.79 -> 59.75   (row span 589020..589074, at char 589035)
+    shai-bolton                  scoring[2026].games 24 -> 25   (row span 719233..719290, at char 719261)
+    shai-bolton                  scoring[2026].avg  94.1 -> 95.18   (row span 719233..719290, at char 719248)
+    tom-barrass                  scoring[2026].games 20 -> 21   (row span 1015052..1015107, at char 1015081)
+    tom-barrass                  scoring[2026].avg  56.94 -> 56.99   (row span 1015052..1015107, at char 1015067)
+    tom-hanily                   scoring[2026].games 6 -> 7   (row span 213853..213905, at char 213881)
+    tom-hanily                   scoring[2026].avg  52.0 -> 53.86   (row span 213853..213905, at char 213868)
+    tom-mccartin                 scoring[2026].games 21 -> 22   (row span 636369..636424, at char 636398)
+    tom-mccartin                 scoring[2026].avg  79.92 -> 79.83   (row span 636369..636424, at char 636384)
+    tom-papley                   scoring[2026].games 19 -> 20   (row span 856754..856808, at char 856783)
+    tom-papley                   scoring[2026].avg  75.79 -> 75.65   (row span 856754..856808, at char 856769)
+    ty-gallop                    scoring[2026].games 19 -> 20   (row span 93402..93457, at char 93431)
+    ty-gallop                    scoring[2026].avg  57.37 -> 57.85   (row span 93402..93457, at char 93417)
+    will-ashcroft                scoring[2026].games 25 -> 26   (row span 217619..217675, at char 217649)
+    will-ashcroft                scoring[2026].avg  106.23 -> 107.03   (row span 217619..217675, at char 217634)
+    will-day                     scoring[2026].games 12 -> 13   (row span 450895..450950, at char 450924)
+    will-day                     scoring[2026].avg  85.84 -> 84.24   (row span 450895..450950, at char 450910)
+    zac-bailey                   scoring[2026].games 24 -> 25   (row span 617424..617482, at char 617453)
+    zac-bailey                   scoring[2026].avg  99.05 -> 99.09   (row span 617424..617482, at char 617439)
+    willem-duursma               games              17 -> 21   (row span 1..664, at char 148)
+    zeke-uwland                  games              16 -> 17   (row span 666..1332, at char 805)
+    harry-dean                   games              15 -> 21   (row span 1334..1988, at char 1473)
+    cooper-duff-tytler           games              11 -> 15   (row span 1990..2671, at char 2145)
+    dylan-patterson              games              4 -> 5   (row span 2673..3335, at char 2820)
+    daniel-annable               games              1 -> 3   (row span 3337..3999, at char 3484)
+    sam-cumming                  games              13 -> 14   (row span 4001..4650, at char 4142)
+    samuel-grlj                  games              17 -> 21   (row span 4652..5313, at char 4793)
+    jacob-farrow                 games              16 -> 20   (row span 5982..6642, at char 6124)
+    xavier-taylor                games              2 -> 3   (row span 6644..7295, at char 6788)
+    dyson-sharp                  games              11 -> 15   (row span 7963..8624, at char 8105)
+    harry-kyle                   games              5 -> 11   (row span 8626..9282, at char 8764)
+    jai-murray                   games              7 -> 8   (row span 10592..11252, at char 10732)
+    beau-addinsall               games              6 -> 9   (row span 11254..11923, at char 11402)
+    josh-lindsay                 games              12 -> 15   (row span 11925..12579, at char 12067)
+    lachlan-carmichael           games              0 -> 2   (row span 13240..13936, at char 13394)
+    aidan-schubert               games              0 -> 1   (row span 14595..15259, at char 14743)
+    louis-emmett                 games              5 -> 7   (row span 17255..17927, at char 17400)
+    jack-dalton                  games              4 -> 5   (row span 21888..22538, at char 22029)
+    max-kondogiannis             games              7 -> 11   (row span 23194..23850, at char 23344)
+    samuel-swadling              games              5 -> 9   (row span 23853..24519, at char 24003)
+    tobyn-murray                 games              0 -> 1   (row span 25848..26498, at char 25990)
+    billy-cootee                 games              5 -> 11   (row span 27177..27828, at char 27321)
+    talor-byrne                  games              13 -> 19   (row span 29129..29784, at char 29269)
+    archie-ludowyke              games              0 -> 2   (row span 32440..33101, at char 32590)
+    hussien-el-achkar            games              7 -> 9   (row span 34402..35067, at char 34554)
+    angus-anderson               games              11 -> 16   (row span 37062..37733, at char 37210)
+    jack-watkins                 games              10 -> 11   (row span 39721..40384, at char 39864)
+    ollie-greeves                games              3 -> 4   (row span 41029..41679, at char 41174)
+    riley-hamilton               games              4 -> 8   (row span 43018..43686, at char 43167)
+    tom-blamires                 games              13 -> 16   (row span 47714..48366, at char 47860)
+    paddy-cross                  games              9 -> 10   (row span 48998..49634, at char 49141)
+    will-lewis                   games              11 -> 12   (row span 49637..50280, at char 49780)
+    milan-murdock                games              15 -> 19   (row span 50282..50925, at char 50429)
+    balyn-o-brien                games              2 -> 6   (row span 50927..51586, at char 51074)
+    chris-scerri                 games              7 -> 9   (row span 51588..52225, at char 51733)
+    mitch-zadow                  games              5 -> 9   (row span 52227..52866, at char 52370)
+    jaxon-artemis                games              2 -> 6   (row span 52868..53543, at char 53012)
+    kye-annand                   games              7 -> 11   (row span 53545..54194, at char 53685)
+    xavier-bamert                games              7 -> 10   (row span 55567..56255, at char 55712)
+    campbell-lake                games              5 -> 9   (row span 56951..57611, at char 57095)
+    max-beattie                  games              0 -> 4   (row span 59682..60357, at char 59823)
+    marcus-herbert               games              6 -> 10   (row span 60359..61046, at char 60506)
+    alex-van-wyk                 games              0 -> 3   (row span 61049..61744, at char 61196)
+    liam-puncher                 games              4 -> 8   (row span 61746..62443, at char 61891)
+    joel-fitzgerald              games              6 -> 11   (row span 62445..63131, at char 62596)
+    sam-lalor                    games              20 -> 23   (row span 64484..65191, at char 64621)
+    finn-o-sullivan              games              37 -> 41   (row span 65193..65935, at char 65342)
+    jagga-smith                  games              18 -> 24   (row span 65937..66594, at char 66078)
+    levi-ashcroft                games              46 -> 53   (row span 67308..68031, at char 67453)
+    harvey-langford              games              41 -> 46   (row span 68033..68752, at char 68182)
+    tobie-travaglia              games              16 -> 19   (row span 69404..70124, at char 69551)
+    leo-lombard                  games              23 -> 27   (row span 70126..70837, at char 70265)
+    alix-tauru                   games              18 -> 19   (row span 70839..71552, at char 70979)
+    xavier-lindsay               games              23 -> 25   (row span 71554..72272, at char 71702)
+    taj-hotton                   games              13 -> 17   (row span 72274..72980, at char 72414)
+    isaac-kako                   games              34 -> 38   (row span 72982..73692, at char 73120)
+    joe-berry                    games              31 -> 35   (row span 74402..75110, at char 74538)
+    bo-allan                     games              22 -> 25   (row span 75112..75822, at char 75246)
+    murphy-reid                  games              43 -> 48   (row span 75824..76543, at char 75964)
+    cooper-hynes                 games              25 -> 31   (row span 77842..78576, at char 77986)
+    luke-trainor                 games              29 -> 32   (row span 78578..79286, at char 78722)
+    jesse-dattoli                games              3 -> 8   (row span 79288..79996, at char 79432)
+    harry-armstrong              games              11 -> 12   (row span 79998..80712, at char 80148)
+    cody-angove                  games              4 -> 5   (row span 80714..81411, at char 80856)
+    lachie-jaques                games              8 -> 10   (row span 84218..84886, at char 84362)
+    jobe-shanahan                games              28 -> 32   (row span 84889..85604, at char 85035)
+    josh-dolan                   games              18 -> 24   (row span 85606..86322, at char 85744)
+    jack-whitlock                games              23 -> 27   (row span 86992..87716, at char 87138)
+    jack-ough                    games              4 -> 5   (row span 89032..89670, at char 89170)
+    christian-moraes             games              23 -> 26   (row span 90331..91066, at char 90483)
+    angus-clarke                 games              17 -> 19   (row span 91068..91778, at char 91210)
+    riley-bice                   games              33 -> 36   (row span 92490..93191, at char 92628)
+    ty-gallop                    games              23 -> 26   (row span 93193..93906, at char 93331)
+    jay-polkinghorne             games              2 -> 8   (row span 94574..95232, at char 94724)
+    hugh-boxshall                games              17 -> 21   (row span 95234..95947, at char 95380)
+    tom-gross                    games              9 -> 12   (row span 95949..96664, at char 96087)
+    charlie-west                 games              5 -> 10   (row span 98725..99441, at char 98869)
+    sam-davidson                 games              31 -> 37   (row span 99444..100173, at char 99586)
+    will-hayes-b                 games              8 -> 12   (row span 102932..103668, at char 103072)
+    rhys-unwin                   games              3 -> 7   (row span 106343..107038, at char 106481)
+    luke-kennedy                 games              4 -> 8   (row span 107040..107718, at char 107184)
+    hamish-davis                 games              26 -> 28   (row span 109024..109745, at char 109168)
+    zak-johnson                  games              14 -> 16   (row span 112449..113151, at char 112589)
+    archer-day-wicks             games              22 -> 26   (row span 113825..114641, at char 113974)
+    patrick-retschko             games              14 -> 18   (row span 118740..119501, at char 118891)
+    josaia-delana                games              8 -> 12   (row span 124979..125672, at char 125126)
+    lachlan-gulbin               games              9 -> 12   (row span 125675..126386, at char 125824)
+    isaiah-dudley                games              35 -> 42   (row span 129584..130269, at char 129731)
+    ben-jepson                   games              5 -> 6   (row span 131641..132322, at char 131784)
+    josh-lai                     games              14 -> 18   (row span 132324..132962, at char 132461)
+    tom-mccarthy                 games              28 -> 32   (row span 133380..134096, at char 133522)
+    zac-banch                    games              8 -> 12   (row span 134098..134806, at char 134234)
+    harrison-ramm                games              3 -> 7   (row span 134809..135529, at char 134955)
+    michael-sellwood             games              18 -> 23   (row span 136229..136902, at char 136379)
+    roan-steele                  games              20 -> 24   (row span 137614..138440, at char 137756)
+    cooper-trembath              games              22 -> 26   (row span 139252..140084, at char 139402)
+    noah-howes                   games              0 -> 2   (row span 143324..144107, at char 143465)
+    harley-reid                  games              58 -> 62   (row span 145468..146241, at char 145609)
+    colby-mckercher              games              58 -> 62   (row span 146243..147039, at char 146392)
+    jed-walter                   games              44 -> 48   (row span 147041..147812, at char 147180)
+    nick-watson                  games              59 -> 65   (row span 148598..149357, at char 148737)
+    ryley-sanders                games              52 -> 58   (row span 149359..150151, at char 149504)
+    caleb-windsor                games              52 -> 57   (row span 150153..150929, at char 150297)
+    daniel-curtin                games              44 -> 50   (row span 150931..151707, at char 151076)
+    ethan-read                   games              36 -> 40   (row span 151709..152481, at char 151848)
+    nate-caddy                   games              44 -> 48   (row span 152483..153247, at char 152623)
+    connor-o-sullivan            games              45 -> 51   (row span 153249..154024, at char 153403)
+    koltyn-tholstrup             games              38 -> 43   (row span 154673..155449, at char 154823)
+    jake-rogers                  games              23 -> 27   (row span 155451..156217, at char 155592)
+    jordan-croft                 games              16 -> 19   (row span 156219..156952, at char 156363)
+    will-green                   games              0 -> 3   (row span 156954..157629, at char 157096)
+    darcy-wilson                 games              59 -> 63   (row span 158327..159105, at char 158470)
+    wil-dawson                   games              14 -> 18   (row span 161110..161887, at char 161250)
+    riley-hardeman               games              24 -> 27   (row span 161889..162662, at char 162035)
+    caiden-cleary                games              25 -> 28   (row span 162664..163429, at char 162809)
+    oscar-ryan                   games              0 -> 2   (row span 164896..165562, at char 165034)
+    logan-morris                 games              63 -> 70   (row span 167796..168560, at char 167940)
+    mitchell-edwards             games              15 -> 20   (row span 168562..169232, at char 168716)
+    angus-hastie                 games              19 -> 21   (row span 169234..169994, at char 169376)
+    billy-wilson                 games              15 -> 21   (row span 169996..170702, at char 170138)
+    shaun-mannagh                games              53 -> 59   (row span 171471..172231, at char 171615)
+    kane-mcauliffe               games              23 -> 24   (row span 174143..174910, at char 174291)
+    joseph-fonti                 games              40 -> 44   (row span 176967..177716, at char 177109)
+    joel-freijah                 games              55 -> 61   (row span 177718..178514, at char 177862)
+    thomas-anastasopoulos        games              2 -> 5   (row span 179847..180515, at char 180004)
+    harvey-johnston              games              13 -> 14   (row span 180517..181230, at char 180665)
+    hugo-garcia                  games              45 -> 49   (row span 181232..182004, at char 181374)
+    archie-roberts               games              44 -> 48   (row span 183783..184550, at char 183929)
+    will-lorenz                  games              9 -> 11   (row span 185815..186585, at char 185957)
+    harvey-thomas                games              58 -> 62   (row span 187299..188065, at char 187444)
+    oliver-wiltshire             games              13 -> 17   (row span 188454..189172, at char 188604)
+    lawson-humphries             games              54 -> 60   (row span 189676..190442, at char 189826)
+    sam-clohesy                  games              43 -> 46   (row span 192305..193069, at char 192446)
+    vigo-visentini               games              2 -> 5   (row span 193477..194290, at char 193626)
+    liam-o-connell               games              16 -> 20   (row span 198028..198736, at char 198177)
+    bruce-reville                games              42 -> 43   (row span 199825..200605, at char 199974)
+    lachlan-bramble              games              95 -> 101   (row span 202080..203014, at char 202231)
+    mykelti-lefau                games              28 -> 32   (row span 203017..203761, at char 203166)
+    lachie-sullivan              games              25 -> 26   (row span 204621..205374, at char 204772)
+    max-hall                     games              42 -> 46   (row span 207118..207831, at char 207252)
+    toby-murray                  games              11 -> 12   (row span 208933..209597, at char 209075)
+    cooper-lord                  games              28 -> 34   (row span 210023..210791, at char 210165)
+    tom-hanily                   games              12 -> 15   (row span 213648..214351, at char 213787)
+    campbell-gray                games              12 -> 13   (row span 214353..215176, at char 214500)
+    aaron-cadman                 games              73 -> 77   (row span 216485..217295, at char 216628)
+    will-ashcroft                games              77 -> 84   (row span 217297..218128, at char 217442)
+    harry-sheezel                games              86 -> 88   (row span 218130..218977, at char 218274)
+    george-wardlaw               games              52 -> 55   (row span 218979..219817, at char 219126)
+    bailey-humphrey              games              79 -> 83   (row span 220643..221486, at char 220792)
+    cameron-mackenzie            games              63 -> 69   (row span 221488..222329, at char 221641)
+    jhye-clark                   games              31 -> 35   (row span 222331..223151, at char 222470)
+    mattaes-phillipou            games              61 -> 65   (row span 223986..224825, at char 224140)
+    oliver-hollands              games              76 -> 79   (row span 224827..225764, at char 224977)
+    jaspa-fletcher               games              87 -> 94   (row span 225766..226596, at char 225913)
+    jedd-busslinger              games              14 -> 15   (row span 226598..227330, at char 226748)
+    matthew-jefferson            games              19 -> 23   (row span 228110..228831, at char 228264)
+    harry-rowston                games              25 -> 29   (row span 228833..229595, at char 228979)
+    max-michalanney              games              85 -> 91   (row span 229597..230424, at char 229745)
+    joshua-weddle                games              75 -> 81   (row span 230426..231248, at char 230570)
+    edward-allan                 games              29 -> 34   (row span 231250..232022, at char 231394)
+    max-gruzewski                games              21 -> 25   (row span 233495..234253, at char 233641)
+    lachlan-cowan                games              56 -> 62   (row span 238434..239248, at char 238578)
+    toby-mcmullin                games              34 -> 36   (row span 240845..241657, at char 240989)
+    billy-dowling                games              11 -> 13   (row span 246644..247418, at char 246789)
+    joe-richards                 games              49 -> 51   (row span 249420..250189, at char 249562)
+    bailey-macdonald             games              17 -> 22   (row span 251798..252565, at char 251948)
+    steely-green                 games              42 -> 45   (row span 253755..254511, at char 253897)
+    seth-campbell                games              62 -> 66   (row span 257502..258360, at char 257645)
+    tylar-young                  games              54 -> 58   (row span 261197..262114, at char 261338)
+    james-o-donnell              games              63 -> 69   (row span 264403..265254, at char 264556)
+    nick-madden                  games              8 -> 12   (row span 266344..267043, at char 266491)
+    will-edwards                 games              12 -> 13   (row span 267644..268294, at char 267791)
+    anthony-caminiti             games              72 -> 74   (row span 274527..275353, at char 274682)
+    ryan-maric                   games              62 -> 63   (row span 277724..278656, at char 277864)
+    jason-horne-francis          games              98 -> 101   (row span 284424..285337, at char 284581)
+    nick-daicos                  games              113 -> 118   (row span 287114..288014, at char 287255)
+    mac-andrew                   games              84 -> 88   (row span 288016..288894, at char 288155)
+    josh-rachele                 games              89 -> 95   (row span 288896..289779, at char 289037)
+    josh-ward                    games              86 -> 92   (row span 289781..290653, at char 289918)
+    jye-amiss                    games              90 -> 96   (row span 290655..291531, at char 290792)
+    neil-erasmus                 games              58 -> 65   (row span 292348..293233, at char 292492)
+    nasiah-wanganeen-milera      games              101 -> 102   (row span 293235..294144, at char 293400)
+    darcy-wilmot                 games              102 -> 109   (row span 297290..298163, at char 297432)
+    tom-brown                    games              56 -> 60   (row span 298165..298971, at char 298301)
+    angus-sheldrick              games              46 -> 49   (row span 298973..299800, at char 299123)
+    jacob-van-rooyen             games              76 -> 79   (row span 299802..300636, at char 299954)
+    kai-lohmann                  games              72 -> 79   (row span 300638..301508, at char 300778)
+    matt-johnson-1               games              73 -> 80   (row span 301510..302336, at char 301656)
+    josh-goater                  games              16 -> 18   (row span 302338..303268, at char 302479)
+    sam-butler-1                 games              32 -> 33   (row span 303270..304143, at char 303410)
+    connor-macdonald             games              109 -> 115   (row span 305794..306678, at char 305945)
+    tyler-sonsie                 games              53 -> 55   (row span 307546..308435, at char 307690)
+    sam-banks                    games              57 -> 60   (row span 308437..309261, at char 308574)
+    judson-clarke                games              17 -> 20   (row span 309263..310085, at char 309407)
+    brady-hough                  games              94 -> 98   (row span 310087..310980, at char 310227)
+    mitchito-owens               games              88 -> 92   (row span 311372..312258, at char 311520)
+    matthew-roberts              games              63 -> 69   (row span 312260..313142, at char 312409)
+    paul-curtis                  games              94 -> 98   (row span 313144..314026, at char 313284)
+    jake-soligo                  games              102 -> 107   (row span 314028..314913, at char 314170)
+    rhett-bazzo                  games              38 -> 42   (row span 314915..315795, at char 315057)
+    blake-howes                  games              47 -> 48   (row span 316404..317165, at char 316544)
+    arthur-jones                 games              32 -> 38   (row span 319512..320348, at char 319654)
+    zac-taylor                   games              43 -> 47   (row span 320350..321209, at char 320489)
+    marcus-windhager             games              94 -> 98   (row span 322093..323002, at char 322245)
+    harvey-harrison              games              23 -> 28   (row span 325001..325774, at char 325149)
+    jai-serong                   games              28 -> 34   (row span 325776..326603, at char 325915)
+    dante-visentini              games              25 -> 29   (row span 327452..328308, at char 327604)
+    jack-williams                games              49 -> 53   (row span 328310..329150, at char 328456)
+    jase-burgoyne                games              75 -> 79   (row span 330529..331438, at char 330673)
+    luke-nankervis               games              44 -> 49   (row span 334027..335172, at char 334172)
+    ned-long                     games              54 -> 59   (row span 335673..336648, at char 335808)
+    karl-worner                  games              50 -> 57   (row span 336650..337573, at char 336789)
+    patrick-voss                 games              45 -> 52   (row span 337575..338440, at char 337718)
+    ollie-dempsey                games              77 -> 83   (row span 339049..340019, at char 339193)
+    judd-mcvee                   games              83 -> 88   (row span 340520..341432, at char 340657)
+    oisin-mullin                 games              62 -> 68   (row span 342121..342942, at char 342266)
+    sandy-brock                  games              19 -> 20   (row span 343330..344035, at char 343475)
+    bodhi-uwland                 games              68 -> 72   (row span 344037..344860, at char 344182)
+    massimo-d-ambrosio           games              85 -> 91   (row span 351872..352760, at char 352027)
+    wade-derksen                 games              9 -> 14   (row span 353155..353909, at char 353299)
+    hugo-hall-kahan              games              7 -> 13   (row span 356939..357705, at char 357088)
+    riley-thilthorpe             games              94 -> 100   (row span 361755..362701, at char 361906)
+    logan-mcdonald               games              87 -> 93   (row span 363330..364207, at char 363477)
+    braeden-campbell             games              96 -> 102   (row span 364209..365254, at char 364359)
+    archie-perkins               games              114 -> 117   (row span 367706..368652, at char 367852)
+    zach-reid                    games              38 -> 42   (row span 368654..369523, at char 368792)
+    tanner-bruhn                 games              82 -> 88   (row span 370451..371335, at char 370595)
+    heath-chapman                games              84 -> 90   (row span 372392..373316, at char 372536)
+    conor-stone                  games              28 -> 30   (row span 373318..374331, at char 373458)
+    lachlan-jones                games              91 -> 94   (row span 374333..375277, at char 374477)
+    oliver-henry                 games              103 -> 109   (row span 376227..377156, at char 376369)
+    ryan-angwin                  games              46 -> 50   (row span 377158..378028, at char 377300)
+    max-holmes                   games              120 -> 122   (row span 378921..379866, at char 379061)
+    jake-bowey                   games              95 -> 100   (row span 379868..380797, at char 380006)
+    bailey-laurie                games              24 -> 29   (row span 380800..381619, at char 380944)
+    brayden-cook                 games              48 -> 54   (row span 383017..383962, at char 383160)
+    nathan-o-driscoll            games              50 -> 55   (row span 384355..385249, at char 384509)
+    sam-berry                    games              95 -> 100   (row span 385251..386179, at char 385389)
+    joel-jeffrey                 games              71 -> 75   (row span 386182..387116, at char 386324)
+    errol-gulden                 games              110 -> 116   (row span 389160..390105, at char 389304)
+    shannon-neale                games              64 -> 70   (row span 390107..390981, at char 390253)
+    corey-durdin                 games              83 -> 87   (row span 392459..393389, at char 392601)
+    samson-ryan                  games              27 -> 30   (row span 394375..395220, at char 394519)
+    harry-sharp                  games              53 -> 58   (row span 396666..397697, at char 396807)
+    beau-mccreery                games              114 -> 119   (row span 397699..398630, at char 397843)
+    brandon-walker               games              67 -> 68   (row span 402092..403030, at char 402238)
+    maurice-rioli-1              games              58 -> 59   (row span 403032..403971, at char 403178)
+    jacob-wehr                   games              53 -> 56   (row span 407535..408411, at char 407673)
+    josh-treacy                  games              99 -> 106   (row span 409741..410778, at char 409882)
+    lachlan-mcneil               games              85 -> 86   (row span 411439..412489, at char 411584)
+    jack-ginnivan                games              108 -> 113   (row span 413141..414173, at char 413284)
+    james-borlase                games              30 -> 35   (row span 419490..420314, at char 419639)
+    jai-newcombe                 games              121 -> 127   (row span 424597..425533, at char 424741)
+    ned-moyle                    games              25 -> 29   (row span 426752..427580, at char 426892)
+    james-peatling               games              87 -> 89   (row span 428698..429644, at char 428846)
+    sam-durham                   games              109 -> 111   (row span 429646..430587, at char 429786)
+    lachlan-mcandrew             games              21 -> 26   (row span 431086..431790, at char 431243)
+    cooper-sharman               games              88 -> 91   (row span 436188..437233, at char 436337)
+    daniel-turner                games              52 -> 56   (row span 437901..438898, at char 438048)
+    matt-rowell                  games              124 -> 128   (row span 438900..439900, at char 439041)
+    noah-anderson                games              147 -> 151   (row span 439902..440902, at char 440047)
+    luke-jackson                 games              138 -> 145   (row span 440904..441922, at char 441049)
+    lachlan-ash                  games              144 -> 148   (row span 441924..442906, at char 442063)
+    dylan-stephens               games              100 -> 104   (row span 442908..443906, at char 443055)
+    hayden-young                 games              98 -> 105   (row span 444356..445343, at char 444498)
+    caleb-serong                 games              143 -> 150   (row span 445346..446339, at char 445489)
+    kysaiah-pickett              games              145 -> 150   (row span 449422..450422, at char 449570)
+    will-day                     games              83 -> 89   (row span 450424..451508, at char 450559)
+    miles-bergman                games              114 -> 118   (row span 451510..452461, at char 451654)
+    cody-weightman               games              82 -> 87   (row span 452463..453411, at char 452609)
+    brodie-kemp                  games              68 -> 74   (row span 453862..454796, at char 454004)
+    mitch-georgiades             games              109 -> 112   (row span 454798..455816, at char 454950)
+    sam-de-koning                games              96 -> 98   (row span 455818..456765, at char 455964)
+    jackson-mead                 games              73 -> 74   (row span 460654..461655, at char 460797)
+    josh-worrell                 games              74 -> 80   (row span 463131..464161, at char 463274)
+    finn-maginness               games              63 -> 64   (row span 464163..465267, at char 464310)
+    harrison-jones               games              63 -> 66   (row span 465269..466209, at char 465417)
+    charlie-comben               games              66 -> 70   (row span 466211..467175, at char 466359)
+    trent-rivers                 games              135 -> 140   (row span 467177..468166, at char 467319)
+    nick-bryan                   games              33 -> 36   (row span 471598..472639, at char 471740)
+    chad-warner                  games              127 -> 130   (row span 472641..473742, at char 472783)
+    francis-evans                games              61 -> 67   (row span 474289..475312, at char 474433)
+    hugo-ralphsmith              games              71 -> 75   (row span 477762..478886, at char 477911)
+    ryan-byrnes                  games              91 -> 95   (row span 482422..483595, at char 482563)
+    jaxon-prior                  games              80 -> 84   (row span 486893..487918, at char 487033)
+    jy-farrar                    games              44 -> 45   (row span 487920..489013, at char 488057)
+    michael-frederick            games              116 -> 123   (row span 489015..490118, at char 489167)
+    bradley-close                games              139 -> 145   (row span 496322..497398, at char 496465)
+    connor-budarick              games              67 -> 70   (row span 497400..498503, at char 497547)
+    malcolm-rosas                games              64 -> 65   (row span 500639..501667, at char 500783)
+    sam-walsh                    games              152 -> 158   (row span 506962..508007, at char 507099)
+    izak-rankine                 games              121 -> 127   (row span 509070..510060, at char 509211)
+    ben-king                     games              139 -> 143   (row span 512086..513071, at char 512221)
+    bailey-smith                 games              144 -> 150   (row span 513073..514094, at char 513216)
+    nick-blakey                  games              170 -> 173   (row span 516026..517074, at char 516167)
+    jye-caldwell                 games              103 -> 106   (row span 517076..518125, at char 517220)
+    isaac-quaynor                games              150 -> 154   (row span 519190..520238, at char 519334)
+    jordan-clark                 games              145 -> 152   (row span 520905..521948, at char 521047)
+    liam-stocker                 games              98 -> 102   (row span 524541..525515, at char 524684)
+    xavier-o-halloran            games              101 -> 104   (row span 526421..527519, at char 526574)
+    james-rowbottom              games              159 -> 162   (row span 529034..530096, at char 529184)
+    rhylee-west                  games              99 -> 105   (row span 530098..531163, at char 530239)
+    tom-sparrow                  games              136 -> 141   (row span 531166..532227, at char 531308)
+    james-jordon                 games              133 -> 136   (row span 535117..536060, at char 535261)
+    kieren-briggs                games              84 -> 88   (row span 536062..537000, at char 536210)
+    bailey-williams-wc           games              102 -> 106   (row span 537002..538063, at char 537160)
+    laitham-vandermeer           games              88 -> 89   (row span 538724..539837, at char 538878)
+    jack-ross                    games              107 -> 111   (row span 542207..543251, at char 542345)
+    justin-mcinerney             games              122 -> 123   (row span 543253..544316, at char 543405)
+    bailey-scott                 games              115 -> 116   (row span 546603..547674, at char 546747)
+    noah-answerth                games              99 -> 104   (row span 550590..551577, at char 550734)
+    lachlan-schultz              games              142 -> 147   (row span 552173..553217, at char 552321)
+    connor-idun                  games              136 -> 140   (row span 554655..555690, at char 554795)
+    darcy-fort                   games              75 -> 82   (row span 557580..558587, at char 557722)
+    toby-bedford                 games              98 -> 99   (row span 563232..564171, at char 563374)
+    callum-wilkie                games              174 -> 178   (row span 565841..566998, at char 565986)
+    tom-atkins                   games              172 -> 178   (row span 570295..571444, at char 570434)
+    kade-chandler                games              98 -> 102   (row span 572521..573604, at char 572665)
+    jordon-sweet                 games              65 -> 69   (row span 575946..576943, at char 576092)
+    callum-brown-ire             games              74 -> 78   (row span 580521..581445, at char 580673)
+    mark-keane                   games              61 -> 67   (row span 581447..582336, at char 581590)
+    sam-wicks                    games              102 -> 107   (row span 588554..589630, at char 588693)
+    buku-khamis                  games              60 -> 66   (row span 591573..592537, at char 591718)
+    matt-cottrell                games              82 -> 88   (row span 592539..593523, at char 592688)
+    hayden-mclean                games              106 -> 110   (row span 595115..596143, at char 595264)
+    ned-reeves                   games              57 -> 58   (row span 596145..597062, at char 596290)
+    john-noble                   games              156 -> 160   (row span 601739..602876, at char 601877)
+    cameron-rayner               games              186 -> 193   (row span 603365..604415, at char 603510)
+    andrew-brayshaw              games              189 -> 196   (row span 604417..605533, at char 604566)
+    luke-davies-uniacke          games              149 -> 153   (row span 606576..607711, at char 606733)
+    adam-cerra                   games              163 -> 169   (row span 607713..608809, at char 607852)
+    hunter-clark                 games              116 -> 118   (row span 609603..610803, at char 609745)
+    nicholas-coffield            games              75 -> 77   (row span 610805..611805, at char 610956)
+    aaron-naughton               games              185 -> 190   (row span 611807..613028, at char 611954)
+    darcy-fogarty                games              138 -> 142   (row span 614581..615694, at char 614727)
+    zac-bailey                   games              184 -> 191   (row span 616821..618056, at char 616960)
+    ed-richards                  games              166 -> 172   (row span 618058..619283, at char 618199)
+    jack-higgins                 games              158 -> 161   (row span 619285..620377, at char 619427)
+    brandon-starcevich           games              139 -> 143   (row span 620379..621493, at char 620533)
+    wil-powell                   games              147 -> 150   (row span 621495..622594, at char 621633)
+    oscar-allen                  games              112 -> 119   (row span 623623..624669, at char 623765)
+    tim-kelly                    games              181 -> 185   (row span 626367..627481, at char 626505)
+    liam-ryan                    games              139 -> 142   (row span 628656..629743, at char 628792)
+    sam-taylor                   games              139 -> 142   (row span 630785..631876, at char 630925)
+    charlie-spargo               games              123 -> 127   (row span 631878..632980, at char 632024)
+    tom-de-koning                games              111 -> 115   (row span 632982..634052, at char 633130)
+    bayley-fritsch               games              188 -> 193   (row span 634054..635153, at char 634200)
+    tom-mccartin                 games              168 -> 174   (row span 635778..636884, at char 635922)
+    harrison-petty               games              116 -> 121   (row span 638635..639705, at char 638783)
+    charlie-ballard              games              141 -> 145   (row span 642215..643330, at char 642365)
+    james-worpel                 games              156 -> 159   (row span 644347..645457, at char 644491)
+    gryan-miers                  games              166 -> 172   (row span 653452..654485, at char 653592)
+    ben-miller                   games              86 -> 90   (row span 657260..658197, at char 657400)
+    dylan-moore                  games              144 -> 150   (row span 660153..661185, at char 660294)
+    lloyd-meek                   games              96 -> 102   (row span 661639..662587, at char 661781)
+    tristan-xerri                games              91 -> 95   (row span 663526..664548, at char 663674)
+    sam-switkowski               games              124 -> 130   (row span 664550..665587, at char 664696)
+    bailey-banfield              games              118 -> 119   (row span 669007..670276, at char 669155)
+    liam-baker                   games              168 -> 171   (row span 674296..675569, at char 674434)
+    changkuoth-jiath             games              87 -> 92   (row span 686161..687206, at char 686314)
+    andrew-mcgrath               games              196 -> 200   (row span 688710..689970, at char 688855)
+    tim-taranto                  games              190 -> 194   (row span 689972..691140, at char 690113)
+    hugh-mccluggage              games              221 -> 225   (row span 691142..692318, at char 691291)
+    ben-ainsworth                games              177 -> 183   (row span 692320..693478, at char 692463)
+    will-setterfield             games              91 -> 95   (row span 693480..694587, at char 693631)
+    griffin-logue                games              109 -> 113   (row span 696485..697599, at char 696630)
+    will-brodie                  games              55 -> 56   (row span 697601..698648, at char 697742)
+    oliver-florent               games              203 -> 209   (row span 699815..701084, at char 699962)
+    jy-simpkin                   games              192 -> 196   (row span 701086..702271, at char 701225)
+    todd-marshall                games              127 -> 131   (row span 704516..705633, at char 704662)
+    jarrod-berry                 games              198 -> 205   (row span 705635..706795, at char 705779)
+    timothy-english              games              167 -> 171   (row span 708077..709285, at char 708229)
+    isaac-cumming                games              117 -> 122   (row span 709287..710386, at char 709431)
+    will-hayward                 games              202 -> 205   (row span 710388..711529, at char 710530)
+    ben-long                     games              152 -> 156   (row span 714210..715361, at char 714344)
+    patrick-lipinski             games              159 -> 161   (row span 717371..718581, at char 717522)
+    shai-bolton                  games              176 -> 183   (row span 718583..719758, at char 718723)
+    willem-drew                  games              149 -> 152   (row span 721454..722454, at char 721596)
+    josh-battle                  games              166 -> 172   (row span 726196..727361, at char 726338)
+    thomas-stewart               games              208 -> 214   (row span 727363..728525, at char 727509)
+    brennan-cox                  games              150 -> 152   (row span 728527..729695, at char 728669)
+    darcy-cameron                games              138 -> 143   (row span 733588..734665, at char 733736)
+    lewis-young                  games              88 -> 93   (row span 734667..735787, at char 734809)
+    jack-graham                  games              158 -> 162   (row span 737953..739134, at char 738095)
+    josh-daicos                  games              170 -> 175   (row span 740855..742122, at char 740996)
+    luke-ryan                    games              197 -> 204   (row span 746422..747571, at char 746558)
+    nick-larkey                  games              153 -> 157   (row span 750557..751675, at char 750699)
+    harry-morrison               games              132 -> 138   (row span 751677..752849, at char 751825)
+    mitchell-lewis               games              96 -> 101   (row span 753552..754665, at char 753700)
+    jake-waterman                games              131 -> 135   (row span 754668..755786, at char 754814)
+    sam-draper                   games              96 -> 103   (row span 755788..756807, at char 755929)
+    rowan-marshall               games              173 -> 177   (row span 761513..762803, at char 761662)
+    cameron-zurhaar              games              162 -> 166   (row span 762805..764071, at char 762952)
+    jack-henry                   games              178 -> 184   (row span 766165..767365, at char 766305)
+    zach-guthrie                 games              147 -> 153   (row span 772626..773865, at char 772768)
+    mark-o-connor                games              163 -> 169   (row span 785140..786306, at char 785287)
+    jacob-weitering              games              214 -> 218   (row span 791963..793181, at char 792112)
+    callum-mills                 games              192 -> 196   (row span 794074..795282, at char 794216)
+    clayton-oliver               games              224 -> 228   (row span 795284..796506, at char 795431)
+    callum-ah-chee               games              173 -> 178   (row span 799918..801131, at char 800063)
+    harry-mckay                  games              156 -> 162   (row span 802022..803177, at char 802164)
+    wayne-milera                 games              140 -> 143   (row span 803179..804337, at char 803321)
+    charlie-curnow               games              167 -> 173   (row span 804339..805495, at char 804487)
+    matthew-kennedy-1            games              160 -> 165   (row span 805497..806737, at char 805649)
+    eric-hipwood                 games              205 -> 212   (row span 806739..807963, at char 806883)
+    daniel-rioli                 games              218 -> 222   (row span 807965..809175, at char 808107)
+    harrison-himmelberg          games              220 -> 224   (row span 809177..810390, at char 809334)
+    ben-keays                    games              180 -> 186   (row span 817277..818486, at char 817414)
+    josh-dunkley                 games              213 -> 220   (row span 818488..819741, at char 818632)
+    mason-redman                 games              155 -> 159   (row span 822154..823306, at char 822296)
+    tom-cole                     games              144 -> 148   (row span 826696..827849, at char 826830)
+    corey-wagner                 games              70 -> 72   (row span 832128..833246, at char 832271)
+    blake-hardwick               games              217 -> 223   (row span 833248..834462, at char 833394)
+    bailey-williams-wb           games              187 -> 193   (row span 835966..837342, at char 836117)
+    jack-silvagni                games              147 -> 151   (row span 839674..840953, at char 839820)
+    samuel-collins               games              168 -> 169   (row span 840955..842120, at char 841103)
+    jordan-dawson                games              172 -> 178   (row span 842122..843301, at char 842268)
+    ryan-gardner                 games              55 -> 58   (row span 844588..845581, at char 844732)
+    nathan-broad                 games              188 -> 191   (row span 848706..849902, at char 848848)
+    tom-papley                   games              210 -> 216   (row span 856070..857262, at char 856208)
+    mabior-chol                  games              122 -> 128   (row span 865644..866863, at char 865786)
+    dan-houston                  games              208 -> 213   (row span 869256..870526, at char 869396)
+    christian-petracca           games              229 -> 232   (row span 879236..880484, at char 879391)
+    isaac-heeney                 games              241 -> 244   (row span 881398..882682, at char 881541)
+    jordan-de-goey               games              200 -> 204   (row span 883184..884587, at char 883330)
+    peter-wright                 games              166 -> 170   (row span 887261..888497, at char 887405)
+    liam-duggan                  games              219 -> 222   (row span 889323..890590, at char 889463)
+    jake-lever                   games              204 -> 208   (row span 892545..893814, at char 892685)
+    kyle-langford                games              177 -> 181   (row span 895155..896543, at char 895300)
+    jayden-laverde               games              162 -> 163   (row span 897114..898379, at char 897262)
+    jack-steele                  games              221 -> 226   (row span 898381..899668, at char 898523)
+    touk-miller                  games              233 -> 237   (row span 904130..905426, at char 904271)
+    alex-neal-bullen             games              219 -> 224   (row span 912163..913544, at char 912314)
+    mitch-mcgovern               games              164 -> 170   (row span 914995..916306, at char 915142)
+    bailey-dale                  games              195 -> 198   (row span 916865..918149, at char 917005)
+    caleb-daniel                 games              234 -> 238   (row span 918151..919543, at char 918294)
+    marc-pittonet                games              96 -> 102   (row span 921149..922315, at char 921297)
+    oscar-mcdonald               games              100 -> 107   (row span 923857..925069, at char 924005)
+    ed-langdon                   games              221 -> 226   (row span 925071..926455, at char 925210)
+    dougal-howard                games              144 -> 145   (row span 926841..928165, at char 926987)
+    harris-andrews               games              255 -> 262   (row span 929595..930880, at char 929743)
+    daniel-butler                games              159 -> 161   (row span 933179..934321, at char 933323)
+    billy-frampton               games              93 -> 98   (row span 938083..939208, at char 938231)
+    reilly-o-brien               games              147 -> 148   (row span 945799..946912, at char 945948)
+    jayden-short                 games              207 -> 211   (row span 946914..948227, at char 947055)
+    lewis-melican                games              110 -> 112   (row span 964325..965520, at char 964471)
+    conor-mckenna                games              141 -> 148   (row span 968495..969739, at char 968642)
+    mason-cox                    games              151 -> 158   (row span 972690..973937, at char 972831)
+    marcus-bontempelli           games              277 -> 282   (row span 976994..978365, at char 977149)
+    luke-mcdonald                games              235 -> 236   (row span 981132..982473, at char 981275)
+    christian-salem              games              204 -> 208   (row span 982475..983900, at char 982623)
+    patrick-cripps               games              249 -> 255   (row span 985963..987294, at char 986111)
+    blake-acres                  games              193 -> 199   (row span 991403..992736, at char 991545)
+    jarman-impey                 games              237 -> 243   (row span 993405..994725, at char 993547)
+    darcy-gardiner               games              192 -> 198   (row span 994727..996056, at char 994875)
+    daniel-mcstay                games              217 -> 222   (row span 997736..999072, at char 997882)
+    zachary-merrett              games              270 -> 274   (row span 999074..1000422, at char 999224)
+    rory-lobb                    games              215 -> 221   (row span 1002412..1003857, at char 1002551)
+    george-hewett                games              216 -> 222   (row span 1005214..1006439, at char 1005360)
+    toby-nankervis               games              187 -> 191   (row span 1008257..1009558, at char 1008407)
+    alex-pearce                  games              155 -> 161   (row span 1010063..1011219, at char 1010205)
+    tom-barrass                  games              190 -> 196   (row span 1014305..1015575, at char 1014447)
+    aliir-aliir                  games              197 -> 199   (row span 1015577..1016803, at char 1015719)
+    nicholas-holman              games              153 -> 154   (row span 1019430..1020741, at char 1019579)
+    darcy-byrne-jones            games              240 -> 243   (row span 1020743..1021974, at char 1020895)
+    james-sicily                 games              197 -> 203   (row span 1022973..1024183, at char 1023115)
+    karl-amon                    games              210 -> 215   (row span 1028672..1030045, at char 1028809)
+    charlie-cameron              games              273 -> 280   (row span 1034123..1035431, at char 1034270)
+    lachie-whitfield             games              273 -> 277   (row span 1054608..1056105, at char 1054758)
+    jack-martin                  games              179 -> 182   (row span 1056775..1058194, at char 1056915)
+    jake-stringer                games              246 -> 250   (row span 1061234..1062606, at char 1061377)
+    jackson-macrae               games              280 -> 282   (row span 1062608..1064022, at char 1062755)
+    oliver-wines                 games              288 -> 292   (row span 1065087..1066487, at char 1065231)
+    nick-vlastuin                games              273 -> 277   (row span 1067476..1068857, at char 1067620)
+    jack-viney                   games              237 -> 238   (row span 1068859..1070258, at char 1068999)
+    aidan-corr                   games              184 -> 187   (row span 1072212..1073587, at char 1072352)
+    brodie-grundy                games              260 -> 265   (row span 1075752..1077173, at char 1075900)
+    mason-wood                   games              174 -> 175   (row span 1090180..1091621, at char 1090319)
+    tim-membrey                  games              217 -> 222   (row span 1093996..1095325, at char 1094138)
+    jake-lloyd                   games              290 -> 296   (row span 1117546..1118983, at char 1117684)
+    dane-rampe                   games              284 -> 289   (row span 1122751..1124288, at char 1122889)
+    stephen-coniglio             games              244 -> 248   (row span 1135488..1136944, at char 1135639)
+    nick-haynes                  games              249 -> 253   (row span 1143173..1144599, at char 1143313)
+    jeremy-cameron               games              296 -> 299   (row span 1145389..1146929, at char 1145537)
+    toby-greene                  games              278 -> 281   (row span 1151653..1153186, at char 1151794)
+    elliot-yeo                   games              229 -> 233   (row span 1168624..1170127, at char 1168763)
+    joel-hamling                 games              111 -> 116   (row span 1170962..1172216, at char 1171106)
+    bradley-hill                 games              296 -> 300   (row span 1172218..1173849, at char 1172361)
+    lachie-neale                 games              313 -> 320   (row span 1189275..1190830, at char 1189419)
+    jarrod-witts                 games              217 -> 218   (row span 1196286..1197802, at char 1196432)
+    rory-laird                   games              284 -> 289   (row span 1208928..1210409, at char 1209065)
+    jack-crisp                   games              293 -> 298   (row span 1226562..1228186, at char 1226702)
+    harry-cunningham             games              230 -> 232   (row span 1239193..1240626, at char 1239346)
+    mark-blicavs                 games              310 -> 315   (row span 1245449..1246981, at char 1245596)
+    dion-prestia                 games              251 -> 254   (row span 1256264..1257862, at char 1256407)
+    tom-lynch-1                  games              240 -> 244   (row span 1258705..1260294, at char 1258845)
+    thomas-liberatore            games              265 -> 268   (row span 1271904..1273490, at char 1272058)
+    jack-darling                 games              338 -> 342   (row span 1277059..1278693, at char 1277203)
+    ryan-lester                  games              248 -> 255   (row span 1279382..1280958, at char 1279522)
+    jeremy-howe                  games              286 -> 289   (row span 1284691..1286281, at char 1284831)
+    luke-parker                  games              334 -> 338   (row span 1290764..1292464, at char 1290905)
+    tom-mcdonald                 games              255 -> 260   (row span 1300552..1302150, at char 1300696)
+    jake-melksham                games              254 -> 255   (row span 1367263..1368852, at char 1367409)
+    jack-gunston                 games              296 -> 302   (row span 1384265..1385817, at char 1384409)
+    max-gawn                     games              266 -> 271   (row span 1387384..1388860, at char 1387522)
+    steele-sidebottom            games              371 -> 375   (row span 1463418..1465055, at char 1463572)
+    patrick-dangerfield          games              376 -> 380   (row span 1562987..1564807, at char 1563144)
+    taylor-walker                games              314 -> 319   (row span 1605795..1607415, at char 1605941)
+    dayne-zorko                  games              314 -> 320   (row span 1738670..1740322, at char 1738811)
+    scott-pendlebury             games              406 -> 408   (row span 1900009..1901821, at char 1900160)
+store AFTER   4667ec2cd27bb7373b51733738daa0c2   (1978063 bytes, +38)
+byte check: reversing every declared replacement reproduces the store byte-for-byte — the ONLY bytes that differ are the declared field values.
+WRITTEN and re-read: 695 row(s) edited, 2650 rows in the store, every other row untouched.
+season clock  re-derived from the edited store by season_state.derive (the sole deriver)
+    source_store_md5  35d68904b770 -> 4667ec2cd27b
+    FINALS HOLD: live store derives exposure_pace 0.955; the round-24 view (459 finals appearances subtracted) re-derives the held 0.909 exactly — held.
+    every derived VALUE asserted unchanged (10 field(s) checked); WRITTEN and re-read.
+    [store_edit OK  30.16s]
+
+--- STEP 2/10  build_proofs   bare build, predicted identity, switch leg, day-0 ---
+build         rc=0 board=8fc081f798bfd1fd8688f8407f6593fe  (292.2s)
+built FROM the edited store: sidecar source_md5 4667ec2cd27b == the store this act wrote
+MOVERS — EVERY ONE, WITH VALUES  (306 of 1002 valued row(s) moved)
+    aaron-cadman                 Aaron Cadman               2075 -> 2073   (-2)  [active]
+    aaron-naughton               Aaron Naughton             1456 -> 1454   (-2)  [active]
+    adam-cerra                   Adam Cerra                 1064 -> 1065   (+1)  [active]
+    adam-treloar                 Adam Treloar               807 -> 806   (-1)  [active]
+    alex-davies                  Alex Davies                412 -> 411   (-1)  [active]
+    alex-neal-bullen             Alex Neal-Bullen           396 -> 395   (-1)  [active]
+    aliir-aliir                  Aliir Aliir                746 -> 745   (-1)  [active]
+    alix-tauru                   Alix Tauru                 687 -> 686   (-1)  [active]
+    andrew-brayshaw              Andrew Brayshaw            2718 -> 2714   (-4)  [active]
+    andrew-mcgrath               Andrew McGrath             1079 -> 1076   (-3)  [active]
+    angus-sheldrick              Angus Sheldrick            664 -> 684   (+20)  [active]
+    archer-reid                  Archer Reid                394 -> 393   (-1)  [active]
+    archie-perkins               Archie Perkins             267 -> 266   (-1)  [active]
+    archie-roberts               Archie Roberts             3728 -> 3721   (-7)  [active]
+    bailey-dale                  Bailey Dale                1793 -> 1789   (-4)  [active]
+    bailey-humphrey              Bailey Humphrey            2324 -> 2323   (-1)  [active]
+    bailey-macdonald             Bailey Macdonald           131 -> 125   (-6)  [active]
+    bailey-smith                 Bailey Smith               5863 -> 5864   (+1)  [active]
+    bailey-williams-wb           Bailey Williams            599 -> 598   (-1)  [active]
+    bailey-williams-wc           Bailey J. Williams         2400 -> 2401   (+1)  [active]
+    bayley-fritsch               Bayley Fritsch             277 -> 275   (-2)  [active]
+    beau-addinsall               Beau Addinsall             1215 -> 1214   (-1)  [active]
+    ben-ainsworth                Ben Ainsworth              384 -> 383   (-1)  [active]
+    ben-miller                   Ben Miller                 951 -> 950   (-1)  [active]
+    billy-cootee                 Billy Cootee               166 -> 154   (-12)  [active]
+    blake-hardwick               Blake Hardwick             594 -> 540   (-54)  [active]
+    bodhi-uwland                 Bodhi Uwland               4032 -> 4024   (-8)  [active]
+    bradley-hill                 Bradley Hill               1403 -> 1401   (-2)  [active]
+    brady-hough                  Brady Hough                344 -> 343   (-1)  [active]
+    brayden-cook                 Brayden Cook               788 -> 787   (-1)  [active]
+    brayden-maynard              Brayden Maynard            530 -> 529   (-1)  [active]
+    brent-daniels                Brent Daniels              1176 -> 1175   (-1)  [active]
+    brodie-grundy                Brodie Grundy              3928 -> 3789   (-139)  [active]
+    caiden-cleary                Caiden Cleary              445 -> 453   (+8)  [active]
+    caleb-daniel                 Caleb Daniel               1219 -> 1217   (-2)  [active]
+    caleb-serong                 Caleb Serong               4193 -> 4486   (+293)  [active]
+    caleb-windsor                Caleb Windsor              973 -> 972   (-1)  [active]
+    callum-mills                 Callum Mills               1916 -> 1912   (-4)  [active]
+    callum-wilkie                Callum Wilkie              3407 -> 3404   (-3)  [active]
+    calsher-dear                 Calsher Dear               569 -> 568   (-1)  [active]
+    cameron-mackenzie            Cameron Mackenzie          1746 -> 1593   (-153)  [active]
+    cameron-rayner               Cameron Rayner             898 -> 892   (-6)  [active]
+    campbell-chesser             Campbell Chesser           161 -> 160   (-1)  [active]
+    charlie-cameron              Charlie Cameron            196 -> 202   (+6)  [active]
+    charlie-curnow               Charlie Curnow             1326 -> 1279   (-47)  [active]
+    christian-moraes             Christian Moraes           663 -> 662   (-1)  [active]
+    christian-petracca           Christian Petracca         1719 -> 1720   (+1)  [active]
+    colby-mckercher              Colby McKercher            4177 -> 4179   (+2)  [active]
+    connor-budarick              Connor Budarick            206 -> 205   (-1)  [active]
+    connor-idun                  Connor Idun                2316 -> 2311   (-5)  [active]
+    connor-macdonald             Connor MacDonald           2878 -> 2912   (+34)  [active]
+    connor-o-sullivan            Connor O'Sullivan          2437 -> 2435   (-2)  [active]
+    conor-mckenna                Conor McKenna              6 -> 8   (+2)  [active]
+    cooper-duff-tytler           Cooper Duff-Tytler         1770 -> 1769   (-1)  [active]
+    cooper-sharman               Cooper Sharman             457 -> 456   (-1)  [active]
+    cooper-trembath              Cooper Trembath            1635 -> 1634   (-1)  [active]
+    corey-wagner                 Corey Wagner               60 -> 59   (-1)  [active]
+    dan-houston                  Dan Houston                1031 -> 1029   (-2)  [active]
+    dane-rampe                   Dane Rampe                 3 -> 4   (+1)  [active]
+    daniel-annable               Daniel Annable             1277 -> 1276   (-1)  [active]
+    daniel-curtin                Daniel Curtin              2336 -> 2335   (-1)  [active]
+    daniel-rioli                 Daniel Rioli               685 -> 684   (-1)  [active]
+    daniel-turner                Daniel Turner              1685 -> 1684   (-1)  [active]
+    darcy-fogarty                Darcy Fogarty              737 -> 736   (-1)  [active]
+    darcy-fort                   Darcy Fort                 81 -> 77   (-4)  [active]
+    darcy-gardiner               Darcy Gardiner             13 -> 12   (-1)  [active]
+    darcy-jones                  Darcy Jones                1463 -> 1462   (-1)  [active]
+    darcy-wilmot                 Darcy Wilmot               2998 -> 2779   (-219)  [active]
+    darcy-wilson                 Darcy Wilson               2653 -> 2649   (-4)  [active]
+    dayne-zorko                  Dayne Zorko                947 -> 883   (-64)  [active]
+    dylan-moore                  Dylan Moore                1261 -> 1289   (+28)  [active]
+    dyson-sharp                  Dyson Sharp                3024 -> 3023   (-1)  [active]
+    ed-langdon                   Ed Langdon                 597 -> 596   (-1)  [active]
+    edward-allan                 Edward Allan               794 -> 793   (-1)  [active]
+    elijah-hewett                Elijah Hewett              486 -> 485   (-1)  [active]
+    eric-hipwood                 Eric Hipwood               84 -> 91   (+7)  [active]
+    errol-gulden                 Errol Gulden               7403 -> 7505   (+102)  [active]
+    esava-ratugolea              Esava Ratugolea            215 -> 214   (-1)  [active]
+    finn-maginness               Finn Maginness             73 -> 72   (-1)  [active]
+    finn-o-sullivan              Finn O'Sullivan            2791 -> 2790   (-1)  [active]
+    francis-evans                Francis Evans              822 -> 821   (-1)  [active]
+    george-wardlaw               George Wardlaw             3082 -> 3083   (+1)  [active]
+    gryan-miers                  Gryan Miers                1653 -> 1651   (-2)  [active]
+    hamish-davis                 Hamish Davis               664 -> 663   (-1)  [active]
+    harley-reid                  Harley Reid                3776 -> 3777   (+1)  [active]
+    harris-andrews               Harris Andrews             1490 -> 1496   (+6)  [active]
+    harrison-himmelberg          Harrison Himmelberg        211 -> 210   (-1)  [active]
+    harry-dean                   Harry Dean                 2664 -> 2663   (-1)  [active]
+    harry-kyle                   Harry Kyle                 791 -> 811   (+20)  [active]
+    harry-mckay                  Harry McKay                1623 -> 1621   (-2)  [active]
+    harry-morrison               Harry Morrison             66 -> 54   (-12)  [active]
+    harvey-langford              Harvey Langford            1875 -> 1873   (-2)  [active]
+    harvey-thomas                Harvey Thomas              1966 -> 1965   (-1)  [active]
+    hayden-mclean                Hayden McLean              303 -> 282   (-21)  [active]
+    hayden-young                 Hayden Young               1612 -> 1655   (+43)  [active]
+    heath-chapman                Heath Chapman              367 -> 445   (+78)  [active]
+    hugh-boxshall                Hugh Boxshall              782 -> 781   (-1)  [active]
+    hugh-mccluggage              Hugh McCluggage            1438 -> 1487   (+49)  [active]
+    isaac-quaynor                Isaac Quaynor              609 -> 608   (-1)  [active]
+    isaiah-dudley                Isaiah Dudley              190 -> 207   (+17)  [active]
+    izak-rankine                 Izak Rankine               4941 -> 4934   (-7)  [active]
+    jack-buller                  Jack Buller                100 -> 99   (-1)  [active]
+    jack-carroll                 Jack Carroll               114 -> 113   (-1)  [active]
+    jack-dalton                  Jack Dalton                436 -> 435   (-1)  [active]
+    jack-ginnivan                Jack Ginnivan              2143 -> 1953   (-190)  [active]
+    jack-gunston                 Jack Gunston               590 -> 621   (+31)  [active]
+    jack-ison                    Jack Ison                  422 -> 421   (-1)  [active]
+    jack-sinclair                Jack Sinclair              3072 -> 3066   (-6)  [active]
+    jack-viney                   Jack Viney                 304 -> 305   (+1)  [active]
+    jacob-farrow                 Jacob Farrow               2032 -> 2031   (-1)  [active]
+    jacob-van-rooyen             Jacob Van Rooyen           1788 -> 1786   (-2)  [active]
+    jacob-weitering              Jacob Weitering            1148 -> 1147   (-1)  [active]
+    jagga-smith                  Jagga Smith                4917 -> 4918   (+1)  [active]
+    jai-murray                   Jai Murray                 1074 -> 1073   (-1)  [active]
+    jai-newcombe                 Jai Newcombe               4329 -> 4355   (+26)  [active]
+    jai-serong                   Jai Serong                 1194 -> 1130   (-64)  [active]
+    jake-bowey                   Jake Bowey                 3881 -> 3873   (-8)  [active]
+    jake-lloyd                   Jake Lloyd                 306 -> 343   (+37)  [active]
+    jake-rogers                  Jake Rogers                330 -> 329   (-1)  [active]
+    jake-soligo                  Jake Soligo                1634 -> 1633   (-1)  [active]
+    jake-waterman                Jake Waterman              987 -> 986   (-1)  [active]
+    james-borlase                James Borlase              325 -> 324   (-1)  [active]
+    james-o-donnell              James O'Donnell            566 -> 565   (-1)  [active]
+    james-peatling               James Peatling             1009 -> 1008   (-1)  [active]
+    james-rowbottom              James Rowbottom            1341 -> 1166   (-175)  [active]
+    james-sicily                 James Sicily               1214 -> 1161   (-53)  [active]
+    james-trezise                James Trezise              179 -> 178   (-1)  [active]
+    james-worpel                 James Worpel               355 -> 354   (-1)  [active]
+    jarman-impey                 Jarman Impey               679 -> 603   (-76)  [active]
+    jarrod-berry                 Jarrod Berry               369 -> 344   (-25)  [active]
+    jase-burgoyne                Jase Burgoyne              2548 -> 2543   (-5)  [active]
+    jason-horne-francis          Jason Horne-Francis        5420 -> 5421   (+1)  [active]
+    jaspa-fletcher               Jaspa Fletcher             2578 -> 2522   (-56)  [active]
+    jayden-short                 Jayden Short               878 -> 876   (-2)  [active]
+    jed-walter                   Jed Walter                 1014 -> 1013   (-1)  [active]
+    jeremy-cameron               Jeremy Cameron             668 -> 667   (-1)  [active]
+    jesse-dattoli                Jesse Dattoli              418 -> 504   (+86)  [active]
+    jobe-shanahan                Jobe Shanahan              1254 -> 1253   (-1)  [active]
+    joe-berry                    Joe Berry                  1014 -> 1013   (-1)  [active]
+    joe-richards                 Joe Richards               934 -> 932   (-2)  [active]
+    joel-freijah                 Joel Freijah               2845 -> 2842   (-3)  [active]
+    joel-jeffrey                 Joel Jeffrey               1413 -> 1412   (-1)  [active]
+    john-noble                   John Noble                 2283 -> 2279   (-4)  [active]
+    jordan-clark                 Jordan Clark               3709 -> 3039   (-670)  [active]
+    jordan-dawson                Jordan Dawson              2796 -> 2797   (+1)  [active]
+    jordan-de-goey               Jordan De Goey             1275 -> 1274   (-1)  [active]
+    jordan-ridley                Jordan Ridley              730 -> 729   (-1)  [active]
+    jordon-sweet                 Jordon Sweet               2501 -> 2502   (+1)  [active]
+    josh-battle                  Josh Battle                1917 -> 1749   (-168)  [active]
+    josh-daicos                  Josh Daicos                2073 -> 2068   (-5)  [active]
+    josh-dunkley                 Josh Dunkley               1341 -> 1324   (-17)  [active]
+    josh-lindsay                 Josh Lindsay               1514 -> 1513   (-1)  [active]
+    josh-rachele                 Josh Rachele               1867 -> 1864   (-3)  [active]
+    josh-treacy                  Josh Treacy                5417 -> 4864   (-553)  [active]
+    josh-ward                    Josh Ward                  2579 -> 2776   (+197)  [active]
+    josh-worrell                 Josh Worrell               2948 -> 2941   (-7)  [active]
+    joshua-kelly                 Joshua Kelly               715 -> 716   (+1)  [active]
+    joshua-weddle                Joshua Weddle              1505 -> 1347   (-158)  [active]
+    judd-mcvee                   Judd McVee                 245 -> 246   (+1)  [active]
+    justin-mcinerney             Justin McInerney           1858 -> 1710   (-148)  [active]
+    jye-amiss                    Jye Amiss                  1313 -> 1291   (-22)  [active]
+    kade-chandler                Kade Chandler              1091 -> 1090   (-1)  [active]
+    kai-lohmann                  Kai Lohmann                706 -> 944   (+238)  [active]
+    kane-farrell                 Kane Farrell               1288 -> 1285   (-3)  [active]
+    kane-mcauliffe               Kane McAuliffe             1069 -> 1068   (-1)  [active]
+    karl-amon                    Karl Amon                  280 -> 251   (-29)  [active]
+    karl-worner                  Karl Worner                1522 -> 1536   (+14)  [active]
+    kieren-briggs                Kieren Briggs              1921 -> 1922   (+1)  [active]
+    koltyn-tholstrup             Koltyn Tholstrup           1664 -> 1663   (-1)  [active]
+    kyle-langford                Kyle Langford              474 -> 473   (-1)  [active]
+    kysaiah-pickett              Kysaiah Pickett            4327 -> 4321   (-6)  [active]
+    lachie-neale                 Lachie Neale               1866 -> 1912   (+46)  [active]
+    lachie-whitfield             Lachie Whitfield           2176 -> 2171   (-5)  [active]
+    lachlan-ash                  Lachlan Ash                5256 -> 5245   (-11)  [active]
+    lachlan-bramble              Lachlan Bramble            102 -> 101   (-1)  [active]
+    lachlan-mcandrew             Lachlan McAndrew           1167 -> 1168   (+1)  [active]
+    lachlan-weller               Lachlan Weller             46 -> 45   (-1)  [active]
+    lawson-humphries             Lawson Humphries           1673 -> 1671   (-2)  [active]
+    leo-lombard                  Leo Lombard                1746 -> 1745   (-1)  [active]
+    levi-ashcroft                Levi Ashcroft              3531 -> 3327   (-204)  [active]
+    lewis-melican                Lewis Melican              33 -> 28   (-5)  [active]
+    liam-baker                   Liam Baker                 486 -> 485   (-1)  [active]
+    liam-duggan                  Liam Duggan                224 -> 223   (-1)  [active]
+    liam-fawcett                 Liam Fawcett               331 -> 330   (-1)  [active]
+    liam-henry                   Liam Henry                 107 -> 106   (-1)  [active]
+    lloyd-meek                   Lloyd Meek                 1385 -> 1465   (+80)  [active]
+    logan-evans                  Logan Evans                1360 -> 1359   (-1)  [active]
+    logan-mcdonald               Logan McDonald             1185 -> 1284   (+99)  [active]
+    logan-morris                 Logan Morris               2909 -> 2795   (-114)  [active]
+    luke-davies-uniacke          Luke Davies-Uniacke        3021 -> 3022   (+1)  [active]
+    luke-jackson                 Luke Jackson               9087 -> 9885   (+798)  [active]
+    luke-nankervis               Luke Nankervis             454 -> 453   (-1)  [active]
+    luke-parker                  Luke Parker                1145 -> 1142   (-3)  [active]
+    luke-ryan                    Luke Ryan                  1269 -> 1194   (-75)  [active]
+    luke-trainor                 Luke Trainor               882 -> 881   (-1)  [active]
+    mabior-chol                  Mabior Chol                212 -> 166   (-46)  [active]
+    mac-andrew                   Mac Andrew                 3775 -> 3772   (-3)  [active]
+    marc-pittonet                Marc Pittonet              509 -> 510   (+1)  [active]
+    marcus-bontempelli           Marcus Bontempelli         3707 -> 3706   (-1)  [active]
+    marcus-windhager             Marcus Windhager           1806 -> 1804   (-2)  [active]
+    mark-keane                   Mark Keane                 1503 -> 1502   (-1)  [active]
+    mason-cox                    Mason Cox                  2 -> 3   (+1)  [active]
+    mason-redman                 Mason Redman               940 -> 938   (-2)  [active]
+    mason-wood                   Mason Wood                 353 -> 352   (-1)  [active]
+    massimo-d-ambrosio           Massimo D'Ambrosio         1785 -> 1821   (+36)  [active]
+    matt-johnson-1               Matt Johnson               1009 -> 1043   (+34)  [active]
+    matt-rowell                  Matt Rowell                4802 -> 4803   (+1)  [active]
+    mattaes-phillipou            Mattaes Phillipou          1748 -> 1746   (-2)  [active]
+    matthew-roberts              Matthew Roberts            1457 -> 1459   (+2)  [active]
+    max-beattie                  Max Beattie                129 -> 116   (-13)  [active]
+    max-gawn                     Max Gawn                   3259 -> 3260   (+1)  [active]
+    max-hall                     Max Hall                   2726 -> 2723   (-3)  [active]
+    michael-frederick            Michael Frederick          112 -> 113   (+1)  [active]
+    miles-bergman                Miles Bergman              975 -> 974   (-1)  [active]
+    mitch-georgiades             Mitch Georgiades           1545 -> 1544   (-1)  [active]
+    mitch-zadow                  Mitch Zadow                119 -> 118   (-1)  [active]
+    mitchell-edwards             Mitchell Edwards           2008 -> 2007   (-1)  [active]
+    mitchell-lewis               Mitchell Lewis             769 -> 818   (+49)  [active]
+    mitchito-owens               Mitchito Owens             1945 -> 1943   (-2)  [active]
+    murphy-reid                  Murphy Reid                3308 -> 3266   (-42)  [active]
+    nate-caddy                   Nate Caddy                 1607 -> 1606   (-1)  [active]
+    ned-long                     Ned Long                   1321 -> 1320   (-1)  [active]
+    ned-moyle                    Ned Moyle                  2087 -> 2088   (+1)  [active]
+    neil-erasmus                 Neil Erasmus               959 -> 960   (+1)  [active]
+    nic-newman                   Nic Newman                 662 -> 660   (-2)  [active]
+    nicholas-martin              Nicholas Martin            3797 -> 3798   (+1)  [active]
+    nick-blakey                  Nick Blakey                3960 -> 3952   (-8)  [active]
+    nick-bryan                   Nick Bryan                 698 -> 697   (-1)  [active]
+    nick-madden                  Nick Madden                1186 -> 1185   (-1)  [active]
+    nick-watson                  Nick Watson                3695 -> 3873   (+178)  [active]
+    noah-anderson                Noah Anderson              5456 -> 5457   (+1)  [active]
+    noah-mraz                    Noah Mraz                  798 -> 797   (-1)  [active]
+    oliver-florent               Oliver Florent             1033 -> 1031   (-2)  [active]
+    oliver-hollands              Oliver Hollands            1522 -> 1521   (-1)  [active]
+    oscar-allen                  Oscar Allen                144 -> 142   (-2)  [active]
+    oscar-mcdonald               Oscar McDonald             81 -> 83   (+2)  [active]
+    oscar-steene                 Oscar Steene               464 -> 463   (-1)  [active]
+    patrick-dangerfield          Patrick Dangerfield        162 -> 161   (-1)  [active]
+    patrick-voss                 Patrick Voss               1131 -> 1093   (-38)  [active]
+    paul-curtis                  Paul Curtis                1526 -> 1524   (-2)  [active]
+    peter-wright                 Peter Wright               1237 -> 1236   (-1)  [active]
+    phoenix-gothard              Phoenix Gothard            1545 -> 1544   (-1)  [active]
+    reuben-ginbey                Reuben Ginbey              2183 -> 2181   (-2)  [active]
+    rhett-bazzo                  Rhett Bazzo                449 -> 448   (-1)  [active]
+    riley-thilthorpe             Riley Thilthorpe           4284 -> 4280   (-4)  [active]
+    rory-laird                   Rory Laird                 708 -> 707   (-1)  [active]
+    rowan-marshall               Rowan Marshall             2001 -> 2002   (+1)  [active]
+    ryan-lester                  Ryan Lester                32 -> 34   (+2)  [active]
+    ryan-maric                   Ryan Maric                 1361 -> 1360   (-1)  [active]
+    ryley-sanders                Ryley Sanders              3527 -> 3528   (+1)  [active]
+    sam-berry                    Sam Berry                  2796 -> 2797   (+1)  [active]
+    sam-cumming                  Sam Cumming                2273 -> 2272   (-1)  [active]
+    sam-darcy                    Sam Darcy                  5224 -> 5220   (-4)  [active]
+    sam-draper                   Sam Draper                 948 -> 918   (-30)  [active]
+    sam-durham                   Sam Durham                 2422 -> 2423   (+1)  [active]
+    sam-flanders                 Sam Flanders               2490 -> 2491   (+1)  [active]
+    sam-lalor                    Sam Lalor                  3451 -> 3450   (-1)  [active]
+    sam-marshall                 Sam Marshall               550 -> 549   (-1)  [active]
+    sam-switkowski               Sam Switkowski             25 -> 23   (-2)  [active]
+    sam-taylor                   Sam Taylor                 1106 -> 1105   (-1)  [active]
+    samuel-grlj                  Samuel Grlj                1706 -> 1705   (-1)  [active]
+    samuel-swadling              Samuel Swadling            1220 -> 1219   (-1)  [active]
+    sean-darcy                   Sean Darcy                 733 -> 732   (-1)  [active]
+    shai-bolton                  Shai Bolton                2146 -> 2190   (+44)  [active]
+    shannon-neale                Shannon Neale              2100 -> 2098   (-2)  [active]
+    shaun-mannagh                Shaun Mannagh              909 -> 908   (-1)  [active]
+    stephen-coniglio             Stephen Coniglio           225 -> 224   (-1)  [active]
+    sullivan-robey               Sullivan Robey             3033 -> 3031   (-2)  [active]
+    taj-hotton                   Taj Hotton                 1898 -> 1897   (-1)  [active]
+    talor-byrne                  Talor Byrne                601 -> 600   (-1)  [active]
+    tanner-bruhn                 Tanner Bruhn               1957 -> 1958   (+1)  [active]
+    thomas-stewart               Thomas Stewart             865 -> 863   (-2)  [active]
+    tim-kelly                    Tim Kelly                  1180 -> 1181   (+1)  [active]
+    timothy-english              Timothy English            3107 -> 3108   (+1)  [active]
+    toby-bedford                 Toby Bedford               323 -> 322   (-1)  [active]
+    toby-greene                  Toby Greene                729 -> 727   (-2)  [active]
+    toby-nankervis               Toby Nankervis             1992 -> 1993   (+1)  [active]
+    toby-pink                    Toby Pink                  80 -> 79   (-1)  [active]
+    tom-de-koning                Tom De Koning              1571 -> 1570   (-1)  [active]
+    tom-hanily                   Tom Hanily                 189 -> 206   (+17)  [active]
+    tom-mccarthy                 Tom McCarthy               1328 -> 1326   (-2)  [active]
+    tom-mccartin                 Tom McCartin               1298 -> 1336   (+38)  [active]
+    tom-papley                   Tom Papley                 522 -> 517   (-5)  [active]
+    tom-powell                   Tom Powell                 1818 -> 1817   (-1)  [active]
+    tom-sparrow                  Tom Sparrow                1470 -> 1471   (+1)  [active]
+    touk-miller                  Touk Miller                2331 -> 2327   (-4)  [active]
+    trent-rivers                 Trent Rivers               1429 -> 1428   (-1)  [active]
+    tristan-xerri                Tristan Xerri              7028 -> 7030   (+2)  [active]
+    ty-gallop                    Ty Gallop                  1046 -> 1088   (+42)  [active]
+    tylar-young                  Tylar Young                347 -> 346   (-1)  [active]
+    wayne-milera                 Wayne Milera               1581 -> 1578   (-3)  [active]
+    will-ashcroft                Will Ashcroft              7203 -> 7202   (-1)  [active]
+    will-day                     Will Day                   1781 -> 1633   (-148)  [active]
+    will-graham                  Will Graham                1277 -> 1276   (-1)  [active]
+    will-hayward                 Will Hayward               274 -> 273   (-1)  [active]
+    will-setterfield             Will Setterfield           964 -> 965   (+1)  [active]
+    willem-drew                  Willem Drew                589 -> 590   (+1)  [active]
+    willem-duursma               Willem Duursma             3492 -> 3491   (-1)  [active]
+    xavier-bamert                Xavier Bamert              348 -> 347   (-1)  [active]
+    xavier-lindsay               Xavier Lindsay             1360 -> 1359   (-1)  [active]
+    xavier-o-halloran            Xavier O'Halloran          70 -> 69   (-1)  [active]
+    zac-bailey                   Zac Bailey                 3129 -> 3131   (+2)  [active]
+    zach-reid                    Zach Reid                  1254 -> 1253   (-1)  [active]
+    zachary-williams             Zachary Williams           337 -> 336   (-1)  [active]
+    zane-duursma                 Zane Duursma               413 -> 412   (-1)  [active]
+    zeke-uwland                  Zeke Uwland                1891 -> 1890   (-1)  [active]
+pool (sum of active v)  687766 -> 686422  (-1344)
+edit.expected_movers is not declared: the movers above are PRINTED and asserted against nothing. Declaring them makes each one a falsifier.
+NO PREREG BOARD PREDICTION IS DECLARED (prereg.board_after is null). This act's prediction of record is its DRY RUN; the assertions made here are internal consistency only — the board was built FROM the edited store (proved above), and it moved if and only if this act declared that it would.
+day-0 re-base : OFF (default). No day-0 reference is regenerated by this landing.
+installed     board + both sidecars + the generator copy (4 files, lockstep)
+    [build_proofs OK  292.30s]
+
+--- STEP 3/10  pins           expected_boot + both sidecars + the generator copy ---
+published board  8fc081f798bfd1fd8688f8407f6593fe
+generator board  8fc081f798bfd1fd8688f8407f6593fe
+both sidecars agree with the board beside them and with the live store. OK.
+COMPUTED from the tree (never typed): store        = 4667ec2cd27bb7373b51733738daa0c2
+  expected_boot store        35d68904b770 -> 4667ec2cd27b   (old value occurs 1 time(s))
+COMPUTED from the tree (never typed): board        = 8fc081f798bfd1fd8688f8407f6593fe
+  expected_boot board        3e5b3454cd35 -> 8fc081f798bf   (old value occurs 1 time(s))
+fields that moved in expected_boot.json: ['board', 'store']
+must-not-move list: 6 checked, 0 moved
+byte check: the ONLY bytes that differ are the declared pin values.
+WRITTEN and re-read.
+    [pins OK  0.02s]
+
+--- STEP 4/10  lineage        the out-of-round column and the append-only entry ---
+column        fw4-finals-week-4-24-9 registered (dry_run=False)
+ASSERTED: the newest stored point is this column, naming the live board 8fc081f798bfd1fd8688f8407f6593fe
+chain OK: register tail destination == this entry's source on board and store
+append-only OK: 23 prior entries byte-verbatim; top-level baseline 06d8af60b679a12db07c064c60c065f9 / v2.11-present-lens-baseline UNMOVED
+MOVED by this transition: ['board', 'store'] (of 11 identities)
+re-read OK: round-trips at indent=1; prior entries still byte-verbatim.
+    [lineage OK  0.14s]
+
+--- STEP 5/10  contract       restamp_dynamic + the bake-lane repin + check ---
+contract seal self-consistent before the act: 23776e66f6fd
+  config       d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4   == expected_boot
+  engine_head  384e05f54288606ee0d16c11ad93023f   == expected_boot
+  rl_model     aa1541d8ebb93868907b24daab5dbed1   == expected_boot
+  fv           123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345   == expected_boot
+  store        4667ec2cd27bb7373b51733738daa0c2   == expected_boot
+  board        8fc081f798bfd1fd8688f8407f6593fe   == expected_boot
+WRITER 1: release_contract.restamp_dynamic(root, as_of_round=24, store, board, season_state)
+   restamp_dynamic returned seal 3d7294743335
+WRITER 2: the bake-lane identities restamp_dynamic does not touch (release_contract.restamp_bake_identities — shared with tools/restamp)
+  contract_sha256             3d7294743335 -> 3d7294743335
+  frozen fields asserted unmoved: 10 checked, 0 moved
+RE-STAMPED, re-read, and release_contract.py check PASSES.
+    [contract OK  0.07s]
+
+--- STEP 6/10  sibling        the balanced sibling, rebuilt and reconciled if moved ---
+verify BEFORE : ok=False balanced=fa1dd0ebac01 fails=10
+    - forward reference vector for fa1dd0eb missing
+    - forward oracle test_forward_lens_8fc081f7.py missing
+    - working canonical board stamp != 8fc081f7
+    - working store stamp != 4667ec2c
+    - public rows disagree with the canonical board for 715 player(s)
+    - sidecar source_store_md5 != current store
+    - sidecar contract_sha256 != live contract seal
+    - sidecar forward_board_md5 != the canonical board of record
+    - sidecar forward_vector filename != regenerated forward vector
+    - sidecar forward_oracle filename != regenerated forward oracle
+sibling       PROVEN EARLIER — stash key 8c1dc69ec98b28abdfd70afd: balanced e20c41e40ab6, forward 8fc081f798bf; the entry's own store/fv/rl_model provenance matches live, nothing rebuilt (S8)
+reconcile     ok=True changed=True balanced fa1dd0ebac01 -> e20c41e40ab6
+  committed targets: board_view_public, board_view_working, forward_oracle, forward_vector, fv_test, manifest, reference_vector, release_contract, sidecar
+verify AFTER  : ok=True fails=0
+    [sibling OK  0.72s]
+
+--- STEP 7/10  ui             ALL SEVEN UI writers, and the identity read back out ---
+BEFORE  working 4a9420c1bfbd902c45582a01f0d826e6  release-block=True
+BEFORE  public  b6ed9ce9f5871341b62619c6f7a7a76a  release-block=False
+BEFORE  mirror  ce4146ee096d839366044a27f1815d82  register=23 entr(ies)
+BEFORE  movers  30dba1729baaa4292a570950fc3d7ea2  model_changes=17 boundar(ies)
+BEFORE  owners 2483da3edf4138cbc0b23246d4e4e05c  pinned board=3e5b3454 store=35d68904
+BEFORE  picks  9458bab91a4d06ddeef428fffaf62f31  stamped board=3e5b3454 store=35d68904 R24
+BEFORE  draft  2c2d4f79821d77a53a3cb73f5fcd8a09  stamped store=35d68904
+WRITER 1/8: ui/tools/extract_board_view.py
+  working after writer 1: 4a9420c1bfbd902c45582a01f0d826e6   release-block=True   <-- DROPPED, as it always is
+WRITER 2/8: round_movers.inject_release_contract(bundle, root, 24)
+  release block: {"as_of_round": 24, "balanced_board_md5": "06d8af60b679a12db07c064c60c065f9", "board": "8fc081f798bfd1fd8688f8407f6593fe", "config": "d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4",
+WRITER 3/8: ui/tools/generate_movers_transition.py  (the lineage projection — supervisor ruling on F-9)
+  wrote: ui/data/movers_transition.js (101970 bytes)
+  register entries mirrored: 24
+  drift guard: mirror OK — committed == projected (101970 bytes, 24 register entries)
+  mirror register == lineage register: 24 entr(ies), EQUAL  (the F-9 predicate holds)
+WRITER 4/8: ui/tools/rebuild_movers_derived.py  (points / values / model_changes — supervisor ruling on F-10)
+  wrote: ui/data/movers.js (6174983 -> 5690964 bytes, latest report R27)
+  derived blocks changed: points, values
+  drift guard: derived blocks OK — committed == rebuilt (5690964 bytes, latest report R27)
+  shipped model_changes == live-derived: 17 boundar(ies), EQUAL  (the F-10 predicate holds)
+WRITER 4b/8: the retro CONTROL first (engine-free: banked r24 vs the live board)
+  CONTROL NOT ASSERTED: the newest banked round is r26 and it differs from the live board on 316 value(s) (0 missing). The retrospective is BEHIND the live board — a week has been applied to the store that is not yet banked. Re-price it with pass_retro_series.py (or bank the newest week from the landed board) to make this a PASS again. The series is still emitted from what IS banked, because dropping banked history is worse than carrying it one week short; see CONTROL_FAIL.json for the rows.
+WRITER 4b/8: emit_retro_series.py  (the R14-R24 walk-forward series writer 4 drops)
+  retro-r26   804 players  board landed-b
+  retro-r27   804 players  board landed-b
+  emitted 14 retro points covering up to 804 players -> ui/data/movers.js
+  retro series present: 14 points, retro-r14 .. retro-r27 (every banked round, no gap)
+WRITER 4c/8: the finals week's weekly report (the movers page reads its scores here)
+  FINALS WEEK 4 written as feed round 28: 804 players, 92 played, 712 DNP; store -> 4667ec2c
+WRITER 4c/8: the week's point on the movers list (read off the built board, not re-priced)
+  banked r28 from the landed board: 804 rows, store 4667ec2c -> docs/evidence/walkforward_retro_2026-08-29/values_r28.json
+  emitted 15 retro points covering up to 804 players -> ui/data/movers.js
+  retro series now 14 .. 28 — the week this act lands is its last point
+WRITER 5/8: ui/tools/ingest_inputs.py --mirror-only  (the ownership mirror, re-pinned to the landed board + store)
+  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /home/user/afl-rl-engine/ui/data/ownership.js
+  MIRROR-ONLY    — the club-valuation bundle was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
+  drift guard: MIRROR DRIFT GUARD — ui/data/ownership.js is byte-identical to what this tree projects (74727 bytes).
+  mirror pin == the landed identity: board 8fc081f7 store 4667ec2c R24, 804 player(s) mirrored (pin() would ACTIVATE it)
+WRITER 6/8: ui/tools/ingest_inputs.py --clubs-only  (the picks bundle, re-stamped to the landed board + store)
+  CLEAN INGEST — 240 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: /home/user/afl-rl-engine/ui/data/club_valuation.js
+  CLUBS-ONLY     — the ownership mirror was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
+  drift guard: PICKS DRIFT GUARD — ui/data/club_valuation.js is byte-identical to what this tree projects (58313 bytes).
+  picks stamp == the landed identity: board 8fc081f7 store 4667ec2c R24, 240 pick(s) priced off 1c3b22d1 (pin() would ACCEPT it)
+WRITER 7/8: ui/tools/gen_draft_outcomes.py  (the draft outcome record, re-stamped to the landed store)
+  rows            1568 national-draft selections
+  never played    226  (14.4%) — the population is not survivor-filtered
+  maturity rule   4 completed seasons (measured: 99% of 1044 eventual debutants)
+  draft stamp == the landed store 4667ec2c: 1568 selections, 226 never played, maturity 4 season(s) (pin() would ACCEPT it)
+WRITER 8/8: ui/tools/gen_v0_sidecar.py  (the v0 sidecar, re-stamped to the landed board)
+  v0 sidecar | board 8fc081f7 store 4667ec2c | rows 804 = pick-slot 561 + entry-anchor 243 + unrecoverable 0
+  wrote ui/data_aux/v0.js (51031 bytes)
+  v0 sidecar == the landed board 8fc081f7 (the card's v0 column will resolve)
+  carrier moved: ui/data_aux/v0.js  d631396231fc -> 1852533b3a90
+AFTER   working 4a9420c1bfbd902c45582a01f0d826e6  release-block=True
+AFTER   public  b6ed9ce9f5871341b62619c6f7a7a76a  release-block=False
+AFTER   movers  bbcbf517240d68a1561ed42795bd3781  MOVED 30dba1729baa -> bbcbf517240d, tracking the register append
+AFTER   mirror  9c83db4fece289b224d054fc6e98782d  MOVED ce4146ee096d -> 9c83db4fece2, tracking the lineage append
+AFTER   owners 1da0ec37292b56ce45666e036f472aab  MOVED 2483da3edf41 -> 1da0ec37292b, tracking the landed board + store
+AFTER   picks  5a7e55dc13b95e34726baf71a34f1fe7  MOVED 9458bab91a4d -> 5a7e55dc13b9, tracking the landed board + store
+AFTER   draft  70b023a3ab5443a0a91d4ee94f7f8f36  MOVED 2c2d4f79821d -> 70b023a3ab54, tracking the landed store
+  stamp.board_md5            8fc081f798bfd1fd8688f8407f6593fe   OK
+  stamp.board                8fc081f798bfd1fd8688f8407f6593fe   OK
+  stamp.srcmd5               8fc081f798bfd1fd8688f8407f6593fe   OK
+  stamp.store_md5            4667ec2cd27bb7373b51733738daa0c2   OK
+  stamp.balanced_board_md5   e20c41e40ab66576828a145bc613113d   OK
+  stamp.asOfRound            24                                 OK
+THE HTML APP'S EMBEDDED BOARD IDENTITY IS 8fc081f798bfd1fd8688f8407f6593fe. All seven writers ran; the release block is back, the reader can see the transition that produced this board, the ownership mirror is pinned to it rather than to the store it replaced, and the pick surface is stamped to it rather than to the board before it.
+    [ui OK  155.60s]
+    build-lock: RELEASED after 'ui' — the remaining steps write nothing and the one gate that builds takes the lock itself.
+
+--- STEP 8/10  state          docs/STATE.md regenerated from the carriers (3c) ---
+state: docs/STATE.md md5 f5dcbbf036a3573431a64aa3565d183a (moved); regeneration verified
+    [state OK  0.13s]
+
+--- STEP 9/10  gates          the landing gate set, verdicts off exit codes ---
+  release_manifest_check   PASS   exit=0  (0.1s)
+  release_contract_check   PASS   exit=0  (0.1s)
+  acceptance_runner        PASS   exit=0  (8.9s)
+  movers_transition        PASS   exit=0  (1.7s)
+  finals_report            PASS   exit=0  (0.4s)
+  movers_ui                PASS   exit=0  (0.7s)
+  ui_222_items             PASS   exit=0  (10.9s)
+  ui_defects_2026_08_21    PASS   exit=0  (0.4s)
+  universe                 PASS   exit=0  (0.3s)
+  draftday                 PASS   exit=0  (0.1s)
+  pickvalue                PASS   exit=0  (0.1s)
+  release_seam             PASS   exit=0  (0.1s)
+  adoption_gate            PASS   exit=0  (0.0s)
+  club_totals_parity       PASS   exit=0  (0.3s)
+  counting_rule            PASS   exit=0  (0.1s)
+  ownership_sidecar        PASS   exit=0  (0.3s)
+  ownership_single_source  PASS   exit=0  (0.1s)
+  responsive_layout        PASS   exit=0  (16.8s)
+  extract_seam             PASS   exit=0  (0.5s)
+  club_curve_provenance    PASS   exit=0  (3.2s)
+  ingest_bounds            PASS   exit=0  (0.1s)
+    [gates OK  45.29s]
+
+--- STEP 10/10  commit         ONE commit, explicit paths only ---
+explicit paths (51):
+    data/expected_boot.json
+    data/release_contract.json
+    data/release_lineage.json
+    data/rl_build/rl_app_data.json
+    data/rl_build/rl_app_data.json.srcmd5
+    data/season_state.json
+    docs/STATE.md
+    docs/evidence/ingest/2026_FW4/build_LANDING.txt
+    docs/evidence/ingest/2026_FW4/gate_acceptance_runner.txt
+    docs/evidence/ingest/2026_FW4/gate_acceptance_runner_evidence/
+    docs/evidence/ingest/2026_FW4/gate_adoption_gate.txt
+    docs/evidence/ingest/2026_FW4/gate_club_curve_provenance.txt
+    docs/evidence/ingest/2026_FW4/gate_club_totals_parity.txt
+    docs/evidence/ingest/2026_FW4/gate_counting_rule.txt
+    docs/evidence/ingest/2026_FW4/gate_draftday.txt
+    docs/evidence/ingest/2026_FW4/gate_extract_seam.txt
+    docs/evidence/ingest/2026_FW4/gate_finals_report.txt
+    docs/evidence/ingest/2026_FW4/gate_ingest_bounds.txt
+    docs/evidence/ingest/2026_FW4/gate_movers_transition.txt
+    docs/evidence/ingest/2026_FW4/gate_movers_ui.txt
+    docs/evidence/ingest/2026_FW4/gate_ownership_sidecar.txt
+    docs/evidence/ingest/2026_FW4/gate_ownership_single_source.txt
+    docs/evidence/ingest/2026_FW4/gate_pickvalue.txt
+    docs/evidence/ingest/2026_FW4/gate_release_contract_check.txt
+    docs/evidence/ingest/2026_FW4/gate_release_manifest_check.txt
+    docs/evidence/ingest/2026_FW4/gate_release_seam.txt
+    docs/evidence/ingest/2026_FW4/gate_responsive_layout.txt
+    docs/evidence/ingest/2026_FW4/gate_ui_222_items.txt
+    docs/evidence/ingest/2026_FW4/gate_ui_defects_2026_08_21.txt
+    docs/evidence/ingest/2026_FW4/gate_universe.txt
+    docs/evidence/walkforward_retro_2026-08-29/CONTROL_FAIL.json
+    docs/evidence/walkforward_retro_2026-08-29/values_r28.json
+    engine/rl_after/ingestion/pos_rank_history.json
+    engine/rl_after/ingestion/rank_history.json
+    engine/rl_after/ingestion/sibling_repin_state.json
+    engine/rl_after/ingestion/value_history.json
+    engine/rl_after/rl_app_data.json
+    engine/rl_after/rl_app_data.json.srcmd5
+    engine/rl_after/rl_model_data.json
+    session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_8fc081f7.json
+    session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_e20c41e4.json
+    session_2026-07-20/fv_provenance_remediation/test_forward_lens_8fc081f7.py
+    session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py
+    ui/data/board_view_public.js
+    ui/data/board_view_working.js
+    ui/data/club_valuation.js
+    ui/data/movers.js
+    ui/data/movers_transition.js
+    ui/data/ownership.js
+    ui/data_aux/draft_outcomes.js
+    ui/data_aux/v0.js
+committed 7bd58e126f0a
+    [commit OK  0.51s]
+
+--- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
+    preflight          0.07s  OK
+    store_edit        30.16s  OK
+    build_proofs     292.30s  OK
+    pins               0.02s  OK
+    lineage            0.14s  OK
+    contract           0.07s  OK
+    sibling            0.72s  OK
+    ui               155.60s  OK
+    state              0.13s  OK
+    gates             45.29s  OK
+    commit             0.51s  OK
+    TOTAL            525.01s
+
+======================================================================================================
+LANDING COMPLETE — every step's postcondition held.
+SOAK: hand-verification stands until the owner's word per act type (G3.iv).
+======================================================================================================
+work dir discarded (the landing completed): /tmp/landing_work_13711
