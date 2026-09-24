@@ -23,8 +23,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, '..', '..', '..'))
 BUNDLE = os.path.join(REPO, 'ui', 'data', 'movers.js')
 ROUNDS = list(range(14, 27))   # 25, 26 = FINALS WEEKS 1 and 2
-FINALS_NAMES = {25: 'Finals Week 1', 26: 'Finals Week 2', 27: 'Semi-Final',
-                28: 'Preliminary Final', 29: 'Grand Final'}   # round_movers.FINALS_WEEK_NAMES
+FINALS_NAMES = {25: 'Finals Week 1', 26: 'Finals Week 2', 27: 'Finals Week 3',
+                28: 'Finals Week 4', 29: 'Grand Final'}   # round_movers.FINALS_WEEK_NAMES
 
 
 def load_bundle():

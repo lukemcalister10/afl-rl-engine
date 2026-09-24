@@ -267,8 +267,8 @@ FIXTURES_REL = ('scores', 'fixtures.json')
 FINALS_WEEK_NAMES = {
     25: 'FINALS WEEK 1',
     26: 'FINALS WEEK 2',
-    27: 'SEMI-FINAL',
-    28: 'PRELIMINARY FINAL',
+    27: 'FINALS WEEK 3',
+    28: 'FINALS WEEK 4',
     29: 'GRAND FINAL',
 }
 
@@ -282,8 +282,8 @@ FINALS_WEEK_NAMES = {
 FINALS_COLUMN_PREFIXES = {
     'fw1-': 'FINALS WEEK 1',
     'fw2-': 'FINALS WEEK 2',
-    'sf-': 'SEMI-FINAL',
-    'pf-': 'PRELIMINARY FINAL',
+    'fw3-': 'FINALS WEEK 3',
+    'fw4-': 'FINALS WEEK 4',
     'gf-': 'GRAND FINAL',
 }
 

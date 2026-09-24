@@ -198,6 +198,21 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   var finalsPrefix = pyMap("FINALS_COLUMN_PREFIXES"); // 'fw1-' -> 'FINALS WEEK 1'
   ok(Object.keys(finalsNames).length > 0 && Object.keys(finalsPrefix).length > 0,
      "round_movers.py declares the finals feed rounds and their column prefixes");
+  /* THE UI'S COPIES OF THE SAME TABLE MUST AGREE WITH THE ENGINE'S (added 2026-09-24). The finals
+     names lived in six places and four of them said "Semi-Final" / "Preliminary Final" — AFL names —
+     for a league whose format is FW1 4 clubs, FW2 8, FW3 4, FW4 4, GF 2. The browser cannot import
+     Python, so the copies stay, and this is what stops them drifting: every prefix the engine
+     registers must be in both UI tables with the same name, and neither UI table may carry one the
+     engine does not. */
+  ["card.js", "movers.js"].forEach(function (f) {
+    var src = fs.readFileSync(path.join(__dirname, "..", "app", f), "utf8");
+    var m = /FINALS_COLUMNS\s*=\s*\{([\s\S]*?)\}/.exec(src), js = {};
+    if (m) { var re = /"([^"]+)"\s*:\s*"([^"]+)"/g, g; while ((g = re.exec(m[1]))) js[g[1]] = g[2]; }
+    var same = Object.keys(finalsPrefix).length === Object.keys(js).length &&
+      Object.keys(finalsPrefix).every(function (k) { return js[k] && js[k].toUpperCase() === finalsPrefix[k]; });
+    ok(same, "ui/app/" + f + " FINALS_COLUMNS matches round_movers.FINALS_COLUMN_PREFIXES exactly",
+       JSON.stringify(js));
+  });
   var nameToFeed = {};
   Object.keys(finalsNames).forEach(function (fr) { nameToFeed[finalsNames[fr]] = Number(fr); });
   var landedFinals = [];
@@ -452,7 +467,7 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   // not pinned: every declared boundary beyond the pre-register restructure corresponds to a
   // boundary-bearing register entry THAT IS NOT A WEEK OF FOOTBALL. Filtered on the column id the
   // entry itself carries, which is the same key model_changes() filters on, so the two cannot drift.
-  var FINALS_PRE = ["fw1-", "fw2-", "sf-", "pf-", "gf-"];
+  var FINALS_PRE = ["fw1-", "fw2-", "fw3-", "fw4-", "gf-"];
   var regB = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "..", "data", "release_lineage.json"), "utf8"))
       .release_transition_register.filter(function (e) {
         if (!(e && e.applies_to && e.applies_to.boundary)) return false;

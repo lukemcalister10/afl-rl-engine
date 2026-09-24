@@ -280,7 +280,7 @@ const finalsTexts = await page.locator('.histtbl .finalsev').allTextContents();
 const nFootball = await page.evaluate(() =>
   ((window.__MATCHDAY_MOVERS__.points || [])
     .filter(p => p.kind === "out_of_round" &&
-                 ["fw1-", "fw2-", "sf-", "pf-", "gf-"].some(k => String(p.id).indexOf(k) === 0))).length);
+                 ["fw1-", "fw2-", "fw3-", "fw4-", "gf-"].some(k => String(p.id).indexOf(k) === 0))).length);
 check(mcidTexts.length + finalsTexts.length === modelPts.length
       && mcidTexts.length === modelPts.length - nFootball
       && mcidTexts.every(t => /^\(MC-\d+\)$/.test(t.trim()))

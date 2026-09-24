@@ -803,7 +803,7 @@ function ovApply(report) {
        label they were given: this adds a name for football, it does not put process back on the
        page. */
     const FINALS_COLUMNS = {"fw1-": "Finals Week 1", "fw2-": "Finals Week 2",
-                            "sf-": "Semi-Final", "pf-": "Preliminary Final", "gf-": "Grand Final"};
+                            "fw3-": "Finals Week 3", "fw4-": "Finals Week 4", "gf-": "Grand Final"};
     function finalsName(id) {
       const s = String(id || "");
       const hit = Object.keys(FINALS_COLUMNS).filter(function (k) { return s.indexOf(k) === 0; })[0];

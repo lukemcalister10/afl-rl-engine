@@ -27,11 +27,11 @@
    "_note": "Eight clubs, owner-declared and independently confirmed by resolving every name in scores/FW2.csv against the store. THREE listed players sit at a ninth, tenth and eleventh club in the store and are NOT evidence those clubs played \u2014 Josh Battle (store: St Kilda), Jack Ginnivan (store: Collingwood) and Oscar Allen (store: West Coast) have all since moved to a club that IS in this list. The store's afl_club is an identity field, not a team sheet; it is stale for those three and nothing reads it to price them."
   },
   "27": {
-   "label": "SF",
+   "label": "FW3",
    "clubs": []
   },
   "28": {
-   "label": "PF",
+   "label": "FW4",
    "clubs": []
   },
   "29": {

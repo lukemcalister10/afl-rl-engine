@@ -62,7 +62,7 @@ except (ImportError, ValueError):
 # season to 29 calendar rounds would drop progress to 0.83 and re-open every finished season in the
 # competition.
 DEFAULT_SEASON_ROUNDS = 29
-FINALS_FEED_ROUNDS = {25: 'FW1', 26: 'FW2', 27: 'SF', 28: 'PF', 29: 'GF'}
+FINALS_FEED_ROUNDS = {25: 'FW1', 26: 'FW2', 27: 'FW3', 28: 'FW4', 29: 'GF'}   # the league's own format (owner, 2026-09-09): FW1 4 clubs, FW2 8, FW3 4, FW4 4, GF 2
 HOME_AND_AWAY_ROUNDS = 24
 
 
