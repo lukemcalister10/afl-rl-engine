@@ -336,6 +336,28 @@ def run_landing(spec_path, ev_dir):
     return res
 
 
+def put_tree_back(keep):
+    """After a failed landing, return the tree to the inputs commit. The lander restores its carriers
+    byte-exact, but some writers leave files beside them (a control report, a week's value bank, an
+    abort note) — FW3's first run left four, and a dirty tree makes the re-run refuse. The run began
+    on a clean tree, so every change here is the landing's own: copy it to `keep`, then undo it."""
+    n = 0
+    for line in git('status', '--porcelain', '--untracked-files=all').splitlines():
+        if not line.strip():
+            continue
+        rel = line[3:]
+        dst = os.path.join(keep, 'tree', rel)
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        if os.path.exists(os.path.join(REPO, rel)):
+            shutil.copyfile(os.path.join(REPO, rel), dst)
+        if line.startswith('??'):
+            os.remove(os.path.join(REPO, rel))
+        else:
+            git('checkout', 'HEAD', '--', rel)
+        n += 1
+    return n
+
+
 # ------------------------------------------------------------------------------ the summary
 def summarise(week):
     mv = load_movers()
@@ -463,6 +485,10 @@ def main():
         os.makedirs(keep, exist_ok=True)
         for r in record:
             shutil.move(os.path.join(REPO, r), os.path.join(keep, os.path.basename(r)))
+        leftovers = put_tree_back(keep)
+        if leftovers:
+            say('  put back %d file(s) the landing wrote outside its carriers (kept in %s)'
+                % (leftovers, keep))
         die('the landing stopped at step %r and put every file back as it was.\n%s\n'
             'Full log: %s/FLIGHT.log. The inputs commit stays; fix the cause and run the same '
             'command again.' % (res.failed_step, str(res.error)[:3000], keep))

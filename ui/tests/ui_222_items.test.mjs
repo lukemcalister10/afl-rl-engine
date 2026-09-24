@@ -161,7 +161,14 @@ const HIST = await page.evaluate(() => {
 // shipped bundle still carries 29 points until FW2 lands, and the sentinel is pinned to what the
 // act WILL produce. That window is the cost of a hand-moved pin, and it is the cost the pin is
 // worth — a count that moved unexplained would mean the card silently gained or lost an event.
-check(HIST.series && HIST.series.length === 30, 'item 3 — the history has all 30 points',
+// RESTATED 2026-09-24 as the relationship (RULEBOOK P4, P14): the hand-moved literal was restated for
+// every landing and would have aborted FW3 at the gates (30 -> 31). The card's all-in history must
+// carry EVERY non-retro point of the bundle it renders — the same event-loss check, in both worlds,
+// with nothing to restate. The floor is the 30 points landed by FW2: history never shrinks.
+const WANT_POINTS = await page.evaluate(() =>
+  (window.__MATCHDAY_MOVERS__.points || []).filter(p => p.kind !== "retro").length);
+check(HIST.series && HIST.series.length === WANT_POINTS && WANT_POINTS >= 30,
+  'item 3 — the history has every non-retro point of the bundle (' + WANT_POINTS + ')',
   HIST.series ? String(HIST.series.length) : 'null');
 check(HIST.series.every(r => r.v != null && r.rank != null && r.posRank != null),
   'item 3 — value, rank and positional rank are present at EVERY point (no participation gate)');
