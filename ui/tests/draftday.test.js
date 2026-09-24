@@ -228,11 +228,15 @@ if (B) {
   ndStore.forEach(function (r) { byStoreKey[r.key] = r; });
   ok(rows.every(function (r) { return r.g === careerGames(byStoreKey[r.k]); }),
      "every shipped career-games figure is the sum of that player's own seasons");
+  /* RESTATED 2026-09-24, as its own message asked: the store now makes the two agree. The owner ruled
+     career games IS the sum of the season rows, and tools/ingest re-asserts that for every row every
+     week (FW4 corrected 511). So the copy is no longer stale, and the check becomes the invariant:
+     a disagreement now means a writer has broken the ruling. The recount above still reads the
+     season rows, so the page cannot drift onto the scalar either way. */
   var scalarDisagrees = ndStore.filter(function (r) { return (r.games || 0) !== careerGames(r); }).length;
-  ok(scalarDisagrees > 0,
-     "the store's top-level `games` scalar DOES still disagree with the season rows for " +
-     scalarDisagrees + " players — this test exists because reading it instead was the bug, and it " +
-     "goes red if a future store makes the two agree, at which point this comment is what to read");
+  ok(scalarDisagrees === 0,
+     "the store's top-level `games` scalar equals the sum of the season rows for every player (" +
+     scalarDisagrees + " disagree) — career games is the season sum by owner ruling 2026-09-24");
   ok(st.nNeverPlayed > 0,
      "busts ARE in the population — without this every rate on the page is survivorship fiction");
 
