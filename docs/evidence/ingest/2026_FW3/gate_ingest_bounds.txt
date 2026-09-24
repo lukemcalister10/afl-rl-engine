@@ -1,0 +1,7 @@
+$ python3 tools/ingest_bounds.py scores/resolved/2026_FW3.json
+
+INGEST BOUNDS — 92 played (84 moved), 712 did not play
+  non-players: median |move| 0.000%, largest 12
+  WITHIN LIMITS
+
+[exit 0]

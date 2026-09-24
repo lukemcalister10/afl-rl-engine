@@ -1,0 +1,8 @@
+RULED-RED LEDGER — step-keyed entries and their expiry probes
+  tree: /home/user/afl-rl-engine   heavy probes: dated
+
+R15-ladder-proof-GFWD              LIVE         probe still fails (exit 1), signature matched
+                                                step: script::session_2026-07-21/final_integration/tests/r15_ladder_survival_proof.py
+
+CG1-one-source-selftest-residual   LIVE         heavy probe: last measured 2026-09-24 (0 days ago, window 30) — SELF-TEST FAILED: 17 check(s), 121 PASS — re-measured 2026-09-24 on a freshly bootstrapped workspace (was 124/15 on 2026-08-20). 12 of the 17 are the #326 pool-level checks: "0 of N live entrants re-price when the level moves". They fail IDENTICALLY with the new prediction cache emptied before every price (harness pass, same process), so they predate it — pool value was retired from pricing. The rest: two file-mode checks and the s4_matrix stamp (workspace artefacts), the book numeraire display (the book is stale against the board), LEG A fade.
+                                                step: ci-guards.yml::Guards 1/2/3/5 + F1/F2 parity (one_source_selftest.py)

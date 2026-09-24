@@ -1,0 +1,27 @@
+$ python3 engine/rl_after/ingestion/test_finals_report.py
+
+FINALS-REPORT WRITER TESTS
+  ------------------------------------------------------------------
+  [PASS] an fw1- column is feed round 25
+  [PASS] an fw2- column is feed round 26
+  [PASS] a NON-finals column is not a finals week — the writer must not fire on an ordinary act
+  [PASS] FW1: 92 scores rebuilt from the edit list  92
+  [PASS] a games field moving by TWO is refused  1 player(s) do not reconcile with the edit that applied them
+  [PASS] every score in scores/FW1.csv equals the score the STORE received
+  [PASS] rebuilt submitted_round == shipped  25
+  [PASS] rebuilt previous_round == shipped  store-fix-impossible-games-30-8
+  [PASS] rebuilt board_md5_before == shipped  f81dbcda220110ad0113ae0633b6c34e
+  [PASS] rebuilt board_md5_after == shipped  c8c2f2b6f99445484fadaa8c44afe609
+  [PASS] rebuilt player_count == shipped  804
+  [PASS] rebuilt txn_id == shipped  txn_fw1_finals_week_1_30_8
+  [PASS] rebuilt source_store_md5_before == shipped  a9dec7e4785c6861a84f3beaae2f020e
+  [PASS] rebuilt source_store_md5_after == shipped  415929d3c9d561cc58bef00ae63432b2
+  [PASS] rebuilt played/DNP == shipped (92 / 712)
+  [PASS] every one of the 92 rebuilt scores == the shipped score  92
+  [PASS] every player row carries the shipped values and delta  804
+  [PASS] the report names the FEED round (25), not the calendar round
+  [PASS] and min(feed, 24) == the manifest's calendar round — the relation core.lineage asserts
+  ------------------------------------------------------------------
+FINALS-REPORT TESTS: ALL PASS
+
+[exit 0]
