@@ -39,7 +39,8 @@
    (ledger within the stated band).
 10. **OWNER-ONLY WORDS.** Three actions need Luke's explicit word, under any level of
     model autonomy: (a) changes to THIS rulebook, (b) tags and releases, (c) arming the
-    score-write. Everything else may run autonomous.
+    score-write (for weekly scores, the owner sending the file IS the word — P14). Everything
+    else may run autonomous.
 11. **THE SEAM PATTERN.** *Amended v3.* Every release ships a numbered claims note. That half
     is UNIVERSAL and admits no exception, and it is machine-generated and machine-checked
     (`tools/claims.py`) rather than written in prose — a claim nobody can recompute is not a
@@ -145,7 +146,7 @@ P8. **EXPLICIT PATHS ONLY.** Every commit stages named paths. No `git add -A`, n
     final state.*
 P9. **THE PREREG COMES FIRST.** An act that touches an engine file commits its
     predictions and falsifiers BEFORE the edit, and corrects the prereg against the tree
-    rather than the tree against the prereg.
+    rather than the tree against the prereg. A weekly score ingest is not an engine act (P14).
     *Incident: the F5 act's A6 clause predicted `engine_head` would move; it does not
     (it tracks `_merged_recover.py`, and the act edited the exporter). The prereg was
     corrected against the tree and the error named rather than quietly satisfied.*
@@ -185,6 +186,23 @@ P13. **A PINNED OWNER-INPUT HAS ONE NAMED WRITER.** The pins of an owner-supplie
     repair.
     *Incident: PACKAGE 3a, 2026-08-21 — the sheet pins left the engine for the data file;
     the writer-of-record rule rode the act as runbook ERRATUM E7 pending this line.*
+P14. **A WEEK OF SCORES IS DATA, NOT AN ACT.** Weekly scores go in by one command,
+    `tools/ingest scores/<WEEK>.csv`, and nothing else. They need no prereg, no arming word
+    beyond the owner sending the file, no predicted movers and no lander self-test. The
+    safety is automatic: every name resolves or it halts before touching anything, the edit
+    is byte-checked, the landing gates run, and the bounds gate refuses a week that moves the
+    players who did not play. When the command stops, its cause is fixed in the tool, not
+    worked around by hand. No session adds a step to this path without the owner's signed
+    word.
+    *Incident: FW1 and FW2, 2026. Both weeks went through the machinery built for engine
+    changes. FW2's scores took about 24 hours and a dozen flights, and the owner stopped
+    sending scores. Replaying FW2 through `tools/ingest` reproduced the landed board byte for
+    byte (store a367386a, board d3fb6b48).*
+P15. **OUTCOME BEFORE PROCESS.** When a documented procedure fails twice for the same kind of
+    reason, stop: fix the procedure, or ask the owner. Do not make a third attempt. A
+    safeguard is kept only while it can name the failure it catches and that failure can
+    still happen. Before adding one, state what it will cost the next routine run.
+    *Incident: the same weeks — the retries fixed each symptom and never the procedure.*
 
 ## SIGNED
 Owner word given in chat 2026-07-22; amended 2026-07-28 (v2.1) and 2026-08-20 (v3, "Okay agree to
@@ -193,3 +211,6 @@ file. CONSTRAINTS v1.19 + acceptance v1.21 archived.
 P12–P13 amendment signed 2026-08-21, owner word verbatim: "Sign the rulebook, that's fine" — given
 against the supervisor's described batch (the pin-file interim-writer rule + the per-arm no-arb
 reading patch queued at the staircase adoption).
+P14–P15 amendment (with the law 10(c) and P9 riders) signed 2026-09-24, owner word verbatim:
+"Agree, on the rulebook changes. sign it." — given against the drafted text (the one-command
+weekly ingest; outcome before process).

@@ -42,7 +42,7 @@ BOOT vs CONTRACT, computed here rather than assumed: board agree · store agree 
 The single governing document, and its own lint's verdict — a pointer without a verdict is a
 gate claimed by name (process law P5).
 
-- **docs/RULEBOOK.md** — md5 `e1780324f39c82a842579f22c09adb6b`
+- **docs/RULEBOOK.md** — md5 `0a649e8c876e016ff54e9cac309932fc`
 - header: # THE RULEBOOK — v3 · 2026-08-20 · OWNER-SIGNED (in chat, 2026-07-22; amended 2026-07-28, 2026-08-20)
 - `tools/rulebook_lint.py` verdict: **PASS** — rulebook_lint: 0 FAIL
 
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `3bee213179a51193ff103926e7fab94acd2d1cbf` |
+| generated at commit | `74e084cffd4569829421242b232181da7e05f496` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |
