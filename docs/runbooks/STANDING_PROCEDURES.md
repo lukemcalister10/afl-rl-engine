@@ -94,7 +94,10 @@ BLAS env (`OPENBLAS/OMP/MKL/NUMEXPR_NUM_THREADS=1`),
 `s4_matrix_M1v7.py`; then `one_source_selftest.py` (the expectation recorded 2026-08-11 was 144
 PASS / 0 FAIL — a DATED figure, not a current assertion: read the count off the run).
 
-Weekly rounds: the catchup verb — `tools/round_entry/weekly_update.sh catchup --file N=scores/RN.csv`
+Finals weeks (FW1–FW4, GF): one command, `tools/ingest scores/<WEEK>.csv` — the whole procedure is
+`docs/runbooks/WEEKLY_SCORES.md` (owner ruling 2026-09-24; no prereg, arming or predicted movers).
+
+Home-and-away rounds (historical; the season is past R24): the catchup verb — `tools/round_entry/weekly_update.sh catchup --file N=scores/RN.csv`
 unarmed = preview; `INGEST_SCORE_APPLY_ARMED=1 INGEST_SCORE_APPLY=<any> ... --approve` = apply;
 ledger blocks double-apply; exit 6 → `finalize --round N` then `repair --round N`. **The round
 lander (`tools/land round`, PLAN_v6 2b) is the writer of record for a round advance since

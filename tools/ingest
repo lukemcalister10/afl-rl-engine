@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# tools/ingest — the weekly score ingest. See tools/ingest.py for what it does and why.
+#   tools/ingest scores/FW3.csv [--check] [--as "Listed Name=store-key"]
+set -euo pipefail
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+VENV="${RL_VENV:-$HOME/rl_venv312}"
+if [ -x "$VENV/bin/python3" ]; then export PATH="$VENV/bin:$PATH"; fi
+export PYTHONHASHSEED=0 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1
+unset RL_BUILD_LOCK_HELD
+exec python3 "$HERE/ingest.py" "$@"

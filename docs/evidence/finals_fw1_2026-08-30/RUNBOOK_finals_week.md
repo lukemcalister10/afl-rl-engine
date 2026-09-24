@@ -1,3 +1,7 @@
+> **SUPERSEDED 2026-09-24.** A finals week is now one command: `tools/ingest scores/<WEEK>.csv`.
+> See `docs/runbooks/WEEKLY_SCORES.md`. This file is kept as the record of how FW1 was landed;
+> do not follow it.
+
 # LANDING A FINALS WEEK — the runbook, written from the one that worked
 
 FW2..GF are the same act as FW1 with a different score file. Two builds: one that MEASURES in a

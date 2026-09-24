@@ -49,6 +49,18 @@
    "rule": "map_all",
    "stable_key": "will-hayes-b",
    "reason": "Owner ruling 2026-08-30, verbatim: \"Will Hayes is Will Hayes b\". The store carries two rows for this display name: will-hayes-b (AFL club Collingwood, AFFL ownership team West Coast Eagles, ACTIVE, 9 games in 2026) and will-hayes-1 (no club, _retired, no scoring rows at all). The FW1 export lists 'Will Hayes' in the Collingwood block. Only one candidate is active, but a display name that maps to two rows is exactly the case the resolver must be TOLD about rather than allowed to guess at, so the binding is recorded here under the owner's word. All listed 'Will Hayes' scores attach to will-hayes-b."
+  },
+  {
+   "name": "Alex N-Bullen",
+   "rule": "map_all",
+   "stable_key": "alex-neal-bullen",
+   "reason": "Owner ruling 2026-09-09 (\"N-Bullen should be Neal-Bullen\"): the FootyWire finals export shortens the surname. Store: Alex Neal-Bullen, Adelaide."
+  },
+  {
+   "name": "Hugo H-Kahan",
+   "rule": "map_all",
+   "stable_key": "hugo-hall-kahan",
+   "reason": "Owner ruling 2026-09-09 (with N-Bullen, \"etc.\"): the FootyWire finals export shortens the surname. Store: Hugo Hall-Kahan, Adelaide."
   }
  ]
 }
