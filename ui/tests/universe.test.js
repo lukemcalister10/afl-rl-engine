@@ -104,27 +104,50 @@ if (lastRetro && firstLive) {
     const bp = vals[k].byPoint || {};
     if (bp[lastRetro] && bp[firstLive]) { compared++; if (bp[lastRetro].v !== bp[firstLive].v) differ++; }
   });
+  /* RESTATED 2026-09-24 (FINALS WEEK 3). At FW2 the live tail was ONE finals week, so "the point after
+     the last retro" and "the live head" were the same point and `differ === 0` held. At FW3 the tail is
+     two weeks, and the check compared retro-r27 (FW3) with fw2 (FW2): 177 players differ, which is
+     one week of football, not a broken seam. What that exposed was real — the current-model history
+     carried every finals week TWICE (retro-rN and its stored column) — and universe.points now keeps
+     only the stored one. The seam is asserted as the three things it always meant: */
+  const weekOfBoard = {};
+  Object.keys(B.reports || {}).forEach(function (r) {
+    const rep = B.reports[r];
+    if (rep && rep.board_md5_after) weekOfBoard[String(rep.board_md5_after)] = Number(r);
+  });
+  const byId = {};
+  U.points(B).forEach(function (p) { byId[String(p.id)] = p; });
+  (B.points || []).forEach(function (p) { if (!byId[String(p.id)]) byId[String(p.id)] = p; });
+  const weekOf = function (id) { const p = byId[id]; return p && p.board ? weekOfBoard[String(p.board)] : undefined; };
   ok(compared > 700, "the retro tail and the live head are comparable across the board (" + compared + " players)");
-  /* RESTATED 2026-09-10 (FINALS WEEK 2). This asserted `differ > 0` — "the handover carries real
-     football, not a copy" — because until FW2 the retro tail was always one week BEHIND the live
-     head, so a zero difference would have meant the series had been duplicated rather than priced.
-     That is no longer the shape. The landing now banks the newest week's retro point FROM THE BOARD
-     IT JUST BUILT, because for the newest applied week the retrospective's truncation removes
-     nothing: the truncated store IS the live store and its pricing IS the live board. So the tail
-     and the head are the SAME BOARD by construction, and `differ === 0` is not a copy — it is the
-     seam closing completely.
-
-     The property is therefore restated as what it was always defending, in two halves that together
-     say more than the original did:
-       (a) THE SEAM IS EXACT — the retro tail agrees with the live head on every comparable player.
-           This is the control (retro-rN reproduces the live board) asserted on the UI's own data.
-       (b) THE SERIES IS NOT WHOLESALE A COPY — somewhere in the retrospective, a re-priced round
-           must actually differ from the stored point at the same round. If the whole series were
-           duplicated stored values, this fails, which is the fraud the original was written to
-           catch. */
-  ok(differ === 0,
-     "the seam is EXACT: the retro tail and the live head agree on every comparable player (" +
-     differ + " of " + compared + " differ)");
+  // (a) ONE WEEK, ONE BOARD: every banked retro week that is also a stored point agrees with it exactly.
+  let pairs = 0, pairDiffer = 0;
+  (B.points || []).filter(function (p) { return p.kind === "retro"; }).forEach(function (rp) {
+    const rep = (B.reports || {})[String(rp.after_round)];
+    // the twin must be a LIVE point (after the last model change): an older stored point for the
+    // same week (FW1, before the bust exclusion) is the same football under a superseded model.
+    const twin = rep && cur.map(function (i) { return byId[i]; }).filter(function (q) {
+      return q && q.kind !== "retro" && q.board && String(q.board) === String(rep.board_md5_after); })[0];
+    if (!twin) return;
+    pairs++;
+    Object.keys(vals).forEach(function (k) {
+      const bp = vals[k].byPoint || {};
+      if (bp[rp.id] && bp[twin.id] && bp[rp.id].v !== bp[twin.id].v) pairDiffer++;
+    });
+  });
+  ok(pairs > 0 && pairDiffer === 0,
+     "the seam is EXACT: every banked week that is also a stored point is the same board (" + pairs +
+     " week(s), " + pairDiffer + " player readings differ)");
+  // (b) NO WEEK TWICE in the current-model history.
+  const curWeeks = cur.map(function (i) {
+    return i.indexOf("retro-r") === 0 ? Number(i.slice("retro-r".length)) : weekOf(i); })
+    .filter(function (w) { return w !== undefined; });
+  const dupWeeks = curWeeks.filter(function (w, j) { return curWeeks.indexOf(w) !== j; });
+  ok(dupWeeks.length === 0, "no week appears twice in the current-model history (" + dupWeeks.join(",") + ")");
+  // (c) NO GAP, NO OVERLAP at the handover: the first live point is the week after the last retro.
+  const handoverWeek = weekOf(firstLive);
+  ok(handoverWeek === undefined || handoverWeek === Number(lastRetro.slice("retro-r".length)) + 1,
+     "the handover is seamless: " + lastRetro + " is followed by week " + handoverWeek + " (" + firstLive + ")");
   let repriced = 0, checkedRounds = 0;
   retros.forEach(function (rid) {
     const rn = String(rid).slice("retro-r".length);

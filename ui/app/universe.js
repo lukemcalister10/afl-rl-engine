@@ -100,8 +100,19 @@
     // is dropped — the stored one is the board the app served and wins.
     const liveRounds = {};
     live.forEach(function (p) { if (p.after_round != null) liveRounds[String(p.after_round)] = true; });
+    // A FINALS WEEK is the same case under a different id: its stored column sits at after_round 24
+    // (the calendar holds) while its retro point sits at the feed round, so the round match above
+    // misses it. The week's report names the board it produced; a retro point whose week's board IS
+    // a live point is that week twice — FW2 at FW2 (invisible: equal values), and after FW3 a card
+    // that read FW2, FW3, FW2, FW3. The stored point wins, as above.
+    const reports = (b || {}).reports || {};
+    const liveBoards = {};
+    live.forEach(function (q) { if (q.board) liveBoards[String(q.board)] = true; });
     const keptRetro = retro.filter(function (p) {
-      return !(p.kind === "retro" && p.after_round != null && liveRounds[String(p.after_round)] &&
+      if (p.after_round == null) return true;
+      const rep = reports[String(p.after_round)];
+      if (rep && rep.board_md5_after && liveBoards[String(rep.board_md5_after)]) return false;
+      return !(liveRounds[String(p.after_round)] &&
                live.some(function (q) { return q.kind === "round" &&
                                         String(q.after_round) === String(p.after_round); }));
     });
