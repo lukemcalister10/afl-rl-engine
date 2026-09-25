@@ -1,0 +1,199 @@
+======================================================================================================================
+ORDER 18 -- THE NATIONAL-DRAFT SITTER TREATMENT: REDISTRIBUTION, OR NET CHARGE?
+======================================================================================================================
+  pins asserted at entry:  board 94f1fec5..  store d9a24282..  instrument 0f822035..
+  engine loaded read-only from a staged copy; repo untouched.  MA.data n=2650
+  on the ND arm _h_cut is inert by construction (gated on p['_pool']), so R is the WHOLE
+  differential. H_POOLSIT=0.804 / H_UNION=0.280 appear below ONLY in the pool control.
+
+======================================================================================================================
+POPULATION
+======================================================================================================================
+  harvested cells (complete-window, Y<=2021):  pool 3334   national 6662
+  national arm by stream: ND 1-64 6662
+  ND 1-64 cells: 6662   of which sit-out: 1385 (20.8% by count)
+
+  NOTE ON `entry_anchor` ON THE NATIONAL ARM. entry_anchor(p) returns v0_start(p) for any non-pool
+  row (_merged_recover.py:1852-1857), so the two denominators phase 1 had to keep separate for the
+  pool COINCIDE here. Verified rather than asserted:
+      max |entry_anchor - v0_start| over ND 1-64 = 0   (n=6662)
+
+======================================================================================================================
+CONTROL -- REPRODUCING PHASE 1's POOL NET-CHARGE COLUMN (published on PR #453)
+======================================================================================================================
+  pathway    published  reproduced      delta |  R-leg only R x H total
+  ------------------------------------------------------------------------------------------------------------------
+  RD           -0.0807     -0.0807  -0.000029 |     -0.1675     -0.2102
+  SSP          -0.0920     -0.0920   0.000033 |     -0.1499     -0.2064
+  MSD          -0.6586     -0.6586  -0.000048 |     -0.3520     -0.7379
+  IRE          -0.3959     -0.3959  -0.000024 |     -0.2522     -0.4527
+  PDA          -0.1198     -0.1198  -0.000045 |     -0.2465     -0.3062
+  PDN          -0.1740     -0.1740   0.000031 |     -0.3972     -0.4861
+  PDS          -0.1138     -0.1138  -0.000006 |     -0.3017     -0.3564
+  UNR          -0.2022     -0.2022   0.000015 |     -0.2015     -0.3291
+  ND>64        -0.0976     -0.0976   0.000008 |     -0.2231     -0.2726
+  ------------------------------------------------------------------------------------------------------------------
+  max |delta| vs published = 0.000048  -> REPRODUCED
+
+  READ THE LAST TWO COLUMNS. Phase 1's published net charge is the H LEG ALONE. The pool sitter
+  also takes R inside sitout_ev at the pool index, and the composed R x H charge is far larger
+  than the figure the phase-1 ruling was made on. That is a finding about the POOL arm surfaced
+  by this act, reported because it was measured -- not because it was asked for.
+
+======================================================================================================================
+1. THE HEADLINE -- ND PICKS 1-64, ENTRY-WEIGHTED MEAN OF THE APPLIED SITTER MULTIPLIER
+======================================================================================================================
+
+      mean = ( SUM_sitters e*R + SUM_non-sitters e*1 ) / SUM_all e ,   e = entry_anchor
+
+      cells                           6662
+      sitter cells                    1385
+      sitter share (by count)       0.2079
+      sitter share (entry-wtd)      0.1394
+      mean R among sitters          0.5613      (i.e. the AVERAGE sitter is charged 1.78x;
+                                              the HARSHEST single cell is charged 6.10x -- see 2)
+      ----------------------------------------
+      HEADLINE MEAN               0.938846
+      NET CHARGE                 -0.061154   (-6.12%)
+      VERDICT                   NET CHARGE - BREACH
+      ----------------------------------------
+      required uplift U           1.071060      what an ND NON-SITTER would have to carry for the
+                                              law to hold. WHAT HE ACTUALLY CARRIES IS 1.000000,
+                                              a shortfall of -7.1060% on every non-sitter.
+
+      cross-check, e = v0_start (identical object on this arm): mean 0.938846  net -0.061154
+      unweighted (per-cell) mean multiplier:                    0.904672
+
+  THE ANSWER TO THE OWNER'S QUESTION. The ND sitter treatment does NOT redistribute. There is no
+  uplift term on the national arm at all -- _h_cut is pool-gated and sitout_ev multiplies only the
+  sitter's own anchor. Every unit taken off a sitter leaves the cohort; not one unit reaches a
+  non-sitter. The 'huge redistribution to those who don't' does not occur, because there is no
+  redistribution: it is a 6.12% NET CHARGE on the national draft 1-64.
+
+======================================================================================================================
+2. BREAKDOWN -- BY PICK BAND, AND BY POSITION CLASS
+======================================================================================================================
+
+  BY PICK BAND (the engine's own board RANGES)
+  band         cells sitters | sit share    mean R |       MEAN  net charge |  U needed
+  ------------------------------------------------------------------------------------------------------------------
+  1-10          1407     100 |    0.0577    0.5607 |   0.974632   -0.025368 |  1.026922
+  11-20         1273     181 |    0.1339    0.6128 |   0.948153   -0.051847 |  1.059863
+  21-30         1033     213 |    0.1987    0.5666 |   0.913882   -0.086118 |  1.107472
+  31-45         1502     419 |    0.2817    0.5448 |   0.871765   -0.128235 |  1.178530
+  46-64         1447     472 |    0.3239    0.5150 |   0.842898   -0.157102 |  1.232381
+  ------------------------------------------------------------------------------------------------------------------
+  SPREAD across bands: -0.025368 to -0.157102  (range 0.131734)
+
+  BY POSITION CLASS
+  class        cells sitters | sit share    mean R |       MEAN  net charge |  U needed
+  ------------------------------------------------------------------------------------------------------------------
+  nonKPP        4656     864 |    0.1204    0.5454 |   0.945255   -0.054745 |  1.062241
+  KPP           1558     379 |    0.1840    0.5473 |   0.916687   -0.083313 |  1.102102
+  RUCK           448     142 |    0.2204    0.6795 |   0.929379   -0.070621 |  1.090583
+  ------------------------------------------------------------------------------------------------------------------
+  SPREAD across classes: -0.054745 to -0.083313  (range 0.028568)
+
+  BY DEPTH OF SIT-OUT (all ND 1-64 sitters at that depth; non-sitters excluded from mean R)
+  depth      sitters |    mean R     min R   max 1/R
+  ------------------------------------------------------------------------------------------------------------------
+  d1             757 |    0.6321    0.5470      1.83x
+  d2             373 |    0.4422    0.3880      2.58x
+  d3             154 |    0.4273    0.3450      2.90x
+  d4              58 |    0.4017    0.2390      4.18x
+  d5              26 |    0.4229    0.1640      6.10x
+  d6              10 |    0.3244    0.1640      6.10x
+  d6+             17 |    0.3747    0.1640      6.10x
+  ------------------------------------------------------------------------------------------------------------------
+  harshest single multiplier applied anywhere on ND 1-64: R=0.1640  ->  6.10x penalty
+  (the owner's '5x' is real and is exceeded)
+
+  WHO IS UPLIFTED. Measured, not assumed: the multiplier actually applied to an ND NON-SITTER.
+      distinct multipliers on ND 1-64 non-sitter cells: [1.0]   (n=5277 cells)
+      => NOBODY IS UPLIFTED. The uplift is 1.0 exactly, in every band and every class.
+
+======================================================================================================================
+3. THE CALIBRATION QUESTION -- IS THE ND ENTRY PRICE ALREADY SITTER-INCLUSIVE?
+======================================================================================================================
+
+  The law only bites if the ND entry price is calibrated to ND returns INCLUDING sitters. Settled
+  from the code, not assumed. Instruments:
+      structural_values()  harness_pvc_REPINNED_pass3.py:339   -- teaches the pick curve
+      realised_full()                                  :313
+      never_established()                              :277
+      load_matrix()                                    :325   -- the teaching-population filter
+
+  WHICH MATRIX THIS COUNT RUNS ON, AND WHY -- DISCLOSED, NOT QUIETLY SUBSTITUTED.
+  The composition-act harness copy pins store d9a24282 (the current gate store), but the matrices
+  it pins (per_entrant_main.json and the four variants) are NOT COMMITTED to the repo -- only the
+  tables derived from them are. The count below therefore runs on the committed self-consistent
+  pair in docs/evidence/noarb_338_2026-08-06/ (harness pinned to store 37ced3ce + its own matrix).
+  THE FUNCTIONS THAT DECIDE THE QUESTION ARE BYTE-IDENTICAL ACROSS THE COPIES -- verified here,
+  not asserted -- so only the pinned store value differs, and never_established/realised_full/
+  sofar/structural_values are the same code either way:
+      noarb_338 copy         md5(from `def never_established` to EOF) = cf5cafb62b70db645b1e40679dfaa981
+      composition copy       md5(from `def never_established` to EOF) = cf5cafb62b70db645b1e40679dfaa981
+      INSTRUMENT of record   md5(from `def never_established` to EOF) = cf5cafb62b70db645b1e40679dfaa981
+      -> ALL THREE IDENTICAL below the pins
+
+  matrix per_entrant_338_confirmation.json   store 37ced3ce   teaching population n=1197
+
+      never-established rows (no season of QUAL_GAMES=6 games)      262   (21.89% of the population)
+      of those, INSIDE the teaching population                      262
+      of those, teaching EXACTLY 0.0                                262
+      of those, teaching non-zero (prior fallback)                    0   
+      their contribution to the summed teaching value               0.0 of 1039851.5
+      provenance of the whole population                         {'completed': 301, 'concluded_realised': 825, 'prior_fallback_thin': 71}
+
+      load_matrix's filter is  teaches_curve & pick 1..64 & 2004<=year<=2022. `teaches_curve`
+      is a MEMBERSHIP flag (rl_model.py:313 `_teaches_curve(p) = _in_pvc(p) and not is_pool(p)`)
+      -- it selects national, in-window, non-pool rows. IT IS NOT A SURVIVORSHIP FILTER.
+      kernel_raw (:396) then takes a weighted MEAN over `max(r['value'],0.0)` across ALL rows,
+      so every one of those zeros sits in the NUMERATOR AS ZERO AND IN THE DENOMINATOR AS ONE.
+
+  VERDICT -- STATED WITHOUT HEDGING, BECAUSE THE CODE IS UNAMBIGUOUS:
+      NEVER-ESTABLISHED PLAYERS ARE INSIDE THE TEACHING POPULATION AT VALUE 0.0.
+      realised_full(r) :313  ->  `if never_established(r): return 0.0`
+      sofar(r,t)       :318  ->  `return 0.0 if never_established(r) else realised_at(r,t)`
+      structural_values :339 ->  iterates ALL of ND; a concluded never-established row is appended
+                                 with value=realised_full(r)=0.0 and how='concluded_realised'; an
+                                 unconcluded one with written depth takes sofar(r,T)*ratio = 0.0.
+                                 NEITHER PATH DROPS THE ROW.
+      The harness says so itself, in its own header:
+          '- THE ZERO IS UNTOUCHED. a career with no season of >= QUAL_GAMES (6) games still
+           teaches 0.0, and stays in the denominator.'
+
+      THEREFORE: the ND pick curve is ALREADY calibrated on returns that include the sitters and
+      the busts at zero. The entry price a pick-N draftee is charged ALREADY has sit-out risk
+      priced into it. Applying R on top is a SECOND CHARGE FOR THE SAME THING.
+
+      THE ND SITTER TREATMENT IS A DOUBLE CHARGE, NOT A SURVIVOR-BIAS CORRECTION.
+      The pre-registered decision rule (PREREG_ORDER18.md) selected this branch in advance.
+
+======================================================================================================================
+4. THE POOL COMPARISON -- SAME DIRECTION? BY HOW MUCH?
+======================================================================================================================
+
+  arm           net charge    vs ND 1-64     verdict
+  ------------------------------------------------------------------------------------------------------------------
+  ND 1-64          -0.0612            --      BREACH
+  pool RD          -0.0807         1.32x      BREACH
+  pool SSP         -0.0920         1.50x      BREACH
+  pool MSD         -0.6586        10.77x      BREACH
+  pool IRE         -0.3959         6.47x      BREACH
+  pool PDA         -0.1198         1.96x      BREACH
+  pool PDN         -0.1740         2.85x      BREACH
+  pool PDS         -0.1138         1.86x      BREACH
+  pool UNR         -0.2022         3.31x      BREACH
+  pool ND>64       -0.0976         1.60x      BREACH
+  ------------------------------------------------------------------------------------------------------------------
+  (pool column = phase 1's PUBLISHED figure, the H leg alone, so the comparison is against the
+   number the phase-1 ruling was actually made on. The composed R x H pool charges are in the
+   control table above and are larger still.)
+
+  PLAINLY: the ND arm breaches the mean-preserving law in the SAME DIRECTION as all nine pool
+  pathways -- a net charge, mean below 1.0, no uplift to anyone. Its magnitude sits OUTSIDE the pool range.
+
+======================================================================================================================
+  pins re-asserted at exit: board 94f1fec5..  store d9a24282..  instrument 0f822035.. UNMOVED
+wrote ND_SITTER.json
