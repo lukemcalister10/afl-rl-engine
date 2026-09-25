@@ -1,0 +1,162 @@
+======================================================================================================================
+TASK 7 -- THE CONSEQUENCE READ
+======================================================================================================================
+  lambda per row = its OWN layer-2 cell (pathway x position), shipped construction, K=10 borrow,
+  renormalised. Pass-through e: 0.996 at 0 games, 0.119 at 1-9, 0.000 at 10+.
+  MODELLED, not built. A board build belongs to adoption and is not run here.
+
+======================================================================================================================
+BOARD TOTAL AND REACH
+======================================================================================================================
+  board rows total                : 804
+  pool rows on the board          : 242
+  of those, reachable at all (e>0): 82   worth 11,300 points, 1.51% of the board
+
+  BOARD TOTAL  745,888  ->  744,350   (-0.21%)
+
+  The repair's reach is small BY CONSTRUCTION, not by accident: the engine already lets a player's
+  own playing record take over from his entry price, and at ten games it has taken over completely.
+
+======================================================================================================================
+THE MOVERS -- every pool board row that moves at all, largest absolute move first
+======================================================================================================================
+  player                 stream  pos      games      e lambda     SHIP  DERIVED    delta
+  ------------------------------------------------------------------------------------------------------------------
+  Liam Hetherton         PDA     KPF          0  0.996  0.324      100       33      -67
+  Xavier Walsh           RD      KPD          0  0.996  0.274       86       24      -62
+  Riley Onley            RD      MID          0  0.996  0.578      143       83      -60
+  Nick Driscoll          RD      MID          0  0.996  0.578      143       83      -60
+  Fred Rodriguez         RD      MID          0  0.996  0.578      143       83      -60
+  Kalani White           PDN     KPF          0  0.996  0.128       67        9      -58
+  Toby Whan              PDN     SF           0  0.996  0.124       60        7      -53
+  Ryda Luke              PDN     SF           0  0.996  0.124       60        7      -53
+  Jai Saxena             PDN     SF           0  0.996  0.124       60        7      -53
+  Noah Chamberlain       PDA     SF           0  0.996  0.403       87       35      -52
+  Jesse Mellor           PDN     MID          0  0.996  0.160       60       10      -50
+  Kobe McDonald          IRE     SD           0  0.996  0.222       60       13      -47
+  Cillian Bourke         IRE     SD           0  0.996  0.222       60       13      -47
+  Ben Murphy             IRE     SD           0  0.996  0.222       60       13      -47
+  Harry Charleson        RD      SD           0  0.996  0.469       86       40      -46
+  Patrick Carr           UNR     RUCK         0  0.996  0.346       67       23      -44
+  Logan Smith            ND>64   RUCK         0  0.996  1.454       91      132      +41
+  Leon Kickett           RD      SF           0  0.996  0.638      112       72      -40
+  Oscar Berry            UNR     KPD          0  0.996  0.193       47        9      -38
+  Indy Cotton            UNR     SD           0  0.996  0.230       49       11      -38
+  Ricky Mentha           PDN     SF           0  0.996  0.124       43        5      -38
+  Benny Barrett          PDN     SF           0  0.996  0.124       43        5      -38
+  Matt Duffy             IRE     SD           0  0.996  0.222       47       11      -36
+  Eamonn Armstrong       IRE     SD           0  0.996  0.222       47       11      -36
+  Cillian Burke          IRE     SD           0  0.996  0.222       47       11      -36
+  Harrison Ramm          MSD     KPD          5  0.119  0.364      320      284      -36
+  Lennox Hoffman         ND>64   SD           0  0.996  0.453       65       30      -35
+  Keighton Matofai-Forbe ND>64   SD           0  0.996  0.453       65       30      -35
+  Jaime Uhr-Henry        UNR     RUCK         0  0.996  0.346       51       18      -33
+  Nathan Wardius         PDA     SF           0  0.996  0.403       54       22      -32
+  Asher Eastham          RD      SF           0  0.996  0.638       81       52      -29
+  River Stevens          ND>64   SF           0  0.996  0.551       65       36      -29
+  Rob Monahan            IRE     SD           0  0.996  0.222       37        8      -29
+  Ollie Greeves          RD      MID          4  0.119  0.578      421      394      -27
+  Oliver Hayes-Brown     UNR     RUCK         7  0.119  0.346      221      195      -26
+  Jacob Moss             UNR     KPF          0  0.996  0.320       36       12      -24
+  Riley Hamilton         PDA     SF           6  0.119  0.403      234      210      -24
+  Lukas Cooke            MSD     KPD          2  0.119  0.364      182      161      -21
+  Oscar Steene           SSP     RUCK         8  0.119  1.402      501      522      +21
+  Kye Annand             MSD     KPD          9  0.119  0.364      181      161      -20
+  ------------------------------------------------------------------------------------------------------------------
+  movers: 79 of 242 pool board rows
+
+======================================================================================================================
+THE NAMED LINES -- the directive's own D5 roster, on the derived numbers
+======================================================================================================================
+  player                 stream  pos      games      e  lambda     SHIP   DERIVED
+  ------------------------------------------------------------------------------------------------------------------
+  John Noble             MSD     SD         158  0.000   1.158     2162      2162
+  Max Hall               MSD     SF          44  0.000   0.886     2820      2820
+  James Peatling         MSD     MID         88  0.000   1.415     1100      1100
+  Mark Keane             SSP     KPD         63  0.000   0.553     1514      1514
+  Tom McCarthy           MSD     SD          30  0.000   1.158     1468      1468
+  Lachlan McAndrew       SSP     RUCK        22  0.000   1.402     1208      1208
+  Zac Banch              MSD     SF          10  0.000   0.886      128       128
+  Flynn Perez            SSP     SD          31  0.000   0.992      113       113
+  Paddy Cross            SSP     SF          10  0.000   0.874      113       113
+  Marcus Herbert         MSD     SD           8  0.119   1.158     1053      1072
+  Mitch Podhajski        MSD     KPF          2  0.119   0.774      195       189
+  Harrison Coe           MSD     RUCK         0  0.996   0.968       52        50
+
+  The owner's expectation is confirmed exactly: the established players do not move, because they
+  are priced on their own playing record and carry zero pass-through from the entry price.
+
+======================================================================================================================
+BOTH COHORT INSTRUMENTS -- all-arm is the DECIDING lens; legacy picks 1-64 retained
+======================================================================================================================
+
+  instrument                        now    DERIVED |     apprec.     charge    MARGIN
+  ------------------------------------------------------------------------------------------------------------------
+  ALL-ARM (deciding) yr1         0.8850     1.0371 |      +3.71%     14.00%   +10.29%
+  legacy picks 1-64 yr1          1.0884     1.0884 |      +8.84%     14.00%    +5.16%
+
+  FREE MONEY REQUIRES APPRECIATION TO EXCEED THE CHARGE. A margin above zero is legal.
+
+  the same instruments at year 4, for context (year 4 is NOT a target -- standing law):
+  instrument                        now    DERIVED
+  ALL-ARM yr4                    1.2859     1.5309
+  legacy picks 1-64 yr4          1.5660     1.5660
+
+  THE LEGACY INSTRUMENT IS INVARIANT AND THAT IS A STRUCTURAL FACT, NOT A NULL RESULT: the picks
+  1-64 table contains national-draft rows only, and no pool level enters any of them. It is
+  retained as the owner ruled, and it is reported as unmoved BECAUSE it cannot move.
+
+======================================================================================================================
+BOTH HEADLINE METRICS -- the career profile AND year-4-over-year-0. Neither is a target.
+======================================================================================================================
+  pathway       n |    CAREER PROF      vs ND |        YR4/YR0      vs ND | derived L1
+  ------------------------------------------------------------------------------------------------------------------
+  RD          688 |         0.5233     0.5104 |         0.7379     0.4763 |      133.5
+  SSP          52 |         1.0287     1.0034 |         1.3507     0.8718 |      253.7
+  MSD         106 |         0.9418     0.9187 |         0.9485     0.6122 |      263.5
+  IRE          57 |         0.2006     0.1956 |         0.2810     0.1814 |       26.1
+  PDA          51 |         0.4279     0.4174 |         0.7709     0.4976 |       81.1
+  PDN          43 |         0.1422     0.1387 |         0.2575     0.1662 |       17.1
+  PDS          21 |         0.1259     0.1228 |         0.1694     0.1094 |       41.1
+  UNR          59 |         0.3493     0.3408 |         0.7672     0.4952 |       35.3
+  ND>64       120 |         0.5477     0.5342 |         0.6924     0.4469 |      142.2
+  ------------------------------------------------------------------------------------------------------------------
+  ND 1-64    1444 |         1.0252     1.0000 |         1.5493     1.0000 |
+
+======================================================================================================================
+THE ORDERED _ruc_prior_cap CHECK -- the only surviving v0-chain law that touches this act
+======================================================================================================================
+
+    _ruc_prior_cap(p,v) = min(v, RUC_PRIOR_CAP * _cap_basis(p) * _ruc_head_v0(p))  for gfut=='RUCK'
+    _cap_basis(p)       = pool_level(p) for a pool row  (_merged_recover.py:1209-1213)
+
+  SO THE CAP IS EXACTLY PROPORTIONAL TO THE LEVEL THIS ACT CHANGES. Lower the level by lambda and
+  the ceiling drops by the same lambda. Whether it BINDS depends on whether the capped quantity
+  falls with it -- and _v0_uncapped = raw_ev(p, debutyr-1) * iso_eff(...) is a production-side
+  object that does NOT read pool_level. So a level CUT tightens the cap against an unchanged v0.
+
+  pool rucks in the eligible population: 140
+  pathway       n    level now  lambda RUCK level derived
+  ------------------------------------------------------------------------------------------------------------------
+  RD           71        282.5       0.9240        261.0
+  SSP           6        252.8       1.4024        354.5
+  MSD          14        286.8       0.9677        277.5
+  IRE           2        133.4       0.2665         35.6
+  PDA           5        194.3       0.6359        123.6
+  PDN           2        123.0       0.2078         25.6
+  PDS           1        145.0       0.5424         78.7
+  UNR          30        103.7       0.3462         35.9
+  ND>64         9        266.1       1.4545        387.0
+
+  THE DIRECTION OF THE RISK, stated plainly: every pool pathway's RUCK cell has the HIGHEST
+  lambda in its pathway (rucks are the best-delivering pool cell everywhere), so the ruck ceiling
+  falls LESS than its pathway's other cells. Where a pathway is cut hard overall, the ruck cap is
+  the least-tightened cell, not the most.
+
+  WHAT THIS CHECK CANNOT SETTLE HERE, AND SO DOES NOT CLAIM TO: whether the cap actually BINDS on
+  any given derived ruck v0 is a property of the machinery's OUTPUT, and the outputs only exist
+  once the levels are wired and the engine re-run. That is adoption work by the order's own scope
+  boundary. What is established here is the STRUCTURE -- the cap moves with the level, is not a
+  fixed ceiling, and cannot silently clip a derived ruck without the level having moved first.
+
+wrote PHASE1_CONSEQUENCE.json

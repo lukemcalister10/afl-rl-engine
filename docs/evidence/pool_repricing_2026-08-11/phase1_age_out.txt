@@ -1,0 +1,107 @@
+======================================================================================================================
+TASK 6 -- DRAFT AGE (D7), FITTED TO PLAYING QUALITY ONLY, PER STREAM
+======================================================================================================================
+  quality = SUM(games*avg)/SUM(games) per player -- POINTS PER GAME. It cannot rise by playing more.
+  PRIMARY aggregate = unweighted mean across players (one player, one vote).
+  Shipped state today: _b_shape is FLAT (RL_B_SHAPE=0), so there is NO age adjustment in force.
+
+  PRE-SPECIFIED DECISION RULE (written before the numbers): adjustment ONLY IF |t| >= 2.0 AND the
+  fitted change across the stream's own age range is >= 2% of its mean quality.
+
+======================================================================================================================
+COVERAGE -- how much of each stream can be measured at all, and what the filter costs
+======================================================================================================================
+  stream         n   played age known   MEASURED   excluded
+  ------------------------------------------------------------------------------------------------------------------
+  ND 1-64     1444     1251     1444       1251        193
+  RD           691      379      691        379        312
+  SSP           52       43       52         43          9
+  MSD          106       76      106         76         30
+  IRE           57       23       57         23         34
+  PDA           51       31       51         31         20
+  PDN           43       17       43         17         26
+  PDS           21        7       21          7         14
+  UNR           59       24       59         24         35
+  ND>64        121       86      121         86         35
+
+  The 'excluded' column is dominated by never-played rows. Every conclusion below is conditional
+  on having played, and that conditioning cannot be removed.
+
+======================================================================================================================
+QUALITY BY DRAFT-AGE BAND -- primary (unweighted) beside D7's games-weighted column
+======================================================================================================================
+  stream         n |     <=18    19-20      21+ |     <=18    19-20      21+ | games-wtd
+                   | --- UNWEIGHTED (primary) --- | --- games-weighted (D7) --- |
+  ------------------------------------------------------------------------------------------------------------------
+  ND 1-64     1251 |    60.73    61.38    61.98 |    73.80    71.25    73.48 |     73.63
+  RD           379 |    56.40    62.34    63.00 |    69.56    72.78    73.22 |     71.23
+  SSP           43 |    42.08    57.65    52.19 |    55.52    62.09    57.55 |     59.27
+  MSD           76 |        -    48.68    52.58 |        -    66.86    60.63 |     63.20
+  IRE           23 |    52.76    55.92    42.65 |    63.21    67.88    46.19 |     65.07
+  PDA           31 |    51.71    54.40    53.97 |    55.07    65.34    53.46 |     57.13
+  PDN           17 |    46.39    65.13    58.74 |    53.58    71.47    52.42 |     57.96
+  PDS            7 |    46.03    49.60        - |    60.91    49.60        - |     59.68
+  UNR           24 |    45.05    50.50    52.22 |    58.54    72.39    61.30 |     64.51
+  ND>64         86 |    54.52    54.94    60.17 |    68.19    78.01    67.45 |     70.35
+
+======================================================================================================================
+THE FIT -- OLS of player quality on CONTINUOUS draft age, per stream
+======================================================================================================================
+  stream         n |   slope/yr        se        t |    mean Q range eff | % of mean
+  ------------------------------------------------------------------------------------------------------------------
+  ND 1-64     1251 |      0.096     0.492     0.19 |     60.83      0.96 |      1.6%
+  RD           379 |      0.904     0.369     2.45 |     59.25     15.37 |     25.9%
+  SSP           43 |      0.664     0.896     0.74 |     51.94      5.31 |     10.2%
+  MSD           76 |      0.951     0.989     0.96 |     51.04      8.56 |     16.8%
+  IRE           23 |     -1.543     2.413    -0.64 |     52.51     -7.71 |     14.7%
+  PDA           31 |      1.400     2.328     0.60 |     52.54      8.40 |     16.0%
+  PDN           17 |      2.061     2.018     1.02 |     50.05     14.43 |     28.8%
+  PDS            7 |      3.572    25.301     0.14 |     46.54      3.57 |      7.7%
+  UNR           24 |      1.348     1.531     0.88 |     50.90     10.79 |     21.2%
+  ND>64         86 |      0.887     0.705     1.26 |     55.65     15.97 |     28.7%
+
+======================================================================================================================
+THE VERDICT PER STREAM, against the pre-specified rule
+======================================================================================================================
+  stream           t   |t|>=2  % of mean       >=2% | RULING
+  ------------------------------------------------------------------------------------------------------------------
+  ND 1-64       0.19       NO       1.6%         NO | NO ADJUSTMENT
+  RD            2.45      yes      25.9%        yes | AGE ADJUSTMENT EARNED
+  SSP           0.74       NO      10.2%        yes | NO ADJUSTMENT
+  MSD           0.96       NO      16.8%        yes | NO ADJUSTMENT
+  IRE          -0.64       NO      14.7%        yes | NO ADJUSTMENT
+  PDA           0.60       NO      16.0%        yes | NO ADJUSTMENT
+  PDN           1.02       NO      28.8%        yes | NO ADJUSTMENT
+  PDS           0.14       NO       7.7%        yes | NO ADJUSTMENT
+  UNR           0.88       NO      21.2%        yes | NO ADJUSTMENT
+  ND>64         1.26       NO      28.7%        yes | NO ADJUSTMENT
+
+  STREAMS EARNING AN AGE ADJUSTMENT: RD
+  of which POOL pathways: 1 of 9 -- RD
+
+======================================================================================================================
+THE ITEM B CONTRAST -- why the retired steps are not reinstated by this measure
+======================================================================================================================
+
+  ITEM B's retirement note records its own defect (_merged_recover.py:1810-1820): quality across
+  draft age read 51.47 / 52.98 / 53.33 at <=18 / 19-20 / 21+ while PARTICIPATION (career games)
+  read 24.7 / 31.7 / 21.6 -- the 21+ slice playing the LEAST of the three while being priced
+  HIGHEST by a measure that rewarded playing more. Measured here on quality alone:
+
+  stream       Q<=18   Q19-20     Q21+ | games<=18    g19-20      g21+
+  ------------------------------------------------------------------------------------------------------------------
+  ND 1-64      60.73    61.38    61.98 |      88.4     104.8      82.1
+  RD           56.40    62.34    63.00 |      65.9      91.8      66.1
+  SSP          42.08    57.65    52.19 |      21.3      51.7      24.4
+  MSD              -    48.68    52.58 |         -      25.3      23.5
+  IRE          52.76    55.92    42.65 |      58.6      76.5      19.8
+  PDA          51.71    54.40    53.97 |      42.9      35.9      18.7
+  PDN          46.39    65.13    58.74 |      22.8      51.5       8.5
+  PDS          46.03    49.60        - |      31.5      23.0         -
+  UNR          45.05    50.50    52.22 |      62.3      74.5      50.1
+  ND>64        54.52    54.94    60.17 |      55.2      81.3      60.6
+
+  Quality and participation move DIFFERENTLY across age bands. Any measure that mixes them prices
+  the mixture, which is precisely what retired ITEM B. Nothing above is fitted to participation.
+
+wrote PHASE1_AGE.json
