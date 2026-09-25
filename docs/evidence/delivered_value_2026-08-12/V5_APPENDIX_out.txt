@@ -1,0 +1,45 @@
+==============================================================================================================
+ORDER 26B -- THE V5 AGE-LADDER APPENDIX.  **RULED OFF 2026-08-13.**  flat-14 is the live config.
+==============================================================================================================
+  OWNER RULING 2026-08-13, verbatim: "don't worry about V5 for now - the XW change addressed the
+  issue and V5 on top would impact the live board a bit too much I think."
+  This appendix is KEPT as measured context -- it is what the owner ruled ON -- but V5 is no
+  longer a live option. Nothing in ORDER 26B rests on it.
+  V5 knots (rl_model.py::_V5_KNOTS, the owner's fifth ladder, keyed on the age at pricing --
+  here the ENTRY age, because Ruling 2 discounts from acquisition):
+    18:.120  19:.125  20:.130  21:.135  22:.140  23:.140  24:.145  25:.150  26:.150  27:.155  28+:.160
+  Below age 22 V5's rate is BELOW flat 14%, and a lower discount RAISES present value. So the
+  direction for young entrants is a RISE, not a fall.
+
+  TOP-LEVEL DELTAS
+                                              flat-14             V5    V5/flat
+    ND cohort-mean delivered value              615.5          692.1     1.1245
+    PRE-ANCHOR SCALE at pick 1                 2463.1         2765.5     1.1228
+    anchoring factor to pin 3000               1.2180         1.0848     0.8906
+    all-pool all-in                             196.2          212.3     1.0819
+
+  THE CURVE AT THE HEADLINE PICKS (both anchored at pick 1 = 3000, so this is SHAPE only)
+    pick                1       2       3       5       7      10      15      20      30      40      50      64
+    flat-14          3000    2663    2563    1802    1242    1309     808     868     614     499     283     105
+    V5               3000    2677    2587    1813    1248    1324     811     863     618     494     281     109
+    V5/flat         1.000   1.005   1.009   1.006   1.004   1.011   1.003   0.994   1.005   0.989   0.995   1.034
+    max |V5/flat - 1| over picks 1-64 (post-anchor SHAPE move): 0.0342  (3.42%)
+
+  PATHWAY ALL-INS AND ND-PICK EQUIVALENTS  --  the quantity PREREG §7 P7.2 named
+    path         n     flat-14          V5  V5/flat   ND eq f14  ND eq V5     move
+    RD         611       211.3       227.8   1.0778          54        55        1
+    SSP         24       213.3       226.1   1.0601          53        55        2
+    MSD         29       324.9       345.6   1.0639          45        45        0
+    IRE         47        84.6        91.8   1.0859         >64       >64        0
+    PDA         38       159.9       177.9   1.1129          59        60        1
+    PDN         24       102.0       110.9   1.0865          63        64        1
+    PDS         21        91.4        99.4   1.0872          64       >64        1
+    UNR         46       122.9       130.0   1.0573          62        63        1
+    ND>64      114       234.9       260.7   1.1099          50        50        0
+    MAX ND-pick-equivalent move under V5: 2 picks   (PREREG P7.2 predicted <= 6)
+
+  SIGN CHECK on every §3 conclusion (PREREG P7.2's other limb)
+    pathway ranking flat-14 : MSD > ND>64 > SSP > RD > PDA > UNR > IRE > PDN > PDS
+    pathway ranking V5      : MSD > ND>64 > SSP > RD > PDA > UNR > IRE > PDN > PDS
+    ranking identical: True
+    every pathway all-in moves in the same direction (up): True

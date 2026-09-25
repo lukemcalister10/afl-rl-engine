@@ -1,0 +1,43 @@
+ORDER 26B -- LAYER 1, THE DURABLE HARVEST (Ruling 11)
+  source store       engine/rl_after/rl_model_data.json  md5 d9a24282357cf3083b1640466e3ecd83  (2650 records)
+  entries            2650
+  player-seasons     11484
+  bytes              2842776
+  md5                ad1229ea6f443538479447132382b21c
+  skipped            {}
+
+  BY MECHANISM
+    mechanism     entries      seasons seasons/entry
+    ND 1-64          1448         8191         5.66
+    RD                691         2071         3.00
+    ND>64             122          445         3.65
+    MSD               106          199         1.88
+    UNR                59          125         2.12
+    IRE                57          131         2.30
+    SSP                52          125         2.40
+    PDA                51          112         2.20
+    PDN                43           59         1.37
+    PDS                21           26         1.24
+
+  BY WINDOW TIER (Ruling 8)
+    core<=2014               1443 entries
+    augmented2015-2021        761 entries
+    sensitivity2022+          446 entries
+
+  BY DAY-0 POSITION GROUP (Ruling 5's acquisition slot)
+    KPD         313 entries
+    KPF         313 entries
+    MID         817 entries
+    RUCK        219 entries
+    SD          465 entries
+    SF          523 entries
+
+  ENTRY-AGE COVERAGE
+    entry_age present   2650 of 2650 (100.0%)
+    entry_age null      0  (recorded null; the engine's year-18 fallback is NOT substituted)
+    entry_age min 16  p50 18  p95 23  max 35
+
+  SEASON-ROW SPAN  2005 .. 2026
+  ASSERTS PASSED   entry keys unique; no duplicate player-season rows; at most the two known historical explicit-zero season rows; every zero-games row carries a zero average; every #323 career-games breach is an ACTIVE record carrying a 2026 season row; no #323 breach on a retired record; the breach never exceeds 2 games (round-lagged snapshot)
+
+  store pin re-verified at exit -- nothing under engine/ was written.
