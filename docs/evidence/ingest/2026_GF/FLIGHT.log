@@ -1,0 +1,666 @@
+======================================================================================================
+LAND STORE-EDIT — GRAND FINAL — 46 PLAYERS GAIN ONE GAME AND A RE-AVERAGED 2026 SEASON ROW
+  tree      : /home/user/afl-rl-engine
+  owner word: Weekly scores supplied by the owner: scores/GF.csv (sha256 d160d1379d4d14c7), ingested with tools/ingest under the owner ruling of 2026-09-24 that weekly data takes its own path.
+  prereg    : docs/evidence/ingest/2026_GF/NOTE.md   predicts board None
+  mode      : APPLY builder=real
+======================================================================================================
+
+--- STEP 0/10  preflight      clean tree, build lock, the restore point ---
+RL_/PAR_ environment  (none)
+build-lock: HELD by land-edit-912 (pid 912) — single writer for the shared workspace.
+base commit        b91f77cc0dae1cad6cadd77060e7a32bc9866111
+board pin (before) 8fc081f798bfd1fd8688f8407f6593fe
+store pin (before) 4667ec2cd27bb7373b51733738daa0c2
+restore point      170 carrier(s) captured, 170 present on disk
+    [preflight OK  0.19s]
+
+--- STEP 1/10  store_edit     THE SURGICAL STORE EDIT, applied in the work dir ---
+store BEFORE  4667ec2cd27bb7373b51733738daa0c2   (1978063 bytes)
+              == expected_boot.store, so the tree is the one this act was written for.
+THE EDIT — surgical, inside the named row's span; `old` asserted, never repaired:
+    alex-pearce                  scoring[2026].games 23 -> 24   (row span 1010734..1010789, at char 1010763)
+    alex-pearce                  scoring[2026].avg  48.34 -> 46.53   (row span 1010734..1010789, at char 1010749)
+    andrew-brayshaw              scoring[2026].games 26 -> 27   (row span 605049..605104, at char 605078)
+    andrew-brayshaw              scoring[2026].avg  99.26 -> 98.51   (row span 605049..605104, at char 605064)
+    caleb-serong                 scoring[2026].games 23 -> 24   (row span 445854..445910, at char 445884)
+    caleb-serong                 scoring[2026].avg  101.73 -> 100.24   (row span 445854..445910, at char 445869)
+    cameron-rayner               scoring[2026].games 26 -> 27   (row span 603936..603990, at char 603965)
+    cameron-rayner               scoring[2026].avg  72.73 -> 72.33   (row span 603936..603990, at char 603951)
+    charlie-cameron              scoring[2026].games 26 -> 27   (row span 1034955..1035008, at char 1034983)
+    charlie-cameron              scoring[2026].avg  71.9 -> 72.01   (row span 1034955..1035008, at char 1034970)
+    conor-mckenna                scoring[2026].games 20 -> 21   (row span 969161..969215, at char 969190)
+    conor-mckenna                scoring[2026].avg  59.24 -> 58.85   (row span 969161..969215, at char 969176)
+    corey-wagner                 scoring[2026].games 15 -> 16   (row span 832633..832691, at char 832662)
+    corey-wagner                 scoring[2026].avg  69.36 -> 67.78   (row span 832633..832691, at char 832648)
+    darcy-fort                   scoring[2026].games 25 -> 26   (row span 558096..558152, at char 558125)
+    darcy-fort                   scoring[2026].avg  66.29 -> 65.63   (row span 558096..558152, at char 558111)
+    darcy-gardiner               scoring[2026].games 15 -> 16   (row span 995573..995628, at char 995602)
+    darcy-gardiner               scoring[2026].avg  45.95 -> 46.39   (row span 995573..995628, at char 995588)
+    darcy-wilmot                 scoring[2026].games 26 -> 27   (row span 297681..297735, at char 297710)
+    darcy-wilmot                 scoring[2026].avg  86.68 -> 86.36   (row span 297681..297735, at char 297696)
+    dayne-zorko                  scoring[2026].games 16 -> 17   (row span 1739656..1739711, at char 1739686)
+    dayne-zorko                  scoring[2026].avg  101.49 -> 102.64   (row span 1739656..1739711, at char 1739671)
+    eric-hipwood                 scoring[2026].games 13 -> 14   (row span 807473..807528, at char 807502)
+    eric-hipwood                 scoring[2026].avg  61.69 -> 58.78   (row span 807473..807528, at char 807488)
+    harris-andrews               scoring[2026].games 23 -> 24   (row span 930385..930440, at char 930414)
+    harris-andrews               scoring[2026].avg  83.71 -> 84.06   (row span 930385..930440, at char 930400)
+    hayden-young                 scoring[2026].games 16 -> 17   (row span 444857..444911, at char 444885)
+    hayden-young                 scoring[2026].avg  84.0 -> 85.94   (row span 444857..444911, at char 444872)
+    heath-chapman                scoring[2026].games 25 -> 26   (row span 372834..372888, at char 372863)
+    heath-chapman                scoring[2026].avg  69.65 -> 68.97   (row span 372834..372888, at char 372849)
+    hugh-mccluggage              scoring[2026].games 16 -> 17   (row span 691833..691888, at char 691862)
+    hugh-mccluggage              scoring[2026].avg  78.45 -> 77.84   (row span 691833..691888, at char 691848)
+    isaiah-dudley                scoring[2026].games 26 -> 27   (row span 129811..129864, at char 129839)
+    isaiah-dudley                scoring[2026].avg  59.2 -> 59.53   (row span 129811..129864, at char 129826)
+    jarrod-berry                 scoring[2026].games 21 -> 22   (row span 706314..706369, at char 706343)
+    jarrod-berry                 scoring[2026].avg  76.38 -> 76.54   (row span 706314..706369, at char 706329)
+    jaspa-fletcher               scoring[2026].games 26 -> 27   (row span 226110..226164, at char 226139)
+    jaspa-fletcher               scoring[2026].avg  72.81 -> 73.04   (row span 226110..226164, at char 226125)
+    jordan-clark                 scoring[2026].games 26 -> 27   (row span 521470..521524, at char 521499)
+    jordan-clark                 scoring[2026].avg  92.76 -> 91.81   (row span 521470..521524, at char 521485)
+    josh-dunkley                 scoring[2026].games 26 -> 27   (row span 819239..819294, at char 819268)
+    josh-dunkley                 scoring[2026].avg  93.51 -> 94.16   (row span 819239..819294, at char 819254)
+    josh-treacy                  scoring[2026].games 26 -> 27   (row span 410193..410248, at char 410222)
+    josh-treacy                  scoring[2026].avg  89.62 -> 89.19   (row span 410193..410248, at char 410208)
+    judd-mcvee                   scoring[2026].games 23 -> 24   (row span 340852..340905, at char 340880)
+    judd-mcvee                   scoring[2026].avg  58.1 -> 57.97   (row span 340852..340905, at char 340867)
+    jye-amiss                    scoring[2026].games 25 -> 26   (row span 291041..291096, at char 291070)
+    jye-amiss                    scoring[2026].avg  67.82 -> 67.94   (row span 291041..291096, at char 291056)
+    kai-lohmann                  scoring[2026].games 26 -> 27   (row span 301022..301076, at char 301051)
+    kai-lohmann                  scoring[2026].avg  69.65 -> 70.26   (row span 301022..301076, at char 301037)
+    karl-worner                  scoring[2026].games 26 -> 27   (row span 336982..337036, at char 337011)
+    karl-worner                  scoring[2026].avg  84.63 -> 83.9   (row span 336982..337036, at char 336997)
+    lachie-neale                 scoring[2026].games 26 -> 27   (row span 1190243..1190299, at char 1190273)
+    lachie-neale                 scoring[2026].avg  107.47 -> 106.3   (row span 1190243..1190299, at char 1190258)
+    levi-ashcroft                scoring[2026].games 26 -> 27   (row span 67537..67592, at char 67566)
+    levi-ashcroft                scoring[2026].avg  73.82 -> 74.53   (row span 67537..67592, at char 67552)
+    logan-morris                 scoring[2026].games 25 -> 26   (row span 168078..168133, at char 168107)
+    logan-morris                 scoring[2026].avg  75.92 -> 75.81   (row span 168078..168133, at char 168093)
+    luke-jackson                 scoring[2026].games 26 -> 27   (row span 441433..441489, at char 441462)
+    luke-jackson                 scoring[2026].avg  120.9 -> 120.5   (row span 441433..441489, at char 441448)
+    luke-ryan                    scoring[2026].games 25 -> 26   (row span 747084..747138, at char 747113)
+    luke-ryan                    scoring[2026].avg  88.23 -> 87.41   (row span 747084..747138, at char 747099)
+    mason-cox                    scoring[2026].games 19 -> 20   (row span 973442..973502, at char 973471)
+    mason-cox                    scoring[2026].avg  47.99 -> 46.94   (row span 973442..973502, at char 973457)
+    matt-johnson-1               scoring[2026].games 25 -> 26   (row span 301850..301905, at char 301879)
+    matt-johnson-1               scoring[2026].avg  71.75 -> 71.68   (row span 301850..301905, at char 301865)
+    michael-frederick            scoring[2026].games 21 -> 22   (row span 489524..489581, at char 489552)
+    michael-frederick            scoring[2026].avg  63.3 -> 63.24   (row span 489524..489581, at char 489539)
+    murphy-reid                  scoring[2026].games 24 -> 25   (row span 76048..76106, at char 76077)
+    murphy-reid                  scoring[2026].avg  86.22 -> 85.81   (row span 76048..76106, at char 76063)
+    neil-erasmus                 scoring[2026].games 26 -> 27   (row span 292746..292800, at char 292774)
+    neil-erasmus                 scoring[2026].avg  70.4 -> 69.83   (row span 292746..292800, at char 292761)
+    oscar-allen                  scoring[2026].games 14 -> 15   (row span 624186..624240, at char 624214)
+    oscar-allen                  scoring[2026].avg  52.2 -> 52.39   (row span 624186..624240, at char 624201)
+    oscar-mcdonald               scoring[2026].games 13 -> 14   (row span 924590..924645, at char 924619)
+    oscar-mcdonald               scoring[2026].avg  66.08 -> 67.15   (row span 924590..924645, at char 924605)
+    patrick-voss                 scoring[2026].games 25 -> 26   (row span 337855..337910, at char 337884)
+    patrick-voss                 scoring[2026].avg  64.63 -> 65.38   (row span 337855..337910, at char 337870)
+    ryan-lester                  scoring[2026].games 22 -> 23   (row span 1280383..1280437, at char 1280412)
+    ryan-lester                  scoring[2026].avg  73.77 -> 74.26   (row span 1280383..1280437, at char 1280398)
+    sam-draper                   scoring[2026].games 25 -> 26   (row span 756308..756368, at char 756337)
+    sam-draper                   scoring[2026].avg  70.45 -> 69.7   (row span 756308..756368, at char 756323)
+    sam-switkowski               scoring[2026].games 25 -> 26   (row span 665111..665165, at char 665140)
+    sam-switkowski               scoring[2026].avg  59.72 -> 60.35   (row span 665111..665165, at char 665126)
+    shai-bolton                  scoring[2026].games 25 -> 26   (row span 719271..719329, at char 719300)
+    shai-bolton                  scoring[2026].avg  95.18 -> 95.21   (row span 719271..719329, at char 719286)
+    ty-gallop                    scoring[2026].games 20 -> 21   (row span 93411..93466, at char 93440)
+    ty-gallop                    scoring[2026].avg  57.85 -> 58.19   (row span 93411..93466, at char 93426)
+    will-ashcroft                scoring[2026].games 26 -> 27   (row span 217637..217693, at char 217667)
+    will-ashcroft                scoring[2026].avg  107.03 -> 107.62   (row span 217637..217693, at char 217652)
+    zac-bailey                   scoring[2026].games 25 -> 26   (row span 617459..617517, at char 617488)
+    zac-bailey                   scoring[2026].avg  99.09 -> 98.43   (row span 617459..617517, at char 617474)
+    levi-ashcroft                games              53 -> 54   (row span 67308..68031, at char 67453)
+    murphy-reid                  games              48 -> 49   (row span 75824..76543, at char 75964)
+    ty-gallop                    games              26 -> 27   (row span 93193..93906, at char 93331)
+    isaiah-dudley                games              42 -> 43   (row span 129584..130270, at char 129731)
+    logan-morris                 games              70 -> 71   (row span 167797..168561, at char 167941)
+    will-ashcroft                games              84 -> 85   (row span 217298..218129, at char 217443)
+    jaspa-fletcher               games              94 -> 95   (row span 225767..226597, at char 225914)
+    jye-amiss                    games              96 -> 97   (row span 290656..291532, at char 290793)
+    neil-erasmus                 games              65 -> 66   (row span 292349..293235, at char 292493)
+    darcy-wilmot                 games              109 -> 110   (row span 297292..298165, at char 297434)
+    kai-lohmann                  games              79 -> 80   (row span 300640..301510, at char 300780)
+    matt-johnson-1               games              80 -> 81   (row span 301512..302338, at char 301658)
+    karl-worner                  games              57 -> 58   (row span 336652..337574, at char 336791)
+    patrick-voss                 games              52 -> 53   (row span 337576..338441, at char 337719)
+    judd-mcvee                   games              88 -> 89   (row span 340521..341434, at char 340658)
+    heath-chapman                games              90 -> 91   (row span 372394..373318, at char 372538)
+    josh-treacy                  games              106 -> 107   (row span 409743..410781, at char 409884)
+    luke-jackson                 games              145 -> 146   (row span 440906..441924, at char 441051)
+    hayden-young                 games              105 -> 106   (row span 444358..445347, at char 444500)
+    caleb-serong                 games              150 -> 151   (row span 445349..446342, at char 445492)
+    michael-frederick            games              123 -> 124   (row span 489018..490122, at char 489170)
+    jordan-clark                 games              152 -> 153   (row span 520909..521952, at char 521051)
+    darcy-fort                   games              82 -> 83   (row span 557584..558591, at char 557726)
+    cameron-rayner               games              193 -> 194   (row span 603369..604419, at char 603514)
+    andrew-brayshaw              games              196 -> 197   (row span 604421..605537, at char 604570)
+    zac-bailey                   games              191 -> 192   (row span 616825..618060, at char 616964)
+    oscar-allen                  games              119 -> 120   (row span 623627..624674, at char 623769)
+    sam-switkowski               games              130 -> 131   (row span 664555..665592, at char 664701)
+    hugh-mccluggage              games              225 -> 226   (row span 691147..692323, at char 691296)
+    jarrod-berry                 games              205 -> 206   (row span 705640..706800, at char 705784)
+    shai-bolton                  games              183 -> 184   (row span 718588..719763, at char 718728)
+    luke-ryan                    games              204 -> 205   (row span 746427..747576, at char 746563)
+    sam-draper                   games              103 -> 104   (row span 755793..756812, at char 755934)
+    eric-hipwood                 games              212 -> 213   (row span 806743..807967, at char 806887)
+    josh-dunkley                 games              220 -> 221   (row span 818492..819745, at char 818636)
+    corey-wagner                 games              72 -> 73   (row span 832132..833250, at char 832275)
+    oscar-mcdonald               games              107 -> 108   (row span 923861..925073, at char 924009)
+    harris-andrews               games              262 -> 263   (row span 929599..930884, at char 929747)
+    conor-mckenna                games              148 -> 149   (row span 968499..969743, at char 968646)
+    mason-cox                    games              158 -> 159   (row span 972694..973941, at char 972835)
+    darcy-gardiner               games              198 -> 199   (row span 994731..996060, at char 994879)
+    alex-pearce                  games              161 -> 162   (row span 1010067..1011223, at char 1010209)
+    charlie-cameron              games              280 -> 281   (row span 1034127..1035436, at char 1034274)
+    lachie-neale                 games              320 -> 321   (row span 1189280..1190834, at char 1189424)
+    ryan-lester                  games              255 -> 256   (row span 1279386..1280962, at char 1279526)
+    dayne-zorko                  games              320 -> 321   (row span 1738674..1740326, at char 1738815)
+store AFTER   68bd9396c1c3eb7befd6a2dff76f5aaa   (1978067 bytes, +4)
+byte check: reversing every declared replacement reproduces the store byte-for-byte — the ONLY bytes that differ are the declared field values.
+WRITTEN and re-read: 138 row(s) edited, 2650 rows in the store, every other row untouched.
+season clock  re-derived from the edited store by season_state.derive (the sole deriver)
+    source_store_md5  4667ec2cd27b -> 68bd9396c1c3
+    FINALS HOLD: live store derives exposure_pace 0.955; the round-24 view (505 finals appearances subtracted) re-derives the held 0.909 exactly — held.
+    every derived VALUE asserted unchanged (10 field(s) checked); WRITTEN and re-read.
+    [store_edit OK  10.97s]
+
+--- STEP 2/10  build_proofs   bare build, predicted identity, switch leg, day-0 ---
+build         rc=0 board=6541dc1438bf7a8c3f1f7c9bcfcfaf10  (344.5s)
+built FROM the edited store: sidecar source_md5 68bd9396c1c3 == the store this act wrote
+MOVERS — EVERY ONE, WITH VALUES  (255 of 1002 valued row(s) moved)
+    aaron-cadman                 Aaron Cadman               2073 -> 2074   (+1)  [active]
+    aaron-naughton               Aaron Naughton             1454 -> 1455   (+1)  [active]
+    adam-saad                    Adam Saad                  419 -> 418   (-1)  [active]
+    alex-pearce                  Alex Pearce                15 -> 14   (-1)  [active]
+    aliir-aliir                  Aliir Aliir                745 -> 746   (+1)  [active]
+    alix-tauru                   Alix Tauru                 686 -> 687   (+1)  [active]
+    andrew-brayshaw              Andrew Brayshaw            2714 -> 2660   (-54)  [active]
+    andrew-mcgrath               Andrew McGrath             1076 -> 1077   (+1)  [active]
+    angus-sheldrick              Angus Sheldrick            684 -> 685   (+1)  [active]
+    archer-reid                  Archer Reid                393 -> 394   (+1)  [active]
+    archie-perkins               Archie Perkins             266 -> 267   (+1)  [active]
+    archie-roberts               Archie Roberts             3721 -> 3722   (+1)  [active]
+    bailey-dale                  Bailey Dale                1789 -> 1791   (+2)  [active]
+    bailey-humphrey              Bailey Humphrey            2323 -> 2324   (+1)  [active]
+    bailey-smith                 Bailey Smith               5864 -> 5867   (+3)  [active]
+    bailey-williams-wc           Bailey J. Williams         2401 -> 2403   (+2)  [active]
+    beau-addinsall               Beau Addinsall             1214 -> 1215   (+1)  [active]
+    ben-miller                   Ben Miller                 950 -> 951   (+1)  [active]
+    blake-hardwick               Blake Hardwick             540 -> 539   (-1)  [active]
+    bodhi-uwland                 Bodhi Uwland               4024 -> 4028   (+4)  [active]
+    brady-hough                  Brady Hough                343 -> 344   (+1)  [active]
+    braeden-campbell             Braeden Campbell           567 -> 568   (+1)  [active]
+    brayden-cook                 Brayden Cook               787 -> 788   (+1)  [active]
+    brodie-grundy                Brodie Grundy              3789 -> 3792   (+3)  [active]
+    caiden-cleary                Caiden Cleary              453 -> 454   (+1)  [active]
+    caleb-daniel                 Caleb Daniel               1217 -> 1218   (+1)  [active]
+    caleb-serong                 Caleb Serong               4486 -> 4181   (-305)  [active]
+    caleb-windsor                Caleb Windsor              972 -> 973   (+1)  [active]
+    callum-mills                 Callum Mills               1912 -> 1914   (+2)  [active]
+    callum-wilkie                Callum Wilkie              3404 -> 3406   (+2)  [active]
+    cameron-rayner               Cameron Rayner             892 -> 882   (-10)  [active]
+    campbell-chesser             Campbell Chesser           160 -> 161   (+1)  [active]
+    chad-warner                  Chad Warner                3877 -> 3879   (+2)  [active]
+    charlie-cameron              Charlie Cameron            202 -> 205   (+3)  [active]
+    charlie-curnow               Charlie Curnow             1279 -> 1280   (+1)  [active]
+    christian-moraes             Christian Moraes           662 -> 663   (+1)  [active]
+    christian-petracca           Christian Petracca         1720 -> 1721   (+1)  [active]
+    clayton-oliver               Clayton Oliver             2223 -> 2225   (+2)  [active]
+    colby-mckercher              Colby McKercher            4179 -> 4187   (+8)  [active]
+    connor-idun                  Connor Idun                2311 -> 2314   (+3)  [active]
+    connor-macdonald             Connor MacDonald           2912 -> 2913   (+1)  [active]
+    connor-o-sullivan            Connor O'Sullivan          2435 -> 2436   (+1)  [active]
+    connor-rozee                 Connor Rozee               3108 -> 3110   (+2)  [active]
+    cooper-duff-tytler           Cooper Duff-Tytler         1769 -> 1770   (+1)  [active]
+    cooper-sharman               Cooper Sharman             456 -> 457   (+1)  [active]
+    cooper-trembath              Cooper Trembath            1634 -> 1635   (+1)  [active]
+    corey-wagner                 Corey Wagner               59 -> 56   (-3)  [active]
+    dan-houston                  Dan Houston                1029 -> 1030   (+1)  [active]
+    daniel-curtin                Daniel Curtin              2335 -> 2336   (+1)  [active]
+    darcy-cameron                Darcy Cameron              1517 -> 1519   (+2)  [active]
+    darcy-fogarty                Darcy Fogarty              736 -> 737   (+1)  [active]
+    darcy-fort                   Darcy Fort                 77 -> 72   (-5)  [active]
+    darcy-jones                  Darcy Jones                1462 -> 1463   (+1)  [active]
+    darcy-parish                 Darcy Parish               606 -> 607   (+1)  [active]
+    darcy-wilmot                 Darcy Wilmot               2779 -> 2755   (-24)  [active]
+    darcy-wilson                 Darcy Wilson               2649 -> 2650   (+1)  [active]
+    dayne-zorko                  Dayne Zorko                883 -> 919   (+36)  [active]
+    dylan-moore                  Dylan Moore                1289 -> 1290   (+1)  [active]
+    dyson-sharp                  Dyson Sharp                3023 -> 3024   (+1)  [active]
+    ed-langdon                   Ed Langdon                 596 -> 597   (+1)  [active]
+    ed-richards                  Ed Richards                3929 -> 3931   (+2)  [active]
+    edward-allan                 Edward Allan               793 -> 794   (+1)  [active]
+    elijah-hewett                Elijah Hewett              485 -> 486   (+1)  [active]
+    eric-hipwood                 Eric Hipwood               91 -> 70   (-21)  [active]
+    errol-gulden                 Errol Gulden               7505 -> 7509   (+4)  [active]
+    finn-callaghan               Finn Callaghan             5410 -> 5413   (+3)  [active]
+    finn-o-sullivan              Finn O'Sullivan            2790 -> 2791   (+1)  [active]
+    george-hewett                George Hewett              1774 -> 1775   (+1)  [active]
+    george-wardlaw               George Wardlaw             3083 -> 3088   (+5)  [active]
+    hamish-davis                 Hamish Davis               663 -> 664   (+1)  [active]
+    harley-reid                  Harley Reid                3777 -> 3779   (+2)  [active]
+    harris-andrews               Harris Andrews             1496 -> 1507   (+11)  [active]
+    harry-dean                   Harry Dean                 2663 -> 2664   (+1)  [active]
+    harry-mckay                  Harry McKay                1621 -> 1622   (+1)  [active]
+    harry-sheezel                Harry Sheezel              10884 -> 10890   (+6)  [active]
+    harvey-langford              Harvey Langford            1873 -> 1874   (+1)  [active]
+    harvey-thomas                Harvey Thomas              1965 -> 1966   (+1)  [active]
+    hayden-mclean                Hayden McLean              282 -> 283   (+1)  [active]
+    hayden-young                 Hayden Young               1655 -> 1867   (+212)  [active]
+    heath-chapman                Heath Chapman              445 -> 389   (-56)  [active]
+    hugh-boxshall                Hugh Boxshall              781 -> 782   (+1)  [active]
+    hugh-mccluggage              Hugh McCluggage            1487 -> 1431   (-56)  [active]
+    hugo-garcia                  Hugo Garcia                2823 -> 2825   (+2)  [active]
+    isaac-heeney                 Isaac Heeney               3676 -> 3678   (+2)  [active]
+    isaac-quaynor                Isaac Quaynor              608 -> 609   (+1)  [active]
+    isaiah-dudley                Isaiah Dudley              207 -> 204   (-3)  [active]
+    izak-rankine                 Izak Rankine               4934 -> 4937   (+3)  [active]
+    jack-carroll                 Jack Carroll               113 -> 114   (+1)  [active]
+    jack-crisp                   Jack Crisp                 348 -> 349   (+1)  [active]
+    jack-ginnivan                Jack Ginnivan              1953 -> 1954   (+1)  [active]
+    jack-gunston                 Jack Gunston               621 -> 622   (+1)  [active]
+    jack-ison                    Jack Ison                  421 -> 422   (+1)  [active]
+    jack-ross                    Jack Ross                  2363 -> 2364   (+1)  [active]
+    jack-sinclair                Jack Sinclair              3066 -> 3069   (+3)  [active]
+    jack-steele                  Jack Steele                1082 -> 1083   (+1)  [active]
+    jacob-van-rooyen             Jacob Van Rooyen           1786 -> 1788   (+2)  [active]
+    jacob-weitering              Jacob Weitering            1147 -> 1148   (+1)  [active]
+    jagga-smith                  Jagga Smith                4918 -> 4922   (+4)  [active]
+    jai-newcombe                 Jai Newcombe               4355 -> 4357   (+2)  [active]
+    jai-serong                   Jai Serong                 1130 -> 1131   (+1)  [active]
+    jake-bowey                   Jake Bowey                 3873 -> 3878   (+5)  [active]
+    jake-lloyd                   Jake Lloyd                 343 -> 344   (+1)  [active]
+    jake-soligo                  Jake Soligo                1633 -> 1634   (+1)  [active]
+    jake-waterman                Jake Waterman              986 -> 987   (+1)  [active]
+    james-borlase                James Borlase              324 -> 325   (+1)  [active]
+    james-sicily                 James Sicily               1161 -> 1162   (+1)  [active]
+    jarman-impey                 Jarman Impey               603 -> 604   (+1)  [active]
+    jase-burgoyne                Jase Burgoyne              2543 -> 2545   (+2)  [active]
+    jason-horne-francis          Jason Horne-Francis        5421 -> 5423   (+2)  [active]
+    jaspa-fletcher               Jaspa Fletcher             2522 -> 2457   (-65)  [active]
+    jayden-short                 Jayden Short               876 -> 877   (+1)  [active]
+    jed-walter                   Jed Walter                 1013 -> 1014   (+1)  [active]
+    jeremy-cameron               Jeremy Cameron             667 -> 668   (+1)  [active]
+    jeremy-howe                  Jeremy Howe                161 -> 160   (-1)  [active]
+    joe-berry                    Joe Berry                  1013 -> 1014   (+1)  [active]
+    joe-richards                 Joe Richards               932 -> 933   (+1)  [active]
+    joel-freijah                 Joel Freijah               2842 -> 2844   (+2)  [active]
+    joel-jeffrey                 Joel Jeffrey               1412 -> 1413   (+1)  [active]
+    john-noble                   John Noble                 2279 -> 2281   (+2)  [active]
+    jordan-clark                 Jordan Clark               3039 -> 3006   (-33)  [active]
+    jordan-dawson                Jordan Dawson              2797 -> 2798   (+1)  [active]
+    jordon-sweet                 Jordon Sweet               2502 -> 2504   (+2)  [active]
+    josh-daicos                  Josh Daicos                2068 -> 2071   (+3)  [active]
+    josh-dunkley                 Josh Dunkley               1324 -> 1365   (+41)  [active]
+    josh-rachele                 Josh Rachele               1864 -> 1865   (+1)  [active]
+    josh-treacy                  Josh Treacy                4864 -> 4824   (-40)  [active]
+    josh-ward                    Josh Ward                  2776 -> 2778   (+2)  [active]
+    josh-worrell                 Josh Worrell               2941 -> 2944   (+3)  [active]
+    joshua-weddle                Joshua Weddle              1347 -> 1348   (+1)  [active]
+    judd-mcvee                   Judd McVee                 246 -> 250   (+4)  [active]
+    justin-mcinerney             Justin McInerney           1710 -> 1711   (+1)  [active]
+    jy-simpkin                   Jy Simpkin                 1193 -> 1195   (+2)  [active]
+    jye-amiss                    Jye Amiss                  1291 -> 1327   (+36)  [active]
+    jye-caldwell                 Jye Caldwell               1028 -> 1030   (+2)  [active]
+    kai-lohmann                  Kai Lohmann                944 -> 967   (+23)  [active]
+    kane-farrell                 Kane Farrell               1285 -> 1287   (+2)  [active]
+    karl-worner                  Karl Worner                1536 -> 1475   (-61)  [active]
+    kieren-briggs                Kieren Briggs              1922 -> 1923   (+1)  [active]
+    kyle-langford                Kyle Langford              473 -> 474   (+1)  [active]
+    kysaiah-pickett              Kysaiah Pickett            4321 -> 4323   (+2)  [active]
+    lachie-neale                 Lachie Neale               1912 -> 1804   (-108)  [active]
+    lachie-whitfield             Lachie Whitfield           2171 -> 2174   (+3)  [active]
+    lachlan-ash                  Lachlan Ash                5245 -> 5251   (+6)  [active]
+    lachlan-weller               Lachlan Weller             45 -> 46   (+1)  [active]
+    lawson-humphries             Lawson Humphries           1671 -> 1668   (-3)  [active]
+    levi-ashcroft                Levi Ashcroft              3327 -> 3463   (+136)  [active]
+    lewis-melican                Lewis Melican              28 -> 29   (+1)  [active]
+    liam-baker                   Liam Baker                 485 -> 486   (+1)  [active]
+    liam-duggan                  Liam Duggan                223 -> 224   (+1)  [active]
+    liam-fawcett                 Liam Fawcett               330 -> 331   (+1)  [active]
+    liam-henry                   Liam Henry                 106 -> 107   (+1)  [active]
+    lloyd-meek                   Lloyd Meek                 1465 -> 1466   (+1)  [active]
+    logan-evans                  Logan Evans                1359 -> 1360   (+1)  [active]
+    logan-mcdonald               Logan McDonald             1284 -> 1285   (+1)  [active]
+    logan-morris                 Logan Morris               2795 -> 2848   (+53)  [active]
+    luke-davies-uniacke          Luke Davies-Uniacke        3022 -> 3024   (+2)  [active]
+    luke-jackson                 Luke Jackson               9885 -> 10010   (+125)  [active]
+    luke-parker                  Luke Parker                1142 -> 1144   (+2)  [active]
+    luke-ryan                    Luke Ryan                  1194 -> 1150   (-44)  [active]
+    mac-andrew                   Mac Andrew                 3772 -> 3773   (+1)  [active]
+    marcus-bontempelli           Marcus Bontempelli         3706 -> 3709   (+3)  [active]
+    marcus-herbert               Marcus Herbert             832 -> 830   (-2)  [active]
+    marcus-windhager             Marcus Windhager           1804 -> 1805   (+1)  [active]
+    mason-cox                    Mason Cox                  3 -> 2   (-1)  [active]
+    mason-redman                 Mason Redman               938 -> 939   (+1)  [active]
+    massimo-d-ambrosio           Massimo D'Ambrosio         1821 -> 1822   (+1)  [active]
+    matt-johnson-1               Matt Johnson               1043 -> 1053   (+10)  [active]
+    matt-rowell                  Matt Rowell                4803 -> 4805   (+2)  [active]
+    mattaes-phillipou            Mattaes Phillipou          1746 -> 1747   (+1)  [active]
+    matthew-kennedy-1            Matthew Kennedy            689 -> 690   (+1)  [active]
+    max-beattie                  Max Beattie                116 -> 117   (+1)  [active]
+    max-gawn                     Max Gawn                   3260 -> 3262   (+2)  [active]
+    max-hall                     Max Hall                   2723 -> 2724   (+1)  [active]
+    max-holmes                   Max Holmes                 7279 -> 7283   (+4)  [active]
+    michael-frederick            Michael Frederick          113 -> 112   (-1)  [active]
+    mitch-georgiades             Mitch Georgiades           1544 -> 1545   (+1)  [active]
+    mitch-zadow                  Mitch Zadow                118 -> 119   (+1)  [active]
+    mitchell-edwards             Mitchell Edwards           2007 -> 2008   (+1)  [active]
+    mitchito-owens               Mitchito Owens             1943 -> 1944   (+1)  [active]
+    nasiah-wanganeen-milera      Nasiah Wanganeen-Milera    9216 -> 9221   (+5)  [active]
+    ned-long                     Ned Long                   1320 -> 1321   (+1)  [active]
+    ned-moyle                    Ned Moyle                  2088 -> 2089   (+1)  [active]
+    nic-newman                   Nic Newman                 660 -> 661   (+1)  [active]
+    nicholas-martin              Nicholas Martin            3798 -> 3800   (+2)  [active]
+    nick-blakey                  Nick Blakey                3952 -> 3956   (+4)  [active]
+    nick-bryan                   Nick Bryan                 697 -> 698   (+1)  [active]
+    nick-daicos                  Nick Daicos                10369 -> 10374   (+5)  [active]
+    nick-haynes                  Nick Haynes                153 -> 152   (-1)  [active]
+    nick-madden                  Nick Madden                1185 -> 1186   (+1)  [active]
+    nick-watson                  Nick Watson                3873 -> 3875   (+2)  [active]
+    noah-anderson                Noah Anderson              5457 -> 5459   (+2)  [active]
+    noah-mraz                    Noah Mraz                  797 -> 798   (+1)  [active]
+    oliver-florent               Oliver Florent             1031 -> 1032   (+1)  [active]
+    oliver-hollands              Oliver Hollands            1521 -> 1522   (+1)  [active]
+    ollie-dempsey                Ollie Dempsey              2405 -> 2408   (+3)  [active]
+    oscar-mcdonald               Oscar McDonald             83 -> 97   (+14)  [active]
+    oscar-steene                 Oscar Steene               463 -> 464   (+1)  [active]
+    patrick-cripps               Patrick Cripps             1341 -> 1343   (+2)  [active]
+    patrick-dangerfield          Patrick Dangerfield        161 -> 162   (+1)  [active]
+    patrick-voss                 Patrick Voss               1093 -> 1185   (+92)  [active]
+    paul-curtis                  Paul Curtis                1524 -> 1525   (+1)  [active]
+    peter-wright                 Peter Wright               1236 -> 1237   (+1)  [active]
+    phoenix-gothard              Phoenix Gothard            1544 -> 1545   (+1)  [active]
+    reuben-ginbey                Reuben Ginbey              2181 -> 2182   (+1)  [active]
+    riley-thilthorpe             Riley Thilthorpe           4280 -> 4283   (+3)  [active]
+    rowan-marshall               Rowan Marshall             2002 -> 2003   (+1)  [active]
+    ryan-lester                  Ryan Lester                34 -> 38   (+4)  [active]
+    ryan-maric                   Ryan Maric                 1360 -> 1361   (+1)  [active]
+    ryley-sanders                Ryley Sanders              3528 -> 3533   (+5)  [active]
+    sam-berry                    Sam Berry                  2797 -> 2798   (+1)  [active]
+    sam-darcy                    Sam Darcy                  5220 -> 5223   (+3)  [active]
+    sam-draper                   Sam Draper                 918 -> 881   (-37)  [active]
+    sam-durham                   Sam Durham                 2423 -> 2424   (+1)  [active]
+    sam-flanders                 Sam Flanders               2491 -> 2492   (+1)  [active]
+    sam-lalor                    Sam Lalor                  3450 -> 3451   (+1)  [active]
+    sam-switkowski               Sam Switkowski             23 -> 25   (+2)  [active]
+    sam-walsh                    Sam Walsh                  3144 -> 3146   (+2)  [active]
+    samuel-grlj                  Samuel Grlj                1705 -> 1706   (+1)  [active]
+    samuel-swadling              Samuel Swadling            1219 -> 1220   (+1)  [active]
+    sean-darcy                   Sean Darcy                 732 -> 733   (+1)  [active]
+    shai-bolton                  Shai Bolton                2190 -> 2196   (+6)  [active]
+    shannon-neale                Shannon Neale              2098 -> 2099   (+1)  [active]
+    sullivan-robey               Sullivan Robey             3031 -> 3032   (+1)  [active]
+    taj-hotton                   Taj Hotton                 1897 -> 1898   (+1)  [active]
+    talor-byrne                  Talor Byrne                600 -> 601   (+1)  [active]
+    tanner-bruhn                 Tanner Bruhn               1958 -> 1961   (+3)  [active]
+    thomas-stewart               Thomas Stewart             863 -> 864   (+1)  [active]
+    tim-taranto                  Tim Taranto                2385 -> 2386   (+1)  [active]
+    timothy-english              Timothy English            3108 -> 3111   (+3)  [active]
+    toby-bedford                 Toby Bedford               322 -> 323   (+1)  [active]
+    toby-nankervis               Toby Nankervis             1993 -> 1995   (+2)  [active]
+    toby-pink                    Toby Pink                  79 -> 80   (+1)  [active]
+    tom-green                    Tom Green                  5120 -> 5123   (+3)  [active]
+    tom-mccarthy                 Tom McCarthy               1326 -> 1325   (-1)  [active]
+    tom-mccartin                 Tom McCartin               1336 -> 1337   (+1)  [active]
+    tom-powell                   Tom Powell                 1817 -> 1818   (+1)  [active]
+    tom-sparrow                  Tom Sparrow                1471 -> 1474   (+3)  [active]
+    touk-miller                  Touk Miller                2327 -> 2328   (+1)  [active]
+    trent-rivers                 Trent Rivers               1428 -> 1424   (-4)  [active]
+    tristan-xerri                Tristan Xerri              7030 -> 7036   (+6)  [active]
+    ty-gallop                    Ty Gallop                  1088 -> 1119   (+31)  [active]
+    wayne-milera                 Wayne Milera               1578 -> 1580   (+2)  [active]
+    wil-powell                   Wil Powell                 828 -> 825   (-3)  [active]
+    will-ashcroft                Will Ashcroft              7202 -> 7164   (-38)  [active]
+    will-day                     Will Day                   1633 -> 1634   (+1)  [active]
+    will-graham                  Will Graham                1276 -> 1277   (+1)  [active]
+    will-hayward                 Will Hayward               273 -> 274   (+1)  [active]
+    willem-drew                  Willem Drew                590 -> 591   (+1)  [active]
+    willem-duursma               Willem Duursma             3491 -> 3492   (+1)  [active]
+    xavier-lindsay               Xavier Lindsay             1359 -> 1360   (+1)  [active]
+    zac-bailey                   Zac Bailey                 3131 -> 3113   (-18)  [active]
+    zach-reid                    Zach Reid                  1253 -> 1254   (+1)  [active]
+    zachary-merrett              Zachary Merrett            2346 -> 2347   (+1)  [active]
+    zak-butters                  Zak Butters                6220 -> 6224   (+4)  [active]
+    zane-duursma                 Zane Duursma               412 -> 413   (+1)  [active]
+pool (sum of active v)  686422 -> 686595  (+173)
+edit.expected_movers is not declared: the movers above are PRINTED and asserted against nothing. Declaring them makes each one a falsifier.
+NO PREREG BOARD PREDICTION IS DECLARED (prereg.board_after is null). This act's prediction of record is its DRY RUN; the assertions made here are internal consistency only — the board was built FROM the edited store (proved above), and it moved if and only if this act declared that it would.
+day-0 re-base : OFF (default). No day-0 reference is regenerated by this landing.
+installed     board + both sidecars + the generator copy (4 files, lockstep)
+    [build_proofs OK  344.55s]
+
+--- STEP 3/10  pins           expected_boot + both sidecars + the generator copy ---
+published board  6541dc1438bf7a8c3f1f7c9bcfcfaf10
+generator board  6541dc1438bf7a8c3f1f7c9bcfcfaf10
+both sidecars agree with the board beside them and with the live store. OK.
+COMPUTED from the tree (never typed): store        = 68bd9396c1c3eb7befd6a2dff76f5aaa
+  expected_boot store        4667ec2cd27b -> 68bd9396c1c3   (old value occurs 1 time(s))
+COMPUTED from the tree (never typed): board        = 6541dc1438bf7a8c3f1f7c9bcfcfaf10
+  expected_boot board        8fc081f798bf -> 6541dc1438bf   (old value occurs 1 time(s))
+fields that moved in expected_boot.json: ['board', 'store']
+must-not-move list: 6 checked, 0 moved
+byte check: the ONLY bytes that differ are the declared pin values.
+WRITTEN and re-read.
+    [pins OK  0.02s]
+
+--- STEP 4/10  lineage        the out-of-round column and the append-only entry ---
+column        gf-grand-final-30-9 registered (dry_run=False)
+ASSERTED: the newest stored point is this column, naming the live board 6541dc1438bf7a8c3f1f7c9bcfcfaf10
+chain OK: register tail destination == this entry's source on board and store
+append-only OK: 24 prior entries byte-verbatim; top-level baseline 06d8af60b679a12db07c064c60c065f9 / v2.11-present-lens-baseline UNMOVED
+MOVED by this transition: ['board', 'store'] (of 11 identities)
+re-read OK: round-trips at indent=1; prior entries still byte-verbatim.
+    [lineage OK  0.16s]
+
+--- STEP 5/10  contract       restamp_dynamic + the bake-lane repin + check ---
+contract seal self-consistent before the act: e2052279c018
+  config       d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4   == expected_boot
+  engine_head  384e05f54288606ee0d16c11ad93023f   == expected_boot
+  rl_model     aa1541d8ebb93868907b24daab5dbed1   == expected_boot
+  fv           123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345   == expected_boot
+  store        68bd9396c1c3eb7befd6a2dff76f5aaa   == expected_boot
+  board        6541dc1438bf7a8c3f1f7c9bcfcfaf10   == expected_boot
+WRITER 1: release_contract.restamp_dynamic(root, as_of_round=24, store, board, season_state)
+   restamp_dynamic returned seal 442f060a9850
+WRITER 2: the bake-lane identities restamp_dynamic does not touch (release_contract.restamp_bake_identities — shared with tools/restamp)
+  contract_sha256             442f060a9850 -> 442f060a9850
+  frozen fields asserted unmoved: 10 checked, 0 moved
+RE-STAMPED, re-read, and release_contract.py check PASSES.
+    [contract OK  0.08s]
+
+--- STEP 6/10  sibling        the balanced sibling, rebuilt and reconciled if moved ---
+verify BEFORE : ok=False balanced=e20c41e40ab6 fails=10
+    - forward reference vector for e20c41e4 missing
+    - forward oracle test_forward_lens_6541dc14.py missing
+    - working canonical board stamp != 6541dc14
+    - working store stamp != 68bd9396
+    - public rows disagree with the canonical board for 397 player(s)
+    - sidecar source_store_md5 != current store
+    - sidecar contract_sha256 != live contract seal
+    - sidecar forward_board_md5 != the canonical board of record
+    - sidecar forward_vector filename != regenerated forward vector
+    - sidecar forward_oracle filename != regenerated forward oracle
+sibling       proof stashed under key 42e0b324fbff2a29dd831917
+reconcile     ok=True changed=True balanced e20c41e40ab6 -> 37aa11485442
+  committed targets: board_view_public, board_view_working, forward_oracle, forward_vector, fv_test, manifest, reference_vector, release_contract, sidecar
+verify AFTER  : ok=True fails=0
+    [sibling OK  682.82s]
+
+--- STEP 7/10  ui             ALL SEVEN UI writers, and the identity read back out ---
+BEFORE  working a85de892a8c8a853dfc0f39869fd97c9  release-block=True
+BEFORE  public  eecc16fbe70ded6b384b1c2cb665f046  release-block=False
+BEFORE  mirror  9c83db4fece289b224d054fc6e98782d  register=24 entr(ies)
+BEFORE  movers  bbcbf517240d68a1561ed42795bd3781  model_changes=17 boundar(ies)
+BEFORE  owners 1da0ec37292b56ce45666e036f472aab  pinned board=8fc081f7 store=4667ec2c
+BEFORE  picks  5a7e55dc13b95e34726baf71a34f1fe7  stamped board=8fc081f7 store=4667ec2c R24
+BEFORE  draft  70b023a3ab5443a0a91d4ee94f7f8f36  stamped store=4667ec2c
+WRITER 1/8: ui/tools/extract_board_view.py
+  working after writer 1: a85de892a8c8a853dfc0f39869fd97c9   release-block=True   <-- DROPPED, as it always is
+WRITER 2/8: round_movers.inject_release_contract(bundle, root, 24)
+  release block: {"as_of_round": 24, "balanced_board_md5": "06d8af60b679a12db07c064c60c065f9", "board": "6541dc1438bf7a8c3f1f7c9bcfcfaf10", "config": "d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4",
+WRITER 3/8: ui/tools/generate_movers_transition.py  (the lineage projection — supervisor ruling on F-9)
+  wrote: ui/data/movers_transition.js (104161 bytes)
+  register entries mirrored: 25
+  drift guard: mirror OK — committed == projected (104161 bytes, 25 register entries)
+  mirror register == lineage register: 25 entr(ies), EQUAL  (the F-9 predicate holds)
+WRITER 4/8: ui/tools/rebuild_movers_derived.py  (points / values / model_changes — supervisor ruling on F-10)
+  wrote: ui/data/movers.js (6589646 -> 6065155 bytes, latest report R28)
+  derived blocks changed: points, values
+  drift guard: derived blocks OK — committed == rebuilt (6065155 bytes, latest report R28)
+  shipped model_changes == live-derived: 17 boundar(ies), EQUAL  (the F-10 predicate holds)
+WRITER 4b/8: the retro CONTROL first (engine-free: banked r24 vs the live board)
+  CONTROL NOT ASSERTED: the newest banked round is r26 and it differs from the live board on 281 value(s) (0 missing). The retrospective is BEHIND the live board — a week has been applied to the store that is not yet banked. Re-price it with pass_retro_series.py (or bank the newest week from the landed board) to make this a PASS again. The series is still emitted from what IS banked, because dropping banked history is worse than carrying it one week short; see CONTROL_FAIL.json for the rows.
+WRITER 4b/8: emit_retro_series.py  (the R14-R24 walk-forward series writer 4 drops)
+  retro-r27   804 players  board landed-b
+  retro-r28   804 players  board landed-b
+  emitted 15 retro points covering up to 804 players -> ui/data/movers.js
+  retro series present: 15 points, retro-r14 .. retro-r28 (every banked round, no gap)
+WRITER 4c/8: the finals week's weekly report (the movers page reads its scores here)
+  GRAND FINAL written as feed round 29: 804 players, 46 played, 758 DNP; store -> 68bd9396
+WRITER 4c/8: the week's point on the movers list (read off the built board, not re-priced)
+  banked r29 from the landed board: 804 rows, store 68bd9396 -> docs/evidence/walkforward_retro_2026-08-29/values_r29.json
+  emitted 16 retro points covering up to 804 players -> ui/data/movers.js
+  retro series now 14 .. 29 — the week this act lands is its last point
+WRITER 5/8: ui/tools/ingest_inputs.py --mirror-only  (the ownership mirror, re-pinned to the landed board + store)
+  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /home/user/afl-rl-engine/ui/data/ownership.js
+  MIRROR-ONLY    — the club-valuation bundle was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
+  drift guard: MIRROR DRIFT GUARD — ui/data/ownership.js is byte-identical to what this tree projects (74727 bytes).
+  mirror pin == the landed identity: board 6541dc14 store 68bd9396 R24, 804 player(s) mirrored (pin() would ACTIVATE it)
+WRITER 6/8: ui/tools/ingest_inputs.py --clubs-only  (the picks bundle, re-stamped to the landed board + store)
+  CLEAN INGEST — 240 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: /home/user/afl-rl-engine/ui/data/club_valuation.js
+  CLUBS-ONLY     — the ownership mirror was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
+  drift guard: PICKS DRIFT GUARD — ui/data/club_valuation.js is byte-identical to what this tree projects (58313 bytes).
+  picks stamp == the landed identity: board 6541dc14 store 68bd9396 R24, 240 pick(s) priced off 1c3b22d1 (pin() would ACCEPT it)
+WRITER 7/8: ui/tools/gen_draft_outcomes.py  (the draft outcome record, re-stamped to the landed store)
+  rows            1568 national-draft selections
+  never played    226  (14.4%) — the population is not survivor-filtered
+  maturity rule   4 completed seasons (measured: 99% of 1044 eventual debutants)
+  draft stamp == the landed store 68bd9396: 1568 selections, 226 never played, maturity 4 season(s) (pin() would ACCEPT it)
+WRITER 8/8: ui/tools/gen_v0_sidecar.py  (the v0 sidecar, re-stamped to the landed board)
+  v0 sidecar | board 6541dc14 store 68bd9396 | rows 804 = pick-slot 561 + entry-anchor 243 + unrecoverable 0
+  wrote ui/data_aux/v0.js (51031 bytes)
+  v0 sidecar == the landed board 6541dc14 (the card's v0 column will resolve)
+  carrier moved: ui/data_aux/v0.js  1852533b3a90 -> 8bcfa39d82e8
+AFTER   working a85de892a8c8a853dfc0f39869fd97c9  release-block=True
+AFTER   public  eecc16fbe70ded6b384b1c2cb665f046  release-block=False
+AFTER   movers  ad8f9c2b4e6ee74e18eed15494012ff6  MOVED bbcbf517240d -> ad8f9c2b4e6e, tracking the register append
+AFTER   mirror  8546db60022c4403692775b49df0fd74  MOVED 9c83db4fece2 -> 8546db60022c, tracking the lineage append
+AFTER   owners 67d17b9205184abc196693176c44e802  MOVED 1da0ec37292b -> 67d17b920518, tracking the landed board + store
+AFTER   picks  d3f9b2fcca9e848c64b237650e94d9a3  MOVED 5a7e55dc13b9 -> d3f9b2fcca9e, tracking the landed board + store
+AFTER   draft  971205b65d458d3fa8953a93a5ddfc5f  MOVED 70b023a3ab54 -> 971205b65d45, tracking the landed store
+  stamp.board_md5            6541dc1438bf7a8c3f1f7c9bcfcfaf10   OK
+  stamp.board                6541dc1438bf7a8c3f1f7c9bcfcfaf10   OK
+  stamp.srcmd5               6541dc1438bf7a8c3f1f7c9bcfcfaf10   OK
+  stamp.store_md5            68bd9396c1c3eb7befd6a2dff76f5aaa   OK
+  stamp.balanced_board_md5   37aa11485442c65ae8bf0bc270cbc43b   OK
+  stamp.asOfRound            24                                 OK
+THE HTML APP'S EMBEDDED BOARD IDENTITY IS 6541dc1438bf7a8c3f1f7c9bcfcfaf10. All seven writers ran; the release block is back, the reader can see the transition that produced this board, the ownership mirror is pinned to it rather than to the store it replaced, and the pick surface is stamped to it rather than to the board before it.
+    [ui OK  183.30s]
+    build-lock: RELEASED after 'ui' — the remaining steps write nothing and the one gate that builds takes the lock itself.
+
+--- STEP 8/10  state          docs/STATE.md regenerated from the carriers (3c) ---
+state: docs/STATE.md md5 8e831b14b433b6d3de8003f8fdd26f17 (moved); regeneration verified
+    [state OK  0.46s]
+
+--- STEP 9/10  gates          the landing gate set, verdicts off exit codes ---
+  release_manifest_check   PASS   exit=0  (0.1s)
+  release_contract_check   PASS   exit=0  (0.1s)
+  acceptance_runner        PASS   exit=0  (16.5s)
+  movers_transition        PASS   exit=0  (2.1s)
+  finals_report            PASS   exit=0  (0.6s)
+  movers_ui                PASS   exit=0  (1.0s)
+  ui_222_items             PASS   exit=0  (12.2s)
+  ui_defects_2026_08_21    PASS   exit=0  (0.4s)
+  universe                 PASS   exit=0  (0.3s)
+  draftday                 PASS   exit=0  (0.1s)
+  pickvalue                PASS   exit=0  (0.2s)
+  release_seam             PASS   exit=0  (0.1s)
+  adoption_gate            PASS   exit=0  (0.0s)
+  club_totals_parity       PASS   exit=0  (0.3s)
+  counting_rule            PASS   exit=0  (0.1s)
+  ownership_sidecar        PASS   exit=0  (0.4s)
+  ownership_single_source  PASS   exit=0  (0.2s)
+  responsive_layout        PASS   exit=0  (16.9s)
+  extract_seam             PASS   exit=0  (0.6s)
+  club_curve_provenance    PASS   exit=0  (3.6s)
+  ingest_bounds            PASS   exit=0  (0.1s)
+    [gates OK  56.05s]
+
+--- STEP 10/10  commit         ONE commit, explicit paths only ---
+explicit paths (51):
+    data/expected_boot.json
+    data/release_contract.json
+    data/release_lineage.json
+    data/rl_build/rl_app_data.json
+    data/rl_build/rl_app_data.json.srcmd5
+    data/season_state.json
+    docs/STATE.md
+    docs/evidence/ingest/2026_GF/build_LANDING.txt
+    docs/evidence/ingest/2026_GF/gate_acceptance_runner.txt
+    docs/evidence/ingest/2026_GF/gate_acceptance_runner_evidence/
+    docs/evidence/ingest/2026_GF/gate_adoption_gate.txt
+    docs/evidence/ingest/2026_GF/gate_club_curve_provenance.txt
+    docs/evidence/ingest/2026_GF/gate_club_totals_parity.txt
+    docs/evidence/ingest/2026_GF/gate_counting_rule.txt
+    docs/evidence/ingest/2026_GF/gate_draftday.txt
+    docs/evidence/ingest/2026_GF/gate_extract_seam.txt
+    docs/evidence/ingest/2026_GF/gate_finals_report.txt
+    docs/evidence/ingest/2026_GF/gate_ingest_bounds.txt
+    docs/evidence/ingest/2026_GF/gate_movers_transition.txt
+    docs/evidence/ingest/2026_GF/gate_movers_ui.txt
+    docs/evidence/ingest/2026_GF/gate_ownership_sidecar.txt
+    docs/evidence/ingest/2026_GF/gate_ownership_single_source.txt
+    docs/evidence/ingest/2026_GF/gate_pickvalue.txt
+    docs/evidence/ingest/2026_GF/gate_release_contract_check.txt
+    docs/evidence/ingest/2026_GF/gate_release_manifest_check.txt
+    docs/evidence/ingest/2026_GF/gate_release_seam.txt
+    docs/evidence/ingest/2026_GF/gate_responsive_layout.txt
+    docs/evidence/ingest/2026_GF/gate_ui_222_items.txt
+    docs/evidence/ingest/2026_GF/gate_ui_defects_2026_08_21.txt
+    docs/evidence/ingest/2026_GF/gate_universe.txt
+    docs/evidence/walkforward_retro_2026-08-29/CONTROL_FAIL.json
+    docs/evidence/walkforward_retro_2026-08-29/values_r29.json
+    engine/rl_after/ingestion/pos_rank_history.json
+    engine/rl_after/ingestion/rank_history.json
+    engine/rl_after/ingestion/sibling_repin_state.json
+    engine/rl_after/ingestion/value_history.json
+    engine/rl_after/rl_app_data.json
+    engine/rl_after/rl_app_data.json.srcmd5
+    engine/rl_after/rl_model_data.json
+    session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_6541dc14.json
+    session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_37aa1148.json
+    session_2026-07-20/fv_provenance_remediation/test_forward_lens_6541dc14.py
+    session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py
+    ui/data/board_view_public.js
+    ui/data/board_view_working.js
+    ui/data/club_valuation.js
+    ui/data/movers.js
+    ui/data/movers_transition.js
+    ui/data/ownership.js
+    ui/data_aux/draft_outcomes.js
+    ui/data_aux/v0.js
+committed 3d5ae5d55c19
+    [commit OK  0.52s]
+
+--- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
+    preflight          0.19s  OK
+    store_edit        10.97s  OK
+    build_proofs     344.55s  OK
+    pins               0.02s  OK
+    lineage            0.16s  OK
+    contract           0.08s  OK
+    sibling          682.82s  OK
+    ui               183.30s  OK
+    state              0.46s  OK
+    gates             56.05s  OK
+    commit             0.52s  OK
+    TOTAL           1279.12s
+
+======================================================================================================
+LANDING COMPLETE — every step's postcondition held.
+SOAK: hand-verification stands until the owner's word per act type (G3.iv).
+======================================================================================================
+work dir discarded (the landing completed): /tmp/landing_work_912
