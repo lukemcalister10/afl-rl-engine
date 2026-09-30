@@ -1,0 +1,3 @@
+one_source_selftest.py F1 leg: present=True, mismatch-reporting=True, key-for-key=True
+
+SCOPE, STATED. This check asserts the REPAIRED SHAPE is still in the source. It does NOT run the suite: one_source_selftest needs a bootstrapped workspace and a board built from it, which is why ci-guards runs it only after setup_env.sh + bootstrap.sh + rl_export.py. The suite's live verdict — 124 PASS / 15 FAIL, the F1 red cleared and 15 residual reds unattributed — is carried as ruled-red CG1 with a dated heavy probe, not silently assumed here.

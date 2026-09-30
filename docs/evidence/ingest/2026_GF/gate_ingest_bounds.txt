@@ -1,0 +1,7 @@
+$ python3 tools/ingest_bounds.py scores/resolved/2026_GF.json
+
+INGEST BOUNDS — 46 played (40 moved), 758 did not play
+  non-players: median |move| 0.000%, largest 8
+  WITHIN LIMITS
+
+[exit 0]
