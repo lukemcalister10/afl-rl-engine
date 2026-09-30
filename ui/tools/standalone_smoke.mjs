@@ -96,8 +96,10 @@ try {
   const bundle = 'window.__MATCHDAY_MOVERS__';
   const newestFeed = Number(await evalJs(`Math.max.apply(null, ${bundle}.rounds.map(Number))`));
   const weekName = String(await evalJs(`(${bundle}.reports[${newestFeed}]||{}).finals_week || ""`));
-  ok(newestFeed > 24 && /FINALS WEEK/i.test(weekName),
-     `the newest week on the board is a FINALS WEEK (feed ${newestFeed}: ${weekName})`);
+  // The week's name comes from round_movers.FINALS_WEEK_NAMES via the report; feed 29 is the GRAND
+  // FINAL, which this regex refused before it landed (2026-09-30).
+  ok(newestFeed > 24 && /FINALS WEEK|GRAND FINAL/i.test(weekName),
+     `the newest week on the board is a finals week (feed ${newestFeed}: ${weekName})`);
   ok(await evalJs(`${bundle}.points.some(function(p){return p.id==="retro-r${newestFeed}";})`),
      `the movers list carries ${weekName} as its own point`);
   const series = String(await evalJs(
