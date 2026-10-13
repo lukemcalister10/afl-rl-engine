@@ -43,16 +43,33 @@ class Opts(object):
 
 class Ctx(object):
     """The smallest ctx the stash touches: options, fault state, spec, work dir, log."""
-    def __init__(self, work_dir, selftest=False, fault=None, act='act-a'):
+    def __init__(self, work_dir, selftest=False, fault=None, act='act-a', root=None):
         self.opts = Opts(selftest)
         self.fault = fault
         self.spec = {'act': act, 'act_kind': 'lever', 'prereg': {'board_after': 'bbb'}}
-        self.root = ROOT
+        self.root = root or ROOT
         self.work_dir = work_dir
         self.lines = []
 
     def log(self, msg):
         self.lines.append(msg)
+
+
+def build_tree(root, sheet='docs/owner_annotations/SITTER_2026_v1.csv'):
+    """A fake repo root carrying every build input the key covers beyond PIN_MEASURERS."""
+    for rel, body in (('data/season_state.json', '{"as_of_round": 24}\n'),
+                      ('data/q97m.pkl', 'q97m-bytes'), ('data/cm_400.pkl', 'cm400-bytes'),
+                      ('data/v0surf.pkl', 'v0surf-bytes'), (sheet, 'key,injured\na,N\n'),
+                      ('data/sheet_pins.json', json.dumps({'sheet_path': sheet}))):
+        p = os.path.join(root, rel)
+        os.makedirs(os.path.dirname(p), exist_ok=True)
+        with open(p, 'w') as f:
+            f.write(body)
+
+
+def touch(root, rel, body):
+    with open(os.path.join(root, rel), 'w') as f:
+        f.write(body)
 
 
 class FakeSR(object):
@@ -192,6 +209,51 @@ def main():
         ok(srb.calls == 1 and got['board_md5'] == 'bal-1',
            'an unwritable stash does not fail the landing — it just does not cache')
         ok(any('NOT stashed' in x for x in cbad.lines), '...and says so plainly')
+
+        # ---- the key covers the build inputs PIN_MEASURERS never did (Phase 0.5, 2026-10-13) --
+        ST.PIN_MEASURERS = with_identities(IDS)
+        tree = tempfile.mkdtemp(prefix='proofstash_tree_')
+        try:
+            build_tree(tree)
+            ct = Ctx(work, root=tree)
+            kb0, ks0 = PS.build_key(ct), PS.sibling_key(ct)
+            ok(PS.build_key(ct) == kb0 and PS.sibling_key(ct) == ks0,
+               'both keys are stable while every build input holds')
+            for rel, label in (('data/season_state.json', 'season_state.json'),
+                               ('docs/owner_annotations/SITTER_2026_v1.csv', 'the pinned sitter sheet'),
+                               ('data/q97m.pkl', 'q97m.pkl'), ('data/cm_400.pkl', 'cm_400.pkl'),
+                               ('data/v0surf.pkl', 'v0surf.pkl')):
+                build_tree(tree)
+                before = (PS.build_key(ct), PS.sibling_key(ct))
+                touch(tree, rel, 'MOVED ' + rel)
+                after = (PS.build_key(ct), PS.sibling_key(ct))
+                ok(before[0] != after[0] and before[1] != after[1],
+                   'the build key AND the sibling key move when %s moves' % label)
+            # the sheet is whichever file the pins name — repoint the pins, the key moves with it
+            build_tree(tree)
+            k_pinned = PS.build_key(ct)
+            build_tree(tree, sheet='docs/owner_annotations/SITTER_2027_v1.csv')
+            ok(PS.build_key(ct) != k_pinned, 'repointing data/sheet_pins.json at another sheet moves the key')
+            # v0surf is in the key EVEN WHEN the act declares it as moving (build_key skips moved pins)
+            build_tree(tree)
+            ct.spec['identities'] = {'moves': ['v0surf']}
+            k_mv = PS.build_key(ct)
+            touch(tree, 'data/v0surf.pkl', 'MOVED anyway')
+            ok(PS.build_key(ct) != k_mv, 'v0surf moves the build key even when the act declares it moving')
+            ct.spec.pop('identities')
+            # an absent input is an identity of its own, not an error
+            build_tree(tree)
+            k_all = PS.build_key(ct)
+            os.remove(os.path.join(tree, 'data', 'season_state.json'))
+            ok(PS.build_key(ct) != k_all, 'an absent season_state.json is its own identity (no error, no match)')
+            # a stash written under the old key shape is never confirmed: the schema is in the basis
+            ok(PS.KEY_SCHEMA >= 2, 'the key schema was bumped, so every pre-existing stash misses')
+            inputs = PS._build_inputs(ct)
+            ok(set(inputs) >= {'data/season_state.json', 'data/q97m.pkl', 'data/cm_400.pkl',
+                               'data/v0surf.pkl', 'sheet:docs/owner_annotations/SITTER_2026_v1.csv'},
+               '_build_inputs names every covered file: %s' % sorted(inputs))
+        finally:
+            shutil.rmtree(tree, ignore_errors=True)
 
         print('  ' + '-' * 60)
         print('PROOF STASH TESTS: %s' % ('ALL %d PASS' % n if not fails else '%d FAIL / %d' % (fails, n)))

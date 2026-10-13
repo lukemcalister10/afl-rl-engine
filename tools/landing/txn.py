@@ -31,6 +31,12 @@ from tools.landing import steps as ST
 
 LOCK_FILE_DEFAULT = '/home/claude/.rl_build.lock'
 
+#: The one line printed whenever BUILD_LOCK=0 is honoured (tools/build_lock.sh prints its own copy):
+#: a landing that is not interlocked says so where it cannot be missed.
+BUILD_LOCK_OFF_WARNING = ('WARNING: build-lock SKIPPED by BUILD_LOCK=0 — this landing is NOT '
+                          'interlocked. If another engine act is live against the shared workspace, '
+                          'both results are void. Unset BUILD_LOCK unless this is a sandbox.')
+
 
 class Options(object):
     __slots__ = ('dry_run', 'no_commit', 'selftest', 'quiet')
@@ -552,6 +558,15 @@ class Ctx(object):
         self.skip_clubs_writer = False
         self.false_claim = False
         self.abort_report = None
+        #: CALLABLES THE COMMIT STEP RUNS JUST BEFORE IT STAGES (Phase 0.5, 2026-10-13), each
+        #: `fn(ctx)`, each writing only into the evidence dir. The launch preflight record and the
+        #: pre-transaction self-test transcripts used to be filed AFTER the commit — they could not
+        #: be written before step 0 (its clean-tree law would refuse the launch's own paperwork) —
+        #: which left them untracked after every successful landing and made the NEXT run refuse
+        #: a dirty tree. Filed here they ride the landing's own commit, which already admits the
+        #: evidence dir. On an abort they are never called; the caller files them after the close
+        #: exactly as before.
+        self.before_commit = []
 
     # -------------------------------------------------------------------------------- plumbing
     def log(self, msg):
@@ -756,7 +771,12 @@ class Ctx(object):
                 'isolation flag nobody reads is a sandbox contending for the shared lock.'
                 % (', '.join(legacy), ', '.join(k[3:] for k in legacy)))
         if os.environ.get('BUILD_LOCK') == '0':
-            self.log('build-lock: SKIPPED by BUILD_LOCK=0. This landing is NOT interlocked.')
+            # LOUD, EVERY TIME IT IS HONOURED (Phase 0.5, 2026-10-13): a silent skip is a sandbox
+            # flag nobody notices on a live tree. One line, to the transcript AND to stderr, so it
+            # survives a quiet run and a captured stdout alike.
+            self.log(BUILD_LOCK_OFF_WARNING)
+            sys.stderr.write(BUILD_LOCK_OFF_WARNING + '\n')
+            sys.stderr.flush()
             return
         path = os.environ.get('BUILD_LOCK_FILE') or LOCK_FILE_DEFAULT
         try:
@@ -880,7 +900,7 @@ def run(ctx, sequence=ST.LEVER_SEQUENCE):
                 'already has and moves no identity.')
     ctx.log(BANNER)
 
-    failed_step = err = None
+    failed_step = err = raised = None
     for i, (name, title, fn) in enumerate(sequence):
         ctx.log('')
         ctx.log('--- STEP %d/%d  %-14s %s ---' % (i, len(sequence) - 1, name, title))
@@ -898,10 +918,17 @@ def run(ctx, sequence=ST.LEVER_SEQUENCE):
                 ctx.log('    build-lock: RELEASED after %r — the remaining steps write nothing and '
                         'the one gate that builds takes the lock itself.' % name)
                 ctx.release_lock()
-        except Exception as e:                                        # noqa: BLE001 — deliberate
+        except BaseException as e:                                    # noqa: BLE001 — deliberate
+            # BaseException, NOT Exception (Phase 0.5, 2026-10-13). A writer run IN-PROCESS —
+            # release_contract._fail(halt=True), boot_guard, config_manifest.enforce — halts with
+            # sys.exit(), which is a SystemExit, which `except Exception` does not catch: the halt
+            # flew straight out of run() past the abort ladder, every carrier left as the failed
+            # step left it. A SystemExit is a failed step like any other here; the one exception
+            # the ladder does not swallow is a KeyboardInterrupt, which is re-raised AFTER the
+            # restore has run (see the tail of this function).
             el = time.time() - t0
             ctx.timings.append((name, round(el, 2), 'FAIL'))
-            failed_step, err = name, e
+            failed_step, err, raised = name, _as_step_failure(name, e), e
             ctx.log('    [%s FAILED  %.2fs]' % (name, el))
             break
 
@@ -924,8 +951,28 @@ def run(ctx, sequence=ST.LEVER_SEQUENCE):
     else:
         ctx.log('WORK DIR KEPT: %s — the restore point is in it and the abort did not prove '
                 'byte-exact.' % ctx.work_dir)
+    if isinstance(raised, KeyboardInterrupt):
+        # The restore has run and the lock is released; the interrupt itself is still the
+        # operator's and is not swallowed.
+        raise raised
     return Result(False, failed_step=failed_step, error=err, timings=ctx.timings, facts=ctx.facts,
                   abort=abort, ctx=ctx)
+
+
+def _as_step_failure(name, exc):
+    """The error the abort records for what a step raised. A SystemExit or KeyboardInterrupt is
+    given a message that says what happened (str(SystemExit(1)) is '1', which tells nobody
+    anything); any other exception is recorded as itself."""
+    if isinstance(exc, SystemExit):
+        return ST.StepError('IN-PROCESS HALT: step %r raised SystemExit(%r) — a writer run inside '
+                            'the lander called sys.exit(). It halts the STEP, not the lander: the '
+                            'abort ladder restores every carrier as for any other failure.'
+                            % (name, exc.code))
+    if isinstance(exc, KeyboardInterrupt):
+        return ST.StepError('INTERRUPTED: KeyboardInterrupt during step %r. The abort ladder runs '
+                            'first; the interrupt is re-raised once every carrier is restored.'
+                            % name)
+    return exc
 
 
 #: The sandbox/work dirs this package creates, all named `<prefix><pid>` in the snapshot dir.
@@ -1098,16 +1145,42 @@ def _abort(ctx, failed_step, err):
         ctx.log('carriers that moved before the failure: %d' % len(moved))
         for rel, b, a in moved:
             ctx.log('    %-64s %s -> %s' % (rel, (b or 'ABSENT')[:12], (a or 'ABSENT')[:12]))
-        actions = ctx.snapshot.restore()
-        ctx.log('RESTORING %d carrier(s):' % len(actions))
-        for rel, act in actions:
-            ctx.log('    %-8s %s' % (act, rel))
-        ctx.snapshot.assert_restored()
-        ctx.log('')
-        ctx.log('ABORT PROOF: every carrier is BYTE-EXACT to the identity captured at step 0.')
-        out['restored'] = [{'path': r, 'action': a} for r, a in actions]
-        out['byte_exact'] = True
-        out['restore_point'] = ctx.snapshot.identities()
+        # A FAILED RESTORE IS A RESULT, NOT AN EXCEPTION (Phase 0.5, 2026-10-13). assert_restored
+        # raising out of here meant run() produced no Result, so the report and the transcript
+        # were never written and the caller's own put-back never ran — the one abort that most
+        # needed a record had none. It is recorded here (byte_exact False, the mismatch list) and
+        # run() returns a Result as for any failure; run() then KEEPS the work dir, and every
+        # caller fails loudly on byte_exact False.
+        actions = []
+        try:
+            actions = ctx.snapshot.restore()
+            ctx.log('RESTORING %d carrier(s):' % len(actions))
+            for rel, act in actions:
+                ctx.log('    %-8s %s' % (act, rel))
+            ctx.snapshot.assert_restored()
+        except CA.CarrierError as ce:
+            try:
+                mismatch = [{'path': r, 'before': b, 'after': a} for r, b, a in ctx.snapshot.diff()]
+            except Exception as de:                                    # noqa: BLE001 — recording
+                mismatch = [{'path': '<diff failed>', 'before': None, 'after': str(de)}]
+            ctx.log('')
+            ctx.log('ABORT PROOF FAILED: THE TREE IS NOT BACK WHERE IT STARTED.')
+            for ln in str(ce).splitlines():
+                ctx.log('  %s' % ln)
+            ctx.log('  %d carrier(s) differ from the restore point; the work dir (restore point '
+                    'inside) is KEPT. Put them back by hand from %s before anything else runs.'
+                    % (len(mismatch), os.path.join(ctx.work_dir, 'restore_point')))
+            out['restored'] = [{'path': r, 'action': a} for r, a in actions]
+            out['byte_exact'] = False
+            out['restore_error'] = str(ce)
+            out['mismatch'] = mismatch
+            out['restore_point'] = ctx.snapshot.identities()
+        else:
+            ctx.log('')
+            ctx.log('ABORT PROOF: every carrier is BYTE-EXACT to the identity captured at step 0.')
+            out['restored'] = [{'path': r, 'action': a} for r, a in actions]
+            out['byte_exact'] = True
+            out['restore_point'] = ctx.snapshot.identities()
 
     ctx.log('')
     ctx.log('THE RECOVERY LADDER: abort-then-retry is the recovery. A landing this lander cannot')

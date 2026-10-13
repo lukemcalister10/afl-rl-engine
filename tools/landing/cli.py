@@ -191,12 +191,28 @@ def _run_cheap_preflight(a, doc):
 
 
 def _file_cheap_preflight(results, evidence_dir):
-    """File the launch preflight record into the act's evidence dir AFTER the transaction closed
-    (committed or restored either way — the write can no longer trip step 0's clean-tree law)."""
+    """File the launch preflight record into the act's evidence dir. Called from inside the commit
+    window (see `_arm_late_filers`) so it rides the landing's own commit, and again after the close
+    as the fallback for an aborted run; the writer is idempotent (byte-identical content is not
+    rewritten), so the second call on a landed run is a no-op."""
     if not results:
         return
     from tools.landing import preflight as PF
     PF.file_evidence(results, evidence_dir)
+
+
+def _arm_late_filers(ctx, pre_ev, pf_results):
+    """FILE THE LAUNCH PAPERWORK INSIDE THE COMMIT WINDOW (Phase 0.5, 2026-10-13).
+
+    The self-test transcripts and PREFLIGHT.json cannot be written before step 0 (its clean-tree
+    law would refuse the launch's own paperwork) and, written after the commit, they sat untracked
+    in the TRACKED evidence dir after every successful landing — the next run then refused a dirty
+    tree, and tools/ingest grew a put-back to cope. The commit step runs these just before it
+    stages, and the evidence dir is a path it already admits, so a landed tree reads clean. The
+    post-close calls stay as the fallback for an abort (the commit step never ran) and are no-ops
+    on a landed run."""
+    ctx.before_commit.append(lambda c: _file_preflight_evidence(pre_ev, c.evidence_dir))
+    ctx.before_commit.append(lambda c: _file_cheap_preflight(pf_results, c.evidence_dir))
 
 
 def cmd_lever(a):
@@ -215,6 +231,7 @@ def cmd_lever(a):
     pre_ev = _preflight_selftest(a, doc) if not a.selftest else None
     opts = TX.Options(dry_run=a.dry_run, no_commit=a.no_commit, selftest=a.selftest)
     ctx = TX.Ctx(a.root, doc, opts, builder=builder, fault=a.fault, keep_work=a.keep_work)
+    _arm_late_filers(ctx, pre_ev, pf_results)
     res = TX.run(ctx, ST.LEVER_SEQUENCE)
     _file_preflight_evidence(pre_ev, ctx.evidence_dir)
     _file_cheap_preflight(pf_results, ctx.evidence_dir)
@@ -234,6 +251,15 @@ def _write_reports(a, ctx, res):
     if a.log:
         with open(a.log, 'w', encoding='utf-8') as fh:
             fh.write('\n'.join(ctx.lines) + '\n')
+    if not res.ok and res.abort and res.abort.get('byte_exact') is False:
+        # The abort could not prove the restore; txn kept the work dir. Say so where the exit
+        # code alone would not.
+        print('=' * 102)
+        print('THE ABORT DID NOT RESTORE THE TREE BYTE-EXACT. %d carrier(s) still differ from the '
+              'restore point (see the report\'s abort.mismatch). The work dir is kept: %s. Put '
+              'them back by hand BEFORE anything else runs on this tree.'
+              % (len(res.abort.get('mismatch') or ()), ctx.work_dir))
+        print('=' * 102)
 
 
 def _jsonable(obj):
@@ -268,6 +294,7 @@ def cmd_round(a):
     opts = TX.Options(dry_run=a.dry_run, no_commit=a.no_commit, selftest=a.selftest)
     ctx = TX.Ctx(a.root, doc, opts, builder=builder, fault=a.fault, keep_work=a.keep_work,
                  carriers=CA.ROUND_CARRIERS)
+    _arm_late_filers(ctx, pre_ev, pf_results)
     res = TX.run(ctx, ST.ROUND_SEQUENCE)
     _file_preflight_evidence(pre_ev, ctx.evidence_dir)
     _file_cheap_preflight(pf_results, ctx.evidence_dir)
@@ -309,6 +336,7 @@ def cmd_edit(a):
     opts = TX.Options(dry_run=False, no_commit=a.no_commit, selftest=a.selftest)
     ctx = TX.Ctx(a.root, doc, opts, builder=builder, fault=a.fault, keep_work=a.keep_work,
                  carriers=CA.EDIT_CARRIERS)
+    _arm_late_filers(ctx, pre_ev, pf_results)
     res = TX.run(ctx, ST.EDIT_SEQUENCE)
     _file_preflight_evidence(pre_ev, ctx.evidence_dir)
     _file_cheap_preflight(pf_results, ctx.evidence_dir)

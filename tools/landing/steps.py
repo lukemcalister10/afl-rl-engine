@@ -3643,7 +3643,16 @@ def commit(ctx):
     ctx.fault_point('commit')
     from tools.landing import carriers as CA
 
-    rc, out = ctx.run(['git', 'status', '--porcelain'])
+    # THE LATE PAPERWORK IS FILED NOW, INSIDE THE COMMIT WINDOW (see txn.Ctx.before_commit): the
+    # evidence dir is admitted below, so what these write is staged with everything else and the
+    # tree reads clean after the landing instead of carrying the landing's own record untracked.
+    for fn in getattr(ctx, 'before_commit', None) or ():
+        fn(ctx)
+
+    # FILES, NOT COLLAPSED DIRECTORIES: without --untracked-files=all git folds a wholly untracked
+    # directory into one `dir/` line, and a directory line can neither be matched against the
+    # admitted paths by component nor named precisely in a refusal.
+    rc, out = ctx.run(['git', 'status', '--porcelain', '--untracked-files=all'])
     if rc != 0:
         raise StepError('git status failed')
     changed = []
@@ -3659,7 +3668,7 @@ def commit(ctx):
                                       ctx.spec.get('_spec_rel')) if p)
     staged, foreign = [], []
     for rel in changed:
-        if CA.in_scope(rel, ctx.carriers) or any(rel.startswith(a) for a in allowed_extra):
+        if CA.in_scope(rel, ctx.carriers) or any(_under(rel, a) for a in allowed_extra):
             staged.append(rel)
         else:
             foreign.append(rel)
@@ -3678,6 +3687,15 @@ def commit(ctx):
                                              % (ctx.spec['act'], verb))
     sha = _git_commit(ctx, staged, msg)
     return {'commit': sha, 'paths': sorted(staged), 'committed': sha is not None}
+
+
+def _under(rel, allowed):
+    """Is `rel` the allowed path itself, or inside it as a DIRECTORY? A path-component match
+    (Phase 0.5, 2026-10-13): the string prefix it replaced admitted `docs/evidence/xy/anything`
+    under an evidence dir of `docs/evidence/x`, which is another act's paperwork, not this one's."""
+    rel = rel.rstrip('/')
+    allowed = allowed.rstrip('/')
+    return rel == allowed or rel.startswith(allowed + '/')
 
 
 #: THE LAST STEP THAT NEEDS THE SINGLE-WRITER LOCK. Steps 0-6 build, or depend on something just
