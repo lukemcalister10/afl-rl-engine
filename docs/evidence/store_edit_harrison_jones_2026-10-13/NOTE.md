@@ -69,3 +69,7 @@ left to the seat, deliberately, rather than mislabelling the column `gf-` to sli
 `harrison-jones` is active (board `v` 153, Essendon); `harrison-jones-haw` is a back-section row
 (`v` 12). Both may move; `expected_movers` is null (the dry run is the prediction of record), the
 board is declared moving, and the column is owed under the standing rule of 2026-07-28.
+
+
+## Owner ruling 2026-10-13
+"Jones - duplciate." The Essendon row's three edits are DROPPED: the twin's 2026 game is a duplicate of a game the Essendon row already carries, not a missing one. The act now touches only harrison-jones-haw (games 1 -> 0, avg 15.0 -> 0.0, career 2 -> 1).

@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
  "act_kind": "store-edit",
- "act": "HARRISON JONES — THE RETIRED HAWTHORN TWIN'S MIS-KEYED 2026 GAME (15) MOVED TO THE ESSENDON ROW: TWIN 2026 {1 GAME, 15.0} -> {0, 0.0}, ESSENDON 2026 {7, 43.86} -> {8, 40.25}",
+ "act": "THE HARRISON JONES TWIN GAME: the retired Hawthorn twin's phantom 2026 appearance removed (owner ruling: a DUPLICATE, not a missing Essendon game)",
  "date": "2026-10-13",
- "owner_word": "OWNER WORD REQUIRED BEFORE FLIGHT. Finding (Phase 0.3, 2026-10-13): store row harrison-jones-haw (_retired true, last game 2020) carries a 2026 season row {games 1, avg 15.0}. No weekly report of record (ui/data/movers.js reports 15..29) and no score file (scores/R21-R24, FW1-FW4, GF) credits a 15 to any Harrison Jones: the row was already in the 2026-07-02 seed (git -S, commit f4a4d34f) — a pre-repo R1-R14 baseline name-join artefact, before every in-repo writer (tools/ingest, round_catchup) resolved names to ACTIVE rows only. The Essendon row harrison-jones grew from the seed's {2 games, 30.5} by exactly the five weekly reports (R16 47, R18 55, R21 67, R23 22, R24 55 = 246) to {7, 43.86} (sum 307.0): the 15 is NOT among them, and a single name-join writes each listed appearance ONCE, so the twin's game is one the Essendon row is MISSING, not a duplicate. The edit moves it: (307 + 15) / 8 = 40.25 at ScoreIngestor._mean, 2 decimals; career games follow the season-row sum (owner ruling 2026-09-24). The owner may instead rule it a duplicate, in which case only the three harrison-jones-haw edits apply.",
+ "owner_word": "Owner, 2026-10-13, verbatim: \"Jones - duplciate.\" \u2014 the 15 credited to harrison-jones-haw in the pre-repo seed is a duplicate of a game already in the Essendon row; the twin's row is zeroed and the Essendon row is untouched.",
  "authority": "owner ruling 2026-09-24 (career games = sum of season rows) + owner word on this act",
  "prereg": {
   "path": "docs/evidence/store_edit_harrison_jones_2026-10-13/NOTE.md",
@@ -31,28 +31,10 @@
     "field": "games",
     "old": 2,
     "new": 1
-   },
-   {
-    "key": "harrison-jones",
-    "field": "scoring[2026].games",
-    "old": 7,
-    "new": 8
-   },
-   {
-    "key": "harrison-jones",
-    "field": "scoring[2026].avg",
-    "old": 43.86,
-    "new": 40.25
-   },
-   {
-    "key": "harrison-jones",
-    "field": "games",
-    "old": 66,
-    "new": 67
    }
   ],
   "expected_movers": null,
-  "_doc_expected_movers": "not declared: the dry run is the prediction of record. Two board rows can move — harrison-jones (active, Essendon: one more game, a lower average) and harrison-jones-haw (back section, retired: its 2026 game removed)."
+  "_doc_expected_movers": "not declared: the dry run is the prediction of record. Two board rows can move \u2014 harrison-jones (active, Essendon: one more game, a lower average) and harrison-jones-haw (back section, retired: its 2026 game removed)."
  },
  "identities": {
   "moves": [
@@ -70,7 +52,7 @@
  },
  "column": {
   "id": "harrison-jones-twin-game-13-10",
-  "label": "13/10 Harrison Jones — the retired twin's mis-keyed 2026 game moved to the Essendon row",
+  "label": "13/10 Harrison Jones (Hawthorn, retired) \u2014 the seed's phantom 2026 game removed; duplicate, owner-ruled",
   "after_round": 24
  },
  "lineage": {
@@ -239,5 +221,5 @@
    ]
   }
  ],
- "commit_message": "Harrison Jones: the retired twin's 2026 game moved to the Essendon row (land edit) — 6 store edits"
+ "commit_message": "STORE: the retired Harrison Jones twin's phantom 2026 game removed (owner ruling 2026-10-13: duplicate)"
 }
