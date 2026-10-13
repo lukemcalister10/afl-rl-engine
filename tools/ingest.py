@@ -61,7 +61,10 @@ MOVERS_REL = 'ui/data/movers.js'
 OVERRIDES_REL = 'engine/rl_after/ingestion/catchup_identity_overrides.json'
 PINNED_NUMPY = '2.4.4'
 SEASON = 2026
-RECORD_FILES = ('FLIGHT.log', 'REPORT.json', 'PREFLIGHT.json')   # what the lander files after its commit
+#: What the lander files after its own commit. PREFLIGHT.json now rides the landing commit
+#: (cli._arm_late_filers) and is listed here as belt-and-braces; the log and the report cannot be
+#: in the commit they describe.
+RECORD_FILES = ('FLIGHT.log', 'REPORT.json', 'PREFLIGHT.json')
 
 #: THE OWNER'S NAMES FOR THE FINALS WEEKS -> the feed round each one is. The display names and column
 #: prefixes come from round_movers (the one table the UI's copies are tested against).
@@ -289,12 +292,29 @@ def compute_edits(resolved, store):
 
 
 # ------------------------------------------------------------------------------ the act
-def build_spec(week, csv_rel, csv_sha, resolved, edits, resolved_rel, ev_rel):
+def first_inputs_date(rel, repo=REPO):
+    """The date of the FIRST commit that touched `rel`, or None if it has never been committed.
+    The inputs commit is what a re-run must not repeat: the spec's `date` and column label are
+    pinned to the day the inputs first entered the tree, so a re-run on a later day regenerates a
+    byte-identical ACT_SPEC and makes no second commit."""
+    p = subprocess.run(['git', 'log', '--reverse', '--format=%as', '--', rel], cwd=repo,
+                       capture_output=True, text=True)
+    first = (p.stdout.strip().splitlines() or [''])[0].strip()
+    if p.returncode != 0 or not first:
+        return None
+    return datetime.date.fromisoformat(first)
+
+
+def build_spec(week, csv_rel, csv_sha, resolved, edits, resolved_rel, ev_rel, date=None):
     from tools.landing import steps as ST
     boot = json.load(io.open(os.path.join(REPO, BOOT_REL), encoding='utf-8'))
-    today = datetime.date.today()
-    col = '%s%s-%d-%d' % (week['prefix'], week['name'].lower().replace(' ', '-'), today.day,
-                          today.month)
+    # THE DATE IS THE INPUTS' DATE, NOT TODAY'S (Phase 0.5, 2026-10-13): the column id and label
+    # once embedded the day of the run, so a re-run on a later day generated a different column id
+    # and a second inputs commit. The id is now the week's alone — `fw3-finals-week-3-2026` — which
+    # still carries the `fw3-` prefix round_movers.FINALS_COLUMN_PREFIXES and finals_report.
+    # feed_round_of key on; the date is the first inputs commit's when there is one.
+    today = date or datetime.date.today()
+    col = '%s%s-%d' % (week['prefix'], week['name'].lower().replace(' ', '-'), SEASON)
     n = len(resolved)
     what = '%s — %d players gain one game and a re-averaged %d season row' % (
         week['name'].title(), n, SEASON)
@@ -361,6 +381,9 @@ def run_landing(spec_path, ev_dir):
     ctx = TX.Ctx(REPO, doc, TX.Options(), builder=TX.RealBuilder(),
                  carriers=CA.EDIT_CARRIERS + WEEK_CARRIERS(CA))
     seq = tuple(s for s in ST.EDIT_SEQUENCE if s[0] != 'claims')
+    # PREFLIGHT.json rides the landing's own commit (cli._arm_late_filers); the call after the
+    # close is the fallback for an abort and a no-op on a landed run.
+    CLI._arm_late_filers(ctx, None, pf)
     res = TX.run(ctx, seq)
     CLI._file_cheap_preflight(pf, ctx.evidence_dir)
     CLI._write_reports(a, ctx, res)
@@ -404,17 +427,40 @@ def summarise(week):
                                          for p in moved[::-1][:6] if p['value_change'] < 0))
 
 
+REBUILD_CMD = 'python3 ui/tools/bundle_standalone.py && node ui/tools/standalone_smoke.mjs valueboard.html'
+PUSH_CMD = 'git push origin HEAD'
+LANDED_NOTE = 'the week is landed and committed; '
+
+
 def rebuild_app():
+    """Rebuild valueboard.html and smoke it. A failure STOPS the command with a non-zero exit
+    (Phase 0.5, 2026-10-13 — it used to print and exit 0): the landing is already committed at this
+    point, and the last line says exactly what to re-run."""
     p = subprocess.run([sys.executable, 'ui/tools/bundle_standalone.py'], cwd=REPO,
                        capture_output=True, text=True)
     if p.returncode != 0:
         say('  valueboard.html NOT rebuilt:\n' + (p.stdout + p.stderr)[-800:])
-        return False
+        die(LANDED_NOTE + 'the app rebuild failed. Re-run `%s`, then `%s`.' % (REBUILD_CMD, PUSH_CMD))
     s = subprocess.run(['node', 'ui/tools/standalone_smoke.mjs', 'valueboard.html'], cwd=REPO,
                        capture_output=True, text=True)
     last = (s.stdout.strip().splitlines() or [''])[-1]
+    if s.returncode != 0:
+        say('  valueboard.html rebuilt but the smoke test FAILED:\n' + (s.stdout + s.stderr)[-800:])
+        die(LANDED_NOTE + 'the app smoke test failed. Re-run `%s`, then `%s`.'
+            % (REBUILD_CMD, PUSH_CMD))
     say('  valueboard.html rebuilt — %s' % last)
-    return s.returncode == 0
+    return True
+
+
+def push_head():
+    """Push HEAD. A failure STOPS the command with a non-zero exit (Phase 0.5, 2026-10-13 — it
+    used to print and exit 0); the week is committed either way and the last line says so."""
+    p = subprocess.run(['git', 'push', 'origin', 'HEAD'], cwd=REPO, capture_output=True, text=True)
+    if p.returncode != 0:
+        say('  NOT pushed:\n' + (p.stdout + p.stderr)[-600:])
+        die(LANDED_NOTE + 'the push failed. Re-run `%s`.' % PUSH_CMD)
+    say('  pushed')
+    return True
 
 
 # ------------------------------------------------------------------------------ main
@@ -491,7 +537,7 @@ def main():
         'no predicted board and no predicted movers — a week of football is supposed to move them.\n'
         % (week['name'].title(), csv_rel, resolved_rel))
     spec = build_spec(week, csv_rel, sha256(os.path.join(REPO, csv_rel)), resolved, edits,
-                      resolved_rel, ev_rel)
+                      resolved_rel, ev_rel, date=first_inputs_date(resolved_rel))
     from tools.landing import spec as SP
     bad = SP.validate(spec)
     if bad:
@@ -518,23 +564,33 @@ def main():
         os.makedirs(keep, exist_ok=True)
         for r in record:
             shutil.move(os.path.join(REPO, r), os.path.join(keep, os.path.basename(r)))
+        unproved = (res.abort or {}).get('byte_exact') is False
+        if unproved:
+            say('  THE ABORT DID NOT RESTORE THE TREE BYTE-EXACT: %d carrier(s) differed from the '
+                'restore point (REPORT.json abort.mismatch). The lander kept its work dir (the '
+                'restore point is inside): %s'
+                % (len((res.abort or {}).get('mismatch') or ()), res.ctx.work_dir))
         leftovers = put_tree_back(keep)
         if leftovers:
             say('  put back %d file(s) the landing wrote outside its carriers (kept in %s)'
                 % (leftovers, keep))
+        if unproved:
+            die('the landing stopped at step %r and its abort COULD NOT PROVE the tree restored. '
+                'The tree has been checked out back to the inputs commit here; the lander\'s copy '
+                'of every changed file is kept in %s. Compare before running anything else.\n%s'
+                % (res.failed_step, keep, str(res.error)[:3000]))
         die('the landing stopped at step %r and put every file back as it was.\n%s\n'
             'Full log: %s/FLIGHT.log. The inputs commit stays; fix the cause and run the same '
             'command again.' % (res.failed_step, str(res.error)[:3000], keep))
     if record:
         git('add', *record)
-        git('commit', '-q', '-m', '%s: the landing record (tools/ingest)' % week['name'].title())
+        if git('diff', '--cached', '--name-only').strip():
+            git('commit', '-q', '-m', '%s: the landing record (tools/ingest)' % week['name'].title())
     reseed_workspace()
     summarise(week)
     rebuild_app()
     if not a.no_push:
-        p = subprocess.run(['git', 'push', 'origin', 'HEAD'], cwd=REPO, capture_output=True,
-                           text=True)
-        say('  pushed' if p.returncode == 0 else '  NOT pushed:\n' + (p.stdout + p.stderr)[-600:])
+        push_head()
     say('\nDONE.')
     return 0
 
