@@ -28,15 +28,31 @@
   },
   "27": {
    "label": "FW3",
-   "clubs": []
+   "clubs": [
+    "Adelaide",
+    "Brisbane",
+    "Fremantle",
+    "Geelong"
+   ],
+   "_note": "4 clubs, derived by tools/ingest from scores/resolved/2026_FW3.json: every club carried as afl_club by more than 3 listed players. 1 listed player(s) sit at another club in the store and are NOT evidence that club played \u2014 oscar-allen (store: West Coast). The store's afl_club is an identity field, stale for them until the AFL Club courier (ui/tools/ownership_store_apply.py) moves it; nothing reads it to price them."
   },
   "28": {
    "label": "FW4",
-   "clubs": []
+   "clubs": [
+    "Brisbane",
+    "Fremantle",
+    "Hawthorn",
+    "Sydney"
+   ],
+   "_note": "4 clubs, derived by tools/ingest from scores/resolved/2026_FW4.json: every club carried as afl_club by more than 3 listed players. 5 listed player(s) sit at another club in the store and are NOT evidence that club played \u2014 charlie-curnow (store: Carlton), darcy-fort (store: Geelong), jack-ginnivan (store: Collingwood), josh-battle (store: St Kilda), oscar-allen (store: West Coast). The store's afl_club is an identity field, stale for them until the AFL Club courier (ui/tools/ownership_store_apply.py) moves it; nothing reads it to price them."
   },
   "29": {
    "label": "GF",
-   "clubs": []
+   "clubs": [
+    "Brisbane",
+    "Fremantle"
+   ],
+   "_note": "2 clubs, derived by tools/ingest from scores/resolved/2026_GF.json: every club carried as afl_club by more than 3 listed players. 2 listed player(s) sit at another club in the store and are NOT evidence that club played \u2014 darcy-fort (store: Geelong), oscar-allen (store: West Coast). The store's afl_club is an identity field, stale for them until the AFL Club courier (ui/tools/ownership_store_apply.py) moves it; nothing reads it to price them."
   }
  },
  "_shape": "THE FINALS SHAPE, OWNER-DECLARED 2026-09-09: FW1 4 clubs, FW2 8, FW3 4, FW4 4, FW5/GF 2. Melbourne and Collingwood were eliminated in week 1; Western Bulldogs and Carlton in week 2. This is the league's own format and it is NOT the AFL's (where week 1 is the wide round) \u2014 the four-then-eight opening is why FW2 carries twice FW1's players, and it is recorded here so nobody re-derives it from a score file and concludes a week went missing."

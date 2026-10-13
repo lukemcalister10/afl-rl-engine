@@ -67,6 +67,19 @@ RECORD_FILES = ('FLIGHT.log', 'REPORT.json', 'PREFLIGHT.json')   # what the land
 #: prefixes come from round_movers (the one table the UI's copies are tested against).
 WEEK_ALIASES = {'FW1': 25, 'FW2': 26, 'FW3': 27, 'FW4': 28, 'FW5': 29, 'GF': 29}
 
+#: THE FINALS FIXTURE, WRITTEN BY THE WEEK THAT PLAYS IT (2026-10-13). round_movers.fixture_clubs
+#: HALTS a finals report whose week has an empty club list — and FW3, FW4 and the GF landed with
+#: exactly that, because the fixture was a hand step nobody owned (FW1/FW2 were typed in by hand).
+#: The side count below was already being printed by this tool every week; now it is also written.
+FIXTURES_REL = 'scores/fixtures.json'
+#: the league's own finals shape (owner-declared 2026-09-09; scores/fixtures.json `_shape`): the
+#: number of clubs each feed round fields. A derived count that disagrees stops the week.
+FINALS_SIDES = {25: 4, 26: 8, 27: 4, 28: 4, 29: 2}
+#: a club is a SIDE when MORE THAN THIS MANY of the listed players carry it as their store
+#: afl_club; fewer is a player the store still has at a former club (a mover), not a club that
+#: played. The threshold is the one this tool has printed under since 2026-09-24.
+SIDE_MIN_LISTED = 3
+
 
 def say(msg=''):
     print(msg, flush=True)
@@ -288,6 +301,72 @@ def compute_edits(resolved, store):
     return edits, problems
 
 
+# ------------------------------------------------------------------------------ the fixture
+def fixture_clubs(resolved_keys, store, feed):
+    """-> (sides, movers). `sides` is the sorted list of clubs that fielded a side this week: the
+    store afl_club of MORE THAN SIDE_MIN_LISTED listed players. `movers` is [(key, store_club)] for
+    every listed player whose store club is not one of them — a player the store still has at a
+    former club. He PLAYED (his score applies either way; afl_club prices nothing), and his store
+    club is NOT evidence that club played, which is the whole reason the fixture exists.
+
+    The side count is asserted against FINALS_SIDES: a week that derives three sides, or five, is a
+    week whose scores file or store is wrong, and it stops here rather than writing a fixture that
+    would mark hundreds of players DNP. Pure: reads nothing, writes nothing."""
+    by_key = {p['key']: p for p in store if p.get('key')}
+    clubs = collections.Counter(by_key[k].get('afl_club') for k in resolved_keys)
+    sides = sorted(c for c, n in clubs.items() if c and n > SIDE_MIN_LISTED)
+    movers = sorted((k, by_key[k].get('afl_club')) for k in resolved_keys
+                    if by_key[k].get('afl_club') not in sides)
+    expect = FINALS_SIDES.get(int(feed))
+    if expect is not None and len(sides) != expect:
+        raise ValueError('feed round %d fields %d clubs by the league\'s own shape, but %d side(s) '
+                         'are listed with more than %d players: %s (counts %s). The scores file or '
+                         'the store is wrong; nothing is written.'
+                         % (int(feed), expect, len(sides), SIDE_MIN_LISTED, sides,
+                            dict(clubs.most_common())))
+    return sides, movers
+
+
+def write_fixture_clubs(path, feed, sides, movers, resolved_rel):
+    """Write this week's clubs into scores/fixtures.json. -> True if the file moved, False if the
+    week already carried exactly these clubs (a re-run is safe). The week's entry must already be
+    declared (its label and the series shape are the owner's, typed once); a declared week with a
+    DIFFERENT non-empty club list is a conflict and raises — this tool fills a blank, it never
+    overrules a hand-declared fixture. Serialisation is the file's own (indent=1, ASCII-escaped, no
+    trailing newline), asserted by round-tripping the existing bytes first."""
+    raw = io.open(path, encoding='utf-8').read()
+    doc = json.loads(raw)
+    if json.dumps(doc, indent=1) != raw:
+        raise ValueError('%s does not round-trip at indent=1; refusing to reformat it' % path)
+    weeks = doc.get('weeks') or {}
+    wk = weeks.get(str(int(feed)))
+    if wk is None:
+        raise ValueError('feed round %d is not declared in %s — the week\'s label and the series '
+                         'shape are the owner\'s; declare the week, then the ingest fills its clubs.'
+                         % (int(feed), path))
+    have = list(wk.get('clubs') or [])
+    if have:
+        if sorted(have) == sorted(sides):
+            return False
+        raise ValueError('feed round %d already declares clubs %s and this week derives %s. A '
+                         'hand-declared fixture is never overruled by the ingest; reconcile it first.'
+                         % (int(feed), have, sides))
+    wk['clubs'] = list(sides)
+    note = ('%d clubs, derived by tools/ingest from %s: every club carried as afl_club by more than '
+            '%d listed players.' % (len(sides), resolved_rel, SIDE_MIN_LISTED))
+    if movers:
+        note += (' %d listed player(s) sit at another club in the store and are NOT evidence that '
+                 'club played — %s. The store\'s afl_club is an identity field, stale for them until '
+                 'the AFL Club courier (ui/tools/ownership_store_apply.py) moves it; nothing reads it '
+                 'to price them.'
+                 % (len(movers), ', '.join('%s (store: %s)' % (k, c) for k, c in movers)))
+    wk['_note'] = note
+    tmp = path + '.ingest_tmp'
+    io.open(tmp, 'w', encoding='utf-8').write(json.dumps(doc, indent=1))
+    os.replace(tmp, path)
+    return True
+
+
 # ------------------------------------------------------------------------------ the act
 def build_spec(week, csv_rel, csv_sha, resolved, edits, resolved_rel, ev_rel):
     from tools.landing import steps as ST
@@ -455,12 +534,17 @@ def main():
     edits, eproblems = compute_edits(resolved, store)
     if eproblems:
         die('\n  '.join(eproblems))
-    clubs = collections.Counter(p.get('afl_club') for p in store if p.get('key') in resolved)
-    say('  clubs         ' + ', '.join('%s %d' % kv for kv in clubs.most_common() if kv[1] > 3))
-    odd = ['%s (%s)' % (k, c) for k, c in clubs.items() if c <= 3]
-    if odd:
+    try:
+        sides, movers = fixture_clubs(set(resolved), store, week['feed'])
+    except ValueError as e:
+        die(str(e))
+    by_key = {p['key']: p for p in store if p.get('key')}
+    counts = collections.Counter(by_key[k].get('afl_club') for k in resolved)
+    say('  clubs         ' + ', '.join('%s %d' % (c, counts[c]) for c in sides)
+        + '  (%d sides; written to %s)' % (len(sides), FIXTURES_REL))
+    if movers:
         say('  also          %s — store club differs from the side they played for; harmless'
-            % ', '.join(odd))
+            % ', '.join('%s (%s)' % kc for kc in movers))
     n_career = sum(1 for e in edits if e['field'] == 'games')
     say('  edits         %d on %d players (games +1, average re-worked at 2 decimals)'
         % (len(edits) - n_career, len(resolved)))
@@ -498,7 +582,16 @@ def main():
         die('the generated spec does not validate:\n  ' + '\n  '.join(bad))
     spec_path = os.path.join(ev_dir, 'ACT_SPEC.json')
     json.dump(spec, io.open(spec_path, 'w', encoding='utf-8'), indent=1, ensure_ascii=False)
-    git('add', csv_rel, resolved_rel, ev_rel)
+    # THE FIXTURE IS AN INPUT OF THE WEEK and is committed with the other inputs, BEFORE the landing:
+    # round_movers reads it from the repo when the finals report is built, and a week that landed
+    # without it (FW3, FW4, GF) left the report builder facing an empty club list.
+    try:
+        moved = write_fixture_clubs(os.path.join(REPO, FIXTURES_REL), week['feed'], sides, movers,
+                                    resolved_rel)
+    except ValueError as e:
+        die(str(e))
+    say('  fixture       %s %s' % (FIXTURES_REL, 'written' if moved else 'already carries this week'))
+    git('add', csv_rel, resolved_rel, ev_rel, FIXTURES_REL)
     if git('diff', '--cached', '--name-only').strip():
         git('commit', '-q', '-m', '%s scores: the inputs (tools/ingest)' % week['name'].title())
         say('  inputs        committed')

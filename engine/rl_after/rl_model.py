@@ -1343,7 +1343,11 @@ def active(p):
     if p.get('_last_listed') is not None and p['_last_listed']<2026: return False  # delisted before 2026 -> off Now (recalled onto back-boards)
     if p.get('_unplayed') or p.get('_force_active'): return True
     played=any(r['games']>=1 for r in p['scoring'])
-    recent=p.get('_has26') or any(r['year']>=2024 for r in p['scoring']) or p['year']>=2024
+    # `_has26` RETIRED AS A READ (2026-10-13, Phase 0.4): the flag was set at the 2026-07-02 seed and never
+    # maintained (stale on 179 rows, every one a row that LATER gained a 2026 season). It is derived from the
+    # scoring rows instead. Provably the same truth for every row: the flag is never true without a 2026
+    # row (0 of 2,650), and a 2026 row already satisfies year>=2024 — so the disjunction is unchanged.
+    recent=any(r['year']>=2024 for r in p['scoring']) or p['year']>=2024
     return played and recent
 players=[p for p in (data+extra) if active(p)]
 def _dkey(p): return (p['key'] or slug(p['player']))+('|u' if p.get('_unplayed') and not p['key'] else '')
@@ -2253,7 +2257,8 @@ def pe(v):
         if PVC[k]<=v: return str(k)
     return '50+'
 def rk(nm):
-    cs=sorted([p for p in players if norm(nm) in norm(p['player']) and (p.get('_has26') or p['year']>=2023 or p.get('_unplayed'))],key=lambda p:-p['_v'])
+    # stdout diagnostic only (nothing downstream reads rk()). `_has26` derived from the rows, 2026-10-13: "played in 2026".
+    cs=sorted([p for p in players if norm(nm) in norm(p['player']) and (any(r['year']>=2026 and r['games']>0 for r in p['scoring']) or p['year']>=2023 or p.get('_unplayed'))],key=lambda p:-p['_v'])
     if not cs: cs=sorted([p for p in players if norm(nm) in norm(p['player'])],key=lambda p:-p['_v'])
     if not cs: return '%-20s NF'%nm
     p=cs[0]; return '%-20s #%-3d val%4d ~pk%-3s %-7s pk%2d %-3s'%(p['player'][:20],players.index(p)+1,p['_v'],pe(p['_v']),GRP[p['pos']],p['pick'],p['type'])

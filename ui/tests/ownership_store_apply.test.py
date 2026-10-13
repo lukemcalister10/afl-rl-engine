@@ -106,9 +106,35 @@ check("sam butler" in board_twins,
       "have been a coin flip that still counted 18")
 
 # ---------------------------------------------------------------- idempotency (acceptance 5)
+# TWO FIELDS SINCE 2026-10-13 (Phase 0.3). The affl_team half must still be a NO-OP on the applied
+# tree; the afl_club half may be PENDING until the owner runs `apply` — so it is asserted against an
+# INDEPENDENT derivation (CSV `AFL Club` cell -> table -> store row by key) rather than against a
+# hard-coded 15 that the first apply would make stale. `plan.moves` is then true iff either half is.
 plan = OSA.preflight(REPO, verbose=False)
-check(not plan.moves and plan.md5_before == plan.md5_after == live_md5,
-      "re-running preflight on the applied tree is a NO-OP — 0 rows move, the store md5 does not budge")
+check(plan.rows == [] and plan.md5_before == live_md5,
+      "re-running preflight on the applied tree moves 0 affl_team rows (the ownership half is a NO-OP)")
+_rows, _enc = OSA._readcsv(os.path.join(REPO, OSA.CSV_REL))
+_i_club = OSA._column_index(_rows[0], OSA.AFL_CLUB_COLUMN)
+_bvw_by_name = {OSA.nkey(p["name"]): p["key"] for p in bvw["players"]}
+_store_by_key = {r["key"]: r for r in store_doc if r.get("key")}
+_known_afl = {r.get("afl_club") for r in store_doc if r.get("afl_club")}
+_expect_club = set()
+for _r in _rows[1:]:
+    if not _r or not _r[0].strip():
+        continue
+    _full = OSA.afl_club_from_sheet(_r[_i_club] if _i_club < len(_r) else "", _known_afl)
+    _k = _bvw_by_name[OSA.nkey(_r[0])]
+    if _full is not None and _store_by_key[_k].get("afl_club") != _full:
+        _expect_club.add((_k, _store_by_key[_k].get("afl_club"), _full))
+check({(k, c, n) for k, _nm, c, n in plan.club_rows} == _expect_club,
+      "the afl_club plan equals the independently derived (sheet != store) set — %d pending"
+      % len(_expect_club))
+check(plan.moves == bool(plan.rows or plan.club_rows)
+      and (plan.md5_after == live_md5) == (not plan.moves),
+      "the store md5 budges iff a planned move exists in either field")
+check(set(plan.planned) == {k for k, _nm, _c, _n in plan.rows} | {k for k, _nm, _c, _n in plan.club_rows}
+      and all(set(v) <= set(OSA.COURIERED_FIELDS) for v in plan.planned.values()),
+      "Plan.planned attributes every move to one of the two couriered fields and no third")
 
 lin = json.load(open(os.path.join(REPO, OSA.LINEAGE_REL)))
 reg = lin["release_transition_register"]

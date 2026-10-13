@@ -1046,6 +1046,32 @@ def _store_apply_step0():
         halt("ownership store apply refused: %s" % e)
 
 
+def _report_pending_courier():
+    """`--check` ONLY: say out loud what the sheet has authored that the store has not been given —
+    affl_team AND, since 2026-10-13, afl_club (the `AFL Club` column). READ-ONLY (the lane's own
+    preflight, which never writes), NEVER A HALT and NEVER A VERDICT: verdicts are serialised into
+    the shipped club_valuation.js, so a verdict line here would drift that bundle on every check.
+    The courier is `ownership_store_apply.py apply`; this line only names the debt."""
+    try:
+        import ownership_store_apply as OSA
+        plan = OSA.preflight(ROOT, verbose=False)
+    except Exception as e:                                       # noqa: BLE001 - reported, not fatal
+        print("\n  COURIER CHECK — could not assess pending sheet authorship: %s" % str(e)[:300])
+        return None
+    if plan.rows or plan.club_rows:
+        print("\n  COURIER CHECK — PENDING: %d affl_team and %d afl_club move(s) are authored in "
+              "docs/inputs/AFFL_Player_Locations.csv and not yet in the store "
+              "(ui/tools/ownership_store_apply.py apply couriers them; this lane never writes the store)."
+              % (len(plan.rows), len(plan.club_rows)))
+        for key, _name, cur, new in plan.club_rows:
+            print("    afl_club   %-24s %-20s -> %s" % (key, cur, new))
+        for key, _name, cur, new in plan.rows:
+            print("    affl_team  %-24s %-20s -> %s" % (key, cur, new))
+    else:
+        print("\n  COURIER CHECK — current: the store carries the sheet's affl_team and afl_club.")
+    return plan
+
+
 def run():
     step0 = _store_apply_step0()
     obj, stamp, pvc = load_board()
@@ -1274,6 +1300,7 @@ def main(argv=None):
                   "apply did not run (this lane reads the store, never writes it).")
             return rc
         if check_only:
+            _report_pending_courier()
             want = open(OUT_OWNERSHIP, "rb").read()
             have = open(shipped, "rb").read() if os.path.exists(shipped) else b""
             if want == have:
