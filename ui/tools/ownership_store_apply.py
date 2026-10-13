@@ -775,7 +775,15 @@ def apply(root=None, verbose=True):
         # writers 1+2, steps.py ui). This tool ran only the first half until 2026-08-28 — the
         # FOURTH strike of the thrice-proven trap, caught by release_manifest_check + three ui
         # suites on the first apply after the release block moved into the working stamp.
+        # THE OVERLAY IS HERMETIC: every path extract_board_view honours from the environment is pointed
+        # at the overlay, whatever the caller's shell carries. 2026-10-13: a test harness exported
+        # RL_UI_BOOT=<live expected_boot> around the full ingest; the overlay's store had moved (the AFL-club
+        # courier's 15 changes) but the ring-fence read the LIVE pin and refused — a false halt that was
+        # invisible while the courier had nothing to write.
         _run([sys.executable, os.path.join(ws, "ui", "tools", "extract_board_view.py")], cwd=ws,
+             env={"RL_UI_BOOT": w(BOOT_REL), "RL_UI_STORE": w(STORE_REL),
+                  "RL_UI_SRC": w(os.path.join("data", "rl_build", "rl_app_data.json")),
+                  "RL_UI_OUT_DIR": w(os.path.join("ui", "data"))},
              label="extract_board_view")
         import importlib.util as _ilu
         _rm_path = os.path.join(ws, "engine", "rl_after", "ingestion", "round_movers.py")

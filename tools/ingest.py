@@ -148,8 +148,9 @@ def check_environment(need_build, src=None):
             die('could not unshallow the clone:\n%s' % (p.stdout + p.stderr)[-800:])
     node_mod = os.path.join(os.path.dirname(REPO), 'node_modules', 'playwright-core')
     if not os.path.exists(node_mod):
-        glob_pw = '/opt/node22/lib/node_modules/playwright/node_modules/playwright-core'
-        if os.path.isdir(glob_pw):
+        glob_pw = next((d for d in ('/opt/node22/lib/node_modules/playwright/node_modules/playwright-core',
+                                    '/opt/node-tools/node_modules/playwright-core') if os.path.isdir(d)), '')
+        if glob_pw:
             os.makedirs(os.path.dirname(node_mod), exist_ok=True)
             os.symlink(glob_pw, node_mod)
             say('  linked playwright-core for the browser gates')

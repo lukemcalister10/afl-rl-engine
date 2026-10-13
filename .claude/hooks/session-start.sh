@@ -22,6 +22,7 @@ if [ -f "$REPO/.git/shallow" ]; then
 fi
 PW_LINK="$(dirname "$REPO")/node_modules/playwright-core"
 PW_SRC=/opt/node22/lib/node_modules/playwright/node_modules/playwright-core
+[ -d "$PW_SRC" ] || PW_SRC=/opt/node-tools/node_modules/playwright-core
 if [ ! -e "$PW_LINK" ] && [ -d "$PW_SRC" ]; then
   mkdir -p "$(dirname "$PW_LINK")" && ln -s "$PW_SRC" "$PW_LINK"
 fi

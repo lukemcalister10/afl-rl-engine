@@ -1212,11 +1212,14 @@ def run():
     return 0
 
 
-FLAGS = ("--mirror-only", "--check", "--clubs-only", "--clubs-check")
+FLAGS = ("--mirror-only", "--check", "--clubs-only", "--clubs-check", "--apply")
 
 USAGE = ("usage: python3 ui/tools/ingest_inputs.py "
          "[--mirror-only | --check | --clubs-only | --clubs-check]\n"
-         "  (no flag)      the full ingest: club_valuation.js + ownership.js, store apply as step 0\n"
+         "  (no flag)      club_valuation.js + ownership.js from the tree AS IT IS; the store is NOT written —\n"
+         "                 pending courier moves are PRINTED (2026-10-13: a test harness and a re-stamp both\n"
+         "                 ran the bare tool and applied 15 AFL-club changes to the live store by accident)\n"
+         "  --apply        the full ingest: the owner's locations sheet couriered into the store as step 0\n"
          "  --mirror-only  write ONLY ui/data/ownership.js; no store apply, no club_valuation write\n"
          "  --check        write NOTHING; regenerate the mirror and byte-compare the shipped one\n"
          "  --clubs-only   write ONLY ui/data/club_valuation.js; no store apply, no mirror write\n"
@@ -1253,6 +1256,10 @@ def main(argv=None):
     mirror_only = check_only or "--mirror-only" in argv
     clubs_check = "--clubs-check" in argv
     clubs_only = clubs_check or "--clubs-only" in argv
+    apply_store = "--apply" in argv
+    if apply_store and (mirror_only or clubs_only):
+        sys.stderr.write("--apply is the full ingest; it cannot be combined with a fenced lane.\n%s" % USAGE)
+        return 2
     if mirror_only and clubs_only:
         sys.stderr.write("the mirror lane and the clubs lane are mutually exclusive — each writes "
                          "exactly one file; run the tool twice, or with no flag at all.\n%s" % USAGE)
@@ -1260,8 +1267,13 @@ def main(argv=None):
 
     scratch = None
     shipped = OUT_OWNERSHIP if mirror_only else OUT
-    if mirror_only or clubs_only:
+    if not apply_store:
+        # THE STORE IS WRITTEN ONLY ON --apply. The bare tool used to run the store apply as step 0, so
+        # anything that invoked it casually (a test harness, a re-stamp) couriered the owner's sheet into
+        # the live store the moment the sheet carried a pending change. The bare lane now reads the
+        # tree as it is and reports the debt; the courier is an act the caller names.
         SKIP_STORE_APPLY = True
+    if mirror_only or clubs_only:
         scratch = tempfile.mkdtemp(prefix="ingest_mirror_" if mirror_only else "ingest_clubs_")
     if mirror_only:
         # The club-valuation bundle is COMPUTED (its verdicts are half this job's guards) and then

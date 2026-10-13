@@ -116,7 +116,10 @@ def run_ingest(scratch, **overrides):
     env.setdefault("RL_UI_INPUTS", REAL_INPUTS)
     for k, v in overrides.items():
         env[k] = v
-    r = subprocess.run([sys.executable, INGEST], capture_output=True, text=True, env=env)
+    # The picks lane only (2026-10-13): these cases are about the curve contract, and the bare tool
+    # used to run the store apply as step 0 — this harness applied 15 pending AFL-club changes to the
+    # LIVE store the first time the courier had something to write. Never the full ingest from a test.
+    r = subprocess.run([sys.executable, INGEST, "--clubs-only"], capture_output=True, text=True, env=env)
     return r.returncode, read_bundle(out), (r.stdout + r.stderr)
 
 

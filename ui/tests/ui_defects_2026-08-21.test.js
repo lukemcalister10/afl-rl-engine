@@ -151,11 +151,23 @@ section("(3) from/to — scope lifted; defaults to the LATEST round's single-mod
     // board is the `to` point's board. In season the point id and the report key are the same string
     // and the old equality holds as a special case.
     var toPt = core.pointFor(live, dp.to);
-    check(rep && rep.player_count > 0 && toPt && !rep.synthetic &&
-          String(rep.board_md5_after) === String(toPt.board || rep.board_md5_after) &&
-          (String(rep.submitted_round) === String(dp.to) || core.storedReport(live, dp.to) === live.reports[String(rep.submitted_round)]),
-      "…and it resolves to the STORED report whose board is the `to` point, over the whole priced population",
-      JSON.stringify({ to: dp.to, submitted: rep && rep.submitted_round }));
+    // Two lawful shapes (RULEBOOK P4; restated 2026-10-13): a football newest point resolves to its STORED
+    // report; in the window after a model change the default is the newest one-round RETRO pair, whose
+    // comparison is the engine's own re-pricing of that round (synthetic by construction, football facts
+    // read from the round's stored report below).
+    var storedTo = core.storedReport(live, dp.to);
+    if (storedTo) {
+      check(rep && rep.player_count > 0 && toPt && !rep.synthetic &&
+            String(rep.board_md5_after) === String(toPt.board || rep.board_md5_after) &&
+            (String(rep.submitted_round) === String(dp.to) || storedTo === live.reports[String(rep.submitted_round)]),
+        "…and it resolves to the STORED report whose board is the `to` point, over the whole priced population",
+        JSON.stringify({ to: dp.to, submitted: rep && rep.submitted_round }));
+    } else {
+      check(rep && rep.player_count > 0 && /^retro-r\d+$/.test(String(dp.to)) && /^retro-r\d+$/.test(String(dp.from)) &&
+            Number(String(dp.to).slice(7)) === Number(String(dp.from).slice(7)) + 1,
+        "…and, in the window after a model change, it is the newest one-round retro pair over the whole priced population",
+        JSON.stringify({ from: dp.from, to: dp.to, n: rep && rep.player_count }));
+    }
     // NOT a loss of the facts: a one-round retro pair IS that round, so played/DNP/score are read
     // from the round's own stored report. Football does not depend on which engine priced it.
     var stored24 = (live.reports || {})[String(lastRound)] || {};

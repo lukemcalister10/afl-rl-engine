@@ -829,11 +829,27 @@ ok(retroReadings > 8000,
   var ids = (shipped.points || []).map(function (p) { return String(p.id); });
   ok(dp && ids.indexOf(dp.to) >= 0 && ids.indexOf(dp.from) >= 0,
      "bug 1 — defaultPair's two ends are both POINT IDS on the shipped bundle (" + JSON.stringify(dp) + ")");
-  eq(dp, { from: String(newest.previous_round), to: String(toPt.id) },
-     "bug 1 — ...and they are the newest report's baseline and the point whose board that report produced");
-  var cmp = core.compare(shipped, dp.from, dp.to);
-  ok(cmp && !cmp.synthetic && String(cmp.submitted_round) === newestKey && cmp.players.length === newest.players.length,
-     "bug 1 — compare() resolves the column id to the STORED report (played/DNP facts kept), not a synthetic diff");
+  // THE RELATIONSHIP, NOT THIS MONTH'S SHAPE (RULEBOOK P4; restated 2026-10-13 when an engine act landed on
+  // top of the Grand Final): the default pair ends at the newest STORED point only when a report produced
+  // that point's board (football). In the window after a model change — the newest stored point has a
+  // board no report produced — the default is the newest one-round RETRO pair, as the app's rule says.
+  var storedPts = (shipped.points || []).filter(function (p) { return p.kind !== "retro"; });
+  var newestStored = storedPts[storedPts.length - 1];
+  var footballNewest = !!newestStored && String(newestStored.board) === String(newest.board_md5_after);
+  var retroIds = (shipped.points || []).filter(function (p) { return p.kind === "retro"; }).map(function (p) { return String(p.id); });
+  if (footballNewest) {
+    eq(dp, { from: String(newest.previous_round), to: String(toPt.id) },
+       "bug 1 — ...and they are the newest report's baseline and the point whose board that report produced");
+    var cmp = core.compare(shipped, dp.from, dp.to);
+    ok(cmp && !cmp.synthetic && String(cmp.submitted_round) === newestKey && cmp.players.length === newest.players.length,
+       "bug 1 — compare() resolves the column id to the STORED report (played/DNP facts kept), not a synthetic diff");
+  } else {
+    eq(dp, { from: retroIds[retroIds.length - 2], to: retroIds[retroIds.length - 1] },
+       "bug 1 — after a model change (newest stored point " + newestStored.id + " has no report) the default is the newest one-round retro pair");
+    var cmpR = core.compare(shipped, String(newest.previous_round), String(toPt.id));
+    ok(cmpR && !cmpR.synthetic && String(cmpR.submitted_round) === newestKey,
+       "bug 1 — ...and the newest report's own pair still resolves to the STORED report by column id");
+  }
   ok(core.compare(shipped, "23", "24").synthetic === true,
      "an in-season pair that is not a report's own pair is still a synthetic diff");
   var r24 = core.compare(shipped, String(reps["24"].previous_round), "24");
