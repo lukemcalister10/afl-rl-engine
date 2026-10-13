@@ -127,10 +127,24 @@ try {
   ok(allFinals.split(',').length >= 1,
      `every landed finals week still has a report (feed rounds ${allFinals})`);
 
-  /* (5) the default comparison the app opens on is the newest one-round pair, both ends current model */
+  /* (5) the default comparison the app opens on is the newest week's own pair. RESTATED 2026-10-13
+         (Phase 0.2, bug 1): this accepted to:"29", the report KEY, which is a point id nowhere — the
+         Grand Final's point is the stored column whose board the report produced. The `to` end must
+         be that point's id, and the To <select> must show it selected by its week name. */
   const pair = await evalJs('JSON.stringify(MD.movers._state ? {from:MD.movers._state.from,to:MD.movers._state.to} : null)');
-  ok(new RegExp('"to":"(retro-r)?' + newestFeed + '"').test(String(pair)),
-     `the Movers tab OPENS on the pair ending at ${weekName}`, String(pair));
+  const wantTo = String(await evalJs(`(function(){var b=${bundle}, r=b.reports[${newestFeed}];
+    var p=b.points.filter(function(q){return q.kind!=="retro"&&q.board&&q.board===r.board_md5_after;})[0];
+    return p?String(p.id):String(${newestFeed});})()`));
+  ok(JSON.parse(String(pair) || 'null') && JSON.parse(String(pair)).to === wantTo,
+     `the Movers tab OPENS on the pair ending at ${weekName} (point ${wantTo})`, String(pair));
+  const selTo = String(await evalJs('(function(){var s=document.querySelectorAll(".moversbar select.boardsel")[1];' +
+    'return s&&s.options[s.selectedIndex]?s.value+"|"+s.options[s.selectedIndex].text:"";})()'));
+  ok(selTo.split('|')[0] === wantTo && new RegExp(weekName.replace(/[^A-Za-z0-9 ]/g, ''), 'i').test(selTo.split('|')[1] || ''),
+     `…and the To selector shows "${weekName}" selected, not its first option`, selTo);
+  const strip = String(await evalJs('(document.querySelector(".moversmeta")||{}).innerText||""')).replace(/\n/g, ' ');
+  ok(new RegExp(weekName.replace(/[^A-Za-z0-9 ]/g, ''), 'i').test(strip) && !/post-model/.test(strip) &&
+     !new RegExp('\\bR' + newestFeed + '\\b').test(strip),
+     `…and the strip names the week, never "R${newestFeed}" or "post-model"`, strip);
   ok(/Finals Week 1/.test(String(await evalJs('document.getElementById("root").innerText'))),
      '…and the rendered tab says "Finals Week 1" on screen');
 

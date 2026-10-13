@@ -198,20 +198,31 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   var finalsPrefix = pyMap("FINALS_COLUMN_PREFIXES"); // 'fw1-' -> 'FINALS WEEK 1'
   ok(Object.keys(finalsNames).length > 0 && Object.keys(finalsPrefix).length > 0,
      "round_movers.py declares the finals feed rounds and their column prefixes");
-  /* THE UI'S COPIES OF THE SAME TABLE MUST AGREE WITH THE ENGINE'S (added 2026-09-24). The finals
+  /* THE UI'S COPY OF THE SAME TABLE MUST AGREE WITH THE ENGINE'S (added 2026-09-24). The finals
      names lived in six places and four of them said "Semi-Final" / "Preliminary Final" — AFL names —
      for a league whose format is FW1 4 clubs, FW2 8, FW3 4, FW4 4, GF 2. The browser cannot import
-     Python, so the copies stay, and this is what stops them drifting: every prefix the engine
-     registers must be in both UI tables with the same name, and neither UI table may carry one the
-     engine does not. */
-  ["card.js", "movers.js"].forEach(function (f) {
+     Python, so ONE copy stays, and this is what stops it drifting: every prefix the engine registers
+     must be in the UI table with the same name, and the UI table may not carry one the engine does
+     not.
+     ONE COPY, NOT TWO (2026-10-13). This used to hold card.js's literal and movers.js's literal each
+     equal to the engine's, which is two things to keep equal instead of one. The table is now
+     movers.js core.FINALS_COLUMNS — the LIVE object, asserted through the module rather than by
+     grepping the source — and card.js and history.js read it from there, so the second half of this
+     check is that neither carries a table of its own. */
+  var liveTbl = core.FINALS_COLUMNS || {};
+  var same = Object.keys(finalsPrefix).length === Object.keys(liveTbl).length &&
+    Object.keys(finalsPrefix).every(function (k) { return liveTbl[k] && liveTbl[k].toUpperCase() === finalsPrefix[k]; });
+  ok(same, "movers.js core.FINALS_COLUMNS (the ONE browser table) matches round_movers.FINALS_COLUMN_PREFIXES exactly",
+     JSON.stringify(liveTbl));
+  Object.keys(finalsPrefix).forEach(function (pre) {
+    ok(core.finalsName(pre + "anything-30-9") === liveTbl[pre] && core.finalsName("retro-r25") === null,
+       "core.finalsName names a '" + pre + "' column and nothing else");
+  });
+  ["card.js", "history.js"].forEach(function (f) {
     var src = fs.readFileSync(path.join(__dirname, "..", "app", f), "utf8");
-    var m = /FINALS_COLUMNS\s*=\s*\{([\s\S]*?)\}/.exec(src), js = {};
-    if (m) { var re = /"([^"]+)"\s*:\s*"([^"]+)"/g, g; while ((g = re.exec(m[1]))) js[g[1]] = g[2]; }
-    var same = Object.keys(finalsPrefix).length === Object.keys(js).length &&
-      Object.keys(finalsPrefix).every(function (k) { return js[k] && js[k].toUpperCase() === finalsPrefix[k]; });
-    ok(same, "ui/app/" + f + " FINALS_COLUMNS matches round_movers.FINALS_COLUMN_PREFIXES exactly",
-       JSON.stringify(js));
+    ok(!/FINALS_COLUMNS\s*[:=]\s*\{/.test(src) && src.indexOf('"fw1-"') < 0 && src.indexOf("'fw1-'") < 0 &&
+       src.indexOf("core.finalsName") > 0,
+       "ui/app/" + f + " carries NO finals table of its own and reads movers.js core.finalsName");
   });
   var nameToFeed = {};
   Object.keys(finalsNames).forEach(function (fr) { nameToFeed[finalsNames[fr]] = Number(fr); });
@@ -790,6 +801,78 @@ ok(retroReadings > 8000,
   ok(finals.length > 0 && finals.every(function (p) { return !/^R\d/.test(String(p.label)); }),
      "every finals retro point on the SHIPPED bundle carries a named label (" +
      finals.map(function (p) { return p.label.split(" · ")[0]; }).join(", ") + ")");
+})();
+
+/* ===============================================================================================
+   PHASE 0.2 (2026-10-13): A FINALS REPORT IS KEYED BY ITS FEED ROUND, BUT ITS POINT IS A COLUMN.
+
+   reports['29'] is the Grand Final; the point it produced is gf-grand-final-30-9, an out-of-round
+   column at after_round 24, because the calendar holds through finals. "29" is a point id nowhere.
+   defaultPair returned to:"29" anyway, so on the shipped bundle the To <select> fell back to its
+   first option, the strip read "To R29", and the baseline read "R24 · post-model" for a week of
+   football; the Round Δ pill named "Round 29 vs Round 28". Every join from a report to a point now
+   goes by the BOARD the report produced. Asserted on the SHIPPED bundle so each would go red again
+   the day it was reintroduced; the in-season cases are asserted beside them so the season proper
+   is shown unmoved.
+   =============================================================================================== */
+(function () {
+  var reps = shipped.reports || {}, rounds = (shipped.rounds || []).slice();
+  var newestKey = String(rounds[rounds.length - 1]), newest = reps[newestKey];
+  var byBoard = {};
+  (shipped.points || []).forEach(function (p) { if (p.kind !== "retro" && p.board) byBoard[String(p.board)] = p; });
+  var toPt = byBoard[String(newest.board_md5_after)];
+  ok(!!newest.finals_week && !!toPt && String(toPt.id) !== newestKey,
+     "the shipped newest report is a finals week whose point is a COLUMN, not a point named by the report key (" +
+     newestKey + " -> " + (toPt && toPt.id) + ")");
+
+  var dp = core.defaultPair(shipped);
+  var ids = (shipped.points || []).map(function (p) { return String(p.id); });
+  ok(dp && ids.indexOf(dp.to) >= 0 && ids.indexOf(dp.from) >= 0,
+     "bug 1 — defaultPair's two ends are both POINT IDS on the shipped bundle (" + JSON.stringify(dp) + ")");
+  eq(dp, { from: String(newest.previous_round), to: String(toPt.id) },
+     "bug 1 — ...and they are the newest report's baseline and the point whose board that report produced");
+  var cmp = core.compare(shipped, dp.from, dp.to);
+  ok(cmp && !cmp.synthetic && String(cmp.submitted_round) === newestKey && cmp.players.length === newest.players.length,
+     "bug 1 — compare() resolves the column id to the STORED report (played/DNP facts kept), not a synthetic diff");
+  ok(core.compare(shipped, "23", "24").synthetic === true,
+     "an in-season pair that is not a report's own pair is still a synthetic diff");
+  var r24 = core.compare(shipped, String(reps["24"].previous_round), "24");
+  ok(r24 && !r24.synthetic && r24.submitted_round === 24, "an in-season report's own pair still resolves by its round id");
+
+  eq(core.pointFor(shipped, newestKey) && core.pointFor(shipped, newestKey).id, toPt.id,
+     "pointFor resolves a finals report key to the column its board produced");
+  eq(core.pointFor(shipped, "24") && core.pointFor(shipped, "24").id, "24", "pointFor resolves a round key to the round point");
+  eq(core.pointFor(shipped, "no-such-point"), null, "pointFor is null for an id that is neither a point nor a report");
+  ok(core.storedReport(shipped, toPt.id) === newest && core.storedReport(shipped, "24") === reps["24"] &&
+     core.storedReport(shipped, "retro-r24") === null,
+     "storedReport: by board for a column, by id for a round, never for a retro point");
+
+  eq(core.pointName(shipped, newestKey, false), core.finalsName(toPt.id),
+     "bug 1 — pointName('" + newestKey + "') is the week's name (" + core.finalsName(toPt.id) + "), not 'R" + newestKey + "'");
+  eq(core.pointName(shipped, String(newest.previous_round), false), core.finalsName(newest.previous_round),
+     "bug 1 — the baseline of a finals report is named by its week, not 'R24 · post-model'");
+  eq(core.pointName(shipped, "24", false), "R24", "pointName keeps the short in-season form");
+  eq(core.pointName(shipped, "24", true), "Round 24", "...and the long one");
+  eq(core.pointName(shipped, "retro-r24", false), "R24 · current model", "a retro round still reads 'current model'");
+  eq(core.pointName(shipped, "retro-r25", false), "Finals Week 1 · current model",
+     "a retro FINALS point takes its week name from the point (as history.js's retroLabel does)");
+  var mcIds = (shipped.model_changes || []).map(function (c) { return String(c.between[1]); });
+  ok(mcIds.length > 0 && mcIds.every(function (id) { return /post-model$/.test(core.pointName(shipped, id, false) || ""); }),
+     "a model-change column still reads 'R<n> · post-model' — the finals name is for football only");
+  ok(mcIds.every(function (id) { return core.finalsName(id) === null && !core.isFootball(shipped, core.pointFor(shipped, id)); }),
+     "no model-change column is a finals week, and none is football");
+
+  var pair = core.footballPair(shipped, newest);
+  eq(pair && [pair.to, pair.from], [String(toPt.id), String(newest.previous_round)],
+     "bug 3 — footballPair names the newest report's column vs its previous football point");
+  eq(pair && (pair.toLabel + " vs " + pair.fromLabel), core.finalsName(toPt.id) + " vs " + core.finalsName(newest.previous_round),
+     "bug 3 — ...by their week names (" + pair.toLabel + " vs " + pair.fromLabel + "), never 'Round 29 vs Round 28'");
+  var p24 = core.footballPair(shipped, reps["24"]);
+  eq(p24 && [p24.to, p24.from, p24.toLabel, p24.fromLabel], ["24", "23", "Round 24", "Round 23"],
+     "bug 3 — in season the pair walks back over the model changes to the previous ROUND: Round 24 vs Round 23");
+  var p15 = core.footballPair(shipped, reps["15"]);
+  eq(p15 && [p15.to, p15.from, p15.toLabel, p15.fromLabel], ["15", "14", "Round 15", "Round 14"],
+     "...and the first stored report pairs with the baseline round");
 })();
 
 console.log("  " + "-".repeat(60));

@@ -206,19 +206,22 @@ MD.card = (function () {
     }
     return (mc && _mcIds[JSON.stringify(mc.between)]) || "MC";
   }
-  /* A FINALS WEEK IS FOOTBALL, NOT A MODEL CHANGE — the browser's copy of
-     round_movers.FINALS_COLUMN_PREFIXES, keyed on the column id the act declares. It lands as a
-     store edit, so it arrives here as a non-round row and fell through to "Model change (MC-N)":
-     unfindable, and a claim about the model that is false about a week of scores. */
-  const FINALS_COLUMNS = { "fw1-": "Finals Week 1", "fw2-": "Finals Week 2",
-                           "fw3-": "Finals Week 3", "fw4-": "Finals Week 4", "gf-": "Grand Final" };
+  /* A FINALS WEEK IS FOOTBALL, NOT A MODEL CHANGE. It lands as a store edit, so it arrives here as
+     an out-of-round column; history.js joins it to the weekly report that produced its board and
+     hands it over as a ROUND (isRound, isFinals) with its week name as the label and its scores in
+     the score cell. The name table is movers.js core.FINALS_COLUMNS — ONE copy, read here, so this
+     file and the selector cannot drift (they were two literals until 2026-10-13). The fallback below
+     covers the window between a finals act landing and its report arriving (FW1 had three such
+     days), when the column has a name but no scores yet. */
   function finalsName(id) {
-    const s = String(id || "");
-    const hit = Object.keys(FINALS_COLUMNS).filter(function (k) { return s.indexOf(k) === 0; })[0];
-    return hit ? FINALS_COLUMNS[hit] : null;
+    const core = MD.movers && MD.movers.core;
+    return (core && core.finalsName) ? core.finalsName(id) : null;
   }
   function eventLabel(r) {
-    if (r.isRound) return fmt.esc(r.label || r.id);
+    if (r.isRound) {
+      const txt = fmt.esc(r.label || r.id);
+      return r.isFinals ? '<span class="finalsev">' + txt + "</span>" : txt;
+    }
     const fin = finalsName(r.id);
     if (fin) return '<span class="finalsev">' + fmt.esc(fin) + "</span>";
     return 'Model change <span class="mcid">(' + fmt.esc(mcId(r.modelChange)) + ")</span>";
@@ -286,7 +289,9 @@ MD.card = (function () {
     const rr = rd && rd[p.key];
     const dTxt = (rr && rr.d != null) ? fmt.signed(rr.d) : "—";
     const dCls = (rr && rr.d != null) ? fmt.cls(rr.d) : "na";
-    const dTitle = (rr && rr.d != null) ? ("Round " + rd._round + " vs Round " + rd._prev) : "no weekly report";
+    // the SAME pair the board pill names (board.roundDeltaTitle): "Grand Final vs Finals Week 4" in
+    // finals, "Round 24 vs Round 23" in season — never "Round 29 vs Round 28", rounds on no fixture.
+    const dTitle = (rr && rr.d != null) ? MD.board.roundDeltaTitle() : "no weekly report";
 
     // The trajectory the card charts is the REAL one: backward re-values and now. The forward
     // +1/+2 projections are ruled off and render nowhere (owner word 2026-08-28).

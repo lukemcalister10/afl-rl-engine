@@ -42,6 +42,27 @@
    3 · `post-r19-redesign-1` IS NOT A ROUND. It is the ITEM 411 D1/D2 restructure. It shows as value and
        rank movement labelled a model change, has no score cell, and can never carry a played indicator.
 
+   4 · A FINALS WEEK IS A ROUND OF FOOTBALL STORED AS A COLUMN (2026-10-13). FW1-FW4 and the Grand
+       Final land as store edits while the calendar holds at 24, so each arrives as an out-of-round
+       column — and until this date every out-of-round column was "not a round", so the card printed
+       "Not a round — no football was played at this point" against the Grand Final, and Alex Pearce's
+       5 in it rendered nowhere. The join is by BOARD: a stored column whose board is a weekly report's
+       `board_md5_after` IS that report's week, its scores are that report's scores, and it joins
+       coverage under the report's key ('25'..'29'), exactly as a retro point joins under its round.
+       Its name is the week's, from the ONE finals table (movers.js core.FINALS_COLUMNS).
+
+       DNP IN A FINALS WEEK IS PER CLUB, NOT PER ROUND. The whole-round bar below (every club at full
+       side) is impossible for a final — four clubs play FW1, two play the Grand Final — and the
+       report's own `dnp` cannot be read bare: round_movers.py:416 documents a tri-state in which an
+       absent player whose club did not play is `dnp: null` ("no football to miss"), but the SHIPPED
+       finals reports mark every absent player `dnp: true` — measured 712 of 804 in FW1 — which is the
+       false claim this module exists to prevent. So the tri-state is HONOURED where present
+       (`dnp === null` is never a DNP) and the club's side stands in for it where it is not: an absent
+       player is a DNP only when his own AFL club fielded a full side (>= MIN_SIDE scorers) that week.
+       Measured on this bundle that yields 4, 8, 4, 4 and 2 full sides for FW1-FW4 and the GF — the
+       fixture — with the odd traded-or-delisted straggler falling below the bar into "not recorded",
+       which is the safe side.
+
    COMPLETENESS IS DERIVED, NOT HARDCODED. The round list above is what today's bundle measures, not a
    constant in the code: coverage() recomputes it from the bundle and the board every load. A future
    round with a full feed lights up on its own; a future partial feed stays blank without a code change.
@@ -57,6 +78,30 @@ MD.history = (function () {
 
   function bundle() { return (typeof window !== "undefined" && window.__MATCHDAY_MOVERS__) || null; }
 
+  function byKeyIndex() { return ((MD.seam && MD.seam.indexed) ? MD.seam.indexed().byKey : {}) || {}; }
+  function finalsName(id) {
+    const core = MD.movers && MD.movers.core;
+    return (core && core.finalsName) ? core.finalsName(id) : null;
+  }
+
+  /* THE FOOTBALL COLUMNS: stored point id -> the report key whose `board_md5_after` is that point's
+     board. This is how a finals week stored as a column finds its own scores. Computed from the
+     bundle, never listed — the day a sixth finals column lands with a report, it joins on its own. */
+  function reportKeyByPointId(b) {
+    const byBoard = {};
+    Object.keys((b || {}).reports || {}).forEach(function (k) {
+      const rep = b.reports[k];
+      if (rep && rep.board_md5_after) byBoard[String(rep.board_md5_after)] = String(k);
+    });
+    const out = {};
+    ((b || {}).points || []).forEach(function (pt) {
+      if (pt.kind === "retro" || pt.kind === "round" || !pt.board) return;
+      const k = byBoard[String(pt.board)];
+      if (k) out[String(pt.id)] = k;
+    });
+    return out;
+  }
+
   let _cov = null;
 
   /* per-round: the score map (key -> score) and whether the round's feed is complete. */
@@ -66,7 +111,7 @@ MD.history = (function () {
     const out = { rounds: {}, clubsOnBoard: 0, minSide: MIN_SIDE };
     if (!b) { _cov = out; return out; }
 
-    const byKey = ((MD.seam && MD.seam.indexed) ? MD.seam.indexed().byKey : {}) || {};
+    const byKey = byKeyIndex();
     const boardClubs = {};
     Object.keys(byKey).forEach(function (k) {
       const c = byKey[k] && byKey[k].afl_club;
@@ -74,13 +119,21 @@ MD.history = (function () {
     });
     out.clubsOnBoard = Object.keys(boardClubs).length;
 
+    // a report whose board is a stored COLUMN's board is a finals week (see header, 4).
+    const finalsKeys = {};
+    const colKeys = reportKeyByPointId(b);
+    Object.keys(colKeys).forEach(function (id) { finalsKeys[colKeys[id]] = id; });
+
     (b.rounds || []).forEach(function (rd) {
       const rep = (b.reports || {})[String(rd)];
       if (!rep) return;
-      const scores = {}, perClub = {};
+      const scores = {}, perClub = {}, nullDnp = {};
       let n = 0;
       (rep.players || []).forEach(function (p) {
-        if (p.score == null) return;
+        if (p.score == null) {
+          if (p.dnp === null && p.played === null) nullDnp[p.key] = true;   // the tri-state's "no game to miss"
+          return;
+        }
         scores[p.key] = p.score; n++;
         const c = byKey[p.key] && byKey[p.key].afl_club;
         if (c) perClub[c] = (perClub[c] || 0) + 1;
@@ -91,8 +144,14 @@ MD.history = (function () {
       const complete = out.clubsOnBoard > 0 &&
                        clubs.length === out.clubsOnBoard &&
                        smallest !== null && smallest >= MIN_SIDE;
+      const finals = !!finalsKeys[String(rd)];
+      // a finals week: the clubs that fielded a full side, which is the DNP bar per club.
+      const fullClubs = {};
+      if (finals) clubs.forEach(function (c) { if (perClub[c] >= MIN_SIDE) fullClubs[c] = perClub[c]; });
       out.rounds[String(rd)] = {
         scores: scores, scored: n, clubs: clubs.length, smallestSide: smallest, complete: complete,
+        finals: finals, pointId: finals ? finalsKeys[String(rd)] : null,
+        fullClubs: fullClubs, nullDnp: nullDnp,
       };
     });
     _cov = out;
@@ -128,21 +187,29 @@ MD.history = (function () {
       if (!name || /^R\d+$/.test(name)) return "Round " + pt.after_round;
       return name;
     }
+    const colKeys = reportKeyByPointId(b);
     return MD.universe.points(b).map(function (pt) {
       /* A RETRO POINT IS A ROUND. It is that round's football re-priced under the current model, so
          it has a score map, a DNP truth and a coverage record — all keyed on the ROUND, not on the
          retro point's own id. Treating it as "not a round" would print "no football was played at
          this point" against a round of football, which is the opposite of true. `roundKey` is what
          the score and coverage lookups join on; it is the point's own id for a stored round and the
-         round number for a retro one. */
+         round number for a retro one.
+         A FINALS COLUMN IS A ROUND TOO (header, 4): a stored column whose board a weekly report
+         produced joins under that report's key, carries that report's scores, and is named by the
+         week rather than by the act's prose label. A column with no report — a model change, or a
+         finals act in the days before its report lands — stays what it was: not a round. */
       const isRetro = pt.kind === "retro";
-      const isRound = pt.kind === "round" || isRetro;
+      const finalsKey = colKeys[String(pt.id)] || null;
+      const isFinals = !!finalsKey;
+      const isRound = pt.kind === "round" || isRetro || isFinals;
       return {
         id: String(pt.id),
-        roundKey: isRetro ? String(pt.after_round) : String(pt.id),
-        label: isRetro ? retroLabel(pt) : pt.label,
+        roundKey: isRetro ? String(pt.after_round) : (finalsKey || String(pt.id)),
+        label: isRetro ? retroLabel(pt) : (isFinals ? (finalsName(pt.id) || pt.label) : pt.label),
         isRound: isRound,
         isRetro: isRetro,
+        isFinals: isFinals,
         modelChange: changes[String(pt.id)] || null,
       };
     });
@@ -165,6 +232,25 @@ MD.history = (function () {
     }
     const s = cov.scores[key];
     if (s != null) return { state: "score", score: s, why: null };
+    if (cov.finals) {
+      /* A FINALS WEEK, PER CLUB (header, 4). The tri-state's null is honoured first; then his own
+         club's side decides: a full side he is absent from is a DNP, anything else is no game. */
+      const rec = byKeyIndex()[key];
+      const club = rec && rec.afl_club;
+      if (cov.nullDnp[key]) {
+        return { state: "unrecorded", score: null,
+                 why: "No game. His club did not play in " + (pt.label || "this week") + ", so there was no game to miss." };
+      }
+      if (club && cov.fullClubs[club]) {
+        return { state: "dnp", score: null,
+                 why: "Did not play. " + club + " fielded a full side in " + (pt.label || "this week") +
+                      " (" + cov.fullClubs[club] + " scorers) and he was not in it." };
+      }
+      return { state: "unrecorded", score: null,
+               why: "No game. " + (club || "His club") + " did not play in " + (pt.label || "this week") +
+                    " (" + Object.keys(cov.fullClubs).length + " clubs fielded a full side), so there was " +
+                    "no game to miss — this is not a DNP." };
+    }
     if (cov.complete) {
       return { state: "dnp", score: null,
                why: "Did not play. " + (pt.label || "This round") + " is completely fed — all " + cov.clubs +
@@ -191,7 +277,7 @@ MD.history = (function () {
       const at = (rec.byPoint || {})[pt.id] || {};
       const row = {
         id: pt.id, roundKey: pt.roundKey, label: pt.label, isRound: pt.isRound,
-        isRetro: !!pt.isRetro, modelChange: pt.modelChange,
+        isRetro: !!pt.isRetro, isFinals: !!pt.isFinals, modelChange: pt.modelChange,
         v: at.v == null ? null : at.v,
         rank: at.rank == null ? null : at.rank,
         posRank: at.pos_rank == null ? null : at.pos_rank,

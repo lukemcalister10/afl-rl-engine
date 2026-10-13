@@ -145,8 +145,17 @@ section("(3) from/to — scope lifted; defaults to the LATEST round's single-mod
     check(dp && core.spansModelChange(live, dp.from, dp.to).length === 0,
       "defaultPair spans NO model change — one model at both ends", JSON.stringify(dp));
     var rep = core.compare(live, dp.from, dp.to);
-    check(rep && String(rep.submitted_round) === String(dp.to) && rep.player_count > 0,
-      "…and it resolves to a comparison over the whole priced population");
+    // RESTATED 2026-10-13 (Phase 0.2, bug 1): `to` is now the POINT the newest report produced — for a
+    // finals week that is the stored column (gf-grand-final-30-9), while the report still names its
+    // feed round (29). So the comparison is checked to be THAT report: the stored one whose terminal
+    // board is the `to` point's board. In season the point id and the report key are the same string
+    // and the old equality holds as a special case.
+    var toPt = core.pointFor(live, dp.to);
+    check(rep && rep.player_count > 0 && toPt && !rep.synthetic &&
+          String(rep.board_md5_after) === String(toPt.board || rep.board_md5_after) &&
+          (String(rep.submitted_round) === String(dp.to) || core.storedReport(live, dp.to) === live.reports[String(rep.submitted_round)]),
+      "…and it resolves to the STORED report whose board is the `to` point, over the whole priced population",
+      JSON.stringify({ to: dp.to, submitted: rep && rep.submitted_round }));
     // NOT a loss of the facts: a one-round retro pair IS that round, so played/DNP/score are read
     // from the round's own stored report. Football does not depend on which engine priced it.
     var stored24 = (live.reports || {})[String(lastRound)] || {};
