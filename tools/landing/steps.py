@@ -712,8 +712,13 @@ def _finals_exposure_hold(ctx, SS, cur, new, moved, store_md5):
         return None
     _rm = _load(ctx, 'round_movers', 'engine/rl_after/ingestion/round_movers.py')
     _fr = _load(ctx, 'finals_report', 'engine/rl_after/ingestion/finals_report.py')
+    # ANY out-of-round act while the season clock is held (as_of_round at the home-and-away ceiling)
+    # may hold the exposure fields — not only a finals-prefixed column (Phase 0, 2026-10-13: the
+    # Harrison Jones twin-game edit and the AFL-club courier both halted here with the honest column
+    # ids, for a store whose round-24 view re-derives the held value exactly). The proof is the
+    # re-derivation below, never the column's name.
     col = (ctx.spec.get('column') or {}).get('id')
-    if not col or _fr.feed_round_of(col, _rm) is None:
+    if int(cur.get('as_of_round', -1)) < int(cur.get('season_total_rounds', 24)):
         return None
     year = int(cur['season_year'])
     src = open(_p(ctx, 'ui/data/movers.js'), encoding='utf-8').read()

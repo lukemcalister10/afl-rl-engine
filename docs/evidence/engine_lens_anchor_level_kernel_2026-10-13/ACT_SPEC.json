@@ -1,0 +1,50 @@
+{
+ "schema_version": 1,
+ "act_kind": "lever-landing",
+ "act": "THE +2 LENS ANCHOR (D1) AND LEVEL-AXIS SMOOTHING (kA): two engine edits in _merged_recover.py, one build",
+ "date": "2026-10-13",
+ "owner_word": "Owner, 2026-10-13, verbatim: \"Yeah approved on the ka/level axis\" (kA) and \"Yep approved\" (D1 + kA, after seeing the kA before/after board and the D1 lens totals). Blind independent review (law 11) PASS WITH NOTES; its two conditions met: kA scoped to the live season, lens order-independence test 804/804.",
+ "authority": "owner word 2026-10-13; RULEBOOK P1 as amended 2026-10-13 (built on a copy, movers shown, then landed)",
+ "prereg": {
+  "path": "docs/evidence/engine_lens_anchor_level_kernel_2026-10-13/NOTE.md",
+  "board_before": "6541dc1438bf7a8c3f1f7c9bcfcfaf10",
+  "board_after": "769eb79e6a70cd0417519d33de1bc8ff",
+  "reference_board": null,
+  "kill_switch": null
+ },
+ "identities": {
+  "moves": [
+   "engine_head",
+   "rl_model",
+   "board"
+  ],
+  "unmoved": [
+   "store",
+   "fv",
+   "config",
+   "register",
+   "as_of_round"
+  ]
+ },
+ "column": {
+  "id": "lens-anchor-level-kernel-13-10",
+  "label": "13/10 +2 lens anchored to the live season; level-axis smoothing (avg \u00b11.0) on every live-season row; _has26 reads derived from the rows",
+  "after_round": 24
+ },
+ "lineage": {
+  "doc": "docs/evidence/engine_lens_anchor_level_kernel_2026-10-13/NOTE.md",
+  "owner_ruling_id": [
+   "LENS_ANCHOR_2026-10-13",
+   "LEVEL_KERNEL_2026-10-13"
+  ],
+  "owner_ruling": "The +1/+2 views treat seasons not yet played as unplayed, not absent; a single score moves a value along a ramp, not a cliff.",
+  "authority": "owner word 2026-10-13",
+  "invariants": {}
+ },
+ "day0_rebase": {
+  "state": "off"
+ },
+ "evidence_dir": "docs/evidence/engine_lens_anchor_level_kernel_2026-10-13",
+ "gates": null,
+ "commit_message": "ENGINE: the +2 lens anchored to the live season (D1); level-axis smoothing on every live-season row (kA) \u2014 owner word 2026-10-13"
+}

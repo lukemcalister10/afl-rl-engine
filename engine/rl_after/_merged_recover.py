@@ -3078,6 +3078,22 @@ def _prod_path(p,Y):
     the same rate never worth less). Centered, unit-mass, level-preserving; nobody outside the family
     is touched."""
     e=raw_ev(p,Y)*iso_eff(p,Y)   # LEG A site 4/6 — THE BOARD PATH (feeds ev())
+    # LEVEL-AXIS SMOOTHING (owner-approved 2026-10-13): the band prior is a stepwise surface in the
+    # player's LEVEL, so one score could move a value by a cliff (measured: Serong +217 for +0.5 pts).
+    # Price the live season at avg +/- 1.0 in 0.5 steps and take the uniform mean: a split point
+    # becomes a ramp spread over two points. Every row with a live-season row; the first-evidence
+    # family keeps its games-axis average below as before. Scope: Y == BASE_REF (the present board and the
+    # retro re-pricings that set the clock to their own year); vM1/vM2 and backtests are not smoothed.
+    _lr=[x for x in p['scoring'] if x['year']==Y and x['games']>0]
+    if _lr and int(Y)==int(MA.BASE_REF) and not _first_evidence(p,Y):   # LIVE SEASON ONLY (blind review 2026-10-13: the -1/-2 columns and harness as-of years are untouched)
+        _r=_lr[0]; _a0=_r['avg']; _out=[]
+        try:
+            for _d in (-1.0,-0.5,0.0,0.5,1.0):
+                if _d==0.0: _out.append(e); continue
+                _r['avg']=_a0+_d
+                _out.append(raw_ev(p,Y)*iso_eff(p,Y))
+        finally: _r['avg']=_a0
+        return float(np.mean(_out))
     if not _first_evidence(p,Y): return e
     row=[x for x in p['scoring'] if x['year']==Y and x['games']>0]
     if not row: return e
@@ -4471,6 +4487,7 @@ if _O30B_PREVIEW:
         predicate: games >= 10·f AND avg >= the age-referenced gate bar) RESETS accumulated c_u to
         zero as of that season; fade re-accrues only on subsequent sitting. A gameless career has no
         delivered season, so day-0 prices are again untouched by construction."""
+        _Yl=int(Y) if getattr(MA,'_LENS_FORM',None) is None else min(int(Y),int(MA._LENS_FORM))   # LENS ANCHOR (2026-10-13): a +k view has no 2027/2028 rows by definition; they are unplayed-yet, not absent
         if _O32S>=3:
             _yd=None; _xd=None
             for _x in (p.get('scoring') or []):
@@ -4479,7 +4496,7 @@ if _O30B_PREVIEW:
             if _yd is not None:
                 # ORDER 41 (RL_O41_RAMP): the in-progress season enters this DEPTH clock on the
                 # engine's own D12 concave proration f**1.5 instead of linearly. Dial off => _fEy.
-                _clk=max(0.0,float(Y-_yd-1)+(_o41_fe(Y,p) if Y>_yd else 0.0))
+                _clk=max(0.0,float(_Yl-_yd-1)+(_o41_fe(_Yl,p) if _Yl>_yd else 0.0))
                 # ORDER 41 (RL_O41_INJ) — THE INJURY STREAM, LIVE BOARD ONLY, DELIVERED ROWS ONLY.
                 # A logged-injured absence PAUSES the sitting clock: the live season's absence accrues
                 # NOTHING. The annotation is a 2026 log and carries no statement about earlier seasons,
@@ -4489,11 +4506,11 @@ if _O30B_PREVIEW:
                 # This arm is reachable ONLY for a row with a delivered season, which is exactly the
                 # owner's ruling that rookies and never-delivered rows stay CAUSE-BLIND.
                 if _O41_INJ and Y>_yd and o41_injured(p):
-                    _clk=max(0.0,_clk-(_fEy(Y,p) or 0.0))
+                    _clk=max(0.0,_clk-(_fEy(_Yl,p) or 0.0))
                 _cred=0.0
                 for _x in (p.get('scoring') or []):
                     if _yd<_x['year']<=Y and _x.get('games'):
-                        _f=(_fEy(Y,p) if _x['year']==Y else 1.0)
+                        _f=(_fEy(_Yl,p) if _x['year']==Y else 1.0)
                         # ORDER 41 (RL_O41_CREDIT): the same one credit object as o31_played_units.
                         _cred+=_f*o41_credit(_x['games'])
                 _post=max(0.0,_clk-_cred)
@@ -5307,7 +5324,8 @@ if _O30B_PREVIEW:
             _gg=float(_x.get('games') or 0.0)
             if _gg>0.0:
                 _pl.add(int(_x['year'])); _pg[int(_x['year'])]=_gg
-        _y=int(Y)
+        _Yl=int(Y) if getattr(MA,'_LENS_FORM',None) is None else min(int(Y),int(MA._LENS_FORM))   # LENS ANCHOR (2026-10-13): a +k view has no 2027/2028 rows by definition; they are unplayed-yet, not absent
+        _y=_Yl
         # A row cannot be absent before he was drafted: the walk stops at his draft year.
         _floor=(int(p['year']) if p.get('year') else None)
         # ---- RL_O41_BREAK=fractional — THE GRADED RUN-BREAK ------------------------------------
@@ -5335,7 +5353,7 @@ if _O30B_PREVIEW:
             _n=0.0
             _gl=float(_pg.get(_y,0.0))
             if not (_O41_INJ and o41_injured(p)):
-                _n+=max(0.0,1.0-o41_unwind(_gl))*float(_o41_fe(Y,p) or 0.0)
+                _n+=max(0.0,1.0-o41_unwind(_gl))*float(_o41_fe(_Yl,p) or 0.0)
             if o41_unwind(_gl)>=1.0: return 1.0        # U0+ games this season breaks the run outright
             _yy=_y-1
             while _floor is None or _yy>_floor:
@@ -5349,7 +5367,7 @@ if _O30B_PREVIEW:
             _n=0.0
             _gl=float(_pg.get(_y,0.0))
             if not (_O41_INJ and o41_injured(p)):
-                _n+=max(0.0,1.0-o41_credit(_gl))*float(_o41_fe(Y,p) or 0.0)
+                _n+=max(0.0,1.0-o41_credit(_gl))*float(_o41_fe(_Yl,p) or 0.0)
             if o41_credit(_gl)>=1.0: return 1.0        # a full live season still breaks it outright
             _yy=_y-1
             while _floor is None or _yy>_floor:
@@ -5370,7 +5388,7 @@ if _O30B_PREVIEW:
         if not (_O41_INJ and o41_injured(p)):
             # ORDER 41 (RL_O41_RAMP): the same D12 concave proration, same reason — this is the
             # DEPTH of the current absence run, not a participation weight.
-            _n+=float(_o41_fe(Y,p) or 0.0)
+            _n+=float(_o41_fe(_Yl,p) or 0.0)
         _yy=_y-1
         while _floor is None or _yy>_floor:
             if _yy in _pl: break                       # a played season BREAKS the run
@@ -5408,7 +5426,8 @@ if _O30B_PREVIEW:
         for _x in (p.get('scoring') or []):
             _gg=float(_x.get('games') or 0.0)
             if _gg>0.0: _pg[int(_x['year'])]=_gg
-        _y=int(Y); _floor=(int(p['year']) if p.get('year') else None)
+        _Yl=int(Y) if getattr(MA,'_LENS_FORM',None) is None else min(int(Y),int(MA._LENS_FORM))   # LENS ANCHOR (2026-10-13): a +k view has no 2027/2028 rows by definition; they are unplayed-yet, not absent
+        _y=_Yl; _floor=(int(p['year']) if p.get('year') else None)
         # a live season that BREAKS the run leaves no run at all, hence no completed season inside it.
         # THE BREAK RULE IS READ FROM THE ACTIVE MODE so this object and the depth walk cannot drift.
         def _brk(_gv):
