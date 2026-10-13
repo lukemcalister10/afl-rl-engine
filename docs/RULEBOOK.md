@@ -41,10 +41,11 @@
     model autonomy: (a) changes to THIS rulebook, (b) tags and releases, (c) arming the
     score-write (for weekly scores, the owner sending the file IS the word — P14). Everything
     else may run autonomous.
-11. **THE SEAM PATTERN.** *Amended v3.* Every release ships a numbered claims note. That half
-    is UNIVERSAL and admits no exception, and it is machine-generated and machine-checked
-    (`tools/claims.py`) rather than written in prose — a claim nobody can recompute is not a
-    claim. One BLIND INDEPENDENT REVIEW is required before the owner's word ONLY for a release
+11. **THE SEAM PATTERN.** *Amended v3; amended 2026-10-13.* Every release ships the landing's
+    own machine-written record (the lander's REPORT.json and FLIGHT.log: every identity it
+    measured, every gate's verdict) — a claim nobody can recompute is not a claim. The separate
+    claims note (`tools/claims.py`) is retired: it re-asserted what the record already held and
+    re-ran every gate to certify the lander's consistency with itself. One BLIND INDEPENDENT REVIEW is required before the owner's word ONLY for a release
     that MOVES PLAYER VALUES; a release that moves no value-bearing artifact — tooling,
     documentation, process — ships on its claims note and its gates, with the byte-unmoved
     identity list as the standing falsifier that it was indeed such a release. The register
@@ -94,18 +95,22 @@ new dated reads enter this file only on his word.
   | 8 LENS-PROJECTION | year-0 = present_position; years-1+ = future_position; cohort = drafted_position; never inferred | — |
   | 9 CONSERVATION | re-pricing redistributes value | `band_scar` = 200 |
   | 10 OWNER-ONLY WORDS | rulebook changes, tags/releases, score-write arming require the explicit owner word | — |
-  | 11 SEAM PATTERN | every release: numbered claims note (universal, `tools/claims.py`) + owner word; blind independent review on value-moving releases; register is the single durable list | — |
+  | 11 SEAM PATTERN | every release: the landing's own record (REPORT.json/FLIGHT.log) + owner word; blind independent review on value-moving releases; register is the single durable list | — |
   | 12 G-Y0 | pooled abs pct gap at the year-0 lens | `max_pct` = 2.0 |
   | *(retired)* G-COHORT | walk-forward book ratio — RETIRED, see the bullet above | *(was `max` 1.3)* |
 
-- Standing-fails and named-row waivers from v1.21 (A2, A3, A12, A-PAIRS-3, the earned-
-  2-row waiver) carry forward AS RECORDED until Luke re-rules or the underlying rows
-  change.
+- **`ship_gates_check.py` and `SHIP_GATES.md` are RETIRED instruments (2026-10-13).** Neither
+  was executed by any workflow or landing step after 2026-09-10; their labels (A1–A15, B1–B6,
+  C/D) and the v1.21 standing-fails and waivers (A2, A3, A12, A-PAIRS-3, the earned-2-row
+  waiver) are history, recorded here once. The measurement standards above stand; the
+  instruments that measure them are the landing gates and CI.
 
 ## PART 4 — PROCESS LAWS (how work is done; each names the incident that created it)
 P1. **THE BOARD MOVES ONLY IN AN ACT THAT SAYS IT WILL.** A process, tooling or
     documentation change leaves every value-bearing artifact byte-identical, and the
-    before/after identity check is the standing falsifier, not a courtesy.
+    before/after identity check is the standing falsifier, not a courtesy. A value-moving change
+    is built on a COPY first and its movers shown to the owner before it lands — the whole of what
+    the prereg ceremony (P9, retired 2026-10-13) was for, kept without the ceremony.
     *Incident: the H3 back-rows repair was measured, found to move the board of record,
     and correctly REVERTED because no owner word then covered it — 2026-08-20, and the
     word was later given as its own act.*
@@ -120,10 +125,12 @@ P3. **ONE WRITER.** Every engine act holds the build lock. Two overlapping acts 
     the shared workspace produce results that look clean and are void.
     *Incident: 2026-07-31 — it happened, and `tools/preboot_assert.sh` exists because it
     did. A detector was not enough: two seats that check simultaneously both see a clear
-    board, so the interlock is a lock, not a check.*
+    board, so the interlock is a lock, not a check.* *Retires when the engine runs from the
+    checkout instead of a shared copy (plan 2026-10-13, phase 5); until then it stands.*
 P4. **ASSERT THE RELATIONSHIP, NEVER THIS MONTH'S NUMBER.** A gate computes the truth
     from the artifact and asserts the carriers agree with it. A hand-typed identity in a
-    check is a red waiting for the next legitimate move.
+    check is a red waiting for the next legitimate move. When a ruling retires an assertion, it
+    is removed from the instrument that carries it IN THE SAME ACT (P11, folded in 2026-10-13).
     *Incidents, four instruments retired for exactly this: the panel 10/10, the movers
     "exactly two known-reds", the R14 fixture config pin, and BOARD_MD5_GOOD.*
 P5. **A GATE'S NAME IS NOT COVERAGE.** A ceremony or law may claim a covering gate only
@@ -135,49 +142,20 @@ P6. **GENERATED-ONLY.** A derived surface that cannot be generated does not exis
     derived view is hand-maintained, whatever banner it carries.
     *Incident: `docs/CURRENT_STATE.md` carries an authority banner and sat 156 register
     versions stale.*
-P7. **RULED-RED IS NOT A SNOOZE BUTTON.** A known red is carried only while it is
-    presented in writing, still measurable, and still failing the recorded way. An entry
-    stops matching, it reds the run.
-    *Incident: the R2 ledger entry demanded its own retirement within an hour of being
-    written, because the fork it recorded was repaired upstream while it was being built.*
+P7. **RULED-RED IS NOT A SNOOZE BUTTON — RETIRED 2026-10-13.** Governed the ruled-red ledger (`acceptance/ruled_red.json`), retired with it: a ledger whose probes expire on a date is a snooze button with a timer, and it reds CI on schedule rather than on a defect.
 P8. **EXPLICIT PATHS ONLY.** Every commit stages named paths. No `git add -A`, no sweep,
     no bare `git commit`.
     *Incident: register v786; the discipline every act since has recorded in its own
     final state.*
-P9. **THE PREREG COMES FIRST.** An act that touches an engine file commits its
-    predictions and falsifiers BEFORE the edit, and corrects the prereg against the tree
-    rather than the tree against the prereg. A weekly score ingest is not an engine act (P14).
-    *Incident: the F5 act's A6 clause predicted `engine_head` would move; it does not
-    (it tracks `_merged_recover.py`, and the act edited the exporter). The prereg was
-    corrected against the tree and the error named rather than quietly satisfied.*
+P9. **THE PREREG COMES FIRST — RETIRED 2026-10-13.** Folded into P1: the property (predict, measure on a copy, show the movers, then land) stands; the ceremony (a committed prediction document per act) was the largest single source of failed flights and is gone.
 P10. **NO SECOND LAWS FILE, EVER.** These laws live here. Any derived view is generated,
     carries a do-not-hand-edit banner, and is CI-linted equal to this document.
     *Incident: `docs/acceptance_v2_0.json` — declared regenerated from this file, read
     and regenerated by no code, and two laws out of step with it for months. Disposed of
     under this amendment: the file is removed, its thresholds folded into PART 3, and
     `tools/rulebook_lint.py` R5/R6 now red on a derived laws view REAPPEARING.*
-P11. **THE RETIREMENT IS RECORDED WHERE THE GATE LIVES.** When a ruling retires or
-    supersedes a gate, the retirement is written into the instrument that carries that
-    gate IN THE SAME ACT AS THE RULING. An instrument that cannot run still gets its
-    strike recorded — being unrunnable is the reason to record it, not an excuse to
-    defer — so a revived instrument can never resurrect retired law. Falsifier: a
-    repaired or revived instrument's first run produces no verdict the owner has already
-    ruled on; if it does, this law was breached at the time of the ruling, not at the
-    revival.
-    *Incident: A9 and B1, 2026-08-20. Both were retired by the owner — A9 as a player-
-    ordering assertion, B1's July-8 cohort rail "weeks ago" — while `ship_gates_check.py`
-    was bricked and executing no gate. Neither retirement was written into the suite,
-    because the suite could not run. When it was unbricked, its first full run presented
-    both as fresh reds at the current head and they were filed as "TWO REDS THAT ARE NEW
-    AT THE CURRENT HEAD". They were not new. They were unrecorded, and two rulings had to
-    be re-obtained from the owner to un-say what he had already said.*
-
-P12. **THE PRICED-ARM READING.** Every value-moving adoption carries its own arm's no-arb
-    band reading and class check PRE-FLIP, measured inside the prereg — a reading taken on
-    a sibling variant does not cover the chosen arm.
-    *Incident: the staircase adoption, 2026-08-21. Variant B's no-arb reading stopped the
-    landing; the owner's chosen arm was A raw, and its own reading had to be (and was)
-    measured inside prereg fb3d3c0 before the flip. This line makes that standing.*
+P11. **THE RETIREMENT IS RECORDED WHERE THE GATE LIVES — RETIRED 2026-10-13.** Folded into P4 as its corollary. The incident it records (A9/B1 re-presented as fresh reds) stands in git history.
+P12. **THE PRICED-ARM READING — RETIRED 2026-10-13.** Governed the no-arb reading ceremony for the staircase adoption (`tools/noarb_page.py`), run by nothing since August. A value-moving adoption is covered by P1 as amended.
 P13. **A PINNED OWNER-INPUT HAS ONE NAMED WRITER.** The pins of an owner-supplied data
     input (today: the sitter sheet's md5/rows/injured-Y in `data/sheet_pins.json`) are
     written by exactly ONE writer of record — the round lander once P2b lands; in any
@@ -214,3 +192,7 @@ reading patch queued at the staircase adoption).
 P14–P15 amendment (with the law 10(c) and P9 riders) signed 2026-09-24, owner word verbatim:
 "Agree, on the rulebook changes. sign it." — given against the drafted text (the one-command
 weekly ingest; outcome before process).
+Amendment 2026-10-13 (P7, P9, P11, P12 retired; P1, P3, P4, law 11 and PART 3 amended; the
+P14/P15 review's finding that none of the laws, gates or ledgers surfaced six weeks of red CI),
+owner word verbatim: "the laws should help, not hurt or cause damage. So i trust your
+recommendation." — given against the supervisor's revised D5 list.
