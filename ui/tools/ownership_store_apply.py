@@ -53,8 +53,25 @@ the way IN would rewrite 2 extra rows that the owner never edited, making them s
 inflating the change set from 18 to 20.  Canonicalise for the MIRROR (extract_board_view.norm_club /
 ingest_inputs.normt), NEVER for the store.
 
+THE SECOND FIELD — `afl_club` (2026-10-13, Phase 0.3).  The same sheet carries an `AFL Club` column
+(FootyWire-style abbreviations: WCE, SYD, NM, PA, BRI, ...).  The store's `afl_club` is an IDENTITY
+field: nothing in pricing reads it (rl_model.py / _merged_recover.py never name it), rl_export.py
+ships it to the UI as `club`, and round_movers keys the finals DNP/unrecorded split on it — so a stale
+value is never a wrong price, only a wrong label and a wrong "did not play" verdict.  It had no
+maintained writer: 15 active players had moved club by the finals and the store still had them at
+their old one (FW2's fixture note names three).  This lane is that writer.  The abbreviation is mapped
+to the store's own full spelling (AFL_CLUB_BY_ABBR, asserted against the 18 values the store carries),
+BLANK MEANS UNCHANGED (71 rows are blank; the owner has not spoken for them), and the row must
+already carry the field (the courier never adds a key — the diff proof asserts the field set).
+Everything else — the join by key, the exact-byte plan, the T2 diff proof, the ten targets — is
+shared with `affl_team`: one transaction, two fields, each row's moves attributed to its field.
+The shipped board's `club` catches up at the next engine build (rl_export reads the store then);
+the board does not move here.
+
 CLI:
   python3 ui/tools/ownership_store_apply.py preflight   # read-only: gates + the plan, no writes
+  python3 ui/tools/ownership_store_apply.py check       # read-only: the plan; exit 1 if anything is
+                                                        #   pending (affl_team or afl_club), 0 if current
   python3 ui/tools/ownership_store_apply.py apply       # the transaction (no-op if already current)
   python3 ui/tools/ownership_store_apply.py verify      # assert the live tree is coherent (no writes)
 """
@@ -125,6 +142,24 @@ TARGETS = (
 # Directories the throwaway overlay needs to be a working repo root for the two generators.
 OVERLAY_DIRS = ("data", "docs", "ui", os.path.join("engine", "rl_after"))
 
+#: THE SHEET'S `AFL Club` ABBREVIATIONS -> THE STORE'S OWN SPELLING. The targets are the 18 values
+#: the store carries today (asserted again at preflight against the live store, never trusted from
+#: here alone). Both GC and GCS are accepted for Gold Coast: the owner's sheet uses GCS, the brief
+#: said GC. An abbreviation outside this table HALTS — a club nobody has spelled would split the UI
+#: and the finals fixture silently.
+AFL_CLUB_BY_ABBR = {
+    "ADE": "Adelaide", "BRI": "Brisbane", "CAR": "Carlton", "COL": "Collingwood",
+    "ESS": "Essendon", "FRE": "Fremantle", "GEE": "Geelong", "GC": "Gold Coast", "GCS": "Gold Coast",
+    "GWS": "GWS", "HAW": "Hawthorn", "MEL": "Melbourne", "NM": "North Melbourne",
+    "PA": "Port Adelaide", "RIC": "Richmond", "STK": "St Kilda", "SYD": "Sydney",
+    "WB": "Western Bulldogs", "WCE": "West Coast",
+}
+AFL_CLUB_COLUMN = "AFL Club"
+AFFL_TEAM_COLUMN = "AFFL Team"
+PLAYER_COLUMN = "Player Name"
+#: the fields this lane is allowed to move, and no third
+COURIERED_FIELDS = ("affl_team", "afl_club")
+
 OWNER_RULING_ID = "OWNERSHIP_SINGLE_SOURCE_2026-07-30"
 OWNER_RULING = ('2026-07-30, owner ruling on #283: the store becomes the single source of ownership '
                 'truth; the ingest writes the CSV\'s ownership into the store\'s affl_team '
@@ -171,12 +206,44 @@ def _bundle_obj(path):
     return json.loads(t[t.index("{"):t.rindex("}") + 1])
 
 
+def afl_club_from_sheet(value, known_clubs):
+    """The sheet's `AFL Club` cell -> the store's spelling, or None for BLANK (= unchanged).
+
+    Pure, so the rule can be unit-tested without a tree. `known_clubs` is the set of spellings the
+    live store carries; a mapped target outside it HALTS (the table above is a claim, the store is the
+    fact). A cell that already carries a full known spelling is accepted verbatim, so a sheet that
+    writes 'Gold Coast' is not refused for failing to abbreviate. Anything else HALTS by name."""
+    v = " ".join(str(value or "").strip().split())
+    if not v:
+        return None
+    full = AFL_CLUB_BY_ABBR.get(v.upper())
+    if full is None and v in known_clubs:
+        full = v
+    if full is None:
+        raise Halt("unknown AFL Club value %r in %s — not an abbreviation this lane knows (%s) and "
+                   "not a spelling the store carries. Nothing is guessed."
+                   % (v, AFL_CLUB_COLUMN, ", ".join(sorted(AFL_CLUB_BY_ABBR))))
+    if full not in known_clubs:
+        raise Halt("AFL Club %r maps to %r, which the store does not spell anywhere (store carries: "
+                   "%s). The mapping table is a claim; the store is the fact." % (v, full, sorted(known_clubs)))
+    return full
+
+
+def _column_index(header, name):
+    """The 0-based index of a named column in the sheet's header row; HALT if absent or repeated."""
+    hits = [i for i, h in enumerate(header) if " ".join(str(h).strip().split()).casefold() == name.casefold()]
+    if len(hits) != 1:
+        raise Halt("CSV header must carry exactly one %r column; found %d in %r" % (name, len(hits), header))
+    return hits[0]
+
+
 # ------------------------------------------------------------------ preflight (P1-P8, reads only)
 class Plan(object):
     def __init__(self, rows, store_raw, store_new, md5_before, md5_after, board_md5, csv_encoding,
-                 root=None):
+                 root=None, club_rows=None):
         self.root = root                  # the LIVE repo root, so validation can compare against it
-        self.rows = rows                  # [(key, name, from_club, to_club)]
+        self.rows = rows                  # affl_team: [(key, name, from_club, to_club)]
+        self.club_rows = list(club_rows or [])   # afl_club: [(key, name, from_club, to_club)]
         self.store_raw = store_raw
         self.store_new = store_new
         self.md5_before = md5_before
@@ -187,6 +254,28 @@ class Plan(object):
     @property
     def moves(self):
         return self.md5_before != self.md5_after
+
+    @property
+    def planned(self):
+        """{key: {field: new_value}} — every substitution this plan makes, attributed to its field.
+        The T2 diff proof and the byte-attribution are driven from this, so a move can never be
+        counted under one field and written under another."""
+        out = {}
+        for key, _name, _cur, new in self.rows:
+            out.setdefault(key, {})["affl_team"] = new
+        for key, _name, _cur, new in self.club_rows:
+            out.setdefault(key, {})["afl_club"] = new
+        return out
+
+    @property
+    def fields_written(self):
+        """'affl_team (18 rows), afl_club (15 rows)' — the transition entry's invariant, computed."""
+        parts = []
+        if self.rows:
+            parts.append("affl_team (%d rows)" % len(self.rows))
+        if self.club_rows:
+            parts.append("afl_club (%d rows)" % len(self.club_rows))
+        return ", ".join(parts) or "none"
 
 
 def preflight(root, verbose=True):
@@ -275,6 +364,10 @@ def preflight(root, verbose=True):
         % (enc, len(rows), len(body)))
 
     # -- P5 the join: CSV name -> board player -> key -> store row BY KEY -----------------------
+    # The two couriered columns are located BY HEADER NAME (the owner's sheet is a spreadsheet
+    # export; a re-ordered column must not become a silent club swap). Player name stays column 0.
+    i_team = _column_index(rows[0], AFFL_TEAM_COLUMN)
+    i_club = _column_index(rows[0], AFL_CLUB_COLUMN)
     unmatched, no_store_row = [], []
     resolved = []
     for r in body:
@@ -287,7 +380,8 @@ def preflight(root, verbose=True):
         if key not in by_key:
             no_store_row.append((r[0], key))
             continue
-        resolved.append((key, r[0], r[1].strip()))
+        club_cell = r[i_club] if i_club < len(r) else ""
+        resolved.append((key, r[0], r[i_team].strip(), club_cell))
     if unmatched or no_store_row:
         raise Halt("NAME JOIN FAILED (validate-or-halt; never widened to fuzzy matching)\n"
                    "    unmatched in the board universe: %s\n"
@@ -300,32 +394,65 @@ def preflight(root, verbose=True):
     # the store's own spellings are equally legitimate: the display lane canonicalises casing, the
     # store does not, so BOTH free-agent spellings are permitted here by construction.
     known |= {r.get("affl_team") for r in store_doc if r.get("affl_team")}
-    unknown = sorted({c for _, _, c in resolved if c not in known})
+    unknown = sorted({c for _, _, c, _ in resolved if c not in known})
     if unknown:
         raise Halt("unknown AFFL club spelling(s) %s — an unknown club would split silently in the UI"
                    % unknown)
     out("  [P6] club spellings — all %d authored values are known spellings" % len(resolved))
 
+    # -- P6b the AFL Club column: abbreviation -> the store's spelling; blank = unchanged ---------
+    # The known set is the STORE'S OWN afl_club spellings (18 today), never the table alone.
+    known_afl = {r.get("afl_club") for r in store_doc if r.get("afl_club")}
+    club_resolved = []                      # [(key, name, mapped_full_or_None)]
+    no_field = []
+    for key, name, _team, cell in resolved:
+        full = afl_club_from_sheet(cell, known_afl)
+        if full is not None and "afl_club" not in by_key[key]:
+            no_field.append((key, name))
+        club_resolved.append((key, name, full))
+    if no_field:
+        raise Halt("AFL Club authored for %d row(s) whose store row carries NO afl_club field: %s. "
+                   "The courier moves a field it finds; it never adds one (the field set is asserted "
+                   "unchanged by the diff proof)." % (len(no_field), no_field[:8]))
+    n_blank = sum(1 for _, _, f in club_resolved if f is None)
+    out("  [P6b] AFL Club column — %d authored, %d blank (= unchanged); targets asserted against the "
+        "store's %d afl_club spellings" % (len(club_resolved) - n_blank, n_blank, len(known_afl)))
+
     # -- P7 the exact-byte plan ----------------------------------------------------------------
     plan_rows = []
-    for key, name, new_club in resolved:
+    for key, name, new_club, _cell in resolved:
         cur = by_key[key].get("affl_team")
         if cur != new_club:
             plan_rows.append((key, name, cur, new_club))
     plan_rows.sort()
+    club_rows = []
+    for key, name, full in club_resolved:
+        if full is None:
+            continue                                # BLANK = UNCHANGED: the owner has not spoken
+        cur = by_key[key].get("afl_club")
+        if cur != full:
+            club_rows.append((key, name, cur, full))
+    club_rows.sort()
 
     for key, _name, _cur, new_club in plan_rows:
         by_key[key]["affl_team"] = new_club        # EXACT BYTES — no canonicalisation (seam-binding)
+    for key, _name, _cur, new_club in club_rows:
+        by_key[key]["afl_club"] = new_club         # the store's own spelling, from the table
     store_new = json.dumps(store_doc).encode()
     md5_after = _md5_bytes(store_new)
 
-    out("  [P7] plan — %d of %d authored rows move (of %d store rows; %d carry affl_team)"
+    out("  [P7] plan — affl_team: %d of %d authored rows move (of %d store rows; %d carry affl_team)"
         % (len(plan_rows), len(body), len(store_doc), sum(1 for r in store_doc if "affl_team" in r)))
     for key, name, cur, new in plan_rows:
         out("         %-24s %-24s %-26s -> %s" % (key, name, cur, new))
+    out("  [P7] plan — afl_club: %d of %d authored rows move (%d pending; blank rows untouched)"
+        % (len(club_rows), len(club_resolved) - n_blank, len(club_rows)))
+    for key, name, cur, new in club_rows:
+        out("         %-24s %-24s %-26s -> %s" % (key, name, cur, new))
     out("  [--] store md5 %s -> %s%s" % (md5_before[:8], md5_after[:8],
                                          "  (NO-OP)" if md5_before == md5_after else ""))
-    return Plan(plan_rows, store_raw, store_new, md5_before, md5_after, board_md5, enc, root=root)
+    return Plan(plan_rows, store_raw, store_new, md5_before, md5_after, board_md5, enc, root=root,
+                club_rows=club_rows)
 
 
 # ------------------------------------------------------------------------------- the diff proof
@@ -358,6 +485,48 @@ def assert_store_diff_is_affl_team_only(old_bytes, new_bytes, expect_keys):
     if json.dumps(reapplied).encode() != new_bytes:
         raise Halt("byte-attribution failed: old bytes + only the planned affl_team substitutions "
                    "do not reproduce the new store bytes")
+    return len(moved)
+
+
+def assert_store_diff_is_planned_only(old_bytes, new_bytes, planned):
+    """T2, two-field form. `planned` is {key: {field: new}} (Plan.planned). Structural, key-by-key
+    over every store row: ONLY the couriered fields, ONLY on the planned (key, field) pairs, with
+    EXACTLY the planned value, every other field byte-identical, row count and order and field set
+    unmoved. Then byte-attribution: the old document plus only those substitutions must reproduce
+    the new bytes exactly. Returns the number of (key, field) substitutions proven."""
+    old, new = json.loads(old_bytes), json.loads(new_bytes)
+    if len(old) != len(new):
+        raise Halt("store row count moved: %d -> %d" % (len(old), len(new)))
+    moved = set()
+    for a, b in zip(old, new):
+        if a.get("key") != b.get("key"):
+            raise Halt("store row order moved at key %r / %r" % (a.get("key"), b.get("key")))
+        if list(a.keys()) != list(b.keys()):
+            raise Halt("store row %r field set moved" % a.get("key"))
+        for f in a:
+            if a[f] != b[f]:
+                if f not in COURIERED_FIELDS:
+                    raise Halt("store diff touched %r on row %r — this job moves %s only"
+                               % (f, a.get("key"), " and ".join(COURIERED_FIELDS)))
+                want = (planned.get(a.get("key")) or {})
+                if f not in want:
+                    raise Halt("store diff moved %r on row %r, which the plan does not declare"
+                               % (f, a.get("key")))
+                if b[f] != want[f]:
+                    raise Halt("store diff wrote %r to %s on row %r; the plan says %r"
+                               % (b[f], f, a.get("key"), want[f]))
+                moved.add((a.get("key"), f))
+    expect = {(k, f) for k, fs in planned.items() for f in fs}
+    if moved != expect:
+        raise Halt("store diff (key, field) set %s != planned %s" % (sorted(moved), sorted(expect)))
+    reapplied = json.loads(old_bytes)
+    idx = {r.get("key"): r for r in reapplied}
+    for k, fs in planned.items():
+        for f, v in fs.items():
+            idx[k][f] = v
+    if json.dumps(reapplied).encode() != new_bytes:
+        raise Halt("byte-attribution failed: old bytes + only the planned substitutions do not "
+                   "reproduce the new store bytes")
     return len(moved)
 
 
@@ -406,7 +575,7 @@ def restamp_season_state(path, store_md5):
 
 
 def append_transition(lineage_path, movers_path, store_before, store_after, board_md5,
-                      release_version, as_of_round):
+                      release_version, as_of_round, fields_written="affl_team only"):
     """T5/T6. Append ONE release_transition_register entry — the out-of-round shape the register's own
     _doc prescribes — and write the byte-identical UI mirror. The top-level present-lens baseline
     (balanced_board_md5 06d8af60) and release_version are asserted UNMOVED: round_movers._release_baseline()
@@ -426,12 +595,15 @@ def append_transition(lineage_path, movers_path, store_before, store_after, boar
 
     entry = collections.OrderedDict()
     entry["_doc"] = ("OUT-OF-ROUND OWNERSHIP STORE WRITE (#283). The owner's AFFL ownership CSV is "
-                     "couriered into the store's affl_team; the #232 sidecar becomes a generated mirror "
-                     "rebuilt FROM the store. Appended, not substituted: every prior entry is preserved "
-                     "verbatim. The BOARD DOES NOT MOVE — affl_team is not in the board of record (128 "
-                     "lensPicks keys, all null; the 804 active rows do not carry it), so this is an "
-                     "identity-only transition with no engine build. Per this register's own law an "
-                     "APPENDED entry is the shape prescribed for an out-of-round move.")
+                     "couriered into the store's affl_team (and, since 2026-10-13, its AFL Club column "
+                     "into afl_club); the #232 sidecar becomes a generated mirror rebuilt FROM the "
+                     "store. Appended, not substituted: every prior entry is preserved verbatim. The "
+                     "BOARD DOES NOT MOVE — affl_team is not in the board of record (128 lensPicks "
+                     "keys, all null; the 804 active rows do not carry it), and afl_club is an identity "
+                     "field no pricing path reads (rl_export ships it as `club`; it catches up at the "
+                     "next build), so this is an identity-only transition with no engine build. Per "
+                     "this register's own law an APPENDED entry is the shape prescribed for an "
+                     "out-of-round move.")
     entry["kind"] = "movers_release_transition"
     entry["schema_version"] = prev.get("schema_version", 2)
     entry["owner_approved"] = True
@@ -457,8 +629,10 @@ def append_transition(lineage_path, movers_path, store_before, store_after, boar
         ("declares_no_landing_board",
          "this transition moves the STORE only; it is a pointer note to the boundary reader and must "
          "never supersede a board-boundary record (round_movers.model_changes)"),
-        ("fields_written", "affl_team only"),
-        ("engine_build", "none — affl_team is not read by ev() and is absent from the board of record"),
+        ("fields_written", fields_written),
+        ("engine_build", "none — neither affl_team nor afl_club is read by ev(); affl_team is absent "
+                         "from the board of record and afl_club reaches the UI only as rl_export's "
+                         "`club` at the next build"),
     ])
     reg.append(entry)
 
@@ -562,10 +736,10 @@ def apply(root=None, verbose=True):
         _atomic_write_bytes(w(STORE_REL), plan.store_new)
         out("  [T1] store written — %s -> %s" % (plan.md5_before[:8], plan.md5_after[:8]))
 
-        # T2 the diff proof
-        n = assert_store_diff_is_affl_team_only(plan.store_raw, plan.store_new,
-                                                [r[0] for r in plan.rows])
-        out("  [T2] store diff proof — affl_team only, on exactly %d planned keys; byte-attribution OK" % n)
+        # T2 the diff proof — both couriered fields, each move attributed to its field
+        n = assert_store_diff_is_planned_only(plan.store_raw, plan.store_new, plan.planned)
+        out("  [T2] store diff proof — %s; exactly %d planned (key, field) substitutions; "
+            "byte-attribution OK" % (plan.fields_written, n))
 
         # T3 the pin moves
         restamp_manifest(w(BOOT_REL), plan.md5_after)
@@ -590,7 +764,8 @@ def apply(root=None, verbose=True):
 
         # T5/T6 the transition entry + its mirror
         append_transition(w(LINEAGE_REL), w(MOVERS_TRANSITION_REL), plan.md5_before, plan.md5_after,
-                          plan.board_md5, release_version, as_of_round)
+                          plan.board_md5, release_version, as_of_round,
+                          fields_written=plan.fields_written)
         out("  [T5] release_transition_register entry appended (ruling id %s)" % OWNER_RULING_ID)
         out("  [T6] movers_transition.js mirror written byte-identically")
 
@@ -622,8 +797,8 @@ def apply(root=None, verbose=True):
 
         # T10 atomic commit
         _commit(root, ws, out)
-        out("\n  APPLIED — %d ownership moves landed; %d targets committed atomically."
-            % (len(plan.rows), len(TARGETS)))
+        out("\n  APPLIED — %d affl_team + %d afl_club moves landed; %d targets committed atomically."
+            % (len(plan.rows), len(plan.club_rows), len(TARGETS)))
 
         # T11 SIBLING COHERENCE (2026-08-28, found live on the first post-flip apply): the balanced
         # sibling's sidecar binds source_store_md5 AND contract_sha256, and T1/T3 move both — so
@@ -765,6 +940,19 @@ def _validate_overlay(ws, plan, out):
             fails.append("board_view_working did not take the move for %s" % key)
         if _mirror_club(own["byKey"].get(key)) != _mirror_club(new):
             fails.append("ownership mirror did not take the move for %s" % key)
+    # THE STAGED STORE CARRIES THE afl_club MOVES, and the AFL club universe did not grow: the
+    # targets were asserted against the live store's spellings at P6b, so the staged store's set
+    # must be a subset of the live one (a club can empty out; a new spelling cannot appear).
+    staged_store = json.loads(open(w(STORE_REL), "rb").read())
+    staged_by_key = {r.get("key"): r for r in staged_store if r.get("key")}
+    for key, _name, _cur, new in plan.club_rows:
+        if staged_by_key.get(key, {}).get("afl_club") != new:
+            fails.append("staged store did not take the afl_club move for %s" % key)
+    live_afl = {r.get("afl_club") for r in json.loads(plan.store_raw) if r.get("afl_club")}
+    staged_afl = {r.get("afl_club") for r in staged_store if r.get("afl_club")}
+    if not staged_afl <= live_afl:
+        fails.append("staged store spells AFL club(s) the live store never did: %s"
+                     % sorted(staged_afl - live_afl))
     clubs = {p.get("affl_team") for p in bvw["players"] if p.get("affl_team")}
     if len(clubs) != 17:
         fails.append("expected 16 clubs + Free Agents = 17 buckets, got %d: %s" % (len(clubs), sorted(clubs)))
@@ -849,6 +1037,16 @@ def main(argv):
     try:
         if cmd == "preflight":
             preflight(root)
+        elif cmd == "check":
+            # READ-ONLY. The plan, then a verdict: exit 1 while the sheet carries authorship the
+            # store has not been given (either field), 0 when the store is current.
+            plan = preflight(root)
+            if plan.moves:
+                print("\n  PENDING — %d affl_team and %d afl_club move(s) are authored in the sheet "
+                      "and not yet in the store. Run `apply` to courier them (one transaction, %d "
+                      "targets)." % (len(plan.rows), len(plan.club_rows), len(TARGETS)))
+                return 1
+            print("\n  CURRENT — the store carries the sheet's ownership and AFL clubs; nothing pending.")
         elif cmd == "apply":
             if apply(root) == "APPLIED_SIBLING_REPIN_REQUIRED":
                 return 3      # T11: the apply stands, the named sibling follow-up is REQUIRED
