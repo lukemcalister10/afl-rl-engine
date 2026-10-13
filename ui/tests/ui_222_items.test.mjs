@@ -192,13 +192,51 @@ check(modelPt && modelPt.score.state === 'not-a-round' && modelPt.v != null,
    deliberately not a model change (round_movers.football_column). The card must still show EVERY
    non-round point in bundle order; the expectation is now derived from the bundle's own points,
    which is the set the card renders, rather than from a list that no longer means the same thing. */
-const wantOorIds = await page.evaluate(() =>
-  ((window.__MATCHDAY_MOVERS__.points || []).filter(p => p.kind === "out_of_round")).map(p => String(p.id)));
-check(modelPts.map(r => String(r.id)).join(',') === wantOorIds.join(',') && wantOorIds.length >= 2,
-  'item 3 — every out-of-round column is present, in bundle order, flagged not-a-round',
-  modelPts.map(r => r.id).join(',') + ' vs ' + wantOorIds.join(','));
+/* RESTATED 2026-10-13 (Phase 0.2, bug 2). Until this date the two checks here PINNED a defect:
+   "every out-of-round column ... flagged not-a-round" was true of the Grand Final column, so the
+   card printed "Not a round — no football was played at this point" against the Grand Final and
+   Alex Pearce's 5 in it rendered nowhere. The correct property splits the columns by what produced
+   them: a column whose board a weekly report produced (board == report.board_md5_after) is a WEEK
+   OF FOOTBALL and carries that report's scores; a column no report produced is a model change and
+   never carries a score. Both halves are derived from the bundle and both must account for every
+   out-of-round column, so a column that is neither still fails. */
+const wantOor = await page.evaluate(() => {
+  const b = window.__MATCHDAY_MOVERS__, byBoard = {};
+  Object.keys(b.reports || {}).forEach(k => { byBoard[String(b.reports[k].board_md5_after)] = String(k); });
+  return (b.points || []).filter(p => p.kind === "out_of_round")
+    .map(p => ({ id: String(p.id), report: byBoard[String(p.board)] || null }));
+});
+const wantModelIds = wantOor.filter(p => !p.report).map(p => p.id);
+const wantFootball = wantOor.filter(p => p.report);
+const footballCols = HIST.series.filter(r => r.isFinals);
+check(modelPts.map(r => String(r.id)).join(',') === wantModelIds.join(',') && wantModelIds.length >= 2,
+  'item 3 — every MODEL-CHANGE column (no report produced its board) is present, in bundle order, flagged not-a-round',
+  modelPts.map(r => r.id).join(',') + ' vs ' + wantModelIds.join(','));
 check(modelPts.every(r => r.score.state === 'not-a-round' && r.v != null),
-  'item 3 — every out-of-round column carries value/rank movement but never a score');
+  'item 3 — every model-change column carries value/rank movement but never a score');
+check(footballCols.map(r => String(r.id)).join(',') === wantFootball.map(p => p.id).join(',') && wantFootball.length >= 5,
+  'bug 2 (2026-10-13) — every FOOTBALL column (a weekly report produced its board) is present, in bundle order, and IS a round',
+  footballCols.map(r => r.id).join(',') + ' vs ' + wantFootball.map(p => p.id).join(','));
+check(footballCols.every(r => r.isRound && r.score.state !== 'not-a-round' &&
+                              r.roundKey === (wantFootball.find(p => p.id === String(r.id)) || {}).report),
+  'bug 2 — a football column joins the report that produced its board (roundKey) and never reads "not a round"',
+  JSON.stringify(footballCols.map(r => [r.id, r.roundKey, r.score.state])));
+check(footballCols.every(r => /Finals Week \d|Grand Final/.test(r.label)) && modelPts.length + footballCols.length === wantOor.length,
+  'bug 2 — a football column is named by its week, and model + football columns together are every out-of-round column',
+  footballCols.map(r => r.label).join(','));
+/* THE OWNER'S CASE, derived rather than typed: every scorer in every finals report sees his score
+   on his card, and the one he noticed (Alex Pearce in the Grand Final) is asserted by name against
+   the report's own figure, not against the literal 5. */
+const PEARCE = await page.evaluate(() => {
+  const b = window.__MATCHDAY_MOVERS__;
+  const newest = b.reports[String(b.rounds[b.rounds.length - 1])];
+  const col = (b.points || []).find(p => p.kind !== 'retro' && p.board && p.board === newest.board_md5_after);
+  const row = (newest.players || []).find(p => p.key === 'alex-pearce');
+  const cell = col ? MD.history.series('alex-pearce').find(r => r.id === String(col.id)) : null;
+  return { finals: !!newest.finals_week, col: col && col.id, want: row && row.score, got: cell && cell.score };
+});
+check(PEARCE.finals && PEARCE.col && PEARCE.want != null && PEARCE.got && PEARCE.got.state === 'score' && PEARCE.got.score === PEARCE.want,
+  'bug 2 — Alex Pearce\'s Grand Final score is on his card, equal to the report\'s figure', JSON.stringify(PEARCE));
 
 // the honesty contract, asserted over EVERY player, not just one.
 const HONESTY = await page.evaluate(() => {
@@ -218,7 +256,23 @@ const HONESTY = await page.evaluate(() => {
       if (b) b[rk] = (b[rk] || 0) + 1;
     });
   });
-  return { cov, dnpByPoint, unrecByPoint, scoreByPoint, n: keys.length };
+  /* A FINALS WEEK'S DNP IS PER CLUB (2026-10-13): audited over every player and every finals row —
+     a DNP only where his own AFL club fielded a full side that week, "not recorded" everywhere
+     else, and the report's tri-state null never a DNP. */
+  const byKey = MD.seam.indexed().byKey;
+  const finalsAudit = { rows: 0, dnpBad: 0, unrecBad: 0, dnp: 0 };
+  keys.forEach(k => {
+    MD.history.series(k).forEach(r => {
+      const c = cov.rounds[r.roundKey];
+      if (!c || !c.finals || r.score.state === 'score') return;
+      finalsAudit.rows++;
+      const club = byKey[k] && byKey[k].afl_club, full = !!(club && c.fullClubs[club]) && !c.nullDnp[k];
+      if (r.score.state === 'dnp') { finalsAudit.dnp++; if (!full) finalsAudit.dnpBad++; }
+      else if (r.score.state === 'unrecorded') { if (full) finalsAudit.unrecBad++; }
+      else finalsAudit.dnpBad++;
+    });
+  });
+  return { cov, dnpByPoint, unrecByPoint, scoreByPoint, n: keys.length, finalsAudit };
 });
 /* THE DEFAULT, asserted on its own terms: one model throughout, no model change inside it, and it
    reaches from R14 to the newest stored point — which is the whole of what the owner asked for. */
@@ -236,7 +290,11 @@ check(DEFAULT_SERIES.length < HIST.series.length,
   ' vs ' + HIST.series.length + ') — the switch is not vacuous');
 
 const completeRounds = Object.keys(HONESTY.cov.rounds).filter(r => HONESTY.cov.rounds[r].complete);
-const partialRounds = Object.keys(HONESTY.cov.rounds).filter(r => !HONESTY.cov.rounds[r].complete);
+/* A FINALS WEEK IS NEITHER COMPLETE NOR PARTIAL (2026-10-13): four clubs play FW1 and two play the
+   Grand Final, so the whole-round bar cannot be met and was never meant to be; its DNP truth is per
+   club and is audited separately below. */
+const finalsRounds = Object.keys(HONESTY.cov.rounds).filter(r => HONESTY.cov.rounds[r].finals);
+const partialRounds = Object.keys(HONESTY.cov.rounds).filter(r => !HONESTY.cov.rounds[r].complete && !HONESTY.cov.rounds[r].finals);
 /* Deliberately NOT asserted as the literal list "17,18,19,20": that would have to be re-pinned by hand
    every time a round lands, which is the upkeep trap this project has paid for before. What is asserted
    is the DERIVATION — a round is complete exactly when every club on the board is present at full-side
@@ -254,8 +312,20 @@ check(completeRounds.length > 0 && partialRounds.length > 0,
   'item 3 — this bundle exercises BOTH branches (complete: ' + completeRounds.join(',') +
   ' · partial: ' + partialRounds.join(',') + ')');
 const dnpPoints = Object.keys(HONESTY.dnpByPoint);
-check(dnpPoints.every(p => completeRounds.includes(p)),
-  'item 3 — DNP is printed ONLY on completely-fed rounds', 'DNP on: ' + dnpPoints.join(','));
+check(dnpPoints.every(p => completeRounds.includes(p) || finalsRounds.includes(p)),
+  'item 3 — DNP is printed ONLY on completely-fed rounds (and, per club, on finals weeks)', 'DNP on: ' + dnpPoints.join(','));
+check(finalsRounds.length >= 5 && finalsRounds.every(r => {
+  const c = HONESTY.cov.rounds[r], full = Object.keys(c.fullClubs).length;
+  return full >= 2 && full < HONESTY.cov.clubsOnBoard && Object.keys(c.fullClubs).every(k => c.fullClubs[k] >= HONESTY.cov.minSide);
+}), 'bug 2 — every finals week has SOME clubs at full side and not all of them (the per-club bar is real on this bundle)',
+  finalsRounds.map(r => r + ':' + Object.keys(HONESTY.cov.rounds[r].fullClubs).length).join(','));
+check(HONESTY.finalsAudit.rows > 3000 && HONESTY.finalsAudit.dnp > 0 &&
+      HONESTY.finalsAudit.dnpBad === 0 && HONESTY.finalsAudit.unrecBad === 0,
+  'bug 2 — in a finals week a DNP is printed ONLY for a player whose own club fielded a full side, and "not recorded" for everyone else',
+  JSON.stringify(HONESTY.finalsAudit));
+check(finalsRounds.every(r => HONESTY.scoreByPoint[r] === HONESTY.cov.rounds[r].scored && HONESTY.cov.rounds[r].scored > 0),
+  'bug 2 — every recorded finals score is shown on a card (the Grand Final\'s included)',
+  finalsRounds.map(r => r + ':' + HONESTY.scoreByPoint[r] + '/' + HONESTY.cov.rounds[r].scored).join(','));
 check(partialRounds.every(r => !HONESTY.dnpByPoint[r]),
   'item 3 — NO player is ever marked DNP in a partially-fed round',
   partialRounds.filter(r => HONESTY.dnpByPoint[r]).join(','));
@@ -284,17 +354,25 @@ check(await page.locator('.histtbl tbody tr').count() === HIST.series.length,
    fails, and a model change that lost its id still fails. */
 const mcidTexts = await page.locator('.histtbl .mcid').allTextContents();
 const finalsTexts = await page.locator('.histtbl .finalsev').allTextContents();
+/* the finals prefixes are READ from the one table (movers.js core.FINALS_COLUMNS), not retyped here */
 const nFootball = await page.evaluate(() =>
   ((window.__MATCHDAY_MOVERS__.points || [])
-    .filter(p => p.kind === "out_of_round" &&
-                 ["fw1-", "fw2-", "fw3-", "fw4-", "gf-"].some(k => String(p.id).indexOf(k) === 0))).length);
-check(mcidTexts.length + finalsTexts.length === modelPts.length
-      && mcidTexts.length === modelPts.length - nFootball
+    .filter(p => p.kind === "out_of_round" && !!MD.movers.core.finalsName(p.id))).length);
+check(mcidTexts.length + finalsTexts.length === wantOor.length
+      && mcidTexts.length === modelPts.length
       && mcidTexts.every(t => /^\(MC-\d+\)$/.test(t.trim()))
-      && finalsTexts.length === nFootball
+      && finalsTexts.length === nFootball && nFootball === footballCols.length
       && finalsTexts.every(t => /Final|Finals Week/.test(t.trim())),
-  'item 3 — every model-change row is ONE line "Model change (MC-N)", every football row is its week name, and together they account for every non-round row',
-  JSON.stringify(mcidTexts.slice(0, 4)));
+  'item 3 — every model-change row is ONE line "Model change (MC-N)", every football row is its week name, and together they account for every out-of-round column',
+  JSON.stringify(mcidTexts.slice(0, 4)) + ' finals=' + JSON.stringify(finalsTexts));
+/* bug 2 (2026-10-13) — the chart marks a finals week as a NORMAL round: the hollow "not a normal
+   round" marker (.ev) is for model changes only, so in the all-in universe there are exactly as
+   many hollow markers as model-change columns, and in the current-model universe (no model change
+   in it) there are none even though the finals columns are drawn. */
+const evAll = await page.evaluate(() => document.querySelectorAll('.wchart circle.ev').length);
+check(evAll === modelPts.length && evAll > 0,
+  'bug 2 — the weekly chart draws a hollow marker for each model-change column and for NO football column',
+  evAll + ' vs ' + modelPts.length);
 check(await page.locator('.reserved:has-text("weekly-loop phase")').count() === 0,
   'item 3 — the "reserved · wired in the weekly-loop phase" placeholder is gone');
 check(await page.locator('.histnote').count() === 0,
@@ -590,29 +668,93 @@ const RD = await page.evaluate(() => {
     const r = rd && rd[p.key];
     return !r || r.d === byKey[p.key].value_change;
   });
+  /* RESTATED 2026-10-13 (Phase 0.2, bug 3). This derived `prevRound` as max(rounds < cur), which
+     named the Grand Final's delta "Round 29 vs Round 28" — two rounds on no fixture. The pill names
+     the FOOTBALL pair: the point the latest report produced (a finals week is a stored column, so
+     that is the column whose board is the report's board_md5_after; in season it is the round
+     itself) vs the previous football point of the stored record, walking back over the model
+     changes between them, which are their own history lines. Both are named by the week. */
+  const mv = window.__MATCHDAY_MOVERS__;
+  const core = MD.movers.core;
+  const cur = rep.submitted_round != null ? rep.submitted_round : rep.current_round;
+  const toPt = mv.points.find(p => p.kind !== 'retro' && p.board && p.board === rep.board_md5_after)
+            || mv.points.find(p => String(p.id) === String(cur));
+  const stored = mv.points.filter(p => p.kind !== 'retro');
+  let i = stored.findIndex(p => String(p.id) === String(rep.previous_round)), fromPt = null;
+  for (; i >= 0; i--) {
+    const p = stored[i];
+    if (p.kind === 'round' || !!core.finalsName(p.id)) { fromPt = p; break; }
+  }
+  const name = p => core.finalsName(p.id) || ('Round ' + p.id);
+  const title = rows[0].querySelector('.pill') && rows[0].querySelector('.pill').getAttribute('title');
   return {
     rows: rows.length,
     ofreeCells: document.querySelectorAll('.ofree').length,
     pills: rows.filter(r => r.querySelector('.pill')).length,
     round: rd && rd._round, prev: rd && rd._prev,
-    repRound: rep.submitted_round != null ? rep.submitted_round : rep.current_round,
-    // the pill names the football pair: the round vs the previous stored ROUND — the model changes
-    // between them are their own history lines, never smeared into this figure's label.
-    prevRound: (() => {
-      const mv = window.__MATCHDAY_MOVERS__;
-      const cur = rep.submitted_round != null ? rep.submitted_round : rep.current_round;
-      const lower = mv.rounds.map(Number).filter(n => !isNaN(n) && n < Number(cur));
-      return lower.length ? Math.max(...lower) : rep.previous_round;
-    })(),
+    wantTo: toPt && String(toPt.id), wantFrom: fromPt && String(fromPt.id),
+    wantTitle: toPt && fromPt && (name(toPt) + ' vs ' + name(fromPt)),
+    title, titles: new Set(rows.map(r => r.querySelector('.pill') && r.querySelector('.pill').getAttribute('title')).filter(Boolean)).size,
+    newestIsFinals: !!rep.finals_week, hna: core.HOME_AND_AWAY_ROUNDS,
     agree,
   };
 });
 check(RD.ofreeCells === 0, 'the over-free column is retired — no .ofree cell renders anywhere');
 check(RD.pills === RD.rows && RD.rows > 0,
   'every board row carries the Round Δ cell', RD.pills + '/' + RD.rows);
-check(RD.round === RD.repRound && RD.prev === RD.prevRound,
-  'Round Δ is the LATEST report\'s round vs the previous stored round', RD.round + ' vs ' + RD.prev);
+check(RD.wantTo && RD.wantFrom && RD.round === RD.wantTo && RD.prev === RD.wantFrom,
+  'Round Δ is the LATEST report\'s point vs the previous FOOTBALL point of the record', RD.round + ' vs ' + RD.prev);
+check(RD.title && RD.title === RD.wantTitle && RD.titles === 1,
+  'bug 3 (2026-10-13) — the Round Δ tooltip names both ends by their week, the same on every row',
+  RD.title + ' (want ' + RD.wantTitle + ')');
+const roundAbove = new RegExp('Round\\s*(' + Array.from({ length: 20 }, (_, k) => RD.hna + 1 + k).join('|') + ')\\b');
+check(RD.newestIsFinals && /Final/.test(RD.title) && !roundAbove.test(RD.title),
+  'bug 3 — in finals the tooltip reads the week names ("Grand Final vs Finals Week 4"), never "Round 29 vs Round 28"', RD.title);
 check(RD.agree, 'every rendered delta is the report\'s own value_change — computed nowhere else');
+// the card's Round Δ cell names the SAME pair as the board pill (one source: MD.board.roundDeltaTitle).
+await page.evaluate(() => MD.go('card', 'alex-pearce'));
+await page.waitForTimeout(300);
+const cardTitle = await page.evaluate(() => document.querySelector('.statrow .v[title]').getAttribute('title'));
+check(cardTitle === RD.title, 'bug 3 — the player card\'s Round Δ tooltip is the board\'s, word for word', cardTitle);
+
+/* ------------------------------------------- bug 1 (2026-10-13): the Movers tab opens on the week */
+section('PHASE 0.2 BUG 1 — the Movers tab opens on the newest week BY NAME');
+/* defaultPair used to return to:"29" — the report KEY of a finals week, which is a point id nowhere
+   (the Grand Final's point is gf-grand-final-30-9). The To <select> then showed its first option,
+   the strip read "To R29", and the baseline read "R24 · post-model" for a week of football. The
+   property: `to` is the id of the point whose board the newest report produced, that id is an
+   option of the To select and is the selected one, and the strip names both ends by the week. */
+await go('movers');
+const MV = await page.evaluate(() => {
+  const b = window.__MATCHDAY_MOVERS__, core = MD.movers.core, st = MD.movers._state;
+  const newest = b.reports[String(b.rounds[b.rounds.length - 1])];
+  const toPt = b.points.find(p => p.kind !== 'retro' && p.board && p.board === newest.board_md5_after)
+            || b.points.find(p => String(p.id) === String(newest.submitted_round));
+  const sels = [...document.querySelectorAll('.moversbar select.boardsel')];
+  const sel = s => ({ value: s.value, text: s.options[s.selectedIndex] ? s.options[s.selectedIndex].text : null,
+                      has: [...s.options].some(o => o.value === s.value) });
+  const cells = [...document.querySelectorAll('.moversmeta .num')].map(e => e.textContent.trim());
+  const lbls = [...document.querySelectorAll('.moversmeta .lbl')].map(e => e.textContent.trim().toLowerCase());
+  const at = l => cells[lbls.indexOf(l)];
+  return { to: st.to, from: st.from, wantTo: toPt && String(toPt.id), wantFrom: String(newest.previous_round),
+           toName: core.finalsName(toPt && toPt.id) || ('Round ' + newest.submitted_round),
+           fromName: core.pointName(b, newest.previous_round, false),
+           selTo: sel(sels[1]), selFrom: sel(sels[0]), stripTo: at('to'), stripBase: at('baseline'),
+           strip: document.querySelector('.moversmeta').innerText, newestIsFinals: !!newest.finals_week,
+           stored: !MD.movers.core.compare(b, st.from, st.to).synthetic };
+});
+check(MV.wantTo && MV.to === MV.wantTo && MV.from === MV.wantFrom,
+  'bug 1 — the default pair ends on the POINT the newest report produced, not on the report key', JSON.stringify([MV.from, MV.to]));
+check(MV.selTo.has && MV.selTo.value === MV.to && MV.selTo.text === MV.toName,
+  'bug 1 — the To <select> has that point and shows it selected, by its week name', JSON.stringify(MV.selTo));
+check(MV.selFrom.has && MV.selFrom.value === MV.from,
+  'bug 1 — the From <select> shows the report\'s baseline point selected', JSON.stringify(MV.selFrom));
+check(MV.stripTo === MV.toName && MV.stripBase === MV.fromName,
+  'bug 1 — the strip reads the week names: To ' + MV.toName + ' · baseline ' + MV.fromName,
+  'got To ' + MV.stripTo + ' · baseline ' + MV.stripBase);
+check(MV.newestIsFinals && !/post-model/.test(MV.strip) && !/\bR2[5-9]\b/.test(MV.strip),
+  'bug 1 — a football pair never reads "post-model" and never names a feed round as "R29"', MV.strip.replace(/\n/g, ' '));
+check(MV.stored, 'bug 1 — the pair still resolves to the STORED report (played/DNP facts), not a synthetic diff');
 
 /* ------------------------------------------------------------------ no runtime errors anywhere */
 section('RUNTIME');

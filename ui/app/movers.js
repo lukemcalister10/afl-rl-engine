@@ -433,6 +433,112 @@ function ovApply(report) {
        what this viewer chose to look at. */
     allPoints: function (bundle) { return ((bundle || {}).points || []).slice(); },
 
+    /* ---- THE FINALS WEEKS, BY NAME — the browser's ONE copy of round_movers.FINALS_COLUMN_PREFIXES.
+       A finals week lands as a store edit, so it arrives here as an out-of-round column, and every
+       out-of-round column used to fall through to the literal string "Model change". The owner
+       opened the tab after FW1 landed and reported that FW1 "doesn't even appear in the movers
+       list": it did, as "Model change (MC-17)", which is unfindable and wrong twice over — it is a
+       week of football, and it is not a change to the model. Keyed on the id, which the act declares
+       and the validator checks, not on the label, which is prose.
+       ONE TABLE (2026-10-13). This lived here AND in card.js, two literals that a test held equal to
+       the engine's. card.js and history.js now read it from here, so the two cannot drift. */
+    FINALS_COLUMNS: {"fw1-": "Finals Week 1", "fw2-": "Finals Week 2",
+                     "fw3-": "Finals Week 3", "fw4-": "Finals Week 4", "gf-": "Grand Final"},
+    finalsName: function (id) {
+      var s = String(id || ""), tbl = core.FINALS_COLUMNS, keys = Object.keys(tbl);
+      for (var i = 0; i < keys.length; i++) if (s.indexOf(keys[i]) === 0) return tbl[keys[i]];
+      return null;
+    },
+
+    /* ---- A FINALS REPORT IS KEYED BY ITS FEED ROUND, BUT ITS POINT IS A COLUMN (2026-10-13) -----
+       reports['29'] is the Grand Final; the point it produced is gf-grand-final-30-9, an out-of-round
+       column with after_round 24, because the calendar holds while finals are played. "29" is a
+       point id nowhere. Everything that joins a report to a point goes through these two, so the
+       join is by the BOARD the report says it produced (board_md5_after == point.board), never by
+       guessing that a report key is a point id. An in-season report ('24') still resolves to the
+       round point '24' first, so nothing about the season proper moves. */
+    reportByBoard: function (bundle, board) {
+      if (!board) return null;
+      var reps = (bundle || {}).reports || {}, keys = Object.keys(reps);
+      for (var i = 0; i < keys.length; i++) {
+        if (reps[keys[i]] && String(reps[keys[i]].board_md5_after) === String(board)) return reps[keys[i]];
+      }
+      return null;
+    },
+    /* the stored report whose terminal board IS this point: by id for a round, by board for a column. */
+    storedReport: function (bundle, toId) {
+      var reps = (bundle || {}).reports || {};
+      if (reps[String(toId)]) return reps[String(toId)];
+      var pts = core.allPoints(bundle);
+      for (var i = 0; i < pts.length; i++) {
+        if (String(pts[i].id) === String(toId)) return pts[i].kind === "retro" ? null : core.reportByBoard(bundle, pts[i].board);
+      }
+      return null;
+    },
+    /* the point behind an id: its own point, or — for a report key with no point of its own — the
+       stored point whose board that report produced. null when neither exists. */
+    pointFor: function (bundle, id) {
+      var pts = core.allPoints(bundle);
+      for (var i = 0; i < pts.length; i++) if (String(pts[i].id) === String(id)) return pts[i];
+      var rep = ((bundle || {}).reports || {})[String(id)];
+      if (rep && rep.board_md5_after) {
+        for (var j = 0; j < pts.length; j++) {
+          if (pts[j].kind !== "retro" && pts[j].board && String(pts[j].board) === String(rep.board_md5_after)) return pts[j];
+        }
+      }
+      return null;
+    },
+    /* Is this stored point a week of FOOTBALL? A round is; a re-priced round is; a column whose board
+       a weekly report produced is (that is what a finals week looks like in the record); a column the
+       act NAMED as a finals week is, even in the window before its report lands. A model change is not. */
+    isFootball: function (bundle, pt) {
+      if (!pt) return false;
+      if (pt.kind === "round" || pt.kind === "retro" || /^\d+$/.test(String(pt.id))) return true;
+      if (core.finalsName(pt.id)) return true;
+      return !!core.reportByBoard(bundle, pt.board);
+    },
+    /* A POINT'S NAME IN FOOTBALL TERMS. Short ("R24") for the strip, long ("Round 24") for a title.
+       A finals column reads its week name — never "R24 · post-model", which is what a column that
+       followed a model change reads and the opposite of what a week of scores is. A retro finals
+       point takes its name from the point, as history.js's retroLabel does. null when the id is
+       neither a point nor a report, so the caller chooses its own fallback. */
+    pointName: function (bundle, id, long) {
+      var pre = long ? "Round " : "R";
+      var pt = core.pointFor(bundle, id);
+      if (!pt) return /^\d+$/.test(String(id)) ? pre + id : null;
+      var fin = core.finalsName(pt.id);
+      if (fin) return fin;
+      if (pt.kind === "retro") {
+        var nm = String(pt.label || "").split(" · ")[0];
+        var base = (nm && !/^R\d+$/.test(nm)) ? nm : (pre + pt.after_round);
+        return base + (long ? " (current model)" : " · current model");
+      }
+      if (pt.kind === "round" || /^\d+$/.test(String(pt.id))) return pre + pt.id;
+      if (pt.after_round != null) return pre + pt.after_round + " · post-model";
+      return null;
+    },
+    /* THE PAIR A REPORT'S DELTA NAMES, in football terms: the point the report produced, and the
+       previous FOOTBALL point of the stored record — the model changes between them are their own
+       history lines, never named by the Round Δ pill. For the Grand Final that is "Grand Final vs
+       Finals Week 4"; for R24 it is still "Round 24 vs Round 23". The pill used to print
+       "Round 29 vs Round 28" by taking max(rounds < 29), two numbers that are on no fixture. */
+    footballPair: function (bundle, report) {
+      if (!report) return null;
+      var curId = report.submitted_round != null ? report.submitted_round : report.current_round;
+      var toPt = core.pointFor(bundle, curId);
+      var toId = toPt ? String(toPt.id) : String(curId);
+      var stored = core.allPoints(bundle).filter(function (p) { return p.kind !== "retro"; });
+      var fromId = String(report.previous_round), i = -1;
+      for (var k = 0; k < stored.length; k++) if (String(stored[k].id) === fromId) { i = k; break; }
+      for (; i >= 0; i--) {
+        if (core.isFootball(bundle, stored[i])) { fromId = String(stored[i].id); break; }
+      }
+      return {
+        to: toId, toLabel: core.pointName(bundle, toId, true) || ("Round " + curId),
+        from: fromId, fromLabel: core.pointName(bundle, fromId, true) || String(fromId),
+      };
+    },
+
     /* ---- THE SCOPE, LIFTED (owner word 2026-08-28) --------------------------------------------
        The 2026-08-21 scope pinned the tab to R22 → R23 "while the model is under ruling". The owner
        has now ruled the opposite way: the tab must NOT feature a cross-model pair, and must default
@@ -474,8 +580,13 @@ function ovApply(report) {
         var rpts = (bundle || {}).reports || {}, rnds = ((bundle || {}).rounds || []).slice();
         for (var y = rnds.length - 1; y >= 0; y--) {
           var cand = rpts[String(rnds[y])];
+          /* `to` IS THE POINT, NOT THE REPORT KEY (2026-10-13). A finals report is keyed by its feed
+             round ('29') but the point it produced is the column (gf-grand-final-30-9); "29" is an
+             id on no point, so the To <select> fell back to its first option and the strip read
+             "To R29". `newest` is the point whose board the report produced, so its id is the answer
+             — and for an in-season round the point id and the report key are the same string. */
           if (cand && cand.board_md5_after === newest.board)
-            return { from: String(cand.previous_round), to: String(rnds[y]) };
+            return { from: String(cand.previous_round), to: String(newest.id) };
         }
       }
       var retro = [];
@@ -529,7 +640,9 @@ function ovApply(report) {
        as-is — it carries the played/score facts, which a bare value diff cannot know. */
     compare: function (bundle, fromId, toId) {
       bundle = bundle || {};
-      var stored = (bundle.reports || {})[String(toId)];
+      // by id for a round, by BOARD for a finals column — the stored report is the one whose terminal
+      // board is the `to` point (core.storedReport), so a column id reaches its own report.
+      var stored = core.storedReport(bundle, toId);
       if (stored && String(stored.previous_round) === String(fromId)) return ovApply(stored);
 
       var values = bundle.values || {}, players = [];
@@ -765,21 +878,13 @@ function ovApply(report) {
       var tal = { played: 0, dnp: 0, unrecorded: 0 };
       (report.players || []).forEach(function (p) { tal[core.participation(p)] += 1; });
       var hasPart = !!(tal.played || tal.dnp);
-      // point display in FOOTBALL terms: a round number as itself; a model-change point as the
-      // round whose board it updated ("R23 · post-model") — the MC ids live on the selector.
-      var _pt = function (id) {
-        if (/^\d+$/.test(String(id))) return "R" + id;
-        var pts = core.points(bundle());
-        for (var i = 0; i < pts.length; i++) {
-          if (String(pts[i].id) === String(id) && pts[i].after_round != null) {
-            // a retro point is that round re-priced under the live model, not a board that followed
-            // a model change — it must not read "post-model", which means the opposite thing.
-            return "R" + pts[i].after_round +
-                   (pts[i].kind === "retro" ? " · current model" : " · post-model");
-          }
-        }
-        return "prior board";
-      };
+      // point display in FOOTBALL terms (core.pointName): a round number as itself; a finals column
+      // as its week name; a retro point as "R23 · current model"; a model-change point as the round
+      // whose board it updated ("R23 · post-model") — the MC ids live on the selector. A stored
+      // finals report names its round as the feed round ('29'), which pointName resolves to the
+      // column that report produced, so the strip reads "To Grand Final · baseline Finals Week 4"
+      // rather than "To R29 · baseline R24 · post-model".
+      var _pt = function (id) { return core.pointName(bundle(), id, false) || "prior board"; };
       s.innerHTML =
         '<span class="lbl">To</span><b class="num">' + _pt(report.submitted_round) + "</b>" +
         '<span class="lbl">baseline</span><b class="num">' + _pt(report.previous_round) + "</b>" +
@@ -791,29 +896,15 @@ function ovApply(report) {
       return s;
     }
 
-    /* Display name for a stored point: rounds as themselves, out-of-round boards as their MC-N id
-       (the ledger behind each ID is ui/MAINTAINER.md — the verbose labels render nowhere). */
-    /* THE FINALS WEEKS, BY NAME — the browser's half of round_movers.FINALS_COLUMN_PREFIXES.
-       A finals week lands as a store edit, so it arrives here as an out-of-round column, and every
-       out-of-round column fell through to the literal string "Model change". The owner opened the
-       tab after FW1 landed and reported that FW1 "doesn't even appear in the movers list": it did,
-       as "Model change (MC-17)", which is unfindable and wrong twice over — it is a week of
-       football, and it is not a change to the model. Keyed on the id, which the act declares and
-       the validator checks, not on the label, which is prose. Model changes keep the de-bloated
-       label they were given: this adds a name for football, it does not put process back on the
+    /* Display name for a stored point: rounds as themselves, finals weeks by name (the ONE table,
+       core.FINALS_COLUMNS), out-of-round boards as their MC-N id (the ledger behind each ID is
+       ui/MAINTAINER.md — the verbose labels render nowhere). Model changes keep the de-bloated label
+       they were given: the finals name is a name for football, it does not put process back on the
        page. */
-    const FINALS_COLUMNS = {"fw1-": "Finals Week 1", "fw2-": "Finals Week 2",
-                            "fw3-": "Finals Week 3", "fw4-": "Finals Week 4", "gf-": "Grand Final"};
-    function finalsName(id) {
-      const s = String(id || "");
-      const hit = Object.keys(FINALS_COLUMNS).filter(function (k) { return s.indexOf(k) === 0; })[0];
-      return hit ? FINALS_COLUMNS[hit] : null;
-    }
-
     function pointLabel(b, p) {
       if (p.kind === "retro") return p.label || ("R" + p.after_round + " · current model");
       if (p.kind === "round" || /^\d+$/.test(String(p.id))) return "Round " + p.id;
-      const fin = finalsName(p.id);
+      const fin = core.finalsName(p.id);
       if (fin) return fin;
       const list = (b || {}).model_changes || [];
       for (let i = 0; i < list.length; i++) {

@@ -103,22 +103,35 @@ MD.board = (function () {
     if (!rep || !rep.players) return _rd;
     // The report names its round as submitted_round (older fixtures: current_round) and its baseline
     // as the immediately-preceding POINT, which can be a model-change id. The football pair the pill
-    // names is round vs previous ROUND — the model changes between them are their own history lines.
+    // names is the report's point vs the previous FOOTBALL point of the record — the model changes
+    // between them are their own history lines. MD.movers.core.footballPair resolves both ends and
+    // names them: "Round 24 vs Round 23" in season, "Grand Final vs Finals Week 4" in September.
+    // This used to take max(rounds < submitted_round), which in finals printed "Round 29 vs Round
+    // 28" — two rounds that are on no fixture.
     const cur = rep.submitted_round != null ? rep.submitted_round : rep.current_round;
-    const priorRounds = rounds.map(Number).filter(function (n) { return !isNaN(n) && n < Number(cur); });
-    const prev = priorRounds.length ? Math.max.apply(null, priorRounds) : rep.previous_round;
-    _rd = { _round: cur, _prev: prev };
+    const core = (MD.movers && MD.movers.core) || null;
+    const pair = (core && core.footballPair) ? core.footballPair(mv, rep) : null;
+    _rd = {
+      _round: pair ? pair.to : cur, _prev: pair ? pair.from : rep.previous_round,
+      _roundLabel: pair ? pair.toLabel : ("Round " + cur),
+      _prevLabel: pair ? pair.fromLabel : ("Round " + rep.previous_round),
+    };
     rep.players.forEach(function (r) {
       if (r.key) _rd[r.key] = { d: r.value_change, prev: r.prev_value, cur: r.cur_value };
     });
     return _rd;
   }
+  /* the pill's tooltip, shared with the card's Round Δ cell so the two cannot name different pairs. */
+  function roundDeltaTitle() {
+    const rd = roundDeltas();
+    return rd ? (rd._roundLabel + " vs " + rd._prevLabel) : "no weekly report";
+  }
   function roundDeltaPill(p) {
     const rd = roundDeltas();
     const r = rd && rd[p.key];
     if (!r || r.d == null) return '<span class="pill na">—</span>';
-    return '<span class="pill ' + fmt.cls(r.d) + '" title="Round ' + rd._round + " vs Round " +
-      rd._prev + '">' + fmt.signed(r.d) + "</span>";
+    return '<span class="pill ' + fmt.cls(r.d) + '" title="' + fmt.esc(roundDeltaTitle()) + '">' +
+      fmt.signed(r.d) + "</span>";
   }
 
   /* per-club aggregate over the visible pool (for the single-club banner rank). */
@@ -435,7 +448,7 @@ MD.board = (function () {
   return { render: render, focusClub: focusClub,
            snapshot: snapshot, restore: restore,
            cohortYear: cohortYear, ageMatches: ageMatches, eligMatches: eligMatches,
-           roundDeltas: roundDeltas, AGE_BANDS: AGE_BANDS,
+           roundDeltas: roundDeltas, roundDeltaTitle: roundDeltaTitle, AGE_BANDS: AGE_BANDS,
            // display-only, exported for the suites: the exact pathway markup the board ships.
            pathwayCell: pathwayCell, SUMMARY_METRICS: SUMMARY_METRICS };
 })();
