@@ -14,12 +14,12 @@
  },
  "identities": {
   "moves": [
-   "engine_head",
-   "rl_model",
    "board"
   ],
   "unmoved": [
    "store",
+   "engine_head",
+   "rl_model",
    "fv",
    "config",
    "register",

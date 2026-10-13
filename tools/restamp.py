@@ -289,7 +289,10 @@ def apply(root):
             raise SystemExit(out[-1200:])
 
     if 'club_valuation' in stale:
-        rc, out = _run(root, [sys.executable, 'ui/tools/ingest_inputs.py'])
+        # --clubs-only: the picks bundle re-stamp ONLY. The bare invocation is the FULL ingest, whose step 0
+        # applies the owner's locations sheet to the store — on 2026-10-13 that couriered 15 AFL-club changes
+        # into the store as a side effect of a re-stamp. A re-stamp never writes the store.
+        rc, out = _run(root, [sys.executable, 'ui/tools/ingest_inputs.py', '--clubs-only'])
         print('  club_valuation    ingest_inputs.py: %s' % ('OK' if rc == 0 else 'FAILED'))
         if rc != 0:
             raise SystemExit(out[-1200:])
