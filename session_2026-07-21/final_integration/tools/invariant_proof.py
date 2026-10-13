@@ -97,7 +97,7 @@ loses nothing per-push. See that file's header.
 Emits machine-readable evidence (invariant_proof.json) + PASS/FAIL. Exit non-zero if any GATING check
 fails: the per-push lane by default, both lanes under --adoption.
 """
-import os, sys, json, hashlib, subprocess
+import os, sys, json, hashlib, subprocess, tempfile
 
 ROOT = os.environ.get('RL_REPO') or os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
 FINAL = os.path.join(ROOT, 'data', 'rl_build', 'rl_app_data.json')
@@ -363,7 +363,12 @@ def main():
                           'vP2_changed': len(ch2), 'present_v_moved': pv_mov, 'missing': len(miss),
                           'added': len(addf), 'oracle': 'Board B 1f10220c (SUPERSEDED R14; not an R19 oracle)'},
               'deferred': DEFERRED, 'checks': R}
-    out = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'evidence', 'invariant_proof.json'))
+    # A GATE MUST NOT WRITE INTO THE TREE IT IS GATING: this used to rewrite the tracked
+    # evidence/invariant_proof.json on every CI run. Default is a scratch dir; set PROOF_EVIDENCE_DIR
+    # to refresh a real evidence directory on purpose. (Not RL_-prefixed — config_manifest.enforce()
+    # rejects unknown RL_* variables as model overrides.)
+    out = os.path.join(os.environ.get('PROOF_EVIDENCE_DIR') or tempfile.mkdtemp(prefix='invariant_proof_'),
+                       'invariant_proof.json')
     os.makedirs(os.path.dirname(out), exist_ok=True)
     json.dump(result, open(out, 'w'), indent=2, sort_keys=True)
     print("\nfinal board md5=%s sha256=%s" % (ident['md5'], ident['sha256'][:16] + '...'))

@@ -8,6 +8,7 @@ generated, no file written). The heavy end-to-end apply is the catch-up proof
 Run:  python3 engine/rl_after/ingestion/test_catchup_preflight.py     (or under pytest)
 Exit 0 = PASS.
 """
+import json
 import os
 import sys
 
@@ -41,7 +42,12 @@ def test_preflight_clean_with_overrides():
     cu = RC.RoundCatchup(REPO, FILES)
     report, rounds = cu.preflight()
     assert report['clean'], report['halt_reasons']
-    assert set(report['identity_override_names']) == {'Callum Brown', 'Bailey Williams'}
+    # The names the preflight reports are exactly the names the owner's overrides file declares.
+    # (A literal set here went stale every time the owner ruled on a new name — 2 names became 6.)
+    with open(RC.DEFAULT_OVERRIDES) as f:
+        declared = {o['name'] for o in json.load(f)['overrides']}
+    assert set(report['identity_override_names']) == declared, (report['identity_override_names'], declared)
+    assert {'Callum Brown', 'Bailey Williams'} <= declared   # the two R15-R19 fixture rulings are still there
     # no unresolved / ambiguous / duplicate anywhere
     for rd in report['rounds']:
         assert not rd['unresolved'] and not rd['ambiguous'] and not rd['duplicate_keys'], rd['round']
