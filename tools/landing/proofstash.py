@@ -18,7 +18,9 @@ DISCIPLINE:
     guard at the call sites).
   * The key covers every measurable identity the build READS (everything in PIN_MEASURERS that
     the act does not declare as moving) plus the spec's prereg block and the act name — any
-    input moving misses the cache and the full proof runs.
+    input moving misses the cache and the full proof runs. Since Phase 0.5 (2026-10-13) it also
+    covers the build inputs PIN_MEASURERS never did: data/season_state.json, the pinned sitter
+    sheet and the three surface pickles (`BUILD_INPUT_FILES`, `_build_inputs`).
   * Entries are content-addressed and verified on load (each stashed file's md5 is recorded and
     re-hashed); a corrupt entry is discarded, never trusted.
 """
@@ -40,6 +42,48 @@ def _md5_bytes(b):
     return hashlib.md5(b).hexdigest()
 
 
+#: THE KEY SCHEMA. Bumped whenever what the key covers changes, so every stash written under the
+#: old coverage misses rather than confirms. 2 = Phase 0.5 (2026-10-13), `_build_inputs` added.
+KEY_SCHEMA = 2
+
+#: Inputs the build READS that PIN_MEASURERS does not cover, each md5'd into both keys (Phase 0.5,
+#: 2026-10-13). Before this the sitter sheet and season_state.json were outside the key, so a cached
+#: board could "confirm" a prediction made against a sheet or a season state that had since moved.
+#: The sheet is whichever file data/sheet_pins.json names; the three pickles are the surfaces the
+#: build loads (v0surf is also a PIN_MEASURERS entry — it is repeated here so it is in the key even
+#: when the act declares it as moving).
+BUILD_INPUT_FILES = ('data/season_state.json', 'data/q97m.pkl', 'data/cm_400.pkl', 'data/v0surf.pkl')
+SHEET_PINS = 'data/sheet_pins.json'
+
+
+def _md5_file(path):
+    try:
+        with open(path, 'rb') as f:
+            return _md5_bytes(f.read())
+    except OSError:
+        return '<absent>'
+
+
+def _build_inputs(ctx):
+    """{rel: md5} for every file in BUILD_INPUT_FILES plus the pinned sitter sheet, read from
+    ctx.root. An absent file hashes as '<absent>', which is still an identity — a build that read
+    nothing where a sheet should be is not the build that read the sheet."""
+    out = {}
+    for rel in BUILD_INPUT_FILES:
+        out[rel] = _md5_file(os.path.join(ctx.root, rel))
+    sheet = None
+    try:
+        with open(os.path.join(ctx.root, SHEET_PINS), encoding='utf-8') as f:
+            sheet = (json.load(f) or {}).get('sheet_path')
+    except (OSError, ValueError):
+        pass
+    if sheet:
+        out['sheet:' + sheet] = _md5_file(os.path.join(ctx.root, sheet))
+    else:
+        out['sheet:<unpinned>'] = '<absent>'
+    return out
+
+
 def build_key(ctx):
     """The input-identity key for a build proof: every PIN_MEASURERS identity the act declares
     UNMOVED (the build's inputs), the prereg block verbatim, and the act name."""
@@ -53,9 +97,9 @@ def build_key(ctx):
             inputs[k] = str(fn(ctx))
         except Exception:
             inputs[k] = '<unmeasurable>'
-    basis = {'inputs': inputs, 'prereg': ctx.spec.get('prereg'),
+    basis = {'inputs': inputs, 'build_inputs': _build_inputs(ctx), 'prereg': ctx.spec.get('prereg'),
              'act': ctx.spec.get('act'), 'act_kind': ctx.spec.get('act_kind'),
-             'day0_rebase': ctx.spec.get('day0_rebase')}
+             'day0_rebase': ctx.spec.get('day0_rebase'), 'key_schema': KEY_SCHEMA}
     return hashlib.sha256(json.dumps(basis, sort_keys=True).encode()).hexdigest()[:24]
 
 
@@ -76,7 +120,8 @@ def sibling_key(ctx):
             inputs[k] = str(fn(ctx))
         except Exception:
             inputs[k] = '<unmeasurable>'
-    basis = {'inputs': inputs, 'act': ctx.spec.get('act'), 'act_kind': ctx.spec.get('act_kind')}
+    basis = {'inputs': inputs, 'build_inputs': _build_inputs(ctx), 'act': ctx.spec.get('act'),
+             'act_kind': ctx.spec.get('act_kind'), 'key_schema': KEY_SCHEMA}
     return hashlib.sha256(json.dumps(basis, sort_keys=True).encode()).hexdigest()[:24]
 
 

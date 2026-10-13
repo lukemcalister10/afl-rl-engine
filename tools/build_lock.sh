@@ -128,8 +128,11 @@ build_lock_acquire() {
     local tag="${1:-unnamed}" timeout="${2:-$BUILD_LOCK_TIMEOUT}"
 
     if [ "${BUILD_LOCK:-1}" = "0" ]; then
-        echo "build-lock: SKIPPED by BUILD_LOCK=0 (tag=$tag). This build is NOT interlocked;" \
-             "if another engine act is live against the shared workspace, both results are void."
+        # LOUD, EVERY TIME IT IS HONOURED, and on stderr as well as stdout: a silent skip is a
+        # sandbox flag nobody notices on a live tree (Phase 0.5, 2026-10-13).
+        local warn="WARNING: build-lock SKIPPED by BUILD_LOCK=0 (tag=$tag) — this build is NOT interlocked. If another engine act is live against the shared workspace, both results are void. Unset BUILD_LOCK unless this is a sandbox."
+        echo "$warn"
+        echo "$warn" >&2
         return 0
     fi
 
