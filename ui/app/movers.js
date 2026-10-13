@@ -921,11 +921,23 @@ function ovApply(report) {
       // post-restructure board) are equally selectable; the tab no longer assumes a fixed series.
       function pointSel(which, selected) {
         const sel = fmt.el("select", "boardsel");
+        let found = false;
         pts.forEach(function (p) {
           const o = fmt.el("option", "", pointLabel(b, p));
-          o.value = String(p.id); if (String(p.id) === String(selected)) o.selected = true;
+          o.value = String(p.id); if (String(p.id) === String(selected)) { o.selected = true; found = true; }
           sel.appendChild(o);
         });
+        // THE SELECT NEVER LIES (2026-10-13): the pair on screen is the pair in the selects. In the
+        // window after a model change the default is a retro pair, which the all-in universe does
+        // not list — the select then showed its first option while the table showed r28 -> r29. The
+        // selected point is always an option, whatever universe the reader chose.
+        if (!found && selected != null) {
+          const extra = core.allPoints(b).filter(function (p) { return String(p.id) === String(selected); })[0];
+          if (extra) {
+            const o = fmt.el("option", "", pointLabel(b, extra));
+            o.value = String(extra.id); o.selected = true; sel.appendChild(o);
+          }
+        }
         sel.addEventListener("change", function () {
           state[which] = sel.value; state.sort = null; render(MD.__moversHolder);
         });

@@ -724,37 +724,50 @@ section('PHASE 0.2 BUG 1 — the Movers tab opens on the newest week BY NAME');
    the strip read "To R29", and the baseline read "R24 · post-model" for a week of football. The
    property: `to` is the id of the point whose board the newest report produced, that id is an
    option of the To select and is the selected one, and the strip names both ends by the week. */
+/* TWO LAWFUL SHAPES (RULEBOOK P4; restated 2026-10-13 when an engine act landed on top of the Grand
+   Final): when the newest STORED point is football (a report produced its board) the default pair is
+   that report's baseline -> that point, named by the week. In the window after a model change the
+   default is the newest one-round RETRO pair. In both: the selects show exactly the pair on screen. */
+await page.evaluate(() => MD.universe.setMode(MD.universe.CURRENT));
 await go('movers');
 const MV = await page.evaluate(() => {
   const b = window.__MATCHDAY_MOVERS__, core = MD.movers.core, st = MD.movers._state;
   const newest = b.reports[String(b.rounds[b.rounds.length - 1])];
+  const stored = b.points.filter(p => p.kind !== 'retro');
+  const newestStored = stored[stored.length - 1];
+  const football = !!newestStored && String(newestStored.board) === String(newest.board_md5_after);
   const toPt = b.points.find(p => p.kind !== 'retro' && p.board && p.board === newest.board_md5_after)
             || b.points.find(p => String(p.id) === String(newest.submitted_round));
+  const retro = b.points.filter(p => p.kind === 'retro').map(p => String(p.id));
   const sels = [...document.querySelectorAll('.moversbar select.boardsel')];
   const sel = s => ({ value: s.value, text: s.options[s.selectedIndex] ? s.options[s.selectedIndex].text : null,
                       has: [...s.options].some(o => o.value === s.value) });
   const cells = [...document.querySelectorAll('.moversmeta .num')].map(e => e.textContent.trim());
   const lbls = [...document.querySelectorAll('.moversmeta .lbl')].map(e => e.textContent.trim().toLowerCase());
   const at = l => cells[lbls.indexOf(l)];
-  return { to: st.to, from: st.from, wantTo: toPt && String(toPt.id), wantFrom: String(newest.previous_round),
-           toName: core.finalsName(toPt && toPt.id) || ('Round ' + newest.submitted_round),
-           fromName: core.pointName(b, newest.previous_round, false),
+  return { football, to: st.to, from: st.from,
+           wantTo: football ? (toPt && String(toPt.id)) : retro[retro.length - 1],
+           wantFrom: football ? String(newest.previous_round) : retro[retro.length - 2],
+           toName: core.pointName(b, st.to, false), fromName: core.pointName(b, st.from, false),
            selTo: sel(sels[1]), selFrom: sel(sels[0]), stripTo: at('to'), stripBase: at('baseline'),
            strip: document.querySelector('.moversmeta').innerText, newestIsFinals: !!newest.finals_week,
-           stored: !MD.movers.core.compare(b, st.from, st.to).synthetic };
+           stored: !MD.movers.core.compare(b, st.from, st.to).synthetic,
+           ownPairStored: !MD.movers.core.compare(b, String(newest.previous_round), String(toPt && toPt.id)).synthetic };
 });
-check(MV.wantTo && MV.to === MV.wantTo && MV.from === MV.wantFrom,
-  'bug 1 — the default pair ends on the POINT the newest report produced, not on the report key', JSON.stringify([MV.from, MV.to]));
+check(MV.to === MV.wantTo && MV.from === MV.wantFrom,
+  'bug 1 — the default pair is ' + (MV.football ? 'the newest report\'s baseline -> the point it produced' : 'the newest one-round retro pair (a model change is the newest stored point)'),
+  JSON.stringify([MV.from, MV.to, MV.wantFrom, MV.wantTo]));
 check(MV.selTo.has && MV.selTo.value === MV.to && MV.selTo.text === MV.toName,
-  'bug 1 — the To <select> has that point and shows it selected, by its week name', JSON.stringify(MV.selTo));
-check(MV.selFrom.has && MV.selFrom.value === MV.from,
-  'bug 1 — the From <select> shows the report\'s baseline point selected', JSON.stringify(MV.selFrom));
+  'bug 1 — the To <select> has the pair\'s end and shows it selected, by its name', JSON.stringify(MV.selTo));
+check(MV.selFrom.has && MV.selFrom.value === MV.from && MV.selFrom.text === MV.fromName,
+  'bug 1 — the From <select> shows the pair\'s baseline selected, by its name', JSON.stringify(MV.selFrom));
 check(MV.stripTo === MV.toName && MV.stripBase === MV.fromName,
-  'bug 1 — the strip reads the week names: To ' + MV.toName + ' · baseline ' + MV.fromName,
+  'bug 1 — the strip names both ends as the selects do: To ' + MV.toName + ' · baseline ' + MV.fromName,
   'got To ' + MV.stripTo + ' · baseline ' + MV.stripBase);
 check(MV.newestIsFinals && !/post-model/.test(MV.strip) && !/\bR2[5-9]\b/.test(MV.strip),
   'bug 1 — a football pair never reads "post-model" and never names a feed round as "R29"', MV.strip.replace(/\n/g, ' '));
-check(MV.stored, 'bug 1 — the pair still resolves to the STORED report (played/DNP facts), not a synthetic diff');
+check(MV.football ? MV.stored : MV.ownPairStored,
+  'bug 1 — the newest report\'s own pair resolves to the STORED report (played/DNP facts), not a synthetic diff');
 
 /* ------------------------------------------------------------------ no runtime errors anywhere */
 section('RUNTIME');
