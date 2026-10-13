@@ -1536,6 +1536,68 @@
    ],
    "invariants": {},
    "_measured_note": "moved/unchanged are MEASURED by tools/landing (steps._measure_sides), not asserted: every `source` identity is re-hashed from the committed tree at b91f77c via git show, every `destination` identity from the live tree, and each side is cross-checked against THAT TREE'S OWN data/expected_boot.json before the entry is composed."
+  },
+  {
+   "_doc": "docs/evidence/engine_lens_anchor_level_kernel_2026-10-13/NOTE.md",
+   "kind": "movers_release_transition",
+   "schema_version": 2,
+   "owner_approved": true,
+   "owner_ruling_id": [
+    "LENS_ANCHOR_2026-10-13",
+    "LEVEL_KERNEL_2026-10-13"
+   ],
+   "owner_ruling": "The +1/+2 views treat seasons not yet played as unplayed, not absent; a single score moves a value along a ramp, not a cliff.",
+   "authority": "owner word 2026-10-13",
+   "applies_to": {
+    "bundle": "ui/data/movers.js",
+    "boundary": [
+     "24",
+     "lens-anchor-level-kernel-13-10"
+    ]
+   },
+   "source": {
+    "release_version": "v2.11-final-rc1-PROVISIONAL",
+    "board": "6541dc1438bf7a8c3f1f7c9bcfcfaf10",
+    "store": "68bd9396c1c3eb7befd6a2dff76f5aaa",
+    "rl_model": "c8b662e64235b27cd5f709388e35f4ef",
+    "engine_head": "0fe52264ff9c409ab7ae158e447dfdea",
+    "fv": "123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345",
+    "config": "d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4",
+    "register": "652d83e87780e415a01a2de6d8b3cc57",
+    "balanced_board_md5": "37aa11485442c65ae8bf0bc270cbc43b",
+    "v0surf": "d9f5d15d9606edcdd5708233197dd951",
+    "as_of_round": 24
+   },
+   "destination": {
+    "release_version": "v2.11-final-rc1-PROVISIONAL",
+    "board": "769eb79e6a70cd0417519d33de1bc8ff",
+    "store": "68bd9396c1c3eb7befd6a2dff76f5aaa",
+    "rl_model": "c8b662e64235b27cd5f709388e35f4ef",
+    "engine_head": "0fe52264ff9c409ab7ae158e447dfdea",
+    "fv": "123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345",
+    "config": "d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4",
+    "register": "652d83e87780e415a01a2de6d8b3cc57",
+    "balanced_board_md5": "37aa11485442c65ae8bf0bc270cbc43b",
+    "v0surf": "d9f5d15d9606edcdd5708233197dd951",
+    "as_of_round": 24
+   },
+   "moved_by_transition": [
+    "board"
+   ],
+   "unchanged_across_transition": [
+    "as_of_round",
+    "balanced_board_md5",
+    "config",
+    "engine_head",
+    "fv",
+    "register",
+    "release_version",
+    "rl_model",
+    "store",
+    "v0surf"
+   ],
+   "invariants": {},
+   "_measured_note": "moved/unchanged are MEASURED by tools/landing (steps._measure_sides), not asserted: every `source` identity is re-hashed from the committed tree at 28179b2 via git show, every `destination` identity from the live tree, and each side is cross-checked against THAT TREE'S OWN data/expected_boot.json before the entry is composed."
   }
  ]
 }
