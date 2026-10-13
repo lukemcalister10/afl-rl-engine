@@ -5,57 +5,7 @@
   "_probe_contract": "EVERY STEP ENTRY MUST CARRY A PROBE, AND THE PROBE IS THE EXPIRY. A carrier entry expires for free — the carrier becomes coherent and the entry stops matching. A step entry cannot: nothing about a committed workflow file says whether its step still fails. The acceptance criterion this extension was built to (REVIEW_COLD_OPUS.md O1, verbatim): 'a workflow-step entry expires when its step stops failing.' So `probe.argv` is the command that asks the step whether it is still broken, `probe.match` is the recorded failure signature, and the runner reads four answers: the probe still fails with that signature (LIVE, the ruling stands); the probe SUCCEEDS (EXPIRED -> FAIL, retire the entry); the probe fails some OTHER way (DRIFTED -> FAIL, re-adjudicate); or a `heavy` probe has not been re-measured inside its own `probe_max_age_days` window (UNPROBED -> FAIL, nobody has looked). A probe must never write to the tree it measures — see tools/probe_bundle_equality.py for why that had to be said out loud.",
   "_self_expiry": "EVERY ENTRY IS SELF-EXPIRING AND THE RUNNER ENFORCES IT. An entry applies only while the drift it describes is still measurable. The moment the carrier becomes coherent — or, for a step entry, the moment its probe stops failing — the entry stops matching and the runner FAILS on the stale entry itself ('stale RULED-RED — retire this entry'). That is deliberate. A known-red list that has quietly stopped matching reality is the panel-10/10 failure mode all over again — the estate has retired four instruments for exactly that (the panel 10/10, the movers 'exactly two known-reds', the R14 fixture config pin, BOARD_MD5_GOOD). This ledger is built so it cannot become the fifth. It has already fired once in anger: see the R2 entry in `retired` below, which the runner demanded be retired within an hour of being written, because the fork it recorded was repaired upstream while this order was being built.",
   "_how_to_add": "An entry may be added ONLY when the fork is already presented in writing to the owner or supervisor, and `presented` must name the document that presents it. A red that is merely inconvenient, or that a seat believes is fine, is a FAIL. RULED-RED is not a snooze button — a drift nobody has presented reds the run, and that is the whole point. A red the record calls a one-line repair is REPAIRED, not entered here: PLAN_v6 1f carries all three recorded one-liners for exactly that reason.",
-  "entries": [
-    {
-      "id": "R15-ladder-proof-GFWD",
-      "steps": [
-        "script::session_2026-07-21/final_integration/tests/r15_ladder_survival_proof.py"
-      ],
-      "reason": "the proof HALTS at engine-import time with KeyError: 'GFWD' in rl_model.py:71 _pos_present, before any assertion of its own is reached. GFWD is a PRE-item-262 position code (migrate_positions.py maps GFWD -> SF, 2026-07-29); the disposable R14 scratch the proof materialises still carries the legacy vocabulary the live engine no longer knows. Proved PRE-EXISTING by running the same proof from a clean worktree at 2991740 — before any of that day's edits — for the identical traceback.",
-      "presented": "docs/evidence/f5_and_sort_2026-08-20/FINAL_STATE.md §3 (referred, not repaired) · docs/evidence/backrows_reseal_2026-08-20/FINAL_STATE.md item 9 · PLAN_v6.md 1a legacy-estate triage",
-      "register": "RETIRED FROM CI by owner word 2026-07-30 (#274) — final-integration.yml still names it in the retirement comment. It is therefore keyed as a script, not a workflow step: it is a proof in the tree that cannot run, not a red job.",
-      "expires_when": "the scratch fixture's position vocabulary is migrated (item 262's map applied to the R14 materialisation), or the proof is retired from the tree. Nobody has ruled on which.",
-      "probe": {
-        "argv": [
-          "python3",
-          "session_2026-07-21/final_integration/tests/r15_ladder_survival_proof.py"
-        ],
-        "match": "KeyError: 'GFWD'",
-        "cost": "cheap",
-        "timeout_s": 300
-      }
-    },
-    {
-      "id": "CG1-one-source-selftest-residual",
-      "steps": [
-        "ci-guards.yml::Guards 1/2/3/5 + F1/F2 parity (one_source_selftest.py)"
-      ],
-      "reason": "the estate's central single-source guard suite runs 139 assertions and 15 still FAIL after M1a's F1 lens repair took it from 123/16 to 124/15. The F1 numeraire red — the one the repair owned — is GONE and was proved non-vacuous (a 1-point board perturbation still fires it). The residual 15 are a separate, un-audited population that nobody has attributed.",
-      "presented": "docs/proposals/process_plan/PLAN_v6.md 1a:47-53 ('ci-guards' recorded red (one_source_selftest)') · REVIEW_COLD_OPUS.md F4 quoting register v787: 'ci-guards RED (build/Guard5/ruling/manifest all pass; one_source_selftest 13/139)'",
-      "expires_when": "the residual 15 are attributed and repaired, or ruled individually. A suite-level entry is the coarsest honest key available until somebody enumerates them.",
-      "probe": {
-        "argv": [
-          "bash",
-          "-c",
-          "cd /home/claude/rl_workspace/rl_after && PYTHONPATH=/home/claude/rl_workspace/rl_after:/home/claude/rl_vendor python3 one_source_selftest.py"
-        ],
-        "match": "SELF-TEST FAILED",
-        "cost": "heavy",
-        "last_probed": "2026-09-24",
-        "last_result": "SELF-TEST FAILED: 17 check(s), 121 PASS — re-measured 2026-09-24 on a freshly bootstrapped workspace (was 124/15 on 2026-08-20). 12 of the 17 are the #326 pool-level checks: \"0 of N live entrants re-price when the level moves\". They fail IDENTICALLY with the new prediction cache emptied before every price (harness pass, same process), so they predate it — pool value was retired from pricing. The rest: two file-mode checks and the s4_matrix stamp (workspace artefacts), the book numeraire display (the book is stale against the board), LEG A fade.",
-        "probe_max_age_days": 30,
-        "timeout_s": 900,
-        "_why_heavy": "the suite needs a bootstrapped workspace AND a board built from it — ci-guards.yml runs it only after setup_env.sh + bootstrap.sh + rl_export.py + s4_matrix. It cannot run on a bare checkout, so it cannot run on every runner invocation, so the ledger demands a DATED measurement instead and reds when the date leaves the window.",
-        "env": {
-          "PYTHONPATH": "/home/claude/rl_workspace/rl_after:/home/claude/rl_vendor",
-          "RL_CONFIG_MODE": "gate",
-          "PYTHONHASHSEED": "0"
-        },
-        "_probe_environment": "MEASURED 2026-08-20, with ACCEPT_HEAVY_PROBES=1 on the P1 box: the probe reports DRIFTED here, because /home/claude/rl_workspace is the STALE shared workspace (pre-D8 engine, pre-R23 store) and the suite dies at import on a missing vendor module before printing its 'suite:' summary line. That is the ledger working: the signature really is absent, and a probe that cannot start must not be read as a probe that failed the recorded way. The env above mirrors ci-guards.yml's step exactly; the suite still needs bootstrap.sh + a board built from it, which no P1 act will do on a shared box other seats are live against (M1a refused the same thing for the same reason). Hence cost=heavy and a DATED measurement, and hence the runner does NOT run heavy probes unless ACCEPT_HEAVY_PROBES=1 is set deliberately.",
-        "_2026_09_24_fixes": "The probe could never match on a real run: its match string was \"suite:\", which this suite never prints (it prints \"SELF-TEST FAILED: N check(s)\"), and its argv lacked the vendored unidecode on PYTHONPATH, so it died on import. Both fixed; the measurement above used the corrected command."
-      }
-    }
-  ],
+  "entries": [],
   "retired": [
     {
       "id": "R2-release-contract-code-identities",
@@ -114,6 +64,61 @@
       },
       "retired": "2026-09-24",
       "retired_because": "Its own expiry condition was met: \"one writer owns the release block\". ui/tools/extract_board_view.py now writes stamp.release itself (via round_movers.release_identity), so a fresh extraction reproduces BOTH committed bundles byte-exact — probe_bundle_equality exits 0 (559128 + 132985 bytes). Found during the 2026-09-24 ingest review: tools/restamp.py ran the extractor alone and shipped release:null, the same trap the lander papered over with a second writer."
+    },
+    {
+      "id": "R15-ladder-proof-GFWD",
+      "steps": [
+        "script::session_2026-07-21/final_integration/tests/r15_ladder_survival_proof.py"
+      ],
+      "reason": "the proof HALTS at engine-import time with KeyError: 'GFWD' in rl_model.py:71 _pos_present, before any assertion of its own is reached. GFWD is a PRE-item-262 position code (migrate_positions.py maps GFWD -> SF, 2026-07-29); the disposable R14 scratch the proof materialises still carries the legacy vocabulary the live engine no longer knows. Proved PRE-EXISTING by running the same proof from a clean worktree at 2991740 — before any of that day's edits — for the identical traceback.",
+      "presented": "docs/evidence/f5_and_sort_2026-08-20/FINAL_STATE.md §3 (referred, not repaired) · docs/evidence/backrows_reseal_2026-08-20/FINAL_STATE.md item 9 · PLAN_v6.md 1a legacy-estate triage",
+      "register": "RETIRED FROM CI by owner word 2026-07-30 (#274) — final-integration.yml still names it in the retirement comment. It is therefore keyed as a script, not a workflow step: it is a proof in the tree that cannot run, not a red job.",
+      "expires_when": "the scratch fixture's position vocabulary is migrated (item 262's map applied to the R14 materialisation), or the proof is retired from the tree. Nobody has ruled on which.",
+      "probe": {
+        "argv": [
+          "python3",
+          "session_2026-07-21/final_integration/tests/r15_ladder_survival_proof.py"
+        ],
+        "match": "KeyError: 'GFWD'",
+        "cost": "cheap",
+        "timeout_s": 300
+      },
+      "retired_on": "2026-10-13",
+      "retired_because": "RETIRED 2026-10-13 (CI Phase 0.1). The proof this entry keyed, session_2026-07-21/final_integration/tests/r15_ladder_survival_proof.py, is DELETED from the tree - the second branch of this entry's own expires_when. It had been unwired from CI since 2026-07-30 (#274) and could not run (KeyError: 'GFWD'), so the entry's only remaining effect was to red the host-insensitive runner on every GitHub push: its probe needs vendor/unidecode on PYTHONPATH, which the composite action never set, so on a bare runner the probe died at import and the ledger reported DRIFTED instead of LIVE. RULEBOOK P7, the law behind this ledger, was retired 2026-10-13.",
+      "_note": "Retired in the same act that deleted its subject. `retired` is never read by known_red.py - only `entries` is - so this can never go on excusing a red."
+    },
+    {
+      "id": "CG1-one-source-selftest-residual",
+      "steps": [
+        "ci-guards.yml::Guards 1/2/3/5 + F1/F2 parity (one_source_selftest.py)"
+      ],
+      "reason": "the estate's central single-source guard suite runs 139 assertions and 15 still FAIL after M1a's F1 lens repair took it from 123/16 to 124/15. The F1 numeraire red — the one the repair owned — is GONE and was proved non-vacuous (a 1-point board perturbation still fires it). The residual 15 are a separate, un-audited population that nobody has attributed.",
+      "presented": "docs/proposals/process_plan/PLAN_v6.md 1a:47-53 ('ci-guards' recorded red (one_source_selftest)') · REVIEW_COLD_OPUS.md F4 quoting register v787: 'ci-guards RED (build/Guard5/ruling/manifest all pass; one_source_selftest 13/139)'",
+      "expires_when": "the residual 15 are attributed and repaired, or ruled individually. A suite-level entry is the coarsest honest key available until somebody enumerates them.",
+      "probe": {
+        "argv": [
+          "bash",
+          "-c",
+          "cd /home/claude/rl_workspace/rl_after && PYTHONPATH=/home/claude/rl_workspace/rl_after:/home/claude/rl_vendor python3 one_source_selftest.py"
+        ],
+        "match": "SELF-TEST FAILED",
+        "cost": "heavy",
+        "last_probed": "2026-09-24",
+        "last_result": "SELF-TEST FAILED: 17 check(s), 121 PASS — re-measured 2026-09-24 on a freshly bootstrapped workspace (was 124/15 on 2026-08-20). 12 of the 17 are the #326 pool-level checks: \"0 of N live entrants re-price when the level moves\". They fail IDENTICALLY with the new prediction cache emptied before every price (harness pass, same process), so they predate it — pool value was retired from pricing. The rest: two file-mode checks and the s4_matrix stamp (workspace artefacts), the book numeraire display (the book is stale against the board), LEG A fade.",
+        "probe_max_age_days": 30,
+        "timeout_s": 900,
+        "_why_heavy": "the suite needs a bootstrapped workspace AND a board built from it — ci-guards.yml runs it only after setup_env.sh + bootstrap.sh + rl_export.py + s4_matrix. It cannot run on a bare checkout, so it cannot run on every runner invocation, so the ledger demands a DATED measurement instead and reds when the date leaves the window.",
+        "env": {
+          "PYTHONPATH": "/home/claude/rl_workspace/rl_after:/home/claude/rl_vendor",
+          "RL_CONFIG_MODE": "gate",
+          "PYTHONHASHSEED": "0"
+        },
+        "_probe_environment": "MEASURED 2026-08-20, with ACCEPT_HEAVY_PROBES=1 on the P1 box: the probe reports DRIFTED here, because /home/claude/rl_workspace is the STALE shared workspace (pre-D8 engine, pre-R23 store) and the suite dies at import on a missing vendor module before printing its 'suite:' summary line. That is the ledger working: the signature really is absent, and a probe that cannot start must not be read as a probe that failed the recorded way. The env above mirrors ci-guards.yml's step exactly; the suite still needs bootstrap.sh + a board built from it, which no P1 act will do on a shared box other seats are live against (M1a refused the same thing for the same reason). Hence cost=heavy and a DATED measurement, and hence the runner does NOT run heavy probes unless ACCEPT_HEAVY_PROBES=1 is set deliberately.",
+        "_2026_09_24_fixes": "The probe could never match on a real run: its match string was \"suite:\", which this suite never prints (it prints \"SELF-TEST FAILED: N check(s)\"), and its argv lacked the vendored unidecode on PYTHONPATH, so it died on import. Both fixed; the measurement above used the corrected command."
+      },
+      "retired_on": "2026-10-13",
+      "retired_because": "RETIRED 2026-10-13 (CI Phase 0.1). The workflow step this entry keyed is DELETED with ci-guards.yml: that job was cancelled at its 30-minute timeout against a ~25-minute board build on every push since 2026-08-20 and never reached one_source_selftest, so the 17-of-139 residual (re-measured by hand on 2026-09-24) was never a CI verdict. As a heavy probe with a 30-day window the entry would have gone UNPROBED on 2026-10-24 and reded CI on a date rather than a defect - the reason RULEBOOK P7 was retired 2026-10-13. The residual fails are NOT repaired by this retirement; they are simply no longer carried as a CI ruling.",
+      "_note": "Retired in the same act that deleted its subject. `retired` is never read by known_red.py - only `entries` is - so this can never go on excusing a red."
     }
   ]
 }

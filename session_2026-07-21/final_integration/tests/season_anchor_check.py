@@ -38,8 +38,8 @@ TWO ANCHORS OF DIFFERENT KINDS, deliberately kept apart.
      What that buys, per #251: the check survives the next round application without a human retyping a
      number (round and stamp both advance in the same commit), and a genuinely wrong derivation still reds
      — change the policy in season_state.py, move the store without re-deriving, or hand-edit a stamped
-     value, and the re-derivation stops matching. Proven both directions by
-     season_anchor_check_nonvacuity.py.
+     value, and the re-derivation stops matching. (The companion non-vacuity script that once
+     proved this was deleted 2026-10-13: it failed 9/11 against the live tree and caught nothing.)
 
 Run directly (`python3 season_anchor_check.py`) for PASS/FAIL + exit code, or call run() for the checks
 and the derived states.

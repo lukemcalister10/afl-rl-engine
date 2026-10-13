@@ -1,12 +1,51 @@
 name: Final Integration
 
-# Supervisor 2nd-review req 8: CI must INDEPENDENTLY RUN the generating tests behind every committed
-# evidence file — the committed JSON is not sufficient on its own. This workflow re-derives the release
-# state on the pinned runner and asserts: canonical switch-manifest closure + fail-closed, present/forward
-# invariants, F5 reconciliation, clean-room engine rebuild-equality (byte-identical board + UI bundles),
-# Round-14 season-state DERIVATION equality, stale calendar-progress + stale exposure-pace REJECTION,
-# unified 868-asset future ranking with no row caps, and a disposable Round-15 regeneration that preserves
-# the full future ladder + F5. Halt-not-warn: any step non-zero fails the run.
+# THE FAST PROOFS THAT ONLY THIS WORKFLOW RUNS (CI Phase 0.1, 2026-10-13).
+#
+# This workflow was red on every push from 2026-08-20 to 2026-10-13: its first real step ran a
+# hand-curated config inventory that did not know ~87 RL_* reads added since August, and nothing
+# below it ever ran. The 0.1 act deleted what caught nothing and kept what was shown to pass on a
+# checkout of this tree. What is left here is every fast check that is NOT already run by the
+# host-insensitive composite (manifests, contract, rulebook lint, the acceptance runner) or by
+# fv-provenance.yml (the pinned-env board rebuild + provenance red/green suite):
+#
+#   season-state      derivation / wiring / behaviour / stale rejection (season_progress_test),
+#                     fenced reads halt (season_state_fenced_test), the fixed R14 + current-round
+#                     anchors (season_anchor_check)
+#   board invariants  invariant_proof.py per-push lane (structural; released-baseline equality is
+#                     the adoption lane and gates at adoption, not here)
+#   UI                the extract / release / counting / club-curve / ownership / movers seams, and
+#                     the two Chromium suites (responsive layout, #222 item acceptance)
+#   bundles           a fresh extract reproduces both committed UI bundles byte-exact — measured in a
+#                     scratch dir (tools/probe_bundle_equality.py), never by rewriting ui/data
+#   Track B           the weekly-updater and catch-up preflight fast unit tests
+#
+# REMOVED 2026-10-13, and why (each verified before removal):
+#   config_inventory.py + release_state_failclosed_test.py   hand-curated RL_* classification, stale
+#                                                            since August; RESULT: FAIL on every push
+#   season_anchor_check_nonvacuity.py                        9/11 against the live tree
+#   acceptance_matrix.py                                     a July prose matrix that re-ran the two
+#                                                            deleted tests and wrote its verdict JSON
+#                                                            into the tracked tree
+#   asset_view_ui_check.mjs                                  asserts pick rows + a reconciliation panel
+#                                                            the UI de-bloat (225f9ac3, owner critique
+#                                                            2026-08-28) removed; 804 rows / 0 picks
+#   build_final_board.py + bootstrap.sh                      the ~25-minute clean-room board build;
+#                                                            fv-provenance.yml is the byte-identical
+#                                                            rebuild surface, and this one could not be
+#                                                            shown to pass on a bare runner
+#   the Board B fetch step                                   actions/checkout with fetch-depth 0 fetches
+#                                                            every branch, and 70ef0ff is the tip of
+#                                                            origin/codex/establish-forward-lens-acceptance;
+#                                                            invariant_proof.py still reads that blob,
+#                                                            so that branch must not be deleted
+#   the two "retired but kept" proofs                        r15_ladder_survival_proof.py and
+#                                                            season_advance_r14_r19_proof.py are deleted
+#                                                            from the tree (unwired since #274, could not
+#                                                            run)
+#
+# A GATE MUST NOT WRITE INTO THE TREE IT GATES. Every step below writes only to a scratch dir, and the
+# last step proves it: `git status --porcelain` must be empty when the job ends.
 
 on:
   push:
@@ -19,8 +58,8 @@ concurrency:
 jobs:
   # ------------------------------------------------------------------------------------------------
   # PLAN_v6 1a — THE HOST-INSENSITIVE FLOOR, on every push. Its own job, deliberately: it must give a
-  # verdict whether or not this workflow's heavy job can run at all, on any runner, with no shared
-  # workspace and no board build. Everything host-scoped stays exactly where it was, below.
+  # verdict whether or not this workflow's other job can run at all, on any runner, with no shared
+  # workspace and no board build.
   host-insensitive-gates:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
@@ -32,9 +71,8 @@ jobs:
 
   final-integration:
     runs-on: ubuntu-24.04
-    # The engine-build tail is heavy: clean-room rebuild + R15 ladder + the SEQUENTIAL R14->R19 advance
-    # (six full board builds) + Track B, on top of env provisioning. 90 min leaves headroom on a slow runner.
-    timeout-minutes: 90
+    # No board build any more: env provisioning + Chromium + a few minutes of fast checks.
+    timeout-minutes: 30
     env:
       RL_REPO: ${{ github.workspace }}
       CLAUDE_PROJECT_DIR: ${{ github.workspace }}
@@ -43,28 +81,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # History reads need real depth: invariant_proof.py + the clean-room driver do
-          # `git show 70ef0ff:…` (Board B — now the DEFERRED forward diagnostic only, vP1/vP2 MEASURED not
-          # gating), the R14 season-state step does `git show 93bd01af:…` (the R14 anchor store). A shallow
-          # checkout (the default depth 1) has neither. (The superseded R14 Board A f05ebe6 is no longer read;
-          # present-lens is gated against the committed reference_vector_5546f278 in BOTH tools.)
+          # History reads need real depth: season_anchor_check.py does `git show 93bd01af:…` (the R14
+          # anchor store) and invariant_proof.py does `git show 70ef0ff:…` (Board B, the DEFERRED
+          # forward diagnostic). fetch-depth 0 fetches every branch and tag, which is what makes the
+          # non-ancestor 70ef0ff resolvable without a fetch step of its own.
           fetch-depth: 0
-
-      - name: Fetch the Board B historical forward-diagnostic commit (comparison only; never a build input)
-        run: |
-          set -euo pipefail
-          # Board B (70ef0ff) is the tip of origin/codex/establish-forward-lens-acceptance and is NOT an
-          # ancestor of this branch, so fetch-depth:0 alone will not pull it. Fetch the immutable SHA so
-          # `git show 70ef0ff:…` resolves for the DEFERRED forward diagnostic (vP1/vP2 deltas — MEASURED,
-          # not gating; present-lens is gated against the committed reference_vector_5546f278, not Board B).
-          # It is read-only — not transplanted, not a build input — and the board_B JSON is deliberately
-          # absent from this branch's tree.
-          # Fetch by SHA (advertised branch tip); fall back to the branch ref if SHA-want is disabled.
-          BOARD_B_SHA=70ef0ff36ca7633aa4097a9b7c1a730013870abe
-          git fetch --no-tags origin "$BOARD_B_SHA" \
-            || git fetch --no-tags origin +refs/heads/codex/establish-forward-lens-acceptance:refs/remotes/origin/codex/establish-forward-lens-acceptance
-          git cat-file -e "$BOARD_B_SHA":session_2026-07-21/forward_lens_acceptance/board_B_lege1_legf1.json
-          echo "Board B (70ef0ff) forward-diagnostic blob is resolvable"
 
       - name: Pin Python 3.12.3
         uses: actions/setup-python@v5
@@ -88,6 +109,21 @@ jobs:
           bash setup_env.sh
           echo "$HOME/rl_venv312/bin" >> "$GITHUB_PATH"
 
+      - name: Seed engine absolute-path artifacts (vendored unidecode, frozen pkls, import-time board panel)
+        # The engine loads a few frozen artifacts by ABSOLUTE /home/claude/... path and reads
+        # /home/claude/rl_build/rl_app_data.json at IMPORT time (a diagnostic panel whose content does
+        # not affect anything, but the file must exist). Same seeding the deleted live-scoring job
+        # used for exactly these fast tests — read-only, no bootstrap, no Guard 5.
+        run: |
+          set -euo pipefail
+          mkdir -p /home/claude/rl_vendor /home/claude/rl_build
+          cp -rf vendor/unidecode /home/claude/rl_vendor/unidecode
+          for f in cm_400.pkl q97m.pkl v0surf.pkl; do
+            [ -f "data/$f" ] && cp -f "data/$f" "/home/claude/$f" || true
+          done
+          cp -f data/rl_build/rl_app_data.json /home/claude/rl_build/rl_app_data.json
+          echo "seeded /home/claude: $(ls /home/claude)"
+
       - name: Node + Playwright (Chromium) for the UI checks
         uses: actions/setup-node@v4
         with:
@@ -102,44 +138,24 @@ jobs:
           npx --yes playwright@1.47.2 install chromium
           echo "PLAYWRIGHT_CORE=$PWD/node_modules/playwright-core" >> "$GITHUB_ENV"
           CHROME="$(node -e "const {chromium}=require('playwright-core');console.log(chromium.executablePath())")"
-          # Belt-and-braces: if the pinned path is somehow absent, fall back to whatever chromium landed in
-          # the ms-playwright cache (playwright-core 1.47.2 drives any recent chromium over stable CDP).
           if [ ! -x "$CHROME" ]; then CHROME="$(ls -d "$HOME"/.cache/ms-playwright/chromium-*/chrome-linux/chrome 2>/dev/null | head -1)"; fi
           test -x "$CHROME" || { echo "no chromium installed for the UI checks"; exit 1; }
           echo "CHROME_BIN=$CHROME" >> "$GITHUB_ENV"
           echo "Chromium for UI checks: $CHROME"
 
-      - name: Config / release-state identity closure (fail-closed)
-        run: |
-          set -euo pipefail
-          python3 config_manifest.py check
-          python3 release_contract.py check
-          python3 ruling_config_check.py
-          python3 session_2026-07-21/final_integration/tools/config_inventory.py
-          python3 session_2026-07-21/final_integration/tests/release_state_failclosed_test.py
-
-      - name: Season-state — derivation, wiring, behaviour, stale rejection + FENCED reads halt (req 1/2/4/5/7)
+      - name: Season-state — derivation, wiring, behaviour, stale rejection + FENCED reads halt
         run: |
           set -euo pipefail
           python3 session_2026-07-21/final_integration/tests/season_progress_test.py
           python3 session_2026-07-21/final_integration/tests/season_state_fenced_test.py
-          # #251 part C: the current-round anchor replaced three hand-typed constants with a re-derivation.
-          # Prove it still reds on each thing those constants stood for, or it is a guard that cannot fail.
-          python3 session_2026-07-21/final_integration/tests/season_anchor_check_nonvacuity.py
 
-      # #256 part A. This gates the PER-PUSH lane only: structural invariants of whatever board the tree
-      # carries (active universe, placeholder shape, unique ids, PVC monotonicity, sort order, and the F5
-      # reconciliation against the board's OWN declared totals). The released-baseline EQUALITY checks —
-      # Sigma v 764021, zero movers vs reference_vector_5546f278, the F5 layer 83538/4649/14272 — are
-      # RELEASE CONDITIONS, not per-push invariants: the tree deliberately carries the held candidate
-      # declared in data/release_contract.json `held_candidates`, so gating on them here painted this
-      # workflow red for the whole baseline effort. They still run and still print (ADOPT-RED rows) and go
-      # into the evidence JSON; they GATE at the owner adoption step, with:
+      # #256 part A. PER-PUSH lane only: structural invariants of whatever board the tree carries. The
+      # released-baseline EQUALITY checks are RELEASE CONDITIONS and gate at adoption with
       #     python3 session_2026-07-21/final_integration/tools/invariant_proof.py --adoption
-      - name: Present / forward invariants + F5 reconciliation — PER-PUSH lane (released-baseline equality is gated at adoption)
+      - name: Present / forward invariants + F5 reconciliation — PER-PUSH lane
         run: python3 session_2026-07-21/final_integration/tools/invariant_proof.py
 
-      - name: UI seams (extract / release / counting / club-curve / movers)
+      - name: UI seams (extract / release / counting / club-curve / ownership / movers)
         run: |
           set -euo pipefail
           python3 ui/tests/extract_seam.test.py
@@ -148,91 +164,41 @@ jobs:
           python3 ui/tests/club_curve_provenance.test.py
           python3 ui/tests/test_club_valuation_current.py
           node    ui/tests/club_totals_parity.test.js
-          # #283 — ownership single source. The store is the one source of `affl_team`; ui/data/ownership.js
-          # is a generated mirror rebuilt FROM it. These two gate the thing that was silently untrue before:
-          # that reader and oracle read the SAME field (proven by injecting divergence BOTH directions), that
-          # a stale or hand-edited mirror is REFUSED rather than honoured, and that the store write is
-          # exact-byte, key-joined, and diff-fenced to affl_team alone.
           node    ui/tests/ownership_single_source.test.js
           python3 ui/tests/ownership_store_apply.test.py
-          # ITEM 271 Addendum 23 fix 3: movers.test.js LAST in this step. Its declared known-red (exactly
-          # two assertions: the no-gate lineage state + the R19-boundary anchor) was shadowing the tests
-          # below it. Pin unchanged. Steps 14-22 stay shadowed until #274 — declared.
           node    ui/tests/movers.test.js
-
-      - name: UI — unified 868-asset ranking, no row caps, residual panel (Chromium)
-        run: node session_2026-07-21/final_integration/tools/asset_view_ui_check.mjs
 
       - name: UI — responsive layout (Chromium, all widths)
         run: node ui/tests/responsive_layout.test.mjs
 
       # #139 items 3/5/9/11/12/13/14/15/16/17/18/21 (issue #222). Guards the two things that would fail
       # SILENTLY: the card claiming a player missed a game the feed never covered, and the browser-side
-      # club totals drifting from the ingest's own arithmetic. Both read live data — no hand-pinned
-      # hashes, no per-round re-pinning.
+      # club totals drifting from the ingest's own arithmetic. Both read live data — no hand-pinned hashes.
       - name: UI — #222 item acceptance (Chromium)
         run: node ui/tests/ui_222_items.test.mjs
-
-      - name: Bootstrap workspace (Guard 5)
-        run: RL_VENDOR="$PWD/vendor" bash bootstrap.sh
-
-      # #256 part A, same split: the GATE here is that the engine rebuild reproduces the committed board
-      # and UI bundles BYTE-IDENTICALLY, plus the reference-vector fixture authority and the exact active
-      # key set. Per-row present-v equality with the released vector is the adoption lane (measured and
-      # printed as ADOPT-RED); committed-vs-released is gated by invariant_proof.py --adoption.
-      - name: Clean-room engine rebuild-equality (board + UI bundles byte-identical; present universe vs reference_vector_5546f278; released values + Board B forward DEFERRED)
-        run: python3 session_2026-07-21/final_integration/tools/build_final_board.py
 
       - name: Season-state anchors (fixed R14 historical + current round) + generated-bundle equality
         run: |
           set -euo pipefail
-          # #251 part C. This step used to carry its OWN inline copy of the season-state assertion, with the
-          # R19 answer (calendar 0.79 / exposure 0.727 / store c120cfd5) hand-typed a second time. R20 was
-          # applied, the store legitimately moved, and fixing the copy in season_progress_test.py would have
-          # left this one red — hazard class 2. There is now ONE executable definition and both sites call it.
-          # The fixed R14 anchor (0.58/0.545 from the immutable store 968de0c7 @ 93bd01af, ITEM 408 item 5.1)
-          # is unchanged; the current-round anchor takes its round from the manifest and its expectation from
-          # the committed stamp, so it survives the next round application with nothing to retype.
+          # #251 part C: ONE executable definition of the season-state assertion; the fixed R14 anchor
+          # (0.58/0.545 from the immutable store 968de0c7 @ 93bd01af) plus the current-round anchor
+          # re-derived from the manifest and the committed stamp — nothing hand-typed to go stale.
           python3 session_2026-07-21/final_integration/tests/season_anchor_check.py
-          # extract must reproduce the committed UI bundles byte-for-byte.
-          cp ui/data/board_view_working.js /tmp/w.js; cp ui/data/board_view_public.js /tmp/p.js
-          python3 ui/tools/extract_board_view.py >/dev/null
-          cmp /tmp/w.js ui/data/board_view_working.js
-          cmp /tmp/p.js ui/data/board_view_public.js
-          echo "generated UI-bundle equality OK"
+          # A fresh extract must reproduce both committed UI bundles byte-for-byte. Measured in a
+          # scratch dir — this step used to regenerate ui/data IN PLACE and cmp, i.e. rewrite the
+          # tree it was gating.
+          python3 tools/probe_bundle_equality.py
 
-      # RETIRED from CI by owner word 2026-07-30 (#274, as a named one-file extension of the adoption
-      # mop-up act). Two steps removed here:
-      #     Disposable R15 regeneration preserves the future ladder + F5   (r15_ladder_survival_proof.py)
-      #     R14-R19 sequential season-state advance                        (season_advance_r14_r19_proof.py)
-      #
-      # WHY. Their premise died at adoption. Both rewound a disposable scratch to the accepted R14 state and
-      # replayed the recorded rounds — but the engine doing the replaying is always the current checkout, so
-      # once the 30/7 rederivation moved `fv` (6a9a520f -> d10aa93e) the combination began exercising paths no
-      # real era ever ran: R14-era state driven through post-adoption code. Guard 5 refused it first, correctly.
-      # When #274 restated the claim so the replay declared itself honestly, the halt cleared and the replay
-      # ran on into engine/forward_valuation/par_build.py:176 — IndexError on a position group with zero
-      # teaching observations (POS built by list comprehension at :115, so an empty group is a shape-(0,)
-      # array indexed as 2-D). That is a real defect, but it is only reachable through this artificial
-      # pairing, and chasing it here would have meant editing engine valuation code to quieten a step whose
-      # premise no longer holds.
-      #
-      # THEIR LAST SERVICE, recorded because it was real: on the way out they unmasked the stale F5 seal —
-      # data/release_contract.json still carried the superseded entrant layer 83,538 while the adopted board
-      # served 77,611. That is now re-stamped (same act, previous commit). A guard earning its keep as it
-      # retires is worth writing down.
-      #
-      # WHAT REPLACES THEM: #139 item 20, the disposable NEXT-ROUND rehearsal — a replay whose premise is the
-      # era the tree is actually in. DOCKETED, deliberately NOT commissioned here.
-      #
-      # THE SCRIPTS STAY ON DISK, byte-untouched. This act unwires them from CI and nothing more: they are
-      # cited by sealed records, so deletion is hygiene's business under the retention law (charter D2), not
-      # this wave's. The par_build empty-group defect is NOT fixed here either — it rides #279's par
-      # per-season rework as a LOUD-HALT requirement: halt naming the empty group, never an IndexError.
-
-      - name: Track B fast unit + acceptance matrix
+      - name: Track B fast unit tests (weekly updater + catch-up preflight)
         run: |
           set -euo pipefail
           python3 engine/rl_after/ingestion/test_weekly_updater.py
           python3 engine/rl_after/ingestion/test_catchup_preflight.py
-          python3 session_2026-07-21/final_integration/tools/acceptance_matrix.py
+
+      - name: The gates wrote nothing into the tree they gated
+        run: |
+          set -euo pipefail
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "a gate wrote into the tracked tree:"; git status --porcelain; exit 1
+          fi
+          echo "tree clean after every gate"

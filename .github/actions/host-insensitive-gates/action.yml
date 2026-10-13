@@ -63,6 +63,10 @@ runs:
         RL_REPO: ${{ github.workspace }}
         CLAUDE_PROJECT_DIR: ${{ github.workspace }}
         PYTHONHASHSEED: '0'
+        # vendor/ carries the engine's offline import dep (unidecode). The runner shells out to
+        # checks and probes that import the engine; on a bare runner nothing else puts it on the
+        # path (the heavy jobs seed /home/claude/rl_vendor by hand; this job has no such step).
+        PYTHONPATH: ${{ github.workspace }}/vendor
       run: |
         set -euo pipefail
         python3 -m acceptance.selftest

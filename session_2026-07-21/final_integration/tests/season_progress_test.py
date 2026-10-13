@@ -176,7 +176,10 @@ def main():
         ck('(e) release_contract importable for stale-state checks', False, 'import failed')
 
     npass = sum(1 for x in R if x['pass']); n = len(R)
-    out = os.path.abspath(os.path.join(HERE, '..', 'evidence', 'season_progress_inventory.json'))
+    # A GATE MUST NOT WRITE INTO THE TREE IT IS GATING: default is a scratch dir; PROOF_EVIDENCE_DIR
+    # refreshes a real evidence directory on purpose (not RL_-prefixed — see config_manifest.enforce()).
+    out = os.path.join(os.environ.get('PROOF_EVIDENCE_DIR') or tempfile.mkdtemp(prefix='season_progress_'),
+                       'season_progress_inventory.json')
     inv = {'r14_state': st, 'current_round_state': st_cur, 'calendar_progression': prog,
            'exposure_scope_examples': {g: scope(g) for g in (3, 6, 9, 11, 12, 20)},
            'engine_wired': True, 'policy_id': S.policy_id(),
