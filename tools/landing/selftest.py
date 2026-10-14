@@ -2,6 +2,12 @@
 
     tools/land selftest [--only step,step] [--keep] [--evidence DIR]
 
+RETIRED 2026-10-14 (owner word): THE BALANCED SIBLING. The `sibling` step is gone from every
+sequence, so the fault loop no longer breaks it, and the two cases that used `fault='sibling'` as
+a convenient stop after the identity writers (the depth case and the edit control) now stop at
+`ui:stop_at_the_door` instead. Every narrative below that mentions the sibling reconcile describes
+the lander as it was; the measurements it reports stand as history.
+
 WHAT IT ASSERTS, and the plan's sentence each assertion comes from:
 
   * "the program deliberately breaks each step in a sandbox and asserts the failure is caught" —
@@ -469,7 +475,8 @@ def main(root=None, keep=False, only=None, evidence_dir=None, base=None):
     print('')
     print('--- FAULTS: every step in LEVER_SEQUENCE broken once ---')
     # steps at or before `lineage` are exercised on a REAL synthetic board move; the rest run the
-    # no-op spec, whose sibling step is a no-build no-op (`verify` is already current).
+    # no-op spec. (The `sibling` step, retired 2026-10-14, is no longer in the sequence and so no
+    # longer broken here.)
     moved_steps = {'pins', 'lineage'}
     tally = {'broken': 0, 'caught': 0, 'aborted_byte_exact': 0}
     for step_name, _title, _fn in ST.LEVER_SEQUENCE:
@@ -620,15 +627,18 @@ def main(root=None, keep=False, only=None, evidence_dir=None, base=None):
     print('--- DEPTH: a landing that WROTE pins + column + lineage + contract, then aborted ---')
     before = carrier_md5s(sb.path)
     rep = os.path.join(ev, 'depth_report.json')
-    rc, out = sb.run_lander('SELFTEST_SPEC_MOVED.json', fault='sibling', builder='selftest-moved',
-                            report=rep, log=os.path.join(ev, 'depth.log'))
+    # The stop is `ui:stop_at_the_door` (txn.FAULTS): the landing is halted at the first step AFTER
+    # every identity writer, before any UI writer runs. Until 2026-10-14 that step was `sibling`;
+    # the sibling is retired, so the door is now the UI step's.
+    rc, out = sb.run_lander('SELFTEST_SPEC_MOVED.json', fault='ui:stop_at_the_door',
+                            builder='selftest-moved', report=rep, log=os.path.join(ev, 'depth.log'))
     open(os.path.join(ev, 'depth_stdout.txt'), 'w', encoding='utf-8').write(out)
     report = _read_json(rep) or {}
     after = carrier_md5s(sb.path)
     movedc = sorted(k for k in set(before) | set(after) if before.get(k) != after.get(k))
     wrote = [r['path'] for r in (report.get('abort') or {}).get('restored') or []]
     record('abort_restores_writers',
-           rc != 0 and report.get('failed_step') == 'sibling' and not movedc and len(wrote) >= 4,
+           rc != 0 and report.get('failed_step') == 'ui' and not movedc and len(wrote) >= 4,
            '%d carrier(s) had been written and were restored: %s' % (len(wrote), ', '.join(wrote[:6])))
     sb.reset()
 
@@ -1020,16 +1030,17 @@ def main(root=None, keep=False, only=None, evidence_dir=None, base=None):
     # POST-edit side. `edit_lineage_straddles` is that sentence, asserted on the file the landing
     # wrote.
     # WHERE THE POSITIVE CONTROL STOPS, AND WHY IT IS THE SAME WALL THE LEVER FIXTURE MEETS. A clean
-    # END-TO-END edit landing cannot be flown with the self-test builder, and the reason is a property
-    # of the tree rather than a limitation of this file: the `sibling` step's repin REBUILDS the
-    # balanced board FROM THE REAL STORE and refuses to stage a forward view that is not the board the
-    # manifest pins ("CONFORMANCE GATE FAILED … this is a STOP", owner ruling v471 §4). A synthetic
-    # board can never satisfy it — which is exactly why `SELFTEST_SPEC_MOVED` is only ever used for
-    # faults AT OR BEFORE `lineage` under `land lever`, and why the lever control lands a NO-OP.
+    # END-TO-END edit landing cannot be flown with the self-test builder: the UI writers and the
+    # gate set read a REAL board (the v0 sidecar loads an engine; the gates assert the board's own
+    # arithmetic), and a synthetic board can never satisfy them — which is exactly why
+    # `SELFTEST_SPEC_MOVED` is only ever used for faults AT OR BEFORE `lineage` under `land lever`,
+    # and why the lever control lands a NO-OP. (Until 2026-10-14 the wall was one step earlier: the
+    # `sibling` step's repin rebuilt the balanced board from the real store and refused a synthetic
+    # one. The sibling is retired; the wall is now the UI step's door, `ui:stop_at_the_door`.)
     #
     # So the coverage is split the way the evidence is: the six steps that carry the edit are proved
-    # HERE, cheaply, on their own merit (nothing is injected until `sibling` starts), and the CLEAN
-    # END-TO-END landing — real build, real sibling reconcile, real gates, real commit — is proved
+    # HERE, cheaply, on their own merit (nothing is injected until `ui` starts), and the CLEAN
+    # END-TO-END landing — real build, real gates, real commit — is proved
     # with the REAL builder in the acceptance flight filed at
     # docs/evidence/edit_verb_2026-08-24/GRAHAM_SANDBOX_FLIGHT.log, which also lands the standing
     # Graham prediction (store daa93053 -> fb640ca0, board 6fd0f7de -> 82fcd8bb, ONE mover).
@@ -1042,8 +1053,9 @@ def main(root=None, keep=False, only=None, evidence_dir=None, base=None):
         store_before = _md5(store_p)
         before = carrier_md5s(sb.path)
         rep = os.path.join(ev, 'edit_control_report.json')
-        rc, out = sb.run_lander('SELFTEST_SPEC_EDIT.json', fault='sibling', builder='selftest-moved',
-                                verb='edit', report=rep, log=os.path.join(ev, 'edit_control.log'))
+        rc, out = sb.run_lander('SELFTEST_SPEC_EDIT.json', fault='ui:stop_at_the_door',
+                                builder='selftest-moved', verb='edit', report=rep,
+                                log=os.path.join(ev, 'edit_control.log'))
         open(os.path.join(ev, 'edit_control_stdout.txt'), 'w', encoding='utf-8').write(out)
         report = _read_json(rep) or {}
         facts = report.get('facts') or {}
@@ -1061,7 +1073,7 @@ def main(root=None, keep=False, only=None, evidence_dir=None, base=None):
                 and (facts.get('contract') or {}).get('check') == 'PASS'),
                'ONE surgical field edit (%s.%s %s -> %s) moved the store %s -> %s; the board was '
                'built FROM it; pins moved %s; the column and the lineage entry were written; the '
-               'contract re-sealed and PASSED — then the injected fault stopped it at `sibling`'
+               'contract re-sealed and PASSED — then the injected stop halted it at the door of `ui`'
                % (the_edit['key'], the_edit['field'], the_edit['old'], the_edit['new'],
                   store_before[:12], str(store_edited)[:12], sorted(pins.get('moved') or [])))
 
@@ -1082,7 +1094,7 @@ def main(root=None, keep=False, only=None, evidence_dir=None, base=None):
         movedc = sorted(k for k in set(before) | set(after) if before.get(k) != after.get(k))
         wrote = [r['path'] for r in (report.get('abort') or {}).get('restored') or []]
         record('edit_abort_restores_store',
-               rc != 0 and report.get('failed_step') == 'sibling' and not movedc
+               rc != 0 and report.get('failed_step') == 'ui' and not movedc
                and sb.head() == edit_base and ST.STORE_REL in wrote and len(wrote) >= 4,
                '%d carrier(s) had been written and were restored BYTE-EXACT, the STORE among them '
                '(%s); HEAD %s: %s'

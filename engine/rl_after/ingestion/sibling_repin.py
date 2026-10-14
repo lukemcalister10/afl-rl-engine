@@ -1,6 +1,15 @@
 #!/usr/bin/env python3
 """SIBLING ADVANCE-REPIN — ITEM 408 directive item 5 (R2 second half).
 
+RETIRED FROM THE LANDING LIBRARY 2026-10-14 (owner word: "doesn't seem like it adds any value other
+than wasting time"). No `tools/land` verb runs `reconcile` or `verify` any more: the `sibling` step
+is gone from the lever, edit and round sequences, the proof stash no longer caches `build_sibling`,
+`tools/restamp.py` no longer checks the sidecar, and `ownership_store_apply` no longer runs T11.
+`balanced_board_md5` in expected_boot / release_contract / the sidecar is a HISTORICAL value now.
+WHAT STILL IMPORTS THIS FILE: `staged_apply._stage_sibling` (c3) builds the sibling inside a round
+advance's own staged transaction, and `scratch_fixture` copies it for the r14 fixture. Those are the
+round transaction's business; when that path drops c3, this module and forward_lens.py can go.
+
 The balanced/strict board and the FV reference vector are DERIVED SIBLINGS of the ONE store: they track
 the store exactly as the canonical board of record does. When the weekly transaction advances the store +
 canonical board (staged_apply), these siblings go stale unless they are regenerated and their pins moved

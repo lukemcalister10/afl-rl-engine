@@ -208,6 +208,8 @@ def facts(root):
              _measured(root, head_rel)),
             ('rl_model', boot.get('rl_model'), 'data/expected_boot.json', model_rel,
              _measured(root, model_rel)),
+            # HISTORICAL since 2026-10-14 (the balanced sibling is retired): reported as the carrier
+            # holds it, never re-measured — there is no artifact to measure it against.
             ('balanced_board_md5', boot.get('balanced_board_md5'), 'data/expected_boot.json',
              None, None),
             ('config', boot.get('config'), 'data/expected_boot.json', 'config_manifest.manifest_hash',

@@ -18,8 +18,9 @@ identical sequence by hand on 2026-08-20 —
 docstring explaining which assertion it re-pointed and which one it must NOT copy. Those five
 scripts per act are the specification of this library and its steps call the SAME writers of record
 they called: `ui/tools/extract_board_view.py`, `round_movers.inject_release_contract`,
-`release_contract.restamp_dynamic`, `sibling_repin`, `out_of_round_column.add_column`. Nothing here
-reimplements a writer. Where a per-act script hard-coded a constant (this act's board, this act's
+`release_contract.restamp_dynamic`, `out_of_round_column.add_column`. Nothing here
+reimplements a writer. (`sibling_repin` was on that list until 2026-10-14; the balanced sibling
+step is RETIRED on the owner's word — see steps.py's banner.) Where a per-act script hard-coded a constant (this act's board, this act's
 must-not-move list, this act's column label), the constant moves into an ACT SPEC file — which is
 the whole of the difference between a landing that is scripted and a landing that is programmed.
 

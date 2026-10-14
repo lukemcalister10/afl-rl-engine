@@ -1,5 +1,9 @@
 """tools/landing/proofstash.py — THE PROOF STASH (shrink review S13, owner word 2026-08-28).
 
+RETIRED 2026-10-14: THE SIBLING SLICE (shrink S8, `sibling_key` + the `sibling` stash kind). The
+balanced sibling is no longer built by any landing (owner word, 2026-10-14), so there is nothing to
+cache for it. Entries written under `sibling_<key>` in an existing stash directory are inert.
+
 THE LANDING INSTALLS PROVEN ARTIFACTS RATHER THAN RE-PROVING THEM. The combined-build landing
 re-proved the same board identity FOUR times (77 minutes) and re-ran the identical 43-leg
 selftest ~10 times (~1.7 hours) across its takes, because every abort correctly restored the
@@ -100,28 +104,6 @@ def build_key(ctx):
     basis = {'inputs': inputs, 'build_inputs': _build_inputs(ctx), 'prereg': ctx.spec.get('prereg'),
              'act': ctx.spec.get('act'), 'act_kind': ctx.spec.get('act_kind'),
              'day0_rebase': ctx.spec.get('day0_rebase'), 'key_schema': KEY_SCHEMA}
-    return hashlib.sha256(json.dumps(basis, sort_keys=True).encode()).hexdigest()[:24]
-
-
-def sibling_key(ctx):
-    """The input-identity key for a SIBLING build proof (shrink S8, "S13 slice 2").
-
-    Unlike `build_key`, this measures EVERY PIN_MEASURERS identity LIVE, including the ones the act
-    declares as moving. That is not a loosening, it is the opposite: the sibling step runs after the
-    board, store and contract are already committed, so at that moment every input the sibling build
-    reads is at its final value and can be measured rather than assumed. The balanced board itself is
-    a DELEGATED pin, not a PIN_MEASURERS entry, so the sibling's own OUTPUT is correctly absent from
-    its own key.
-    """
-    from tools.landing import steps as ST
-    inputs = {}
-    for k, fn in ST.PIN_MEASURERS.items():
-        try:
-            inputs[k] = str(fn(ctx))
-        except Exception:
-            inputs[k] = '<unmeasurable>'
-    basis = {'inputs': inputs, 'build_inputs': _build_inputs(ctx), 'act': ctx.spec.get('act'),
-             'act_kind': ctx.spec.get('act_kind'), 'key_schema': KEY_SCHEMA}
     return hashlib.sha256(json.dumps(basis, sort_keys=True).encode()).hexdigest()[:24]
 
 

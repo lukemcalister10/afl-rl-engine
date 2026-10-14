@@ -53,3 +53,13 @@ landing: store `a367386a` and board `d3fb6b48` byte-identical, 366 edits, and ev
 rank and movers entry identical. It differed only in dates, the engine version stamp and label text.
 Measured: preflight 58s, landing 1,042s (the build 274s, the balanced sibling 548s, the UI 148s,
 the gates 44s). No retries.
+
+**The landing no longer builds a sibling (2026-10-14).** Every landing used to rebuild a second full
+board — the "balanced sibling" — after the contract step and reconcile its fixtures (the sidecar,
+`forward_vector_*`/`reference_vector_*`, a `test_forward_lens_*` oracle, the `balanced_board_md5`
+field). Measured on 2026-10-13 it cost 548 s, 575 s and 1,839 s per landing, and nothing read the
+result but its own parity checks. On the owner's word it is retired: the `sibling` step is gone from
+the lever, edit and round sequences, `balanced_board_md5` is a frozen historical field in
+`expected_boot` / `release_contract` / the sidecar (the `06d8af60` present-lens anchor in
+`release_lineage` was always frozen and is untouched), and no gate reds on it. The week's landing is
+now the build, the UI writers and the gates; the 548 s line above is history.

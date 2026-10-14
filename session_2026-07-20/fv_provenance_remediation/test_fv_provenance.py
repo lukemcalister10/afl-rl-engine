@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 """DURABLE FORWARD-VALUATION PROVENANCE RED/GREEN SUITE (fv-provenance remediation 2026-07-20).
 
+NOTE 2026-10-14: the balanced sibling is RETIRED from the landing library (owner word). No landing
+re-points the BOARD_MD5_GOOD / reference-vector anchors below any more; they are the LAST reconciled
+values and the opt-in `--board-oracle` reads them as history. `_run_build` is untouched — it is the
+canonical build, used by tools/landing/_build_child.py. (A round advance's staged_apply c3 is the
+one path that still rewrites the anchors, inside its own transaction.)
+
 Proves the fail-closed forward-valuation / rl_model / config provenance fix end-to-end. Self-contained: it
 builds the board in a fresh disposable staging copy of the checkout, with a controlled environment, and asserts
 the outcome. Runs locally and on a clean CI runner (.github/workflows/fv-provenance.yml).

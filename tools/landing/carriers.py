@@ -13,11 +13,18 @@ THREE PROPERTIES, EACH FOR A REASON THE RECORD ALREADY PAID FOR.
    outside this set is a landing whose abort cannot restore it — so `verify_scope()` refuses at the
    end of the transaction if git reports a modification outside the declared set.
 
-2. GLOBS ARE FIRST-CLASS, BECAUSE THE SIBLING REPIN CREATES FILES. `sibling_repin` writes
-   `forward_vector_<md5>.json` and `test_forward_lens_<md5>.py`, whose NAMES are keyed to the board
-   id. A restore that only rewrote known paths would leave the newly created ones behind and call
-   the tree restored. Restoration therefore also DELETES files that appeared inside a carrier glob
-   after the snapshot, and RECREATES files that were deleted.
+2. GLOBS ARE FIRST-CLASS, BECAUSE SOME WRITERS CREATE FILES. A round advance writes
+   `movers_R<N>.json` and, inside its staged transaction, `forward_vector_<md5>.json` and
+   `test_forward_lens_<md5>.py`, whose NAMES are keyed to the round or the board id. A restore that
+   only rewrote known paths would leave the newly created ones behind and call the tree restored.
+   Restoration therefore also DELETES files that appeared inside a carrier glob after the snapshot,
+   and RECREATES files that were deleted.
+
+   RETIRED 2026-10-14 — THE BALANCED SIBLING (owner word). The lever and edit landers no longer run
+   a `sibling` step, so the sibling's targets (its sidecar, the FV oracle, the per-board fixtures)
+   are NOT lever carriers any more: a lever landing that touched one would be refused as foreign,
+   which is correct. They remain ROUND carriers only because `staged_apply._stage_sibling` (c3)
+   still writes them inside the armed advance's own transaction.
 
 3. THE SNAPSHOT LIVES OUTSIDE THE REPO. A snapshot written inside the tree is a dirty working tree
    at the exact moment the tree's cleanliness is the thing being asserted, and it would be caught by
@@ -223,17 +230,11 @@ LEVER_CARRIERS = (
       'coincidence. It is LAST among the writers because it is the only one that loads an engine; '
       'everything cheaper has already run and failed fast by then.'),
 
-    # ---- the sibling repin's own targets ----------------------------------------------------------
-    F('engine/rl_after/ingestion/sibling_repin_state.json', 'sibling_repin.reconcile',
-      'the sibling provenance sidecar'),
-    F('session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py', 'sibling_repin.reconcile',
-      'the FV oracle the repin re-points at the new balanced board'),
-    G('session_2026-07-20/fv_provenance_remediation/fixtures/*.json', 'sibling_repin.reconcile',
-      'reference + forward vectors, FILENAMES KEYED TO THE BOARD ID — created, not merely edited'),
-    G('session_2026-07-20/fv_provenance_remediation/test_forward_lens_*.py', 'sibling_repin.reconcile',
-      'forward oracles, filenames keyed to the board id'),
-    G('engine/rl_after/ingestion/.sibling_txn/**', 'sibling_repin (its own transaction dir)',
-      'the repin transaction dir; an aborted landing must not leave a half-open txn behind'),
+    # ---- the sibling repin's own targets — RETIRED FROM THIS SET 2026-10-14 ----------------------
+    # The `sibling` step is gone (owner word). Its sidecar, the FV oracle and the per-board fixtures
+    # are listed under ROUND_EXTRA_CARRIERS below, because only the armed advance's staged
+    # transaction still writes them. `.sibling_txn/**` (sibling_repin.reconcile's own txn dir) is
+    # gone from every set: no lander calls `reconcile` any more.
 )
 
 #: THE ROUND LANDER'S EXTRA CARRIERS (PLAN_v6 2b). This tuple is ADDED to `LEVER_CARRIERS`; it is not
@@ -278,6 +279,20 @@ ROUND_EXTRA_CARRIERS = (
     G('engine/rl_after/ingestion/.weekly_txn/**', 'staged_apply (its own transaction dir)',
       'the weekly staged-transaction records; tracked (R15…R23 all are). An aborted landing must not '
       'leave a half-open txn behind'),
+
+    # ---- the in-transaction sibling's targets (staged_apply c3) -----------------------------------
+    # ROUND-ONLY SINCE 2026-10-14. The balanced sibling is retired from the landing library (owner
+    # word); these were lever carriers while the `sibling` step existed. They stay here because
+    # `staged_apply._stage_sibling` still builds and stages the sibling INSIDE the armed advance's
+    # own transaction, and a file the advance commits must be one the abort ladder can put back.
+    F('engine/rl_after/ingestion/sibling_repin_state.json', 'staged_apply._stage_sibling (c3)',
+      'the sibling provenance sidecar — HISTORICAL between advances; no lever step moves it'),
+    F('session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py', 'staged_apply._stage_sibling (c3)',
+      'the FV oracle the in-txn repin re-points at the new balanced board'),
+    G('session_2026-07-20/fv_provenance_remediation/fixtures/*.json', 'staged_apply._stage_sibling (c3)',
+      'reference + forward vectors, FILENAMES KEYED TO THE BOARD ID — created, not merely edited'),
+    G('session_2026-07-20/fv_provenance_remediation/test_forward_lens_*.py', 'staged_apply._stage_sibling (c3)',
+      'forward oracles, filenames keyed to the board id'),
 
     # ---- the weekly fixture bumps — RETIRED (shrink review S1, owner word 2026-08-28) ------------
     # The two movers suites carried hand-typed round pins ([15..N], the future-append round, the
@@ -389,8 +404,9 @@ class Snapshot(object):
     """The restore-point: every carrier's bytes and md5, captured before the first write.
 
     `entries` maps repo-relative path -> md5, with None meaning THE FILE DID NOT EXIST. That
-    distinction is the whole reason restore can undo a `forward_vector_<newmd5>.json` the repin
-    created: absent-then-present is a change like any other, and it is reverted by deletion.
+    distinction is the whole reason restore can undo a `movers_R<N>.json` (or, in a round advance,
+    a `forward_vector_<newmd5>.json`) the transaction created: absent-then-present is a change like
+    any other, and it is reverted by deletion.
     """
 
     __slots__ = ('root', 'store_dir', 'entries', 'carriers', '_owned')
