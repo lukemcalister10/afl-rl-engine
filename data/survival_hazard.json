@@ -1,0 +1,99 @@
+{
+ "band_midpoints": [
+  3,
+  12,
+  35,
+  75,
+  180
+ ],
+ "bands": [
+  [
+   1,
+   5
+  ],
+  [
+   6,
+   20
+  ],
+  [
+   21,
+   50
+  ],
+  [
+   51,
+   100
+  ],
+  [
+   101,
+   null
+  ]
+ ],
+ "cap_lift": false,
+ "coef": {
+  "S1": [
+   0.43781906441335794,
+   -0.38681845728386977,
+   -0.32442301880378294,
+   -0.09817138417113332,
+   0.3307270140109361,
+   0.6238781608426143,
+   1.347641964350432,
+   2.435765059551045,
+   3.3564717659379517
+  ],
+  "S2": [
+   -0.4422121583569376,
+   -0.4206606066790681,
+   -0.38927161003919847,
+   -0.043613637218751396,
+   0.2686480336197129,
+   0.5988659529379722,
+   1.4596749622949945,
+   2.546277725795483,
+   3.527640316146661
+  ]
+ },
+ "date": "2026-10-14",
+ "design": "[1, min(age,24)-24, (age-24)+, (age-29)+, (age-33)+, band6-20, band21-50, band51-100, band100+]",
+ "design_notes": {
+  "age": "the engine's integer age(p) in the base season (rl_model.age: max(2026-by, 18+(2026-cycle_year))); the fit used Y - birth_year per (player, base season Y)",
+  "application": "RELATIVE, sum-preserving per integer age: vP_k' = round(vP_k * S_k / Sbar_k(age)), with Sbar_k(age) = sum(vP_k * S_k) / sum(vP_k) over ALL active rows at that age (value-weighted by the lens value itself; hazard_part2.py section [f])",
+  "bands": "career-games bands; the base (reference) band is 1-5 games; the four dummies are 6-20, 21-50, 51-100, 101+",
+  "games": "career games through the base season (the board row's g = p['games']); fit: cumulative games <= Y",
+  "monotone_in_evidence": "S(age,g) = min over band midpoints m in band_midpoints with m >= g of S_raw(age,m), together with S_raw(age,g); for g > 180, S_raw(age,g). (hazard_final_v2.py line 36)",
+  "zero_games": "a 0-game row takes the intake-cohort 'ever plays' rate ever0[type|tenure] as S2 and sqrt of it as S1 (UNMEASURED interpolation, hazard_final_v2.py lines 58-62); tenure = clamp(2026-year (+1 for MSD), 1, 2); unknown type -> ever0_default"
+ },
+ "ever0": {
+  "IRE|1": 0.412,
+  "IRE|2": 0.208,
+  "MSD|1": 0.489,
+  "MSD|2": 0.13,
+  "ND|1": 0.714,
+  "ND|2": 0.441,
+  "PDA|1": 0.528,
+  "PDA|2": 0.273,
+  "PDN|1": 0.387,
+  "PDN|2": 0.25,
+  "PDS|1": 0.385,
+  "PDS|2": 0.273,
+  "RD|1": 0.37,
+  "RD|2": 0.19,
+  "SSP|1": 0.357,
+  "SSP|2": 0.25,
+  "UNR|1": 0.349,
+  "UNR|2": 0.129
+ },
+ "ever0_default": 0.35,
+ "fit": {
+  "base_seasons_in_fit": "2010-2024",
+  "fitted_by": "scratchpad/hazard/hazard_final_v2.py -> hazard_final_v2.json (2026-10-14 00:42)",
+  "measured_application": "scratchpad/hazard/hazard_part2.py section [f] (hazard_out2.txt): relative S/Sbar(age) +1 635134 -> 635135 (+0.0%), +2 593206 -> 593201 (-0.0%)",
+  "model": "additive-logit (IRLS, ridge 1e-6) per lens: S1 = P(listed one season on), S2 = P(listed two seasons on)",
+  "owner_stated_window": "2019-2025 (the owner's brief; the fitting script's loop is range(2010, 2025) \u2014 recorded as run)",
+  "rows": "every (player, base season Y) with cumulative games > 0, 2010 <= Y <= 2024, player listed in Y; outcome observed to 2026 (n = 9297)",
+  "store": "engine/rl_after/rl_model_data.json",
+  "store_md5": "b0eeaf4b9f766e6618081dce8fc328e3"
+ },
+ "ruling": "SURVIVAL_H2_2026-10-14",
+ "ruling_text": "D-H = H2: retirement/exit risk on the +1 and +2 lens values is probability-based survival, spread across each age cohort by risk, SUM-PRESERVING within each age band. Pure H2 (lifts allowed) is the default; cap_lift=true is the measurement variant that caps the multiplier at 1.0."
+}

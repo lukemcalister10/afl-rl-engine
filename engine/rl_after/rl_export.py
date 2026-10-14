@@ -270,6 +270,32 @@ with _ctx.redirect_stdout(_io.StringIO()):
         _p['_v'] = _p['_vM2'] = _p['_vM1'] = _p['_vP1'] = _p['_vP2'] = _nb(_ev(_p, 2026))
         _p['_cvx'] = 1.0
 g['BASE_REF']=g['AGE_REF']=2026; g['_pe_clear']()  # the ev loop advanced the clock to the last as-of year; re-pin to the present so the DISPLAY layer (peak_est/level_now/track/...) reads 2026, as the prior 2-instance display did
+# ==== SURVIVAL HAZARD ON THE FORWARD LENSES — owner ruling SURVIVAL_H2_2026-10-14 (D-H = "H2") ============
+# THE RULE: exit risk on +1/+2 is probability-based survival, spread across each age cohort by risk,
+# SUM-PRESERVING within each integer-age band: vP_k = round(vP_k x S_k(age,games) / Sbar_k(age)), where
+# Sbar_k(age) is the value-weighted mean of S_k over the active rows at that age. Applied HERE, at the export
+# layer, after EVERY active row is priced (so the Leg-F3 pedigree floor above is already in the base) and
+# before player_rec reads _vP1/_vP2 — never inside ev(). The present v and the -1/-2 lenses are untouched;
+# the back rows above and the phantom picks below are untouched. The calibration is data/survival_hazard.json
+# under the repo root (RL_REPO / CLAUDE_PROJECT_DIR, the season_read resolution); absent => HALT, no fallback.
+# A row whose age or games cannot be formed HALTS by key (survival_hazard.survival_of). The ONE switch for the
+# no-lift measurement variant is survival_hazard.CAP_LIFT (a module constant, not an environment flag).
+import survival_hazard as _SH
+_SURV_DOC = _SH.load()
+_surv_rows = [{'key': _p['key'], 'age': age(_p), 'games': _p.get('games'), 'ty': _p.get('type'), 'yr': _p.get('year'),
+               'vP1': _p['_vP1'], 'vP2': _p['_vP2']} for _p in players]
+_SURV_PER, _SURV_REPORT = _SH.apply(_surv_rows, _SURV_DOC, AGE_REF)
+for _p in players:
+    _s = _SURV_PER[_p['key']]
+    _p['_vP1'], _p['_vP2'] = _s['vP1'], _s['vP2']
+    _p['_surv'] = {'S1': round(_s['S1'], 4), 'S2': round(_s['S2'], 4), 'age': _s['age'], 'games': _s['games'],
+                   'm1': _s['m1'], 'm2': _s['m2']}
+for _lbl, _t in sorted(_SURV_REPORT['totals'].items()):
+    print('SURVIVAL HAZARD %s (%s): %s players %d -> %d (%+d; rounding bound %.1f on %d rows; cap_lift=%s) %s'
+          % (_SURV_REPORT['ruling'], _lbl, _t['field'], _t['before'], _t['after'], _t['delta'], 0.5 * len(players),
+             len(players), _SURV_REPORT['cap_lift'], 'SUM-PRESERVED' if not _SURV_REPORT['cap_lift'] else 'CAPPED (no lifts)'))
+print('SURVIVAL HAZARD source %s md5 %s · Sbar_1 by age: %s' % (_SURV_REPORT['source'], _SURV_REPORT['source_md5'][:8],
+      ' '.join('%s:%.3f' % (_a, _d['sbar']) for _a, _d in _SURV_REPORT['sbar_by_age']['S1'].items() if _d['sbar'] is not None)))
 # ==== ORDER 29B — THE PRINTED-DAY-0 ASSERT. A PERMANENT BOOT-CLASS CHECK, NOT A ONE-ACT MEASUREMENT ======
 # THE LAW THIS INSTALLS: from this act on, a day-0 entrant's PRINTED price IS his derived v0 x numeraire.
 # ORDER 29's PREREG P12 predicted that identity and MEASURED it false — 0 of 46 fresh entrants, printed at
@@ -391,6 +417,7 @@ def player_rec(p):
             'g':p['games'],'cg':cg,'yr':p['year'],'pk':p['pick'],'ty':p['type'],'unpl':bool(p.get('_unplayed')),
             'lnNull':level_now(p) is None,'track':track,'v':p['_v'],'bk':bool(p.get('_backonly')),
             'vP1':p.get('_vP1'),'vP2':p.get('_vP2'),'vM1':p.get('_vM1'),'vM2':p.get('_vM2'),'cvx':p.get('_cvx',1.0),
+            '_surv':p.get('_surv'),                                  # SURVIVAL_H2_2026-10-14: {S1,S2,age,games,m1,m2} — the survival multipliers the +1/+2 lens values carry (active rows; None on back rows)
             'avail_hc':p.get('_avail_hc',0.0),                       # RL_AVAIL present haircut L_p (register out-names; was b2hc)
             'avail_nerf':p.get('_avail_nerf',0),                     # Part-1 attribution: ev(layer)-ev(no-layer) per player (G-ATTR)
             'lti_return_hc':p.get('_lti_return_hc',0.0),             # Part-2 attribution column, FROZEN AT 0.0: the return arm was deleted 2026-10-14 with the LTI register (the engine sets no _lti_return_hc; the column stays so the board schema does not move)
@@ -661,6 +688,7 @@ lensConservation['_meta']={'principle':'year-0 continuity: value converts, does 
 
 out={'active':active,'back':back,'cohort':coh,
      'lensPicks':lensPicks,'lensConservation':lensConservation,   # items 12/14: future-lens phantom picks + conservation diagnostic (report-only)
+     'survivalHazard':_SURV_REPORT,                               # SURVIVAL_H2_2026-10-14: source md5, cap_lift, per-age Sbar tables, +1/+2 totals before/after
      'BASEPK_REG':{f'{k[0]}|{k[1]}':round(v,3) for k,v in g['BASEPK_REG'].items()},
      'POOL':{str(k):round(v,3) for k,v in g['POOL'].items()},
      'MIX':{str(b):{gg:round(w,4) for gg,w in g['MIX'][b].items()} for b in g['MIX']},
@@ -955,14 +983,30 @@ if os.environ.get('RL_LEGF', '1') != '0':
         if _o < 0:
             _ps += sum((_r.get(_fld) or _r.get('v') or 0) for _r in back); _nb = len(back)
         _pk = sum(pp['v'] for pp in _visible if pp['lens'] == _o)
+        # RECONCILED total (owner ruling 2026-10-14): players + the FULL sealed entrant layer x the classes on
+        # the lens (= draftAssetTotals['+k']['total'], per-class x nClasses) — the number the owner judges
+        # balance on. The display total (players + visible picks 1-64) stands beside it.
+        _ent_full = (_PVC64 + _res_nd + _res_mech) * _o if _o > 0 else 0
         _lc[_lbl] = {'lensYear': 2026 + _o, 'players': _ps, 'picks': _pk, 'total': _ps + _pk,
+                     'entrant_layer_full': _ent_full, 'nClasses': (_o if _o > 0 else 0),
+                     'reconciled': _ps + _ent_full,
                      'nPlayers': len(active) + _nb, 'nPicks': sum(1 for pp in _visible if pp['lens'] == _o)}
     _cn = _lc['now']['total'] or 1
+    _cr = _lc['now']['reconciled'] or 1
     _lc['_meta'] = {'principle': 'year-0 continuity: value converts, does not vanish (item 12)',
                     'report_only': True,
                     'basis': 'visible national-draft picks 1-64 at release-active PVC face value (the ranked assets)',
-                    'spread_vs_now': {_l: round(100 * (_lc[_l]['total'] - _cn) / _cn, 2) for _l, _, _ in _LF2}}
+                    'basis_reconciled': 'players + the FULL sealed F5 entrant layer x classes on the lens '
+                                        '(= draftAssetTotals[+k].total); the owner judges balance on this number',
+                    'spread_vs_now': {_l: round(100 * (_lc[_l]['total'] - _cn) / _cn, 2) for _l, _, _ in _LF2},
+                    'spread_vs_now_reconciled': {_l: round(100 * (_lc[_l]['reconciled'] - _cr) / _cr, 2) for _l, _, _ in _LF2}}
     out['lensConservation'] = _lc
+    for _lbl, _fld, _o in _LF2:
+        print('LENS CONSERVATION %-3s players %7d | display total %7d (picks 1-64 %6d; %+6.2f%% vs now) | RECONCILED %7d '
+              '(entrant layer x%d %6d; %+6.2f%% vs now)'
+              % (_lbl, _lc[_lbl]['players'], _lc[_lbl]['total'], _lc[_lbl]['picks'], _lc['_meta']['spread_vs_now'][_lbl],
+                 _lc[_lbl]['reconciled'], _lc[_lbl]['nClasses'], _lc[_lbl]['entrant_layer_full'],
+                 _lc['_meta']['spread_vs_now_reconciled'][_lbl]))
     # draftAssetTotals: the visible+residual -> F5 reconciliation (residuals separate; not ranked)
     _dat = {}
     for _k, _fld, _yr in _LF_LENS:
