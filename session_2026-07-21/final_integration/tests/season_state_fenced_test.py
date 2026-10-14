@@ -43,18 +43,6 @@ def _load(modname, path):
 SS = _load('season_state_fz', os.path.join(ROOT, 'season_state.py'))
 
 
-def _extract_season_val(path):
-    """Return a callable of the SHIPPED `_season_val` function, exec'd in an isolated namespace with only
-    `os`/`json` (so we test the real shipped bytes without importing the heavy engine module)."""
-    src = open(path).read()
-    m = re.search(r'\ndef _season_val\(_key, _fb\):\n(?:(?: {4}.*)?\n)+', src)
-    if not m:
-        raise AssertionError("could not locate _season_val in %s" % path)
-    ns = {'os': os, 'json': json}
-    exec(m.group(0), ns)
-    return ns['_season_val']
-
-
 def _fixture(tmp, body):
     d = os.path.join(tmp, 'data'); os.makedirs(d, exist_ok=True)
     p = os.path.join(d, 'season_state.json')
