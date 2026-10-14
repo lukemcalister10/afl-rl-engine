@@ -9,8 +9,8 @@ authoritative data/season_state.json cannot be loaded/validated. An explicitly U
 
 This proves, for EACH fenced mode and each corruption:
   (A) season_state.read_value + the two accessors: fenced -> SeasonStateError; unfenced -> fallback;
-  (B) the SHIPPED engine `_season_val` bytes (extracted from each engine module, exec'd in isolation so no
-      heavy import is needed): fenced -> raises; unfenced -> fallback;
+  (B) the SHIPPED engine reader engine/rl_after/season_read.py (one copy since 2026-10-14): every
+      engine module imports it; it raises on every corruption in every mode (no fallback);
   (C) rejection happens BEFORE any board is written: a gate-mode canonical build against a corrupted
       season_state.json exits non-zero and writes NO board (canonical files untouched). [workspace-gated]
 
@@ -132,44 +132,46 @@ def part_a():
 
 
 def part_b():
-    print("\n(B) shipped engine `_season_val` bytes (rl_model / _merged_recover / conditional_prior)")
-    fns = {name: _extract_season_val(path) for name, path in ENGINE_MODULES.items()}
-    for name, fn in fns.items():
-        # unfenced: corruption -> fallback
-        r = _with_env(RL_CONFIG_MODE=None, RL_REPO=None, CLAUDE_PROJECT_DIR=None)
+    """ONE READER, NO FALLBACK (2026-10-14). The three engine modules used to carry private `_season_val`
+    copies with a dev-mode fallback to 0.58; they now import engine/rl_after/season_read.value, which halts
+    on every corruption in EVERY mode. This part asserts (1) each module imports that reader and carries no
+    private copy and no fallback literal, (2) the reader returns the real value on a valid file, (3) it
+    halts on every corruption and on an unresolved root, fenced or not."""
+    print("\n(B) the single engine reader engine/rl_after/season_read.py (no fallback, any mode)")
+    for name, path in ENGINE_MODULES.items():
+        src = open(path, encoding='utf-8').read()
+        ok('%s imports season_read.value as _season_val' % name,
+           'from season_read import value as _season_val' in src)
+        ok('%s carries no private _season_val and no fallback literal' % name,
+           'def _season_val(' not in src and "_season_val('calendar_progress',0.58)" not in src
+           and "_season_val('exposure_pace',0.545)" not in src)
+    SR = _load('season_read_fz', os.path.join(ROOT, 'engine', 'rl_after', 'season_read.py'))
+    for mode in (None,) + FENCED:
+        label_mode = mode or 'unfenced'
+        tv = _fixture(tempfile.mkdtemp(), VALID)
+        r = _with_env(RL_CONFIG_MODE=mode, RL_REPO=tv, CLAUDE_PROJECT_DIR=None)
         try:
-            t = _fixture(tempfile.mkdtemp(), '{ bad'); os.environ['RL_REPO'] = t
-            ok('%s unfenced malformed -> fallback' % name, fn('calendar_progress', 0.58) == 0.58)
-            shutil.rmtree(t, ignore_errors=True)
+            ok('reader %s valid -> real value' % label_mode, SR.value('calendar_progress') == 0.58)
+        finally:
+            r(); shutil.rmtree(tv, ignore_errors=True)
+        for label, body in CORRUPTIONS.items():
+            t = _fixture(tempfile.mkdtemp(), body)
+            r = _with_env(RL_CONFIG_MODE=mode, RL_REPO=t, CLAUDE_PROJECT_DIR=None)
+            try:
+                SR.value('calendar_progress')
+                ok('reader %s %s -> HALT' % (label_mode, label), False, 'did not raise')
+            except Exception:
+                ok('reader %s %s -> HALT' % (label_mode, label), True)
+            finally:
+                r(); shutil.rmtree(t, ignore_errors=True)
+        r = _with_env(RL_CONFIG_MODE=mode, RL_REPO=None, CLAUDE_PROJECT_DIR=None)
+        try:
+            SR.value('calendar_progress')
+            ok('reader %s unresolved-root -> HALT' % label_mode, False, 'did not raise')
+        except Exception:
+            ok('reader %s unresolved-root -> HALT' % label_mode, True)
         finally:
             r()
-        # fenced modes: corruption -> raise; valid -> real value
-        for mode in FENCED:
-            tv = _fixture(tempfile.mkdtemp(), VALID)
-            r = _with_env(RL_CONFIG_MODE=mode, RL_REPO=tv, CLAUDE_PROJECT_DIR=None)
-            try:
-                ok('%s fenced %s valid -> real value' % (name, mode), fn('calendar_progress', 0.58) == 0.58)
-            finally:
-                r(); shutil.rmtree(tv, ignore_errors=True)
-            for label, body in CORRUPTIONS.items():
-                t = _fixture(tempfile.mkdtemp(), body)
-                r = _with_env(RL_CONFIG_MODE=mode, RL_REPO=t, CLAUDE_PROJECT_DIR=None)
-                try:
-                    fn('calendar_progress', 0.58)
-                    ok('%s fenced %s %s -> HALT' % (name, mode, label), False, 'did not raise')
-                except Exception:
-                    ok('%s fenced %s %s -> HALT' % (name, mode, label), True)
-                finally:
-                    r(); shutil.rmtree(t, ignore_errors=True)
-            # unresolved root (RL_REPO/CLAUDE_PROJECT_DIR unset) -> raise
-            r = _with_env(RL_CONFIG_MODE=mode, RL_REPO=None, CLAUDE_PROJECT_DIR=None)
-            try:
-                fn('calendar_progress', 0.58)
-                ok('%s fenced %s unresolved-root -> HALT' % (name, mode), False, 'did not raise')
-            except Exception:
-                ok('%s fenced %s unresolved-root -> HALT' % (name, mode), True)
-            finally:
-                r()
 
 
 def part_c():
