@@ -56,7 +56,8 @@ KEY_SCHEMA = 2
 #: The sheet is whichever file data/sheet_pins.json names; the three pickles are the surfaces the
 #: build loads (v0surf is also a PIN_MEASURERS entry — it is repeated here so it is in the key even
 #: when the act declares it as moving).
-BUILD_INPUT_FILES = ('data/season_state.json', 'data/q97m.pkl', 'data/cm_400.pkl', 'data/v0surf.pkl')
+BUILD_INPUT_FILES = ('data/season_state.json', 'data/q97m.pkl', 'data/cm_400.pkl', 'data/v0surf.pkl',
+                     'engine/rl_after/season_read.py')   # the season-state reader is an engine input the pins do not cover
 SHEET_PINS = 'data/sheet_pins.json'
 
 

@@ -3,31 +3,7 @@ import os,io,contextlib,copy,pickle,numpy as np
 import math as _math
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.isotonic import IsotonicRegression
-def _season_val(_key, _fb):
-    """DYNAMIC season-state value (calendar_progress|exposure_pace) from data/season_state.json (single
-    source; advances weekly).
-    FENCED (RL_CONFIG_MODE in bake|gate|canonical): HALT on any of unresolved/untrusted repo root,
-    missing file, malformed JSON, missing key, or a non-numeric / non-finite value. UNFENCED dev: fallback."""
-    import json as _j
-    _mode = (os.environ.get('RL_CONFIG_MODE') or '').strip().lower()
-    _fenced = _mode in ('bake', 'gate', 'canonical')
-    _r = os.environ.get('RL_REPO') or os.environ.get('CLAUDE_PROJECT_DIR')
-    if not _r:
-        if _fenced:
-            raise RuntimeError("FENCED season-state read (RL_CONFIG_MODE=%s): repo root unresolved "
-                               "(RL_REPO/CLAUDE_PROJECT_DIR unset) — cannot load authoritative season state" % _mode)
-        _r = '.'
-    _p = os.path.join(_r, 'data', 'season_state.json')
-    try:
-        _v = float(_j.load(open(_p))[_key])
-        if _v != _v or _v in (float('inf'), float('-inf')):
-            raise ValueError("non-finite %s=%r" % (_key, _v))
-        return _v
-    except Exception as _e:
-        if _fenced:
-            raise RuntimeError("FENCED season-state read (RL_CONFIG_MODE=%s): cannot load %r from %s (%s)"
-                               % (_mode, _key, _p, _e)) from _e
-        return float(_fb)
+from season_read import value as _season_val   # THE season-state reader (one copy, no fallback; 2026-10-14)
 # ===== DETERMINISM FIX (2026-07-14, session_2026-07-14/determinism_fix) =====
 # PART 1 bisect finding: the FIRST cross-environment divergent bit is a BLAS-routed np.dot
 # (price6, below) — NOT the NW-smoother the register hypothesised. All 3 np.dot sites on the
@@ -158,7 +134,7 @@ RUC_WAGE=float(os.environ.get('RL_RUC_WAGE','1.0'))   # #334 ITEM E1 sizing: 1.0
 # judged only against games that were playable (R14/24 -> fE=0.58 at this cut; RL_M3_FE = the M2/M3
 # season-progress convention, one dial). Completed seasons are byte-identical (fE=1). G_ADQ (12, M1
 # proven-player recent-adequacy window) deliberately NOT prorated — outside the 6/10/14/22 enumeration.
-SEASON_FE=_season_val('calendar_progress',0.58)   # CALENDAR progress (was RL_M3_FE env / 0.58); dynamic from season_state
+SEASON_FE=_season_val('calendar_progress')   # CALENDAR progress (was RL_M3_FE env / 0.58); dynamic from season_state
 INPROG_Y=int(os.environ.get('RL_M3_INPROG_Y','2026'))
 # ==== RL_AVAIL — LTI/AVAILABILITY LAYER (Chapter-3 2026-07-09; register-driven; touches register keys only) ==
 # Part 1 (current-season nerf, R-iv = season-state at the proration seam): for a register name out for the
@@ -3081,7 +3057,7 @@ def ev(p,Y=2026):
 # evaluation date (fE -> 1 as the season completes). RL_M3_FE=1 = kill-switch (byte-exact inert).
 # RE-REGISTERED ACCEPTANCE at this config (D7): A3 >= 0.75 (Luke's amended bar) with ZERO on-pace
 # collateral >2% and B-gates holding.
-M3_FE=_season_val('calendar_progress',0.58)   # CALENDAR progress (was RL_M3_FE env / 0.58); dynamic from season_state                # elapsed-season fraction; 1.0 -> lever off
+M3_FE=_season_val('calendar_progress')   # CALENDAR progress (was RL_M3_FE env / 0.58); dynamic from season_state                # elapsed-season fraction; 1.0 -> lever off
 M3_DEN=11.0                                                   # M2's evidence-replacement denominator (on-pace floor)
 _ev_click=ev                                                  # the full-click evaluation (M1+asc + M2 + caps)
 def _m3_s(p,Y):

@@ -1,29 +1,5 @@
 import json, numpy as np, math, re, os
-def _season_val(_key, _fb):
-    """Read a DYNAMIC season-state value (calendar_progress | exposure_pace) from the authoritative
-    data/season_state.json (single source; advances weekly).
-    FENCED (RL_CONFIG_MODE in bake|gate|canonical): HALT on any of unresolved/untrusted repo root,
-    missing file, malformed JSON, missing key, or a non-numeric / non-finite value — a release build
-    must never silently fall back to a stale Round-14 default. UNFENCED dev shell: use the fallback."""
-    _mode = (os.environ.get('RL_CONFIG_MODE') or '').strip().lower()
-    _fenced = _mode in ('bake', 'gate', 'canonical')
-    _r = os.environ.get('RL_REPO') or os.environ.get('CLAUDE_PROJECT_DIR')
-    if not _r:
-        if _fenced:
-            raise RuntimeError("FENCED season-state read (RL_CONFIG_MODE=%s): repo root unresolved "
-                               "(RL_REPO/CLAUDE_PROJECT_DIR unset) — cannot load authoritative season state" % _mode)
-        _r = '.'
-    _p = os.path.join(_r, 'data', 'season_state.json')
-    try:
-        _v = float(json.load(open(_p))[_key])
-        if _v != _v or _v in (float('inf'), float('-inf')):
-            raise ValueError("non-finite %s=%r" % (_key, _v))
-        return _v
-    except Exception as _e:
-        if _fenced:
-            raise RuntimeError("FENCED season-state read (RL_CONFIG_MODE=%s): cannot load %r from %s (%s)"
-                               % (_mode, _key, _p, _e)) from _e
-        return float(_fb)
+from season_read import value as _season_val   # THE season-state reader (one copy, no fallback; 2026-10-14)
 import pgrid   # establishment-P surface (Praw + mat_mult); ported onto the board 2026-06-21 (was compute.py-only)
 from unidecode import unidecode
 data=json.load(open('rl_model_data.json')); P=json.load(open('params.json')); PMD=json.load(open('rl_passmark.json'))
@@ -1876,7 +1852,7 @@ print('#326 POOL LEVELS (N43 signed, read verbatim, LADDER currency; ND65+ = %.1
                    for _k in sorted(_POOL_LEVELS))))
 print('#326 POOL POPULATION (engine classification, re-derived at build time): %s'
       %(' · '.join('%s %d'%(_k,_POOL_DIV_COUNT[_k]) for _k in sorted(_POOL_DIV_COUNT))))
-SEASON_PROG=_season_val('calendar_progress',0.58)   # CALENDAR progress from data/season_state.json (dynamic; R14/24=0.58). Was the frozen literal 0.58.
+SEASON_PROG=_season_val('calendar_progress')   # CALENDAR progress from data/season_state.json (dynamic; R14/24=0.58). Was the frozen literal 0.58.
 def _playsig(g): return 1-math.exp(-g/6.0)    # saturating establishment from senior games
 def debut_factor(p):                          # step-1 debut signal on pick-anchored value; asymmetric by pick
     ep=effpk(p); s=los(p); cg=sum(r['games'] for r in p['scoring'])
