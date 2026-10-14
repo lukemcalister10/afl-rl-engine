@@ -2,12 +2,12 @@
  "schema_version": 1,
  "act_kind": "store-edit",
  "act": "THE HARRISON JONES TWIN GAME: the retired Hawthorn twin's phantom 2026 appearance removed (owner ruling: a DUPLICATE, not a missing Essendon game)",
- "date": "2026-10-13",
+ "date": "2026-10-14",
  "owner_word": "Owner, 2026-10-13, verbatim: \"Jones - duplciate.\" \u2014 the 15 credited to harrison-jones-haw in the pre-repo seed is a duplicate of a game already in the Essendon row; the twin's row is zeroed and the Essendon row is untouched.",
  "authority": "owner ruling 2026-09-24 (career games = sum of season rows) + owner word on this act",
  "prereg": {
   "path": "docs/evidence/store_edit_harrison_jones_2026-10-13/NOTE.md",
-  "board_before": "769eb79e6a70cd0417519d33de1bc8ff",
+  "board_before": "e22e3ef67a41f58e1a6d3a80488f5289",
   "board_after": null,
   "reference_board": null,
   "kill_switch": null
@@ -51,8 +51,8 @@
   ]
  },
  "column": {
-  "id": "harrison-jones-twin-game-13-10",
-  "label": "13/10 Harrison Jones (Hawthorn, retired) \u2014 the seed's phantom 2026 game removed; duplicate, owner-ruled",
+  "id": "harrison-jones-twin-game-14-10",
+  "label": "14/10 Harrison Jones (Hawthorn, retired) \u2014 the seed's phantom 2026 game removed; duplicate, owner-ruled",
   "after_round": 24
  },
  "lineage": {
