@@ -1,0 +1,488 @@
+======================================================================================================
+LAND STORE-EDIT — THE LISTING FACT: _last_listed set on 201 retired rows from the AFL end-of-season list changes (2025 and 2024), owner-couriered; the 13 rows that already carried it agree. The board moves only in its dormant back section: 31 retired rows appear at scrap values (measured).
+  tree      : /home/user/afl-rl-engine
+  owner word: Owner, 2026-10-14: the AFL retirements-and-delistings pages for 2025 and 2024 ("obviously ignore anyone who is trd or fa"; a re-appearance voids the exit; "Tarryn Thomas was cut at the end of 2023").
+  prereg    : docs/evidence/store_edit_last_listed_2026-10-14/NOTE.md   predicts board e944be2096f2d7e7af41a5a0ea914e22
+  mode      : APPLY builder=real
+======================================================================================================
+
+--- STEP 0/9  preflight      clean tree, build lock, the restore point ---
+RL_/PAR_ environment  (none)
+build-lock: HELD by land-edit-23777 (pid 23777) — single writer for the shared workspace.
+base commit        5ec6b30187378e5824ba596b6d41520aad115f82
+board pin (before) bec12594550a4380b80ac00cbb0b65e9
+store pin (before) b0eeaf4b9f766e6618081dce8fc328e3
+restore point      39 carrier(s) captured, 39 present on disk
+    [preflight OK  0.06s]
+
+--- STEP 1/9  store_edit     THE SURGICAL STORE EDIT, applied in the work dir ---
+store BEFORE  b0eeaf4b9f766e6618081dce8fc328e3   (1978077 bytes)
+              == expected_boot.store, so the tree is the one this act was written for.
+THE EDIT — surgical, inside the named row's span; `old` asserted, never repaired; `add` inserted, never overwriting:
+    lachlan-gollant              _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 479459..480170, at char 479982)
+    will-hamill                  _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 533454..534155, at char 533967)
+    patrick-parnell              _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 426105..426761, at char 426573)
+    rory-sloane                  _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1495110..1496344, at char 1496255)
+    joe-daniher                  _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1064105..1065166, at char 1065078)
+    kalin-lane                   _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 432595..433087, at char 432896)
+    jarryd-lyons                 _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1306449..1307677, at char 1307488)
+    james-madden                 _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 582442..583090, at char 582918)
+    carter-michael               _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 417995..418535, at char 418363)
+    dom-akuei                    _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 344870..345350, at char 345178)
+    david-cuningham              _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 816611..817448, at char 817359)
+    sam-durdin                   _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 894626..895348, at char 895259)
+    caleb-marchbank              _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 884784..885614, at char 885526)
+    alex-mirkov                  _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 427659..428050, at char 427960)
+    aiden-begg                   _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 434795..435344, at char 435153)
+    jack-bytel                   _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 541389..541994, at char 541905)
+    josh-carmichael              _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 355896..356410, at char 356321)
+    nathan-kreuger               _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 950873..951592, at char 951403)
+    nathan-murphy                _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 640809..641429, at char 641340)
+    kaine-baldwin                _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 420788..421266, at char 421195)
+    jayden-davey                 _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 253366..253760, at char 253672)
+    dyson-heppell                _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1255397..1256694, at char 1256433)
+    nick-hind                    _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 550054..550867, at char 550679)
+    jaiden-hunter                _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 281651..282044, at char 281955)
+    jake-kelly                   _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1044778..1045830, at char 1045569)
+    tex-wanganeen                _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 350017..350436, at char 350366)
+    sam-weideman                 _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 801527..802414, at char 802326)
+    josh-corbett                 _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1745238..1745882, at char 1745811)
+    tom-emmett                   _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 245475..245966, at char 245878)
+    ethan-hughes                 _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 948727..949833, at char 949572)
+    sebit-kuek                   _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 358341..358831, at char 358641)
+    ethan-stanley                _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 281221..281671, at char 281582)
+    matthew-taberner             _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1113196..1114357, at char 1114168)
+    conrad-williams              _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 269507..270002, at char 269829)
+    phoenix-foster               _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 252596..252988, at char 252899)
+    mitch-hardie                 _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 280873..281263, at char 281174)
+    tom-hawkins                  _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1683082..1684488, at char 1684400)
+    emerson-jeka                 _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 495648..496241, at char 496053)
+    oscar-murdoch                _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 260290..260773, at char 260586)
+    brandan-parfitt              _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 715935..716783, at char 716694)
+    gary-rohan                   _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1364115..1365322, at char 1365235)
+    zach-tuohy                   _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1447526..1448685, at char 1448613)
+    james-willis                 _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 311166..311554, at char 311465)
+    levi-casboult                _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1437392..1438610, at char 1438421)
+    brandon-ellis                _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1157584..1158876, at char 1158614)
+    oskar-faulkhead              _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 355087..355486, at char 355397)
+    darcy-macpherson             _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 860562..861627, at char 861366)
+    jack-mahony                  _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 469008..469621, at char 469533)
+    hewago-oea                   _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 417803..418301, at char 418229)
+    james-tsitas                 _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 349589..350169, at char 349999)
+    cooper-hamilton              _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 338647..339252, at char 339064)
+    braydon-preuss               _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 950670..951399, at char 951209)
+    joshua-bennetts              _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 270722..271116, at char 271043)
+    denver-grainger-barras       _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 365639..366211, at char 366123)
+    cooper-stephens              _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 453975..454422, at char 454333)
+    jack-o-sullivan              _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 248665..249057, at char 248969)
+    ethan-phillips               _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 203770..204195, at char 204124)
+    clay-tucker                  _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 279676..280068, at char 279978)
+    chad-wingard                 _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1142246..1143317, at char 1143230)
+    angus-brayshaw               _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 881407..882317, at char 882229)
+    ben-brown                    _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1018980..1019988, at char 1019899)
+    kyah-farris-white            _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 264140..264540, at char 264468)
+    lachlan-hunter               _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1097797..1098880, at char 1098791)
+    josh-schache                 _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 794061..794950, at char 794862)
+    joel-smith-1                 _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 876265..877081, at char 876909)
+    adam-tomlinson               _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1150919..1152141, at char 1151952)
+    blake-drury                  _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 256625..257123, at char 257036)
+    hamish-free                  _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 260863..261356, at char 261167)
+    hugh-greenwood               _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 877149..877999, at char 877926)
+    charlie-lazzaro              _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 392365..392993, at char 392904)
+    bigoa-nyuon                  _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 485042..485654, at char 485465)
+    tyler-sellers                _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 204219..204648, at char 204577)
+    liam-shiels                  _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1487531..1488819, at char 1488730)
+    jaidyn-stephenson            _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 609751..610541, at char 610454)
+    curtis-taylor                _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 545712..546449, at char 546361)
+    tom-clurey                   _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1085096..1086042, at char 1085953)
+    charlie-dixon                _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1270729..1272010, at char 1271821)
+    kyle-marshall                _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 256249..256645, at char 256556)
+    tom-mccallum                 _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 242196..242590, at char 242501)
+    matt-coulthard               _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 280224..280722, at char 280634)
+    noah-cumberland              _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 476712..477386, at char 477198)
+    dylan-grimes                 _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1414112..1415612, at char 1415244)
+    dustin-martin                _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1361971..1363232, at char 1363144)
+    sam-naismith                 _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1129031..1129805, at char 1129615)
+    marlion-pickett              _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 601878..602787, at char 602526)
+    riley-bonner                 _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 829058..830053, at char 829865)
+    brad-crouch                  _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1143825..1144770, at char 1144682)
+    jack-hayes                   _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 348439..348971, at char 348900)
+    olli-hotton                  _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 241710..242194, at char 242006)
+    sebastian-ross               _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1166396..1167618, at char 1167429)
+    james-van-es                 _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 239301..239690, at char 239601)
+    harry-arnold                 _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 280790..281179, at char 281090)
+    jaiden-magor                 _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 262898..263380, at char 263192)
+    sam-reid-syd                 _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1393334..1394388, at char 1394299)
+    cooper-vickery               _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 236875..237363, at char 237175)
+    jordyn-baker                 _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 272295..272784, at char 272612)
+    coby-burgiel                 _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 238117..238505, at char 238417)
+    luke-edwards                 _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 404801..405427, at char 405338)
+    andrew-gaff                  _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 1252137..1253411, at char 1253223)
+    jamaine-jones                _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 780847..781665, at char 781477)
+    josh-rotham                  _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 725545..726359, at char 726171)
+    zane-trew                    _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 413341..413989, at char 413801)
+    alex-witherden               _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 714071..715002, at char 714814)
+    dominic-bedendo              _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 406292..406744, at char 406656)
+    charlie-clarke               _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 235082..235480, at char 235392)
+    alex-keath                   _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 875648..876481, at char 876408)
+    aiden-o-driscoll             _last_listed       ADD 2024   after '_pickless', as 13 exemplar row(s) carry it   (row span 184559..185041, at char 184873)
+    chris-burgess                _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1747644..1748460, at char 1748289)
+    matt-crouch                  _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 997854..998859, at char 998770)
+    lachlan-murphy               _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 682226..683226, at char 682965)
+    brodie-smith                 _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1263824..1265142, at char 1264954)
+    kieran-strachan              _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 569158..569883, at char 569694)
+    darcy-craven                 _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 216066..216556, at char 216367)
+    oscar-mcinerney              _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 776409..777364, at char 777174)
+    brandon-ryan                 _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 282662..283261, at char 283072)
+    jaxon-binns                  _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 239824..240318, at char 240229)
+    alex-cincotta                _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 275890..276523, at char 276353)
+    sam-docherty                 _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1155381..1156480, at char 1156292)
+    orazio-fantasia              _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1023970..1024965, at char 1024877)
+    harry-lemmey                 _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 249323..249711, at char 249622)
+    will-white                   _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 132971..133385, at char 133315)
+    charlie-dean                 _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 335952..336449, at char 336361)
+    will-hoskin-elliott          _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1141209..1142389, at char 1142302)
+    ash-johnson                  _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 426690..427247, at char 427158)
+    oleg-markov                  _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 839715..840589, at char 840501)
+    tom-mitchell                 _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1149256..1150432, at char 1150243)
+    alwyn-davey-1                _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 248420..248927, at char 248839)
+    todd-goldstein               _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1680874..1682330, at char 1682240)
+    ben-hobbs                    _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 295805..296419, at char 296330)
+    luamon-lual                  _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 173732..174170, at char 174082)
+    jye-menzie                   _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 359735..360440, at char 360251)
+    dylan-shiel                  _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1139293..1140460, at char 1140372)
+    oskar-smartt                 _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 144953..145495, at char 145306)
+    james-aish                   _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 982136..983300, at char 983113)
+    jack-delean                  _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 188162..188547, at char 188459)
+    nathan-fyfe                  _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1378766..1380067, at char 1379978)
+    quinton-narkle               _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 744662..745590, at char 745402)
+    michael-walters              _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1505306..1506596, at char 1506508)
+    ted-clohesy                  _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 270576..271226, at char 271054)
+    mitchell-duncan              _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1385692..1387093, at char 1386905)
+    cameron-guthrie              _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1276234..1277506, at char 1277317)
+    thomas-berry                 _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 539642..540299, at char 540211)
+    lloyd-johnston               _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 267647..268243, at char 268071)
+    sean-lemmens                 _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1002748..1003900, at char 1003712)
+    alex-sexton                  _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1204134..1205481, at char 1205220)
+    david-swallow                _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1249725..1250910, at char 1250822)
+    josh-fahey                   _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 319904..320442, at char 320254)
+    lachlan-keeffe               _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1555290..1556364, at char 1556291)
+    callan-ward                  _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1576064..1577487, at char 1577398)
+    luke-breust                  _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1542358..1543664, at char 1543476)
+    sam-frost                    _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1209286..1210545, at char 1210357)
+    seamus-mitchell              _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 388314..388972, at char 388784)
+    jasper-scaife                _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 207994..208387, at char 208298)
+    jack-billings                _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 978276..979338, at char 979251)
+    tom-fullarton                _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 587215..587834, at char 587761)
+    marty-hore                   _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 553333..553924, at char 553736)
+    oliver-sestan                _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 262695..263182, at char 262994)
+    will-verrall                 _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 259773..260262, at char 260073)
+    taj-woewodin                 _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 334380..335045, at char 334857)
+    miller-bergman               _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 316795..317400, at char 317212)
+    kallan-dawson                _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 352446..353066, at char 352977)
+    eddie-ford                   _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 407318..407924, at char 407836)
+    geordie-payne                _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 205537..205990, at char 205902)
+    will-phillips                _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 364032..364656, at char 364568)
+    brynn-teakle                 _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 356500..357126, at char 357036)
+    darcy-tucker                 _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 822528..823591, at char 823403)
+    rory-atkins                  _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1108713..1109711, at char 1109622)
+    travis-boak                  _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1653336..1654820, at char 1654732)
+    ryan-burton                  _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 815035..815969, at char 815881)
+    jeremy-finlayson             _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 941776..942789, at char 942600)
+    hugh-jackson                 _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 328067..328514, at char 328425)
+    jed-mcentee                  _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 433475..434243, at char 434054)
+    willie-rioli                 _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 739469..740195, at char 740107)
+    dylan-williams               _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 460710..461428, at char 461240)
+    jacob-bauer                  _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 357710..358265, at char 358175)
+    jacob-blight                 _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 206014..206518, at char 206429)
+    thomson-dow                  _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 459020..459741, at char 459652)
+    jacob-koschitzke             _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 550664..551339, at char 551250)
+    kamdyn-mcintosh              _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1088108..1089119, at char 1089030)
+    harry-boyd                   _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 129167..129588, at char 129516)
+    zaine-cordy                  _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 933646..934673, at char 934584)
+    zak-jones                    _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 990941..992086, at char 991897)
+    angus-mclennan               _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 272216..272711, at char 272639)
+    arie-schoenmaker             _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 189313..189813, at char 189725)
+    jimmy-webster                _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1182660..1183880, at char 1183619)
+    robbie-fox                   _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 776329..777331, at char 777070)
+    aaron-francis                _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 800289..801251, at char 801163)
+    caleb-mitchell               _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 245411..245913, at char 245824)
+    jayden-hunt                  _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1027323..1028268, at char 1028180)
+    callum-jamieson              _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 482174..482844, at char 482654)
+    coen-livingstone             _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 201838..202239, at char 202165)
+    jeremy-mcgovern              _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1349204..1350374, at char 1350185)
+    jack-petruccelle             _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 642084..642919, at char 642831)
+    dominic-sheed                _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 987447..988456, at char 988367)
+    taylor-duryea                _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1411932..1413140, at char 1412952)
+    james-harmes                 _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1034472..1035504, at char 1035395)
+    jason-johannisen             _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1345700..1347044, at char 1346783)
+    liam-jones                   _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 1488161..1489490, at char 1489301)
+    caleb-poulter                _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 389370..390042, at char 389953)
+    anthony-scott                _last_listed       ADD 2025   after '_pickless', as 13 exemplar row(s) carry it   (row span 424907..425618, at char 425448)
+    tarryn-thomas                _last_listed       ADD 2023   after '_pickless', as 13 exemplar row(s) carry it   (row span 516245..517028, at char 516841)
+store AFTER   f49dbef62a6f4595684449ccdf6533e7   (1982499 bytes, +4422)
+byte check: reversing every declared replacement (removing every added field) reproduces the store byte-for-byte — the ONLY bytes that differ are the declared field values.
+WRITTEN and re-read: 201 row(s) edited, 2650 rows in the store, every other row untouched.
+season clock  re-derived from the edited store by season_state.derive (the sole deriver)
+    source_store_md5  b0eeaf4b9f76 -> f49dbef62a6f
+    FINALS HOLD: live store derives exposure_pace 0.955; the round-24 view (505 finals appearances subtracted) re-derives the held 0.909 exactly — held.
+    every derived VALUE asserted unchanged (10 field(s) checked); WRITTEN and re-read.
+    [store_edit OK  6.85s]
+
+--- STEP 2/9  build_proofs   bare build, predicted identity, switch leg, day-0 ---
+build         rc=0 board=e944be2096f2d7e7af41a5a0ea914e22  (536.2s)
+built FROM the edited store: sidecar source_md5 f49dbef62a6f == the store this act wrote
+MOVERS — EVERY ONE, WITH VALUES  (31 of 1032 valued row(s) moved)
+    aiden-begg                   Aiden Begg                 None -> 9   (appeared/vanished)  [back]
+    alex-mirkov                  Alex Mirkov                None -> 9   (appeared/vanished)  [back]
+    angus-brayshaw               Angus Brayshaw             None -> 54   (appeared/vanished)  [back]
+    braydon-preuss               Braydon Preuss             None -> 7   (appeared/vanished)  [back]
+    carter-michael               Carter Michael             None -> 7   (appeared/vanished)  [back]
+    chad-wingard                 Chad Wingard               None -> 23   (appeared/vanished)  [back]
+    cooper-hamilton              Cooper Hamilton            None -> 11   (appeared/vanished)  [back]
+    cooper-stephens              Cooper Stephens            None -> 21   (appeared/vanished)  [back]
+    denver-grainger-barras       Denver Grainger-Barras     None -> 24   (appeared/vanished)  [back]
+    dom-akuei                    Dom Akuei                  None -> 9   (appeared/vanished)  [back]
+    dominic-bedendo              Dominic Bedendo            None -> 4   (appeared/vanished)  [back]
+    emerson-jeka                 Emerson Jeka               None -> 13   (appeared/vanished)  [back]
+    ethan-stanley                Ethan Stanley              None -> 9   (appeared/vanished)  [back]
+    hewago-oea                   Hewago Paul Oea            None -> 8   (appeared/vanished)  [back]
+    jack-mahony                  Jack Mahony                None -> 8   (appeared/vanished)  [back]
+    james-madden                 James Madden               None -> 7   (appeared/vanished)  [back]
+    james-tsitas                 James Tsitas               None -> 1   (appeared/vanished)  [back]
+    james-willis                 James Willis               None -> 15   (appeared/vanished)  [back]
+    joel-smith-1                 Joel Smith                 None -> 9   (appeared/vanished)  [back]
+    josh-carmichael              Josh Carmichael            None -> 4   (appeared/vanished)  [back]
+    josh-corbett                 Josh Corbett               None -> 9   (appeared/vanished)  [back]
+    josh-fahey                   Josh Fahey                 None -> 7   (appeared/vanished)  [back]
+    kaine-baldwin                Kaine Baldwin              None -> 10   (appeared/vanished)  [back]
+    kalin-lane                   Kalin Lane                 None -> 9   (appeared/vanished)  [back]
+    nathan-murphy                Nathan Murphy              None -> 9   (appeared/vanished)  [back]
+    oskar-faulkhead              Oskar Faulkhead            None -> 8   (appeared/vanished)  [back]
+    rory-sloane                  Rory Sloane                None -> 10   (appeared/vanished)  [back]
+    sam-reid-syd                 Sam Reid                   None -> 8   (appeared/vanished)  [back]
+    sebit-kuek                   Sebit Kuek                 None -> 11   (appeared/vanished)  [back]
+    tex-wanganeen                Tex Wanganeen              None -> 8   (appeared/vanished)  [back]
+    tom-clurey                   Tom Clurey                 None -> 10   (appeared/vanished)  [back]
+pool (sum of active v)  687821 -> 687821  (+0)
+DECLARED MOVERS MET: 31 of 31, each key and both values
+PREDICTED BOARD MET: e944be2096f2d7e7af41a5a0ea914e22 == prereg docs/evidence/store_edit_last_listed_2026-10-14/NOTE.md
+day-0 re-base : OFF (default). No day-0 reference is regenerated by this landing.
+installed     board + both sidecars + the generator copy (4 files, lockstep)
+    [build_proofs OK  536.20s]
+
+--- STEP 3/9  pins           expected_boot + both sidecars + the generator copy ---
+published board  e944be2096f2d7e7af41a5a0ea914e22
+generator board  e944be2096f2d7e7af41a5a0ea914e22
+both sidecars agree with the board beside them and with the live store. OK.
+COMPUTED from the tree (never typed): store        = f49dbef62a6f4595684449ccdf6533e7
+  expected_boot store        b0eeaf4b9f76 -> f49dbef62a6f   (old value occurs 1 time(s))
+COMPUTED from the tree (never typed): board        = e944be2096f2d7e7af41a5a0ea914e22
+  expected_boot board        bec12594550a -> e944be2096f2   (old value occurs 1 time(s))
+fields that moved in expected_boot.json: ['board', 'store']
+must-not-move list: 6 checked, 0 moved
+byte check: the ONLY bytes that differ are the declared pin values.
+WRITTEN and re-read.
+    [pins OK  0.02s]
+
+--- STEP 4/9  lineage        the out-of-round column and the append-only entry ---
+column        listing-fact-14-10 registered (dry_run=False)
+ASSERTED: the newest stored point is this column, naming the live board e944be2096f2d7e7af41a5a0ea914e22
+chain OK: register tail destination == this entry's source on board and store
+append-only OK: 31 prior entries byte-verbatim; top-level baseline 06d8af60b679a12db07c064c60c065f9 / v2.11-present-lens-baseline UNMOVED
+MOVED by this transition: ['board', 'store'] (of 11 identities)
+re-read OK: round-trips at indent=1; prior entries still byte-verbatim.
+    [lineage OK  0.16s]
+
+--- STEP 5/9  contract       restamp_dynamic + the bake-lane repin + check ---
+contract seal self-consistent before the act: ba6155622d4a
+  config       d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4   == expected_boot
+  engine_head  bebaff641a986e54840fd24210591ff5   == expected_boot
+  rl_model     ad48eb299b01639b62d397c4c0016dd4   == expected_boot
+  fv           80e63a6b8ea26b56e8aa60c9c1cf028156881fc6259d8a4fd8ebbad40963a5cd   == expected_boot
+  store        f49dbef62a6f4595684449ccdf6533e7   == expected_boot
+  board        e944be2096f2d7e7af41a5a0ea914e22   == expected_boot
+WRITER 1: release_contract.restamp_dynamic(root, as_of_round=24, store, board, season_state)
+   restamp_dynamic returned seal 4c6cc85aae1d
+WRITER 2: the bake-lane identities restamp_dynamic does not touch (release_contract.restamp_bake_identities — shared with tools/restamp)
+  contract_sha256             4c6cc85aae1d -> 4c6cc85aae1d
+  frozen fields asserted unmoved: 10 checked, 0 moved
+RE-STAMPED, re-read, and release_contract.py check PASSES.
+    [contract OK  0.07s]
+
+--- STEP 6/9  ui             ALL SEVEN UI writers, and the identity read back out ---
+BEFORE  working 784851dfcd0054efdb0fb919234878e3  release-block=True
+BEFORE  public  4420a838b186e5c255630cbabaf2ca46  release-block=False
+BEFORE  mirror  b58c06f4587f88c7ce08189218501be1  register=31 entr(ies)
+BEFORE  movers  2d1263ae25382cad12821218199efa6a  model_changes=22 boundar(ies)
+BEFORE  owners 38c7fda9b772ddd7597f6e6bd1503bd2  pinned board=bec12594 store=b0eeaf4b
+BEFORE  picks  f805b7cd5244a9b27cd2ccaea1e430d3  stamped board=bec12594 store=b0eeaf4b R24
+BEFORE  draft  32a271e6341fd43dd66da3810c9bbaea  stamped store=b0eeaf4b
+WRITER 1/8: ui/tools/extract_board_view.py
+  working after writer 1: 887e81639bc796c6a3b6eaccd39780c0   release-block=True   <-- DROPPED, as it always is
+WRITER 2/8: round_movers.inject_release_contract(bundle, root, 24)
+  release block: {"as_of_round": 24, "balanced_board_md5": "06d8af60b679a12db07c064c60c065f9", "board": "e944be2096f2d7e7af41a5a0ea914e22", "config": "d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4",
+WRITER 3/8: ui/tools/generate_movers_transition.py  (the lineage projection — supervisor ruling on F-9)
+  wrote: ui/data/movers_transition.js (119656 bytes)
+  register entries mirrored: 32
+  drift guard: mirror OK — committed == projected (119656 bytes, 32 register entries)
+  mirror register == lineage register: 32 entr(ies), EQUAL  (the F-9 predicate holds)
+WRITER 4/8: ui/tools/rebuild_movers_derived.py  (points / values / model_changes — supervisor ruling on F-10)
+  wrote: ui/data/movers.js (7276376 -> 6713435 bytes, latest report R29)
+  derived blocks changed: points, values, model_changes
+  drift guard: derived blocks OK — committed == rebuilt (6713435 bytes, latest report R29)
+  shipped model_changes == live-derived: 23 boundar(ies), EQUAL  (the F-10 predicate holds)
+WRITER 4b/8: the retro CONTROL first (engine-free: banked r24 vs the live board)
+  CONTROL PASS: r29 reproduces the live board values exactly (804 rows) — the retrospective is current with the store.
+WRITER 4b/8: emit_retro_series.py  (the R14-R24 walk-forward series writer 4 drops)
+  retro-r28   804 players  board in-proce
+  retro-r29   804 players  board in-proce
+  emitted 16 retro points covering up to 804 players -> ui/data/movers.js
+  retro series present: 16 points, retro-r14 .. retro-r29 (every banked round, no gap)
+WRITER 5/8: ui/tools/ingest_inputs.py --mirror-only  (the ownership mirror, re-pinned to the landed board + store)
+  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /home/user/afl-rl-engine/ui/data/ownership.js
+  MIRROR-ONLY    — the club-valuation bundle was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
+  drift guard: MIRROR DRIFT GUARD — ui/data/ownership.js is byte-identical to what this tree projects (74727 bytes).
+  mirror pin == the landed identity: board e944be20 store f49dbef6 R24, 804 player(s) mirrored (pin() would ACTIVATE it)
+WRITER 6/8: ui/tools/ingest_inputs.py --clubs-only  (the picks bundle, re-stamped to the landed board + store)
+  CLEAN INGEST — 240 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: /home/user/afl-rl-engine/ui/data/club_valuation.js
+  CLUBS-ONLY     — the ownership mirror was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
+  drift guard: PICKS DRIFT GUARD — ui/data/club_valuation.js is byte-identical to what this tree projects (58319 bytes).
+  picks stamp == the landed identity: board e944be20 store f49dbef6 R24, 240 pick(s) priced off 1c3b22d1 (pin() would ACCEPT it)
+WRITER 7/8: ui/tools/gen_draft_outcomes.py  (the draft outcome record, re-stamped to the landed store)
+  rows            1568 national-draft selections
+  never played    226  (14.4%) — the population is not survivor-filtered
+  maturity rule   4 completed seasons (measured: 99% of 1044 eventual debutants)
+  draft stamp == the landed store f49dbef6: 1568 selections, 226 never played, maturity 4 season(s) (pin() would ACCEPT it)
+WRITER 8/8: ui/tools/gen_v0_sidecar.py  (the v0 sidecar, re-stamped to the landed board)
+  v0 sidecar | board e944be20 store f49dbef6 | rows 804 = pick-slot 561 + entry-anchor 243 + unrecoverable 0
+  wrote ui/data_aux/v0.js (51031 bytes)
+  v0 sidecar == the landed board e944be20 (the card's v0 column will resolve)
+  carrier moved: ui/data_aux/v0.js  be8ddff199d8 -> b9ff3c13c586
+AFTER   working 887e81639bc796c6a3b6eaccd39780c0  release-block=True
+AFTER   public  4420a838b186e5c255630cbabaf2ca46  release-block=False
+AFTER   movers  20d6a39e6108c91286f4c3570d3c9f91  MOVED 2d1263ae2538 -> 20d6a39e6108, tracking the register append
+AFTER   mirror  f1a1a32b2e6ccb84e5f7c0d930b7452c  MOVED b58c06f4587f -> f1a1a32b2e6c, tracking the lineage append
+AFTER   owners 84dd212d6fdad9f4899825b3e7d4697f  MOVED 38c7fda9b772 -> 84dd212d6fda, tracking the landed board + store
+AFTER   picks  838884bb60d6698cd9be7d5c4e10b712  MOVED f805b7cd5244 -> 838884bb60d6, tracking the landed board + store
+AFTER   draft  8570cccf4a52baa7069b5c03dc48ca3a  MOVED 32a271e6341f -> 8570cccf4a52, tracking the landed store
+  stamp.board_md5            e944be2096f2d7e7af41a5a0ea914e22   OK
+  stamp.board                e944be2096f2d7e7af41a5a0ea914e22   OK
+  stamp.srcmd5               e944be2096f2d7e7af41a5a0ea914e22   OK
+  stamp.store_md5            f49dbef62a6f4595684449ccdf6533e7   OK
+  stamp.balanced_board_md5   f4126b629ea4d4135b4c0ad0f1b29508   OK
+  stamp.asOfRound            24                                 OK
+THE HTML APP'S EMBEDDED BOARD IDENTITY IS e944be2096f2d7e7af41a5a0ea914e22. All seven writers ran; the release block is back, the reader can see the transition that produced this board, the ownership mirror is pinned to it rather than to the store it replaced, and the pick surface is stamped to it rather than to the board before it.
+    [ui OK  250.22s]
+    build-lock: RELEASED after 'ui' — the remaining steps write nothing and the one gate that builds takes the lock itself.
+
+--- STEP 7/9  state          docs/STATE.md regenerated from the carriers (3c) ---
+state: docs/STATE.md md5 bc4c4c55e795136dff3a16fc5fccdff7 (moved); regeneration verified
+    [state OK  0.14s]
+
+--- STEP 8/9  gates          the landing gate set, verdicts off exit codes ---
+  release_manifest_check   PASS   exit=0  (0.1s)
+  release_contract_check   PASS   exit=0  (0.1s)
+  acceptance_runner        PASS   exit=0  (5.7s)
+  movers_transition        PASS   exit=0  (2.0s)
+  finals_report            PASS   exit=0  (0.4s)
+  movers_ui                PASS   exit=0  (0.6s)
+  ui_222_items             PASS   exit=0  (14.0s)
+  ui_defects_2026_08_21    PASS   exit=0  (0.5s)
+  universe                 PASS   exit=0  (0.3s)
+  draftday                 PASS   exit=0  (0.1s)
+  pickvalue                PASS   exit=0  (0.1s)
+  release_seam             PASS   exit=0  (0.1s)
+  adoption_gate            PASS   exit=0  (0.0s)
+  club_totals_parity       PASS   exit=0  (0.3s)
+  counting_rule            PASS   exit=0  (0.1s)
+  ownership_sidecar        PASS   exit=0  (0.3s)
+  ownership_single_source  PASS   exit=0  (0.2s)
+  responsive_layout        PASS   exit=0  (16.7s)
+  extract_seam             PASS   exit=0  (0.5s)
+  club_curve_provenance    PASS   exit=0  (1.6s)
+    [gates OK  43.56s]
+
+--- STEP 9/9  commit         ONE commit, explicit paths only ---
+explicit paths (60):
+    data/expected_boot.json
+    data/release_contract.json
+    data/release_lineage.json
+    data/rl_build/rl_app_data.json
+    data/rl_build/rl_app_data.json.srcmd5
+    data/season_state.json
+    docs/STATE.md
+    docs/evidence/store_edit_last_listed_2026-10-14/PREFLIGHT.json
+    docs/evidence/store_edit_last_listed_2026-10-14/build_LANDING.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_acceptance_runner.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_acceptance_runner_evidence/boot_guard_checkout.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_acceptance_runner_evidence/config_manifest.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_acceptance_runner_evidence/dial_coverage.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_acceptance_runner_evidence/doc_lint.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_acceptance_runner_evidence/inbox_manifest.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_acceptance_runner_evidence/mirror_parity.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_acceptance_runner_evidence/oneliner_f1_lens.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_acceptance_runner_evidence/oneliner_gamma.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_acceptance_runner_evidence/oneliner_r14_restore.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_acceptance_runner_evidence/register_form_index.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_acceptance_runner_evidence/register_form_pen.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_acceptance_runner_evidence/release_contract_seal.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_acceptance_runner_evidence/release_manifest.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_acceptance_runner_evidence/rulebook_lint.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_acceptance_runner_evidence/ruled_red_ledger.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_acceptance_runner_evidence/ruling_config.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_acceptance_runner_evidence/state_file.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_acceptance_runner_evidence/store_coherence_six_way.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_adoption_gate.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_club_curve_provenance.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_club_totals_parity.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_counting_rule.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_draftday.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_extract_seam.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_finals_report.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_movers_transition.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_movers_ui.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_ownership_sidecar.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_ownership_single_source.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_pickvalue.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_release_contract_check.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_release_manifest_check.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_release_seam.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_responsive_layout.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_ui_222_items.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_ui_defects_2026_08_21.txt
+    docs/evidence/store_edit_last_listed_2026-10-14/gate_universe.txt
+    engine/rl_after/ingestion/pos_rank_history.json
+    engine/rl_after/ingestion/rank_history.json
+    engine/rl_after/ingestion/value_history.json
+    engine/rl_after/rl_app_data.json
+    engine/rl_after/rl_app_data.json.srcmd5
+    engine/rl_after/rl_model_data.json
+    ui/data/board_view_working.js
+    ui/data/club_valuation.js
+    ui/data/movers.js
+    ui/data/movers_transition.js
+    ui/data/ownership.js
+    ui/data_aux/draft_outcomes.js
+    ui/data_aux/v0.js
+committed 1af953e79e7e
+    [commit OK  0.48s]
+
+--- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
+    preflight          0.06s  OK
+    store_edit         6.85s  OK
+    build_proofs     536.20s  OK
+    pins               0.02s  OK
+    lineage            0.16s  OK
+    contract           0.07s  OK
+    ui               250.22s  OK
+    state              0.14s  OK
+    gates             43.56s  OK
+    commit             0.48s  OK
+    TOTAL            837.76s
+
+======================================================================================================
+LANDING COMPLETE — every step's postcondition held.
+SOAK: hand-verification stands until the owner's word per act type (G3.iv).
+======================================================================================================
+work dir discarded (the landing completed): /tmp/landing_work_23777
