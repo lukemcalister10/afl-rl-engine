@@ -1,0 +1,53 @@
+{
+ "schema_version": 1,
+ "act_kind": "lever-landing",
+ "act": "THE LTI REGISTER RETIRED: LTI_REGISTER.md, its consumer, the dead Part-2 return arm and the owner re-pin tool deleted; the 'register' identity frozen as a historical field (the balanced-sibling precedent). No player value moves.",
+ "date": "2026-10-14",
+ "owner_word": "Owner, 2026-10-14, to \"retire the LTI register\": \"5. Agree\". The sheet (docs/owner_annotations/SITTER_2026_v1.csv, ORDER 42) has been the only injury truth since 2026-10; the register had no live consumer.",
+ "authority": "owner word on this act",
+ "prereg": {
+  "path": "docs/evidence/lti_register_retired_2026-10-14/NOTE.md",
+  "board_before": "e40c37ccc543e7f2bcca16c996b53dbb",
+  "board_after": "bec12594550a4380b80ac00cbb0b65e9",
+  "reference_board": null,
+  "kill_switch": null
+ },
+ "identities": {
+  "moves": [
+   "board"
+  ],
+  "unmoved": [
+   "store",
+   "engine_head",
+   "rl_model",
+   "fv",
+   "config",
+   "register",
+   "as_of_round"
+  ],
+  "_doc": "engine_head moves at the flip commit (flip-carried, declared unmoved per spec law). register is FROZEN from this act on: its pinned value stays as history and nothing re-hashes it. The board moves by one dropped top-level key (lti_register_md5)."
+ },
+ "column": {
+  "id": "lti-register-retired-14-10",
+  "label": "14/10 the LTI register retired (file, consumer, dead return arm, re-pin tool); register identity frozen \u2014 no player value moves",
+  "after_round": 24
+ },
+ "lineage": {
+  "doc": "docs/evidence/lti_register_retired_2026-10-14/NOTE.md",
+  "owner_ruling_id": [
+   "LTI_REGISTER_RETIRED_2026-10-14"
+  ],
+  "owner_ruling": "The injury truth is the owner sheet; the LTI register and its machinery are retired.",
+  "authority": "owner word 2026-10-14",
+  "invariants": {
+   "player_values": "every v / vP1 / vP2 / vM1 / vM2 / rank identical to the live board e40c37cc",
+   "board_bytes": "identical to the live board except the dropped top-level key lti_register_md5"
+  }
+ },
+ "day0_rebase": {
+  "state": "off"
+ },
+ "evidence_dir": "docs/evidence/lti_register_retired_2026-10-14",
+ "gates": null,
+ "commit_message": "ENGINE/TOOLS: the LTI register retired; register identity frozen \u2014 no player value moves (owner word 2026-10-14)"
+}
