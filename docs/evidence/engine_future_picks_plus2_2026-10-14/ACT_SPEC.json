@@ -1,0 +1,50 @@
+{
+ "schema_version": 1,
+ "act_kind": "lever-landing",
+ "act": "THE +2 BOARD CARRIES THE 2027 CLASS AS PICKS: every draft class not yet on the board rides the lens (+1: 2027 picks 1-64; +2: 2027 AND 2028 picks 1-64)",
+ "date": "2026-10-14",
+ "owner_word": "Owner, 2026-10-13, verbatim: \"For the future boards... phantom draft picks (ie 2027 pick 1 onward for +1 year and then for the +2 2027 and 2028 pick 1 onwards)\"; and 2026-10-14, to \"+2 board carries 2027 picks\": \"2. Yes, please do.\"",
+ "authority": "owner word on this act",
+ "prereg": {
+  "path": "docs/evidence/engine_future_picks_plus2_2026-10-14/NOTE.md",
+  "board_before": "769eb79e6a70cd0417519d33de1bc8ff",
+  "board_after": "e22e3ef67a41f58e1a6d3a80488f5289",
+  "reference_board": null,
+  "kill_switch": null
+ },
+ "identities": {
+  "moves": [
+   "board"
+  ],
+  "unmoved": [
+   "store",
+   "engine_head",
+   "rl_model",
+   "fv",
+   "config",
+   "register",
+   "as_of_round"
+  ]
+ },
+ "column": {
+  "id": "plus2-carries-2027-picks-14-10",
+  "label": "14/10 the +2 board carries the 2027 class as picks (64 more rankable picks on +2; no player value moves)",
+  "after_round": 24
+ },
+ "lineage": {
+  "doc": "docs/evidence/engine_future_picks_plus2_2026-10-14/NOTE.md",
+  "owner_ruling_id": [
+   "FUTURE_PICKS_2026-10-13",
+   "PLUS2_PICKS_2026-10-14"
+  ],
+  "owner_ruling": "Every draft class not yet on the board is on the future board as picks: 2027 on +1; 2027 and 2028 on +2.",
+  "authority": "owner word 2026-10-13 and 2026-10-14",
+  "invariants": {}
+ },
+ "day0_rebase": {
+  "state": "off"
+ },
+ "evidence_dir": "docs/evidence/engine_future_picks_plus2_2026-10-14",
+ "gates": null,
+ "commit_message": "ENGINE: the +2 board carries the 2027 class as picks (rl_export lensPicks; owner word 2026-10-13/14)"
+}

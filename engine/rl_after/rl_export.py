@@ -937,12 +937,18 @@ if os.environ.get('RL_LEGF', '1') != '0':
     _res_nd = _draft_r - _PVC64                                      # national-draft deep tail + partial occupancy
     _res_mech = _mech_r                                              # non-national-draft entry mechanisms
     _visible = []
+    # EVERY CLASS NOT YET ON THE BOARD RIDES THE LENS (owner ruling 2026-10-14): the +1 view carries the
+    # 2027 class as picks; the +2 view carries BOTH the 2027 and the 2028 classes — by 2028 the 2027
+    # class exists as players, but none of them is in the store yet, so it is still picks. Before this
+    # the +2 board had no 2027 class at all and ran ~47k short of the present board for that reason.
     for _k, _fld, _yr in _LF_LENS:                                   # (1,'vP1',2027) , (2,'vP2',2028)
-        for _n in range(1, 65):
-            _visible.append({'lens': _k, 'labelYear': _yr, 'n': _n, 'v': PVC[_n],
-                             'kind': 'pick', 'asset': 'pick', 'assetType': 'future_national_draft_pick',
-                             'label': '%d Draft Pick %d' % (_yr, _n), 'id': 'draft-pick:%d:%d' % (_yr, _n),
-                             'club': None, 'affl_team': None, 'phantom': True})
+        for _cls_yr in range(2027, _yr + 1):                          # +1: 2027 · +2: 2027 and 2028
+            for _n in range(1, 65):
+                _visible.append({'lens': _k, 'labelYear': _cls_yr, 'n': _n, 'v': PVC[_n],
+                                 'kind': 'pick', 'asset': 'pick', 'assetType': 'future_national_draft_pick',
+                                 'label': '%d Draft Pick %d' % (_cls_yr, _n),
+                                 'id': 'draft-pick:%d:%d' % (_cls_yr, _n) + ('' if _cls_yr == _yr else ':lens%d' % _k),
+                                 'club': None, 'affl_team': None, 'phantom': True})
     out['lensPicks'] = _visible                                      # 64 rankable picks per lens (supersedes the 30-pick ladder)
     # recompute the lens-conservation diagnostic against the visible 64-pick ladder (report-only)
     _LF2 = [('-2', 'vM2', -2), ('-1', 'vM1', -1), ('now', 'v', 0), ('+1', 'vP1', 1), ('+2', 'vP2', 2)]
@@ -963,7 +969,8 @@ if os.environ.get('RL_LEGF', '1') != '0':
     # draftAssetTotals: the visible+residual -> F5 reconciliation (residuals separate; not ranked)
     _dat = {}
     for _k, _fld, _yr in _LF_LENS:
-        _dat['+%d' % _k] = {'lensYear': _yr, 'nVisiblePicks': 64, 'visible_1_64': _PVC64,
+        _dat['+%d' % _k] = {'lensYear': _yr, 'classes': list(range(2027, _yr + 1)),
+                            'nVisiblePicks': 64 * (_yr - 2026), 'visible_1_64': _PVC64,
                             'residual_nd_tail': _res_nd, 'residual_mech': _res_mech,
                             'residual_total': _res_nd + _res_mech, 'total': _PVC64 + _res_nd + _res_mech,
                             'f5_entrant_layer_pvc': _ent_r, 'f5_draft_pvc': _draft_r,
