@@ -143,6 +143,9 @@ DEFAULT_GATES = (
     # this rebuilds the FW1 report that shipped and asserts it comes back identical, so the writer
     # is checked against real history on every act rather than only when a finals week happens.
     {'name': 'finals_report', 'argv': ['python3', 'engine/rl_after/ingestion/test_finals_report.py']},
+    # the board's structural invariants (CI's per-push lane) — run here too, so a landing and CI agree
+    {'name': 'board_invariants', 'argv': ['python3', 'session_2026-07-21/final_integration/tools/invariant_proof.py'],
+     'must_contain': 'RESULT: 28/28 PASS'},
     {'name': 'movers_ui', 'argv': ['node', 'ui/tests/movers.test.js']},
     # THE UI SUITE, ADDED 2026-09-01. movers.test.js was the ONLY ui/tests file in the gate set, so
     # every other surface's suite ran on nobody's schedule. Measured cost of that: the point-count

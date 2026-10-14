@@ -131,13 +131,16 @@ jobs:
       - name: Install playwright-core + Chromium
         run: |
           set -euo pipefail
-          npm i --no-save playwright-core@1.47.2
+          # OUTSIDE THE TREE: the last step of this job proves the gates wrote nothing into the checkout,
+          # and an in-tree node_modules/ failed it on every push from 2026-10-13 (a9a8f283) on.
+          TOOLS="$RUNNER_TEMP/node-tools"; mkdir -p "$TOOLS"
+          npm i --prefix "$TOOLS" --no-save playwright-core@1.47.2
           # Pin the INSTALLER to the same version so it fetches the exact chromium revision
           # playwright-core@1.47.2 expects (an unpinned `npx playwright install` fetches a different
           # revision, leaving chromium.executablePath() pointing at a path that does not exist).
           npx --yes playwright@1.47.2 install chromium
-          echo "PLAYWRIGHT_CORE=$PWD/node_modules/playwright-core" >> "$GITHUB_ENV"
-          CHROME="$(node -e "const {chromium}=require('playwright-core');console.log(chromium.executablePath())")"
+          echo "PLAYWRIGHT_CORE=$TOOLS/node_modules/playwright-core" >> "$GITHUB_ENV"
+          CHROME="$(cd "$TOOLS" && node -e "const {chromium}=require('playwright-core');console.log(chromium.executablePath())")"
           if [ ! -x "$CHROME" ]; then CHROME="$(ls -d "$HOME"/.cache/ms-playwright/chromium-*/chrome-linux/chrome 2>/dev/null | head -1)"; fi
           test -x "$CHROME" || { echo "no chromium installed for the UI checks"; exit 1; }
           echo "CHROME_BIN=$CHROME" >> "$GITHUB_ENV"

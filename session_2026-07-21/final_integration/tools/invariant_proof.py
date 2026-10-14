@@ -245,10 +245,14 @@ def main():
     lp = F['lensPicks']
     vis1 = [p for p in lp if p['lens'] == 1 and not p.get('residual')]
     vis2 = [p for p in lp if p['lens'] == 2 and not p.get('residual')]
+    # EVERY CLASS NOT YET ON THE BOARD RIDES THE LENS (owner ruling 2026-10-13/14, landed 8686f4b8): the +1
+    # view carries the 2027 class; the +2 view carries 2027 AND 2028 — 64 picks per class.
+    CLASSES = {1: (2027,), 2: (2027, 2028)}
     ck('(12) exactly 64 visible 2027 national-draft placeholders (+1)', len(vis1) == 64, len(vis1))
-    ck('(12) exactly 64 visible 2028 national-draft placeholders (+2)', len(vis2) == 64, len(vis2))
-    ck('(12) all visible labelYear correct (2027/2028)',
-       all(p['labelYear'] == 2027 for p in vis1) and all(p['labelYear'] == 2028 for p in vis2))
+    ck('(12) exactly 64 visible placeholders per class on +2 (2027 and 2028)',
+       len(vis2) == 128 and all(sum(1 for p in vis2 if p['labelYear'] == y) == 64 for y in CLASSES[2]), len(vis2))
+    ck('(12) all visible labelYear correct (+1: 2027; +2: 2027/2028)',
+       all(p['labelYear'] in CLASSES[1] for p in vis1) and all(p['labelYear'] in CLASSES[2] for p in vis2))
     ck('(12) zero visible future placeholders on the current player ladder',
        not any(p.get('asset') == 'pick' for p in fa) and not any('pick' in (p.get('kind') or '') for p in fa))
     ids = [p['id'] for p in lp]
@@ -263,14 +267,14 @@ def main():
     ck('(12) exact PVC equality for every visible pick (v == PVC[n])', pvc_ok)
     mono = all(PVC[n] >= PVC[n + 1] for n in range(1, 64))
     ck('(12) release-active PVC monotone non-increasing over 1..64', mono)
-    sort1 = [p['v'] for p in vis1]; sort2 = [p['v'] for p in vis2]
-    ck('(12) visible picks sorted by value desc (both lenses)',
-       sort1 == sorted(sort1, reverse=True) and sort2 == sorted(sort2, reverse=True))
+    ck('(12) visible picks sorted by value desc within every class (both lenses)',
+       all([p['v'] for p in vis if p['labelYear'] == y] == sorted((p['v'] for p in vis if p['labelYear'] == y), reverse=True)
+           for k, vis in ((1, vis1), (2, vis2)) for y in CLASSES[k]))
 
     sum64 = sum(PVC[n] for n in range(1, 65))
     # residuals are held OUT of the ranking (supervisor req 5) — they live in draftAssetTotals, NOT lensPicks.
-    ck('(12) lensPicks carries ONLY the 64 rankable visible picks per lens (no residual rows in the ranking)',
-       all(not p.get('residual') for p in lp) and len(vis1) == 64 and len(vis2) == 64)
+    ck('(12) lensPicks carries ONLY the 64 rankable visible picks per class (no residual rows in the ranking)',
+       all(not p.get('residual') for p in lp) and len(vis1) == 64 * len(CLASSES[1]) and len(vis2) == 64 * len(CLASSES[2]))
     # The F5 reconciliation splits cleanly: the ARITHMETIC (visible + the two residuals close on the
     # board's own declared entrant layer, and draftAssetTotals agrees with phantomTotals) is true of any
     # correctly-built board and stays per-push; the released MAGNITUDES (64617 / 83538 / 4649 / 14272)
@@ -278,23 +282,31 @@ def main():
     fptm = F.get('phantomTotals', {}).get('_meta', {}) or {}
     for off, vis in ((1, vis1), (2, vis2)):
         dat = F['draftAssetTotals']['+%d' % off]
-        res_nd = dat['residual_nd_tail']; res_mech = dat['residual_mech']
+        nc = len(CLASSES[off])
+        # PER CLASS, THEN TIMES THE CLASSES ON THE LENS. The sealed F5 layer is one draft class; the +2
+        # lens shows two. `per_class` is the block's own per-class statement (boards from 2026-10-14 on);
+        # the lens-level fields are that times the number of classes.
+        pc = dat.get('per_class') or {'visible_1_64': dat['visible_1_64'], 'residual_nd_tail': dat['residual_nd_tail'],
+                                      'residual_mech': dat['residual_mech'], 'total': dat['total']}
+        res_nd = pc['residual_nd_tail']; res_mech = pc['residual_mech']
         visible = sum(p['v'] for p in vis)
-        ck('(13) lens +%d: visible == Sigma PVC[1..64] == draftAssetTotals.visible_1_64' % off,
-           visible == sum64 == dat['visible_1_64'],
-           'visible=%d sumPVC=%d declared=%d' % (visible, sum64, dat['visible_1_64']))
+        ck('(13) lens +%d: visible == %d x Sigma PVC[1..64] == draftAssetTotals.visible_1_64' % (off, nc),
+           visible == sum64 * nc == dat['visible_1_64'],
+           'visible=%d sumPVC=%d x%d declared=%d' % (visible, sum64, nc, dat['visible_1_64']))
         # one closure, tying two independently produced blocks together: the ranking's own totals and
-        # the sealed phantom layer must state the SAME entrant layer, and it must be what the parts add to.
-        closes = (visible + res_nd + res_mech == dat['f5_entrant_layer_pvc'] == dat['total']
-                  == dat['f5_draft_pvc'] + dat['f5_mech_pvc'] == fptm.get('entrant_layer_pvc'))
-        ck('(13) lens +%d: visible + residual_nd + residual_mech == the board\'s own F5 entrant layer '
-           '(draftAssetTotals total == draft+mech == phantomTotals entrant layer)' % off, closes,
-           'parts=%d declared=%d total=%d draft+mech=%d phantom=%s'
-           % (visible + res_nd + res_mech, dat['f5_entrant_layer_pvc'], dat['total'],
+        # the sealed phantom layer must state the SAME entrant layer per class, and it must be what the
+        # per-class parts add to; the lens total is that layer times the classes on the lens.
+        closes = (sum64 + res_nd + res_mech == dat['f5_entrant_layer_pvc'] == pc['total']
+                  == dat['f5_draft_pvc'] + dat['f5_mech_pvc'] == fptm.get('entrant_layer_pvc')
+                  and dat['total'] == pc['total'] * nc)
+        ck('(13) lens +%d: per-class visible + residual_nd + residual_mech == the board\'s own F5 entrant layer '
+           '(== draft+mech == phantomTotals entrant layer); lens total == that x %d' % (off, nc), closes,
+           'parts=%d declared=%d per_class_total=%d lens_total=%d draft+mech=%d phantom=%s'
+           % (sum64 + res_nd + res_mech, dat['f5_entrant_layer_pvc'], pc['total'], dat['total'],
               dat['f5_draft_pvc'] + dat['f5_mech_pvc'], fptm.get('entrant_layer_pvc')))
-        ck('(13) lens +%d: residual_nd == f5_draft_pvc - visible_1_64' % off,
-           res_nd == dat['f5_draft_pvc'] - dat['visible_1_64'],
-           'residual_nd=%d draft_pvc=%d - visible=%d' % (res_nd, dat['f5_draft_pvc'], dat['visible_1_64']))
+        ck('(13) lens +%d: residual_nd == f5_draft_pvc - per-class visible_1_64' % off,
+           res_nd == dat['f5_draft_pvc'] - pc['visible_1_64'],
+           'residual_nd=%d draft_pvc=%d - visible=%d' % (res_nd, dat['f5_draft_pvc'], pc['visible_1_64']))
         ck('(13) lens +%d: residual_mech == f5_mech_pvc == phantomTotals mech_pvc' % off,
            res_mech == dat['f5_mech_pvc'] == fptm.get('mech_pvc'),
            'residual_mech=%d f5_mech=%d phantom_mech=%s' % (res_mech, dat['f5_mech_pvc'], fptm.get('mech_pvc')))
