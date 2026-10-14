@@ -35,6 +35,11 @@ if the two ever overlap.
 BAKE-ONLY, DELIBERATELY ABSENT: `data/book_stable_seal.json` moves at bake acts and nowhere else
 (shrink S3/S10). It is listed in HISTORY_OR_BAKE so that its absence here is a stated decision
 rather than an oversight.
+
+RETIRED 2026-10-14 — THE SIBLING SIDECAR STAMP. The balanced sibling is no longer built by any
+landing (owner word), so `engine/rl_after/ingestion/sibling_repin_state.json` stopped being a stamp
+and became a record: it is in HISTORY_OR_BAKE, `check` never reads it, and `apply` no longer has a
+refusal for it. The "five instances" story above is kept as the history it is.
 """
 import argparse
 import hashlib
@@ -119,13 +124,6 @@ def _club_valuation(root):
     return {'board': st.get('board'), 'store': st.get('store'), 'engine_head': st.get('engine')}
 
 
-def _sibling_state(root):
-    p = os.path.join(root, 'engine', 'rl_after', 'ingestion', 'sibling_repin_state.json')
-    with open(p, encoding='utf-8') as f:
-        d = json.load(f)
-    return {'store': d.get('source_store_md5'), 'fv': d.get('fv_identity')}
-
-
 STAMPS = [
     ('expected_boot', 'data/expected_boot.json', _boot,
      'the CARRIER — every other stamp below is checked against the tree the same way, but this is '
@@ -140,9 +138,9 @@ STAMPS = [
     ('club_valuation', 'ui/data/club_valuation.js', _club_valuation,
      'the clubs projection, which names the board it was computed from',
      'ui/tools/ingest_inputs.py'),
-    ('sibling_repin_state', 'engine/rl_after/ingestion/sibling_repin_state.json', _sibling_state,
-     "the sibling sidecar's binding to the store and FV it was built from",
-     'engine/rl_after/ingestion/sibling_repin.py (reconcile)'),
+    # `sibling_repin_state` was the fifth stamp until 2026-10-14. The balanced sibling is RETIRED
+    # (owner word), so the sidecar's store/fv binding is a record of the last reconcile, not a claim
+    # about what is live: it is listed under HISTORY_OR_BAKE below and never checked or restamped.
 ]
 
 #: Files that a reader might expect here and that carry NO identity claim at all, by design. Named
@@ -166,6 +164,9 @@ HISTORY_OR_BAKE = [
     ('engine/rl_after/ingestion/rank_history.json', 'the rank record'),
     ('engine/rl_after/ingestion/pos_rank_history.json', 'the positional-rank record'),
     ('data/book_stable_seal.json', 'BAKE-ONLY: the seal moves at bake acts and nowhere else (shrink S3/S10)'),
+    ('engine/rl_after/ingestion/sibling_repin_state.json',
+     'HISTORICAL since 2026-10-14: the balanced sibling is retired; the sidecar records the last '
+     'reconcile and no landing step rebuilds it'),
 ]
 
 
@@ -296,14 +297,6 @@ def apply(root):
         print('  club_valuation    ingest_inputs.py: %s' % ('OK' if rc == 0 else 'FAILED'))
         if rc != 0:
             raise SystemExit(out[-1200:])
-
-    if 'sibling_repin_state' in stale:
-        raise SystemExit(
-            'REFUSING: the sibling sidecar is stale, and its writer of record (sibling_repin '
-            'reconcile) REBUILDS the balanced board and the forward view before it writes — that is '
-            'a build, not a stamp, and it belongs inside a transaction that can abort and restore. '
-            'Run `tools/land` (its sibling step does exactly this), or `python3 '
-            'engine/rl_after/ingestion/sibling_repin.py reconcile` deliberately.')
 
     print('-' * 96)
     _, bad2 = check(root)

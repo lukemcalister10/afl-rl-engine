@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """FORWARD-LENS SIBLING — ITEM 408 D2 (issue #157 §1-§3).
 
+RETIRED FROM THE LANDING LIBRARY 2026-10-14 (owner word): no `tools/land` verb emits a forward
+vector or a `test_forward_lens_<md5>.py` oracle any more — the balanced sibling step is gone. This
+module survives only because `sibling_repin.py` imports it for `staged_apply._stage_sibling` (c3,
+the round advance's in-transaction sibling). The committed fixtures and oracles are history.
+
 The +1/+2 projection view (`vP1`/`vP2`) is a DERIVED artifact of the ONE store + the model + the PVC, in
 exactly the sense the balanced/strict board and the FV present-value reference vector already are. Until
 this module it was NOT a member of the advance transaction's sibling set, so it could lag the live board

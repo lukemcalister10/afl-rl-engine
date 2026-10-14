@@ -9,9 +9,10 @@ CI invokes it, and reads the verdict off its exit code. That matters for two rea
      byte-accurate today with nothing in the tree asserting they stay that way.
 
   2. Several of these gates are wired into NO workflow at all today (AUDIT_CI.md §2 and gap G9:
-     doc_lint.py, verify_restore.sh, sibling_repin.py verify, ingest_inputs.py, preboot_assert.sh,
-     ship_gates_check.py). Wrapping rather than rewriting means wiring them costs one registration
-     line each, which is the only reason G9 is cheap to close.
+     doc_lint.py, verify_restore.sh, ingest_inputs.py, preboot_assert.sh, ship_gates_check.py).
+     Wrapping rather than rewriting means wiring them costs one registration line each, which is
+     the only reason G9 is cheap to close. (`sibling_repin.py verify` was on that list; the
+     balanced sibling was retired 2026-10-14 and is not a gate anywhere.)
 
 Every wrapper captures the gate's full stdout+stderr to the evidence directory, so the one-line
 reason in the table always has the raw output standing behind it.

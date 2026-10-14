@@ -15,7 +15,7 @@ which is the full profile minus that same check. See `_preflight_selftest` for t
     tools/land round --print-sequence           the fourteen steps, and which seven are SHARED
 
     tools/land edit --spec <edit_spec.json> [--dry-run]
-    tools/land edit --print-sequence            the twelve steps, and which eleven are SHARED
+    tools/land edit --print-sequence            the eleven steps, and which ten are SHARED
 
 `land edit` IS THE THIRD THIN ENTRY POINT (THE EDIT VERB, directive 2026-08-24) — the general
 out-of-round store-edit lane the owner ruled into existence after `land lever` refused an owner-worded
@@ -306,7 +306,7 @@ def cmd_edit(a):
     """`land edit` — THE THIRD THIN ENTRY POINT over the same library (directive 2026-08-24).
 
     It is `cmd_lever` with the sequence and the carrier set looked up from the act kind, exactly as
-    `cmd_round` is — ELEVEN of its twelve steps are the lever lander's own functions, and the driver,
+    `cmd_round` is — TEN of its eleven steps are the lever lander's own functions, and the driver,
     the abort ladder, the build lock, the explicit-path commits, the per-step timing and the
     pre-transaction self-test are one implementation serving three verbs. What the edit verb adds is
     the one step a store edit genuinely has and the other two genuinely do not.

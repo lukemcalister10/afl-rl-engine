@@ -64,8 +64,10 @@ def fixture(tmp, **over):
                                                     'config': t['config'][:12]}})
     wjs('ui/data/club_valuation.js', {'stamp': {'board': t['board'], 'store': t['store'][:8],
                                                 'engine': t['engine_head'][:8]}})
+    # The sibling sidecar is DELIBERATELY written STALE (a foreign store): since 2026-10-14 it is a
+    # historical record, not a stamp, and a stale one must not be a disagreement.
     w('engine/rl_after/ingestion/sibling_repin_state.json',
-      {'source_store_md5': t['store'], 'fv_identity': t['fv']})
+      {'source_store_md5': 'x' * 32, 'fv_identity': t['fv']})
     return tmp
 
 
@@ -87,10 +89,13 @@ def main():
         fixture(tmp)
         _, bad = RS.check(tmp, verbose=False)
         ok(not bad, 'a coherent tree reports every stamp agreeing')
+        ok(not any(p.endswith('sibling_repin_state.json') for p in stamp_paths)
+           and any(p.endswith('sibling_repin_state.json') for p in hist_paths),
+           'the sibling sidecar is HISTORY, not a stamp (retired 2026-10-14) — a stale one never reds')
 
         # ---- NON-VACUITY, PER STAMP AND PER IDENTITY --------------------------------------------
-        # Each stamp claims a DIFFERENT subset (the sibling sidecar carries store and fv but no
-        # engine id, for instance), so staling one fixed identity across the board would silently
+        # Each stamp claims a DIFFERENT subset (the club valuation carries board, store and engine
+        # but no config, for instance), so staling one fixed identity across the board would silently
         # skip the stamps that never claimed it — a test that passes by not testing. Every claimed
         # identity of every stamp is corrupted in turn, and every one must be caught.
         for name, path, reader, _why, _w in RS.STAMPS:
@@ -143,17 +148,6 @@ def main():
         except SystemExit as exc:
             refused = 'CARRIER' in str(exc) or 'carrier' in str(exc).lower()
         ok(refused, 'apply REFUSES to move expected_boot — moving the carrier is a landing act')
-
-        shutil.rmtree(tmp); os.makedirs(tmp); fixture(tmp)
-        sp = os.path.join(tmp, 'engine/rl_after/ingestion/sibling_repin_state.json')
-        json.dump({'source_store_md5': 'x' * 32, 'fv_identity': TRUTH['fv']}, open(sp, 'w'))
-        try:
-            RS.apply(tmp)
-            refused2 = False
-        except SystemExit as exc:
-            refused2 = 'sibling' in str(exc).lower()
-        ok(refused2, 'apply REFUSES the sibling sidecar — its writer REBUILDS, and a build belongs '
-                     'in a transaction that can abort')
 
         # ---- THE MEASURERS ARE THE LANDER'S, on the real repo ----------------------------------
         RS.measure = real_measure

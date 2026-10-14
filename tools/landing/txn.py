@@ -222,9 +222,19 @@ def _fault_seal_broken(ctx):
         json.dump(d, fh, indent=2)
 
 
-def _fault_sidecar_corrupt(ctx):
-    p = os.path.join(ctx.root, 'engine', 'rl_after', 'ingestion', 'sibling_repin_state.json')
-    open(p, 'w', encoding='utf-8').write('{ this is not json')
+def _fault_stop_before_ui(ctx):
+    """STOP AT THE DOOR OF THE UI WRITERS — the fault that proves the steps BEFORE it wrote and unwrote.
+
+    Until 2026-10-14 the self-test's depth and edit cases stopped the landing at the `sibling` step,
+    which sat between `contract` and `ui` and was the first step after every identity writer. The
+    sibling is retired (owner word, 2026-10-14), so this injector takes its place: it raises at the
+    `ui` step's fault point, before any writer has run, and the case measures that pins, column,
+    lineage and contract were written and then restored byte-exact. Same construction as
+    `advance:stop_at_the_door`; not a broken step and not counted as one.
+    """
+    raise ST.StepError(
+        'STOPPED AT THE DOOR, BY REQUEST (selftest fault `ui:stop_at_the_door`). Every identity '
+        'writer before the UI step ran for real; the abort ladder is what this case measures.')
 
 
 def _fault_skip_second_writer(ctx):
@@ -429,8 +439,6 @@ FAULTS = {
                      _fault_chain_broken),
     'contract':     ('seal_broken', 'the contract seal does not verify BEFORE the act',
                      _fault_seal_broken),
-    'sibling':      ('sidecar_corrupt', 'the sibling provenance sidecar is unreadable',
-                     _fault_sidecar_corrupt),
     'ui':           ('skip_second_writer', 'THE THRICE-PROVEN TRAP: writer 2 never runs',
                      _fault_skip_second_writer),
     'state':        ('state_ungeneratable',
@@ -454,6 +462,11 @@ FAULTS = {
                      _fault_second_mover),
 
     # ---- MODE-QUALIFIED: the `ui` step's other writers ------------------------------------------
+    'ui:stop_at_the_door': ('stop_before_ui',
+                            'the transaction is stopped at the door of the UI writers, so the case '
+                            'measures the identity writers that already ran (the depth + edit cases; '
+                            'the retired `sibling` fault used to play this part)',
+                            _fault_stop_before_ui),
     'ui:stale_mirror': ('stale_ownership_mirror',
                         'WRITER 5 never runs and the shipped ownership mirror keeps a foreign store '
                         'pin — the live ownership lane ships SWITCHED OFF, silently',

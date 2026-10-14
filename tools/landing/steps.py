@@ -1,4 +1,13 @@
-"""tools/landing/steps.py — THE ELEVEN STEPS, IN THE DAY'S PROVEN ORDER.
+"""tools/landing/steps.py — THE TEN STEPS, IN THE DAY'S PROVEN ORDER.
+
+RETIRED 2026-10-14 (owner word: "doesn't seem like it adds any value other than wasting time"): THE
+BALANCED SIBLING. Every landing used to carry a `sibling` step between `contract` and `ui` that
+rebuilt a SECOND full board through engine/rl_after/ingestion/sibling_repin.py and reconciled its
+fixtures — 548 s, 575 s and 1,839 s per landing on 2026-10-13, for a value nothing but its own
+parity checks read. The step is gone from all three sequences. `balanced_board_md5` is now a
+HISTORICAL field: it stays in every carrier at its last reconciled value and no landing step moves
+it or asserts it against a fresh build. (A round advance's staged_apply c3 still carries the
+in-transaction sibling; that is the round transaction's own business, not this library's.)
 
 Every step here is a CONSOLIDATION of a script that already ran and already landed a board on
 2026-08-20. The provenance of each is named in its own docstring, and the rule throughout is the one
@@ -10,7 +19,7 @@ The only values that arrive from outside are PREDICTIONS (the prereg's board), C
 word, the lineage authority) and POLICY (which identities this act is allowed to move). Those are
 the three things a tree cannot measure about itself, and they are exactly what the act spec carries.
 
-WHAT THE STEPS SHARE WITH THE ROUND LANDER (2b). `preflight`, `contract`, `sibling`, `ui`, `state`,
+WHAT THE STEPS SHARE WITH THE ROUND LANDER (2b). `preflight`, `contract`, `ui`, `state`,
 `gates`, `claims` and `commit` are act-kind agnostic: 2b registers the same functions in its own sequence and
 adds `scores`, `catchup` and `advance_repin` beside them. `build_proofs`, `pins` and `lineage` read
 `spec['act_kind']` where the two kinds genuinely differ (a round advance moves the store and the
@@ -18,7 +27,7 @@ round; a lever landing must not). That is why they are parameterised rather than
 
 AND WITH THE EDIT VERB (`land edit`, directive 2026-08-24). `EDIT_SEQUENCE` is composed FROM
 `LEVER_SEQUENCE` with exactly one step inserted — `store_edit`, after `preflight` and before
-`build_proofs` — so eleven of its twelve steps are the same function objects the lever lander runs.
+`build_proofs` — so ten of its eleven steps are the same function objects the lever lander runs.
 Where a shared step must know the third kind it is parameterised on `act_kind` in the two places it
 genuinely differs (`build_proofs`'s optional prediction and mover assertions, `claims`'s
 unmoved-carrier set), and the existing two branches keep their existing behaviour untouched.
@@ -91,7 +100,8 @@ PIN_MEASURERS = {
 #: Identities that ARE tracked but belong to another writer of record. Declaring one in
 #: `identities.moves` is legal; the pins step refuses to write it and says who does.
 DELEGATED_PINS = {
-    'balanced_board_md5': 'engine/rl_after/ingestion/sibling_repin.py (the sibling step)',
+    'balanced_board_md5': 'HISTORICAL since 2026-10-14 — the balanced sibling is retired; no landing '
+                          'step writes it (only a round advance\'s staged_apply c3 still does, in-txn)',
     'as_of_round': 'the round lander (2b); a lever landing HOLDS the round',
     'season_state': 'the round lander (2b)',
     'rl_model_data': 'the round lander (2b) — the store is written by a score application',
@@ -1490,141 +1500,6 @@ def contract(ctx):
     return out
 
 
-# =============================================================================== STEP 5 — SIBLING
-def sibling(ctx):
-    """The balanced sibling: rebuild and reconcile IF it moves, through its writer of record.
-
-    `sibling_repin.py` is BUILD-AND-COMPARE only — the pin is moved to a value that was just BUILT
-    and derived from the built artifact, never to an expectation. This step verifies before, plans,
-    reconciles only when the plan says something changed, and verifies after. A `verify` that still
-    reports fails after a reconcile is a halt, not a note: the D8 landing discharged an eight-fail
-    backlog here precisely because it was never allowed to be a note.
-    """
-    ctx.fault_point('sibling')
-    SR = _load(ctx, 'sibling_repin', 'engine/rl_after/ingestion/sibling_repin.py')
-    _restore_build = _install_sibling_stash(ctx, SR)
-    try:
-        return _sibling_body(ctx, SR)
-    finally:
-        _restore_build()
-
-
-def _install_sibling_stash(ctx, SR):
-    """THE SIBLING PROOF STASH (shrink S8, the sibling half of S13; owner word 2026-08-29).
-
-    The sibling reconcile is 54% of a landing's wall-clock (2,171s) and the combined-build landing
-    rebuilt it FOUR times to the same identity, three of them deleted byte-exact by aborts. What
-    costs the time is `build_sibling` — two full engine builds (the balanced/strict present-lens
-    board and the config-of-record forward view) that WRITE NOTHING and return a derived-identity
-    dict. That is a pure derivation, exactly the shape slice 1 caches.
-
-    SO ONLY THE DERIVATION IS CACHED. Everything that writes still runs for real, every flight: the
-    plan, the overlay validation, the release-contract self-seal, the atomic replacement, the
-    journal, the rollback ladder and the verify-after. This is deliberate — the owner was told that
-    the sibling step writing and committing is what makes it a different risk shape from slice 1,
-    and the answer is to keep the cache on the side of the step that only computes.
-
-    THE PATCH IS SCOPED TO THIS STEP. `SR.build_sibling` is restored in a finally, so the gate's
-    `check`, the CLI and every other caller of the module are untouched by landing policy.
-
-    THREE THINGS MUST HOLD FOR A HIT TO BE USED, and any one failing rebuilds:
-      * not a selftest and not a fault run (those exist to exercise the real machinery);
-      * the key — every PIN_MEASURERS identity measured LIVE at this point in the transaction;
-      * the entry's OWN recorded provenance (source_store_md5 / fv_identity / rl_model_md5, which
-        `build_sibling` derives from the artifacts it actually built) still equals what is live.
-    The third is the one that matters: it is an independent check against the key, so a key that
-    somehow collided or an entry that outlived its inputs is caught by the artifact's own record
-    rather than by trust in the key alone.
-    """
-    _orig = SR.build_sibling
-    if ctx.opts.selftest or ctx.fault:
-        return lambda: None
-
-    from tools.landing import proofstash as PS
-    key = PS.sibling_key(ctx)
-
-    def _live():
-        return {'store': PIN_MEASURERS['store'](ctx),
-                'fv': PIN_MEASURERS['fv'](ctx),
-                'rl_model': PIN_MEASURERS['rl_model'](ctx)}
-
-    def _stashed_build(repo_root, with_forward=True):
-        if not with_forward:
-            return _orig(repo_root, with_forward=with_forward)   # not the shape that is cached
-        hit = PS.load('sibling', key)
-        if hit:
-            try:
-                sib = json.load(open(hit[0]['sib'], encoding='utf-8'))
-            except Exception:
-                sib = None
-            if sib is not None:
-                live = _live()
-                same = (sib.get('source_store_md5') == live['store'] and
-                        sib.get('fv_identity') == live['fv'] and
-                        sib.get('rl_model_md5') == live['rl_model'])
-                if same:
-                    ctx.log('sibling       PROVEN EARLIER — stash key %s: balanced %s, forward %s; '
-                            'the entry\'s own store/fv/rl_model provenance matches live, nothing '
-                            'rebuilt (S8)'
-                            % (key, str(sib.get('board_md5'))[:12],
-                               str(sib.get('forward_board_md5'))[:12]))
-                    return sib
-                ctx.log('sibling       stash entry DISCARDED — its recorded provenance no longer '
-                        'matches live (store/fv/rl_model); the full build runs.')
-        sib = _orig(repo_root, with_forward=with_forward)
-        try:
-            tmp = os.path.join(ctx.work_dir, 'sibling_proof.json')
-            with open(tmp, 'w', encoding='utf-8') as fh:
-                json.dump(sib, fh, sort_keys=True)
-            PS.save('sibling', key, {'sib': tmp},
-                    {'board_md5': sib.get('board_md5'),
-                     'forward_board_md5': sib.get('forward_board_md5'),
-                     'source_store_md5': sib.get('source_store_md5')})
-            ctx.log('sibling       proof stashed under key %s' % key)
-        except Exception as exc:                      # a stash failure must never fail a landing
-            ctx.log('sibling       proof NOT stashed (%s) — the landing is unaffected.' % exc)
-        return sib
-
-    SR.build_sibling = _stashed_build
-
-    def _restore():
-        SR.build_sibling = _orig
-    return _restore
-
-
-def _sibling_body(ctx, SR):
-    sr = SR.SiblingRepin(ctx.root)
-    before = sr.verify()
-    ctx.log('verify BEFORE : ok=%s balanced=%s fails=%d'
-            % (before.get('ok'), str(before.get('balanced_board_md5'))[:12], len(before.get('fails') or [])))
-    for f in (before.get('fails') or []):
-        ctx.log('    - %s' % f)
-    if before.get('ok'):
-        ctx.log('the sibling is CURRENT — nothing to reconcile, and this step writes nothing.')
-        return {'reconciled': False, 'balanced_board_md5': before.get('balanced_board_md5'),
-                'fails_before': 0, 'fails_after': 0}
-    if ctx.opts.dry_run:
-        ctx.log('--dry-run: the sibling is stale and would be reconciled (a BUILD). Not run.')
-        return {'reconciled': 'dry-run', 'fails_before': len(before.get('fails') or [])}
-
-    res = ctx.with_child_env(lambda: sr.reconcile(
-        round_n=int(json.load(open(_p(ctx, 'data', 'expected_boot.json'), encoding='utf-8'))['as_of_round'])))
-    ctx.log('reconcile     ok=%s changed=%s balanced %s -> %s'
-            % (res.get('ok'), res.get('changed'), str(res.get('old_balanced_board_md5'))[:12],
-               str(res.get('balanced_board_md5'))[:12]))
-    ctx.log('  committed targets: %s' % ', '.join(res.get('committed_targets') or []))
-    if not res.get('ok'):
-        raise StepError('the sibling reconcile did not complete: %s' % json.dumps(res)[:800])
-    after = SR.SiblingRepin(ctx.root).verify()
-    ctx.log('verify AFTER  : ok=%s fails=%d' % (after.get('ok'), len(after.get('fails') or [])))
-    if not after.get('ok'):
-        raise StepError('sibling verify still reports %d fail(s) after the reconcile: %s'
-                        % (len(after['fails']), after['fails']))
-    return {'reconciled': True, 'balanced_board_md5': after.get('balanced_board_md5'),
-            'fails_before': len(before.get('fails') or []), 'fails_after': 0,
-            'committed_targets': res.get('committed_targets')}
-
-
 # ==================================================================================== STEP 6 — UI
 def _js_obj(path):
     """The payload of a `window.__X__ = {...}` bundle, read the way the r14 gate reads it.
@@ -2357,6 +2232,9 @@ def ui(ctx):
         raise StepError('the working bundle carries no __MATCHDAY_WORKING__ payload')
     st = json.loads(m.group(1).rstrip().rstrip(';'))['stamp']
     fails = []
+    # balanced_board_md5 is HISTORICAL (the sibling was retired 2026-10-14): the extractor copies the
+    # frozen expected_boot value into the stamp verbatim, and that copy is all this asserts — never
+    # agreement with a freshly built sibling, because none is built.
     for k, exp in (('board_md5', boot['board']), ('board', boot['board']), ('srcmd5', boot['board']),
                    ('store_md5', boot['store']),
                    ('balanced_board_md5', boot['balanced_board_md5']),
@@ -3596,7 +3474,7 @@ def state(ctx):
     """docs/STATE.md — the machine-written state file, regenerated (PLAN_v6 3c, process law P6).
 
     A LATE STEP OF BOTH SEQUENCES, AND ITS POSITION IS THE DESIGN. It runs AFTER every writer that
-    can move an identity (pins, lineage, contract, sibling, ui — and the advance, in a round) and
+    can move an identity (pins, lineage, contract, ui — and the advance, in a round) and
     BEFORE `gates`, so the state file that the gate set then reads is the one this landing produced.
     Put it after `gates` and the landing's own `acceptance::state_file` row would be measuring the
     PREVIOUS landing's file; put it after `commit` and it would never be committed at all.
@@ -3718,7 +3596,6 @@ LEVER_SEQUENCE = (
     ('pins',         'expected_boot + both sidecars + the generator copy',   pins),
     ('lineage',      'the out-of-round column and the append-only entry',    lineage),
     ('contract',     'restamp_dynamic + the bake-lane repin + check',        contract),
-    ('sibling',      'the balanced sibling, rebuilt and reconciled if moved', sibling),
     ('ui',           'ALL SEVEN UI writers, and the identity read back out', ui),
     ('state',        'docs/STATE.md regenerated from the carriers (3c)',     state),
     ('gates',        'the landing gate set, verdicts off exit codes',        gates),
@@ -3728,8 +3605,8 @@ LEVER_SEQUENCE = (
 
 #: THE ROUND-ADVANCE SEQUENCE (PLAN_v6 2b) — the R23 hand-walk's proven order, as a program.
 #:
-#: EIGHT OF THESE FIFTEEN STEPS ARE THE LEVER LANDER'S OWN FUNCTIONS, registered again here rather
-#: than copied: `preflight`, `contract`, `sibling`, `ui`, `state`, `gates`, `claims`, `commit`. That is the S7
+#: SEVEN OF THESE FOURTEEN STEPS ARE THE LEVER LANDER'S OWN FUNCTIONS, registered again here rather
+#: than copied: `preflight`, `contract`, `ui`, `state`, `gates`, `claims`, `commit`. That is the S7
 #: law made structural — two commands, one library, and no way for the shared half to drift apart,
 #: because there is only one of it. What 2b adds is the seven steps a round genuinely has and a lever
 #: landing genuinely does not.
@@ -3743,7 +3620,7 @@ LEVER_SEQUENCE = (
 #:   generator_sync    09b_generator_board_sync.txt: the disclosed generator-side sync (ERRATUM E5)
 #:   day0              register v810 item 1: the day-0 reference's natural home, and only here
 #:   contract          05_landing_c_contract.txt: restamp + the bake-lane repin + check
-#:   sibling           05b/13: verify — after an advance the repin has already run IN-transaction
+#:   (sibling          05b/13 — RETIRED 2026-10-14; the verify-only step is gone)
 #:   ui                10_ui_writers_r23.txt, now ALL FIVE writers (F-9, F-10 and the ownership mirror)
 #:   movers_page       ACT 4 — MOVERS_R23.html through the frozen template
 #:   state             PLAN_v6 3c: docs/STATE.md regenerated from the carriers, before the gates
@@ -3765,7 +3642,6 @@ ROUND_SEQUENCE = (
     ('generator_sync',    'the generator-side board copy, synced and DISCLOSED',    generator_sync),
     ('day0',              'the day-0 reference — regenerated AT the advance, only', day0),
     ('contract',          'restamp_dynamic + the bake-lane repin + check',          contract),
-    ('sibling',           'the balanced sibling: verify (the repin ran in-txn)',    sibling),
     ('ui',                'ALL SEVEN UI writers, and the identity read back out',   ui),
     ('movers_page',       "the owner's movers page, through the frozen template",   movers_page),
     ('state',             'docs/STATE.md regenerated from the carriers (3c)',       state),
@@ -3776,7 +3652,7 @@ ROUND_SEQUENCE = (
 
 #: THE STORE-EDIT SEQUENCE (THE EDIT VERB, directive 2026-08-24) — the LEVER sequence with ONE step
 #: inserted, and it is composed FROM `LEVER_SEQUENCE` rather than written out, so the two can never
-#: drift apart by a step. Eleven of its twelve steps are literally the lever lander's own functions
+#: drift apart by a step. Ten of its eleven steps are literally the lever lander's own functions
 #: (S7: one library, steps REGISTERED, never copied); the twelfth is `store_edit`.
 #:
 #: WHY THE POSITION IS THE WHOLE DESIGN. `store_edit` runs AFTER `preflight` — so the clean-tree

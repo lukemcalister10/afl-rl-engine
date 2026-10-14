@@ -1,5 +1,12 @@
 """STAGED-APPLY — the SAFE weekly round-score store-write: STAGE -> VALIDATE -> ATOMIC SWAP.
 
+NOTE 2026-10-14: the balanced sibling is RETIRED from the landing library (owner word — it rebuilt a
+second full board per landing for nothing but its own parity checks). The lever/edit/round landers
+no longer run a `sibling` step. Step (c3) below — `_stage_sibling` / `_validate_sibling_staged`,
+the in-transaction sibling of a ROUND ADVANCE — is NOT changed by that retirement: it is part of this
+transaction's own staged set and was left as proven. It is the one remaining caller of
+sibling_repin.py, and the one remaining place `balanced_board_md5` can move.
+
 This is the hardened successor to round_apply.RoundApplier (PR #125). PR #125's applier mutated the
 LIVE files in sequence (store, then board, then manifest, then ledger) with NO staging and NO
 rollback: a failure after the store write left a NEW store with an OLD board / manifest / ledger — a
