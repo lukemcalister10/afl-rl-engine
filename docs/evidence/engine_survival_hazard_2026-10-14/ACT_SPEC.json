@@ -42,7 +42,7 @@
   "authority": "owner word 2026-10-14",
   "invariants": {
    "present_v": "0 of 804 present values move",
-   "lens_totals": "+1 635,134 -> 624,163; +2 593,206 -> 573,360 (reconciled vs present -1.0% / -0.2%)"
+   "lens_totals": "F1 refit (MEASURED_TABLES_F1.txt): +1 635,134 -> 627,102; +2 593,206 -> 577,981 (reconciled vs present -0.59% / +0.51%); 0-game rows not charged"
   }
  },
  "day0_rebase": {

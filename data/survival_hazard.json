@@ -29,72 +29,114 @@
   ]
  ],
  "cap_lift": true,
+ "cap_lift_note": "Owner ruling 2026-10-14: the lift is capped at 1.0 \u2014 nobody rises for survival; the charge on thin-evidence players stands and the lens totals fall by it. Measured: MEASURED_TABLES_F1.txt.",
  "coef": {
   "S1": [
-   0.43781906441335794,
-   -0.38681845728386977,
-   -0.32442301880378294,
-   -0.09817138417113332,
-   0.3307270140109361,
-   0.6238781608426143,
-   1.347641964350432,
-   2.435765059551045,
-   3.3564717659379517
+   0.6661389760562693,
+   -0.3088602896602927,
+   -0.3255098136841547,
+   -0.08150210083571545,
+   0.2842349249679737,
+   3.6433709299025954,
+   -5.581429637651336,
+   0.6160820998591476,
+   1.2392012145785003,
+   2.2552798571122006,
+   3.1844496810156615
   ],
   "S2": [
-   -0.4422121583569376,
-   -0.4206606066790681,
-   -0.38927161003919847,
-   -0.043613637218751396,
-   0.2686480336197129,
-   0.5988659529379722,
-   1.4596749622949945,
-   2.546277725795483,
-   3.527640316146661
+   -0.10948391224107767,
+   -0.3295366819588669,
+   -0.38885992183985685,
+   -0.033740640590453126,
+   0.20114600368588306,
+   -1.2018122096056878,
+   -0.42488205628274744,
+   0.49881738991085905,
+   1.2698595397908572,
+   2.2604024060667607,
+   3.2440182457151576
+  ]
+ },
+ "coef_names": [
+  "const",
+  "young_slope",
+  "age24+",
+  "age29+",
+  "age33+",
+  "band0",
+  "band0_tenure2+",
+  "band6-20",
+  "band21-50",
+  "band51-100",
+  "band101+"
+ ],
+ "coef_se": {
+  "S1": [
+   0.124634,
+   0.028448,
+   0.030576,
+   0.065119,
+   0.161712,
+   0.511047,
+   0.508052,
+   0.12316,
+   0.128305,
+   0.145084,
+   0.165469
+  ],
+  "S2": [
+   0.10801,
+   0.022817,
+   0.026459,
+   0.058977,
+   0.195309,
+   0.111454,
+   0.110434,
+   0.1043,
+   0.109883,
+   0.123141,
+   0.144111
   ]
  },
  "date": "2026-10-14",
- "design": "[1, min(age,24)-24, (age-24)+, (age-29)+, (age-33)+, band6-20, band21-50, band51-100, band100+]",
+ "design": "[1, min(age,24)-24, (age-24)+, (age-29)+, (age-33)+, band0, band0 x (tenure>=2), band6-20, band21-50, band51-100, band101+]",
  "design_notes": {
-  "age": "the engine's integer age(p) in the base season (rl_model.age: max(2026-by, 18+(2026-cycle_year))); the fit used Y - birth_year per (player, base season Y)",
-  "application": "RELATIVE, sum-preserving per integer age: vP_k' = round(vP_k * S_k / Sbar_k(age)), with Sbar_k(age) = sum(vP_k * S_k) / sum(vP_k) over ALL active rows at that age (value-weighted by the lens value itself; hazard_part2.py section [f])",
-  "bands": "career-games bands; the base (reference) band is 1-5 games; the four dummies are 6-20, 21-50, 51-100, 101+",
-  "games": "career games through the base season (the board row's g = p['games']); fit: cumulative games <= Y",
-  "monotone_in_evidence": "S(age,g) = min over band midpoints m in band_midpoints with m >= g of S_raw(age,m), together with S_raw(age,g); for g > 180, S_raw(age,g). (hazard_final_v2.py line 36)",
-  "zero_games": "a 0-game row takes the intake-cohort 'ever plays' rate ever0[type|tenure] as S2 and sqrt of it as S1 (UNMEASURED interpolation, hazard_final_v2.py lines 58-62); tenure = clamp(2026-year (+1 for MSD), 1, 2); unknown type -> ever0_default"
+  "age": "the engine's integer age at the base season: max(Y - birth_year, 18 + (Y - cycle_year)) (rl_model._age_at); at application the board row's age(p) at AGE_REF = 2026",
+  "application": "RELATIVE within a cohort, CAPPED: vP_k' = round(vP_k x min(1, S_k / Sbar_k(cohort))) over the CHARGED rows (games >= 1); Sbar_k(cohort) = sum(vP_k x S_k) / sum(vP_k) over the charged rows of the cohort. Cohorts: one per integer age, ages >= 33 pooled into one, and any age with fewer than 5 charged rows joins the nearest larger cohort below it. The cap means the lens totals can only fall: NOT sum-preserving.",
+  "bands": "career-games bands; the reference band is 1-5 games; dummies for 0 games (with a 2nd+-season tenure term), 6-20, 21-50, 51-100, 101+",
+  "games": "career games through the base season (fit: cumulative scoring games <= Y; application: the board row's games)",
+  "monotone_in_evidence": "played bands: S(age,g) = min over band midpoints m >= g of S_raw(age,m), together with S_raw(age,g); for g > 180, S_raw(age,g). The 0-game band is NOT clamped under the 1-5 band: a first-year never-played rookie measures ABOVE it (fact-only window Y=2024: 0g tenure-1 raw S1 0.93 vs 1-5 band 0.80).",
+  "zero_games": "the 0-game band is fitted on the SAME outcome (never-played listed rows; tenure = seasons on a list through Y, 1 vs 2+; the fit supports the term: z = -11.0 / -3.8). It replaces the ever0 intake table. At application a 0-game row reports S but is EXCLUDED from the charge and from Sbar (m = 1): its vP is a pick-curve expectation that already averages over busts."
  },
- "ever0": {
-  "IRE|1": 0.412,
-  "IRE|2": 0.208,
-  "MSD|1": 0.489,
-  "MSD|2": 0.13,
-  "ND|1": 0.714,
-  "ND|2": 0.441,
-  "PDA|1": 0.528,
-  "PDA|2": 0.273,
-  "PDN|1": 0.387,
-  "PDN|2": 0.25,
-  "PDS|1": 0.385,
-  "PDS|2": 0.273,
-  "RD|1": 0.37,
-  "RD|2": 0.19,
-  "SSP|1": 0.357,
-  "SSP|2": 0.25,
-  "UNR|1": 0.349,
-  "UNR|2": 0.129
- },
- "ever0_default": 0.35,
  "fit": {
-  "base_seasons_in_fit": "2010-2024",
-  "fitted_by": "scratchpad/hazard/hazard_final_v2.py -> hazard_final_v2.json (2026-10-14 00:42)",
-  "measured_application": "scratchpad/hazard/hazard_part2.py section [f] (hazard_out2.txt): relative S/Sbar(age) +1 635134 -> 635135 (+0.0%), +2 593206 -> 593201 (-0.0%)",
-  "model": "additive-logit (IRLS, ridge 1e-6) per lens: S1 = P(listed one season on), S2 = P(listed two seasons on)",
-  "owner_stated_window": "2019-2025 (the owner's brief; the fitting script's loop is range(2010, 2025) \u2014 recorded as run)",
-  "rows": "every (player, base season Y) with cumulative games > 0, 2010 <= Y <= 2024, player listed in Y; outcome observed to 2026 (n = 9297)",
+  "base_seasons": {
+   "S1": "2010-2024",
+   "S2": "2010-2023"
+  },
+  "fitted_by": "engine/rl_after/ingestion/fit_survival_hazard.py (deterministic; re-run to reproduce)",
+  "last_listed_sources": {
+   "active": 3373,
+   "fact": 1426,
+   "lastplay": 5382,
+   "tenure338": 804
+  },
+  "model": "additive-logit per lens (IRLS, ridge 1e-6); S1 = P(listed at the end of Y+1), S2 = P(listed at the end of Y+2)",
+  "n": {
+   "S1": 10985,
+   "S2": 10175
+  },
+  "n_zero_game_records": 1669,
+  "proxy_note": "lastplay rows under-state listing by one season in 33 of 170 and by two in 9 of 170 retirees that carry both a list fact and games (measured on the store); tenure338 rows assume the #338 minimum tenure. The fit with and without the proxy rows: docs/evidence/engine_survival_hazard_2026-10-14/MEASURED_TABLES_F1.txt.",
+  "rows_carrying_last_listed": 214,
   "store": "engine/rl_after/rl_model_data.json",
-  "store_md5": "b0eeaf4b9f766e6618081dce8fc328e3"
+  "store_md5": "f49dbef62a6f4595684449ccdf6533e7",
+  "survivors": {
+   "S1": 9514,
+   "S2": 7491
+  }
  },
+ "outcome": "S_k(age, evidence) = P(on an AFL list at the END of season Y+k | listed at the END of base season Y, age at Y, career games through Y), k in {1,2}. last_listed_year per store row = _last_listed (a list fact, the AFL 2024/2025 list changes) when present; else 2026 for a row active today (the live board); else the last season with a game (a PROXY that under-states listing by one season for a retiree who sat out his last listed season); else, for a never-played retiree with no list fact, the #338 minimum tenure debut+N-1 (a PROXY). Listed at the end of Y iff debut <= Y <= last_listed_year (debut = draft year + 1; MSD = the draft year). outcome_k = 1 iff last_listed_year >= Y+k. Base seasons 2010..2024 (k=1) and 2010..2023 (k=2): the latest outcome year is 2025, covered by the couriered list changes; nothing depends on an unobserved future.",
  "ruling": "SURVIVAL_H2_2026-10-14",
- "ruling_text": "D-H = H2: retirement/exit risk on the +1 and +2 lens values is probability-based survival, spread across each age cohort by risk, SUM-PRESERVING within each age band. Pure H2 (lifts allowed) is the default; cap_lift=true is the measurement variant that caps the multiplier at 1.0.",
- "cap_lift_note": "Owner ruling 2026-10-14: the lift is capped at 1.0 \u2014 nobody rises for survival; the charge on thin-evidence players stands and the lens totals fall by it (measured: +1 635,134 -> 624,163; +2 593,206 -> 573,360; reconciled vs present -1.0% / -0.2%)."
+ "ruling_text": "D-H = H2: retirement/exit risk on the +1 and +2 lens values is probability-based survival, spread across each age cohort by risk; the lift is capped at 1.0 (owner ruling 2026-10-14), so the lens totals fall by the within-cohort thin-evidence charge."
 }
