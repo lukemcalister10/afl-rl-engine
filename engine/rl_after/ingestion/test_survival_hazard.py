@@ -48,7 +48,7 @@ def _hand_S(doc, age, games, k):
 
 def main():
     doc = SH.load(HZ)
-    check(doc['ruling'] == 'SURVIVAL_H2_2026-10-14' and doc['cap_lift'] is False, 'calibration loads; ruling id and cap_lift=false recorded')
+    check(doc['ruling'] == 'SURVIVAL_H2_2026-10-14' and doc['cap_lift'] is True, 'calibration loads; ruling id and cap_lift=true recorded (owner ruling 2026-10-14: the lift is capped)')
     check(len(doc['coef']['S1']) == 9 and len(doc['coef']['S2']) == 9, 'two 9-coefficient vectors')
 
     # (a) S from the coefficients, synthetic (age, games)
@@ -126,11 +126,11 @@ def main():
     try:
         SH.CAP_LIFT = None
         _, r0 = SH.apply(rows, doc, 2026)
-        SH.CAP_LIFT = True
+        SH.CAP_LIFT = False
         _, r1 = SH.apply(rows, doc, 2026)
     finally:
         SH.CAP_LIFT = saved
-    check(r0['cap_lift'] is False and r1['cap_lift'] is True, '(c) CAP_LIFT=None reads the document (false); CAP_LIFT=True flips the build')
+    check(r0['cap_lift'] is True and r1['cap_lift'] is False, '(c) CAP_LIFT=None reads the document (true, capped); CAP_LIFT=False flips a measurement build to pure H2')
 
     # halts
     def raises(fn):
