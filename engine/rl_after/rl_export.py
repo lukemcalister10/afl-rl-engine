@@ -969,10 +969,14 @@ if os.environ.get('RL_LEGF', '1') != '0':
     # draftAssetTotals: the visible+residual -> F5 reconciliation (residuals separate; not ranked)
     _dat = {}
     for _k, _fld, _yr in _LF_LENS:
-        _dat['+%d' % _k] = {'lensYear': _yr, 'classes': list(range(2027, _yr + 1)),
-                            'nVisiblePicks': 64 * (_yr - 2026), 'visible_1_64': _PVC64,
-                            'residual_nd_tail': _res_nd, 'residual_mech': _res_mech,
-                            'residual_total': _res_nd + _res_mech, 'total': _PVC64 + _res_nd + _res_mech,
+        _nc = _yr - 2026                                                # classes on this lens (+1: 1, +2: 2)
+        _dat['+%d' % _k] = {'lensYear': _yr, 'classes': list(range(2027, _yr + 1)), 'nClasses': _nc,
+                            'nVisiblePicks': 64 * _nc, 'visible_1_64': _PVC64 * _nc,
+                            'residual_nd_tail': _res_nd * _nc, 'residual_mech': _res_mech * _nc,
+                            'residual_total': (_res_nd + _res_mech) * _nc,
+                            'total': (_PVC64 + _res_nd + _res_mech) * _nc,
+                            'per_class': {'visible_1_64': _PVC64, 'residual_nd_tail': _res_nd,
+                                          'residual_mech': _res_mech, 'total': _PVC64 + _res_nd + _res_mech},
                             'f5_entrant_layer_pvc': _ent_r, 'f5_draft_pvc': _draft_r,
                             'f5_mech_pvc': _mech_r,
                             # F5 FIX — THIS FLAG USED TO BE A TAUTOLOGY. It read
