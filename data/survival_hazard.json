@@ -32,30 +32,26 @@
  "cap_lift_note": "Owner ruling 2026-10-14: the lift is capped at 1.0 \u2014 nobody rises for survival; the charge on thin-evidence players stands and the lens totals fall by it. Measured: MEASURED_TABLES_F1.txt.",
  "coef": {
   "S1": [
-   0.6661389760562693,
-   -0.3088602896602927,
-   -0.3255098136841547,
-   -0.08150210083571545,
-   0.2842349249679737,
-   3.6433709299025954,
-   -5.581429637651336,
-   0.6160820998591476,
-   1.2392012145785003,
-   2.2552798571122006,
-   3.1844496810156615
+   0.3623601974757563,
+   -0.41847367740885094,
+   -0.3091512958019752,
+   -0.11517059378229537,
+   0.3210621764394898,
+   0.6957587705833169,
+   1.4186770957546035,
+   2.5032191964701114,
+   3.4396022961146406
   ],
   "S2": [
-   -0.10948391224107767,
-   -0.3295366819588669,
-   -0.38885992183985685,
-   -0.033740640590453126,
-   0.20114600368588306,
-   -1.2018122096056878,
-   -0.42488205628274744,
-   0.49881738991085905,
-   1.2698595397908572,
-   2.2604024060667607,
-   3.2440182457151576
+   -0.472151423091975,
+   -0.4473156787460337,
+   -0.3744184891554249,
+   -0.06472592681259631,
+   0.23884537018620827,
+   0.5861258911816248,
+   1.4883494401674697,
+   2.568041530958695,
+   3.561848291582116
   ]
  },
  "coef_names": [
@@ -64,8 +60,6 @@
   "age24+",
   "age29+",
   "age33+",
-  "band0",
-  "band0_tenure2+",
   "band6-20",
   "band21-50",
   "band51-100",
@@ -73,41 +67,37 @@
  ],
  "coef_se": {
   "S1": [
-   0.124634,
-   0.028448,
-   0.030576,
-   0.065119,
-   0.161712,
-   0.511047,
-   0.508052,
-   0.12316,
-   0.128305,
-   0.145084,
-   0.165469
+   0.131084,
+   0.032645,
+   0.030958,
+   0.065615,
+   0.161934,
+   0.126417,
+   0.132782,
+   0.149666,
+   0.169599
   ],
   "S2": [
-   0.10801,
-   0.022817,
-   0.026459,
-   0.058977,
-   0.195309,
-   0.111454,
-   0.110434,
-   0.1043,
-   0.109883,
-   0.123141,
-   0.144111
+   0.118085,
+   0.027248,
+   0.02688,
+   0.059589,
+   0.194979,
+   0.10794,
+   0.116123,
+   0.130458,
+   0.150319
   ]
  },
  "date": "2026-10-14",
- "design": "[1, min(age,24)-24, (age-24)+, (age-29)+, (age-33)+, band0, band0 x (tenure>=2), band6-20, band21-50, band51-100, band101+]",
+ "design": "[1, min(age,24)-24, (age-24)+, (age-29)+, (age-33)+, band6-20, band21-50, band51-100, band101+]",
  "design_notes": {
   "age": "the engine's integer age at the base season: max(Y - birth_year, 18 + (Y - cycle_year)) (rl_model._age_at); at application the board row's age(p) at AGE_REF = 2026",
-  "application": "RELATIVE within a cohort, CAPPED: vP_k' = round(vP_k x min(1, S_k / Sbar_k(cohort))) over the CHARGED rows (games >= 1); Sbar_k(cohort) = sum(vP_k x S_k) / sum(vP_k) over the charged rows of the cohort. Cohorts: one per integer age, ages >= 33 pooled into one, and any age with fewer than 5 charged rows joins the nearest larger cohort below it. The cap means the lens totals can only fall: NOT sum-preserving.",
-  "bands": "career-games bands; the reference band is 1-5 games; dummies for 0 games (with a 2nd+-season tenure term), 6-20, 21-50, 51-100, 101+",
+  "application": "RELATIVE within a cohort by EVIDENCE, CAPPED: vP_k' = round(vP_k x min(1, S_k(age_i, g_i) / R_k(age_i))) over the CHARGED rows (games >= 1); R_k(age_i) = sum_j w_j S_k(age_i, g_j) over the charged rows j of the cohort, w_j = vP_j / sum vP \u2014 the cohort's evidence mix priced at the row's OWN age, so a row is charged for thinner evidence, never for being older than its cohort-mates (for a single-age cohort this is the value-weighted mean of S_k). Cohorts: one per integer age, ages >= 33 pooled into one, and any age with fewer than 5 charged rows joins the nearest larger cohort below it. The cap means the lens totals can only fall: NOT sum-preserving.",
+  "bands": "career-games bands; the reference band is 1-5 games; dummies for 6-20, 21-50, 51-100, 101+",
   "games": "career games through the base season (fit: cumulative scoring games <= Y; application: the board row's games)",
-  "monotone_in_evidence": "played bands: S(age,g) = min over band midpoints m >= g of S_raw(age,m), together with S_raw(age,g); for g > 180, S_raw(age,g). The 0-game band is NOT clamped under the 1-5 band: a first-year never-played rookie measures ABOVE it (fact-only window Y=2024: 0g tenure-1 raw S1 0.93 vs 1-5 band 0.80).",
-  "zero_games": "the 0-game band is fitted on the SAME outcome (never-played listed rows; tenure = seasons on a list through Y, 1 vs 2+; the fit supports the term: z = -11.0 / -3.8). It replaces the ever0 intake table. At application a 0-game row reports S but is EXCLUDED from the charge and from Sbar (m = 1): its vP is a pick-curve expectation that already averages over busts."
+  "monotone_in_evidence": "S(age,g) = min over band midpoints m >= g of S_raw(age,m), together with S_raw(age,g); for g > 180, S_raw(age,g)",
+  "zero_games": "NOT fitted and NOT charged. A never-played retiree's exit season is not observable before the 2024/2025 list facts (575 of the 619 never-played retirees carry no list fact), and a 0-game band in the fit leaked into the shared age slopes (first F1 fit: young_slope -0.309 vs -0.419 played-only for S1). At application a 0-game row carries charged=false, S1/S2 = null, m = 1: its vP is a pick-curve expectation that already averages over busts. The fact-only window's raw rates are recorded in zero_game_fact_window for the record only."
  },
  "fit": {
   "base_seasons": {
@@ -115,28 +105,41 @@
    "S2": "2010-2023"
   },
   "fitted_by": "engine/rl_after/ingestion/fit_survival_hazard.py (deterministic; re-run to reproduce)",
-  "last_listed_sources": {
-   "active": 3373,
-   "fact": 1426,
-   "lastplay": 5382,
-   "tenure338": 804
+  "last_listed_sources_played": {
+   "active": 3086,
+   "fact": 1254,
+   "lastplay": 4976
   },
   "model": "additive-logit per lens (IRLS, ridge 1e-6); S1 = P(listed at the end of Y+1), S2 = P(listed at the end of Y+2)",
   "n": {
-   "S1": 10985,
-   "S2": 10175
+   "S1": 9316,
+   "S2": 8618
   },
-  "n_zero_game_records": 1669,
-  "proxy_note": "lastplay rows under-state listing by one season in 33 of 170 and by two in 9 of 170 retirees that carry both a list fact and games (measured on the store); tenure338 rows assume the #338 minimum tenure. The fit with and without the proxy rows: docs/evidence/engine_survival_hazard_2026-10-14/MEASURED_TABLES_F1.txt.",
+  "n_zero_game_records_not_fitted": 1233,
+  "proxy_note": "DIRECTION OF BIAS: the last-played proxy UNDER-STATES listing \u2014 of the 170 retirees that carry both a list fact and games, 33 were listed one season beyond their last game and 9 two seasons (about 25%). Where the proxy stands (every pre-2024 exit without a list fact) a retiree is counted as exited one season early, so the pre-2024 played-band survival is biased DOWN and the within-cohort charge biased UP, by an unquantified amount. The fit with and without the proxy rows: docs/evidence/engine_survival_hazard_2026-10-14/MEASURED_TABLES_F1.txt.",
   "rows_carrying_last_listed": 214,
   "store": "engine/rl_after/rl_model_data.json",
   "store_md5": "f49dbef62a6f4595684449ccdf6533e7",
   "survivors": {
-   "S1": 9514,
-   "S2": 7491
+   "S1": 8287,
+   "S2": 6806
   }
  },
- "outcome": "S_k(age, evidence) = P(on an AFL list at the END of season Y+k | listed at the END of base season Y, age at Y, career games through Y), k in {1,2}. last_listed_year per store row = _last_listed (a list fact, the AFL 2024/2025 list changes) when present; else 2026 for a row active today (the live board); else the last season with a game (a PROXY that under-states listing by one season for a retiree who sat out his last listed season); else, for a never-played retiree with no list fact, the #338 minimum tenure debut+N-1 (a PROXY). Listed at the end of Y iff debut <= Y <= last_listed_year (debut = draft year + 1; MSD = the draft year). outcome_k = 1 iff last_listed_year >= Y+k. Base seasons 2010..2024 (k=1) and 2010..2023 (k=2): the latest outcome year is 2025, covered by the couriered list changes; nothing depends on an unobserved future.",
+ "outcome": "S_k(age, evidence) = P(on an AFL list at the END of season Y+k | listed at the END of base season Y with career games >= 1, age at Y, career games through Y), k in {1,2}; PLAYED rows only. last_listed_year per store row = _last_listed (a list fact, the AFL 2024/2025 list changes) when present; else 2026 for a row active today (the live board); else the last season with a game (a PROXY that under-states listing for a retiree who sat out his last listed season(s)). Listed at the end of Y iff debut <= Y <= last_listed_year (debut = draft year + 1; MSD = the draft year). outcome_k = 1 iff last_listed_year >= Y+k. Base seasons 2010..2024 (k=1) and 2010..2023 (k=2): the latest outcome year is 2025, covered by the couriered list changes; nothing depends on an unobserved future. 0-game (never-played) records are not in the fit and carry no fitted S.",
  "ruling": "SURVIVAL_H2_2026-10-14",
- "ruling_text": "D-H = H2: retirement/exit risk on the +1 and +2 lens values is probability-based survival, spread across each age cohort by risk; the lift is capped at 1.0 (owner ruling 2026-10-14), so the lens totals fall by the within-cohort thin-evidence charge."
+ "ruling_text": "D-H = H2: retirement/exit risk on the +1 and +2 lens values is probability-based survival, spread across each age cohort by risk; the lift is capped at 1.0 (owner ruling 2026-10-14), so the lens totals fall by the within-cohort thin-evidence charge.",
+ "zero_game_fact_window": {
+  "by_tenure": {
+   "0g t1": {
+    "n": 54,
+    "raw_S1": 0.926
+   },
+   "0g t2+": {
+    "n": 48,
+    "raw_S1": 0.438
+   }
+  },
+  "note": "raw rates for the record; the 0-game outcome is not observable before the 2024/2025 list facts, so no S is fitted or published for 0-game rows",
+  "window": "Y=2024, k=1 (listed at the end of 2025 | 0 career games through 2024)"
+ }
 }

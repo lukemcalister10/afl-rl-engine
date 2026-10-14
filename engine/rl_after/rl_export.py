@@ -271,13 +271,16 @@ with _ctx.redirect_stdout(_io.StringIO()):
         _p['_cvx'] = 1.0
 g['BASE_REF']=g['AGE_REF']=2026; g['_pe_clear']()  # the ev loop advanced the clock to the last as-of year; re-pin to the present so the DISPLAY layer (peak_est/level_now/track/...) reads 2026, as the prior 2-instance display did
 # ==== SURVIVAL HAZARD ON THE FORWARD LENSES — owner ruling SURVIVAL_H2_2026-10-14 (D-H = "H2"), CAPPED; F1 ==
-# THE RULE: exit risk on +1/+2 is probability-based survival, spread across each age cohort by risk, the
-# multiplier CAPPED at 1.0: vP_k = round(vP_k x min(1, S_k(age,games) / Sbar_k(cohort))) over the CHARGED rows
-# (career games >= 1), where Sbar_k(cohort) is the value-weighted mean of S_k over the charged rows of the
-# cohort (integer ages; >= 33 pooled into one; an age with < 5 charged rows joins the cohort below). A 0-game
-# row reports S and is NOT charged: its vP is a pick-curve expectation that already averages over busts. Under
-# the cap the lens totals can only FALL — this is NOT sum-preserving. S_k is fitted on the TRUE listing outcome
-# (on an AFL list at the end of Y+k | listed at the end of Y, age and career games at Y; fix plan F1,
+# THE RULE: exit risk on +1/+2 is probability-based survival, spread across each age cohort by EVIDENCE, the
+# multiplier CAPPED at 1.0: vP_k = round(vP_k x min(1, S_k(age_i,g_i) / R_k(age_i))) over the CHARGED rows
+# (career games >= 1), where R_k(age_i) = sum_j w_j S_k(age_i, g_j) is the cohort's evidence mix priced at the
+# row's OWN age (w_j = vP_j / sum vP over the cohort's charged rows; the value-weighted mean of S_k for a
+# single-age cohort) — a row is charged for thinner evidence, never for being older than its cohort-mates.
+# Cohorts: integer ages; >= 33 pooled into one; an age with < 5 charged rows joins the cohort below. A 0-game
+# row carries NO fitted S (its listing outcome is not observable before the 2024/2025 list facts) and is NOT
+# charged: its vP is a pick-curve expectation that already averages over busts. Under the cap the lens totals
+# can only FALL — this is NOT sum-preserving. S_k is fitted on the TRUE listing outcome over PLAYED rows (on an
+# AFL list at the end of Y+k | listed at the end of Y with games >= 1, age and career games at Y; fix plan F1,
 # engine/rl_after/ingestion/fit_survival_hazard.py). Applied HERE, at the export layer, after EVERY active row
 # is priced (so the Leg-F3 pedigree floor above is already in the base) and before player_rec reads
 # _vP1/_vP2 — never inside ev(). The present v and the -1/-2 lenses are untouched; the back rows above and the
@@ -287,7 +290,7 @@ g['BASE_REF']=g['AGE_REF']=2026; g['_pe_clear']()  # the ev loop advanced the cl
 # variant is survival_hazard.CAP_LIFT (a module constant, not an environment flag).
 # ON r_pop (§2.ix, _merged_recover.py): r_pop carries the AGE-LEVEL exit risk of the forward lens (one carrier,
 # the §2.iii haircut retired). The capped cohort rule here adds a WITHIN-COHORT thin-evidence charge ON TOP of
-# it — measured F1 2026-10-14 at 1.22% of the 26-32 vP1 total and 2.65% of the 26-32 vP2 total
+# it — measured F1 2026-10-14 at 1.27% of the 26-32 vP1 total and 2.76% of the 26-32 vP2 total
 # (docs/evidence/engine_survival_hazard_2026-10-14/MEASURED_TABLES_F1.txt).
 import survival_hazard as _SH
 _SURV_DOC = _SH.load()
@@ -297,8 +300,9 @@ _SURV_PER, _SURV_REPORT = _SH.apply(_surv_rows, _SURV_DOC, AGE_REF)
 for _p in players:
     _s = _SURV_PER[_p['key']]
     _p['_vP1'], _p['_vP2'] = _s['vP1'], _s['vP2']
-    _p['_surv'] = {'S1': round(_s['S1'], 4), 'S2': round(_s['S2'], 4), 'age': _s['age'], 'games': _s['games'],
-                   'cohort': _s['cohort'], 'charged': _s['charged'], 'm1': _s['m1'], 'm2': _s['m2']}
+    _p['_surv'] = {'S1': (round(_s['S1'], 4) if _s['S1'] is not None else None), 'S2': (round(_s['S2'], 4) if _s['S2'] is not None else None),
+                   'age': _s['age'], 'games': _s['games'], 'cohort': _s['cohort'], 'charged': _s['charged'],
+                   'ref1': _s['ref1'], 'ref2': _s['ref2'], 'm1': _s['m1'], 'm2': _s['m2']}
 for _lbl, _t in sorted(_SURV_REPORT['totals'].items()):
     print('SURVIVAL HAZARD %s (%s): %s players %d -> %d (%+d; %d charged rows, %d 0-game rows not charged; cap_lift=%s) %s'
           % (_SURV_REPORT['ruling'], _lbl, _t['field'], _t['before'], _t['after'], _t['delta'], _SURV_REPORT['nCharged'],
@@ -426,7 +430,7 @@ def player_rec(p):
             'g':p['games'],'cg':cg,'yr':p['year'],'pk':p['pick'],'ty':p['type'],'unpl':bool(p.get('_unplayed')),
             'lnNull':level_now(p) is None,'track':track,'v':p['_v'],'bk':bool(p.get('_backonly')),
             'vP1':p.get('_vP1'),'vP2':p.get('_vP2'),'vM1':p.get('_vM1'),'vM2':p.get('_vM2'),'cvx':p.get('_cvx',1.0),
-            '_surv':p.get('_surv'),                                  # SURVIVAL_H2_2026-10-14 (F1): {S1,S2,age,games,cohort,charged,m1,m2} — the capped survival multipliers the +1/+2 lens values carry (active rows; 0-game rows m=1; None on back rows)
+            '_surv':p.get('_surv'),                                  # SURVIVAL_H2_2026-10-14 (F1): {S1,S2,age,games,cohort,charged,ref1,ref2,m1,m2} — the capped survival multipliers the +1/+2 lens values carry (active rows; 0-game rows charged=false, S/ref null, m=1; None on back rows)
             'avail_hc':p.get('_avail_hc',0.0),                       # RL_AVAIL present haircut L_p (register out-names; was b2hc)
             'avail_nerf':p.get('_avail_nerf',0),                     # Part-1 attribution: ev(layer)-ev(no-layer) per player (G-ATTR)
             'lti_return_hc':p.get('_lti_return_hc',0.0),             # Part-2 attribution column, FROZEN AT 0.0: the return arm was deleted 2026-10-14 with the LTI register (the engine sets no _lti_return_hc; the column stays so the board schema does not move)
@@ -788,7 +792,7 @@ _OV.assert_presence(active)
 # pick-slot strawman RETIRES: the entrant side is now the full sealed intake at PVC (§2.viii); exit risk already
 # lives in r_pop (§2.ix, F4 — one carrier, no double-count at the AGE level; the SURVIVAL_H2_2026-10-14 capped
 # cohort rule above adds a within-cohort thin-evidence charge on top of r_pop's age-level exit risk — measured F1
-# 2026-10-14 at 1.22% of the 26-32 vP1 total and 2.65% of the 26-32 vP2 total). The owner's ratification list updates (§2.viii
+# 2026-10-14 at 1.27% of the 26-32 vP1 total and 2.76% of the 26-32 vP2 total). The owner's ratification list updates (§2.viii
 # supersedes the item-343 R slot). Resurrection ref: git show a9570cb5:engine/rl_after/rl_export.py.
 if os.environ.get('RL_LEGF', '1') != '0':
     import hashlib as _hl
@@ -913,7 +917,7 @@ if os.environ.get('RL_LEGF', '1') != '0':
         _lg['0']['with'] += _v0; _lg['0']['without'] += _v0
         for _k, _fld, _yr in _LF_LENS:
             _proj = [_r for _r in _rows if _r.get(_fld) is not None]
-            _ret_sum = sum((_r.get(_fld) or 0) for _r in _proj)             # retained forward value (age-level exit risk in r_pop, §2.ix; PLUS the survival hazard's within-cohort thin-evidence charge, F1: 1.22% / 2.65% of the 26-32 +1/+2 totals)
+            _ret_sum = sum((_r.get(_fld) or 0) for _r in _proj)             # retained forward value (age-level exit risk in r_pop, §2.ix; PLUS the survival hazard's within-cohort thin-evidence charge, F1: 1.27% / 2.76% of the 26-32 +1/+2 totals)
             _with = _ret_sum + _cent_val                                    # + one annual entrant class (§2.viii)
             _without = _ret_sum
             _intake = [{'kind': 'draft', 'effpk': _e, 'count': round(_c, 4), 'v': _p, 'club': _cl,
@@ -937,7 +941,7 @@ if os.environ.get('RL_LEGF', '1') != '0':
         'entrant_layer_pvc': _ent_r, 'draft_pvc': _draft_r, 'mech_pvc': _mech_r,   # F5 fix: the total is the SUM of the parts, not a third rounding
         'expected_slots_per_year': _lf_struct['expected_slots_per_year'],
         'pickeq': _lf_struct['pickeq'],
-        'exit_model': 'age-level exit risk carried by r_pop (§2.ix, F4 — incl exiters residuals); no §2.iii haircut. The SURVIVAL_H2_2026-10-14 capped cohort rule adds a within-cohort thin-evidence charge on top of r_pop (measured F1 2026-10-14: 1.22% of the 26-32 vP1 total, 2.65% of the 26-32 vP2 total)',
+        'exit_model': 'age-level exit risk carried by r_pop (§2.ix, F4 — incl exiters residuals); no §2.iii haircut. The SURVIVAL_H2_2026-10-14 capped cohort rule adds a within-cohort thin-evidence charge on top of r_pop (measured F1 2026-10-14: 1.27% of the 26-32 vP1 total, 2.76% of the 26-32 vP2 total)',
         'per_lens': 'each forward lens carries ONE annual entrant class on top of the r_pop-retained roster; +2 is the marginal-annual view and runs slightly under now (declared caveat, item-12 lens-conservation)',
         'basis': 'per club + league, per lens (bal/+1/+2), WITH vs WITHOUT the phantom layer',
         'report_only': True, 'gates': False, 'k0_phantom': 'none',

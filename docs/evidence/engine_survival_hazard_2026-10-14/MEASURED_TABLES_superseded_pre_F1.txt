@@ -1,3 +1,5 @@
+SUPERSEDED (pre-F1, first survival act): fitted on the last-played proxy with the ever0 0-game table and per-age Sbar. The shipped measurement is MEASURED_TABLES_F1.txt (fix plan F1, second blind review).
+
 
 === PURE H2 (sum-preserving per age) ===
 lens totals: +1 635134 -> 635142 (+0.00%)   +2 593206 -> 593209 (+0.00%)

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "act_kind": "lever-landing",
- "act": "SURVIVAL ON THE +1/+2 LENSES (D-H = H2, capped): exit risk is probability-based survival S_k(age, games) fitted on the store's own history, spread across each age cohort by risk (S_k / S\u0304_k(age)) with the multiplier capped at 1.0 \u2014 nobody rises for survival; 0-game players carry their intake cohort's ever-plays rate. Present values untouched.",
+ "act": "SURVIVAL ON THE +1/+2 LENSES (D-H = H2, capped; fix plan F1): exit risk is probability-based survival S_k(age, games) fitted on the TRUE listing outcome over played rows (on an AFL list at the end of Y+k | listed at the end of Y), spread across each age cohort by EVIDENCE (S_k(age_i, g_i) / R_k(age_i), the cohort's evidence mix at the row's own age; ages >= 33 pooled) with the multiplier capped at 1.0 \u2014 nobody rises for survival; 0-game players carry no fitted S and are not charged (their vP is a pick-curve expectation that already averages over busts). Present values untouched.",
  "date": "2026-10-14",
  "owner_word": "Owner, 2026-10-14: \"H2 makes the most sense\" (probability-based survival spread across the cohort by risk/age); on the capped variant, \"the capped option seems to keep the board stable, so that's probably the best option\" \u2014 confirmed [owner word to be quoted verbatim at landing].",
  "authority": "owner word on this act",
@@ -25,11 +25,11 @@
    "register",
    "as_of_round"
   ],
-  "_doc": "rl_export.py and the new engine/rl_after/survival_hazard.py + data/survival_hazard.json are not pinned identities; the board moves (vP1/vP2 on 390 rows). engine_head, rl_model, fv unmoved."
+  "_doc": "rl_export.py and the new engine/rl_after/survival_hazard.py + data/survival_hazard.json are not pinned identities; the board moves (F1 measured offline: vP1 on 322 rows, vP2 on 323 rows, all down; 0-game rows untouched). engine_head, rl_model, fv unmoved."
  },
  "column": {
   "id": "survival-hazard-capped-14-10",
-  "label": "14/10 survival on the +1/+2 lenses (capped H2): thin-evidence and never-played players priced by their survival odds; no present value moves",
+  "label": "14/10 survival on the +1/+2 lenses (capped H2, F1): thin-evidence players charged by their listing-survival odds within their age cohort; never-played rows untouched; no present value moves",
   "after_round": 24
  },
  "lineage": {
@@ -42,7 +42,7 @@
   "authority": "owner word 2026-10-14",
   "invariants": {
    "present_v": "0 of 804 present values move",
-   "lens_totals": "F1 refit (MEASURED_TABLES_F1.txt): +1 635,134 -> 627,102; +2 593,206 -> 577,981 (reconciled vs present -0.59% / +0.51%); 0-game rows not charged"
+   "lens_totals": "F1 refit, played rows, evidence-only cohort reference (MEASURED_TABLES_F1.txt): +1 635,134 -> 627,218; +2 593,206 -> 578,436 (reconciled vs present -0.57% / +0.57%); 0-game rows not charged"
   }
  },
  "day0_rebase": {

@@ -271,10 +271,11 @@ def _fa_year(Y):
 # consumption :851) to the SAME players' MEASURED POPULATION backward-transition rate r_pop(age) — measured
 # on each committed -2/-1/now roster INCLUDING exiters' realized residual paths (busts full weight, R107.3),
 # so a single population rate carries exit risk and the F3 §2.iii retirement haircut RETIRES (v1.3 §2.ix, no
-# double-count at the AGE level. The SURVIVAL_H2_2026-10-14 capped cohort rule at the export layer (rl_export.py,
-# survival_hazard.py) adds a WITHIN-COHORT thin-evidence charge ON TOP of r_pop's age-level exit risk — measured
-# F1 2026-10-14 at 1.22% of the 26-32 vP1 total and 2.65% of the 26-32 vP2 total, MEASURED_TABLES_F1.txt).
-# Geometric blend by the sealed s(age): x_used = x_form * (x_age/x_form)**s. s=1 => x_used ==
+# double-count). CAVEAT (owner ruling 2026-10-14, capped H2 — SURVIVAL_H2_2026-10-14): the capped cohort rule at
+# the export layer (rl_export.py, survival_hazard.py) adds a WITHIN-COHORT thin-evidence charge ON TOP of r_pop's
+# age-level exit risk — measured F1 2026-10-14 at 1.27% of the 26-32 vP1 total and 2.76% of the 26-32 vP2 total
+# (docs/evidence/engine_survival_hazard_2026-10-14/MEASURED_TABLES_F1.txt). Geometric blend by the sealed s(age):
+# x_used = x_form * (x_age/x_form)**s. s=1 => x_used ==
 # x_age (undamped, byte-exact); s in [0,1) tempers the advance toward the form anchor. FORWARD-ONLY (MA.
 # _LENS_FORM set AND AGE_REF>BASE_REF) + RL_LEGF-gated => k=0 / balanced / backward / RL_LEGF=0 => x_age==x_form
 # => x_used==x_age => the pre-F4 chain byte-exact BY CONSTRUCTION. Reid: the damper's ONLY content is the

@@ -3,12 +3,13 @@
 
     python3 engine/rl_after/ingestion/test_survival_hazard.py     (exit 0 = all pass, exit 1 = a failure)
 
-Light: no engine load. It (a) rebuilds S for a few synthetic (age, games, tenure) from the JSON coefficients by
-hand and checks the module agrees, with pins against the fit script's own S grid; (b) checks the cohort rule
-(integer ages, >= 33 pooled, < 5 charged rows joins the cohort below); (c) checks the capped application on a
-synthetic active set — charged rows only, 0-game rows untouched and outside Sbar, no lifts, totals fall; (d) the
-pure-H2 measurement variant is sum-preserving per cohort over the charged rows; and it checks the halts (missing
-file, unformable age/games, 0-game row without type/year, another ruling id).
+Light: no engine load. It (a) rebuilds S for a few synthetic (age, games) from the JSON coefficients by hand and
+checks the module agrees, with pins against the fit script's own S grid; (b) checks the cohort rule (integer
+ages, >= 33 pooled, < 5 charged rows joins the cohort below); (c) checks the capped application on a synthetic
+active set — charged rows only, 0-game rows untouched with no fitted S and outside R, the evidence-only reference
+R_k(age_i) in the pooled cohort, no lifts, totals fall; (d) the pure-H2 measurement variant is sum-preserving
+within each single-age cohort; and it checks the halts (missing file, unformable age/games, another ruling id,
+a calibration of the wrong width).
 """
 import json
 import math
@@ -34,66 +35,54 @@ def check(cond, label, detail=''):
         _fails.append(label)
 
 
-def _hand_S(doc, age, games, k, tenure=1):
-    """Independent arithmetic: the design string, read literally, then the logistic; then the played-band
-    monotone min (the 0-game band stands on its own value)."""
+def _hand_S(doc, age, games, k):
+    """Independent arithmetic: the design string, read literally, then the logistic; then the band-monotone min."""
     coef = doc['coef']['S%d' % k]
 
-    def raw(g, t=1):
-        b = 0 if g == 0 else 1 if g <= 5 else 2 if g <= 20 else 3 if g <= 50 else 4 if g <= 100 else 5
+    def raw(g):
+        b = 0 if g <= 5 else 1 if g <= 20 else 2 if g <= 50 else 3 if g <= 100 else 4
         x = [1, min(age, 24) - 24, max(0, age - 24), max(0, age - 29), max(0, age - 33),
-             1 if b == 0 else 0, 1 if (b == 0 and t >= 2) else 0,
-             1 if b == 2 else 0, 1 if b == 3 else 0, 1 if b == 4 else 0, 1 if b == 5 else 0]
+             1 if b == 1 else 0, 1 if b == 2 else 0, 1 if b == 3 else 0, 1 if b == 4 else 0]
         return 1 / (1 + math.exp(-sum(a * c for a, c in zip(x, coef))))
-    if games == 0:
-        return raw(0, tenure)
-    if games > 180:
-        return raw(games)
-    return min([raw(games)] + [raw(m) for m in (3, 12, 35, 75, 180) if m >= games])
+    g = max(1, games)
+    if g > 180:
+        return raw(g)
+    return min([raw(g)] + [raw(m) for m in (3, 12, 35, 75, 180) if m >= g])
 
 
 def main():
     doc = SH.load(HZ)
     check(doc['ruling'] == 'SURVIVAL_H2_2026-10-14' and doc['cap_lift'] is True, 'calibration loads; ruling id and cap_lift=true recorded (owner ruling 2026-10-14: the lift is capped)')
-    check(len(doc['coef']['S1']) == 11 and len(doc['coef']['S2']) == 11 and len(doc['coef_names']) == 11, 'two 11-coefficient vectors (band0 + band0 x tenure2+ added, F1)')
-    check('on an AFL list at the END of season Y+k' in doc['outcome'] and '_last_listed' in doc['outcome'] and 'PROXY' in doc['outcome'],
-          'the JSON states the fitted outcome (listed at the end of Y+k | listed at the end of Y), its sources and its proxies')
-    check('ever0' not in doc, 'the ever0 intake table is gone (the 0-game band is fitted on the same outcome)')
+    check(len(doc['coef']['S1']) == 9 and len(doc['coef']['S2']) == 9 and len(doc['coef_names']) == 9, 'two 9-coefficient vectors (played rows only; no 0-game columns)')
+    check('on an AFL list at the END of season Y+k' in doc['outcome'] and '_last_listed' in doc['outcome'] and 'PROXY' in doc['outcome']
+          and 'PLAYED rows only' in doc['outcome'], 'the JSON states the fitted outcome (listed at the end of Y+k | listed at the end of Y, played rows), its sources and its proxy')
+    check('ever0' not in doc and 'not observable before the 2024/2025 list facts' in doc['design_notes']['zero_games']
+          and 'UNDER-STATES' in doc['fit']['proxy_note'] and 'biased DOWN' in doc['fit']['proxy_note'],
+          'the ever0 table is gone; the 0-game outcome is recorded as unobservable pre-2024/2025; the proxy note states the direction of its bias')
 
-    # (a) S from the coefficients, synthetic (age, games, tenure)
-    cases = [(19, 3, 1), (22, 1, 1), (24, 46, 1), (27, 95, 1), (31, 143, 1), (35, 271, 1), (23, 250, 1), (20, 180, 1), (29, 51, 1),
-             (19, 0, 1), (20, 0, 2), (23, 0, 1), (25, 0, 3)]
+    # (a) S from the coefficients, synthetic (age, games)
+    cases = [(19, 3), (22, 1), (24, 46), (27, 95), (31, 143), (35, 271), (23, 250), (20, 180), (29, 51)]
     ok = True
-    for a, gm, t in cases:
+    for a, gm in cases:
         for k in (1, 2):
-            want = _hand_S(doc, a, gm, k, t)
-            yr = 2026 - t + 1 - 1          # tenure t = 2026 - debut + 1, debut = yr + 1 (ND)
-            got = SH.survival_of({'key': 'x', 'age': a, 'games': gm, 'ty': 'ND', 'yr': yr}, k, doc, 2026)
+            want = _hand_S(doc, a, gm, k)
+            got = SH.survival_of({'key': 'x', 'age': a, 'games': gm}, k, doc, 2026)
             if abs(want - got) > 1e-12:
-                ok = False; print('     S%d(%d,%d,t%d) module %.6f hand %.6f' % (k, a, gm, t, got, want))
-    check(ok, '(a) S1/S2 on %d synthetic (age, games, tenure) equal the hand-built logistic from the JSON coefficients' % len(cases))
-    # pins from the fit script's S grid (fit_survival_hazard.py; MEASURED_TABLES_F1.txt): age 20 g3 0.870/0.770,
-    # age 24 g75 0.949/0.896, age 28 g180 0.927/0.829, age 35 g180 0.586/0.280, age 20 0-game tenure 2+ 0.491/0.397
-    pins = [((20, 3, 1), (0.870, 0.770)), ((24, 75, 1), (0.949, 0.896)), ((28, 180, 1), (0.927, 0.829)), ((35, 180, 1), (0.586, 0.280)),
-            ((20, 0, 2), (0.491, 0.397))]
-    ok = all(round(SH.survival_of({'key': 'p', 'age': a, 'games': g, 'ty': 'ND', 'yr': 2026 - t}, k, doc, 2026), 3) == want[k - 1]
-             for (a, g, t), want in pins for k in (1, 2))
-    check(ok, '(a) five pins from the fit script\'s S grid reproduce to 3 dp')
+                ok = False; print('     S%d(%d,%d) module %.6f hand %.6f' % (k, a, gm, got, want))
+    check(ok, '(a) S1/S2 on %d synthetic (age, games) equal the hand-built logistic from the JSON coefficients' % len(cases))
+    # pins from the fit script's S grid (fit_survival_hazard.py; MEASURED_TABLES_F1.txt): age 20 g3 0.885/0.789,
+    # age 24 g75 0.946/0.891, age 28 g180 0.929/0.831, age 35 g180 0.587/0.281
+    pins = [((20, 3), (0.885, 0.789)), ((24, 75), (0.946, 0.891)), ((28, 180), (0.929, 0.831)), ((35, 180), (0.587, 0.281))]
+    ok = all(round(SH.survival_of({'key': 'p', 'age': a, 'games': g}, k, doc, 2026), 3) == want[k - 1] for (a, g), want in pins for k in (1, 2))
+    check(ok, '(a) four pins from the fit script\'s S grid reproduce to 3 dp')
     mono = all(SH.survival_of({'key': 'm', 'age': a, 'games': g1}, k, doc, 2026) <= SH.survival_of({'key': 'm', 'age': a, 'games': g2}, k, doc, 2026) + 1e-12
                for a in range(19, 37) for k in (1, 2) for g1, g2 in ((1, 6), (6, 21), (21, 51), (51, 101), (3, 300)))
-    check(mono, '(a) S is monotone non-decreasing in evidence across the played bands at fixed age (the band-min rule)')
+    check(mono, '(a) S is monotone non-decreasing in evidence at fixed age (the band-min rule)')
     aged = all(SH.survival_of({'key': 'm', 'age': a, 'games': 150}, k, doc, 2026) > SH.survival_of({'key': 'm', 'age': a + 1, 'games': 150}, k, doc, 2026)
                for a in range(24, 36) for k in (1, 2))
     check(aged, '(a) S falls with age past 24 at fixed evidence')
-    # 0-game: own band by tenure; tenure 2+ below tenure 1 (the fitted term); MSD tenure counts the draft year
-    z1 = SH.survival_of({'key': 'z', 'age': 19, 'games': 0, 'ty': 'ND', 'yr': 2025}, 1, doc, 2026)
-    z2 = SH.survival_of({'key': 'z', 'age': 19, 'games': 0, 'ty': 'ND', 'yr': 2024}, 1, doc, 2026)
-    m1 = SH.survival_of({'key': 'z', 'age': 19, 'games': 0, 'ty': 'MSD', 'yr': 2026}, 1, doc, 2026)
-    m2 = SH.survival_of({'key': 'z', 'age': 19, 'games': 0, 'ty': 'MSD', 'yr': 2025}, 1, doc, 2026)
-    check(z2 < z1 and m2 < m1 and abs(m1 - z1) < 1e-12 and SH.tenure_of('MSD', 2025, 2026) == 2 and SH.tenure_of('ND', 2025, 2026) == 1,
-          '(a) 0-game rows: tenure 1 (ND drafted 2025 / MSD 2026) above tenure 2+ (ND 2024 / MSD 2025); MSD debuts in its draft year')
-    check(abs(SH.survival_of({'key': 'z', 'age': 19, 'games': 0, 'ty': 'ND', 'yr': 2022}, 2, doc, 2026) - z2 * 0 - _hand_S(doc, 19, 0, 2, 5)) < 1e-12,
-          '(a) tenure 5 is the same 2+ term (no third level)')
+    check(SH.survival_of({'key': 'z', 'age': 19, 'games': 0}, 1, doc, 2026) is None and SH.survival_of({'key': 'z', 'age': 25, 'games': 0}, 2, doc, 2026) is None,
+          '(a) a 0-game row has no fitted S (None); no type/year needed')
 
     # (b) the cohort rule
     coh = SH.cohorts_of({19: 30, 20: 40, 21: 3, 22: 50, 23: 50, 33: 10, 34: 4, 36: 1})
@@ -118,40 +107,63 @@ def main():
     check(all(t['after'] < t['before'] for t in repc['totals'].values()), '(c) capped totals fall (charges kept, no lifts)', repr(repc['totals']))
     zero = [r for r in rows if r['games'] == 0]
     check(all(perc[r['key']]['m1'] == 1.0 and perc[r['key']]['m2'] == 1.0 and perc[r['key']]['vP1'] == r['vP1'] and perc[r['key']]['vP2'] == r['vP2']
-              and perc[r['key']]['charged'] is False for r in zero),
-          '(c) 0-game rows are not charged: m=1, vP1/vP2 untouched, charged=False')
-    check(all(perc[r['key']]['S1'] > 0 and perc[r['key']]['S2'] > 0 for r in zero), '(c) 0-game rows still report their fitted S1/S2')
-    # Sbar excludes the 0-game rows: the value-weighted mean over the CHARGED rows of the cohort
+              and perc[r['key']]['charged'] is False and perc[r['key']]['S1'] is None and perc[r['key']]['S2'] is None
+              and perc[r['key']]['ref1'] is None for r in zero),
+          '(c) 0-game rows are not charged: charged=False, S1/S2/ref None, m=1, vP1/vP2 untouched')
+    # single-age cohort: R == the value-weighted mean of the CHARGED rows' own S (the 0-game row outside it)
     for k, fld in ((1, 'vP1'), (2, 'vP2')):
         a19 = [r for r in rows if r['age'] == 19 and r['games'] >= 1]
         want = sum(r[fld] * perc[r['key']]['S%d' % k] for r in a19) / sum(r[fld] for r in a19)
-        check(abs(repc['sbar_by_cohort']['S%d' % k]['19']['sbar'] - want) < 1e-6 and repc['sbar_by_cohort']['S%d' % k]['19']['n_charged'] == 5
-              and repc['sbar_by_cohort']['S%d' % k]['19']['n_zero_game'] == 1,
-              '(c) Sbar_%d(19) is the %s-weighted mean of S%d over the 5 charged rows at 19 (the 0-game row outside it)' % (k, fld, k))
-    check(all(abs(perc[r['key']]['m1'] - min(1.0, perc[r['key']]['S1'] / repc['sbar_by_cohort']['S1'][perc[r['key']]['cohort']]['sbar'])) < 1e-5
-              for r in rows if r['games'] >= 1), '(c) m_k = min(1, S_k / Sbar_k(cohort)) on every charged row')
-    check(repc['cohort_of_age']['33'] == '33+' and repc['cohort_of_age']['35'] == '33+' and perc['p37']['cohort'] == '33+'
-          and set(repc['sbar_by_cohort']['S1']['33+']['ages']) == {33, 35},
-          '(c) ages 33 and 35 share the pooled 33+ cohort and one Sbar')
+        d = repc['sbar_by_cohort']['S%d' % k]['19']
+        check(abs(d['sbar'] - want) < 1e-6 and abs(d['ref_by_age']['19'] - want) < 1e-6 and d['n_charged'] == 5 and d['n_zero_game'] == 1
+              and all(abs(perc[r['key']]['ref%d' % k] - want) < 1e-5 for r in a19),
+              '(c) single-age cohort 19: R_%d(19) == the %s-weighted mean of S%d over the 5 charged rows (the 0-game row outside it)' % (k, fld, k))
+    check(all(abs(perc[r['key']]['m1'] - min(1.0, perc[r['key']]['S1'] / perc[r['key']]['ref1'])) < 1e-5 for r in rows if r['games'] >= 1),
+          '(c) m_k = min(1, S_k / R_k(age_i)) on every charged row')
+    # the pooled cohort: R_k(age_i) is the cohort's evidence mix priced at the row's OWN age (not at the cohort-mates' ages)
+    pool = [r for r in rows if r['age'] >= 33 and r['games'] >= 1]
+    ok = True
+    for k, fld in ((1, 'vP1'), (2, 'vP2')):
+        coef = doc['coef']['S%d' % k]; mids = tuple(doc['band_midpoints'])
+        den = sum(r[fld] for r in pool)
+        for a in (33, 35):
+            want = sum(r[fld] * SH.survival(a, r['games'], coef, mids) for r in pool) / den
+            got = repc['sbar_by_cohort']['S%d' % k]['33+']['ref_by_age'][str(a)]
+            rows_a = [r for r in pool if r['age'] == a]
+            if abs(got - want) > 1e-6 or any(abs(perc[r['key']]['ref%d' % k] - want) > 1e-5 for r in rows_a):
+                ok = False; print('     k=%d age %d R %.6f want %.6f' % (k, a, got, want))
+    check(ok, '(c) pooled 33+ cohort: R_k(33) and R_k(35) are the SAME evidence mix priced at 33 and at 35 (evidence-only reference)')
+    # the evidence-only reference: the 35-year-old with the same games as a 33-year-old is NOT charged more for his age
+    p33 = {r['games']: perc[r['key']] for r in pool if r['age'] == 33}; p35 = {r['games']: perc[r['key']] for r in pool if r['age'] == 35}
+    # under an age-level reference (one Sbar for the pool) the 35-year-old would be charged S(35,g)/Sbar < S(33,g)/Sbar, i.e. for
+    # being older; under the evidence-only reference the two multipliers differ only by the small residual age effect on the
+    # S(age,g)/R(age) RATIO (a few hundredths), and the proven rows at BOTH ages are held at 1.
+    check(all(abs(p33[g]['m1'] - p35[g]['m1']) < 0.05 and abs(p33[g]['m2'] - p35[g]['m2']) < 0.10 for g in p33)
+          and p33[210]['m1'] == p35[210]['m1'] == 1.0 and p33[88]['m1'] == p35[88]['m1'] == 1.0 and p33[210]['m2'] == p35[210]['m2'] == 1.0,
+          '(c) in the pool a 35-year-old is not charged for his age: same-games multipliers at 33 and 35 agree to a few hundredths; the proven rows at both ages are held at 1',
+          repr([(g, p33[g]['m1'], p35[g]['m1'], p33[g]['m2'], p35[g]['m2']) for g in sorted(p33)]))
+    check(repc['cohort_of_age']['33'] == '33+' and repc['cohort_of_age']['35'] == '33+' and set(repc['sbar_by_cohort']['S1']['33+']['ages']) == {33, 35},
+          '(c) ages 33 and 35 share the pooled 33+ cohort')
     thin = perc['p2']; proven = perc['p5']  # age 19: (2 games) vs (88 games)
     check(thin['m1'] < 1.0 and thin['m2'] < 1.0 and proven['m1'] == 1.0 and proven['m2'] == 1.0, '(c) at one age the thin row is charged (m<1) and the proven row is held (m=1, no lift)')
-    check(all(perc[r['key']][k2] is not None for r in rows for k2 in ('S1', 'S2', 'age', 'games', 'cohort', 'm1', 'm2')), '(c) per-row record carries S1,S2,age,games,cohort,charged,m1,m2')
+    check(all(k2 in perc[r['key']] for r in rows for k2 in ('S1', 'S2', 'age', 'games', 'cohort', 'charged', 'ref1', 'ref2', 'm1', 'm2')), '(c) per-row record carries S1,S2,age,games,cohort,charged,ref1,ref2,m1,m2')
     check(repc['source_md5'] and repc['ruling'] == 'SURVIVAL_H2_2026-10-14' and repc['nCharged'] == 35 and repc['nZeroGame'] == 7
-          and 'not sum-preserving' in repc['law'] and repc['outcome'], '(c) report carries ruling, source md5, charged/0-game counts, the capped law, the outcome')
+          and 'not sum-preserving' in repc['law'] and 'R_k(age_i)' in repc['law'] and repc['outcome'], '(c) report carries ruling, source md5, charged/0-game counts, the capped evidence-only law, the outcome')
 
-    # (d) the pure-H2 measurement variant: sum-preserving per cohort over the charged rows
+    # (d) the pure-H2 measurement variant: sum-preserving within each single-age cohort over the charged rows
     per, rep = SH.apply(rows, doc, 2026, cap_lift=False)
     ok = True
     for k in (1, 2):
         fld = 'vP%d' % k
-        for c in set(per[r['key']]['cohort'] for r in rows if r['games'] >= 1):
+        for c in ('19', '21', '24', '27', '30'):
             s = [r for r in rows if r['games'] >= 1 and per[r['key']]['cohort'] == c]
             before = sum(r[fld] for r in s); after = sum(per[r['key']][fld] for r in s)
             if abs(after - before) > 0.5 * len(s):
                 ok = False; print('     cohort %s %s %d -> %d' % (c, fld, before, after))
-    check(ok, '(d) cap_lift=False: per-cohort charged lens sums preserved to rounding (%d rows, 7 ages, both lenses)' % len(rows))
-    check(rep['cap_lift'] is False and any(per[r['key']]['m1'] > 1.0 for r in rows) and all(per[r['key']]['m1'] == 1.0 for r in zero),
-          '(d) uncapped carries lifts on charged rows; 0-game rows still m=1')
+    check(ok, '(d) cap_lift=False: single-age cohorts\' charged lens sums preserved to rounding (both lenses)')
+    check(rep['cap_lift'] is False and any(per[r['key']]['m1'] > 1.0 for r in rows) and all(per[r['key']]['m1'] == 1.0 for r in zero)
+          and all(abs(per[r['key']]['m1'] - per[r['key']]['S1'] / per[r['key']]['ref1']) < 1e-5 for r in pool),
+          '(d) uncapped carries lifts on charged rows; 0-game rows still m=1; the pool uses the same S/R(age_i) uncapped')
     check(all(perc[r['key']]['m1'] == min(1.0, per[r['key']]['m1']) for r in rows), '(d) capped m == min(1, uncapped m) row by row')
     saved = SH.CAP_LIFT
     try:
@@ -175,15 +187,15 @@ def main():
     check(e is not None and 'bad-age' in e, 'halt names the key: unformable age')
     e = raises(lambda: SH.apply([{'key': 'bad-games', 'age': 22, 'games': None, 'vP1': 1, 'vP2': 1}], doc, 2026))
     check(e is not None and 'bad-games' in e, 'halt names the key: unformable games')
-    e = raises(lambda: SH.apply([{'key': 'bad-zero', 'age': 22, 'games': 0, 'ty': None, 'yr': 2025, 'vP1': 1, 'vP2': 1}], doc, 2026))
-    check(e is not None and 'bad-zero' in e, 'halt names the key: 0-game row without type/year')
+    e = raises(lambda: SH.apply([{'key': 'bad-lens', 'age': 22, 'games': 10, 'vP1': 1, 'vP2': None}], doc, 2026))
+    check(e is not None and 'bad-lens' in e, 'halt names the key: unformable lens value')
     with tempfile.TemporaryDirectory() as td:
         bad = dict(json.load(open(HZ))); bad['ruling'] = 'OTHER'
         p = os.path.join(td, 'h.json'); json.dump(bad, open(p, 'w'))
         check(raises(lambda: SH.load(p)) is not None, 'halt: a calibration carrying another ruling id')
-        bad = dict(json.load(open(HZ))); bad['coef'] = {'S1': bad['coef']['S1'][:9], 'S2': bad['coef']['S2']}
-        p = os.path.join(td, 'h9.json'); json.dump(bad, open(p, 'w'))
-        check(raises(lambda: SH.load(p)) is not None, 'halt: a 9-coefficient (pre-F1) calibration')
+        bad = dict(json.load(open(HZ))); bad['coef'] = {'S1': bad['coef']['S1'] + [0.0, 0.0], 'S2': bad['coef']['S2']}
+        p = os.path.join(td, 'h11.json'); json.dump(bad, open(p, 'w'))
+        check(raises(lambda: SH.load(p)) is not None, 'halt: a calibration of the wrong width (an 11-coefficient vector)')
 
     print('  ' + '-' * 66)
     if _fails:
