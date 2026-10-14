@@ -113,6 +113,32 @@ facts do not depend on which engine priced the player. Every other range (multi-
 spanning an out-of-round column) keeps the honest "not recorded", and `ui_defects_2026-08-21` asserts
 both directions so the enrichment can never silently widen.
 
+## The as-at season boards (owner ruling 2026-10-14) — the −1 / −2 lens columns
+
+The card's "Value by year" line reads `lens[0..2]` = (−2, −1, now). Until this ruling the two backward
+values were the engine's `vM2`/`vM1` = ev(p, 2024/2025) on the CURRENT 804 rows (rl_export.py:210-212),
+so a November-2025 draftee carried a 2025 value he never had and a 2025 retiree was scrap on the board
+he finished. The ruling: −1 and −2 are TRUE AS-AT BOARDS — every player listed at the end of 2025 /
+2024 (retirees included, not-yet-debuted excluded), priced with that season as the base year.
+
+Two files beside the retro series carry it, on the same one-load discipline:
+
+* `docs/evidence/walkforward_retro_2026-08-29/pass_asat_seasons.py` (run:
+  `tools/harness docs/evidence/walkforward_retro_2026-08-29/pass_asat_seasons.py`) builds the roster per
+  R1 (debut ≤ Y and: played in Y, or `_last_listed` ≥ Y, or active now, or unplayed inside the entry
+  window), rewinds each row to ≤ Y with `_retired`/`_last_listed` cleared for the duration, prices
+  `round(ev(p,Y)/_PL_F)`, restores byte-exact, and banks `values_asat_2025.json` / `values_asat_2024.json`.
+  ITS CONTROL RUNS FIRST: Y=2026 through the same machinery must reproduce the live board on every row.
+* `emit_asat_seasons.py` patches `lens[1]`/`lens[0]` on every current row of `board_view_working.js` from
+  the banks (null = not on that board; the card names the season) and writes `ui/data/asat_boards.js`
+  (`window.__ASAT_BOARDS__`) with the full rosters incl. retirees, stamped with the board + store md5s.
+  Mirror law: it refuses if the banks, the bundle and the tree do not name one board and one store.
+
+NOT YET THE ENGINE'S OWN FIELDS: the live board's `vM1`/`vM2` and `rl_export.py` are untouched until the
+owner has seen the as-at numbers; `extract_board_view.py` therefore puts the engine's values back when
+it regenerates the bundle, and the emitter must be re-run after it (the lander does not yet run it).
+Dry tests: `python3 docs/evidence/walkforward_retro_2026-08-29/test_pass_asat_seasons.py`.
+
 ## Clubs page: the 56-asset rating
 
 The "Rating" column is the 56-asset club rating (owner formula, 2026-08-28): best 41 player

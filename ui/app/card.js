@@ -297,6 +297,12 @@ MD.card = (function () {
     // +1/+2 projections are ruled off and render nowhere (owner word 2026-08-28).
     const years = (w.lensYears || [2024, 2025, 2026]).slice(0, 3);
     const lensPts = (p.lens || []).slice(0, 3).map(function (v) { return { v: v }; });
+    // AS-AT BOARDS (owner ruling 2026-10-14): a null backward value means the player was NOT on the
+    // board at the end of that season (not yet debuted, or already gone). lineChart skips nulls; the
+    // gap is named here rather than left as a silent hole in the line. "Now" (the last year) is never null.
+    const offBoard = years.filter(function (_, i) { return i < years.length - 1 && (p.lens || [])[i] == null; });
+    const offBoardNote = offBoard.length
+      ? '<div class="note">Not on the board at end of ' + offBoard.join(" or ") + ".</div>" : "";
 
     let ovTag = "";
     if (p.owner_rule) ovTag = '<span class="tag" title="Your rule holds this price.">Owner rule</span>';
@@ -318,7 +324,7 @@ MD.card = (function () {
         '<h2 class="sec"><span>Entry price</span></h2>' +
         v0Section(p) +
         '<h2 class="sec"><span>Value by year</span><span class="meta">' + years[0] + "–" + years[years.length - 1] + "</span></h2>" +
-        lineChart(lensPts, years, years.length - 1, true) +
+        lineChart(lensPts, years, years.length - 1, true) + offBoardNote +
         // OWNER ITEM 3 (2026-08-31): the season-score "Recent form" line is replaced by the weekly
         // value graph. The scores it drew are not lost — they remain, per round, in the Score
         // column of the weekly history table directly below, where each one carries its own
