@@ -28,7 +28,7 @@
    null
   ]
  ],
- "cap_lift": false,
+ "cap_lift": true,
  "coef": {
   "S1": [
    0.43781906441335794,
@@ -95,5 +95,6 @@
   "store_md5": "b0eeaf4b9f766e6618081dce8fc328e3"
  },
  "ruling": "SURVIVAL_H2_2026-10-14",
- "ruling_text": "D-H = H2: retirement/exit risk on the +1 and +2 lens values is probability-based survival, spread across each age cohort by risk, SUM-PRESERVING within each age band. Pure H2 (lifts allowed) is the default; cap_lift=true is the measurement variant that caps the multiplier at 1.0."
+ "ruling_text": "D-H = H2: retirement/exit risk on the +1 and +2 lens values is probability-based survival, spread across each age cohort by risk, SUM-PRESERVING within each age band. Pure H2 (lifts allowed) is the default; cap_lift=true is the measurement variant that caps the multiplier at 1.0.",
+ "cap_lift_note": "Owner ruling 2026-10-14: the lift is capped at 1.0 \u2014 nobody rises for survival; the charge on thin-evidence players stands and the lens totals fall by it (measured: +1 635,134 -> 624,163; +2 593,206 -> 573,360; reconciled vs present -1.0% / -0.2%)."
 }
