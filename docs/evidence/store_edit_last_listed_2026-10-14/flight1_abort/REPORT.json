@@ -1,0 +1,3786 @@
+{
+  "abort": {
+    "byte_exact": true,
+    "commits_rewound": [],
+    "error": "THE MOVERS ARE NOT THE MOVERS THIS ACT DECLARED.\n    UNEXPECTED MOVER(S): aiden-begg None -> 9, alex-mirkov None -> 9, angus-brayshaw None -> 54, braydon-preuss None -> 7, carter-michael None -> 7, chad-wingard None -> 23, cooper-hamilton None -> 11, cooper-stephens None -> 21, denver-grainger-barras None -> 24, dom-akuei None -> 9, dominic-bedendo None -> 4, emerson-jeka None -> 13, ethan-stanley None -> 9, hewago-oea None -> 8, jack-mahony None -> 8, james-madden None -> 7, james-tsitas None -> 1, james-willis None -> 15, joel-smith-1 None -> 9, josh-carmichael None -> 4, josh-corbett None -> 9, josh-fahey None -> 7, kaine-baldwin None -> 10, kalin-lane None -> 9, nathan-murphy None -> 9, oskar-faulkhead None -> 8, rory-sloane None -> 10, sam-reid-syd None -> 8, sebit-kuek None -> 11, tex-wanganeen None -> 8, tom-clurey None -> 10\n    DECLARED AND ABSENT: (none)\nA store edit predicts who moves; a second mover means the edit did something the act did not say it would, and that is an abort.",
+    "failed_step": "build_proofs",
+    "restore_point": {
+      "data/expected_boot.json": "7ef915b3c16b9ce419dffe58e52af8b1",
+      "data/release_contract.json": "4afb0a4832b7ace1dc913ed0a63a72df",
+      "data/release_lineage.json": "3a0412fa169029f077add720062b906d",
+      "data/rl_build/rl_app_data.json": "bec12594550a4380b80ac00cbb0b65e9",
+      "data/rl_build/rl_app_data.json.srcmd5": "597af0f2e23f91b81d72b4c1089c83b9",
+      "data/season_state.json": "1635abe8b37aed53952ae64373be466c",
+      "data/sheet_pins.json": "226b73ff64e6a6967103bfee788848a0",
+      "docs/STATE.md": "3e63708a0242a6399f823592501fd6e6",
+      "docs/evidence/walkforward_retro_2026-08-29/CONTROL_FAIL.json": "1d3977c4570000208652b25971b92831",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r14.json": "6d68ed07fd02b5ad90b61af5789ed507",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r15.json": "1c268118a8d0737faa1ef53dc0340cda",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r16.json": "9cc8de979974e8fe93d5b817748b20cc",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r17.json": "883649ce700a611926ca3558e6f05a2c",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r18.json": "d64df0627312d9970f0cb3df6b451058",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r19.json": "db887e07047c9885f5f530ca1479646d",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r20.json": "c7ab631d8e11ecaac8093c3ae87881da",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r21.json": "265688755d05ddd416d8f7b3bcaa9e0f",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r22.json": "8799915d3dd6f6eb3c4c88f5db3342da",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r23.json": "b49802755f2cbeaacbf29e62bb25d5c2",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r24.json": "af6e688187df9cd1245f0c99d166cd3e",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r25.json": "a179b3799f8b251994d0dc7442ca4240",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r26.json": "7744e66db5d722fa3c8949601d609e36",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r27.json": "b07bd899afe8b4dd7c8b550007ac0118",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r28.json": "3c0ebb05d48282462f72e999c31721d7",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r29.json": "e48c1b70a9a67b68d800fd3cf63597fe",
+      "engine/rl_after/ingestion/pos_rank_history.json": "752eb0e3a74d8af36596d3b2a57cf3d0",
+      "engine/rl_after/ingestion/rank_history.json": "12252c0932c4ecf552e2b85f4c171ae5",
+      "engine/rl_after/ingestion/value_history.json": "8d4978d562c3458b9e69e9777a822a8d",
+      "engine/rl_after/rl_app_data.json": "bec12594550a4380b80ac00cbb0b65e9",
+      "engine/rl_after/rl_app_data.json.srcmd5": "597af0f2e23f91b81d72b4c1089c83b9",
+      "engine/rl_after/rl_model_data.json": "b0eeaf4b9f766e6618081dce8fc328e3",
+      "ui/data/board_view_public.js": "4420a838b186e5c255630cbabaf2ca46",
+      "ui/data/board_view_working.js": "784851dfcd0054efdb0fb919234878e3",
+      "ui/data/club_valuation.js": "f805b7cd5244a9b27cd2ccaea1e430d3",
+      "ui/data/movers.js": "2d1263ae25382cad12821218199efa6a",
+      "ui/data/movers_transition.js": "b58c06f4587f88c7ce08189218501be1",
+      "ui/data/ownership.js": "38c7fda9b772ddd7597f6e6bd1503bd2",
+      "ui/data_aux/draft_outcomes.js": "32a271e6341fd43dd66da3810c9bbaea",
+      "ui/data_aux/v0.js": "be8ddff199d81cd66d09da83984ea4c9"
+    },
+    "restored": [
+      {
+        "action": "rewrite",
+        "path": "data/season_state.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/rl_model_data.json"
+      }
+    ]
+  },
+  "commits": [],
+  "error": "THE MOVERS ARE NOT THE MOVERS THIS ACT DECLARED.\n    UNEXPECTED MOVER(S): aiden-begg None -> 9, alex-mirkov None -> 9, angus-brayshaw None -> 54, braydon-preuss None -> 7, carter-michael None -> 7, chad-wingard None -> 23, cooper-hamilton None -> 11, cooper-stephens None -> 21, denver-grainger-barras None -> 24, dom-akuei None -> 9, dominic-bedendo None -> 4, emerson-jeka None -> 13, ethan-stanley None -> 9, hewago-oea None -> 8, jack-mahony None -> 8, james-madden None -> 7, james-tsitas None -> 1, james-willis None -> 15, joel-smith-1 None -> 9, josh-carmichael None -> 4, josh-corbett None -> 9, josh-fahey None -> 7, kaine-baldwin None -> 10, kalin-lane None -> 9, nathan-murphy None -> 9, oskar-faulkhead None -> 8, rory-sloane None -> 10, sam-reid-syd None -> 8, sebit-kuek None -> 11, tex-wanganeen None -> 8, tom-clurey None -> 10\n    DECLARED AND ABSENT: (none)\nA store edit predicts who moves; a second mover means the edit did something the act did not say it would, and that is an abort.",
+  "facts": {
+    "base": {
+      "carriers": {
+        "data/expected_boot.json": "7ef915b3c16b9ce419dffe58e52af8b1",
+        "data/release_contract.json": "4afb0a4832b7ace1dc913ed0a63a72df",
+        "data/release_lineage.json": "3a0412fa169029f077add720062b906d",
+        "data/rl_build/rl_app_data.json": "bec12594550a4380b80ac00cbb0b65e9",
+        "data/rl_build/rl_app_data.json.srcmd5": "597af0f2e23f91b81d72b4c1089c83b9",
+        "data/season_state.json": "1635abe8b37aed53952ae64373be466c",
+        "data/sheet_pins.json": "226b73ff64e6a6967103bfee788848a0",
+        "docs/STATE.md": "3e63708a0242a6399f823592501fd6e6",
+        "docs/evidence/walkforward_retro_2026-08-29/CONTROL_FAIL.json": "1d3977c4570000208652b25971b92831",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r14.json": "6d68ed07fd02b5ad90b61af5789ed507",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r15.json": "1c268118a8d0737faa1ef53dc0340cda",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r16.json": "9cc8de979974e8fe93d5b817748b20cc",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r17.json": "883649ce700a611926ca3558e6f05a2c",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r18.json": "d64df0627312d9970f0cb3df6b451058",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r19.json": "db887e07047c9885f5f530ca1479646d",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r20.json": "c7ab631d8e11ecaac8093c3ae87881da",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r21.json": "265688755d05ddd416d8f7b3bcaa9e0f",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r22.json": "8799915d3dd6f6eb3c4c88f5db3342da",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r23.json": "b49802755f2cbeaacbf29e62bb25d5c2",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r24.json": "af6e688187df9cd1245f0c99d166cd3e",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r25.json": "a179b3799f8b251994d0dc7442ca4240",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r26.json": "7744e66db5d722fa3c8949601d609e36",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r27.json": "b07bd899afe8b4dd7c8b550007ac0118",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r28.json": "3c0ebb05d48282462f72e999c31721d7",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r29.json": "e48c1b70a9a67b68d800fd3cf63597fe",
+        "engine/rl_after/ingestion/pos_rank_history.json": "752eb0e3a74d8af36596d3b2a57cf3d0",
+        "engine/rl_after/ingestion/rank_history.json": "12252c0932c4ecf552e2b85f4c171ae5",
+        "engine/rl_after/ingestion/value_history.json": "8d4978d562c3458b9e69e9777a822a8d",
+        "engine/rl_after/rl_app_data.json": "bec12594550a4380b80ac00cbb0b65e9",
+        "engine/rl_after/rl_app_data.json.srcmd5": "597af0f2e23f91b81d72b4c1089c83b9",
+        "engine/rl_after/rl_model_data.json": "b0eeaf4b9f766e6618081dce8fc328e3",
+        "ui/data/board_view_public.js": "4420a838b186e5c255630cbabaf2ca46",
+        "ui/data/board_view_working.js": "784851dfcd0054efdb0fb919234878e3",
+        "ui/data/club_valuation.js": "f805b7cd5244a9b27cd2ccaea1e430d3",
+        "ui/data/movers.js": "2d1263ae25382cad12821218199efa6a",
+        "ui/data/movers_transition.js": "b58c06f4587f88c7ce08189218501be1",
+        "ui/data/ownership.js": "38c7fda9b772ddd7597f6e6bd1503bd2",
+        "ui/data_aux/draft_outcomes.js": "32a271e6341fd43dd66da3810c9bbaea",
+        "ui/data_aux/v0.js": "be8ddff199d81cd66d09da83984ea4c9"
+      },
+      "commit": "db7380133bba2f92432f2d6f1da571f53d128c06",
+      "expected_boot": {
+        "as_of_round": 24,
+        "balanced_board_md5": "f4126b629ea4d4135b4c0ad0f1b29508",
+        "band": "f39c7b96603a6d1483a8f3295fad1a29",
+        "board": "bec12594550a4380b80ac00cbb0b65e9",
+        "bust_prior": "ff87e42e502a476a90e453bad90825b0",
+        "config": "d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4",
+        "engine_head": "bebaff641a986e54840fd24210591ff5",
+        "fv": "80e63a6b8ea26b56e8aa60c9c1cf028156881fc6259d8a4fd8ebbad40963a5cd",
+        "peak_model": "8329ff9379cf6066c0e7cd73dd6cd2e0",
+        "pvc_snapshot": "4704b8296008f81e7bb5407424229e85",
+        "q97m": "5ea7546d9a4897114597a7d8ea1596db",
+        "register": "652d83e87780e415a01a2de6d8b3cc57",
+        "register_note": "LTI_REGISTER.md \u2014 owner-authored availability sidecar, pinned as a versioned input (R-REG=R2, Chapter-3 2026-07-09). Guard 5 asserts it on entry like the store; bootstrap seeds it to the workspace; the lookalike tripwire (single_source.py) keeps it single. Owner edits it -> this pin moves in the same commit (a curation edit, NOT a store bake).",
+        "release_version": "v2.11-final-rc1-PROVISIONAL",
+        "rl_model": "ad48eb299b01639b62d397c4c0016dd4",
+        "store": "b0eeaf4b9f766e6618081dce8fc328e3",
+        "tag": "ID-PRIMARY MIGRATION candidate (clean scope) 2026-07-12 \u2014 NOT A BAKE PROMOTION (no tag, no main merge; owner word required). base = v2.8 (store 04f38dad, board 9ecbe0fa). Store MOVED 04f38dad -> b0c39d78: 804 stable_player_id (afl-player-v1-<20hex>) + affl_team + eligibilities attached (identity fields, not read by ev(), 0 board movers); 5 named DOB corrections (onley/kickett/rodriguez/driscoll _by 2000->2007/2006; mcandrew _by 1999->2000); taylor-adams marked _retired (mid-season retirement). RE-ENTRY TRIO (perez/mcandrew/keane -> pickless SSP) DEFERRED to the v2.9 lever build (owner-ruled 2026-07-12; register v11 item 11a) \u2014 it reprices 657 non-named rows via the load-time calibration refit. luke-nankervis NO-import (store PSD pick 2 stands). Engine code UNTOUCHED at the store migration (head 7a07e369) -> board de4baef9; book RE-SEALED for the new store (n re-counted). [v2.9 REFIT+BAKE 2026-07-13 rides ON this store: engine 7a07e369->2030e5df (6 env-gated levers, default-ON), board de4baef9->8a66b4ba->f2d6e3f5->81e48293 (refit -> export/display -> L7 num\u00e9raire+override BAKE, display-only), store b0c39d78 UNCHANGED; cohort gate PASS 126.8/125.2/116.1; see _engine_head_note.] Board movers vs 9ecbe0fa: 94 = 5 DOB + adams removed + 88 hairline retirement ripple (<=+/-2 SCAR, owner-declared expected). Two Max Kings remain separately keyed (collision sentry GREEN). Lineage: v2.8 (9bd0cfd) -> this candidate. Tag push + main promote are owner-only. [ITEM 20 STORE-IDENTITY JOB 2026-07-13 (first job post-v2.9-tag) MOVED the store b0c39d78 -> 340a7a32 and the board 81e48293 -> 3dc19fbb: see _item20_note above. Engine ev()/config/band/rl_model UNCHANGED; the ONLY v mover is bramble (+1); everything else is identity/display. v2.9 tag (9f8ae76) is unmoved and remains canonical; this is the next chapter's first store write, no re-tag.]",
+        "v0surf": "d9f5d15d9606edcdd5708233197dd951"
+      }
+    },
+    "preflight": {
+      "base_commit": "db7380133bba2f92432f2d6f1da571f53d128c06",
+      "board_before": "bec12594550a4380b80ac00cbb0b65e9",
+      "carriers_captured": 39,
+      "lock": "land-edit-22980"
+    },
+    "store_edit": {
+      "bytes_after": 1982499,
+      "bytes_before": 1978077,
+      "edits": [
+        {
+          "anchor": "after '_pickless'",
+          "at": 479982,
+          "chars_after": 1978099,
+          "chars_before": 1978077,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "lachlan-gollant",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            479459,
+            480170
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 533967,
+          "chars_after": 1978121,
+          "chars_before": 1978099,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "will-hamill",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            533454,
+            534155
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 426573,
+          "chars_after": 1978143,
+          "chars_before": 1978121,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "patrick-parnell",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            426105,
+            426761
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1496255,
+          "chars_after": 1978165,
+          "chars_before": 1978143,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "rory-sloane",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1495110,
+            1496344
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1065078,
+          "chars_after": 1978187,
+          "chars_before": 1978165,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "joe-daniher",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1064105,
+            1065166
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 432896,
+          "chars_after": 1978209,
+          "chars_before": 1978187,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "kalin-lane",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            432595,
+            433087
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1307488,
+          "chars_after": 1978231,
+          "chars_before": 1978209,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jarryd-lyons",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1306449,
+            1307677
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 582918,
+          "chars_after": 1978253,
+          "chars_before": 1978231,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "james-madden",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            582442,
+            583090
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 418363,
+          "chars_after": 1978275,
+          "chars_before": 1978253,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "carter-michael",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            417995,
+            418535
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 345178,
+          "chars_after": 1978297,
+          "chars_before": 1978275,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "dom-akuei",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            344870,
+            345350
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 817359,
+          "chars_after": 1978319,
+          "chars_before": 1978297,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "david-cuningham",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            816611,
+            817448
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 895259,
+          "chars_after": 1978341,
+          "chars_before": 1978319,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "sam-durdin",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            894626,
+            895348
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 885526,
+          "chars_after": 1978363,
+          "chars_before": 1978341,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "caleb-marchbank",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            884784,
+            885614
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 427960,
+          "chars_after": 1978385,
+          "chars_before": 1978363,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "alex-mirkov",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            427659,
+            428050
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 435153,
+          "chars_after": 1978407,
+          "chars_before": 1978385,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "aiden-begg",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            434795,
+            435344
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 541905,
+          "chars_after": 1978429,
+          "chars_before": 1978407,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jack-bytel",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            541389,
+            541994
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 356321,
+          "chars_after": 1978451,
+          "chars_before": 1978429,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "josh-carmichael",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            355896,
+            356410
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 951403,
+          "chars_after": 1978473,
+          "chars_before": 1978451,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "nathan-kreuger",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            950873,
+            951592
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 641340,
+          "chars_after": 1978495,
+          "chars_before": 1978473,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "nathan-murphy",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            640809,
+            641429
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 421195,
+          "chars_after": 1978517,
+          "chars_before": 1978495,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "kaine-baldwin",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            420788,
+            421266
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 253672,
+          "chars_after": 1978539,
+          "chars_before": 1978517,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jayden-davey",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            253366,
+            253760
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1256433,
+          "chars_after": 1978561,
+          "chars_before": 1978539,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "dyson-heppell",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1255397,
+            1256694
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 550679,
+          "chars_after": 1978583,
+          "chars_before": 1978561,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "nick-hind",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            550054,
+            550867
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 281955,
+          "chars_after": 1978605,
+          "chars_before": 1978583,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jaiden-hunter",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            281651,
+            282044
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1045569,
+          "chars_after": 1978627,
+          "chars_before": 1978605,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jake-kelly",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1044778,
+            1045830
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 350366,
+          "chars_after": 1978649,
+          "chars_before": 1978627,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "tex-wanganeen",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            350017,
+            350436
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 802326,
+          "chars_after": 1978671,
+          "chars_before": 1978649,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "sam-weideman",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            801527,
+            802414
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1745811,
+          "chars_after": 1978693,
+          "chars_before": 1978671,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "josh-corbett",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1745238,
+            1745882
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 245878,
+          "chars_after": 1978715,
+          "chars_before": 1978693,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "tom-emmett",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            245475,
+            245966
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 949572,
+          "chars_after": 1978737,
+          "chars_before": 1978715,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "ethan-hughes",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            948727,
+            949833
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 358641,
+          "chars_after": 1978759,
+          "chars_before": 1978737,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "sebit-kuek",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            358341,
+            358831
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 281582,
+          "chars_after": 1978781,
+          "chars_before": 1978759,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "ethan-stanley",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            281221,
+            281671
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1114168,
+          "chars_after": 1978803,
+          "chars_before": 1978781,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "matthew-taberner",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1113196,
+            1114357
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 269829,
+          "chars_after": 1978825,
+          "chars_before": 1978803,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "conrad-williams",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            269507,
+            270002
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 252899,
+          "chars_after": 1978847,
+          "chars_before": 1978825,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "phoenix-foster",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            252596,
+            252988
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 281174,
+          "chars_after": 1978869,
+          "chars_before": 1978847,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "mitch-hardie",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            280873,
+            281263
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1684400,
+          "chars_after": 1978891,
+          "chars_before": 1978869,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "tom-hawkins",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1683082,
+            1684488
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 496053,
+          "chars_after": 1978913,
+          "chars_before": 1978891,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "emerson-jeka",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            495648,
+            496241
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 260586,
+          "chars_after": 1978935,
+          "chars_before": 1978913,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "oscar-murdoch",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            260290,
+            260773
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 716694,
+          "chars_after": 1978957,
+          "chars_before": 1978935,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "brandan-parfitt",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            715935,
+            716783
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1365235,
+          "chars_after": 1978979,
+          "chars_before": 1978957,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "gary-rohan",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1364115,
+            1365322
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1448613,
+          "chars_after": 1979001,
+          "chars_before": 1978979,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "zach-tuohy",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1447526,
+            1448685
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 311465,
+          "chars_after": 1979023,
+          "chars_before": 1979001,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "james-willis",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            311166,
+            311554
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1438421,
+          "chars_after": 1979045,
+          "chars_before": 1979023,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "levi-casboult",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1437392,
+            1438610
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1158614,
+          "chars_after": 1979067,
+          "chars_before": 1979045,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "brandon-ellis",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1157584,
+            1158876
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 355397,
+          "chars_after": 1979089,
+          "chars_before": 1979067,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "oskar-faulkhead",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            355087,
+            355486
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 861366,
+          "chars_after": 1979111,
+          "chars_before": 1979089,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "darcy-macpherson",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            860562,
+            861627
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 469533,
+          "chars_after": 1979133,
+          "chars_before": 1979111,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jack-mahony",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            469008,
+            469621
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 418229,
+          "chars_after": 1979155,
+          "chars_before": 1979133,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "hewago-oea",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            417803,
+            418301
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 349999,
+          "chars_after": 1979177,
+          "chars_before": 1979155,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "james-tsitas",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            349589,
+            350169
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 339064,
+          "chars_after": 1979199,
+          "chars_before": 1979177,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "cooper-hamilton",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            338647,
+            339252
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 951209,
+          "chars_after": 1979221,
+          "chars_before": 1979199,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "braydon-preuss",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            950670,
+            951399
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 271043,
+          "chars_after": 1979243,
+          "chars_before": 1979221,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "joshua-bennetts",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            270722,
+            271116
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 366123,
+          "chars_after": 1979265,
+          "chars_before": 1979243,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "denver-grainger-barras",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            365639,
+            366211
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 454333,
+          "chars_after": 1979287,
+          "chars_before": 1979265,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "cooper-stephens",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            453975,
+            454422
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 248969,
+          "chars_after": 1979309,
+          "chars_before": 1979287,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jack-o-sullivan",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            248665,
+            249057
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 204124,
+          "chars_after": 1979331,
+          "chars_before": 1979309,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "ethan-phillips",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            203770,
+            204195
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 279978,
+          "chars_after": 1979353,
+          "chars_before": 1979331,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "clay-tucker",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            279676,
+            280068
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1143230,
+          "chars_after": 1979375,
+          "chars_before": 1979353,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "chad-wingard",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1142246,
+            1143317
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 882229,
+          "chars_after": 1979397,
+          "chars_before": 1979375,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "angus-brayshaw",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            881407,
+            882317
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1019899,
+          "chars_after": 1979419,
+          "chars_before": 1979397,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "ben-brown",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1018980,
+            1019988
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 264468,
+          "chars_after": 1979441,
+          "chars_before": 1979419,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "kyah-farris-white",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            264140,
+            264540
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1098791,
+          "chars_after": 1979463,
+          "chars_before": 1979441,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "lachlan-hunter",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1097797,
+            1098880
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 794862,
+          "chars_after": 1979485,
+          "chars_before": 1979463,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "josh-schache",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            794061,
+            794950
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 876909,
+          "chars_after": 1979507,
+          "chars_before": 1979485,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "joel-smith-1",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            876265,
+            877081
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1151952,
+          "chars_after": 1979529,
+          "chars_before": 1979507,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "adam-tomlinson",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1150919,
+            1152141
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 257036,
+          "chars_after": 1979551,
+          "chars_before": 1979529,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "blake-drury",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            256625,
+            257123
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 261167,
+          "chars_after": 1979573,
+          "chars_before": 1979551,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "hamish-free",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            260863,
+            261356
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 877926,
+          "chars_after": 1979595,
+          "chars_before": 1979573,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "hugh-greenwood",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            877149,
+            877999
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 392904,
+          "chars_after": 1979617,
+          "chars_before": 1979595,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "charlie-lazzaro",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            392365,
+            392993
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 485465,
+          "chars_after": 1979639,
+          "chars_before": 1979617,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "bigoa-nyuon",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            485042,
+            485654
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 204577,
+          "chars_after": 1979661,
+          "chars_before": 1979639,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "tyler-sellers",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            204219,
+            204648
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1488730,
+          "chars_after": 1979683,
+          "chars_before": 1979661,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "liam-shiels",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1487531,
+            1488819
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 610454,
+          "chars_after": 1979705,
+          "chars_before": 1979683,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jaidyn-stephenson",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            609751,
+            610541
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 546361,
+          "chars_after": 1979727,
+          "chars_before": 1979705,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "curtis-taylor",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            545712,
+            546449
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1085953,
+          "chars_after": 1979749,
+          "chars_before": 1979727,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "tom-clurey",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1085096,
+            1086042
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1271821,
+          "chars_after": 1979771,
+          "chars_before": 1979749,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "charlie-dixon",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1270729,
+            1272010
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 256556,
+          "chars_after": 1979793,
+          "chars_before": 1979771,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "kyle-marshall",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            256249,
+            256645
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 242501,
+          "chars_after": 1979815,
+          "chars_before": 1979793,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "tom-mccallum",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            242196,
+            242590
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 280634,
+          "chars_after": 1979837,
+          "chars_before": 1979815,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "matt-coulthard",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            280224,
+            280722
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 477198,
+          "chars_after": 1979859,
+          "chars_before": 1979837,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "noah-cumberland",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            476712,
+            477386
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1415244,
+          "chars_after": 1979881,
+          "chars_before": 1979859,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "dylan-grimes",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1414112,
+            1415612
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1363144,
+          "chars_after": 1979903,
+          "chars_before": 1979881,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "dustin-martin",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1361971,
+            1363232
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1129615,
+          "chars_after": 1979925,
+          "chars_before": 1979903,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "sam-naismith",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1129031,
+            1129805
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 602526,
+          "chars_after": 1979947,
+          "chars_before": 1979925,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "marlion-pickett",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            601878,
+            602787
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 829865,
+          "chars_after": 1979969,
+          "chars_before": 1979947,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "riley-bonner",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            829058,
+            830053
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1144682,
+          "chars_after": 1979991,
+          "chars_before": 1979969,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "brad-crouch",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1143825,
+            1144770
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 348900,
+          "chars_after": 1980013,
+          "chars_before": 1979991,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jack-hayes",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            348439,
+            348971
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 242006,
+          "chars_after": 1980035,
+          "chars_before": 1980013,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "olli-hotton",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            241710,
+            242194
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1167429,
+          "chars_after": 1980057,
+          "chars_before": 1980035,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "sebastian-ross",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1166396,
+            1167618
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 239601,
+          "chars_after": 1980079,
+          "chars_before": 1980057,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "james-van-es",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            239301,
+            239690
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 281090,
+          "chars_after": 1980101,
+          "chars_before": 1980079,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "harry-arnold",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            280790,
+            281179
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 263192,
+          "chars_after": 1980123,
+          "chars_before": 1980101,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jaiden-magor",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            262898,
+            263380
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1394299,
+          "chars_after": 1980145,
+          "chars_before": 1980123,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "sam-reid-syd",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1393334,
+            1394388
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 237175,
+          "chars_after": 1980167,
+          "chars_before": 1980145,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "cooper-vickery",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            236875,
+            237363
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 272612,
+          "chars_after": 1980189,
+          "chars_before": 1980167,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jordyn-baker",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            272295,
+            272784
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 238417,
+          "chars_after": 1980211,
+          "chars_before": 1980189,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "coby-burgiel",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            238117,
+            238505
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 405338,
+          "chars_after": 1980233,
+          "chars_before": 1980211,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "luke-edwards",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            404801,
+            405427
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1253223,
+          "chars_after": 1980255,
+          "chars_before": 1980233,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "andrew-gaff",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1252137,
+            1253411
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 781477,
+          "chars_after": 1980277,
+          "chars_before": 1980255,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jamaine-jones",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            780847,
+            781665
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 726171,
+          "chars_after": 1980299,
+          "chars_before": 1980277,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "josh-rotham",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            725545,
+            726359
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 413801,
+          "chars_after": 1980321,
+          "chars_before": 1980299,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "zane-trew",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            413341,
+            413989
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 714814,
+          "chars_after": 1980343,
+          "chars_before": 1980321,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "alex-witherden",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            714071,
+            715002
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 406656,
+          "chars_after": 1980365,
+          "chars_before": 1980343,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "dominic-bedendo",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            406292,
+            406744
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 235392,
+          "chars_after": 1980387,
+          "chars_before": 1980365,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "charlie-clarke",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            235082,
+            235480
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 876408,
+          "chars_after": 1980409,
+          "chars_before": 1980387,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "alex-keath",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            875648,
+            876481
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 184873,
+          "chars_after": 1980431,
+          "chars_before": 1980409,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "aiden-o-driscoll",
+          "kind": "add",
+          "new": 2024,
+          "new_text": ", \"_last_listed\": 2024",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            184559,
+            185041
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1748289,
+          "chars_after": 1980453,
+          "chars_before": 1980431,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "chris-burgess",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1747644,
+            1748460
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 998770,
+          "chars_after": 1980475,
+          "chars_before": 1980453,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "matt-crouch",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            997854,
+            998859
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 682965,
+          "chars_after": 1980497,
+          "chars_before": 1980475,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "lachlan-murphy",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            682226,
+            683226
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1264954,
+          "chars_after": 1980519,
+          "chars_before": 1980497,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "brodie-smith",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1263824,
+            1265142
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 569694,
+          "chars_after": 1980541,
+          "chars_before": 1980519,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "kieran-strachan",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            569158,
+            569883
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 216367,
+          "chars_after": 1980563,
+          "chars_before": 1980541,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "darcy-craven",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            216066,
+            216556
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 777174,
+          "chars_after": 1980585,
+          "chars_before": 1980563,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "oscar-mcinerney",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            776409,
+            777364
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 283072,
+          "chars_after": 1980607,
+          "chars_before": 1980585,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "brandon-ryan",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            282662,
+            283261
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 240229,
+          "chars_after": 1980629,
+          "chars_before": 1980607,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jaxon-binns",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            239824,
+            240318
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 276353,
+          "chars_after": 1980651,
+          "chars_before": 1980629,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "alex-cincotta",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            275890,
+            276523
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1156292,
+          "chars_after": 1980673,
+          "chars_before": 1980651,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "sam-docherty",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1155381,
+            1156480
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1024877,
+          "chars_after": 1980695,
+          "chars_before": 1980673,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "orazio-fantasia",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1023970,
+            1024965
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 249622,
+          "chars_after": 1980717,
+          "chars_before": 1980695,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "harry-lemmey",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            249323,
+            249711
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 133315,
+          "chars_after": 1980739,
+          "chars_before": 1980717,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "will-white",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            132971,
+            133385
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 336361,
+          "chars_after": 1980761,
+          "chars_before": 1980739,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "charlie-dean",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            335952,
+            336449
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1142302,
+          "chars_after": 1980783,
+          "chars_before": 1980761,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "will-hoskin-elliott",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1141209,
+            1142389
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 427158,
+          "chars_after": 1980805,
+          "chars_before": 1980783,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "ash-johnson",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            426690,
+            427247
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 840501,
+          "chars_after": 1980827,
+          "chars_before": 1980805,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "oleg-markov",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            839715,
+            840589
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1150243,
+          "chars_after": 1980849,
+          "chars_before": 1980827,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "tom-mitchell",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1149256,
+            1150432
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 248839,
+          "chars_after": 1980871,
+          "chars_before": 1980849,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "alwyn-davey-1",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            248420,
+            248927
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1682240,
+          "chars_after": 1980893,
+          "chars_before": 1980871,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "todd-goldstein",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1680874,
+            1682330
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 296330,
+          "chars_after": 1980915,
+          "chars_before": 1980893,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "ben-hobbs",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            295805,
+            296419
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 174082,
+          "chars_after": 1980937,
+          "chars_before": 1980915,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "luamon-lual",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            173732,
+            174170
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 360251,
+          "chars_after": 1980959,
+          "chars_before": 1980937,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jye-menzie",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            359735,
+            360440
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1140372,
+          "chars_after": 1980981,
+          "chars_before": 1980959,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "dylan-shiel",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1139293,
+            1140460
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 145306,
+          "chars_after": 1981003,
+          "chars_before": 1980981,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "oskar-smartt",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            144953,
+            145495
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 983113,
+          "chars_after": 1981025,
+          "chars_before": 1981003,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "james-aish",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            982136,
+            983300
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 188459,
+          "chars_after": 1981047,
+          "chars_before": 1981025,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jack-delean",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            188162,
+            188547
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1379978,
+          "chars_after": 1981069,
+          "chars_before": 1981047,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "nathan-fyfe",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1378766,
+            1380067
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 745402,
+          "chars_after": 1981091,
+          "chars_before": 1981069,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "quinton-narkle",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            744662,
+            745590
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1506508,
+          "chars_after": 1981113,
+          "chars_before": 1981091,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "michael-walters",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1505306,
+            1506596
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 271054,
+          "chars_after": 1981135,
+          "chars_before": 1981113,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "ted-clohesy",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            270576,
+            271226
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1386905,
+          "chars_after": 1981157,
+          "chars_before": 1981135,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "mitchell-duncan",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1385692,
+            1387093
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1277317,
+          "chars_after": 1981179,
+          "chars_before": 1981157,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "cameron-guthrie",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1276234,
+            1277506
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 540211,
+          "chars_after": 1981201,
+          "chars_before": 1981179,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "thomas-berry",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            539642,
+            540299
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 268071,
+          "chars_after": 1981223,
+          "chars_before": 1981201,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "lloyd-johnston",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            267647,
+            268243
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1003712,
+          "chars_after": 1981245,
+          "chars_before": 1981223,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "sean-lemmens",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1002748,
+            1003900
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1205220,
+          "chars_after": 1981267,
+          "chars_before": 1981245,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "alex-sexton",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1204134,
+            1205481
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1250822,
+          "chars_after": 1981289,
+          "chars_before": 1981267,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "david-swallow",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1249725,
+            1250910
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 320254,
+          "chars_after": 1981311,
+          "chars_before": 1981289,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "josh-fahey",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            319904,
+            320442
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1556291,
+          "chars_after": 1981333,
+          "chars_before": 1981311,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "lachlan-keeffe",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1555290,
+            1556364
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1577398,
+          "chars_after": 1981355,
+          "chars_before": 1981333,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "callan-ward",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1576064,
+            1577487
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1543476,
+          "chars_after": 1981377,
+          "chars_before": 1981355,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "luke-breust",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1542358,
+            1543664
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1210357,
+          "chars_after": 1981399,
+          "chars_before": 1981377,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "sam-frost",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1209286,
+            1210545
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 388784,
+          "chars_after": 1981421,
+          "chars_before": 1981399,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "seamus-mitchell",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            388314,
+            388972
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 208298,
+          "chars_after": 1981443,
+          "chars_before": 1981421,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jasper-scaife",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            207994,
+            208387
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 979251,
+          "chars_after": 1981465,
+          "chars_before": 1981443,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jack-billings",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            978276,
+            979338
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 587761,
+          "chars_after": 1981487,
+          "chars_before": 1981465,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "tom-fullarton",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            587215,
+            587834
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 553736,
+          "chars_after": 1981509,
+          "chars_before": 1981487,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "marty-hore",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            553333,
+            553924
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 262994,
+          "chars_after": 1981531,
+          "chars_before": 1981509,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "oliver-sestan",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            262695,
+            263182
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 260073,
+          "chars_after": 1981553,
+          "chars_before": 1981531,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "will-verrall",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            259773,
+            260262
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 334857,
+          "chars_after": 1981575,
+          "chars_before": 1981553,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "taj-woewodin",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            334380,
+            335045
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 317212,
+          "chars_after": 1981597,
+          "chars_before": 1981575,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "miller-bergman",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            316795,
+            317400
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 352977,
+          "chars_after": 1981619,
+          "chars_before": 1981597,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "kallan-dawson",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            352446,
+            353066
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 407836,
+          "chars_after": 1981641,
+          "chars_before": 1981619,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "eddie-ford",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            407318,
+            407924
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 205902,
+          "chars_after": 1981663,
+          "chars_before": 1981641,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "geordie-payne",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            205537,
+            205990
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 364568,
+          "chars_after": 1981685,
+          "chars_before": 1981663,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "will-phillips",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            364032,
+            364656
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 357036,
+          "chars_after": 1981707,
+          "chars_before": 1981685,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "brynn-teakle",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            356500,
+            357126
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 823403,
+          "chars_after": 1981729,
+          "chars_before": 1981707,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "darcy-tucker",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            822528,
+            823591
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1109622,
+          "chars_after": 1981751,
+          "chars_before": 1981729,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "rory-atkins",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1108713,
+            1109711
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1654732,
+          "chars_after": 1981773,
+          "chars_before": 1981751,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "travis-boak",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1653336,
+            1654820
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 815881,
+          "chars_after": 1981795,
+          "chars_before": 1981773,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "ryan-burton",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            815035,
+            815969
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 942600,
+          "chars_after": 1981817,
+          "chars_before": 1981795,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jeremy-finlayson",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            941776,
+            942789
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 328425,
+          "chars_after": 1981839,
+          "chars_before": 1981817,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "hugh-jackson",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            328067,
+            328514
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 434054,
+          "chars_after": 1981861,
+          "chars_before": 1981839,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jed-mcentee",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            433475,
+            434243
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 740107,
+          "chars_after": 1981883,
+          "chars_before": 1981861,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "willie-rioli",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            739469,
+            740195
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 461240,
+          "chars_after": 1981905,
+          "chars_before": 1981883,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "dylan-williams",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            460710,
+            461428
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 358175,
+          "chars_after": 1981927,
+          "chars_before": 1981905,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jacob-bauer",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            357710,
+            358265
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 206429,
+          "chars_after": 1981949,
+          "chars_before": 1981927,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jacob-blight",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            206014,
+            206518
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 459652,
+          "chars_after": 1981971,
+          "chars_before": 1981949,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "thomson-dow",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            459020,
+            459741
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 551250,
+          "chars_after": 1981993,
+          "chars_before": 1981971,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jacob-koschitzke",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            550664,
+            551339
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1089030,
+          "chars_after": 1982015,
+          "chars_before": 1981993,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "kamdyn-mcintosh",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1088108,
+            1089119
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 129516,
+          "chars_after": 1982037,
+          "chars_before": 1982015,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "harry-boyd",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            129167,
+            129588
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 934584,
+          "chars_after": 1982059,
+          "chars_before": 1982037,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "zaine-cordy",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            933646,
+            934673
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 991897,
+          "chars_after": 1982081,
+          "chars_before": 1982059,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "zak-jones",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            990941,
+            992086
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 272639,
+          "chars_after": 1982103,
+          "chars_before": 1982081,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "angus-mclennan",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            272216,
+            272711
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 189725,
+          "chars_after": 1982125,
+          "chars_before": 1982103,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "arie-schoenmaker",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            189313,
+            189813
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1183619,
+          "chars_after": 1982147,
+          "chars_before": 1982125,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jimmy-webster",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1182660,
+            1183880
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 777070,
+          "chars_after": 1982169,
+          "chars_before": 1982147,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "robbie-fox",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            776329,
+            777331
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 801163,
+          "chars_after": 1982191,
+          "chars_before": 1982169,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "aaron-francis",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            800289,
+            801251
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 245824,
+          "chars_after": 1982213,
+          "chars_before": 1982191,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "caleb-mitchell",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            245411,
+            245913
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1028180,
+          "chars_after": 1982235,
+          "chars_before": 1982213,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jayden-hunt",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1027323,
+            1028268
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 482654,
+          "chars_after": 1982257,
+          "chars_before": 1982235,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "callum-jamieson",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            482174,
+            482844
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 202165,
+          "chars_after": 1982279,
+          "chars_before": 1982257,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "coen-livingstone",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            201838,
+            202239
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1350185,
+          "chars_after": 1982301,
+          "chars_before": 1982279,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jeremy-mcgovern",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1349204,
+            1350374
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 642831,
+          "chars_after": 1982323,
+          "chars_before": 1982301,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jack-petruccelle",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            642084,
+            642919
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 988367,
+          "chars_after": 1982345,
+          "chars_before": 1982323,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "dominic-sheed",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            987447,
+            988456
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1412952,
+          "chars_after": 1982367,
+          "chars_before": 1982345,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "taylor-duryea",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1411932,
+            1413140
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1035395,
+          "chars_after": 1982389,
+          "chars_before": 1982367,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "james-harmes",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1034472,
+            1035504
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1346783,
+          "chars_after": 1982411,
+          "chars_before": 1982389,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "jason-johannisen",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1345700,
+            1347044
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 1489301,
+          "chars_after": 1982433,
+          "chars_before": 1982411,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "liam-jones",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1488161,
+            1489490
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 389953,
+          "chars_after": 1982455,
+          "chars_before": 1982433,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "caleb-poulter",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            389370,
+            390042
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 425448,
+          "chars_after": 1982477,
+          "chars_before": 1982455,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "anthony-scott",
+          "kind": "add",
+          "new": 2025,
+          "new_text": ", \"_last_listed\": 2025",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            424907,
+            425618
+          ]
+        },
+        {
+          "anchor": "after '_pickless'",
+          "at": 516841,
+          "chars_after": 1982499,
+          "chars_before": 1982477,
+          "exemplars": 13,
+          "field": "_last_listed",
+          "key": "tarryn-thomas",
+          "kind": "add",
+          "new": 2023,
+          "new_text": ", \"_last_listed\": 2023",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            516245,
+            517028
+          ]
+        }
+      ],
+      "rows": 2650,
+      "season_state": {
+        "calendar_progress": 1.0,
+        "exposure_pace": 0.909,
+        "fields_checked": 10,
+        "source_store_md5": "f49dbef62a6f4595684449ccdf6533e7"
+      },
+      "store_after": "f49dbef62a6f4595684449ccdf6533e7",
+      "store_before": "b0eeaf4b9f766e6618081dce8fc328e3",
+      "written": true
+    }
+  },
+  "failed_step": "build_proofs",
+  "ok": false,
+  "timings": [
+    {
+      "seconds": 0.06,
+      "step": "preflight",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 7.0,
+      "step": "store_edit",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 555.3,
+      "step": "build_proofs",
+      "verdict": "FAIL"
+    }
+  ]
+}

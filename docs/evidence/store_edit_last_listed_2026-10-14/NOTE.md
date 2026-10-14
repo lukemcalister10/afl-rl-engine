@@ -12,6 +12,8 @@ Match report: 217 valid exits (13 already carried the fact and agree), 21 void (
 later, or on the next year's list), 4 names not in the store (never played: McHenry, Adam Kennedy, Trent
 McKenzie, the young Tom Scully), 3 name twins resolved by last game <= exit year.
 
-## Why the board cannot move
-Every edited row is `_retired`; the engine prices a retired row as scrap regardless of `_last_listed`
-(`delisted()` is `_retired or _last_listed < 2026`). The as-at season boards read the fact; the live board does not.
+## What moves on the board (measured by the first flight, which the lander aborted because the spec said nothing would)
+No active row: the active pool is 687,821 before and after. The engine's old retiree recall (rl_model.py
+`_on_board`/`_backval`) reads `_last_listed`, so 31 of the 201 rows APPEAR in the board's dormant `back` section at
+scrap values (1..54). Nothing renders that section; it is the old −1/−2 machinery the as-at boards supersede.
+The 31 are declared as the act's movers.

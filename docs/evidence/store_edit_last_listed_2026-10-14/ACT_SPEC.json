@@ -1,14 +1,14 @@
 {
  "schema_version": 1,
  "act_kind": "store-edit",
- "act": "THE LISTING FACT: _last_listed set on 201 retired rows from the AFL end-of-season list changes (2025 and 2024), owner-couriered; the 13 rows that already carried it agree. Board unchanged by construction (every row is already retired).",
+ "act": "THE LISTING FACT: _last_listed set on 201 retired rows from the AFL end-of-season list changes (2025 and 2024), owner-couriered; the 13 rows that already carried it agree. The board moves only in its dormant back section: 31 retired rows appear at scrap values (measured).",
  "date": "2026-10-14",
  "owner_word": "Owner, 2026-10-14: the AFL retirements-and-delistings pages for 2025 and 2024 (\"obviously ignore anyone who is trd or fa\"; a re-appearance voids the exit; \"Tarryn Thomas was cut at the end of 2023\").",
  "authority": "owner ruling 2026-09-24 (career games = sum of season rows) + owner word on this act",
  "prereg": {
   "path": "docs/evidence/store_edit_last_listed_2026-10-14/NOTE.md",
   "board_before": "bec12594550a4380b80ac00cbb0b65e9",
-  "board_after": "bec12594550a4380b80ac00cbb0b65e9",
+  "board_after": "e944be2096f2d7e7af41a5a0ea914e22",
   "reference_board": null,
   "kill_switch": null
  },
@@ -1020,15 +1020,171 @@
     "add": 2023
    }
   ],
-  "expected_movers": [],
-  "_doc_expected_movers": "none: every edited row is retired (back section, priced as scrap regardless of _last_listed); the board is predicted byte-identical."
+  "expected_movers": [
+   {
+    "key": "aiden-begg",
+    "before": null,
+    "after": 9
+   },
+   {
+    "key": "alex-mirkov",
+    "before": null,
+    "after": 9
+   },
+   {
+    "key": "angus-brayshaw",
+    "before": null,
+    "after": 54
+   },
+   {
+    "key": "braydon-preuss",
+    "before": null,
+    "after": 7
+   },
+   {
+    "key": "carter-michael",
+    "before": null,
+    "after": 7
+   },
+   {
+    "key": "chad-wingard",
+    "before": null,
+    "after": 23
+   },
+   {
+    "key": "cooper-hamilton",
+    "before": null,
+    "after": 11
+   },
+   {
+    "key": "cooper-stephens",
+    "before": null,
+    "after": 21
+   },
+   {
+    "key": "denver-grainger-barras",
+    "before": null,
+    "after": 24
+   },
+   {
+    "key": "dom-akuei",
+    "before": null,
+    "after": 9
+   },
+   {
+    "key": "dominic-bedendo",
+    "before": null,
+    "after": 4
+   },
+   {
+    "key": "emerson-jeka",
+    "before": null,
+    "after": 13
+   },
+   {
+    "key": "ethan-stanley",
+    "before": null,
+    "after": 9
+   },
+   {
+    "key": "hewago-oea",
+    "before": null,
+    "after": 8
+   },
+   {
+    "key": "jack-mahony",
+    "before": null,
+    "after": 8
+   },
+   {
+    "key": "james-madden",
+    "before": null,
+    "after": 7
+   },
+   {
+    "key": "james-tsitas",
+    "before": null,
+    "after": 1
+   },
+   {
+    "key": "james-willis",
+    "before": null,
+    "after": 15
+   },
+   {
+    "key": "joel-smith-1",
+    "before": null,
+    "after": 9
+   },
+   {
+    "key": "josh-carmichael",
+    "before": null,
+    "after": 4
+   },
+   {
+    "key": "josh-corbett",
+    "before": null,
+    "after": 9
+   },
+   {
+    "key": "josh-fahey",
+    "before": null,
+    "after": 7
+   },
+   {
+    "key": "kaine-baldwin",
+    "before": null,
+    "after": 10
+   },
+   {
+    "key": "kalin-lane",
+    "before": null,
+    "after": 9
+   },
+   {
+    "key": "nathan-murphy",
+    "before": null,
+    "after": 9
+   },
+   {
+    "key": "oskar-faulkhead",
+    "before": null,
+    "after": 8
+   },
+   {
+    "key": "rory-sloane",
+    "before": null,
+    "after": 10
+   },
+   {
+    "key": "sam-reid-syd",
+    "before": null,
+    "after": 8
+   },
+   {
+    "key": "sebit-kuek",
+    "before": null,
+    "after": 11
+   },
+   {
+    "key": "tex-wanganeen",
+    "before": null,
+    "after": 8
+   },
+   {
+    "key": "tom-clurey",
+    "before": null,
+    "after": 10
+   }
+  ],
+  "_doc_expected_movers": "31 retired rows APPEAR in the board's dormant back section (the engine's old retiree recall, rl_model.py _on_board/_backval, reads _last_listed) at scrap values 1..54. No active row moves; the active pool is 687,821 before and after. Measured by the first flight (abort evidence in this directory)."
  },
  "identities": {
   "moves": [
-   "store"
+   "store",
+   "board"
   ],
   "unmoved": [
-   "board",
    "engine_head",
    "rl_model",
    "fv",
@@ -1037,7 +1193,11 @@
    "as_of_round"
   ]
  },
- "column": null,
+ "column": {
+  "id": "listing-fact-14-10",
+  "label": "14/10 the listing fact: _last_listed on 201 retired rows from the AFL 2025/2024 lists; 31 retirees appear in the back section at scrap \u2014 no active value moves",
+  "after_round": 24
+ },
  "lineage": {
   "doc": "docs/evidence/store_edit_last_listed_2026-10-14/NOTE.md",
   "owner_ruling_id": [
@@ -1047,7 +1207,8 @@
   "authority": "owner word 2026-10-14",
   "kind": "owner-store-edit",
   "invariants": {
-   "board": "byte-identical"
+   "active_pool": "687,821 before and after; 0 active rows move",
+   "back_section": "31 retired rows appear at scrap (1..54)"
   }
  },
  "day0_rebase": {

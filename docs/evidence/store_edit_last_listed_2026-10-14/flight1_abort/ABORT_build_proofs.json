@@ -1,0 +1,57 @@
+{
+  "byte_exact": true,
+  "commits_rewound": [],
+  "error": "THE MOVERS ARE NOT THE MOVERS THIS ACT DECLARED.\n    UNEXPECTED MOVER(S): aiden-begg None -> 9, alex-mirkov None -> 9, angus-brayshaw None -> 54, braydon-preuss None -> 7, carter-michael None -> 7, chad-wingard None -> 23, cooper-hamilton None -> 11, cooper-stephens None -> 21, denver-grainger-barras None -> 24, dom-akuei None -> 9, dominic-bedendo None -> 4, emerson-jeka None -> 13, ethan-stanley None -> 9, hewago-oea None -> 8, jack-mahony None -> 8, james-madden None -> 7, james-tsitas None -> 1, james-willis None -> 15, joel-smith-1 None -> 9, josh-carmichael None -> 4, josh-corbett None -> 9, josh-fahey None -> 7, kaine-baldwin None -> 10, kalin-lane None -> 9, nathan-murphy None -> 9, oskar-faulkhead None -> 8, rory-sloane None -> 10, sam-reid-syd None -> 8, sebit-kuek None -> 11, tex-wanganeen None -> 8, tom-clurey None -> 10\n    DECLARED AND ABSENT: (none)\nA store edit predicts who moves; a second mover means the edit did something the act did not say it would, and that is an abort.",
+  "failed_step": "build_proofs",
+  "restore_point": {
+    "data/expected_boot.json": "7ef915b3c16b9ce419dffe58e52af8b1",
+    "data/release_contract.json": "4afb0a4832b7ace1dc913ed0a63a72df",
+    "data/release_lineage.json": "3a0412fa169029f077add720062b906d",
+    "data/rl_build/rl_app_data.json": "bec12594550a4380b80ac00cbb0b65e9",
+    "data/rl_build/rl_app_data.json.srcmd5": "597af0f2e23f91b81d72b4c1089c83b9",
+    "data/season_state.json": "1635abe8b37aed53952ae64373be466c",
+    "data/sheet_pins.json": "226b73ff64e6a6967103bfee788848a0",
+    "docs/STATE.md": "3e63708a0242a6399f823592501fd6e6",
+    "docs/evidence/walkforward_retro_2026-08-29/CONTROL_FAIL.json": "1d3977c4570000208652b25971b92831",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r14.json": "6d68ed07fd02b5ad90b61af5789ed507",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r15.json": "1c268118a8d0737faa1ef53dc0340cda",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r16.json": "9cc8de979974e8fe93d5b817748b20cc",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r17.json": "883649ce700a611926ca3558e6f05a2c",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r18.json": "d64df0627312d9970f0cb3df6b451058",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r19.json": "db887e07047c9885f5f530ca1479646d",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r20.json": "c7ab631d8e11ecaac8093c3ae87881da",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r21.json": "265688755d05ddd416d8f7b3bcaa9e0f",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r22.json": "8799915d3dd6f6eb3c4c88f5db3342da",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r23.json": "b49802755f2cbeaacbf29e62bb25d5c2",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r24.json": "af6e688187df9cd1245f0c99d166cd3e",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r25.json": "a179b3799f8b251994d0dc7442ca4240",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r26.json": "7744e66db5d722fa3c8949601d609e36",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r27.json": "b07bd899afe8b4dd7c8b550007ac0118",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r28.json": "3c0ebb05d48282462f72e999c31721d7",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r29.json": "e48c1b70a9a67b68d800fd3cf63597fe",
+    "engine/rl_after/ingestion/pos_rank_history.json": "752eb0e3a74d8af36596d3b2a57cf3d0",
+    "engine/rl_after/ingestion/rank_history.json": "12252c0932c4ecf552e2b85f4c171ae5",
+    "engine/rl_after/ingestion/value_history.json": "8d4978d562c3458b9e69e9777a822a8d",
+    "engine/rl_after/rl_app_data.json": "bec12594550a4380b80ac00cbb0b65e9",
+    "engine/rl_after/rl_app_data.json.srcmd5": "597af0f2e23f91b81d72b4c1089c83b9",
+    "engine/rl_after/rl_model_data.json": "b0eeaf4b9f766e6618081dce8fc328e3",
+    "ui/data/board_view_public.js": "4420a838b186e5c255630cbabaf2ca46",
+    "ui/data/board_view_working.js": "784851dfcd0054efdb0fb919234878e3",
+    "ui/data/club_valuation.js": "f805b7cd5244a9b27cd2ccaea1e430d3",
+    "ui/data/movers.js": "2d1263ae25382cad12821218199efa6a",
+    "ui/data/movers_transition.js": "b58c06f4587f88c7ce08189218501be1",
+    "ui/data/ownership.js": "38c7fda9b772ddd7597f6e6bd1503bd2",
+    "ui/data_aux/draft_outcomes.js": "32a271e6341fd43dd66da3810c9bbaea",
+    "ui/data_aux/v0.js": "be8ddff199d81cd66d09da83984ea4c9"
+  },
+  "restored": [
+    {
+      "action": "rewrite",
+      "path": "data/season_state.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "engine/rl_after/rl_model_data.json"
+    }
+  ]
+}
