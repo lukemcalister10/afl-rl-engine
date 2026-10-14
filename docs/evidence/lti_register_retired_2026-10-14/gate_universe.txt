@@ -1,0 +1,18 @@
+$ node ui/tests/universe.test.js
+
+  [PASS] the mode round-trips through storage
+  [PASS] ...and back
+  [PASS] NO model change is in the current-model universe (0 found)
+  [PASS] ...and the all-in universe DOES carry them — the switch is not vacuous
+  [PASS] the two universes are different point sets
+  [PASS] both universes are non-empty enough to compare across
+  [PASS] the current-model universe reaches back to R14
+  [PASS] ...and forward to the last retro point (retro-r29) — the newest stored point (lti-register-retired-14-10) is a MODEL CHANGE and is excluded by the rule above, so this is the window between a model change and the next round
+  [PASS] no round's football appears twice in the current-model universe (0 duplicates)
+  [PASS] an out-of-round column DOES sit at the same after_round as a round point — which is why the check above is not a bare collision count
+  [PASS] no retro/live handover yet, and for the right reason: the universe is retro-only (16 points) because the newest stored point (lti-register-retired-14-10) is a model change. The handover returns with the next round.
+  [PASS] a localStorage that throws does not break the universe (it falls back in-page)
+  ------------------------------------------------------------
+UNIVERSE TESTS: ALL 12 PASS
+
+[exit 0]
