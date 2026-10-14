@@ -105,9 +105,30 @@ def scores_from_edits(edits, season):
     return out
 
 
+def _fixture_clubs(repo_root, feed_round):
+    """The clubs that played in `feed_round`, read by round_movers.fixture_clubs from scores/fixtures.json
+    (a finals week with no entry is a halt there, never a default). Loaded by path so this module needs
+    no package context — the lander loads it the same way."""
+    import importlib.util
+    here = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'round_movers.py')
+    spec = importlib.util.spec_from_file_location('_fr_round_movers', here)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod.fixture_clubs(repo_root, feed_round)
+
+
 def build(repo_root, bundle, column_id, feed_round, edits, season,
-          store_before, store_after, generated_at):
-    """The report object. Pure: reads the bundle and the tree, writes nothing."""
+          store_before, store_after, generated_at, clubs_played=None):
+    """The report object. Pure: reads the bundle and the tree, writes nothing.
+
+    PARTICIPATION IS TRI-STATE (owner ruling 2026-08-30; the round writer has carried it since FW1, this
+    writer did not until 2026-10-14 and marked 712 of 804 players DNP in a four-club week). A player who
+    scored PLAYED; one who did not score at a club that PLAYED is a DNP (`played False, dnp True`); one
+    at a club that did not play that week is UNRECORDED (`played None, dnp None` — the absent sentinel
+    the UI renders as "not recorded"). `clubs_played` defaults to the week's fixture."""
+    if clubs_played is None:
+        clubs_played = _fixture_clubs(repo_root, feed_round)
+    clubs_played = None if clubs_played is None else set(clubs_played)
     points = bundle.get('points') or []
     ids = [p.get('id') for p in points]
     if column_id not in ids:
@@ -133,11 +154,16 @@ def build(repo_root, bundle, column_id, feed_round, edits, season,
         dv = b_['v'] - a_['v']
         if sc is not None:
             played_n += 1
+            played, dnp = True, False
+        elif clubs_played is None or rec.get('club') in clubs_played:
+            played, dnp = False, True
+        else:
+            played, dnp = None, None
         players.append({
             'key': key, 'name': rec.get('name'), 'club': rec.get('club'),
             'affl_team': rec.get('affl_team'), 'pos': rec.get('pos'), 'posCode': rec.get('posCode'),
             'previous_round': prev_id, 'current_round': feed_round,
-            'played': sc is not None, 'dnp': sc is None, 'score': sc,
+            'played': played, 'dnp': dnp, 'score': sc,
             'prev_value': a_['v'], 'cur_value': b_['v'], 'value_change': dv,
             'value_change_pct': (round(dv / a_['v'] * 10000) / 100.0) if a_['v'] else None,
             'prev_rank': a_.get('rank'), 'cur_rank': b_.get('rank'),
@@ -195,7 +221,9 @@ def build(repo_root, bundle, column_id, feed_round, edits, season,
                   'value_fallers': top('value_change', False),
                   'rank_risers': top('rank_change', True),
                   'rank_fallers': top('rank_change', False),
-                  'played_count': played_n, 'dnp_count': len(players) - played_n},
+                  'played_count': played_n,
+                  'dnp_count': sum(1 for p in players if p['played'] is False),
+                  'unrecorded_count': sum(1 for p in players if p['played'] is None)},
         'players': players,
     }
 
@@ -227,4 +255,5 @@ def emit(repo_root, column_id, edits, season, store_before, generated_at, round_
         io.open(path, 'w', encoding='utf-8').write(head + body + tail)
     return {'feed_round': feed, 'week': rep['finals_week'], 'already_present': False,
             'player_count': rep['player_count'], 'played': rep['views']['played_count'],
-            'dnp': rep['views']['dnp_count'], 'store_after': store_after}
+            'dnp': rep['views']['dnp_count'], 'unrecorded': rep['views']['unrecorded_count'],
+            'store_after': store_after}

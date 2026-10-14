@@ -116,9 +116,16 @@ def run_all():
     for k in ('submitted_round', 'previous_round', 'board_md5_before', 'board_md5_after',
               'player_count', 'txn_id', 'source_store_md5_before', 'source_store_md5_after'):
         _ck(built[k] == shipped[k], 'rebuilt %s == shipped' % k, built[k])
+    # TRI-STATE (2026-10-14): 92 played; 93 DNP at the four clubs that played; 619 unrecorded at the
+    # fourteen that did not. The 712 this line used to pin was every non-scorer marked DNP.
     _ck(built['views']['played_count'] == shipped['views']['played_count'] == 92
-        and built['views']['dnp_count'] == shipped['views']['dnp_count'] == 712,
-        'rebuilt played/DNP == shipped (92 / 712)')
+        and built['views']['dnp_count'] == shipped['views']['dnp_count'] == 93
+        and built['views']['unrecorded_count'] == shipped['views']['unrecorded_count'] == 619,
+        'rebuilt played/DNP/unrecorded == shipped (92 / 93 / 619)')
+    _ck(all((p['played'], p['dnp']) == (s['played'], s['dnp'])
+            for p, s in zip(sorted(built['players'], key=lambda r: r['key']),
+                            sorted(shipped['players'], key=lambda r: r['key']))),
+        'every rebuilt row carries the shipped tri-state')
     bs = {p['key']: p['score'] for p in built['players'] if p['played']}
     ss = {p['key']: p['score'] for p in shipped['players'] if p['played']}
     _ck(bs == ss, 'every one of the 92 rebuilt scores == the shipped score', len(bs))

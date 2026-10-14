@@ -171,9 +171,14 @@ section("(3) from/to — scope lifted; defaults to the LATEST round's single-mod
     // NOT a loss of the facts: a one-round retro pair IS that round, so played/DNP/score are read
     // from the round's own stored report. Football does not depend on which engine priced it.
     var stored24 = (live.reports || {})[String(lastRound)] || {};
+    // TRI-STATE (2026-10-14): a finals week carries played / DNP / NOT RECORDED (a club that did not
+    // play that week), so the rows are compared to the stored report's own facts, not to "never null".
+    var storedFacts = {};
+    (stored24.players || []).forEach(function (p) { storedFacts[p.key] = [p.played, p.dnp]; });
     check(rep.views.played_count === (stored24.views || {}).played_count &&
           rep.views.dnp_count === (stored24.views || {}).dnp_count &&
-          rep.players.every(function (p) { return p.played !== null; }),
+          rep.players.every(function (p) {
+            var f = storedFacts[p.key]; return f && f[0] === p.played && f[1] === p.dnp; }),
       "…and it keeps the round's participation facts (played " + rep.views.played_count +
       " / DNP " + rep.views.dnp_count + ") — the chips, the scores and both filters survive the change");
     // NON-VACUITY: a range that is NOT one round of football still says the facts are unknown.
