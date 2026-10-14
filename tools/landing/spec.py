@@ -689,3 +689,19 @@ def _round_template():
         'gates': None,
         '_doc_gates': 'null = the standard landing gate set (steps.DEFAULT_GATES).',
     }
+
+
+if __name__ == '__main__':   # python3 -m tools.landing.spec validate <ACT_SPEC.json>
+    # Until 2026-10-14 this module had no entry point: `-m tools.landing.spec validate X` ran nothing and exited
+    # 0, so a seat read "validated" off a spec the lander then refused (the chain act's first flight).
+    import sys as _sys
+    _args = _sys.argv[1:]
+    if len(_args) != 2 or _args[0] != 'validate':
+        _sys.exit('usage: python3 -m tools.landing.spec validate <ACT_SPEC.json>')
+    with open(_args[1], encoding='utf-8') as _fh:
+        _problems = validate(json.load(_fh))
+    if _problems:
+        print('act spec %s cannot drive a landing — %d problem(s):\n  - %s'
+              % (_args[1], len(_problems), '\n  - '.join(_problems)))
+        _sys.exit(1)
+    print('act spec %s: no problems — fit to drive a landing' % _args[1])
