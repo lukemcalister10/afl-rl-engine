@@ -35,9 +35,20 @@ HOME_AND_AWAY_ROUNDS = 24
 FINALS_FEED_CEILING = 29
 
 #: Every identity the lander tracks in `data/expected_boot.json`. `moves`/`unmoved` must partition it.
+#: Two of these are FROZEN HISTORICAL fields: `balanced_board_md5` (the balanced sibling, retired
+#: 2026-10-14) and `register` (the LTI register, retired 2026-10-14 on the owner's word — the file is
+#: deleted and the pin stays at its last value). Both names stay accepted in `unmoved` so every
+#: existing ACT_SPEC still loads; `register` is refused in `moves` because nothing can write it.
 TRACKED_IDENTITIES = ('board', 'store', 'engine_head', 'rl_model', 'fv', 'config', 'register',
                       'balanced_board_md5', 'as_of_round', 'v0surf', 'band', 'q97m', 'peak_model',
                       'bust_prior', 'pvc_snapshot', 'release_version', 'rl_model_data', 'season_state')
+
+#: Identities frozen at their last value with NO writer anywhere — a spec may list them in `unmoved`
+#: (and old specs do), never in `moves`. (`balanced_board_md5` is not here: a round advance's
+#: staged_apply c3 still writes it in-transaction.)
+FROZEN_IDENTITIES = {
+    'register': 'the LTI register was retired 2026-10-14 (owner word); LTI_REGISTER.md is deleted',
+}
 
 #: THE SCOPE PARTITION (ORDER 45 attempt-4 class, 2026-08-25; the Graham `_doc_store` precedent).
 #: `identities.moves` means MOVES DURING THE LANDING TRANSACTION. An identity that moved at the FLIP
@@ -418,6 +429,11 @@ def validate(doc):
             if k not in TRACKED_IDENTITIES:
                 bad.append('identity %r is not one this lander tracks (%s)'
                            % (k, ', '.join(TRACKED_IDENTITIES)))
+        for k in moves:
+            if k in FROZEN_IDENTITIES:
+                bad.append('identities.moves declares %r, which is FROZEN — %s. No writer exists for '
+                           'it and the lander will not invent one; declare it in `unmoved` or drop it.'
+                           % (k, FROZEN_IDENTITIES[k]))
         # THE SCOPE PARTITION (attempt-4 class — see the table comments at the top of this file).
         # `moves` is TRANSACTION scope. Flip-carried identities go in `unmoved`.
         for k in moves:

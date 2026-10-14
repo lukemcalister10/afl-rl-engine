@@ -316,9 +316,8 @@ def _verify_r14(scratch_root):
         fails.append("expected_boot rl_model != scratch rl_model.py md5")
 
     # CURRENT immutable model inputs must remain coherent with the restored R14 release authority.
-    reg_p = os.path.join(R, 'LTI_REGISTER.md')
-    if os.path.exists(reg_p) and boot.get('register') != _md5(reg_p):
-        fails.append("expected_boot register pin != scratch LTI_REGISTER.md md5 (immutable input drift)")
+    # (The LTI_REGISTER.md pin check stood here until 2026-10-14: the register is retired, the file is
+    # deleted, and expected_boot 'register' is a frozen historical field with no artifact to re-hash.)
     mc_p = os.path.join(R, 'data', 'model_config.json')
     if os.path.exists(mc_p):
         try:

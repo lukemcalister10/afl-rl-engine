@@ -127,8 +127,8 @@ def assert_fv_provenance(root=None, halt=True):
     return True
 
 
-def assert_boot(label, store_path=None, engine_head_path=None, band_path=None, register_path=None, halt=True):
-    """Assert the store (and optionally engine head / band / register) a script is about to READ matches the
+def assert_boot(label, store_path=None, engine_head_path=None, band_path=None, halt=True):
+    """Assert the store (and optionally engine head / band) a script is about to READ matches the
     checked-out repo AND the pinned expected. HALT (SystemExit) on any mismatch. Returns True on pass.
 
     label            : short name of the caller, quoted in the halt message (e.g. 'run_panel').
@@ -136,7 +136,7 @@ def assert_boot(label, store_path=None, engine_head_path=None, band_path=None, r
                        engine-loading scripts). REQUIRED for the store assertion.
     engine_head_path : optional _merged_recover.py the caller will read (three-assertion parity).
     band_path        : optional cm_400.pkl the caller will read.
-    register_path    : optional LTI_REGISTER.md the caller will read (R-REG=R2 pinned availability input).
+    (register_path   : RETIRED 2026-10-14 — the LTI register is retired on the owner's word; see (0r) below.)
     """
     root = repo_root()
     exp = expected(root)
@@ -150,16 +150,10 @@ def assert_boot(label, store_path=None, engine_head_path=None, band_path=None, r
         fails.append("checkout store %s != pinned store %s (data/expected_boot.json) — repo/pin out of sync"
                      % (_fmt(repo_md5), _fmt(exp.get('store'))))
 
-    # (0r) register checkout integrity (R-REG=R2): the repo's own LTI_REGISTER.md must equal the pin, if a
-    #      register pin is present. Backward-compatible: skipped when 'register' is absent from the manifest.
-    exp_reg = exp.get('register')
-    if exp_reg is not None:
-        repo_reg = os.path.join(root, 'LTI_REGISTER.md')
-        repo_reg_md5 = _md5(repo_reg) if os.path.exists(repo_reg) else None
-        if _fmt(repo_reg_md5) != _fmt(exp_reg):
-            fails.append("checkout register %s != pinned register %s (data/expected_boot.json 'register') — "
-                         "owner edited LTI_REGISTER.md without re-pinning, or the pin drifted"
-                         % (_fmt(repo_reg_md5), _fmt(exp_reg)))
+    # (0r) RETIRED 2026-10-14 — the LTI register checkout leg. The register (LTI_REGISTER.md, R-REG=R2)
+    #      was retired on the owner's word and the file is deleted; `register` in expected_boot is a
+    #      FROZEN HISTORICAL field (its last md5, 652d83e8), carried by the lineage and never asserted
+    #      against an artifact — exactly as balanced_board_md5 is carried since the sibling's retirement.
 
     # (0b) config integrity (gate-integrity 2026-07-09, the durable half of R3): the model-config manifest
     #     hash must equal the pinned boot config. Makes Guard 5 a code+store+CONFIG check — a model-semantics
@@ -321,8 +315,6 @@ def assert_boot(label, store_path=None, engine_head_path=None, band_path=None, r
     _chk('STORE  rl_model_data.json', store_path,       exp.get('store'),       repo_md5)
     _chk('ENGINE _merged_recover.py', engine_head_path, exp.get('engine_head'), None)
     _chk('BAND   cm_400.pkl',         band_path,        exp.get('band'),        None)
-    if exp.get('register') is not None:
-        _chk('REGISTER LTI_REGISTER.md', register_path, exp.get('register'),    None)
 
     # (0g) FORWARD-VALUATION provenance (fv-provenance remediation 2026-07-20): assert the checked-out
     #      engine/forward_valuation source set == the pin AND the EXACT RL_FV dir the engine will import ==
@@ -346,15 +338,15 @@ def assert_boot(label, store_path=None, engine_head_path=None, band_path=None, r
 
 if __name__ == '__main__':
     if len(sys.argv) < 3:
-        print("usage: boot_guard.py <label> <store_path> [<engine_head_path> [<band_path> [<register_path>]]]", file=sys.stderr)
+        print("usage: boot_guard.py <label> <store_path> [<engine_head_path> [<band_path>]]", file=sys.stderr)
         sys.exit(2)
     _label = sys.argv[1]
     _store = sys.argv[2]
     _eng   = sys.argv[3] if len(sys.argv) > 3 else None
     _band  = sys.argv[4] if len(sys.argv) > 4 else None
-    _reg   = sys.argv[5] if len(sys.argv) > 5 else None
+    # (a fifth positional, the register path, was accepted until 2026-10-14; it is ignored now)
     try:
-        assert_boot(_label, store_path=_store, engine_head_path=_eng, band_path=_band, register_path=_reg, halt=True)
+        assert_boot(_label, store_path=_store, engine_head_path=_eng, band_path=_band, halt=True)
     except SystemExit as e:
         if isinstance(e.code, str):
             print(e.code, file=sys.stderr)

@@ -48,7 +48,10 @@ def _last_meaningful(out, n=1):
 
 # ------------------------------------------------------------------------------------------------
 def boot_guard_checkout(ctx):
-    """Guard 5 checkout legs: store / engine_head / band / register == pinned boot identity.
+    """Guard 5 checkout legs: store / engine_head / band == pinned boot identity.
+
+    (The register leg left 2026-10-14: the LTI register is retired on the owner's word, LTI_REGISTER.md
+    is deleted, and expected_boot 'register' is a frozen historical field no gate reds on.)
 
     All four legs are pointed at the CHECKOUT, never at /home/claude/rl_workspace. That is the
     whole reason this leg is safe to run anywhere: the audit measured `run_panel.sh` correctly
@@ -60,8 +63,7 @@ def boot_guard_checkout(ctx):
         'python3', 'boot_guard.py', 'acceptance-spine',
         os.path.join(ctx.root, 'engine/rl_after/rl_model_data.json'),
         os.path.join(ctx.root, 'engine/rl_after/_merged_recover.py'),
-        os.path.join(ctx.root, 'data/cm_400.pkl'),
-        os.path.join(ctx.root, 'LTI_REGISTER.md')])
+        os.path.join(ctx.root, 'data/cm_400.pkl')])
     if rc == 0:
         return C.Verdict('boot_guard_checkout', C.PASS, ev, _last_meaningful(out))
     return C.Verdict('boot_guard_checkout', C.FAIL, ev, _last_meaningful(out))

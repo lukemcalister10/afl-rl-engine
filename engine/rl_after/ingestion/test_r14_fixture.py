@@ -260,7 +260,8 @@ def test_current_source_not_replaced():                                         
 def test_current_immutable_inputs_stay_current():                                # control 17
     scr = _good_r14_scratch()
     try:
-        for rel in ('data/model_config.json', 'LTI_REGISTER.md'):
+        # (LTI_REGISTER.md left this tuple 2026-10-14: the register is retired and the file deleted.)
+        for rel in ('data/model_config.json',):
             assert _md5(os.path.join(scr, rel)) == _md5(os.path.join(REPO, rel)), \
                 "%s in the scratch != current checkout (immutable input drifted)" % rel
         # the whole forward_valuation source set matches the current checkout, file by file

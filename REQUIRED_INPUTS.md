@@ -5,7 +5,7 @@
 | This tarball (whole workspace + vendored deps) | the bundle itself | PRESENT | everything |
 | Engine head `_merged_recover.py` (7a07e369, BAKED v2.7; was c47cb43d at v2.4) | engine/rl_after/ | PRESENT (md5 verified) | all pricing |
 | Store `rl_model_data.json` (a2fbc9a0, SINGLE SOURCE; was e1b4d8bf at v2.6) | engine/rl_after/ | PRESENT | all pricing |
-| **LTI register `LTI_REGISTER.md`** (652d83e8, owner-authored availability sidecar — R-REG=R2, Chapter-3 2026-07-09; pinned like the store, seeded to the workspace by bootstrap, asserted by Guard 5) | repo root | PRESENT (43/43 keys store-verified) | RL_AVAIL availability layer (Part 1 nerf + Part 2 return haircut) |
+| ~~LTI register `LTI_REGISTER.md`~~ — **RETIRED 2026-10-14 (owner word: "retire the LTI register")**. The file, its parser `lti_register.py` and the Part-2 return arm are deleted; the `register` pin `652d83e8` is a frozen historical field in the carriers. The injury truth is the owner's sheet `docs/owner_annotations/SITTER_2026_v1.csv` (pinned by `data/sheet_pins.json`, manifest-checked) | — | RETIRED | nothing — the RL_AVAIL layer reads the sheet (ORDER 42) |
 | Band pickle `cm_400.pkl` (34faa865) | data/ | PRESENT | conditional prior |
 | GATE-1 + walk-forward harnesses | engine/rl_after/ (`_gate1_wf.py`, `_gate1_picksplit.py`, `s4_matrix_M1v7.py`, `s4_render_M1v7.py`) | PRESENT | book / gates |
 | Vendored dep — **unidecode ONLY** (nothing else is vendored) | vendor/ | PRESENT (offline-safe) | engine load (name normalisation) |

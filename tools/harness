@@ -12,7 +12,7 @@ WS=/home/claude/rl_workspace/rl_after
 . "$HERE/tools/build_lock.sh"
 build_lock_acquire harness || exit 1
 export RL_FV="$HERE/engine/forward_valuation"
-RL_REPO="$HERE" python3 "$HERE/boot_guard.py" harness "$WS/rl_model_data.json" "$WS/_merged_recover.py" "$HERE/data/cm_400.pkl" "$WS/LTI_REGISTER.md" || exit 1
+RL_REPO="$HERE" python3 "$HERE/boot_guard.py" harness "$WS/rl_model_data.json" "$WS/_merged_recover.py" "$HERE/data/cm_400.pkl" || exit 1
 # Pass paths are resolved against the CALLER's cwd before we enter the workspace.
 ARGS=()
 for a in "$@"; do

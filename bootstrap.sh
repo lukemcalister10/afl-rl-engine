@@ -64,10 +64,8 @@ cp -f "$HERE/config_manifest.py"        /home/claude/rl_workspace/rl_after/confi
 cp -f "$HERE/fv_provenance.py"          /home/claude/rl_workspace/rl_after/fv_provenance.py
 cp -f "$HERE/boot_guard.py"             /home/claude/rl_workspace/rl_after/boot_guard.py
 
-# R-REG=R2 (Chapter-3 2026-07-09): seed the owner-authored LTI register — a pinned availability INPUT the
-# RL_AVAIL layer consumes at build. Copied into the workspace rl_after (the engine's cwd) so lti_register.py
-# reads the ONE committed source; Guard 5 asserts its md5 == the pin (data/expected_boot.json 'register').
-cp -f "$HERE/LTI_REGISTER.md"           /home/claude/rl_workspace/rl_after/LTI_REGISTER.md
+# (The LTI register seed — LTI_REGISTER.md, R-REG=R2 — stood here until 2026-10-14. The register is retired
+# on the owner's word and the file is deleted; the engine's injury truth is docs/owner_annotations/SITTER_2026_v1.csv.)
 
 # 2. absolute-path data deps
 cp -f "$HERE/data/cm_400.pkl"                /home/claude/cm_400.pkl
@@ -97,11 +95,10 @@ U=$(python3 -c "import sys; sys.path.insert(0,'/home/claude/rl_vendor'); import 
 RL_REPO="$HERE" python3 "$HERE/boot_guard.py" bootstrap \
   /home/claude/rl_workspace/rl_after/rl_model_data.json \
   /home/claude/rl_workspace/rl_after/_merged_recover.py \
-  /home/claude/cm_400.pkl \
-  /home/claude/rl_workspace/rl_after/LTI_REGISTER.md || { echo "bootstrap FAILED: seeded workspace does not match the pinned store/register (see above)"; exit 1; }
+  /home/claude/cm_400.pkl || { echo "bootstrap FAILED: seeded workspace does not match the pinned store (see above)"; exit 1; }
 # F1 (register item 91): ASSERT the workspace q97m the ENGINE will LOAD (/home/claude/q97m.pkl) == the pin —
 # do not merely echo it. boot_guard's (0e) loaded-path block also asserts this on entry; this is the visible,
-# fail-closed check in bootstrap's own verify block, matching the store/cm/register assertions in the call above.
+# fail-closed check in bootstrap's own verify block, matching the store/cm assertions in the call above.
 QPIN=$(python3 -c "import json,sys; sys.stdout.write(json.load(open('$HERE/data/expected_boot.json'))['q97m'][:8])")
 [ "$Q" = "$QPIN" ] || { echo "bootstrap FAILED: workspace q97m /home/claude/q97m.pkl md5 $Q != pinned $QPIN — the engine would LOAD an unverified pickle (F1)"; exit 1; }
 # FORWARD-VALUATION PROVENANCE (fv-provenance remediation 2026-07-20): the seed above copies
@@ -127,13 +124,11 @@ if [ -n "$FVPIN" ] && [ "$FVPIN" != "None" ]; then
   [ "$FVCKID" = "$FVPIN" ] || { echo "bootstrap FAILED: CHECKOUT engine/forward_valuation identity ${FVCKID:0:12} != pinned ${FVPIN:0:12} (data/expected_boot.json 'fv') — a forward-valuation source drifted from the pin (re-pin at a bake)"; exit 1; }
   [ "$FVWS" = "$FVPIN" ] || { echo "bootstrap FAILED: workspace COPY /home/claude/rl_workspace/forward_valuation identity ${FVWS:0:12} != pinned ${FVPIN:0:12} — a STALE forward_valuation copy is in the workspace (re-run bootstrap.sh from the intended checkout; the canonical build binds RL_FV to the checkout, but a stale copy must halt loudly)"; exit 1; }
 fi
-R=$(md5sum /home/claude/rl_workspace/rl_after/LTI_REGISTER.md | cut -c1-8)
 echo "bootstrap OK"
 echo "  engine md5     : $M   (candidate: F1/F2 one-source rewire)"
 echo "  cm_400 md5     : $C   (expect 34faa865)"
 echo "  q97m md5       : $Q   (expect cfdc7321 — FROZEN q97 ceiling; loaded, never fitted; Guard 5 asserted == pinned)"
 echo "  store md5      : $S   (single source; no .pre_stage0/.stage0 lookalikes; Guard 5 asserted == pinned)"
-echo "  register md5   : $R   (LTI_REGISTER.md — R-REG=R2 pinned availability input; Guard 5 asserted == pinned)"
 echo "  fv identity    : ${FVPIN:0:8}   (engine/forward_valuation source set; CHECKOUT + workspace copy asserted == pinned 'fv'; canonical build binds RL_FV to the CHECKOUT)"
 echo "  unidecode      : $U   (vendored, offline)"
 echo "  ENV (with vendor): PYTHONPATH=/home/claude/rl_workspace/rl_after:/home/claude/rl_vendor ; RL_FV=<repo>/engine/forward_valuation (canonical FV source)"

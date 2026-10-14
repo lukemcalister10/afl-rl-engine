@@ -23,7 +23,7 @@ first is the one non-reader in this directory: it makes a register push a single
 
 **`orient.sh`** — one command, no args:
 `git ls-remote` of `main` + tag `v2.9` against the canonical URL (RAW SHAs) · the checked-out
-`HEAD` SHA beside them · `LTI_REGISTER.md`'s own header line · the `docs/` listing · a table of
+`HEAD` SHA beside them · the `docs/` listing · a table of
 every pack doc's HEADER VERSION (MANIFEST, CORE, HANDOVER, DECISIONS, CONSTRAINTS, acceptance, SSI)
 for the PK-vs-repo comparison R98.10 / R100.10 require. Globs each doc by prefix so a version bump
 is still found; prints filename + raw header string.

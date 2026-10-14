@@ -63,3 +63,14 @@ the lever, edit and round sequences, `balanced_board_md5` is a frozen historical
 `expected_boot` / `release_contract` / the sidecar (the `06d8af60` present-lens anchor in
 `release_lineage` was always frozen and is untouched), and no gate reds on it. The week's landing is
 now the build, the UI writers and the gates; the 548 s line above is history.
+
+**The LTI register is retired (2026-10-14).** `LTI_REGISTER.md` — the owner-authored availability
+sidecar pinned as the `register` identity — stopped being read at ORDER 42, when the owner's annotation
+sheet (`docs/owner_annotations/SITTER_2026_v1.csv`) became the only injury truth; the Part-2 return
+arm it fed shipped zero on every row from then on. On the owner's word ("retire the LTI register")
+the file, its parser `lti_register.py`, the return arm (`derive_lti_return.py`, `lti_return_table.json`)
+and the owner's `lti_repin.py` are deleted; bootstrap no longer seeds it, Guard 5 no longer asserts
+it, and the board no longer carries an `lti_register_md5` stamp. `register` is a frozen historical
+field in `expected_boot` / `release_contract` / the UI stamp at its last value `652d83e8`, carried by
+the lineage step and the manifest check as an anchor, and no gate reds on it. Nothing about the
+weekly landing changes: the sheet is the only availability input, pinned by `data/sheet_pins.json`.

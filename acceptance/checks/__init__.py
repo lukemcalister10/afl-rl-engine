@@ -35,8 +35,9 @@ C.register('release_manifest', _manifest.check,
 #    "COVERED — non-vacuous on every leg I probed". It anchors on expected_boot, so it reads those
 #    carriers; if the manifest check found expected_boot drifted, this is BLOCKED, not re-failed.
 C.register('boot_guard_checkout', _standing.boot_guard_checkout,
-           reads=('expected_boot:store', 'expected_boot:engine_head', 'expected_boot:register'),
-           doc='Guard 5 checkout legs: store / engine_head / register == pinned boot identity')
+           reads=('expected_boot:store', 'expected_boot:engine_head'),
+           doc='Guard 5 checkout legs: store / engine_head == pinned boot identity (the register leg '
+               'is retired 2026-10-14)')
 
 # 3. The config manifest hash matches its pin and its stored value.
 C.register('config_manifest', _standing.config_manifest,

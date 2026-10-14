@@ -21,9 +21,10 @@ measurement made while this file was written, not a claim carried over from the 
 |---|---|---|---|---|
 | board | `e40c37ccc543e7f2bcca16c996b53dbb` | data/expected_boot.json | data/rl_build/rl_app_data.json | agrees |
 | store | `b0eeaf4b9f766e6618081dce8fc328e3` | data/expected_boot.json | engine/rl_after/rl_model_data.json | agrees |
-| engine_head | `b6427045918d8e9a5eb208d8a077d78e` | data/expected_boot.json | engine/rl_after/_merged_recover.py | agrees |
+| engine_head | `b6427045918d8e9a5eb208d8a077d78e` | data/expected_boot.json | engine/rl_after/_merged_recover.py | DRIFTED |
 | rl_model | `ad48eb299b01639b62d397c4c0016dd4` | data/expected_boot.json | engine/rl_after/rl_model.py | agrees |
 | balanced_board_md5 | `f4126b629ea4d4135b4c0ad0f1b29508` | data/expected_boot.json | (no in-tree artifact) | not in tree |
+| register | `652d83e87780e415a01a2de6d8b3cc57` | data/expected_boot.json | (no in-tree artifact) | not in tree |
 | config | `d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4` | data/expected_boot.json | config_manifest.manifest_hash | agrees |
 
 | release fact | value | carrier |
@@ -71,7 +72,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `e624651395437b0598567ab57445ba1a743f759b` |
+| generated at commit | `3911fdfc4771be15d4f831238d8020f6b8140e74` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

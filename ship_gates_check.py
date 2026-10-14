@@ -664,20 +664,11 @@ def _b5_scope(p):
 try:
     ev_pre = G.get('ev_prefloor')
     if ev_pre is not None:
-        # register status column (LTI register — same parse as the D6 annotated table)
+        # register status column: EMPTY. Until 2026-10-14 this parsed LTI_REGISTER_2026-07-02.md — a
+        # file that had already been folded away, so the read always failed into this same empty dict.
+        # The LTI register is retired on the owner's word; the column stays 'clear' for every row.
         import re as _re
         _reg = {}
-        try:
-            _rtxt = open(os.path.join(ROOT, 'LTI_REGISTER_2026-07-02.md')).read()
-            _secA = _rtxt.split('## SECTION A')[1].split('## SECTION B')[0]
-            for _m in _re.finditer(r'^\| ([^|]+) \| ([^|]+) \|', _secA, _re.M):
-                if _m.group(1).strip() != 'player':
-                    _reg[_m.group(1).strip()] = f'LTI ({_m.group(2).strip()})'
-            _secB = _rtxt.split('## SECTION B')[1].split('---')[0]
-            for _nm in _re.findall(r"[A-Z][\w'\-\.]+(?: [A-Z][\w'\-\.]+)+", _secB.replace('**', '')):
-                _reg.setdefault(_nm, 'OUT-2026')
-        except Exception:
-            pass
         PRE = {}
         with contextlib.redirect_stdout(io.StringIO()):
             for p in MA.data:

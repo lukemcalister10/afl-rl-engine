@@ -9,6 +9,12 @@ HISTORICAL field: it stays in every carrier at its last reconciled value and no 
 it or asserts it against a fresh build. (A round advance's staged_apply c3 still carries the
 in-transaction sibling; that is the round transaction's own business, not this library's.)
 
+RETIRED 2026-10-14 (owner word: "retire the LTI register"): THE LTI REGISTER. `register` — the md5 of
+LTI_REGISTER.md — was a PIN_MEASURERS identity. The file is deleted (the owner's annotation sheet has
+been the only injury truth since ORDER 42), so `register` is now a HISTORICAL field exactly like
+`balanced_board_md5`: it stays in every carrier at its last value, the lineage step carries it from
+expected_boot on both sides, the UI stamp copies it verbatim, and no step measures or moves it.
+
 Every step here is a CONSOLIDATION of a script that already ran and already landed a board on
 2026-08-20. The provenance of each is named in its own docstring, and the rule throughout is the one
 the per-act scripts stated for themselves:
@@ -89,7 +95,6 @@ PIN_MEASURERS = {
     'store':       lambda ctx: md5(_p(ctx, 'engine', 'rl_after', 'rl_model_data.json')),
     'engine_head': lambda ctx: md5(_p(ctx, 'engine', 'rl_after', '_merged_recover.py')),
     'rl_model':    lambda ctx: md5(_p(ctx, 'engine', 'rl_after', 'rl_model.py')),
-    'register':    lambda ctx: md5(_p(ctx, 'LTI_REGISTER.md')),
     'v0surf':      lambda ctx: md5(_p(ctx, 'data', 'v0surf.pkl')),
     'config':      lambda ctx: _load(ctx, 'config_manifest', 'config_manifest.py')
                                    .manifest_hash(ctx.root),
@@ -102,6 +107,8 @@ PIN_MEASURERS = {
 DELEGATED_PINS = {
     'balanced_board_md5': 'HISTORICAL since 2026-10-14 — the balanced sibling is retired; no landing '
                           'step writes it (only a round advance\'s staged_apply c3 still does, in-txn)',
+    'register': 'HISTORICAL since 2026-10-14 — the LTI register is retired (owner word) and '
+                'LTI_REGISTER.md is deleted; the pin is frozen at its last value and nothing writes it',
     'as_of_round': 'the round lander (2b); a lever landing HOLDS the round',
     'season_state': 'the round lander (2b)',
     'rl_model_data': 'the round lander (2b) — the store is written by a score application',
@@ -1267,18 +1274,19 @@ def _measure_sides(ctx):
              'store': 'engine/rl_after/rl_model_data.json',
              'engine_head': 'engine/rl_after/_merged_recover.py',
              'rl_model': 'engine/rl_after/rl_model.py',
-             'register': 'LTI_REGISTER.md',
              'v0surf': 'data/v0surf.pkl'}
     src = {k: _git_show_md5(ctx, base, rel) for k, rel in files.items()}
     dst = {k: md5(_p(ctx, rel)) for k, rel in files.items()}
     boot_before = ctx.facts['base']['expected_boot']
     boot_after = json.load(open(_p(ctx, 'data', 'expected_boot.json'), encoding='utf-8'))
-    for k in ('config', 'fv', 'balanced_board_md5', 'as_of_round', 'release_version'):
+    # register is HISTORICAL since 2026-10-14 (the LTI register is retired, the file deleted): carried
+    # from each side's expected_boot like balanced_board_md5, never re-hashed from a file.
+    for k in ('config', 'fv', 'balanced_board_md5', 'register', 'as_of_round', 'release_version'):
         src[k] = boot_before.get(k)
         dst[k] = boot_after.get(k)
     # The measured side is cross-checked against THAT TREE'S OWN manifest, exactly as the per-act
     # measure_lineage.py did. A side that disagrees with its own manifest is not a side.
-    for k in ('board', 'store', 'engine_head', 'rl_model', 'register'):
+    for k in ('board', 'store', 'engine_head', 'rl_model'):
         if boot_before.get(k) is not None and boot_before[k] != src[k]:
             raise StepError('base-commit %s (%s) disagrees with that tree\'s expected_boot (%s)'
                             % (k, src[k], boot_before[k]))
@@ -2246,6 +2254,8 @@ def ui(ctx):
         ctx.log('  stamp.%-20s %-34s %s' % (k, st.get(k), 'OK' if ok else '*** != %s ***' % exp))
         if not ok:
             fails.append('stamp.' + k)
+    # stamp.register is likewise HISTORICAL (the LTI register was retired 2026-10-14): the extractor
+    # copies the frozen expected_boot value, and that copy is all this asserts.
     for k, exp in (('engine', boot['engine_head'][:8]), ('store', boot['store'][:8]),
                    ('register', boot['register'][:8]), ('config', boot['config'][:12])):
         ok = str(st.get(k)) == exp

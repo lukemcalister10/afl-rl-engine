@@ -22,7 +22,7 @@ build_lock_acquire run_panel || exit 1
 # tree the engine will import == the pin. RL_REPO also resolves it, but the explicit bind is the intended
 # canonical source and makes the selection auditable.
 export RL_FV="$HERE/engine/forward_valuation"
-RL_REPO="$HERE" RL_FV="$HERE/engine/forward_valuation" python3 "$HERE/boot_guard.py" run_panel "$WS/rl_model_data.json" "$WS/_merged_recover.py" "$HERE/data/cm_400.pkl" "$WS/LTI_REGISTER.md" || exit 1
+RL_REPO="$HERE" RL_FV="$HERE/engine/forward_valuation" python3 "$HERE/boot_guard.py" run_panel "$WS/rl_model_data.json" "$WS/_merged_recover.py" "$HERE/data/cm_400.pkl" || exit 1
 cd "$WS"
 # CONFIG-MANIFEST v2.9 COMPLETION 2026-07-14: run the panel UNDER RL_CONFIG_MODE=gate so the engine takes
 # ALL model vars from the pinned manifest (data/model_config.json) rather than code defaults / a hand-copied

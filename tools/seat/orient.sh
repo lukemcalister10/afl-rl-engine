@@ -11,7 +11,6 @@ HERE="$(cd "$(dirname "$0")" && cd ../.. && pwd)"   # repo root (tools/seat -> .
 die() { echo "orient: FAIL — $*" >&2; exit 1; }
 
 [ -d "$HERE/docs" ] || die "docs/ not found under repo root $HERE (run from a checkout)"
-[ -f "$HERE/LTI_REGISTER.md" ] || die "LTI_REGISTER.md missing (register is a pinned input)"
 
 echo "== orient · $URL =="
 
@@ -42,12 +41,9 @@ else
   printf '  %s\n' "$OIR_HDR"
 fi
 
-# 2b) The LTI/availability register header (pinned input, root) — kept, honestly relabelled.
-#     This is the availability sidecar, NOT the open-items log printed above.
-echo "-- LTI register header (pinned input, root) --"
-REG_HDR="$(head -n1 "$HERE/LTI_REGISTER.md")" || die "cannot read LTI_REGISTER.md"
-[ -n "$REG_HDR" ] || die "LTI_REGISTER.md header line is empty"
-echo "  $REG_HDR"
+# 2b) RETIRED 2026-10-14: the LTI/availability register header used to print here. The register is
+#     retired on the owner's word and LTI_REGISTER.md is deleted; the injury truth is the owner's sheet,
+#     docs/owner_annotations/SITTER_2026_v1.csv (pinned by data/sheet_pins.json, gated by the manifest check).
 
 # 3) docs/ listing (raw).
 echo "-- docs/ listing --"

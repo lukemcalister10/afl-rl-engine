@@ -5,7 +5,8 @@
 WHY THIS EXISTS
   data/model_config.json pins the model-semantics vars and stamps config_sha256. This contract binds
   that config identity TOGETHER with the release identities (board / balanced-baseline / store / engine /
-  rl_model / fv / register / as_of_round), the owner-approved switch posture, the PVC provenance, and the
+  rl_model / fv / register [FROZEN since 2026-10-14: the LTI register is retired] / as_of_round), the
+  owner-approved switch posture, the PVC provenance, and the
   set of override hooks that MUST be absent. It is loaded deterministically in a CANONICAL build and
   fails closed: missing, stale, contradictory, ambient-only, or unknown state HALTS before any board is
   produced. Changing any bound class-A value necessarily moves either config_sha256 (in the manifest hash)

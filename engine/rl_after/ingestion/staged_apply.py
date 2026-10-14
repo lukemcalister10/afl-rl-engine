@@ -771,11 +771,12 @@ class StagedRoundApplier:
         # staged build resolves the SAME accepted provenance modules the checkout ships (never an
         # ambient one). boot_guard.py runs BOTH as a script (Guard 5, from ws root) and as an import
         # (rl_export gate mode, from wsra), so it lands in both.
-        for f in ('config_manifest.py', 'LTI_REGISTER.md', 'fv_provenance.py', 'boot_guard.py', 'season_state.py'):
+        # (LTI_REGISTER.md was in both lists until 2026-10-14; the register is retired and the file deleted.)
+        for f in ('config_manifest.py', 'fv_provenance.py', 'boot_guard.py', 'season_state.py'):
             _src = os.path.join(R, f)
             if os.path.exists(_src):
                 shutil.copyfile(_src, os.path.join(wsra, f))
-        for f in ('boot_guard.py', 'config_manifest.py', 'LTI_REGISTER.md', 'fv_provenance.py',
+        for f in ('boot_guard.py', 'config_manifest.py', 'fv_provenance.py',
                   'season_state.py', 'release_contract.py'):
             _src = os.path.join(R, f)
             if os.path.exists(_src):
@@ -1570,7 +1571,7 @@ class StagedRoundApplier:
         r = subprocess.run(
             [sys.executable, os.path.join(ws, 'boot_guard.py'), 'weekly_updater_staged',
              os.path.join(wsra, 'rl_model_data.json'), os.path.join(wsra, '_merged_recover.py'),
-             os.path.join(ws, 'data', 'cm_400.pkl'), os.path.join(wsra, 'LTI_REGISTER.md')],
+             os.path.join(ws, 'data', 'cm_400.pkl')],
             env=env, capture_output=True, text=True)
         return r.returncode, (r.stdout + r.stderr)
 

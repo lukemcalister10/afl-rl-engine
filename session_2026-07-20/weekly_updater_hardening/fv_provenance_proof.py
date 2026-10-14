@@ -56,10 +56,11 @@ def make_scratch(tag):
     shutil.copytree(os.path.join(REPO, 'engine', 'forward_valuation'),
                     os.path.join(dst, 'engine', 'forward_valuation'))
     ws = os.path.join(dst, 'engine', 'rl_after')
-    for f in ('config_manifest.py', 'LTI_REGISTER.md', 'fv_provenance.py', 'boot_guard.py',
+    # (LTI_REGISTER.md left both copy lists 2026-10-14: the LTI register is retired and the file deleted.)
+    for f in ('config_manifest.py', 'fv_provenance.py', 'boot_guard.py',
               'season_state.py', 'release_contract.py'):
         shutil.copyfile(os.path.join(REPO, f), os.path.join(ws, f))
-    for f in ('boot_guard.py', 'config_manifest.py', 'LTI_REGISTER.md', 'fv_provenance.py',
+    for f in ('boot_guard.py', 'config_manifest.py', 'fv_provenance.py',
               'season_state.py', 'release_contract.py'):
         shutil.copyfile(os.path.join(REPO, f), os.path.join(dst, f))
     shutil.copytree(os.path.join(REPO, 'data'), os.path.join(dst, 'data'))

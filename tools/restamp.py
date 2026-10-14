@@ -40,6 +40,12 @@ RETIRED 2026-10-14 — THE SIBLING SIDECAR STAMP. The balanced sibling is no lon
 landing (owner word), so `engine/rl_after/ingestion/sibling_repin_state.json` stopped being a stamp
 and became a record: it is in HISTORY_OR_BAKE, `check` never reads it, and `apply` no longer has a
 refusal for it. The "five instances" story above is kept as the history it is.
+
+RETIRED 2026-10-14 — THE LTI REGISTER. `register` (the md5 of LTI_REGISTER.md) was a measured identity
+until the owner retired the register the same day the sibling went. The file is deleted, so there is
+nothing to measure: `register` is a FROZEN HISTORICAL field in expected_boot / release_contract / the
+UI stamp at its last value (652d83e8…), `measure` no longer computes it, no reader here reads it, and
+`apply` never re-hashes it. The manifest check asserts the carriers agree on the frozen value.
 """
 import argparse
 import hashlib
@@ -69,7 +75,6 @@ def measure(root):
         'store': md5(os.path.join(root, 'engine', 'rl_after', 'rl_model_data.json')),
         'engine_head': md5(os.path.join(root, 'engine', 'rl_after', '_merged_recover.py')),
         'rl_model': md5(os.path.join(root, 'engine', 'rl_after', 'rl_model.py')),
-        'register': md5(os.path.join(root, 'LTI_REGISTER.md')),
         'v0surf': md5(os.path.join(root, 'data', 'v0surf.pkl')),
         'config': config_manifest.manifest_hash(root),
         'fv': fv_provenance.fv_identity(fv_provenance.checkout_fv_dir(root)),
@@ -83,7 +88,7 @@ def measure(root):
 def _boot(root):
     with open(os.path.join(root, 'data', 'expected_boot.json'), encoding='utf-8') as f:
         d = json.load(f)
-    return {k: d.get(k) for k in ('board', 'store', 'engine_head', 'rl_model', 'register',
+    return {k: d.get(k) for k in ('board', 'store', 'engine_head', 'rl_model',
                                   'v0surf', 'config', 'fv')}
 
 
@@ -93,7 +98,7 @@ def _contract(root):
     ids = d.get('identities') or {}
     return {'board': ids.get('board'), 'store': ids.get('store'),
             'engine_head': ids.get('engine_head'), 'rl_model': ids.get('rl_model'),
-            'register': ids.get('register'), 'fv': ids.get('fv'),
+            'fv': ids.get('fv'),
             'config': d.get('config_sha256')}
 
 
@@ -115,7 +120,7 @@ def _js_bundle(path):
 def _board_view(root, which='working'):
     st = _js_bundle(os.path.join(root, 'ui', 'data', 'board_view_%s.js' % which)).get('stamp') or {}
     return {'board': st.get('board') or st.get('board_md5'), 'store': st.get('store'),
-            'engine_head': st.get('engine'), 'register': st.get('register'),
+            'engine_head': st.get('engine'),
             'config': st.get('config')}
 
 
@@ -128,7 +133,7 @@ STAMPS = [
     ('expected_boot', 'data/expected_boot.json', _boot,
      'the CARRIER — every other stamp below is checked against the tree the same way, but this is '
      'the file the boot guard and the manifest read',
-     'tools/land (pins step) · tools/owner/lti_repin.py for the register pin'),
+     'tools/land (pins step)'),
     ('release_contract', 'data/release_contract.json', _contract,
      'the released identities + config, sealed by contract_sha256',
      'release_contract.restamp_dynamic + release_contract.restamp_bake_identities'),

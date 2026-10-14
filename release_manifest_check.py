@@ -47,7 +47,7 @@ THE IDENTITY SET  (11)                       THE CARRIERS  (8 files, 43 fields)
     rl_model         engine/rl_after/rl_model.py          data/rl_build/rl_app_data.json.srcmd5
     fv               engine/forward_valuation/*.py        ui/data/board_view_working.js  (stamp)
     config           data/model_config.json               ui/data/board_view_working.js  (stamp.release)
-    register         LTI_REGISTER.md                      data/book_stable_seal.json
+    register         (FROZEN 2026-10-14 — anchor)         data/book_stable_seal.json
     as_of_round      (declared — see below)               data/sheet_pins.json
     sheet            docs/owner_annotations/SITTER_2026_v1.csv   (the file the declaration names)
     sheet_rows       the same file's csv row count
@@ -66,6 +66,12 @@ names a fact about the world (which round the league has played) and has no arti
 authority is `data/expected_boot.json` — the same file Guard 5 anchors every other identity on — and
 the table marks it `anchor` rather than `computed` so a reader is never misled about which rows are
 derived and which are declared.
+
+`register` IS FROZEN (2026-10-14). The LTI register was retired on the owner's word and
+LTI_REGISTER.md is deleted, so there is no artifact to hash. Its last md5 (652d83e8…) stays in the
+four carriers as a HISTORICAL field — exactly as `balanced_board_md5` stays since the balanced
+sibling's retirement — and this gate asserts only that the carriers agree with the frozen
+`expected_boot` value: an `anchor` row, never `computed`, and nothing reds on the file being gone.
 
 TRUNCATION. Carriers legitimately store short forms: the UI stamp carries `engine` as 8 hex, the
 book seal carries `head_md5` as 8, the UI stamp carries `config` as 12. Each carrier therefore
@@ -109,7 +115,7 @@ STORE_SRC = 'engine/rl_after/rl_model_data.json'
 BOARD_SRC = 'data/rl_build/rl_app_data.json'
 HEAD_SRC = 'engine/rl_after/_merged_recover.py'
 RLMODEL_SRC = 'engine/rl_after/rl_model.py'
-REGISTER_SRC = 'LTI_REGISTER.md'
+# (REGISTER_SRC = 'LTI_REGISTER.md' stood here until 2026-10-14; the register is retired and the file deleted.)
 
 MD5 = 32
 SHA = 64
@@ -149,7 +155,9 @@ def compute_truth(root):
     truth['board'] = (_md5_file(p(BOARD_SRC)), 'computed md5 %s' % BOARD_SRC)
     truth['engine_head'] = (_md5_file(p(HEAD_SRC)), 'computed md5 %s' % HEAD_SRC)
     truth['rl_model'] = (_md5_file(p(RLMODEL_SRC)), 'computed md5 %s' % RLMODEL_SRC)
-    truth['register'] = (_md5_file(p(REGISTER_SRC)), 'computed md5 %s' % REGISTER_SRC)
+    # register: FROZEN 2026-10-14 — no artifact to hash (LTI_REGISTER.md is deleted); the carriers are
+    # asserted against the frozen expected_boot value, which is `anchor`, never `computed`.
+    truth['register'] = (str(_json(p(BOOT_REL)).get('register')), 'anchor %s (FROZEN 2026-10-14: the LTI register is retired)' % BOOT_REL)
 
     # fv: the canonical tree hash over engine/forward_valuation/*.py, through the ONE resolver the
     # engine and Guard 5 both use. Never re-implemented here — a second implementation is exactly
@@ -284,6 +292,8 @@ def read_carriers(root):
             (G_REL, 'board_view_working.stamp.release.config', s(rel.get('config')), SHA, 'live'),
             (G_BOOK, 'book_stable_seal.config', s(book.get('config')), SHA, 'sealed'),
         ],
+        # register: FROZEN 2026-10-14 (the LTI register is retired). Truth is the expected_boot anchor,
+        # so these rows assert the carriers agree on the frozen value, nothing more.
         'register': [
             (G_BOOT, 'expected_boot.register', s(boot.get('register')), MD5, 'live'),
             (G_RC, 'release_contract.identities.register', s(rcid.get('register')), MD5, 'live'),

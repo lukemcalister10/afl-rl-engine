@@ -79,8 +79,7 @@ if _repo:
     try:
         _BG.assert_boot('one_source_selftest', store_path=hp('rl_model_data.json'),
                         engine_head_path=hp('_merged_recover.py'),
-                        register_path=(hp('LTI_REGISTER.md') if os.path.exists(hp('LTI_REGISTER.md')) else None),
-                        halt=False)
+                        halt=False)   # (register_path left this call 2026-10-14: the LTI register is retired)
         check(True, "GUARD 5: boot-store — this dir's store+head == pinned checkout store")
     except AssertionError as _e:
         _det=[l.strip() for l in str(_e).splitlines() if l.strip() and set(l.strip())!={'='} and 'HALTED' not in l]

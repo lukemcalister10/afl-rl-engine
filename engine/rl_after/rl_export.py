@@ -348,7 +348,8 @@ print('L7 NUMÉRAIRE RE-BASE ÷%.4f: order preserved (no strict inversion; %d ro
 # list holds a SEPARATE synthesized object than the one RL_AVAIL mutated, so `_lti_reg` never reaches the
 # board object and both tags exported NULL (verified STILL NULL after the migration/refit regens: a regen
 # alone does not close it — the fix is CONSUMER WIRING). Resolve the register-disposition tag by STABLE KEY
-# from the engine records here. DISPLAY-ONLY: this reads the register tag (a fact from LTI_REGISTER.md),
+# from the engine records here. DISPLAY-ONLY: this reads the sheet-state tag `_lti_reg` (built from
+# docs/owner_annotations/SITTER_2026_v1.csv under ORDER 42; the LTI register itself was retired 2026-10-14),
 # never `v` — every board value is the already-computed `_v` and is untouched (zero EV movers by
 # construction). The board-native availability ATTRIBUTION fields (avail_hc / avail_nerf / lti_return_hc)
 # are left as the board object's own values; for these two the shipped board applied no availability
@@ -360,7 +361,7 @@ def _lti_reg_of(p):   # board tag if present, else the engine record's tag resol
 
 # ==== (h) EXPORT ATTRIBUTION SIDECAR — vPrev (last-accepted-bake value) + per-lever G-ATTR deltas =========
 # Certified per-player attribution, committed as engine/rl_after/export_attribution.json and seeded to cwd
-# by bootstrap exactly like pick_redenomination.json / lti_return_table.json. It is DERIVED FROM the
+# by bootstrap exactly like pick_redenomination.json. It is DERIVED FROM the
 # certified G-ATTR stage boards (base → +L1 → +L1+L4 → +L1+L4+L2 → +L1+L4+L2+L3 → FULL), reproduced to the
 # dollar by the committed gen_gattr_chain.sh — i.e. taken from the certified attribution, NOT a new method.
 #   vPrev[key]  = the player's value on the last-accepted-bake board = the all-levers-OFF pre-refit base
@@ -392,7 +393,7 @@ def player_rec(p):
             'vP1':p.get('_vP1'),'vP2':p.get('_vP2'),'vM1':p.get('_vM1'),'vM2':p.get('_vM2'),'cvx':p.get('_cvx',1.0),
             'avail_hc':p.get('_avail_hc',0.0),                       # RL_AVAIL present haircut L_p (register out-names; was b2hc)
             'avail_nerf':p.get('_avail_nerf',0),                     # Part-1 attribution: ev(layer)-ev(no-layer) per player (G-ATTR)
-            'lti_return_hc':p.get('_lti_return_hc',0.0),             # Part-2 attribution: derived return-season haircut (own column, G-ATTR)
+            'lti_return_hc':p.get('_lti_return_hc',0.0),             # Part-2 attribution column, FROZEN AT 0.0: the return arm was deleted 2026-10-14 with the LTI register (the engine sets no _lti_return_hc; the column stays so the board schema does not move)
             'lti_reg':_lti_reg_of(p),                                # register disposition tag (section/designation/on-sight flags), resolved by key for first-year no-scoring-row rows; or None
             'vPrev':_vprev_by_key.get(p['key']),                     # §7.3 last-accepted-bake value (all-off base) -> Δ-vs-bake column; None if the row is new since the bake
             'vRaw':None,                                             # §7.3 pre-override model figure; stamped (=v) only for owner-overridden rows, post-application below
@@ -621,9 +622,6 @@ DEBUT_AGE={'ND':19,'RD':19,'SSP':19,'MSD':19,'PSD':19,'IRE':19,'UNR':19,'PDA':19
 _ndc=g['_NDC']; _medNDC=int(round(float(np.median(list(_ndc.values())))))
 TYPEOFF={'ND':0,'RD':_medNDC}   # rookie picks sit after the national draft on the projector's pick scale
 TILT={k:g[k] for k in ['TILT_REF','GAIN_UP','W_UP','UP_MAX','TILT_HI','GAIN_DN','W_DN','DN_MAX','TILT_LO','NBAD_REF','SUS_MIN']}
-try:
-    import lti_register as _LTIREG; _reg_md5=_LTIREG.file_md5()
-except Exception: _reg_md5=None
 
 # ==== (i) FUTURE-LENS PHANTOM PICK ENTRIES (items 12+14, owner-worded 2026-07-12) =========================
 # The current cycle's remaining picks are the next-EOY National Draft class — a class already in the league
@@ -663,7 +661,6 @@ lensConservation['_meta']={'principle':'year-0 continuity: value converts, does 
 
 out={'active':active,'back':back,'cohort':coh,
      'lensPicks':lensPicks,'lensConservation':lensConservation,   # items 12/14: future-lens phantom picks + conservation diagnostic (report-only)
-     'lti_register_md5':_reg_md5,   # R-REG=R2: stamp the availability input's identity into the derived board
      'BASEPK_REG':{f'{k[0]}|{k[1]}':round(v,3) for k,v in g['BASEPK_REG'].items()},
      'POOL':{str(k):round(v,3) for k,v in g['POOL'].items()},
      'MIX':{str(b):{gg:round(w,4) for gg,w in g['MIX'][b].items()} for b in g['MIX']},

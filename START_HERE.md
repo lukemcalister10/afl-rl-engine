@@ -11,7 +11,7 @@ _**BAKED v2.7 2026-07-10** (Chapter-3 injury/availability + R-i=ADVANCE per owne
 ## 1. IDENTITY / MD5 AXES (all verified this cut)
 - code→head: `engine/rl_after/_merged_recover.py` = **`7a07e369`** (BAKED v2.7 = Chapter-3 injury/availability + R-i=advance; was 4b08796c at v2.6) · position model in `rl_model.py` = **`4cd7e37f`** (drafted/present/future single-valued columns; the raw_multipos blend is DELETED; moved v2.6→v2.7 with the availability layer)
 - data→store: `engine/rl_after/rl_model_data.json` = **`a2fbc9a0`** (SINGLE SOURCE; the `.pre_stage0`/`.stage0` lookalikes are DELETED — one-source rewire 2026-07-05; King/Murphy birth-year correction folded; was `e1b4d8bf` at v2.6)
-- register: `LTI_REGISTER.md` = **`652d83e8`** (R-REG=R2 pinned availability input; Guard 5 asserts it on entry)
+- register: RETIRED 2026-10-14 (owner word) — `LTI_REGISTER.md` is deleted; the `register` pin **`652d83e8`** is a frozen historical field no gate asserts. Injury truth: `docs/owner_annotations/SITTER_2026_v1.csv` (sheet pins, manifest-checked)
 - config: `data/model_config.json` manifest hash = **`69ead79b`** (40 model vars pinned; bake/gate mode clears ambient + loads this)
 - band: `data/cm_400.pkl` = **`34faa865`**
 - file→bundle: see CHECKPOINT_MANIFEST.md (recorded at cut).

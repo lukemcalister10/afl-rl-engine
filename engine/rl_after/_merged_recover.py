@@ -147,7 +147,6 @@ INPROG_Y=int(os.environ.get('RL_M3_INPROG_Y','2026'))
 # stays 2 games; we only stop grossing them up). RL_AVAIL=0 ⇒ _AVAIL_STATE empty ⇒ _fEy(Y,p)==_fEy(Y) and
 # _avail_hc==0 for every player ⇒ byte-exact to the layer-off board (register-only movement by construction).
 _AVAIL_ON=os.environ.get('RL_AVAIL','1')!='0'
-_LTI_RETURN_ON=os.environ.get('RL_LTI_RETURN','1')!='0'       # Part-2 return-haircut arm (separable lever, G-ATTR)
 _LTI_CLOCK=os.environ.get('RL_LTI_CLOCK','advance')          # fork-i L1c clock: advance (DEFAULT, owner-ruled R-i 2026-07-10, DECISIONS v90 §36) | pause (retired provisional). Pinned in data/model_config.json + asserted by ruling_config_check.py (a paused bake/gate fails loudly).
 _AVAIL_STATE={}                                               # key -> availability state (populated by the layer block below)
 _KPF_LD_FALLBACK=set()                                        # fork-v: register names whose LD fell back to count-against (report-only)
@@ -710,16 +709,18 @@ def _o41_fe(Y,p=None):
 # "The old LTI register can be redundant. A - run it."  PREREG_D6.md pushed at bd365f9 BEFORE this edit.
 #
 # THE OWNER'S ANNOTATION SHEET BECOMES THE ONLY INJURY TRUTH. Every LIVE consumption of the old
-# LTI_REGISTER.md is retired or re-keyed to docs/owner_annotations/SITTER_2026_v1.csv. The file
-# LTI_REGISTER.md stays in the tree and stays seeded by bootstrap.sh; what this dial retires is its
-# CONSUMPTION, not the artifact.
+# LTI register was retired or re-keyed to docs/owner_annotations/SITTER_2026_v1.csv. THE REGISTER
+# ITSELF IS GONE: LTI_REGISTER.md, its parser lti_register.py and the Part-2 return arm
+# (derive_lti_return.py / lti_return_table.json) were DELETED 2026-10-14 on the owner's word
+# ("retire the LTI register"). Its last md5 652d83e8 is a frozen HISTORICAL field in the carriers.
 #
 # ONE DIAL FOR THE WHOLE CONSOLIDATION. All FOUR live sites read exactly one object, _AVAIL_STATE, so
 # re-keying the state source moves all four together:
 #   1. _fe_p_one / _fEy  (:127-132)   the fE=1.0 LTI override — the site behind audit F2's one-season-out leak
 #   2. the KPF fork-v    (:1207-1208) the 2026-exclusion / nuked season
 #   3. the L1c clock     (:1414-1415) g += L*cp.SEASON
-#   4. _AVAIL_STATE population + the Part-2 return arm (the block near the foot of this file)
+#   4. _AVAIL_STATE population (the block near the foot of this file; the Part-2 return arm that
+#      sat beside it shipped zero under this dial and was deleted 2026-10-14)
 #
 # THE STACK THIS SITS ON. The base is the owner-ruled D5-final dial line, whose break mode is
 # RL_O41_BREAK=unwind with RL_O41_UNWIND=7.
@@ -730,9 +731,10 @@ def _o41_fe(Y,p=None):
 # RL_O43=0 reproduced ff936186 byte-exact. ADOPTED — owner word 2026-10-13 ("d3 was adopted and should be reflected"); hard-wired 2026-10-14.
 _O42_AVAIL_BASE=18   # THE OWNER'S AVAILABILITY BASE — how much of a season a player is expected to be
                      # available for. IT IS NOT THE SEASON-LENGTH CONSTANT AND IT IS NEVER ASSERTED
-                     # EQUAL TO ONE. cp.SEASON stays 22 and lti_register.G_FULL stays 22, so the
-                     # `G_FULL == cp.SEASON` assert in the availability block is UNTOUCHED and still
-                     # passes on every board, dial on and dial off. See PREREG_D6.md §3.
+                     # EQUAL TO ONE. cp.SEASON stays 22: the availability block asserts it directly
+                     # (until 2026-10-14 that assert read `lti_register.G_FULL == cp.SEASON`; the
+                     # register is retired and G_FULL is gone with it) and it still passes on every
+                     # board. See PREREG_D6.md §3.
 if not _AVAIL_ON:
     raise SystemExit('ORDER 42 HALT: the consolidation re-keys the availability layer onto the owner\'s '
                      'annotation sheet, but RL_AVAIL=0 disables that layer entirely. The '
@@ -769,15 +771,16 @@ if _O42_AVAIL_BASE!=18 or _O42_AVAIL_BASE==cp.SEASON:
 # (o41_r3_take -> 0.0), the sitter-clock pause (o31_cu) and the absence-depth in-progress exemption.
 # A counterpart carrying shields UNDERSTATES the healthy charge and would lift rows that deserve no
 # lift. The counterpart here is what the engine would say IF THE PLAYER HAD SIMPLY NEVER BEEN LOGGED
-# INJURED ANYWHERE: all SEVEN live injury sites off, and his absences charged by the normal
+# INJURED ANYWHERE: all SIX live injury sites off (seven until 2026-10-14), and his absences charged by the normal
 # machinery (R3 production fade, sitting charges) exactly as a healthy peer's would be.
 #
-# THE SEVEN LIVE SITES, on two keying objects — the exhaustive list this guard neutralises:
+# THE SIX LIVE SITES (seven until 2026-10-14), on two keying objects — the exhaustive list this guard neutralises:
 #   _AVAIL_STATE[key] :127-132 _fEy fE=1.0 season-complete override        CHARGE
 #                     :1244    the KPF fork-v 2026-exclusion / nuked season  shield
 #                     :1451    the L1c clock g += L*cp.SEASON (advance)    CHARGE
 #   p['_avail_hc']    :1339,1389 the Part-1 present haircut L_p            CHARGE
-#   p['_lti_ret_hc']  :1265    the Part-2 return haircut (retired under O42) CHARGE
+#   (p['_lti_ret_hc'] — the Part-2 return haircut — was the seventh site; it shipped zero under O42
+#    and was DELETED 2026-10-14 with the LTI register. Nothing sets it and nothing reads it.)
 #   o41_injured(p)    :4139    o31_cu — the sitter clock PAUSES             shield
 #                     :4912/4926/4945, :5007 absence-depth term + R3 EXEMPT  shield
 #
@@ -1357,12 +1360,8 @@ def _w4_ctx(p,Y):
     if not (_W4FWD or _W4OVP) or not _isreal(p): return None   # L1c: RL_YOUNG no longer routes through the W(k) context (its credit lives on raw_ev, below)
     pos=MA.gfut(p); n=_nqual(p,Y); a=cp._age_asof(p,Y)
     ctx={'pos':pos,'ep':float(MA.effpk(p)),'n':n,'E':_ev_qual(p,Y)}   # LEG B: per-player evidence weight E for the un-compress map (sites 1-3; flat into projected years — no future store seasons)
-    # Part-2 return haircut (RL_LTI_RETURN): apply the derived, net-of-aging return-season dip at the return
-    # season k = ret_year - BASE_REF (decays to zero the next season = single k). Section-A out-names only;
-    # young/speculative already ship h=0 (set on the record). SEPARABLE from Part 1 (own column lti_return_hc).
-    _rh=p.get('_lti_ret_hc',0.0)
-    if _LTI_RETURN_ON and _rh>0:
-        ctx['ret_hc']=float(_rh); ctx['ret_k']=int(p.get('_lti_ret_year',2027))-int(Y)   # k offset from THIS eval year (deterministic; not global BASE_REF)
+    # (The Part-2 return-season haircut — ctx['ret_hc'] / ctx['ret_k'] off p['_lti_ret_hc'] — stood here
+    # until 2026-10-14. It shipped zero on every row under ORDER 42 and is deleted with the LTI register.)
     _kpf_reb=_W4KPF and pos=='KPF'                         # KPF REBALANCE T2 coordinates active
     _partial=False
     if _kpf_reb and 2<=n<PROVEN_N:                             # partial-proven KPF: top-tier sustained demonstration only
@@ -1435,7 +1434,7 @@ def _proj_w4(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0,grace=0):
         if ag<=pa: lev=max(lev,cl)
         if k==0: lev=max(lev,cl)
         if k==0 and pre_hc>0 and MA.BASE_REF==2026 and MA.AGE_REF==2026: lev*=(1-pre_hc)  # RL_AVAIL present haircut L_p (was _b2hc)
-        if _BOARD_PATH and k==ctx.get('ret_k',-1) and ctx.get('ret_hc',0.0)>0: lev*=(1-ctx['ret_hc'])   # Part-2 return-season haircut (BOARD-ONLY: the walk-forward book stays availability-free; single k -> decays next season)
+        # (the Part-2 return-season haircut lev*=(1-ret_hc) stood here until 2026-10-14; it never fired under ORDER 42 and is deleted with the LTI register)
         base=lev+MA.capt_prem(lev)
         Wk=_w4_W(k,ctx)
         _df=MA.disc_factor(ah,d,k,lens,grace)
@@ -5044,7 +5043,7 @@ def o41_completed_absent(p,Y):
     register v754 / audit finding F2 — WHY THIS OBJECT EXISTS. `o41_absence_depth` returns
     `1 + n`, and the FIRST thing it adds to `n` is the in-progress season's elapsed fraction
     `_o41_fe`. `_fEy` returns the calendar fraction for an ordinary row, but returns exactly
-    **1.0** for a row the engine's own `LTI_REGISTER.md` marks out. So a row whose ONLY unplayed
+    **1.0** for a row the owner's sheet marks out (_AVAIL_STATE; the LTI register until ORDER 42). So a row whose ONLY unplayed
     season is the in-progress one lands on depth 1 + 1.0 = **2.0000** and sails straight past the
     `< 2.0` guard — and R3 charges him for an absence of one part-season. MEASURED on the
     candidate's own dial line: of 116 rows whose only unplayed season is 2026, exactly 4 reach
@@ -5800,8 +5799,7 @@ if MA._UNCOMP and MA.UNCOMP_S is not None:
 # Runs AFTER ev is fully defined so attribution can diff ev(layer-on) vs ev(layer-off) per register name. The
 # layer touches ONLY register keys: every non-register record keeps _avail_hc==0 and _fEy(Y,p)==_fEy(Y), so
 # the board is byte-identical off the register set (non-mover parity by construction). RL_AVAIL=0 skips it.
-import lti_register as LTIREG
-_AVAIL_REPORT=[]; _AVAIL_MOVERS=[]
+_AVAIL_MOVERS=[]
 def _o42_state(_skeys,_allrecs):
     """ORDER 42 — the availability state built from THE OWNER'S ANNOTATION SHEET, which is the only
     injury truth under this dial. It returns the SAME state SHAPE the register consumer produced, so
@@ -5812,7 +5810,7 @@ def _o42_state(_skeys,_allrecs):
     owner annotated IS injured whether or not the register ever listed him.
 
     L IS RE-BASED to the owner's 18-game availability season, L18 = 1 - min(g/18, 1), against the
-    register consumer's L22 = 1 - min(g/22, 1) at lti_register.py:115. g STAYS THE STORE'S 2026
+    retired register consumer's L22 = 1 - min(g/22, 1) (lti_register.py, deleted 2026-10-14). g STAYS THE STORE'S 2026
     GAMES: the register's own header rule (spec 3.3 — "the store stays the single source of
     production") is not overturned here, and the sheet agrees with the store on every annotated row,
     which is asserted below rather than assumed.
@@ -5885,7 +5883,7 @@ def _o42_state(_skeys,_allrecs):
                              'The store is the single source of production and the sheet is the single '
                              'source of injury; a disagreement between them is an input defect, not '
                              'something to average away.'%(_k,_gs,_g))
-        _L22=1.0-min(float(_g)/float(LTIREG.G_FULL),1.0)      # what the register consumer would have said
+        _L22=1.0-min(float(_g)/float(cp.SEASON),1.0)          # what the retired register consumer would have said (its G_FULL was asserted == cp.SEASON == 22)
         _L18=1.0-min(float(_g)/float(_O42_AVAIL_BASE),1.0)    # THE RE-BASE
         # D6-F8, CORRECTED AFTER IT FIRED ON THE FIRST CANDIDATE BUILD. The fire is recorded in
         # PACKET_D6.md and in PREREG_D6.md's amendment, and the diagnosis is that the FALSIFIER was
@@ -5909,38 +5907,24 @@ if _AVAIL_ON:
     _sbk={}
     for _p in MA.data: _sbk.setdefault(_p.get('key'),[]).append(_p)
     _skeys={_k:_v[0] for _k,_v in _sbk.items() if len(_v)==1}
-    # ORDER 42: THE SHEET IS THE ONLY INJURY TRUTH. build_state() — the one live read of
-    # LTI_REGISTER.md — is NOT called, so the register has no live consumption on this lane.
+    # ORDER 42: THE SHEET IS THE ONLY INJURY TRUTH. (lti_register.build_state — the register's last
+    # live consumer — was the RL_O42 off-path, deleted with the dial 2026-10-14. The register itself,
+    # LTI_REGISTER.md + lti_register.py, was deleted the same day on the owner's word.)
     _st=_o42_state(_skeys,MA.data)
-    # (The LTIREG.build_state(_skeys, report=_AVAIL_REPORT) read — the register's last live consumer — was the
-    # RL_O42 off-path; deleted with the dial 2026-10-14.)
-    # UNTOUCHED, UNCONDITIONAL, AND STILL PASSING ON EVERY BOARD — dial on and dial off (PREREG_D6.md
-    # §3). The engine keeps exactly ONE season constant and it is still 22. ORDER 42's re-base to 18 is
-    # an AVAILABILITY base living in its own constant (_O42_AVAIL_BASE); nothing is asserted equal to
-    # it, G_FULL is not moved, and cp.SEASON is not moved.
-    assert LTIREG.G_FULL==cp.SEASON, "LTI G_FULL %s != engine season-games cp.SEASON %s (one constant, spec §3.1)"%(LTIREG.G_FULL,cp.SEASON)
+    # UNTOUCHED, UNCONDITIONAL, AND STILL PASSING ON EVERY BOARD (PREREG_D6.md §3). The engine keeps
+    # exactly ONE season constant and it is still 22. Until 2026-10-14 this read
+    # `lti_register.G_FULL == cp.SEASON`; with the register gone the constant is asserted directly.
+    # ORDER 42's re-base to 18 is an AVAILABILITY base living in its own constant (_O42_AVAIL_BASE);
+    # nothing is asserted equal to it, and cp.SEASON is not moved.
+    assert cp.SEASON==22, "engine season-games cp.SEASON %s != 22 (one constant, spec §3.1)"%(cp.SEASON,)
     _reg_recs={_p.get('key'):_p for _p in MA.data if _p.get('key') in _st}
-    # Part-2 return-haircut surface (derived, net-of-aging; young<27 ships ZERO). HALT if RL_LTI_RETURN is on
-    # but the derived table is absent (guard-family halt-not-warn).
-    _RET_TAB=None
-    if _LTI_RETURN_ON:
-        import json as _rjson
-        if not os.path.exists('lti_return_table.json'):
-            raise SystemExit("Part-2 HALT: RL_LTI_RETURN is ON but lti_return_table.json is absent — run "
-                             "derive_lti_return.py / re-seed the workspace.")
-        _RET_TAB=_rjson.load(open('lti_return_table.json'))
-    def _ret_hc_for(_p,_s):
-        """derived return-season haircut h for a Section-A out-name at his return age; young/speculative -> 0."""
-        if not (_LTI_RETURN_ON and _RET_TAB and _s['return_arm']): return 0.0
-        _a=cp._age_asof(_p,int(_s['ret_year']))                    # age AT the return season
-        if _a is None or _nqual(_p,2026)<PROVEN_N: return 0.0      # speculative exemption (nqual<4) — never touch young/speculative
-        _sf=_RET_TAB['age_surface']; _ks=sorted(int(k) for k in _sf)
-        _ai=int(round(_a)); _ai=min(max(_ai,_ks[0]),_ks[-1])
-        return float(_sf[str(_ai)])
-    # (1) layer-OFF baseline for attribution — _AVAIL_STATE empty, _avail_hc 0, no ret_hc
+    # (The Part-2 return-haircut surface — _RET_TAB / lti_return_table.json / _ret_hc_for — stood here
+    # until 2026-10-14. return_arm is False on every sheet row, so it returned 0.0 for every player;
+    # deleted with the LTI register, and nothing is set in its place.)
+    # (1) layer-OFF baseline for attribution — _AVAIL_STATE empty, _avail_hc 0
     with contextlib.redirect_stdout(io.StringIO()):
         _ev_off={_k:ev(_p,2026) for _k,_p in _reg_recs.items()}
-    # (2) Part 1 ON: season-state override (_AVAIL_STATE) + present haircut _avail_hc=L_p (ret_hc still 0)
+    # (2) Part 1 ON: season-state override (_AVAIL_STATE) + present haircut _avail_hc=L_p
     _AVAIL_STATE.update(_st)
     for _k,_p in _reg_recs.items():
         _s=_st[_k]
@@ -5952,29 +5936,26 @@ if _AVAIL_ON:
                         'L':round(_s['L'],4),'return_arm':_s['return_arm'],'ret_year':_s['ret_year'],'flags':_flags}
     with contextlib.redirect_stdout(io.StringIO()):
         _ev_p1={_k:ev(_p,2026) for _k,_p in _reg_recs.items()}    # Part-1-only value
-    # (3) Part 2 ON: derived return-season haircut on Section-A out-names (own column; young ships 0)
+    # (3) report-only flags on the sheet state. (The Part-2 loop that stood here set _lti_ret_hc /
+    #     _lti_return_hc / _lti_ret_year — always 0 / 0.0 / 2027 under ORDER 42 — and was deleted
+    #     2026-10-14 with the LTI register. Nothing sets those fields now; the board's lti_return_hc
+    #     column reads 0.0 off their absence, so the board schema does not move.)
     for _k,_p in _reg_recs.items():
-        _s=_st[_k]; _h=_ret_hc_for(_p,_s)
-        _p['_lti_ret_hc']=_h; _p['_lti_return_hc']=round(_h,4); _p['_lti_ret_year']=int(_s['ret_year'])
-        if _h>0: _p['_lti_reg']['flags'].append('return_hc')
         if _k in _KPF_LD_FALLBACK: _p['_lti_reg']['flags'].append('kpf_LD_fallback')   # fork-v report
-    # (4) full eval + SEPARABLE attribution: avail_nerf (Part 1) + lti_ret_delta (Part 2) — G-ATTR
+    # (4) full eval + SEPARABLE attribution: avail_nerf (Part 1) + lti_ret_delta (Part 2, 0 since 2026-10-14) — G-ATTR
     with contextlib.redirect_stdout(io.StringIO()):
         for _k,_p in _reg_recs.items():
             _vfull=ev(_p,2026)
             _p['_avail_nerf']=int(_ev_p1[_k]-_ev_off[_k])         # Part-1 delta
-            _p['_lti_ret_delta']=int(_vfull-_ev_p1[_k])           # Part-2 delta (return arm value)
+            _p['_lti_ret_delta']=int(_vfull-_ev_p1[_k])           # Part-2 delta (0: there is no return arm since 2026-10-14)
             _AVAIL_MOVERS.append((_k,_p.get('player'),_ev_off[_k],_ev_p1[_k],_vfull,
                                   _p['_avail_nerf'],_p['_lti_ret_delta'],_p.get('_lti_return_hc',0.0)))
     print("=== ORDER 42 CONSOLIDATION — THE OWNER'S ANNOTATION SHEET IS THE ONLY INJURY TRUTH: %d "
           "annotated rows; avail_hc RE-BASED to 1-min(g/%d,1) (cp.SEASON untouched at %d); "
-          "LTI_REGISTER.md has NO live consumption on this lane; Part-2 return arm RETIRED (no "
-          "sheet analogue for section A/B) ==="%(len(_reg_recs),_O42_AVAIL_BASE,cp.SEASON))
+          "the LTI register is RETIRED (deleted 2026-10-14, owner word) and the Part-2 return arm "
+          "with it ==="%(len(_reg_recs),_O42_AVAIL_BASE,cp.SEASON))
     if _KPF_LD_FALLBACK:
         print("    fork-v KPFFIX LD fell back to count-against (report-only): %s"%sorted(_KPF_LD_FALLBACK))
-    if _AVAIL_REPORT:
-        print("    register store-vs-designation anomalies (REPORT-ONLY, register governs, engine never re-diagnoses):")
-        for _a in _AVAIL_REPORT: print("      - "+_a)
 # ==== ORDER I (RL_O36) — ARM S1. Everything above this line — every load-time reference median, every
 # proven-population denominator, every conservation renormaliser — was derived on the DIAL-OFF BASIS,
 # so the dial-on and dial-off boards share ONE currency and S1 cannot re-denominate the board (ORDER
@@ -6014,10 +5995,10 @@ for _k in _D7_TREATED:
     with contextlib.redirect_stdout(io.StringIO()):
         _v_inj=ev(_p,2026)
         _d_liv=float(o31_D(_p,2026))                    # the sitter fade at his LIVE (injury) depth
-    # ---- THE HEALTHY COUNTERPART: all seven live injury sites off for THIS ROW ONLY ----
+    # ---- THE HEALTHY COUNTERPART: all six live injury sites off for THIS ROW ONLY ----
     _sv_state=_AVAIL_STATE.pop(_k,None)                 # sites 1,2,3
-    _sv_hc=_p.get('_avail_hc',0.0); _sv_ret=_p.get('_lti_ret_hc',0.0)
-    _p['_avail_hc']=0.0; _p['_lti_ret_hc']=0.0          # sites 4,5
+    _sv_hc=_p.get('_avail_hc',0.0)
+    _p['_avail_hc']=0.0                                 # site 4 (site 5, _lti_ret_hc, was deleted 2026-10-14 with the return arm)
     _D7_HEALTHY_KEYS.add(_k)                            # sites 6,7 (via o41_injured)
     try:
         with contextlib.redirect_stdout(io.StringIO()):
@@ -6026,7 +6007,7 @@ for _k in _D7_TREATED:
     finally:
         _D7_HEALTHY_KEYS.discard(_k)
         if _sv_state is not None: _AVAIL_STATE[_k]=_sv_state
-        _p['_avail_hc']=_sv_hc; _p['_lti_ret_hc']=_sv_ret
+        _p['_avail_hc']=_sv_hc
     # D7-F6 — THE MEASUREMENT MUST BE NON-DESTRUCTIVE. If the row does not restore EXACTLY, the
     # probe is corrupting the board and nothing it produced can be trusted. HALT, never warn.
     with contextlib.redirect_stdout(io.StringIO()):

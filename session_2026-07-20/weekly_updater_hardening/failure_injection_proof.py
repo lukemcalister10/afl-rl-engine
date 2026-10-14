@@ -77,10 +77,11 @@ def make_scratch(tag):
     # fv_provenance.py + boot_guard.py ride along: df5066a's rl_export.py imports them at build time
     # (fail-closed provenance preamble), and the applier's own workspace copy re-copies them from this
     # scratch root — so the scratch must carry them at the root and beside rl_export.
-    for f in ('config_manifest.py', 'LTI_REGISTER.md', 'fv_provenance.py', 'boot_guard.py',
+    # (LTI_REGISTER.md left both copy lists 2026-10-14: the LTI register is retired and the file deleted.)
+    for f in ('config_manifest.py', 'fv_provenance.py', 'boot_guard.py',
               'season_state.py', 'release_contract.py'):
         shutil.copyfile(os.path.join(REPO, f), os.path.join(ws, f))
-    for f in ('boot_guard.py', 'config_manifest.py', 'LTI_REGISTER.md', 'fv_provenance.py',
+    for f in ('boot_guard.py', 'config_manifest.py', 'fv_provenance.py',
               'season_state.py', 'release_contract.py'):
         shutil.copyfile(os.path.join(REPO, f), os.path.join(dst, f))
     shutil.copytree(os.path.join(REPO, 'data'), os.path.join(dst, 'data'))

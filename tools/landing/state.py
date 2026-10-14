@@ -212,6 +212,9 @@ def facts(root):
             # holds it, never re-measured — there is no artifact to measure it against.
             ('balanced_board_md5', boot.get('balanced_board_md5'), 'data/expected_boot.json',
              None, None),
+            # HISTORICAL since 2026-10-14 (the LTI register is retired on the owner's word and
+            # LTI_REGISTER.md is deleted): reported as the carrier holds it, never re-measured.
+            ('register', boot.get('register'), 'data/expected_boot.json', None, None),
             ('config', boot.get('config'), 'data/expected_boot.json', 'config_manifest.manifest_hash',
              manifest_hash),
         ],
