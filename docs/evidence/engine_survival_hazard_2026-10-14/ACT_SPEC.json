@@ -1,0 +1,54 @@
+{
+ "schema_version": 1,
+ "act_kind": "lever-landing",
+ "act": "SURVIVAL ON THE +1/+2 LENSES (D-H = H2, capped): exit risk is probability-based survival S_k(age, games) fitted on the store's own history, spread across each age cohort by risk (S_k / S\u0304_k(age)) with the multiplier capped at 1.0 \u2014 nobody rises for survival; 0-game players carry their intake cohort's ever-plays rate. Present values untouched.",
+ "date": "2026-10-14",
+ "owner_word": "Owner, 2026-10-14: \"H2 makes the most sense\" (probability-based survival spread across the cohort by risk/age); on the capped variant, \"the capped option seems to keep the board stable, so that's probably the best option\" \u2014 confirmed [owner word to be quoted verbatim at landing].",
+ "authority": "owner word on this act",
+ "prereg": {
+  "path": "docs/evidence/engine_survival_hazard_2026-10-14/NOTE.md",
+  "board_before": null,
+  "board_after": null,
+  "reference_board": null,
+  "kill_switch": null
+ },
+ "identities": {
+  "moves": [
+   "board"
+  ],
+  "unmoved": [
+   "store",
+   "engine_head",
+   "rl_model",
+   "fv",
+   "config",
+   "register",
+   "as_of_round"
+  ],
+  "_doc": "rl_export.py and the new engine/rl_after/survival_hazard.py + data/survival_hazard.json are not pinned identities; the board moves (vP1/vP2 on 390 rows). engine_head, rl_model, fv unmoved."
+ },
+ "column": {
+  "id": "survival-hazard-capped-14-10",
+  "label": "14/10 survival on the +1/+2 lenses (capped H2): thin-evidence and never-played players priced by their survival odds; no present value moves",
+  "after_round": 24
+ },
+ "lineage": {
+  "doc": "docs/evidence/engine_survival_hazard_2026-10-14/NOTE.md",
+  "owner_ruling_id": [
+   "SURVIVAL_H2_2026-10-14",
+   "SURVIVAL_CAP_2026-10-14"
+  ],
+  "owner_ruling": "Retirement on the future boards is probability-based survival spread across each age cohort by risk; the lift is capped at 1.0.",
+  "authority": "owner word 2026-10-14",
+  "invariants": {
+   "present_v": "0 of 804 present values move",
+   "lens_totals": "+1 635,134 -> 624,163; +2 593,206 -> 573,360 (reconciled vs present -1.0% / -0.2%)"
+  }
+ },
+ "day0_rebase": {
+  "state": "off"
+ },
+ "evidence_dir": "docs/evidence/engine_survival_hazard_2026-10-14",
+ "gates": null,
+ "commit_message": "ENGINE: survival on the +1/+2 lenses \u2014 capped H2 (owner word 2026-10-14); present values untouched"
+}
