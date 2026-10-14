@@ -689,8 +689,8 @@ RES_K_336 = 5.8                                        # = par_build.RES_K = _me
 def _rho_336x(g):
     g=float(max(0.0,g)); return (g*g)/(g*g+g+RES_K_336)
 _RHO_BAR_336=_rho_336x(QUAL_336)
-A3_DBAND =float(os.environ.get('RL_336_DBAND', '0.707707'))  # PINNED: the forward band's OWN charge for
-A3_TARGET=float(os.environ.get('RL_336_TARGET','0.707455'))  # establishment failure on the unresolved subset,
+A3_DBAND =0.707707                                     # PINNED (hard-wired 2026-10-14; was RL_336_DBAND): the forward band's OWN charge for
+A3_TARGET=0.707455                                     # (was RL_336_TARGET) establishment failure on the unresolved subset,
                                                        # and the class risk it must total to. Both measured on
                                                        # n=329 unresolved players, value-weighted, against the
                                                        # conservative certainty-equivalent comparator. The full
@@ -702,13 +702,13 @@ A3_TARGET=float(os.environ.get('RL_336_TARGET','0.707455'))  # establishment fai
                                                        # nothing further, and amendment 2's anchor-side P on
                                                        # unresolved players was a SECOND charge.
 A3_D=min(1.0,A3_TARGET/A3_DBAND) if A3_DBAND>0 else 1.0
-_DFORCE_336=os.environ.get('RL_336_DFORCE')            # DECLARED measurement ablation lever; unset when reported
-_RFORCE_336=os.environ.get('RL_336_RFORCE')            # DECLARED measurement ablation lever (pass-through derivation)
+# RL_336_DFORCE / RL_336_RFORCE — the DECLARED measurement ablation levers (force D, force r(p)) — were never set
+# on a shipping board (unset when reported) and are hard-wired unset 2026-10-14: _dbpk_336 and _resolve_w_336 carry
+# their derived values only. par_build.py's amendment-3 block still describes the ablations they priced.
 def _resolve_w_336(p,Y=None):
     """#336 AMENDMENT 3: r(p) in [0,1], the smooth resolution weight. Same curve, same K, same bar and the
     same AS-OF discipline _resolved_336 carries (Y defaults to BASE_REF so the walk-forward cannot read a
     resolution the calendar has not reached)."""
-    if _RFORCE_336 is not None: return float(_RFORCE_336)
     if Y is None: Y=BASE_REF
     gs=[r['games'] for r in p['scoring'] if r['year']<=Y]
     return min(1.0,_rho_336x(max(gs) if gs else 0)/_RHO_BAR_336)
@@ -716,7 +716,6 @@ def _dbpk_336(g,b):
     """#336 AMENDMENT 3: D — the anchor-side discount left after the reconciliation. Pooled, one number.
     _pest_336 is NOT applied here any more; it is still applied in full to PICKS, via basepk()/BASEPK_REG,
     which pick_raw / base_prod / pick_value keep reading unmoved."""
-    if _DFORCE_336 is not None: return float(_DFORCE_336)
     if _NOP_336: return 1.0    # CHANNEL (a) RL_336_NOP: the residual anchor-side probability discount comes off too
     return A3_D
 def basepk_c_p(p,g,pk):
@@ -874,7 +873,7 @@ def best2(p):
     d=debut(p); s=sorted([r['avg'] for r in p['scoring'] if r['games']>=7 and r['year']>=d],reverse=True)[:2]; return float(np.mean(s)) if s else 0
 REPL={'MID':80.1,'SD':78.3,'RUCK':78.5,'KPD':68.4,'SF':70.9,'KPF':66.8}  # v3.3 derived (rl_replacement_derive.py): Rule-1 pool, kfru 0.5, SD/MID 50/50 @4.16/5.20, KPD@2.0, SF@4.0, KPF@2.0, RUCK@1.64  [BAKE 2026-07-04: KPF REPL-1, 67.8->66.8, owner dial]
 DELTAS={-8:.58,-7:.62,-6:.68,-5:.74,-4:.80,-3:.86,-2:.92,-1:.97,0:1.0,1:.99,2:.98,3:.96,4:.94,5:.91,6:.88,7:.84,8:.79,9:.73,10:.66,11:.58,12:.50,13:.42,14:.34}
-# ==== ORDER B — THE VETERAN FIXES (RL_O33, DEFAULT OFF; #334 c.5312733761 commission, c.5314553763 the
+# ==== ORDER B — THE VETERAN FIXES (RL_O33, DEFAULT OFF, HARD-WIRED OFF 2026-10-14 — the B-1 ladder is OWNER-KILLED (v772) and B-3 is reached through _merged_recover's b6 alone; #334 c.5312733761 commission, c.5314553763 the
 # owner's B rulings, derivation packet docs/evidence/order_b_derivation_2026-08-17/). NOTHING IS GREENLIT:
 # RL_O33 unset => every expression below is inert => the board is BYTE-EXACT to the pre-order tree, and
 # this build LANDS ONLY AFTER the repaired Candidate 32 lands (two packets, two reviews — the ruling's
@@ -905,8 +904,10 @@ DELTAS={-8:.58,-7:.62,-6:.68,-5:.74,-4:.80,-3:.86,-2:.92,-1:.97,0:1.0,1:.99,2:.9
 #    O33_FADE_KNOTS + the four call sites). ──
 # Prereg: docs/evidence/order_b_build_2026-08-17/PREREG_B_BUILD.md + PREREG_B_A1.md (each pushed
 # before the engine edits they govern).
-_O33=os.environ.get('RL_O33','0')!='0'                       # ORDER B: the veteran fixes (default OFF)
-_O33S=(int(os.environ.get('RL_O33_STAGE','2')) if _O33 else 0)
+# RL_O33 / RL_O33_STAGE — HARD-WIRED OFF 2026-10-14 (owner word 2026-10-13, "d3 was adopted and should be reflected").
+# The ladder (B-1) stays OWNER-KILLED: frac() takes DELTAS for every caller, proj_from_peak carries no s* renorm, and
+# the pre-anchor basis fence below has nothing to fence. O33_TALL_LADDER / O33_SSTAR_PIN are kept as the derivation's
+# record (RESULTS_B_*.json; VETLEAN_*.json) and are read by no reachable expression.
 def _o33_ladder(rho0=0.03625,g=0.011125,n=14):                   # B-1 family, the derivation's own construction (b2_fit.ladder_of). R-VETLEAN RE-TUNE (#334 c.5316404479; PREREG_B_A1 + B-A2, every step prereg'd-then-run): the owner's lean-over-not-under preference ruling moves the point INSIDE the fitted CI box (rho0 CI [0,.08], g CI [.010,.045]). The offline replica transfer proved unstable across s* re-derivations, so the final point is the B-A2 MEASURED-BRACKET midpoint t=.55 between the two BUILT endpoints — iter-1 (.050,.0125): calls all dead, 28/29/31 under floor (.902/.868/.907); iter-2 (.025,.010): floor cleared, full-30 call RESURRECTED (1.335*) — giving (.03625,.011125), predicted cells 27:1.04 28:0.99 29:0.96 30:1.19(full 1.26) 31:0.98. Verified on the built board by the W5 harness (the ruled binding check); hard revert-to-iter-1 rule on failure. Frontier + both endpoints published (VETLEAN_*.json).
     f,out=1.0,{}
     for j in range(1,n+1):
@@ -914,11 +915,11 @@ def _o33_ladder(rho0=0.03625,g=0.011125,n=14):                   # B-1 family, t
     return out
 O33_TALL_LADDER=_o33_ladder()                                # f(1..5)=.9637/.9181/.8644/.8042/.7393 (ages 28-32; the fit optimum was .970/.9167/.8433/.7548/.6566 — the re-tune keeps the fitted head and softens the slope inside the CI box); tail = the family continued (W5 measures nothing past 31 — extrapolation-by-rule, bounded by the frac<0.42 projection stop)
 O33_SSTAR_PIN=1.2678                                          # s* PINNED for the B-A2 midpoint ladder (fixed point on the frozen pre-anchor basis: conserves the 55 tall-anchor rows 23-26 to -0.09%, inside the prereg'd 0.2% tolerance; log SSTAR_A3_out.txt. Retired with their ladders: 1.2988 (fit optimum), 1.3451 (iter-1), 1.1909 (iter-2).)
-_o33sstar=os.environ.get('RL_O33_SSTAR')                     # derivation-shell override (the s* fixed point itself); never set on a shipping board
-O33_SSTAR=(float(_o33sstar) if _o33sstar not in (None,'') else O33_SSTAR_PIN)
+O33_SSTAR=O33_SSTAR_PIN                                      # (RL_O33_SSTAR, the derivation-shell override, hard-wired unset 2026-10-14)
 def frac(a,pa,g=None):
     j=max(-8,min(14,int(round(a-pa))))
-    if _O33 and _O33S>=1 and j>0 and g in ('KPD','KPF'): return O33_TALL_LADDER[j]   # B-1: tall post-peak ladder (two-arg callers and dial-off take the shared DELTAS verbatim)
+    # (ORDER B B-1's tall post-peak ladder, `O33_TALL_LADDER[j]` for KPD/KPF past peak, was the RL_O33 stage>=1 branch —
+    # owner-killed, hard-wired off 2026-10-14. `g` stays in the signature for the callers that pass it.)
     return DELTAS[j]
 KAPPA=0.10;SCONV=30.0;LOWBASE=54.0;GAMMA=float(__import__('os').environ.get('RL_GAMMA','1.0'))  # 0.85=SCAR(concave); 1.0=VOR(linear) via RL_GAMMA env (for the SCAR-vs-VOR dual-column build)
 S_SH=3.0
@@ -1111,7 +1112,7 @@ def survival(b,delta,games):
     # tracking *below* his own bar (mult>1) -- an at-par or above-par player gets no extra bust tax.
     bp=BUST_BAND.get(b,0.15); mult=clamp(1.0-delta/20.0,0.4,1.6); fade=max(0.0,1-games/40.0)
     return 1-bp*max(0.0,mult-1.0)*fade
-# ==== ORDER I — S1, THE AGE-REFERENCED BAR INSIDE THE PROJECTION CORE (RL_O36, DEFAULT OFF) =========
+# ==== ORDER I — S1, THE AGE-REFERENCED BAR INSIDE THE PROJECTION CORE (RL_O36 — ADOPTED, HARD-WIRED ON 2026-10-14) =========
 # ISSUE #334 comment 5317842435 / PREREG_I.md, pushed before this edit. ORDER E located and priced the
 # defect (docs/evidence/order_e_diag_2026-08-17/PACKET_E.md §1): the projection loop and the
 # demonstrated-production floor subtract the MATURE replacement bar from a YOUNG player's output, so a
@@ -1129,7 +1130,7 @@ def survival(b,delta,games):
 # cannot move. `age` is the age AT THAT PROJECTION HORIZON, not the age today.
 # LAM_S1 IS NOT HAND-PICKED: it is a grid axis in the ONE joint calibration with the re-mix and relief
 # knobs (PREREG_I.md §3; ORDER E's dose warning binds — full S1 overshoots).
-# RL_O36 unset  =>  o36_bar IS REPL[pos]  =>  the landing candidate 1f176444 reproduces BYTE-EXACT.
+# (RL_O36 unset => o36_bar IS REPL[pos] => the landing candidate 1f176444 reproduced BYTE-EXACT: the deleted off-path.)
 # ORDER P (RL_O37) — THE PEDIGREE-CONDITIONAL CHARGE. The new dial IMPLIES the O36 stack (and so
 # O35/O32/O31) and, where the ORDER K constants are not passed explicitly, defaults them to ORDER K's
 # RULED values — the dose 0.40 below, and kappa 0.20 / gamma_u 8.0 / eta 0.50 in _merged_recover.py.
@@ -1143,11 +1144,7 @@ def survival(b,delta,games):
 # pin do not move. KILL-SWITCH: RL_O37=0 RL_O38A=0 RL_O38B1=0 (all three — _O37 is an OR, so
 # RL_O37=0 alone does nothing). With _O37 live, O36_LAM_S1/O36_KAPPA/O36_GAMMA/O36_ETA take their
 # ORDER K ruled values and _O36/_O35/_O32/_O31 all follow, so the whole KLINE is implied, not set.
-# NOT ADOPTED, OWNER WORD PENDING.
-_O37=(os.environ.get('RL_O37','1')!='0'
-      or os.environ.get('RL_O38A','1')!='0' or os.environ.get('RL_O38B1','1')!='0'
-      or os.environ.get('RL_O38B2','0')!='0')
-_O36=(os.environ.get('RL_O36','0')!='0') or _O37
+# ADOPTED — owner word 2026-10-13 ("d3 was adopted and should be reflected"); hard-wired 2026-10-14. The three reads below are gone; S1 and the ORDER P line are unconditional.
 # THE DOSE. NOT hand-picked and NOT chosen by looking at harry-dean. The joint calibration
 # (docs/evidence/order_i_2026-08-18/o36_calibrate.py) swept it against the counterweight and the
 # relief; the owner's own mature-row law then PINNED the counterweight (0 of 11 knob moves and 4 of 5
@@ -1156,9 +1153,9 @@ _O36=(os.environ.get('RL_O36','0')!='0') or _O37
 # ladder printed (PACKET_I.md §5). 0.25 is carried because it is the point at which the year-1 class
 # cohort lands on G1's stated IDEAL of ~1.08 (mean_0515 = 1.0788, against 1.0421 today). It is
 # CARRIED FOR THE OWNER TO LOOK AT. IT IS NOT A RECOMMENDATION AND NOTHING LANDS ON THIS SEAT'S WORD.
-# ORDER P: under RL_O37 the default is ORDER K's RULED dose 0.40 (register v735), not 0.25. An explicit
-# RL_O36_LAM_S1 still wins, so the ORDER K build line and the ORDER P build line agree number for number.
-O36_LAM_S1=float(os.environ.get('RL_O36_LAM_S1','0.40' if _O37 else '0.25'))
+# ORDER P: the dose is ORDER K's RULED 0.40 (register v735), not 0.25 — hard-wired 2026-10-14 (was RL_O36_LAM_S1,
+# default '0.40' under _O37, so the ORDER K build line and the ORDER P build line agreed number for number).
+O36_LAM_S1=0.40
 O36_TALLPOS=frozenset(('KPD','KPF','RUCK'))
 O36_GATE_DELTA={'TALL':{18:22.334475609756097,19:20.55500752464971,20:16.306362402208926,
                         21:11.588672690048071,22:7.826894964594814,23:6.439783302063788},
@@ -1186,11 +1183,11 @@ O36_GATE_DELTA={'TALL':{18:22.334475609756097,19:20.55500752464971,20:16.3063624
 # read afterwards carry S1 in full.
 _O36_SCOPE={'on':False,'armed':False}
 def o36_bar(pos,age):
-    """THE ONE EXPRESSION. Returns REPL[pos] byte-exact with the dial off, outside the real-player
+    """THE ONE EXPRESSION. Returns REPL[pos] byte-exact outside the real-player
     scope, at a missing/unknown age, or from age 24 up. Never returns a bar ABOVE the flat bar (the
     cap law is structural: DELTA >= 0)."""
     _b=REPL.get(pos)
-    if (_b is None or not _O36 or not _O36_SCOPE['armed'] or not _O36_SCOPE['on']
+    if (_b is None or not _O36_SCOPE['armed'] or not _O36_SCOPE['on']
             or O36_LAM_S1<=0.0 or age is None): return _b
     try: _a=int(age)
     except Exception: return _b
@@ -1217,7 +1214,6 @@ def proj_from_peak(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0,grace=0):
         if k==0: prod+=posval(base-o36_bar(g0,ag))*21/_df        # ORDER I S1 site 1 (dial off => REPL[g0])
         else: prod+=sum(w*posval(base-o36_bar(gg,ag)) for gg,w in fut)*21/_df   # ORDER I S1 site 2 (dial off => REPL[gg])
     if g in('KPF','KPD'): prod*=1.05
-    if _O33 and _O33S>=1 and g in('KPF','KPD'): prod*=O33_SSTAR   # ORDER B B-1: anchor-preserving renorm on the tall PROJECTION stream only (the floor is a current-level object and is NOT renormed — disclosed in the packet)
     runway=clamp((25-a)/6.0,0,1); elite=clamp((lp/PEAK[g]-0.97)/0.30,0,1); prod*=(1+runway*elite*PMAX)
     return prod
 def prod_floor(p,lens='bal'):
@@ -1360,7 +1356,7 @@ for p in players:
 players=[_best[k] for k in _order]
 played=[p for p in players if not p.get('_unplayed')]
 STBL=True
-# ==== ORDER B (RL_O33): THE PRE-ANCHOR BASIS SECTION RUNS ON THE DIAL-OFF BASIS. ======================
+# ==== ORDER B (RL_O33, hard-wired OFF): THE PRE-ANCHOR BASIS SECTION RUNS ON THE DIAL-OFF BASIS. ============
 # The ruled mechanisms reprice VETERANS; they must not re-denominate the board. Two anchors in this
 # module are computed FROM player/pick streams at load: the P99 `ref` (line below) and the v3.4
 # pre-anchor PVC head that BOARD_FACTOR divides by (:~1447). With the dial live during load, the tall
@@ -1368,7 +1364,7 @@ STBL=True
 # docs/evidence/order_b_build_2026-08-17/QUICKLOOK_out.txt pre-fix). So the stage is forced to 0 from
 # here until just after BOARD_FACTOR, then restored: dial-on and dial-off boards share ONE currency, and
 # the numeraire s (pick_redenomination.json) is untouched either way. Dial off => nothing happens here.
-if _O33 and _O33S>=1: _o33_bas=_O33S; _O33S=0
+# (The stage fence `_o33_bas=_O33S; _O33S=0` ... restore after BOARD_FACTOR — was RL_O33's; nothing to fence with the ladder hard-wired off.)
 ref=np.percentile([player_raw(p,'bal') for p in played],99); SCALE=7000/ref**GAMMA   # anchor on stable basis
 STBL=False
 for p in played: p['_pr']=player_raw(p,'bal')
@@ -1577,7 +1573,6 @@ _P1=float(__import__('os').environ.get('RL_PICK1','3000'))
 _NUM=_load_numeraire(_P1)                                    # LOUD-HALTs on a missing block or an incoherent s
 BOARD_FACTOR=(_P1/PVC[1])*_NUM['s']; SCALE=SCALE*BOARD_FACTOR   # SCALE reassigned → val() (late-binding) scales players too
 PVC={k:int(round(v*BOARD_FACTOR)) for k,v in PVC.items()}    # pre-swap basis only; the shipped curve comes from the artifact
-if _O33 and '_o33_bas' in globals(): _O33S=_o33_bas; del _o33_bas   # ORDER B: end of the dial-off BASIS section (see the block above the P99 ref) — the stage returns live for every runtime consumer
 # --- de-plateau (Luke): the monotone pass pools noisy mid-curve bands to a flat run; ramp each interior flat run
 #     linearly through its real endpoints so picks decline smoothly, leaving the genuine DEEP-TAIL floor flat
 #     (runs starting at pick>=46 are the floor and stay flat). Mid-curve only; pure shape, anchor (pick1) untouched.

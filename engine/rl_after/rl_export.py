@@ -283,15 +283,15 @@ g['BASE_REF']=g['AGE_REF']=2026; g['_pe_clear']()  # the ev loop advanced the cl
 # whose day-0 prints have drifted off the ladder does not get written.
 # NON-VACUITY: the check counts the rows it covered and HALTS if that count is zero, so a predicate that
 # quietly stops matching anybody is a failure, not a silent pass.
-# It rides the same declared kill-switch as the wiring — RL_ENTRY29B=0 leaves _entry29b_derived None and
-# this block is skipped, which is what makes the byte-exact kill-switch proof possible.
+# It rides the same switch as the wiring — RL_PVC2=0 leaves _entry29b_derived None and this block is
+# skipped (RL_ENTRY29B, the block's own declared kill-switch, was hard-wired ON 2026-10-14).
 #
 # ORDER 30B RESTATEMENT (PREREG_30B P25). The 29B identity `printed == round(v0)` was the FADE == 1 special
 # case of the law that now holds: `printed == round(v0 x D(c))`, the sitter fade at his continuous depth.
 # It is SUPERSEDED, NOT DROPPED — the same rows, the same tolerance 0, the same halt, one factor wider. The
 # predicate is read from the engine (`_entry30b_price`), so the board and the engine cannot drift apart; when
-# the 30B block is killed (RL_ONEMACH=0) that name is None and the check falls back to the 29B predicate,
-# which is what keeps the kill-switch chain byte-exact in both directions.
+# the 30B block is off (RL_PVC2=0; its own kill-switch RL_ONEMACH was hard-wired ON 2026-10-14) that name is
+# None and the check falls back to the 29B predicate, which keeps the chain byte-exact in both directions.
 _d0_of = _ens.get('_entry30b_price') or _ens.get('_entry29b_derived')
 _d0_law = 'round(derived v0 x sitter fade D(c))' if _ens.get('_entry30b_price') else 'round(derived v0)'
 if _d0_of is not None:

@@ -516,6 +516,16 @@ def price6(p,bb,Y=2026):
     finally: MA.REPL.update(sav)
 def recover(perf,par): return float(np.clip(np.interp(perf/max(1.0,par),RECX,RECY),0,1))
 def synth(pk,avg,pos,nyr=2): return {'player':'s','pos':GRPPOS.get(pos,midpos),'pick':float(pk),'year':2023,'dob':'2005-03-01','type':'ND','scoring':[{'year':2024+i,'games':18,'avg':float(avg)} for i in range(nyr)],'_pos_now':None,'_futpos':None}   # DPP STRIP: single-position synth (gfut falls back to bnow=pos)
+# ===== THE ORDER 30B-43 CHAIN IS ADOPTED AND HARD-WIRED. owner word 2026-10-13 ("d3 was adopted and should be reflected"); hard-wired 2026-10-14. =====
+# Everything below that read a kill-switch — RL_O30B_PREVIEW/NOPOLE/NOISO/RESOLVED, RL_O31, RL_O31_NOPHI,
+# RL_O31F_NOBPOOL, RL_O32/_STAGE, RL_O34, RL_O35, RL_O36 + its five constants, RL_O36_FLOORFIX/TALL, RL_O37,
+# RL_O38A/B1/B2, RL_O39_TMAXPCT/BETASAT, RL_O40_RECW/CAPFORM/CAPPCT/LAMBDA/PGMAT, RL_O41_SDOFF/CREDIT/CREDITFORM/
+# RESET/INJ/R3/RAMP/BREAK/UNWIND, RL_O42, RL_O43, RL_O33_TAPEROFF, RL_ENTRY29B, RL_ONEMACH — now carries its shipped
+# default as a LITERAL, and the dial-off branches are DELETED. None of those names was ever in
+# data/model_config.json, so config_manifest.enforce() already refused them in every fenced build (bake/gate/
+# canonical) and no landed board could carry them; the kill-switch-off paths were also broken (NameError on
+# o41_injured and _O46 with the preview lane off). The narrative below is kept as the record of HOW each rung
+# was priced and ruled; 'DEFAULT OFF' / 'NOTHING IS GREENLIT' in it describe the state at the time of writing.
 # ORDER 30B STEP-3 MEASUREMENT DIALS. BOTH DEFAULT OFF => the shipped expressions are byte-identical.
 # They exist to PRICE the forbidden-set boundary (which objects the 26A deletion reaches) before the owner
 # rules it, exactly as the STEP-2 stop priced its three options. No board ships with either set.
@@ -541,7 +551,6 @@ def synth(pk,avg,pos,nyr=2): return {'player':'s','pos':GRPPOS.get(pos,midpos),'
 # resolved dial re-derived its own production leg it would no longer be the law RESOLVED_ALLROWS.json prices,
 # and the current-board row control could not be scored. NOTHING IS GREENLIT and NOTHING WIRES PERMANENTLY:
 # with both dials unset the committed board 9298203135202a0c707bb0977ba38c31 reproduces BYTE-EXACT.
-_O30B_RESOLVED=os.environ.get('RL_O30B_RESOLVED','0')!='0'  # ORDER 30B-N: the RESOLVED candidate's law
 # ===== ORDER 31 — THE ONE LAW. A THIRD DECLARED DIAL, DEFAULT OFF, THAT REPLACES THE LANES. ===============
 # #334 comment 5310338355. The lanes/bridge/join design (30B-N above) is CONDEMNED by the brief -- "the four
 # row diagnosis killed the thin lane" -- and is REPLACED, not amended. RL_O31=1 implies RL_O30B_PREVIEW=1 by
@@ -568,13 +577,11 @@ _O30B_RESOLVED=os.environ.get('RL_O30B_RESOLVED','0')!='0'  # ORDER 30B-N: the R
 # Dial unset => _O32S == 0 => every branch below is inert and the Candidate 31 board fe6be9d6
 # (RL_O31=1) / the Step-2-law board (RL_O31 unset) reproduce BYTE-EXACT. NOTHING LANDS WITHOUT THE
 # OWNER'S WORD ON THE PACKET.
-_O34=os.environ.get('RL_O34','0')!='0'                      # ORDER C: the age-conditional normalization (#334 c.5315155802; PREREG_C.md pushed first). IMPLIES RL_O32 on the next line and nowhere else.
 # ORDER D — THE PICK-CURVE SITTER FADE (owner word: WIRE OPTION (A), the MEASURED curve; ruling
 # R-PICKFADE's smooth-curve condition; PREREG_D.md + amendment AD1; docs/evidence/order_d_2026-08-17).
 # RL_O35 implies RL_O32 below and nowhere else; NOT stacked on RL_O34 (Order C shelved). Dial-off
 # reproduces the repaired Candidate 32 board 7802ee97 BYTE-EXACT. THE LANDING CANDIDATE on the
 # owner's word.
-_O35=os.environ.get('RL_O35','0')!='0'                      # ORDER D: the pick-curve fade
 # ORDER I — THE COORDINATED BUILD (#334 comment 5317842435; PREREG_I.md pushed before the first engine
 # edit). THREE MEASURED LEVERS ON ONE DIAL: (1) S1, the age-referenced bar inside the projection core
 # (wired in rl_model.o36_bar and its two duplicate loops here); (2) THE COUNTERWEIGHT — the O32 re-mix
@@ -582,14 +589,12 @@ _O35=os.environ.get('RL_O35','0')!='0'                      # ORDER D: the pick-
 # performers and charged to sub-expectation-with-games rows; (3) Order H's smooth TALL/SMALL factor on
 # the wired pick-curve fade. RL_O36 IMPLIES RL_O35 (and so RL_O32/RL_O31) on the next lines and nowhere
 # else. Dial-off reproduces the landing candidate 1f176444 BYTE-EXACT. NOTHING LANDS WITHOUT THE OWNER.
-_O36=MA._O36                                                # ORDER I: read in rl_model (S1 needs it at import)
 # ORDER P — THE PEDIGREE-CONDITIONAL CHARGE (RL_O37; PREREG_P_BUILD.md pushed before this edit;
 # docs/evidence/order_p_2026-08-18 is the measurement and the derivation). It REPLACES the ORDER A
 # stage-6 blind eta charge — a pure function of GAMES, peaking at gamma_d = 14 and blind to how the
 # player actually played — with a charge read against the bar the player's OWN ENTRY PRICE implies.
 # RL_O37 IMPLIES RL_O36 (and so RL_O35/RL_O32/RL_O31) in rl_model, and nowhere else. Dial off =>
 # ORDER K's board f3101883 reproduces BYTE-EXACT. NOTHING LANDS WITHOUT THE OWNER'S WORD.
-_O37=MA._O37                                                # ORDER P: read in rl_model (it sets the O36 dose default)
 # ORDER Q — TWO DEFECT REPAIRS, PRICED AND NOT ADOPTED (RL_O38A / RL_O38B1 / RL_O38B2; PREREG_Q.md
 # pushed before this edit). RL_O38A monotonises the pedigree leg in ENTRY PRICE. RL_O38B1 deletes the
 # age-24 gate. RL_O38B2 ramps the charge out across ages 23-26 with an INVENTED endpoint. Each implies
@@ -597,19 +602,8 @@ _O37=MA._O37                                                # ORDER P: read in r
 # ORDER P's board 374d4e44 reproduces BYTE-EXACT. NOTHING IS ADOPTED AND NOTHING LANDS.
 # BAKE 2026-08-20 (register v780): RL_O38A / RL_O38B1 ARE NOW DEFAULT-ON. RL_O38B2 stays OFF (the
 # candidate never sets it, and B1/B2 are ALTERNATIVES — the both-set halt below is unchanged).
-# KILL-SWITCH: RL_O38A=0 / RL_O38B1=0. NOT ADOPTED, OWNER WORD PENDING.
-_O38A=os.environ.get('RL_O38A','1')!='0'
-_O38B1=os.environ.get('RL_O38B1','1')!='0'
-_O38B2=os.environ.get('RL_O38B2','0')!='0'
-_O38=_O38A or _O38B1 or _O38B2
-if _O38B1 and _O38B2:
-    raise SystemExit('ORDER Q HALT: RL_O38B1 and RL_O38B2 are ALTERNATIVES, not a stack. B1 deletes '
-                     'the age gate outright; B2 ramps the charge out across 23-26. Running both would '
-                     'price a variant nobody asked for and label it one of the two.')
-if _O38 and not _O37:
-    raise SystemExit('ORDER Q HALT: an RL_O38* dial is set but RL_O37 is not live. The ORDER Q repairs '
-                     'act on the ORDER P charge; without it there is nothing to repair.')
-# ORDER R — THE OWNER'S TWO SOFTENINGS, PRICED AND NOT ADOPTED (RL_O39_TMAXPCT / RL_O39_BETASAT;
+# ADOPTED — owner word 2026-10-13 ("d3 was adopted and should be reflected"); hard-wired 2026-10-14: FIX A and FIX B1 are the line; B2 (the invented 23-26 ramp) is not.
+# ORDER R — THE OWNER'S TWO SOFTENINGS, PRICED, THEN ADOPTED (RL_O39_TMAXPCT / RL_O39_BETASAT;
 # PREREG_R.md pushed before this edit; docs/evidence/order_r_2026-08-18). The owner judged the ORDER P
 # charge too harsh on hard underperformers -- "effectively stripped their pedigree" -- and ruled two
 # softenings: (1) "tmax should be 15 or 20 not 5", i.e. set the cap at the 15th or 20th percentile of
@@ -620,20 +614,9 @@ if _O38 and not _O37:
 # BAKE 2026-08-20 (register v780): RL_O39_BETASAT IS NOW DEFAULT '0.105' (inside its published 90%
 # CI, the owner's softening). RL_O39_TMAXPCT stays UNSET — the candidate does not carry it.
 # KILL-SWITCH: RL_O39_BETASAT= (the empty string, read identically to unset).
-# NOT ADOPTED, OWNER WORD PENDING.
-_O39_PCT_RAW=os.environ.get('RL_O39_TMAXPCT','')
-_O39_BSAT_RAW=os.environ.get('RL_O39_BETASAT','0.105')
-_O39=(_O39_PCT_RAW!='' or _O39_BSAT_RAW!='')
-if _O39 and not _O38:
-    raise SystemExit('ORDER R HALT: an RL_O39_* dial is set but no RL_O38* dial is live. The ORDER R '
-                     'softenings reach the ORDER Q charge path only. Setting one without an RL_O38 dial '
-                     'would silently do nothing and print a board labelled as though it had.')
-_O39_PCT=int(_O39_PCT_RAW) if _O39_PCT_RAW!='' else 5
-if _O39_PCT not in (5,15,20):
-    raise SystemExit('ORDER R HALT: RL_O39_TMAXPCT=%r. Only 5 (ORDER P\'s own), 15 and 20 are measured '
-                     'percentiles of the young cohort surplus. Nothing else is priced and nothing else '
-                     'may be invented at the dial.'%_O39_PCT_RAW)
-# ORDER S — FOUR MEASURED REPAIRS, PRICED AND NOT ADOPTED (RL_O40_RECW / RL_O40_CAPFORM +
+# ADOPTED — owner word 2026-10-13 ("d3 was adopted and should be reflected"); hard-wired 2026-10-14: BETA_sat 0.105 (the softening, inside the CI) at ORDER P's own p5 cap.
+_O39_PCT=5                                                  # ORDER R: the TMAX percentile. The '15 or 20' softening was PRICED (O39_S_PQ carries both) and the candidate line never carried it — ORDER P's own p5 stands. Hard-wired 2026-10-14. BETA_sat's softening is the literal at O39_BETA_SAT below.
+# ORDER S — FOUR MEASURED REPAIRS, PRICED, THEN ADOPTED (RL_O40_RECW / RL_O40_CAPFORM +
 # RL_O40_CAPPCT / RL_O40_LAMBDA / RL_O40_PGMAT; PREREG_S.md pushed BEFORE this edit;
 # docs/evidence/order_s_2026-08-19 is the measurement). The owner's review round found four things
 # ORDERS P, Q and R all missed:
@@ -656,32 +639,8 @@ if _O39_PCT not in (5,15,20):
 # KILL-SWITCH: RL_O40_RECW= / RL_O40_PGMAT=0, and CAPFORM+CAPPCT AS A PAIR — RL_O40_CAPFORM=
 # RL_O40_CAPPCT= together, because the two coherence halts below (smooth-without-anchor, and
 # anchor-without-form) are DELIBERATELY NOT WEAKENED and either alone would halt.
-# NOT ADOPTED, OWNER WORD PENDING.
-_O40_RECW_RAW=os.environ.get('RL_O40_RECW','0.47')
-_O40_CAPFORM=os.environ.get('RL_O40_CAPFORM','smooth')
-_O40_CAPPCT_RAW=os.environ.get('RL_O40_CAPPCT','15')
-_O40_LAM_RAW=os.environ.get('RL_O40_LAMBDA','')
-_O40_PGMAT=os.environ.get('RL_O40_PGMAT','1')!='0'
-_O40=(_O40_RECW_RAW!='' or _O40_CAPFORM!='' or _O40_LAM_RAW!='' or _O40_PGMAT)
-if _O40 and not _O38:
-    raise SystemExit('ORDER S HALT: an RL_O40_* dial is set but no RL_O38* dial is live. The ORDER S '
-                     'repairs reach the ORDER Q charge path only. Setting one without an RL_O38 dial '
-                     'would silently do nothing and print a board labelled as though it had.')
-if _O40_CAPFORM not in ('','smooth'):
-    raise SystemExit('ORDER S HALT: RL_O40_CAPFORM=%r. The only priced form is "smooth" — the owner\'s '
-                     'monotone gap-preserving compression T\' = C*(1-exp(-T_raw/C)). Unset is ORDER P\'s '
-                     'hard clip. No other cap form is measured and none may be invented at the dial.'
-                     %_O40_CAPFORM)
-if _O40_CAPFORM=='smooth' and _O40_CAPPCT_RAW=='':
-    raise SystemExit('ORDER S HALT: RL_O40_CAPFORM=smooth with no RL_O40_CAPPCT. The compression\'s ONE '
-                     'constant is its anchor ceiling and it must be named, not defaulted.')
-if _O40_CAPFORM=='' and _O40_CAPPCT_RAW!='':
-    raise SystemExit('ORDER S HALT: RL_O40_CAPPCT is set but RL_O40_CAPFORM is not. The anchor would '
-                     'silently do nothing and print a board labelled as though it had.')
-_O40_CAPPCT=(int(_O40_CAPPCT_RAW) if _O40_CAPPCT_RAW!='' else None)
-if _O40_CAPPCT is not None and _O40_CAPPCT not in (15,20):
-    raise SystemExit('ORDER S HALT: RL_O40_CAPPCT=%r. The owner named the 15th and 20th percentiles of '
-                     'the young cohort\'s own surplus. Nothing else is priced.'%_O40_CAPPCT_RAW)
+# ADOPTED — owner word 2026-10-13 ("d3 was adopted and should be reflected"); hard-wired 2026-10-14: RECW 0.47, CAPFORM smooth at the p15 anchor, PGMAT on; LAMBDA stays ORDER P's inherited level.
+_O40_CAPPCT=15                                              # ORDER S S2: the compression's ONE constant, its anchor ceiling, named at the 15th percentile of the young cohort's own surplus (the owner named 15 and 20). Hard-wired 2026-10-14; O40_CAPC is formed from it below.
 # ORDER 41 — THE ASSEMBLY. THE SD LEVEL OFFSET AND THE ABSENCE PACKAGE (RL_O41_SDOFF /
 # RL_O41_CREDIT / RL_O41_RESET / RL_O41_INJ / RL_O41_R3; PREREG_ASSEMBLY.md pushed BEFORE this edit,
 # docs/evidence/assembly_2026-08-19). EVERY constant these dials introduce is copied from a named
@@ -702,28 +661,11 @@ if _O40_CAPPCT is not None and _O40_CAPPCT not in (15,20):
 # BAKE 2026-08-20 (register v780): RL_O41_SDOFF IS NOW DEFAULT '2.98' and RL_O41_CREDIT DEFAULT-ON.
 # KILL-SWITCH: RL_O41_SDOFF= / RL_O41_CREDIT=0. RL_O41_CREDITFORM is UNCHANGED at 'guarded' — the
 # candidate never sets it, and the raw-without-credit halt below is unchanged.
-# NOT ADOPTED, OWNER WORD PENDING.
-_O41_SDOFF_RAW=os.environ.get('RL_O41_SDOFF','2.98')
-_O41_CREDIT=os.environ.get('RL_O41_CREDIT','1')!='0'
-# RL_O41_CREDITFORM — WHICH F1 READING THE CREDIT CURVE USES. 'guarded' (default) is F1's guarded
-# isotonic curve; 'raw' is F1's RAW per-games cells. F1 PUBLISHED BOTH, their CIs overlap heavily,
-# and the choice between them was a SEAT CALL that was never owner-ruled — so it is a DIAL, not a
-# decision. Unset or 'guarded' => byte-identical to the candidate ca73176e.
-_O41_CREDITFORM=(os.environ.get('RL_O41_CREDITFORM','guarded').strip().lower() or 'guarded')
-if _O41_CREDITFORM not in ('guarded','raw'):
-    raise SystemExit('ORDER 41 HALT: RL_O41_CREDITFORM=%r. F1 published exactly two readings of this '
-                     'curve — "guarded" (the isotonic guard) and "raw" (the per-games cells). Nothing '
-                     'else is measured and nothing else is priced.'%_O41_CREDITFORM)
-if _O41_CREDITFORM=='raw' and not _O41_CREDIT:
-    raise SystemExit('ORDER 41 HALT: RL_O41_CREDITFORM=raw but RL_O41_CREDIT is unset. The form '
-                     'selects between two readings of a curve that is not switched on.')
-# BAKE 2026-08-20 (register v780): RL_O41_RESET / RL_O41_INJ / RL_O41_R3 ARE NOW DEFAULT-ON.
-# KILL-SWITCH: RL_O41_RESET=0 / RL_O41_INJ=0 / RL_O41_R3=0 — but RL_O41_R3=0 must be paired with
-# RL_O41_BREAK=binary, since the break rule may not shape a collector that is switched off (that
-# halt is unchanged). NOT ADOPTED, OWNER WORD PENDING.
-_O41_RESET=os.environ.get('RL_O41_RESET','1')!='0'
-_O41_INJ=os.environ.get('RL_O41_INJ','1')!='0'
-_O41_R3=os.environ.get('RL_O41_R3','1')!='0'
+# ADOPTED — owner word 2026-10-13 ("d3 was adopted and should be reflected"); hard-wired 2026-10-14: SDOFF 2.98, CREDIT on (F1's GUARDED reading), RESET/INJ/R3/RAMP on, BREAK unwind, U0 7.
+_O41_SDOFF=2.98                                             # G: the SD charge bar lowered by T1's MEASURED 2.98 pts/game (point 2.98, 90% CI [1.66, 4.33]). Hard-wired 2026-10-14.
+# I1 reads F1's GUARDED isotonic curve (O41_CREDIT). F1 also published the RAW per-games cells (O41_CREDIT_RAW,
+# kept below as data); choosing between them was the RL_O41_CREDITFORM dial, never owner-ruled and never set on
+# the candidate line — 'guarded' is hard-wired.
 # RL_O41_RAMP — THE IN-SEASON RAMP FOR ABSENCE DEPTH. Owner's ruling: the mid-season effect must not
 # be linear in rounds — "less at the start and more at the end". THE SHAPE IS NOT INVENTED AND IT IS
 # NOT FITTED: it is the engine's OWN, already active and already owner-ruled — the D12 concave
@@ -737,8 +679,7 @@ _O41_R3=os.environ.get('RL_O41_R3','1')!='0'
 # NOT applied to the I1 credit, which is a participation weight.
 # BAKE 2026-08-20 (register v780): RL_O41_RAMP IS NOW DEFAULT-ON. KILL-SWITCH: RL_O41_RAMP=0.
 # The scope decision above is UNCHANGED: the ramp stays on the two DEPTH quantities and is still
-# REFUSED as a participation weight. NOT ADOPTED, OWNER WORD PENDING.
-_O41_RAMP=os.environ.get('RL_O41_RAMP','1')!='0'
+# REFUSED as a participation weight. ADOPTED — owner word 2026-10-13 ("d3 was adopted and should be reflected"); hard-wired 2026-10-14.
 _O41_RAMP_P=1.5                                  # D12's own exponent. Not a new constant.
 # RL_O41_BREAK — HOW A PLAYED SEASON BREAKS THE R3 CURRENT-ABSENCE RUN.
 #   'binary'     (default) any season with games > 0 breaks the run outright.
@@ -756,15 +697,8 @@ _O41_RAMP_P=1.5                                  # D12's own exponent. Not a new
 #                season that fully unwinds (g >= U0) stops the walk.
 # BAKE 2026-08-20 (register v780): RL_O41_BREAK IS NOW DEFAULT 'unwind' — the owner's own shape.
 # KILL-SWITCH: RL_O41_BREAK=binary (the empty string also falls back to 'binary' via the `or`).
-# Must be paired with RL_O41_R3=0 only when killing R3 itself. NOT ADOPTED, OWNER WORD PENDING.
-_O41_BREAK=(os.environ.get('RL_O41_BREAK','unwind').strip().lower() or 'binary')
-if _O41_BREAK not in ('binary','fractional','unwind'):
-    raise SystemExit('ORDER 41 HALT: RL_O41_BREAK=%r. Only "binary" (the wired rule), "fractional" '
-                     '(the F1-credit-graded rule) and "unwind" (the owner\'s linear U0-game unwind) '
-                     'are priced.'%_O41_BREAK)
-if _O41_BREAK!='binary' and not _O41_R3:
-    raise SystemExit('ORDER 41 HALT: RL_O41_BREAK=%s but RL_O41_R3 is unset. The break rule '
-                     'shapes a collector that is not switched on.'%_O41_BREAK)
+# ADOPTED — owner word 2026-10-13 ("d3 was adopted and should be reflected"); hard-wired 2026-10-14: 'unwind' is the line. The 'binary' and 'fractional' walks were the priced
+# alternatives; their code is deleted with the dial (o41_absence_depth carries the unwind walk only).
 # RL_O41_UNWIND — U0, THE NUMBER OF RETURN GAMES THAT FULLY UNWIND AN ACCRUED ABSENCE.
 #
 # THIS CONSTANT IS **RULED, NOT MEASURED**, AND IT IS LABELLED THAT WAY EVERYWHERE IT APPEARS.
@@ -777,18 +711,8 @@ if _O41_BREAK!='binary' and not _O41_R3:
 # U0 IS RULED, NOT MEASURED, AND NO DOCUMENT MAY DESCRIBE U0 AS MEASURED. The D6 break-speed sweep
 # (3/5/7/11) SUPPORTS the owner's word; it does not derive it. KILL-SWITCH: RL_O41_UNWIND=5 (the
 # empty string is NOT a kill-switch here — it is not a number and halts by design).
-# NOT ADOPTED, OWNER WORD PENDING.
-_O41_UNWIND_RAW=os.environ.get('RL_O41_UNWIND','7').strip()
-try:
-    _O41_UNWIND=float(_O41_UNWIND_RAW)
-except Exception:
-    raise SystemExit('ORDER 41 HALT: RL_O41_UNWIND=%r is not a number. U0 is a count of return games.'
-                     %_O41_UNWIND_RAW)
-if not (_O41_UNWIND>0.0):
-    raise SystemExit('ORDER 41 HALT: RL_O41_UNWIND=%r. U0 must be > 0 — it is the number of return '
-                     'games that fully unwind an accrued absence, and a non-positive value would '
-                     'unwind every absence at zero games, i.e. delete the collector silently.'
-                     %_O41_UNWIND_RAW)
+# ADOPTED — owner word 2026-10-13 ("d3 was adopted and should be reflected"); hard-wired 2026-10-14. U0 IS STILL RULED, NOT MEASURED.
+_O41_UNWIND=7.0                                             # U0 — OWNER-RULED, DATA-SUPPORTED (D5-final, 2026-08-19); hard-wired 2026-10-14. A count of return games, > 0 by construction.
 def o41_unwind(g):
     """u(g) — the share of an ACCRUED absence penalty that a return of g games has unwound.
 
@@ -802,15 +726,10 @@ def o41_unwind(g):
     if _g<=0.0: return 0.0
     return min(1.0,_g/_O41_UNWIND)
 def _o41_fe(Y,p=None):
-    """The in-progress season's contribution to an ABSENCE DEPTH clock. Dial off => the linear fE the
-    engine has always used, byte for byte."""
+    """The in-progress season's contribution to an ABSENCE DEPTH clock. Was the RL_O41_RAMP dial; the linear fE the
+    engine used before it is the off-path, deleted."""
     _f=float(_fEy(Y,p) or 0.0)
-    return (_f**_O41_RAMP_P) if (_O41_RAMP and 0.0<_f<1.0) else _f
-_O41_ANY=bool(_O41_SDOFF_RAW!='' or _O41_CREDIT or _O41_RESET or _O41_INJ or _O41_R3 or _O41_RAMP)
-if _O41_ANY and not (_O38A or _O38B1 or _O38B2):
-    raise SystemExit('ORDER 41 HALT: an RL_O41_* dial is set but no RL_O38* dial is live. The assembly '
-                     'sits on the ORDER Q repairs; setting one without an RL_O38 dial would price a '
-                     'stack the owner never ruled.')
+    return (_f**_O41_RAMP_P) if (0.0<_f<1.0) else _f
 # ============ ORDER 42 (RL_O42) — THE INJURY CONSOLIDATION. register v760, owner-ruled: ==============
 # "The old LTI register can be redundant. A - run it."  PREREG_D6.md pushed at bd365f9 BEFORE this edit.
 #
@@ -832,24 +751,22 @@ if _O41_ANY and not (_O38A or _O38B1 or _O38B2):
 # That label is carried here as a STANDING OBLIGATION so no later pass can re-gloss it: it is ruled by
 # the owner AND supported by the data, and it must be quoted with BOTH halves, never one.
 # BAKE 2026-08-20 (register v780): RL_O42 IS NOW DEFAULT-ON. KILL-SWITCH: RL_O42=0, which with
-# RL_O43=0 reproduces ff936186 byte-exact. NOT ADOPTED, OWNER WORD PENDING.
-_O42=os.environ.get('RL_O42','1')!='0'
+# RL_O43=0 reproduced ff936186 byte-exact. ADOPTED — owner word 2026-10-13 ("d3 was adopted and should be reflected"); hard-wired 2026-10-14.
 _O42_AVAIL_BASE=18   # THE OWNER'S AVAILABILITY BASE — how much of a season a player is expected to be
                      # available for. IT IS NOT THE SEASON-LENGTH CONSTANT AND IT IS NEVER ASSERTED
                      # EQUAL TO ONE. cp.SEASON stays 22 and lti_register.G_FULL stays 22, so the
                      # `G_FULL == cp.SEASON` assert in the availability block is UNTOUCHED and still
                      # passes on every board, dial on and dial off. See PREREG_D6.md §3.
-if _O42:
-    if not _AVAIL_ON:
-        raise SystemExit('ORDER 42 HALT: RL_O42=1 re-keys the availability layer onto the owner\'s '
-                         'annotation sheet, but RL_AVAIL=0 disables that layer entirely. The '
-                         'consolidation would be a silent no-op, which is exactly the failure the '
-                         'dial exists to prevent.')
-    if _O42_AVAIL_BASE!=18 or _O42_AVAIL_BASE==cp.SEASON:
-        raise SystemExit('ORDER 42 HALT: the availability base reads %r against cp.SEASON %r. The 18 '
-                         'is the owner\'s AVAILABILITY base and is deliberately NOT the season '
-                         'constant; collapsing the two would silently re-gloss the re-base as a '
-                         'season-length change.'%(_O42_AVAIL_BASE,cp.SEASON))
+if not _AVAIL_ON:
+    raise SystemExit('ORDER 42 HALT: the consolidation re-keys the availability layer onto the owner\'s '
+                     'annotation sheet, but RL_AVAIL=0 disables that layer entirely. The '
+                     'consolidation would be a silent no-op, which is exactly the failure the '
+                     'dial exists to prevent.')
+if _O42_AVAIL_BASE!=18 or _O42_AVAIL_BASE==cp.SEASON:
+    raise SystemExit('ORDER 42 HALT: the availability base reads %r against cp.SEASON %r. The 18 '
+                     'is the owner\'s AVAILABILITY base and is deliberately NOT the season '
+                     'constant; collapsing the two would silently re-gloss the re-base as a '
+                     'season-length change.'%(_O42_AVAIL_BASE,cp.SEASON))
 # ============ ORDER D7 (RL_O43) — THE PARITY GUARD. register v771, owner-ruled, VERBATIM: ============
 # "Being marked as injured shouldn't all of a sudden enrol you to a mechanism that doesn't affect
 #  your peers. In other words, a first year sitter who is injured is punished harder for it. No
@@ -894,38 +811,17 @@ if _O42:
 # guarding past seasons would rewrite history the owner did not rule on.
 # BAKE 2026-08-20 (register v780): RL_O43 — THE PARITY GUARD — IS NOW DEFAULT-ON. It is a per-row
 # max and cannot lower a row. KILL-SWITCH: RL_O43=0, which reproduces daa16812 byte-exact.
-# NOT ADOPTED, OWNER WORD PENDING.
-_O43=os.environ.get('RL_O43','1')!='0'
+# ADOPTED — owner word 2026-10-13 ("d3 was adopted and should be reflected"); hard-wired 2026-10-14.
 _D7_HEALTHY_KEYS=set()   # keys currently being evaluated as their HEALTHY counterpart (o41_injured -> False)
 _D7_FLOOR={}             # key -> the healthy-counterpart value; the floor the guard enforces at Y=2026
 _D7_DFADE={}             # key -> (D_live, D_healthy), the sitter fade either side of the guard
-if _O43 and not (_AVAIL_ON or _O41_INJ):
-    raise SystemExit('ORDER D7 HALT: RL_O43=1 but neither the availability layer (RL_AVAIL) nor the '
-                     'injury stream (RL_O41_INJ) is live, so NO row carries injury treatment and the '
-                     'parity guard would be a silent no-op — printing a board labelled as though an '
-                     'owner ruling had been enforced on it. That is exactly the failure this dial '
-                     'exists to prevent.')
-if _O41_SDOFF_RAW!='':
-    try: _O41_SDOFF=float(_O41_SDOFF_RAW)
-    except ValueError:
-        raise SystemExit('ORDER 41 HALT: RL_O41_SDOFF=%r is not a number.'%_O41_SDOFF_RAW)
-    if not (0.0<=_O41_SDOFF<=6.0):
-        raise SystemExit('ORDER 41 HALT: RL_O41_SDOFF=%.17g is outside the T1 measurement it comes '
-                         'from (point 2.98, 90%% CI [1.66, 4.33]). A value outside [0, 6] is not a '
-                         'reading of that measurement.'%_O41_SDOFF)
-else:
-    _O41_SDOFF=0.0
 # ORDER 41: the pre-cap production leg, stashed at the staleness site and read by the R3 sizing law.
 # It is a REFERENCE quantity for one arithmetic and is never written to a board.
 _O41_PRED8={}
-_O35=_O35 or _O36                                           # ORDER I implies the pick-curve fade
-_O32=(os.environ.get('RL_O32','0')!='0') or _O34 or _O35    # ORDER A: CANDIDATE 32 (ORDERS C/D build ON it)
-_O32S=(int(os.environ.get('RL_O32_STAGE','6')) if _O32 else 0)
-_O31=(os.environ.get('RL_O31','0')!='0') or _O32            # ORDER 31: THE ONE LAW (O32 implies it)
-_O31_NOPHI=os.environ.get('RL_O31_NOPHI','0')!='0'           # declared, default off: price the 30B-C conditioning by removing it
-_O30B_PREVIEW=(os.environ.get('RL_O30B_PREVIEW','0')!='0') or _O30B_RESOLVED or _O31  # ORDER 30B-P: the whole preview lane
-_O30B_NOPOLE=(os.environ.get('RL_O30B_NOPOLE','0')!='0') or _O30B_PREVIEW   # delete the PEDIGREE POLE leg from raw_ev
-_O30B_NOISO=(os.environ.get('RL_O30B_NOISO','0')!='0') or _O30B_PREVIEW     # delete the par-built ISO pick-tax from the production path
+# THE IMPLICATION LADDER THAT STOOD HERE — RL_O37 => O36 => O35 => O32 at stage 6 => O31 => O30B_PREVIEW =>
+# NOPOLE + NOISO — is hard-wired (owner word 2026-10-13 ("d3 was adopted and should be reflected"); hard-wired 2026-10-14). Every rung is
+# a literal now: stage 6 of CANDIDATE 32 (all six mechanisms), the ONE LAW at ev(), the preview lane with the
+# pedigree pole and the par-built ISO pick-tax DELETED, ORDER C (RL_O34, shelved) OFF, RL_O31_NOPHI OFF.
 # THE EFFECTIVE POSITIONAL BARS — the ONE object the preview re-references the two retained par denominators
 # to. It is `MA.REPL[pos] - rd.REPL_DROP[pos]`, i.e. the position bar the pricing core ITSELF subtracts inside
 # price6 (`MA.REPL[g]=sav[g]-rd.REPL_DROP.get(g,0)`), and it is the identical object ORDER 30B-M's harness
@@ -933,53 +829,20 @@ _O30B_NOISO=(os.environ.get('RL_O30B_NOISO','0')!='0') or _O30B_PREVIEW     # de
 # (KPD 65.4 · KPF 63.8 · MID 77.1 · RUCK 75.5 · SD 75.3 · SF 67.9 — o30bm_measure.py:70-73).
 # It is POSITION-LEVEL and PICK-BLIND by construction: there is no pick axis in it at all.
 _O30BP_BARS={_g:(MA.REPL[_g]-rd.REPL_DROP.get(_g,0.0)) for _g in MA.REPL}
-# ===== ORDER C (#334 comment 5315155802) — THE AGE-CONDITIONAL NORMALIZATION SURFACE (RL_O34). =========
-# THE DEFECT: ORDER 31's lawful deletion of the pick-prior par tables (aimed at the PICK axis) also
-# deleted their DEVELOPMENT axis, re-referencing the production leg's two RETAINED normalization
-# denominators (the Q evidence weight in _c_w; the decay-gate par inside ev()) to the FLAT bars above —
-# so young output is judged against MATURE standards inside the production core (S1: those bars fail
-# 86-100% of age-18/19 seasons even for players who turn out fine). ORDER C replaces the OBJECT in those
-# two denominators — AND ONLY THOSE TWO — with the measured S1 C3 age x position expected-output surface:
-#     par34(pos, age) = _O30BP_BARS[pos] - DELTA(class, clamp(age, 18, 23))
-# NO PICK AXIS (the forbidden-set ruling stays fully honoured) · CAPPED AT THE FLAT BAR (DELTA >= 0,
-# load-asserted) · FLAT FROM AGE 24 on the integer age Y - birth-year (the SAME basis every O32 age
-# object uses), so every mature row prices BYTE-IDENTICALLY — the core identity control. The stall gate
-# keeps its own repair-built age bars (o32_gate_bar); the v0-language, the instruments and every other
-# reader keep the flat bars; _O30BP_BARS itself is NEVER edited. DELTA is the C3 class-pooled table the
-# repair already carries (O32_GATE_DELTA lineage; CONSTRUCTIONS_S1.json::C3), duplicated here because
-# the two denominator sites are read before the O32 block exists. With RL_O34 unset _o34_par returns the
-# flat bar on every call and the repaired Candidate 32 board 7802ee97 reproduces BYTE-EXACT.
-_O34_TALL=frozenset(('KPD','KPF','RUCK'))
-_O34_DELTA={'TALL':{18:22.334475609756097,19:20.55500752464971,20:16.306362402208926,
-                    21:11.588672690048071,22:7.826894964594814,23:6.439783302063788},
-            'SMALL':{18:20.080511089352214,19:20.080511089352214,20:14.306977484301457,
-                     21:11.265167414136857,22:6.761247284555768,23:4.584052475875439}}
-def _o34_par(pos,p,Y):
-    """ORDER C: the two retained normalization denominators' object. The flat effective positional bar
-    unless RL_O34 is set AND the row is at a developing age (Y - birth year < 24); a row with no birth
-    year keeps the flat bar (count disclosed on the packet). Never above the flat bar, by cap law."""
-    _b=_O30BP_BARS[pos]
-    if not _O34: return _b
-    _by=p.get('_by')
-    if not _by: return _b
-    _a=Y-int(_by)
-    if _a>=24: return _b                                    # FLAT FROM 24 — mature-row byte-identity
-    return _b-_O34_DELTA['TALL' if pos in _O34_TALL else 'SMALL'][max(18,min(23,int(_a)))]
-if _O34:
-    # BUILD-FAILING STRUCTURAL ASSERTS (cap law + flat-from-24), evaluated on a synthetic age ladder.
-    for _pos34 in _O30BP_BARS:
-        for _a34 in range(16,30):
-            _pb34=_o34_par(_pos34,{'_by':2026-_a34},2026)
-            if not (_pb34<=_O30BP_BARS[_pos34]+1e-12) or (_a34>=24 and _pb34!=_O30BP_BARS[_pos34]):
-                raise SystemExit('ORDER C HALT: par34 cap/flat law broken at %s age %d'%(_pos34,_a34))
-# The preview blend is INSTALLED LATER (it needs day0_v0, which the ORDER 29B block defines ~2300 lines
+# ORDER C (RL_O34, #334 comment 5315155802) — THE AGE-CONDITIONAL NORMALIZATION SURFACE — WAS SHELVED (ORDER D is
+# NOT stacked on it) and never on the candidate line. Hard-wired OFF 2026-10-14: the two retained normalization
+# denominators (the Q evidence weight in _c_w; the decay-gate par inside ev()) read the flat effective bar
+# _O30BP_BARS[pos] on every row. Its surface par34(pos,age) = bar - DELTA(class, clamp(age,18,23)) was the C3
+# class-pooled table O32_GATE_DELTA, which the gate-only object below still carries; the measurement is
+# docs/evidence (REMIX_34.json) and the repaired Candidate 32 board 7802ee97.
+# The ONE-LAW blend is INSTALLED LATER (it needs day0_v0, which the ORDER 29B block defines ~2300 lines
 # below). This is the late-bound hook; it FAILS CLOSED — a preview-on call that reaches a price before the
 # blend is installed halts rather than silently falling through to the superseded machinery.
-_PV={'on':_O30B_PREVIEW,'blend':None}
+_PV={'blend':None}
 def _pv_apply(p,Y,e):
     _f=_PV['blend']
     if _f is None:
-        raise SystemExit('ORDER 30B-P HALT: RL_O30B_PREVIEW is set but the preview blend is not installed '
+        raise SystemExit('ORDER 30B-P HALT: the one-law blend is not installed '
                          'yet — a price was formed before the pedigree object existed. FAIL-CLOSED BY '
                          'DESIGN: falling through here would print a superseded-machinery price under a '
                          'preview label.')
@@ -1080,14 +943,13 @@ def raw_ev(p,Y=2026):
         expgate=_expgate(p,Y)                                                         # EXPOSURE REGIME (regime 4): smoothed (was 1.0 if nqual>=4 else exposure/POLE_RAMP ramp); RL_EVW=0 => base gate
         w=wage*tfade*expgate
     perf=cp._lvl_wt(p,Y)                                  # WEIGHTED games x recency level (RL_RECENCY_DECAY), not flat best-3
-    # ORDER 30B MEASUREMENT DIAL, DECLARED AND DEFAULT-OFF (RL_O30B_NOPOLE=1). This line IS the PEDIGREE
-    # POLE leg — `po` is par_pole(pos,pk,T), a forbidden-set object, added on top of the production price
-    # `pr` and faded by wage x tfade x expgate. The dial deletes the leg (raw_ev == the production price)
-    # so the price consequence of the STEP-3 forbidden-set boundary can be MEASURED before it is ruled.
-    # Default 0 => this expression is byte-identical to the shipped one. It is a MEASUREMENT dial for the
-    # step-3 stop, not a pricing lever, and no board ships with it set.
-    if _O30B_NOPOLE: return pr
-    return pr+w*recover(perf,par)*max(0.0,po-pr)
+    # ORDER 30B — THE PEDIGREE POLE LEG IS DELETED (was the RL_O30B_NOPOLE measurement dial, implied ON by the
+    # adopted chain; hard-wired 2026-10-14). raw_ev == the production price `pr`. The deleted leg was
+    #     pr + w*recover(perf,par)*max(0, po-pr)
+    # — `po` = par_pole(pos,pk,T), a forbidden-set object, added on top of the production price and faded by
+    # wage x tfade x expgate. The pole inputs above are still formed (par_pole's memo is read by the pole table
+    # freeze below); they no longer reach the price.
+    return pr
 # ===== (3) ISOTONIC PICK GUARD: per pos, monotone non-increasing in pick at par; correction factor =====
 # ==== LEG A — iso_corr EVIDENCE-FADE + ISO MONOTONIZATION (RL_ISOFADE; item 132, spec §3 Leg A) ====
 # (a) MONOTONIZE the multiplier: iso_corr = iso/raw is a monotone-non-increasing NUMERATOR over a
@@ -1116,10 +978,13 @@ for pos in ['MID','SF','KPF','SD','KPD','RUCK']:
     ISO[pos]=(np.array(PICKS), fs)
 def iso_corr(pos,pk): xs,fs=ISO[pos]; return float(np.interp(min(pk,70),xs,fs))
 def iso_eff(p,Y=2026):                                        # LEG A (b): per-REAL-player EFFECTIVE iso — the pick tax faded on the v2.10 evidence weight w=E_q
-    if _O30B_NOISO: return 1.0                                # ORDER 30B measurement dial (default off): the ISO table is BUILT FROM par_at synths (:497) and is a PICK-side correction on the production leg — the two properties that put it on the forbidden-set boundary
-    base=iso_corr(MA.gfut(p),MA.effpk(p))
-    if not _ISOFADE or not _isreal(p): return base            # switch off, or a synth (structural scaffold; zero-evidence convention) => raw/monotonized table, unfaded
-    return 1.0+(base-1.0)*_math.exp(-_ev_qual(p,Y)/_ISOFADE_TAU)   # full at w=0 (V0 unchanged by construction) -> 1.0 as evidence saturates (residual-0 member of the pedigree-fade family)
+    # ORDER 30B — THE PAR-BUILT ISO PICK-TAX IS DELETED FROM THE PRODUCTION PATH (was the RL_O30B_NOISO measurement
+    # dial, implied ON by the adopted chain; hard-wired 2026-10-14): the ISO table is BUILT FROM par_at synths
+    # (above) and is a PICK-side correction on the production leg — the two properties that put it on the
+    # forbidden-set boundary. The deleted form: base = iso_corr(gfut, effpk); a synth or RL_ISOFADE=0 returned
+    # base unfaded; a real row returned 1+(base-1)*exp(-_ev_qual(p,Y)/_ISOFADE_TAU) (LEG A (b)). iso_corr and
+    # the ISO table stay for their display/self-test readers.
+    return 1.0
 for _pp in ['MID','SF','KPF','SD','KPD','RUCK']:   # STEP1: FREEZE pole table on ORIGINAL features
     for _pk in range(1,int(cp.KMAX)+1):                            #   (pole = pick-side; untouched until step 2-4)
         for _T in range(1,7): par_pole(_pp,_pk,_T)
@@ -1244,7 +1109,7 @@ def _v7(bb,p,Y):
 # _REAL/_isreal are now DEFINED ABOVE (hoisted to just before the ISO-table build; seg-5 map-ON load-order
 # fix, owner-authorized). Original definition site was HERE; this block documents their keying, retained in place.
 _b6_pre_v7=b6
-# ==== ORDER D8 — THE CEILING-ONLY DIAL (RL_O33_TAPEROFF; DECLARED KILL-SWITCH, DEFAULT ON) =================
+# ==== ORDER D8 — THE CEILING-ONLY DIAL (RL_O33_TAPEROFF; ADOPTED 2026-08-20, HARD-WIRED ON 2026-10-14) =================
 # WHY THIS EXISTS. ORDER B's B-3 (taper retirement) was on OWNER PROBATION (register v772: "happy to look at
 # still boosting the younger players pending a look at the movers list") and v793 sequenced it to land BEFORE
 # the R23 ingestion. Pricing it required running it ALONE — and until this line there was no configuration
@@ -1283,14 +1148,12 @@ _b6_pre_v7=b6
 # total 693,753 / 804 rows BYTE-EXACT — the board the owner looked at, not a rebuild of it. Evidence:
 # docs/evidence/d8_ceiling_2026-08-20/ (the pricing) and docs/evidence/d8_adoption_2026-08-20/ (the act,
 # PREREG_ADOPTION.md committed BEFORE this edit; F1/F2 both measured, neither fired).
-_O33_TAPEROFF=os.environ.get('RL_O33_TAPEROFF','1')!='0'     # ORDER D8: B-3 ALONE (SHIPPED DEFAULT-ON; ADOPTED 2026-08-20)
+# HARD-WIRED 2026-10-14 (owner word 2026-10-13, "d3 was adopted and should be reflected"): the kill-switch read is gone and so is
+# the v7 taper path it guarded (`_v7(bb,p,Y)` on a real row) — the off-path that reproduced a05fe951. rl_model's
+# RL_O33 stage dial, the OTHER route to this expression, is hard-wired OFF in the same act (the ladder stays
+# OWNER-KILLED), so the ceiling fix is reached through this one line and nothing else.
 def b6(p,Y=2026):
-    bb=_b6_pre_v7(p,Y)
-    if (MA._O33 and MA._O33S>=2) or _O33_TAPEROFF: return bb   # ORDER B B-3 TAPER RETIREMENT (stage 2 after the B-A1 re-map; was 3), reachable EITHER through ORDER B's stage dial (unchanged) OR through ORDER D8's ceiling-only dial above: asc == 1, band[5] stays max(q97m, q90) exactly as _b6_core emits it — the derivation's boundary solution in every band; kills all 341 v-inversions by construction; q97m itself untouched (bake-time refit per R-W6). Both dials off => the v7 taper applies byte-exact below.
-    if _isreal(p):
-        try: return _v7(bb,p,Y)
-        except Exception: return bb
-    return bb
+    return _b6_pre_v7(p,Y)   # ORDER B B-3 TAPER RETIREMENT (stage 2 after the B-A1 re-map; was 3): asc == 1, band[5] stays max(q97m, q90) exactly as _b6_core emits it — the derivation's boundary solution in every band; kills all 341 v-inversions by construction; q97m itself untouched (bake-time refit per R-W6).
 cp._lvl_eff=_inferM1; cp._feat=_feat_infer   # M1 level bind (was _lvl_eff_infer) + STEP1 inference feature path (q97m + ISO + POLE above used ORIGINAL features)
 # ==== THE ABSENCE TERM (Option C, owner-ruled 2026-07-14) =========================================
 # A missed season carries a PREDICTIVE, MULTIPLICATIVE penalty on a returning player's PROJECTED LEVEL
@@ -1614,7 +1477,6 @@ def _proj_w4(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0,grace=0):
         if k==0: prod+=Wk*MA.posval(base-MA.o36_bar(g0,_abar))*21/_df
         else: prod+=Wk*sum(w*MA.posval(base-MA.o36_bar(gg,_abar)) for gg,w in fut)*21/_df
     if g in('KPF','KPD'): prod*=1.05
-    if MA._O33 and MA._O33S>=1 and g in('KPF','KPD'): prod*=MA.O33_SSTAR   # ORDER B B-1 renorm — duplicate-loop fence: matches rl_model.proj_from_peak
     runway=MA.clamp((25-ah)/6.0,0,1); elite=MA.clamp((lp/MA.PEAK[g]-0.97)/0.30,0,1); prod*=(1+runway*elite*MA.PMAX)
     return prod
 MA.proj_from_peak=_proj_w4
@@ -3003,9 +2865,7 @@ def _c_w(p,Y,e_full,anchor):
     # it on the forbidden-set boundary. The preview re-references it to the POSITION-LEVEL, PICK-BLIND
     # effective bar (_O30BP_BARS). FORM, CLIP AND CONSTANTS ARE UNCHANGED — only the object in the
     # denominator moves, so the before/after is a pure re-referencing and not a re-tuning.
-    # ORDER C (RL_O34) — SITE 1 of exactly two: the SAME retained denominator, its object now the
-    # age-conditional surface _o34_par (flat-bar-identical with the dial off, and for every age >= 24).
-    par=((_o34_par(MA.gfut(p),p,Y) if _O34 else _O30BP_BARS[MA.gfut(p)]) if _O30B_PREVIEW else float(PR.par_at(MA.gfut(p),min(MA.effpk(p),cp.KMAX),T)))
+    par=_O30BP_BARS[MA.gfut(p)]                           # SITE 1 of exactly two (hard-wired 2026-10-14; was float(PR.par_at(gfut, min(effpk,KMAX), T)) off the preview lane, and ORDER C's _o34_par under the shelved RL_O34)
     G=gt/(gt+_C_G0)
     Q=float(np.clip(sa/par,0.0,_C_QMAX)) if par>0 else 0.0
     gate=min(e_full/anchor,1.0) if e_full>0 else 0.0
@@ -3166,8 +3026,7 @@ def ev(p,Y=2026):
     # exactly the same rule as Q2's site: form/threshold/constants untouched, the pick-conditional par table
     # replaced by the position-level pick-blind effective bar. This `par` has ONE consumer, `pr`, two lines
     # of code below — verified, so the re-reference cannot leak anywhere else in ev().
-    # ORDER C (RL_O34) — SITE 2 of exactly two: the decay-gate denominator, same re-referencing rule.
-    par=((_o34_par(pos,p,Y) if _O34 else _O30BP_BARS[pos]) if _O30B_PREVIEW else PR.par_at(pos,min(MA.effpk(p),cp.KMAX),min(max(el,1),6)))
+    par=_O30BP_BARS[pos]                                      # SITE 2 of exactly two (hard-wired 2026-10-14; was PR.par_at(pos, min(effpk,KMAX), min(max(el,1),6)) off the preview lane, and ORDER C's _o34_par under the shelved RL_O34)
     pr=bestlvl(p,Y)/max(1,par)
     if ns==0:                                                 # SIT-OUT: derived games-ramp treatment (V0-anchored, prorated, scoring-aware, continuous at graduation)
         # ORDER 30B-P, STOP §5 Q4 — REPLACE, NOT WRAP. sitout_ev's ns==0 arm IS an anchor<->production blend
@@ -3175,19 +3034,14 @@ def ev(p,Y=2026):
         # wrapping would count pedigree twice and exceed the measured share by construction. Note this arm
         # is reached ONLY by rows that HAVE evidence and have not yet banked a 6-game season — a row with no
         # games at all is intercepted by _entry30b_price above and keeps the Step-2 fade untouched.
-        if _PV['on']:
-            # ORDER 31: UNROUNDED ON PURPOSE, exactly as ORDER 29B's day-0 branch is. The board applies
-            # int(round(ev/_F)) once at write time; rounding here too would double-round and put the
-            # printed-day-0 identity a point off on 26 of 89 rows. Measured, not guessed.
-            _q=_pv_apply(p,Y,e*_h_cut(p,Y))
-            return _q if _O31 else round(_q)
-        return round(sitout_ev(p,Y,e)*_h_cut(p,Y))            # #334 ITEM H: the ruled cuts, cell-qualified
+        # ORDER 31: UNROUNDED ON PURPOSE, exactly as ORDER 29B's day-0 branch is. The board applies
+        # int(round(ev/_F)) once at write time; rounding here too would double-round and put the
+        # printed-day-0 identity a point off on 26 of 89 rows. Measured, not guessed.
+        return _pv_apply(p,Y,e*_h_cut(p,Y))                    # #334 ITEM H: the ruled cuts, cell-qualified (the REPLACED arm was round(sitout_ev(p,Y,e)*_h_cut(p,Y)))
     e=e*_h_cut(p,Y)                                           # #334 ITEM H on the year-1+ arm (mature nonRD reaches it; sitter cells cannot, by definition)
     # ORDER 30B-P, STOP §5 Q4 — ITEM A's anchor carry is the OTHER superseded anchor<->production blend and
     # is likewise REPLACED, not wrapped. _c_w / C_H / the ruck ceiling are NOT touched by this: they are an
-    # evidence weight and a ceiling, they survive, and their par denominator is re-referenced above.
-    if _A_ON and _isreal(p) and not _PV['on']:                # #334 ITEM A: the anchor leg no longer stops at qualification — it fades (see _a_blend above)
-        e=_a_blend(p,Y,e)
+    # evidence weight and a ceiling, they survive, and their par denominator is re-referenced above. (The replaced call, `e=_a_blend(p,Y,e)` on a real row, is deleted with the lane dial.)
     keyruc = pos in ('KPF','KPD','RUCK'); onset = (4 if keyruc else 3)
     _o41_e_pre=e                                              # ORDER 41: the production leg BEFORE the caps
     if el>=onset and ns<=1:                                   # stalled: D8 graded release at evaluated year
@@ -3210,16 +3064,12 @@ def ev(p,Y=2026):
     # the price depend on EVALUATION ORDER. The engine's own EXPORT<->ENGINE PARITY GATE caught it on
     # exactly one row (shadeau-brain, board 77 vs engine 80). Always writing makes the stash a
     # same-call hand-off rather than a cache, and the gate passes.
-    if _O41_R3:
-        _O41_PRED8[(id(p),int(Y))]=float(_o41_e_pre)
+    _O41_PRED8[(id(p),int(Y))]=float(_o41_e_pre)
     # ORDER 30B-P — THE BLEND SITE. `e` is now the FINISHED PRODUCTION LEG: pole deleted, ISO deleted, and
     # the RETAINED form machinery (ITEM H's ruled cuts, the ruck ceiling, the KPF compression, D8 graded
     # staleness, the decay gate) all applied to it, exactly as the boundary reading "bars/aging/form
     # legitimately retained" says they should be. The pedigree leg is added ONCE, here, at the measured share.
-    if _PV['on']:
-        _q=_pv_apply(p,Y,e)                                   # ORDER 31: unrounded (see the ns==0 arm)
-        return _q if _O31 else round(_q)
-    return round(e)
+    return _pv_apply(p,Y,e)                                   # ORDER 31: unrounded (see the ns==0 arm); the pre-lane path returned round(e)
 # ==== M3 PROPORTIONAL-TENURE/AGE BLEND (BAKE CANDIDATE v2, D7 02/07/2026 — design + backtest:
 # session_2026-07-02/m3_design_proportional_tenure.md; NOT baked until Luke's bake word) ====
 # Mid-season the age/tenure clocks advance a FULL year while the season is only fE elapsed. M3 evaluates
@@ -3251,7 +3101,7 @@ def _ev_m3(p,Y=2026):
     # 470.82 -> round 495.49 = 495 -> /1.0524 = 470.4 -> 470, against the identity's 471. One rounding,
     # at the board, is the convention ORDER 29B's day-0 branch already used ("unrounded ON PURPOSE").
     _m3=w*v+(1.0-w)*vpin
-    return _m3 if _O31 else round(_m3)
+    return _m3
 # ==== PRICING FLOOR (BAKE CANDIDATE v2, D7 02/07/2026 — Luke's ruling, B5 amendment: the crater floor
 # becomes a PRICING FEATURE; prototype engine/prototypes/floor_pricing_clamp.py 66fbf0f6, D6) ====
 # D12 03/07/2026 (Luke ruling R8): floor basis RE-ANCHORED old-PVC draftval -> live V0 start value.
@@ -3281,15 +3131,11 @@ def ev(p,Y=2026):
     # an ANCHOR LOWER BOUND: it is the third object in the supersession list and the ablation that identified
     # ITEM A proved it is the thing a zeroed production leg actually falls to. The ruled blend already carries
     # the pedigree leg at the measured share for every row, so leaving the floor underneath it would put a
-    # SECOND, uncalibrated pedigree object under the same price. In the preview lane it does not run.
-    if _PV['on']: return v
-    _pool=bool(p.get('_pool'))
-    if not _isreal(p) or p.get('_retired') or delisted(p): return v          # out of scope: byte-exact passthrough
-    if not _pool and (p.get('type')!='ND' or p.get('_pickless')): return v   # non-pool: the national-draft scope, unchanged
-    yis=Y-int(p.get('year') or 0)
-    if yis<1: return v
-    fl=floor_frac(yis)*entry_anchor(p)  # D12: RE-ANCHORED draftval -> live V0 (schedule unchanged; Luke R8). #326: a pool entrant's anchor is his division's signed level
-    return v if v>=fl else round(fl)
+    # SECOND, uncalibrated pedigree object under the same price. Under the adopted lane it does not run
+    # (hard-wired 2026-10-14): the floor arithmetic that stood here — ND/pool entrants only, yis>=1,
+    #     fl = floor_frac(yis) x entry_anchor(p);  return v if v>=fl else round(fl)
+    # — was the off-path. FLOOR_YRS / floor_frac / ev_prefloor stay for the harnesses that read them.
+    return v
 # ==== W4 PVC FIT (RL_PVCFIT, DOWNSTREAM) — per the re-stamped PVC Derivation Spec v1 (PR #41) ================
 # PVC(k) = end-of-calendar-year-1 as-of value of the TYPICAL player at pick k, FITTED FROM THE CANDIDATE
 # WALK-FORWARD BOOK anchors (2004-2024 ND pool) — so the curve reads the LIFTED young values and the LIVE ruck
@@ -3460,11 +3306,11 @@ print('#326 ENTRY ANCHOR WIRED: %d pool entrants anchor on their signed division
 # The branch RETURNS BEFORE the legacy chain, so it cannot perturb it. A row with even one game is priced
 # exactly as it was before this act.
 #
-# KILL-SWITCH, DECLARED: RL_ENTRY29B=0 skips this block entirely => board 86c8d5d9 byte-exact. It is a
+# RL_ENTRY29B (the declared kill-switch; =0 skipped this block => board 86c8d5d9) is HARD-WIRED ON 2026-10-14. It was a
 # DECLARED kill-switch, not a manifest dial (config_sha256 UNMOVED), exactly as RL_PVC2/RL_EVW/RL_ISOFADE.
 # It also rides RL_PVC2: with the v2 artifact out of the ev channel there is no day-0 object to consume, so
 # the kill-switch chain stays byte-exact in both directions.
-_ENTRY29B=(os.environ.get('RL_ENTRY29B','1')!='0') and (os.environ.get('RL_PVC2','1')!='0')
+_ENTRY29B=(os.environ.get('RL_PVC2','1')!='0')             # rides RL_PVC2 only (manifest-pinned '1'): with the v2 artifact out of the ev channel there is no day-0 object to consume
 _entry29b_derived=None
 if _ENTRY29B:
     _V0ND=_V2J.get('nd_v0'); _V0POOL=_V2J.get('pool_v0')
@@ -3473,7 +3319,7 @@ if _ENTRY29B:
             'ORDER 29B HALT: pvc_curve_v2.json carries no nd_v0.posv / pool_v0.cells, so the printed day-0 '
             'price has no object to be. This is FAIL-CLOSED BY DESIGN — falling back to the legacy legs '
             'would silently restore the very 0-of-46 gap this act exists to close. Install the artifact '
-            'that carries both day-0 objects, or set RL_ENTRY29B=0 and say so.')
+            'that carries both day-0 objects, or set RL_PVC2=0 and say so.')
     _POSV={_g:{int(_k):float(_v) for _k,_v in _d.items()} for _g,_d in _V0ND['posv'].items()}
     def day0_v0(p):
         """The row's OWN derived day-0 v0, in BOARD currency (the numeraire s is already inside).
@@ -3501,16 +3347,11 @@ if _ENTRY29B:
         for _r in p['scoring']:
             if _r['year']<=Y and _r['games']: return None          # he has evidence as of Y: not a day-0 print
         return day0_v0(p)
-    _ev_pre29b=ev
-    def ev(p,Y=2026):
-        # ORDER 31 — NO LANES. The 29B day-0 interception is the OTHER lane boundary the one law replaces:
-        # under RL_O31 a zero-evidence row is priced by the same expression as everybody else, which
-        # returns v0 x D(c_u) identically (rho(0)=0, pi(0,c)=D(c)). Both interceptions must go, or the
-        # first one still owns the row and "one formula, all g" is false of the code.
-        if _O31: return _ev_pre29b(p,Y)
-        _d0=_entry29b_derived(p,Y)
-        if _d0 is None: return _ev_pre29b(p,Y)
-        return _d0*_PL_F                                            # unrounded ON PURPOSE — see above
+    # ORDER 31 — NO LANES (hard-wired 2026-10-14). The 29B day-0 interception that wrapped ev() here is DELETED:
+    # under the one law a zero-evidence row is priced by the same expression as everybody else, which returns
+    # v0 x D(c_u) identically (rho(0)=0, pi(0,c)=D(c)). Both interceptions had to go, or the first one still
+    # owned the row and "one formula, all g" was false of the code. _entry29b_derived survives as the
+    # POPULATION predicate (rl_export's printed-day-0 assert reads it).
     _D0_NOW=[p for p in MA.data if _entry29b_derived(p,MA.BASE_REF) is not None]
     _D0_ND=[p for p in _D0_NOW if not p.get('_pool')]
     print('ORDER 29B ENTRY WIRING LIVE: %d day-0 entrants at Y=%d (%d national in-curve on nd_v0.posv, %d '
@@ -3518,7 +3359,7 @@ if _ENTRY29B:
           'legacy legs byte-for-byte.'
           %(len(_D0_NOW),MA.BASE_REF,len(_D0_ND),len(_D0_NOW)-len(_D0_ND)))
 else:
-    print('ORDER 29B ENTRY WIRING OFF (RL_ENTRY29B=0 or RL_PVC2=0) — the legacy legs print the day-0 price.')
+    print('ORDER 29B ENTRY WIRING OFF (RL_PVC2=0) — the legacy legs print the day-0 price.')
 # ===== ORDER 30B STEP 2 — THE SITTER FADE, WIRED. SITTING IS EVIDENCE. =====================================
 # THE LAW. A listed player who has not played is not frozen at his entry price: the sitting itself is the
 # evidence, and it is priced. The schedule is the R1 RE-DERIVED listed-conditional row — re-derived against
@@ -3571,11 +3412,10 @@ else:
 # is a DISPLAY field ('losd') in the UI bundle and not a price. It is therefore not reachable from any printed
 # price, before or after this act. It is KEPT IN CODE as the declared fallback — the existing convention for
 # every superseded law in this engine (RL_PVC2/RL_EVW/RL_ISOFADE/RL_ENTRY29B all keep their old leg) — behind
-# this block's declared kill-switch RL_ONEMACH=0, which restores the 29B flat hold exactly.
+# this block's declared kill-switch RL_ONEMACH=0, which restored the 29B flat hold exactly (hard-wired ON 2026-10-14).
 #
-# KILL-SWITCH, DECLARED: RL_ONEMACH=0 makes this whole block inert => the STEP-1 board 84c9ea16 byte-exact.
+# RL_ONEMACH (=0 made this whole block inert => the STEP-1 board 84c9ea16) is HARD-WIRED ON 2026-10-14; the read is gone.
 # It is a DECLARED kill-switch, not a manifest dial (config_sha256 UNMOVED).
-_ONEMACH=(os.environ.get('RL_ONEMACH','1')!='0')
 FADE30B_D={1:1.0,
            2:0.5501935857356868,      # R1 re-derived, listed-conditional (L-B), n=464
            3:0.26278629823610156,     # R1 re-derived, listed-conditional (L-B), n=100
@@ -3601,29 +3441,23 @@ def fade30b_clock(p,Y):
     return max(0.0,float(n)+_fEy(Y,p))
 def fade30b_of(p,Y):
     """The fade multiplier this row carries at Y, or 1.0 if the law does not reach him at this step."""
-    if not _ONEMACH: return 1.0
     if p.get('_pool'): return 1.0                                  # pool fade is derived at STEP 4
     _pk=p.get('pick')
     if p.get('type')!='ND' or not _pk or not (1<=int(_pk)<=MA.ND_CURVE_LAST): return 1.0
     return fade30b_D(fade30b_clock(p,Y))
 _entry30b_price=None
-if _ONEMACH and _ENTRY29B:
+if _ENTRY29B:
     def _entry30b_price(p,Y=2026):
         """The printed sitter price this row MUST carry at as-of year Y, in BOARD currency, or None if he is
         not a sitter at Y. ONE predicate: the ev branch and the rl_export boot-class assert both read it."""
         _d0=_entry29b_derived(p,Y)
         if _d0 is None: return None
         return _d0*fade30b_of(p,Y)
-    _ev_pre30b=ev
-    def ev(p,Y=2026):
-        # ORDER 31 — NO LANES. The one law prices a zero-games row with the SAME expression as every other
-        # row (rho(0)=0 and pi(0,c)=D(c) make it identically v0 x D(c)), so the interception is switched OFF
-        # and the row falls through to the blend site. This is the single line that makes "one formula, all
-        # g" TRUE OF THE CODE and not merely of the algebra.
-        if _O31: return _ev_pre30b(p,Y)
-        _d0=_entry30b_price(p,Y)
-        if _d0 is None: return _ev_pre30b(p,Y)
-        return _d0*_PL_F                                           # unrounded ON PURPOSE — see the 29B note
+    # ORDER 31 — NO LANES (hard-wired 2026-10-14). The sitter interception that wrapped ev() here is DELETED: the
+    # one law prices a zero-games row with the SAME expression as every other row (rho(0)=0 and pi(0,c)=D(c)
+    # make it identically v0 x D(c)), so the row falls through to the blend site. This is what makes "one
+    # formula, all g" TRUE OF THE CODE and not merely of the algebra. _entry30b_price survives as the ONE
+    # predicate the rl_export boot-class assert reads.
     _S30=[p for p in MA.data if _entry30b_price(p,MA.BASE_REF) is not None]
     _S30ND=[p for p in _S30 if fade30b_of(p,MA.BASE_REF)<1.0]
     print('ORDER 30B STEP 2 — SITTER FADE LIVE: D(2)=%.4f D(3)=%.4f D(4+)=%.4f FLAT (as measured; the '
@@ -3631,9 +3465,7 @@ if _ONEMACH and _ENTRY29B:
           '%d sitters at Y=%d, %d of them carry a discount (%d at D=1: entry-year or pool). los_decay is '
           'off the live path.'
           %(FADE30B_D[2],FADE30B_D[3],FADE30B_D[4],len(_S30),MA.BASE_REF,len(_S30ND),len(_S30)-len(_S30ND)))
-elif not _ONEMACH:
-    print('ORDER 30B ONE-MACHINERY OFF (RL_ONEMACH=0) — the 29B flat hold prints the sitter price.')
-# ===== ORDER 30B-P — THE STEP-3 PREVIEW BLEND. INSTALLED HERE, BEHIND RL_O30B_PREVIEW (DEFAULT OFF). ======
+# ===== ORDER 30B-P — THE STEP-3 PREVIEW BLEND. INSTALLED HERE (RL_O30B_PREVIEW HARD-WIRED ON 2026-10-14). ======
 # #334 comment 5299562714. NOTHING IS GREENLIT: the Step-3 forbidden-set boundary word is still OPEN, and
 # this lane exists so the owner can rule it from a board. Dial unset => every branch above is False and the
 # committed Step-2 board 9298203135202a0c707bb0977ba38c31 reproduces BYTE-EXACT.
@@ -3786,2350 +3618,2141 @@ def _sheet_pins():
         raise SystemExit('SHEET-PIN HALT: %s carries a non-numeric row/injured count (%s).'%(_pp,_pe2))
     _SHEET_PIN_CACHE[0]=_po
     return _po
-if _O30B_PREVIEW:
-    if not (_ENTRY29B and _ONEMACH):
-        raise SystemExit('ORDER 30B-P HALT: the preview needs the ORDER 29B day-0 object (the pedigree leg) '
-                         'and the ORDER 30B Step-2 fade (the zero-evidence lane). One of them is switched '
-                         'off, so the preview has nothing coherent to be. FAIL-CLOSED BY DESIGN.')
-    def pv_pedigree(p):
-        """The pedigree leg in ENGINE currency: the STEP-1 positional v0 (pool: the signed pool cell) x _PL_F."""
-        _v=day0_v0(p)
-        if _v is None:
-            raise SystemExit('ORDER 30B-P HALT: %r carries evidence but has no day-0 v0 object, so the '
-                             'preview cannot form its pedigree leg. Measured before wiring: 0 of the 715 '
-                             'priced rows are in this state. FAIL-CLOSED rather than defaulted.'
-                             %(p.get('key'),))
-        return float(_v)*_PL_F
-    def _pv_blend(p,Y,e):
-        """price = (1-sigma(g)) x production + sigma(g) x pedigree. ONE pedigree leg, at the measured share."""
-        _s=sigma30bp(pv_games(p,Y))
-        return (1.0-_s)*float(e)+_s*pv_pedigree(p)
-    _PV['blend']=_pv_blend
-    # ---- ORDER 30B-N — THE RESOLVED LAW AT THE ev() LEVEL. -------------------------------------------
-    # It prices AS-OF YEARS, which the derived board could not: g is games-as-of-Y on the raw clock, D and
-    # c are the LIVE Step-2 fade and its continuous clock at Y, and P is the finished production leg at Y.
-    # THE ARITHMETIC IS TRANSCRIBED, NOT REDERIVED, from o30br_resolved.py::book() / o30br_allrows.py.
-    #
-    #   sitter  zero games at Y   v0 x D(c)          <- NOT REACHED HERE. _entry30b_price intercepts the row
-    #                                                   in the ev() wrapper above; the Step-2 wiring is
-    #                                                   untouched and day-0 prints stay byte-identical. The
-    #                                                   g<=0 case below is a CONTINUITY GUARD, not a branch:
-    #                                                   b_lift(0)=1 exactly, so it returns the same v0 x D.
-    #   thin    0 < g <= 10       v0 x D(c) x b_lift(g,c)      production does NOT enter (the T3 conflict)
-    #   bridge  10 < g < 16       thin10 + t x (d16 - thin10)  a DECLARED bridge, not a measurement
-    #   deep    g >= 16           P + beta(g) x v0             the additive reading (T1)
-    #
-    # CURRENCY. Every lane is homogeneous of degree 1 in currency, so the law commutes with the BOARD ->
-    # ENGINE conversion: P arrives in engine currency and pv_pedigree() already applies _PL_F, exactly as
-    # the preview blend does. No second numeraire is introduced and none is re-pinned. PRE-NUMERAIRE.
-    #
-    # T4 IS OPEN and this lane does NOT choose it: it prices the v0 OBJECT, which is the object
-    # RESOLVED_ALLROWS.json totals (715,228.6). The entry_anchor object is not wired here.
-    #
-    # POOL, DISCLOSED: fade30b_of() returns 1.0 for every pool row because the pool fade is STEP 4's work
-    # and is NOT DERIVED. A pool row therefore carries D=1.0 through the thin and bridge lanes. That is
-    # carried unchanged from the resolution arithmetic, which prints the same caveat on its own rows.
-    BETA30BN_PTS=((2.5,0.2968279384332228),(10.5,0.362259307264279),(25.5,0.22329587551741345),
-                  (53.0,0.15314862603013868),(85.5,0.020068021140596692))
-    BETA30BN_SRC=('ORDER 30B-R resolution/READING.json::beta_curve.points -- sigma_b := beta_v0 x mean(v0) /'
-                  ' mean(R), o30bm_measure.py::band_fit; log-linear in log(games) between band midpoints,'
-                  ' FLAT outside. #334 comment 5310246218')
-    # The cumulative backbone, by DEPTH LANE (2 if the fade clock c < 2.5 else 3). JOIN.json::backbone.
-    BACKBONE30BN={2:((0,0.5684),(2,0.656),(5,0.6936),(10,0.8236)),
-                  3:((0,0.36),(2,0.5933),(5,0.6807),(10,0.693))}
-    def beta30bn(g):
-        """The ADDITIVE reading's pedigree coefficient at g games. Log-linear in log(g) between the five
-        band midpoints, flat outside. Pure function of g -- no player state, trivially auditable.
-        NOTE, disclosed rather than smoothed: this curve is NOT monotone. It RISES from 2.5 to 10.5 games
-        before falling. That is what the band fit measured; it is carried, not patched."""
-        g=max(1e-6,float(g))
-        if g<=BETA30BN_PTS[0][0]: return BETA30BN_PTS[0][1]
-        if g>=BETA30BN_PTS[-1][0]: return BETA30BN_PTS[-1][1]
-        for _i in range(1,len(BETA30BN_PTS)):
-            g0,b0=BETA30BN_PTS[_i-1]; g1,b1=BETA30BN_PTS[_i]
-            if g0<=g<=g1:
-                _t=(_math.log(g)-_math.log(g0))/(_math.log(g1)-_math.log(g0))
-                return _math.exp(_math.log(b0)+_t*(_math.log(b1)-_math.log(b0)))
-        return BETA30BN_PTS[-1][1]
-    def b_lift30bn(g,c):
-        """The cumulative backbone as a LIFT ON THE SITTER PRICE: the lane's curve normalised by its own
-        g=0 value, so lift(0)=1 EXACTLY and the thin lane is continuous into the Step-2 sitter price at the
-        first game. Log-linear in log1p(g); beyond 10 games it extrapolates on the last segment's slope
-        (never reached in the thin lane, which ends at 10, but kept identical to the resolution's own
-        b_lift so the two cannot drift)."""
-        _pts=BACKBONE30BN[2 if c<2.5 else 3]
-        _b0=_pts[0][1]
-        _lift=[(_k,_v/_b0) for _k,_v in _pts]
-        if g<=0: return 1.0
-        _x=_math.log1p(float(g))
-        for _i in range(1,len(_lift)):
-            _k0,_l0=_lift[_i-1]; _k1,_l1=_lift[_i]
-            _x0,_x1=_math.log1p(_k0),_math.log1p(_k1)
-            if _x0<=_x<=_x1:
-                _t=(_x-_x0)/(_x1-_x0)
-                return _math.exp(_math.log(_l0)+_t*(_math.log(_l1)-_math.log(_l0)))
-        (_k0,_l0),(_k1,_l1)=_lift[-2],_lift[-1]
-        _sl=(_math.log(_l1)-_math.log(_l0))/(_math.log1p(_k1)-_math.log1p(_k0))
-        return _math.exp(_math.log(_l1)+_sl*(_x-_math.log1p(_k1)))
-    def _pv_resolved(p,Y,e):
-        """THE RESOLVED LAW: additive reading, v0 object, joined lanes, on the raw games-as-of-Y clock."""
-        _g=pv_games(p,Y)                   # raw career games as of Y (T2: the recency clock LOST)
-        _V=pv_pedigree(p)                  # the v0 object, ENGINE currency (T4 is OPEN; v0 is priced)
-        _D=fade30b_of(p,Y)                 # the LIVE Step-2 sitter fade at Y (1.0 for pool -- Step 4)
-        _c=fade30b_clock(p,Y)              # its continuous depth clock at Y
-        _P=float(e)                        # the finished production leg at Y
-        if _g<=10.0:                       # thin (and the g<=0 continuity guard: b_lift(0)=1 -> v0 x D)
-            return _V*_D*b_lift30bn(_g,_c)
-        if _g<16.0:                        # the DECLARED bridge
-            _t10=_V*_D*b_lift30bn(10.0,_c)
-            _d16=_P+beta30bn(16.0)*_V
-            _t=(_math.log1p(_g)-_math.log1p(10.0))/(_math.log1p(16.0)-_math.log1p(10.0))
-            return _t10+_t*(_d16-_t10)
-        return _P+beta30bn(_g)*_V          # deep: the additive reading
-    # ================= ORDER 31 — THE ONE LAW, AT ev(). ==============================================
-    # Constants are TRANSCRIBED from docs/evidence/candidate_31/LAW31.json, produced by o31_fit.py from
-    # the committed artifacts only (READING.json's beta curve, BLEND30B.json's R1 backbone and D(2),
-    # CIRCULARITY.json's stall-cohort coefficients). Nothing here is fitted at build time.
-    # ORDER 31-F (#334 comment 5310576233) RE-FITS EVERY ONE OF THESE ON THE HEAD-FIXED RULER.
-    # R1 ruler discipline: rho, beta, PhiStall and the sitter fade were all measured against the STEP-1
-    # positional v0 surface. F1's head fix MOVED that surface, so all four were re-measured with their
-    # COMMITTED HARNESSES RUN WHOLE (only the v0 source and the output directory re-pointed) and the fit
-    # core LIFTED BY SOURCE TEXT from o31_fit.py and exec'd verbatim. Constants transcribed from
-    # docs/evidence/candidate_31f/LAW31F.json. Drifts are published in SHIPPING_PACKET_31.md.
-    #   D(2)   0.5501936 -> 0.5582775     beta(2.5)  0.2968279 -> 0.2878886
-    #   D(3)   0.2627863 -> 0.2747858     beta(10.5) 0.3622593 -> 0.3561228 (monotone-projected as before)
-    #   D(4+)  0.3460005 -> 0.3972709     PhiStall(2.5) 0.5834703 -> 0.5792927
-    #   TAU_RHO 27.019054 -> 29.194254    B_RHO 0.8377678 -> 0.8015424   RMS 0.015333 -> 0.017369
-    O31_TAU_RHO=29.194253560287144; O31_B_RHO=0.8015424473253033
-    # beta under the brief's EXPLICIT "pi decays in g" constraint: the monotone non-increasing projection
-    # of the measured pooled curve. The projection deletes the measured 2.5->10.5 RISE, which 30B-C 4.3
-    # measured paying 57 of 352 stall paths MORE pedigree for stalling. DISCLOSED, not hidden: the raw
-    # measured value at 10.5 is 0.362259307264279 and this law carries 0.2968279384332228 there.
-    # ORDER 31-F: re-measured on the head-fixed ruler. The raw measured value at 10.5 is 0.3561228 and
-    # this law carries 0.2878886 there -- the SAME deletion, disclosed exactly as before.
-    O31_BETA=((2.5,0.2878886216033701),(10.5,0.2878886216033701),(25.5,0.21772876584106796),
-              (53.0,0.14155152291809878),(85.5,0.023849021706229417))
-    # PhiStall = beta_stall / beta_pooled at the five band midpoints (30B-C 3.2), the deep two ZERO-FLOORED
-    # because t=-0.29 / -0.90 with CIs spanning zero, then made non-increasing.
-    # ORDER 31-F: the 30B-C circularity harness re-run on the head-fixed ruler. The seat did NOT rely on
-    # the "the ratio is invariant because both coefficients move together" argument -- it MEASURED it, and
-    # the ratio in fact moved slightly MORE than the coefficients did (max |dPhiStall| 0.0102 against
-    # max |dbeta_stall| 0.0064). PHI_31F.json.
-    O31_PHIST=((2.5,0.5792926948039687),(10.5,0.298245232115451),(25.5,0.298245232115451),
-               (53.0,0.0),(85.5,0.0))
-    O31_PHI_RAMP=2.0                       # 30B-C's OWN continued-staller definition: two stall seasons
-    O31_SRC=('docs/evidence/candidate_31f/LAW31F.json / o31f_fit.py; #334 comment 5310576233 (31-F), '
-             'superseding docs/evidence/candidate_31/LAW31.json; rho calibrated on the 31-F re-derived '
-             'cumulative backbone, pi pinned at D(c) at g=0 and handing over to the measured beta as '
-             'evidence accumulates. EVERY constant re-measured on the HEAD-FIXED v0 surface (R1).')
-    # ---- ORDER 31-F — THE SITTER FADE, RE-DERIVED ON THE HEAD-FIXED RULER ---------------------------
-    # The Step-2 wired row FADE30B_D above is the RULED row, measured on the PRE-head-fix v0s, and it is
-    # LEFT EXACTLY WHERE IT IS so that the dial-off board remains the Step-2 law and the head fix can be
-    # priced in isolation. THE ONE LAW USES ITS OWN, re-measured by o30a2_recut.py run WHOLE on the
-    # head-fixed surface (FADE_31F.json). Same construction, same listing reading (L-B outcome-blind
-    # floor), same owner rulings: the depth-4 > depth-3 SELECTION kink is kept unsmoothed and the deep end
-    # HOLDS FLAT at depth 4. Nothing is extrapolated.
-    O31_FADE_D={1:1.0,
-                2:0.5582775239783688,      # 31-F re-derived, listed-conditional (L-B), n=464
-                3:0.2747857941376827,      # 31-F re-derived, listed-conditional (L-B), n=100
-                4:0.39727085107749216}     # 31-F re-derived, listed-conditional (L-B), n=11 — the kink
-    O31_FADE_FLAT_FROM=4
-    # ORDER 41 / register v750 — THE F4 DEPTH->=3 SWAP IS WITHDRAWN. THE MEASURED WIRED ROW STAYS,
-    # INCLUDING THE DEPTH-3 -> DEPTH-4 RISE. Owner's ruling: a fourth-year sitter STILL BEING LISTED is
-    # itself information — clubs cut the two- and three-year sitters who are not up to it, so surviving
-    # to a contracted fourth year signals potential. That is the engine's own selection-as-evidence
-    # principle applied to this same object. The row is MEASURED (F4's control verified this engine
-    # literal against FADE_31F.json::wired at every depth, to 1e-16) and it stays DOCUMENTED AS THIN
-    # (n = 11 at depth 4). ALSO ON THE RECORD: the swap was never green-lit — it was folded into the
-    # absence package without the owner's word, and the halt raised against it was correct.
-    # RL_O41_RESET now does ONE thing: the graded restore inside o31_cu. It does not touch this row,
-    # so every day-0 sitter price is bit-identical to the frozen reference BY CONSTRUCTION.
-    def o31_fade_D(c):
-        """The 31-F sitter fade at continuous depth c. IDENTICAL RULE to fade30b_D — log-linear between
-        integer depths, 1.0 at/below depth 1, FLAT from depth 4 out — on the re-measured row."""
-        if c<=1.0: return 1.0
-        if c>=O31_FADE_FLAT_FROM: return O31_FADE_D[O31_FADE_FLAT_FROM]
-        _n=int(_math.floor(c)); _f=c-_n
-        _d0=O31_FADE_D[_n]; _d1=O31_FADE_D[_n+1]
-        if _f<=0.0: return _d0
-        return _math.exp((1.0-_f)*_math.log(_d0)+_f*_math.log(_d1))
-    # ---- ORDER 31 STEP 2 — THE POOL FADE, DERIVED BY THE ND LAW'S OWN ESTIMATOR ---------------------
-    # docs/evidence/candidate_31/o31_pool.py execs the 30A-2 harness VERBATIM to its surface builder and
-    # rebuilds the population on the POOL pathways with the SIGNED pool v0 cell as the object. CONTROL:
-    # that transplanted estimator re-derives the RULED ND row at deviation 0.0 (D 0.550194 / 0.262786 /
-    # 0.346000), so the pool row below is produced by the same instrument, not an analogue of it.
-    #   D_pool(1) = 1.0                  n 840
-    #   D_pool(2) = 0.5545657072981915   n 588      (the ND law reads 0.5501936 at the same depth)
-    #   FLAT from depth 2 out.
-    # The depth-3 pool cell measures 2.2635 on n 17 -- it INVERTS. All 17 are eventual players and 45% of
-    # their value is in the unobserved tail: it is survivorship, in the extreme. It is PUBLISHED IN FULL
-    # in POOL31.json and NOT WIRED, by the declared rule "wire the deepest cell that clears the n floor
-    # AND is a fade (D <= 1)". Flagged on the packet as an OWED CONFIRMATION, not presented as ruled.
-    O31_POOL_D={1:1.0,2:0.5545657072981915}
-    O31_POOL_FLAT_FROM=2
-    # ---- ORDER 31-F F2 — beta_pool, DERIVED. The largest borrowing ORDER 31 left, closed. ----------
-    # docs/evidence/candidate_31f/o31f_pool.py transplants the 30B-M PANEL CONSTRUCTION to pool cohorts:
-    # the harness's own panel(nd_only=False) pool states, its own band_fit regression, its own games
-    # bands, its own H=6 horizon and its own player clustering. The ONE thing supplied is the v0 pool
-    # rows never had — MA.pool_v0_of, the accessor that HALTS on an unsigned cell. CONTROL: re-running
-    # band_fit on the ND panel reproduces the 31-F ND beta row at deviation 0.0.
-    #   MEASURED   2.5:0.3731(t 1.33) 10.5:0.3857(t 0.79) 25.5:1.0645(t 1.81) 53:1.7978(t 2.46) 85.5:1.9732(t 2.13)
-    # THE MEASURED CURVE RISES. Under the brief's EXPLICIT "pi decays in g" it takes the SAME monotone
-    # non-increasing projection the ND beta takes, which deletes the rise and leaves the row FLAT at the
-    # shallow-band value. THE DELETION IS LARGE AND IT IS DISCLOSED ON THE PACKET, with the reason: on
-    # pool rows v0 takes only ~54 distinct values (pathway x position), so inside a games band it acts as
-    # a pathway fixed effect rather than as pedigree, and the deep bands' "rise" is that identification
-    # failure, not persistence. The two SHALLOW bands — the ones that price beecken/madden/reidy/scerri —
-    # have t of 1.33 and 0.79: INDISTINGUISHABLE FROM ZERO, and that is on the packet too.
-    O31_BETA_POOL=((2.5,0.3730572000100778),(10.5,0.3730572000100778),(25.5,0.3730572000100778),
-                   (53.0,0.3730572000100778),(85.5,0.3730572000100778))
-    # Phi on pool rows: the brief's condition — "by the same construction if the pool panel supports it".
-    # IT DOES: every pool games band clears band_fit's own n>=40 floor, so this is POOL-MEASURED, not
-    # ND-borrowed. Same construction as the ND row: zero-floor, monotone, ratio to the wired beta_pool,
-    # clip to [0,1], monotone again. The stall coefficients' t are 0.61/0.07/1.31/1.74/0.39 — weak, and
-    # said so on the packet.
-    O31_PHIST_POOL=((2.5,0.21225409196511028),(10.5,0.03648485735530794),(25.5,0.03648485735530794),
-                    (53.0,0.03648485735530794),(85.5,0.036484857355307924))
-    # DECLARED, DEFAULT-OFF: price the beta_pool decision by REMOVING it (pool rows fall back to the ND
-    # beta and the ND PhiStall, i.e. exactly ORDER 31's behaviour), so its cost is a NUMBER, not a
-    # paragraph — the same discipline RL_O31_NOPHI applies to the stall conditioning.
-    _O31F_NOBPOOL=os.environ.get('RL_O31F_NOBPOOL','0')!='0'
-    # ================= ORDER A — CANDIDATE 32 CONSTANTS AND HELPERS (all behind _O32S). ============
-    # Sources: docs/evidence/order_a_2026-08-17/{PREREG_32.md, PHI_32.json, FADE_32.json,
-    # RELIEF_32.json, REMIX_32.json}; #334 comment 5312733761. NOTHING here runs with the dial off.
-    #
-    # M1 — THE AGE-REFERENCED GATE BARS (S1 construction C3). A NEW, GATE-ONLY object:
-    # bar(pos, age) = _O30BP_BARS[pos] - Δ(class, clamp(age,18,23)); flat from age 24 (cap law
-    # structural, Δ >= 0). CONSUMED ONLY inside the stall-run test and the delivered test below.
-    # _O30BP_BARS ITSELF IS NEVER EDITED: the production references and both par denominators keep
-    # the flat bars untouched (S1 §12 coupling warning).
-    O32_TALLPOS=frozenset(('KPD','KPF','RUCK'))
-    O32_GATE_DELTA={'TALL':{18:22.334475609756097,19:20.55500752464971,20:16.306362402208926,
-                            21:11.588672690048071,22:7.826894964594814,23:6.439783302063788},
-                    'SMALL':{18:20.080511089352214,19:20.080511089352214,20:14.306977484301457,
-                             21:11.265167414136857,22:6.761247284555768,23:4.584052475875439}}
-    def o32_gate_bar(pos,age):
-        """The gate's AVG bar for a season played at `age`. Flat at/after 24; the C3 class-pooled
-        development offset below; ages <= 18 take the age-18 column. None if the position has no bar."""
-        _b=_O30BP_BARS.get(pos)
-        if _b is None: return None
-        if _O32S<1 or age is None or age>=24: return _b
-        return _b-O32_GATE_DELTA['TALL' if pos in O32_TALLPOS else 'SMALL'][max(18,min(23,int(age)))]
-    # M6b-2 — THE PHI ROW RE-DERIVED UNDER THE NEW BARS (PHI_32.json; the Δ≡0 control reproduced
-    # CIRCULARITY_31F at deviation 0). beta is UNCHANGED (owner ruling R-W1) — only the stall RATIO
-    # moves. Pool rows keep the 31-F pool row (O31_PHIST_POOL): the pool stall coefficients were not
-    # re-derived under the new bars — an OWED LIMITATION, disclosed on the packet, not hidden here.
-    O32_PHIST=((2.5,0.645228057068287),(10.5,0.14783270364736742),(25.5,0.14783270364736742),
-               (53.0,0.14783270364736742),(85.5,0.0))
-    # M4/M6b-4(b) — SELECTION RELIEF INSIDE D (S3 sketch (a), the capped form). RELIEF_32.json:
-    # λ fit on the S2 spectrum surface under the NEW clock definitions (identifiability band
-    # [0.46, 1.20] published). The cap at full pedigree (D -> at most 1) is STRUCTURAL: the ceiling
-    # stays production-only, relief can never pay above v0.
-    O32_LAMBDA=1.08
-    def o32_sigma_sel(p,Y):
-        """The S3 threshold shape on current + most-recent-season selection: zero below ~5 games,
-        rising 5-10, flat >= 10; the in-progress season prorated by its own fraction."""
-        _s=0.0
-        for _x in (p.get('scoring') or []):
-            if _x['year'] in (Y,Y-1) and _x.get('games'):
-                _f=(_fEy(Y,p) if _x['year']==Y else 1.0)
-                if _f>0.0:
-                    _s=max(_s,max(0.0,min(1.0,(float(_x['games'])-5.0*_f)/(5.0*_f))))
-        return _s
-    # M3 — THE DELIVERED PREDICATE (one predicate: the stall run and the reset both read it).
-    def o32_delivered(p,Y,x):
-        """Season row x is DELIVERED as of Y: games >= 10 x season-fraction AND avg >= the
-        age-referenced gate bar (the flat bar below stage 1)."""
-        _u=(_fEy(Y,p) if x['year']==Y else 1.0)
-        if float(x.get('games') or 0.0)<10.0*_u: return False
-        _bar=o32_gate_bar(MA.gfut(p),(x['year']-p['_by']) if p.get('_by') else None)
-        return _bar is not None and float(x.get('avg') or 0.0)>=_bar
-    # M5/M6c — THE 5-15g RE-MIX (R-REMIX, two-sided acknowledged). TWO knobs, both from W2's own
-    # translation ("raise the production-leg loading ... but then the pedigree leg must come down
-    # in step"):
-    #   rho32(g)     = rho31(g) + κ·m_u(g)·(1-rho31(g)),   m_u = (g/γ_u)·exp(1-g/γ_u)
-    #   pedigree leg x max(0, 1-η·m_d(g)),                 m_d = (g/γ_d)·exp(1-g/γ_d)
-    # m_u(0)=m_d(0)=0 exactly: g=0 sitters untouched and pi(0)=D preserved. Two-sided BY
-    # CONSTRUCTION: weight moves from the pedigree leg to shown production, so poor starters CAN
-    # fall below entry and risers rise. Calibrated on W2's hindsight surface subject to the slope
-    # band, the W band, the HARD no-arb line (max class <= 1.139 — this also CURES the inherited
-    # 2010 class mark of 1.1405) and the η <= 0.75 non-degeneracy guard (REMIX_32.json; the prereg
-    # one-knob family measured INFEASIBLE there — a disclosed prereg deviation). Monotonicity of
-    # rho32 asserted at load.
-    # REMIX_32R.json::chosen (ORDER A REPAIR, PREREG_32R + amendments A1-A3) — re-calibrated on the
-    # CORRECTED (age-relative) hindsight surface with the R1 age credit live. Selection = min
-    # corrected-surface SSE among the ruled-gate-feasible set {slope band, W inside the corrected
-    # hindsight 90% CI [0.312, 0.556], max class <= 1.139 (the 1.14 no-arb line), rho32 monotone,
-    # the ruled at-bar continuity object (integer-step, the ledger's own gate, age credit
-    # included)} — ONE feasible point on the grid; the vantage matrix and band spreads are
-    # DIAGNOSTIC-ONLY and justified no part of this choice (amendment A2).
-    O32_KAPPA=0.24
-    O32_GAMMA=11.0
-    O32_ETA=0.41
-    O32_GAMMA_D=14.0
-    # ===== ORDER I (RL_O36) — LEVER 2: THE COUNTERWEIGHT ==========================================
-    # docs/evidence/order_i_2026-08-18/REMIX_36.json::chosen. With S1 live, "below expectation"
-    # finally means below AGE-expectation, so the re-mix and the relief are RE-DERIVED on the
-    # corrected readings rather than inherited. ONE joint calibration over
-    # (lambda_S1, kappa, gamma_u, eta, gamma_d, lambda_rel) — the dose is a grid axis, never a
-    # hand-picked number (PREREG_I.md §3; ORDER E's dose warning). Selection = minimum
-    # corrected-surface SSE among the points feasible on BOTH the ruled constraints (rho32 monotone,
-    # the ruled at-bar continuity object incl. the age credit, W inside the corrected hindsight 90%
-    # CI [0.3117, 0.5560], slope in [0.885, 1.115], max class <= 1.139) AND the owner's acceptance
-    # gates G1-G5. THE MECHANISM, stated so the direction is not claimed after the fact: kappa moves
-    # weight OFF a row's pedigree leg and ONTO his shown production, and eta charges the pedigree leg
-    # down as games accumulate — so a young row ABOVE his age bar gains twice while a young row BELOW
-    # it loses. That is how the S1 lift is paid to performers and charged to sub-expectation rows.
-    # m_u(0) = m_d(0) = 0 exactly, so day-0 prints cannot move. Dial off => the O32 repair values.
-    # THE MATURE-ROW IDENTITY GATE BINDS HERE, and it is the finding, not an oversight: the re-mix is
-    # keyed on CAREER GAMES, not on age, so ANY move in (kappa, gamma_u, eta, gamma_d) re-prices mature
-    # rows too and breaks the owner's byte-identity law. ORDER C hit the same wall (REMIX_34.json: the
-    # repaired knob point is the ONLY one of 3,960 the mature gate admits). The joint calibration
-    # therefore carries the mature-row identity as a HARD constraint, which pins these four to the
-    # repair values; the unconstrained optimum is REPORTED and NEVER CHOSEN. See PACKET_I.md §4.
-    # The declared overrides below exist so the grid can be swept and the pinning PROVED, not asserted.
-    # ORDER P: with RL_O37 on, the DEFAULTS become ORDER K's RULED setting (register v735) so the new
-    # dial carries the O36-K stack on its own. An explicit RL_O36_* still wins, and the ORDER P build
-    # line passes them explicitly anyway, so the two agree number for number rather than by trust.
-    O36_KAPPA=float(os.environ.get('RL_O36_KAPPA','0.20' if _O37 else '0.24'))
-    O36_GAMMA=float(os.environ.get('RL_O36_GAMMA','8.0' if _O37 else '11.0'))
-    O36_ETA=float(os.environ.get('RL_O36_ETA','0.50' if _O37 else '0.41'))
-    O36_GAMMA_D=float(os.environ.get('RL_O36_GAMMA_D','14.0'))
-    O36_LAMBDA=float(os.environ.get('RL_O36_LAMBDA','1.08'))
-    if _O36:
-        # THE REBIND. Every consumer below reads the O32_* names; with the dial off not one byte of
-        # this block executes, which is what makes 1f176444 reproduce exactly.
-        O32_KAPPA=O36_KAPPA; O32_GAMMA=O36_GAMMA; O32_ETA=O36_ETA
-        O32_GAMMA_D=O36_GAMMA_D; O32_LAMBDA=O36_LAMBDA
-    # ---- ORDER D — THE PICK-CURVE SITTER FADE (RL_O35; owner word: the MEASURED curve) ----------
-    # docs/evidence/order_d_2026-08-17/O35_CURVE.json — the prereg'd logistic fit (sit-penalty
-    # s(p) = γ0 + γ1·ln(pick), SAT vs played-11+, ND 2005-2020) and the redistribution constant
-    # s_norm solved so the pick-weighted mean fade at the ruled depth-2 cell equals the ruled
-    # D(2) exactly (identity residual 0.0). SMOOTH in ln(pick), never a band step (R-PICKFADE's
-    # condition). Effective picks past 64 (the pool index and every pickless convention) evaluate
-    # the curve at 64 — a flat extension, disclosed; the clip bounds everything to [0.5, 2.0].
-    O35_G0=0.1286221202379088
-    O35_G1=0.4535958546743124
-    O35_SNORM=1.7472066252064105
-    O35_CLIP=(0.5,2.0)
-    def o35_kappa_at(_pk):
-        """Order D's POOLED exponent as a pure function of the effective pick. Split out (ORDER K) so
-        the tall/small floor can be re-sited at a small's own PRE-FACTOR value without duplicating the
-        constants — there is one pooled curve in this file and both callers read it."""
-        _pk=max(1.0,min(64.0,float(_pk)))
-        return min(O35_CLIP[1],max(O35_CLIP[0],(O35_G0+O35_G1*_math.log(_pk))/O35_SNORM))
-    def o35_kappa(p):
-        """The fade exponent at the row's effective pick. kappa < 1 softens (early picks — their
-        sitters measured the safest), kappa > 1 deepens (late picks). Pure function of pick."""
-        _pk=MA.effpk(p)
-        return o35_kappa_at(float(_pk if _pk else 64))
-    # ===== ORDER I (RL_O36) — LEVER 3: THE TALL/SMALL SITTER FACTOR ================================
-    # ORDER H (docs/evidence/order_h_posfade_2026-08-17/PACKET_H.md §6 + H_RESULTS.json). The owner's
-    # premise was CONFIRMED on base rates: rucks sit 3.55x more than smalls at the same pick (90% CI
-    # 2.18-5.91), KPP 1.70x. The interaction resolves for TALL POOLED (h_TALL -0.6921, CI -1.239 to
-    # -0.080, 96.8% of draws in the owner's direction) but NOT for RUCK alone (F2 fired at n=53) —
-    # which is why this is a TALL/SMALL factor and never a ruck factor.
-    #   s(pick, group) = g0 + g1*ln(pick) + h_TALL*(group is TALL)
-    #   kappa(pick, group) = clip( s / s_norm', 0.5, 2.0 )
-    # SMOOTH IN ln(pick): one constant added inside a logarithmic curve. No band, no threshold, no
-    # cliff — R-PICKFADE's condition and H's falsifier F7. s_norm' is H's RE-SOLVED redistribution
-    # constant: the mean of D2^kappa over H's fitted sitters still equals the ruled depth-2 fade
-    # 0.5582775 EXACTLY (H residual -1.1e-16). THIS REDISTRIBUTES THE FADE BETWEEN TALLS AND SMALLS;
-    # IT DOES NOT CHANGE THE TOTAL FADE THE BOARD CHARGES. m_TALL = 0.677 is the multiplicative
-    # translation the owner asked for. TWO DECLARED SIDE EFFECTS, reported with numbers on the packet
-    # and NOT discovered later: (i) D's 0.5 clip binds for talls over picks 1-24 and for smalls over
-    # picks 1-9 — a flat spot the clip, not the fit, is setting; (ii) the total is pinned, so LATE
-    # SMALL SITTERS PAY for the talls' relief (a small at pick 64 goes from exponent 1.1533 to 1.4527).
-    O36_TG0=-0.8778138796894399                        # H_RESULTS.json interaction['SAT1|ctl1|TALL-pooled'].coef[3]
-    O36_TG1=0.7100022285392401                         # ...coef[4]  (PACKET_H prints these rounded to -0.8778/+0.7100)
-    O36_HTALL=-0.6921227120657417
-    O36_SNORM=1.4284052406915069
-    O36_D2=0.5582775                                   # the ruled depth-2 fade the identity is pinned to
-    # ===== ORDER K — THE FADE FLOOR FIX (PREREG_K.md §2, owner comment 5321546243) =================
-    # THE DEFECT. Because the fade base D(c_u) is BELOW 1, a HIGHER exponent is a HEAVIER fade. The
-    # pooled fit (slope 0.4536) and the tall/small fit (slope 0.7100) are different lines, so the SMALL
-    # curve does not sit above the pooled curve — IT CROSSES IT, and below pick 19 it sits BELOW, i.e.
-    # LIGHTER. The redistribution identity pins only the MEAN, so nothing stopped that locally. The
-    # symmetric 0.5 clip does not cause it and does not cure it: it clips the small curve part-way back
-    # toward the pooled line and stops, leaving the inversion in place. Measured on Order J's own built
-    # board: SEVEN smalls were made LIGHTER by a talls-only relief, +126 board points, worst
-    # josh-smillie (MID, pick 7, 0 games) +79 — 772 -> 851, out of the range the owner's fade ruling
-    # put him in.
-    # THE FIX — THE FLOOR IS RE-SITED, NOT REMOVED. A SMALL's floor stops being the abstract number 0.5
-    # and becomes HIS OWN PRE-FACTOR EXPONENT: the value Order D's pooled curve would have charged him
-    # if the tall factor did not exist. The owner's acceptance test — "no small's sitting fade may
-    # become lighter as a result of the tall factor" — therefore holds BY CONSTRUCTION, at every pick,
-    # for every row, with no tolerance, no special case and no named row anywhere in the mechanism.
-    # Talls keep the [0.5, 2.0] clip they were ruled with, and h_TALL is UNCHANGED at -0.6921227120657417.
-    # THE COST, DISCLOSED: the identity is a real constraint, so charging smalls at picks 6-18 properly
-    # must be given back, and it is given back by the normaliser rising 1.4284052407 -> 1.4340996146
-    # (+0.40%), re-solved WITH the re-sited floor inside the constraint set on Order H's own 408 fitted
-    # sitters (residual -1.1e-16). Late talls therefore end up with slightly MORE relief, not less
-    # (pick 64: +11.40% -> +11.65%); talls at picks 1-25 are on the 0.5 floor either way and do not move.
-    # REJECTED ALTERNATIVES, with their reasons, so the choice is on the record: (A) "re-solve the
-    # normalisation with the clip inside the constraint set" is a NO-OP — Order H's solve already
-    # carried the clip (oh_posfade.py:383) and re-solving the wired form reproduces 1.4284052406915069
-    # to the last bit; the small curve's problem is its SLOPE, not its LEVEL. (B) "apply the factor
-    # after the clip" discards Order H's fitted small slope and carries a ruled h onto a curve it was
-    # never fitted against — a re-optimisation of a ruled object, which this seat is forbidden to make.
-    O36_SNORM_K=1.4340996145830727                     # re-solved with the re-sited floor inside the constraint set
-    O36_D2_FULL=0.5582775239783688                     # the depth-2 fade at the precision the identity was SOLVED at
-    # ORDER H's own 408 fitted sitters, as (effective pick, is TALL) -> count. Transcribed so the
-    # redistribution-identity assert needs no external file and cannot pass vacuously. Reproduced by
-    # docs/evidence/order_k_2026-08-18/ok_floor_design.py from the same population Order H fitted on
-    # (ND 2005-2020, picks 1-64, teaches_curve, year-1 games == 0, force-majeure rows removed).
-    _O36K_SATCOUNTS={(1,False):2,(3,False):3,(4,False):1,(4,True):1,(5,False):1,(5,True):2,(7,False):1,
-     (8,False):1,(8,True):1,(9,False):2,(10,True):2,(11,True):1,(12,True):2,(13,False):3,(13,True):1,
-     (14,False):2,(14,True):1,(15,False):3,(15,True):3,(16,False):4,(16,True):2,(17,False):4,(17,True):1,
-     (18,False):3,(18,True):1,(19,False):2,(19,True):1,(20,False):2,(20,True):1,(21,False):2,(21,True):1,
-     (22,False):5,(22,True):1,(23,False):6,(24,False):2,(24,True):2,(25,False):2,(25,True):3,(26,False):5,
-     (27,False):2,(27,True):1,(28,False):5,(29,False):4,(29,True):4,(30,False):3,(30,True):2,(31,False):4,
-     (31,True):4,(32,False):4,(32,True):2,(33,False):5,(33,True):4,(34,False):3,(34,True):7,(35,False):4,
-     (35,True):5,(36,False):4,(36,True):4,(37,False):5,(37,True):3,(38,False):7,(38,True):3,(39,False):6,
-     (39,True):1,(40,False):6,(40,True):1,(41,False):6,(41,True):5,(42,False):7,(42,True):4,(43,False):5,
-     (43,True):4,(44,False):6,(44,True):3,(45,False):8,(45,True):1,(46,False):3,(46,True):2,(47,False):8,
-     (47,True):3,(48,False):6,(48,True):3,(49,False):8,(49,True):5,(50,False):6,(50,True):3,(51,False):5,
-     (51,True):3,(52,False):5,(52,True):4,(53,False):4,(53,True):2,(54,False):5,(54,True):4,(55,False):6,
-     (55,True):3,(56,False):6,(56,True):1,(57,False):9,(58,False):5,(58,True):4,(59,False):6,(59,True):2,
-     (60,False):6,(60,True):4,(61,False):8,(61,True):3,(62,False):10,(62,True):2,(63,False):6,(63,True):3,
-     (64,False):5,(64,True):5}
-    # DECLARED, DEFAULT-ON measurement dial: RL_O36_FLOORFIX=0 restores Order J's wired form EXACTLY
-    # (s_norm 1.4284052406915069, symmetric [0.5, 2.0] clip on both groups), so the fix's cost on every
-    # row and every band is a NUMBER on the movers ledger rather than a paragraph.
-    _O36_FLOORFIX=os.environ.get('RL_O36_FLOORFIX','1')!='0'
-    # DECLARED, DEFAULT-ON measurement dial (the same discipline RL_O31_NOPHI applies to the stall
-    # conditioning): RL_O36_TALL=0 prices the tall/small factor BY REMOVING IT, so its cost on every
-    # row and every band is a NUMBER on the movers ledger rather than a paragraph. It falls back to
-    # Order D's wired pooled exponent exactly.
-    _O36_TALL=os.environ.get('RL_O36_TALL','1')!='0'
-    def o36_kappa_at(_pk,_tall):
-        """The fade exponent as a pure function of (effective pick, TALL/SMALL) — no player object, so
-        the build-failing asserts below can sweep it over every pick without inventing rows."""
-        _pk=max(1.0,min(64.0,float(_pk)))
-        if not _O36_FLOORFIX:
-            _s=O36_TG0+O36_TG1*_math.log(_pk)+(O36_HTALL if _tall else 0.0)
-            return min(O35_CLIP[1],max(O35_CLIP[0],_s/O36_SNORM))
-        _s=O36_TG0+O36_TG1*_math.log(_pk)+(O36_HTALL if _tall else 0.0)
-        if _tall:
-            return min(O35_CLIP[1],max(O35_CLIP[0],_s/O36_SNORM_K))
-        # THE RE-SITED FLOOR: a small's floor is his own Order-D pooled exponent, which is itself
-        # already >= O35_CLIP[0], so the 0.5 hard floor is subsumed and never breached.
-        return min(O35_CLIP[1],max(o35_kappa_at(_pk),_s/O36_SNORM_K))
-    def o36_kappa(p):
-        """The fade exponent at the row's effective pick AND position class. Pure function of
-        (pick, TALL/SMALL). TALL = the engine's own O32_TALLPOS = {KPD, KPF, RUCK}."""
-        _pk=MA.effpk(p)
-        return o36_kappa_at(float(_pk if _pk else 64),MA.gfut(p) in O32_TALLPOS)
-    # ORDER C (RL_O34) — the R1 age credit's SURVIVING SCALE under the corrected normalization.
-    # The repair's credit partially compensated the BLIND denominators; with the denominators fixed the
-    # unchanged credit would DOUBLE-PAY age on every row the sites now pay correctly, so the credit is
-    # RE-DERIVED jointly with the re-mix knobs on the corrected surface (REMIX_34.json — same
-    # joint-derivation discipline, min corrected-SSE inside the ruled gates + the ORDER C mature-row
-    # identity gate). Read ONLY when _O34 is set: the dial-off credit path is byte-identical.
-    # REMIX_34.json::chosen — the joint grid left the repaired knob point (the ONLY knob point the
-    # mature gate admits, 1 of 3960) x alpha in [0.75, 1.00] feasible (the 1.14 line kills alpha >
-    # 1.00; the ruled at-bar continuity object kills alpha < 0.75); min corrected-SSE selects the
-    # boundary 0.75 (obj 31.3 vs 33.0 at alpha=1). The unconstrained minimum (alpha 0, different
-    # knobs, obj 20.6) moves mature rows up to 35 board points and is REPORTED, NEVER CHOSEN.
-    O34_ALPHA=0.75
-    def o31_pool_D(c):
-        if c<=1.0: return 1.0
-        if c>=O31_POOL_FLAT_FROM: return O31_POOL_D[O31_POOL_FLAT_FROM]
-        _n=int(_math.floor(c)); _f=c-_n
-        _d0=O31_POOL_D[_n]; _d1=O31_POOL_D[_n+1]
-        return _d0 if _f<=0.0 else _math.exp((1.0-_f)*_math.log(_d0)+_f*_math.log(_d1))
-    def _o31_loglin(pts,g):
-        g=max(1e-9,float(g))
-        if g<=pts[0][0]: return pts[0][1]
-        if g>=pts[-1][0]: return pts[-1][1]
-        for _i in range(1,len(pts)):
-            g0,y0=pts[_i-1]; g1,y1=pts[_i]
-            if g0<=g<=g1:
-                _t=(_math.log(g)-_math.log(g0))/(_math.log(g1)-_math.log(g0))
-                if y0<=0.0 or y1<=0.0: return y0+_t*(y1-y0)
-                return _math.exp(_math.log(y0)+_t*(_math.log(y1)-_math.log(y0)))
-        return pts[-1][1]
-    def o31_rho_base(g):
-        """The 31-F reliability curve UNTOUCHED — the pre-existing production leg's own weight."""
-        g=float(g)
-        return 0.0 if g<=0.0 else 1.0-_math.exp(-((g/O31_TAU_RHO)**O31_B_RHO))
-    def rho31(g):
-        """MEASURED PRODUCTION RELIABILITY. rho(0)=0 EXACTLY, strictly increasing, -> 1. Fitted so a thin
-        cohort's aggregate price matches the R1 cumulative backbone. Pure function of g.
-        ORDER A stage 6: the R-REMIX low-g bump rides on top (see the O32 block above); rho(0)=0 and
-        the deep end are untouched by construction."""
-        _r=o31_rho_base(g)
-        if _r>0.0 and _O32S>=6 and O32_KAPPA>0.0:
-            g=float(g)
-            _r=_r+O32_KAPPA*((g/O32_GAMMA)*_math.exp(1.0-g/O32_GAMMA))*(1.0-_r)
-        return _r
-    # ---- ORDER A REPAIR R1 (PREREG_32R.md; owner-directed) -----------------------------------------
-    # The re-mix's ADDED production weight reads shown production at the player's AGE-APPROPRIATE
-    # expectation: the owner caught that the re-mix judged young output against the MATURE bars —
-    # the same defect S1 measured in the gate (86-100% of age-18/19 seasons flagged). The repair
-    # credits the re-mix leg with A(p,Y) = Δ(age, class)·20·_PL_F — the S1 C3 development gap as one
-    # 20-game season, engine currency. ONLY the κ-bump weight carries it: the pre-existing
-    # production leg (Phat at rho_base) is untouched (the gate-only scope discipline), m_u(0)=0 so
-    # day-0 prints cannot move, and ages >= 24 carry zero (cap law).
-    def o32_age_gap(p,Y):
-        """Δ(age at Y, class) in points per game; 0 from age 24; 0 without a birth year."""
-        _by=p.get('_by')
-        if not _by: return 0.0
-        _a=Y-int(_by)
-        if _a>=24: return 0.0
-        return O32_GATE_DELTA['TALL' if MA.gfut(p) in O32_TALLPOS else 'SMALL'][max(18,min(23,int(_a)))]
-    def o32_age_credit(p,Y,g):
-        """The R1 age credit on the re-mix's added production weight: κ·m_u(g)·(1-rho_base)·A(p,Y)."""
-        if _O32S<6 or O32_KAPPA<=0.0: return 0.0
-        g=float(g)
-        if g<=0.0: return 0.0
-        _d=o32_age_gap(p,Y)
-        if _d<=0.0: return 0.0
-        _c=O32_KAPPA*((g/O32_GAMMA)*_math.exp(1.0-g/O32_GAMMA))*(1.0-o31_rho_base(g))*_d*20.0*_PL_F
-        return _c*O34_ALPHA if _O34 else _c                 # ORDER C: re-derived scale; dial-off byte-identical
-    def beta31(g,pool=False):
-        """The measured additive pedigree coefficient. ORDER 31-F: pool rows take the POOL-DERIVED curve
-        (o31f_pool.py), ND rows the ND curve. One law still — the same expression, the row's own
-        measured coefficient. RL_O31F_NOBPOOL=1 restores ORDER 31's ND-borrowed behaviour."""
-        return _o31_loglin(O31_BETA_POOL if (pool and not _O31F_NOBPOOL) else O31_BETA,g)
-    def phistall31(g,pool=False):
-        if pool and not _O31F_NOBPOOL: return _o31_loglin(O31_PHIST_POOL,g)
-        return _o31_loglin(O32_PHIST if _O32S>=4 else O31_PHIST,g)
-    def phi31(g,s,pool=False):
-        """THE 30B-C STALL CONDITIONING. Phi(g,0)=1 EXACTLY, so it cannot touch a gameless row."""
-        if s<=0: return 1.0
-        return 1.0-(min(float(s),O31_PHI_RAMP)/O31_PHI_RAMP)*(1.0-phistall31(g,pool))
-    # ===== ORDER 41 (RL_O41_*) — THE ABSENCE PACKAGE. THE MEASURED CONSTANTS ======================
-    # PREREG_ASSEMBLY.md sections 4.1-4.4, pushed BEFORE this edit. Every row of every table below is
-    # COPIED from a named artifact in docs/evidence/order_s_readonly_2026-08-19. Nothing is fitted here
-    # and nothing is interpolated that the measurement declined to interpolate.
-    #
-    # I1 — THE CREDIT CURVE. FOLLOWUP_F1.json::iso — F1's GUARDED isotonic curve (the house
-    # pool-adjacent-violators monotonicity guard, ORDER P's own instrument, 400-draw band), measured on
-    # 1,068 ND entrants 2005-2019 at depth 2. It replaces the wired step min(1, g/2), which F1 measured
-    # to sit 5.41 credit-units above this curve summed over g=1..10 and OUTSIDE the band at every g
-    # from 1 to 8. c(0) = 0 EXACTLY, so day-0 prices are untouched by construction.
-    O41_CREDIT=((0,0.0),(1,0.1286875208353465),(2,0.23834489196711883),(3,0.23834489196711883),
-                (4,0.23834489196711883),(5,0.2455042373957035),(6,0.38568558243890977),
-                (7,0.38568558243890977),(8,0.45188866847720316),(9,0.8878514765964253),
-                (10,0.8878514765964253),(11,1.0))
-    # I1 ALTERNATIVE READING (RL_O41_CREDITFORM=raw) — F1's RAW PER-GAMES CELLS, FOLLOWUP_F1.json::curve.
-    # F1 published BOTH readings and their intervals overlap heavily; the guarded/raw choice was a seat
-    # call, never owner-ruled, so both are priced and the owner picks on built numbers.
-    # THE RAW CELLS AS MEASURED (chat):
-    #   0 0.0 · 1 0.12869 · 2 0.47061 · 3 0.07238 · 4 0.07428 · 5 0.24550 · 6 0.57110
-    #   7 0.22499 · 8 0.45189 · 9 1.03200 · 10 0.77161 · 11+ 1.0
-    # THEY INVERT AT g = 3, 7 AND 10 (a 3-game season would credit LESS than a 2-game one, which is
-    # what the guard exists to remove). MONOTONISED BY RUNNING MAXIMUM — deliberately NOT by the
-    # pool-adjacent-violators guard, because PAVA AVERAGES the violating cells and so produces numbers
-    # that are not any measured cell (0.23834 is the guarded curve's own pooled value, not an F1
-    # reading). THE RUNNING MAXIMUM CARRIES ONLY MEASURED CELL VALUES FORWARD AND INVENTS NOTHING.
-    # The one non-cell number is the CAP AT 1.0 at g=9, where the raw cell reads 1.03200: the cap is
-    # STRUCTURAL and pre-existing — the wired law and the charter both cap a season's credit at one
-    # full played season — so it is applied, not invented, and it is disclosed here.
-    O41_CREDIT_RAW=((0,0.0),(1,0.1286875208353465),(2,0.4706058223361502),(3,0.4706058223361502),
-                    (4,0.4706058223361502),(5,0.4706058223361502),(6,0.5711028628770571),
-                    (7,0.5711028628770571),(8,0.5711028628770571),(9,1.0),(10,1.0),(11,1.0))
-    def o41_credit(g):
-        """The per-season played credit at g games. Linear between the measured integer knots, held at
-        1.0 from 11 games, 0 at 0 games. RL_O41_CREDIT off => the wired min(1, g/2) step, byte for byte.
-        RL_O41_CREDITFORM selects which F1 reading the knots come from; 'guarded' is the default and
-        reproduces the candidate exactly."""
-        _g=float(g)
-        if not _O41_CREDIT: return min(1.0,_g/2.0)
-        if _g<=0.0: return 0.0
-        if _g>=11.0: return 1.0
-        _tab=(O41_CREDIT_RAW if _O41_CREDITFORM=='raw' else O41_CREDIT)
-        _n=int(_math.floor(_g)); _f=_g-_n
-        _c0=_tab[_n][1]; _c1=_tab[min(_n+1,11)][1]
-        return _c0 if _f<=0.0 else (1.0-_f)*_c0+_f*_c1
-    # I2 — THE GRADED RESET. FOLLOWUP_F2.json::partA.games — the reversal curve on 134 returners
-    # scored against 760 kept-sitting and 1,704 never-sat rows. `r` is how much of the way back to a
-    # never-sat comparable a returning season buys. THE WIRED RESET CREDITS 1.0 AT TEN GAMES AND 0.0
-    # BELOW, AND NO MEASURED CELL REACHES 1.0 — the best (15+) reaches 0.596 with an interval topping
-    # out at 0.886, and the whole 10-14 cell reads 0.213 with an interval that EXCLUDES 1.0 on 22 rows.
-    # READ AS A STEP FUNCTION ON THE MEASURED BANDS, NOT INTERPOLATED: F2's own preregistered NULL
-    # (F2-P4) is that this sample CANNOT separate a step at ten from a smooth curve, so a smooth
-    # interpolant here would claim a shape the measurement declines to supply.
-    # NO POSITION CUT: F2 has no position cut, the 0.60 is pooled and ruck-specific recovery is
-    # unmeasured (register v741). The TALL/SMALL exponent carries through the EXISTING o36_kappa
-    # exponent on D in o31_D, which acts on the clock this reset produces — so position differentiation
-    # keeps coming from the object that measured it and is not applied twice.
-    O41_REVERSAL=((2.0,0.17599730114691226),      # 1-2 games      n 38   CI [+0.053, +0.333]
-                  (5.0,0.1690225197655352),       # 3-5 games      n 29   CI [+0.030, +0.353]
-                  (9.0,0.09435725147204567),      # 6-9 games      n 27   CI [+0.004, +0.214]
-                  (14.0,0.21251254122424307),     # 10-14 games    n 22   CI [+0.054, +0.449]  wired 1.0
-                  (1e9,0.5959292983878227))       # 15+ games      n 18   CI [+0.321, +0.886]  wired 1.0
-    def o41_reversal(g):
-        """r(g) — the share of ACCRUED sitting clock a returning season of g games restores. The dial
-        off returns 1.0, which IS the wired all-or-nothing wipe, so the identity setting is exact."""
-        if not _O41_RESET: return 1.0
-        _g=float(g)
-        for _hi,_r in O41_REVERSAL:
-            if _g<=_hi: return _r
-        return O41_REVERSAL[-1][1]
-    # I2 (continued) — THE FADE ROW AT DEPTH >= 3: WITHDRAWN AT register v750, BY OWNER RULING.
-    # The earlier assembly draft replaced depths 3 and 4 with F4's UNCONDITIONAL population
-    # (0.2143 / 0.1052, monotone down, 154 rows at depth 4). THE OWNER RULED AGAINST IT and the
-    # measured wired row STAYS, rise and all — see the note at o31_fade_D. The constant that carried
-    # the swap is DELETED rather than left dial-able, so no future run can reach it by accident.
-    # What the swap would have cost is on the record and is not being hidden: it moved 28 of 95 day-0
-    # sitter prices by -1,876 board points, which is what forced the halt that produced this ruling.
-    # I4 — THE MEASURED COST OF ABSENCE. FOLLOWUP_F3.json::dcurve — this seat's own re-measurement on
-    # the house ruler, NOT a read-back of the wired schedule (which would be circular). Depth c = 2
-    # means ONE unplayed season. The cost is a fraction of DELIVERED VALUE.
-    O41_COST=((2.0,0.36723755424736493),      # n 463   90% CI [+0.201, +0.513]
-              (3.0,0.7628696536230766),       # n 242   90% CI [+0.680, +0.836]
-              (4.0,0.8883339330826462),       # n 161   90% CI [+0.822, +0.947]
-              (5.0,0.945109511421381))        # n 132   90% CI [+0.872, +0.994]
-    def o41_cost(c):
-        """The measured TOTAL cost of absence at unexplained depth c. ZERO BELOW DEPTH 2 BY
-        CONSTRUCTION — F3 cannot speak about depth 1, which is its own normaliser, and the owner's
-        words are 'two seasons out'. Linear between the measured depths, flat from depth 5."""
-        _c=float(c)
-        if _c<=2.0: return 0.0 if _c<2.0 else O41_COST[0][1]
-        if _c>=5.0: return O41_COST[-1][1]
-        for _i in range(len(O41_COST)-1):
-            _c0,_v0c=O41_COST[_i]; _c1,_v1c=O41_COST[_i+1]
-            if _c0<=_c<=_c1:
-                _f=(_c-_c0)/(_c1-_c0)
-                return (1.0-_f)*_v0c+_f*_v1c
-        return O41_COST[-1][1]
-    # I3 — THE INJURY STREAM. The owner-authored annotation, LIVE BOARD ONLY, no backtest.
-    # OWNER-RULED TWO-CHANNEL LAW: for a DELIVERED row a logged-injured absence PAUSES the sitting
-    # clock (those weeks accrue nothing); an UNEXPLAINED absence gets NO grace year and fades
-    # continuously on the existing fE season fraction. ROOKIES AND NEVER-DELIVERED ROWS ARE
-    # CAUSE-BLIND AND UNCHANGED — the owner ruled the same penalty either way, so no annotation is
-    # read for a row with no delivered season whatever its flag says.
-    # THE FILE IS A PINNED INPUT: md5 asserted, row count asserted, injured count asserted, and the
-    # name match asserted 35 of 35. ANY of those failing HALTS THE BUILD LOUDLY.
-    # RE-CUT 2026-08-20 (register v790, owner word "All good on the injury sheet. Fine by me."):
-    # harry-armstrong and judson-clarke flipped injured Y->N because the R23 file LISTS them — ORDER
-    # 42 pins each injured=Y row's games_2026 to the store's 2026 games, and a round advance moves
-    # that. Y 37->35, rows unchanged at 219, md5 b26798c3->21361291.
-    # THE PINS ARE ONE DECLARATION AND THEY CANNOT DRIFT APART ANY MORE (PLAN_v6 3a, 2026-08-21):
-    # the three facts this block asserts and the three the ORDER 42 block at _o42_state asserts are
-    # the SAME three, read from data/sheet_pins.json by _sheet_pins() above. Previously they were six
-    # literals in two blocks, and a re-cut that moved only the ORDER 42 trio died HERE with the sheet
-    # already changed. THE FIRING REGIME IS UNCHANGED: the pins are resolved inside this dial's own
-    # branch, so a build with RL_O41_INJ off reads neither the sheet nor its pins, and this block
-    # still HALTS FIRST.
-    _O41_INJSET=frozenset()
-    if _O41_INJ:
-        import csv as _csv, hashlib as _hl, re as _re
-        O41_INJ_MD5,O41_INJ_ROWS,O41_INJ_Y=_sheet_pins()
-        _ip=os.path.join(os.environ.get('RL_REPO','.'),'docs/owner_annotations/SITTER_2026_v1.csv')
-        if not os.path.exists(_ip):
-            raise SystemExit('ORDER 41 HALT: RL_O41_INJ=1 but the owner\'s annotation file is ABSENT at '
-                             '%s. The injury stream reads a PINNED OWNER INPUT and will not run without '
-                             'it, and will not substitute a guess for it.'%_ip)
-        _ib=open(_ip,'rb').read(); _im=_hl.md5(_ib).hexdigest()
-        if _im!=O41_INJ_MD5:
-            raise SystemExit('ORDER 41 HALT: SITTER_2026_v1.csv md5 %s != the pinned %s. The owner\'s '
-                             'annotation has moved; the build stops rather than price an input nobody '
-                             'ruled on.'%(_im,O41_INJ_MD5))
-        _ir=list(_csv.DictReader(_ib.decode('utf-8').splitlines()))
-        if len(_ir)!=O41_INJ_ROWS:
-            raise SystemExit('ORDER 41 HALT: SITTER_2026_v1.csv holds %d rows, pinned %d.'
-                             %(len(_ir),O41_INJ_ROWS))
-        def _inorm(n):
-            return _re.sub(r'[^a-z0-9]+','-',str(n).strip().lower().replace('’',"'")).strip('-')
-        _iy=[r for r in _ir if (r.get('injured') or '').strip().upper()=='Y']
-        if len(_iy)!=O41_INJ_Y:
-            raise SystemExit('ORDER 41 HALT: SITTER_2026_v1.csv marks %d rows injured=Y, pinned %d.'
-                             %(len(_iy),O41_INJ_Y))
-        _known=set()
-        for _p in MA.data:
-            for _f in ('key','player'):
-                if _p.get(_f): _known.add(_inorm(_p[_f]))
-        _want=set(_inorm(r['player']) for r in _iy)
-        _missing=sorted(_want-_known)
-        if _missing:
-            raise SystemExit('ORDER 41 HALT: %d of %d injured-annotated players do not match an engine '
-                             'row: %s. A silent miss would quietly charge an injured row as though he '
-                             'had sat by choice.'%(len(_missing),len(_iy),_missing[:8]))
-        _O41_INJSET=frozenset(_want)
-    def o41_injured(p):
-        """Is this row logged-injured by the owner for the live season? False whenever the dial is off,
-        so every non-live board and every dial-off board is untouched by construction.
-
-        ORDER D7 (RL_O43): while a row is being evaluated AS ITS HEALTHY COUNTERPART it answers False
-        here, which is what clears the three SHIELDS `_ev_off` leaves standing — the R3
-        injured-exemption, the sitter-clock pause and the absence-depth in-progress exemption. The
-        set is empty except inside that one measurement, so with RL_O43 unset this line cannot fire
-        and the dial-off board is byte-identical by construction."""
-        if _D7_HEALTHY_KEYS and p.get('key') in _D7_HEALTHY_KEYS: return False
-        if not _O41_INJ or not _O41_INJSET: return False
-        for _f in ('key','player'):
-            if p.get(_f):
-                _k=_re.sub(r'[^a-z0-9]+','-',str(p[_f]).strip().lower().replace('’',"'")).strip('-')
-                if _k in _O41_INJSET: return True
-        return False
-    def o31_played_units(p,Y):
-        """Season-units in which the row PLAYED, on the same clock the fade uses: 1.0 per completed season,
-        _fEy for the in-progress one. ORDER A stage 2 (M2, owner ruling on S2 P1): a season's credit is
-        f·min(1, g/2) — the G*=2 per-season played credit that retires the one-game full-cure cliff.
-        u(0)=0, so day-0 prices are untouched by construction."""
-        _u=0.0
-        for _x in p.get('scoring') or []:
-            if _x['year']>Y or not _x['games']: continue
+if not _ENTRY29B:
+    raise SystemExit('ORDER 30B-P HALT: the preview needs the ORDER 29B day-0 object (the pedigree leg) '
+                     'and the ORDER 30B Step-2 fade (the zero-evidence lane). RL_PVC2=0 switches the first '
+                     'off, so the lane has nothing coherent to be. FAIL-CLOSED BY DESIGN.')
+def pv_pedigree(p):
+    """The pedigree leg in ENGINE currency: the STEP-1 positional v0 (pool: the signed pool cell) x _PL_F."""
+    _v=day0_v0(p)
+    if _v is None:
+        raise SystemExit('ORDER 30B-P HALT: %r carries evidence but has no day-0 v0 object, so the '
+                         'preview cannot form its pedigree leg. Measured before wiring: 0 of the 715 '
+                         'priced rows are in this state. FAIL-CLOSED rather than defaulted.'
+                         %(p.get('key'),))
+    return float(_v)*_PL_F
+def _pv_blend(p,Y,e):
+    """price = (1-sigma(g)) x production + sigma(g) x pedigree. ONE pedigree leg, at the measured share."""
+    _s=sigma30bp(pv_games(p,Y))
+    return (1.0-_s)*float(e)+_s*pv_pedigree(p)
+_PV['blend']=_pv_blend
+# ---- ORDER 30B-N — THE RESOLVED LAW (RL_O30B_RESOLVED) — DELETED 2026-10-14 with its dial. -------------------
+# The lanes/bridge/join design (#334 comment 5310246218: sitter v0 x D(c) · thin g<=10 v0 x D x b_lift(g,c) ·
+# bridge 10<g<16 log1p-interpolated · deep g>=16 P + beta(g) x v0, beta from the 30B-R band fit, NON-monotone)
+# was CONDEMNED by the ORDER 31 brief ("the four row diagnosis killed the thin lane") and REPLACED by the one law
+# below. It was never on a candidate line. Its transcription (beta30bn / b_lift30bn / _pv_resolved; READING.json,
+# JOIN.json, o30br_resolved.py::book()) is in git history at this file's pre-2026-10-14 revisions.
+# ================= ORDER 31 — THE ONE LAW, AT ev(). ==============================================
+# Constants are TRANSCRIBED from docs/evidence/candidate_31/LAW31.json, produced by o31_fit.py from
+# the committed artifacts only (READING.json's beta curve, BLEND30B.json's R1 backbone and D(2),
+# CIRCULARITY.json's stall-cohort coefficients). Nothing here is fitted at build time.
+# ORDER 31-F (#334 comment 5310576233) RE-FITS EVERY ONE OF THESE ON THE HEAD-FIXED RULER.
+# R1 ruler discipline: rho, beta, PhiStall and the sitter fade were all measured against the STEP-1
+# positional v0 surface. F1's head fix MOVED that surface, so all four were re-measured with their
+# COMMITTED HARNESSES RUN WHOLE (only the v0 source and the output directory re-pointed) and the fit
+# core LIFTED BY SOURCE TEXT from o31_fit.py and exec'd verbatim. Constants transcribed from
+# docs/evidence/candidate_31f/LAW31F.json. Drifts are published in SHIPPING_PACKET_31.md.
+#   D(2)   0.5501936 -> 0.5582775     beta(2.5)  0.2968279 -> 0.2878886
+#   D(3)   0.2627863 -> 0.2747858     beta(10.5) 0.3622593 -> 0.3561228 (monotone-projected as before)
+#   D(4+)  0.3460005 -> 0.3972709     PhiStall(2.5) 0.5834703 -> 0.5792927
+#   TAU_RHO 27.019054 -> 29.194254    B_RHO 0.8377678 -> 0.8015424   RMS 0.015333 -> 0.017369
+O31_TAU_RHO=29.194253560287144; O31_B_RHO=0.8015424473253033
+# beta under the brief's EXPLICIT "pi decays in g" constraint: the monotone non-increasing projection
+# of the measured pooled curve. The projection deletes the measured 2.5->10.5 RISE, which 30B-C 4.3
+# measured paying 57 of 352 stall paths MORE pedigree for stalling. DISCLOSED, not hidden: the raw
+# measured value at 10.5 is 0.362259307264279 and this law carries 0.2968279384332228 there.
+# ORDER 31-F: re-measured on the head-fixed ruler. The raw measured value at 10.5 is 0.3561228 and
+# this law carries 0.2878886 there -- the SAME deletion, disclosed exactly as before.
+O31_BETA=((2.5,0.2878886216033701),(10.5,0.2878886216033701),(25.5,0.21772876584106796),
+          (53.0,0.14155152291809878),(85.5,0.023849021706229417))
+# PhiStall = beta_stall / beta_pooled at the five band midpoints (30B-C 3.2), the deep two ZERO-FLOORED
+# because t=-0.29 / -0.90 with CIs spanning zero, then made non-increasing.
+# ORDER 31-F: the 30B-C circularity harness re-run on the head-fixed ruler. The seat did NOT rely on
+# the "the ratio is invariant because both coefficients move together" argument -- it MEASURED it, and
+# the ratio in fact moved slightly MORE than the coefficients did (max |dPhiStall| 0.0102 against
+# max |dbeta_stall| 0.0064). PHI_31F.json.
+O31_PHIST=((2.5,0.5792926948039687),(10.5,0.298245232115451),(25.5,0.298245232115451),
+           (53.0,0.0),(85.5,0.0))
+O31_PHI_RAMP=2.0                       # 30B-C's OWN continued-staller definition: two stall seasons
+O31_SRC=('docs/evidence/candidate_31f/LAW31F.json / o31f_fit.py; #334 comment 5310576233 (31-F), '
+         'superseding docs/evidence/candidate_31/LAW31.json; rho calibrated on the 31-F re-derived '
+         'cumulative backbone, pi pinned at D(c) at g=0 and handing over to the measured beta as '
+         'evidence accumulates. EVERY constant re-measured on the HEAD-FIXED v0 surface (R1).')
+# ---- ORDER 31-F — THE SITTER FADE, RE-DERIVED ON THE HEAD-FIXED RULER ---------------------------
+# The Step-2 wired row FADE30B_D above is the RULED row, measured on the PRE-head-fix v0s, and it is
+# LEFT EXACTLY WHERE IT IS so that the dial-off board remains the Step-2 law and the head fix can be
+# priced in isolation. THE ONE LAW USES ITS OWN, re-measured by o30a2_recut.py run WHOLE on the
+# head-fixed surface (FADE_31F.json). Same construction, same listing reading (L-B outcome-blind
+# floor), same owner rulings: the depth-4 > depth-3 SELECTION kink is kept unsmoothed and the deep end
+# HOLDS FLAT at depth 4. Nothing is extrapolated.
+O31_FADE_D={1:1.0,
+            2:0.5582775239783688,      # 31-F re-derived, listed-conditional (L-B), n=464
+            3:0.2747857941376827,      # 31-F re-derived, listed-conditional (L-B), n=100
+            4:0.39727085107749216}     # 31-F re-derived, listed-conditional (L-B), n=11 — the kink
+O31_FADE_FLAT_FROM=4
+# ORDER 41 / register v750 — THE F4 DEPTH->=3 SWAP IS WITHDRAWN. THE MEASURED WIRED ROW STAYS,
+# INCLUDING THE DEPTH-3 -> DEPTH-4 RISE. Owner's ruling: a fourth-year sitter STILL BEING LISTED is
+# itself information — clubs cut the two- and three-year sitters who are not up to it, so surviving
+# to a contracted fourth year signals potential. That is the engine's own selection-as-evidence
+# principle applied to this same object. The row is MEASURED (F4's control verified this engine
+# literal against FADE_31F.json::wired at every depth, to 1e-16) and it stays DOCUMENTED AS THIN
+# (n = 11 at depth 4). ALSO ON THE RECORD: the swap was never green-lit — it was folded into the
+# absence package without the owner's word, and the halt raised against it was correct.
+# RL_O41_RESET now does ONE thing: the graded restore inside o31_cu. It does not touch this row,
+# so every day-0 sitter price is bit-identical to the frozen reference BY CONSTRUCTION.
+def o31_fade_D(c):
+    """The 31-F sitter fade at continuous depth c. IDENTICAL RULE to fade30b_D — log-linear between
+    integer depths, 1.0 at/below depth 1, FLAT from depth 4 out — on the re-measured row."""
+    if c<=1.0: return 1.0
+    if c>=O31_FADE_FLAT_FROM: return O31_FADE_D[O31_FADE_FLAT_FROM]
+    _n=int(_math.floor(c)); _f=c-_n
+    _d0=O31_FADE_D[_n]; _d1=O31_FADE_D[_n+1]
+    if _f<=0.0: return _d0
+    return _math.exp((1.0-_f)*_math.log(_d0)+_f*_math.log(_d1))
+# ---- ORDER 31 STEP 2 — THE POOL FADE, DERIVED BY THE ND LAW'S OWN ESTIMATOR ---------------------
+# docs/evidence/candidate_31/o31_pool.py execs the 30A-2 harness VERBATIM to its surface builder and
+# rebuilds the population on the POOL pathways with the SIGNED pool v0 cell as the object. CONTROL:
+# that transplanted estimator re-derives the RULED ND row at deviation 0.0 (D 0.550194 / 0.262786 /
+# 0.346000), so the pool row below is produced by the same instrument, not an analogue of it.
+#   D_pool(1) = 1.0                  n 840
+#   D_pool(2) = 0.5545657072981915   n 588      (the ND law reads 0.5501936 at the same depth)
+#   FLAT from depth 2 out.
+# The depth-3 pool cell measures 2.2635 on n 17 -- it INVERTS. All 17 are eventual players and 45% of
+# their value is in the unobserved tail: it is survivorship, in the extreme. It is PUBLISHED IN FULL
+# in POOL31.json and NOT WIRED, by the declared rule "wire the deepest cell that clears the n floor
+# AND is a fade (D <= 1)". Flagged on the packet as an OWED CONFIRMATION, not presented as ruled.
+O31_POOL_D={1:1.0,2:0.5545657072981915}
+O31_POOL_FLAT_FROM=2
+# ---- ORDER 31-F F2 — beta_pool, DERIVED. The largest borrowing ORDER 31 left, closed. ----------
+# docs/evidence/candidate_31f/o31f_pool.py transplants the 30B-M PANEL CONSTRUCTION to pool cohorts:
+# the harness's own panel(nd_only=False) pool states, its own band_fit regression, its own games
+# bands, its own H=6 horizon and its own player clustering. The ONE thing supplied is the v0 pool
+# rows never had — MA.pool_v0_of, the accessor that HALTS on an unsigned cell. CONTROL: re-running
+# band_fit on the ND panel reproduces the 31-F ND beta row at deviation 0.0.
+#   MEASURED   2.5:0.3731(t 1.33) 10.5:0.3857(t 0.79) 25.5:1.0645(t 1.81) 53:1.7978(t 2.46) 85.5:1.9732(t 2.13)
+# THE MEASURED CURVE RISES. Under the brief's EXPLICIT "pi decays in g" it takes the SAME monotone
+# non-increasing projection the ND beta takes, which deletes the rise and leaves the row FLAT at the
+# shallow-band value. THE DELETION IS LARGE AND IT IS DISCLOSED ON THE PACKET, with the reason: on
+# pool rows v0 takes only ~54 distinct values (pathway x position), so inside a games band it acts as
+# a pathway fixed effect rather than as pedigree, and the deep bands' "rise" is that identification
+# failure, not persistence. The two SHALLOW bands — the ones that price beecken/madden/reidy/scerri —
+# have t of 1.33 and 0.79: INDISTINGUISHABLE FROM ZERO, and that is on the packet too.
+O31_BETA_POOL=((2.5,0.3730572000100778),(10.5,0.3730572000100778),(25.5,0.3730572000100778),
+               (53.0,0.3730572000100778),(85.5,0.3730572000100778))
+# Phi on pool rows: the brief's condition — "by the same construction if the pool panel supports it".
+# IT DOES: every pool games band clears band_fit's own n>=40 floor, so this is POOL-MEASURED, not
+# ND-borrowed. Same construction as the ND row: zero-floor, monotone, ratio to the wired beta_pool,
+# clip to [0,1], monotone again. The stall coefficients' t are 0.61/0.07/1.31/1.74/0.39 — weak, and
+# said so on the packet.
+O31_PHIST_POOL=((2.5,0.21225409196511028),(10.5,0.03648485735530794),(25.5,0.03648485735530794),
+                (53.0,0.03648485735530794),(85.5,0.036484857355307924))
+# RL_O31F_NOBPOOL (declared, default-off: price the beta_pool decision by REMOVING it — pool rows fall back to the ND
+# beta and the ND PhiStall, i.e. exactly ORDER 31's behaviour), so its cost is a NUMBER, not a
+# paragraph) is HARD-WIRED OFF 2026-10-14: pool rows read the pool-measured row, full stop.
+# ================= ORDER A — CANDIDATE 32 CONSTANTS AND HELPERS (stage 6, hard-wired). ============
+# Sources: docs/evidence/order_a_2026-08-17/{PREREG_32.md, PHI_32.json, FADE_32.json,
+# RELIEF_32.json, REMIX_32.json}; #334 comment 5312733761. All six stages are the line.
+#
+# M1 — THE AGE-REFERENCED GATE BARS (S1 construction C3). A NEW, GATE-ONLY object:
+# bar(pos, age) = _O30BP_BARS[pos] - Δ(class, clamp(age,18,23)); flat from age 24 (cap law
+# structural, Δ >= 0). CONSUMED ONLY inside the stall-run test and the delivered test below.
+# _O30BP_BARS ITSELF IS NEVER EDITED: the production references and both par denominators keep
+# the flat bars untouched (S1 §12 coupling warning).
+O32_TALLPOS=frozenset(('KPD','KPF','RUCK'))
+O32_GATE_DELTA={'TALL':{18:22.334475609756097,19:20.55500752464971,20:16.306362402208926,
+                        21:11.588672690048071,22:7.826894964594814,23:6.439783302063788},
+                'SMALL':{18:20.080511089352214,19:20.080511089352214,20:14.306977484301457,
+                         21:11.265167414136857,22:6.761247284555768,23:4.584052475875439}}
+def o32_gate_bar(pos,age):
+    """The gate's AVG bar for a season played at `age`. Flat at/after 24; the C3 class-pooled
+    development offset below; ages <= 18 take the age-18 column. None if the position has no bar."""
+    _b=_O30BP_BARS.get(pos)
+    if _b is None: return None
+    if age is None or age>=24: return _b
+    return _b-O32_GATE_DELTA['TALL' if pos in O32_TALLPOS else 'SMALL'][max(18,min(23,int(age)))]
+# M6b-2 — THE PHI ROW RE-DERIVED UNDER THE NEW BARS (PHI_32.json; the Δ≡0 control reproduced
+# CIRCULARITY_31F at deviation 0). beta is UNCHANGED (owner ruling R-W1) — only the stall RATIO
+# moves. Pool rows keep the 31-F pool row (O31_PHIST_POOL): the pool stall coefficients were not
+# re-derived under the new bars — an OWED LIMITATION, disclosed on the packet, not hidden here.
+O32_PHIST=((2.5,0.645228057068287),(10.5,0.14783270364736742),(25.5,0.14783270364736742),
+           (53.0,0.14783270364736742),(85.5,0.0))
+# M4/M6b-4(b) — SELECTION RELIEF INSIDE D (S3 sketch (a), the capped form). RELIEF_32.json:
+# λ fit on the S2 spectrum surface under the NEW clock definitions (identifiability band
+# [0.46, 1.20] published). The cap at full pedigree (D -> at most 1) is STRUCTURAL: the ceiling
+# stays production-only, relief can never pay above v0.
+O32_LAMBDA=1.08
+def o32_sigma_sel(p,Y):
+    """The S3 threshold shape on current + most-recent-season selection: zero below ~5 games,
+    rising 5-10, flat >= 10; the in-progress season prorated by its own fraction."""
+    _s=0.0
+    for _x in (p.get('scoring') or []):
+        if _x['year'] in (Y,Y-1) and _x.get('games'):
             _f=(_fEy(Y,p) if _x['year']==Y else 1.0)
-            # ORDER 41 (RL_O41_CREDIT): the F1 GUARDED MEASURED credit curve replaces the wired step.
-            # o41_credit falls back to min(1, g/2) with the dial off, byte for byte.
-            _u+=_f*(o41_credit(_x['games']) if _O32S>=2 else 1.0)
-        return _u
-    def o31_cu(p,Y):
-        """THE UNPLAYED CLOCK. c_u = the fade clock MINUS the time he actually played. This is the brief's
-        'the time-fade applies to UNPLAYED time only' -- a played season advances g, not the sitter clock,
-        which is what kills the sitter-fade-while-playing defect. For a row that has NEVER played it is the
-        fade clock EXACTLY, so every printed-day-0 price is unmoved by construction.
-        ORDER A stage 3 (M3, owner ruling on S2 P2): a DELIVERED season (the one o32_delivered
-        predicate: games >= 10·f AND avg >= the age-referenced gate bar) RESETS accumulated c_u to
-        zero as of that season; fade re-accrues only on subsequent sitting. A gameless career has no
-        delivered season, so day-0 prices are again untouched by construction."""
-        _Yl=int(Y) if getattr(MA,'_LENS_FORM',None) is None else min(int(Y),int(MA._LENS_FORM))   # LENS ANCHOR (2026-10-13): a +k view has no 2027/2028 rows by definition; they are unplayed-yet, not absent
-        if _O32S>=3:
-            _yd=None; _xd=None
-            for _x in (p.get('scoring') or []):
-                if _x['year']<=Y and _x.get('games') and o32_delivered(p,Y,_x):
-                    if _yd is None or _x['year']>_yd: _yd=_x['year']; _xd=_x
-            if _yd is not None:
-                # ORDER 41 (RL_O41_RAMP): the in-progress season enters this DEPTH clock on the
-                # engine's own D12 concave proration f**1.5 instead of linearly. Dial off => _fEy.
-                _clk=max(0.0,float(_Yl-_yd-1)+(_o41_fe(_Yl,p) if _Yl>_yd else 0.0))
-                # ORDER 41 (RL_O41_INJ) — THE INJURY STREAM, LIVE BOARD ONLY, DELIVERED ROWS ONLY.
-                # A logged-injured absence PAUSES the sitting clock: the live season's absence accrues
-                # NOTHING. The annotation is a 2026 log and carries no statement about earlier seasons,
-                # so the pause is the live year's fraction and no more — extending it backwards would
-                # be inventing injury history the owner did not write. Unexplained absence is
-                # untouched here and keeps fading continuously on fE: that is the other channel.
-                # This arm is reachable ONLY for a row with a delivered season, which is exactly the
-                # owner's ruling that rookies and never-delivered rows stay CAUSE-BLIND.
-                if _O41_INJ and Y>_yd and o41_injured(p):
-                    _clk=max(0.0,_clk-(_fEy(_Yl,p) or 0.0))
-                _cred=0.0
-                for _x in (p.get('scoring') or []):
-                    if _yd<_x['year']<=Y and _x.get('games'):
-                        _f=(_fEy(_Yl,p) if _x['year']==Y else 1.0)
-                        # ORDER 41 (RL_O41_CREDIT): the same one credit object as o31_played_units.
-                        _cred+=_f*o41_credit(_x['games'])
-                _post=max(0.0,_clk-_cred)
-                # ORDER 41 (RL_O41_RESET) — THE GRADED RESTORE. The wired law WIPES all accrued
-                # sitting clock at a delivered season. F2 measured that no returning season restores a
-                # never-sat comparable: the best cell (15+ games) reaches 0.596 and the cell at the
-                # wired threshold reads 0.213 with an interval that excludes 1.0. So the pre-delivery
-                # clock is restored only by r and the remainder is CARRIED:
-                #     c_u = (1 - r) * c_pre + c_post
-                # r = 1 IS the wired wipe, which is why the dial-off identity is exact. c_pre is the
-                # UNRESET clock as it stood at the delivered season. Where a row has several delivered
-                # seasons the grading is applied at the LAST one — that is F2's own estimand, a
-                # returner's single return season restoring accrued damage — and the carry from any
-                # earlier delivery is already inside c_pre.
-                if _O41_RESET:
-                    _r=o41_reversal(float((_xd or {}).get('games') or 0.0))
-                    _pre=max(0.0,fade30b_clock(p,_yd)-o31_played_units(p,_yd))
-                    return max(0.0,(1.0-_r)*_pre+_post)
-                return _post
-        return max(0.0,fade30b_clock(p,Y)-o31_played_units(p,Y))
-    # ==== ORDERS 46-47 — THE COMBINED BUILD (register v873-v875; prereg docs/evidence/combined_build_2026-08-27) ====
-    # ORDER 46 (RL_O46, default '1'): THE EVIDENCE-CONDITIONAL CAPITAL-RETENTION SURFACE. Inside the
-    # thin-evidence class (every season <2 games as-of Y — the owner's sat word — tenure 2-4 at Y,
-    # entry age <22) the pedigree multiplier pi is FLOORED at the measured fair capital loading:
-    # cells fitted on resolved cohorts 2003-2018 at the CONSERVATIVE (fixed-horizon) line, register
-    # v869; piecewise-linear in cameo-quality rel = career cameo avg / REPL bar across the knots
-    # 0.40/0.525/0.65 (no cliff — mccabe sits on the edge); era t2-3 vs t4; the tall ceiling 0.92 is
-    # the v868 banked-mediocre cap, ruled AT equality. The floor's PRICE-level cap (never past the
-    # day-0 stamp via the lift; standing above-draft prices are not clawed back) lives at the blend.
-    # ORDER 47 (RL_O47, default '1'): HELP STEPS AT THE TRANSITION (the accrual asymmetry, owner
-    # 2026-08-25 twice-refined: "hurt accrues through the season, help steps at the season
-    # transition... survivors are entitled immediately"). ZERO NEW CONSTANTS: the entitled level is
-    # the EXISTING fitted table's own value — D(4)>D(3) is the measured survivorship selection — and
-    # the snap reads it only when HIGHER (help), never lower (hurt keeps accruing). Both dials off
-    # => neither branch below is reached => byte-exact to the pre-order board.
-    _O46=os.environ.get('RL_O46','1')!='0'
-    _O47=os.environ.get('RL_O47','1')!='0'
-    _O46F=[True]     # the in-body floor's live switch: the ORDER 46 FINAL GUARD (end of file) flips it
-                     # to price a row's floor-off twin in one call; nothing else may touch it.
-    _O46_TALL={'RUCK','KPF','KPD'}
-    _O46_CELLS={(0,0):(0.31,0.19,0.45,0.41),(0,1):(0.01,0.00,0.66,0.66),
-                (1,0):(0.70,0.21,0.92,0.92),(1,1):(0.25,0.00,0.67,0.67)}
-    _O46_KNOTS=(0.40,0.525,0.65)
-    def _o46_class(p,Y):
-        """The thin-evidence SURFACE class as-of Y (prereg L1, the v869/v870 studies' class): no season
-        with >=6 games, tenure 2-4, entry age <22 (mature-agers stay the owner's own packet word, D3
-        convention). NOT the <2 sat-season word — that word defines which seasons are SAT for the
-        STEP-UP (_o47_class below); the first build conflated the two and priced oliver/mccabe (cameo
-        rows with 2-5 game seasons) OUT of the surface — caught by the board verification, filed."""
-        _yr=int(p.get('year') or 0)
-        _t=Y-_yr+1
-        if not (2<=_t<=4): return False
-        _by=p.get('_by')
-        if not _by or _yr-int(_by)>=22: return False
-        return not any(_x.get('games',0)>=6 for _x in (p.get('scoring') or []) if _x.get('year',0)<=Y)
-    def _o47_class(p,Y):
-        """The STEP-UP class (prereg L3): every season <2 games — the ruled sat word — with the same
-        tenure/entry frame. The max() structure below self-selects the tenure-3 rows (D(4)>D(3) is the
-        only rising step), which is what makes the registered class 21 rows."""
-        _yr=int(p.get('year') or 0)
-        _t=Y-_yr+1
-        if not (2<=_t<=4): return False
-        _by=p.get('_by')
-        if not _by or _yr-int(_by)>=22: return False
-        return not any(_x.get('games',0)>=2 for _x in (p.get('scoring') or []) if _x.get('year',0)<=Y)
-    def _o46_L(p,Y):
-        """The measured cell, interpolated in rel across the knots — v869's conservative line."""
-        _cells=_O46_CELLS[(1 if MA.gfut(p) in _O46_TALL else 0, 1 if (Y-int(p.get('year') or Y)+1)>=4 else 0)]
-        _sc=[_x for _x in (p.get('scoring') or []) if _x.get('year',0)<=Y]
-        _g=sum(_x.get('games',0) for _x in _sc)
-        if _g==0: return _cells[0]
-        _rel=(sum(_x['avg']*_x['games'] for _x in _sc)/_g)/MA.REPL[MA.gfut(p)]
-        _lo,_mid,_hi=_O46_KNOTS
-        if _rel<=_lo: return _cells[1]
-        if _rel<=_mid: return _cells[1]+(_cells[2]-_cells[1])*(_rel-_lo)/(_mid-_lo)
-        if _rel<=_hi: return _cells[2]+(_cells[3]-_cells[2])*(_rel-_mid)/(_hi-_mid)
-        return _cells[3]
-    def o31_D(p,Y):
-        """The fade at the UNPLAYED depth. ONE law for every pathway: the ruled ND schedule is applied to
-        every non-pool row (a BORROW for RD and pickless-ND rows, disclosed), and pool rows take the
-        Step-2-derived pool schedule.
-        ORDER A stage 5 (M4): current + most-recent-season selection buys back the discount on
-        unproven pedigree — D·(1+λ·σ_sel) — CAPPED AT 1: never above full pedigree, the ceiling
-        stays production-only. σ_sel(0 games)=0, so gameless rows are untouched."""
-        _cu=o31_cu(p,Y)
-        _D=(o31_pool_D(_cu) if p.get('_pool') else o31_fade_D(_cu))
-        if _O47 and _o47_class(p,Y):
-            # ORDER 47 — THE CLOCK LAW (FADE_LAW_DERIVATION.md L3a, verbatim): the unplayed clock
-            # SNAPS to the next integer level IF AND ONLY IF the table's value there is HIGHER (help
-            # steps, hurt accrues; v851's 143/77/106 ladder; benchmark dodson D(2.871)->D(4)). The
-            # search runs to the flat and stops at the FIRST higher level; a clock already at its
-            # best level finds none and stands. [The first cut of this order transcribed an
-            # nsat-counting formula instead; it handed the O45 scoring-stripped counterfactual twin
-            # a fresh-survivor level D(2) — caught by the residual probe, filed. The law is a
-            # function of the CLOCK, so every row — twins included — reads it identically.]
-            _Dtab=(o31_pool_D if p.get('_pool') else o31_fade_D)
-            _k=int(_cu) if _cu==int(_cu) else int(_cu)+1
-            while _k<=O31_FADE_FLAT_FROM and _Dtab(_k)<=_D: _k+=1
-            if _k<=O31_FADE_FLAT_FROM: _D=_Dtab(_k)
-        # ORDER D (RL_O35, owner word: the MEASURED curve): the per-year sitting cost scales with
-        # the fitted pick-signal — D^kappa(pick), smooth in ln(pick), NEVER a band step. Applied to
-        # the row's own schedule BEFORE the relief; 1^kappa == 1 so rows the fade does not reach
-        # cannot move, and the redistribution identity keeps the pooled fade at the ruled row.
-        if _O35 and _D<1.0:
-            # ORDER I (RL_O36): the pooled exponent becomes the TALL/SMALL exponent. Same site, same
-            # smooth log-pick curve, same clips; only the numerator carries the position term and the
-            # normaliser is re-solved so the pooled fade stays pinned at the ruled row.
-            _D=_D**(o36_kappa(p) if (_O36 and _O36_TALL) else o35_kappa(p))
-        if _O32S>=5 and _D<1.0:
-            _sg=o32_sigma_sel(p,Y)
-            if _sg>0.0: _D=min(1.0,_D*(1.0+O32_LAMBDA*_sg))
-        return _D
-    def o31_stall_run(p,Y):
-        """s -- THE CURRENT STALL RUN: consecutive most-recent seasons the row PLAYED but did not DELIVER
-        (delivered == games >= 10 AND avg >= his position's v0-language bar). A delivered season RESETS it.
-        A GAMELESS season is SKIPPED, never counted: unplayed time is D(c_u)'s channel and counting it in
-        both would be exactly the double-discount the no-stacking constraint forbids.
-        s >= 1 therefore IMPLIES g >= 1, which is what makes pi(0,c)=D(c) safe for every s."""
-        _pos=MA.gfut(p)
-        _bar0=_O30BP_BARS.get(_pos)
-        if _bar0 is None: return 0
-        _s=0
-        for _x in sorted((p.get('scoring') or []),key=lambda r:-r['year']):
+            if _f>0.0:
+                _s=max(_s,max(0.0,min(1.0,(float(_x['games'])-5.0*_f)/(5.0*_f))))
+    return _s
+# M3 — THE DELIVERED PREDICATE (one predicate: the stall run and the reset both read it).
+def o32_delivered(p,Y,x):
+    """Season row x is DELIVERED as of Y: games >= 10 x season-fraction AND avg >= the
+    age-referenced gate bar (the flat bar below stage 1)."""
+    _u=(_fEy(Y,p) if x['year']==Y else 1.0)
+    if float(x.get('games') or 0.0)<10.0*_u: return False
+    _bar=o32_gate_bar(MA.gfut(p),(x['year']-p['_by']) if p.get('_by') else None)
+    return _bar is not None and float(x.get('avg') or 0.0)>=_bar
+# M5/M6c — THE 5-15g RE-MIX (R-REMIX, two-sided acknowledged). TWO knobs, both from W2's own
+# translation ("raise the production-leg loading ... but then the pedigree leg must come down
+# in step"):
+#   rho32(g)     = rho31(g) + κ·m_u(g)·(1-rho31(g)),   m_u = (g/γ_u)·exp(1-g/γ_u)
+#   pedigree leg x max(0, 1-η·m_d(g)),                 m_d = (g/γ_d)·exp(1-g/γ_d)
+# m_u(0)=m_d(0)=0 exactly: g=0 sitters untouched and pi(0)=D preserved. Two-sided BY
+# CONSTRUCTION: weight moves from the pedigree leg to shown production, so poor starters CAN
+# fall below entry and risers rise. Calibrated on W2's hindsight surface subject to the slope
+# band, the W band, the HARD no-arb line (max class <= 1.139 — this also CURES the inherited
+# 2010 class mark of 1.1405) and the η <= 0.75 non-degeneracy guard (REMIX_32.json; the prereg
+# one-knob family measured INFEASIBLE there — a disclosed prereg deviation). Monotonicity of
+# rho32 asserted at load.
+# REMIX_32R.json::chosen (ORDER A REPAIR, PREREG_32R + amendments A1-A3) — re-calibrated on the
+# CORRECTED (age-relative) hindsight surface with the R1 age credit live. Selection = min
+# corrected-surface SSE among the ruled-gate-feasible set {slope band, W inside the corrected
+# hindsight 90% CI [0.312, 0.556], max class <= 1.139 (the 1.14 no-arb line), rho32 monotone,
+# the ruled at-bar continuity object (integer-step, the ledger's own gate, age credit
+# included)} — ONE feasible point on the grid; the vantage matrix and band spreads are
+# DIAGNOSTIC-ONLY and justified no part of this choice (amendment A2).
+O32_KAPPA=0.24
+O32_GAMMA=11.0
+O32_ETA=0.41
+O32_GAMMA_D=14.0
+# ===== ORDER I (RL_O36) — LEVER 2: THE COUNTERWEIGHT ==========================================
+# docs/evidence/order_i_2026-08-18/REMIX_36.json::chosen. With S1 live, "below expectation"
+# finally means below AGE-expectation, so the re-mix and the relief are RE-DERIVED on the
+# corrected readings rather than inherited. ONE joint calibration over
+# (lambda_S1, kappa, gamma_u, eta, gamma_d, lambda_rel) — the dose is a grid axis, never a
+# hand-picked number (PREREG_I.md §3; ORDER E's dose warning). Selection = minimum
+# corrected-surface SSE among the points feasible on BOTH the ruled constraints (rho32 monotone,
+# the ruled at-bar continuity object incl. the age credit, W inside the corrected hindsight 90%
+# CI [0.3117, 0.5560], slope in [0.885, 1.115], max class <= 1.139) AND the owner's acceptance
+# gates G1-G5. THE MECHANISM, stated so the direction is not claimed after the fact: kappa moves
+# weight OFF a row's pedigree leg and ONTO his shown production, and eta charges the pedigree leg
+# down as games accumulate — so a young row ABOVE his age bar gains twice while a young row BELOW
+# it loses. That is how the S1 lift is paid to performers and charged to sub-expectation rows.
+# m_u(0) = m_d(0) = 0 exactly, so day-0 prints cannot move. Dial off => the O32 repair values.
+# THE MATURE-ROW IDENTITY GATE BINDS HERE, and it is the finding, not an oversight: the re-mix is
+# keyed on CAREER GAMES, not on age, so ANY move in (kappa, gamma_u, eta, gamma_d) re-prices mature
+# rows too and breaks the owner's byte-identity law. ORDER C hit the same wall (REMIX_34.json: the
+# repaired knob point is the ONLY one of 3,960 the mature gate admits). The joint calibration
+# therefore carries the mature-row identity as a HARD constraint, which pins these four to the
+# repair values; the unconstrained optimum is REPORTED and NEVER CHOSEN. See PACKET_I.md §4.
+# The declared overrides below exist so the grid can be swept and the pinning PROVED, not asserted.
+# ORDER P: the constants are ORDER K's RULED setting (register v735), carried on the ORDER P line. Hard-wired
+# 2026-10-14 (were RL_O36_KAPPA/GAMMA/ETA/GAMMA_D/LAMBDA with these defaults under _O37; the pre-ORDER-P
+# repair values 0.24/11.0/0.41 are quoted in the ORDER I print for the ledger).
+O36_KAPPA=0.20
+O36_GAMMA=8.0
+O36_ETA=0.50
+O36_GAMMA_D=14.0
+O36_LAMBDA=1.08
+# THE REBIND. Every consumer below reads the O32_* names (ORDER I's counterweight, hard-wired; with the
+# RL_O36 dial off these two lines did not run, which is what made 1f176444 reproduce exactly).
+O32_KAPPA=O36_KAPPA; O32_GAMMA=O36_GAMMA; O32_ETA=O36_ETA
+O32_GAMMA_D=O36_GAMMA_D; O32_LAMBDA=O36_LAMBDA
+# ---- ORDER D — THE PICK-CURVE SITTER FADE (RL_O35; owner word: the MEASURED curve) ----------
+# docs/evidence/order_d_2026-08-17/O35_CURVE.json — the prereg'd logistic fit (sit-penalty
+# s(p) = γ0 + γ1·ln(pick), SAT vs played-11+, ND 2005-2020) and the redistribution constant
+# s_norm solved so the pick-weighted mean fade at the ruled depth-2 cell equals the ruled
+# D(2) exactly (identity residual 0.0). SMOOTH in ln(pick), never a band step (R-PICKFADE's
+# condition). Effective picks past 64 (the pool index and every pickless convention) evaluate
+# the curve at 64 — a flat extension, disclosed; the clip bounds everything to [0.5, 2.0].
+O35_G0=0.1286221202379088
+O35_G1=0.4535958546743124
+O35_SNORM=1.7472066252064105
+O35_CLIP=(0.5,2.0)
+def o35_kappa_at(_pk):
+    """Order D's POOLED exponent as a pure function of the effective pick. Split out (ORDER K) so
+    the tall/small floor can be re-sited at a small's own PRE-FACTOR value without duplicating the
+    constants — there is one pooled curve in this file and both callers read it."""
+    _pk=max(1.0,min(64.0,float(_pk)))
+    return min(O35_CLIP[1],max(O35_CLIP[0],(O35_G0+O35_G1*_math.log(_pk))/O35_SNORM))
+def o35_kappa(p):
+    """The fade exponent at the row's effective pick. kappa < 1 softens (early picks — their
+    sitters measured the safest), kappa > 1 deepens (late picks). Pure function of pick."""
+    _pk=MA.effpk(p)
+    return o35_kappa_at(float(_pk if _pk else 64))
+# ===== ORDER I (RL_O36) — LEVER 3: THE TALL/SMALL SITTER FACTOR ================================
+# ORDER H (docs/evidence/order_h_posfade_2026-08-17/PACKET_H.md §6 + H_RESULTS.json). The owner's
+# premise was CONFIRMED on base rates: rucks sit 3.55x more than smalls at the same pick (90% CI
+# 2.18-5.91), KPP 1.70x. The interaction resolves for TALL POOLED (h_TALL -0.6921, CI -1.239 to
+# -0.080, 96.8% of draws in the owner's direction) but NOT for RUCK alone (F2 fired at n=53) —
+# which is why this is a TALL/SMALL factor and never a ruck factor.
+#   s(pick, group) = g0 + g1*ln(pick) + h_TALL*(group is TALL)
+#   kappa(pick, group) = clip( s / s_norm', 0.5, 2.0 )
+# SMOOTH IN ln(pick): one constant added inside a logarithmic curve. No band, no threshold, no
+# cliff — R-PICKFADE's condition and H's falsifier F7. s_norm' is H's RE-SOLVED redistribution
+# constant: the mean of D2^kappa over H's fitted sitters still equals the ruled depth-2 fade
+# 0.5582775 EXACTLY (H residual -1.1e-16). THIS REDISTRIBUTES THE FADE BETWEEN TALLS AND SMALLS;
+# IT DOES NOT CHANGE THE TOTAL FADE THE BOARD CHARGES. m_TALL = 0.677 is the multiplicative
+# translation the owner asked for. TWO DECLARED SIDE EFFECTS, reported with numbers on the packet
+# and NOT discovered later: (i) D's 0.5 clip binds for talls over picks 1-24 and for smalls over
+# picks 1-9 — a flat spot the clip, not the fit, is setting; (ii) the total is pinned, so LATE
+# SMALL SITTERS PAY for the talls' relief (a small at pick 64 goes from exponent 1.1533 to 1.4527).
+O36_TG0=-0.8778138796894399                        # H_RESULTS.json interaction['SAT1|ctl1|TALL-pooled'].coef[3]
+O36_TG1=0.7100022285392401                         # ...coef[4]  (PACKET_H prints these rounded to -0.8778/+0.7100)
+O36_HTALL=-0.6921227120657417
+O36_SNORM=1.4284052406915069
+O36_D2=0.5582775                                   # the ruled depth-2 fade the identity is pinned to
+# ===== ORDER K — THE FADE FLOOR FIX (PREREG_K.md §2, owner comment 5321546243) =================
+# THE DEFECT. Because the fade base D(c_u) is BELOW 1, a HIGHER exponent is a HEAVIER fade. The
+# pooled fit (slope 0.4536) and the tall/small fit (slope 0.7100) are different lines, so the SMALL
+# curve does not sit above the pooled curve — IT CROSSES IT, and below pick 19 it sits BELOW, i.e.
+# LIGHTER. The redistribution identity pins only the MEAN, so nothing stopped that locally. The
+# symmetric 0.5 clip does not cause it and does not cure it: it clips the small curve part-way back
+# toward the pooled line and stops, leaving the inversion in place. Measured on Order J's own built
+# board: SEVEN smalls were made LIGHTER by a talls-only relief, +126 board points, worst
+# josh-smillie (MID, pick 7, 0 games) +79 — 772 -> 851, out of the range the owner's fade ruling
+# put him in.
+# THE FIX — THE FLOOR IS RE-SITED, NOT REMOVED. A SMALL's floor stops being the abstract number 0.5
+# and becomes HIS OWN PRE-FACTOR EXPONENT: the value Order D's pooled curve would have charged him
+# if the tall factor did not exist. The owner's acceptance test — "no small's sitting fade may
+# become lighter as a result of the tall factor" — therefore holds BY CONSTRUCTION, at every pick,
+# for every row, with no tolerance, no special case and no named row anywhere in the mechanism.
+# Talls keep the [0.5, 2.0] clip they were ruled with, and h_TALL is UNCHANGED at -0.6921227120657417.
+# THE COST, DISCLOSED: the identity is a real constraint, so charging smalls at picks 6-18 properly
+# must be given back, and it is given back by the normaliser rising 1.4284052407 -> 1.4340996146
+# (+0.40%), re-solved WITH the re-sited floor inside the constraint set on Order H's own 408 fitted
+# sitters (residual -1.1e-16). Late talls therefore end up with slightly MORE relief, not less
+# (pick 64: +11.40% -> +11.65%); talls at picks 1-25 are on the 0.5 floor either way and do not move.
+# REJECTED ALTERNATIVES, with their reasons, so the choice is on the record: (A) "re-solve the
+# normalisation with the clip inside the constraint set" is a NO-OP — Order H's solve already
+# carried the clip (oh_posfade.py:383) and re-solving the wired form reproduces 1.4284052406915069
+# to the last bit; the small curve's problem is its SLOPE, not its LEVEL. (B) "apply the factor
+# after the clip" discards Order H's fitted small slope and carries a ruled h onto a curve it was
+# never fitted against — a re-optimisation of a ruled object, which this seat is forbidden to make.
+O36_SNORM_K=1.4340996145830727                     # re-solved with the re-sited floor inside the constraint set
+O36_D2_FULL=0.5582775239783688                     # the depth-2 fade at the precision the identity was SOLVED at
+# ORDER H's own 408 fitted sitters, as (effective pick, is TALL) -> count. Transcribed so the
+# redistribution-identity assert needs no external file and cannot pass vacuously. Reproduced by
+# docs/evidence/order_k_2026-08-18/ok_floor_design.py from the same population Order H fitted on
+# (ND 2005-2020, picks 1-64, teaches_curve, year-1 games == 0, force-majeure rows removed).
+_O36K_SATCOUNTS={(1,False):2,(3,False):3,(4,False):1,(4,True):1,(5,False):1,(5,True):2,(7,False):1,
+ (8,False):1,(8,True):1,(9,False):2,(10,True):2,(11,True):1,(12,True):2,(13,False):3,(13,True):1,
+ (14,False):2,(14,True):1,(15,False):3,(15,True):3,(16,False):4,(16,True):2,(17,False):4,(17,True):1,
+ (18,False):3,(18,True):1,(19,False):2,(19,True):1,(20,False):2,(20,True):1,(21,False):2,(21,True):1,
+ (22,False):5,(22,True):1,(23,False):6,(24,False):2,(24,True):2,(25,False):2,(25,True):3,(26,False):5,
+ (27,False):2,(27,True):1,(28,False):5,(29,False):4,(29,True):4,(30,False):3,(30,True):2,(31,False):4,
+ (31,True):4,(32,False):4,(32,True):2,(33,False):5,(33,True):4,(34,False):3,(34,True):7,(35,False):4,
+ (35,True):5,(36,False):4,(36,True):4,(37,False):5,(37,True):3,(38,False):7,(38,True):3,(39,False):6,
+ (39,True):1,(40,False):6,(40,True):1,(41,False):6,(41,True):5,(42,False):7,(42,True):4,(43,False):5,
+ (43,True):4,(44,False):6,(44,True):3,(45,False):8,(45,True):1,(46,False):3,(46,True):2,(47,False):8,
+ (47,True):3,(48,False):6,(48,True):3,(49,False):8,(49,True):5,(50,False):6,(50,True):3,(51,False):5,
+ (51,True):3,(52,False):5,(52,True):4,(53,False):4,(53,True):2,(54,False):5,(54,True):4,(55,False):6,
+ (55,True):3,(56,False):6,(56,True):1,(57,False):9,(58,False):5,(58,True):4,(59,False):6,(59,True):2,
+ (60,False):6,(60,True):4,(61,False):8,(61,True):3,(62,False):10,(62,True):2,(63,False):6,(63,True):3,
+ (64,False):5,(64,True):5}
+# RL_O36_FLOORFIX (declared, default-on; =0 restored Order J's wired form EXACTLY —
+# (s_norm 1.4284052406915069, symmetric [0.5, 2.0] clip on both groups), so the fix's cost on every
+# row and every band was a NUMBER on the movers ledger) is HARD-WIRED ON 2026-10-14; the removal lane is deleted.
+# RL_O36_TALL (declared, default-on; =0 priced the tall/small factor BY REMOVING IT, so its cost on every
+# row and every band was a NUMBER on the movers ledger, falling back to Order D's wired pooled exponent)
+# is HARD-WIRED ON 2026-10-14.
+def o36_kappa_at(_pk,_tall):
+    """The fade exponent as a pure function of (effective pick, TALL/SMALL) — no player object, so
+    the build-failing asserts below can sweep it over every pick without inventing rows."""
+    _pk=max(1.0,min(64.0,float(_pk)))
+    # (Order J's wired form, the deleted removal lane: _s/O36_SNORM under the symmetric [0.5, 2.0] clip on both groups.)
+    _s=O36_TG0+O36_TG1*_math.log(_pk)+(O36_HTALL if _tall else 0.0)
+    if _tall:
+        return min(O35_CLIP[1],max(O35_CLIP[0],_s/O36_SNORM_K))
+    # THE RE-SITED FLOOR: a small's floor is his own Order-D pooled exponent, which is itself
+    # already >= O35_CLIP[0], so the 0.5 hard floor is subsumed and never breached.
+    return min(O35_CLIP[1],max(o35_kappa_at(_pk),_s/O36_SNORM_K))
+def o36_kappa(p):
+    """The fade exponent at the row's effective pick AND position class. Pure function of
+    (pick, TALL/SMALL). TALL = the engine's own O32_TALLPOS = {KPD, KPF, RUCK}."""
+    _pk=MA.effpk(p)
+    return o36_kappa_at(float(_pk if _pk else 64),MA.gfut(p) in O32_TALLPOS)
+    # (ORDER C's re-derived credit scale alpha=0.75 — REMIX_34.json::chosen — rode on the shelved RL_O34 and is
+    # deleted with it; the age credit below is the repair's own, unscaled.)
+def o31_pool_D(c):
+    if c<=1.0: return 1.0
+    if c>=O31_POOL_FLAT_FROM: return O31_POOL_D[O31_POOL_FLAT_FROM]
+    _n=int(_math.floor(c)); _f=c-_n
+    _d0=O31_POOL_D[_n]; _d1=O31_POOL_D[_n+1]
+    return _d0 if _f<=0.0 else _math.exp((1.0-_f)*_math.log(_d0)+_f*_math.log(_d1))
+def _o31_loglin(pts,g):
+    g=max(1e-9,float(g))
+    if g<=pts[0][0]: return pts[0][1]
+    if g>=pts[-1][0]: return pts[-1][1]
+    for _i in range(1,len(pts)):
+        g0,y0=pts[_i-1]; g1,y1=pts[_i]
+        if g0<=g<=g1:
+            _t=(_math.log(g)-_math.log(g0))/(_math.log(g1)-_math.log(g0))
+            if y0<=0.0 or y1<=0.0: return y0+_t*(y1-y0)
+            return _math.exp(_math.log(y0)+_t*(_math.log(y1)-_math.log(y0)))
+    return pts[-1][1]
+def o31_rho_base(g):
+    """The 31-F reliability curve UNTOUCHED — the pre-existing production leg's own weight."""
+    g=float(g)
+    return 0.0 if g<=0.0 else 1.0-_math.exp(-((g/O31_TAU_RHO)**O31_B_RHO))
+def rho31(g):
+    """MEASURED PRODUCTION RELIABILITY. rho(0)=0 EXACTLY, strictly increasing, -> 1. Fitted so a thin
+    cohort's aggregate price matches the R1 cumulative backbone. Pure function of g.
+    ORDER A stage 6: the R-REMIX low-g bump rides on top (see the O32 block above); rho(0)=0 and
+    the deep end are untouched by construction."""
+    _r=o31_rho_base(g)
+    if _r>0.0 and O32_KAPPA>0.0:
+        g=float(g)
+        _r=_r+O32_KAPPA*((g/O32_GAMMA)*_math.exp(1.0-g/O32_GAMMA))*(1.0-_r)
+    return _r
+# ---- ORDER A REPAIR R1 (PREREG_32R.md; owner-directed) -----------------------------------------
+# The re-mix's ADDED production weight reads shown production at the player's AGE-APPROPRIATE
+# expectation: the owner caught that the re-mix judged young output against the MATURE bars —
+# the same defect S1 measured in the gate (86-100% of age-18/19 seasons flagged). The repair
+# credits the re-mix leg with A(p,Y) = Δ(age, class)·20·_PL_F — the S1 C3 development gap as one
+# 20-game season, engine currency. ONLY the κ-bump weight carries it: the pre-existing
+# production leg (Phat at rho_base) is untouched (the gate-only scope discipline), m_u(0)=0 so
+# day-0 prints cannot move, and ages >= 24 carry zero (cap law).
+def o32_age_gap(p,Y):
+    """Δ(age at Y, class) in points per game; 0 from age 24; 0 without a birth year."""
+    _by=p.get('_by')
+    if not _by: return 0.0
+    _a=Y-int(_by)
+    if _a>=24: return 0.0
+    return O32_GATE_DELTA['TALL' if MA.gfut(p) in O32_TALLPOS else 'SMALL'][max(18,min(23,int(_a)))]
+def o32_age_credit(p,Y,g):
+    """The R1 age credit on the re-mix's added production weight: κ·m_u(g)·(1-rho_base)·A(p,Y)."""
+    if O32_KAPPA<=0.0: return 0.0
+    g=float(g)
+    if g<=0.0: return 0.0
+    _d=o32_age_gap(p,Y)
+    if _d<=0.0: return 0.0
+    _c=O32_KAPPA*((g/O32_GAMMA)*_math.exp(1.0-g/O32_GAMMA))*(1.0-o31_rho_base(g))*_d*20.0*_PL_F
+    return _c
+def beta31(g,pool=False):
+    """The measured additive pedigree coefficient. ORDER 31-F: pool rows take the POOL-DERIVED curve
+    (o31f_pool.py), ND rows the ND curve. One law still — the same expression, the row's own
+    measured coefficient. (RL_O31F_NOBPOOL=1 restored ORDER 31's ND-borrowed behaviour; hard-wired off.)"""
+    return _o31_loglin(O31_BETA_POOL if pool else O31_BETA,g)
+def phistall31(g,pool=False):
+    if pool: return _o31_loglin(O31_PHIST_POOL,g)
+    return _o31_loglin(O32_PHIST,g)
+def phi31(g,s,pool=False):
+    """THE 30B-C STALL CONDITIONING. Phi(g,0)=1 EXACTLY, so it cannot touch a gameless row."""
+    if s<=0: return 1.0
+    return 1.0-(min(float(s),O31_PHI_RAMP)/O31_PHI_RAMP)*(1.0-phistall31(g,pool))
+# ===== ORDER 41 (RL_O41_*) — THE ABSENCE PACKAGE. THE MEASURED CONSTANTS ======================
+# PREREG_ASSEMBLY.md sections 4.1-4.4, pushed BEFORE this edit. Every row of every table below is
+# COPIED from a named artifact in docs/evidence/order_s_readonly_2026-08-19. Nothing is fitted here
+# and nothing is interpolated that the measurement declined to interpolate.
+#
+# I1 — THE CREDIT CURVE. FOLLOWUP_F1.json::iso — F1's GUARDED isotonic curve (the house
+# pool-adjacent-violators monotonicity guard, ORDER P's own instrument, 400-draw band), measured on
+# 1,068 ND entrants 2005-2019 at depth 2. It replaces the wired step min(1, g/2), which F1 measured
+# to sit 5.41 credit-units above this curve summed over g=1..10 and OUTSIDE the band at every g
+# from 1 to 8. c(0) = 0 EXACTLY, so day-0 prices are untouched by construction.
+O41_CREDIT=((0,0.0),(1,0.1286875208353465),(2,0.23834489196711883),(3,0.23834489196711883),
+            (4,0.23834489196711883),(5,0.2455042373957035),(6,0.38568558243890977),
+            (7,0.38568558243890977),(8,0.45188866847720316),(9,0.8878514765964253),
+            (10,0.8878514765964253),(11,1.0))
+# I1 ALTERNATIVE READING (RL_O41_CREDITFORM=raw) — F1's RAW PER-GAMES CELLS, FOLLOWUP_F1.json::curve.
+# F1 published BOTH readings and their intervals overlap heavily; the guarded/raw choice was a seat
+# call, never owner-ruled, so both are priced and the owner picks on built numbers.
+# THE RAW CELLS AS MEASURED (chat):
+#   0 0.0 · 1 0.12869 · 2 0.47061 · 3 0.07238 · 4 0.07428 · 5 0.24550 · 6 0.57110
+#   7 0.22499 · 8 0.45189 · 9 1.03200 · 10 0.77161 · 11+ 1.0
+# THEY INVERT AT g = 3, 7 AND 10 (a 3-game season would credit LESS than a 2-game one, which is
+# what the guard exists to remove). MONOTONISED BY RUNNING MAXIMUM — deliberately NOT by the
+# pool-adjacent-violators guard, because PAVA AVERAGES the violating cells and so produces numbers
+# that are not any measured cell (0.23834 is the guarded curve's own pooled value, not an F1
+# reading). THE RUNNING MAXIMUM CARRIES ONLY MEASURED CELL VALUES FORWARD AND INVENTS NOTHING.
+# The one non-cell number is the CAP AT 1.0 at g=9, where the raw cell reads 1.03200: the cap is
+# STRUCTURAL and pre-existing — the wired law and the charter both cap a season's credit at one
+# full played season — so it is applied, not invented, and it is disclosed here.
+O41_CREDIT_RAW=((0,0.0),(1,0.1286875208353465),(2,0.4706058223361502),(3,0.4706058223361502),
+                (4,0.4706058223361502),(5,0.4706058223361502),(6,0.5711028628770571),
+                (7,0.5711028628770571),(8,0.5711028628770571),(9,1.0),(10,1.0),(11,1.0))
+def o41_credit(g):
+    """The per-season played credit at g games. Linear between the measured integer knots, held at
+    1.0 from 11 games, 0 at 0 games. (The wired min(1, g/2) step was the RL_O41_CREDIT off-path; hard-wired on.)
+    The knots are F1's GUARDED reading (RL_O41_CREDITFORM hard-wired 'guarded'), which
+    reproduces the candidate exactly."""
+    _g=float(g)
+    if _g<=0.0: return 0.0
+    if _g>=11.0: return 1.0
+    _tab=O41_CREDIT
+    _n=int(_math.floor(_g)); _f=_g-_n
+    _c0=_tab[_n][1]; _c1=_tab[min(_n+1,11)][1]
+    return _c0 if _f<=0.0 else (1.0-_f)*_c0+_f*_c1
+# I2 — THE GRADED RESET. FOLLOWUP_F2.json::partA.games — the reversal curve on 134 returners
+# scored against 760 kept-sitting and 1,704 never-sat rows. `r` is how much of the way back to a
+# never-sat comparable a returning season buys. THE WIRED RESET CREDITS 1.0 AT TEN GAMES AND 0.0
+# BELOW, AND NO MEASURED CELL REACHES 1.0 — the best (15+) reaches 0.596 with an interval topping
+# out at 0.886, and the whole 10-14 cell reads 0.213 with an interval that EXCLUDES 1.0 on 22 rows.
+# READ AS A STEP FUNCTION ON THE MEASURED BANDS, NOT INTERPOLATED: F2's own preregistered NULL
+# (F2-P4) is that this sample CANNOT separate a step at ten from a smooth curve, so a smooth
+# interpolant here would claim a shape the measurement declines to supply.
+# NO POSITION CUT: F2 has no position cut, the 0.60 is pooled and ruck-specific recovery is
+# unmeasured (register v741). The TALL/SMALL exponent carries through the EXISTING o36_kappa
+# exponent on D in o31_D, which acts on the clock this reset produces — so position differentiation
+# keeps coming from the object that measured it and is not applied twice.
+O41_REVERSAL=((2.0,0.17599730114691226),      # 1-2 games      n 38   CI [+0.053, +0.333]
+              (5.0,0.1690225197655352),       # 3-5 games      n 29   CI [+0.030, +0.353]
+              (9.0,0.09435725147204567),      # 6-9 games      n 27   CI [+0.004, +0.214]
+              (14.0,0.21251254122424307),     # 10-14 games    n 22   CI [+0.054, +0.449]  wired 1.0
+              (1e9,0.5959292983878227))       # 15+ games      n 18   CI [+0.321, +0.886]  wired 1.0
+def o41_reversal(g):
+    """r(g) — the share of ACCRUED sitting clock a returning season of g games restores. (The off-path
+    returned 1.0, the wired all-or-nothing wipe; RL_O41_RESET hard-wired on.)"""
+    _g=float(g)
+    for _hi,_r in O41_REVERSAL:
+        if _g<=_hi: return _r
+    return O41_REVERSAL[-1][1]
+# I2 (continued) — THE FADE ROW AT DEPTH >= 3: WITHDRAWN AT register v750, BY OWNER RULING.
+# The earlier assembly draft replaced depths 3 and 4 with F4's UNCONDITIONAL population
+# (0.2143 / 0.1052, monotone down, 154 rows at depth 4). THE OWNER RULED AGAINST IT and the
+# measured wired row STAYS, rise and all — see the note at o31_fade_D. The constant that carried
+# the swap is DELETED rather than left dial-able, so no future run can reach it by accident.
+# What the swap would have cost is on the record and is not being hidden: it moved 28 of 95 day-0
+# sitter prices by -1,876 board points, which is what forced the halt that produced this ruling.
+# I4 — THE MEASURED COST OF ABSENCE. FOLLOWUP_F3.json::dcurve — this seat's own re-measurement on
+# the house ruler, NOT a read-back of the wired schedule (which would be circular). Depth c = 2
+# means ONE unplayed season. The cost is a fraction of DELIVERED VALUE.
+O41_COST=((2.0,0.36723755424736493),      # n 463   90% CI [+0.201, +0.513]
+          (3.0,0.7628696536230766),       # n 242   90% CI [+0.680, +0.836]
+          (4.0,0.8883339330826462),       # n 161   90% CI [+0.822, +0.947]
+          (5.0,0.945109511421381))        # n 132   90% CI [+0.872, +0.994]
+def o41_cost(c):
+    """The measured TOTAL cost of absence at unexplained depth c. ZERO BELOW DEPTH 2 BY
+    CONSTRUCTION — F3 cannot speak about depth 1, which is its own normaliser, and the owner's
+    words are 'two seasons out'. Linear between the measured depths, flat from depth 5."""
+    _c=float(c)
+    if _c<=2.0: return 0.0 if _c<2.0 else O41_COST[0][1]
+    if _c>=5.0: return O41_COST[-1][1]
+    for _i in range(len(O41_COST)-1):
+        _c0,_v0c=O41_COST[_i]; _c1,_v1c=O41_COST[_i+1]
+        if _c0<=_c<=_c1:
+            _f=(_c-_c0)/(_c1-_c0)
+            return (1.0-_f)*_v0c+_f*_v1c
+    return O41_COST[-1][1]
+# I3 — THE INJURY STREAM. The owner-authored annotation, LIVE BOARD ONLY, no backtest.
+# OWNER-RULED TWO-CHANNEL LAW: for a DELIVERED row a logged-injured absence PAUSES the sitting
+# clock (those weeks accrue nothing); an UNEXPLAINED absence gets NO grace year and fades
+# continuously on the existing fE season fraction. ROOKIES AND NEVER-DELIVERED ROWS ARE
+# CAUSE-BLIND AND UNCHANGED — the owner ruled the same penalty either way, so no annotation is
+# read for a row with no delivered season whatever its flag says.
+# THE FILE IS A PINNED INPUT: md5 asserted, row count asserted, injured count asserted, and the
+# name match asserted 35 of 35. ANY of those failing HALTS THE BUILD LOUDLY.
+# RE-CUT 2026-08-20 (register v790, owner word "All good on the injury sheet. Fine by me."):
+# harry-armstrong and judson-clarke flipped injured Y->N because the R23 file LISTS them — ORDER
+# 42 pins each injured=Y row's games_2026 to the store's 2026 games, and a round advance moves
+# that. Y 37->35, rows unchanged at 219, md5 b26798c3->21361291.
+# THE PINS ARE ONE DECLARATION AND THEY CANNOT DRIFT APART ANY MORE (PLAN_v6 3a, 2026-08-21):
+# the three facts this block asserts and the three the ORDER 42 block at _o42_state asserts are
+# the SAME three, read from data/sheet_pins.json by _sheet_pins() above. Previously they were six
+# literals in two blocks, and a re-cut that moved only the ORDER 42 trio died HERE with the sheet
+# already changed. THE FIRING REGIME IS UNCHANGED: the pins are resolved here, before any price
+# is formed (RL_O41_INJ hard-wired ON 2026-10-14; a dial-off build no longer exists), and this block
+# still HALTS FIRST.
+import csv as _csv, hashlib as _hl, re as _re
+O41_INJ_MD5,O41_INJ_ROWS,O41_INJ_Y=_sheet_pins()
+_ip=os.path.join(os.environ.get('RL_REPO','.'),'docs/owner_annotations/SITTER_2026_v1.csv')
+if not os.path.exists(_ip):
+    raise SystemExit('ORDER 41 HALT: the owner\'s annotation file is ABSENT at '
+                     '%s. The injury stream reads a PINNED OWNER INPUT and will not run without '
+                     'it, and will not substitute a guess for it.'%_ip)
+_ib=open(_ip,'rb').read(); _im=_hl.md5(_ib).hexdigest()
+if _im!=O41_INJ_MD5:
+    raise SystemExit('ORDER 41 HALT: SITTER_2026_v1.csv md5 %s != the pinned %s. The owner\'s '
+                     'annotation has moved; the build stops rather than price an input nobody '
+                     'ruled on.'%(_im,O41_INJ_MD5))
+_ir=list(_csv.DictReader(_ib.decode('utf-8').splitlines()))
+if len(_ir)!=O41_INJ_ROWS:
+    raise SystemExit('ORDER 41 HALT: SITTER_2026_v1.csv holds %d rows, pinned %d.'
+                     %(len(_ir),O41_INJ_ROWS))
+def _inorm(n):
+    return _re.sub(r'[^a-z0-9]+','-',str(n).strip().lower().replace('’',"'")).strip('-')
+_iy=[r for r in _ir if (r.get('injured') or '').strip().upper()=='Y']
+if len(_iy)!=O41_INJ_Y:
+    raise SystemExit('ORDER 41 HALT: SITTER_2026_v1.csv marks %d rows injured=Y, pinned %d.'
+                     %(len(_iy),O41_INJ_Y))
+_known=set()
+for _p in MA.data:
+    for _f in ('key','player'):
+        if _p.get(_f): _known.add(_inorm(_p[_f]))
+_want=set(_inorm(r['player']) for r in _iy)
+_missing=sorted(_want-_known)
+if _missing:
+    raise SystemExit('ORDER 41 HALT: %d of %d injured-annotated players do not match an engine '
+                     'row: %s. A silent miss would quietly charge an injured row as though he '
+                     'had sat by choice.'%(len(_missing),len(_iy),_missing[:8]))
+_O41_INJSET=frozenset(_want)
+def o41_injured(p):
+    """Is this row logged-injured by the owner for the live season? False for a row not on the sheet,
+    so every non-live board is untouched by construction.
+
+    ORDER D7 (RL_O43): while a row is being evaluated AS ITS HEALTHY COUNTERPART it answers False
+    here, which is what clears the three SHIELDS `_ev_off` leaves standing — the R3
+    injured-exemption, the sitter-clock pause and the absence-depth in-progress exemption. The
+    set is empty except inside that one measurement, so with RL_O43 unset this line cannot fire
+    and the dial-off board is byte-identical by construction."""
+    if _D7_HEALTHY_KEYS and p.get('key') in _D7_HEALTHY_KEYS: return False
+    if not _O41_INJSET: return False
+    for _f in ('key','player'):
+        if p.get(_f):
+            _k=_re.sub(r'[^a-z0-9]+','-',str(p[_f]).strip().lower().replace('’',"'")).strip('-')
+            if _k in _O41_INJSET: return True
+    return False
+def o31_played_units(p,Y):
+    """Season-units in which the row PLAYED, on the same clock the fade uses: 1.0 per completed season,
+    _fEy for the in-progress one. ORDER A stage 2 (M2, owner ruling on S2 P1): a season's credit is
+    f·min(1, g/2) — the G*=2 per-season played credit that retires the one-game full-cure cliff.
+    u(0)=0, so day-0 prices are untouched by construction."""
+    _u=0.0
+    for _x in p.get('scoring') or []:
+        if _x['year']>Y or not _x['games']: continue
+        _f=(_fEy(Y,p) if _x['year']==Y else 1.0)
+        # ORDER 41 (RL_O41_CREDIT): the F1 GUARDED MEASURED credit curve replaces the wired step.
+        # o41_credit falls back to min(1, g/2) with the dial off, byte for byte.
+        _u+=_f*o41_credit(_x['games'])
+    return _u
+def o31_cu(p,Y):
+    """THE UNPLAYED CLOCK. c_u = the fade clock MINUS the time he actually played. This is the brief's
+    'the time-fade applies to UNPLAYED time only' -- a played season advances g, not the sitter clock,
+    which is what kills the sitter-fade-while-playing defect. For a row that has NEVER played it is the
+    fade clock EXACTLY, so every printed-day-0 price is unmoved by construction.
+    ORDER A stage 3 (M3, owner ruling on S2 P2): a DELIVERED season (the one o32_delivered
+    predicate: games >= 10·f AND avg >= the age-referenced gate bar) RESETS accumulated c_u to
+    zero as of that season; fade re-accrues only on subsequent sitting. A gameless career has no
+    delivered season, so day-0 prices are again untouched by construction."""
+    _Yl=int(Y) if getattr(MA,'_LENS_FORM',None) is None else min(int(Y),int(MA._LENS_FORM))   # LENS ANCHOR (2026-10-13): a +k view has no 2027/2028 rows by definition; they are unplayed-yet, not absent
+    _yd=None; _xd=None
+    for _x in (p.get('scoring') or []):
+        if _x['year']<=Y and _x.get('games') and o32_delivered(p,Y,_x):
+            if _yd is None or _x['year']>_yd: _yd=_x['year']; _xd=_x
+    if _yd is not None:
+        # ORDER 41 (RL_O41_RAMP): the in-progress season enters this DEPTH clock on the
+        # engine's own D12 concave proration f**1.5 instead of linearly (RL_O41_RAMP, hard-wired on).
+        _clk=max(0.0,float(_Yl-_yd-1)+(_o41_fe(_Yl,p) if _Yl>_yd else 0.0))
+        # ORDER 41 (RL_O41_INJ) — THE INJURY STREAM, LIVE BOARD ONLY, DELIVERED ROWS ONLY.
+        # A logged-injured absence PAUSES the sitting clock: the live season's absence accrues
+        # NOTHING. The annotation is a 2026 log and carries no statement about earlier seasons,
+        # so the pause is the live year's fraction and no more — extending it backwards would
+        # be inventing injury history the owner did not write. Unexplained absence is
+        # untouched here and keeps fading continuously on fE: that is the other channel.
+        # This arm is reachable ONLY for a row with a delivered season, which is exactly the
+        # owner's ruling that rookies and never-delivered rows stay CAUSE-BLIND.
+        if Y>_yd and o41_injured(p):
+            _clk=max(0.0,_clk-(_fEy(_Yl,p) or 0.0))
+        _cred=0.0
+        for _x in (p.get('scoring') or []):
+            if _yd<_x['year']<=Y and _x.get('games'):
+                _f=(_fEy(_Yl,p) if _x['year']==Y else 1.0)
+                # ORDER 41 (RL_O41_CREDIT): the same one credit object as o31_played_units.
+                _cred+=_f*o41_credit(_x['games'])
+        _post=max(0.0,_clk-_cred)
+        # ORDER 41 (RL_O41_RESET) — THE GRADED RESTORE. The wired law WIPES all accrued
+        # sitting clock at a delivered season. F2 measured that no returning season restores a
+        # never-sat comparable: the best cell (15+ games) reaches 0.596 and the cell at the
+        # wired threshold reads 0.213 with an interval that excludes 1.0. So the pre-delivery
+        # clock is restored only by r and the remainder is CARRIED:
+        #     c_u = (1 - r) * c_pre + c_post
+        # r = 1 IS the wired wipe (the deleted RL_O41_RESET off-path returned _post alone). c_pre is the
+        # UNRESET clock as it stood at the delivered season. Where a row has several delivered
+        # seasons the grading is applied at the LAST one — that is F2's own estimand, a
+        # returner's single return season restoring accrued damage — and the carry from any
+        # earlier delivery is already inside c_pre.
+        _r=o41_reversal(float((_xd or {}).get('games') or 0.0))
+        _pre=max(0.0,fade30b_clock(p,_yd)-o31_played_units(p,_yd))
+        return max(0.0,(1.0-_r)*_pre+_post)
+    return max(0.0,fade30b_clock(p,Y)-o31_played_units(p,Y))
+# ==== ORDERS 46-47 — THE COMBINED BUILD (register v873-v875; prereg docs/evidence/combined_build_2026-08-27) ====
+# ORDER 46 (RL_O46, default '1'): THE EVIDENCE-CONDITIONAL CAPITAL-RETENTION SURFACE. Inside the
+# thin-evidence class (every season <2 games as-of Y — the owner's sat word — tenure 2-4 at Y,
+# entry age <22) the pedigree multiplier pi is FLOORED at the measured fair capital loading:
+# cells fitted on resolved cohorts 2003-2018 at the CONSERVATIVE (fixed-horizon) line, register
+# v869; piecewise-linear in cameo-quality rel = career cameo avg / REPL bar across the knots
+# 0.40/0.525/0.65 (no cliff — mccabe sits on the edge); era t2-3 vs t4; the tall ceiling 0.92 is
+# the v868 banked-mediocre cap, ruled AT equality. The floor's PRICE-level cap (never past the
+# day-0 stamp via the lift; standing above-draft prices are not clawed back) lives at the blend.
+# ORDER 47 (RL_O47, default '1'): HELP STEPS AT THE TRANSITION (the accrual asymmetry, owner
+# 2026-08-25 twice-refined: "hurt accrues through the season, help steps at the season
+# transition... survivors are entitled immediately"). ZERO NEW CONSTANTS: the entitled level is
+# the EXISTING fitted table's own value — D(4)>D(3) is the measured survivorship selection — and
+# the snap reads it only when HIGHER (help), never lower (hurt keeps accruing). Both dials off
+# => neither branch below is reached => byte-exact to the pre-order board.
+_O46=os.environ.get('RL_O46','1')!='0'
+_O47=os.environ.get('RL_O47','1')!='0'
+_O46F=[True]     # the in-body floor's live switch: the ORDER 46 FINAL GUARD (end of file) flips it
+                 # to price a row's floor-off twin in one call; nothing else may touch it.
+_O46_TALL={'RUCK','KPF','KPD'}
+_O46_CELLS={(0,0):(0.31,0.19,0.45,0.41),(0,1):(0.01,0.00,0.66,0.66),
+            (1,0):(0.70,0.21,0.92,0.92),(1,1):(0.25,0.00,0.67,0.67)}
+_O46_KNOTS=(0.40,0.525,0.65)
+def _o46_class(p,Y):
+    """The thin-evidence SURFACE class as-of Y (prereg L1, the v869/v870 studies' class): no season
+    with >=6 games, tenure 2-4, entry age <22 (mature-agers stay the owner's own packet word, D3
+    convention). NOT the <2 sat-season word — that word defines which seasons are SAT for the
+    STEP-UP (_o47_class below); the first build conflated the two and priced oliver/mccabe (cameo
+    rows with 2-5 game seasons) OUT of the surface — caught by the board verification, filed."""
+    _yr=int(p.get('year') or 0)
+    _t=Y-_yr+1
+    if not (2<=_t<=4): return False
+    _by=p.get('_by')
+    if not _by or _yr-int(_by)>=22: return False
+    return not any(_x.get('games',0)>=6 for _x in (p.get('scoring') or []) if _x.get('year',0)<=Y)
+def _o47_class(p,Y):
+    """The STEP-UP class (prereg L3): every season <2 games — the ruled sat word — with the same
+    tenure/entry frame. The max() structure below self-selects the tenure-3 rows (D(4)>D(3) is the
+    only rising step), which is what makes the registered class 21 rows."""
+    _yr=int(p.get('year') or 0)
+    _t=Y-_yr+1
+    if not (2<=_t<=4): return False
+    _by=p.get('_by')
+    if not _by or _yr-int(_by)>=22: return False
+    return not any(_x.get('games',0)>=2 for _x in (p.get('scoring') or []) if _x.get('year',0)<=Y)
+def _o46_L(p,Y):
+    """The measured cell, interpolated in rel across the knots — v869's conservative line."""
+    _cells=_O46_CELLS[(1 if MA.gfut(p) in _O46_TALL else 0, 1 if (Y-int(p.get('year') or Y)+1)>=4 else 0)]
+    _sc=[_x for _x in (p.get('scoring') or []) if _x.get('year',0)<=Y]
+    _g=sum(_x.get('games',0) for _x in _sc)
+    if _g==0: return _cells[0]
+    _rel=(sum(_x['avg']*_x['games'] for _x in _sc)/_g)/MA.REPL[MA.gfut(p)]
+    _lo,_mid,_hi=_O46_KNOTS
+    if _rel<=_lo: return _cells[1]
+    if _rel<=_mid: return _cells[1]+(_cells[2]-_cells[1])*(_rel-_lo)/(_mid-_lo)
+    if _rel<=_hi: return _cells[2]+(_cells[3]-_cells[2])*(_rel-_mid)/(_hi-_mid)
+    return _cells[3]
+def o31_D(p,Y):
+    """The fade at the UNPLAYED depth. ONE law for every pathway: the ruled ND schedule is applied to
+    every non-pool row (a BORROW for RD and pickless-ND rows, disclosed), and pool rows take the
+    Step-2-derived pool schedule.
+    ORDER A stage 5 (M4): current + most-recent-season selection buys back the discount on
+    unproven pedigree — D·(1+λ·σ_sel) — CAPPED AT 1: never above full pedigree, the ceiling
+    stays production-only. σ_sel(0 games)=0, so gameless rows are untouched."""
+    _cu=o31_cu(p,Y)
+    _D=(o31_pool_D(_cu) if p.get('_pool') else o31_fade_D(_cu))
+    if _O47 and _o47_class(p,Y):
+        # ORDER 47 — THE CLOCK LAW (FADE_LAW_DERIVATION.md L3a, verbatim): the unplayed clock
+        # SNAPS to the next integer level IF AND ONLY IF the table's value there is HIGHER (help
+        # steps, hurt accrues; v851's 143/77/106 ladder; benchmark dodson D(2.871)->D(4)). The
+        # search runs to the flat and stops at the FIRST higher level; a clock already at its
+        # best level finds none and stands. [The first cut of this order transcribed an
+        # nsat-counting formula instead; it handed the O45 scoring-stripped counterfactual twin
+        # a fresh-survivor level D(2) — caught by the residual probe, filed. The law is a
+        # function of the CLOCK, so every row — twins included — reads it identically.]
+        _Dtab=(o31_pool_D if p.get('_pool') else o31_fade_D)
+        _k=int(_cu) if _cu==int(_cu) else int(_cu)+1
+        while _k<=O31_FADE_FLAT_FROM and _Dtab(_k)<=_D: _k+=1
+        if _k<=O31_FADE_FLAT_FROM: _D=_Dtab(_k)
+    # ORDER D (RL_O35, owner word: the MEASURED curve): the per-year sitting cost scales with
+    # the fitted pick-signal — D^kappa(pick), smooth in ln(pick), NEVER a band step. Applied to
+    # the row's own schedule BEFORE the relief; 1^kappa == 1 so rows the fade does not reach
+    # cannot move, and the redistribution identity keeps the pooled fade at the ruled row.
+    if _D<1.0:
+        # ORDER I (RL_O36): the pooled exponent becomes the TALL/SMALL exponent. Same site, same
+        # smooth log-pick curve, same clips; only the numerator carries the position term and the
+        # normaliser is re-solved so the pooled fade stays pinned at the ruled row.
+        _D=_D**o36_kappa(p)
+    if _D<1.0:
+        _sg=o32_sigma_sel(p,Y)
+        if _sg>0.0: _D=min(1.0,_D*(1.0+O32_LAMBDA*_sg))
+    return _D
+def o31_stall_run(p,Y):
+    """s -- THE CURRENT STALL RUN: consecutive most-recent seasons the row PLAYED but did not DELIVER
+    (delivered == games >= 10 AND avg >= his position's v0-language bar). A delivered season RESETS it.
+    A GAMELESS season is SKIPPED, never counted: unplayed time is D(c_u)'s channel and counting it in
+    both would be exactly the double-discount the no-stacking constraint forbids.
+    s >= 1 therefore IMPLIES g >= 1, which is what makes pi(0,c)=D(c) safe for every s."""
+    _pos=MA.gfut(p)
+    _bar0=_O30BP_BARS.get(_pos)
+    if _bar0 is None: return 0
+    _s=0
+    for _x in sorted((p.get('scoring') or []),key=lambda r:-r['year']):
+        if _x['year']>Y: continue
+        _g=float(_x['games'] or 0.0)
+        if _g<=0.0: continue                                   # gameless: D(c_u)'s channel, skipped
+        _u=(_fEy(Y,p) if _x['year']==Y else 1.0)
+        # ORDER A stage 1 (M1): the AVG leg reads the age-referenced gate bar — a NEW gate-only
+        # object; the flat production references are untouched. The GAMES leg is unchanged (S1 §3).
+        _bar=(o32_gate_bar(_pos,_x['year']-p['_by']) if p.get('_by') else _bar0)
+        if _g>=10.0*_u and float(_x['avg'] or 0.0)>=_bar: break # DELIVERED -> the run resets
+        _s+=1
+    return _s
+# ===== ORDER P (RL_O37) — THE PEDIGREE-CONDITIONAL CHARGE =====================================
+# PREREG_P_BUILD.md (pushed before this edit) · docs/evidence/order_p_2026-08-18 (the measurement,
+# the derivation and the offline pricing) · docs/evidence/order_p_build_2026-08-18 (this wiring).
+#
+# WHAT IS REPLACED, AND WHY. The ORDER A stage-6 charge below reads GAMES AND NOTHING ELSE:
+#     pi *= max(0, 1 - eta*(g/gamma_d)*exp(1 - g/gamma_d))          eta 0.50, gamma_d 14
+# It peaks at exactly 14 games and then FALLS AWAY, so a 36-game row keeps MORE of his unearned
+# entry price than a 17-game row however either of them played. Measured on the young board: two
+# rows within two games of each other and 63 points a game apart on production-against-age paid
+# the identical charge to the last decimal (PACKET_N). That is the defect the owner asked to
+# remove, and this block removes it.
+#
+# WHAT REPLACES IT, for rows aged UNDER 24 at the year being priced:
+#     pi *= exp( -LAMBDA * A(g) * T(s_P) )
+#     A(g)  = 1 - exp(-g/G0)                        how much evidence g games is. A(0) = 0 EXACTLY.
+#     T(s)  = clip( 1 - THETA_R*(s - s0), 0, TMAX )  what the evidence says. Non-increasing in s.
+#     s_P   = the games-weighted mean of ( season avg - BAR_P ) over every season played to date
+#     BAR_P = o32_gate_bar(that season's bar, his age that season) + PG(ln v0, class)
+#
+# THE ONE NEW OBJECT IS PG, THE PEDIGREE PREMIUM: how far above his AGE bar a player who entered
+# at that price actually produces. It is MEASURED FROM OUTCOMES, never from prices — v0 is the
+# axis the outcomes are indexed by and no board price is added to anything. It is the whole of the
+# owner's sentence: "there should be a higher bar / more positive signs required to maintain a
+# higher valuation".
+#
+# WORKED, ON TWO REAL ROWS THAT SIT 17 GAMES EACH AND ABOUT 1.7 POINTS A GAME BELOW THEIR AGE BAR.
+# Under the charge above they pay the IDENTICAL 49.0%, because it only reads games. Zeke Uwland
+# was pick 2 and cost 2,583; a player at that price produces 19.2 points a game clear of the age
+# bar, so against what is priced into him he is 20.9 short and he pays 84.7%. Cooper Harvey was
+# pick 56 and cost 265; a player at that price produces 1.3 BELOW the age bar, so he is half a
+# point short and he pays nothing. Same production for their age, opposite verdicts.
+#
+# ON THE FORBIDDEN SET. This object is NOT the deleted par machinery returning. Par entered price
+# as max(0, pole - production) and as a level substitute, both strictly NON-NEGATIVE: a high pick
+# was PAID for being a high pick. This object enters a CHARGE and T is non-increasing in surplus,
+# so raising an expensive row's bar RAISES his charge and LOWERS his price — the opposite sign.
+# Three bounds, all asserted below or in the build proofs: F = 1 - exp(-LAMBDA*A*T) is in [0,1),
+# so no row can price above its own UNCHARGED (eta-zero) price, a board the forbidden set is
+# already absent from (0 of 9,746 vantages, STEP4_P_out.txt); A(0) = 0 exactly, so no day-0 print
+# moves; and the bar reads outcomes, never prices. THE OWNER STILL RULES ON THE WORD.
+#
+# THE CONSTANTS ARE MEASURED AND SOLVED. NOT ONE OF THEM IS RE-FITTED HERE.
+#   G0, BETA_sat  — the BETA_P(g) curve of PACKET_P section 4.5, fitted as BETA_sat*(1-exp(-g/G0))
+#                   weighted by each bin's own inverse variance. MECH_P.json.
+#   LAMBDA        — SOLVED, not chosen: bisection so the derived charge removes exactly the same
+#                   total points from the year-1 class-mark population (cohort classes 2005-2015)
+#                   as the current charge does. 101,402.7 matrix points, matched to the last
+#                   decimal. STEP4_P.json::mechanism.LAMBDA.
+#   THETA_R       — FOLLOWS as BETA_sat/LAMBDA, so the delivered slope d ln(retained pedigree)/ds
+#                   equals the MEASURED slope at every level of surplus. It is not free.
+#   s0            — the games-weighted mean of s_P over the young cohort. T(s0) = 1.
+#   TMAX          — T at the cohort's own 5th percentile of s_P, so the worst 5% all pay the same
+#                   top rate rather than an unbounded one. It is not free.
+# THERE IS NO FREE PARAMETER. LAMBDA*THETA_R == BETA_sat is asserted at load.
+O37_G0=9.890000000000008                                   # MECH_P.json::G0        90% CI [7.60, 12.98]
+O37_BETA_SAT=0.11464630061141393                           # MECH_P.json::BETA_sat  90% CI [0.10416, 0.12718]
+O37_LAMBDA=0.1743833036575403                              # STEP4_P.json — SOLVED by the anchoring identity
+O37_S0=-2.452720891469074                                  # MECH_P.json::s0
+O37_S_P5=-33.06133449874688                                # MECH_P.json::s_p5 — the cohort's own 5th percentile
+O37_AGE_GATE=24                                            # the age bar has content below 24 and none at or above it
+O37_THETA_R=O37_BETA_SAT/O37_LAMBDA                        # NOT FREE
+O37_TMAX=1.0-O37_THETA_R*(O37_S_P5-O37_S0)                 # NOT FREE
+# ===== ORDER R (RL_O39_TMAXPCT / RL_O39_BETASAT) — THE OWNER'S TWO SOFTENINGS ==================
+# PREREG_R.md, pushed before this edit · docs/evidence/order_r_2026-08-18.
+# THIS IS A MEASUREMENT ORDER. NOTHING HERE IS ADOPTED AND NOTHING LANDS. Both dials off => the
+# effective constants below are the ORDER P constants BIT FOR BIT (same float expressions, same
+# order of operations), so ORDER P's 374d4e44 and every ORDER Q board reproduce BYTE-EXACT.
+#
+# THE CAP. TMAX is T evaluated at the young cohort's own Qth percentile of s_P, so the worst
+# -producing Q% all pay the same top rate rather than an unbounded one. ORDER P set Q = 5, which
+# charges a row sitting at the cap 97.3% of his pedigree leg. The owner ruled Q = 15 or 20. The
+# three percentiles below are np.percentile(sP, Q) over the SAME 4,143 young-cohort season rows in
+# STEP2_P.json that produced MECH_P.json::s_p5, by the SAME call, unweighted. The Q=5 entry
+# reproduces MECH_P.json::s_p5 to the last bit and that is asserted at load (R10 below).
+O39_S_PQ={5:-33.06133449874688,           # == O37_S_P5, MECH_P.json::s_p5
+          15:-22.148794633345666,
+          20:-19.024574086528315}
+# THE SLOPE. BETA_sat is the MEASURED saturated slope of the pedigree leg's response to surplus.
+# Its published 90% CI is a parametric bootstrap over the seven games bins, ORDER P seed 32.
+# SOFTENING OUTSIDE THE MEASURED INTERVAL IS FORBIDDEN and the dial HALTS on it (R11).
+O39_BSAT_CI=(0.10416359711151935,0.1271777523096214)      # MECH_P.json::BETA_sat_ci
+O39_BETA_SAT=0.105                                        # the owner's softening, INSIDE the published 90% CI (was RL_O39_BETASAT default '0.105'; ORDER P's own O37_BETA_SAT was the off-path). Hard-wired 2026-10-14.
+if not (O39_BSAT_CI[0]<=O39_BETA_SAT<=O39_BSAT_CI[1]):
+    raise SystemExit('ORDER R HALT (R11): BETA_sat=%.17g is OUTSIDE the published 90%% CI '
+                     '[%.17g, %.17g]. The owner ruled the charge may be softened INSIDE the measured '
+                     'interval and not beyond it. The engine does not price an unmeasured slope.'
+                     %(O39_BETA_SAT,O39_BSAT_CI[0],O39_BSAT_CI[1]))
+# THETA_R FOLLOWS the slope and TMAX FOLLOWS THETA_R AND the percentile. NEITHER IS FREE, and TMAX
+# is RECOMPUTED from the effective THETA_R every time rather than carried from ORDER P. Holding a
+# stale TMAX while moving BETA_sat would break LAMBDA*THETA_R == BETA_sat's meaning at the cap.
+O39_THETA_R=O39_BETA_SAT/O37_LAMBDA                        # NOT FREE
+O39_TMAX=1.0-O39_THETA_R*(O39_S_PQ[_O39_PCT]-O37_S0)       # NOT FREE — recomputed, never stale
+# DISCLOSED, LOUDLY: LAMBDA IS NOT RE-SOLVED. On ORDER P, LAMBDA was SOLVED by an anchoring
+# identity — bisection so the new charge removes exactly the same total points from the year-1
+# class-mark population as ORDER K's blind charge did. Moving BETA_sat or TMAX BREAKS that anchor,
+# so these variants remove LESS total charge than ORDER P by construction. THAT IS THE SOFTENING.
+# Re-solving LAMBDA would claw back exactly what the owner asked to give away. The choice is the
+# order's and it is written on the prereg, not discovered afterwards.
+# R9/R10 — the two identities, asserted at load.
+if abs(O37_LAMBDA*O39_THETA_R-O39_BETA_SAT)>1e-15:
+    raise SystemExit('ORDER R HALT (R9): LAMBDA*THETA_R = %.17g is not the effective BETA_sat = '
+                     '%.17g — the tilt has come loose from the measurement.'
+                     %(O37_LAMBDA*O39_THETA_R,O39_BETA_SAT))
+if abs(O39_TMAX-(1.0-O39_THETA_R*(O39_S_PQ[_O39_PCT]-O37_S0)))>1e-12:
+    raise SystemExit('ORDER R HALT (R10): TMAX is not 1 - THETA_R*(s_pQ - s0) on the EFFECTIVE '
+                     'THETA_R. A stale cap is being carried.')
+if abs(O39_S_PQ[5]-O37_S_P5)>0.0:
+    raise SystemExit('ORDER R HALT (R10): the Q=5 percentile in O39_S_PQ is not MECH_P.json::s_p5 '
+                     'bit for bit. The percentile table has drifted from the population it came from.')
+# ===== ORDER S (RL_O40_*) — THE FOUR MEASURED REPAIRS =========================================
+# PREREG_S.md, pushed before this edit · docs/evidence/order_s_2026-08-19.
+# THIS WAS A MEASUREMENT + PRICING ORDER; ADOPTED 2026-10-13, hard-wired 2026-10-14. With every dial
+# off => the effective constants below are the ORDER R constants BIT FOR BIT (same float
+# expressions, same operands, same order of operations), so ORDER P's 374d4e44 and every ORDER
+# Q/R board reproduce BYTE-EXACT.
+#
+# THE LEVEL (S3). LAMBDA was SOLVED by an anchoring identity: bisection so the derived charge
+# removes exactly the same total (101,402.7 points) from the year-1 class-mark population as the
+# OLD BLIND CHARGE did. The old charge is the object ORDER P replaced BECAUSE it was defective.
+# So the DISTRIBUTION was solved and the LEVEL was inherited. This dial re-opens the level. It is
+# a measurement dial: docs/evidence/order_s_2026-08-19/LAMBDA_S_out.txt reports the frontier and
+# this seat RECOMMENDS NOTHING.
+O40_LAMBDA=O37_LAMBDA                                     # the LEVEL is ORDER P's inherited one: RL_O40_LAMBDA was never on the candidate line (hard-wired unset 2026-10-14; the (1e-6, 20] bracket halt went with it)
+# THETA_R FOLLOWS the slope and the level; TMAX FOLLOWS THETA_R and the ORDER R percentile.
+# NEITHER IS FREE, and BOTH are RECOMPUTED from the EFFECTIVE level every time rather than
+# carried from ORDER P or ORDER R. A stale cap HALTS (S-F2) and so does a loose tilt (S-F1).
+O40_THETA_R=O39_BETA_SAT/O40_LAMBDA                        # NOT FREE
+O40_TMAX=1.0-O40_THETA_R*(O39_S_PQ[_O39_PCT]-O37_S0)       # NOT FREE — recomputed, never stale
+# THE CAP FORM (S2) — the owner's spec, verbatim intent: "what if P20 was just the floor, and
+# everything scaled in between? So someone at P10 would still appear a little ahead of P5, but
+# both would be at or above the old P20." That is a MONOTONE, GAP-PRESERVING compression:
+#
+#     T_raw(s) = max(1 - THETA_R*(s - s0), 0)          the charge with only the ZERO clip
+#     C        = 1 - THETA_R*(s_pQ - s0)               the anchor ceiling, Q = RL_O40_CAPPCT
+#     T'(s)    = C * (1 - exp(-T_raw(s)/C))
+#
+# WHY THIS FORM AND NO OTHER, and why it adds NO free parameter beyond the anchor percentile:
+#   (1) T'(0) = 0 — a row at the cohort centre's crossing is untouched.
+#   (2) dT'/dT_raw = exp(-T_raw/C) > 0 for every finite T_raw. THERE IS NO FLAT SEGMENT ANYWHERE.
+#       Worse play ALWAYS costs strictly more. That is the owner's requirement, met exactly.
+#   (3) dT'/dT_raw -> 1 as T_raw -> 0: the compression AGREES WITH THE UNCOMPRESSED CHARGE TO
+#       FIRST ORDER at the shallow end, so it is not a rescaling of the whole line — it bends
+#       only where the line was going to be clipped.
+#   (4) T' < C everywhere and T' -> C. So EVERY row pays at most the hard-clip-at-Q charge:
+#       "both would be at or above the old P20" holds for every row, not just for the capped.
+#   Requirements (1) and (3) — value AND slope matched at zero — fix the exponential's rate to
+#   1/C UNIQUELY. The only quantity chosen is C, and C is the anchor percentile's own TMAX, the
+#   SAME object the hard clip used. A hard clip fails (2); a linear rescale fails (3); a power or
+#   logistic form needs a second constant. THERE IS NO FREE PARAMETER BEYOND THE ANCHOR.
+O40_CAPC=(1.0-O40_THETA_R*(O39_S_PQ[_O40_CAPPCT]-O37_S0))
+# THE RECENCY RETENTION (S1). w = 1 is the engine's own object: o37_surplus weights a played
+# season by GAMES ONLY, so a 2024 season counts identically to a 2026 one. Measured walk-forward
+# on the store's own history (RECENCY_S_out.txt), w = 1 is the WORST point on the out-of-sample
+# error curve. A season's weight becomes  games * w^(Y - season year).
+# THE SEASON-TURN AXIS: a pure geometric-in-years-back weight is EXACTLY invariant to the
+# calendar turn, because at a turn every played season's exponent rises by one and the common
+# factor w cancels in the normalisation. That is VERIFIED by sweep, not assumed (CONT_S).
+O40_RECW=0.47                                             # the geometric retention, in (0, 1] (1 was the engine's own flat weighting, the off-path). Hard-wired 2026-10-14.
+# S-F1 / S-F2 / S-F0 — asserted at load.
+if abs(O40_LAMBDA*O40_THETA_R-O39_BETA_SAT)>1e-15:
+    raise SystemExit('ORDER S HALT (S-F1): LAMBDA*THETA_R = %.17g is not the effective BETA_sat = '
+                     '%.17g — the tilt has come loose from the measurement.'
+                     %(O40_LAMBDA*O40_THETA_R,O39_BETA_SAT))
+if abs(O40_TMAX-(1.0-O40_THETA_R*(O39_S_PQ[_O39_PCT]-O37_S0)))>1e-12:
+    raise SystemExit('ORDER S HALT (S-F2): TMAX is not 1 - THETA_R*(s_pQ - s0) on the EFFECTIVE '
+                     'THETA_R. A stale cap is being carried.')
+if not (O40_CAPC>0.0):
+    raise SystemExit('ORDER S HALT: the compression ceiling C = %.17g is not positive. The form '
+                     'divides by C and is undefined there.'%O40_CAPC)
+# THE PEDIGREE PREMIUM SURFACE, in AFL Fantasy points per game, as a function of ln(v0).
+# Estimated by games-weighted LOCAL-LINEAR KERNEL REGRESSION on ln(v0), tricube kernel, bandwidth
+# 0.40 in log-v0 units — the SAME estimator family par_build.py used over log-pick at the same
+# bandwidth, chosen deliberately so the comparison with the deleted object is like-for-like rather
+# than flattering. Fitted separately for TALL (KPD/KPF/RUCK) and SMALL (MID/SD/SF) — the same
+# class pooling the C3 age surface uses — on 5,041 season rows over 1,575 players and 58,488
+# games: every season with games played, at age 18-23, by an entrant from 2005 on, up to 2025.
+# The house monotonicity guard (pool-adjacent-violators, increasing) is applied to the fitted
+# grid: a more expensively priced player is never expected to produce less.
+# POOLED OVER AGE. The age-carrying variant WAS measured (PACKET_P section 7.1) and is WORSE on
+# every rail — picks 1-10 primary +11.36% against +8.62%, modern +21.51% against +18.85%. It is
+# not built and it is not a dial.
+# Each entry is (lo, hi, y): 121 nodes evenly spaced in ln(v0) from the 1st to the 99th percentile
+# of the fitted population. Linear between nodes; HELD FLAT outside — never extrapolated.
+# Regenerated and proved by docs/evidence/order_p_build_2026-08-18/op_surface_emit.py.
+O37_PG_GRID={
+    'TALL':(4.5664293576716606,7.9885090493489335,(
+     -5.4455867081102411,-5.4455867081102411,-5.4455867081102411,-5.4455867081102411,-5.4455867081102411,-5.4455867081102411,
+     -5.4047760344362308,-4.9137051657926945,-4.1839519626341524,-3.547798820225772,-3.1187175304818613,-2.8306827587028107,
+     -2.6045867243204794,-2.392965577383134,-2.1575978172075794,-1.8634270971665809,-1.560737614127947,-1.2463682940640921,
+     -0.82697777110007242,-0.28727210729525771,0.28334745102024395,0.77364690364419653,1.1176538458895451,1.3142810568719852,
+     1.4310924620360834,1.520241712493009,1.6268839845690664,1.776900578289401,1.9598395453176443,2.1565703297145311,
+     2.3199477429090098,2.3199477429090098,2.3199477429090098,2.3199477429090098,2.3199477429090098,2.3199477429090098,
+     2.3199477429090098,2.3199477429090098,2.3199477429090098,2.474881949521277,2.6717527927652842,2.8539009509446318,
+     3.0553005117574554,3.2248913696028327,3.3244578540162637,3.3857104690490463,3.4355619922454075,3.4938807892483328,
+     3.5947902186262426,3.7601719898077497,3.9754096770391913,4.2049119382434821,4.4059043555525639,4.5912396350554889,
+     4.7996043033283202,5.0266845168513967,5.2423954980924758,5.4329737318027815,5.5893790725385122,5.7119077410334489,
+     5.8151049019440784,5.9120969830277739,6.0208086283023166,6.1708840705720354,6.3531589632807055,6.5402149256632711,
+     6.7098008286908533,6.8522404947596378,6.980153007982616,7.1048873555435152,7.2306252201587577,7.3540943529449283,
+     7.4757697071890457,7.5836700076450869,7.62948305161009,7.6303872722392505,7.6303872722392505,7.6430773265604213,
+     7.6870980531344522,7.7766525774302959,7.8756881756463715,7.9633911919679612,8.0445919060075664,8.1221435028876048,
+     8.1926242718733544,8.2856734010323052,8.4537394810191948,8.7338293170424244,9.1427768527383044,9.6774305607147912,
+     10.334428729611606,10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,
+     10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,
+     10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,
+     10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,11.289519873909789,12.494465623798206,
+     13.790014604208249,15.165841316681965,16.629718563960207,18.166261696501994,19.724615375615219,21.29444967737923,
+     22.922043787483595)),
+    'SMALL':(4.513054897080286,8.1444759697678766,(
+     -7.0364117904300656,-7.0364117904300656,-7.0364117904300656,-7.0364117904300656,-7.0364117904300656,-7.0364117904300656,
+     -7.0364117904300656,-7.0364117904300656,-7.0364117904300656,-7.0364117904300656,-7.0364117904300656,-7.0364117904300656,
+     -7.0364117904300656,-7.0364117904300656,-6.9773343756962305,-6.9102456731853668,-6.8867837853820841,-6.8464823480538177,
+     -6.511703309229838,-5.8993680558490569,-5.2586397290260249,-4.6294139565183876,-4.0039710870706218,-3.369989812391148,
+     -2.6987267228160507,-2.0594809191407717,-1.5456971844867691,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,
+     -1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,
+     -1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,
+     -1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,
+     -1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.0572820081904364,-0.58708959825022011,-0.035343884619787727,
+     0.52871229816215748,1.0565821790478596,1.5489700305648837,2.0044630763037796,2.4129854340099217,2.7675906478389396,
+     3.0699264814972471,3.335506691763455,3.606059236306455,3.8818979295555134,4.1761265754243224,4.4790899072732095,
+     4.7631474761536525,5.0094995251320986,5.2124068582748908,5.3699927357834421,5.4864157942619096,5.5900876575677954,
+     5.7114709064914733,5.8704887287729814,6.0776429038458968,6.3145545807411683,6.5320472490656307,6.5320472490656307,
+     6.5320472490656307,6.5320472490656307,6.5320472490656307,6.5320472490656307,6.5320472490656307,6.5320472490656307,
+     6.5320472490656307,7.0464452408760305,7.7002183677861256,8.2807077727565961,8.7699574761164047,9.1743996939167616,
+     9.5102475540686697,9.9191904515388014,10.516979561510675,11.299647269537539,12.150777171882492,12.934785820087493,
+     13.596950104805869,14.125890693373643,14.515989950412777,14.862776535541089,15.326868021342062,15.893077430881478,
+     16.433508150193134,16.840860053165954,17.132174599855659,17.34201506740057,17.486029109510262,17.571748104372329,
+     17.74030898924396,18.262436503686921,18.900128819869604,19.553610645797963,20.215990248694148,20.855503188591502,
+     21.440141766150504,21.955229100286488,22.432987140706345,22.94209310608661,23.554904535865262,24.351188761151118,
+     25.440230012706913)),
+}
+# ===== ORDER S (RL_O40_PGMAT) — THE MATURE PEDIGREE PREMIUM ===================================
+# The SAME estimator as O37_PG_GRID above — games-weighted local-linear kernel on ln(v0),
+# tricube, bandwidth 0.40 in log-v0 units, isotonised, 121-point grid, seed 32 — refitted on
+# seasons at AGE 24 AND OVER instead of 18-23. NOTHING about the estimator changes; only the
+# population does. The young refit run with this same code reproduces O37_PG_GRID BIT FOR BIT
+# (max |difference| 0.0 on all 242 nodes, docs/evidence/order_s_2026-08-19/MATURE_S_out.txt), so
+# this is the SAME KIND OF OBJECT and not a lookalike.
+# MEASURED: the mature premium is a FLATTER object. It is HIGHER than the young one at the cheap
+# end (+4.03 pts a game at v0 400 SMALL, CI excludes zero) and LOWER at the expensive end
+# (-4.71 at v0 3,000 SMALL, CI excludes zero); the average slope ratio is TALL 0.904, SMALL
+# 0.747. So FIX B1, which reads the YOUNG premium at every age, sets too LOW a bar on cheap
+# mature rows and too HIGH a bar on expensive ones.
+O40_PGM_GRID={
+    'TALL': (4.4296256134731609,7.9885769057654086,
+    (-5.7168614613721367,-5.7168614613721367,-5.7168614613721367,-5.7168614613721367,-5.7168614613721367,
+     -5.6232805605946519,-5.2809357159352812,-4.8135196163656149,-4.2217803059476395,-3.4821714213704893,
+     -2.5533326051439671,-1.5581077570178237,-1.1807618121309136,-1.1807618121309136,-1.0768750631577608,
+     -0.62195922165405826,0.026811632696395422,0.75592753737246554,1.4366771525328785,1.9773137612360845,
+     2.0017133993528589,2.0017133993528589,2.0017133993528589,2.0017133993528589,2.0017133993528589,
+     2.0017133993528589,2.0017133993528589,2.0017133993528589,2.0017133993528589,2.0017133993528589,
+     2.0017133993528589,2.0017133993528589,2.0017133993528589,2.0017133993528589,2.0017133993528589,
+     2.1908240055317574,2.6592046835123941,3.119218017946161,3.5653534016549417,3.9887121743218414,
+     4.3205596873354644,4.5774855633758991,4.8657107520380416,5.2680866403922231,5.8067256301935828,
+     6.4072435329532391,6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,
+     6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,
+     6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,
+     6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,
+     6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,
+     6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,
+     6.8853868709460322,6.8958353061175295,7.3904694821563073,7.9303917512987709,8.4799871241271809,
+     9.0523121624079099,9.6121059684483861,10.159722127308756,10.758357771022034,11.444958030716455,
+     12.152392490908982,12.851660397040057,13.239357437433398,13.239357437433398,13.239357437433398,
+     13.239357437433398,13.239357437433398,13.239357437433398,13.239357437433398,13.239357437433398,
+     13.239357437433398,13.239357437433398,13.239357437433398,13.239357437433398,13.239357437433398,
+     13.239357437433398,13.239357437433398,13.239357437433398,13.239357437433398,13.239357437433398,
+     13.239357437433398,13.239357437433398,13.239357437433398,13.239357437433398,13.239357437433398,
+     13.239357437433398,13.239357437433398,13.239357437433398,13.241906944899288,14.302996336806453,
+     15.475907213691711,16.744368819708381,18.032043114169984,19.195051146630242,20.155136491538418,
+     20.954374277043737)),
+    'SMALL': (4.513054897080286,8.1444759697678766,
+    (-6.8097514604215306,-5.8541053733531072,-5.1932069237483223,-5.1932069237483223,-5.1932069237483223,
+     -5.1932069237483223,-5.1932069237483223,-5.1932069237483223,-5.1932069237483223,-5.1932069237483223,
+     -4.6899526812163632,-4.6587851532219711,-4.6587851532219711,-4.6587851532219711,-4.6587851532219711,
+     -4.6587851532219711,-4.6587851532219711,-4.6587851532219711,-4.6587851532219711,-4.6587851532219711,
+     -4.4984484453615128,-3.9560211778444945,-3.359325620818439,-2.7302391432848991,-2.0040352890746349,
+     -1.2291668907876403,-0.55076655315529399,0.011471152621557781,0.49113905087589171,0.9304334296447907,
+     1.366367002438128,1.810680204786677,2.2528047823866459,2.6807756031442658,2.7626294928937898,
+     2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7626294928937898,
+     2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7626294928937898,
+     2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7626294928937898,
+     2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7626294928937898,
+     2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7716565120205132,3.0292401258172643,
+     3.2553721850251942,3.4753310385332665,3.716865709336453,4.0013703907702771,4.3806810472632929,
+     4.8669705175205289,5.4272167179242148,6.0052827033870662,6.5616392701716366,7.0737763745601621,
+     7.5198048876445611,7.9151082904002479,8.309313929910255,8.4586111085663287,8.4586111085663287,
+     8.4586111085663287,8.4586111085663287,8.4586111085663287,8.4586111085663287,8.4586111085663287,
+     8.4586111085663287,8.4586111085663287,8.4586111085663287,8.4586111085663287,8.4586111085663287,
+     8.4586111085663287,8.4586111085663287,8.4586111085663287,8.4827402394829718,8.6271074026877397,
+     8.891203850882853,9.6361022766501048,10.92943670868515,12.483873089752624,13.926348978173678,
+     15.074416039118409,15.965006774552032,16.640006016464852,17.094709573831405,17.343061537581139,
+     17.458754020193279,17.458754020193279,17.458754020193279,17.458754020193279,17.458754020193279,
+     17.458754020193279,17.458754020193279,17.458754020193279,17.458754020193279,17.458754020193279,
+     17.458754020193279,17.458754020193279,17.458754020193279,17.458754020193279,17.458754020193279,
+     17.458754020193279,17.458754020193279,17.458754020193279,17.458754020193279,17.458754020193279,
+     17.458754020193279)),
+}
+def o40_pg(v0,cls):
+    """PG_mature(ln v0, class). Same reader as o37_pg, on the mature grid."""
+    _lo,_hi,_y=O40_PGM_GRID[cls]
+    _x=_math.log(max(1e-9,float(v0)))
+    if _x<=_lo: return _y[0]
+    if _x>=_hi: return _y[-1]
+    _t=(_x-_lo)/(_hi-_lo)*(len(_y)-1)
+    _i=int(_t)
+    if _i>=len(_y)-1: return _y[-1]
+    return _y[_i]+(_t-_i)*(_y[_i+1]-_y[_i])
+def o37_pg(v0,cls):
+    """PG(ln v0, class) in points per game. Linear on the fitted grid, held flat outside its
+    support. Reproduces op_lib.Premium.at_v0 — proved node by node in the build packet."""
+    _lo,_hi,_y=O37_PG_GRID[cls]
+    _x=_math.log(max(1e-9,float(v0)))
+    if _x<=_lo: return _y[0]
+    if _x>=_hi: return _y[-1]
+    _t=(_x-_lo)/(_hi-_lo)*(len(_y)-1)
+    _i=int(_t)
+    if _i>=len(_y)-1: return _y[-1]
+    return _y[_i]+(_t-_i)*(_y[_i+1]-_y[_i])
+_O37_SCACHE={}
+def o37_surplus(p,Y):
+    """s_P — the games-weighted mean of (season avg - BAR_P) over every season the row PLAYED up
+    to and including Y, in AFL Fantasy points per game. POSITIVE means he is producing above what
+    a player priced like him produces at his age.
+    Returns None — and the ORDER K charge is then kept UNCHANGED for that row — when the row has
+    never played, has no day-0 v0 object, has no birth year, or carries a season the bar cannot
+    read. That is the SAME fallback op_step4.py::F_new used offline, so the built board and the
+    published estimate are comparable line by line rather than nearly."""
+    _ck=(id(p),p.get('key'),int(Y))
+    if _ck in _O37_SCACHE: return _O37_SCACHE[_ck]
+    _r=None; _v=day0_v0(p); _by=p.get('_by')
+    if _v is not None and _by:
+        # ENGINE currency, at the matrix emitter's own one-decimal convention, so the axis this
+        # premium is read on is EXACTLY the axis it was fitted on.
+        _v0=round(float(_v)*_PL_F,1)
+        _num=_den=0.0; _ok=True
+        for _x in (p.get('scoring') or []):
             if _x['year']>Y: continue
-            _g=float(_x['games'] or 0.0)
-            if _g<=0.0: continue                                   # gameless: D(c_u)'s channel, skipped
-            _u=(_fEy(Y,p) if _x['year']==Y else 1.0)
-            # ORDER A stage 1 (M1): the AVG leg reads the age-referenced gate bar — a NEW gate-only
-            # object; the flat production references are untouched. The GAMES leg is unchanged (S1 §3).
-            _bar=(o32_gate_bar(_pos,_x['year']-p['_by']) if (_O32S>=1 and p.get('_by')) else _bar0)
-            if _g>=10.0*_u and float(_x['avg'] or 0.0)>=_bar: break # DELIVERED -> the run resets
-            _s+=1
-        return _s
-    # ===== ORDER P (RL_O37) — THE PEDIGREE-CONDITIONAL CHARGE =====================================
-    # PREREG_P_BUILD.md (pushed before this edit) · docs/evidence/order_p_2026-08-18 (the measurement,
-    # the derivation and the offline pricing) · docs/evidence/order_p_build_2026-08-18 (this wiring).
-    #
-    # WHAT IS REPLACED, AND WHY. The ORDER A stage-6 charge below reads GAMES AND NOTHING ELSE:
-    #     pi *= max(0, 1 - eta*(g/gamma_d)*exp(1 - g/gamma_d))          eta 0.50, gamma_d 14
-    # It peaks at exactly 14 games and then FALLS AWAY, so a 36-game row keeps MORE of his unearned
-    # entry price than a 17-game row however either of them played. Measured on the young board: two
-    # rows within two games of each other and 63 points a game apart on production-against-age paid
-    # the identical charge to the last decimal (PACKET_N). That is the defect the owner asked to
-    # remove, and this block removes it.
-    #
-    # WHAT REPLACES IT, for rows aged UNDER 24 at the year being priced:
-    #     pi *= exp( -LAMBDA * A(g) * T(s_P) )
-    #     A(g)  = 1 - exp(-g/G0)                        how much evidence g games is. A(0) = 0 EXACTLY.
-    #     T(s)  = clip( 1 - THETA_R*(s - s0), 0, TMAX )  what the evidence says. Non-increasing in s.
-    #     s_P   = the games-weighted mean of ( season avg - BAR_P ) over every season played to date
-    #     BAR_P = o32_gate_bar(that season's bar, his age that season) + PG(ln v0, class)
-    #
-    # THE ONE NEW OBJECT IS PG, THE PEDIGREE PREMIUM: how far above his AGE bar a player who entered
-    # at that price actually produces. It is MEASURED FROM OUTCOMES, never from prices — v0 is the
-    # axis the outcomes are indexed by and no board price is added to anything. It is the whole of the
-    # owner's sentence: "there should be a higher bar / more positive signs required to maintain a
-    # higher valuation".
-    #
-    # WORKED, ON TWO REAL ROWS THAT SIT 17 GAMES EACH AND ABOUT 1.7 POINTS A GAME BELOW THEIR AGE BAR.
-    # Under the charge above they pay the IDENTICAL 49.0%, because it only reads games. Zeke Uwland
-    # was pick 2 and cost 2,583; a player at that price produces 19.2 points a game clear of the age
-    # bar, so against what is priced into him he is 20.9 short and he pays 84.7%. Cooper Harvey was
-    # pick 56 and cost 265; a player at that price produces 1.3 BELOW the age bar, so he is half a
-    # point short and he pays nothing. Same production for their age, opposite verdicts.
-    #
-    # ON THE FORBIDDEN SET. This object is NOT the deleted par machinery returning. Par entered price
-    # as max(0, pole - production) and as a level substitute, both strictly NON-NEGATIVE: a high pick
-    # was PAID for being a high pick. This object enters a CHARGE and T is non-increasing in surplus,
-    # so raising an expensive row's bar RAISES his charge and LOWERS his price — the opposite sign.
-    # Three bounds, all asserted below or in the build proofs: F = 1 - exp(-LAMBDA*A*T) is in [0,1),
-    # so no row can price above its own UNCHARGED (eta-zero) price, a board the forbidden set is
-    # already absent from (0 of 9,746 vantages, STEP4_P_out.txt); A(0) = 0 exactly, so no day-0 print
-    # moves; and the bar reads outcomes, never prices. THE OWNER STILL RULES ON THE WORD.
-    #
-    # THE CONSTANTS ARE MEASURED AND SOLVED. NOT ONE OF THEM IS RE-FITTED HERE.
-    #   G0, BETA_sat  — the BETA_P(g) curve of PACKET_P section 4.5, fitted as BETA_sat*(1-exp(-g/G0))
-    #                   weighted by each bin's own inverse variance. MECH_P.json.
-    #   LAMBDA        — SOLVED, not chosen: bisection so the derived charge removes exactly the same
-    #                   total points from the year-1 class-mark population (cohort classes 2005-2015)
-    #                   as the current charge does. 101,402.7 matrix points, matched to the last
-    #                   decimal. STEP4_P.json::mechanism.LAMBDA.
-    #   THETA_R       — FOLLOWS as BETA_sat/LAMBDA, so the delivered slope d ln(retained pedigree)/ds
-    #                   equals the MEASURED slope at every level of surplus. It is not free.
-    #   s0            — the games-weighted mean of s_P over the young cohort. T(s0) = 1.
-    #   TMAX          — T at the cohort's own 5th percentile of s_P, so the worst 5% all pay the same
-    #                   top rate rather than an unbounded one. It is not free.
-    # THERE IS NO FREE PARAMETER. LAMBDA*THETA_R == BETA_sat is asserted at load.
-    O37_G0=9.890000000000008                                   # MECH_P.json::G0        90% CI [7.60, 12.98]
-    O37_BETA_SAT=0.11464630061141393                           # MECH_P.json::BETA_sat  90% CI [0.10416, 0.12718]
-    O37_LAMBDA=0.1743833036575403                              # STEP4_P.json — SOLVED by the anchoring identity
-    O37_S0=-2.452720891469074                                  # MECH_P.json::s0
-    O37_S_P5=-33.06133449874688                                # MECH_P.json::s_p5 — the cohort's own 5th percentile
-    O37_AGE_GATE=24                                            # the age bar has content below 24 and none at or above it
-    O37_THETA_R=O37_BETA_SAT/O37_LAMBDA                        # NOT FREE
-    O37_TMAX=1.0-O37_THETA_R*(O37_S_P5-O37_S0)                 # NOT FREE
-    # ===== ORDER R (RL_O39_TMAXPCT / RL_O39_BETASAT) — THE OWNER'S TWO SOFTENINGS ==================
-    # PREREG_R.md, pushed before this edit · docs/evidence/order_r_2026-08-18.
-    # THIS IS A MEASUREMENT ORDER. NOTHING HERE IS ADOPTED AND NOTHING LANDS. Both dials off => the
-    # effective constants below are the ORDER P constants BIT FOR BIT (same float expressions, same
-    # order of operations), so ORDER P's 374d4e44 and every ORDER Q board reproduce BYTE-EXACT.
-    #
-    # THE CAP. TMAX is T evaluated at the young cohort's own Qth percentile of s_P, so the worst
-    # -producing Q% all pay the same top rate rather than an unbounded one. ORDER P set Q = 5, which
-    # charges a row sitting at the cap 97.3% of his pedigree leg. The owner ruled Q = 15 or 20. The
-    # three percentiles below are np.percentile(sP, Q) over the SAME 4,143 young-cohort season rows in
-    # STEP2_P.json that produced MECH_P.json::s_p5, by the SAME call, unweighted. The Q=5 entry
-    # reproduces MECH_P.json::s_p5 to the last bit and that is asserted at load (R10 below).
-    O39_S_PQ={5:-33.06133449874688,           # == O37_S_P5, MECH_P.json::s_p5
-              15:-22.148794633345666,
-              20:-19.024574086528315}
-    # THE SLOPE. BETA_sat is the MEASURED saturated slope of the pedigree leg's response to surplus.
-    # Its published 90% CI is a parametric bootstrap over the seven games bins, ORDER P seed 32.
-    # SOFTENING OUTSIDE THE MEASURED INTERVAL IS FORBIDDEN and the dial HALTS on it (R11).
-    O39_BSAT_CI=(0.10416359711151935,0.1271777523096214)      # MECH_P.json::BETA_sat_ci
-    O39_BETA_SAT=(float(_O39_BSAT_RAW) if _O39_BSAT_RAW!='' else O37_BETA_SAT)
-    if _O39_BSAT_RAW!='' and not (O39_BSAT_CI[0]<=O39_BETA_SAT<=O39_BSAT_CI[1]):
-        raise SystemExit('ORDER R HALT (R11): RL_O39_BETASAT=%.17g is OUTSIDE the published 90%% CI '
-                         '[%.17g, %.17g]. The owner ruled the charge may be softened INSIDE the measured '
-                         'interval and not beyond it. This dial does not price an unmeasured slope.'
-                         %(O39_BETA_SAT,O39_BSAT_CI[0],O39_BSAT_CI[1]))
-    # THETA_R FOLLOWS the slope and TMAX FOLLOWS THETA_R AND the percentile. NEITHER IS FREE, and TMAX
-    # is RECOMPUTED from the effective THETA_R every time rather than carried from ORDER P. Holding a
-    # stale TMAX while moving BETA_sat would break LAMBDA*THETA_R == BETA_sat's meaning at the cap.
-    O39_THETA_R=O39_BETA_SAT/O37_LAMBDA                        # NOT FREE
-    O39_TMAX=1.0-O39_THETA_R*(O39_S_PQ[_O39_PCT]-O37_S0)       # NOT FREE — recomputed, never stale
-    # DISCLOSED, LOUDLY: LAMBDA IS NOT RE-SOLVED. On ORDER P, LAMBDA was SOLVED by an anchoring
-    # identity — bisection so the new charge removes exactly the same total points from the year-1
-    # class-mark population as ORDER K's blind charge did. Moving BETA_sat or TMAX BREAKS that anchor,
-    # so these variants remove LESS total charge than ORDER P by construction. THAT IS THE SOFTENING.
-    # Re-solving LAMBDA would claw back exactly what the owner asked to give away. The choice is the
-    # order's and it is written on the prereg, not discovered afterwards.
-    # R9/R10 — the two identities, asserted at load on every path including dial-off.
-    if abs(O37_LAMBDA*O39_THETA_R-O39_BETA_SAT)>1e-15:
-        raise SystemExit('ORDER R HALT (R9): LAMBDA*THETA_R = %.17g is not the effective BETA_sat = '
-                         '%.17g — the tilt has come loose from the measurement.'
-                         %(O37_LAMBDA*O39_THETA_R,O39_BETA_SAT))
-    if abs(O39_TMAX-(1.0-O39_THETA_R*(O39_S_PQ[_O39_PCT]-O37_S0)))>1e-12:
-        raise SystemExit('ORDER R HALT (R10): TMAX is not 1 - THETA_R*(s_pQ - s0) on the EFFECTIVE '
-                         'THETA_R. A stale cap is being carried.')
-    if abs(O39_S_PQ[5]-O37_S_P5)>0.0:
-        raise SystemExit('ORDER R HALT (R10): the Q=5 percentile in O39_S_PQ is not MECH_P.json::s_p5 '
-                         'bit for bit. The percentile table has drifted from the population it came from.')
-    if not _O39 and (O39_THETA_R!=O37_THETA_R or O39_TMAX!=O37_TMAX):
-        raise SystemExit('ORDER R HALT (R1): with both ORDER R dials unset the effective constants are '
-                         'not the ORDER P constants bit for bit. Dial-off would not be byte-exact.')
-    # ===== ORDER S (RL_O40_*) — THE FOUR MEASURED REPAIRS =========================================
-    # PREREG_S.md, pushed before this edit · docs/evidence/order_s_2026-08-19.
-    # THIS IS A MEASUREMENT + PRICING ORDER. NOTHING HERE IS ADOPTED AND NOTHING LANDS. Every dial
-    # off => the effective constants below are the ORDER R constants BIT FOR BIT (same float
-    # expressions, same operands, same order of operations), so ORDER P's 374d4e44 and every ORDER
-    # Q/R board reproduce BYTE-EXACT.
-    #
-    # THE LEVEL (S3). LAMBDA was SOLVED by an anchoring identity: bisection so the derived charge
-    # removes exactly the same total (101,402.7 points) from the year-1 class-mark population as the
-    # OLD BLIND CHARGE did. The old charge is the object ORDER P replaced BECAUSE it was defective.
-    # So the DISTRIBUTION was solved and the LEVEL was inherited. This dial re-opens the level. It is
-    # a measurement dial: docs/evidence/order_s_2026-08-19/LAMBDA_S_out.txt reports the frontier and
-    # this seat RECOMMENDS NOTHING.
-    O40_LAMBDA=(float(_O40_LAM_RAW) if _O40_LAM_RAW!='' else O37_LAMBDA)
-    if _O40_LAM_RAW!='' and not (1e-6<O40_LAMBDA<=20.0):
-        raise SystemExit('ORDER S HALT: RL_O40_LAMBDA=%r is outside the bracket the anchoring solve '
-                         'itself bisected on, (1e-6, 20]. Nothing outside it is priced.'%_O40_LAM_RAW)
-    # THETA_R FOLLOWS the slope and the level; TMAX FOLLOWS THETA_R and the ORDER R percentile.
-    # NEITHER IS FREE, and BOTH are RECOMPUTED from the EFFECTIVE level every time rather than
-    # carried from ORDER P or ORDER R. A stale cap HALTS (S-F2) and so does a loose tilt (S-F1).
-    O40_THETA_R=O39_BETA_SAT/O40_LAMBDA                        # NOT FREE
-    O40_TMAX=1.0-O40_THETA_R*(O39_S_PQ[_O39_PCT]-O37_S0)       # NOT FREE — recomputed, never stale
-    # THE CAP FORM (S2) — the owner's spec, verbatim intent: "what if P20 was just the floor, and
-    # everything scaled in between? So someone at P10 would still appear a little ahead of P5, but
-    # both would be at or above the old P20." That is a MONOTONE, GAP-PRESERVING compression:
-    #
-    #     T_raw(s) = max(1 - THETA_R*(s - s0), 0)          the charge with only the ZERO clip
-    #     C        = 1 - THETA_R*(s_pQ - s0)               the anchor ceiling, Q = RL_O40_CAPPCT
-    #     T'(s)    = C * (1 - exp(-T_raw(s)/C))
-    #
-    # WHY THIS FORM AND NO OTHER, and why it adds NO free parameter beyond the anchor percentile:
-    #   (1) T'(0) = 0 — a row at the cohort centre's crossing is untouched.
-    #   (2) dT'/dT_raw = exp(-T_raw/C) > 0 for every finite T_raw. THERE IS NO FLAT SEGMENT ANYWHERE.
-    #       Worse play ALWAYS costs strictly more. That is the owner's requirement, met exactly.
-    #   (3) dT'/dT_raw -> 1 as T_raw -> 0: the compression AGREES WITH THE UNCOMPRESSED CHARGE TO
-    #       FIRST ORDER at the shallow end, so it is not a rescaling of the whole line — it bends
-    #       only where the line was going to be clipped.
-    #   (4) T' < C everywhere and T' -> C. So EVERY row pays at most the hard-clip-at-Q charge:
-    #       "both would be at or above the old P20" holds for every row, not just for the capped.
-    #   Requirements (1) and (3) — value AND slope matched at zero — fix the exponential's rate to
-    #   1/C UNIQUELY. The only quantity chosen is C, and C is the anchor percentile's own TMAX, the
-    #   SAME object the hard clip used. A hard clip fails (2); a linear rescale fails (3); a power or
-    #   logistic form needs a second constant. THERE IS NO FREE PARAMETER BEYOND THE ANCHOR.
-    O40_CAPC=(1.0-O40_THETA_R*(O39_S_PQ[_O40_CAPPCT]-O37_S0)) if _O40_CAPPCT is not None else None
-    # THE RECENCY RETENTION (S1). w = 1 is the engine's own object: o37_surplus weights a played
-    # season by GAMES ONLY, so a 2024 season counts identically to a 2026 one. Measured walk-forward
-    # on the store's own history (RECENCY_S_out.txt), w = 1 is the WORST point on the out-of-sample
-    # error curve. A season's weight becomes  games * w^(Y - season year).
-    # THE SEASON-TURN AXIS: a pure geometric-in-years-back weight is EXACTLY invariant to the
-    # calendar turn, because at a turn every played season's exponent rises by one and the common
-    # factor w cancels in the normalisation. That is VERIFIED by sweep, not assumed (CONT_S).
-    O40_RECW=(float(_O40_RECW_RAW) if _O40_RECW_RAW!='' else 1.0)
-    if not (0.0<O40_RECW<=1.0):
-        raise SystemExit('ORDER S HALT: RL_O40_RECW=%r. The retention is a per-year-back weight and '
-                         'must lie in (0, 1]. 1 is the engine\'s own flat weighting.'%_O40_RECW_RAW)
-    _O40REC=(_O40_RECW_RAW!='')
-    # S-F1 / S-F2 / S-F0 — asserted at load on EVERY path including dial-off.
-    if abs(O40_LAMBDA*O40_THETA_R-O39_BETA_SAT)>1e-15:
-        raise SystemExit('ORDER S HALT (S-F1): LAMBDA*THETA_R = %.17g is not the effective BETA_sat = '
-                         '%.17g — the tilt has come loose from the measurement.'
-                         %(O40_LAMBDA*O40_THETA_R,O39_BETA_SAT))
-    if abs(O40_TMAX-(1.0-O40_THETA_R*(O39_S_PQ[_O39_PCT]-O37_S0)))>1e-12:
-        raise SystemExit('ORDER S HALT (S-F2): TMAX is not 1 - THETA_R*(s_pQ - s0) on the EFFECTIVE '
-                         'THETA_R. A stale cap is being carried.')
-    if not _O40 and (O40_THETA_R!=O39_THETA_R or O40_TMAX!=O39_TMAX or O40_RECW!=1.0
-                     or O40_CAPC is not None):
-        raise SystemExit('ORDER S HALT (S-F0): with every ORDER S dial unset the effective constants '
-                         'are not the ORDER R constants bit for bit. Dial-off would not be byte-exact.')
-    if O40_CAPC is not None and not (O40_CAPC>0.0):
-        raise SystemExit('ORDER S HALT: the compression ceiling C = %.17g is not positive. The form '
-                         'divides by C and is undefined there.'%O40_CAPC)
-    # THE PEDIGREE PREMIUM SURFACE, in AFL Fantasy points per game, as a function of ln(v0).
-    # Estimated by games-weighted LOCAL-LINEAR KERNEL REGRESSION on ln(v0), tricube kernel, bandwidth
-    # 0.40 in log-v0 units — the SAME estimator family par_build.py used over log-pick at the same
-    # bandwidth, chosen deliberately so the comparison with the deleted object is like-for-like rather
-    # than flattering. Fitted separately for TALL (KPD/KPF/RUCK) and SMALL (MID/SD/SF) — the same
-    # class pooling the C3 age surface uses — on 5,041 season rows over 1,575 players and 58,488
-    # games: every season with games played, at age 18-23, by an entrant from 2005 on, up to 2025.
-    # The house monotonicity guard (pool-adjacent-violators, increasing) is applied to the fitted
-    # grid: a more expensively priced player is never expected to produce less.
-    # POOLED OVER AGE. The age-carrying variant WAS measured (PACKET_P section 7.1) and is WORSE on
-    # every rail — picks 1-10 primary +11.36% against +8.62%, modern +21.51% against +18.85%. It is
-    # not built and it is not a dial.
-    # Each entry is (lo, hi, y): 121 nodes evenly spaced in ln(v0) from the 1st to the 99th percentile
-    # of the fitted population. Linear between nodes; HELD FLAT outside — never extrapolated.
-    # Regenerated and proved by docs/evidence/order_p_build_2026-08-18/op_surface_emit.py.
-    O37_PG_GRID={
-        'TALL':(4.5664293576716606,7.9885090493489335,(
-         -5.4455867081102411,-5.4455867081102411,-5.4455867081102411,-5.4455867081102411,-5.4455867081102411,-5.4455867081102411,
-         -5.4047760344362308,-4.9137051657926945,-4.1839519626341524,-3.547798820225772,-3.1187175304818613,-2.8306827587028107,
-         -2.6045867243204794,-2.392965577383134,-2.1575978172075794,-1.8634270971665809,-1.560737614127947,-1.2463682940640921,
-         -0.82697777110007242,-0.28727210729525771,0.28334745102024395,0.77364690364419653,1.1176538458895451,1.3142810568719852,
-         1.4310924620360834,1.520241712493009,1.6268839845690664,1.776900578289401,1.9598395453176443,2.1565703297145311,
-         2.3199477429090098,2.3199477429090098,2.3199477429090098,2.3199477429090098,2.3199477429090098,2.3199477429090098,
-         2.3199477429090098,2.3199477429090098,2.3199477429090098,2.474881949521277,2.6717527927652842,2.8539009509446318,
-         3.0553005117574554,3.2248913696028327,3.3244578540162637,3.3857104690490463,3.4355619922454075,3.4938807892483328,
-         3.5947902186262426,3.7601719898077497,3.9754096770391913,4.2049119382434821,4.4059043555525639,4.5912396350554889,
-         4.7996043033283202,5.0266845168513967,5.2423954980924758,5.4329737318027815,5.5893790725385122,5.7119077410334489,
-         5.8151049019440784,5.9120969830277739,6.0208086283023166,6.1708840705720354,6.3531589632807055,6.5402149256632711,
-         6.7098008286908533,6.8522404947596378,6.980153007982616,7.1048873555435152,7.2306252201587577,7.3540943529449283,
-         7.4757697071890457,7.5836700076450869,7.62948305161009,7.6303872722392505,7.6303872722392505,7.6430773265604213,
-         7.6870980531344522,7.7766525774302959,7.8756881756463715,7.9633911919679612,8.0445919060075664,8.1221435028876048,
-         8.1926242718733544,8.2856734010323052,8.4537394810191948,8.7338293170424244,9.1427768527383044,9.6774305607147912,
-         10.334428729611606,10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,
-         10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,
-         10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,
-         10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,11.289519873909789,12.494465623798206,
-         13.790014604208249,15.165841316681965,16.629718563960207,18.166261696501994,19.724615375615219,21.29444967737923,
-         22.922043787483595)),
-        'SMALL':(4.513054897080286,8.1444759697678766,(
-         -7.0364117904300656,-7.0364117904300656,-7.0364117904300656,-7.0364117904300656,-7.0364117904300656,-7.0364117904300656,
-         -7.0364117904300656,-7.0364117904300656,-7.0364117904300656,-7.0364117904300656,-7.0364117904300656,-7.0364117904300656,
-         -7.0364117904300656,-7.0364117904300656,-6.9773343756962305,-6.9102456731853668,-6.8867837853820841,-6.8464823480538177,
-         -6.511703309229838,-5.8993680558490569,-5.2586397290260249,-4.6294139565183876,-4.0039710870706218,-3.369989812391148,
-         -2.6987267228160507,-2.0594809191407717,-1.5456971844867691,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,
-         -1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,
-         -1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,
-         -1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,
-         -1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.0572820081904364,-0.58708959825022011,-0.035343884619787727,
-         0.52871229816215748,1.0565821790478596,1.5489700305648837,2.0044630763037796,2.4129854340099217,2.7675906478389396,
-         3.0699264814972471,3.335506691763455,3.606059236306455,3.8818979295555134,4.1761265754243224,4.4790899072732095,
-         4.7631474761536525,5.0094995251320986,5.2124068582748908,5.3699927357834421,5.4864157942619096,5.5900876575677954,
-         5.7114709064914733,5.8704887287729814,6.0776429038458968,6.3145545807411683,6.5320472490656307,6.5320472490656307,
-         6.5320472490656307,6.5320472490656307,6.5320472490656307,6.5320472490656307,6.5320472490656307,6.5320472490656307,
-         6.5320472490656307,7.0464452408760305,7.7002183677861256,8.2807077727565961,8.7699574761164047,9.1743996939167616,
-         9.5102475540686697,9.9191904515388014,10.516979561510675,11.299647269537539,12.150777171882492,12.934785820087493,
-         13.596950104805869,14.125890693373643,14.515989950412777,14.862776535541089,15.326868021342062,15.893077430881478,
-         16.433508150193134,16.840860053165954,17.132174599855659,17.34201506740057,17.486029109510262,17.571748104372329,
-         17.74030898924396,18.262436503686921,18.900128819869604,19.553610645797963,20.215990248694148,20.855503188591502,
-         21.440141766150504,21.955229100286488,22.432987140706345,22.94209310608661,23.554904535865262,24.351188761151118,
-         25.440230012706913)),
-    }
-    # ===== ORDER S (RL_O40_PGMAT) — THE MATURE PEDIGREE PREMIUM ===================================
-    # The SAME estimator as O37_PG_GRID above — games-weighted local-linear kernel on ln(v0),
-    # tricube, bandwidth 0.40 in log-v0 units, isotonised, 121-point grid, seed 32 — refitted on
-    # seasons at AGE 24 AND OVER instead of 18-23. NOTHING about the estimator changes; only the
-    # population does. The young refit run with this same code reproduces O37_PG_GRID BIT FOR BIT
-    # (max |difference| 0.0 on all 242 nodes, docs/evidence/order_s_2026-08-19/MATURE_S_out.txt), so
-    # this is the SAME KIND OF OBJECT and not a lookalike.
-    # MEASURED: the mature premium is a FLATTER object. It is HIGHER than the young one at the cheap
-    # end (+4.03 pts a game at v0 400 SMALL, CI excludes zero) and LOWER at the expensive end
-    # (-4.71 at v0 3,000 SMALL, CI excludes zero); the average slope ratio is TALL 0.904, SMALL
-    # 0.747. So FIX B1, which reads the YOUNG premium at every age, sets too LOW a bar on cheap
-    # mature rows and too HIGH a bar on expensive ones.
-    O40_PGM_GRID={
-        'TALL': (4.4296256134731609,7.9885769057654086,
-        (-5.7168614613721367,-5.7168614613721367,-5.7168614613721367,-5.7168614613721367,-5.7168614613721367,
-         -5.6232805605946519,-5.2809357159352812,-4.8135196163656149,-4.2217803059476395,-3.4821714213704893,
-         -2.5533326051439671,-1.5581077570178237,-1.1807618121309136,-1.1807618121309136,-1.0768750631577608,
-         -0.62195922165405826,0.026811632696395422,0.75592753737246554,1.4366771525328785,1.9773137612360845,
-         2.0017133993528589,2.0017133993528589,2.0017133993528589,2.0017133993528589,2.0017133993528589,
-         2.0017133993528589,2.0017133993528589,2.0017133993528589,2.0017133993528589,2.0017133993528589,
-         2.0017133993528589,2.0017133993528589,2.0017133993528589,2.0017133993528589,2.0017133993528589,
-         2.1908240055317574,2.6592046835123941,3.119218017946161,3.5653534016549417,3.9887121743218414,
-         4.3205596873354644,4.5774855633758991,4.8657107520380416,5.2680866403922231,5.8067256301935828,
-         6.4072435329532391,6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,
-         6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,
-         6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,
-         6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,
-         6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,
-         6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,
-         6.8853868709460322,6.8958353061175295,7.3904694821563073,7.9303917512987709,8.4799871241271809,
-         9.0523121624079099,9.6121059684483861,10.159722127308756,10.758357771022034,11.444958030716455,
-         12.152392490908982,12.851660397040057,13.239357437433398,13.239357437433398,13.239357437433398,
-         13.239357437433398,13.239357437433398,13.239357437433398,13.239357437433398,13.239357437433398,
-         13.239357437433398,13.239357437433398,13.239357437433398,13.239357437433398,13.239357437433398,
-         13.239357437433398,13.239357437433398,13.239357437433398,13.239357437433398,13.239357437433398,
-         13.239357437433398,13.239357437433398,13.239357437433398,13.239357437433398,13.239357437433398,
-         13.239357437433398,13.239357437433398,13.239357437433398,13.241906944899288,14.302996336806453,
-         15.475907213691711,16.744368819708381,18.032043114169984,19.195051146630242,20.155136491538418,
-         20.954374277043737)),
-        'SMALL': (4.513054897080286,8.1444759697678766,
-        (-6.8097514604215306,-5.8541053733531072,-5.1932069237483223,-5.1932069237483223,-5.1932069237483223,
-         -5.1932069237483223,-5.1932069237483223,-5.1932069237483223,-5.1932069237483223,-5.1932069237483223,
-         -4.6899526812163632,-4.6587851532219711,-4.6587851532219711,-4.6587851532219711,-4.6587851532219711,
-         -4.6587851532219711,-4.6587851532219711,-4.6587851532219711,-4.6587851532219711,-4.6587851532219711,
-         -4.4984484453615128,-3.9560211778444945,-3.359325620818439,-2.7302391432848991,-2.0040352890746349,
-         -1.2291668907876403,-0.55076655315529399,0.011471152621557781,0.49113905087589171,0.9304334296447907,
-         1.366367002438128,1.810680204786677,2.2528047823866459,2.6807756031442658,2.7626294928937898,
-         2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7626294928937898,
-         2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7626294928937898,
-         2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7626294928937898,
-         2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7626294928937898,
-         2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7716565120205132,3.0292401258172643,
-         3.2553721850251942,3.4753310385332665,3.716865709336453,4.0013703907702771,4.3806810472632929,
-         4.8669705175205289,5.4272167179242148,6.0052827033870662,6.5616392701716366,7.0737763745601621,
-         7.5198048876445611,7.9151082904002479,8.309313929910255,8.4586111085663287,8.4586111085663287,
-         8.4586111085663287,8.4586111085663287,8.4586111085663287,8.4586111085663287,8.4586111085663287,
-         8.4586111085663287,8.4586111085663287,8.4586111085663287,8.4586111085663287,8.4586111085663287,
-         8.4586111085663287,8.4586111085663287,8.4586111085663287,8.4827402394829718,8.6271074026877397,
-         8.891203850882853,9.6361022766501048,10.92943670868515,12.483873089752624,13.926348978173678,
-         15.074416039118409,15.965006774552032,16.640006016464852,17.094709573831405,17.343061537581139,
-         17.458754020193279,17.458754020193279,17.458754020193279,17.458754020193279,17.458754020193279,
-         17.458754020193279,17.458754020193279,17.458754020193279,17.458754020193279,17.458754020193279,
-         17.458754020193279,17.458754020193279,17.458754020193279,17.458754020193279,17.458754020193279,
-         17.458754020193279,17.458754020193279,17.458754020193279,17.458754020193279,17.458754020193279,
-         17.458754020193279)),
-    }
-    def o40_pg(v0,cls):
-        """PG_mature(ln v0, class). Same reader as o37_pg, on the mature grid."""
-        _lo,_hi,_y=O40_PGM_GRID[cls]
-        _x=_math.log(max(1e-9,float(v0)))
-        if _x<=_lo: return _y[0]
-        if _x>=_hi: return _y[-1]
-        _t=(_x-_lo)/(_hi-_lo)*(len(_y)-1)
-        _i=int(_t)
-        if _i>=len(_y)-1: return _y[-1]
-        return _y[_i]+(_t-_i)*(_y[_i+1]-_y[_i])
-    def o37_pg(v0,cls):
-        """PG(ln v0, class) in points per game. Linear on the fitted grid, held flat outside its
-        support. Reproduces op_lib.Premium.at_v0 — proved node by node in the build packet."""
-        _lo,_hi,_y=O37_PG_GRID[cls]
-        _x=_math.log(max(1e-9,float(v0)))
-        if _x<=_lo: return _y[0]
-        if _x>=_hi: return _y[-1]
-        _t=(_x-_lo)/(_hi-_lo)*(len(_y)-1)
-        _i=int(_t)
-        if _i>=len(_y)-1: return _y[-1]
-        return _y[_i]+(_t-_i)*(_y[_i+1]-_y[_i])
-    _O37_SCACHE={}
-    def o37_surplus(p,Y):
-        """s_P — the games-weighted mean of (season avg - BAR_P) over every season the row PLAYED up
-        to and including Y, in AFL Fantasy points per game. POSITIVE means he is producing above what
-        a player priced like him produces at his age.
-        Returns None — and the ORDER K charge is then kept UNCHANGED for that row — when the row has
-        never played, has no day-0 v0 object, has no birth year, or carries a season the bar cannot
-        read. That is the SAME fallback op_step4.py::F_new used offline, so the built board and the
-        published estimate are comparable line by line rather than nearly."""
-        _ck=(id(p),p.get('key'),int(Y))
-        if _ck in _O37_SCACHE: return _O37_SCACHE[_ck]
-        _r=None; _v=day0_v0(p); _by=p.get('_by')
-        if _v is not None and _by:
-            # ENGINE currency, at the matrix emitter's own one-decimal convention, so the axis this
-            # premium is read on is EXACTLY the axis it was fitted on.
-            _v0=round(float(_v)*_PL_F,1)
-            _num=_den=0.0; _ok=True
-            for _x in (p.get('scoring') or []):
-                if _x['year']>Y: continue
-                _gg=float(_x.get('games') or 0.0)
-                if _gg<=0.0: continue
-                _pos=MA._fit_bar(p,_x['year'])
-                _b=o32_gate_bar(_pos,_x['year']-_by)
-                if _b is None or _x.get('avg') is None: _ok=False; break
-                # ORDER S (RL_O40_RECW): the season's weight becomes games * w^(Y - season year).
-                # Dial off => _wt IS _gg and the two lines below are ORDER P's byte for byte.
-                _wt=(_gg*(O40_RECW**(int(Y)-int(_x['year']))) if _O40REC else _gg)
-                _cls=('TALL' if _pos in O32_TALLPOS else 'SMALL')
-                # ORDER S (RL_O40_PGMAT): a season played at 24+ reads the MATURE premium.
-                _pgv=(o40_pg(_v0,_cls) if (_O40_PGMAT and (_x['year']-_by)>=O37_AGE_GATE)
-                      else o37_pg(_v0,_cls))
-                # ORDER 41 (RL_O41_SDOFF) — THE SD LEVEL OFFSET, STANDALONE. T1 measured the SD
-                # position over-barred by 2.98 points a game against the pooled bar (90% CI
-                # [-4.33, -1.66], flat in age — the age slope is +0.540 [-0.214, +1.293] and does NOT
-                # exclude zero, which is what makes a LEVEL the right object for SD). Lowering SD's
-                # charge bar RAISES his surplus and so LOWERS his charge. NOTHING OFFSETS IT: the
-                # zero-sum was a property of the fit, not a wiring constraint (register v744). SF is
-                # NOT wired (survivor-bias caveat, and it would hurt the very rows it looks like it
-                # helps) and RUCK is NOT wired — RUCK's residual SWINGS with age (+5.779 a year,
-                # CI [+4.139, +7.630]) and an age column removes 17.76% more of it than a level does
-                # against SD's 0.86%, so RUCK's misfiring object is the C3 age delta O32_GATE_DELTA,
-                # not PG, and a level offset would be wrong at both ends. PREREG_ASSEMBLY.md §3.
-                _bar=_b+_pgv-(_O41_SDOFF if _pos=='SD' else 0.0)
-                _num+=_wt*(float(_x['avg'])-_bar)
-                _den+=_wt
-            if _ok and _den>0.0: _r=_num/_den
-        _O37_SCACHE[_ck]=_r
-        return _r
-    def o37_factor(p,Y,g):
-        """The multiplier the pedigree leg is charged by. Falls back to the ORDER K charge, byte for
-        byte, for every row this object cannot speak about — a mature row, a row with no birth year,
-        a row with no day-0 v0, a row whose seasons carry no bar."""
-        _old=max(0.0,1.0-O32_ETA*((float(g)/O32_GAMMA_D)*_math.exp(1.0-float(g)/O32_GAMMA_D)))
-        _by=p.get('_by')
-        if not _by or (int(Y)-int(_by))>=O37_AGE_GATE: return _old
-        _s=o37_surplus(p,Y)
-        if _s is None: return _old
-        _T=min(max(1.0-O37_THETA_R*(_s-O37_S0),0.0),O37_TMAX)
-        return _math.exp(-O37_LAMBDA*(1.0-_math.exp(-float(g)/O37_G0))*_T)
-    # ===== ORDER Q (RL_O38A / RL_O38B1 / RL_O38B2) — TWO DEFECTS IN THE ORDER P CHARGE ============
-    # PREREG_Q.md, pushed before this edit · docs/evidence/order_q_2026-08-18.
-    # THIS IS A MEASUREMENT ORDER. NOTHING HERE IS ADOPTED AND NOTHING LANDS. All three dials off =>
-    # not one byte of this block executes and ORDER P's board 374d4e44 reproduces BYTE-EXACT.
-    #
-    # DEFECT 1 — THE PICK REVERSAL (repaired by RL_O38A). Hold a row's output and games fixed and
-    # raise ONLY his entry price. His pedigree leg is  v0 * exp(-LAMBDA*A(g)*T(s_P)). Raising v0
-    # raises the bar he is judged against through PG, which raises his charge. Differentiating, the
-    # leg FALLS with price wherever  dPG/dln(v0) > 1/(BETA_sat*A).  At saturation that threshold is
-    # 1/0.1146463 = 8.723 and the measured SMALL premium slope averages about 8.95 across its
-    # support, so this is a board-wide reversal and not an exotic corner. A higher pick can be worth
-    # LESS than a lower pick on identical evidence.
-    #
-    # THE REPAIR, WITH NO FREE PARAMETER. Write x = ln(v0) in engine currency and
-    #     psi(x) = x - LAMBDA*A(g)*T( OUT - wTALL*PG(x,TALL) - wSMALL*PG(x,SMALL) )
-    # so that the charged pedigree leg is proportional to exp(psi(x)). The charge is CAPPED at its
-    # own inversion point by taking the RUNNING MAXIMUM from the left:
-    #     psi_A(x) = max over u <= x of psi(u)        factor = exp( psi_A(x) - x )
-    # exp(psi_A) is non-decreasing in x BY CONSTRUCTION, so no lower entry price can price higher.
-    # psi_A >= psi always, so the charge is only ever CAPPED, never raised: a price can only move UP
-    # against ORDER P. And psi(u) <= u for every u <= x, so the factor stays in (0,1] and no row can
-    # price above its own uncharged price. This is the same isotonic idea the ISO multiplier already
-    # uses in this engine over pick, applied here over entry price.
-    #
-    # IT IS COMPUTED EXACTLY, NOT ON A GRID. PG is piecewise linear on its published nodes and T is
-    # piecewise linear in s with two clip breakpoints, so psi is piecewise linear in x. The maximum
-    # of a piecewise linear function sits at a breakpoint. The candidate set is therefore the premium
-    # grid nodes of both classes below x, the flat-support boundaries, the clip crossings inside each
-    # segment, and x itself.
-    # ONE DISCLOSED RESIDUAL: the engine reads the premium at v0 ROUNDED TO ONE DECIMAL, which makes
-    # the true function a staircase with steps of 0.1 in engine currency. Monotonicity therefore holds
-    # up to one rounding cell, not to the last bit. The residual is bounded by BETA_sat*A*(dPG/dx)*
-    # (0.1/v0) in log terms -- about 3e-5 of the leg at v0 = 3,000, well under one board point -- and
-    # it is MEASURED densely in the continuity suite rather than asserted.
-    #
-    # DEFECT 2 — THE AGE-24 CLIFF (repaired by RL_O38B1 or RL_O38B2). ORDER P's own age gate reads
-    # `if (int(Y)-int(_by))>=O37_AGE_GATE: return _old`. At 24 the charge does not switch off. It
-    # HANDS BACK to ORDER K's games-only charge. So on his 24th birthday, with his games and his
-    # output unchanged, a player's price becomes his ORDER K price. The owner's words: "players
-    # shouldn't have drastic price changes for no reason other than getting older."
-    #   RL_O38B1 — DELETE THE GATE. The charge runs at every age on the same bar. From 24 the S1 age
-    #     bar already equals the flat bar by construction, so a mature row is judged against the flat
-    #     bar plus the measured premium. No phase-out and no new parameter. THE KNOWN COST: mature
-    #     rows are NO LONGER byte-identical to ORDER K. That is the price of this option and it is
-    #     measured and reported in full, never buried.
-    #   RL_O38B2 — RAMP THE CHARGE OUT ACROSS AGES 23 TO 26, in the exponent:
-    #       ln f = w(age)*ln f_P + (1 - w(age))*ln f_K
-    #       w = 1 at 23 and below, 2/3 at 24, 1/3 at 25, 0 at 26 and above.
-    #     THE ENDPOINT 26 IS A FREE PARAMETER. IT WAS INVENTED BY THIS SEAT AND IT WAS NOT MEASURED.
-    #     It is never described as derived. A second disclosure: age in this engine is the integer
-    #     int(Y) - int(birth year), so this does not remove the step. It replaces one step of full
-    #     size with three steps of a third the size. That is what a ramp can be on an integer axis.
-    # The two are alternatives, not a stack. Setting both HALTS at load.
-    def o38_pg_at(_x,cls):
-        """PG read directly at ln(v0) rather than at v0. Identical to o37_pg by construction:
-        o37_pg(v) takes the log first and then does exactly this interpolation."""
-        _lo,_hi,_y=O37_PG_GRID[cls]
-        if _x<=_lo: return _y[0]
-        if _x>=_hi: return _y[-1]
-        _t=(_x-_lo)/(_hi-_lo)*(len(_y)-1)
-        _i=int(_t)
-        if _i>=len(_y)-1: return _y[-1]
-        return _y[_i]+(_t-_i)*(_y[_i+1]-_y[_i])
-    def o40_pg_at(_x,cls):
-        """ORDER S: the MATURE premium read directly at ln(v0). Identical to o40_pg by
-        construction, exactly as o38_pg_at is to o37_pg."""
-        _lo,_hi,_y=O40_PGM_GRID[cls]
-        if _x<=_lo: return _y[0]
-        if _x>=_hi: return _y[-1]
-        _t=(_x-_lo)/(_hi-_lo)*(len(_y)-1)
-        _i=int(_t)
-        if _i>=len(_y)-1: return _y[-1]
-        return _y[_i]+(_t-_i)*(_y[_i+1]-_y[_i])
-    _O38_PCACHE={}
-    def o38_parts(p,Y):
-        """(OUT, wTALL, wSMALL) on exactly o37_surplus's own rules and fallbacks.
-        OUT is the games-weighted mean of (season avg - AGE bar): the part of s_P that does NOT move
-        with entry price. wTALL/wSMALL are the games shares of the two premium classes. Then
-            s_P(v) = OUT - wTALL*PG(v,'TALL') - wSMALL*PG(v,'SMALL')     EXACTLY.
-        Returns None wherever o37_surplus returns None, so the fallback population is identical."""
-        _ck=(id(p),p.get('key'),int(Y))
-        if _ck in _O38_PCACHE: return _O38_PCACHE[_ck]
-        _r=None; _by=p.get('_by')
-        if _by:
-            _num=_den=_wt=0.0; _ok=True
-            _wtm=_wsm=0.0                                  # ORDER S: the MATURE sub-shares
-            for _x in (p.get('scoring') or []):
-                if _x['year']>Y: continue
-                _gg=float(_x.get('games') or 0.0)
-                if _gg<=0.0: continue
-                _pos=MA._fit_bar(p,_x['year'])
-                _b=o32_gate_bar(_pos,_x['year']-_by)
-                if _b is None or _x.get('avg') is None: _ok=False; break
-                # ORDER S (RL_O40_RECW): the SAME weight o37_surplus uses, so the FIX A identity
-                # s_P(v) = OUT - wT*PG(v,TALL) - wS*PG(v,SMALL) survives EXACTLY. Dial off => _ww IS
-                # _gg and these lines are ORDER Q's byte for byte.
-                _ww=(_gg*(O40_RECW**(int(Y)-int(_x['year']))) if _O40REC else _gg)
-                # ORDER 41 (RL_O41_SDOFF): THE SAME SD bar offset o37_surplus applies, applied HERE
-                # TOO. THIS SITE IS LOAD-BEARING AND IT IS NOT A DUPLICATE BY ACCIDENT: with FIX A
-                # live the charge does NOT read o37_surplus's return — o38_mono rebuilds the surplus
-                # from THIS decomposition as s_P(v) = OUT - wT*PG(v,TALL) - wS*PG(v,SMALL), so an
-                # offset applied only in o37_surplus reaches nothing on a FIX A board. (Measured, not
-                # reasoned: the first SD board built without this line was BYTE-IDENTICAL to the board
-                # without the dial. It is in the packet as a caught defect.) The offset is a CONSTANT
-                # addition to OUT and carries no v term, so the FIX A identity survives EXACTLY.
-                _num+=_ww*(float(_x['avg'])-_b+(_O41_SDOFF if _pos=='SD' else 0.0)); _den+=_ww
-                if _pos in O32_TALLPOS: _wt+=_ww
-                if _O40_PGMAT and (_x['year']-_by)>=O37_AGE_GATE:
-                    if _pos in O32_TALLPOS: _wtm+=_ww
-                    else: _wsm+=_ww
-            if _ok and _den>0.0: _r=(_num/_den,_wt/_den,1.0-_wt/_den,_wtm/_den,_wsm/_den)
-        _O38_PCACHE[_ck]=_r
-        return _r
-    def o38_T(_s):
-        # ORDER R: the EFFECTIVE cap and slope. With both R dials unset these are O37_THETA_R and
-        # O37_TMAX bit for bit (asserted above), so this line is byte-identical to ORDER Q's.
-        # ORDER S: with every S dial unset O40_THETA_R and O40_TMAX are the ORDER R constants bit for
-        # bit (S-F0, asserted at load), so the clip branch below is byte-identical to ORDER R's.
-        if _O40_CAPFORM=='smooth':
-            # THE OWNER'S COMPRESSION. Strictly increasing in shortfall EVERYWHERE — no flat segment
-            # anywhere — and bounded by the anchor ceiling C, which it approaches but never reaches.
-            _raw=max(1.0-O40_THETA_R*(_s-O37_S0),0.0)
-            return O40_CAPC*(1.0-_math.exp(-_raw/O40_CAPC))
-        return min(max(1.0-O40_THETA_R*(_s-O37_S0),0.0),O40_TMAX)
-    def o38_mono(p,Y,g,_s):
-        """FIX A. The charge, capped wherever the pedigree leg would otherwise FALL as entry price
-        RISES. Returns the multiplier the pedigree leg is charged by, in (0,1]."""
-        _A=1.0-_math.exp(-float(g)/O37_G0)
-        _pr=o38_parts(p,Y)
-        _v=day0_v0(p)
-        if _pr is None or _v is None:
-            return _math.exp(-O40_LAMBDA*_A*o38_T(_s))
-        _OUT,_wT,_wS,_wTm,_wSm=_pr
-        _X=_math.log(round(float(_v)*_PL_F,1))
-        def _sx(_x):
-            # ORDER S (RL_O40_PGMAT): the row's mature season-share reads the mature surface, so the
-            # identity s_P(v) = OUT - SUM(share * PG_that-surface(v)) stays EXACT. Dial off => the
-            # second branch runs and this is ORDER Q's expression byte for byte.
-            if _O40_PGMAT:
-                return _OUT-((_wT-_wTm)*o38_pg_at(_x,'TALL')+_wTm*o40_pg_at(_x,'TALL')
-                             +(_wS-_wSm)*o38_pg_at(_x,'SMALL')+_wSm*o40_pg_at(_x,'SMALL'))
-            return _OUT-(_wT*o38_pg_at(_x,'TALL')+_wS*o38_pg_at(_x,'SMALL'))
-        def _psi(_x):
-            return _x-O40_LAMBDA*_A*o38_T(_sx(_x))
-        _cand=[]
-        for _c,_wc in (('TALL',_wT),('SMALL',_wS)):
-            if _wc<=0.0: continue
-            _lo,_hi,_y=O37_PG_GRID[_c]; _n=len(_y)
-            for _i in range(_n):
-                _xi=_lo+(_hi-_lo)*_i/(_n-1.0)
-                if _xi<_X: _cand.append(_xi)
-            # ORDER S: under RL_O40_PGMAT the mature surface has its OWN nodes, and psi can only
-            # change slope at a node of a surface it actually reads. They are added, not substituted.
-            if _O40_PGMAT:
-                _lo,_hi,_y=O40_PGM_GRID[_c]; _n=len(_y)
-                for _i in range(_n):
-                    _xi=_lo+(_hi-_lo)*_i/(_n-1.0)
-                    if _xi<_X: _cand.append(_xi)
-        _cand.append(_X)
-        _cand=sorted(set(_cand))
-        # the clip crossings: s is affine on each segment, so the pre-clip T is affine and its two
-        # clip boundaries are the only interior places psi can change slope.
-        _extra=[]
-        for _j in range(len(_cand)-1):
-            _a,_b=_cand[_j],_cand[_j+1]
-            _sa,_sb=_sx(_a),_sx(_b)
-            if _sa==_sb: continue
-            # ORDER R: the EFFECTIVE clip boundaries. ORDER S: under the COMPRESSION there is no
-            # upper clip at all — T' is smooth and approaches C without reaching it — so only the
-            # ZERO crossing is a kink. psi stays CONVEX on each segment either way (x is linear and
-            # +LAMBDA*A*C*exp(-affine/C) is convex), so the maximum on a segment is still at an
-            # endpoint and the running maximum over the nodes is still EXACT.
-            for _tv in ((0.0,) if _O40_CAPFORM=='smooth' else (0.0,O40_TMAX)):
-                _st=O37_S0+(1.0-_tv)/O40_THETA_R
-                if (_sa-_st)*(_sb-_st)<0.0:
-                    _extra.append(_a+(_b-_a)*(_st-_sa)/(_sb-_sa))
-        if _extra: _cand=sorted(set(_cand+_extra))
-        _m=_psi(_X)
-        for _x in _cand:
-            _q=_psi(_x)
-            if _q>_m: _m=_q
-        return _math.exp(_m-_X)
-    def o38_w(_age):
-        """The weight on the ORDER P charge. B1: 1 at every age. B2: the 23-to-26 ramp.
-        Neither: ORDER P's own hard gate at 24."""
-        if _O38B1: return 1.0
-        if _O38B2:
-            if _age<=23: return 1.0
-            if _age>=26: return 0.0
-            return (26.0-float(_age))/3.0
-        return 1.0 if _age<O37_AGE_GATE else 0.0
-    def o38_factor(p,Y,g):
-        """The ORDER Q multiplier. Falls back to the ORDER K charge, byte for byte, on exactly the
-        rows ORDER P falls back on: no birth year, no day-0 v0, no readable bar."""
-        _old=max(0.0,1.0-O32_ETA*((float(g)/O32_GAMMA_D)*_math.exp(1.0-float(g)/O32_GAMMA_D)))
-        _by=p.get('_by')
-        if not _by: return _old
-        _w=o38_w(int(Y)-int(_by))
-        if _w<=0.0: return _old
-        _s=o37_surplus(p,Y)
-        if _s is None: return _old
-        _f=o38_mono(p,Y,g,_s) if _O38A else _math.exp(-O40_LAMBDA*(1.0-_math.exp(-float(g)/O37_G0))*o38_T(_s))
-        if _w>=1.0: return _f
-        if _f<=0.0 or _old<=0.0: return _f*_w+_old*(1.0-_w)
-        return _math.exp(_w*_math.log(_f)+(1.0-_w)*_math.log(_old))
-    def o31_pi(p,Y,g=None,_Dov=None,_nofloor=False):
-        """pi(g, c_u, s) = Phi(g,s) * [ D(c_u)*(1-rho(g)) + beta_mono(g)*rho(g) ].
-        At g=0 this is D(c_u) EXACTLY. As rho -> 1 it is the measured additive beta EXACTLY.
-        ORDER 41: _Dov overrides the sitter fade D — used ONLY to form the ABSENCE-FREE reference
-        price the R3 sizing law needs (_Dov=1.0 = the row as if he had never sat). It is a reference
-        quantity that is never written to a board, and it is None on every real pricing call."""
-        _g=pv_games(p,Y) if g is None else float(g)
-        _r=rho31(_g)
-        # Phi multiplies the MEASURED COEFFICIENT ONLY. beta_stall/beta_pooled is a ratio of ADDITIVE
-        # COEFFICIENTS estimated on PLAYED players; D(c_u) is the sitter fade, estimated on GAMELESS
-        # listed players, and no stall measurement was ever taken on that channel. This also makes
-        # pi(0,c,s) == D(c) true for EVERY s structurally rather than by an unreachable-state argument.
-        # RL_O31_NOPHI=1 is a DECLARED, DEFAULT-OFF measurement dial that prices the conditioning by
-        # removing it -- so the unconditioned alternative's cost is MEASURED, not argued.
-        _pl=bool(p.get('_pool'))
-        _pi=(o31_D(p,Y) if _Dov is None else float(_Dov))*(1.0-_r)+(1.0 if _O31_NOPHI else phi31(_g,o31_stall_run(p,Y),_pl))*beta31(_g,_pl)*_r
-        # ORDER A stage 6 (M5): the pedigree leg comes down in step — W2's own translation. m_d(0)=0
-        # so pi(0,c)=D(c) still holds EXACTLY and gameless rows are untouched.
-        if _O32S>=6 and O32_ETA>0.0 and _g>0.0:
-            # ORDER P (RL_O37): the pedigree-conditional charge REPLACES the blind one at this one
-            # site. Dial off => the second branch runs and not one byte of the first executes, which
-            # is what makes f3101883 reproduce exactly. m_d(0) = 0 and A(0) = 0, so BOTH forms leave
-            # every gameless row untouched and pi(0,c) = D(c) still holds for both.
-            # ORDER Q (RL_O38A/B1/B2): the two defect repairs sit at this same one site. With all
-            # three dials off `_O38` is False and o37_factor runs exactly as before, byte for byte.
-            _pi*=(((o38_factor(p,Y,_g) if _O38 else o37_factor(p,Y,_g)) if _O37 else
-                  max(0.0,1.0-O32_ETA*((_g/O32_GAMMA_D)*_math.exp(1.0-_g/O32_GAMMA_D)))))
-        if _O46 and _O46F[0] and not _nofloor and _o46_class(p,Y):
-            _pi=max(_pi,_o46_L(p,Y))               # ORDER 46: the retention surface (floor, in-body —
-        return _pi                                 # the studies' proven site; _nofloor serves the
-                                                   # exporter mirror; _O46F serves the final guard)
-    # ===== ORDER 41 (RL_O41_R3) — THE PRODUCTION FADE, SIZED BY THE OWNER'S R1 COMBINED-TAKE LAW ===
-    # THE OWNER: "his production leg should fade with 2 seasons out." Conway is the exhibit, never the
-    # target. THE SIZING LAW IS HIS R1 RULING: split collection across mechanisms is NOT a defect, an
-    # UNCALIBRATED TOTAL is. So this collector does not carry a rate of its own — it collects exactly
-    # the RESIDUAL between what the existing collectors have already taken and what F3 MEASURED the
-    # absence to cost. However many collectors there are, the one fact is collected once, at the
-    # calibrated total. THERE IS NO FREE PARAMETER IN THIS BLOCK.
-    #
-    # WHY A NEW COLLECTOR AT ALL. F3 §15 published the STRUCTURAL CEILING: the sitter fade multiplies
-    # only the (1-rho) share of the pedigree leg, and in THREE OF FOUR c_u bands the ceiling of that
-    # collector plus the D8 cap sits BELOW the lower limit of the measured cost. No setting of either
-    # existing dial can reach it, because the collectors act on a share of the price that is smaller
-    # than the cost is. The production leg is the one that can reach.
-    #
-    # THE LIMITATION F3 STATED, CARRIED FORWARD RATHER THAN QUIETLY DROPPED: a row whose absence has
-    # already depressed his PRODUCTION leg has paid for it somewhere these attributions do not count,
-    # so F3's gap is an UPPER BOUND on the shortfall, not a point estimate. The take is therefore
-    # CAPPED so the total can never EXCEED the measured cost's point estimate, and capped again at the
-    # production leg itself so the factor stays inside [0, 1].
-    def o41_absence_depth(p,Y):
-        """THE NUMBER OF SEASONS THE ROW HAS GENUINELY NOT PLAYED, on F3's own clock: depth 1 is the
-        normaliser (nothing missed) and depth 2 is ONE unplayed season, exactly as FOLLOWUP_F3.json's
-        dcurve is indexed.
-
-        THIS IS DELIBERATELY *NOT* o31_cu, AND THE DIFFERENCE IS THE WHOLE POINT. o31_cu is the
-        SITTER clock: it is time-since-delivery MINUS a partial credit for each season played, and
-        under the F1 measured credit curve a season of 5 games now credits 0.25 instead of 1.00. That
-        is right for the pedigree fade — a five-game season really is weak evidence — but it is WRONG
-        as a count of seasons missed, because it accumulates for a player who never missed one.
-        MEASURED, NOT REASONED: the first candidate built on o31_cu faded the production leg of a ruck
-        with 187 career games who has played EVERY season since 2015 and has no unplayed season at
-        all. The absence collector must read absence, so it counts absence.
-        Injured-logged live absence is NOT counted — that is the two-channel law.
-
-        register v751 — THE RUN IS *CURRENT AND CONSECUTIVE*, NOT CUMULATIVE-SINCE-DELIVERY.
-        THE DEFECT THIS REPLACES: the first version counted EVERY unplayed season since the last
-        DELIVERED one, and charged that total against TODAY'S production leg. Because "delivered"
-        needs games >= 10*f AND an average over the gate bar, a player can be playing every week and
-        still never deliver — so old gaps kept accruing while he was on the field. Measured on the
-        built board: a ruck playing 16 games THIS SEASON was charged depth 3 for 2024+2025 and lost
-        920 board points, and a row with 7 games this season (under the prorated 9.2-game threshold)
-        lost 809 — while a genuinely absent row lost only 606, because he had less production left to
-        strip. THE COLLECTOR WAS LANDING HARDEST ON THE PLAYERS WHO HAD COME BACK, which is backwards
-        against the owner's ruling: his words are present-tense, "his production leg should fade with
-        two seasons OUT". It was also out of domain — F3 measured the cost on CURRENTLY-ABSENT rows,
-        and F2 separately measured that returners recover substantially.
-        THE RULE NOW: walk BACK from Y. ANY season with games > 0 BREAKS THE RUN. A row playing this
-        season has a run of zero and pays nothing, whatever his history. Nothing else about the R3
-        sizing changes."""
-        _pl=set(); _pg={}
-        for _x in (p.get('scoring') or []):
             _gg=float(_x.get('games') or 0.0)
-            if _gg>0.0:
-                _pl.add(int(_x['year'])); _pg[int(_x['year'])]=_gg
-        _Yl=int(Y) if getattr(MA,'_LENS_FORM',None) is None else min(int(Y),int(MA._LENS_FORM))   # LENS ANCHOR (2026-10-13): a +k view has no 2027/2028 rows by definition; they are unplayed-yet, not absent
-        _y=_Yl
-        # A row cannot be absent before he was drafted: the walk stops at his draft year.
-        _floor=(int(p['year']) if p.get('year') else None)
-        # ---- RL_O41_BREAK=fractional — THE GRADED RUN-BREAK ------------------------------------
-        # A season contributes (1 - credit(games)) of its OWN season-weight to the current run, and
-        # only a season that FULLY credits (credit = 1, i.e. 11+ games) stops the walk. The credit is
-        # o41_credit — THE SAME F1 GUARDED CURVE I1 already uses. ONE MEASURED OBJECT, TWO CONSUMERS,
-        # NO NEW CONSTANT. A one-game season credits 0.1287 and so leaves ~87% of that season's
-        # absence standing; a sixteen-game season credits 1.0 and breaks the run outright.
-        # WHY A GRADED BREAK IS THE RIGHT SHAPE HERE: the run is a DEPTH, and "how much of a season
-        # did he miss" is exactly what one minus the played-credit measures.
-        # ---- RL_O41_BREAK=unwind — THE OWNER'S LINEAR U0-GAME UNWIND (register v755) ---------------
-        # STRUCTURALLY THIS IS THE FRACTIONAL WALK WITH o41_unwind SUBSTITUTED FOR o41_credit, and
-        # saying so plainly is more useful than presenting it as a new mechanism. The walk, the break
-        # condition and the in-progress term are identical; ONLY THE CURVE DIFFERS. The F1 credit curve
-        # is concave and saturates at 11 games; the owner's unwind is linear and saturates at U0 = 5.
-        #
-        # THE IN-PROGRESS INTERACTION, WIRED EXACTLY AS PREREGGED (PREREG_D4_D5.md §3.1): the GAMES are
-        # counted RAW and are NOT prorated — his phrase is "their first 5 games on return", a count of
-        # games actually played — while the ABSENCE those games fail to unwind carries the in-season
-        # weight `_o41_fe`, which under the folded-in D4 ramp is f**1.5 rather than f. The alternative
-        # (prorating the threshold to U0*f, so fewer games are needed the later it gets) is REFUSED and
-        # the reason is on the record: it would let a player clear his penalty with less evidence the
-        # longer he waited, which inverts the plain meaning of the ruling.
-        if _O41_BREAK=='unwind':
-            _n=0.0
-            _gl=float(_pg.get(_y,0.0))
-            if not (_O41_INJ and o41_injured(p)):
-                _n+=max(0.0,1.0-o41_unwind(_gl))*float(_o41_fe(_Yl,p) or 0.0)
-            if o41_unwind(_gl)>=1.0: return 1.0        # U0+ games this season breaks the run outright
-            _yy=_y-1
-            while _floor is None or _yy>_floor:
-                _u=o41_unwind(float(_pg.get(_yy,0.0)))
-                if _u>=1.0: break                      # a FULLY UNWOUND season breaks the run
-                _n+=1.0-_u                             # otherwise its un-unwound share stands
-                _yy-=1
-                if _floor is None and _y-_yy>40: break
-            return 1.0+_n
-        if _O41_BREAK=='fractional':
-            _n=0.0
-            _gl=float(_pg.get(_y,0.0))
-            if not (_O41_INJ and o41_injured(p)):
-                _n+=max(0.0,1.0-o41_credit(_gl))*float(_o41_fe(_Yl,p) or 0.0)
-            if o41_credit(_gl)>=1.0: return 1.0        # a full live season still breaks it outright
-            _yy=_y-1
-            while _floor is None or _yy>_floor:
-                _gy=float(_pg.get(_yy,0.0))
-                _c=o41_credit(_gy)
-                if _c>=1.0: break                      # a FULL season breaks the run outright
-                _n+=max(0.0,1.0-_c)                    # a partial season leaves the remainder standing
-                _yy-=1
-                if _floor is None and _y-_yy>40: break
-            return 1.0+_n
-        # ---- the wired binary rule ---------------------------------------------------------------
-        # HE IS PLAYING NOW -> the current run is zero -> depth 1 -> no take. This one line is the fix.
-        if _y in _pl: return 1.0
-        _n=0.0
-        # the live, in-progress season counts only by the fraction elapsed, and not at all for a row
-        # the owner has logged injured. An injured live season does NOT break the run either — injury
-        # does not erase an earlier unexplained absence, it just is not itself charged.
-        if not (_O41_INJ and o41_injured(p)):
-            # ORDER 41 (RL_O41_RAMP): the same D12 concave proration, same reason — this is the
-            # DEPTH of the current absence run, not a participation weight.
-            _n+=float(_o41_fe(_Yl,p) or 0.0)
-        _yy=_y-1
-        while _floor is None or _yy>_floor:
-            if _yy in _pl: break                       # a played season BREAKS the run
-            _n+=1.0
-            _yy-=1
-            if _floor is None and _y-_yy>40: break     # structural guard on a missing draft year
-        return 1.0+_n
-    def o41_completed_absent(p,Y):
-        """THE COUNT OF **COMPLETED** UNPLAYED SEASONS INSIDE THE CURRENT RUN — i.e. how many whole,
-        finished seasons of this absence are actually on the record. The in-progress season is NOT
-        counted, because it has not finished and is not yet evidence of anything.
-
-        register v754 / audit finding F2 — WHY THIS OBJECT EXISTS. `o41_absence_depth` returns
-        `1 + n`, and the FIRST thing it adds to `n` is the in-progress season's elapsed fraction
-        `_o41_fe`. `_fEy` returns the calendar fraction for an ordinary row, but returns exactly
-        **1.0** for a row the engine's own `LTI_REGISTER.md` marks out. So a row whose ONLY unplayed
-        season is the in-progress one lands on depth 1 + 1.0 = **2.0000** and sails straight past the
-        `< 2.0` guard — and R3 charges him for an absence of one part-season. MEASURED on the
-        candidate's own dial line: of 116 rows whose only unplayed season is 2026, exactly 4 reach
-        depth >= 2 (all 4 on the LTI register, all 4 with fE = 1.000); not one non-LTI row does.
-        That contradicts this seat's own written promise — "day-0 and one-season-out rows are
-        untouched" — so the promise is now enforced in code rather than left to arithmetic.
-
-        THE FIX IS STRUCTURAL, NOT NUMERIC, AND THAT IS DELIBERATE. Nudging the guard to 2.01 would
-        clear these four rows by arithmetic accident and would silently re-break the moment the
-        season state, the register, or `_fEy` moved. The property actually promised is about
-        COMPLETED seasons, so the code now says COMPLETED seasons. NO NEW CONSTANT IS INTRODUCED and
-        the `< 2.0` guard is not moved by a hair.
-
-        IT REUSES THE DEPTH WALK'S OWN RULES so the two objects cannot drift apart: the same break
-        rule for the active `RL_O41_BREAK` mode (games > 0 binary / full credit fractional), the same
-        draft-year floor, the same structural 40-year guard. Each backward step the depth walk takes
-        is one completed season of the run, so this is that walk's step count."""
-        _pg={}
+            if _gg<=0.0: continue
+            _pos=MA._fit_bar(p,_x['year'])
+            _b=o32_gate_bar(_pos,_x['year']-_by)
+            if _b is None or _x.get('avg') is None: _ok=False; break
+            # ORDER S (RL_O40_RECW): the season's weight becomes games * w^(Y - season year).
+            # (With w=1, the deleted off-path, _wt IS _gg and the two lines below are ORDER P's byte for byte.)
+            _wt=_gg*(O40_RECW**(int(Y)-int(_x['year'])))
+            _cls=('TALL' if _pos in O32_TALLPOS else 'SMALL')
+            # ORDER S (RL_O40_PGMAT): a season played at 24+ reads the MATURE premium.
+            _pgv=(o40_pg(_v0,_cls) if (_x['year']-_by)>=O37_AGE_GATE
+                  else o37_pg(_v0,_cls))
+            # ORDER 41 (RL_O41_SDOFF) — THE SD LEVEL OFFSET, STANDALONE. T1 measured the SD
+            # position over-barred by 2.98 points a game against the pooled bar (90% CI
+            # [-4.33, -1.66], flat in age — the age slope is +0.540 [-0.214, +1.293] and does NOT
+            # exclude zero, which is what makes a LEVEL the right object for SD). Lowering SD's
+            # charge bar RAISES his surplus and so LOWERS his charge. NOTHING OFFSETS IT: the
+            # zero-sum was a property of the fit, not a wiring constraint (register v744). SF is
+            # NOT wired (survivor-bias caveat, and it would hurt the very rows it looks like it
+            # helps) and RUCK is NOT wired — RUCK's residual SWINGS with age (+5.779 a year,
+            # CI [+4.139, +7.630]) and an age column removes 17.76% more of it than a level does
+            # against SD's 0.86%, so RUCK's misfiring object is the C3 age delta O32_GATE_DELTA,
+            # not PG, and a level offset would be wrong at both ends. PREREG_ASSEMBLY.md §3.
+            _bar=_b+_pgv-(_O41_SDOFF if _pos=='SD' else 0.0)
+            _num+=_wt*(float(_x['avg'])-_bar)
+            _den+=_wt
+        if _ok and _den>0.0: _r=_num/_den
+    _O37_SCACHE[_ck]=_r
+    return _r
+def o37_factor(p,Y,g):
+    """The multiplier the pedigree leg is charged by. Falls back to the ORDER K charge, byte for
+    byte, for every row this object cannot speak about — a mature row, a row with no birth year,
+    a row with no day-0 v0, a row whose seasons carry no bar."""
+    _old=max(0.0,1.0-O32_ETA*((float(g)/O32_GAMMA_D)*_math.exp(1.0-float(g)/O32_GAMMA_D)))
+    _by=p.get('_by')
+    if not _by or (int(Y)-int(_by))>=O37_AGE_GATE: return _old
+    _s=o37_surplus(p,Y)
+    if _s is None: return _old
+    _T=min(max(1.0-O37_THETA_R*(_s-O37_S0),0.0),O37_TMAX)
+    return _math.exp(-O37_LAMBDA*(1.0-_math.exp(-float(g)/O37_G0))*_T)
+# ===== ORDER Q (RL_O38A / RL_O38B1 / RL_O38B2) — TWO DEFECTS IN THE ORDER P CHARGE ============
+# PREREG_Q.md, pushed before this edit · docs/evidence/order_q_2026-08-18.
+# THIS IS A MEASUREMENT ORDER. NOTHING HERE IS ADOPTED AND NOTHING LANDS. All three dials off =>
+# not one byte of this block executes and ORDER P's board 374d4e44 reproduces BYTE-EXACT.
+#
+# DEFECT 1 — THE PICK REVERSAL (repaired by RL_O38A). Hold a row's output and games fixed and
+# raise ONLY his entry price. His pedigree leg is  v0 * exp(-LAMBDA*A(g)*T(s_P)). Raising v0
+# raises the bar he is judged against through PG, which raises his charge. Differentiating, the
+# leg FALLS with price wherever  dPG/dln(v0) > 1/(BETA_sat*A).  At saturation that threshold is
+# 1/0.1146463 = 8.723 and the measured SMALL premium slope averages about 8.95 across its
+# support, so this is a board-wide reversal and not an exotic corner. A higher pick can be worth
+# LESS than a lower pick on identical evidence.
+#
+# THE REPAIR, WITH NO FREE PARAMETER. Write x = ln(v0) in engine currency and
+#     psi(x) = x - LAMBDA*A(g)*T( OUT - wTALL*PG(x,TALL) - wSMALL*PG(x,SMALL) )
+# so that the charged pedigree leg is proportional to exp(psi(x)). The charge is CAPPED at its
+# own inversion point by taking the RUNNING MAXIMUM from the left:
+#     psi_A(x) = max over u <= x of psi(u)        factor = exp( psi_A(x) - x )
+# exp(psi_A) is non-decreasing in x BY CONSTRUCTION, so no lower entry price can price higher.
+# psi_A >= psi always, so the charge is only ever CAPPED, never raised: a price can only move UP
+# against ORDER P. And psi(u) <= u for every u <= x, so the factor stays in (0,1] and no row can
+# price above its own uncharged price. This is the same isotonic idea the ISO multiplier already
+# uses in this engine over pick, applied here over entry price.
+#
+# IT IS COMPUTED EXACTLY, NOT ON A GRID. PG is piecewise linear on its published nodes and T is
+# piecewise linear in s with two clip breakpoints, so psi is piecewise linear in x. The maximum
+# of a piecewise linear function sits at a breakpoint. The candidate set is therefore the premium
+# grid nodes of both classes below x, the flat-support boundaries, the clip crossings inside each
+# segment, and x itself.
+# ONE DISCLOSED RESIDUAL: the engine reads the premium at v0 ROUNDED TO ONE DECIMAL, which makes
+# the true function a staircase with steps of 0.1 in engine currency. Monotonicity therefore holds
+# up to one rounding cell, not to the last bit. The residual is bounded by BETA_sat*A*(dPG/dx)*
+# (0.1/v0) in log terms -- about 3e-5 of the leg at v0 = 3,000, well under one board point -- and
+# it is MEASURED densely in the continuity suite rather than asserted.
+#
+# DEFECT 2 — THE AGE-24 CLIFF (repaired by RL_O38B1 or RL_O38B2). ORDER P's own age gate reads
+# `if (int(Y)-int(_by))>=O37_AGE_GATE: return _old`. At 24 the charge does not switch off. It
+# HANDS BACK to ORDER K's games-only charge. So on his 24th birthday, with his games and his
+# output unchanged, a player's price becomes his ORDER K price. The owner's words: "players
+# shouldn't have drastic price changes for no reason other than getting older."
+#   RL_O38B1 — DELETE THE GATE. The charge runs at every age on the same bar. From 24 the S1 age
+#     bar already equals the flat bar by construction, so a mature row is judged against the flat
+#     bar plus the measured premium. No phase-out and no new parameter. THE KNOWN COST: mature
+#     rows are NO LONGER byte-identical to ORDER K. That is the price of this option and it is
+#     measured and reported in full, never buried.
+#   RL_O38B2 — RAMP THE CHARGE OUT ACROSS AGES 23 TO 26, in the exponent:
+#       ln f = w(age)*ln f_P + (1 - w(age))*ln f_K
+#       w = 1 at 23 and below, 2/3 at 24, 1/3 at 25, 0 at 26 and above.
+#     THE ENDPOINT 26 IS A FREE PARAMETER. IT WAS INVENTED BY THIS SEAT AND IT WAS NOT MEASURED.
+#     It is never described as derived. A second disclosure: age in this engine is the integer
+#     int(Y) - int(birth year), so this does not remove the step. It replaces one step of full
+#     size with three steps of a third the size. That is what a ramp can be on an integer axis.
+# The two are alternatives, not a stack. Setting both HALTS at load.
+def o38_pg_at(_x,cls):
+    """PG read directly at ln(v0) rather than at v0. Identical to o37_pg by construction:
+    o37_pg(v) takes the log first and then does exactly this interpolation."""
+    _lo,_hi,_y=O37_PG_GRID[cls]
+    if _x<=_lo: return _y[0]
+    if _x>=_hi: return _y[-1]
+    _t=(_x-_lo)/(_hi-_lo)*(len(_y)-1)
+    _i=int(_t)
+    if _i>=len(_y)-1: return _y[-1]
+    return _y[_i]+(_t-_i)*(_y[_i+1]-_y[_i])
+def o40_pg_at(_x,cls):
+    """ORDER S: the MATURE premium read directly at ln(v0). Identical to o40_pg by
+    construction, exactly as o38_pg_at is to o37_pg."""
+    _lo,_hi,_y=O40_PGM_GRID[cls]
+    if _x<=_lo: return _y[0]
+    if _x>=_hi: return _y[-1]
+    _t=(_x-_lo)/(_hi-_lo)*(len(_y)-1)
+    _i=int(_t)
+    if _i>=len(_y)-1: return _y[-1]
+    return _y[_i]+(_t-_i)*(_y[_i+1]-_y[_i])
+_O38_PCACHE={}
+def o38_parts(p,Y):
+    """(OUT, wTALL, wSMALL) on exactly o37_surplus's own rules and fallbacks.
+    OUT is the games-weighted mean of (season avg - AGE bar): the part of s_P that does NOT move
+    with entry price. wTALL/wSMALL are the games shares of the two premium classes. Then
+        s_P(v) = OUT - wTALL*PG(v,'TALL') - wSMALL*PG(v,'SMALL')     EXACTLY.
+    Returns None wherever o37_surplus returns None, so the fallback population is identical."""
+    _ck=(id(p),p.get('key'),int(Y))
+    if _ck in _O38_PCACHE: return _O38_PCACHE[_ck]
+    _r=None; _by=p.get('_by')
+    if _by:
+        _num=_den=_wt=0.0; _ok=True
+        _wtm=_wsm=0.0                                  # ORDER S: the MATURE sub-shares
         for _x in (p.get('scoring') or []):
+            if _x['year']>Y: continue
             _gg=float(_x.get('games') or 0.0)
-            if _gg>0.0: _pg[int(_x['year'])]=_gg
-        _Yl=int(Y) if getattr(MA,'_LENS_FORM',None) is None else min(int(Y),int(MA._LENS_FORM))   # LENS ANCHOR (2026-10-13): a +k view has no 2027/2028 rows by definition; they are unplayed-yet, not absent
-        _y=_Yl; _floor=(int(p['year']) if p.get('year') else None)
-        # a live season that BREAKS the run leaves no run at all, hence no completed season inside it.
-        # THE BREAK RULE IS READ FROM THE ACTIVE MODE so this object and the depth walk cannot drift.
-        def _brk(_gv):
-            if _O41_BREAK=='unwind': return o41_unwind(float(_gv))>=1.0
-            if _O41_BREAK=='fractional': return o41_credit(float(_gv))>=1.0
-            return float(_gv)>0.0
-        if _brk(_pg.get(_y,0.0)): return 0
-        _k=0; _yy=_y-1
-        while _floor is None or _yy>_floor:
-            if _brk(_pg.get(_yy,0.0)): break
-            _k+=1
-            _yy-=1
-            if _floor is None and _y-_yy>40: break
-        return _k
-    def o41_r3_take(p,Y,g,e,ped):
-        """Board points to remove from the production leg so the TOTAL absence collection lands at
-        F3's measured cost. Returns 0.0 for every row the law does not reach."""
-        if not _O41_R3: return 0.0
-        # THE TWO-CHANNEL LAW: an injured-annotated row is EXEMPT. His absence is explained and the
-        # engine does not charge him for it on any channel.
-        if o41_injured(p): return 0.0
-        _cx=o41_absence_depth(p,Y)
-        # ZERO BELOW DEPTH 2 BY CONSTRUCTION. F3 cannot speak about depth 1 — it is its own normaliser
-        # — and the owner's words are "two seasons out". So day-0 rows and one-season-out rows are
-        # untouched, which also keeps every printed day-0 price exactly where it was.
-        #
-        # register v754 / audit F2 — THE PROMISE IS NOW STRUCTURAL AS WELL AS NUMERIC. The depth
-        # guard alone did not deliver "one-season-out rows are untouched": an LTI-register row whose
-        # only unplayed season is the IN-PROGRESS one lands on exactly 2.0000 and passed it. R3 is
-        # therefore reachable only when the run contains AT LEAST ONE **COMPLETED** unplayed season.
-        # A row whose only unplayed season is the in-progress one is never charged, AT ANY fE.
-        if _cx<2.0 or o41_completed_absent(p,Y)<1: return 0.0
-        _tgt=o41_cost(_cx)
-        if _tgt<=0.0: return 0.0
-        _ac=o32_age_credit(p,Y,g)
-        _prod=rho31(g)*float(e)
-        if _prod<=0.0: return 0.0
-        # THE ABSENCE-FREE REFERENCE: the same row with BOTH existing absence collectors neutralised —
-        # the sitter fade forced to 1 and the production cap released. This is F3's own denominator.
-        _epre=_O41_PRED8.get((id(p),int(Y)),e)
-        _free=rho31(g)*float(_epre)+o31_pi(p,Y,g,_Dov=1.0)*ped+_ac
-        if not (_free>0.0): return 0.0
-        _now=_prod+o31_pi(p,Y,g)*ped+_ac
-        _taken=max(0.0,(_free-_now)/_free)          # what the fade and the D8 cap have ALREADY taken
-        _resid=max(0.0,_tgt-_taken)                 # what is still owed against the measured cost
-        if _resid<=0.0: return 0.0                  # already at or past the target: collect NOTHING
-        return min(_resid*_free,_prod)              # never more than the production leg holds
-    def _pv_order31(p,Y,e):
-        """THE ONE LAW. One expression, every row, every pathway, every games count.
-        ORDER A REPAIR R1: + the age credit on the re-mix's added production weight (zero at g=0,
-        zero from age 24, zero below stage 6 — the dial-off path is unchanged byte-for-byte).
-        ORDER 41 (RL_O41_R3): the production leg fades with MULTI-SEASON UNEXPLAINED absence, at the
-        residual the combined-take law leaves. Dial off => this line is not reached."""
-        _g=pv_games(p,Y)
-        _ped=pv_pedigree(p)
-        _pi31=o31_pi(p,Y,_g)
-        _v=rho31(_g)*float(e)+_pi31*_ped+o32_age_credit(p,Y,_g)
-        if _O41_R3: _v=_v-o41_r3_take(p,Y,_g,e,_ped)
-        # (ORDER 46's price cap moved OUT of this blend to the FINAL GUARD at the end of the file:
-        # capping here left the floored pi visible to downstream stages that gate on it — the
-        # measured mraz flip, where a route relief switched off and a standing 943 fell to 739.
-        # The cap and the no-decrease belong at the level of the price the owner's rule speaks
-        # about: the finished one.)
-        return _v
-    if _O31:
-        _PV['blend']=_pv_order31
-        # THE DAY-0 PREDICATE IS RESTATED, NOT DROPPED. Under the one law a zero-games row's price IS
-        # v0 x D(c_u) with c_u == the fade clock, so rl_export's printed-day-0 assert keeps its meaning and
-        # its tolerance-0 equality -- it now proves the one law reproduces the ruled sitter law rather than
-        # asserting a separately-wired branch against itself.
-        # ORDER 46 RESTATEMENT (2026-08-27, the prereg's own 'F7 exporter assert' repair): inside the
-        # retention-surface class the sitter law is ONE CLAUSE WIDER — pi is floored at the measured cell
-        # and the lift is capped at the day-0 stamp — so the predicate is read THROUGH the engine's own
-        # o31_pi/cap path for exactly those rows (same rows, tolerance 0, the 29B->30B->31 lineage
-        # continued). Out-of-class rows and the dials-off path keep the pre-order expression verbatim,
-        # which is what keeps F1's byte-exact off-proof meaningful. The wall below (pi(0)==D) still
-        # holds because the gameless 'none' cells sit below the (O47-stepped) fade everywhere measured;
-        # the widening binds only on cameo evidence, through L1's cells, never the maturation term.
-        def _entry30b_price(p,Y=2026,__d=_entry29b_derived):
-            _d0=__d(p,Y)
-            if _d0 is None: return None
-            if not (_O46 and _o46_class(p,Y)):
-                return _d0*o31_D(p,Y)
-            # the ORDER 46 FINAL GUARD's construct, mirrored in board currency (the pre-order
-            # identity proved pi_raw(g)==D on the sitter set, so the off-leg is the old law):
-            #   max(off, min(on, max(off, day0)))
-            _g=pv_games(p,Y)
-            _off=_d0*o31_pi(p,Y,_g,_nofloor=True)
-            _on=_d0*o31_pi(p,Y,_g)
-            _d0c=day0_v0(p)
-            _cap=max(_off,float(_d0c)) if _d0c is not None else _off
-            return max(_off,min(_on,_cap))
-        # BUILD-FAILING STRUCTURAL ASSERTS (the brief's assert wall, at the law itself).
-        _o31_bad=[]
-        for _p in MA.data:
-            if not (_isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos'))): continue
-            _gg=pv_games(_p,MA.BASE_REF)
-            if _gg<=0.0:
-                if o31_stall_run(_p,MA.BASE_REF)>0: _o31_bad.append(('s>0 at g==0',_p.get('key')))
-                if abs(o31_pi(_p,MA.BASE_REF,0.0)-o31_D(_p,MA.BASE_REF))>0.0: _o31_bad.append(('pi(0)!=D',_p.get('key')))
-        if _o31_bad:
-            raise SystemExit('ORDER 31 HALT: %d structural violations of the one law — %s'%(len(_o31_bad),_o31_bad[:6]))
-        # ORDER A — CANDIDATE 32 BUILD-FAILING ASSERTS (only with the dial on).
-        if _O32S>=1:
-            # cap law: every gate bar <= the flat bar, flat from 24 (murdock guard, structural)
-            for _pos in _O30BP_BARS:
-                for _a in range(16,30):
-                    _b=o32_gate_bar(_pos,_a)
-                    if not (_b<=_O30BP_BARS[_pos]+1e-12) or (_a>=24 and _b!=_O30BP_BARS[_pos]):
-                        raise SystemExit('ORDER A HALT: gate-bar cap law broken at %s age %d'%(_pos,_a))
-            # S1 flat-bar identity: the C3 construction was built on these exact flat bars
-            _s1flat={'KPD':65.4,'KPF':63.8,'MID':77.1,'RUCK':75.5,'SD':75.3,'SF':67.9}
-            for _pos,_v in _s1flat.items():
-                if abs(_O30BP_BARS.get(_pos,-1)-_v)>1e-9:
-                    raise SystemExit('ORDER A HALT: _O30BP_BARS[%s]=%r is not the S1 flat bar %r — the '
-                                     'C3 offsets do not apply to this object'%(_pos,_O30BP_BARS.get(_pos),_v))
-        if _O32S>=6 and O32_KAPPA>0.0:
-            _prev=-1.0
-            _gg=0.0
-            while _gg<=300.0:
-                _r=rho31(_gg)
-                if _r<_prev-1e-12:
-                    raise SystemExit('ORDER A HALT: rho32 non-monotone at g=%.2f (PREREG_32 F5)'%_gg)
-                if not (_r<1.0+1e-12):
-                    raise SystemExit('ORDER A HALT: rho32 breaches 1 at g=%.2f'%_gg)
-                _prev=_r; _gg+=0.25
-        if _O35:
-            # ORDER D BUILD-FAILING ASSERTS: the curve is smooth and monotone in pick, bounded by
-            # its clips, and transcribed exactly from O35_CURVE.json (kappa(1)=0.5, kappa(64)
-            # within 1e-9 of the derivation's own table).
-            _prevk=None
-            for _pk in range(1,65):
-                _kk=min(O35_CLIP[1],max(O35_CLIP[0],(O35_G0+O35_G1*_math.log(float(_pk)))/O35_SNORM))
-                if not (O35_CLIP[0]-1e-12<=_kk<=O35_CLIP[1]+1e-12) or (_prevk is not None and _kk<_prevk-1e-12):
-                    raise SystemExit('ORDER D HALT: kappa(pick) broke monotone/clip at pick %d'%_pk)
-                _prevk=_kk
-            if abs((O35_G0+O35_G1*_math.log(64.0))/O35_SNORM-1.153311931087099)>1e-9:
-                raise SystemExit('ORDER D HALT: the transcribed curve does not reproduce O35_CURVE.json at pick 64')
-        if _O36:
-            # ===== ORDER I BUILD-FAILING ASSERTS (only with the dial on) ==============================
-            # A1 — the S1 surface in rl_model is BYTE-EQUAL to the C3 object this file already carries.
-            # Two copies exist only because rl_model is imported before this block runs; they may never
-            # drift, and a drift is a build failure, not a warning.
-            if MA.O36_GATE_DELTA!=O32_GATE_DELTA or set(MA.O36_TALLPOS)!=set(O32_TALLPOS):
-                raise SystemExit('ORDER I HALT: rl_model.O36_GATE_DELTA/TALLPOS has drifted from the '
-                                 'C3 object O32_GATE_DELTA in this file — the two copies must be identical')
-            # A2 — THE CAP LAW AND THE MATURE-ROW IDENTITY, on the S1 bar itself: never above the flat
-            # bar, and EXACTLY the flat bar from age 24 (this is what makes murdock byte-identical).
-            for _pos in MA.REPL:
-                for _a in range(16,40):
-                    _bb=MA.o36_bar(_pos,_a)
-                    if not (_bb<=MA.REPL[_pos]+1e-12):
-                        raise SystemExit('ORDER I HALT: S1 bar ABOVE the flat bar at %s age %d'%(_pos,_a))
-                    if _a>=24 and _bb!=MA.REPL[_pos]:
-                        raise SystemExit('ORDER I HALT: S1 bar is not byte-identical at %s age %d — the '
-                                         'cap law (flat from 24) is broken and mature rows would move'%(_pos,_a))
-                if MA.o36_bar(_pos,None)!=MA.REPL[_pos]:
-                    raise SystemExit('ORDER I HALT: S1 bar moved a row with no age at %s'%_pos)
-            if not (0.0<=MA.O36_LAM_S1<=1.0):
-                raise SystemExit('ORDER I HALT: lambda_S1 %r is outside the declared [0,1] dose range'%MA.O36_LAM_S1)
-            # A3 — the S1 surface is MONOTONE NON-INCREASING in age over 18..23: the development gap
-            # must shrink as a player matures, never widen. The final step at age 24 (gap -> 0) is the
-            # RULED CAP LAW itself — the same structural step the O32 stage-1 gate already ships — and
-            # is DISCLOSED with its number on the packet rather than asserted away.
-            for _cls in ('TALL','SMALL'):
-                _tab=O32_GATE_DELTA[_cls]
-                for _a in range(18,23):
-                    if _tab[_a+1]>_tab[_a]+1e-12:
-                        raise SystemExit('ORDER I HALT: the S1 development gap WIDENS from age %d to %d '
-                                         'in class %s — the surface is not monotone'%(_a,_a+1,_cls))
-            # A4 — THE TALL/SMALL FADE: smooth and monotone in pick within each class, bounded by the
-            # clips, and transcribed EXACTLY from H_RESULTS.json (every pick H published, 1e-12).
-            _HK={1:(0.5,0.5),5:(0.5,0.5),10:(0.5299803208304396,0.5),16:(0.7636000350961567,0.5),
-                 20:(0.8745156311776653,0.5),24:(0.96514027182361,0.5),
-                 30:(1.0760558679051182,0.5915136019227577),40:(1.2190509415248914,0.734508675542531),
-                 50:(1.3299665376063998,0.8454242716240395),53:(1.3589296451644084,0.8743873791820481),
-                 64:(1.4526706557906086,0.9681283898082481)}
-            def _kap36(_pk,_tall):
-                _s=O36_TG0+O36_TG1*_math.log(float(_pk))+(O36_HTALL if _tall else 0.0)
-                return min(O35_CLIP[1],max(O35_CLIP[0],_s/O36_SNORM))
-            for _pk,(_ks,_kt) in _HK.items():
-                if abs(_kap36(_pk,False)-_ks)>1e-12 or abs(_kap36(_pk,True)-_kt)>1e-12:
-                    raise SystemExit('ORDER I HALT: the transcribed tall/small curve does not reproduce '
-                                     'H_RESULTS.json at pick %d'%_pk)
-            _ps=_pt=None
-            for _pk in range(1,65):
-                _a1=_kap36(_pk,False); _a2=_kap36(_pk,True)
-                for _v in (_a1,_a2):
-                    if not (O35_CLIP[0]-1e-12<=_v<=O35_CLIP[1]+1e-12):
-                        raise SystemExit('ORDER I HALT: kappa breached its clip at pick %d'%_pk)
-                if (_ps is not None and _a1<_ps-1e-12) or (_pt is not None and _a2<_pt-1e-12):
-                    raise SystemExit('ORDER I HALT: kappa(pick) broke monotone at pick %d'%_pk)
-                # smoothness: no step between neighbouring picks bigger than the pick-1->2 step
-                if _ps is not None and (_a1-_ps)>O36_TG1/O36_SNORM*_math.log(2.0)+1e-12:
-                    raise SystemExit('ORDER I HALT: kappa(pick) took a step larger than the log curve '
-                                     'allows at pick %d — that is a cliff'%_pk)
-                _ps=_a1; _pt=_a2
-            # ===== ORDER K — K-FLOOR, THE BUILD-FAILING ASSERTS ON THE FIX (PREREG_K.md §2.6) =======
-            # A4 above is left UNTOUCHED and still runs on the WIRED form. That is deliberate: it keeps
-            # proving that the RULED FIT CONSTANTS (TG0, TG1, h_TALL and Order H's own s_norm) are
-            # transcribed exactly and have not been quietly re-fitted by this order. What follows gates
-            # the LIVE exponent — the one the board actually charges.
-            # K-FLOOR (a) — NO SMALL IS MADE LIGHTER, at any pick, structurally. This is the owner's
-            # acceptance test written as an inequality the build cannot pass without satisfying it.
-            # K-FLOOR (d) — the talls' relief survives: a TALL is never made HEAVIER by the factor.
-            # ON THE DECLARED REMOVAL LANE (RL_O36_FLOORFIX=0) THESE ARE NOT HALTS. That lane exists to
-            # PRICE the defect by rebuilding it, exactly as RL_O36_TALL=0 prices the adopted factor by
-            # removing it; halting there would make the defect unmeasurable. The inequalities are still
-            # evaluated and the breach is PRINTED with its picks — and the fact that they fire the
-            # moment the fix is removed is the NON-VACUITY PROOF that they are live and not decorative
-            # (the firing run is kept at docs/evidence/order_k_2026-08-18/K1_NONVACUITY_PROOF.txt).
-            _k1=[_pk for _pk in range(1,65) if o36_kappa_at(_pk,False)<o35_kappa_at(_pk)-1e-12]
-            _k3=[_pk for _pk in range(1,65) if o36_kappa_at(_pk,True)>o35_kappa_at(_pk)+1e-12]
-            if _O36_FLOORFIX:
-                if _k1:
-                    raise SystemExit('ORDER K HALT (K1): a SMALL is made LIGHTER by the tall factor at '
-                                     'picks %s — at pick %d kappa %.10f is below his pre-factor %.10f. '
-                                     'The fade floor has inverted again.'
-                                     %(_k1,_k1[0],o36_kappa_at(_k1[0],False),o35_kappa_at(_k1[0])))
-                if _k3:
-                    raise SystemExit('ORDER K HALT (K3): a TALL is made HEAVIER by the tall factor at '
-                                     'picks %s — the ruled relief has reversed'%_k3)
-            else:
-                print('ORDER K MEASUREMENT LANE (RL_O36_FLOORFIX=0) — THE FADE FLOOR FIX IS REMOVED AND '
-                      'THE DEFECT IS REBUILT ON PURPOSE, so it can be priced. K1 BREACH: smalls are made '
-                      'LIGHTER at picks %s. K3 breach: %s. This board is a MEASUREMENT, never a candidate.'
-                      %(_k1 or 'none',_k3 or 'none'))
-            # The live curve is bounded, monotone in pick within each class, and smooth (no cliff). The
-            # small side is the max of two monotone curves, so it is monotone and continuous; the step
-            # bound is the looser of the two curves' own one-pick steps.
-            _ps=_pt=None
-            _stepmax=max(O36_TG1/(O36_SNORM_K if _O36_FLOORFIX else O36_SNORM),O35_G1/O35_SNORM)*_math.log(2.0)
-            for _pk in range(1,65):
-                _a1=o36_kappa_at(_pk,False); _a2=o36_kappa_at(_pk,True)
-                for _v in (_a1,_a2):
-                    if not (O35_CLIP[0]-1e-12<=_v<=O35_CLIP[1]+1e-12):
-                        raise SystemExit('ORDER K HALT: the live kappa breached its clip at pick %d'%_pk)
-                if (_ps is not None and _a1<_ps-1e-12) or (_pt is not None and _a2<_pt-1e-12):
-                    raise SystemExit('ORDER K HALT: the live kappa(pick) broke monotone at pick %d'%_pk)
-                if _ps is not None and (_a1-_ps)>_stepmax+1e-12:
-                    raise SystemExit('ORDER K HALT: the live kappa(pick) took a step larger than either '
-                                     'log curve allows at pick %d — that is a cliff'%_pk)
-                _ps=_a1; _pt=_a2
-            # K-FLOOR (e) — THE REDISTRIBUTION IDENTITY. The pick-weighted mean of D2^kappa over ORDER
-            # H's own 408 fitted sitters must still equal the ruled depth-2 fade 0.5582775. The sitter
-            # set is transcribed here as (pick, TALL) counts so the assert needs no external file and
-            # cannot be satisfied vacuously; the counts are H's SATROWS, reproduced in
-            # docs/evidence/order_k_2026-08-18/ok_floor_design.py.
-            _SATC=_O36K_SATCOUNTS
-            _n=sum(_SATC.values())
-            if _n!=408:
-                raise SystemExit('ORDER K HALT: the transcribed sitter set is %d rows, not ORDER H\'s 408'%_n)
-            _idr=(sum(_c*(O36_D2_FULL**o36_kappa_at(_pk,_tl)) for (_pk,_tl),_c in _SATC.items())/_n
-                  -O36_D2_FULL)
-            if abs(_idr)>1e-9:
-                raise SystemExit('ORDER K HALT (K4): the tall/small redistribution identity misses the '
-                                 'ruled depth-2 fade %.7f by %.3e — the total fade the board charges has '
-                                 'moved'%(O36_D2,_idr))
-            O36_IDENT_RESID=_idr
-            # A5 — m_TALL, the multiplicative translation the owner asked for, reproduced from the wire.
-            _mt=(sum(_kap36(_p,True) for _p in range(1,65))/sum(_kap36(_p,False) for _p in range(1,65)))
-            print('ORDER I LIVE (RL_O36=1) — THE COORDINATED BUILD. NOTHING IS GREENLIT AND NOTHING MERGES.\n'
-                  '  LEVER 1  S1, the age-referenced projection bar: lambda_S1=%.3f applied to the C3 gap at '
-                  'the four projection/floor sites. NO pick axis, capped at the flat bar, FLAT FROM AGE 24 '
-                  '(every mature row byte-identical, store-wide).\n'
-                  '  LEVER 2  the counterweight, re-derived JOINTLY on the corrected age-fair surface: '
-                  'kappa=%.2f gamma_u=%.1f / eta=%.2f gamma_d=%.1f / relief lambda=%.2f '
-                  '(was %.2f/%.1f/%.2f/%.1f/%.2f).\n'
-                  '  LEVER 3  the tall/small sitter factor: h_TALL=%.4f, s_norm=%.10f, clip [%.1f, %.1f]; '
-                  'kappa(16) small %.3f / tall %.3f, kappa(64) small %.3f / tall %.3f; m_TALL=%.3f. '
-                  'DECLARED: the pinned identity means LATE SMALL SITTERS PAY for the talls\' relief.\n'
-                  '  ORDER K FADE FLOOR: %s. A SMALL\'s floor is HIS OWN PRE-FACTOR (Order D pooled) '
-                  'exponent, so no small can be made lighter by a talls-only relief; talls keep the '
-                  '[0.5, 2.0] clip. h_TALL UNCHANGED; the normaliser re-solved WITH the re-sited floor '
-                  'inside the constraint set (%.10f -> %.10f). Redistribution identity residual %.3e '
-                  'against the ruled depth-2 fade %.7f. The floor still binds: talls picks 1-%d on 0.5; '
-                  'smalls picks 1-%d on their own pooled exponent (of those, picks 1-%d also on 0.5 '
-                  'because the pooled curve is itself clipped there).\n'
-                  '  %d active rows sit at a developing age and can be reached by S1; %d have no birth '
-                  'year and keep the flat bar.'
-                  %(MA.O36_LAM_S1,O36_KAPPA,O36_GAMMA,O36_ETA,O36_GAMMA_D,O36_LAMBDA,
-                    0.24,11.0,0.41,14.0,1.08,
-                    O36_HTALL,(O36_SNORM_K if _O36_FLOORFIX else O36_SNORM),O35_CLIP[0],O35_CLIP[1],
-                    o36_kappa_at(16,False),o36_kappa_at(16,True),o36_kappa_at(64,False),
-                    o36_kappa_at(64,True),_mt,
-                    ('LIVE (RL_O36_FLOORFIX=1, the default)' if _O36_FLOORFIX else
-                     'REMOVED (RL_O36_FLOORFIX=0) — Order J\'s wired form, THE DEFECT IS BACK: '
-                     'smalls at picks 6-18 are made LIGHTER by a talls-only relief'),
-                    O36_SNORM,(O36_SNORM_K if _O36_FLOORFIX else O36_SNORM),O36_IDENT_RESID,O36_D2,
-                    max([_p for _p in range(1,65) if abs(o36_kappa_at(_p,True)-O35_CLIP[0])<1e-12] or [0]),
-                    max([_p for _p in range(1,65) if abs(o36_kappa_at(_p,False)-o35_kappa_at(_p))<1e-12] or [0]),
-                    max([_p for _p in range(1,65) if abs(o36_kappa_at(_p,False)-O35_CLIP[0])<1e-12] or [0]),
-                    sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and _p.get('_by') and (MA.BASE_REF-int(_p['_by']))<24),
-                    sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and not _p.get('_by'))))
-        if _O37:
-            # ===== ORDER P BUILD-FAILING ASSERTS (only with the dial on) ==============================
-            # P1 — THE TILT IS THE MEASUREMENT. LAMBDA*THETA_R must equal BETA_sat, the saturated slope
-            # measured on outcomes. If this drifts, the charge no longer responds to surplus at the rate
-            # the data says it should and every claim in PACKET_P is void.
-            if abs(O37_LAMBDA*O37_THETA_R-O37_BETA_SAT)>1e-15:
-                raise SystemExit('ORDER P HALT (P1): LAMBDA*THETA_R = %.17g is not BETA_sat = %.17g — the '
-                                 'tilt has come loose from the measurement'%(O37_LAMBDA*O37_THETA_R,O37_BETA_SAT))
-            # P2 — THE PUBLISHED CONSTANTS, transcribed and not quietly re-fitted.
-            for _nm,_got,_want in (('G0',O37_G0,9.89),('BETA_sat',O37_BETA_SAT,0.11465),
-                                   ('LAMBDA',O37_LAMBDA,0.17438),('THETA_R',O37_THETA_R,0.65744),
-                                   ('s0',O37_S0,-2.4527),('TMAX',O37_TMAX,21.12)):
-                if abs(round(_got,{'G0':2,'BETA_sat':5,'LAMBDA':5,'THETA_R':5,'s0':4,'TMAX':2}[_nm])-_want)>1e-12:
-                    raise SystemExit('ORDER P HALT (P2): %s is %.17g, which does not round to the published '
-                                     '%.5f — a derived constant has been changed'%(_nm,_got,_want))
-            # P-S1 — A(0) = 0 EXACTLY, so pi(0,c) = D(c) and NO DAY-0 PRINT CAN MOVE. This is the same
-            # structural law m_d(0) = 0 gave the charge being replaced, and it is asserted, not assumed.
-            if (1.0-_math.exp(-0.0/O37_G0))!=0.0:
-                raise SystemExit('ORDER P HALT (P-S1): A(0) is not exactly zero')
-            # P-S2 — A is non-decreasing in g. THIS IS THE DEFECT BEING REMOVED: the charge it replaces
-            # RISES to g=14 and then FALLS, so more evidence bought a smaller charge. A never falls.
-            _pa=-1.0; _gg=0.0
-            while _gg<=400.0:
-                _av=1.0-_math.exp(-_gg/O37_G0)
-                if _av<_pa-1e-15:
-                    raise SystemExit('ORDER P HALT (P-S2): A(g) fell at g=%.2f — the blind bump is back'%_gg)
-                _pa=_av; _gg+=0.25
-            # P-S3 — T is non-increasing in the surplus, and P-S4 — the factor is in (0, 1]. Both are
-            # checked on a real spread rather than argued from the formula.
-            _pt=None
-            _ss=-60.0
-            while _ss<=40.0:
-                _T=min(max(1.0-O37_THETA_R*(_ss-O37_S0),0.0),O37_TMAX)
-                if _pt is not None and _T>_pt+1e-12:
-                    raise SystemExit('ORDER P HALT (P-S3): T rose at s=%.2f — a better player was charged '
-                                     'more for being better'%_ss)
-                for _gq in (0.0,1.0,5.0,14.0,30.0,60.0,150.0,400.0):
-                    _f=_math.exp(-O37_LAMBDA*(1.0-_math.exp(-_gq/O37_G0))*_T)
-                    if not (0.0<_f<=1.0+1e-15):
-                        raise SystemExit('ORDER P HALT (P-S4): the charge factor left (0,1] at s=%.2f '
-                                         'g=%.1f — %.17g'%(_ss,_gq,_f))
-                _pt=_T; _ss+=0.25
-            # P3 — THE PREMIUM SURFACE IS NON-DECREASING IN PRICE. A more expensively priced player is
-            # never expected to produce LESS. The house monotonicity guard was applied to the fitted grid
-            # offline; this asserts it survived transcription.
-            for _cls in ('TALL','SMALL'):
-                _lo,_hi,_y=O37_PG_GRID[_cls]
-                if len(_y)!=121 or not (_hi>_lo):
-                    raise SystemExit('ORDER P HALT (P3): the %s premium grid is malformed'%_cls)
-                for _i in range(1,len(_y)):
-                    if _y[_i]<_y[_i-1]-1e-12:
-                        raise SystemExit('ORDER P HALT (P3): the %s premium FALLS with price at node %d '
-                                         '(%.6f -> %.6f)'%(_cls,_i,_y[_i-1],_y[_i]))
-            # P4 — CONTINUITY IN PRICE. The premium is read by linear interpolation on an even grid and
-            # held flat outside, so it can have no cliff; the largest one-node step is printed so the
-            # owner can see the size of the biggest jump the surface is capable of.
-            _stepPG=max(max(_y[_i]-_y[_i-1] for _i in range(1,len(_y)))
-                        for _lo,_hi,_y in O37_PG_GRID.values())
-            _o37n=sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p)
-                      and MA.GRP.get(_p.get('pos')) and _p.get('_by')
-                      and (MA.BASE_REF-int(_p['_by']))<O37_AGE_GATE
-                      and o37_surplus(_p,MA.BASE_REF) is not None)
-            print('ORDER P LIVE (RL_O37=1) — THE PEDIGREE-CONDITIONAL CHARGE. NOTHING IS GREENLIT AND '
-                  'NOTHING MERGES.\n'
-                  '  THE BLIND ETA CHARGE IS GONE. It read games and nothing else, peaked at %.0f games '
-                  'and then FELL AWAY, so a 36-game row kept more unearned pedigree than a 17-game row '
-                  'however either of them played.\n'
-                  '  IN ITS PLACE: pi *= exp(-LAMBDA*A(g)*T(s_P)) below age %d; the old charge at %d and '
-                  'above. A(g)=1-exp(-g/%.2f) · T=clip(1-%.5f*(s%+.4f), 0, %.4f) · LAMBDA=%.5f.\n'
-                  '  s_P is production against the S1 AGE BAR PLUS the MEASURED PEDIGREE PREMIUM '
-                  'PG(ln v0, class), pooled over age, fitted on 5,041 season rows by local-linear kernel '
-                  'regression on ln(v0) (tricube, h=0.40), monotone guarded, held flat outside support.\n'
-                  '  PG spans %+.2f to %+.2f points a game for SMALLS (v0 %.0f to %.0f) and %+.2f to '
-                  '%+.2f for TALLS (v0 %.0f to %.0f). Largest one-node step %.4f — no cliff.\n'
-                  '  LAMBDA*THETA_R = %.5f = BETA_sat, the measured saturated slope. NO FREE PARAMETER.\n'
-                  '  %d active rows are inside the age gate AND carry a readable pedigree surplus; every '
-                  'other row keeps the ORDER K charge byte for byte, and A(0)=0 means no day-0 print moves.'
-                  %(O32_GAMMA_D,O37_AGE_GATE,O37_AGE_GATE,O37_G0,O37_THETA_R,-O37_S0,O37_TMAX,O37_LAMBDA,
-                    O37_PG_GRID['SMALL'][2][0],O37_PG_GRID['SMALL'][2][-1],
-                    _math.exp(O37_PG_GRID['SMALL'][0]),_math.exp(O37_PG_GRID['SMALL'][1]),
-                    O37_PG_GRID['TALL'][2][0],O37_PG_GRID['TALL'][2][-1],
-                    _math.exp(O37_PG_GRID['TALL'][0]),_math.exp(O37_PG_GRID['TALL'][1]),
-                    _stepPG,O37_LAMBDA*O37_THETA_R,_o37n))
-        if _O38:
-            # ===== ORDER Q — BUILD-FAILING STRUCTURAL ASSERTS ==========================================
-            # Q-A1  the FIX A factor is never SMALLER than ORDER P's: the repair CAPS a charge, it never
-            #       raises one, so a price can only move UP against ORDER P.
-            # Q-A2  the FIX A factor stays in (0, 1]: no row can price above its own uncharged price.
-            # Q-A3  the monotonised leg is NON-DECREASING in entry price on a dense synthetic sweep.
-            # Q-B1  the ORDER K charge is strictly positive at every games count, so the B2 ramp's
-            #       geometric blend is defined everywhere.
-            # Q-B2  the ramp weight is 1 at 23, 0 at 26 and above, and non-increasing between.
-            if _O38A:
-                _qA=1.0-_math.exp(-17.0/O37_G0)
-                for _cls in ('TALL','SMALL'):
-                    _lo,_hi,_y=O37_PG_GRID[_cls]
-                    _wT,_wS=(1.0,0.0) if _cls=='TALL' else (0.0,1.0)
-                    for _OUT in (-30.0,-12.0,-4.0,0.0,6.0,20.0):
-                        _prev=None; _pm=None
-                        for _k in range(0,1201):
-                            _x=_lo-0.6+(_hi-_lo+1.2)*_k/1200.0
-                            _sx=_OUT-(_wT*o38_pg_at(_x,'TALL')+_wS*o38_pg_at(_x,'SMALL'))
-                            _ps=_x-O37_LAMBDA*_qA*o38_T(_sx)
-                            _pm=_ps if _pm is None else max(_pm,_ps)
-                            _fA=_math.exp(_pm-_x); _fP=_math.exp(-O37_LAMBDA*_qA*o38_T(_sx))
-                            if _fA<_fP-1e-12:
-                                raise SystemExit('ORDER Q HALT (Q-A1): the monotonised factor is BELOW '
-                                                 'ORDER P\'s at %s x=%.4f (%.9f < %.9f). FIX A may only '
-                                                 'CAP a charge.'%(_cls,_x,_fA,_fP))
-                            if not (0.0<_fA<=1.0+1e-12):
-                                raise SystemExit('ORDER Q HALT (Q-A2): the monotonised factor left (0,1] '
-                                                 'at %s x=%.4f: %.9f'%(_cls,_x,_fA))
-                            _leg=_math.exp(_pm)
-                            if _prev is not None and _leg<_prev-1e-9:
-                                raise SystemExit('ORDER Q HALT (Q-A3): the monotonised pedigree leg FALLS '
-                                                 'with entry price at %s x=%.4f (%.9f -> %.9f)'
-                                                 %(_cls,_x,_prev,_leg))
-                            _prev=_leg
-            for _gq in [0.01*_i for _i in range(1,20001)]:
-                if not (max(0.0,1.0-O32_ETA*((_gq/O32_GAMMA_D)*_math.exp(1.0-_gq/O32_GAMMA_D)))>0.0):
-                    raise SystemExit('ORDER Q HALT (Q-B1): the ORDER K charge reaches zero at g=%.2f, so '
-                                     'the B2 geometric ramp is undefined there.'%_gq)
-            _wprev=None
-            for _ag in range(16,41):
-                _wq=(1.0 if _ag<=23 else (0.0 if _ag>=26 else (26.0-float(_ag))/3.0))
-                if _wprev is not None and _wq>_wprev+1e-15:
-                    raise SystemExit('ORDER Q HALT (Q-B2): the B2 ramp weight RISES with age at %d'%_ag)
-                _wprev=_wq
-            if abs(o38_w(23)-1.0)>1e-15 or (not _O38B1 and abs(o38_w(26)-0.0)>1e-15):
-                raise SystemExit('ORDER Q HALT (Q-B2): the ramp endpoints are not 1 at 23 and 0 at 26')
-            _o38n=sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p)
-                      and MA.GRP.get(_p.get('pos')) and _p.get('_by')
-                      and o38_w(MA.BASE_REF-int(_p['_by']))>0.0
-                      and o37_surplus(_p,MA.BASE_REF) is not None)
-            _o38m=sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p)
-                      and MA.GRP.get(_p.get('pos')) and _p.get('_by')
-                      and (MA.BASE_REF-int(_p['_by']))>=O37_AGE_GATE
-                      and o38_w(MA.BASE_REF-int(_p['_by']))>0.0
-                      and o37_surplus(_p,MA.BASE_REF) is not None)
-            print('ORDER Q LIVE — TWO DEFECT REPAIRS, PRICED AND NOT ADOPTED. NOTHING IS GREENLIT AND '
-                  'NOTHING MERGES.\n'
-                  '  FIX A (RL_O38A) %s — the pedigree leg is monotonised in ENTRY PRICE by the running '
-                  'maximum of x - LAMBDA*A(g)*T(s_P(x)) over x = ln(v0). No free parameter: the charge is '
-                  'CAPPED at its own inversion point. Exact on the piecewise-linear breakpoints, up to the '
-                  'engine\'s own one-decimal rounding of the premium axis, which is disclosed and measured.\n'
-                  '  FIX B1 (RL_O38B1) %s — the age-24 gate is DELETED. Mature rows are NO LONGER '
-                  'byte-identical to ORDER K and that movement is the price of this option.\n'
-                  '  FIX B2 (RL_O38B2) %s — the charge is ramped out across ages 23 to 26 in the exponent, '
-                  'w = 1, 2/3, 1/3, 0. THE ENDPOINT 26 IS A FREE PARAMETER INVENTED BY THIS SEAT. IT WAS '
-                  'NOT MEASURED. Age here is an integer, so this replaces one full step with three '
-                  'third-sized steps rather than removing the step.\n'
-                  '  %d active rows now carry the ORDER P charge (%d of them aged %d or over, which ORDER '
-                  'P left on the ORDER K charge). A(0)=0 still, so no day-0 print can move.'
-                  %('LIVE' if _O38A else 'off','LIVE' if _O38B1 else 'off','LIVE' if _O38B2 else 'off',
-                    _o38n,_o38m,O37_AGE_GATE))
-            # ===== ORDER R — THE OWNER'S TWO SOFTENINGS, PRICED AND NOT ADOPTED ======================
-            # R-S1  T is still NON-INCREASING in surplus on the effective constants.
-            # R-S2  the factor exp(-LAMBDA*A(g)*T) is still in (0,1] everywhere, so no row can price
-            #       above its own uncharged price.
-            # R-S3  A(0) = 0 EXACTLY still, so no day-0 print and no gameless row can move.
-            # R-S4  THE SOFTENING IS NOT UNIFORM, AND THIS ASSERT IS THE CORRECTED ONE.
-            #       The FIRST version of this assert said the ORDER R factor may never be below
-            #       ORDER P's at any surplus. IT FIRED, on the very first in-process load, and it was
-            #       RIGHT to fire: the assert was wrong, not the dials. Lowering BETA_sat lowers
-            #       THETA_R, which FLATTENS the T line about s0. T(s0) = 1 on every board by
-            #       construction, so a flatter line sits ABOVE ORDER P's for s BELOW s0 and BELOW it
-            #       for s ABOVE s0. In plain words: lowering the slope softens the charge on rows
-            #       producing under the cohort centre -- every row the owner's complaint is about --
-            #       and STIFFENS it very slightly on rows producing just above the centre, until the
-            #       zero clip catches up. The TMAX lever has no such effect: it only lowers the cap.
-            #       What is asserted here is therefore the true statement, not the convenient one:
-            #         R-S4a  for every s AT OR BELOW s0, the ORDER R factor is >= ORDER P's. The
-            #                softening may never charge an underperformer MORE. THIS HALTS.
-            #         R-S4b  the region above s0 where ORDER R charges more is BOUNDED and MEASURED,
-            #                and the bound is printed on the banner rather than asserted away.
-            _rprev=None; _rstiff=0.0; _rstiffn=0; _rstiffs=None; _rstiffhi=None
-            for _i in range(0,20001):
-                _ss=-120.0+0.01*_i
-                _Tr=min(max(1.0-O39_THETA_R*(_ss-O37_S0),0.0),O39_TMAX)
-                if _rprev is not None and _Tr>_rprev+1e-12:
-                    raise SystemExit('ORDER R HALT (R-S1): T RISES with surplus at s=%.2f'%_ss)
-                _rprev=_Tr
-                for _gq in (0.0,1.0,17.0,60.0,400.0):
-                    _fr=_math.exp(-O37_LAMBDA*(1.0-_math.exp(-_gq/O37_G0))*_Tr)
-                    if not (0.0<_fr<=1.0+1e-15):
-                        raise SystemExit('ORDER R HALT (R-S2): the factor left (0,1] at s=%.2f g=%.2f: '
-                                         '%.9g'%(_ss,_gq,_fr))
-                    _Tp=min(max(1.0-O37_THETA_R*(_ss-O37_S0),0.0),O37_TMAX)
-                    _fp=_math.exp(-O37_LAMBDA*(1.0-_math.exp(-_gq/O37_G0))*_Tp)
-                    if _ss<=O37_S0 and _fr<_fp-1e-12:
-                        raise SystemExit('ORDER R HALT (R-S4a): the ORDER R constants charge MORE than '
-                                         'ORDER P at s=%.4f g=%.2f (%.9f < %.9f), and that surplus is AT '
-                                         'OR BELOW the cohort centre s0=%.4f. The softening may never '
-                                         'charge an underperformer more.'%(_ss,_gq,_fr,_fp,O37_S0))
-                    if _fr<_fp-1e-12:
-                        _rstiff=max(_rstiff,_fp-_fr); _rstiffs=_ss if _rstiffn==0 else _rstiffs
-                        _rstiffn+=1; _rstiffhi=_ss
-            if (1.0-_math.exp(-0.0/O37_G0))!=0.0:
-                raise SystemExit('ORDER R HALT (R-S3): A(0) is not 0 exactly')
-            print('ORDER R %s — THE OWNER\'S TWO SOFTENINGS, PRICED AND NOT ADOPTED. NOTHING IS GREENLIT '
-                  'AND NOTHING MERGES.\n'
-                  '  THE CAP: TMAX at the young cohort\'s p%d of s_P = %+.5f pts/g  =>  TMAX %.4f '
-                  '(ORDER P p5: s_p5 %+.5f, TMAX %.4f). %s\n'
-                  '  THE SLOPE: BETA_sat %.8f%s, 90%% CI [%.5f, %.5f]  =>  THETA_R %.6f (ORDER P: '
-                  'BETA_sat %.8f, THETA_R %.6f).\n'
-                  '  LAMBDA*THETA_R = %.8f = the effective BETA_sat. TMAX is RECOMPUTED from this '
-                  'THETA_R, never carried stale. NO FREE PARAMETER IS INTRODUCED.\n'
-                  '  LAMBDA IS NOT RE-SOLVED. ORDER P solved it by an anchoring identity that held the '
-                  'total charge constant; moving the cap or the slope BREAKS that anchor ON PURPOSE, and '
-                  'that broken anchor IS the softening. Disclosed on PREREG_R.md, not discovered after.\n'
-                  '  A row at the cap with 38 games is charged %.2f%% of his pedigree leg (ORDER P: '
-                  '%.2f%%).\n'
-                  '  R-S4b, MEASURED NOT ASSERTED: lowering BETA_sat FLATTENS T about s0, so it softens '
-                  'the charge BELOW the cohort centre and STIFFENS it slightly ABOVE. %s'
-                  %('LIVE' if _O39 else 'off (dial-off: the ORDER P constants, bit for bit)',
-                    _O39_PCT,O39_S_PQ[_O39_PCT],O39_TMAX,O37_S_P5,O37_TMAX,
-                    'THE CAP IS UNCHANGED FROM ORDER P.' if _O39_PCT==5 else
-                    'The worst-producing %d%% now all pay the same top rate.'%_O39_PCT,
-                    O39_BETA_SAT,'' if _O39_BSAT_RAW=='' else ' (RL_O39_BETASAT)',
-                    O39_BSAT_CI[0],O39_BSAT_CI[1],O39_THETA_R,O37_BETA_SAT,O37_THETA_R,
-                    O37_LAMBDA*O39_THETA_R,
-                    100.0*(1.0-_math.exp(-O37_LAMBDA*(1.0-_math.exp(-38.0/O37_G0))*O39_TMAX)),
-                    100.0*(1.0-_math.exp(-O37_LAMBDA*(1.0-_math.exp(-38.0/O37_G0))*O37_TMAX)),
-                    ('There is NO surplus at which this board charges more than ORDER P.'
-                     if _rstiffn==0 else
-                     'It charges MORE than ORDER P over s in (%.4f, %.4f], a window %.4f points a game '
-                     'wide, and the WORST extra charge anywhere in it is %.4f%% of the pedigree leg. '
-                     'That window sits ABOVE the cohort centre, so it lands on rows already producing '
-                     'at or above what their entry price implies. IT IS REPORTED, NOT ARGUED AWAY.'
-                     %(_rstiffs,_rstiffhi,_rstiffhi-_rstiffs,100.0*_rstiff))))
-            # ===== ORDER S — THE FOUR MEASURED REPAIRS, PRICED AND NOT ADOPTED ===================
-            # Every assert below runs on the EFFECTIVE form o38_T actually applies, not on ORDER P's
-            # or ORDER R's constants, so a dial that changed the shape could not slip past them.
-            #   S-S1  T is NON-INCREASING in surplus on the effective form.
-            #   S-S2  the factor is still in (0,1] everywhere, so NO ROW CAN PRICE ABOVE ITS OWN
-            #         UNCHARGED PRICE. This is the law, asserted, not a claim.
-            #   S-S3  A(0) = 0 EXACTLY, so no day-0 print and no gameless row can move.
-            #   S-S4  UNDER THE COMPRESSION, T IS STRICTLY INCREASING IN SHORTFALL — there is NO FLAT
-            #         SEGMENT ANYWHERE. This is the owner's whole requirement and it HALTS if it
-            #         fails. (The hard clip fails it by construction and is not asserted against it.)
-            #   S-S5  UNDER THE COMPRESSION, T' <= the hard clip at the SAME anchor AND <= ORDER P's
-            #         own p5 clip, at every surplus. So no row is charged more than it was — S2-F2.
-            _sprev=None; _sflat=0; _sflats=None
-            _s5stiff=0.0; _s5n=0; _s5s=None; _s5hi=None      # ORDER 41: the S-S5 limb-2 window, measured
-            for _i in range(0,22001):
-                _ss=20.0-0.01*_i
-                _Ts=o38_T(_ss)
-                if _sprev is not None and _Ts<_sprev[1]-1e-12:
-                    raise SystemExit('ORDER S HALT (S-S1): T FALLS as surplus falls at s=%.2f'%_ss)
-                if _O40_CAPFORM=='smooth':
-                    _Traw=max(1.0-O40_THETA_R*(_ss-O37_S0),0.0)
-                    _Tclip=min(_Traw,O40_CAPC)
-                    _TP=min(max(1.0-O37_THETA_R*(_ss-O37_S0),0.0),O37_TMAX)
-                    # S-S5 LIMB 1 — THE COMPRESSION LAW ITSELF, STILL A HALT. T' must never exceed the
-                    # hard clip AT THE SAME ANCHOR AND THE SAME EFFECTIVE SLOPE. This is the property
-                    # the cap form actually promises ("both would be at or above the old P20") and it
-                    # is asserted here exactly as ORDER S wrote it.
-                    if _Ts>_Tclip+1e-12:
-                        raise SystemExit('ORDER S HALT (S-S5): the compression charges MORE than the '
-                                         'hard clip at the SAME anchor at s=%.4f (%.9f vs %.9f).'
-                                         %(_ss,_Ts,_Tclip))
-                    # S-S5 LIMB 2 — MEASURED AND REPORTED, NOT HALTED. ASSEMBLY BUILD, DISCLOSED
-                    # DEVIATION (PREREG_ASSEMBLY.md; reported in PACKET_ASSEMBLY.md and to the owner).
-                    # ORDER S wrote this second limb as a HALT comparing T' against ORDER P's OWN p5
-                    # clip at ORDER P's OWN slope. That comparison is vacuous while BETA_sat is ORDER
-                    # P's — the only case ORDER S ever built — and it is NOT vacuous once the owner's
-                    # ruled slope 0.105 is live. What trips it is THE SLOPE, NOT THE CAP FORM: a
-                    # gentler slope makes T decay toward zero more slowly, so in a narrow window just
-                    # above the cohort centre the softened board charges a hair MORE than ORDER P did.
-                    # THAT EFFECT IS ALREADY THE HOUSE'S OWN, MEASURED AND DISCLOSED RATHER THAN
-                    # FORBIDDEN: ORDER R's banner does exactly this for exactly this phenomenon
-                    # (_rstiff/_rstiffs/_rstiffhi, "IT IS REPORTED, NOT ARGUED AWAY"). Halting here
-                    # would forbid on one dial line what the house reports on another, and it would
-                    # veto a combination THE OWNER HIMSELF RULED (slope 0.105 at v745, compression p20
-                    # standing). So it is measured on the same sweep and printed in the banner.
-                    # NO LAW IS TRADED SILENTLY: limb 1 above still HALTS, S-S2 (no row above its
-                    # uncharged price) still HALTS, and this window is published with its size.
-                    if _Ts>_TP+1e-12:
-                        _s5stiff=max(_s5stiff,_Ts-_TP)
-                        _s5s=_ss if _s5n==0 else _s5s
-                        _s5n+=1; _s5hi=_ss
-                    if _sprev is not None and _Traw>1e-12 and _Ts<=_sprev[1]:
-                        _sflat+=1; _sflats=_ss if _sflats is None else _sflats
-                for _gq in (0.0,1.0,17.0,60.0,400.0):
-                    _fs=_math.exp(-O40_LAMBDA*(1.0-_math.exp(-_gq/O37_G0))*_Ts)
-                    if not (0.0<_fs<=1.0+1e-15):
-                        raise SystemExit('ORDER S HALT (S-S2): the factor left (0,1] at s=%.2f g=%.2f: '
-                                         '%.9g'%(_ss,_gq,_fs))
-                _sprev=(_ss,_Ts)
-            if _O40_CAPFORM=='smooth' and _sflat:
-                raise SystemExit('ORDER S HALT (S-S4): the compression has a FLAT SEGMENT — %d ties on '
-                                 'the dense sweep, first at s=%.4f. The owner\'s requirement is that '
-                                 'worse play ALWAYS costs at least slightly more. It does not hold.'
-                                 %(_sflat,_sflats))
-            # ORDER 41 — S-S5 LIMB 2, PUBLISHED. Printed on EVERY compression board so the window can
-            # never ride unreported, and printed as ZERO when there is none.
-            if _O40_CAPFORM=='smooth':
-                print('ORDER S S-S5 LIMB 2 (vs ORDER P\'s own p5 clip) — %s'
-                      %('NO surplus at which this board\'s cap exceeds ORDER P\'s.' if _s5n==0 else
-                        'the cap exceeds ORDER P\'s over s in (%.4f, %.4f], a window %.4f points a game '
-                        'wide; the WORST excess in T anywhere in it is %.9f, i.e. at most %.4f%% of the '
-                        'pedigree leg at 38 games. THE CAUSE IS THE RULED SLOPE (BETA_sat %.5f vs ORDER '
-                        'P\'s %.5f), NOT THE CAP FORM — the same-anchor limb holds everywhere. This '
-                        'window sits ABOVE the cohort centre (s0 = %.4f), so it lands on rows already '
-                        'producing at or above what their entry price implies. MEASURED AND REPORTED, '
-                        'NOT ARGUED AWAY.'
-                        %(_s5s,_s5hi,_s5hi-_s5s,_s5stiff,
-                          100.0*(1.0-_math.exp(-O40_LAMBDA*(1.0-_math.exp(-38.0/O37_G0))*_s5stiff)),
-                          O39_BETA_SAT,O37_BETA_SAT,O37_S0)))
-            if (1.0-_math.exp(-0.0/O37_G0))!=0.0:
-                raise SystemExit('ORDER S HALT (S-S3): A(0) is not 0 exactly')
-            _sA38=1.0-_math.exp(-38.0/O37_G0)
-            print('ORDER S %s — FOUR MEASURED REPAIRS, PRICED AND NOT ADOPTED. NOTHING IS GREENLIT AND '
-                  'NOTHING MERGES.\n'
-                  '  S1 RECENCY (RL_O40_RECW) %s — a season\'s weight in s_P is games * w^(years back). '
-                  'w=1 is the ENGINE\'s own flat weighting and it is the WORST point on this seat\'s '
-                  'walk-forward out-of-sample error curve. Implied 3-season weights at equal games: '
-                  '[%.3f, %.3f, %.3f].\n'
-                  '  S2 THE CAP FORM (RL_O40_CAPFORM) %s — T\' = C*(1-exp(-T_raw/C)), C = %s. Strictly '
-                  'increasing in shortfall EVERYWHERE, no flat segment, T\' < C always. ONE constant, '
-                  'and it is the anchor percentile\'s own TMAX. %s\n'
-                  '  S3 THE LEVEL (RL_O40_LAMBDA) %s — LAMBDA %.8f (ORDER P solved %.8f by an anchoring '
-                  'identity against the OLD BLIND CHARGE\'s tonnage of 101,402.7). THETA_R %.6f and '
-                  'TMAX %.4f are RECOMPUTED from it, never carried stale.\n'
-                  '  S4 THE MATURE PREMIUM (RL_O40_PGMAT) %s — seasons at %d+ read a premium refitted on '
-                  'MATURE seasons by the identical estimator. The young refit reproduces O37_PG_GRID '
-                  'BIT FOR BIT, so it is the same kind of object.\n'
-                  '  A row at the effective cap with 38 games is charged %.2f%% of his pedigree leg '
-                  '(ORDER P: %.2f%%). LAMBDA*THETA_R = %.8f = the effective BETA_sat.\n'
-                  '  NOTHING IS ADOPTED. NOTHING LANDS. NO VARIANT IS RECOMMENDED.'
-                  %('LIVE' if _O40 else 'off (dial-off: the ORDER R constants, bit for bit)',
-                    ('LIVE w=%.4f'%O40_RECW) if _O40REC else 'off (w=1, the engine\'s own)',
-                    1.0/(1.0+O40_RECW+O40_RECW*O40_RECW),
-                    O40_RECW/(1.0+O40_RECW+O40_RECW*O40_RECW),
-                    O40_RECW*O40_RECW/(1.0+O40_RECW+O40_RECW*O40_RECW),
-                    'LIVE (smooth)' if _O40_CAPFORM=='smooth' else 'off (ORDER P/R hard clip)',
-                    ('%.4f, the p%d anchor'%(O40_CAPC,_O40_CAPPCT)) if O40_CAPC is not None
-                    else 'n/a',
-                    ('Under the CLIP every row past the crossing pays the IDENTICAL rate, so GAMES '
-                     'become the differentiator instead of performance. Under the COMPRESSION they '
-                     'are strictly ordered.') if _O40_CAPFORM=='smooth' else '',
-                    ('LIVE' if _O40_LAM_RAW!='' else 'off (ORDER P\'s inherited level)'),
-                    O40_LAMBDA,O37_LAMBDA,O40_THETA_R,O40_TMAX,
-                    ('LIVE' if _O40_PGMAT else 'off (the young premium at every age)'),
-                    O37_AGE_GATE,
-                    100.0*(1.0-_math.exp(-O40_LAMBDA*_sA38*o38_T(-1e6))),
-                    100.0*(1.0-_math.exp(-O37_LAMBDA*_sA38*O37_TMAX)),
-                    O40_LAMBDA*O40_THETA_R))
-        if _O35:
-            print('ORDER D PICK-CURVE FADE LIVE (RL_O35=1) — THE LANDING CANDIDATE ON THE OWNER\'S WORD. '
-                  'D_eff = D(c_u)^kappa(pick), kappa = clip((%.4f%+.4f·ln p)/%.4f, %.1f, %.1f): '
-                  'kappa(1)=%.3f kappa(20)=%.3f kappa(64)=%.3f. Smooth in ln(pick), never a band; '
-                  'pooled fade pinned at the ruled row by the redistribution identity.'
-                  %(O35_G0,O35_G1,O35_SNORM,O35_CLIP[0],O35_CLIP[1],
-                    min(O35_CLIP[1],max(O35_CLIP[0],(O35_G0)/O35_SNORM)),
-                    min(O35_CLIP[1],max(O35_CLIP[0],(O35_G0+O35_G1*_math.log(20.0))/O35_SNORM)),
-                    min(O35_CLIP[1],max(O35_CLIP[0],(O35_G0+O35_G1*_math.log(64.0))/O35_SNORM))))
-        if _O32S>=1:
-            print('ORDER A CANDIDATE 32 LIVE (RL_O32=1, stage %d of 6) — NOTHING IS GREENLIT AND NOTHING '
-                  'MERGES. bars(age) gate-only · credit f·min(1,g/2) · delivered reset · Phi_32 row · '
-                  'relief min(1, D·(1+%.2f·σ_sel)) · re-mix κ=%.2f γu=%.1f / η=%.2f γd=%.1f. '
-                  '%d rows carry a stall run; %d carry c_u>1; %d carry relief.'
-                  %(_O32S,O32_LAMBDA,O32_KAPPA,O32_GAMMA,O32_ETA,O32_GAMMA_D,
-                    sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and o31_stall_run(_p,MA.BASE_REF)>0),
-                    sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and o31_cu(_p,MA.BASE_REF)>1.0),
-                    sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and _O32S>=5 and o32_sigma_sel(_p,MA.BASE_REF)>0.0 and (o31_pool_D(o31_cu(_p,MA.BASE_REF)) if _p.get('_pool') else o31_fade_D(o31_cu(_p,MA.BASE_REF)))<1.0)))
-        if _O34:
-            print('ORDER C LIVE (RL_O34=1) — NOTHING IS GREENLIT AND NOTHING MERGES. The two retained '
-                  'normalization denominators (Q evidence weight; decay gate) read the S1 C3 '
-                  'age-conditional surface: flat bar - DELTA(class, age), NO pick axis, capped at the '
-                  'flat bar, FLAT FROM AGE 24 (mature rows byte-identical). R1 age credit scale '
-                  'alpha=%.2f (re-derived). %d active rows are at a developing age; %d active rows have '
-                  'no birth year and keep the flat bar.'
-                  %(O34_ALPHA,
-                    sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and _p.get('_by') and (MA.BASE_REF-int(_p['_by']))<24),
-                    sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and not _p.get('_by'))))
-        print('ORDER 31 THE ONE LAW LIVE (RL_O31=1) — NOTHING IS GREENLIT AND NOTHING MERGES. '
-              'price = rho(g)*Phat + [D(c_u)*(1-rho(g)) + Phi(g,s)*beta(g)*rho(g)]*v0, ONE FORMULA FOR '
-              'EVERY ROW: no sitter branch, no thin lane, no bridge, no deep lane. rho = 1-exp(-(g/%.4f)^'
-              '%.4f) calibrated on the R1 backbone, rho(0)=0 exactly · beta MONOTONE-PROJECTED (the brief\'s '
-              '"pi decays in g"; the measured 2.5->10.5 rise is deleted and disclosed) · D on the UNPLAYED '
-              'clock c_u only · Phi = the 30B-C stall conditioning on the current stall run, Phi(g,0)=1 '
-              'exactly. %d rows priced; %d carry a stall conditioning; %d carry an unplayed-clock discount.'
-              %(O31_TAU_RHO,O31_B_RHO,
-                sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos'))),
-                sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and o31_stall_run(_p,MA.BASE_REF)>0),
-                sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and o31_cu(_p,MA.BASE_REF)>1.0)))
-    if _O30B_RESOLVED:
-        _PV['blend']=_pv_resolved
-        print('ORDER 30B-N RESOLVED CANDIDATE LIVE (RL_O30B_RESOLVED=1) — NOTHING IS GREENLIT, T4 (the '
-              'OBJECT) IS STILL OPEN, AND THIS BOARD IS PRE-NUMERAIRE. The preview lane\'s production leg '
-              'is consumed UNCHANGED (this dial implies RL_O30B_PREVIEW); only the BLEND FUNCTION is '
-              'swapped. ADDITIVE reading P + beta(g)xv0 · raw games-as-of-Y clock · JOINED lanes '
-              'sitter/thin<=10/bridge<16/deep>=16 · beta from the 30B-R band fit (NON-monotone, carried) · '
-              'backbone lift lane 2 if c<2.5 else 3. Pool fade NOT DERIVED (D=1.0) — Step 4.')
-    # ORDER 31 — under the one law there is no zero-evidence EXCLUSION: every priced row carries the law.
-    _PV_ROWS=[p for p in MA.data if _isreal(p) and not p.get('_retired') and not delisted(p)
-              and MA.GRP.get(p.get('pos')) and (_O31 or _entry30b_price(p,MA.BASE_REF) is None)]
-    print('ORDER 30B-P STEP-3 PREVIEW LIVE (RL_O30B_PREVIEW=1) — NOTHING IS GREENLIT, THE BOUNDARY IS STILL '
-          'UNRULED, AND THIS BOARD IS PRE-NUMERAIRE. pole DELETED + ISO DELETED (via the two existing '
-          'ablation lines) · blend sigma(g)=exp(-(g/%.4g)^%.4g) on the measured 30B-M curve · pedigree leg = '
-          'STEP-1 positional v0 x %.4f · Q and the decay gate RETAINED with their denominators re-referenced '
-          'to the effective positional bars (%s) · _a_blend, sitout_ev\'s ns==0 arm and the year-zero floor '
-          'REPLACED, not wrapped. %d rows carry the blend; %d zero-evidence rows keep the Step-2 fade '
-          'untouched.'
-          %(SIGMA30BP_TAU,SIGMA30BP_BETA,_PL_F,
-            ' '.join('%s %.1f'%(_g,_O30BP_BARS[_g]) for _g in sorted(_O30BP_BARS)),
-            len(_PV_ROWS),len(_S30) if _ONEMACH and _ENTRY29B else 0))
+            if _gg<=0.0: continue
+            _pos=MA._fit_bar(p,_x['year'])
+            _b=o32_gate_bar(_pos,_x['year']-_by)
+            if _b is None or _x.get('avg') is None: _ok=False; break
+            # ORDER S (RL_O40_RECW): the SAME weight o37_surplus uses, so the FIX A identity
+            # s_P(v) = OUT - wT*PG(v,TALL) - wS*PG(v,SMALL) survives EXACTLY. Dial off => _ww IS
+            # _gg and these lines are ORDER Q's byte for byte.
+            _ww=_gg*(O40_RECW**(int(Y)-int(_x['year'])))
+            # ORDER 41 (RL_O41_SDOFF): THE SAME SD bar offset o37_surplus applies, applied HERE
+            # TOO. THIS SITE IS LOAD-BEARING AND IT IS NOT A DUPLICATE BY ACCIDENT: with FIX A
+            # live the charge does NOT read o37_surplus's return — o38_mono rebuilds the surplus
+            # from THIS decomposition as s_P(v) = OUT - wT*PG(v,TALL) - wS*PG(v,SMALL), so an
+            # offset applied only in o37_surplus reaches nothing on a FIX A board. (Measured, not
+            # reasoned: the first SD board built without this line was BYTE-IDENTICAL to the board
+            # without the dial. It is in the packet as a caught defect.) The offset is a CONSTANT
+            # addition to OUT and carries no v term, so the FIX A identity survives EXACTLY.
+            _num+=_ww*(float(_x['avg'])-_b+(_O41_SDOFF if _pos=='SD' else 0.0)); _den+=_ww
+            if _pos in O32_TALLPOS: _wt+=_ww
+            if (_x['year']-_by)>=O37_AGE_GATE:
+                if _pos in O32_TALLPOS: _wtm+=_ww
+                else: _wsm+=_ww
+        if _ok and _den>0.0: _r=(_num/_den,_wt/_den,1.0-_wt/_den,_wtm/_den,_wsm/_den)
+    _O38_PCACHE[_ck]=_r
+    return _r
+def o38_T(_s):
+    # ORDER R: the EFFECTIVE cap and slope. With both R dials unset these are O37_THETA_R and
+    # O37_TMAX bit for bit (asserted above), so this line is byte-identical to ORDER Q's.
+    # ORDER S: the owner's compression is the line (the hard clip min(max(1-THETA_R*(s-s0),0),TMAX) was
+    # the off-path, deleted with RL_O40_CAPFORM 2026-10-14).
+    # THE OWNER'S COMPRESSION. Strictly increasing in shortfall EVERYWHERE — no flat segment
+    # anywhere — and bounded by the anchor ceiling C, which it approaches but never reaches.
+    _raw=max(1.0-O40_THETA_R*(_s-O37_S0),0.0)
+    return O40_CAPC*(1.0-_math.exp(-_raw/O40_CAPC))
+def o38_mono(p,Y,g,_s):
+    """FIX A. The charge, capped wherever the pedigree leg would otherwise FALL as entry price
+    RISES. Returns the multiplier the pedigree leg is charged by, in (0,1]."""
+    _A=1.0-_math.exp(-float(g)/O37_G0)
+    _pr=o38_parts(p,Y)
+    _v=day0_v0(p)
+    if _pr is None or _v is None:
+        return _math.exp(-O40_LAMBDA*_A*o38_T(_s))
+    _OUT,_wT,_wS,_wTm,_wSm=_pr
+    _X=_math.log(round(float(_v)*_PL_F,1))
+    def _sx(_x):
+        # ORDER S (RL_O40_PGMAT): the row's mature season-share reads the mature surface, so the
+        # identity s_P(v) = OUT - SUM(share * PG_that-surface(v)) stays EXACT. (ORDER Q's own
+        # expression, OUT - (wT*PG_TALL + wS*PG_SMALL), was the RL_O40_PGMAT off-path.)
+        return _OUT-((_wT-_wTm)*o38_pg_at(_x,'TALL')+_wTm*o40_pg_at(_x,'TALL')
+                     +(_wS-_wSm)*o38_pg_at(_x,'SMALL')+_wSm*o40_pg_at(_x,'SMALL'))
+    def _psi(_x):
+        return _x-O40_LAMBDA*_A*o38_T(_sx(_x))
+    _cand=[]
+    for _c,_wc in (('TALL',_wT),('SMALL',_wS)):
+        if _wc<=0.0: continue
+        _lo,_hi,_y=O37_PG_GRID[_c]; _n=len(_y)
+        for _i in range(_n):
+            _xi=_lo+(_hi-_lo)*_i/(_n-1.0)
+            if _xi<_X: _cand.append(_xi)
+        # ORDER S: the mature surface has its OWN nodes, and psi can only
+        # change slope at a node of a surface it actually reads. They are added, not substituted.
+        _lo,_hi,_y=O40_PGM_GRID[_c]; _n=len(_y)
+        for _i in range(_n):
+            _xi=_lo+(_hi-_lo)*_i/(_n-1.0)
+            if _xi<_X: _cand.append(_xi)
+    _cand.append(_X)
+    _cand=sorted(set(_cand))
+    # the clip crossings: s is affine on each segment, so the pre-clip T is affine and its two
+    # clip boundaries are the only interior places psi can change slope.
+    _extra=[]
+    for _j in range(len(_cand)-1):
+        _a,_b=_cand[_j],_cand[_j+1]
+        _sa,_sb=_sx(_a),_sx(_b)
+        if _sa==_sb: continue
+        # ORDER R: the EFFECTIVE clip boundaries. ORDER S: under the COMPRESSION there is no
+        # upper clip at all — T' is smooth and approaches C without reaching it — so only the
+        # ZERO crossing is a kink. psi stays CONVEX on each segment either way (x is linear and
+        # +LAMBDA*A*C*exp(-affine/C) is convex), so the maximum on a segment is still at an
+        # endpoint and the running maximum over the nodes is still EXACT.
+        for _tv in (0.0,):                                   # (the clip's second crossing, O40_TMAX, went with the hard clip)
+            _st=O37_S0+(1.0-_tv)/O40_THETA_R
+            if (_sa-_st)*(_sb-_st)<0.0:
+                _extra.append(_a+(_b-_a)*(_st-_sa)/(_sb-_sa))
+    if _extra: _cand=sorted(set(_cand+_extra))
+    _m=_psi(_X)
+    for _x in _cand:
+        _q=_psi(_x)
+        if _q>_m: _m=_q
+    return _math.exp(_m-_X)
+def o38_w(_age):
+    """The weight on the ORDER P charge. FIX B1 (hard-wired 2026-10-14): 1 at every age — the age-24
+    gate is DELETED. (B2's 23-to-26 ramp w = 1, (26-age)/3, 0 and ORDER P's own hard gate at 24 were
+        the priced alternatives; neither is on the line.)"""
+    return 1.0
+def o38_factor(p,Y,g):
+    """The ORDER Q multiplier. Falls back to the ORDER K charge, byte for byte, on exactly the
+    rows ORDER P falls back on: no birth year, no day-0 v0, no readable bar."""
+    _old=max(0.0,1.0-O32_ETA*((float(g)/O32_GAMMA_D)*_math.exp(1.0-float(g)/O32_GAMMA_D)))
+    _by=p.get('_by')
+    if not _by: return _old
+    _s=o37_surplus(p,Y)
+    if _s is None: return _old
+    return o38_mono(p,Y,g,_s)                              # FIX A (hard-wired): the monotonised charge. (FIX A's off-path was exp(-LAMBDA*A(g)*T(s)) and, with o38_w<1, its geometric blend with the ORDER K charge; o38_w is 1 at every age under FIX B1.)
+def o31_pi(p,Y,g=None,_Dov=None,_nofloor=False):
+    """pi(g, c_u, s) = Phi(g,s) * [ D(c_u)*(1-rho(g)) + beta_mono(g)*rho(g) ].
+    At g=0 this is D(c_u) EXACTLY. As rho -> 1 it is the measured additive beta EXACTLY.
+    ORDER 41: _Dov overrides the sitter fade D — used ONLY to form the ABSENCE-FREE reference
+    price the R3 sizing law needs (_Dov=1.0 = the row as if he had never sat). It is a reference
+    quantity that is never written to a board, and it is None on every real pricing call."""
+    _g=pv_games(p,Y) if g is None else float(g)
+    _r=rho31(_g)
+    # Phi multiplies the MEASURED COEFFICIENT ONLY. beta_stall/beta_pooled is a ratio of ADDITIVE
+    # COEFFICIENTS estimated on PLAYED players; D(c_u) is the sitter fade, estimated on GAMELESS
+    # listed players, and no stall measurement was ever taken on that channel. This also makes
+    # pi(0,c,s) == D(c) true for EVERY s structurally rather than by an unreachable-state argument.
+    # (RL_O31_NOPHI=1, a declared default-off measurement dial, priced the conditioning by
+    # removing it; hard-wired OFF 2026-10-14 — Phi is always applied.)
+    _pl=bool(p.get('_pool'))
+    _pi=(o31_D(p,Y) if _Dov is None else float(_Dov))*(1.0-_r)+phi31(_g,o31_stall_run(p,Y),_pl)*beta31(_g,_pl)*_r
+    # ORDER A stage 6 (M5): the pedigree leg comes down in step — W2's own translation. m_d(0)=0
+    # so pi(0,c)=D(c) still holds EXACTLY and gameless rows are untouched.
+    if O32_ETA>0.0 and _g>0.0:
+        # ORDER P (RL_O37): the pedigree-conditional charge REPLACES the blind one at this one
+        # site (hard-wired 2026-10-14; the blind charge max(0, 1-eta*(g/gamma_d)*exp(1-g/gamma_d)) was the off-path, which
+        # is what makes f3101883 reproduce exactly. m_d(0) = 0 and A(0) = 0, so BOTH forms leave
+        # every gameless row untouched and pi(0,c) = D(c) still holds for both.
+        # ORDER Q (RL_O38A/B1): the two defect repairs sit at this same one site (o38_factor; o37_factor
+        # was the pre-repair charge).
+        _pi*=o38_factor(p,Y,_g)
+    if _O46 and _O46F[0] and not _nofloor and _o46_class(p,Y):
+        _pi=max(_pi,_o46_L(p,Y))               # ORDER 46: the retention surface (floor, in-body —
+    return _pi                                 # the studies' proven site; _nofloor serves the
+                                               # exporter mirror; _O46F serves the final guard)
+# ===== ORDER 41 (RL_O41_R3) — THE PRODUCTION FADE, SIZED BY THE OWNER'S R1 COMBINED-TAKE LAW ===
+# THE OWNER: "his production leg should fade with 2 seasons out." Conway is the exhibit, never the
+# target. THE SIZING LAW IS HIS R1 RULING: split collection across mechanisms is NOT a defect, an
+# UNCALIBRATED TOTAL is. So this collector does not carry a rate of its own — it collects exactly
+# the RESIDUAL between what the existing collectors have already taken and what F3 MEASURED the
+# absence to cost. However many collectors there are, the one fact is collected once, at the
+# calibrated total. THERE IS NO FREE PARAMETER IN THIS BLOCK.
+#
+# WHY A NEW COLLECTOR AT ALL. F3 §15 published the STRUCTURAL CEILING: the sitter fade multiplies
+# only the (1-rho) share of the pedigree leg, and in THREE OF FOUR c_u bands the ceiling of that
+# collector plus the D8 cap sits BELOW the lower limit of the measured cost. No setting of either
+# existing dial can reach it, because the collectors act on a share of the price that is smaller
+# than the cost is. The production leg is the one that can reach.
+#
+# THE LIMITATION F3 STATED, CARRIED FORWARD RATHER THAN QUIETLY DROPPED: a row whose absence has
+# already depressed his PRODUCTION leg has paid for it somewhere these attributions do not count,
+# so F3's gap is an UPPER BOUND on the shortfall, not a point estimate. The take is therefore
+# CAPPED so the total can never EXCEED the measured cost's point estimate, and capped again at the
+# production leg itself so the factor stays inside [0, 1].
+def o41_absence_depth(p,Y):
+    """THE NUMBER OF SEASONS THE ROW HAS GENUINELY NOT PLAYED, on F3's own clock: depth 1 is the
+    normaliser (nothing missed) and depth 2 is ONE unplayed season, exactly as FOLLOWUP_F3.json's
+    dcurve is indexed.
+
+    THIS IS DELIBERATELY *NOT* o31_cu, AND THE DIFFERENCE IS THE WHOLE POINT. o31_cu is the
+    SITTER clock: it is time-since-delivery MINUS a partial credit for each season played, and
+    under the F1 measured credit curve a season of 5 games now credits 0.25 instead of 1.00. That
+    is right for the pedigree fade — a five-game season really is weak evidence — but it is WRONG
+    as a count of seasons missed, because it accumulates for a player who never missed one.
+    MEASURED, NOT REASONED: the first candidate built on o31_cu faded the production leg of a ruck
+    with 187 career games who has played EVERY season since 2015 and has no unplayed season at
+    all. The absence collector must read absence, so it counts absence.
+    Injured-logged live absence is NOT counted — that is the two-channel law.
+
+    register v751 — THE RUN IS *CURRENT AND CONSECUTIVE*, NOT CUMULATIVE-SINCE-DELIVERY.
+    THE DEFECT THIS REPLACES: the first version counted EVERY unplayed season since the last
+    DELIVERED one, and charged that total against TODAY'S production leg. Because "delivered"
+    needs games >= 10*f AND an average over the gate bar, a player can be playing every week and
+    still never deliver — so old gaps kept accruing while he was on the field. Measured on the
+    built board: a ruck playing 16 games THIS SEASON was charged depth 3 for 2024+2025 and lost
+    920 board points, and a row with 7 games this season (under the prorated 9.2-game threshold)
+    lost 809 — while a genuinely absent row lost only 606, because he had less production left to
+    strip. THE COLLECTOR WAS LANDING HARDEST ON THE PLAYERS WHO HAD COME BACK, which is backwards
+    against the owner's ruling: his words are present-tense, "his production leg should fade with
+    two seasons OUT". It was also out of domain — F3 measured the cost on CURRENTLY-ABSENT rows,
+    and F2 separately measured that returners recover substantially.
+    THE RULE NOW: walk BACK from Y. ANY season with games > 0 BREAKS THE RUN. A row playing this
+    season has a run of zero and pays nothing, whatever his history. Nothing else about the R3
+    sizing changes."""
+    _pl=set(); _pg={}
+    for _x in (p.get('scoring') or []):
+        _gg=float(_x.get('games') or 0.0)
+        if _gg>0.0:
+            _pl.add(int(_x['year'])); _pg[int(_x['year'])]=_gg
+    _Yl=int(Y) if getattr(MA,'_LENS_FORM',None) is None else min(int(Y),int(MA._LENS_FORM))   # LENS ANCHOR (2026-10-13): a +k view has no 2027/2028 rows by definition; they are unplayed-yet, not absent
+    _y=_Yl
+    # A row cannot be absent before he was drafted: the walk stops at his draft year.
+    _floor=(int(p['year']) if p.get('year') else None)
+    # ---- THE OWNER'S LINEAR U0-GAME UNWIND (register v755; RL_O41_BREAK=unwind, hard-wired 2026-10-14) ----
+    # STRUCTURALLY THIS IS THE (deleted) FRACTIONAL WALK WITH o41_unwind SUBSTITUTED FOR o41_credit, and
+    # saying so plainly is more useful than presenting it as a new mechanism. The walk, the break
+    # condition and the in-progress term are identical; ONLY THE CURVE DIFFERS. The F1 credit curve
+    # is concave and saturates at 11 games; the owner's unwind is linear and saturates at U0 = 5.
+    #
+    # THE IN-PROGRESS INTERACTION, WIRED EXACTLY AS PREREGGED (PREREG_D4_D5.md §3.1): the GAMES are
+    # counted RAW and are NOT prorated — his phrase is "their first 5 games on return", a count of
+    # games actually played — while the ABSENCE those games fail to unwind carries the in-season
+    # weight `_o41_fe`, which under the folded-in D4 ramp is f**1.5 rather than f. The alternative
+    # (prorating the threshold to U0*f, so fewer games are needed the later it gets) is REFUSED and
+    # the reason is on the record: it would let a player clear his penalty with less evidence the
+    # longer he waited, which inverts the plain meaning of the ruling.
+    _n=0.0
+    _gl=float(_pg.get(_y,0.0))
+    if not o41_injured(p):
+        _n+=max(0.0,1.0-o41_unwind(_gl))*float(_o41_fe(_Yl,p) or 0.0)
+    if o41_unwind(_gl)>=1.0: return 1.0        # U0+ games this season breaks the run outright
+    _yy=_y-1
+    while _floor is None or _yy>_floor:
+        _u=o41_unwind(float(_pg.get(_yy,0.0)))
+        if _u>=1.0: break                      # a FULLY UNWOUND season breaks the run
+        _n+=1.0-_u                             # otherwise its un-unwound share stands
+        _yy-=1
+        if _floor is None and _y-_yy>40: break
+    return 1.0+_n
+    # (The 'fractional' walk — o41_credit in place of o41_unwind — and the wired 'binary' walk — any season
+    # with games > 0 breaks the run outright, the live season counting fE unless injured — were the priced
+    # alternatives behind RL_O41_BREAK; deleted with the dial.)
+def o41_completed_absent(p,Y):
+    """THE COUNT OF **COMPLETED** UNPLAYED SEASONS INSIDE THE CURRENT RUN — i.e. how many whole,
+    finished seasons of this absence are actually on the record. The in-progress season is NOT
+    counted, because it has not finished and is not yet evidence of anything.
+
+    register v754 / audit finding F2 — WHY THIS OBJECT EXISTS. `o41_absence_depth` returns
+    `1 + n`, and the FIRST thing it adds to `n` is the in-progress season's elapsed fraction
+    `_o41_fe`. `_fEy` returns the calendar fraction for an ordinary row, but returns exactly
+    **1.0** for a row the engine's own `LTI_REGISTER.md` marks out. So a row whose ONLY unplayed
+    season is the in-progress one lands on depth 1 + 1.0 = **2.0000** and sails straight past the
+    `< 2.0` guard — and R3 charges him for an absence of one part-season. MEASURED on the
+    candidate's own dial line: of 116 rows whose only unplayed season is 2026, exactly 4 reach
+    depth >= 2 (all 4 on the LTI register, all 4 with fE = 1.000); not one non-LTI row does.
+    That contradicts this seat's own written promise — "day-0 and one-season-out rows are
+    untouched" — so the promise is now enforced in code rather than left to arithmetic.
+
+    THE FIX IS STRUCTURAL, NOT NUMERIC, AND THAT IS DELIBERATE. Nudging the guard to 2.01 would
+    clear these four rows by arithmetic accident and would silently re-break the moment the
+    season state, the register, or `_fEy` moved. The property actually promised is about
+    COMPLETED seasons, so the code now says COMPLETED seasons. NO NEW CONSTANT IS INTRODUCED and
+    the `< 2.0` guard is not moved by a hair.
+
+    IT REUSES THE DEPTH WALK'S OWN RULES so the two objects cannot drift apart: the same break
+    rule (a FULLY UNWOUND season, o41_unwind >= 1), the same
+    draft-year floor, the same structural 40-year guard. Each backward step the depth walk takes
+    is one completed season of the run, so this is that walk's step count."""
+    _pg={}
+    for _x in (p.get('scoring') or []):
+        _gg=float(_x.get('games') or 0.0)
+        if _gg>0.0: _pg[int(_x['year'])]=_gg
+    _Yl=int(Y) if getattr(MA,'_LENS_FORM',None) is None else min(int(Y),int(MA._LENS_FORM))   # LENS ANCHOR (2026-10-13): a +k view has no 2027/2028 rows by definition; they are unplayed-yet, not absent
+    _y=_Yl; _floor=(int(p['year']) if p.get('year') else None)
+    # a live season that BREAKS the run leaves no run at all, hence no completed season inside it.
+    # THE BREAK RULE IS THE DEPTH WALK'S OWN so this object and the depth walk cannot drift.
+    def _brk(_gv):
+        return o41_unwind(float(_gv))>=1.0
+    if _brk(_pg.get(_y,0.0)): return 0
+    _k=0; _yy=_y-1
+    while _floor is None or _yy>_floor:
+        if _brk(_pg.get(_yy,0.0)): break
+        _k+=1
+        _yy-=1
+        if _floor is None and _y-_yy>40: break
+    return _k
+def o41_r3_take(p,Y,g,e,ped):
+    """Board points to remove from the production leg so the TOTAL absence collection lands at
+    F3's measured cost. Returns 0.0 for every row the law does not reach."""
+    # THE TWO-CHANNEL LAW: an injured-annotated row is EXEMPT. His absence is explained and the
+    # engine does not charge him for it on any channel.
+    if o41_injured(p): return 0.0
+    _cx=o41_absence_depth(p,Y)
+    # ZERO BELOW DEPTH 2 BY CONSTRUCTION. F3 cannot speak about depth 1 — it is its own normaliser
+    # — and the owner's words are "two seasons out". So day-0 rows and one-season-out rows are
+    # untouched, which also keeps every printed day-0 price exactly where it was.
+    #
+    # register v754 / audit F2 — THE PROMISE IS NOW STRUCTURAL AS WELL AS NUMERIC. The depth
+    # guard alone did not deliver "one-season-out rows are untouched": an LTI-register row whose
+    # only unplayed season is the IN-PROGRESS one lands on exactly 2.0000 and passed it. R3 is
+    # therefore reachable only when the run contains AT LEAST ONE **COMPLETED** unplayed season.
+    # A row whose only unplayed season is the in-progress one is never charged, AT ANY fE.
+    if _cx<2.0 or o41_completed_absent(p,Y)<1: return 0.0
+    _tgt=o41_cost(_cx)
+    if _tgt<=0.0: return 0.0
+    _ac=o32_age_credit(p,Y,g)
+    _prod=rho31(g)*float(e)
+    if _prod<=0.0: return 0.0
+    # THE ABSENCE-FREE REFERENCE: the same row with BOTH existing absence collectors neutralised —
+    # the sitter fade forced to 1 and the production cap released. This is F3's own denominator.
+    _epre=_O41_PRED8.get((id(p),int(Y)),e)
+    _free=rho31(g)*float(_epre)+o31_pi(p,Y,g,_Dov=1.0)*ped+_ac
+    if not (_free>0.0): return 0.0
+    _now=_prod+o31_pi(p,Y,g)*ped+_ac
+    _taken=max(0.0,(_free-_now)/_free)          # what the fade and the D8 cap have ALREADY taken
+    _resid=max(0.0,_tgt-_taken)                 # what is still owed against the measured cost
+    if _resid<=0.0: return 0.0                  # already at or past the target: collect NOTHING
+    return min(_resid*_free,_prod)              # never more than the production leg holds
+def _pv_order31(p,Y,e):
+    """THE ONE LAW. One expression, every row, every pathway, every games count.
+    ORDER A REPAIR R1: + the age credit on the re-mix's added production weight (zero at g=0,
+    zero from age 24, zero below stage 6 — the dial-off path is unchanged byte-for-byte).
+    ORDER 41 (RL_O41_R3): the production leg fades with MULTI-SEASON UNEXPLAINED absence, at the
+    residual the combined-take law leaves (RL_O41_R3 hard-wired on)."""
+    _g=pv_games(p,Y)
+    _ped=pv_pedigree(p)
+    _pi31=o31_pi(p,Y,_g)
+    _v=rho31(_g)*float(e)+_pi31*_ped+o32_age_credit(p,Y,_g)
+    _v=_v-o41_r3_take(p,Y,_g,e,_ped)
+    # (ORDER 46's price cap moved OUT of this blend to the FINAL GUARD at the end of the file:
+    # capping here left the floored pi visible to downstream stages that gate on it — the
+    # measured mraz flip, where a route relief switched off and a standing 943 fell to 739.
+    # The cap and the no-decrease belong at the level of the price the owner's rule speaks
+    # about: the finished one.)
+    return _v
+_PV['blend']=_pv_order31
+# THE DAY-0 PREDICATE IS RESTATED, NOT DROPPED. Under the one law a zero-games row's price IS
+# v0 x D(c_u) with c_u == the fade clock, so rl_export's printed-day-0 assert keeps its meaning and
+# its tolerance-0 equality -- it now proves the one law reproduces the ruled sitter law rather than
+# asserting a separately-wired branch against itself.
+# ORDER 46 RESTATEMENT (2026-08-27, the prereg's own 'F7 exporter assert' repair): inside the
+# retention-surface class the sitter law is ONE CLAUSE WIDER — pi is floored at the measured cell
+# and the lift is capped at the day-0 stamp — so the predicate is read THROUGH the engine's own
+# o31_pi/cap path for exactly those rows (same rows, tolerance 0, the 29B->30B->31 lineage
+# continued). Out-of-class rows and the dials-off path keep the pre-order expression verbatim,
+# which is what keeps F1's byte-exact off-proof meaningful. The wall below (pi(0)==D) still
+# holds because the gameless 'none' cells sit below the (O47-stepped) fade everywhere measured;
+# the widening binds only on cameo evidence, through L1's cells, never the maturation term.
+def _entry30b_price(p,Y=2026,__d=_entry29b_derived):
+    _d0=__d(p,Y)
+    if _d0 is None: return None
+    if not (_O46 and _o46_class(p,Y)):
+        return _d0*o31_D(p,Y)
+    # the ORDER 46 FINAL GUARD's construct, mirrored in board currency (the pre-order
+    # identity proved pi_raw(g)==D on the sitter set, so the off-leg is the old law):
+    #   max(off, min(on, max(off, day0)))
+    _g=pv_games(p,Y)
+    _off=_d0*o31_pi(p,Y,_g,_nofloor=True)
+    _on=_d0*o31_pi(p,Y,_g)
+    _d0c=day0_v0(p)
+    _cap=max(_off,float(_d0c)) if _d0c is not None else _off
+    return max(_off,min(_on,_cap))
+# BUILD-FAILING STRUCTURAL ASSERTS (the brief's assert wall, at the law itself).
+_o31_bad=[]
+for _p in MA.data:
+    if not (_isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos'))): continue
+    _gg=pv_games(_p,MA.BASE_REF)
+    if _gg<=0.0:
+        if o31_stall_run(_p,MA.BASE_REF)>0: _o31_bad.append(('s>0 at g==0',_p.get('key')))
+        if abs(o31_pi(_p,MA.BASE_REF,0.0)-o31_D(_p,MA.BASE_REF))>0.0: _o31_bad.append(('pi(0)!=D',_p.get('key')))
+if _o31_bad:
+    raise SystemExit('ORDER 31 HALT: %d structural violations of the one law — %s'%(len(_o31_bad),_o31_bad[:6]))
+# ORDER A — CANDIDATE 32 BUILD-FAILING ASSERTS (stage 6, hard-wired).
+# cap law: every gate bar <= the flat bar, flat from 24 (murdock guard, structural)
+for _pos in _O30BP_BARS:
+    for _a in range(16,30):
+        _b=o32_gate_bar(_pos,_a)
+        if not (_b<=_O30BP_BARS[_pos]+1e-12) or (_a>=24 and _b!=_O30BP_BARS[_pos]):
+            raise SystemExit('ORDER A HALT: gate-bar cap law broken at %s age %d'%(_pos,_a))
+# S1 flat-bar identity: the C3 construction was built on these exact flat bars
+_s1flat={'KPD':65.4,'KPF':63.8,'MID':77.1,'RUCK':75.5,'SD':75.3,'SF':67.9}
+for _pos,_v in _s1flat.items():
+    if abs(_O30BP_BARS.get(_pos,-1)-_v)>1e-9:
+        raise SystemExit('ORDER A HALT: _O30BP_BARS[%s]=%r is not the S1 flat bar %r — the '
+                         'C3 offsets do not apply to this object'%(_pos,_O30BP_BARS.get(_pos),_v))
+if O32_KAPPA>0.0:
+    _prev=-1.0
+    _gg=0.0
+    while _gg<=300.0:
+        _r=rho31(_gg)
+        if _r<_prev-1e-12:
+            raise SystemExit('ORDER A HALT: rho32 non-monotone at g=%.2f (PREREG_32 F5)'%_gg)
+        if not (_r<1.0+1e-12):
+            raise SystemExit('ORDER A HALT: rho32 breaches 1 at g=%.2f'%_gg)
+        _prev=_r; _gg+=0.25
+# ORDER D BUILD-FAILING ASSERTS: the curve is smooth and monotone in pick, bounded by
+# its clips, and transcribed exactly from O35_CURVE.json (kappa(1)=0.5, kappa(64)
+# within 1e-9 of the derivation's own table).
+_prevk=None
+for _pk in range(1,65):
+    _kk=min(O35_CLIP[1],max(O35_CLIP[0],(O35_G0+O35_G1*_math.log(float(_pk)))/O35_SNORM))
+    if not (O35_CLIP[0]-1e-12<=_kk<=O35_CLIP[1]+1e-12) or (_prevk is not None and _kk<_prevk-1e-12):
+        raise SystemExit('ORDER D HALT: kappa(pick) broke monotone/clip at pick %d'%_pk)
+    _prevk=_kk
+if abs((O35_G0+O35_G1*_math.log(64.0))/O35_SNORM-1.153311931087099)>1e-9:
+    raise SystemExit('ORDER D HALT: the transcribed curve does not reproduce O35_CURVE.json at pick 64')
+# ===== ORDER I BUILD-FAILING ASSERTS (hard-wired) ==============================
+# A1 — the S1 surface in rl_model is BYTE-EQUAL to the C3 object this file already carries.
+# Two copies exist only because rl_model is imported before this block runs; they may never
+# drift, and a drift is a build failure, not a warning.
+if MA.O36_GATE_DELTA!=O32_GATE_DELTA or set(MA.O36_TALLPOS)!=set(O32_TALLPOS):
+    raise SystemExit('ORDER I HALT: rl_model.O36_GATE_DELTA/TALLPOS has drifted from the '
+                     'C3 object O32_GATE_DELTA in this file — the two copies must be identical')
+# A2 — THE CAP LAW AND THE MATURE-ROW IDENTITY, on the S1 bar itself: never above the flat
+# bar, and EXACTLY the flat bar from age 24 (this is what makes murdock byte-identical).
+for _pos in MA.REPL:
+    for _a in range(16,40):
+        _bb=MA.o36_bar(_pos,_a)
+        if not (_bb<=MA.REPL[_pos]+1e-12):
+            raise SystemExit('ORDER I HALT: S1 bar ABOVE the flat bar at %s age %d'%(_pos,_a))
+        if _a>=24 and _bb!=MA.REPL[_pos]:
+            raise SystemExit('ORDER I HALT: S1 bar is not byte-identical at %s age %d — the '
+                             'cap law (flat from 24) is broken and mature rows would move'%(_pos,_a))
+    if MA.o36_bar(_pos,None)!=MA.REPL[_pos]:
+        raise SystemExit('ORDER I HALT: S1 bar moved a row with no age at %s'%_pos)
+if not (0.0<=MA.O36_LAM_S1<=1.0):
+    raise SystemExit('ORDER I HALT: lambda_S1 %r is outside the declared [0,1] dose range'%MA.O36_LAM_S1)
+# A3 — the S1 surface is MONOTONE NON-INCREASING in age over 18..23: the development gap
+# must shrink as a player matures, never widen. The final step at age 24 (gap -> 0) is the
+# RULED CAP LAW itself — the same structural step the O32 stage-1 gate already ships — and
+# is DISCLOSED with its number on the packet rather than asserted away.
+for _cls in ('TALL','SMALL'):
+    _tab=O32_GATE_DELTA[_cls]
+    for _a in range(18,23):
+        if _tab[_a+1]>_tab[_a]+1e-12:
+            raise SystemExit('ORDER I HALT: the S1 development gap WIDENS from age %d to %d '
+                             'in class %s — the surface is not monotone'%(_a,_a+1,_cls))
+# A4 — THE TALL/SMALL FADE: smooth and monotone in pick within each class, bounded by the
+# clips, and transcribed EXACTLY from H_RESULTS.json (every pick H published, 1e-12).
+_HK={1:(0.5,0.5),5:(0.5,0.5),10:(0.5299803208304396,0.5),16:(0.7636000350961567,0.5),
+     20:(0.8745156311776653,0.5),24:(0.96514027182361,0.5),
+     30:(1.0760558679051182,0.5915136019227577),40:(1.2190509415248914,0.734508675542531),
+     50:(1.3299665376063998,0.8454242716240395),53:(1.3589296451644084,0.8743873791820481),
+     64:(1.4526706557906086,0.9681283898082481)}
+def _kap36(_pk,_tall):
+    _s=O36_TG0+O36_TG1*_math.log(float(_pk))+(O36_HTALL if _tall else 0.0)
+    return min(O35_CLIP[1],max(O35_CLIP[0],_s/O36_SNORM))
+for _pk,(_ks,_kt) in _HK.items():
+    if abs(_kap36(_pk,False)-_ks)>1e-12 or abs(_kap36(_pk,True)-_kt)>1e-12:
+        raise SystemExit('ORDER I HALT: the transcribed tall/small curve does not reproduce '
+                         'H_RESULTS.json at pick %d'%_pk)
+_ps=_pt=None
+for _pk in range(1,65):
+    _a1=_kap36(_pk,False); _a2=_kap36(_pk,True)
+    for _v in (_a1,_a2):
+        if not (O35_CLIP[0]-1e-12<=_v<=O35_CLIP[1]+1e-12):
+            raise SystemExit('ORDER I HALT: kappa breached its clip at pick %d'%_pk)
+    if (_ps is not None and _a1<_ps-1e-12) or (_pt is not None and _a2<_pt-1e-12):
+        raise SystemExit('ORDER I HALT: kappa(pick) broke monotone at pick %d'%_pk)
+    # smoothness: no step between neighbouring picks bigger than the pick-1->2 step
+    if _ps is not None and (_a1-_ps)>O36_TG1/O36_SNORM*_math.log(2.0)+1e-12:
+        raise SystemExit('ORDER I HALT: kappa(pick) took a step larger than the log curve '
+                         'allows at pick %d — that is a cliff'%_pk)
+    _ps=_a1; _pt=_a2
+# ===== ORDER K — K-FLOOR, THE BUILD-FAILING ASSERTS ON THE FIX (PREREG_K.md §2.6) =======
+# A4 above is left UNTOUCHED and still runs on the WIRED form. That is deliberate: it keeps
+# proving that the RULED FIT CONSTANTS (TG0, TG1, h_TALL and Order H's own s_norm) are
+# transcribed exactly and have not been quietly re-fitted by this order. What follows gates
+# the LIVE exponent — the one the board actually charges.
+# K-FLOOR (a) — NO SMALL IS MADE LIGHTER, at any pick, structurally. This is the owner's
+# acceptance test written as an inequality the build cannot pass without satisfying it.
+# K-FLOOR (d) — the talls' relief survives: a TALL is never made HEAVIER by the factor.
+# (ON THE DECLARED REMOVAL LANE, RL_O36_FLOORFIX=0 — deleted 2026-10-14 — THESE WERE NOT HALTS. That lane existed to
+# PRICE the defect by rebuilding it, exactly as RL_O36_TALL=0 priced the adopted factor by
+# removing it; halting there would have made the defect unmeasurable. The inequalities were
+# evaluated and the breach PRINTED with its picks — and the fact that they fire the
+# moment the fix is removed is the NON-VACUITY PROOF that they are live and not decorative
+# (the firing run is kept at docs/evidence/order_k_2026-08-18/K1_NONVACUITY_PROOF.txt).)
+_k1=[_pk for _pk in range(1,65) if o36_kappa_at(_pk,False)<o35_kappa_at(_pk)-1e-12]
+_k3=[_pk for _pk in range(1,65) if o36_kappa_at(_pk,True)>o35_kappa_at(_pk)+1e-12]
+if _k1:
+    raise SystemExit('ORDER K HALT (K1): a SMALL is made LIGHTER by the tall factor at '
+                     'picks %s — at pick %d kappa %.10f is below his pre-factor %.10f. '
+                     'The fade floor has inverted again.'
+                     %(_k1,_k1[0],o36_kappa_at(_k1[0],False),o35_kappa_at(_k1[0])))
+if _k3:
+    raise SystemExit('ORDER K HALT (K3): a TALL is made HEAVIER by the tall factor at '
+                     'picks %s — the ruled relief has reversed'%_k3)
+# The live curve is bounded, monotone in pick within each class, and smooth (no cliff). The
+# small side is the max of two monotone curves, so it is monotone and continuous; the step
+# bound is the looser of the two curves' own one-pick steps.
+_ps=_pt=None
+_stepmax=max(O36_TG1/O36_SNORM_K,O35_G1/O35_SNORM)*_math.log(2.0)
+for _pk in range(1,65):
+    _a1=o36_kappa_at(_pk,False); _a2=o36_kappa_at(_pk,True)
+    for _v in (_a1,_a2):
+        if not (O35_CLIP[0]-1e-12<=_v<=O35_CLIP[1]+1e-12):
+            raise SystemExit('ORDER K HALT: the live kappa breached its clip at pick %d'%_pk)
+    if (_ps is not None and _a1<_ps-1e-12) or (_pt is not None and _a2<_pt-1e-12):
+        raise SystemExit('ORDER K HALT: the live kappa(pick) broke monotone at pick %d'%_pk)
+    if _ps is not None and (_a1-_ps)>_stepmax+1e-12:
+        raise SystemExit('ORDER K HALT: the live kappa(pick) took a step larger than either '
+                         'log curve allows at pick %d — that is a cliff'%_pk)
+    _ps=_a1; _pt=_a2
+# K-FLOOR (e) — THE REDISTRIBUTION IDENTITY. The pick-weighted mean of D2^kappa over ORDER
+# H's own 408 fitted sitters must still equal the ruled depth-2 fade 0.5582775. The sitter
+# set is transcribed here as (pick, TALL) counts so the assert needs no external file and
+# cannot be satisfied vacuously; the counts are H's SATROWS, reproduced in
+# docs/evidence/order_k_2026-08-18/ok_floor_design.py.
+_SATC=_O36K_SATCOUNTS
+_n=sum(_SATC.values())
+if _n!=408:
+    raise SystemExit('ORDER K HALT: the transcribed sitter set is %d rows, not ORDER H\'s 408'%_n)
+_idr=(sum(_c*(O36_D2_FULL**o36_kappa_at(_pk,_tl)) for (_pk,_tl),_c in _SATC.items())/_n
+      -O36_D2_FULL)
+if abs(_idr)>1e-9:
+    raise SystemExit('ORDER K HALT (K4): the tall/small redistribution identity misses the '
+                     'ruled depth-2 fade %.7f by %.3e — the total fade the board charges has '
+                     'moved'%(O36_D2,_idr))
+O36_IDENT_RESID=_idr
+# A5 — m_TALL, the multiplicative translation the owner asked for, reproduced from the wire.
+_mt=(sum(_kap36(_p,True) for _p in range(1,65))/sum(_kap36(_p,False) for _p in range(1,65)))
+print('ORDER I — THE COORDINATED BUILD. ADOPTED (owner word 2026-10-13), HARD-WIRED 2026-10-14.\n'
+      '  LEVER 1  S1, the age-referenced projection bar: lambda_S1=%.3f applied to the C3 gap at '
+      'the four projection/floor sites. NO pick axis, capped at the flat bar, FLAT FROM AGE 24 '
+      '(every mature row byte-identical, store-wide).\n'
+      '  LEVER 2  the counterweight, re-derived JOINTLY on the corrected age-fair surface: '
+      'kappa=%.2f gamma_u=%.1f / eta=%.2f gamma_d=%.1f / relief lambda=%.2f '
+      '(was %.2f/%.1f/%.2f/%.1f/%.2f).\n'
+      '  LEVER 3  the tall/small sitter factor: h_TALL=%.4f, s_norm=%.10f, clip [%.1f, %.1f]; '
+      'kappa(16) small %.3f / tall %.3f, kappa(64) small %.3f / tall %.3f; m_TALL=%.3f. '
+      'DECLARED: the pinned identity means LATE SMALL SITTERS PAY for the talls\' relief.\n'
+      '  ORDER K FADE FLOOR: %s. A SMALL\'s floor is HIS OWN PRE-FACTOR (Order D pooled) '
+      'exponent, so no small can be made lighter by a talls-only relief; talls keep the '
+      '[0.5, 2.0] clip. h_TALL UNCHANGED; the normaliser re-solved WITH the re-sited floor '
+      'inside the constraint set (%.10f -> %.10f). Redistribution identity residual %.3e '
+      'against the ruled depth-2 fade %.7f. The floor still binds: talls picks 1-%d on 0.5; '
+      'smalls picks 1-%d on their own pooled exponent (of those, picks 1-%d also on 0.5 '
+      'because the pooled curve is itself clipped there).\n'
+      '  %d active rows sit at a developing age and can be reached by S1; %d have no birth '
+      'year and keep the flat bar.'
+      %(MA.O36_LAM_S1,O36_KAPPA,O36_GAMMA,O36_ETA,O36_GAMMA_D,O36_LAMBDA,
+        0.24,11.0,0.41,14.0,1.08,
+        O36_HTALL,O36_SNORM_K,O35_CLIP[0],O35_CLIP[1],
+        o36_kappa_at(16,False),o36_kappa_at(16,True),o36_kappa_at(64,False),
+        o36_kappa_at(64,True),_mt,
+        'LIVE (hard-wired 2026-10-14)',
+        O36_SNORM,O36_SNORM_K,O36_IDENT_RESID,O36_D2,
+        max([_p for _p in range(1,65) if abs(o36_kappa_at(_p,True)-O35_CLIP[0])<1e-12] or [0]),
+        max([_p for _p in range(1,65) if abs(o36_kappa_at(_p,False)-o35_kappa_at(_p))<1e-12] or [0]),
+        max([_p for _p in range(1,65) if abs(o36_kappa_at(_p,False)-O35_CLIP[0])<1e-12] or [0]),
+        sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and _p.get('_by') and (MA.BASE_REF-int(_p['_by']))<24),
+        sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and not _p.get('_by'))))
+# ===== ORDER P BUILD-FAILING ASSERTS (hard-wired) ==============================
+# P1 — THE TILT IS THE MEASUREMENT. LAMBDA*THETA_R must equal BETA_sat, the saturated slope
+# measured on outcomes. If this drifts, the charge no longer responds to surplus at the rate
+# the data says it should and every claim in PACKET_P is void.
+if abs(O37_LAMBDA*O37_THETA_R-O37_BETA_SAT)>1e-15:
+    raise SystemExit('ORDER P HALT (P1): LAMBDA*THETA_R = %.17g is not BETA_sat = %.17g — the '
+                     'tilt has come loose from the measurement'%(O37_LAMBDA*O37_THETA_R,O37_BETA_SAT))
+# P2 — THE PUBLISHED CONSTANTS, transcribed and not quietly re-fitted.
+for _nm,_got,_want in (('G0',O37_G0,9.89),('BETA_sat',O37_BETA_SAT,0.11465),
+                       ('LAMBDA',O37_LAMBDA,0.17438),('THETA_R',O37_THETA_R,0.65744),
+                       ('s0',O37_S0,-2.4527),('TMAX',O37_TMAX,21.12)):
+    if abs(round(_got,{'G0':2,'BETA_sat':5,'LAMBDA':5,'THETA_R':5,'s0':4,'TMAX':2}[_nm])-_want)>1e-12:
+        raise SystemExit('ORDER P HALT (P2): %s is %.17g, which does not round to the published '
+                         '%.5f — a derived constant has been changed'%(_nm,_got,_want))
+# P-S1 — A(0) = 0 EXACTLY, so pi(0,c) = D(c) and NO DAY-0 PRINT CAN MOVE. This is the same
+# structural law m_d(0) = 0 gave the charge being replaced, and it is asserted, not assumed.
+if (1.0-_math.exp(-0.0/O37_G0))!=0.0:
+    raise SystemExit('ORDER P HALT (P-S1): A(0) is not exactly zero')
+# P-S2 — A is non-decreasing in g. THIS IS THE DEFECT BEING REMOVED: the charge it replaces
+# RISES to g=14 and then FALLS, so more evidence bought a smaller charge. A never falls.
+_pa=-1.0; _gg=0.0
+while _gg<=400.0:
+    _av=1.0-_math.exp(-_gg/O37_G0)
+    if _av<_pa-1e-15:
+        raise SystemExit('ORDER P HALT (P-S2): A(g) fell at g=%.2f — the blind bump is back'%_gg)
+    _pa=_av; _gg+=0.25
+# P-S3 — T is non-increasing in the surplus, and P-S4 — the factor is in (0, 1]. Both are
+# checked on a real spread rather than argued from the formula.
+_pt=None
+_ss=-60.0
+while _ss<=40.0:
+    _T=min(max(1.0-O37_THETA_R*(_ss-O37_S0),0.0),O37_TMAX)
+    if _pt is not None and _T>_pt+1e-12:
+        raise SystemExit('ORDER P HALT (P-S3): T rose at s=%.2f — a better player was charged '
+                         'more for being better'%_ss)
+    for _gq in (0.0,1.0,5.0,14.0,30.0,60.0,150.0,400.0):
+        _f=_math.exp(-O37_LAMBDA*(1.0-_math.exp(-_gq/O37_G0))*_T)
+        if not (0.0<_f<=1.0+1e-15):
+            raise SystemExit('ORDER P HALT (P-S4): the charge factor left (0,1] at s=%.2f '
+                             'g=%.1f — %.17g'%(_ss,_gq,_f))
+    _pt=_T; _ss+=0.25
+# P3 — THE PREMIUM SURFACE IS NON-DECREASING IN PRICE. A more expensively priced player is
+# never expected to produce LESS. The house monotonicity guard was applied to the fitted grid
+# offline; this asserts it survived transcription.
+for _cls in ('TALL','SMALL'):
+    _lo,_hi,_y=O37_PG_GRID[_cls]
+    if len(_y)!=121 or not (_hi>_lo):
+        raise SystemExit('ORDER P HALT (P3): the %s premium grid is malformed'%_cls)
+    for _i in range(1,len(_y)):
+        if _y[_i]<_y[_i-1]-1e-12:
+            raise SystemExit('ORDER P HALT (P3): the %s premium FALLS with price at node %d '
+                             '(%.6f -> %.6f)'%(_cls,_i,_y[_i-1],_y[_i]))
+# P4 — CONTINUITY IN PRICE. The premium is read by linear interpolation on an even grid and
+# held flat outside, so it can have no cliff; the largest one-node step is printed so the
+# owner can see the size of the biggest jump the surface is capable of.
+_stepPG=max(max(_y[_i]-_y[_i-1] for _i in range(1,len(_y)))
+            for _lo,_hi,_y in O37_PG_GRID.values())
+_o37n=sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p)
+          and MA.GRP.get(_p.get('pos')) and _p.get('_by')
+          and (MA.BASE_REF-int(_p['_by']))<O37_AGE_GATE
+          and o37_surplus(_p,MA.BASE_REF) is not None)
+print('ORDER P — THE PEDIGREE-CONDITIONAL CHARGE. ADOPTED (owner word 2026-10-13), HARD-WIRED '
+      '2026-10-14.\n'
+      '  THE BLIND ETA CHARGE IS GONE. It read games and nothing else, peaked at %.0f games '
+      'and then FELL AWAY, so a 36-game row kept more unearned pedigree than a 17-game row '
+      'however either of them played.\n'
+      '  IN ITS PLACE: pi *= exp(-LAMBDA*A(g)*T(s_P)) below age %d; the old charge at %d and '
+      'above. A(g)=1-exp(-g/%.2f) · T=clip(1-%.5f*(s%+.4f), 0, %.4f) · LAMBDA=%.5f.\n'
+      '  s_P is production against the S1 AGE BAR PLUS the MEASURED PEDIGREE PREMIUM '
+      'PG(ln v0, class), pooled over age, fitted on 5,041 season rows by local-linear kernel '
+      'regression on ln(v0) (tricube, h=0.40), monotone guarded, held flat outside support.\n'
+      '  PG spans %+.2f to %+.2f points a game for SMALLS (v0 %.0f to %.0f) and %+.2f to '
+      '%+.2f for TALLS (v0 %.0f to %.0f). Largest one-node step %.4f — no cliff.\n'
+      '  LAMBDA*THETA_R = %.5f = BETA_sat, the measured saturated slope. NO FREE PARAMETER.\n'
+      '  %d active rows are inside the age gate AND carry a readable pedigree surplus; every '
+      'other row keeps the ORDER K charge byte for byte, and A(0)=0 means no day-0 print moves.'
+      %(O32_GAMMA_D,O37_AGE_GATE,O37_AGE_GATE,O37_G0,O37_THETA_R,-O37_S0,O37_TMAX,O37_LAMBDA,
+        O37_PG_GRID['SMALL'][2][0],O37_PG_GRID['SMALL'][2][-1],
+        _math.exp(O37_PG_GRID['SMALL'][0]),_math.exp(O37_PG_GRID['SMALL'][1]),
+        O37_PG_GRID['TALL'][2][0],O37_PG_GRID['TALL'][2][-1],
+        _math.exp(O37_PG_GRID['TALL'][0]),_math.exp(O37_PG_GRID['TALL'][1]),
+        _stepPG,O37_LAMBDA*O37_THETA_R,_o37n))
+# ===== ORDER Q — BUILD-FAILING STRUCTURAL ASSERTS ==========================================
+# Q-A1  the FIX A factor is never SMALLER than ORDER P's: the repair CAPS a charge, it never
+#       raises one, so a price can only move UP against ORDER P.
+# Q-A2  the FIX A factor stays in (0, 1]: no row can price above its own uncharged price.
+# Q-A3  the monotonised leg is NON-DECREASING in entry price on a dense synthetic sweep.
+# Q-B1  the ORDER K charge is strictly positive at every games count, so the B2 ramp's
+#       geometric blend is defined everywhere.
+# Q-B2  the ramp weight is 1 at 23, 0 at 26 and above, and non-increasing between.
+_qA=1.0-_math.exp(-17.0/O37_G0)
+for _cls in ('TALL','SMALL'):
+    _lo,_hi,_y=O37_PG_GRID[_cls]
+    _wT,_wS=(1.0,0.0) if _cls=='TALL' else (0.0,1.0)
+    for _OUT in (-30.0,-12.0,-4.0,0.0,6.0,20.0):
+        _prev=None; _pm=None
+        for _k in range(0,1201):
+            _x=_lo-0.6+(_hi-_lo+1.2)*_k/1200.0
+            _sx=_OUT-(_wT*o38_pg_at(_x,'TALL')+_wS*o38_pg_at(_x,'SMALL'))
+            _ps=_x-O37_LAMBDA*_qA*o38_T(_sx)
+            _pm=_ps if _pm is None else max(_pm,_ps)
+            _fA=_math.exp(_pm-_x); _fP=_math.exp(-O37_LAMBDA*_qA*o38_T(_sx))
+            if _fA<_fP-1e-12:
+                raise SystemExit('ORDER Q HALT (Q-A1): the monotonised factor is BELOW '
+                                 'ORDER P\'s at %s x=%.4f (%.9f < %.9f). FIX A may only '
+                                 'CAP a charge.'%(_cls,_x,_fA,_fP))
+            if not (0.0<_fA<=1.0+1e-12):
+                raise SystemExit('ORDER Q HALT (Q-A2): the monotonised factor left (0,1] '
+                                 'at %s x=%.4f: %.9f'%(_cls,_x,_fA))
+            _leg=_math.exp(_pm)
+            if _prev is not None and _leg<_prev-1e-9:
+                raise SystemExit('ORDER Q HALT (Q-A3): the monotonised pedigree leg FALLS '
+                                 'with entry price at %s x=%.4f (%.9f -> %.9f)'
+                                 %(_cls,_x,_prev,_leg))
+            _prev=_leg
+for _gq in [0.01*_i for _i in range(1,20001)]:
+    if not (max(0.0,1.0-O32_ETA*((_gq/O32_GAMMA_D)*_math.exp(1.0-_gq/O32_GAMMA_D)))>0.0):
+        raise SystemExit('ORDER Q HALT (Q-B1): the ORDER K charge reaches zero at g=%.2f, so '
+                         'the B2 geometric ramp is undefined there.'%_gq)
+_wprev=None
+for _ag in range(16,41):
+    _wq=(1.0 if _ag<=23 else (0.0 if _ag>=26 else (26.0-float(_ag))/3.0))
+    if _wprev is not None and _wq>_wprev+1e-15:
+        raise SystemExit('ORDER Q HALT (Q-B2): the B2 ramp weight RISES with age at %d'%_ag)
+    _wprev=_wq
+if abs(o38_w(23)-1.0)>1e-15:
+    raise SystemExit('ORDER Q HALT (Q-B2): the ramp endpoints are not 1 at 23 and 0 at 26')
+_o38n=sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p)
+          and MA.GRP.get(_p.get('pos')) and _p.get('_by')
+          and o38_w(MA.BASE_REF-int(_p['_by']))>0.0
+          and o37_surplus(_p,MA.BASE_REF) is not None)
+_o38m=sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p)
+          and MA.GRP.get(_p.get('pos')) and _p.get('_by')
+          and (MA.BASE_REF-int(_p['_by']))>=O37_AGE_GATE
+          and o38_w(MA.BASE_REF-int(_p['_by']))>0.0
+          and o37_surplus(_p,MA.BASE_REF) is not None)
+print('ORDER Q — TWO DEFECT REPAIRS, PRICED, THEN ADOPTED (owner word 2026-10-13), HARD-WIRED '
+      '2026-10-14.\n'
+      '  FIX A (RL_O38A) %s — the pedigree leg is monotonised in ENTRY PRICE by the running '
+      'maximum of x - LAMBDA*A(g)*T(s_P(x)) over x = ln(v0). No free parameter: the charge is '
+      'CAPPED at its own inversion point. Exact on the piecewise-linear breakpoints, up to the '
+      'engine\'s own one-decimal rounding of the premium axis, which is disclosed and measured.\n'
+      '  FIX B1 (RL_O38B1) %s — the age-24 gate is DELETED. Mature rows are NO LONGER '
+      'byte-identical to ORDER K and that movement is the price of this option.\n'
+      '  FIX B2 (RL_O38B2) %s — the charge is ramped out across ages 23 to 26 in the exponent, '
+      'w = 1, 2/3, 1/3, 0. THE ENDPOINT 26 IS A FREE PARAMETER INVENTED BY THIS SEAT. IT WAS '
+      'NOT MEASURED. Age here is an integer, so this replaces one full step with three '
+      'third-sized steps rather than removing the step.\n'
+      '  %d active rows now carry the ORDER P charge (%d of them aged %d or over, which ORDER '
+      'P left on the ORDER K charge). A(0)=0 still, so no day-0 print can move.'
+      %('LIVE','LIVE','off (the invented 23-26 ramp — priced, never on the line)',
+        _o38n,_o38m,O37_AGE_GATE))
+# ===== ORDER R — THE OWNER'S TWO SOFTENINGS, PRICED, THEN ADOPTED ======================
+# R-S1  T is still NON-INCREASING in surplus on the effective constants.
+# R-S2  the factor exp(-LAMBDA*A(g)*T) is still in (0,1] everywhere, so no row can price
+#       above its own uncharged price.
+# R-S3  A(0) = 0 EXACTLY still, so no day-0 print and no gameless row can move.
+# R-S4  THE SOFTENING IS NOT UNIFORM, AND THIS ASSERT IS THE CORRECTED ONE.
+#       The FIRST version of this assert said the ORDER R factor may never be below
+#       ORDER P's at any surplus. IT FIRED, on the very first in-process load, and it was
+#       RIGHT to fire: the assert was wrong, not the dials. Lowering BETA_sat lowers
+#       THETA_R, which FLATTENS the T line about s0. T(s0) = 1 on every board by
+#       construction, so a flatter line sits ABOVE ORDER P's for s BELOW s0 and BELOW it
+#       for s ABOVE s0. In plain words: lowering the slope softens the charge on rows
+#       producing under the cohort centre -- every row the owner's complaint is about --
+#       and STIFFENS it very slightly on rows producing just above the centre, until the
+#       zero clip catches up. The TMAX lever has no such effect: it only lowers the cap.
+#       What is asserted here is therefore the true statement, not the convenient one:
+#         R-S4a  for every s AT OR BELOW s0, the ORDER R factor is >= ORDER P's. The
+#                softening may never charge an underperformer MORE. THIS HALTS.
+#         R-S4b  the region above s0 where ORDER R charges more is BOUNDED and MEASURED,
+#                and the bound is printed on the banner rather than asserted away.
+_rprev=None; _rstiff=0.0; _rstiffn=0; _rstiffs=None; _rstiffhi=None
+for _i in range(0,20001):
+    _ss=-120.0+0.01*_i
+    _Tr=min(max(1.0-O39_THETA_R*(_ss-O37_S0),0.0),O39_TMAX)
+    if _rprev is not None and _Tr>_rprev+1e-12:
+        raise SystemExit('ORDER R HALT (R-S1): T RISES with surplus at s=%.2f'%_ss)
+    _rprev=_Tr
+    for _gq in (0.0,1.0,17.0,60.0,400.0):
+        _fr=_math.exp(-O37_LAMBDA*(1.0-_math.exp(-_gq/O37_G0))*_Tr)
+        if not (0.0<_fr<=1.0+1e-15):
+            raise SystemExit('ORDER R HALT (R-S2): the factor left (0,1] at s=%.2f g=%.2f: '
+                             '%.9g'%(_ss,_gq,_fr))
+        _Tp=min(max(1.0-O37_THETA_R*(_ss-O37_S0),0.0),O37_TMAX)
+        _fp=_math.exp(-O37_LAMBDA*(1.0-_math.exp(-_gq/O37_G0))*_Tp)
+        if _ss<=O37_S0 and _fr<_fp-1e-12:
+            raise SystemExit('ORDER R HALT (R-S4a): the ORDER R constants charge MORE than '
+                             'ORDER P at s=%.4f g=%.2f (%.9f < %.9f), and that surplus is AT '
+                             'OR BELOW the cohort centre s0=%.4f. The softening may never '
+                             'charge an underperformer more.'%(_ss,_gq,_fr,_fp,O37_S0))
+        if _fr<_fp-1e-12:
+            _rstiff=max(_rstiff,_fp-_fr); _rstiffs=_ss if _rstiffn==0 else _rstiffs
+            _rstiffn+=1; _rstiffhi=_ss
+if (1.0-_math.exp(-0.0/O37_G0))!=0.0:
+    raise SystemExit('ORDER R HALT (R-S3): A(0) is not 0 exactly')
+print('ORDER R %s — THE OWNER\'S TWO SOFTENINGS, PRICED AND NOT ADOPTED. NOTHING IS GREENLIT '
+      'AND NOTHING MERGES.\n'
+      '  THE CAP: TMAX at the young cohort\'s p%d of s_P = %+.5f pts/g  =>  TMAX %.4f '
+      '(ORDER P p5: s_p5 %+.5f, TMAX %.4f). %s\n'
+      '  THE SLOPE: BETA_sat %.8f%s, 90%% CI [%.5f, %.5f]  =>  THETA_R %.6f (ORDER P: '
+      'BETA_sat %.8f, THETA_R %.6f).\n'
+      '  LAMBDA*THETA_R = %.8f = the effective BETA_sat. TMAX is RECOMPUTED from this '
+      'THETA_R, never carried stale. NO FREE PARAMETER IS INTRODUCED.\n'
+      '  LAMBDA IS NOT RE-SOLVED. ORDER P solved it by an anchoring identity that held the '
+      'total charge constant; moving the cap or the slope BREAKS that anchor ON PURPOSE, and '
+      'that broken anchor IS the softening. Disclosed on PREREG_R.md, not discovered after.\n'
+      '  A row at the cap with 38 games is charged %.2f%% of his pedigree leg (ORDER P: '
+      '%.2f%%).\n'
+      '  R-S4b, MEASURED NOT ASSERTED: lowering BETA_sat FLATTENS T about s0, so it softens '
+      'the charge BELOW the cohort centre and STIFFENS it slightly ABOVE. %s'
+      %('LIVE',
+        _O39_PCT,O39_S_PQ[_O39_PCT],O39_TMAX,O37_S_P5,O37_TMAX,
+        'THE CAP IS UNCHANGED FROM ORDER P.' if _O39_PCT==5 else
+        'The worst-producing %d%% now all pay the same top rate.'%_O39_PCT,
+        O39_BETA_SAT,' (hard-wired 2026-10-14)',
+        O39_BSAT_CI[0],O39_BSAT_CI[1],O39_THETA_R,O37_BETA_SAT,O37_THETA_R,
+        O37_LAMBDA*O39_THETA_R,
+        100.0*(1.0-_math.exp(-O37_LAMBDA*(1.0-_math.exp(-38.0/O37_G0))*O39_TMAX)),
+        100.0*(1.0-_math.exp(-O37_LAMBDA*(1.0-_math.exp(-38.0/O37_G0))*O37_TMAX)),
+        ('There is NO surplus at which this board charges more than ORDER P.'
+         if _rstiffn==0 else
+         'It charges MORE than ORDER P over s in (%.4f, %.4f], a window %.4f points a game '
+         'wide, and the WORST extra charge anywhere in it is %.4f%% of the pedigree leg. '
+         'That window sits ABOVE the cohort centre, so it lands on rows already producing '
+         'at or above what their entry price implies. IT IS REPORTED, NOT ARGUED AWAY.'
+         %(_rstiffs,_rstiffhi,_rstiffhi-_rstiffs,100.0*_rstiff))))
+# ===== ORDER S — THE FOUR MEASURED REPAIRS, PRICED AND NOT ADOPTED ===================
+# Every assert below runs on the EFFECTIVE form o38_T actually applies, not on ORDER P's
+# or ORDER R's constants, so a dial that changed the shape could not slip past them.
+#   S-S1  T is NON-INCREASING in surplus on the effective form.
+#   S-S2  the factor is still in (0,1] everywhere, so NO ROW CAN PRICE ABOVE ITS OWN
+#         UNCHARGED PRICE. This is the law, asserted, not a claim.
+#   S-S3  A(0) = 0 EXACTLY, so no day-0 print and no gameless row can move.
+#   S-S4  UNDER THE COMPRESSION, T IS STRICTLY INCREASING IN SHORTFALL — there is NO FLAT
+#         SEGMENT ANYWHERE. This is the owner's whole requirement and it HALTS if it
+#         fails. (The hard clip fails it by construction and is not asserted against it.)
+#   S-S5  UNDER THE COMPRESSION, T' <= the hard clip at the SAME anchor AND <= ORDER P's
+#         own p5 clip, at every surplus. So no row is charged more than it was — S2-F2.
+_sprev=None; _sflat=0; _sflats=None
+_s5stiff=0.0; _s5n=0; _s5s=None; _s5hi=None      # ORDER 41: the S-S5 limb-2 window, measured
+for _i in range(0,22001):
+    _ss=20.0-0.01*_i
+    _Ts=o38_T(_ss)
+    if _sprev is not None and _Ts<_sprev[1]-1e-12:
+        raise SystemExit('ORDER S HALT (S-S1): T FALLS as surplus falls at s=%.2f'%_ss)
+    _Traw=max(1.0-O40_THETA_R*(_ss-O37_S0),0.0)
+    _Tclip=min(_Traw,O40_CAPC)
+    _TP=min(max(1.0-O37_THETA_R*(_ss-O37_S0),0.0),O37_TMAX)
+    # S-S5 LIMB 1 — THE COMPRESSION LAW ITSELF, STILL A HALT. T' must never exceed the
+    # hard clip AT THE SAME ANCHOR AND THE SAME EFFECTIVE SLOPE. This is the property
+    # the cap form actually promises ("both would be at or above the old P20") and it
+    # is asserted here exactly as ORDER S wrote it.
+    if _Ts>_Tclip+1e-12:
+        raise SystemExit('ORDER S HALT (S-S5): the compression charges MORE than the '
+                         'hard clip at the SAME anchor at s=%.4f (%.9f vs %.9f).'
+                         %(_ss,_Ts,_Tclip))
+    # S-S5 LIMB 2 — MEASURED AND REPORTED, NOT HALTED. ASSEMBLY BUILD, DISCLOSED
+    # DEVIATION (PREREG_ASSEMBLY.md; reported in PACKET_ASSEMBLY.md and to the owner).
+    # ORDER S wrote this second limb as a HALT comparing T' against ORDER P's OWN p5
+    # clip at ORDER P's OWN slope. That comparison is vacuous while BETA_sat is ORDER
+    # P's — the only case ORDER S ever built — and it is NOT vacuous once the owner's
+    # ruled slope 0.105 is live. What trips it is THE SLOPE, NOT THE CAP FORM: a
+    # gentler slope makes T decay toward zero more slowly, so in a narrow window just
+    # above the cohort centre the softened board charges a hair MORE than ORDER P did.
+    # THAT EFFECT IS ALREADY THE HOUSE'S OWN, MEASURED AND DISCLOSED RATHER THAN
+    # FORBIDDEN: ORDER R's banner does exactly this for exactly this phenomenon
+    # (_rstiff/_rstiffs/_rstiffhi, "IT IS REPORTED, NOT ARGUED AWAY"). Halting here
+    # would forbid on one dial line what the house reports on another, and it would
+    # veto a combination THE OWNER HIMSELF RULED (slope 0.105 at v745, compression p20
+    # standing). So it is measured on the same sweep and printed in the banner.
+    # NO LAW IS TRADED SILENTLY: limb 1 above still HALTS, S-S2 (no row above its
+    # uncharged price) still HALTS, and this window is published with its size.
+    if _Ts>_TP+1e-12:
+        _s5stiff=max(_s5stiff,_Ts-_TP)
+        _s5s=_ss if _s5n==0 else _s5s
+        _s5n+=1; _s5hi=_ss
+    if _sprev is not None and _Traw>1e-12 and _Ts<=_sprev[1]:
+        _sflat+=1; _sflats=_ss if _sflats is None else _sflats
+    for _gq in (0.0,1.0,17.0,60.0,400.0):
+        _fs=_math.exp(-O40_LAMBDA*(1.0-_math.exp(-_gq/O37_G0))*_Ts)
+        if not (0.0<_fs<=1.0+1e-15):
+            raise SystemExit('ORDER S HALT (S-S2): the factor left (0,1] at s=%.2f g=%.2f: '
+                             '%.9g'%(_ss,_gq,_fs))
+    _sprev=(_ss,_Ts)
+if _sflat:
+    raise SystemExit('ORDER S HALT (S-S4): the compression has a FLAT SEGMENT — %d ties on '
+                     'the dense sweep, first at s=%.4f. The owner\'s requirement is that '
+                     'worse play ALWAYS costs at least slightly more. It does not hold.'
+                     %(_sflat,_sflats))
+# ORDER 41 — S-S5 LIMB 2, PUBLISHED. Printed on EVERY compression board so the window can
+# never ride unreported, and printed as ZERO when there is none.
+print('ORDER S S-S5 LIMB 2 (vs ORDER P\'s own p5 clip) — %s'
+      %('NO surplus at which this board\'s cap exceeds ORDER P\'s.' if _s5n==0 else
+        'the cap exceeds ORDER P\'s over s in (%.4f, %.4f], a window %.4f points a game '
+        'wide; the WORST excess in T anywhere in it is %.9f, i.e. at most %.4f%% of the '
+        'pedigree leg at 38 games. THE CAUSE IS THE RULED SLOPE (BETA_sat %.5f vs ORDER '
+        'P\'s %.5f), NOT THE CAP FORM — the same-anchor limb holds everywhere. This '
+        'window sits ABOVE the cohort centre (s0 = %.4f), so it lands on rows already '
+        'producing at or above what their entry price implies. MEASURED AND REPORTED, '
+        'NOT ARGUED AWAY.'
+        %(_s5s,_s5hi,_s5hi-_s5s,_s5stiff,
+          100.0*(1.0-_math.exp(-O40_LAMBDA*(1.0-_math.exp(-38.0/O37_G0))*_s5stiff)),
+          O39_BETA_SAT,O37_BETA_SAT,O37_S0)))
+if (1.0-_math.exp(-0.0/O37_G0))!=0.0:
+    raise SystemExit('ORDER S HALT (S-S3): A(0) is not 0 exactly')
+_sA38=1.0-_math.exp(-38.0/O37_G0)
+print('ORDER S %s — FOUR MEASURED REPAIRS, PRICED, THEN ADOPTED (owner word 2026-10-13), HARD-WIRED '
+      '2026-10-14.\n'
+      '  S1 RECENCY (RL_O40_RECW) %s — a season\'s weight in s_P is games * w^(years back). '
+      'w=1 is the ENGINE\'s own flat weighting and it is the WORST point on this seat\'s '
+      'walk-forward out-of-sample error curve. Implied 3-season weights at equal games: '
+      '[%.3f, %.3f, %.3f].\n'
+      '  S2 THE CAP FORM (RL_O40_CAPFORM) %s — T\' = C*(1-exp(-T_raw/C)), C = %s. Strictly '
+      'increasing in shortfall EVERYWHERE, no flat segment, T\' < C always. ONE constant, '
+      'and it is the anchor percentile\'s own TMAX. %s\n'
+      '  S3 THE LEVEL (RL_O40_LAMBDA) %s — LAMBDA %.8f (ORDER P solved %.8f by an anchoring '
+      'identity against the OLD BLIND CHARGE\'s tonnage of 101,402.7). THETA_R %.6f and '
+      'TMAX %.4f are RECOMPUTED from it, never carried stale.\n'
+      '  S4 THE MATURE PREMIUM (RL_O40_PGMAT) %s — seasons at %d+ read a premium refitted on '
+      'MATURE seasons by the identical estimator. The young refit reproduces O37_PG_GRID '
+      'BIT FOR BIT, so it is the same kind of object.\n'
+      '  A row at the effective cap with 38 games is charged %.2f%% of his pedigree leg '
+      '(ORDER P: %.2f%%). LAMBDA*THETA_R = %.8f = the effective BETA_sat.\n'
+      '  RECW / smooth CAPFORM at p15 / PGMAT are the line; LAMBDA stays ORDER P\'s inherited level.'
+      %('LIVE',
+        'LIVE w=%.4f'%O40_RECW,
+        1.0/(1.0+O40_RECW+O40_RECW*O40_RECW),
+        O40_RECW/(1.0+O40_RECW+O40_RECW*O40_RECW),
+        O40_RECW*O40_RECW/(1.0+O40_RECW+O40_RECW*O40_RECW),
+        'LIVE (smooth)',
+        '%.4f, the p%d anchor'%(O40_CAPC,_O40_CAPPCT),
+        ('Under the CLIP every row past the crossing pays the IDENTICAL rate, so GAMES '
+         'become the differentiator instead of performance. Under the COMPRESSION they '
+         'are strictly ordered.'),
+        'off (ORDER P\'s inherited level; never on the candidate line)',
+        O40_LAMBDA,O37_LAMBDA,O40_THETA_R,O40_TMAX,
+        'LIVE',
+        O37_AGE_GATE,
+        100.0*(1.0-_math.exp(-O40_LAMBDA*_sA38*o38_T(-1e6))),
+        100.0*(1.0-_math.exp(-O37_LAMBDA*_sA38*O37_TMAX)),
+        O40_LAMBDA*O40_THETA_R))
+print('ORDER D PICK-CURVE FADE — ADOPTED (owner word 2026-10-13), HARD-WIRED 2026-10-14. '
+      'D_eff = D(c_u)^kappa(pick), kappa = clip((%.4f%+.4f·ln p)/%.4f, %.1f, %.1f): '
+      'kappa(1)=%.3f kappa(20)=%.3f kappa(64)=%.3f. Smooth in ln(pick), never a band; '
+      'pooled fade pinned at the ruled row by the redistribution identity.'
+      %(O35_G0,O35_G1,O35_SNORM,O35_CLIP[0],O35_CLIP[1],
+        min(O35_CLIP[1],max(O35_CLIP[0],(O35_G0)/O35_SNORM)),
+        min(O35_CLIP[1],max(O35_CLIP[0],(O35_G0+O35_G1*_math.log(20.0))/O35_SNORM)),
+        min(O35_CLIP[1],max(O35_CLIP[0],(O35_G0+O35_G1*_math.log(64.0))/O35_SNORM))))
+print('ORDER A CANDIDATE 32 — stage %d of 6, ADOPTED (owner word 2026-10-13), HARD-WIRED '
+      '2026-10-14. bars(age) gate-only · credit f·min(1,g/2) · delivered reset · Phi_32 row · '
+      'relief min(1, D·(1+%.2f·σ_sel)) · re-mix κ=%.2f γu=%.1f / η=%.2f γd=%.1f. '
+      '%d rows carry a stall run; %d carry c_u>1; %d carry relief.'
+      %(6,O32_LAMBDA,O32_KAPPA,O32_GAMMA,O32_ETA,O32_GAMMA_D,
+        sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and o31_stall_run(_p,MA.BASE_REF)>0),
+        sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and o31_cu(_p,MA.BASE_REF)>1.0),
+        sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and o32_sigma_sel(_p,MA.BASE_REF)>0.0 and (o31_pool_D(o31_cu(_p,MA.BASE_REF)) if _p.get('_pool') else o31_fade_D(o31_cu(_p,MA.BASE_REF)))<1.0)))
+print('ORDER 31 THE ONE LAW — ADOPTED (owner word 2026-10-13), HARD-WIRED 2026-10-14. '
+      'price = rho(g)*Phat + [D(c_u)*(1-rho(g)) + Phi(g,s)*beta(g)*rho(g)]*v0, ONE FORMULA FOR '
+      'EVERY ROW: no sitter branch, no thin lane, no bridge, no deep lane. rho = 1-exp(-(g/%.4f)^'
+      '%.4f) calibrated on the R1 backbone, rho(0)=0 exactly · beta MONOTONE-PROJECTED (the brief\'s '
+      '"pi decays in g"; the measured 2.5->10.5 rise is deleted and disclosed) · D on the UNPLAYED '
+      'clock c_u only · Phi = the 30B-C stall conditioning on the current stall run, Phi(g,0)=1 '
+      'exactly. %d rows priced; %d carry a stall conditioning; %d carry an unplayed-clock discount.'
+      %(O31_TAU_RHO,O31_B_RHO,
+        sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos'))),
+        sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and o31_stall_run(_p,MA.BASE_REF)>0),
+        sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and o31_cu(_p,MA.BASE_REF)>1.0)))
+# ORDER 31 — under the one law there is no zero-evidence EXCLUSION: every priced row carries the law.
+_PV_ROWS=[p for p in MA.data if _isreal(p) and not p.get('_retired') and not delisted(p)
+          and MA.GRP.get(p.get('pos'))]
+print('ORDER 30B-P STEP-3 LANE — ADOPTED (owner word 2026-10-13), HARD-WIRED 2026-10-14. '
+      'pole DELETED + ISO DELETED (via the two existing '
+      'ablation lines) · blend sigma(g)=exp(-(g/%.4g)^%.4g) on the measured 30B-M curve · pedigree leg = '
+      'STEP-1 positional v0 x %.4f · Q and the decay gate RETAINED with their denominators re-referenced '
+      'to the effective positional bars (%s) · _a_blend, sitout_ev\'s ns==0 arm and the year-zero floor '
+      'REPLACED, not wrapped. %d rows carry the blend; %d zero-evidence rows keep the Step-2 fade '
+      'untouched.'
+      %(SIGMA30BP_TAU,SIGMA30BP_BETA,_PL_F,
+        ' '.join('%s %.1f'%(_g,_O30BP_BARS[_g]) for _g in sorted(_O30BP_BARS)),
+        len(_PV_ROWS),len(_S30) if _ENTRY29B else 0))
 import json as _w4json
 _PVCFIT_META={}
 if _W4PVC and os.path.exists('pvc_fit_candidate.json'):
@@ -6310,15 +5933,11 @@ if _AVAIL_ON:
     _sbk={}
     for _p in MA.data: _sbk.setdefault(_p.get('key'),[]).append(_p)
     _skeys={_k:_v[0] for _k,_v in _sbk.items() if len(_v)==1}
-    if _O42:
-        # ORDER 42: THE SHEET IS THE ONLY INJURY TRUTH. build_state() — the one live read of
-        # LTI_REGISTER.md — is NOT called, so the register has no live consumption on this lane.
-        _st=_o42_state(_skeys,MA.data)
-    else:
-        try:
-            _st=LTIREG.build_state(_skeys, report=_AVAIL_REPORT)      # HALT on unknown key / bad schema
-        except ValueError as _e:
-            raise SystemExit("\n==== LTI REGISTER HALT ====\n"+str(_e))
+    # ORDER 42: THE SHEET IS THE ONLY INJURY TRUTH. build_state() — the one live read of
+    # LTI_REGISTER.md — is NOT called, so the register has no live consumption on this lane.
+    _st=_o42_state(_skeys,MA.data)
+    # (The LTIREG.build_state(_skeys, report=_AVAIL_REPORT) read — the register's last live consumer — was the
+    # RL_O42 off-path; deleted with the dial 2026-10-14.)
     # UNTOUCHED, UNCONDITIONAL, AND STILL PASSING ON EVERY BOARD — dial on and dial off (PREREG_D6.md
     # §3). The engine keeps exactly ONE season constant and it is still 22. ORDER 42's re-base to 18 is
     # an AVAILABILITY base living in its own constant (_O42_AVAIL_BASE); nothing is asserted equal to
@@ -6371,13 +5990,10 @@ if _AVAIL_ON:
             _p['_lti_ret_delta']=int(_vfull-_ev_p1[_k])           # Part-2 delta (return arm value)
             _AVAIL_MOVERS.append((_k,_p.get('player'),_ev_off[_k],_ev_p1[_k],_vfull,
                                   _p['_avail_nerf'],_p['_lti_ret_delta'],_p.get('_lti_return_hc',0.0)))
-    if _O42:
-        print("=== ORDER 42 CONSOLIDATION — THE OWNER'S ANNOTATION SHEET IS THE ONLY INJURY TRUTH: %d "
-              "annotated rows; avail_hc RE-BASED to 1-min(g/%d,1) (cp.SEASON untouched at %d); "
-              "LTI_REGISTER.md has NO live consumption on this lane; Part-2 return arm RETIRED (no "
-              "sheet analogue for section A/B) ==="%(len(_reg_recs),_O42_AVAIL_BASE,cp.SEASON))
-    else:
-        print("=== RL_AVAIL LAYER ON: %d register names (32 A + 11 B); RL_LTI_RETURN=%s; non-register byte-identical ==="%(len(_reg_recs),_LTI_RETURN_ON))
+    print("=== ORDER 42 CONSOLIDATION — THE OWNER'S ANNOTATION SHEET IS THE ONLY INJURY TRUTH: %d "
+          "annotated rows; avail_hc RE-BASED to 1-min(g/%d,1) (cp.SEASON untouched at %d); "
+          "LTI_REGISTER.md has NO live consumption on this lane; Part-2 return arm RETIRED (no "
+          "sheet analogue for section A/B) ==="%(len(_reg_recs),_O42_AVAIL_BASE,cp.SEASON))
     if _KPF_LD_FALLBACK:
         print("    fork-v KPFFIX LD fell back to count-against (report-only): %s"%sorted(_KPF_LD_FALLBACK))
     if _AVAIL_REPORT:
@@ -6387,7 +6003,7 @@ if _AVAIL_ON:
 # proven-population denominator, every conservation renormaliser — was derived on the DIAL-OFF BASIS,
 # so the dial-on and dial-off boards share ONE currency and S1 cannot re-denominate the board (ORDER
 # B's ruling, rl_model.py:1269, applied to this lever). From here down S1 is live in full: the board
-# export, every ev() a harness calls, and every price the owner reads. Dial off => this is a no-op.
+# export, every ev() a harness calls, and every price the owner reads. (RL_O36 hard-wired on.)
 MA._O36_SCOPE['armed']=True
 # ==== ORDER D7 (RL_O43) — THE PARITY GUARD, MEASURED AND INSTALLED. =========================
 # PLACED HERE ON PURPOSE, AND THE POSITION IS LOAD-BEARING. It sits AFTER the S1 arming above, so the
@@ -6406,129 +6022,128 @@ MA._O36_SCOPE['armed']=True
 # D7 block dead code — the dial was set, no banner printed, and the board came back byte-identical to
 # the base. It was caught only because a guard that must move rows moved none. DO NOT WRITE THAT
 # SENTINEL STRING VERBATIM ANYWHERE IN THIS FILE. ***
-if _O43:
-    _D7_TREATED=sorted(set(_AVAIL_STATE)|{_p.get('key') for _p in MA.data
-                                          if _p.get('key') and o41_injured(_p)})
-    _D7_BYKEY={}
-    for _p in MA.data:
-        if _p.get('key') in set(_D7_TREATED): _D7_BYKEY.setdefault(_p.get('key'),[]).append(_p)
-    _D7_ROWS=[]; _D7_BAD=[]
-    for _k in _D7_TREATED:
-        _rs=_D7_BYKEY.get(_k) or []
-        if len(_rs)!=1:
-            raise SystemExit('ORDER D7 HALT: treated key %r is carried by %d engine records. The '
-                             'guard is a PER-ROW max and cannot be applied to an ambiguous row.'
-                             %(_k,len(_rs)))
-        _p=_rs[0]
+_D7_TREATED=sorted(set(_AVAIL_STATE)|{_p.get('key') for _p in MA.data
+                                      if _p.get('key') and o41_injured(_p)})
+_D7_BYKEY={}
+for _p in MA.data:
+    if _p.get('key') in set(_D7_TREATED): _D7_BYKEY.setdefault(_p.get('key'),[]).append(_p)
+_D7_ROWS=[]; _D7_BAD=[]
+for _k in _D7_TREATED:
+    _rs=_D7_BYKEY.get(_k) or []
+    if len(_rs)!=1:
+        raise SystemExit('ORDER D7 HALT: treated key %r is carried by %d engine records. The '
+                         'guard is a PER-ROW max and cannot be applied to an ambiguous row.'
+                         %(_k,len(_rs)))
+    _p=_rs[0]
+    with contextlib.redirect_stdout(io.StringIO()):
+        _v_inj=ev(_p,2026)
+        _d_liv=float(o31_D(_p,2026))                    # the sitter fade at his LIVE (injury) depth
+    # ---- THE HEALTHY COUNTERPART: all seven live injury sites off for THIS ROW ONLY ----
+    _sv_state=_AVAIL_STATE.pop(_k,None)                 # sites 1,2,3
+    _sv_hc=_p.get('_avail_hc',0.0); _sv_ret=_p.get('_lti_ret_hc',0.0)
+    _p['_avail_hc']=0.0; _p['_lti_ret_hc']=0.0          # sites 4,5
+    _D7_HEALTHY_KEYS.add(_k)                            # sites 6,7 (via o41_injured)
+    try:
         with contextlib.redirect_stdout(io.StringIO()):
-            _v_inj=ev(_p,2026)
-            _d_liv=float(o31_D(_p,2026))                    # the sitter fade at his LIVE (injury) depth
-        # ---- THE HEALTHY COUNTERPART: all seven live injury sites off for THIS ROW ONLY ----
-        _sv_state=_AVAIL_STATE.pop(_k,None)                 # sites 1,2,3
-        _sv_hc=_p.get('_avail_hc',0.0); _sv_ret=_p.get('_lti_ret_hc',0.0)
-        _p['_avail_hc']=0.0; _p['_lti_ret_hc']=0.0          # sites 4,5
-        _D7_HEALTHY_KEYS.add(_k)                            # sites 6,7 (via o41_injured)
-        try:
-            with contextlib.redirect_stdout(io.StringIO()):
-                _v_hth=ev(_p,2026)
-                _d_hth=float(o31_D(_p,2026))                # the same fade at his HEALTHY depth
-        finally:
-            _D7_HEALTHY_KEYS.discard(_k)
-            if _sv_state is not None: _AVAIL_STATE[_k]=_sv_state
-            _p['_avail_hc']=_sv_hc; _p['_lti_ret_hc']=_sv_ret
-        # D7-F6 — THE MEASUREMENT MUST BE NON-DESTRUCTIVE. If the row does not restore EXACTLY, the
-        # probe is corrupting the board and nothing it produced can be trusted. HALT, never warn.
-        with contextlib.redirect_stdout(io.StringIO()):
-            _v_back=ev(_p,2026)
-        if _v_back!=_v_inj:
-            _D7_BAD.append((_k,_v_inj,_v_back))
-        _g26=next((x['games'] for x in (_p.get('scoring') or []) if x['year']==2026),0)
-        _D7_ROWS.append({'key':_k,'player':_p.get('player'),'g2026':int(_g26 or 0),
-                         'v_injury':float(_v_inj),'v_healthy':float(_v_hth),
-                         'won':('healthy' if _v_hth>_v_inj else ('injury' if _v_inj>_v_hth else 'tie')),
-                         'delta':float(max(_v_inj,_v_hth)-_v_inj),
-                         'treated_avail':bool(_k in _AVAIL_STATE),'treated_inj':bool(o41_injured(_p))})
-        if _v_hth>_v_inj:
-            _D7_FLOOR[_k]=float(_v_hth)                     # the guard binds ONLY where it raises
-            _D7_DFADE[_k]=(_d_liv,_d_hth)                   # and the fade pair the day-0 predicate needs
-    if _D7_BAD:
-        raise SystemExit('ORDER D7 HALT (D7-F6): %d treated row(s) did not restore EXACTLY after the '
-                         'healthy-counterpart measurement: %s. The measurement is mutating the board '
-                         'it is measuring; no price it produced can be trusted.'%(len(_D7_BAD),_D7_BAD[:6]))
-    _ev_pre43=ev
-    def ev(p,Y=2026,__inner=_ev_pre43):
-        """ORDER D7 (RL_O43) — THE PARITY GUARD, at the one law. The row's LIVE price is lifted to its
-        healthy counterpart whenever the injury regime would have charged it more. max only: a row
-        whose injury regime already prices above its counterpart (a Murphy-type riser) is returned
-        UNTOUCHED, because the shield is not a charge. Dial off => this wrapper is never installed."""
-        _v=__inner(p,Y)
-        if int(Y)==2026:
-            _f=_D7_FLOOR.get(p.get('key'))
-            if _f is not None and _f>_v: return _f
-        return _v
-    # ---- ORDER D7b — THE THIRD WIRING SITE. IT SUBSUMES THE SECOND; IT DOES NOT STACK ON IT. ------
-    # PREREG_D7B.md, pushed at cfd4748 BEFORE this edit. Register v775, on the v771 ruling.
-    # DISCLOSED LOUDLY: this is a THIRD SITE OF ONE DIAL, not a second dial and not a second rule. It
-    # is the SAME per-row max, on the SAME ruling, gated on the SAME _O43. NO NEW DIAL, NO NEW
-    # PARAMETER, NOTHING FITTED.
-    #
-    # WHAT D7 DID, AND WHAT IT MISSED. D7 wired the max at ev() above and at the day-0 predicate
-    # `_entry30b_price`. It did NOT wire `o31_D`, THE FADE ITSELF — and the ORDER 31-F emitter reads
-    # `o31_D` STRAIGHT OUT OF THE ENGINE NAMESPACE (emit_matrix_31f.py:83, `o31_D = G['o31_D']`)
-    # precisely so its replication guard cannot drift from the law it is guarding. With the fade
-    # unguarded, that emitter formed the LIVE-depth (injury) fade while the board carried the HEALTHY
-    # one, and it fail-closed at 82 of 89 on exactly the seven rows where the healthy fade wins. THE
-    # EMITTER WAS RIGHT: the law had moved one level above the symbol it was told to read. The emitter
-    # is byte-carried and is NOT modified; DAY0_CP.json is correct and is NOT touched.
-    # (docs/evidence/final_candidate_2026-08-19/HALT_EMIT_CP.md and O31D_PROBE_out.txt.)
-    #
-    # WHY THIS REPLACES THE SECOND SITE RATHER THAN JOINING IT — ARITHMETIC, NOT OPINION. Under _O31
-    # the day-0 predicate IS the fade: `_entry30b_price` is `_d0*o31_D(p,Y)` (:5109-5112), and it
-    # resolves o31_D as a MODULE GLOBAL AT CALL TIME. So the moment o31_D returns the healthy fade the
-    # predicate ALREADY returns _d0*_dh — exactly the board's printed day-0 price. Had D7's ratio
-    # wrapper ALSO fired, the predicate would return _d0*_dh^2/_dl and the ONE ruling would be applied
-    # TWICE. Worked on harley-barker: _d0*_dl = 481.44 (what the emitter formed), _d0*_dh = 503.51 ->
-    # 504 (THE BOARD, CORRECT), _d0*_dh^2/_dl = 526.60 -> 527 (both sites firing, WRONG). The ruling,
-    # the dial and the arithmetic are UNCHANGED; only the LEVEL moves down one, from the predicate to
-    # the fade the predicate is built from. ONE correction, at the ONE symbol every consumer — ev(),
-    # the day-0 predicate, and the emitter — reads. THE 29B/30B PRINTED-DAY-0 ASSERT IS NOT WEAKENED,
-    # NOT BYPASSED AND NOT RE-POINTED, and the frozen DAY0_K.json reference is NOT touched.
-    #
-    # WHY THE FADE AND NOT THE VALUE: for a zero-games row the one law collapses to v = v0 * D(c_u)
-    # exactly (rho(0)=0 kills the production leg, o32_age_credit(...,0)=0), so a max on the VALUE is
-    # identically a max on the FADE. Working in the fade keeps this in the predicate's own units and
-    # needs NO numeraire conversion, so no currency can be got wrong here.
-    #
-    # Y==2026 ONLY. The parity ruling is a 2026 ruling. The walk-forward matrix's years 1..7 are formed
-    # from ev(p,Y) at Y>2026 and MUST NOT move; this wrapper cannot reach them.
-    # A MAX, SO IT CAN ONLY RAISE. _D7_DFADE carries only rows whose healthy VALUE won, and the wrapper
-    # additionally requires _dh>_dl — so a riser (the Murphy type) is returned UNTOUCHED. The shield is
-    # not a charge. Dial off => this wrapper is never installed.
-    if _D7_DFADE:
-        # THE SUBSUMPTION IS ASSERTED, NOT ASSUMED. If the LIVE day-0 predicate is not the one built on
-        # o31_D — it is `_d0*fade30b_of` when _O31 is off (:3371) — then wrapping the fade does NOT
-        # reach it, and dropping D7's ratio wrapper would SILENTLY REGRESS the predicate. HALT instead.
-        _e30b_co=getattr(globals().get('_entry30b_price'),'__code__',None)
-        if _e30b_co is not None and 'o31_D' not in _e30b_co.co_names:
-            raise SystemExit('ORDER D7b HALT: the live _entry30b_price is NOT the day-0 predicate built '
-                             'on o31_D, so this third wiring site does not reach it. Refusing to retire '
-                             'the D7 second site against a predicate that still has to carry it.')
-        _o31D_pre43=o31_D
-        def o31_D(p,Y,__inner=_o31D_pre43):
-            """ORDER D7b (RL_O43) — THE PARITY GUARD AT THE FADE ITSELF: the one symbol that ev(), the
-            day-0 predicate and the ORDER 31-F emitter all read. A guarded row's fade is lifted to its
-            HEALTHY-counterpart fade at Y=2026. max only: a row whose live fade already sits at or above
-            its healthy one is returned UNTOUCHED. Dial off => this wrapper is never installed."""
-            _d=__inner(p,Y)
-            if int(Y)!=2026: return _d
-            _pr=_D7_DFADE.get(p.get('key'))
-            if not _pr: return _d
-            _dl,_dh=_pr
-            return max(_d,_dh) if (_dl>0.0 and _dh>_dl) else _d
-    print("=== ORDER D7 PARITY GUARD LIVE (register v771) — %d rows carry injury treatment; %d are "
-          "LIFTED to their healthy counterpart, %d keep an injury-regime value at or above it. The "
-          "guard is a per-row max at Y=2026: it can only RAISE. NO FREE PARAMETER. ==="
-          %(len(_D7_ROWS),len(_D7_FLOOR),len(_D7_ROWS)-len(_D7_FLOOR)))
+            _v_hth=ev(_p,2026)
+            _d_hth=float(o31_D(_p,2026))                # the same fade at his HEALTHY depth
+    finally:
+        _D7_HEALTHY_KEYS.discard(_k)
+        if _sv_state is not None: _AVAIL_STATE[_k]=_sv_state
+        _p['_avail_hc']=_sv_hc; _p['_lti_ret_hc']=_sv_ret
+    # D7-F6 — THE MEASUREMENT MUST BE NON-DESTRUCTIVE. If the row does not restore EXACTLY, the
+    # probe is corrupting the board and nothing it produced can be trusted. HALT, never warn.
+    with contextlib.redirect_stdout(io.StringIO()):
+        _v_back=ev(_p,2026)
+    if _v_back!=_v_inj:
+        _D7_BAD.append((_k,_v_inj,_v_back))
+    _g26=next((x['games'] for x in (_p.get('scoring') or []) if x['year']==2026),0)
+    _D7_ROWS.append({'key':_k,'player':_p.get('player'),'g2026':int(_g26 or 0),
+                     'v_injury':float(_v_inj),'v_healthy':float(_v_hth),
+                     'won':('healthy' if _v_hth>_v_inj else ('injury' if _v_inj>_v_hth else 'tie')),
+                     'delta':float(max(_v_inj,_v_hth)-_v_inj),
+                     'treated_avail':bool(_k in _AVAIL_STATE),'treated_inj':bool(o41_injured(_p))})
+    if _v_hth>_v_inj:
+        _D7_FLOOR[_k]=float(_v_hth)                     # the guard binds ONLY where it raises
+        _D7_DFADE[_k]=(_d_liv,_d_hth)                   # and the fade pair the day-0 predicate needs
+if _D7_BAD:
+    raise SystemExit('ORDER D7 HALT (D7-F6): %d treated row(s) did not restore EXACTLY after the '
+                     'healthy-counterpart measurement: %s. The measurement is mutating the board '
+                     'it is measuring; no price it produced can be trusted.'%(len(_D7_BAD),_D7_BAD[:6]))
+_ev_pre43=ev
+def ev(p,Y=2026,__inner=_ev_pre43):
+    """ORDER D7 (RL_O43) — THE PARITY GUARD, at the one law. The row's LIVE price is lifted to its
+    healthy counterpart whenever the injury regime would have charged it more. max only: a row
+    whose injury regime already prices above its counterpart (a Murphy-type riser) is returned
+    UNTOUCHED, because the shield is not a charge. Dial off => this wrapper is never installed."""
+    _v=__inner(p,Y)
+    if int(Y)==2026:
+        _f=_D7_FLOOR.get(p.get('key'))
+        if _f is not None and _f>_v: return _f
+    return _v
+# ---- ORDER D7b — THE THIRD WIRING SITE. IT SUBSUMES THE SECOND; IT DOES NOT STACK ON IT. ------
+# PREREG_D7B.md, pushed at cfd4748 BEFORE this edit. Register v775, on the v771 ruling.
+# DISCLOSED LOUDLY: this is a THIRD SITE OF ONE DIAL, not a second dial and not a second rule. It
+# is the SAME per-row max, on the SAME ruling (RL_O43, hard-wired on 2026-10-14). NO NEW DIAL, NO NEW
+# PARAMETER, NOTHING FITTED.
+#
+# WHAT D7 DID, AND WHAT IT MISSED. D7 wired the max at ev() above and at the day-0 predicate
+# `_entry30b_price`. It did NOT wire `o31_D`, THE FADE ITSELF — and the ORDER 31-F emitter reads
+# `o31_D` STRAIGHT OUT OF THE ENGINE NAMESPACE (emit_matrix_31f.py:83, `o31_D = G['o31_D']`)
+# precisely so its replication guard cannot drift from the law it is guarding. With the fade
+# unguarded, that emitter formed the LIVE-depth (injury) fade while the board carried the HEALTHY
+# one, and it fail-closed at 82 of 89 on exactly the seven rows where the healthy fade wins. THE
+# EMITTER WAS RIGHT: the law had moved one level above the symbol it was told to read. The emitter
+# is byte-carried and is NOT modified; DAY0_CP.json is correct and is NOT touched.
+# (docs/evidence/final_candidate_2026-08-19/HALT_EMIT_CP.md and O31D_PROBE_out.txt.)
+#
+# WHY THIS REPLACES THE SECOND SITE RATHER THAN JOINING IT — ARITHMETIC, NOT OPINION. Under _O31
+# the day-0 predicate IS the fade: `_entry30b_price` is `_d0*o31_D(p,Y)` (:5109-5112), and it
+# resolves o31_D as a MODULE GLOBAL AT CALL TIME. So the moment o31_D returns the healthy fade the
+# predicate ALREADY returns _d0*_dh — exactly the board's printed day-0 price. Had D7's ratio
+# wrapper ALSO fired, the predicate would return _d0*_dh^2/_dl and the ONE ruling would be applied
+# TWICE. Worked on harley-barker: _d0*_dl = 481.44 (what the emitter formed), _d0*_dh = 503.51 ->
+# 504 (THE BOARD, CORRECT), _d0*_dh^2/_dl = 526.60 -> 527 (both sites firing, WRONG). The ruling,
+# the dial and the arithmetic are UNCHANGED; only the LEVEL moves down one, from the predicate to
+# the fade the predicate is built from. ONE correction, at the ONE symbol every consumer — ev(),
+# the day-0 predicate, and the emitter — reads. THE 29B/30B PRINTED-DAY-0 ASSERT IS NOT WEAKENED,
+# NOT BYPASSED AND NOT RE-POINTED, and the frozen DAY0_K.json reference is NOT touched.
+#
+# WHY THE FADE AND NOT THE VALUE: for a zero-games row the one law collapses to v = v0 * D(c_u)
+# exactly (rho(0)=0 kills the production leg, o32_age_credit(...,0)=0), so a max on the VALUE is
+# identically a max on the FADE. Working in the fade keeps this in the predicate's own units and
+# needs NO numeraire conversion, so no currency can be got wrong here.
+#
+# Y==2026 ONLY. The parity ruling is a 2026 ruling. The walk-forward matrix's years 1..7 are formed
+# from ev(p,Y) at Y>2026 and MUST NOT move; this wrapper cannot reach them.
+# A MAX, SO IT CAN ONLY RAISE. _D7_DFADE carries only rows whose healthy VALUE won, and the wrapper
+# additionally requires _dh>_dl — so a riser (the Murphy type) is returned UNTOUCHED. The shield is
+# not a charge.
+if _D7_DFADE:
+    # THE SUBSUMPTION IS ASSERTED, NOT ASSUMED. If the LIVE day-0 predicate is not the one built on
+    # o31_D — it was `_d0*fade30b_of` with the one law off, a path now deleted — then wrapping the fade does NOT
+    # reach it, and dropping D7's ratio wrapper would SILENTLY REGRESS the predicate. HALT instead.
+    _e30b_co=getattr(globals().get('_entry30b_price'),'__code__',None)
+    if _e30b_co is not None and 'o31_D' not in _e30b_co.co_names:
+        raise SystemExit('ORDER D7b HALT: the live _entry30b_price is NOT the day-0 predicate built '
+                         'on o31_D, so this third wiring site does not reach it. Refusing to retire '
+                         'the D7 second site against a predicate that still has to carry it.')
+    _o31D_pre43=o31_D
+    def o31_D(p,Y,__inner=_o31D_pre43):
+        """ORDER D7b (RL_O43) — THE PARITY GUARD AT THE FADE ITSELF: the one symbol that ev(), the
+        day-0 predicate and the ORDER 31-F emitter all read. A guarded row's fade is lifted to its
+        HEALTHY-counterpart fade at Y=2026. max only: a row whose live fade already sits at or above
+        its healthy one is returned UNTOUCHED. Dial off => this wrapper is never installed."""
+        _d=__inner(p,Y)
+        if int(Y)!=2026: return _d
+        _pr=_D7_DFADE.get(p.get('key'))
+        if not _pr: return _d
+        _dl,_dh=_pr
+        return max(_d,_dh) if (_dl>0.0 and _dh>_dl) else _d
+print("=== ORDER D7 PARITY GUARD LIVE (register v771) — %d rows carry injury treatment; %d are "
+      "LIFTED to their healthy counterpart, %d keep an injury-regime value at or above it. The "
+      "guard is a per-row max at Y=2026: it can only RAISE. NO FREE PARAMETER. ==="
+      %(len(_D7_ROWS),len(_D7_FLOOR),len(_D7_ROWS)-len(_D7_FLOOR)))
 # ==== ORDER 45 (RL_O45) — THE POSITION-SCALED SAFETY NET. PREREG_ORDER45.md committed at fa105f7 ========
 # BEFORE this edit (P9). Owner words, verbatim, 2026-08-25 (register v852/v853): "Yes, adopt the new
 # model" (D1) · "Scaled on the safety net" (D2) · "Exclude mature agers" (D3).
