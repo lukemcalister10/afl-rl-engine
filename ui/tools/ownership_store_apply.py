@@ -24,7 +24,7 @@ rows do not carry it at all.  The UI's affl_team is JOINED FROM THE STORE at ext
 NO ENGINE BUILD.  Values do not move; identity does.  The board's own byte-integrity pin
 (rl_app_data.json.srcmd5 `own_md5`) is asserted UNCHANGED here; only its `source_md5` advances.
 
-THE TEN TARGETS (the transaction commits all ten together or none):
+THE ELEVEN TARGETS (the transaction commits all eleven together or none):
    0  engine/rl_after/rl_model_data.json          the store write itself
    1  data/expected_boot.json                     `store`
    2  data/release_contract.json                  identities.store + contract_sha256 re-seal
@@ -63,7 +63,7 @@ their old one (FW2's fixture note names three).  This lane is that writer.  The 
 to the store's own full spelling (AFL_CLUB_BY_ABBR, asserted against the 18 values the store carries),
 BLANK MEANS UNCHANGED (71 rows are blank; the owner has not spoken for them), and the row must
 already carry the field (the courier never adds a key — the diff proof asserts the field set).
-Everything else — the join by key, the exact-byte plan, the T2 diff proof, the ten targets — is
+Everything else — the join by key, the exact-byte plan, the T2 diff proof, the eleven targets — is
 shared with `affl_team`: one transaction, two fields, each row's moves attributed to its field.
 The shipped board's `club` catches up at the next engine build (rl_export reads the store then);
 the board does not move here.
@@ -119,8 +119,9 @@ BVP_REL = os.path.join("ui", "data", "board_view_public.js")
 OWNERSHIP_REL = os.path.join("ui", "data", "ownership.js")
 CLUBVAL_REL = os.path.join("ui", "data", "club_valuation.js")
 MOVERS_TRANSITION_REL = os.path.join("ui", "data", "movers_transition.js")
+V0_REL = os.path.join("ui", "data_aux", "v0.js")   # the v0 sidecar (entry prices), stamped with the store
 
-# The ten live targets, committed atomically (the store write is target 0).
+# The eleven live targets, committed atomically (the store write is target 0).
 TARGETS = (
     ("store", STORE_REL),
     ("manifest", BOOT_REL),
@@ -137,6 +138,9 @@ TARGETS = (
     ("board_view_public", BVP_REL),
     ("ownership_sidecar", OWNERSHIP_REL),
     ("club_valuation", CLUBVAL_REL),
+    ("v0_sidecar", V0_REL),   # 2026-10-14: MD.v0 refuses a sidecar whose store stamp is not the loaded
+    # store; the courier moved the store on 2026-10-13 and left this stamp behind (ui_defects red on
+    # main until the next landing regenerated it). Restamped here, under the entry-inputs signature.
 )
 
 # Directories the throwaway overlay needs to be a working repo root for the two generators.
@@ -554,6 +558,30 @@ def restamp_board_sidecar(path, store_md5, expect_own_md5):
     _atomic_write_text(path, json.dumps(d, sort_keys=True))
 
 
+def restamp_v0_sidecar(path, store_md5, store_path):
+    """Move the v0 sidecar's store stamp. The sidecar's CONTENT is authenticated by its entry-inputs
+    signature (ui/tools/v0_identity.py): this job writes identity fields only, so the signature of the
+    staged store must equal the one the sidecar was cut on — asserted here, not assumed. The reader
+    (ui/app/v0.js) pins on the store md5, so the stamp has to follow the store or every player card
+    loses its entry price."""
+    import importlib.util as _ilu
+    here = os.path.dirname(os.path.abspath(__file__))
+    _sp = _ilu.spec_from_file_location("_osa_v0_identity", os.path.join(here, "v0_identity.py"))
+    _vi = _ilu.module_from_spec(_sp); _sp.loader.exec_module(_vi)
+    _gp = _ilu.spec_from_file_location("_osa_gen_v0", os.path.join(here, "gen_v0_sidecar.py"))
+    _gen = _ilu.module_from_spec(_gp); _gp.loader.exec_module(_gen)
+    d = _bundle_obj(path)
+    st = d.get("stamp") or {}
+    want = _vi.entry_inputs_sig_of_store(store_path)
+    if str(st.get("entryInputsSig")) != want:
+        raise Halt("v0 sidecar entry-inputs signature %s != the staged store's %s — an entry input "
+                   "moved; regenerate with ui/tools/gen_v0_sidecar.py instead of restamping"
+                   % (str(st.get("entryInputsSig"))[:12], want[:12]))
+    st["store"] = store_md5
+    st["generatedFromStore"] = store_md5
+    _atomic_write_text(path, _gen.render(d))
+
+
 def restamp_season_state(path, store_md5):
     """Move `source_store_md5` ONLY. calendar_progress / exposure_pace / exposure_derivation are
     derived from GAMES, not ownership, and are asserted byte-unchanged here rather than assumed."""
@@ -749,6 +777,7 @@ def apply(root=None, verbose=True):
         # restamped one twin and the lander selftest caught the divergence on the next run.
         restamp_board_sidecar(w(GEN_SIDECAR_REL), plan.md5_after, plan.board_md5)
         season_frozen = restamp_season_state(w(SEASON_REL), plan.md5_after)
+        restamp_v0_sidecar(w(V0_REL), plan.md5_after, w(STORE_REL))
         rc = _load_release_contract_module(ws)
         season_doc = json.load(open(w(SEASON_REL)))
         rc.restamp_dynamic(ws, as_of_round, plan.md5_after, plan.board_md5, season_doc)
@@ -967,7 +996,7 @@ def _validate_overlay(ws, plan, out):
 
 def _commit(root, ws, out):
     """T10. Journal + per-target backup, atomic replace of every target, byte-for-byte rollback on
-    any fault. The ten targets land together or not at all."""
+    any fault. The eleven targets land together or not at all."""
     backup = tempfile.mkdtemp(prefix="osa_backup_")
     done = []
     try:
@@ -1009,12 +1038,13 @@ def verify(root=None, verbose=True):
         "rl_app_data.json.srcmd5.source_md5": str(json.load(open(p(SIDECAR_REL))).get("source_md5") or ""),
         "board_view_working.stamp.store_md5":
             str((_bundle_obj(p(BVW_REL)).get("stamp") or {}).get("store_md5") or ""),
+        "v0.js.stamp.store": str((_bundle_obj(p(V0_REL)).get("stamp") or {}).get("store") or ""),
     }
     ok = len(set(seen.values())) == 1
     if verbose:
         for k, v in seen.items():
             print("  %-38s %s" % (k, v))
-        print("  six-way store coherence: %s" % ("PASS" if ok else "FAIL"))
+        print("  seven-way store coherence: %s" % ("PASS" if ok else "FAIL"))
     if not ok:
         raise Halt("live tree store identity is incoherent")
     return store
