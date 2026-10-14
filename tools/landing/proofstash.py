@@ -57,7 +57,8 @@ KEY_SCHEMA = 2
 #: build loads (v0surf is also a PIN_MEASURERS entry — it is repeated here so it is in the key even
 #: when the act declares it as moving).
 BUILD_INPUT_FILES = ('data/season_state.json', 'data/q97m.pkl', 'data/cm_400.pkl', 'data/v0surf.pkl',
-                     'engine/rl_after/season_read.py')   # the season-state reader is an engine input the pins do not cover
+                     'engine/rl_after/season_read.py',   # the season-state reader is an engine input the pins do not cover
+                     'engine/rl_after/survival_hazard.py', 'data/survival_hazard.json')   # the survival calibration (2026-10-14)
 SHEET_PINS = 'data/sheet_pins.json'
 
 
