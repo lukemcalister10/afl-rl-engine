@@ -1,0 +1,53 @@
+{
+ "schema_version": 1,
+ "act_kind": "lever-landing",
+ "act": "THE ADOPTED CHAIN HARD-WIRED (D3): 51 ORDER 30B-43 kill-switch reads become their shipped literals and the dead off-branches go; ONE season-state reader that halts instead of guessing; the +2 reconciliation panel counts both classes. Board values unchanged by construction.",
+ "date": "2026-10-14",
+ "owner_word": "Owner, 2026-10-13, verbatim: \"Yes, d3 was adopted. And should be reflected\" (the chain is adopted; its NOT ADOPTED labels and broken kill-switches go). Engine hygiene items from the owner-accepted plan (Phase 1): single season-state reader, no silent fallback.",
+ "authority": "owner word on this act",
+ "prereg": {
+  "path": "docs/evidence/engine_chain_hardwired_single_reader_2026-10-14/NOTE.md",
+  "board_before": "848874f1a79a230a453ddcecf4a7c843",
+  "board_after": "e40c37ccc543e7f2bcca16c996b53dbb",
+  "reference_board": null,
+  "kill_switch": null
+ },
+ "identities": {
+  "moves": [
+   "board",
+   "engine_head",
+   "rl_model",
+   "fv"
+  ],
+  "unmoved": [
+   "store",
+   "config",
+   "register",
+   "as_of_round"
+  ]
+ },
+ "column": {
+  "id": "chain-hardwired-single-reader-14-10",
+  "label": "14/10 the adopted chain hard-wired (51 kill-switches gone, 666 lines); one season-state reader; +2 panel per class \u2014 no player value moves",
+  "after_round": 24
+ },
+ "lineage": {
+  "doc": "docs/evidence/engine_chain_hardwired_single_reader_2026-10-14/NOTE.md",
+  "owner_ruling_id": [
+   "D3_ADOPTED_2026-10-13",
+   "PHASE1_HYGIENE_2026-10-14"
+  ],
+  "owner_ruling": "The ORDER 30B-43 chain is adopted and the engine says so in code: no kill-switch, no NOT ADOPTED label. The engine never prices on a guessed season.",
+  "authority": "owner word 2026-10-13; owner-accepted plan Phase 1",
+  "invariants": {
+   "player_values": "every v / vP1 / vP2 / vM1 / vM2 / rank identical to the live board 848874f1",
+   "board_bytes": "identical to the live board outside draftAssetTotals (the +2 panel)"
+  }
+ },
+ "day0_rebase": {
+  "state": "off"
+ },
+ "evidence_dir": "docs/evidence/engine_chain_hardwired_single_reader_2026-10-14",
+ "gates": null,
+ "commit_message": "ENGINE: the adopted chain hard-wired (D3), one season-state reader, +2 panel per class \u2014 no player value moves (owner word 2026-10-13)"
+}
