@@ -118,8 +118,10 @@ try {
 
   const played = await evalJs(`(${bundle}.reports[${newestFeed}]||{}).views.played_count`);
   const dnp = await evalJs(`(${bundle}.reports[${newestFeed}]||{}).views.dnp_count`);
-  ok(Number(played) > 0 && Number(dnp) > 0 && Number(played) + Number(dnp) > 700,
-     `the ${weekName} weekly report is present: ${played} played, ${dnp} DNP`);
+  const unrec = await evalJs(`(${bundle}.reports[${newestFeed}]||{}).views.unrecorded_count || 0`);
+  // TRI-STATE (2026-10-14): a finals week's rows are played / DNP / not recorded (club did not play).
+  ok(Number(played) > 0 && Number(dnp) > 0 && Number(played) + Number(dnp) + Number(unrec) > 700,
+     `the ${weekName} weekly report is present: ${played} played, ${dnp} DNP, ${unrec} not recorded`);
 
   /* AND EVERY EARLIER FINALS WEEK IS STILL THERE — the list grows, it does not shift. */
   const allFinals = String(await evalJs(

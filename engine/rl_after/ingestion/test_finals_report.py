@@ -118,14 +118,22 @@ def run_all():
         _ck(built[k] == shipped[k], 'rebuilt %s == shipped' % k, built[k])
     # TRI-STATE (2026-10-14): 92 played; 93 DNP at the four clubs that played; 619 unrecorded at the
     # fourteen that did not. The 712 this line used to pin was every non-scorer marked DNP.
-    _ck(built['views']['played_count'] == shipped['views']['played_count'] == 92
-        and built['views']['dnp_count'] == shipped['views']['dnp_count'] == 93
-        and built['views']['unrecorded_count'] == shipped['views']['unrecorded_count'] == 619,
-        'rebuilt played/DNP/unrecorded == shipped (92 / 93 / 619)')
-    _ck(all((p['played'], p['dnp']) == (s['played'], s['dnp'])
-            for p, s in zip(sorted(built['players'], key=lambda r: r['key']),
-                            sorted(shipped['players'], key=lambda r: r['key']))),
-        'every rebuilt row carries the shipped tri-state')
+    _ck(shipped['views']['played_count'] == 92 and shipped['views']['dnp_count'] == 93
+        and shipped['views']['unrecorded_count'] == 619,
+        'shipped played/DNP/unrecorded == 92 / 93 / 619')
+    # A rebuild today reads each player's club from the bundle's CURRENT values; the shipped rows carry
+    # the club he was at in that week. The two differ only for players the AFL-club courier has since
+    # moved (trade period), and for exactly those a DNP/not-recorded verdict can lawfully differ. Every
+    # other row must rebuild to the shipped tri-state; the moved rows must be the only exceptions.
+    _vals = bundle.get('values') or {}
+    _ship = {p['key']: p for p in shipped['players']}
+    _moved = {k for k, p in _ship.items() if p.get('club') != (_vals.get(k) or {}).get('club')}
+    _wrong = [p['key'] for p in built['players'] if p['key'] not in _moved and
+              (p['played'], p['dnp']) != (_ship[p['key']]['played'], _ship[p['key']]['dnp'])]
+    _ck(not _wrong, 'every rebuilt row at an unmoved club carries the shipped tri-state', _wrong[:5])
+    _ck(all(p['played'] == _ship[p['key']]['played'] for p in built['players'] if p['played'] is True)
+        and all(p['played'] is True for p in built['players'] if _ship[p['key']]['played'] is True),
+        'a player who scored is PLAYED in both, whichever club the store carries today')
     bs = {p['key']: p['score'] for p in built['players'] if p['played']}
     ss = {p['key']: p['score'] for p in shipped['players'] if p['played']}
     _ck(bs == ss, 'every one of the 92 rebuilt scores == the shipped score', len(bs))
