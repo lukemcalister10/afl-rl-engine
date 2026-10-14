@@ -51,8 +51,8 @@ WORK = '/home/claude/retro_walkforward'
 # It is real football and it is APPLIED, so every earlier round must subtract it. Before it was in this
 # list the finals game could not be subtracted and was carried backwards into all eleven rounds:
 # Harry Dean's round-14 store read 11 games against a truth of 10 (measured 2026-09-02).
-ROUNDS = list(range(14, 27))
-APPLIED = list(range(15, 27))
+ROUNDS = list(range(14, 30))
+APPLIED = list(range(15, 30))
 HOME_AND_AWAY_ROUNDS = 24        # round_movers.HOME_AND_AWAY_ROUNDS; a feed round above it is finals
 F = 1.0524
 
@@ -176,6 +176,18 @@ def derive_season_state(R, truncated_store_path):
     # 1. It gets there at r24 and holds." The clamp above is the mechanism; this is the law. A clamp
     # can be edited by someone who does not know why it is there — a HALT cannot be edited by
     # accident. 1.04 is the number this catches, and it is the one that broke FW1.
+    # THE EXPOSURE CLOCK HOLDS TOO (owner ruling 2026-09-24; tools/landing/steps._finals_exposure_hold):
+    # in finals the pace is derived from the ROUND-24 VIEW of the store — the truncated store less every
+    # finals week played up to R — exactly as the landed boards were built. Without this the GF point
+    # re-priced at pace 0.955 against a live board built at 0.909 (28 diffs, 2026-10-14).
+    if R > HOME_AND_AWAY_ROUNDS:
+        reps_all = _load_movers_reports()
+        reps_le = {k: v for k, v in reps_all.items() if HOME_AND_AWAY_ROUNDS < int(k) <= R}
+        played = m.finals_played(reps_le, HOME_AND_AWAY_ROUNDS)
+        rows = json.load(open(truncated_store_path))
+        ep, meta = m.exposure_pace(m.home_and_away_rows(rows, played, int(st['season_year'])), int(st['season_year']))
+        st['exposure_pace'], st['exposure_derivation'] = ep, meta
+        st['_retro_note'] += '; exposure HELD at the round-24 view (%d finals appearances subtracted)' % sum(played.values())
     if not (0 < st['calendar_progress'] <= 1.0):
         raise SystemExit('CALENDAR HALT: feed round %d derived calendar_progress %.4f. The season '
                          'clock reaches 1.00 at round %d and HOLDS there through the finals; a '

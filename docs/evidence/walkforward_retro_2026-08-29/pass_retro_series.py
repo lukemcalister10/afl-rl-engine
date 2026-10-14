@@ -27,7 +27,7 @@ import json, os
 HERE = '/home/user/afl-rl-engine/docs/evidence/walkforward_retro_2026-08-29'
 REPO = '/home/user/afl-rl-engine'
 WORK = '/home/claude/retro_walkforward'
-ROUNDS = list(range(14, 27))   # 25, 26 = FINALS WEEKS 1-2 (feed rounds above the H&A season)
+ROUNDS = list(range(14, 30))   # 25..29 = FINALS WEEKS 1-4 + the GRAND FINAL (feed rounds above the H&A season)
 
 
 def run(ns):

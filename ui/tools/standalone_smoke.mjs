@@ -132,9 +132,14 @@ try {
          Grand Final's point is the stored column whose board the report produced. The `to` end must
          be that point's id, and the To <select> must show it selected by its week name. */
   const pair = await evalJs('JSON.stringify(MD.movers._state ? {from:MD.movers._state.from,to:MD.movers._state.to} : null)');
+  // TWO LAWFUL SHAPES (RULEBOOK P4; 2026-10-13): the newest week's stored column when it is the newest
+  // stored point (football), or the newest week's RETRO point in the window after a model change —
+  // either way the pair ends at the newest week.
   const wantTo = String(await evalJs(`(function(){var b=${bundle}, r=b.reports[${newestFeed}];
-    var p=b.points.filter(function(q){return q.kind!=="retro"&&q.board&&q.board===r.board_md5_after;})[0];
-    return p?String(p.id):String(${newestFeed});})()`));
+    var stored=b.points.filter(function(q){return q.kind!=="retro";}); var last=stored[stored.length-1];
+    var p=stored.filter(function(q){return q.board&&q.board===r.board_md5_after;})[0];
+    if(p&&last&&String(last.id)===String(p.id)) return String(p.id);
+    return "retro-r"+${newestFeed};})()`));
   ok(JSON.parse(String(pair) || 'null') && JSON.parse(String(pair)).to === wantTo,
      `the Movers tab OPENS on the pair ending at ${weekName} (point ${wantTo})`, String(pair));
   const selTo = String(await evalJs('(function(){var s=document.querySelectorAll(".moversbar select.boardsel")[1];' +
