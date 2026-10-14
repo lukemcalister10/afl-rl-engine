@@ -22,6 +22,7 @@ writing a spec should learn all of its gaps in one run.
 
 import json
 import os
+import re
 
 SCHEMA_VERSION = 1
 ACT_KINDS = ('lever-landing', 'round-advance', 'store-edit')
@@ -87,7 +88,7 @@ REQUIRED_PREREG = ('path', 'board_after')
 REQUIRED_ROUND_EXPECTED = ('round', 'listed', 'resolved', 'absent_dnp', 'scores_sha256',
                            'ledger_before', 'ledger_delta')
 
-#: THE STORE EDIT'S DECLARATION — the four slots one field edit needs, and no fifth.
+#: THE STORE EDIT'S DECLARATION — the four slots one field CHANGE needs, and no fifth.
 #:
 #: `old` IS AN ASSERTION, NOT A HINT. The lander reads the named row, compares the named field to
 #: `old`, and ABORTS on a mismatch — it never repairs, never widens the match, and never edits a row
@@ -95,6 +96,14 @@ REQUIRED_ROUND_EXPECTED = ('round', 'listed', 'resolved', 'absent_dnp', 'scores_
 #: (ERRATUM E2 class), and it is why the edit is declared as {key, field, old, new} rather than as a
 #: patch: a patch says what to write, a declaration says what must be TRUE before anything is written.
 REQUIRED_EDIT_FIELDS = ('key', 'field', 'old', 'new')
+
+#: THE ADD VERB (2026-10-14, `_last_listed`): {key, field, add} puts a FLAT field on a row that does
+#: NOT carry it. `add` is mutually exclusive with `old`/`new` — there is nothing to assert on a field
+#: the row lacks, and the lane ABORTS (never overwrites) when the row turns out to carry it. The field
+#: must be a plain JSON key (`_ADD_FIELD`; a `scoring[Y].x` path is not one — an add never reaches
+#: inside a container) and the value a JSON scalar, for the same byte-exact reason a change's is.
+REQUIRED_ADD_FIELDS = ('key', 'field', 'add')
+_ADD_FIELD = re.compile(r'^[A-Za-z_][A-Za-z0-9_]*$')
 
 
 class SpecError(RuntimeError):
@@ -255,9 +264,11 @@ def _validate_edit(doc):
 
     WHAT IS REQUIRED HERE AND NOT BY THE OTHER KINDS:
 
-      * `edit.store` — a non-empty list of {key, field, old, new}. `old` is ASSERTED (see
-        REQUIRED_EDIT_FIELDS); `old == new` is refused, because an edit that changes nothing is an
-        edit nobody needed to authorise and its "abort on mismatch" leg could never fire.
+      * `edit.store` — a non-empty list of {key, field, old, new} (a CHANGE) or {key, field, add}
+        (an ADD, see REQUIRED_ADD_FIELDS). `old` is ASSERTED (see REQUIRED_EDIT_FIELDS); `old == new`
+        is refused, because an edit that changes nothing is an edit nobody needed to authorise and
+        its "abort on mismatch" leg could never fire. An add carries NO `old`/`new`: the lane refuses
+        a row that already carries the field rather than overwriting it.
       * `identities.moves` must carry `store`. The act moves the store BY DEFINITION, the pins step
         re-pins it MEASURED-not-typed, and a spec that declared it unmoved would be asking the pins
         step to prove a falsehood.
@@ -295,8 +306,17 @@ def _validate_edit(doc):
         seen = set()
         for i, e in enumerate(rows):
             if not isinstance(e, dict):
-                bad.append('edit.store[%d] must be an object with %s'
-                           % (i, ', '.join(REQUIRED_EDIT_FIELDS)))
+                bad.append('edit.store[%d] must be an object with %s (a change) or %s (an add)'
+                           % (i, ', '.join(REQUIRED_EDIT_FIELDS), ', '.join(REQUIRED_ADD_FIELDS)))
+                continue
+            if 'add' in e:
+                bad.extend(_validate_add(i, e))
+                pair = (e.get('key'), e.get('field'))
+                if all(pair) and pair in seen:
+                    bad.append('edit.store declares %r twice. An add and a second edit to the same '
+                               'field would make one of them a statement about the other\'s output.'
+                               % (pair,))
+                seen.add(pair)
                 continue
             for k in REQUIRED_EDIT_FIELDS:
                 if k not in e:
@@ -341,6 +361,29 @@ def _validate_edit(doc):
     if doc.get('round') is not None:
         bad.append('a store-edit act declares a `round`. It HOLDS the round it finds, exactly as a '
                    'lever landing does.')
+    return bad
+
+
+def _validate_add(i, e):
+    """The ADD verb's shape: {key, field, add} and nothing of the change's. -> [problems]."""
+    bad = []
+    for k in ('old', 'new'):
+        if k in e:
+            bad.append('edit.store[%d] declares `add` AND `%s`. One entry is one verb: an add has no '
+                       'value to assert (the row must NOT carry the field) and `add` IS the value it '
+                       'writes.' % (i, k))
+    for k in REQUIRED_ADD_FIELDS:
+        if k not in e:
+            bad.append('edit.store[%d].%s is required for an add' % (i, k))
+    f = e.get('field')
+    if 'field' in e and (not isinstance(f, str) or not _ADD_FIELD.match(f)):
+        bad.append('edit.store[%d].field %r is not a flat JSON key name (%s). An add puts a '
+                   'TOP-LEVEL field on the row; a season path (`scoring[Y].x`) is not one — an add '
+                   'never reaches inside a container.' % (i, f, _ADD_FIELD.pattern))
+    if 'add' in e and isinstance(e['add'], (dict, list)):
+        bad.append('edit.store[%d].add must be a JSON SCALAR (string, number, boolean, null), not %s '
+                   '— a container\'s on-disk serialization is not the lane\'s to assume.'
+                   % (i, type(e['add']).__name__))
     return bad
 
 
@@ -582,7 +625,10 @@ def _edit_template():
                                 'mismatch aborts); new = the value it writes. The replacement is a '
                                 'surgical byte replacement inside the row\'s own span: the store\'s '
                                 'serialization is not re-emitted, and no byte outside the span may '
-                                'move.')}],
+                                'move. TO ADD a flat field the row does NOT carry, declare {key, '
+                                'field, add} instead (no old/new): the field is inserted where the '
+                                'rows that already carry it put it, and a row that turns out to '
+                                'carry it ABORTS rather than being overwritten.')}],
             'expected_movers': None,
             '_doc_expected_movers': ('null = not declared (the movers are printed and asserted '
                                      'against nothing). A list of {"key","before","after"} is a '

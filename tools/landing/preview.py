@@ -190,8 +190,12 @@ def dry_run(root, doc, keep=False, report=None, log=None):
         out('')
         out('THE EDIT — surgical, inside the named row\'s span; `old` is asserted, never repaired')
         for a in applied:
-            out('    %-28s %-18s %s -> %s'
-                % (a['key'], a['field'], json.dumps(a['old']), json.dumps(a['new'])))
+            if a.get('kind') == 'add':
+                out('    %-28s %-18s ADD %s   (%s, as %d exemplar row(s) carry it)'
+                    % (a['key'], a['field'], json.dumps(a['new']), a['anchor'], a['exemplars']))
+            else:
+                out('    %-28s %-18s %s -> %s'
+                    % (a['key'], a['field'], json.dumps(a['old']), json.dumps(a['new'])))
             out('        row span %d..%d of the store, %d char(s) -> %d char(s) in the file'
                 % (a['row_span'][0], a['row_span'][1], a['chars_before'], a['chars_after']))
 

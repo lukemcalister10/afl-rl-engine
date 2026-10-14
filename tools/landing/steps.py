@@ -385,6 +385,165 @@ def _season_spans(span_text, year):
     return out
 
 
+#: THE ONE SHAPE AN ADDED FIELD MAY HAVE: a flat JSON key. A season path (`scoring[2017].x`) does
+#: not match, and that is the point — `add` is a top-level verb and never reaches inside a container.
+_ADD_FIELD = re.compile(r'^[A-Za-z_][A-Za-z0-9_]*$')
+
+
+def _row_fields(span):
+    """-> ([{key, kstart, kend, vstart, vend}, ...], close): the EXACT offsets of every top-level field
+    of one row's text, in document order, and the offset of the row's closing brace.
+
+    DECODED, NOT SCANNED FOR, for the same reason `store_row_spans` is: `JSONDecoder.raw_decode` is
+    handed the offset of each key and each value in turn and RETURNS where it ends, so a `{` or a `,`
+    inside a string value cannot shift a field by a byte. These offsets are what the `add` verb
+    inserts between — the bytes between a value's end and the next key's quote are the row's own
+    separator, copied, never assumed.
+    """
+    dec = json.JSONDecoder()
+    n = len(span)
+    i = span.index('{') + 1
+    out = []
+    while True:
+        while i < n and span[i] in ' \t\r\n':
+            i += 1
+        if i >= n:
+            raise StepError('a row span ends without its closing brace')
+        if span[i] == '}':
+            return out, i
+        if span[i] == ',':
+            i += 1
+            continue
+        k, kend = dec.raw_decode(span, i)
+        j = kend
+        while span[j] in ' \t\r\n':
+            j += 1
+        if span[j] != ':':
+            raise StepError('a row field is not followed by a colon at char %d of its span' % j)
+        j += 1
+        while span[j] in ' \t\r\n':
+            j += 1
+        _v, vend = dec.raw_decode(span, j)
+        out.append({'key': k, 'kstart': i, 'kend': kend, 'vstart': j, 'vend': vend})
+        i = vend
+
+
+def _add_anchor(text, field):
+    """WHERE an added field sits in a row that lacks it — MEASURED off the rows that already carry it.
+
+    THE STORE'S ROWS ARE NOT KEY-SORTED (measured 2026-10-14: 2,650 rows in 26 distinct key orders,
+    none of them sorted — the order is the writer's insertion order), so there is no rule to compute
+    a position from. There is only the file's own precedent: every row that carries the field has it
+    somewhere, and if they ALL have it after the same key, that key is the anchor and the new field
+    goes immediately after it. The 13 `_last_listed` rows all read `_pickless, _last_listed,
+    future_position`, so `_last_listed` is added after `_pickless`.
+
+    DISAGREEMENT IS A REFUSAL, NOT A VOTE: exemplar rows that place the field after different keys
+    describe no single order, and choosing the majority's would be a guess dressed as a measurement.
+    NO EXEMPLAR AT ALL means the file has no order for this field yet; the field is then appended as
+    the row's LAST field, which is the one position that asserts nothing about an order the file
+    does not have, and is what the store's own writer (`row[field] = v; json.dumps`) would produce.
+    """
+    preds = {}
+    for k, (_s, _e, row) in store_row_spans(text).items():
+        if field in row:
+            ks = list(row)
+            at = ks.index(field)
+            preds.setdefault(ks[at - 1] if at > 0 else None, []).append(k)
+    if not preds:
+        return {'kind': 'last', 'after': None, 'exemplars': 0}
+    if len(preds) > 1:
+        raise StepError('the rows that already carry %r do not agree on where it sits — it follows %s. '
+                        'No single order to keep means no position to insert at; the add is refused '
+                        'rather than guessed.'
+                        % (field, '; '.join('%r in %d row(s) (e.g. %s)' % (p, len(v), v[0])
+                                            for p, v in sorted(preds.items(), key=lambda kv: str(kv[0])))))
+    p = next(iter(preds))
+    return {'kind': 'first' if p is None else 'after', 'after': p, 'exemplars': len(preds[p])}
+
+
+def _apply_add(cur, i, e, start, end, row, anchor):
+    """THE ADD VERB on one row: insert `"<field>": <value>` where the file's own order puts it.
+
+    -> (new_text, applied_record). Refuses, in order: a field that is not a flat JSON key; a value
+    that is not a scalar; a row that ALREADY CARRIES the field (an add never overwrites — the value
+    the row carries is named in the refusal, because the spec's premise is false and that is a fact
+    about the store the seat has to see); a row that lacks the anchor key the exemplars put the field
+    after. Then it inserts, with the row's OWN separator and colon bytes copied from the field it is
+    inserted beside, and proves the row re-parses as the original dict plus the one key, in the
+    expected key order.
+    """
+    key, field, value = e['key'], e['field'], e['add']
+    if not isinstance(field, str) or not _ADD_FIELD.match(field):
+        raise StepError('edit %d: `add` takes a FLAT field name (%r is not one). A season path '
+                        '(`scoring[Y].x`) adds inside a container, whose on-disk shape this lane '
+                        'does not assume; a field the row has gets `old`/`new`, not `add`.'
+                        % (i, field))
+    enc = _scalar_json(value)
+    # THE FILE'S OWN ESCAPING: this store is written ascii-escaped (`\u` sequences, no raw non-ASCII
+    # byte), so an added string takes the escaped form when the file is pure ASCII, the literal form
+    # when the file already carries literal characters. An int takes the only form it has.
+    value_text = enc[0] if len(enc) == 1 else (enc[1] if cur.isascii() else enc[0])
+    if field in row:
+        raise StepError(
+            'THE FIELD AN `add` WOULD CREATE IS ALREADY ON THE ROW.\n'
+            '    row    : %s\n    field  : %s\n    carries: %s\n    add    : %s\n'
+            'An add never overwrites. This is an ABORT, not a repair: if the value the row carries is '
+            'wrong, declare it with `old`/`new`; if it is right, the add was not needed.'
+            % (key, field, json.dumps(row[field]), json.dumps(value)))
+    span = cur[start:end]
+    fields, _close = _row_fields(span)
+    names = [f['key'] for f in fields]
+    if names != list(row):
+        raise StepError('edit %d: row %r decodes to keys %s but its text carries %s; refusing to add '
+                        'into a row whose fields are not each present exactly once'
+                        % (i, key, list(row), names))
+    if anchor['kind'] == 'after':
+        if names.count(anchor['after']) != 1:
+            raise StepError('edit %d: the rows that carry %r all have it after %r, and row %r %s that '
+                            'key — there is no position in this row that keeps the file\'s order.'
+                            % (i, field, anchor['after'], key,
+                               'lacks' if anchor['after'] not in names else 'repeats'))
+        idx = names.index(anchor['after'])
+    elif anchor['kind'] == 'first':
+        idx = -1
+    else:
+        idx = len(fields) - 1
+    # THE ROW'S OWN BYTES BETWEEN FIELDS, copied from where the insertion is made.
+    ref = fields[idx] if idx >= 0 else fields[0]
+    colon = span[ref['kend']:ref['vstart']]
+    if idx >= 0 and idx + 1 < len(fields):
+        sep = span[fields[idx]['vend']:fields[idx + 1]['kstart']]
+    elif len(fields) > 1:
+        sep = span[fields[0]['vend']:fields[1]['kstart']]
+    else:
+        sep = ', '
+    if sep.strip() != ',' or colon.strip() != ':':
+        raise StepError('edit %d: row %r separates its fields with %r / %r, which this lane does not '
+                        'recognise as JSON spacing; refusing to copy it' % (i, key, sep, colon))
+    pair = '"%s"%s%s' % (field, colon, value_text)
+    if idx >= 0:
+        at, ins = fields[idx]['vend'], sep + pair
+    else:
+        at, ins = fields[0]['kstart'], pair + sep
+    nxt = cur[:start] + span[:at] + ins + span[at:] + cur[end:]
+
+    after = store_row_spans(nxt, [key])[key][2]
+    if json.dumps(after, sort_keys=True) != json.dumps(dict(row, **{field: value}), sort_keys=True):
+        raise StepError('edit %d: the row changed in some way other than the one added field' % i)
+    want = names[:idx + 1] + [field] + names[idx + 1:]
+    if list(after) != want:
+        raise StepError('edit %d: the row\'s keys read %s after the add; expected %s'
+                        % (i, list(after), want))
+    where = ('after %r' % anchor['after'] if anchor['kind'] == 'after'
+             else 'as the FIRST field' if anchor['kind'] == 'first' else 'as the LAST field')
+    return nxt, {'key': key, 'field': field, 'old': None, 'new': value, 'kind': 'add',
+                 'anchor': where, 'exemplars': anchor['exemplars'],
+                 'row_span': [start, end], 'at': start + at,
+                 'chars_before': len(cur), 'chars_after': len(nxt),
+                 'old_text': '', 'new_text': ins}
+
+
 def apply_store_edits(text, edits):
     """THE SURGICAL BYTE REPLACEMENT. -> (new_text, [applied]). Pure: it writes nothing.
 
@@ -394,29 +553,53 @@ def apply_store_edits(text, edits):
     something to catch). A second copy of this function anywhere would be the mirrored-pair hazard the
     whole library exists to refuse.
 
-    WHAT IT ASSERTS, PER EDIT, BEFORE IT CHANGES A BYTE:
+    TWO VERBS, DECLARED BY SHAPE. `{key, field, old, new}` CHANGES a field the row carries. `{key,
+    field, add}` ADDS a flat field the row does NOT carry (2026-10-14: `_last_listed`, a listing fact
+    the owner supplied for ~204 retired rows that never had it). The lane never creates a ROW; it
+    adds a FIELD only under the explicit `add` verb, and the two are mutually exclusive on one entry.
+
+    WHAT A CHANGE ASSERTS, PER EDIT, BEFORE IT CHANGES A BYTE:
 
       1. the store carries EXACTLY ONE row with that `key` (`store_row_spans`);
-      2. that row HAS the named field — a field the row does not carry cannot be "corrected";
+      2. that row HAS the named field — a field the row does not carry cannot be "corrected" (that
+         is what `add` is for);
       3. the field's value is EXACTLY `old`, compared on its JSON encoding so that `true` is not `1`
          and `90` is not `90.0`. A mismatch is an ABORT, never a repair (the exact-string law);
       4. the text `"<field>": <old>` occurs EXACTLY ONCE inside that row's span. Not once in the file
          — once in the SPAN, which is what makes this an edit to a named row rather than a global
          substitution that happens to hit the right one.
 
-    AND AFTER: the row re-parses equal to itself with the one field changed, and reversing every
-    replacement reproduces the input text CHARACTER FOR CHARACTER. That reverse check is the pins
-    step's own byte proof, carried: the only bytes that differ are the declared values.
+    WHAT AN ADD ASSERTS (`_apply_add`): the same unique row; the field is a FLAT key and the value a
+    scalar; the row does NOT carry the field — a row that does is an ABORT naming the value it
+    carries, never an overwrite; and the position is the file's own (`_add_anchor`: after the key
+    every row that already carries the field has it after), with the row's own separator bytes.
+
+    AND AFTER: the row re-parses equal to itself with the one field changed (or plus the one field
+    added, in the expected key order), and reversing every replacement — removing every inserted
+    text — reproduces the input text CHARACTER FOR CHARACTER. That reverse check is the pins step's
+    own byte proof, carried: the only bytes that differ are the declared values.
     """
     applied = []
     cur = text
+    anchors = {}   # field -> where the file puts it, measured ONCE per field off the INPUT text
     for i, e in enumerate(edits):
-        key, field, old, new = e['key'], e['field'], e['old'], e['new']
+        key, field = e['key'], e['field']
         spans = store_row_spans(cur, [key])
         if key not in spans:
             raise StepError('edit %d: the store has no row with key %r. The lander edits a row it '
                             'found; it never creates one.' % (i, key))
         start, end, row = spans[key]
+        if 'add' in e:
+            if 'old' in e or 'new' in e:
+                raise StepError('edit %d: `add` is mutually exclusive with `old`/`new` — one entry is '
+                                'one verb, and there is no value to assert on a field the row does '
+                                'not have.' % i)
+            if field not in anchors:
+                anchors[field] = _add_anchor(text, field)
+            cur, rec = _apply_add(cur, i, e, start, end, row, anchors[field])
+            applied.append(rec)
+            continue
+        old, new = e['old'], e['new']
 
         # A SEASON-ROW PATH (`scoring[2017].games`) narrows the span to that one season object and
         # then behaves exactly as the flat path does inside it: the field must exist, `old` must
@@ -450,7 +633,8 @@ def apply_store_edits(text, edits):
         else:
             if field not in row:
                 raise StepError('edit %d: row %r has no field %r (it carries: %s). A field that is '
-                                'not there is not a field that is wrong.'
+                                'not there is not a field that is wrong; a field the row should '
+                                'carry is declared with `add`, not `old`/`new`.'
                                 % (i, key, field, ', '.join(sorted(row)[:12])))
             got = row[field]
         if json.dumps(got, sort_keys=True) != json.dumps(old, sort_keys=True):
@@ -511,7 +695,7 @@ def apply_store_edits(text, edits):
                                 % i)
         if json.dumps(after[field], sort_keys=True) != json.dumps(new, sort_keys=True):
             raise StepError('edit %d: the row does not carry the new value after the replacement' % i)
-        applied.append({'key': key, 'field': e['field'], 'old': old, 'new': new,
+        applied.append({'key': key, 'field': e['field'], 'old': old, 'new': new, 'kind': 'change',
                         'row_span': [start, end], 'at': start + m.start(),
                         'chars_before': len(cur), 'chars_after': len(nxt),
                         'old_text': m.group(0), 'new_text': m.group(1) + new_enc})
@@ -522,7 +706,9 @@ def apply_store_edits(text, edits):
     # occurrence in the file, which for `"p_dual_stream": 40` is another player's row entirely — the
     # first draft refused the real Graham edit on its own reverse check for exactly that. Each
     # replacement is undone AT THE OFFSET IT WAS MADE, newest first so the earlier offsets still
-    # describe the text they were measured in.
+    # describe the text they were measured in. An ADD is the same record with an EMPTY `old_text`:
+    # undoing it removes the inserted bytes, so the proof that nothing beyond the declared bytes
+    # moved covers both verbs without a second loop.
     rev = cur
     for a in reversed(applied):
         at, nt = a['at'], a['new_text']
@@ -580,14 +766,20 @@ def store_edit(ctx):
     new_raw = new_text.encode('utf-8')
     after_md5 = hashlib.md5(new_raw).hexdigest()
 
-    ctx.log('THE EDIT — surgical, inside the named row\'s span; `old` asserted, never repaired:')
+    ctx.log('THE EDIT — surgical, inside the named row\'s span; `old` asserted, never repaired; '
+            '`add` inserted, never overwriting:')
     for a in applied:
-        ctx.log('    %-28s %-18s %s -> %s   (row span %d..%d, at char %d)'
-                % (a['key'], a['field'], json.dumps(a['old']), json.dumps(a['new']),
-                   a['row_span'][0], a['row_span'][1], a['at']))
+        if a.get('kind') == 'add':
+            ctx.log('    %-28s %-18s ADD %s   %s, as %d exemplar row(s) carry it   (row span %d..%d, '
+                    'at char %d)' % (a['key'], a['field'], json.dumps(a['new']), a['anchor'],
+                                     a['exemplars'], a['row_span'][0], a['row_span'][1], a['at']))
+        else:
+            ctx.log('    %-28s %-18s %s -> %s   (row span %d..%d, at char %d)'
+                    % (a['key'], a['field'], json.dumps(a['old']), json.dumps(a['new']),
+                       a['row_span'][0], a['row_span'][1], a['at']))
     ctx.log('store AFTER   %s   (%d bytes, %+d)' % (after_md5, len(new_raw), len(new_raw) - len(raw)))
-    ctx.log('byte check: reversing every declared replacement reproduces the store byte-for-byte — '
-            'the ONLY bytes that differ are the declared field values.')
+    ctx.log('byte check: reversing every declared replacement (removing every added field) reproduces '
+            'the store byte-for-byte — the ONLY bytes that differ are the declared field values.')
     if after_md5 == before_md5:
         raise StepError('the edited store is byte-identical to the store this step started from. An '
                         'edit that moves no byte is not an edit.')
@@ -746,7 +938,9 @@ def _finals_exposure_hold(ctx, SS, cur, new, moved, store_md5):
     played = SS.finals_played(reports.get('reports') or {}, int(cur['as_of_round']))
     gf = 'scoring[%d].games' % year
     for e in (ctx.spec.get('edit') or {}).get('store') or []:
-        if e.get('field') == gf:
+        # A CHANGE to this season's games moves the count; an `add` is a flat field by construction
+        # (`_ADD_FIELD`) and carries no `old` to subtract, so it never reaches this arithmetic.
+        if e.get('field') == gf and 'add' not in e:
             played[e['key']] = played.get(e['key'], 0) + int(e['new']) - int(e['old'])
     rows = json.load(open(_p(ctx, STORE_REL), encoding='utf-8'))
     ep, meta = SS.exposure_pace(SS.home_and_away_rows(rows, played, year), year)
