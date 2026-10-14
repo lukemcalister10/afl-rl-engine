@@ -1,0 +1,12 @@
+$ python3 ui/tools/ownership_store_apply.py verify
+(cwd /home/user/afl-rl-engine)
+
+  store file                             d83692ba774a8f9c3dbbd1bb3a273775
+  expected_boot.store                    d83692ba774a8f9c3dbbd1bb3a273775
+  release_contract.identities.store      d83692ba774a8f9c3dbbd1bb3a273775
+  season_state.source_store_md5          d83692ba774a8f9c3dbbd1bb3a273775
+  rl_app_data.json.srcmd5.source_md5     d83692ba774a8f9c3dbbd1bb3a273775
+  board_view_working.stamp.store_md5     d83692ba774a8f9c3dbbd1bb3a273775
+  six-way store coherence: PASS
+
+[exit 0]
