@@ -1,0 +1,1209 @@
+{
+ "schema_version": 1,
+ "act_kind": "store-edit",
+ "act": "THE LISTING FACT: _last_listed set on 201 retired rows from the AFL end-of-season list changes (2025 and 2024), owner-couriered; the 13 rows that already carried it agree. Board unchanged by construction (every row is already retired).",
+ "date": "2026-10-14",
+ "owner_word": "Owner, 2026-10-14: the AFL retirements-and-delistings pages for 2025 and 2024 (\"obviously ignore anyone who is trd or fa\"; a re-appearance voids the exit; \"Tarryn Thomas was cut at the end of 2023\").",
+ "authority": "owner ruling 2026-09-24 (career games = sum of season rows) + owner word on this act",
+ "prereg": {
+  "path": "docs/evidence/store_edit_last_listed_2026-10-14/NOTE.md",
+  "board_before": "bec12594550a4380b80ac00cbb0b65e9",
+  "board_after": "bec12594550a4380b80ac00cbb0b65e9",
+  "reference_board": null,
+  "kill_switch": null
+ },
+ "edit": {
+  "store": [
+   {
+    "key": "lachlan-gollant",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "will-hamill",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "patrick-parnell",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "rory-sloane",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "joe-daniher",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "kalin-lane",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "jarryd-lyons",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "james-madden",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "carter-michael",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "dom-akuei",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "david-cuningham",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "sam-durdin",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "caleb-marchbank",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "alex-mirkov",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "aiden-begg",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "jack-bytel",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "josh-carmichael",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "nathan-kreuger",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "nathan-murphy",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "kaine-baldwin",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "jayden-davey",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "dyson-heppell",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "nick-hind",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "jaiden-hunter",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "jake-kelly",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "tex-wanganeen",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "sam-weideman",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "josh-corbett",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "tom-emmett",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "ethan-hughes",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "sebit-kuek",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "ethan-stanley",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "matthew-taberner",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "conrad-williams",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "phoenix-foster",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "mitch-hardie",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "tom-hawkins",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "emerson-jeka",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "oscar-murdoch",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "brandan-parfitt",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "gary-rohan",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "zach-tuohy",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "james-willis",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "levi-casboult",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "brandon-ellis",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "oskar-faulkhead",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "darcy-macpherson",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "jack-mahony",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "hewago-oea",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "james-tsitas",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "cooper-hamilton",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "braydon-preuss",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "joshua-bennetts",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "denver-grainger-barras",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "cooper-stephens",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "jack-o-sullivan",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "ethan-phillips",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "clay-tucker",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "chad-wingard",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "angus-brayshaw",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "ben-brown",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "kyah-farris-white",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "lachlan-hunter",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "josh-schache",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "joel-smith-1",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "adam-tomlinson",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "blake-drury",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "hamish-free",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "hugh-greenwood",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "charlie-lazzaro",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "bigoa-nyuon",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "tyler-sellers",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "liam-shiels",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "jaidyn-stephenson",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "curtis-taylor",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "tom-clurey",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "charlie-dixon",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "kyle-marshall",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "tom-mccallum",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "matt-coulthard",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "noah-cumberland",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "dylan-grimes",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "dustin-martin",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "sam-naismith",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "marlion-pickett",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "riley-bonner",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "brad-crouch",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "jack-hayes",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "olli-hotton",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "sebastian-ross",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "james-van-es",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "harry-arnold",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "jaiden-magor",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "sam-reid-syd",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "cooper-vickery",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "jordyn-baker",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "coby-burgiel",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "luke-edwards",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "andrew-gaff",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "jamaine-jones",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "josh-rotham",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "zane-trew",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "alex-witherden",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "dominic-bedendo",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "charlie-clarke",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "alex-keath",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "aiden-o-driscoll",
+    "field": "_last_listed",
+    "add": 2024
+   },
+   {
+    "key": "chris-burgess",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "matt-crouch",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "lachlan-murphy",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "brodie-smith",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "kieran-strachan",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "darcy-craven",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "oscar-mcinerney",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "brandon-ryan",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "jaxon-binns",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "alex-cincotta",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "sam-docherty",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "orazio-fantasia",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "harry-lemmey",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "will-white",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "charlie-dean",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "will-hoskin-elliott",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "ash-johnson",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "oleg-markov",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "tom-mitchell",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "alwyn-davey-1",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "todd-goldstein",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "ben-hobbs",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "luamon-lual",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "jye-menzie",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "dylan-shiel",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "oskar-smartt",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "james-aish",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "jack-delean",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "nathan-fyfe",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "quinton-narkle",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "michael-walters",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "ted-clohesy",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "mitchell-duncan",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "cameron-guthrie",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "thomas-berry",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "lloyd-johnston",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "sean-lemmens",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "alex-sexton",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "david-swallow",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "josh-fahey",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "lachlan-keeffe",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "callan-ward",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "luke-breust",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "sam-frost",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "seamus-mitchell",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "jasper-scaife",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "jack-billings",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "tom-fullarton",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "marty-hore",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "oliver-sestan",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "will-verrall",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "taj-woewodin",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "miller-bergman",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "kallan-dawson",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "eddie-ford",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "geordie-payne",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "will-phillips",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "brynn-teakle",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "darcy-tucker",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "rory-atkins",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "travis-boak",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "ryan-burton",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "jeremy-finlayson",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "hugh-jackson",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "jed-mcentee",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "willie-rioli",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "dylan-williams",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "jacob-bauer",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "jacob-blight",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "thomson-dow",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "jacob-koschitzke",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "kamdyn-mcintosh",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "harry-boyd",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "zaine-cordy",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "zak-jones",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "angus-mclennan",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "arie-schoenmaker",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "jimmy-webster",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "robbie-fox",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "aaron-francis",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "caleb-mitchell",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "jayden-hunt",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "callum-jamieson",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "coen-livingstone",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "jeremy-mcgovern",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "jack-petruccelle",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "dominic-sheed",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "taylor-duryea",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "james-harmes",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "jason-johannisen",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "liam-jones",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "caleb-poulter",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "anthony-scott",
+    "field": "_last_listed",
+    "add": 2025
+   },
+   {
+    "key": "tarryn-thomas",
+    "field": "_last_listed",
+    "add": 2023
+   }
+  ],
+  "expected_movers": [],
+  "_doc_expected_movers": "none: every edited row is retired (back section, priced as scrap regardless of _last_listed); the board is predicted byte-identical."
+ },
+ "identities": {
+  "moves": [
+   "store"
+  ],
+  "unmoved": [
+   "board",
+   "engine_head",
+   "rl_model",
+   "fv",
+   "config",
+   "register",
+   "as_of_round"
+  ]
+ },
+ "column": null,
+ "lineage": {
+  "doc": "docs/evidence/store_edit_last_listed_2026-10-14/NOTE.md",
+  "owner_ruling_id": [
+   "LIST_CHANGES_2026-10-14"
+  ],
+  "owner_ruling": "The AFL end-of-season lists are the listing fact; ret/del are exits, trd/FA are not; a later re-appearance voids an exit.",
+  "authority": "owner word 2026-10-14",
+  "kind": "owner-store-edit",
+  "invariants": {
+   "board": "byte-identical"
+  }
+ },
+ "day0_rebase": {
+  "state": "off"
+ },
+ "evidence_dir": "docs/evidence/store_edit_last_listed_2026-10-14",
+ "gates": [
+  {
+   "name": "release_manifest_check",
+   "argv": [
+    "python3",
+    "release_manifest_check.py"
+   ],
+   "must_contain": "PASS"
+  },
+  {
+   "name": "release_contract_check",
+   "argv": [
+    "python3",
+    "release_contract.py",
+    "check"
+   ],
+   "must_contain": "PASS"
+  },
+  {
+   "name": "acceptance_runner",
+   "argv": [
+    "python3",
+    "-m",
+    "acceptance.runner",
+    "--profile",
+    "in-transaction",
+    "--evidence",
+    "@EVIDENCE@"
+   ],
+   "must_contain": "GREEN"
+  },
+  {
+   "name": "movers_transition",
+   "argv": [
+    "python3",
+    "engine/rl_after/ingestion/test_movers_transition.py"
+   ]
+  },
+  {
+   "name": "finals_report",
+   "argv": [
+    "python3",
+    "engine/rl_after/ingestion/test_finals_report.py"
+   ]
+  },
+  {
+   "name": "movers_ui",
+   "argv": [
+    "node",
+    "ui/tests/movers.test.js"
+   ]
+  },
+  {
+   "name": "ui_222_items",
+   "argv": [
+    "node",
+    "ui/tests/ui_222_items.test.mjs"
+   ]
+  },
+  {
+   "name": "ui_defects_2026_08_21",
+   "argv": [
+    "node",
+    "ui/tests/ui_defects_2026-08-21.test.js"
+   ]
+  },
+  {
+   "name": "universe",
+   "argv": [
+    "node",
+    "ui/tests/universe.test.js"
+   ]
+  },
+  {
+   "name": "draftday",
+   "argv": [
+    "node",
+    "ui/tests/draftday.test.js"
+   ]
+  },
+  {
+   "name": "pickvalue",
+   "argv": [
+    "node",
+    "ui/tests/pickvalue.test.js"
+   ]
+  },
+  {
+   "name": "release_seam",
+   "argv": [
+    "node",
+    "ui/tests/release_seam.test.js"
+   ]
+  },
+  {
+   "name": "adoption_gate",
+   "argv": [
+    "node",
+    "ui/tests/adoption_gate.test.js"
+   ]
+  },
+  {
+   "name": "club_totals_parity",
+   "argv": [
+    "node",
+    "ui/tests/club_totals_parity.test.js"
+   ]
+  },
+  {
+   "name": "counting_rule",
+   "argv": [
+    "node",
+    "ui/tests/counting_rule.test.js"
+   ]
+  },
+  {
+   "name": "ownership_sidecar",
+   "argv": [
+    "node",
+    "ui/tests/ownership_sidecar.test.js"
+   ]
+  },
+  {
+   "name": "ownership_single_source",
+   "argv": [
+    "node",
+    "ui/tests/ownership_single_source.test.js"
+   ]
+  },
+  {
+   "name": "responsive_layout",
+   "argv": [
+    "node",
+    "ui/tests/responsive_layout.test.mjs"
+   ]
+  },
+  {
+   "name": "extract_seam",
+   "argv": [
+    "python3",
+    "ui/tests/extract_seam.test.py"
+   ]
+  },
+  {
+   "name": "club_curve_provenance",
+   "argv": [
+    "python3",
+    "ui/tests/club_curve_provenance.test.py"
+   ]
+  }
+ ],
+ "commit_message": "STORE: _last_listed set on 201 retired rows from the AFL 2025/2024 list changes (owner-couriered; board unchanged)"
+}

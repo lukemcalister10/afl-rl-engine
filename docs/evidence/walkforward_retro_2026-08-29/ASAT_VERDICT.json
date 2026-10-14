@@ -1,0 +1,36 @@
+{
+ "control": {
+  "n": 804,
+  "diffs": 0,
+  "missing": 0,
+  "pass": true,
+  "sample_diffs": {}
+ },
+ "seasons": {
+  "2025": {
+   "n": 790,
+   "retired_now": 91,
+   "active_now": 699,
+   "by_reason": {
+    "played": 668,
+    "active_now": 106,
+    "listed": 8,
+    "entry_window": 8
+   }
+  },
+  "2024": {
+   "n": 775,
+   "retired_now": 188,
+   "active_now": 587,
+   "by_reason": {
+    "played": 656,
+    "active_now": 73,
+    "listed": 7,
+    "entry_window": 39
+   }
+  }
+ },
+ "board_md5": "bec12594550a4380b80ac00cbb0b65e9",
+ "store_md5": "b0eeaf4b9f766e6618081dce8fc328e3",
+ "rule": "R1 (owner ruling 2026-10-14): on the board at end of Y iff debut<=Y (debut=year+1; MSD=year) and (played a game in Y, or _last_listed>=Y, or active now, or never played and debut<=Y<=debut+1). Priced with BASE_REF=AGE_REF=Y, scoring rewound to <=Y, _retired/_last_listed cleared for the duration; v=round(ev/_PL_F), no display override."
+}
