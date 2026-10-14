@@ -1,0 +1,6 @@
+q97m     MIRROR OK   RL_Q97M_PKL -> /home/claude/q97m.pkl -> RL_REPO -> CLAUDE_PROJECT_DIR -> data -> q97m.pkl
+         PIN OK      data/q97m.pkl == expected_boot['q97m']
+v0surf   MIRROR OK   RL_V0SURF_PKL -> RL_REPO -> CLAUDE_PROJECT_DIR -> data -> v0surf.pkl
+         PIN OK      data/v0surf.pkl == expected_boot['v0surf']
+cm/band  MIRROR OK   RL_CM_PKL -> /home/claude/cm_{}.pkl -> RL_PRIOR_TREES -> 400
+         PIN OK      data/cm_400.pkl == expected_boot['band']
