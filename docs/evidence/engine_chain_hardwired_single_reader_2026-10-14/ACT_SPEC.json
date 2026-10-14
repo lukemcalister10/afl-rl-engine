@@ -14,17 +14,18 @@
  },
  "identities": {
   "moves": [
-   "board",
-   "engine_head",
-   "rl_model",
-   "fv"
+   "board"
   ],
   "unmoved": [
    "store",
+   "engine_head",
+   "rl_model",
+   "fv",
    "config",
    "register",
    "as_of_round"
-  ]
+  ],
+  "_doc": "engine_head, rl_model and fv moved at the flip commit (6d83a99d/7d6e63a5), before this landing; inside the transaction they are byte-stable, so they are declared unmoved here (spec law, ORDER 45 attempt 4)."
  },
  "column": {
   "id": "chain-hardwired-single-reader-14-10",
