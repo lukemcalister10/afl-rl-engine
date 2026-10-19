@@ -1,0 +1,141 @@
+==========================================================================================================================
+ORDER 26B-V  --  THE GRACE-YEARS VARIANTS.   **MEASUREMENT ONLY.  NOT RULED.**
+==========================================================================================================================
+  flat-14 on the C2 basis remains the OPERATIVE derivation. These are labelled Layer-2 re-runs.
+  order: #334 comment 5275831956.  forms and predictions: PRESTATEMENT_26BV.md (pushed first).
+  mechanism: an EXPONENT SHIFT in the existing discount ladder: DF(k) = disc_factor(entry_age, 0.14, max(0, k - G)). It still routes through the engine's own disc_factor callable; only the exponent handed to it moves.
+  k-mapping: k = season_year - entry_year; k = 1 is a normal draftee's FIRST played season and carries 1.14^-1 on the current basis. k <= 0 discounts at 1.0 (engine convention).
+  READING O (PRIMARY):   PRIMARY. exponent max(0, k - G_O).  grace-A: G_O = 2 if entry_age <= 19 else 0.  grace-B: G_O = 3 if <= 19, 2 if == 20, else 0.
+  READING L (secondary): SECONDARY. exponent max(0, k - 1 - G).  grace-A: G = 1 if <= 19 else 0.  grace-B: G = 2 if <= 19, 1 if == 20, else 0.  Gives EVERY entrant one free year at G = 0.
+  everything else identical to C2: identical to the operative C2 basis: loclin curve, force-majeure slide, window tiers, games weighting, K=15, bars, positions, tails.
+
+  LANDING CONSTRAINT, recorded before the numbers: AT LANDING THE TWO SIDES CANNOT MOVE APART. The identity gate ties this scorer to price6, which discounts projected seasons through the same disc_factor. A grace on the curve side alone would break that identity and the ruled landing assert with it. If a grace is ever ruled in it must be ruled into disc_factor itself, and both sides re-derive together.
+
+--------------------------------------------------------------------------------------------------------------------------
+ARM STATUS -- carried on the face of the menu, not in a footnote
+--------------------------------------------------------------------------------------------------------------------------
+  flat-14    OPERATIVE -- the live config and the basis of every 26B conclusion
+  V5 [OFF]   RULED OFF 2026-08-13. OWNER: "don't worry about V5 for now - the XW change addressed the issue and V5 on top would impact the live board a bit too much I think." Kept in the menu as MEASURED CONTEXT only; it is not a live option.
+  grace-A    NOT RULED -- live variant, measurement only
+  grace-B    NOT RULED -- live variant, measurement only
+
+--------------------------------------------------------------------------------------------------------------------------
+1.  THE FOUR-WAY MENU
+--------------------------------------------------------------------------------------------------------------------------
+  metric                            flat-14       V5 [OFF]        grace-A        grace-B
+  PRE-ANCHOR HEAD (pick 1)           2463.1         2765.5         3191.2         3602.8
+  ANCHOR FACTOR                      1.2180         1.0848         0.9401         0.8327
+  PICK-vs-PLAYER PREMIUM              21.8%           8.5%          -6.0%         -16.7%
+  ND cohort mean                      615.5          692.1          789.1          890.9
+  pooled derived/printed             0.3906         0.3757         0.3477         0.3472
+  pooled derived/ANCHOR              1.0056         0.9670         0.8950         0.8937
+  reconciliation (assert)         2.220e-16      2.220e-16      2.220e-16      2.220e-16
+
+  THE ANCHORED CURVE (all four pinned at pick 1 = 3000, so this is SHAPE only)
+  pick                  1       2       3       5       7      10      15      20      30      40      50      64
+  flat-14            3000    2663    2563    1802    1242    1309     808     868     614     499     283     105
+  V5 [OFF]           3000    2677    2587    1813    1248    1324     811     863     618     494     281     109
+  grace-A            3000    2668    2569    1804    1243    1312     803     859     607     479     274     106
+  grace-B            3000    2669    2571    1807    1243    1318     804     858     611     476     273     106
+  today PVC          3000    2999    2874    1881    1549    1460    1030     990     663     514     346     185
+
+  max |V5 [OFF] / flat-14 - 1| across picks 1-64 (post-anchor SHAPE): 0.0342 (3.42%)
+  max |grace-A / flat-14 - 1| across picks 1-64 (post-anchor SHAPE): 0.0425 (4.25%)
+  max |grace-B / flat-14 - 1| across picks 1-64 (post-anchor SHAPE): 0.0488 (4.88%)
+
+  PATHWAY ND-PICK EQUIVALENTS  (the '>64' threshold is each variant's own pick-64 value)
+  path     flat-14 v V5 [OFF] v  grace-A v  grace-B v   eq flat- eq V5 [O eq grace eq grace
+  MSD            396        375        335        346         45       45       47       46
+  ND>64          286        283        264        269         50       50       52       51
+  SSP            260        245        216        228         53       55       57       56
+  RD             257        247        231        226         54       55       56       56
+  PDA            195        193        188        189         59       60       60       59
+  UNR            150        141        125        125         62       63       63       63
+  PDN            124        120        111        113         63       64       64       64
+  PDS            111        108        101        101         64      >64      >64      >64
+  IRE            103        100         95         96        >64      >64      >64      >64
+  pick-64 value: flat-14 105  V5 [OFF] 109  grace-A 106  grace-B 106
+
+  POOLED derived/printed and derived/ANCHOR, BY DAY-0 POSITION (medians)
+  pos         flat-14    V5 [OFF]     grace-A     grace-B
+  MID p        0.4137      0.3987      0.3747      0.3740
+  MID a        0.8085      0.7792      0.7324      0.7310
+  SD p         0.3575      0.3431      0.3097      0.3194
+  SD a         1.1615      1.1145      1.0394      1.0140
+  SF p         0.3734      0.3629      0.3522      0.3510
+  SF a         0.8687      0.8444      0.8195      0.8166
+  KPD p        0.2484      0.2337      0.2128      0.2052
+  KPD a        0.6750      0.6272      0.5889      0.5864
+  KPF p        0.2299      0.2237      0.2089      0.2026
+  KPF a        1.0240      0.9965      0.9303      0.9022
+  RUCK p       1.2634      1.2020      1.0883      1.0402
+  RUCK a       1.6807      1.5990      1.4478      1.3838
+
+  BY PATHWAY, derived/ANCHOR (median) -- who gains and who loses under grace
+  path         flat-14    V5 [OFF]     grace-A     grace-B   A/flat  B/flat
+  RD            0.9763      0.9490      0.9210      0.9022    0.943   0.924
+  SSP           0.6750      0.6272      0.5447      0.5681    0.807   0.842
+  MSD           1.2819      1.1986      1.0639      1.0684    0.830   0.833
+  IRE           0.8819      0.8517      0.8210      0.8411    0.931   0.954
+  PDA           0.9616      0.9385      0.9343      0.9556    0.972   0.994
+  PDN           0.9596      0.9270      0.8698      0.8806    0.906   0.918
+  PDS           1.5335      1.4788      1.3853      1.3626    0.903   0.889
+  UNR           1.4518      1.3788      1.2260      1.1959    0.844   0.824
+  ND>64         1.0281      0.9908      0.8764      0.9371    0.852   0.912
+
+--------------------------------------------------------------------------------------------------------------------------
+2.  READING L vs READING O, AND THE grace-0 DIAGNOSTIC  (the conflation, as a number)
+--------------------------------------------------------------------------------------------------------------------------
+  The order's formula (1.14)^-max(0, j-1-G) gives EVERY entrant one free year at G=0, which
+  collides with the owner's own 'Not mature age players'. Reading O honours both constraints;
+  Reading L is the formula taken literally. grace-0 isolates the universal shift alone.
+  arm                      head       factor      premium   der/anchor  der/printed
+  flat-14                2463.1       1.2180        21.8%       1.0056       0.3906
+  V5 [OFF]               2765.5       1.0848         8.5%       0.9670       0.3757
+  grace-A                3191.2       0.9401        -6.0%       0.8950       0.3477
+  grace-B                3602.8       0.8327       -16.7%       0.8937       0.3472
+  grace-A (L)            3191.2       0.9401        -6.0%       0.9476       0.3681
+  grace-B (L)            3602.8       0.8327       -16.7%       0.9217       0.3580
+  grace-0 (diag)         2807.9       1.0684         6.8%       1.0053       0.3905
+
+  READING-CHOICE SENSITIVITY (L/O):  head 1.0000 / 1.0000   pooled der/anchor 1.0588 / 1.0313
+
+--------------------------------------------------------------------------------------------------------------------------
+3.  THE HITS TABLE -- THE PICK-1 COHORT, PER PLAYER  (the owner's specific ask)
+--------------------------------------------------------------------------------------------------------------------------
+  entries 2004-2021 attributed to slid pick 1, after the force-majeure exclusion (26B-C1).
+  key                       entry    age     flat-14     grace-A     grace-B   A/flat   B/flat
+  sam-walsh                  2018     18      4589.1      5922.0      6607.5   1.2905   1.4398
+  brett-deledio              2004     17      4450.7      5751.3      6471.9   1.2922   1.4541
+  jason-horne-francis        2021     18      4225.9      5489.5      6215.1   1.2990   1.4707
+  marc-murphy                2005     18      4035.9      5243.7      5959.8   1.2993   1.4767
+  matt-rowell                2019     18      3922.4      5021.8      5649.0   1.2803   1.4402
+  christian-petracca         2014     18      3621.7      4706.8      5343.1   1.2996   1.4753
+  joshua-kelly               2013     18      3592.8      4668.6      5305.8   1.2994   1.4768
+  bryce-gibbs                2006     18      3239.7      4210.3      4732.6   1.2996   1.4608
+  lachie-whitfield           2012     18      2761.4      3585.8      4070.3   1.2986   1.4740
+  jacob-weitering            2015     18      1505.9      1942.4      2192.9   1.2899   1.4563
+  matthew-kreuzer            2007     18      1494.2      1941.7      2191.9   1.2996   1.4670
+  jack-watts                 2008     17      1469.5      1909.8      2176.7   1.2996   1.4813
+  jaeger-o-meara             2011     17      1440.1      1871.6      2078.4   1.2996   1.4432
+  david-swallow              2010     17      1385.6      1785.9      2009.7   1.2889   1.4504
+  andrew-mcgrath             2016     18      1295.4      1681.3      1911.9   1.2979   1.4759
+  tom-scully                 2009     18       659.9       856.0       963.2   1.2972   1.4597
+  cameron-rayner             2017     18       441.3       572.5       651.7   1.2973   1.4767
+  jamarra-ugle-hagan         2020     18       149.8       194.7       221.9   1.2994   1.4810
+  flat-14                  cohort mean     2460.1   top     4589.1   top/mean  1.865   zeros 0 of 18
+  grace-A                  cohort mean     3186.4   top     5922.0   top/mean  1.859   zeros 0 of 18
+  grace-B                  cohort mean     3597.4   top     6607.5   top/mean  1.837   zeros 0 of 18
+  LONG careers (>=8 seasons, n=15):  A/flat 1.2966   B/flat 1.4645
+  AND THE BUSTS: every zero stays exactly zero under every ladder -- a career with no above-bar
+  season scores 0 whatever the discount, so grace cannot move a bust by construction.
+
+--------------------------------------------------------------------------------------------------------------------------
+4.  THE NAMED ROWS UNDER EACH VARIANT
+--------------------------------------------------------------------------------------------------------------------------
+  key                path      age   deliv f14    deliv gA    deliv gB        v0 f14       v0 gA       v0 gB
+  willem-duursma     ND 1-64    18      3531.0      4580.2      5186.0        3157.2      3157.2      3157.2
+  callum-moore       RD         19         5.2         6.7         7.6         222.0       201.7       195.6
+  harrison-ramm      MSD        19       696.1       904.7      1030.4         397.3       342.5       346.7
+  vigo-visentini     RD         18       588.0       764.1       871.1         454.6       391.6       374.3
+  jai-newcombe       MSD        20      3992.5      3992.5      5146.7         628.2       504.6       547.0
