@@ -1,0 +1,389 @@
+======================================================================================================================
+ORDER 19 -- THE POOL SITTER LIFT: TWO VARIANTS, BOTH MEASURED
+======================================================================================================================
+  pins asserted at entry:  board 94f1fec5..  store d9a24282..  instrument 0f822035..
+  shipped constants read from the engine: H_POOLSIT=0.804  H_UNION=0.280  (composed 0.2251)
+  engine loaded read-only from a staged copy; repo untouched.  MA.data n=2650
+
+======================================================================================================================
+0. CONTROLS -- BELIEVE NOTHING UNTIL THE BASELINE REPRODUCES
+======================================================================================================================
+  board BASE    md5 94f1fec59f99c59d5890d5975c79fa9b   (board_BASE.json)
+  board LIFTH   md5 5053a763d8c3de875999f4642cdd8165   (board_LIFTH.json)
+  board LIFTRH  md5 e47fa529cf1f79257f4863b573d5c307   (board_LIFTRH.json)
+  live board md5 94f1fec59f99c59d5890d5975c79fa9b
+  CONTROL 1: the HEAD-defaults board build reproduces THE LIVE BOARD BYTE-FOR-BYTE -> REPRODUCED
+  CONTROL 2: a fresh HEAD-defaults 24-year emit reproduces per_entrant_SHIP.json `recs` -> REPRODUCED
+  matrix engine identities: SHIP a8071af4   LIFTH a8071af4   LIFTRH 002ff843
+    -> LIFTRH's engine_head DIFFERS. That is the machine-readable proof variant B is a CODE
+       variant, not a dial variant, and that the patch was actually in the tree that emitted it.
+  store pin on every matrix: d9a24282 / d9a24282 / d9a24282
+
+======================================================================================================================
+1. THE BOARD EFFECT -- LIVE BOARD, 'active' ROWS  (v = round(engine ev(p,2026) / F))
+======================================================================================================================
+  active rows: 804      board total today: 745,888 board points
+
+                              board total         change   change %
+  ------------------------------------------------------------------
+  TODAY (shipped)                 745,888              -          -
+  VARIANT A  (H lifted)           748,194          2,306    +0.309%
+  VARIANT B  (H and R lifted)        754,355          8,467    +1.135%
+
+  ROWS MOVED
+                              moved       up     down   sum of moves   largest move
+  ----------------------------------------------------------------------------------
+  VARIANT A                      49       49        0          2,306            689
+  VARIANT B                      75       75        0          8,467            689
+
+  ROW SETS: A moves 49, B moves 75.  A subset of B: True.  B \ A = 26 rows.  A \ B = 0 rows.
+  Every moved row is a POOL row: A True   B True
+  Every moved row is a 2026 SIT-OUT (zero games this season): A True   B False
+
+  NO NATIONAL-ARM ROW MOVES. This is the owner's ruling, verified rather than asserted:
+      ND 1-64 board rows whose value changes under EITHER variant: 0
+
+  DISTRIBUTION OF THE MOVES (percentage change of the row's own value)
+  variant             n        min        p25     median        p75        max
+  --------------------------------------------------------------------------
+  VARIANT A          49      2.50%     17.05%     23.88%     26.53%    344.23%
+  VARIANT B          75      2.50%     51.59%    106.25%    184.62%    633.33%
+
+  BUCKETED (variant B, the full lift)
+      0 - 10%         4 rows             28 board points
+      10 - 25%       12 rows          1,270 board points
+      25 - 50%        3 rows            298 board points
+      50 - 100%       7 rows            598 board points
+      100 - 150%     26 rows          2,869 board points
+      150%+          23 rows          3,404 board points
+
+  EVERY POOL PLAYER ON THE LIVE BOARD WHOSE VALUE CHANGES, sorted by absolute move under B
+  (today / variant A / variant B, in board points; 'd' = the row's own sit-out depth in seasons)
+
+  player                   pathway   age  g26   d |    TODAY    VAR A    VAR B |   A move   B move
+  --------------------------------------------------------------------------------------------------------------------
+  Nicholas Martin          SSP        25    0   q |    2,828    3,517    3,517 |     689      689
+  Oliver Griffin           MSD        19    0   1 |       39      172      286 |     133      247
+  Max Beattie              MSD        23    0   1 |       39      172      286 |     133      247
+  Caleb May                MSD        21    0   1 |       52      231      286 |     179      234
+  Max Mapley               MSD        21    0   1 |       52      231      286 |     179      234
+  Harrison Coe             MSD        27    0   1 |       52      231      286 |     179      234
+  Xavier Walsh             RD         21    0   3 |       86      107      300 |      21      214
+  Luker Kentfield          MSD        21    3   3 |      179      179      375 |       0      196
+  Iliro Smit               MSD        21    0   3 |      100      170      286 |      70      186
+  Luke Beecken             MSD        25    0   3 |      100      100      286 |       0      186
+  Jack Henderson           SSP        27    0   2 |       88      103      252 |      15      164
+  Hudson O'Keeffe          SSP        22    3   4 |      143      143      306 |       0      163
+  Noah Howes               MSD        21    1   2 |      128      128      289 |       0      161
+  Harry Charleson          RD         20    0   2 |       86      100      246 |      14      160
+  Zac Walker               MSD        20    0   2 |      128      128      286 |       0      158
+  Riley Onley              RD         19    0   1 |      143      177      294 |      34      151
+  Fred Rodriguez           RD         19    0   1 |      143      177      294 |      34      151
+  Max Ramsden              MSD        23    2   5 |      115      115      266 |       0      151
+  Nick Driscoll            RD         19    0   1 |      143      177      294 |      34      151
+  Asher Eastham            RD         20    0   2 |       81       94      231 |      13      150
+  Joe Pike                 RD         21    0   2 |      140      174      282 |      34      142
+  Aiden Riddle             RD         21    0   2 |      140      174      282 |      34      142
+  Nathan Wardius           PDA        22    0   3 |       54       67      194 |      13      140
+  Caleb Lewis              MSD        23    2   2 |      128      128      267 |       0      139
+  Jacob Newton             MSD        20    3   2 |      156      156      286 |       0      130
+  Lennox Hoffman           ND>64      20    0   2 |       65       75      185 |      10      120
+  Tom Cochrane             RD         20    3   2 |      146      146      266 |       0      120
+  Keighton Matofai-Forbes  ND>64      20    0   2 |       65       75      185 |      10      120
+  River Stevens            ND>64      20    0   2 |       65       75      185 |      10      120
+  Leon Kickett             RD         20    0   1 |      112      139      231 |      27      119
+  Harrison Ramm            MSD        20    4   2 |      320      320      438 |       0      118
+  Vigo Visentini           RD         21    1   3 |      167      167      282 |       0      115
+  Noah Chamberlain         PDA        19    0   1 |       87      106      194 |      19      107
+  Ben Jepson               SSP        25    4   2 |       88       88      195 |       0      107
+  Aidan Johnson            ND>64      26    1   2 |       81       81      185 |       0      104
+  Rob Monahan              IRE        22    0   3 |       37       47      133 |      10       96
+  Logan Smith              ND>64      20    0   2 |       91      114      185 |      23       94
+  Liam Hetherton           PDA        19    0   1 |      100      124      194 |      24       94
+  Mitch Podhajski          MSD        27    2   1 |      195      195      285 |       0       90
+  Lukas Cooke              MSD        23    2   1 |      182      182      272 |       0       90
+  Ollie Greeves            RD         19    4   1 |      421      421      509 |       0       88
+  Cillian Burke            IRE        23    0   2 |       47       54      133 |       7       86
+  Matt Duffy               IRE        22    0   2 |       47       54      133 |       7       86
+  Eamonn Armstrong         IRE        20    0   2 |       47       54      133 |       7       86
+  Ricky Mentha             PDN        20    0   2 |       43       50      123 |       7       80
+  Benny Barrett            PDN        20    0   2 |       43       50      123 |       7       80
+  Oliver Francou           MSD        20    4   1 |      345      345      418 |       0       73
+  Kobe McDonald            IRE        19    0   1 |       60       80      133 |      20       73
+  Ben Murphy               IRE        19    0   1 |       60       80      133 |      20       73
+  Cillian Bourke           IRE        20    0   1 |       60       80      133 |      20       73
+  Liam Reidy               RD         26    4   4 |      328      328      400 |       0       72
+  Zak Evans                UNR        26    0   2 |       36       42      103 |       6       67
+  Jacob Moss               UNR        22    0   2 |       36       45      103 |       9       67
+  Jaxon Artemis            MSD        20    4   1 |      305      305      370 |       0       65
+  Josh Draper              PDN        22    0   q |      274      338      338 |      64       64
+  Toby Whan                PDN        19    0   1 |       60       74      123 |      14       63
+  Ryda Luke                PDN        19    0   1 |       60       74      123 |      14       63
+  Jai Saxena               PDN        19    0   1 |       60       74      123 |      14       63
+  Jesse Mellor             PDN        19    0   1 |       60       74      123 |      14       63
+  Alex Van Wyk             MSD        22    1   1 |      233      233      290 |       0       57
+  Oscar Berry              UNR        24    0   1 |       47       70      103 |      23       56
+  Flynn Riley              MSD        22    1   1 |      232      232      288 |       0       56
+  Balyn O'Brien            SSP        19    4   1 |      263      263      319 |       0       56
+  Kalani White             PDN        19    0   1 |       67       85      123 |      18       56
+  Indy Cotton              UNR        19    0   1 |       49       62      103 |      13       54
+  Jaime Uhr-Henry          UNR        23    0   2 |       51       64      103 |      13       52
+  Matt Hill                UNR        22    2   2 |       48       48       95 |       0       47
+  Patrick Carr             UNR        21    0   1 |       67       83      103 |      16       36
+  Tyson Stengle            RD         28    0   q |      121      150      150 |      29       29
+  Tyrell Dewar             PDN        22    0   q |       68       82       82 |      14       14
+  Jayden Nguyen            PDN        20    5   2 |      429      429      443 |       0       14
+  Thomas Burton            SSP        19    5   1 |      305      305      316 |       0       11
+  Caleb Graham             ND>64      26    0   q |       38       45       45 |       7        7
+  Robert Hansen            MSD        22    0   q |       80       82       82 |       2        2
+  Wil Parker               UNR        24    5   3 |       29       29       30 |       0        1
+  --------------------------------------------------------------------------------------------------------------------
+  TOTAL (moved rows only)                         |   11,663   13,969   20,130 |   2,306    8,467
+
+  percentage moves, same order:
+  player                          A %        B %
+  Nicholas Martin             +24.36%    +24.36%
+  Oliver Griffin             +341.03%   +633.33%
+  Max Beattie                +341.03%   +633.33%
+  Caleb May                  +344.23%   +450.00%
+  Max Mapley                 +344.23%   +450.00%
+  Harrison Coe               +344.23%   +450.00%
+  Xavier Walsh                +24.42%   +248.84%
+  Luker Kentfield              +0.00%   +109.50%
+  Iliro Smit                  +70.00%   +186.00%
+  Luke Beecken                 +0.00%   +186.00%
+  Jack Henderson              +17.05%   +186.36%
+  Hudson O'Keeffe              +0.00%   +113.99%
+  Noah Howes                   +0.00%   +125.78%
+  Harry Charleson             +16.28%   +186.05%
+  Zac Walker                   +0.00%   +123.44%
+  Riley Onley                 +23.78%   +105.59%
+  Fred Rodriguez              +23.78%   +105.59%
+  Max Ramsden                  +0.00%   +131.30%
+  Nick Driscoll               +23.78%   +105.59%
+  Asher Eastham               +16.05%   +185.19%
+  Joe Pike                    +24.29%   +101.43%
+  Aiden Riddle                +24.29%   +101.43%
+  Nathan Wardius              +24.07%   +259.26%
+  Caleb Lewis                  +0.00%   +108.59%
+  Jacob Newton                 +0.00%    +83.33%
+  Lennox Hoffman              +15.38%   +184.62%
+  Tom Cochrane                 +0.00%    +82.19%
+  Keighton Matofai-Forbes     +15.38%   +184.62%
+  River Stevens               +15.38%   +184.62%
+  Leon Kickett                +24.11%   +106.25%
+  Harrison Ramm                +0.00%    +36.88%
+  Vigo Visentini               +0.00%    +68.86%
+  Noah Chamberlain            +21.84%   +122.99%
+  Ben Jepson                   +0.00%   +121.59%
+  Aidan Johnson                +0.00%   +128.40%
+  Rob Monahan                 +27.03%   +259.46%
+  Logan Smith                 +25.27%   +103.30%
+  Liam Hetherton              +24.00%    +94.00%
+  Mitch Podhajski              +0.00%    +46.15%
+  Lukas Cooke                  +0.00%    +49.45%
+  Ollie Greeves                +0.00%    +20.90%
+  Cillian Burke               +14.89%   +182.98%
+  Matt Duffy                  +14.89%   +182.98%
+  Eamonn Armstrong            +14.89%   +182.98%
+  Ricky Mentha                +16.28%   +186.05%
+  Benny Barrett               +16.28%   +186.05%
+  Oliver Francou               +0.00%    +21.16%
+  Kobe McDonald               +33.33%   +121.67%
+  Ben Murphy                  +33.33%   +121.67%
+  Cillian Bourke              +33.33%   +121.67%
+  Liam Reidy                   +0.00%    +21.95%
+  Zak Evans                   +16.67%   +186.11%
+  Jacob Moss                  +25.00%   +186.11%
+  Jaxon Artemis                +0.00%    +21.31%
+  Josh Draper                 +23.36%    +23.36%
+  Toby Whan                   +23.33%   +105.00%
+  Ryda Luke                   +23.33%   +105.00%
+  Jai Saxena                  +23.33%   +105.00%
+  Jesse Mellor                +23.33%   +105.00%
+  Alex Van Wyk                 +0.00%    +24.46%
+  Oscar Berry                 +48.94%   +119.15%
+  Flynn Riley                  +0.00%    +24.14%
+  Balyn O'Brien                +0.00%    +21.29%
+  Kalani White                +26.87%    +83.58%
+  Indy Cotton                 +26.53%   +110.20%
+  Jaime Uhr-Henry             +25.49%   +101.96%
+  Matt Hill                    +0.00%    +97.92%
+  Patrick Carr                +23.88%    +53.73%
+  Tyson Stengle               +23.97%    +23.97%
+  Tyrell Dewar                +20.59%    +20.59%
+  Jayden Nguyen                +0.00%     +3.26%
+  Thomas Burton                +0.00%     +3.61%
+  Caleb Graham                +18.42%    +18.42%
+  Robert Hansen                +2.50%     +2.50%
+  Wil Parker                   +0.00%     +3.45%
+
+  BOARD EFFECT BY PATHWAY (all live 'active' rows of the pathway, moved or not)
+  pathway    rows  moved |        today        VAR A        VAR B |    A delta    B delta |        A %        B %
+  --------------------------------------------------------------------------------------------------------------------
+  RD           66     14 |       45,676       45,950       47,480 |        274      1,804 |    +0.600%    +3.950%
+  SSP          28      6 |       10,856       11,560       12,046 |        704      1,190 |    +6.485%   +10.962%
+  MSD          63     21 |       35,223       36,098       38,277 |        875      3,054 |    +2.484%    +8.670%
+  IRE          14      7 |          719          810        1,292 |         91        573 |   +12.656%   +79.694%
+  PDA          15      3 |        8,081        8,137        8,422 |         56        341 |    +0.693%    +4.220%
+  PDN          16     10 |        2,651        2,817        3,211 |        166        560 |    +6.262%   +21.124%
+  UNR          13      8 |        1,259        1,339        1,639 |         80        380 |    +6.354%   +30.183%
+  ND>64        28      6 |       18,778       18,838       19,343 |         60        565 |    +0.320%    +3.009%
+  ND 1-64     561      0 |      622,645      622,645      622,645 |          0          0 |    +0.000%    +0.000%
+  --------------------------------------------------------------------------------------------------------------------
+  ALL POOL    243     75 |      123,243      125,549      131,710 |      2,306      8,467 |    +1.871%    +6.870%
+
+  MEAN VALUE CHANGE PER ROW (all rows of the pathway, moved or not / moved rows only)
+  pathway      rows     mean A     mean B |    moved     mean A     mean B
+  ------------------------------------------------------------------------------
+  RD             66       +4.2      +27.3 |       14      +19.6     +128.9
+  SSP            28      +25.1      +42.5 |        6     +117.3     +198.3
+  MSD            63      +13.9      +48.5 |       21      +41.7     +145.4
+  IRE            14       +6.5      +40.9 |        7      +13.0      +81.9
+  PDA            15       +3.7      +22.7 |        3      +18.7     +113.7
+  PDN            16      +10.4      +35.0 |       10      +16.6      +56.0
+  UNR            13       +6.2      +29.2 |        8      +10.0      +47.5
+  ND>64          28       +2.1      +20.2 |        6      +10.0      +94.2
+
+  THE 'back' BOARD (delisted / non-active, 198 rows), reported so the population is complete:
+      total today 2,469 -> A 2,469 -> B 2,469 ; rows moved under B: 0
+      delisted(p) returns 0.02*v0_start BEFORE any sitter site is reached (ev():2229), so these
+      rows cannot move -- and do not.
+
+======================================================================================================================
+2. THE MEAN-PRESERVING FIGURE, PER PATHWAY
+======================================================================================================================
+  The owner's D8 law: once a group's entry price is calibrated on that group's own realized
+  returns -- sitters included -- any within-group sitter differential must REDISTRIBUTE and never
+  be a net charge. Test statistic, entry-weighted over the pathway:
+      mean = ( SUM_sit e*M + SUM_non e*1 ) / SUM_all e ,   e = entry_anchor,  M = applied multiplier
+  mean < 1.0 is a NET CHARGE. The cell construction below is ORDER 18's, carried verbatim, which
+  is phase 1's, carried verbatim. It is not reinvented here.
+
+  CONTROL 3 -- reproduce ORDER 18's published composed R x H column before reporting anything.
+      max |delta| vs ORDER 18's composed column = 0.000045 -> REPRODUCED
+
+  pathway    cells sitters   sit wtd |      TODAY  net charge |      VAR A  net charge |      VAR B  net charge
+  --------------------------------------------------------------------------------------------------------------------
+  RD          2352     832    0.3527 |   0.789801   -0.210199 |   0.832482   -0.167518 |   1.000000   -0.000000
+  SSP           34      13    0.3824 |   0.793576   -0.206424 |   0.850059   -0.149941 |   1.000000    0.000000
+  MSD           40      34    0.8500 |   0.262104   -0.737896 |   0.647975   -0.352025 |   1.000000    0.000000
+  IRE          137      70    0.5109 |   0.547311   -0.452689 |   0.747847   -0.252153 |   1.000000    0.000000
+  PDA          106      53    0.5000 |   0.693845   -0.306155 |   0.753538   -0.246462 |   1.000000   -0.000000
+  PDN           36      29    0.8056 |   0.513917   -0.486083 |   0.602778   -0.397222 |   1.000000   -0.000000
+  PDS           62      36    0.5806 |   0.643645   -0.356355 |   0.698323   -0.301677 |   1.000000    0.000000
+  UNR          126      65    0.5159 |   0.670915   -0.329085 |   0.798548   -0.201452 |   1.000000    0.000000
+  ND>64        441     193    0.4376 |   0.727445   -0.272555 |   0.776882   -0.223118 |   1.000000   -0.000000
+  --------------------------------------------------------------------------------------------------------------------
+  ALL POOL    3334    1325    0.3845 |   0.762329   -0.237671 |   0.816779   -0.183221 |   1.000000   -0.000000
+  ND 1-64     6662    1385    0.1394 |   0.938846   -0.061154 |  UNTOUCHED     (ruled) |  UNTOUCHED     (ruled)
+
+  CROSS-CHECK against ORDER 18's published R-LEG-ONLY column (which is exactly what variant A
+  leaves standing).  max |delta| = 0.000048
+
+  WHERE THE MEAN-PRESERVING FIGURE LANDS:
+      TODAY      pool pathways span 0.2621 (MSD) to 0.7936 (SSP); ALL POOL 0.762329
+      VARIANT A  pool pathways span 0.6028 to 0.8501; ALL POOL 0.816779  -- moves TOWARD 1.0 but does
+                 NOT reach it: every pathway is still in breach on the surviving R leg.
+      VARIANT B  every pool pathway lands at EXACTLY 1.000000 -- the law holds, by construction.
+
+======================================================================================================================
+3. THE v0 QUESTION -- 'How much would that change ... the v0 of them?'
+======================================================================================================================
+  ANSWER: NOT AT ALL. THE SITTER PENALTY DOES NOT REACH v0, ON EITHER LEG, IN EITHER VARIANT.
+  Three independent proofs, all by EXECUTION, none by assertion.
+
+  PROOF 1 -- THE FULL-ENGINE PROOF. Three complete 24-year walk-forward emits were run, one per
+  variant, each writing every entrant's own v0 = v0_start(p) under THAT engine. Compare them:
+      records                                          2645
+      of which POOL                                    1201
+      max |v0(VARIANT A) - v0(SHIP)|  ALL rows         0
+      max |v0(VARIANT B) - v0(SHIP)|  ALL rows         0
+      max |v0(VARIANT A) - v0(SHIP)|  POOL rows        0
+      max |v0(VARIANT B) - v0(SHIP)|  POOL rows        0
+      records whose WALK-FORWARD PATH did change: A 884,  B 1022
+      -> v0 is EXACTLY unchanged (delta 0.0, not 'small') while 1 in 3 careers' priced path moves.
+         The instrument is plainly sensitive to the lift; v0 simply is not downstream of it.
+
+  PROOF 2 -- THE CALL-GRAPH PROOF BY EXECUTION. _h_cut and sitout_ev are wrapped with counters in
+  the staged engine, then the v0 chain is called for every pool player and the counters read.
+      pool players probed: 1202
+      calls to _h_cut / sitout_ev during _v0_uncapped + _v0_raw + v0_start + entry_anchor + raw_ev:
+          _h_cut     0
+          sitout_ev  0
+      the SAME counters during 60 calls to ev(p,2026) on the same players:
+          _h_cut     109
+          sitout_ev  70
+      -> the counters are live and they FIRE at ev(). They never fire on the v0 chain. The site
+         comment at _merged_recover.py:1999 says so in the engine's own words: 'this runs at ev(),
+         NEVER inside raw_ev -- _v0_uncapped calls raw_ev at Y=debutyr-1 to BUILD the very
+         year-0 prior'.
+
+  PROOF 3 -- THE IN-PROCESS PERTURBATION. Set H_POOLSIT=H_UNION=1.0 and pool-gate _R_surf to 1.0
+  in the staged engine, CLEAR the v0 caches, and recompute the whole v0 chain for every pool row.
+      max |_v0_uncapped(perturbed) - _v0_uncapped(shipped)| over 1202 pool rows = 0
+      max |_v0_raw(perturbed) - _v0_raw(shipped)| over 1202 pool rows = 0
+      max |v0_start(perturbed) - v0_start(shipped)| over 1202 pool rows = 0
+      max |entry_anchor(perturbed) - entry_anchor(shipped)| over 1202 pool rows = 0
+
+  WHY, FROM THE CODE (the mechanism, so the verdict is understood and not just believed):
+      _v0_uncapped(p) = raw_ev(p, debutyr-1) * iso_eff(p, debutyr-1)   (:1228-1238)
+      _v0_raw(p)      = _ruc_prior_cap(p, _v0_uncapped(p))             (:1239-1241)
+      v0_start(p)     = _V0CURVE[key] on the board path                (:1756-1760)
+      entry_anchor(p) = pool_level(p)*_PL_F*_b_factor(p) for a POOL row (:1852-1857)
+  NOT ONE of those five reads H_POOLSIT, H_UNION or _R_surf. _h_cut (:2037) and sitout_ev (:1961)
+  are both applied INSIDE ev() (:2228-2277). raw_ev is a DIFFERENT function (:1061).
+
+  THE CONSEQUENCE THE OWNER SHOULD TAKE FROM THIS, stated plainly:
+      Lifting the pool sitter penalty changes what a pool player is WORTH TODAY. It does not
+      change what he ENTERED at. v0 and the signed division levels are a separate object and a
+      separate decision -- which is exactly the pool REPRICING question phase 1 is measuring on
+      its own branch. THESE TWO LEVERS DO NOT OVERLAP AT THE v0 SITE.
+
+======================================================================================================================
+4. THE OWNER'S OWN CONCERN, MEASURED -- 'given more pool players sit'
+======================================================================================================================
+  Population: the same complete-window cells (Y <= 2021). A cell is a SIT-OUT if the player has
+  no season of >= 6 games up to and including that year. Both an unweighted count share and the
+  ENTRY-WEIGHTED share are given, because the entry weighting is what the charge actually keys on
+  (ORDER 18's P7 miss was exactly this distinction).
+
+  pathway     cells  sitters   share (n)   share (wtd) |   vs ND n vs ND wtd
+  ----------------------------------------------------------------------------------
+  RD           2352      832      0.3537        0.3527 |     1.70x     2.53x
+  SSP            34       13      0.3824        0.3824 |     1.84x     2.74x
+  MSD            40       34      0.8500        0.8500 |     4.09x     6.10x
+  IRE           137       70      0.5109        0.5109 |     2.46x     3.67x
+  PDA           106       53      0.5000        0.5000 |     2.41x     3.59x
+  PDN            36       29      0.8056        0.8056 |     3.87x     5.78x
+  PDS            62       36      0.5806        0.5806 |     2.79x     4.17x
+  UNR           126       65      0.5159        0.5159 |     2.48x     3.70x
+  ND>64         441      193      0.4376        0.4376 |     2.11x     3.14x
+  ----------------------------------------------------------------------------------
+  ALL POOL     3334     1325      0.3974        0.3845 |     1.91x     2.76x
+  ND 1-64      6662     1385      0.2079        0.1394 |    1.00x    1.00x
+
+  THE OWNER'S PREMISE ('more pool players sit'):
+      pathways at or BELOW ND 1-64 by COUNT share:          NONE
+      pathways at or BELOW ND 1-64 by ENTRY-WEIGHTED share: NONE
+      pooled pool vs ND 1-64: 1.91x by count, 2.76x entry-weighted.
+
+  AND ON THE LIVE BOARD (2026 season, zero games so far this season):
+  pathway      rows  sit-outs       share |  value sitting share of value
+  --------------------------------------------------------------------------
+  RD             66        11      0.1667 |          1,206        0.0264
+  SSP            28         2      0.0714 |          2,916        0.2686
+  MSD            63        11      0.1746 |            830        0.0236
+  IRE            14         7      0.5000 |            358        0.4979
+  PDA            15         3      0.2000 |            241        0.0298
+  PDN            16         9      0.5625 |            735        0.2773
+  UNR            13         6      0.4615 |            286        0.2272
+  ND>64          28         6      0.2143 |            334        0.0178
+  ND 1-64       561        87      0.1551 |         27,822        0.0447
+  --------------------------------------------------------------------------
+  ALL POOL      243        55      0.2263 |          6,906        0.0560
+
+======================================================================================================================
+PINS RE-ASSERTED AT EXIT -- board 94f1fec5..  store d9a24282..  instrument 0f822035..  UNMOVED.
+Nothing was wired. No shipped default changed. The live board was not touched.
+======================================================================================================================
