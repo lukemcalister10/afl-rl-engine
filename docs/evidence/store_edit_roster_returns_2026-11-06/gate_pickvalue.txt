@@ -1,0 +1,111 @@
+$ node ui/tests/pickvalue.test.js
+
+PICK VALUE VIEW TESTS
+  ----------------------------------------------------------------------
+
+  slot key (POSITION|AGE|PICK)
+  [PASS] a well-formed slot parses to its three fields  (got {"pos":"KPF","age":18,"pick":1})
+  [PASS] the last ordinal in the ruled domain parses  (got {"pos":"MID","age":21,"pick":64})
+  [PASS] two fields is not a slot
+  [PASS] four fields is not a slot
+  [PASS] an empty position is not a slot
+  [PASS] a non-numeric age is not a slot
+  [PASS] a non-numeric pick is not a slot
+  [PASS] a zero draft age is not a slot
+  [PASS] a null slot is not a slot
+  [PASS] an absent slot is not a slot
+  [PASS] a non-string slot is not a slot
+  [PASS] pick 0 is outside the curve's domain and does not parse
+  [PASS] pick 65 is the POOL, not an ordinal, and does not parse as a pick
+  [PASS] a pick far past the curve does not parse
+
+  the all-in curve
+  [PASS] a missing pvc fails closed
+  [PASS] an undefined pvc fails closed
+  [PASS] an empty pvc fails closed
+  [PASS] the failure names the artifact that is absent, rather than failing silently
+  [PASS] a pvc carrying ONLY the pool prices no pick and fails closed
+  [PASS] ...and offers no ordinal to render
+  [PASS] a complete curve is accepted
+  [PASS] a complete curve yields exactly one row per ruled ordinal  (got 64)
+  [PASS] RELATIONSHIP: every ordinal offered lies inside the ruled 1–64 domain
+  [PASS] RELATIONSHIP: index 65 is NEVER offered as a pick ordinal
+  [PASS] the pool level is read, separately from the curve
+  [PASS] an unpriced ordinal is REPORTED as missing  (got [7,40])
+  [PASS] RELATIONSHIP: an unpriced ordinal is omitted, never interpolated from its neighbours
+  [PASS] ...and the table is two rows shorter, not two guesses longer  (got 62)
+  [PASS] a curve with no pool level still prices picks, and reports no pool rather than inventing one
+
+  indexing entry prices
+  [PASS] only the rows that resolve to a numbered pick inside the domain are used  (got 5)
+  [PASS] a pool entrant is counted as not-a-pick-slot, not as missing data  (got 1)
+  [PASS] a row with no recoverable entry price is counted  (got 1)
+  [PASS] an unreadable slot and an out-of-domain pick are counted as dropped  (got 2)
+  [PASS] RELATIONSHIP: the four counts PARTITION the input — every row handed in is accounted for exactly once
+  [PASS] the positions offered are exactly those the data carries  (got ["KPF","MID"])
+  [PASS] the draft ages offered are exactly those the data carries  (got [18,19])
+  [PASS] the default draft age is DERIVED as the modal one, not typed in  (got 18)
+  [PASS] no data means no default age is claimed  (got null)
+  [PASS] a null entry list indexes to nothing rather than throwing  (got 0)
+  [PASS] a tie on observation count breaks to the YOUNGER age, so the default is deterministic  (got 19)
+
+  grid cells
+  [PASS] a cell's n is the count of observations actually used  (got 2)
+  [PASS] RELATIONSHIP: agreeing observations are not aggregated — lo === v0 === hi
+  [PASS] RELATIONSHIP: a fixed-age cell contains ONLY that age's observations  (got [18])
+  [PASS] pooling ages uses every observation at that (position, pick)  (got 3)
+  [PASS] ...and is marked aggregated when the pooled values disagree
+  [PASS] RELATIONSHIP: an aggregated cell's mean lies strictly inside the real range it reports
+  [PASS] an aggregated cell reports every draft age it pooled  (got [18,19])
+  [PASS] RELATIONSHIP: a pick with no observation yields NOTHING, even though picks 1 and 5 have values
+  [PASS] a draft age the data does not carry yields nothing
+  [PASS] a position the data does not carry yields nothing
+  [PASS] no position selected yields no cell
+  [PASS] no index yields no cell
+  [PASS] a cell resting on 2 or fewer careers is flagged thin
+  [PASS] RELATIONSHIP: thin is exactly n <= THIN_MAX, computed from the same n that is printed
+  [PASS] RELATIONSHIP: over all 384 synthetic (position, pick, age) cells, no cell claims a sample it does not have and no empty cell materialises a value
+
+  rendered rows
+  [PASS] one row per priced ordinal  (got 64)
+  [PASS] RELATIONSHIP: every rendered pick is within the curve's domain
+  [PASS] RELATIONSHIP: the pool index is never rendered as a pick row
+  [PASS] RELATIONSHIP: no cell means NO delta — never a delta against a stood-in zero
+  [PASS] RELATIONSHIP: the delta is exactly (position v0 − all-in), a difference of two given figures
+  [PASS] RELATIONSHIP: the ratio is exactly (position v0 / all-in)
+  [PASS] RELATIONSHIP: the round label follows the ruled 18-pick round size
+  [PASS] with no position selected the table is the all-in column alone
+  [PASS] ...and the all-in column is still fully populated
+  [PASS] RELATIONSHIP: an ordinal the curve cannot price produces no row at all
+  [PASS] RELATIONSHIP: coverage partitions the rows into filled and absent  (got 64)
+  [PASS] coverage counts exactly the rows drawn  (got 64)
+  [PASS] RELATIONSHIP: the stated career count is the sum of the cells' own n, so the sentence cannot drift from the table  (got 3)
+  [PASS] RELATIONSHIP: thin and aggregated cells are subsets of the filled ones
+  [PASS] the all-in-only table claims no positional coverage  (got 0)
+
+  shipped artifacts
+  [PASS] the shipped board publishes a usable pick-value curve
+  [PASS] RELATIONSHIP: the shipped curve prices every ordinal in the ruled domain (no holes to explain)  (got [])
+  [PASS] RELATIONSHIP: every shipped ordinal lies inside the ruled domain
+  [PASS] the shipped curve carries a pool level
+  [PASS] RELATIONSHIP: the pool level is a distinct object from pick 64's value, not a continuation of the curve
+  [PASS] RELATIONSHIP: every shipped sidecar row is accounted for exactly once across the four counts
+  [PASS] RELATIONSHIP: no shipped pick-slot row has a slot key this view cannot read — the format is as verified  (got 0)
+  [PASS] RELATIONSHIP: origin 'pick-slot' and a readable slot key agree on every shipped row (0 disagreements)
+  [PASS] RELATIONSHIP: on the shipped surface each (position, draft age, pick) carries exactly ONE entry price (303 triples, 0 violations)
+  [PASS] RELATIONSHIP: across every shipped position × draft age, all 3072 rendered picks lie inside the curve's domain
+  [PASS] RELATIONSHIP: at a fixed draft age the shipped data aggregates NOTHING — every cell is the surface's own value
+  [PASS] RELATIONSHIP: on shipped data no cell claims a sample it does not have (0 overclaims)
+  [PASS] RELATIONSHIP: pooling every draft age conserves the observations exactly — no row counted twice, none dropped ()
+  [PASS] RELATIONSHIP: every ≈ cell on shipped data reports a real, non-degenerate range containing its mean (28 such cells, 0 malformed)
+  [PASS] RELATIONSHIP: the coverage sentence reconciles to the drawn rows for every shipped position
+  [PASS] RELATIONSHIP: the shipped grid IS sparse — there are genuinely absent cells to show as absent
+  [PASS] RELATIONSHIP: every entry position on the shipped surface is in the board's own position vocabulary (ui/app/counting.js) — unknown: []
+  [PASS] the shipped surface carries usable draft-age labels
+  [PASS] RELATIONSHIP: the DERIVED default draft age is one the shipped data actually carries
+  [PASS] RELATIONSHIP: the derived default is the modal draft age, by observation count
+
+  ----------------------------------------------------------------------
+PICK VALUE TESTS: ALL 90 PASS
+
+[exit 0]

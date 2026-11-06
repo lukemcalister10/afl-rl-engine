@@ -1,0 +1,9 @@
+DIAL COVERAGE — data/model_config.json vars vs what engine/ actually reads
+  declared dials             : 90
+  read WITH a default        : 88
+  DECLARED-ORPHAN (self-declared inert in var_notes): 2  ['RL_LTI_RETURN', 'RL_RUCK_TAX']
+  read WITHOUT a default / not read at all: 0  
+
+REPORTED, NOT GATED — engine-read RL_*/PAR_* vars the manifest does not declare: 26
+  This is the population PLAN_v6 4-zero is about (the declared kill_switches block, named on record and never delivered). Declaring them MOVES config_sha256, which is a value-bearing identity, so P1 measures the number and touches nothing.
+  RL_336_DBAND, RL_336_DFORCE, RL_336_RFORCE, RL_336_TARGET, RL_ABS_CAP, RL_ABS_LREF, RL_ALLOW_PVCFIT_BOARD, RL_APP_DATA, RL_ARM1_OUT, RL_ARM2_OUT, RL_CALENDAR_ROUNDS, RL_CM_PKL, RL_CONFIG_MODE, RL_DAMP_K, RL_LANE_EXPECT, RL_LENS_BASIS, RL_LSYM_TAB, RL_NO_OWNER_OVERRIDES, RL_Q97M_PKL, RL_REPO, RL_SEASON_ROUNDS, RL_UNCOMP_S, RL_V0SURF_PKL, RL_V0SURF_REFIT, RL_V0_LENS, RL_VENDOR
