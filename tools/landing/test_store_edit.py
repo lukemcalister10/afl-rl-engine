@@ -277,9 +277,13 @@ def add_verb():
     ok(list(srow) == ['player', 'key', 'games', '_retired', '_last_listed', 'future_position'],
        'a row that LACKS the usual anchor key takes the field after its last agreed predecessor (`_retired`), keeping the order')
     got, why = refuses([{'key': 'c', 'field': '_ll', 'add': 3}],
-                       json.dumps([{'key': 'a', '_ll': 1, 'p': 1}, {'key': 'b', 'p': 1, '_ll': 1}, {'key': 'c'}]),
-                       'before it in some rows and after it in others')
-    ok(got, 'a TRUE order conflict among exemplars is still refused  (%s)' % why)
+                       json.dumps([{'key': 'a', '_ll': 1, 'p': 1}, {'key': 'b', 'p': 1, '_ll': 1}, {'key': 'c', 'p': 2}]),
+                       'before it in some rows, after it in others')
+    ok(got, 'a TRUE order conflict is refused when the target row carries the conflicting key  (%s)' % why)
+    out, _ = ST.apply_store_edits(json.dumps([{'key': 'a', '_ll': 1, 'p': 1}, {'key': 'b', 'p': 1, '_ll': 1}, {'key': 'c', 'q': 2}]),
+                                  [{'key': 'c', 'field': '_ll', 'add': 3}])
+    ok(list(ST.store_row_spans(out, ['c'])['c'][2]) == ['key', '_ll', 'q'],
+       'a conflicting key the target does NOT carry cannot break the order: the add goes after the last agreed predecessor')
 
     got, why = refuses([{'key': 'r-target', 'field': '_tags', 'add': ['a']}], ADD_STORE, 'container')
     ok(got, 'a container value is refused, as it is for a change  (%s)' % why)

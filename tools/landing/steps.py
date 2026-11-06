@@ -467,13 +467,12 @@ def _add_anchor(text, field):
                     after.add(kk)
     if not exemplars:
         return {'kind': 'last', 'after': None, 'exemplars': 0}
-    if conflict:
-        raise StepError('the rows that already carry %r do not agree on where it sits — %s sit(s) before '
-                        'it in some rows and after it in others. No single order to keep means no '
-                        'position to insert at; the add is refused rather than guessed.'
-                        % (field, ', '.join(repr(c) for c in sorted(conflict))))
-    return {'kind': 'ordered', 'before': sorted(before), 'after_keys': sorted(after), 'after': None,
-            'exemplars': exemplars}
+    # A key on BOTH sides is a conflict only for a target row that CARRIES it (measured 2026-11-06:
+    # `_bd` sits before `_force_active` in 17 rows and after it in 46 — the file has no one order
+    # for that pair, but a row without `_bd` cannot break it). The conflict set rides to the
+    # insertion, which refuses when the target carries any of it.
+    return {'kind': 'ordered', 'before': sorted(before - conflict), 'after_keys': sorted(after - conflict),
+            'conflict': sorted(conflict), 'after': None, 'exemplars': exemplars}
 
 
 def _apply_add(cur, i, e, start, end, row, anchor):
@@ -516,6 +515,12 @@ def _apply_add(cur, i, e, start, end, row, anchor):
         # the last key of THIS row that every exemplar puts before the field; every key the
         # exemplars put after it must then sit later in this row, or the order cannot be kept.
         bset, aset = set(anchor['before']), set(anchor['after_keys'])
+        bad = [n for n in names if n in set(anchor.get('conflict') or ())]
+        if bad:
+            raise StepError('edit %d: the rows that already carry %r do not agree on where it sits '
+                            'relative to %s (before it in some rows, after it in others), and row %r '
+                            'carries %s — no position keeps the file\'s order; the add is refused rather '
+                            'than guessed.' % (i, field, anchor['conflict'], key, bad))
         b_idx = [j for j, n in enumerate(names) if n in bset]
         a_idx = [j for j, n in enumerate(names) if n in aset]
         if not b_idx:
