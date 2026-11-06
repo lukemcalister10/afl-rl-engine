@@ -383,8 +383,16 @@ def add_live_store():
     text = open(path, 'rb').read().decode('utf-8')
     rows = json.loads(text)
     have = [r for r in rows if '_last_listed' in r]
-    ok(have and all(list(r)[list(r).index('_last_listed') - 1] == '_pickless' for r in have),
-       'every row that carries `_last_listed` (%d) has it immediately after `_pickless`' % len(have))
+    # PRECEDENCE, not adjacency (2026-11-06): the anchor rule is "after the last BEFORE key that precedes
+    # the first AFTER key", so a row that also carries `_force_active` legitimately reads
+    # `_pickless, _force_active, _last_listed, future_position` (alex-mirkov, the returns act). The
+    # invariant every exemplar must hold is `_pickless` < `_last_listed` < `future_position`.
+    def _prec(r):
+        ks = list(r)
+        i = ks.index('_last_listed')
+        return '_pickless' in ks[:i] and 'future_position' in ks[i + 1:]
+    ok(have and all(_prec(r) for r in have),
+       'every row that carries `_last_listed` (%d) has it after `_pickless` and before `future_position`' % len(have))
     anchor = ST._add_anchor(text, '_last_listed')
     ok(anchor['kind'] == 'ordered' and '_pickless' in anchor['before'] and 'future_position' in anchor['after_keys']
        and anchor['exemplars'] == len(have),
