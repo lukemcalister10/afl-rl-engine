@@ -69,6 +69,59 @@
     "new": 2026
    },
    {
+    "key": "alex-mirkov",
+    "field": "year",
+    "old": 2021,
+    "new": 2026
+   },
+   {
+    "key": "alex-mirkov",
+    "field": "type",
+    "old": "MSD",
+    "new": "UNR"
+   },
+   {
+    "key": "alex-mirkov",
+    "field": "_draft",
+    "old": "Mid-Season",
+    "new": "Post-Draft - Unregistered"
+   },
+   {
+    "key": "alex-mirkov",
+    "field": "_draft_club",
+    "old": "Carlton",
+    "new": "GWS"
+   },
+   {
+    "key": "alex-mirkov",
+    "field": "stream_year",
+    "old": 2021,
+    "new": 2026
+   },
+   {
+    "key": "alex-mirkov",
+    "field": "pick",
+    "old": 6,
+    "new": null
+   },
+   {
+    "key": "alex-mirkov",
+    "field": "_pickless",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "alex-mirkov",
+    "field": "draft_stream",
+    "old": "MSD",
+    "new": "OTHER"
+   },
+   {
+    "key": "alex-mirkov",
+    "field": "_force_active",
+    "add": true
+   },
+   {
     "add_row": {
      "player": "Finnbarr Roarty",
      "pick": null,
@@ -146,7 +199,7 @@
    }
   ],
   "expected_movers": null,
-  "_doc_expected_movers": "four rows APPEAR on the active board (Bedendo, Mirkov, Roarty, Purcell) at their entry prices; the dry run is the prediction of record and the four are declared after it."
+  "_doc_expected_movers": "Four rows appear on the active board (Bedendo from the back section at 48; Roarty 53; Purcell 108; Mirkov at his 2026 entry price). Flight 3 also showed 61 rows moving by exactly -1: the board is normalised to its pool (G[_PL_F]), so adding active rows re-scales every value by a hair and the rounding lands on 61 of them. Printed, not asserted (the dry run is the prediction of record)."
  },
  "identities": {
   "moves": [
