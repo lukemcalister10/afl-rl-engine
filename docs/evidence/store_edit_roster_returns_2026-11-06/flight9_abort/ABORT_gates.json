@@ -1,0 +1,137 @@
+{
+  "byte_exact": true,
+  "commits_rewound": [],
+  "error": "3 of 20 gate(s) did not pass. ALL of them are listed \u2014 fix them together, because the next flight costs a full build.\n\n--- gate ui_222_items (exit 1)\ninal vs Finals Week 4\"), never \"Round 29 vs Round 28\"\n  [PASS] every rendered delta is the report's own value_change \u2014 computed nowhere else\n  [PASS] bug 3 \u2014 the player card's Round \u0394 tooltip is the board's, word for word\n\nPHASE 0.2 BUG 1 \u2014 the Movers tab opens on the newest week BY NAME\n-----------------------------------------------------------------\n  [PASS] bug 1 \u2014 the default pair is the newest one-round retro pair (a model change is the newest stored point)\n  [PASS] bug 1 \u2014 the To <select> has the pair's end and shows it selected, by its name\n  [PASS] bug 1 \u2014 the From <select> shows the pair's baseline selected, by its name\n  [PASS] bug 1 \u2014 the strip names both ends as the selects do: To Grand Final \u00b7 current model \u00b7 baseline Finals Week 4 \u00b7 current model\n  [PASS] bug 1 \u2014 a football pair never reads \"post-model\" and never names a feed round as \"R29\"\n  [PASS] bug 1 \u2014 the newest report's own pair resolves to the STORED report (played/DNP facts), not a synthetic diff\n\nRUNTIME\n-------\n  [PASS] the tab list is readable, so this loop covers the whole app\n  [PASS] every view renders with no page errors\n\n------------------------------------------------------------\nFAIL 96/104 passed\n\n    raw output: /home/user/afl-rl-engine/docs/evidence/store_edit_roster_returns_2026-11-06/gate_ui_222_items.txt\n\n--- gate ui_defects_2026_08_21 (exit 1)\nort carries draft year 2025 \u2014 the clock rule, on real rows\n  [PASS] a null age filter matches everything\n  [PASS] an exact age matches\n  [PASS] \u2026and only that age\n  [PASS] the 20-and-under band matches 19\n  [PASS] \u2026and not 21\n  [PASS] the 29-and-over band matches 34\n  [PASS] a row with NO age drops out while an age filter is on, rather than being bucketed\n  [PASS] the bands are well-formed and cover the range in order\n  [PASS] a null eligibility filter matches everything\n  [PASS] a dual player matches his KPF eligibility\n  [PASS] \u2026AND his MID eligibility\n  [PASS] a player without the eligibility does not match\n  [PASS] an empty eligibility set matches nothing\n  [PASS] \u2026and so does an absent one\n  [FAIL] every shipped row carries an eligibility set  806 of 808\n  [PASS] and the board really has dual-eligible players (186) \u2014 the case the modelling Position axis cannot answer\n  [PASS] \"eligible to play KPF now\" is a superset of \"modelled as KPF\"\n  [PASS] the snapshot carries all five surviving filters, so Back restores the board you were on\n  [PASS] \u2026and restore round-trips them\n\n  ------------------------------------------------------------------------\nUI ACT 2026-08-21: 3 FAIL / 180\n\n    raw output: /home/user/afl-rl-engine/docs/evidence/store_edit_roster_returns_2026-11-06/gate_ui_defects_2026_08_21.txt\n\n--- gate counting_rule (exit 1)\ncell, dominic-bedendo\n  [PASS] SHIPPED map: and it carries NOBODY who is not on the board \u2014 a departed player left in it is the same staleness in the other direction, and nothing on screen would show it\n  [PASS] SHIPPED map: its stamp's own count is the number of players it actually carries\n  [FAIL] SHIPPED map: its stamped ROSTER signature is the board's own player-key set, recomputed here \u2014 so a player joining or leaving the league stales it loudly instead of silently  want=recomputed match got=b1ae87fe9709\n  [FAIL] SHIPPED map: and its stamped CSV md5 is the owner's locations file as committed \u2014 a re-cut CSV changes the codes with no board movement at all, so it is the other real dependency  want=recomputed match got=64a0e735588f\n  [PASS] SHIPPED map: the stamp no longer claims a BOARD \u2014 that was the wrong dependency, and the obvious 'fix' for the mismatch it produced (a board pin in the reader) would have taken the pocket panel dark on every landing\n  [PASS] SHIPPED map: the board it was built against is retained but LABELLED as provenance, not a dependency, so nobody checks it by mistake\n  ------------------------------------------------------------\n  28/31 passed  (3 FAILED)\n\n    raw output: /home/user/afl-rl-engine/docs/evidence/store_edit_roster_returns_2026-11-06/gate_counting_rule.txt",
+  "failed_step": "gates",
+  "restore_point": {
+    "data/expected_boot.json": "cc15bf57e495ab59d444ed5985e42e8f",
+    "data/release_contract.json": "bf8388ad9c64c471a9ae685bad805180",
+    "data/release_lineage.json": "e1f4e951f9a4e9d1532e51d1fc8da9b3",
+    "data/rl_build/rl_app_data.json": "96896e1c489620cb3789b06adb9452f5",
+    "data/rl_build/rl_app_data.json.srcmd5": "10ab75f8f77fe29113a44bd065812223",
+    "data/season_state.json": "f19a9ac303548a0255f1376204267906",
+    "data/sheet_pins.json": "226b73ff64e6a6967103bfee788848a0",
+    "docs/STATE.md": "cec32647cf886c08e91ef26e7184ca1d",
+    "docs/evidence/walkforward_retro_2026-08-29/CONTROL_FAIL.json": "1d3977c4570000208652b25971b92831",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r14.json": "6d68ed07fd02b5ad90b61af5789ed507",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r15.json": "1c268118a8d0737faa1ef53dc0340cda",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r16.json": "9cc8de979974e8fe93d5b817748b20cc",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r17.json": "883649ce700a611926ca3558e6f05a2c",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r18.json": "d64df0627312d9970f0cb3df6b451058",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r19.json": "db887e07047c9885f5f530ca1479646d",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r20.json": "c7ab631d8e11ecaac8093c3ae87881da",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r21.json": "265688755d05ddd416d8f7b3bcaa9e0f",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r22.json": "8799915d3dd6f6eb3c4c88f5db3342da",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r23.json": "b49802755f2cbeaacbf29e62bb25d5c2",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r24.json": "af6e688187df9cd1245f0c99d166cd3e",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r25.json": "a179b3799f8b251994d0dc7442ca4240",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r26.json": "7744e66db5d722fa3c8949601d609e36",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r27.json": "b07bd899afe8b4dd7c8b550007ac0118",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r28.json": "3c0ebb05d48282462f72e999c31721d7",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r29.json": "e48c1b70a9a67b68d800fd3cf63597fe",
+    "engine/rl_after/ingestion/pos_rank_history.json": "0401247d63835c9ba852679fa922340a",
+    "engine/rl_after/ingestion/rank_history.json": "71fd4ee722a1793a21fa4b250130f7e1",
+    "engine/rl_after/ingestion/value_history.json": "a51f8711709eb6806316f7e5fc09ef27",
+    "engine/rl_after/rl_app_data.json": "96896e1c489620cb3789b06adb9452f5",
+    "engine/rl_after/rl_app_data.json.srcmd5": "10ab75f8f77fe29113a44bd065812223",
+    "engine/rl_after/rl_model_data.json": "6f0123fb6b166465d5bae9ec2eca9026",
+    "ui/data/board_view_public.js": "c604f0d2750a5a0043f997188e154a4c",
+    "ui/data/board_view_working.js": "5de9187c84f029da372b5d78a6c3ab3b",
+    "ui/data/club_valuation.js": "627e4f1bd00c2cc1d6a1e5e0677e4a3b",
+    "ui/data/movers.js": "ab5b0dd9d090adb45d33ecf789907920",
+    "ui/data/movers_transition.js": "f1b78b784e05c7a4311c184101ca8e81",
+    "ui/data/ownership.js": "3e2c1946dfdf5ff580e4cfb4e6bbebb1",
+    "ui/data_aux/draft_outcomes.js": "8570cccf4a52baa7069b5c03dc48ca3a",
+    "ui/data_aux/v0.js": "ea8f715fbcf42dba3bf9bc8c102071e5"
+  },
+  "restored": [
+    {
+      "action": "rewrite",
+      "path": "data/expected_boot.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "data/release_contract.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "data/release_lineage.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "data/rl_build/rl_app_data.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "data/rl_build/rl_app_data.json.srcmd5"
+    },
+    {
+      "action": "rewrite",
+      "path": "data/season_state.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "docs/STATE.md"
+    },
+    {
+      "action": "rewrite",
+      "path": "docs/evidence/walkforward_retro_2026-08-29/CONTROL_FAIL.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "engine/rl_after/ingestion/pos_rank_history.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "engine/rl_after/ingestion/rank_history.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "engine/rl_after/ingestion/value_history.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "engine/rl_after/rl_app_data.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "engine/rl_after/rl_app_data.json.srcmd5"
+    },
+    {
+      "action": "rewrite",
+      "path": "engine/rl_after/rl_model_data.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data/board_view_public.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data/board_view_working.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data/club_valuation.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data/movers.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data/movers_transition.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data/ownership.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data_aux/draft_outcomes.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data_aux/v0.js"
+    }
+  ]
+}

@@ -2819,6 +2819,20 @@ def ui(ctx):
     if md5(v0side) != v0_before:
         ctx.log('  carrier moved: ui/data_aux/v0.js  %s -> %s' % (v0_before[:12], md5(v0side)[:12]))
 
+    # ---- WRITER 9/9 — THE POSITIONS MAP (ui/app/positions_data.js), 2026-11-06 ----------------------
+    # Stamped with the board's roster signature and the locations CSV md5; counting_rule.test.js and
+    # ui_defects refuse a stale one. It was never a lander writer, so a roster change (a player added
+    # or retired) or a re-cut sheet staled it until somebody ran the extractor by hand (the roster
+    # returns act, flight 9, failed its gates on exactly that).
+    posmap = _p(ctx, 'ui', 'app', 'positions_data.js')
+    pos_before = md5(posmap)
+    ctx.log('WRITER 9/9: ui/tools/extract_positions.py  (the positions map, re-stamped to the landed roster + sheet)')
+    rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'extract_positions.py')], timeout=600)
+    if rc != 0:
+        raise StepError('the positions map regeneration failed (exit %s):\n%s' % (rc, out[-2000:]))
+    if md5(posmap) != pos_before:
+        ctx.log('  carrier moved: ui/app/positions_data.js  %s -> %s' % (pos_before[:12], md5(posmap)[:12]))
+
     ctx.log('AFTER   working %s  release-block=%s' % (md5(bundle), has_release(bundle)))
     ctx.log('AFTER   public  %s  release-block=%s' % (md5(public), has_release(public)))
     ctx.log('AFTER   movers  %s  %s' % (md5(movers),

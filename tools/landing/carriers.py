@@ -218,6 +218,8 @@ LEVER_CARRIERS = (
       'writes the file, and it reads the store and nothing else. It costs about a second — it loads '
       'no engine — so there is no efficiency argument for deferring it to a later act.'),
 
+    F('ui/app/positions_data.js', 'steps.ui writer 9 (ui/tools/extract_positions.py)',
+      'the positions map: canonical position codes per board player, stamped with the roster signature and the locations CSV md5'),
     F('ui/data_aux/v0.js',
       'steps.ui writer 8 (ui/tools/gen_v0_sidecar.py)',
       'THE v0 SIDECAR — the entry price per player, and the one the entry above already named as the '

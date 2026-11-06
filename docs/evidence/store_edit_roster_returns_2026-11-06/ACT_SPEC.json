@@ -37,6 +37,11 @@
     "new": 2026
    },
    {
+    "key": "dominic-bedendo",
+    "field": "eligibilities",
+    "add": "SF"
+   },
+   {
     "key": "alex-mirkov",
     "field": "scoring[2026]",
     "add": {
@@ -110,6 +115,11 @@
     "key": "alex-mirkov",
     "field": "_force_active",
     "add": true
+   },
+   {
+    "key": "alex-mirkov",
+    "field": "eligibilities",
+    "add": "RUCK"
    },
    {
     "add_row": {
