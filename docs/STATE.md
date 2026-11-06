@@ -19,8 +19,8 @@ measurement made while this file was written, not a claim carried over from the 
 
 | identity | pinned value | carrier | re-hashed from | verdict |
 |---|---|---|---|---|
-| board | `15431ae8676370eb3b3b90a7def22e6e` | data/expected_boot.json | data/rl_build/rl_app_data.json | agrees |
-| store | `82aed8d1df509e0c2b5869fa72036295` | data/expected_boot.json | engine/rl_after/rl_model_data.json | agrees |
+| board | `159d3972cdfa9b558b7a92547688192b` | data/expected_boot.json | data/rl_build/rl_app_data.json | agrees |
+| store | `6d70c6b93e111c9c1eb398bf8e37295f` | data/expected_boot.json | engine/rl_after/rl_model_data.json | agrees |
 | engine_head | `b8152511821fd710b4b7b530b822213e` | data/expected_boot.json | engine/rl_after/_merged_recover.py | agrees |
 | rl_model | `ad48eb299b01639b62d397c4c0016dd4` | data/expected_boot.json | engine/rl_after/rl_model.py | agrees |
 | balanced_board_md5 | `f4126b629ea4d4135b4c0ad0f1b29508` | data/expected_boot.json | (no in-tree artifact) | not in tree |
@@ -29,7 +29,7 @@ measurement made while this file was written, not a claim carried over from the 
 
 | release fact | value | carrier |
 |---|---|---|
-| contract seal | `38891143e58aa757396764db61c28783be82b886b86d0878db8dd561e8d33527` | data/release_contract.json:contract_sha256 |
+| contract seal | `c6e304c766827b8b55eb8b197bed0e85e95f108ede4baf2227bc2b7f43d5117e` | data/release_contract.json:contract_sha256 |
 | config seal | `d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4` | data/release_contract.json:config_sha256 |
 | release version | v2.11-final-rc1-PROVISIONAL | data/release_contract.json:release_version |
 | round (as_of_round) | 24 | data/release_contract.json:as_of_round |
@@ -58,21 +58,21 @@ gate claimed by name (process law P5).
 
 ## LINEAGE TIP
 
-`data/release_lineage.json` — the append-only out-of-round transition register, 35 entries.
+`data/release_lineage.json` — the append-only out-of-round transition register, 36 entries.
 
 | field | value |
 |---|---|
-| column | roster-returns-06-11 |
+| column | exits-2026-06-11 |
 | after round | 24 |
-| board moved | `96896e1c489620cb3789b06adb9452f5` → `15431ae8676370eb3b3b90a7def22e6e` |
+| board moved | `15431ae8676370eb3b3b90a7def22e6e` → `159d3972cdfa9b558b7a92547688192b` |
 | identities moved | board, store |
-| owner ruling id | ROSTER_RETURNS_2026-11-06 |
+| owner ruling id | EXITS_2026_2026-11-06 |
 
 ## GENERATION STAMP
 
 | field | value |
 |---|---|
-| generated at commit | `9acb859a83a08fa361525c2d0e10225f6cab4644` |
+| generated at commit | `c518ad1a600fd138589339a017c6186e5b7b646f` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |
