@@ -3,7 +3,7 @@
  "act_kind": "lever-landing",
  "act": "SURVIVAL ON THE +1/+2 LENSES (D-H = H2, capped; fix plan F1): exit risk is probability-based survival S_k(age, games) fitted on the TRUE listing outcome over played rows (on an AFL list at the end of Y+k | listed at the end of Y), spread across each age cohort by EVIDENCE (S_k(age_i, g_i) / R_k(age_i), the cohort's evidence mix at the row's own age; ages >= 33 pooled) with the multiplier capped at 1.0 \u2014 nobody rises for survival; 0-game players carry no fitted S and are not charged (their vP is a pick-curve expectation that already averages over busts). Present values untouched.",
  "date": "2026-10-14",
- "owner_word": "Owner, 2026-10-14 (verbatim): \"H2 makes the most sense\"; on the capped variant: \"the capped option seems to keep the board stable, so that's probably the best option?\"; fix plan F1 accepted after the first blind review (\"Unless you say otherwise I proceed with F1\" \u2014 no objection); landing word: [to be quoted verbatim when given].",
+ "owner_word": "Owner, 2026-10-14 (verbatim): \"H2 makes the most sense\"; on the capped variant: \"the capped option seems to keep the board stable, so that's probably the best option?\"; fix plan F1 accepted after the first blind review (\"Unless you say otherwise I proceed with F1\" \u2014 no objection); landing word, 2026-11-06, verbatim: \"Yes, please proceed with that plan.\" (the plan presented: land the survival act, then write the Phase 2-5 briefs).",
  "authority": "owner word on this act",
  "prereg": {
   "path": "docs/evidence/engine_survival_hazard_2026-10-14/NOTE.md",
