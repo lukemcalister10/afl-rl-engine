@@ -16,25 +16,23 @@
   "store": [
    {
     "key": "dominic-bedendo",
-    "field": "_retired",
-    "old": true,
-    "new": false
-   },
-   {
-    "key": "dominic-bedendo",
-    "field": "_last_listed",
-    "old": 2024,
-    "new": 2026
-   },
-   {
-    "key": "dominic-bedendo",
     "field": "afl_club",
     "add": "Fremantle"
    },
    {
     "key": "dominic-bedendo",
+    "field": "stable_player_id",
+    "add": "afl-player-v1-11c3b75d73c4b5fe53f5"
+   },
+   {
+    "key": "dominic-bedendo",
     "field": "affl_team",
     "add": "Free Agents"
+   },
+   {
+    "key": "dominic-bedendo",
+    "field": "eligibilities",
+    "add": "G-FWD"
    },
    {
     "key": "dominic-bedendo",
@@ -47,13 +45,13 @@
     }
    },
    {
-    "key": "alex-mirkov",
+    "key": "dominic-bedendo",
     "field": "_retired",
     "old": true,
     "new": false
    },
    {
-    "key": "alex-mirkov",
+    "key": "dominic-bedendo",
     "field": "_last_listed",
     "old": 2024,
     "new": 2026
@@ -65,8 +63,18 @@
    },
    {
     "key": "alex-mirkov",
+    "field": "stable_player_id",
+    "add": "afl-player-v1-9c9e1eae45b315029454"
+   },
+   {
+    "key": "alex-mirkov",
     "field": "affl_team",
     "add": "Free Agents"
+   },
+   {
+    "key": "alex-mirkov",
+    "field": "eligibilities",
+    "add": "RUCK"
    },
    {
     "key": "alex-mirkov",
@@ -77,6 +85,18 @@
      "games": 0,
      "pos": "RUCK"
     }
+   },
+   {
+    "key": "alex-mirkov",
+    "field": "_retired",
+    "old": true,
+    "new": false
+   },
+   {
+    "key": "alex-mirkov",
+    "field": "_last_listed",
+    "old": 2024,
+    "new": 2026
    },
    {
     "add_row": {
@@ -153,26 +173,6 @@
      "draft_stream": "OTHER",
      "stream_year": 2026
     }
-   },
-   {
-    "key": "dominic-bedendo",
-    "field": "stable_player_id",
-    "add": "afl-player-v1-11c3b75d73c4b5fe53f5"
-   },
-   {
-    "key": "dominic-bedendo",
-    "field": "eligibilities",
-    "add": "G-FWD"
-   },
-   {
-    "key": "alex-mirkov",
-    "field": "stable_player_id",
-    "add": "afl-player-v1-9c9e1eae45b315029454"
-   },
-   {
-    "key": "alex-mirkov",
-    "field": "eligibilities",
-    "add": "RUCK"
    }
   ],
   "expected_movers": null,
