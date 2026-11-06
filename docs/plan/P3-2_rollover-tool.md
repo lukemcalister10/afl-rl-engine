@@ -1,25 +1,43 @@
-# P3-2 — The season rollover (MEDIUM; AFTER THE DRAFT — owner ruling 2026-10-14)
+# P3-2 — The season rollover (HIGH; AFTER THE DRAFT — owner ruling 2026-10-14; owner word)
 
-**Goal.** `tools/rollover 2027` turns the end-of-2026 tree into the start-of-2027 tree in one landed act:
-season_state (season_year 2027, as_of_round 0, calendar_progress 0, exposure_pace from the previous season's
-completed rows), every store row gains an empty 2027 scoring row where the engine expects one (read how 2026's
-0-game rows are represented: 805 rows incl. 0-game), the retirements/delistings from the AFL 2026 list applied
-via `tools/player retire` (the listing fact), the draft intake added via `tools/player add` from the owner's
-draft file (national, rookie, MSD, pathway, SSP as they occur), the fixtures file reset, the column/report ids
-keyed 2027 (P2-4), the movers bundle's season rolled (a new season section; 2026 kept), the phantom-pick
-classes advanced (2028/2029), and the as-at banks for end-2026 produced by the as-at pass (so −1 becomes 2026).
+**Depends on.** P3-1 (live_season), P2-3 (tools/player add/retire), P2-4 (season-keyed ids), P5-3 (as-at columns),
+P4-3 (the config move: the two INPROG dials go to "2027"). On P2-1, see "Rehearsal" — the reviewer asked to add P2-1
+as a dependency; that would be circular (P2-1 needs this rollover landed or rehearsed), so it is split below.
 
-**Why.** The engine has never rolled a season; everything that says 2026 was hand-written in July.
+**Done when.** `tools/rollover 2027 --draft <owner's draft file> --delistings <AFL list> [--check]` turns the
+end-of-2026 tree into the start-of-2027 tree in one landed store-edit act (or a declared short series), shown to the
+owner as a full movers board first, and the first 2027 week can then be ingested (P2-1).
 
-**Files.** New tools/rollover.py; season_state.py; tools/ingest.py (first week of 2027 must work after);
-engine/rl_after/rl_export.py (lens years from LIVE_SEASON — P3-1); scores/fixtures.json; docs/runbooks/ROLLOVER.md.
+**Facts (checked at ffb2663b).**
+- data/season_state.json: season_year 2026, as_of_round 24, calendar_progress 1.0, exposure_pace 0.909 (derived by
+  season_state.derive, season_state.py:143; calendar_progress(as_of, total) :55).
+- `as_of_round` and `season_state` are DELEGATED_PINS owned by "the round lander (2b)" (steps.py:112-113); the edit
+  lane's season-clock step re-derives at the CURRENT as_of_round and STOPS if anything but source_store_md5 moves
+  (steps.py:872-892). A rollover therefore needs a declared season-state writer in the edit lane (season_year+1,
+  as_of_round 0, re-derived from the edited store). Build it here; P2-1 reuses it for round N→N+1.
+- Store: 805 rows carry a 2026 scoring row, 137 of them with 0 games — measure how a 0-game live row is represented
+  and whether the engine needs a 2027 row at round 0 (build a copy both ways; do not assume).
+- The as-at banks/emitter use SEASONS = (2025, 2024) (emit_asat_seasons.py:42) — they become (2026, 2025).
+  Phantom pick classes start at 2027 (rl_export.py:1029). tools/ingest.py:63 SEASON (P3-1 routes it).
+  RL_M3_INPROG_Y / RL_EXPO_INPROG_Y are pinned "2026" in data/model_config.json (config identity; P3-1 asserts they
+  equal season_year, so the rollover must move them with it).
+- scores/fixtures.json `season` "2026"; ui/data/movers.js has one season of reports (P2-4 makes room for two).
+- The RULEBOOK has no season/rollover text (`grep -in "season\|rollover" docs/RULEBOOK.md`): no law 10a edit needed.
 
-**Rules.** Depends on P3-1, P2-3, P2-4, P5-3. The rollover is a store-edit act with declared movers (every
-retired row leaves the board; every draftee appears at his pick price): the dry run predicts them. Rehearsal
-on a copy FIRST (P3-3 is this rehearsal: a worktree with a scratch remote, run the rollover, build, run the
-first "week" with a synthetic R1 file through tools/ingest, every gate green) before the real one. The
-rulebook's P1 applies (owner sees the movers: the whole new board).
+**Change.** tools/rollover.py builds the edit spec: season-state move; `tools/player retire` edits for the AFL
+delistings (`_retired`, `_last_listed 2026`); `tools/player add` rows for the draftees (national, rookie, MSD,
+pathway, SSP as they occur) at their picks; the two config dials to "2027" (declared `config` move); fixtures reset;
+as-at bank re-run for 2026/2025 (so −1 = 2026); movers bundle season section opened. `--check` prints all edits and
+the predicted movers (the lane's dry run). docs/runbooks/ROLLOVER.md.
 
-**Proof.** The rehearsal, repeated until it is boring; then the real act with the owner's word.
+**Must not change.** 2026 history (reports, value/rank histories, release_lineage entries); the frozen v0-surface
+signature (a draft intake changes the v0 kernel's roster sample — measure whether the signature moves BEFORE the act;
+if it does, a v0surf re-fit is a bake and needs its own word).
 
-**Lands via.** Store-edit act(s) through the lane.
+**Prove it — rehearsal first (this is P3-3).** A worktree with a scratch remote: run the rollover, land it, build,
+every gate green, the owner-readable movers board produced. Then, ONLY once P2-1's code exists, ingest a synthetic
+2027 R1 through `tools/ingest` on the same copy (P2-1's own proof). P3-2 lands without waiting for P2-1; its done
+condition is the rehearsal through the rollover build. Repeat until boring; then the real act on the owner's word.
+Blind independent review (law 11: every player's value moves — ages, calendar 0, retirements, draftees).
+
+**Lands via.** Store-edit act(s) through the lane, `moves` declaring store, board, config, as_of_round, season_state.

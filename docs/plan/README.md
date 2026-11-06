@@ -1,37 +1,59 @@
 # The plan briefs — Phases 2 to 5 (owner word 2026-11-06: "Yes, please proceed with that plan.")
 
-One brief per item. Each is a complete hand-off for one agent: goal, why, files, the rules that must hold,
-the proof to run, and how it lands. Work ONE engine item at a time (never two agents in the same engine file).
-Every brief ends with the same contract:
-
-- **Lane.** A change that moves the board, the store or a pinned identity lands through the landing library
-  (`tools/landing`, driver pattern in `tools/ingest.py` / `docs/evidence/*/ACT_SPEC.json`), with the
-  flip-commit procedure for engine pins (hand-edit `data/expected_boot.json`, `python3 tools/restamp.py apply`,
-  commit, then fly). A change that moves none of those is a plain commit after its tests.
-- **Proof.** Byte-identical board where the brief says so (a bare build via `tools/landing/_build_child.py` and a
-  JSON key-for-key compare against `data/rl_build/rl_app_data.json`); the named test suites; the acceptance
-  runner (`python3 -m acceptance.runner --profile host-insensitive`) green; `python3 tools/rulebook_lint.py` clean.
-- **Owner word.** Only value-moving items (tier HIGH) need the owner's word and a blind review (RULEBOOK law 11).
-  Everything else is the owner-accepted plan.
-- **No new knobs.** No environment flags, no kill-switches (the engine has none since 2026-10-14). A measurement
-  variant is a module constant flipped for a build, never shipped.
-
-| order | brief | tier | lands via |
-|---|---|---|---|
-| 1 | P2-1 rounds-on-ingest | LOW | plain commit + a rehearsed dry run |
-| 2 | P2-2 movers-single-writer | LOW | plain commit (bundle byte-identical) |
-| 3 | P4-1 evidence-archive | LOW | plain commit + archive branch |
-| 4 | P4-2 dead-tooling-deletions | LOW | plain commit |
-| 5 | P4-3 flip-inside-the-lander | MEDIUM | plain commit (lander change) + one rehearsal act |
-| 6 | P4-4 retire-the-round-lane | MEDIUM | plain commit (after 1 and 5) |
-| 7 | P2-3 store-writer-and-player-tool | MEDIUM | plain commit (lane verbs) + one rehearsal act |
-| 8 | P2-4 season-keyed-ids | MEDIUM | plain commit (UI/ingest) |
-| 9 | P5-1 engine-one-ev | MEDIUM | lever act, board byte-identical |
-| 10 | P5-2 engine-file-end | MEDIUM | lever act, board byte-identical |
-| 11 | P5-3 asat-columns-adopted | MEDIUM | lever act (board bytes move: −1/−2 columns) |
-| 12 | P5-4 remaining-flags | MEDIUM | lever act + contract re-seal |
-| 13 | P3-1 live-season-constant | MEDIUM | lever act, board byte-identical |
-| 14 | P3-2 rollover-tool (AFTER THE DRAFT) | MEDIUM | plain commit + rehearsal on a copy |
-| 15 | P5-5 veteran-damper (F3) | HIGH | lever act, owner word, blind review |
-| 16 | P5-6 grid-surface-smoothing | HIGH | lever act, owner word, blind review |
-| 17 | P4-5 stale-docs-sweep | LOW | plain commit, last |
+One brief per item: **Done when**, **Facts** (file:line read at ffb2663b — re-read, lines drift), **Change**, **Must
+not change**, **Prove it**, **Lands via**. The 2026 season is over (season_state.json as_of_round 24, calendar_progress
+1.0; movers.js reports 15–29, GF included). Next: the draft, then the rollover, then 2027 Round 1.
+## The common contract
+- **Serial rule.** One item at a time in `tools/landing/steps.py`, `tools/ingest.py` and the engine
+  (`engine/rl_after/_merged_recover.py`, `rl_model.py`, `rl_export.py`, `engine/forward_valuation/`).
+  P2-1, P2-2, P2-3, P2-4, P4-1a, P4-2, P4-3 and P4-4 all edit steps.py.
+- **Lanes.** A change that moves the board, the store or a pinned identity lands through `tools/land`
+  (lever / edit) or `tools/ingest`. Until P4-3 lands, an engine or config source change needs the flip:
+  edit the pins in data/expected_boot.json, `python3 tools/restamp.py apply`, commit, then land with those
+  identities in `unmoved` (tools/landing/spec.py:65 refuses engine_head/rl_model/fv/config/v0surf in `moves`).
+  After P4-3, declare them in `moves`. Anything else is a plain commit after its tests.
+- **Gates.** The lander runs DEFAULT_GATES (steps.py:139-185), with acceptance at `--profile in-transaction`
+  (:144-147). CI runs `python3 -m acceptance.selftest` and `--profile host-insensitive`
+  (.github/actions/host-insensitive-gates/action.yml:72-73). Neither profile runs `lander_selftest`
+  (PROFILE 'full', acceptance/checks/landing.py:71); the lander runs tools/landing/selftest.py itself before
+  every transaction (tools/landing/cli.py:231,293,335) unless a standing proof exists. "Acceptance green" in a
+  brief = `python3 -m acceptance.runner --profile full` for a plain commit; the lander's gates for an act.
+- **Byte-identical board.** Board pin `96896e1c…` = md5 of data/rl_build/rl_app_data.json. Bare build:
+  `python3 tools/landing/_build_child.py $PWD <tag> canonical <scratch>/b '{}'`, then md5 `<scratch>/b.board.json`.
+  For an act, the lander's build_proofs against `prereg.board_after` is the binding proof.
+- **Spec baseline.** 29 `ACT_SPEC*.json` under docs/evidence; 28 validate today. ACT_SPEC_P3A.json
+  (docs/evidence/p3a_pins_out_2026-08-21) already fails (engine_head in `moves`). "Every spec still validates"
+  means the same 28 still pass (state it if P3A starts passing after P4-3).
+- **Config rule (corrects "the engine has no env flags since 2026-10-14", which was false).** Distinct RL_* names
+  read in code: 66 in _merged_recover.py (69 if you count three named only in "Was os.environ.get" comments at
+  :216, :1161, :1162), 20 in rl_model.py, 7 in rl_export.py, 5 in conditional_prior.py. All but SIX are either
+  manifest dials in data/model_config.json `vars` (90 entries) or config_manifest.INFRA_ALLOW (config_manifest.py:50);
+  in gate/canonical mode any other RL_/PAR_ var halts the build (config_manifest.py:121-128). The D3 act
+  (dd7cad24) hard-wired the adopted chain; it did not remove the pinned dials. RULE: no new UNPINNED switch;
+  manifest dials stay — they ARE the config identity. The six unpinned reads are P5-4's. A measurement variant
+  is a module constant flipped on a scratch copy, never shipped.
+- **Owner word.** Value-moving releases (law 11 blind review, RULEBOOK P1 movers shown first): P5-3, P3-2, P5-5,
+  P5-6. RULEBOOK edits (law 10a): P4-4 (P13 names the round lander as the sheet-pin writer). A new step on the
+  weekly path (P14, RULEBOOK.md:173: "No session adds a step to this path without the owner's signed word"):
+  P2-1. A history rewrite: P4-1b. Everything else is the owner-accepted plan.
+## Order
+| # | brief | tier | depends on | lands via |
+|---|---|---|---|---|
+| 1 | P2-2 movers single writer | LOW | — | plain commit, bundle byte-identical |
+| 2 | P4-1a hard-fail the two retro exists-guards (in P4-1) | LOW | — | plain commit (~10 lines) |
+| 3 | P4-2 retired tooling (re-scoped) | LOW | P4-1a | plain commits, one per unit |
+| 4 | P4-3 flip inside the lander (+stash key, +config) | MEDIUM | P4-2 | plain commit + rehearsal act |
+| 5 | P5-2 engine file end | MEDIUM | P4-3 | lever act, board unmoved |
+| 6 | P5-1 one ev | MEDIUM | P5-2 | lever act, board unmoved |
+| 7 | P5-4 the six unpinned reads + refit lane | MEDIUM | P5-1 | lever act, board unmoved |
+| 8 | P5-3 as-at −1/−2 columns (a value move) | HIGH | P4-3 | lever act, owner word, blind review |
+| 9 | P2-3 store row verbs + tools/player | MEDIUM | P4-2 | plain commit + rehearsal |
+| 10 | P2-4 season-keyed ids | MEDIUM | P2-2 | plain commit (one data migration) |
+| 11 | P3-1 one live season | MEDIUM | P4-3, P5-4 | lever act, board unmoved |
+| 12 | P3-2 rollover (AFTER THE DRAFT) | HIGH | P3-1, P2-3, P2-4, P5-3, P4-3 | edit act, owner word |
+| 13 | P2-1 rounds on ingest (BEFORE 2027 R1) | MEDIUM | P3-1, P2-4, P3-2 | plain commit + rehearsal, owner word |
+| 14 | P4-4 retire the round lane (after a real 2027 round) | MEDIUM | P2-1 + one landed 2027 round | plain commits, owner word |
+| 15 | P4-1b archive branch / history rewrite (in P4-1) | LOW | owner decision; P4-4 | owner word |
+| 16 | P5-5 veteran damper | HIGH | P5-4 | lever act, owner word, blind review |
+| 17 | P5-6 grid-surface smoothing | HIGH | P4-3, P5-5 | lever act, owner word, blind review |
+| 18 | P4-5 stale-docs sweep | LOW | all others | plain commit, last |

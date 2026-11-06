@@ -1,23 +1,45 @@
-# P5-3 — The export writes the as-at −1/−2 columns itself (MEDIUM; board bytes move, values do not)
+# P5-3 — The export writes the as-at −1/−2 columns itself (HIGH: player values move on −1/−2)
 
-**Goal.** rl_export.py stops computing vM1/vM2 as `ev(p,2024)/ev(p,2025)` on the current roster
-(rl_export.py:210-212) and instead reads the banked as-at values (docs/evidence/walkforward_retro_2026-08-29/
-values_asat_2025.json / 2024.json, or their new home after P4-1): a current player's vM1/vM2 = his as-at value,
-null when he was not on that board. The `back` section (the old retiree recall, 228 rows) is deleted from the
-board; the full as-at rosters incl. retirees stay in ui/data/asat_boards.js (emit_asat_seasons.py becomes the
-one writer of that file and is run by the landing's UI step, so an extract never puts the old columns back).
+**Depends on.** P4-3 (rl_export.py and the banks enter the proof-stash key; BUILD_INPUT_FILES). Serial: rl_export.py.
+**Owner word + blind review.** vM1/vM2 ARE player values (the −1/−2 lenses, ui/app/config.js:43; card.js:299-303
+draws them). Replacing them is a value move: RULEBOOK law 11 (blind independent review) and P1 (show the owner the
+movers first). The old brief's "not a value move" was wrong.
 
-**Why.** Owner ruling 2026-10-14: −1/−2 are as-at boards. Today the engine still writes the backward lens and
-the emitter patches it after the fact (ui/MAINTAINER.md).
+**Done when.** rl_export.py sets each current row's vM1/vM2 from the banked as-at values (null when the player was
+not on that season's as-at board), writes no `back` section, the lander's ui step regenerates ui/data/asat_boards.js
+from the same banks, and the act lands on the owner's word with the movers shown.
 
-**Rules.** The banks are build inputs (proofstash BUILD_INPUT_FILES) and the export halts if a bank is missing
-or its stamp (store/board it was cut on) is older than the current store's as-at roster facts — define that
-rule explicitly: a bank is valid for a store whose `_last_listed`/`_retired`/scoring facts for seasons ≤ Y are
-unchanged; the pass re-runs otherwise (document the re-run command). Present v, vP1, vP2 unchanged. The UI
-card's "Value by year" and any reader of `back` updated; ui/tests fixtures updated.
+**Facts (checked at ffb2663b).**
+- rl_export.py:210-212: with BASE_REF=AGE_REF=2026, `_vM2, _vM1 = ev(p,2024), ev(p,2025)` on the current roster.
+- Banks: docs/evidence/walkforward_retro_2026-08-29/values_asat_2025.json / values_asat_2024.json, produced by
+  `tools/harness …/pass_asat_seasons.py` (its Y=2026 control first, :47-50). emit_asat_seasons.py PATCHES
+  ui/data/board_view_working.js's lens columns after the fact and writes ui/data/asat_boards.js (:45, :48); the
+  lander never runs it (no reference in steps.py), so every landing's extract_board_view rewrite drops the patch.
+- They differ from today's columns for a second reason: the level-axis smoothing runs only when Y == BASE_REF
+  (_merged_recover.py:2921-2926); the banks price with BASE_REF = Y (smoothed), today's columns at BASE_REF 2026 do not.
+- `back` = 228 rows (data/rl_build/rl_app_data.json). Readers: rl_export.py:688-700 (lensConservation adds `back`
+  on −1/−2), :994-1004 (the 64-pick recompute, same sum), :702 (`out`); ui/tools/extract_board_view.py:366, :480, :571;
+  tools/landing/steps.py:962-972 (`board_values` reads active+back for store-edit summaries); ui/tests/extract_seam.test.py
+  :175, :236 (fixtures). No ui/app file reads `back`. The sealed F5 reconciliation (release_contract.json
+  `f5_entrant_reconciliation`) is the entrant layer only and does not include `back`.
+- rl_export.py is in neither PIN_MEASURERS nor proofstash BUILD_INPUT_FILES today (P4-3 adds it; verify it did).
 
-**Proof.** Build: v/vP1/vP2 identical key-for-key; vM1/vM2 equal the banks; `back` absent; all ui/tests;
-standalone smoke; acceptance green. engine_head unmoved (rl_export is not pinned).
+- Each bank records `store_md5` (f49dbef6 = the live store) and `board_md5` e944be20 — NOT the live board 96896e1c:
+  the banks were cut before a later engine act and record no engine identity. Re-run the pass before measuring.
 
-**Lands via.** Lever act, `moves: [board]`, movers declared (the vM1/vM2 column change on 804 rows is not a
-value move; say so in the NOTE).
+**Change.** (1) pass_asat_seasons also records engine_head/rl_model/config/fv in each bank; rl_export reads the two
+banks and HALTS if one is missing or any recorded identity differs from the live tree (no partial-staleness rule:
+re-run `tools/harness docs/evidence/walkforward_retro_2026-08-29/pass_asat_seasons.py`, document it in ui/MAINTAINER.md).
+An engine act then owes a bank re-run inside its own act (say how the lander orders it, or halt the act); (2) delete `back` and both lensConservation sums
+over it (−1/−2 totals then mean "players on the as-at board who are still current" — say so in `_meta`);
+(3) extract_board_view, board_values and extract_seam fixtures stop expecting `back`; (4) emit_asat_seasons stops
+patching board_view_working.js and becomes the ui step's writer of asat_boards.js (add a carrier entry);
+(5) add both banks to proofstash BUILD_INPUT_FILES (bump KEY_SCHEMA).
+
+**Must not change.** v, vP1, vP2 key for key; the store; the as-at banks themselves; the present lens conservation.
+
+**Prove it.** Measurement build first: per-row vM1/vM2 old vs new (count, median, largest movers, by age), the −1/−2
+lensConservation before/after — shown to the owner. Then: v/vP1/vP2 identical; vM1/vM2 == banks; `back` absent;
+every ui/tests suite (`node ui/tests/*.test.js`, `*.test.mjs`, `python3 ui/tests/*.test.py`); blind review filed.
+
+**Lands via.** Lever act, `moves: [board]` (+ engine_head only if the engine is touched), movers declared, owner word.

@@ -1,22 +1,45 @@
-# P4-1 — The evidence archive branch (LOW; owner decision D4 = yes)
+# P4-1 — Evidence: (a) the retro guards fail loudly; (b) the archive branch (owner decision D4)
 
-**Goal.** `docs/evidence/` (148 act directories, 216 MB) stays complete in history on an archive branch
-`evidence-archive`, and `main` keeps only the directories something live reads plus the last 10 acts.
+Two items, landed separately and far apart in the order (README #2 and #15).
 
-**Why.** Every clone, CI checkout and worktree carries 216 MB of flight logs and gate outputs nothing reads;
-the owner's pain point is the weight of the repo.
+## P4-1a — hard-fail the two exists-guards (LOW, ~10 lines; depends on nothing; serial rule: steps.py)
+**Facts.** tools/landing/steps.py:2038-2039 wraps writer 4b in `if os.path.exists(_retro):` and :2159-2161 wraps
+writer 4c's bank in `if os.path.exists(_bank) and not _res.get('already_present'):`. Writer 4 has already
+dropped the retro series (:2005-2009), so a moved or missing emitter ships a bundle with no movers series and no
+error. The scripts also locate the repo by depth: emit_retro_series.py:23 and emit_asat_seasons.py:41
+(`REPO = HERE/../../..`), so moving their directory breaks them even if the guards are fixed.
+**Done when.** A missing `_retro` or `_bank` file raises StepError naming the path and the remedy; the
+`already_present` skip is kept exactly as it is.
+**Must not change.** Behaviour when both files exist (every gate and carrier identical).
+**Prove it.** `python3 tools/landing/test_txn.py`, `test_store_edit.py`, `test_proofstash.py`; a new test (or a
+scratch-tree run of the ui step) with each file renamed shows the StepError; acceptance `--profile full` green.
+**Lands via.** Plain commit.
 
-**Rules.** FIRST find what reads docs/evidence at runtime: `grep -rn "docs/evidence" --include=*.py
---include=*.js --include=*.yml --include=*.sh . | grep -v "^./docs/evidence"` — known live readers today:
-docs/evidence/walkforward_retro_2026-08-29/ (the retro + as-at machinery and banks: KEEP, and consider moving
-it to tools/retro/ in the same change, updating every reference incl. tools/ingest.py WEEK_CARRIERS,
-tools/landing/carriers.py, the landing steps' retro bank writer, ui/MAINTAINER.md), fw1/fw2 report emitters
-(check), anything the acceptance checks or release_manifest_check.py name. Nothing that a gate reads may move
-without the gate moving with it. Create the archive branch from the current main (so history is intact there),
-then on main `git rm -r` the dead directories in ONE commit whose message lists them and names the branch.
-Keep the last 10 acts by date (they are the recent record). docs/register/ and docs/STATE.md untouched.
-
-**Proof.** acceptance green; every landing gate in tools/landing/steps.py DEFAULT_GATES still runs green on
-the trimmed tree (run them); `python3 tools/landing/test_proofstash.py`; CI green on the pushed tree.
-
-**Lands via.** Plain commit + `git push origin evidence-archive`. Reversible: the branch holds everything.
+## P4-1b — the archive branch and, separately, a history rewrite (LOW; owner decision; after P4-4)
+**Facts — the honest benefit.** docs/evidence is 216 MB in the worktree (147 directories + README.md); the
+repository's .git is 222 MB (pack 173 MB). `git rm` does not shrink history, and CI checks out with
+`fetch-depth: 0` (.github/workflows/final-integration.yml:69,88; fv-provenance.yml:44), which fetches every
+branch, so an `evidence-archive` branch on origin is downloaded by CI anyway. The ONLY gain of an archive branch
+plus `git rm` is checkout/worktree size (~216 MB per worktree). Shrinking clones requires rewriting history
+(filter-repo + force-push of main), which changes every commit SHA the register, release_lineage.json and the
+evidence notes cite — that is a separate decision that needs the owner's explicit word; do not do it under D4.
+**Live readers (code, not comments) — each stays, or moves in the same commit as its reader:**
+- walkforward_retro_2026-08-29/ — steps.py:2038, :2050, :2061-2064, :2159; tools/ingest.py:444-448 (WEEK_CARRIERS
+  glob `values_r*.json`); the depth-based REPO in its scripts (above); `tools/harness …/pass_retro_series.py` and
+  `pass_asat_seasons.py` (steps.py:2064 remedy text); ui/tests/movers.test.js:688 (message).
+- final_candidate_2026-08-19/DAY0_CP.json — carriers.py:306-311, txn.py:376.
+- candidate_31f/ext_2026-08-17/t338_extended_DISCLOSED.py — md5-pinned by tools/noarb_standing_page.py:37-38.
+- exec_306_zlaarm/ — copied by staged_apply.py:808; read by the refit lane (_merged_recover.py:2163-2165,
+  :2382-2384) and by ui/tests/draftday.test.js:753-754.
+- finals_fw1_2026-08-30/FW1_EDIT_PLAN.json — engine/rl_after/ingestion/test_finals_report.py:66 (a DEFAULT_GATE).
+- ingest/ — tools/ingest.py:616 writes each week's evidence there; act evidence dirs named in specs.
+- tools/landing/carriers.py has NO walkforward reference (the old brief was wrong to list it).
+Re-run before deleting anything: `git grep -n "docs/evidence\|'evidence', '" -- '*.py' '*.js' '*.mjs' '*.sh' '*.yml'
+':!docs/evidence' ':!session_*' ':!backups'` and classify every hit (comment / fixture string / live read).
+**Done when.** `evidence-archive` exists on origin at the pre-trim main; main has one `git rm -r` commit listing
+every removed directory and naming the branch; every live reader above still resolves.
+**Must not change.** Any file a reader above opens; docs/register/, docs/STATE.md; the last 10 act directories.
+**Prove it.** Every DEFAULT_GATE (steps.py:139-185) green on the trimmed tree (run them); `test_proofstash.py`,
+`test_txn.py`; `md5sum` of the T338 file still equals T338_MD5 (noarb_standing_page.py:38); acceptance `--profile
+full`; CI green.
+**Lands via.** Plain commit + `git push origin evidence-archive` (reversible). History rewrite: owner word only.

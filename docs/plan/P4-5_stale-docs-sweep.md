@@ -1,18 +1,36 @@
 # P4-5 — The stale-docs sweep (LOW; last)
 
-**Goal.** Every document under docs/ (14 top-level .md files, docs/runbooks, START_HERE.md, REQUIRED_INPUTS.md,
-ui/MAINTAINER.md, the README) says what the tree does AFTER Phases 2–5: no sibling, no LTI register, no round
-lane, no selftest/claims/day0, no hand flip, no "NOT ADOPTED"; the weekly command, the player tool, the rollover
-and the as-at boards documented in one place each. docs/register/LATEST.md gets one closing entry naming the
-plan's landing commits.
+**Depends on.** Every other brief that has landed (it documents the end state). Run it once, after the last one.
 
-**Why.** Every retired mechanism still has a page; an agent reading the docs first is led to the wrong tool.
+**Done when.** Every live document says what the tree does after the items that actually landed: the weekly command
+for finals AND rounds (if P2-1 landed), `tools/player`, `tools/rollover`, the as-at columns, the in-transaction flip
+(P4-3), no `land round` (if P4-4 landed), no claims step, day-0 optional. Each topic is documented in ONE place and
+the others link to it. docs/register/LATEST.md gets one closing entry naming the plan's landing commits.
 
-**Rules.** `python3 tools/rulebook_lint.py` and `acceptance doc_lint` green; do not rewrite history files
-(docs/OPEN_ITEMS_REGISTER.md is byte-sealed; docs/CHANGELOG.md append-only); the RULEBOOK changes only with the
-owner's word (none expected: its retired paragraphs already say so).
+**Facts (checked at ffb2663b).**
+- Live docs: the 14 top-level docs/*.md, docs/runbooks/ (F5_OFFBYONE_DIAGNOSIS.md, R23_RUNBOOK.md,
+  STANDING_PROCEDURES.md, WEEKLY_SCORES.md), the root README.md, START_HERE.md, REQUIRED_INPUTS.md, ui/MAINTAINER.md.
+- Records that are never rewritten: docs/OPEN_ITEMS_REGISTER.md (frozen; tools/incident_index.py:15, :203 "NEVER
+  written to"), docs/CHANGELOG.md (the lineage record, exempt by design, doc_lint.py:17), docs/register/entries/,
+  data/release_lineage.json, every docs/evidence/ directory.
+- The RULEBOOK changes only on the owner's word (law 10a, RULEBOOK.md:40-42). Its retired paragraphs (P7, P9, P11,
+  P12, :145-158) and law 11's claims sentence (:46-48) already say what is retired; P13 is P4-4's (owner word).
+- Things that are NOT retired and must not be documented as retired: the lander's pre-transaction self-test
+  (tools/landing/selftest.py, run by cli.py:231/293/335), acceptance/selftest.py (CI), the manifest-pinned engine
+  dials in data/model_config.json (config identity, see the plan README).
+- Lints: `python3 tools/rulebook_lint.py` (0 FAIL today) and the acceptance `doc_lint` check
+  (acceptance/checks/standing.py:104).
 
-**Proof.** The two lints; a fresh-eyes read by an agent given only START_HERE.md and asked to run a finals week
-on a copy (`tools/ingest --check`) and to describe how an engine act lands — both must come back right.
+**Change.** For each live doc: grep for the retired names that apply (`claims.py`, `land round`, `restamp.py apply`,
+`day0_rebase` as required, `values_r24`-style bare ids, "NOT ADOPTED", "env flag"), rewrite the passage to the current
+behaviour or delete it, and link to the one place the topic lives (WEEKLY_SCORES.md for weeks, a ROLLOVER.md from
+P3-2, the lander README/runbook for acts). Do not touch the records listed above.
+
+**Must not change.** Any record file; the RULEBOOK (unless the owner gives the word); code.
+
+**Prove it.** `python3 tools/rulebook_lint.py` 0 FAIL; `python3 -m acceptance.runner --profile full` with doc_lint
+green; a fresh-eyes check: an agent given only START_HERE.md, asked (a) to run a finals or round week on a scratch
+copy with `tools/ingest --check` and (b) to describe how an engine act lands — both answers right, recorded in the
+commit message.
 
 **Lands via.** Plain commit.
