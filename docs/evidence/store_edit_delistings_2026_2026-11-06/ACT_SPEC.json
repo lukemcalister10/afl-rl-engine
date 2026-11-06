@@ -1,0 +1,1919 @@
+{
+ "schema_version": 1,
+ "act_kind": "store-edit",
+ "act": "THE END-OF-2026 EXITS: 107 players delisted or retired in real life (the AFL list changes ahead of 2027, cross-referenced with the owner's locations sheet: blank AFL club) are retired in the store with _last_listed 2026; AFFL-owned ones keep their AFFL team. They leave the active board.",
+ "date": "2026-11-06",
+ "owner_word": "Owner, 2026-11-06: \"the players who have been delisted in real life now also do not have an afl club listed either (some of these are free agents, some remain affl listed players). so the master store might need an update to reflect that.\" and \"Please proceed.\"",
+ "authority": "owner ruling 2026-09-24 (career games = sum of season rows) + owner word on this act",
+ "prereg": {
+  "path": "docs/evidence/store_edit_delistings_2026_2026-11-06/NOTE.md",
+  "board_before": null,
+  "board_after": null,
+  "reference_board": null,
+  "kill_switch": null
+ },
+ "edit": {
+  "store": [
+   {
+    "key": "ben-camporeale",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "ben-camporeale",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "lucas-camporeale",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "lucas-camporeale",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "adam-saad",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "adam-saad",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "harry-charleson",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "harry-charleson",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "zachary-williams",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "zachary-williams",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "noah-howes",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "noah-howes",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "harrison-coe",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "harrison-coe",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "nikolas-cox",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "nikolas-cox",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "kayle-gerreyn",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "kayle-gerreyn",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "saad-el-hawli",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "saad-el-hawli",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "ollie-murphy",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "ollie-murphy",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "mitchell-knevitt",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "mitchell-knevitt",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "george-stevens",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "george-stevens",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "conor-stone",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "conor-stone",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "flynn-perez",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "flynn-perez",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "henry-hustwaite",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "henry-hustwaite",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "kalani-white",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "kalani-white",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "cooper-harvey",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "cooper-harvey",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "tyler-sonsie",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "tyler-sonsie",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "steely-green",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "steely-green",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "jack-carroll",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "jack-carroll",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "dane-rampe",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "dane-rampe",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "lachlan-smith",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "lachlan-smith",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "harvey-gallagher",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "harvey-gallagher",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "harry-schoenberg",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "harry-schoenberg",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "adam-treloar",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "adam-treloar",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "aidan-johnson",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "aidan-johnson",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "andy-moniz-wakefield",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "andy-moniz-wakefield",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "asher-eastham",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "asher-eastham",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "bailey-banfield",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "bailey-banfield",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "bailey-scott",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "bailey-scott",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "benny-barrett",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "benny-barrett",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "bobby-hill",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "bobby-hill",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "brayden-george",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "brayden-george",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "caleb-graham",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "caleb-graham",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "callum-coleman-jones",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "callum-coleman-jones",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "chayce-jones",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "chayce-jones",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "clay-hall",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "clay-hall",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "cody-anderson",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "cody-anderson",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "cooper-bell",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "cooper-bell",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "dion-prestia",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "dion-prestia",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "dougal-howard",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "dougal-howard",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "elijah-hollands",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "elijah-hollands",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "flynn-young",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "flynn-young",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "harry-barnett",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "harry-barnett",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "harvey-johnston",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "harvey-johnston",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "iliro-smit",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "iliro-smit",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "jack-henderson",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "jack-henderson",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "jack-williams",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "jack-williams",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "jackson-mead",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "jackson-mead",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "jacob-moss",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "jacob-moss",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "jade-gresham",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "jade-gresham",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "jaime-uhr-henry",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "jaime-uhr-henry",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "jake-kolodjashnij",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "jake-kolodjashnij",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "jake-melksham",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "jake-melksham",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "jakob-ryan",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "jakob-ryan",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "james-blanck",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "james-blanck",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "james-trezise",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "james-trezise",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "jamie-cripps",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "jamie-cripps",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "jed-bews",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "jed-bews",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "joel-cochran",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "joel-cochran",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "jordan-boyd",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "jordan-boyd",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "kaleb-smith",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "kaleb-smith",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "keighton-matofai-forbes",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "keighton-matofai-forbes",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "lachie-sullivan",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "lachie-sullivan",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "lachlan-fogarty",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "lachlan-fogarty",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "lachlan-mcneil",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "lachlan-mcneil",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "lachlan-sholl",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "lachlan-sholl",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "lewis-young",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "lewis-young",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "liam-fawcett",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "liam-fawcett",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "liam-mcmahon",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "liam-mcmahon",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "luke-beecken",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "luke-beecken",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "luke-urquhart",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "luke-urquhart",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "mani-liddy",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "mani-liddy",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "matt-duffy",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "matt-duffy",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "matt-guelfi",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "matt-guelfi",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "matt-owies",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "matt-owies",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "mitch-podhajski",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "mitch-podhajski",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "nathan-broad",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "nathan-broad",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "nicholas-coffield",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "nicholas-coffield",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "nicholas-holman",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "nicholas-holman",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "oliver-hayes-brown",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "oliver-hayes-brown",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "ollie-lord",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "ollie-lord",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "oskar-baker",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "oskar-baker",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "paddy-dow",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "paddy-dow",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "patrick-said",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "patrick-said",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "rhys-stanley",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "rhys-stanley",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "riley-onley",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "riley-onley",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "robert-hansen",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "robert-hansen",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "ryan-gardner",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "ryan-gardner",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "ryda-luke",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "ryda-luke",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "sam-sturt",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "sam-sturt",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "sam-switkowski",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "sam-switkowski",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "steele-sidebottom",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "steele-sidebottom",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "taylor-walker",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "taylor-walker",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "thomas-liberatore",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "thomas-liberatore",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "thomas-anastasopoulos",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "thomas-anastasopoulos",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "tom-edwards",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "tom-edwards",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "tom-mcdonald",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "tom-mcdonald",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "tyler-brockman",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "tyler-brockman",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "tyler-welsh",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "tyler-welsh",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "tyson-stengle",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "tyson-stengle",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "will-brodie",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "will-brodie",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "will-lorenz",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "will-lorenz",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "xavier-walsh",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "xavier-walsh",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "zac-fisher",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "zac-fisher",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "zac-walker",
+    "field": "_retired",
+    "old": false,
+    "new": true
+   },
+   {
+    "key": "zac-walker",
+    "field": "_last_listed",
+    "add": 2026
+   }
+  ],
+  "expected_movers": [
+   {
+    "key": "ben-camporeale",
+    "before": 179,
+    "after": null
+   },
+   {
+    "key": "lucas-camporeale",
+    "before": 131,
+    "after": null
+   },
+   {
+    "key": "adam-saad",
+    "before": 421,
+    "after": null
+   },
+   {
+    "key": "harry-charleson",
+    "before": 109,
+    "after": null
+   },
+   {
+    "key": "zachary-williams",
+    "before": 338,
+    "after": null
+   },
+   {
+    "key": "noah-howes",
+    "before": 194,
+    "after": null
+   },
+   {
+    "key": "harrison-coe",
+    "before": 254,
+    "after": null
+   },
+   {
+    "key": "nikolas-cox",
+    "before": 193,
+    "after": null
+   },
+   {
+    "key": "kayle-gerreyn",
+    "before": 300,
+    "after": null
+   },
+   {
+    "key": "saad-el-hawli",
+    "before": 73,
+    "after": null
+   },
+   {
+    "key": "ollie-murphy",
+    "before": 198,
+    "after": null
+   },
+   {
+    "key": "mitchell-knevitt",
+    "before": 193,
+    "after": null
+   },
+   {
+    "key": "george-stevens",
+    "before": 141,
+    "after": null
+   },
+   {
+    "key": "conor-stone",
+    "before": 137,
+    "after": null
+   },
+   {
+    "key": "flynn-perez",
+    "before": 71,
+    "after": null
+   },
+   {
+    "key": "henry-hustwaite",
+    "before": 60,
+    "after": null
+   },
+   {
+    "key": "kalani-white",
+    "before": 65,
+    "after": null
+   },
+   {
+    "key": "cooper-harvey",
+    "before": 396,
+    "after": null
+   },
+   {
+    "key": "tyler-sonsie",
+    "before": 762,
+    "after": null
+   },
+   {
+    "key": "steely-green",
+    "before": 114,
+    "after": null
+   },
+   {
+    "key": "jack-carroll",
+    "before": 114,
+    "after": null
+   },
+   {
+    "key": "dane-rampe",
+    "before": 3,
+    "after": null
+   },
+   {
+    "key": "lachlan-smith",
+    "before": 241,
+    "after": null
+   },
+   {
+    "key": "harvey-gallagher",
+    "before": 68,
+    "after": null
+   },
+   {
+    "key": "harry-schoenberg",
+    "before": 44,
+    "after": null
+   },
+   {
+    "key": "adam-treloar",
+    "before": 806,
+    "after": null
+   },
+   {
+    "key": "aidan-johnson",
+    "before": 74,
+    "after": null
+   },
+   {
+    "key": "andy-moniz-wakefield",
+    "before": 53,
+    "after": null
+   },
+   {
+    "key": "asher-eastham",
+    "before": 86,
+    "after": null
+   },
+   {
+    "key": "bailey-banfield",
+    "before": 13,
+    "after": null
+   },
+   {
+    "key": "bailey-scott",
+    "before": 19,
+    "after": null
+   },
+   {
+    "key": "benny-barrett",
+    "before": 23,
+    "after": null
+   },
+   {
+    "key": "bobby-hill",
+    "before": 65,
+    "after": null
+   },
+   {
+    "key": "brayden-george",
+    "before": 175,
+    "after": null
+   },
+   {
+    "key": "caleb-graham",
+    "before": 66,
+    "after": null
+   },
+   {
+    "key": "callum-coleman-jones",
+    "before": 31,
+    "after": null
+   },
+   {
+    "key": "chayce-jones",
+    "before": 39,
+    "after": null
+   },
+   {
+    "key": "clay-hall",
+    "before": 351,
+    "after": null
+   },
+   {
+    "key": "cody-anderson",
+    "before": 31,
+    "after": null
+   },
+   {
+    "key": "cooper-bell",
+    "before": 263,
+    "after": null
+   },
+   {
+    "key": "dion-prestia",
+    "before": 234,
+    "after": null
+   },
+   {
+    "key": "dougal-howard",
+    "before": 40,
+    "after": null
+   },
+   {
+    "key": "elijah-hollands",
+    "before": 641,
+    "after": null
+   },
+   {
+    "key": "flynn-young",
+    "before": 58,
+    "after": null
+   },
+   {
+    "key": "harry-barnett",
+    "before": 420,
+    "after": null
+   },
+   {
+    "key": "harvey-johnston",
+    "before": 164,
+    "after": null
+   },
+   {
+    "key": "iliro-smit",
+    "before": 314,
+    "after": null
+   },
+   {
+    "key": "jack-henderson",
+    "before": 32,
+    "after": null
+   },
+   {
+    "key": "jack-williams",
+    "before": 339,
+    "after": null
+   },
+   {
+    "key": "jackson-mead",
+    "before": 48,
+    "after": null
+   },
+   {
+    "key": "jacob-moss",
+    "before": 64,
+    "after": null
+   },
+   {
+    "key": "jade-gresham",
+    "before": 15,
+    "after": null
+   },
+   {
+    "key": "jaime-uhr-henry",
+    "before": 56,
+    "after": null
+   },
+   {
+    "key": "jake-kolodjashnij",
+    "before": 17,
+    "after": null
+   },
+   {
+    "key": "jake-melksham",
+    "before": 2,
+    "after": null
+   },
+   {
+    "key": "jakob-ryan",
+    "before": 147,
+    "after": null
+   },
+   {
+    "key": "james-blanck",
+    "before": 15,
+    "after": null
+   },
+   {
+    "key": "james-trezise",
+    "before": 178,
+    "after": null
+   },
+   {
+    "key": "jamie-cripps",
+    "before": 9,
+    "after": null
+   },
+   {
+    "key": "jed-bews",
+    "before": 1,
+    "after": null
+   },
+   {
+    "key": "joel-cochran",
+    "before": 264,
+    "after": null
+   },
+   {
+    "key": "jordan-boyd",
+    "before": 23,
+    "after": null
+   },
+   {
+    "key": "kaleb-smith",
+    "before": 59,
+    "after": null
+   },
+   {
+    "key": "keighton-matofai-forbes",
+    "before": 111,
+    "after": null
+   },
+   {
+    "key": "lachie-sullivan",
+    "before": 20,
+    "after": null
+   },
+   {
+    "key": "lachlan-fogarty",
+    "before": 101,
+    "after": null
+   },
+   {
+    "key": "lachlan-mcneil",
+    "before": 42,
+    "after": null
+   },
+   {
+    "key": "lachlan-sholl",
+    "before": 90,
+    "after": null
+   },
+   {
+    "key": "lewis-young",
+    "before": 124,
+    "after": null
+   },
+   {
+    "key": "liam-fawcett",
+    "before": 329,
+    "after": null
+   },
+   {
+    "key": "liam-mcmahon",
+    "before": 193,
+    "after": null
+   },
+   {
+    "key": "luke-beecken",
+    "before": 157,
+    "after": null
+   },
+   {
+    "key": "luke-urquhart",
+    "before": 67,
+    "after": null
+   },
+   {
+    "key": "mani-liddy",
+    "before": 108,
+    "after": null
+   },
+   {
+    "key": "matt-duffy",
+    "before": 37,
+    "after": null
+   },
+   {
+    "key": "matt-guelfi",
+    "before": 7,
+    "after": null
+   },
+   {
+    "key": "matt-owies",
+    "before": 6,
+    "after": null
+   },
+   {
+    "key": "mitch-podhajski",
+    "before": 116,
+    "after": null
+   },
+   {
+    "key": "nathan-broad",
+    "before": 8,
+    "after": null
+   },
+   {
+    "key": "nicholas-coffield",
+    "before": 111,
+    "after": null
+   },
+   {
+    "key": "nicholas-holman",
+    "before": 2,
+    "after": null
+   },
+   {
+    "key": "oliver-hayes-brown",
+    "before": 101,
+    "after": null
+   },
+   {
+    "key": "ollie-lord",
+    "before": 124,
+    "after": null
+   },
+   {
+    "key": "oskar-baker",
+    "before": 28,
+    "after": null
+   },
+   {
+    "key": "paddy-dow",
+    "before": 27,
+    "after": null
+   },
+   {
+    "key": "patrick-said",
+    "before": 50,
+    "after": null
+   },
+   {
+    "key": "rhys-stanley",
+    "before": 5,
+    "after": null
+   },
+   {
+    "key": "riley-onley",
+    "before": 91,
+    "after": null
+   },
+   {
+    "key": "robert-hansen",
+    "before": 104,
+    "after": null
+   },
+   {
+    "key": "ryan-gardner",
+    "before": 6,
+    "after": null
+   },
+   {
+    "key": "ryda-luke",
+    "before": 23,
+    "after": null
+   },
+   {
+    "key": "sam-sturt",
+    "before": 56,
+    "after": null
+   },
+   {
+    "key": "sam-switkowski",
+    "before": 25,
+    "after": null
+   },
+   {
+    "key": "steele-sidebottom",
+    "before": 8,
+    "after": null
+   },
+   {
+    "key": "taylor-walker",
+    "before": 166,
+    "after": null
+   },
+   {
+    "key": "thomas-liberatore",
+    "before": 1074,
+    "after": null
+   },
+   {
+    "key": "thomas-anastasopoulos",
+    "before": 201,
+    "after": null
+   },
+   {
+    "key": "tom-edwards",
+    "before": 95,
+    "after": null
+   },
+   {
+    "key": "tom-mcdonald",
+    "before": 26,
+    "after": null
+   },
+   {
+    "key": "tyler-brockman",
+    "before": 75,
+    "after": null
+   },
+   {
+    "key": "tyler-welsh",
+    "before": 146,
+    "after": null
+   },
+   {
+    "key": "tyson-stengle",
+    "before": 198,
+    "after": null
+   },
+   {
+    "key": "will-brodie",
+    "before": 117,
+    "after": null
+   },
+   {
+    "key": "will-lorenz",
+    "before": 166,
+    "after": null
+   },
+   {
+    "key": "xavier-walsh",
+    "before": 116,
+    "after": null
+   },
+   {
+    "key": "zac-fisher",
+    "before": 153,
+    "after": null
+   },
+   {
+    "key": "zac-walker",
+    "before": 153,
+    "after": null
+   }
+  ],
+  "_doc_expected_movers": "every retired row VANISHES from the active board (before = its present value, after None); nothing else moves. Pool of active v falls by 14997."
+ },
+ "identities": {
+  "moves": [
+   "store",
+   "board"
+  ],
+  "unmoved": [
+   "engine_head",
+   "rl_model",
+   "fv",
+   "config",
+   "register",
+   "as_of_round"
+  ]
+ },
+ "column": {
+  "id": "exits-2026-06-11",
+  "label": "06/11 the end-of-2026 exits: 107 players retired or delisted in real life leave the board (AFL list changes ahead of 2027; owner sheet)",
+  "after_round": 24
+ },
+ "lineage": {
+  "doc": "docs/evidence/store_edit_delistings_2026_2026-11-06/NOTE.md",
+  "owner_ruling_id": [
+   "EXITS_2026_2026-11-06"
+  ],
+  "owner_ruling": "A player delisted or retired in real life is retired in the store with his last listed season; AFFL ownership is kept where it exists.",
+  "authority": "owner word 2026-11-06",
+  "kind": "owner-store-edit",
+  "invariants": {}
+ },
+ "day0_rebase": {
+  "state": "off"
+ },
+ "evidence_dir": "docs/evidence/store_edit_delistings_2026_2026-11-06",
+ "gates": [
+  {
+   "name": "release_manifest_check",
+   "argv": [
+    "python3",
+    "release_manifest_check.py"
+   ],
+   "must_contain": "PASS"
+  },
+  {
+   "name": "release_contract_check",
+   "argv": [
+    "python3",
+    "release_contract.py",
+    "check"
+   ],
+   "must_contain": "PASS"
+  },
+  {
+   "name": "acceptance_runner",
+   "argv": [
+    "python3",
+    "-m",
+    "acceptance.runner",
+    "--profile",
+    "in-transaction",
+    "--evidence",
+    "@EVIDENCE@"
+   ],
+   "must_contain": "GREEN"
+  },
+  {
+   "name": "movers_transition",
+   "argv": [
+    "python3",
+    "engine/rl_after/ingestion/test_movers_transition.py"
+   ]
+  },
+  {
+   "name": "finals_report",
+   "argv": [
+    "python3",
+    "engine/rl_after/ingestion/test_finals_report.py"
+   ]
+  },
+  {
+   "name": "movers_ui",
+   "argv": [
+    "node",
+    "ui/tests/movers.test.js"
+   ]
+  },
+  {
+   "name": "ui_222_items",
+   "argv": [
+    "node",
+    "ui/tests/ui_222_items.test.mjs"
+   ]
+  },
+  {
+   "name": "ui_defects_2026_08_21",
+   "argv": [
+    "node",
+    "ui/tests/ui_defects_2026-08-21.test.js"
+   ]
+  },
+  {
+   "name": "universe",
+   "argv": [
+    "node",
+    "ui/tests/universe.test.js"
+   ]
+  },
+  {
+   "name": "draftday",
+   "argv": [
+    "node",
+    "ui/tests/draftday.test.js"
+   ]
+  },
+  {
+   "name": "pickvalue",
+   "argv": [
+    "node",
+    "ui/tests/pickvalue.test.js"
+   ]
+  },
+  {
+   "name": "release_seam",
+   "argv": [
+    "node",
+    "ui/tests/release_seam.test.js"
+   ]
+  },
+  {
+   "name": "adoption_gate",
+   "argv": [
+    "node",
+    "ui/tests/adoption_gate.test.js"
+   ]
+  },
+  {
+   "name": "club_totals_parity",
+   "argv": [
+    "node",
+    "ui/tests/club_totals_parity.test.js"
+   ]
+  },
+  {
+   "name": "counting_rule",
+   "argv": [
+    "node",
+    "ui/tests/counting_rule.test.js"
+   ]
+  },
+  {
+   "name": "ownership_sidecar",
+   "argv": [
+    "node",
+    "ui/tests/ownership_sidecar.test.js"
+   ]
+  },
+  {
+   "name": "ownership_single_source",
+   "argv": [
+    "node",
+    "ui/tests/ownership_single_source.test.js"
+   ]
+  },
+  {
+   "name": "responsive_layout",
+   "argv": [
+    "node",
+    "ui/tests/responsive_layout.test.mjs"
+   ]
+  },
+  {
+   "name": "extract_seam",
+   "argv": [
+    "python3",
+    "ui/tests/extract_seam.test.py"
+   ]
+  },
+  {
+   "name": "club_curve_provenance",
+   "argv": [
+    "python3",
+    "ui/tests/club_curve_provenance.test.py"
+   ]
+  }
+ ],
+ "commit_message": "STORE: the end-of-2026 exits \u2014 107 players retired or delisted in real life leave the board (owner word 2026-11-06)"
+}
