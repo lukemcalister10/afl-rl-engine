@@ -270,10 +270,16 @@ def add_verb():
                          'new': 2025}], ADD_STORE, 'mutually exclusive')
     ok(got, 'an add that also carries old/new is refused — one entry is one verb  (%s)' % why)
 
-    got, why = refuses([{'key': 's-target', 'field': '_last_listed', 'add': 2025}], ADD_STORE,
-                       'lacks')
-    ok(got, 'a row that LACKS the anchor key has no position that keeps the file\'s order — '
-            'refused, not guessed  (%s)' % why)
+    # 2026-11-06: the anchor is the full precedence the exemplars agree on, so a row that lacks the
+    # usual predecessor (`_pickless`) takes the field after its LAST key the exemplars put before it.
+    out, applied = ST.apply_store_edits(ADD_STORE, [{'key': 's-target', 'field': '_last_listed', 'add': 2025}])
+    srow = ST.store_row_spans(out, ['s-target'])['s-target'][2]
+    ok(list(srow) == ['player', 'key', 'games', '_retired', '_last_listed', 'future_position'],
+       'a row that LACKS the usual anchor key takes the field after its last agreed predecessor (`_retired`), keeping the order')
+    got, why = refuses([{'key': 'c', 'field': '_ll', 'add': 3}],
+                       json.dumps([{'key': 'a', '_ll': 1, 'p': 1}, {'key': 'b', 'p': 1, '_ll': 1}, {'key': 'c'}]),
+                       'before it in some rows and after it in others')
+    ok(got, 'a TRUE order conflict among exemplars is still refused  (%s)' % why)
 
     got, why = refuses([{'key': 'r-target', 'field': '_tags', 'add': ['a']}], ADD_STORE, 'container')
     ok(got, 'a container value is refused, as it is for a change  (%s)' % why)
@@ -376,8 +382,9 @@ def add_live_store():
     ok(have and all(list(r)[list(r).index('_last_listed') - 1] == '_pickless' for r in have),
        'every row that carries `_last_listed` (%d) has it immediately after `_pickless`' % len(have))
     anchor = ST._add_anchor(text, '_last_listed')
-    ok(anchor == {'kind': 'after', 'after': '_pickless', 'exemplars': len(have)},
-       'the measured anchor is `_pickless`, from %d exemplar row(s)' % len(have))
+    ok(anchor['kind'] == 'ordered' and '_pickless' in anchor['before'] and 'future_position' in anchor['after_keys']
+       and anchor['exemplars'] == len(have),
+       'the measured precedence puts `_pickless` before and `future_position` after, from %d exemplar row(s)' % len(have))
     targets = []
     for nxt in ('future_position', '_bd'):
         for r in rows:

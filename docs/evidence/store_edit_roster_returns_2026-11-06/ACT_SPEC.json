@@ -117,6 +117,11 @@
     "new": "OTHER"
    },
    {
+    "key": "alex-mirkov",
+    "field": "_force_active",
+    "add": true
+   },
+   {
     "add_row": {
      "player": "Finnbarr Roarty",
      "pick": null,

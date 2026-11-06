@@ -444,22 +444,36 @@ def _add_anchor(text, field):
     the row's LAST field, which is the one position that asserts nothing about an order the file
     does not have, and is what the store's own writer (`row[field] = v; json.dumps`) would produce.
     """
-    preds = {}
+    # THE ORDER THE EXEMPLARS AGREE ON, with optional keys allowed between (2026-11-06). The first
+    # rule took the single key immediately before the field and refused when exemplars differed —
+    # which refused `_force_active` (46 rows read `_pickless, _force_active`, 17 read `_pickless,
+    # _bd, _force_active`: the same order, with the optional `_bd` present or not). The measurement
+    # is now the full precedence: BEFORE = keys that precede the field in every exemplar that carries
+    # them, AFTER = keys that follow it in every exemplar that carries them. A key that is before in
+    # one exemplar and after in another is a TRUE conflict and still refuses. In the target row the
+    # field goes immediately after its last BEFORE key, which must sit before its first AFTER key.
+    before, after, conflict, exemplars = set(), set(), set(), 0
     for k, (_s, _e, row) in store_row_spans(text).items():
         if field in row:
+            exemplars += 1
             ks = list(row)
             at = ks.index(field)
-            preds.setdefault(ks[at - 1] if at > 0 else None, []).append(k)
-    if not preds:
+            for j, kk in enumerate(ks):
+                if j < at:
+                    if kk in after: conflict.add(kk)
+                    before.add(kk)
+                elif j > at:
+                    if kk in before: conflict.add(kk)
+                    after.add(kk)
+    if not exemplars:
         return {'kind': 'last', 'after': None, 'exemplars': 0}
-    if len(preds) > 1:
-        raise StepError('the rows that already carry %r do not agree on where it sits — it follows %s. '
-                        'No single order to keep means no position to insert at; the add is refused '
-                        'rather than guessed.'
-                        % (field, '; '.join('%r in %d row(s) (e.g. %s)' % (p, len(v), v[0])
-                                            for p, v in sorted(preds.items(), key=lambda kv: str(kv[0])))))
-    p = next(iter(preds))
-    return {'kind': 'first' if p is None else 'after', 'after': p, 'exemplars': len(preds[p])}
+    if conflict:
+        raise StepError('the rows that already carry %r do not agree on where it sits — %s sit(s) before '
+                        'it in some rows and after it in others. No single order to keep means no '
+                        'position to insert at; the add is refused rather than guessed.'
+                        % (field, ', '.join(repr(c) for c in sorted(conflict))))
+    return {'kind': 'ordered', 'before': sorted(before), 'after_keys': sorted(after), 'after': None,
+            'exemplars': exemplars}
 
 
 def _apply_add(cur, i, e, start, end, row, anchor):
@@ -498,13 +512,22 @@ def _apply_add(cur, i, e, start, end, row, anchor):
         raise StepError('edit %d: row %r decodes to keys %s but its text carries %s; refusing to add '
                         'into a row whose fields are not each present exactly once'
                         % (i, key, list(row), names))
-    if anchor['kind'] == 'after':
-        if names.count(anchor['after']) != 1:
-            raise StepError('edit %d: the rows that carry %r all have it after %r, and row %r %s that '
-                            'key — there is no position in this row that keeps the file\'s order.'
-                            % (i, field, anchor['after'], key,
-                               'lacks' if anchor['after'] not in names else 'repeats'))
-        idx = names.index(anchor['after'])
+    if anchor['kind'] == 'ordered':
+        # the last key of THIS row that every exemplar puts before the field; every key the
+        # exemplars put after it must then sit later in this row, or the order cannot be kept.
+        bset, aset = set(anchor['before']), set(anchor['after_keys'])
+        b_idx = [j for j, n in enumerate(names) if n in bset]
+        a_idx = [j for j, n in enumerate(names) if n in aset]
+        if not b_idx:
+            raise StepError('edit %d: the rows that carry %r all have it after one of %s, and row %r '
+                            'carries none of them — there is no position in this row that keeps the '
+                            'file\'s order.' % (i, field, anchor['before'], key))
+        idx = max(b_idx)
+        if a_idx and min(a_idx) <= idx:
+            raise StepError('edit %d: row %r orders its keys so that %r (which the exemplars put after '
+                            '%r) comes before %r (which they put before it); no position keeps the '
+                            'file\'s order.' % (i, key, names[min(a_idx)], field, names[idx]))
+        anchor = dict(anchor, after=names[idx])
     elif anchor['kind'] == 'first':
         idx = -1
     else:
@@ -535,7 +558,7 @@ def _apply_add(cur, i, e, start, end, row, anchor):
     if list(after) != want:
         raise StepError('edit %d: the row\'s keys read %s after the add; expected %s'
                         % (i, list(after), want))
-    where = ('after %r' % anchor['after'] if anchor['kind'] == 'after'
+    where = ('after %r' % anchor['after'] if anchor['kind'] == 'ordered'
              else 'as the FIRST field' if anchor['kind'] == 'first' else 'as the LAST field')
     return nxt, {'key': key, 'field': field, 'old': None, 'new': value, 'kind': 'add',
                  'anchor': where, 'exemplars': anchor['exemplars'],
