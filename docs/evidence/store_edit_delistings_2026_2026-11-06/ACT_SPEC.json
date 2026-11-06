@@ -7,7 +7,7 @@
  "authority": "owner ruling 2026-09-24 (career games = sum of season rows) + owner word on this act",
  "prereg": {
   "path": "docs/evidence/store_edit_delistings_2026_2026-11-06/NOTE.md",
-  "board_before": null,
+  "board_before": "15431ae8676370eb3b3b90a7def22e6e",
   "board_after": null,
   "reference_board": null,
   "kill_switch": null
@@ -1915,5 +1915,6 @@
    ]
   }
  ],
- "commit_message": "STORE: the end-of-2026 exits \u2014 107 players retired or delisted in real life leave the board (owner word 2026-11-06)"
+ "commit_message": "STORE: the end-of-2026 exits \u2014 107 players retired or delisted in real life leave the board (owner word 2026-11-06)",
+ "expected_movers": null
 }
