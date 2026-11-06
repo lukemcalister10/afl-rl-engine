@@ -429,6 +429,13 @@ def preflight(root, verbose=True):
                 unmatched.append(r[0])
                 continue
             if len(cands) > 1:
+                # Same rule as ingest_inputs' off-board join (2026-11-06): of several same-name
+                # store rows, the one carrying authored ownership (`affl_team`, written here by an
+                # earlier courier) is the sheet's row; anything else stays ambiguous and halts.
+                owned = [c for c in cands if (by_key.get(c) or {}).get("affl_team")]
+                if len(owned) == 1:
+                    cands = owned
+            if len(cands) > 1:
                 ambiguous_store.append((r[0], sorted(cands)))
                 continue
             key = cands[0]

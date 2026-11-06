@@ -714,6 +714,15 @@ def validate_csvs(board_by_nkey, affl_teams):
         if nkey(r[0]) in board_by_nkey:
             continue
         cands = store_by_nkey.get(nkey(r[0])) or []
+        # TWO STORE ROWS, ONE NAME (2026-11-06, the exits act: lachlan-smith, delisted 2026, and
+        # lachlan-smith-2011, a 2011 pick with no games): the sheet names the player it AUTHORS, and
+        # the courier wrote that authorship into the store as `affl_team`. When exactly one of the
+        # same-name rows carries it, that row is the sheet's — a fact the sheet itself maintains,
+        # not a fuzzy match. Any other collision still halts by name.
+        if len(cands) > 1:
+            owned = [c for c in cands if c.get("affl_team")]
+            if len(owned) == 1:
+                cands = owned
         if len(cands) == 1 and (cands[0].get("_retired") or cands[0].get("key") in pending):
             off_board.append(r[0])
         else:

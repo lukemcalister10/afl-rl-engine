@@ -215,18 +215,21 @@ check(json.dumps(lin["release_transition_register"], sort_keys=True)
       "release_lineage and the movers_transition mirror are byte-identical")
 
 # ---------------------------------------------------------------- F3, the exact-byte law
-# The store and the CSV each carry BOTH free-agent spellings, aligned row-for-row. Folding them on the
-# way in would author 2 rows the owner never edited. This asserts the split exists AND that display
-# canonicalisation would really move those extra rows — so the law is load-bearing, not decorative.
+# Until 2026-11-06 the store and the CSV each carried BOTH free-agent spellings, aligned row-for-row,
+# and this block proved that folding them on the way in would author 2 rows the owner never edited.
+# The owner then standardised the sheet to "Free Agents" ("Free agents should be Free Agents") and the
+# courier carried the 146 moves as authored rows. The law is unchanged: the courier writes the sheet's
+# bytes and never canonicalises. What is asserted now is that ONE spelling remains and that no row
+# would move under canonicalisation — so a second spelling reappearing is caught here, by name.
 spellings = collections.Counter(r.get("affl_team") for r in store_doc if "affl_team" in r)
 fa = {k: v for k, v in spellings.items() if k and k.lower() == "free agents"}
-check(len(fa) == 2, "the store carries BOTH free-agent spellings: %s" % dict(fa))
+check(set(fa) == {"Free Agents"}, "the store carries ONE free-agent spelling, the owner's: %s" % dict(fa))
 would_move = sum(1 for r in store_doc
                  if r.get("affl_team") and r["affl_team"].lower() == "free agents"
-                 and r["affl_team"] != "Free agents")
-check(would_move == 2,
-      "canonicalising on the way IN would rewrite exactly %d rows the owner never edited "
-      "(18 -> 20) — the exact-byte law is load-bearing" % would_move)
+                 and r["affl_team"] != "Free Agents")
+check(would_move == 0,
+      "canonicalising on the way IN would rewrite %d rows — none, since the owner standardised; "
+      "the exact-byte law stays the rule, not the demonstration" % would_move)
 
 # ---------------------------------------------------------------- the diff proof can fail
 keys18 = [e["key"] for e in ours[0].get("_rows", [])] if ours[0].get("_rows") else None
@@ -356,19 +359,19 @@ try:
     i_team = OSA._column_index(rows[0], OSA.AFFL_TEAM_COLUMN)
     i_club = OSA._column_index(rows[0], OSA.AFL_CLUB_COLUMN)
     new = [""] * len(rows[0])
-    new[0], new[i_team], new[i_club] = _retired_unique["player"], "Free agents", ""   # club BLANK
+    new[0], new[i_team], new[i_club] = _retired_unique["player"], "Free Agents", ""   # club BLANK
     rows.append(new)
     _write_rows(csvp, rows, enc)
     plan = OSA.preflight(ws, verbose=False)
     k = _retired_unique["key"]
     check((k, _retired_unique["player"]) in plan.off_board,
           "a RETIRED store row on the sheet (%s) is admitted, resolved off the board to its one store row" % k)
-    check((k, _retired_unique["player"], None, "Free agents") in plan.rows and (k, "affl_team") in plan.added,
+    check((k, _retired_unique["player"], None, "Free Agents") in plan.rows and (k, "affl_team") in plan.added,
           "...its affl_team is PLANNED as an ADDITION (the row lacked the field)")
     check(not any(kk == k for kk, _n, _c, _nw in plan.club_rows) and (k, "afl_club") not in plan.added,
           "...and its BLANK AFL Club adds nothing — blank means unchanged, and an absent field stays absent")
     staged = {r["key"]: r for r in json.loads(plan.store_new)}
-    check(list(staged[k])[-1] == "affl_team" and staged[k]["affl_team"] == "Free agents"
+    check(list(staged[k])[-1] == "affl_team" and staged[k]["affl_team"] == "Free Agents"
           and list(staged[k])[:-1] == list(_retired_unique),
           "the staged row carries affl_team as its LAST field, every other field in place")
     n = OSA.assert_store_diff_is_planned_only(plan.store_raw, plan.store_new, plan.planned, added=plan.added)
@@ -382,12 +385,33 @@ finally:
 
 d, ws = sandbox()
 try:
-    # Sam Butler: one on the board (sam-butler-1), one retired (sam-butler). Take the board one off
-    # the board and his sheet row is off-board with TWO store rows: ambiguous, never a coin flip.
+    # Sam Butler: one on the board (sam-butler-1, AFFL-owned), one retired (sam-butler, never owned).
+    # Take the board one off the board and his sheet row is off-board with TWO store rows. Since
+    # 2026-11-06 the join narrows same-name rows to the ONE carrying authored ownership (affl_team),
+    # so it resolves to sam-butler-1 — and then halts on the shape rule, because that row is not
+    # retired: an active store row off the board is a board defect, never a coin flip.
     _rewrite_bvw(os.path.join(ws, OSA.BVW_REL),
                  lambda o: o.__setitem__("players", [p for p in o["players"] if p["key"] != "sam-butler-1"]))
     halts(lambda: OSA.preflight(ws, verbose=False),
-          "P5 HALTS on an off-board name that matches MORE THAN ONE store row (Sam Butler)", "MORE THAN ONE")
+          "P5 narrows an off-board name to the AUTHORED store row and halts on its shape (Sam Butler, "
+          "sam-butler-1 not retired)", "sam-butler-1")
+finally:
+    shutil.rmtree(d, ignore_errors=True)
+
+d, ws = sandbox()
+try:
+    # Alwyn Davey: TWO retired store rows, neither AFFL-owned. A sheet row for him is off-board
+    # with two candidates the authorship rule cannot split: ambiguous, and it halts by name.
+    csvp = os.path.join(ws, OSA.CSV_REL)
+    rows, enc = OSA._readcsv(csvp)
+    i_team = OSA._column_index(rows[0], OSA.AFFL_TEAM_COLUMN)
+    new = [""] * len(rows[0])
+    new[0], new[i_team] = "Alwyn Davey", "Free Agents"
+    rows.append(new)
+    _write_rows(csvp, rows, enc)
+    halts(lambda: OSA.preflight(ws, verbose=False),
+          "P5 HALTS on an off-board name that matches MORE THAN ONE unowned store row (Alwyn Davey)",
+          "MORE THAN ONE")
 finally:
     shutil.rmtree(d, ignore_errors=True)
 
@@ -415,7 +439,7 @@ finally:
 
 mutated4 = copy.deepcopy(store_doc)
 _lack = next(r for r in mutated4 if "affl_team" not in r)
-_lack["affl_team"] = "Free agents"
+_lack["affl_team"] = "Free Agents"
 halts(lambda: OSA.assert_store_diff_is_planned_only(store_raw, json.dumps(mutated4).encode(), {}),
       "the two-field diff proof REJECTS an added field nobody planned", "does not declare")
 mutated5 = copy.deepcopy(store_doc)
