@@ -521,17 +521,18 @@ def _apply_add(cur, i, e, start, end, row, anchor):
                             'relative to %s (before it in some rows, after it in others), and row %r '
                             'carries %s — no position keeps the file\'s order; the add is refused rather '
                             'than guessed.' % (i, field, anchor['conflict'], key, bad))
-        b_idx = [j for j, n in enumerate(names) if n in bset]
         a_idx = [j for j, n in enumerate(names) if n in aset]
+        first_after = min(a_idx) if a_idx else len(names)
+        # the last BEFORE key that still precedes every AFTER key in THIS row. A BEFORE key the
+        # courier appended at the row's end (its own placement, after `future_position`) is not a
+        # usable anchor, because the exemplars put the field before `future_position`.
+        b_idx = [j for j, n in enumerate(names) if n in bset and j < first_after]
         if not b_idx:
-            raise StepError('edit %d: the rows that carry %r all have it after one of %s, and row %r '
-                            'carries none of them — there is no position in this row that keeps the '
-                            'file\'s order.' % (i, field, anchor['before'], key))
+            raise StepError('edit %d: the rows that carry %r put it after one of %s and before one of '
+                            '%s; row %r carries no key that satisfies both — there is no position in '
+                            'this row that keeps the file\'s order.'
+                            % (i, field, anchor['before'], anchor['after_keys'], key))
         idx = max(b_idx)
-        if a_idx and min(a_idx) <= idx:
-            raise StepError('edit %d: row %r orders its keys so that %r (which the exemplars put after '
-                            '%r) comes before %r (which they put before it); no position keeps the '
-                            'file\'s order.' % (i, key, names[min(a_idx)], field, names[idx]))
         anchor = dict(anchor, after=names[idx])
     elif anchor['kind'] == 'first':
         idx = -1
