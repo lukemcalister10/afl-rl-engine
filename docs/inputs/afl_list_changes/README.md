@@ -13,3 +13,11 @@ Owner rule (2026-10-14): only `ret` and `del` are list exits. An exit at the end
 re-appears later (plays or is listed in a later season, or appears on a later year's list), except that a
 delisting at the end of 2024 followed by a re-appearance only in 2026 would still stand (no such case is known).
 The valid exits set `_last_listed = Y` on the player's store row; this is the listing fact the as-at boards read.
+
+
+## 2026 (ahead of 2027)
+`2026.csv` is the AFL's "Ins and outs: every club's full list changes ahead of 2027" page
+(https://www.afl.com.au/news/1628837/…), transcribed verbatim 2026-11-06 with columns club, direction (IN/OUT), name,
+detail as the page states it. Exits are OUT rows whose detail is `retired` or starts with `delisted`; a player
+"committed to re-drafting" is an exit only if he is not re-listed. Cross-referenced against the owner's
+docs/inputs/AFFL_Player_Locations.csv (upload baf6ad5e) — see the chat record of 2026-11-06.

@@ -1,0 +1,202 @@
+club,direction,name,detail
+Adelaide,IN,Harry Cunningham,committed to signing in off-season
+Adelaide,OUT,Jordon Butts,"free agent, Western Bulldogs"
+Adelaide,OUT,Chayce Jones,delisted
+Adelaide,OUT,Luke Pedlar,"trade, Port Adelaide"
+Adelaide,OUT,Lachlan Sholl,delisted
+Adelaide,OUT,Taylor Walker,retired
+Adelaide,OUT,Tyler Welsh,delisted
+Brisbane,OUT,Luke Beecken,delisted
+Brisbane,OUT,Keidean Coleman,"trade, Essendon"
+Brisbane,OUT,Koby Evans,delisted; committed to re-drafting in the Rookie Draft
+Brisbane,OUT,Darragh Joyce,delisted
+Brisbane,OUT,Luke Lloyd,delisted; committed to re-drafting in the Rookie Draft
+Brisbane,OUT,Sam Marshall,"trade, St Kilda"
+Brisbane,OUT,Will McLachlan,"trade, Melbourne"
+Brisbane,OUT,Lachie Neale,"free agent, Collingwood"
+Carlton,IN,Joel Amartey,"free agent, Sydney"
+Carlton,IN,Wil Parker,delisted free agent
+Carlton,IN,Lachie Whitfield,"trade, Greater Western Sydney"
+Carlton,OUT,Jordan Boyd,delisted
+Carlton,OUT,Ben Camporeale,delisted
+Carlton,OUT,Lucas Camporeale,delisted
+Carlton,OUT,Harry Charleson,delisted
+Carlton,OUT,Matt Duffy,delisted
+Carlton,OUT,Lachie Fogarty,delisted
+Carlton,OUT,Elijah Hollands,delisted
+Carlton,OUT,Hudson O'Keeffe,"trade, Western Bulldogs"
+Carlton,OUT,Flynn Riley,"trade, Collingwood"
+Carlton,OUT,Adam Saad,delisted
+Carlton,OUT,Zac Williams,delisted
+Carlton,OUT,Lewis Young,delisted
+Carlton,OUT,Flynn Young,delisted
+Collingwood,IN,Jesse Hogan,"trade, Greater Western Sydney"
+Collingwood,IN,Lachie Neale,"free agent, Brisbane"
+Collingwood,IN,Flynn Riley,"trade, Carlton"
+Collingwood,IN,Finnbarr Roarty,category B rookie
+Collingwood,OUT,Joel Cochran,delisted
+Collingwood,OUT,Harrison Coe,delisted
+Collingwood,OUT,Harry DeMattia,delisted; committed to re-drafting in the Rookie Draft
+Collingwood,OUT,Bobby Hill,delisted
+Collingwood,OUT,Noah Howes,delisted
+Collingwood,OUT,Wil Parker,delisted
+Collingwood,OUT,Scott Pendlebury,"trade, Gold Coast"
+Collingwood,OUT,Mitch Podhajski,delisted
+Collingwood,OUT,Jakob Ryan,delisted
+Collingwood,OUT,Steele Sidebottom,retired
+Collingwood,OUT,Iliro Smit,delisted
+Collingwood,OUT,Lachie Sullivan,delisted
+Essendon,IN,Jack Bowes,"trade, Geelong"
+Essendon,IN,Keidean Coleman,"trade, Brisbane"
+Essendon,OUT,Nik Cox,delisted
+Essendon,OUT,Tom Edwards,delisted
+Essendon,OUT,Saad El-Hawli,delisted
+Essendon,OUT,Kayle Gerreyn,delisted
+Essendon,OUT,Jade Gresham,delisted
+Essendon,OUT,Matt Guelfi,delisted
+Essendon,OUT,Liam McMahon,delisted
+Essendon,OUT,Zach Merrett,"trade, Hawthorn"
+Essendon,OUT,Jordan Ridley,"trade, Geelong"
+Essendon,OUT,Elijah Tsatas,delisted
+Fremantle,IN,Dominic Bedendo,delisted free agent
+Fremantle,OUT,Bailey Banfield,delisted
+Fremantle,OUT,Jaren Carr,delisted; committed to re-drafting in the Rookie Draft
+Fremantle,OUT,Ryda Luke,delisted
+Fremantle,OUT,Ollie Murphy,delisted
+Fremantle,OUT,Nathan O'Driscoll,"trade, Richmond"
+Fremantle,OUT,Sam Sturt,delisted
+Fremantle,OUT,Sam Switkowski,retired
+Geelong,IN,Toby Greene,"free agent, Greater Western Sydney"
+Geelong,IN,Rowan Marshall,"trade, St Kilda"
+Geelong,IN,Jordan Ridley,"trade, Essendon"
+Geelong,OUT,Jed Bews,delisted
+Geelong,OUT,Jack Bowes,"trade, Essendon"
+Geelong,OUT,Mitch Knevitt,delisted
+Geelong,OUT,Jake Kolodjashnij,retired
+Geelong,OUT,Keighton Matofai-Forbes,delisted
+Geelong,OUT,Rhys Stanley,retired
+Geelong,OUT,Tyson Stengle,delisted
+Geelong,OUT,George Stevens,delisted
+Gold Coast,IN,Sam Butler,"trade, Hawthorn"
+Gold Coast,IN,Scott Pendlebury,"trade, Collingwood"
+Gold Coast,IN,Aidan Schubert,"trade, Hawthorn"
+Gold Coast,OUT,Cooper Bell,delisted
+Gold Coast,OUT,Asher Eastham,delisted
+Gold Coast,OUT,Caleb Graham,delisted
+Gold Coast,OUT,Elliott Himmelberg,delisted; committed to re-drafting in the AFL Draft
+Gold Coast,OUT,Nick Holman,retired
+Gold Coast,OUT,Ben King,"free agent, Hawthorn"
+Gold Coast,OUT,Jamarra Ugle-Hagan,delisted; committed to re-drafting in the AFL Draft
+GWS,IN,Alex Mirkov,committed to signing in off-season
+GWS,OUT,Kieren Briggs,"free agent, Richmond"
+GWS,OUT,Toby Greene,"free agent, Geelong"
+GWS,OUT,Jesse Hogan,"trade, Collingwood"
+GWS,OUT,Conor Stone,delisted
+GWS,OUT,Jake Stringer,delisted
+GWS,OUT,Lachie Whitfield,"trade, Carlton"
+Hawthorn,IN,Ben King,"free agent, Gold Coast"
+Hawthorn,IN,Josh Goater,"trade, North Melbourne"
+Hawthorn,IN,Zach Merrett,"trade, Essendon"
+Hawthorn,IN,Ollie Purcell,category B rookie
+Hawthorn,OUT,Cody Anderson,delisted
+Hawthorn,OUT,James Blanck,delisted
+Hawthorn,OUT,Sam Butler,"trade, Gold Coast"
+Hawthorn,OUT,Henry Hustwaite,delisted
+Hawthorn,OUT,Finn Maginness,"trade, Western Bulldogs"
+Hawthorn,OUT,Flynn Perez,delisted
+Hawthorn,OUT,Max Ramsden,delisted
+Hawthorn,OUT,Bodie Ryan,"trade, Melbourne"
+Hawthorn,OUT,Aidan Schubert,"trade, Gold Coast"
+Hawthorn,OUT,Jaime Uhr-Henry,delisted
+Melbourne,IN,Zane Duursma,"trade, North Melbourne"
+Melbourne,IN,Will McLachlan,"trade, Brisbane"
+Melbourne,IN,Bodie Ryan,"trade, Hawthorn"
+Melbourne,OUT,Tom Campbell,retired
+Melbourne,OUT,Jack Henderson,delisted
+Melbourne,OUT,Aidan Johnson,delisted
+Melbourne,OUT,Steven May,retired
+Melbourne,OUT,Shane McAdam,retired
+Melbourne,OUT,Tom McDonald,retired
+Melbourne,OUT,Jake Melksham,retired
+Melbourne,OUT,Andy Moniz-Wakefield,delisted
+Melbourne,OUT,Riley Onley,delisted
+Melbourne,OUT,Trent Rivers,"trade, West Coast"
+Melbourne,OUT,Jack Viney,"trade, West Coast"
+Melbourne,OUT,Kalani White,delisted
+North Melbourne,IN,Nick Blakey,"trade, Sydney"
+North Melbourne,IN,Darragh Joyce,delisted free agent
+North Melbourne,IN,Samson Ryan,delisted free agent
+North Melbourne,IN,Elijah Tsatas,delisted free agent
+North Melbourne,OUT,Callum Coleman-Jones,delisted
+North Melbourne,OUT,Zane Duursma,"trade, Melbourne"
+North Melbourne,OUT,Zac Fisher,delisted
+North Melbourne,OUT,Brayden George,delisted
+North Melbourne,OUT,Josh Goater,"trade, Hawthorn"
+North Melbourne,OUT,Robert Hansen jnr,delisted
+North Melbourne,OUT,Cooper Harvey,delisted
+North Melbourne,OUT,Bailey Scott,delisted
+North Melbourne,OUT,Luke Urquhart,delisted
+Port Adelaide,IN,Luke Pedlar,"trade, Adelaide"
+Port Adelaide,OUT,Tom Anastasopoulos,delisted
+Port Adelaide,OUT,Benny Barrett,delisted
+Port Adelaide,OUT,Will Brodie,retired
+Port Adelaide,OUT,Zak Butters,"free agent, Western Bulldogs"
+Port Adelaide,OUT,Mani Liddy,delisted
+Port Adelaide,OUT,Ollie Lord,delisted
+Port Adelaide,OUT,Will Lorenz,delisted
+Port Adelaide,OUT,Jackson Mead,delisted
+Port Adelaide,OUT,Jacob Moss,delisted
+Port Adelaide,OUT,Ivan Soldo,retired
+Port Adelaide,OUT,Xavier Walsh,delisted
+Richmond,IN,Kieren Briggs,"free agent, Greater Western Sydney"
+Richmond,IN,Nathan O'Driscoll,"trade, Fremantle"
+Richmond,OUT,Nathan Broad,retired
+Richmond,OUT,Liam Fawcett,delisted
+Richmond,OUT,Steely Green,delisted
+Richmond,OUT,Oliver Hayes-Brown,delisted
+Richmond,OUT,Dion Prestia,retired
+Richmond,OUT,Samson Ryan,delisted
+Richmond,OUT,Kaleb Smith,delisted
+Richmond,OUT,Tyler Sonsie,delisted
+Richmond,OUT,James Trezise,delisted
+St Kilda,IN,Sam Marshall,"trade, Brisbane"
+St Kilda,IN,Max Ramsden,delisted free agent
+St Kilda,IN,Jake Stringer,delisted free agent
+St Kilda,OUT,Dan Butler,delisted; committed to re-drafting in the Rookie Draft
+St Kilda,OUT,Ryan Byrnes,delisted; committed to re-drafting in the Rookie Draft
+St Kilda,OUT,Jack Carroll,delisted
+St Kilda,OUT,Paddy Dow,delisted
+St Kilda,OUT,Dougal Howard,retired
+St Kilda,OUT,Isaac Keeler,delisted
+St Kilda,OUT,Rowan Marshall,"trade, Geelong"
+St Kilda,OUT,Patrick Said,delisted
+Sydney,OUT,Taylor Adams,retired
+Sydney,OUT,Joel Amartey,"free agent, Carlton"
+Sydney,OUT,Nick Blakey,"trade, North Melbourne"
+Sydney,OUT,Harry Cunningham,delisted
+Sydney,OUT,Dane Rampe,retired
+West Coast,IN,Trent Rivers,"trade, Melbourne"
+West Coast,IN,Jack Viney,"trade, Melbourne"
+West Coast,OUT,Harry Barnett,delisted
+West Coast,OUT,Tyler Brockman,delisted
+West Coast,OUT,Jamie Cripps,retired
+West Coast,OUT,Clay Hall,delisted
+West Coast,OUT,Harvey Johnston,delisted
+West Coast,OUT,Matt Owies,delisted
+West Coast,OUT,Harry Schoenberg,delisted
+West Coast,OUT,Jack Williams,delisted
+Western Bulldogs,IN,Zak Butters,"free agent, Port Adelaide"
+Western Bulldogs,IN,Jordon Butts,"free agent, Adelaide"
+Western Bulldogs,IN,Finn Maginness,"trade, Hawthorn"
+Western Bulldogs,IN,Hudson O'Keeffe,"trade, Carlton"
+Western Bulldogs,OUT,Oskar Baker,delisted
+Western Bulldogs,OUT,Nick Coffield,delisted
+Western Bulldogs,OUT,Harvey Gallagher,delisted
+Western Bulldogs,OUT,Riley Garcia,delisted; committed to re-drafting in the Rookie Draft
+Western Bulldogs,OUT,Ryan Gardner,delisted
+Western Bulldogs,OUT,James Harmes,retired
+Western Bulldogs,OUT,Tom Liberatore,retired
+Western Bulldogs,OUT,Lachie McNeil,delisted
+Western Bulldogs,OUT,Lachlan Smith,delisted
+Western Bulldogs,OUT,Adam Treloar,retired
+Western Bulldogs,OUT,Zac Walker,delisted
