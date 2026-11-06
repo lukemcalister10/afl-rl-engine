@@ -2322,6 +2322,42 @@ def ui(ctx):
         ctx.log('--dry-run: none of the seven writers is run.')
         return {'writers': 0, 'dry_run': True}
 
+    # ---- WRITER 0 (conditional): THE v0 SIDECAR, AHEAD OF THE JOIN THAT READS IT (2026-11-06) -------
+    # Writer 1 JOINS ui/data_aux/v0.js into the public bundle and publishes an entry price only when
+    # the sidecar's entry-inputs signature (ui/tools/v0_identity.py) equals the landed store's. Writer
+    # 8 regenerates the sidecar LAST, for the fail-fast reason it states — which is correct on every
+    # act that leaves the entry inputs alone (a round advance, a score, a listing fact) and wrong on
+    # the one kind that moves them: a roster act. The returns act of 2026-11-06 (two rows added, two
+    # re-based) shipped a public bundle joined to the OLD sidecar — nPriced 0, nAbsent 808 — and the
+    # ui_defects gate refused it after the engine load had already been paid. So: when the landed
+    # store's signature differs from the sidecar's, pay the engine load HERE, before the join; writer
+    # 8 then finds a byte-identical file and moves nothing. On every other act this block costs one
+    # JSON read.
+    v0side_early = _p(ctx, 'ui', 'data_aux', 'v0.js')
+    try:
+        sys.path.insert(0, _p(ctx, 'ui', 'tools'))
+        from v0_identity import entry_inputs_sig_of_store as _eis
+        want_sig = _eis(_p(ctx, 'engine', 'rl_after', 'rl_model_data.json'))
+    finally:
+        sys.path.pop(0)
+    have_sig = str(_do_stamp(v0side_early).get('entryInputsSig') or '')
+    if have_sig != want_sig:
+        ctx.log('WRITER 0/9: ui/tools/gen_v0_sidecar.py  (the act moved an entry-price input: sidecar sig %s, '
+                'landed store %s — regenerated BEFORE writer 1 joins it)' % (have_sig[:8] or '-', want_sig[:8]))
+        v0_b0 = md5(v0side_early)
+        rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'gen_v0_sidecar.py')], timeout=3600)
+        if rc != 0:
+            raise StepError('the early v0 sidecar regeneration failed (exit %s):\n%s' % (rc, out[-2000:]))
+        for ln in _lines_with(out, 'v0 sidecar', 'wrote'):
+            ctx.log('  %s' % ln.strip())
+        if str(_do_stamp(v0side_early).get('entryInputsSig') or '') != want_sig:
+            raise StepError('THE v0 SIDECAR STILL CARRIES A DIFFERENT ENTRY-INPUTS SIGNATURE after regeneration; '
+                            'writer 1 would publish no entry price.')
+        ctx.log('  carrier moved: ui/data_aux/v0.js  %s -> %s' % (v0_b0[:12], md5(v0side_early)[:12]))
+    else:
+        ctx.log('WRITER 0/9: v0 sidecar entry-inputs signature == the landed store (%s); no early regeneration.'
+                % want_sig[:8])
+
     ctx.log('WRITER 1/8: ui/tools/extract_board_view.py')
     rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'extract_board_view.py')], timeout=900)
     if rc != 0:

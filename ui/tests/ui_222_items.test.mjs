@@ -50,6 +50,13 @@ page.on('console', m => { if (m.type() === 'error') pageErrors.push('console: ' 
 await page.goto(URL);
 await page.waitForTimeout(600);
 
+/* THE ROSTER SIZE IS READ OFF THE SHIPPED BUNDLE, NOT PINNED (2026-11-06). Every "all N players"
+   assertion below is against the working bundle's own player count, so a roster act (a player
+   entering or leaving the active board) does not stale this file. The count is still asserted to be
+   a real board, not an empty one. */
+const N_ACTIVE = await page.evaluate(() => (window.__MATCHDAY_WORKING__.players || []).length);
+if (!(N_ACTIVE > 700)) throw new Error('the working bundle carries ' + N_ACTIVE + ' active players; not a board');
+
 /* RESTATED 2026-08-28 (owner redesign): the app ships ONE fully transparent tier — the public
    renderer and the tier toggle are retired, so `setTier` went with them. Item substance that
    survives (form, pick, rank denominator, navigation, totals) is asserted against THE app. */
@@ -59,7 +66,7 @@ const go = async (view) => { await page.evaluate(v => MD.go(v), view); await pag
 section('PREREQUISITE — the board ring-fence');
 check(await page.locator('.failclosed').count() === 0,
   'the app renders (the shipped bundle matches its board of record)');
-check(await page.locator('.rows .row').count() === 804, 'the working board renders all 804 players');
+check(await page.locator('.rows .row').count() === N_ACTIVE, 'the working board renders all ' + N_ACTIVE + ' players');
 
 /* ------------------------------------------------------------------ CLUSTER 3: tabs and labels */
 section('CLUSTER 3 — tabs and labels (items 2, 13, 14, 5)');
@@ -172,7 +179,7 @@ check(HIST.series && HIST.series.length === WANT_POINTS && WANT_POINTS >= 30,
   HIST.series ? String(HIST.series.length) : 'null');
 check(HIST.series.every(r => r.v != null && r.rank != null && r.posRank != null),
   'item 3 — value, rank and positional rank are present at EVERY point (no participation gate)');
-check(HIST.traceSize === 804, 'item 3 — the trace covers all 804 tracked players', String(HIST.traceSize));
+check(HIST.traceSize === N_ACTIVE, 'item 3 — the trace covers all ' + N_ACTIVE + ' tracked players', String(HIST.traceSize));
 
 const modelPts = HIST.series.filter(r => !r.isRound);
 const modelPt = modelPts[0];
@@ -333,7 +340,7 @@ check(!HONESTY.dnpByPoint['14'] && !HONESTY.dnpByPoint['post-r19-redesign-1'],
   'item 3 — no DNP at the baseline point or the restructure point');
 check(completeRounds.every(r => HONESTY.dnpByPoint[r] > 0),
   'item 3 — DNP IS shown where it is warranted (the indicator is not simply switched off)');
-check(HONESTY.unrecByPoint['15'] > 0 && HONESTY.unrecByPoint['16'] > 0 && HONESTY.unrecByPoint['14'] === 804,
+check(HONESTY.unrecByPoint['15'] > 0 && HONESTY.unrecByPoint['16'] > 0 && HONESTY.unrecByPoint['14'] === N_ACTIVE,
   'item 3 — partial rounds and the R14 baseline read "not recorded" instead');
 check(completeRounds.every(r => HONESTY.scoreByPoint[r] === HONESTY.cov.rounds[r].scored),
   'item 3 — every recorded score is shown');
@@ -407,7 +414,7 @@ check(JSON.stringify(axisTitles) === JSON.stringify(['ROUND', 'VALUE']),
   'item 3 (2026-08-31) — both axes are labelled (his ask), not just ticked',
   JSON.stringify(axisTitles));
 check(/pick\s*\d+/i.test(cardText), 'item 18 — the card shows the draft pick');
-check(/\/\s*804/.test(cardText), 'item 18 — the card shows rank WITH its denominator');
+check(new RegExp('\\/\\s*' + N_ACTIVE).test(cardText), 'item 18 — the card shows rank WITH its denominator');
 check(!/guard 5|board <b>|engine <b>/i.test(cardText), 'item 18 — no build provenance on the card');
 check(!/per-lever|why the price/i.test(cardText), 'item 18 — no attribution panel on the card');
 const steady = await page.locator('.statrow').first().innerText();
@@ -456,7 +463,7 @@ const ratioCheck = await page.evaluate(() => {
   });
   return out;
 });
-check(ratioCheck.n === 804 && ratioCheck.bad2dp === 0,
+check(ratioCheck.n === N_ACTIVE && ratioCheck.bad2dp === 0,
   'item 11 — every board row carries a ratio, and every one of them is to two decimals',
   JSON.stringify(ratioCheck));
 check(ratioCheck.wrong === 0,
@@ -464,7 +471,7 @@ check(ratioCheck.wrong === 0,
 check(ratioCheck.inside > 0 && ratioCheck.outside > 0,
   'item 11 — the label sits inside the fill on long bars and outside it on short ones, so it is legible on both',
   JSON.stringify(ratioCheck));
-check(ratioCheck.ticks === 804,
+check(ratioCheck.ticks === N_ACTIVE,
   'item 11 — the pick-1 tick is drawn on every bar, which is what makes "past the line = worth more than pick 1" readable',
   String(ratioCheck.ticks));
 /* The floor is asserted to be IN USE, not merely tolerated. It was found on the rendered page: the
@@ -521,9 +528,9 @@ check(/mono/i.test(idFace),
 section('CLUSTER 2 — navigation (items 12, 16, 15, 9, 11)');
 await go('board');
 const bRows = page.locator('.rows .row.working');
-check(await bRows.count() === 804, 'the board renders all rows');
+check(await bRows.count() === N_ACTIVE, 'the board renders all rows');
 const bRowText = await bRows.first().innerText();
-check(/\n/.test(bRowText) && (await page.locator('.rows .row.working .club').count()) === 804,
+check(/\n/.test(bRowText) && (await page.locator('.rows .row.working .club').count()) === N_ACTIVE,
   'item 9 — every row carries the AFFL/AFL club');
 
 // item 16 — a player row opens that player's profile.
@@ -547,7 +554,7 @@ const afterClubOpen = await page.evaluate(() => ({
 }));
 check(afterClubOpen.view === 'board' && !!afterClubOpen.filter,
   'item 12 — opening a club routes to the board WITH the club filter set');
-check(afterClubOpen.rows > 0 && afterClubOpen.rows < 804,
+check(afterClubOpen.rows > 0 && afterClubOpen.rows < N_ACTIVE,
   'item 12 — the board shows that club only, not the all-player list',
   'rows=' + afterClubOpen.rows);
 check(afterClubOpen.picksPanel === 1,
@@ -582,7 +589,7 @@ const afterBack = await page.evaluate(() => ({
 check(afterBack.view === 'board' && afterBack.filter === clubBefore,
   'item 15 — Back returns to the CLUB page, not the all-player list',
   JSON.stringify(afterBack) + ' want filter ' + clubBefore);
-check(afterBack.rows > 0 && afterBack.rows < 804, 'item 15 — the club filter is restored with the page');
+check(afterBack.rows > 0 && afterBack.rows < N_ACTIVE, 'item 15 — the club filter is restored with the page');
 
 // item 15 — player -> club also has a Back, and Back is not card-specific.
 await go('clubs');
