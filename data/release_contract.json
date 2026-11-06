@@ -39,7 +39,7 @@
     "fv": "80e63a6b8ea26b56e8aa60c9c1cf028156881fc6259d8a4fd8ebbad40963a5cd",
     "register": "652d83e87780e415a01a2de6d8b3cc57",
     "rl_model": "ad48eb299b01639b62d397c4c0016dd4",
-    "store": "f49dbef62a6f4595684449ccdf6533e7"
+    "store": "6f0123fb6b166465d5bae9ec2eca9026"
   },
   "must_be_unset": [
     "RL_UNCOMP_S",
@@ -89,5 +89,5 @@
     "RL_LEGF": "1",
     "RL_PVC2": "1"
   },
-  "contract_sha256": "ce0b1f03185bd8375a9e36f8b9583c613f08f0795555d5e4b05f713c51d522ca"
+  "contract_sha256": "651f4d1a12c58d307c6ada1fa13aec780350cc368afd2d9db77167e83f635452"
 }
