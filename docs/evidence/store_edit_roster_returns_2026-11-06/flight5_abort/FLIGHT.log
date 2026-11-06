@@ -1,0 +1,280 @@
+======================================================================================================
+LAND STORE-EDIT — ROSTER RETURNS: Dominic Bedendo (to Fremantle) and Alex Mirkov (to GWS) un-retired with a 2026 season; Finnbarr Roarty (Collingwood, Ireland selection) and Ollie Purcell (Hawthorn, unregistered selection) added as new rows. Four players appear on the board.
+  tree      : /home/user/afl-rl-engine
+  owner word: Owner, 2026-11-06: "Un-retire Bedendo agree."; "Roarty, Purcell, and Mirkov should be added to the store as free agents attached to those clubs. Roarty Key defender, Purcell General Defender, Mirkov ruckman."; "Purcell April 26, 2005. Unregistered selection this year. Roarty January 4, 2006. Ireland selection this year."; "Please proceed."
+  prereg    : docs/evidence/store_edit_roster_returns_2026-11-06/NOTE.md   predicts board None
+  mode      : APPLY builder=real
+======================================================================================================
+
+--- STEP 0/9  preflight      clean tree, build lock, the restore point ---
+RL_/PAR_ environment  (none)
+build-lock: HELD by land-edit-7138 (pid 7138) — single writer for the shared workspace.
+base commit        f6db3409cc2c0125e924b5b2ba7ceacdd0073502
+board pin (before) 96896e1c489620cb3789b06adb9452f5
+store pin (before) 6f0123fb6b166465d5bae9ec2eca9026
+restore point      39 carrier(s) captured, 39 present on disk
+    [preflight OK  0.06s]
+
+--- STEP 1/9  store_edit     THE SURGICAL STORE EDIT, applied in the work dir ---
+store BEFORE  6f0123fb6b166465d5bae9ec2eca9026   (1982485 bytes)
+              == expected_boot.store, so the tree is the one this act was written for.
+THE EDIT — surgical, inside the named row's span; `old` asserted, never repaired; `add` inserted, never overwriting:
+    dominic-bedendo              eligibilities      ADD "G-FWD"   after 'affl_team', as 804 exemplar row(s) carry it   (row span 407023..407550, at char 407524)
+    dominic-bedendo              scoring[2026]      ADD SEASON {"year": 2026, "avg": 0.0, "games": 0, "pos": "SF"}   after season 2022, as the LAST season, in the key order of the store's 11484 season object(s)   (row span 407023..407576, at char 407247)
+    dominic-bedendo              _retired           true -> false   (row span 407023..407629, at char 407320)
+    dominic-bedendo              _last_listed       2024 -> 2026   (row span 407023..407630, at char 407443)
+    alex-mirkov                  eligibilities      ADD "RUCK"   after 'affl_team', as 804 exemplar row(s) carry it   (row span 429491..429951, at char 429931)
+    alex-mirkov                  scoring[2026]      ADD SEASON {"year": 2026, "avg": 0.0, "games": 0, "pos": "RUCK"}   into an EMPTY scoring list, in the key order of the store's 11484 season object(s)   (row span 429491..429976, at char 429659)
+    alex-mirkov                  _retired           true -> false   (row span 429491..430029, at char 429732)
+    alex-mirkov                  _last_listed       2024 -> 2026   (row span 429491..430030, at char 429848)
+    alex-mirkov                  year               2021 -> 2026   (row span 429491..430030, at char 429528)
+    alex-mirkov                  type               "MSD" -> "UNR"   (row span 429491..430030, at char 429542)
+    alex-mirkov                  _draft             "Mid-Season" -> "Post-Draft - Unregistered"   (row span 429491..430030, at char 429778)
+    alex-mirkov                  _draft_club        "Carlton" -> "GWS"   (row span 429491..430045, at char 429817)
+    alex-mirkov                  stream_year        2021 -> 2026   (row span 429491..430041, at char 429949)
+    alex-mirkov                  pick               6 -> null   (row span 429491..430041, at char 429517)
+    alex-mirkov                  _pickless          false -> true   (row span 429491..430044, at char 429842)
+    alex-mirkov                  draft_stream       "MSD" -> "OTHER"   (row span 429491..430043, at char 429910)
+    finnbarr-roarty              (new row)          ADD ROW {"player": "Finnbarr Roarty", "pick": null, "year": 2026, "type": "IRE", "drafted_position": "KPD", "present_position": ...   as the LAST row, keys in the majority order (16 existing row(s) use exactly this order)   (row span 1982660..1983341, at char 1982658)
+    ollie-purcell                (new row)          ADD ROW {"player": "Ollie Purcell", "pick": null, "year": 2026, "type": "UNR", "drafted_position": "SD", "present_position": "SD...   as the LAST row, keys in the majority order (17 existing row(s) use exactly this order)   (row span 1983343..1984014, at char 1983341)
+store AFTER   7f2d7e26f602b888f9ea13c5c166dc13   (1984015 bytes, +1530)
+byte check: reversing every declared replacement (removing every added field, season and row) reproduces the store byte-for-byte — the ONLY bytes that differ are the declared values.
+WRITTEN and re-read: 18 edit(s) applied, 2 row(s) added, 2652 rows in the store (was 2650), every other row untouched.
+season clock  re-derived from the edited store by season_state.derive (the sole deriver)
+    source_store_md5  6f0123fb6b16 -> 7f2d7e26f602
+    FINALS HOLD: live store derives exposure_pace 0.955; the round-24 view (505 finals appearances subtracted) re-derives the held 0.909 exactly — held.
+    every derived VALUE asserted unchanged (10 field(s) checked); WRITTEN and re-read.
+    [store_edit OK  1.23s]
+
+--- STEP 2/9  build_proofs   bare build, predicted identity, switch leg, day-0 ---
+build         rc=0 board=26c90a294fa420aa9e3690eebbb2c88b  (405.1s)
+built FROM the edited store: sidecar source_md5 7f2d7e26f602 == the store this act wrote
+MOVERS — EVERY ONE, WITH VALUES  (65 of 1034 valued row(s) moved)
+    alex-mirkov                  Alex Mirkov                9 -> None   (appeared/vanished)  [back]
+    andrew-mcgrath               Andrew McGrath             1082 -> 1081   (-1)  [active]
+    anthony-caminiti             Anthony Caminiti           824 -> 823   (-1)  [active]
+    bradley-hill                 Bradley Hill               1406 -> 1405   (-1)  [active]
+    brayden-cook                 Brayden Cook               803 -> 802   (-1)  [active]
+    caleb-serong                 Caleb Serong               4172 -> 4171   (-1)  [active]
+    cameron-mackenzie            Cameron Mackenzie          1575 -> 1574   (-1)  [active]
+    connor-macdonald             Connor MacDonald           2919 -> 2918   (-1)  [active]
+    connor-o-sullivan            Connor O'Sullivan          2593 -> 2592   (-1)  [active]
+    connor-rozee                 Connor Rozee               3104 -> 3103   (-1)  [active]
+    daniel-curtin                Daniel Curtin              2334 -> 2333   (-1)  [active]
+    dominic-bedendo              Dominic Bedendo            4 -> 48   (+44)  [active]
+    ed-richards                  Ed Richards                3925 -> 3924   (-1)  [active]
+    errol-gulden                 Errol Gulden               7499 -> 7498   (-1)  [active]
+    finnbarr-roarty              Finnbarr Roarty            None -> 53   (appeared/vanished)  [active]
+    hamish-davis                 Hamish Davis               664 -> 663   (-1)  [active]
+    harry-dean                   Harry Dean                 2664 -> 2663   (-1)  [active]
+    harry-sheezel                Harry Sheezel              10872 -> 10871   (-1)  [active]
+    harvey-langford              Harvey Langford            1860 -> 1859   (-1)  [active]
+    hugh-mccluggage              Hugh McCluggage            1429 -> 1428   (-1)  [active]
+    jack-ross                    Jack Ross                  2353 -> 2352   (-1)  [active]
+    jacob-van-rooyen             Jacob Van Rooyen           1814 -> 1813   (-1)  [active]
+    jake-riccardi                Jake Riccardi              260 -> 259   (-1)  [active]
+    jarman-impey                 Jarman Impey               608 -> 607   (-1)  [active]
+    jobe-shanahan                Jobe Shanahan              1262 -> 1261   (-1)  [active]
+    john-noble                   John Noble                 2294 -> 2293   (-1)  [active]
+    jordan-clark                 Jordan Clark               3040 -> 3039   (-1)  [active]
+    jordan-dawson                Jordan Dawson              2793 -> 2792   (-1)  [active]
+    josh-daicos                  Josh Daicos                2062 -> 2061   (-1)  [active]
+    josh-rachele                 Josh Rachele               1881 -> 1880   (-1)  [active]
+    jye-amiss                    Jye Amiss                  1314 -> 1313   (-1)  [active]
+    kysaiah-pickett              Kysaiah Pickett            4306 -> 4305   (-1)  [active]
+    lachie-whitfield             Lachie Whitfield           2161 -> 2160   (-1)  [active]
+    lachlan-ash                  Lachlan Ash                5278 -> 5277   (-1)  [active]
+    lachlan-blakiston            Lachlan Blakiston          74 -> 73   (-1)  [active]
+    lachlan-schultz              Lachlan Schultz            644 -> 643   (-1)  [active]
+    lawson-humphries             Lawson Humphries           1702 -> 1701   (-1)  [active]
+    liam-henry                   Liam Henry                 107 -> 106   (-1)  [active]
+    logan-morris                 Logan Morris               2856 -> 2855   (-1)  [active]
+    luke-nankervis               Luke Nankervis             445 -> 444   (-1)  [active]
+    marcus-bontempelli           Marcus Bontempelli         3704 -> 3703   (-1)  [active]
+    max-holmes                   Max Holmes                 7269 -> 7268   (-1)  [active]
+    mitchell-edwards             Mitchell Edwards           2008 -> 2007   (-1)  [active]
+    murphy-reid                  Murphy Reid                3231 -> 3230   (-1)  [active]
+    nasiah-wanganeen-milera      Nasiah Wanganeen-Milera    9206 -> 9205   (-1)  [active]
+    neil-erasmus                 Neil Erasmus               928 -> 927   (-1)  [active]
+    nicholas-martin              Nicholas Martin            3793 -> 3792   (-1)  [active]
+    nick-blakey                  Nick Blakey                3977 -> 3976   (-1)  [active]
+    nick-daicos                  Nick Daicos                10362 -> 10361   (-1)  [active]
+    noah-anderson                Noah Anderson              5260 -> 5259   (-1)  [active]
+    oliver-wines                 Oliver Wines               383 -> 382   (-1)  [active]
+    ollie-dempsey                Ollie Dempsey              2379 -> 2378   (-1)  [active]
+    ollie-purcell                Ollie Purcell              None -> 108   (appeared/vanished)  [active]
+    oscar-steene                 Oscar Steene               464 -> 463   (-1)  [active]
+    patrick-dangerfield          Patrick Dangerfield        163 -> 162   (-1)  [active]
+    paul-curtis                  Paul Curtis                1529 -> 1528   (-1)  [active]
+    sam-flanders                 Sam Flanders               2502 -> 2501   (-1)  [active]
+    talor-byrne                  Talor Byrne                601 -> 600   (-1)  [active]
+    tanner-bruhn                 Tanner Bruhn               1941 -> 1940   (-1)  [active]
+    tim-kelly                    Tim Kelly                  1179 -> 1178   (-1)  [active]
+    tom-de-koning                Tom De Koning              1569 -> 1568   (-1)  [active]
+    will-ashcroft                Will Ashcroft              7164 -> 7163   (-1)  [active]
+    will-day                     Will Day                   1633 -> 1632   (-1)  [active]
+    zac-bailey                   Zac Bailey                 3121 -> 3120   (-1)  [active]
+    zak-butters                  Zak Butters                6214 -> 6213   (-1)  [active]
+pool (sum of active v)  687821 -> 687969  (+148)
+edit.expected_movers is not declared: the movers above are PRINTED and asserted against nothing. Declaring them makes each one a falsifier.
+NO PREREG BOARD PREDICTION IS DECLARED (prereg.board_after is null). This act's prediction of record is its DRY RUN; the assertions made here are internal consistency only — the board was built FROM the edited store (proved above), and it moved if and only if this act declared that it would.
+day-0 re-base : OFF (default). No day-0 reference is regenerated by this landing.
+installed     board + both sidecars + the generator copy (4 files, lockstep)
+    [build_proofs OK  405.15s]
+
+--- STEP 3/9  pins           expected_boot + both sidecars + the generator copy ---
+published board  26c90a294fa420aa9e3690eebbb2c88b
+generator board  26c90a294fa420aa9e3690eebbb2c88b
+both sidecars agree with the board beside them and with the live store. OK.
+COMPUTED from the tree (never typed): store        = 7f2d7e26f602b888f9ea13c5c166dc13
+  expected_boot store        6f0123fb6b16 -> 7f2d7e26f602   (old value occurs 1 time(s))
+COMPUTED from the tree (never typed): board        = 26c90a294fa420aa9e3690eebbb2c88b
+  expected_boot board        96896e1c4896 -> 26c90a294fa4   (old value occurs 1 time(s))
+fields that moved in expected_boot.json: ['board', 'store']
+must-not-move list: 6 checked, 0 moved
+byte check: the ONLY bytes that differ are the declared pin values.
+WRITTEN and re-read.
+    [pins OK  0.02s]
+
+--- STEP 4/9  lineage        the out-of-round column and the append-only entry ---
+column        roster-returns-06-11 registered (dry_run=False)
+ASSERTED: the newest stored point is this column, naming the live board 26c90a294fa420aa9e3690eebbb2c88b
+chain: the tail is a store-only transition (no destination.board by design); its board read from invariants.board_unmoved_by_transition = 96896e1c4896
+chain OK: register tail destination == this entry's source on board and store
+append-only OK: 34 prior entries byte-verbatim; top-level baseline 06d8af60b679a12db07c064c60c065f9 / v2.11-present-lens-baseline UNMOVED
+MOVED by this transition: ['board', 'store'] (of 11 identities)
+re-read OK: round-trips at indent=1; prior entries still byte-verbatim.
+    [lineage OK  0.15s]
+
+--- STEP 5/9  contract       restamp_dynamic + the bake-lane repin + check ---
+contract seal self-consistent before the act: 651f4d1a12c5
+  config       d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4   == expected_boot
+  engine_head  b8152511821fd710b4b7b530b822213e   == expected_boot
+  rl_model     ad48eb299b01639b62d397c4c0016dd4   == expected_boot
+  fv           80e63a6b8ea26b56e8aa60c9c1cf028156881fc6259d8a4fd8ebbad40963a5cd   == expected_boot
+  store        7f2d7e26f602b888f9ea13c5c166dc13   == expected_boot
+  board        26c90a294fa420aa9e3690eebbb2c88b   == expected_boot
+WRITER 1: release_contract.restamp_dynamic(root, as_of_round=24, store, board, season_state)
+   restamp_dynamic returned seal 2066c8f165d1
+WRITER 2: the bake-lane identities restamp_dynamic does not touch (release_contract.restamp_bake_identities — shared with tools/restamp)
+  contract_sha256             2066c8f165d1 -> 2066c8f165d1
+  frozen fields asserted unmoved: 10 checked, 0 moved
+RE-STAMPED, re-read, and release_contract.py check PASSES.
+    [contract OK  0.07s]
+
+--- STEP 6/9  ui             ALL SEVEN UI writers, and the identity read back out ---
+BEFORE  working 5de9187c84f029da372b5d78a6c3ab3b  release-block=True
+BEFORE  public  c604f0d2750a5a0043f997188e154a4c  release-block=False
+BEFORE  mirror  f1b78b784e05c7a4311c184101ca8e81  register=34 entr(ies)
+BEFORE  movers  ab5b0dd9d090adb45d33ecf789907920  model_changes=24 boundar(ies)
+BEFORE  owners 3e2c1946dfdf5ff580e4cfb4e6bbebb1  pinned board=96896e1c store=6f0123fb
+BEFORE  picks  627e4f1bd00c2cc1d6a1e5e0677e4a3b  stamped board=96896e1c store=6f0123fb R24
+BEFORE  draft  8570cccf4a52baa7069b5c03dc48ca3a  stamped store=f49dbef6
+WRITER 1/8: ui/tools/extract_board_view.py
+  working after writer 1: 2620dfda743227a95e7b7913b7f9c708   release-block=True   <-- DROPPED, as it always is
+WRITER 2/8: round_movers.inject_release_contract(bundle, root, 24)
+  release block: {"as_of_round": 24, "balanced_board_md5": "06d8af60b679a12db07c064c60c065f9", "board": "26c90a294fa420aa9e3690eebbb2c88b", "config": "d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4",
+WRITER 3/8: ui/tools/generate_movers_transition.py  (the lineage projection — supervisor ruling on F-9)
+  wrote: ui/data/movers_transition.js (126281 bytes)
+  register entries mirrored: 35
+  drift guard: mirror OK — committed == projected (126281 bytes, 35 register entries)
+  mirror register == lineage register: 35 entr(ies), EQUAL  (the F-9 predicate holds)
+WRITER 4/8: ui/tools/rebuild_movers_derived.py  (points / values / model_changes — supervisor ruling on F-10)
+  wrote: ui/data/movers.js (7376123 -> 6815101 bytes, latest report R29)
+  derived blocks changed: points, values, model_changes
+  drift guard: derived blocks OK — committed == rebuilt (6815101 bytes, latest report R29)
+  shipped model_changes == live-derived: 25 boundar(ies), EQUAL  (the F-10 predicate holds)
+WRITER 4b/8: the retro CONTROL first (engine-free: banked r24 vs the live board)
+  CONTROL NOT ASSERTED: the newest banked round is r29 and it differs from the live board on 61 value(s) (3 missing). The retrospective is BEHIND the live board — a week has been applied to the store that is not yet banked. Re-price it with pass_retro_series.py (or bank the newest week from the landed board) to make this a PASS again. The series is still emitted from what IS banked, because dropping banked history is worse than carrying it one week short; see CONTROL_FAIL.json for the rows.
+WRITER 4b/8: emit_retro_series.py  (the R14-R24 walk-forward series writer 4 drops)
+  retro-r28   804 players  board in-proce
+  retro-r29   804 players  board in-proce
+  emitted 16 retro points covering up to 804 players -> ui/data/movers.js
+  retro series present: 16 points, retro-r14 .. retro-r29 (every banked round, no gap)
+WRITER 5/8: ui/tools/ingest_inputs.py --mirror-only  (the ownership mirror, re-pinned to the landed board + store)
+    [ui FAILED  2.17s]
+
+======================================================================================================
+LANDING ABORTED AT STEP 'ui'
+======================================================================================================
+  the ownership mirror regeneration failed (exit 2):
+  ease pick-curve contract has all required fields  (missing: none)
+    [PASS] contract adopted_pathway is a known pathway  (RL_PVC2 (known: ['RL_PVC2', 'RL_PVCADOPT']))
+    [PASS] release manifest has current board/store/round/version  (missing: none)
+    [PASS] curve contract release_version == current release version  (contract v2.11-final-rc1-PROVISIONAL vs manifest v2.11-final-rc1-PROVISIONAL)
+    [PASS] curve contract carries a full immutable source-store identity  (curve source store f1e8c9fe)
+    [PASS] contract numeraire pin1 == 3000  (pin1 = 3000)
+    [PASS] contract pick_curve_path matches the adopted pathway  (RL_PVC2 expects pvc_curve_v2.json, contract points at pvc_curve_v2.json)
+    [PASS] release-active curve file md5 == contract  (file 031ec76e vs contract 031ec76e)
+    [PASS] release-active curve curve_md5 == contract  (curve 1c3b22d1 vs contract 1c3b22d1)
+    [PASS] engine curve self-declares gate == adopted pathway  (curve gate 'RL_PVC2' vs pathway 'RL_PVC2')
+    [PASS] engine curve store binding == release store  (curve f1e8c9fe vs release f1e8c9fe)
+    [PASS] board PVC == release-active engine/rl_after/pvc_curve_v2.json (RL_PVC2, over 64 shared picks)
+    [PASS] PVC numeraire anchor pick1 == 3000  (pick1 = 3000)
+    [PASS] PVC monotone non-increasing (picks 1-64)
+    [PASS] board name-join keys unambiguous (normalised)  (dups: [])
+    [PASS] AFFL club count  (16 clubs (+ Free Agents pool))
+    [PASS] player names unambiguous in Player_Locations.csv (normalised)  (dups: none)
+    [PASS] player names unambiguous in Future_Positioning.csv (normalised)  (dups: none)
+    [FAIL] every off-board Player_Locations name -> exactly ONE retired store row (delisted, still owned)  (0 off the board admitted; refused: [('Alex Mirkov', 'not retired')])
+  
+  ■ HALT — player name(s) off the board fail the store join: [('Alex Mirkov', 'not retired')]
+    The club-valuation overlay refuses to render on this ingest.  Nothing is guessed.
+    The ownership sidecar refuses on the same halt (ui/data/ownership.js).
+
+carriers that moved before the failure: 18
+    data/expected_boot.json                                          cc15bf57e495 -> 5e9a6bd3ff45
+    data/release_contract.json                                       bf8388ad9c64 -> 1c64ddea2c71
+    data/release_lineage.json                                        e1f4e951f9a4 -> 7672f705a16b
+    data/rl_build/rl_app_data.json                                   96896e1c4896 -> 26c90a294fa4
+    data/rl_build/rl_app_data.json.srcmd5                            10ab75f8f77f -> f27f756a097a
+    data/season_state.json                                           f19a9ac30354 -> 7a7956117609
+    docs/evidence/walkforward_retro_2026-08-29/CONTROL_FAIL.json     1d3977c45700 -> 87fdcb254178
+    engine/rl_after/ingestion/pos_rank_history.json                  0401247d6383 -> 7afb7856709b
+    engine/rl_after/ingestion/rank_history.json                      71fd4ee722a1 -> cd4ce21a7129
+    engine/rl_after/ingestion/value_history.json                     a51f8711709e -> e2585187f10c
+    engine/rl_after/rl_app_data.json                                 96896e1c4896 -> 26c90a294fa4
+    engine/rl_after/rl_app_data.json.srcmd5                          10ab75f8f77f -> f27f756a097a
+    engine/rl_after/rl_model_data.json                               6f0123fb6b16 -> 7f2d7e26f602
+    ui/data/board_view_public.js                                     c604f0d2750a -> e3714158b54d
+    ui/data/board_view_working.js                                    5de9187c84f0 -> 2620dfda7432
+    ui/data/movers.js                                                ab5b0dd9d090 -> 975448961209
+    ui/data/movers_transition.js                                     f1b78b784e05 -> 2754c99c7c3a
+    ui/data/ownership.js                                             3e2c1946dfdf -> eb7717e9fb23
+RESTORING 18 carrier(s):
+    rewrite  data/expected_boot.json
+    rewrite  data/release_contract.json
+    rewrite  data/release_lineage.json
+    rewrite  data/rl_build/rl_app_data.json
+    rewrite  data/rl_build/rl_app_data.json.srcmd5
+    rewrite  data/season_state.json
+    rewrite  docs/evidence/walkforward_retro_2026-08-29/CONTROL_FAIL.json
+    rewrite  engine/rl_after/ingestion/pos_rank_history.json
+    rewrite  engine/rl_after/ingestion/rank_history.json
+    rewrite  engine/rl_after/ingestion/value_history.json
+    rewrite  engine/rl_after/rl_app_data.json
+    rewrite  engine/rl_after/rl_app_data.json.srcmd5
+    rewrite  engine/rl_after/rl_model_data.json
+    rewrite  ui/data/board_view_public.js
+    rewrite  ui/data/board_view_working.js
+    rewrite  ui/data/movers.js
+    rewrite  ui/data/movers_transition.js
+    rewrite  ui/data/ownership.js
+
+ABORT PROOF: every carrier is BYTE-EXACT to the identity captured at step 0.
+
+THE RECOVERY LADDER: abort-then-retry is the recovery. A landing this lander cannot
+complete after abort+retry is a round that SLIPS, on the owner's call — never an
+improvised manual landing under pressure.
+======================================================================================================
+
+--- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
+    preflight          0.06s  OK
+    store_edit         1.23s  OK
+    build_proofs     405.15s  OK
+    pins               0.02s  OK
+    lineage            0.15s  OK
+    contract           0.07s  OK
+    ui                 2.17s  FAIL
+    TOTAL            408.85s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_7138

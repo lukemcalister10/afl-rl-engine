@@ -1,0 +1,121 @@
+{
+  "byte_exact": true,
+  "commits_rewound": [],
+  "error": "the ownership mirror regeneration failed (exit 2):\nease pick-curve contract has all required fields  (missing: none)\n  [PASS] contract adopted_pathway is a known pathway  (RL_PVC2 (known: ['RL_PVC2', 'RL_PVCADOPT']))\n  [PASS] release manifest has current board/store/round/version  (missing: none)\n  [PASS] curve contract release_version == current release version  (contract v2.11-final-rc1-PROVISIONAL vs manifest v2.11-final-rc1-PROVISIONAL)\n  [PASS] curve contract carries a full immutable source-store identity  (curve source store f1e8c9fe)\n  [PASS] contract numeraire pin1 == 3000  (pin1 = 3000)\n  [PASS] contract pick_curve_path matches the adopted pathway  (RL_PVC2 expects pvc_curve_v2.json, contract points at pvc_curve_v2.json)\n  [PASS] release-active curve file md5 == contract  (file 031ec76e vs contract 031ec76e)\n  [PASS] release-active curve curve_md5 == contract  (curve 1c3b22d1 vs contract 1c3b22d1)\n  [PASS] engine curve self-declares gate == adopted pathway  (curve gate 'RL_PVC2' vs pathway 'RL_PVC2')\n  [PASS] engine curve store binding == release store  (curve f1e8c9fe vs release f1e8c9fe)\n  [PASS] board PVC == release-active engine/rl_after/pvc_curve_v2.json (RL_PVC2, over 64 shared picks)\n  [PASS] PVC numeraire anchor pick1 == 3000  (pick1 = 3000)\n  [PASS] PVC monotone non-increasing (picks 1-64)\n  [PASS] board name-join keys unambiguous (normalised)  (dups: [])\n  [PASS] AFFL club count  (16 clubs (+ Free Agents pool))\n  [PASS] player names unambiguous in Player_Locations.csv (normalised)  (dups: none)\n  [PASS] player names unambiguous in Future_Positioning.csv (normalised)  (dups: none)\n  [FAIL] every off-board Player_Locations name -> exactly ONE retired store row (delisted, still owned)  (0 off the board admitted; refused: [('Alex Mirkov', 'not retired')])\n\n\u25a0 HALT \u2014 player name(s) off the board fail the store join: [('Alex Mirkov', 'not retired')]\n  The club-valuation overlay refuses to render on this ingest.  Nothing is guessed.\n  The ownership sidecar refuses on the same halt (ui/data/ownership.js).\n",
+  "failed_step": "ui",
+  "restore_point": {
+    "data/expected_boot.json": "cc15bf57e495ab59d444ed5985e42e8f",
+    "data/release_contract.json": "bf8388ad9c64c471a9ae685bad805180",
+    "data/release_lineage.json": "e1f4e951f9a4e9d1532e51d1fc8da9b3",
+    "data/rl_build/rl_app_data.json": "96896e1c489620cb3789b06adb9452f5",
+    "data/rl_build/rl_app_data.json.srcmd5": "10ab75f8f77fe29113a44bd065812223",
+    "data/season_state.json": "f19a9ac303548a0255f1376204267906",
+    "data/sheet_pins.json": "226b73ff64e6a6967103bfee788848a0",
+    "docs/STATE.md": "cec32647cf886c08e91ef26e7184ca1d",
+    "docs/evidence/walkforward_retro_2026-08-29/CONTROL_FAIL.json": "1d3977c4570000208652b25971b92831",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r14.json": "6d68ed07fd02b5ad90b61af5789ed507",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r15.json": "1c268118a8d0737faa1ef53dc0340cda",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r16.json": "9cc8de979974e8fe93d5b817748b20cc",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r17.json": "883649ce700a611926ca3558e6f05a2c",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r18.json": "d64df0627312d9970f0cb3df6b451058",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r19.json": "db887e07047c9885f5f530ca1479646d",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r20.json": "c7ab631d8e11ecaac8093c3ae87881da",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r21.json": "265688755d05ddd416d8f7b3bcaa9e0f",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r22.json": "8799915d3dd6f6eb3c4c88f5db3342da",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r23.json": "b49802755f2cbeaacbf29e62bb25d5c2",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r24.json": "af6e688187df9cd1245f0c99d166cd3e",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r25.json": "a179b3799f8b251994d0dc7442ca4240",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r26.json": "7744e66db5d722fa3c8949601d609e36",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r27.json": "b07bd899afe8b4dd7c8b550007ac0118",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r28.json": "3c0ebb05d48282462f72e999c31721d7",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r29.json": "e48c1b70a9a67b68d800fd3cf63597fe",
+    "engine/rl_after/ingestion/pos_rank_history.json": "0401247d63835c9ba852679fa922340a",
+    "engine/rl_after/ingestion/rank_history.json": "71fd4ee722a1793a21fa4b250130f7e1",
+    "engine/rl_after/ingestion/value_history.json": "a51f8711709eb6806316f7e5fc09ef27",
+    "engine/rl_after/rl_app_data.json": "96896e1c489620cb3789b06adb9452f5",
+    "engine/rl_after/rl_app_data.json.srcmd5": "10ab75f8f77fe29113a44bd065812223",
+    "engine/rl_after/rl_model_data.json": "6f0123fb6b166465d5bae9ec2eca9026",
+    "ui/data/board_view_public.js": "c604f0d2750a5a0043f997188e154a4c",
+    "ui/data/board_view_working.js": "5de9187c84f029da372b5d78a6c3ab3b",
+    "ui/data/club_valuation.js": "627e4f1bd00c2cc1d6a1e5e0677e4a3b",
+    "ui/data/movers.js": "ab5b0dd9d090adb45d33ecf789907920",
+    "ui/data/movers_transition.js": "f1b78b784e05c7a4311c184101ca8e81",
+    "ui/data/ownership.js": "3e2c1946dfdf5ff580e4cfb4e6bbebb1",
+    "ui/data_aux/draft_outcomes.js": "8570cccf4a52baa7069b5c03dc48ca3a",
+    "ui/data_aux/v0.js": "ea8f715fbcf42dba3bf9bc8c102071e5"
+  },
+  "restored": [
+    {
+      "action": "rewrite",
+      "path": "data/expected_boot.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "data/release_contract.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "data/release_lineage.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "data/rl_build/rl_app_data.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "data/rl_build/rl_app_data.json.srcmd5"
+    },
+    {
+      "action": "rewrite",
+      "path": "data/season_state.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "docs/evidence/walkforward_retro_2026-08-29/CONTROL_FAIL.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "engine/rl_after/ingestion/pos_rank_history.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "engine/rl_after/ingestion/rank_history.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "engine/rl_after/ingestion/value_history.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "engine/rl_after/rl_app_data.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "engine/rl_after/rl_app_data.json.srcmd5"
+    },
+    {
+      "action": "rewrite",
+      "path": "engine/rl_after/rl_model_data.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data/board_view_public.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data/board_view_working.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data/movers.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data/movers_transition.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data/ownership.js"
+    }
+  ]
+}
