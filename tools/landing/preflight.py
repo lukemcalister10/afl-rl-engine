@@ -38,8 +38,8 @@ def _md5(p):
     return hashlib.md5(open(p, 'rb').read()).hexdigest()
 
 
-def _run(argv, root, timeout=300):
-    p = subprocess.run(argv, cwd=root, capture_output=True, text=True, timeout=timeout)
+def _run(argv, root, timeout=300, env=None):
+    p = subprocess.run(argv, cwd=root, capture_output=True, text=True, timeout=timeout, env=env)
     return p.returncode, (p.stdout or '') + (p.stderr or '')
 
 
@@ -271,7 +271,27 @@ def run_preflight(root, spec_path, out=print):
     #      contract pin died at ui writer 5, ~55 build-minutes in — the same standing checker runs
     #      here in --clubs-check mode, which writes NOTHING and fires every coherence halt).
     def _picks():
-        rc, o = _run([sys.executable, 'ui/tools/ingest_inputs.py', '--clubs-check'], root)
+        # A STORE-EDIT ACT IS JUDGED ON THE STORE IT LEAVES (2026-11-06; the store_sanity precedent):
+        # the check reads the post-edit store, and the rows the act adds or un-retires are named as
+        # pending board rows, so a sheet that already carries a new player does not refuse the very
+        # act that creates his row — while the positions writer inside the landing still requires
+        # the sheet row. Outside a store-edit act nothing changes.
+        env = None
+        edits = list(((doc or {}).get('edit') or {}).get('store') or ())
+        if edits:
+            import tempfile
+            sys.path.insert(0, root)
+            from tools.landing.steps import apply_store_edits
+            text = open(os.path.join(root, 'engine', 'rl_after', 'rl_model_data.json'),
+                        encoding='utf-8').read()
+            text, _applied = apply_store_edits(text, edits)
+            tmp = tempfile.NamedTemporaryFile('w', suffix='.json', delete=False, encoding='utf-8')
+            tmp.write(text); tmp.close()
+            pending = [e['add_row']['key'] for e in edits if 'add_row' in e]
+            pending += [e['key'] for e in edits
+                        if e.get('field') == '_retired' and e.get('old') is True and e.get('new') is False]
+            env = dict(os.environ, RL_UI_STORE=tmp.name, RL_UI_PENDING_BOARD=','.join(pending))
+        rc, o = _run([sys.executable, 'ui/tools/ingest_inputs.py', '--clubs-check'], root, env=env)
         return ('PASS', 'picks/curve halt battery clean (read-only)') if rc == 0 else \
                ('FAIL', ([l for l in o.splitlines() if 'HALT' in l or 'DRIFT' in l] or
                          [o.strip()[:200]])[0][:200])

@@ -703,12 +703,18 @@ def validate_csvs(board_by_nkey, affl_teams):
                 store_by_nkey[nkey(_r.get("player") or "")].append(_r)
     except Exception as e:                                           # noqa: BLE001
         halt("could not read the store for the off-board name join: %s" % e)
+    # PENDING BOARD ROWS (2026-11-06): a store-edit act that ADDS or UN-RETIRES a player puts him on
+    # the board at its build, after this read-only check has run at preflight. The lander names those
+    # store keys in RL_UI_PENDING_BOARD (and points RL_UI_STORE at the store as the act leaves it);
+    # a sheet row that resolves to one of them is admitted as off-board-for-now. Outside a preflight
+    # the variable is unset and nothing changes.
+    pending = {k for k in (os.environ.get("RL_UI_PENDING_BOARD") or "").split(",") if k}
     off_board, bad_off_board = [], []
     for r in loc_rows:
         if nkey(r[0]) in board_by_nkey:
             continue
         cands = store_by_nkey.get(nkey(r[0])) or []
-        if len(cands) == 1 and cands[0].get("_retired"):
+        if len(cands) == 1 and (cands[0].get("_retired") or cands[0].get("key") in pending):
             off_board.append(r[0])
         else:
             bad_off_board.append((r[0], "no store row" if not cands else
