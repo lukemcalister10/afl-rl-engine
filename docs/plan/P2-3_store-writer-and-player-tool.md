@@ -29,7 +29,8 @@ edits and stops; a rehearsal adds and then retires a synthetic player end to end
 2. tools/player.py: `add` (from a JSON/CSV row), `retire KEY --last-listed Y` (two change edits: `_retired`, and
    `_last_listed` as `add` when absent), `move KEY CLUB` (one change edit on `afl_club`, refused for the 1,846 rows
    that have no `afl_club`), `set KEY FIELD VALUE` (one change edit). Each writes a spec like tools/ingest.build_spec
-   (ingest.py:388-437) and runs the lane; `--check` = the lane's dry run.
+   (ingest.py:388-437) and lands it through `tools/land edit` (cmd_edit, cli.py:305 — launch checks and the
+   pre-transaction self-test run; this is not P14's weekly path); `--check` = the lane's dry run.
 3. When the season-clock stop fires, the tool says so plainly (the act is a re-derivation and needs its own word).
 
 **Must not change.** Existing verbs and their proofs; the store bytes for any act that does not use `add_row`; the

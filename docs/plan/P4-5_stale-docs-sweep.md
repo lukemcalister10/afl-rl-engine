@@ -5,7 +5,9 @@
 **Done when.** Every live document says what the tree does after the items that actually landed: the weekly command
 for finals AND rounds (if P2-1 landed), `tools/player`, `tools/rollover`, the as-at columns, the in-transaction flip
 (P4-3), no `land round` (if P4-4 landed), no claims step, day-0 optional. Each topic is documented in ONE place and
-the others link to it. docs/register/LATEST.md gets one closing entry naming the plan's landing commits.
+the others link to it. One closing register entry naming the plan's landing commits, written ONLY with
+`python3 tools/seat/pen.py append --entry-file F` (it writes entries/vNNN.md, rewrites docs/register/LATEST.md and
+runs `verify`, pen.py:13-21) — never hand-edit LATEST.md or the index.
 
 **Facts (checked at ffb2663b).**
 - Live docs: the 14 top-level docs/*.md, docs/runbooks/ (F5_OFFBYONE_DIAGNOSIS.md, R23_RUNBOOK.md,
@@ -16,7 +18,7 @@ the others link to it. docs/register/LATEST.md gets one closing entry naming the
 - The RULEBOOK changes only on the owner's word (law 10a, RULEBOOK.md:40-42). Its retired paragraphs (P7, P9, P11,
   P12, :145-158) and law 11's claims sentence (:46-48) already say what is retired; P13 is P4-4's (owner word).
 - Things that are NOT retired and must not be documented as retired: the lander's pre-transaction self-test
-  (tools/landing/selftest.py, run by cli.py:231/293/335), acceptance/selftest.py (CI), the manifest-pinned engine
+  (tools/landing/selftest.py, run by `tools/land` at cli.py:231/293/335 — NOT by tools/ingest, ingest.py:450-463, P14), acceptance/selftest.py (CI), the manifest-pinned engine
   dials in data/model_config.json (config identity, see the plan README).
 - Lints: `python3 tools/rulebook_lint.py` (0 FAIL today) and the acceptance `doc_lint` check
   (acceptance/checks/standing.py:104).

@@ -14,15 +14,15 @@ sees today, and the board is byte-identical.
 - The :6153 and :6269 definitions sit inside `if _O45:` (:6124-6125, `RL_O45`) and `if _O49:` (:6264-6265, `RL_O49`).
   Both are manifest-pinned dials ('1' in data/model_config.json `vars`), i.e. config, not stray flags (README
   config rule). Keep both conditions verbatim here; P5-4 does not remove pinned dials either.
-- MODULE-LEVEL CALLS BEFORE LATER WRAPPERS EXIST: the availability/D7 block calls `ev(_p,2026)` at :5952, :6000,
-  :6009, :6018 — before :6035 — so those measurements are taken on the pre-43 chain BY DESIGN (the D7 comment at
+- MODULE-LEVEL CALLS BEFORE LATER WRAPPERS EXIST: module-level code calls `ev(_p,2026)` at :5782, :5930, :5942,
+  :5952 (availability block), :6000, :6009, :6018 (D7) — all before :6035 — so those measurements are taken on the pre-43 chain BY DESIGN (the D7 comment at
   :5969-5985: "the position is load-bearing"). `o31_D` is also wrapped (:6092-6093, `_o31D_pre43`, own `__inner`).
 - Memo/state the stages rely on: `_pe_clear`, the `_POLE` memo, `_O46F` (the :6227 stage flips it, :6231/:6236),
   the ev-time scoring swap-and-restore.
 
 **Change.** Rename each intermediate stage to a named function (`_ev_stage_pre43`, …) and keep each existing alias
 name bound to the SAME function object it is bound to today (`_ev_click`, `_raw_ev_w4_0`, `_ev_pre43`, …) so every
-caller — including the module-level calls at :5952-:6018 and the `o31_D` chain — resolves to the stage it calls now.
+caller — including the module-level calls at :5782-:6018 and the `o31_D` chain — resolves to the stage it calls now.
 The final `ev` is defined once, after the last stage, and its body calls the stages in order under the same two
 `_O45`/`_O49` conditions. Keep every stage comment. Do not change rounding points or the `__inner` call counts inside
 a stage (several stages call their inner twice: :6198/:6202, :6286/:6290).
@@ -33,9 +33,9 @@ time resolves to (grep every body between :907 and the end for bare calls — re
 refit lane at :2130-~2438). The board (96896e1c), store, config.
 
 **Prove it.**
-- Before editing, record for every row `ev(p,Y)` for Y in 2024..2028 and the four module-level results (`_D7_ROWS`,
-  `_AVAIL_MOVERS`) from a harness load of the current file; after the edit, the same values, key for key.
-- Bare canonical build byte-identical (README recipe); `tools/harness docs/evidence/walkforward_retro_2026-08-29/
+- Before editing, record for every row `ev(p,Y)` for Y in 2024..2028 and every module-level result those seven calls
+  feed (`_ev_off`, `_ev_p1`, `_AVAIL_MOVERS`, `_D7_ROWS`, and what :5782 sets) from a harness load of the current file; after the edit, the same values, key for key.
+- Bare build byte-identical (README recipe); `tools/harness docs/evidence/walkforward_retro_2026-08-29/
   pass_asat_seasons.py` control passes and the as-at banks are byte-identical (`git diff --exit-code`);
   engine/rl_after/one_source_selftest.py (run from engine/rl_after); acceptance `--profile full`.
 - The lever act: `moves: [engine_head]`, `prereg.board_before == board_after`.

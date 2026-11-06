@@ -14,7 +14,7 @@ literal (file:line, class: live | historical | label) is committed; the board is
 - Engine sites: rl_model.py:74 `LIVE_SEASON=2026`, :163-164 `AGE_REF`/`BASE_REF=2026`, :1187 and :1215
   `BASE_REF==2026 and AGE_REF==2026`; _merged_recover.py:138 `INPROG_Y` and :1237 `M3_INPROG_Y` (both read
   RL_M3_INPROG_Y), conditional_prior.py:65 `EXPO_INPROG_Y` (RL_EXPO_INPROG_Y); rl_export.py:210-212 (`BASE_REF=
-  AGE_REF=2026`, `ev(p,2024/2025/2026)`), :695 and :1005 (`lensYear: 2026+_off`), :1029 (`range(2027, …)` pick classes). tools/ingest.py:63 `SEASON = 2026`.
+  AGE_REF=2026`, `ev(p,2024/2025/2026)`), :695 and :1005 (`lensYear: 2026+_off`), :985 and :1029 (`range(2027, …)` pick classes). tools/ingest.py:63 `SEASON = 2026`.
   The default `Y=2026` arguments of every `ev`/`raw_ev` definition (P5-1 lists them) are live-season defaults.
 - RL_M3_INPROG_Y and RL_EXPO_INPROG_Y are manifest dials pinned "2026" (data/model_config.json `vars`) — config
   identity. `config` is in FLIP_SCOPED_IDENTITIES (spec.py:65) and refused in `moves` (:481-488) until P4-3.
@@ -33,7 +33,7 @@ literal (file:line, class: live | historical | label) is committed; the board is
 dates, frozen anchors, `draft-pick:<class>` labels), the frozen v0-surface signature.
 
 **Prove it.**
-- Bare canonical build byte-identical; `tools/harness docs/evidence/walkforward_retro_2026-08-29/pass_asat_seasons.py`
+- Bare build byte-identical; `tools/harness docs/evidence/walkforward_retro_2026-08-29/pass_asat_seasons.py`
   control passes and the banks are byte-identical; engine/rl_after/one_source_selftest.py; acceptance `--profile full`.
 - A 2027 copy (scratch worktree): set season_year/inprog_year 2027, both dials "2027" (recompute config_sha256 and the
   `config` pin there), then a DEV-mode build (`_build_child.py … dev …`) completes; grep its log and the board for a

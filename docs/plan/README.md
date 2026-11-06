@@ -6,7 +6,7 @@ not change**, **Prove it**, **Lands via**. The 2026 season is over (season_state
 ## The common contract
 - **Serial rule.** One item at a time in `tools/landing/steps.py`, `tools/ingest.py` and the engine
   (`engine/rl_after/_merged_recover.py`, `rl_model.py`, `rl_export.py`, `engine/forward_valuation/`).
-  P2-1, P2-2, P2-3, P2-4, P4-1a, P4-2, P4-3 and P4-4 all edit steps.py.
+  P2-1, P2-2, P2-3, P2-4, P4-1a, P4-2, P4-3, P4-4 and P5-3 all edit steps.py.
 - **Lanes.** A change that moves the board, the store or a pinned identity lands through `tools/land`
   (lever / edit) or `tools/ingest`. Until P4-3 lands, an engine or config source change needs the flip:
   edit the pins in data/expected_boot.json, `python3 tools/restamp.py apply`, commit, then land with those
@@ -15,22 +15,22 @@ not change**, **Prove it**, **Lands via**. The 2026 season is over (season_state
 - **Gates.** The lander runs DEFAULT_GATES (steps.py:139-185), with acceptance at `--profile in-transaction`
   (:144-147). CI runs `python3 -m acceptance.selftest` and `--profile host-insensitive`
   (.github/actions/host-insensitive-gates/action.yml:72-73). Neither profile runs `lander_selftest`
-  (PROFILE 'full', acceptance/checks/landing.py:71); the lander runs tools/landing/selftest.py itself before
-  every transaction (tools/landing/cli.py:231,293,335) unless a standing proof exists. "Acceptance green" in a
-  brief = `python3 -m acceptance.runner --profile full` for a plain commit; the lander's gates for an act.
-- **Byte-identical board.** Board pin `96896e1c…` = md5 of data/rl_build/rl_app_data.json. Bare build:
-  `python3 tools/landing/_build_child.py $PWD <tag> canonical <scratch>/b '{}'`, then md5 `<scratch>/b.board.json`.
-  For an act, the lander's build_proofs against `prereg.board_after` is the binding proof.
-- **Spec baseline.** 29 `ACT_SPEC*.json` under docs/evidence; 28 validate today. ACT_SPEC_P3A.json
-  (docs/evidence/p3a_pins_out_2026-08-21) already fails (engine_head in `moves`). "Every spec still validates"
-  means the same 28 still pass (state it if P3A starts passing after P4-3).
+  (PROFILE 'full', acceptance/checks/landing.py:71); `tools/land lever|round|edit` runs tools/landing/selftest.py
+  before its transaction (cli.py:231,293,335) unless a standing proof exists, but tools/ingest drives the steps
+  WITHOUT it (ingest.py:450-463; RULEBOOK P14 "no lander self-test"). P2-1 uses tools/ingest; P2-3's tools/player
+  uses `tools/land edit` (self-test runs). "Acceptance green" = `--profile full` (plain commit) / the lander's gates.
+- **Byte-identical board.** Pin `96896e1c…` = md5 data/rl_build/rl_app_data.json. Bare build as the lander builds it
+  (mode 'dev', steps.py:1114): `python3 tools/landing/_build_child.py $PWD <tag> dev <scratch>/b '{}'`, md5
+  `<scratch>/b.board.json`. For an act, build_proofs against `prereg.board_after` is the binding proof.
+- **Spec baseline.** 29 `ACT_SPEC*.json` under docs/evidence; 28 validate; p3a_pins_out_2026-08-21/ACT_SPEC_P3A.json
+  already fails (engine_head in `moves`). "Every spec validates" = the same 28 (say if P3A passes after P4-3).
 - **Config rule (corrects "the engine has no env flags since 2026-10-14", which was false).** Distinct RL_* names
   read in code: 66 in _merged_recover.py (69 if you count three named only in "Was os.environ.get" comments at
-  :216, :1161, :1162), 20 in rl_model.py, 7 in rl_export.py, 5 in conditional_prior.py. All but SIX are either
+  :216, :1161, :1162), 20 in rl_model.py, 7 in rl_export.py, 5 in conditional_prior.py. All but six are either
   manifest dials in data/model_config.json `vars` (90 entries) or config_manifest.INFRA_ALLOW (config_manifest.py:50);
   in gate/canonical mode any other RL_/PAR_ var halts the build (config_manifest.py:121-128). The D3 act
   (dd7cad24) hard-wired the adopted chain; it did not remove the pinned dials. RULE: no new UNPINNED switch;
-  manifest dials stay — they ARE the config identity. The six unpinned reads are P5-4's. A measurement variant
+  manifest dials stay — they ARE the config identity. The unpinned reads (six in these four files, eleven in all build-loaded files) are P5-4's. A measurement variant
   is a module constant flipped on a scratch copy, never shipped.
 - **Owner word.** Value-moving releases (law 11 blind review, RULEBOOK P1 movers shown first): P5-3, P3-2, P5-5,
   P5-6. RULEBOOK edits (law 10a): P4-4 (P13 names the round lander as the sheet-pin writer). A new step on the
@@ -45,7 +45,7 @@ not change**, **Prove it**, **Lands via**. The 2026 season is over (season_state
 | 4 | P4-3 flip inside the lander (+stash key, +config) | MEDIUM | P4-2 | plain commit + rehearsal act |
 | 5 | P5-2 engine file end | MEDIUM | P4-3 | lever act, board unmoved |
 | 6 | P5-1 one ev | MEDIUM | P5-2 | lever act, board unmoved |
-| 7 | P5-4 the six unpinned reads + refit lane | MEDIUM | P5-1 | lever act, board unmoved |
+| 7 | P5-4 unpinned reads in the build + refit lane | MEDIUM | P5-1 | lever act, board unmoved |
 | 8 | P5-3 as-at −1/−2 columns (a value move) | HIGH | P4-3 | lever act, owner word, blind review |
 | 9 | P2-3 store row verbs + tools/player | MEDIUM | P4-2 | plain commit + rehearsal |
 | 10 | P2-4 season-keyed ids | MEDIUM | P2-2 | plain commit (one data migration) |

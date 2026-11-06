@@ -4,7 +4,7 @@
 P4-3 (the config move: the two INPROG dials go to "2027"). On P2-1, see "Rehearsal" — the reviewer asked to add P2-1
 as a dependency; that would be circular (P2-1 needs this rollover landed or rehearsed), so it is split below.
 
-**Done when.** `tools/rollover 2027 --draft <owner's draft file> --delistings <AFL list> [--check]` turns the
+**Done when.** `tools/rollover 2027 --draft <owner's draft file> --list-changes docs/inputs/afl_list_changes/2026.csv [--check]` turns the
 end-of-2026 tree into the start-of-2027 tree in one landed store-edit act (or a declared short series), shown to the
 owner as a full movers board first, and the first 2027 week can then be ingested (P2-1).
 
@@ -22,11 +22,19 @@ owner as a full movers board first, and the first 2027 week can then be ingested
   RL_M3_INPROG_Y / RL_EXPO_INPROG_Y are pinned "2026" in data/model_config.json (config identity; P3-1 asserts they
   equal season_year, so the rollover must move them with it).
 - scores/fixtures.json `season` "2026"; ui/data/movers.js has one season of reports (P2-4 makes room for two).
+- The list-change input exists: docs/inputs/afl_list_changes/2026.csv (commit b7344862, on main after ffb2663b:
+  header `club,direction,name,detail`; 160 OUT, 41 IN, details like "delisted", "trade, Port Adelaide", "free agent,
+  Western Bulldogs", "committed to signing"). Its README's owner rule (2026-10-14): only `ret` and `del` are list
+  exits; a valid exit at the end of Y sets `_last_listed = Y`.
 - The RULEBOOK has no season/rollover text (`grep -in "season\|rollover" docs/RULEBOOK.md`): no law 10a edit needed.
 
-**Change.** tools/rollover.py builds the edit spec: season-state move; `tools/player retire` edits for the AFL
-delistings (`_retired`, `_last_listed 2026`); `tools/player add` rows for the draftees (national, rookie, MSD,
-pathway, SSP as they occur) at their picks; the two config dials to "2027" (declared `config` move); fixtures reset;
+**Change.** tools/rollover.py builds the edit spec from 2026.csv: OUT + retired/delisted → `tools/player retire`
+(`_retired`, `_last_listed 2026`); OUT as trade or free agent with a destination → `move` to that club; IN from another
+AFL club → `move`; IN from outside the AFL → `add`; every row it cannot classify (or match to a store key) is listed for
+the owner and the tool stops. Draftees (national, rookie, MSD, pathway, SSP) → `add` at their picks from the owner's
+draft file. Season-state move. The two config dials to "2027" ride the act's INPUT commit (data/model_config.json is
+not a carrier; recompute its config_sha256) and are declared `config` in `moves` — so P4-3's launch exemption for
+declared identities must cover that commit; fixtures reset;
 as-at bank re-run for 2026/2025 (so −1 = 2026); movers bundle season section opened. `--check` prints all edits and
 the predicted movers (the lane's dry run). docs/runbooks/ROLLOVER.md.
 

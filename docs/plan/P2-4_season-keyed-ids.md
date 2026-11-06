@@ -25,14 +25,25 @@ uses the parser (no dual-shape readers).
   :36 FINALS_FEED_CEILING, round_movers.FINALS_WEEK_NAMES / FINALS_COLUMN_PREFIXES (test_finals_bounds.py asserts
   they agree).
 - scores/fixtures.json: `season` "2026", `weeks` keyed '25'… .
+- THE OWNER-ANCHORED DIGEST: round_movers.canonical_reports_digest (round_movers.py:119-124) hashes exactly
+  `{str(r): report}` for R15-R19; the anchors live in ui/data/movers_transition.js and data/release_lineage.json
+  `release_transition` (`reportsDigest`; never rewritten), checked by test_movers_transition.py:250-287. Re-keying
+  R15-R19 breaks the digest and the UI refuses the history.
+- More bare-int readers: ui/tools/rebuild_movers_derived.py:61 (writer 4, every landing); round_movers.py:656, :888;
+  steps.py:1544 (`key=int`), :2177; test_movers_transition.py:85; ui/app/history.js:92; ui/app/movers.js:462; under
+  docs/evidence/walkforward_retro_2026-08-29: bank_from_landed_board.py:45, :54; emit_retro_series.py:52-64;
+  pass_retro_series.py:80, :124, :142; retro_walkforward.py:270, :363. This list is not proof of completeness.
 
-**Change.** Pick the id form once (e.g. `2026-R24`, `2026-F25` — the feed number keeps finals ordering trivial) and
-write it in round_key.py's docstring. Migrate movers.js `reports`/`rounds`/`points` ids, the bank filenames (or a
-season sub-directory), fixtures.json `weeks`, and value_history column references in ONE commit, with the
-old→new mapping committed as JSON beside the migrated data (reversible). Every reader above goes
-through the parser; season_state.finals_played compares (season, round) against (season_year, 24).
+**Change.** FIRST attach to the work the output of `git grep -n "reports\|values_r" -- ':!docs/evidence' ':!session_*'
+':!backups'` plus the same grep on docs/evidence/walkforward_retro_2026-08-29, every hit classified. Pick the id form once (e.g. `2026-R24`, `2026-F25` — the feed
+number keeps finals ordering trivial) and write it in round_key.py's docstring. R15-R19 KEEP their legacy keys (or
+canonical_reports_digest maps new ids back to legacy keys before hashing — prove the digest unchanged either way).
+Migrate the other movers.js `reports`/`rounds`/`points` ids, the bank filenames (or a season sub-directory),
+fixtures.json `weeks`, and value_history column references in ONE commit, with the old→new mapping committed as JSON
+beside the migrated data. Every reader goes through the parser; finals_played compares (season, round).
 
-**Must not change.** Values, rows, report contents, board, store, pins. The lander's writer 4 + 4b full-cycle check
+**Must not change.** ui/data/movers_transition.js and data/release_lineage.json (byte-identical); the R15-R19 digest;
+values, rows, report contents, board, store, pins. The lander's writer 4 + 4b full-cycle check
 (P2-2) must reproduce the migrated bundle byte-identically.
 
 **Prove it.** `node` every ui/tests suite (movers.test.js fixtures updated to the new ids);

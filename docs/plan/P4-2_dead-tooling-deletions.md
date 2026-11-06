@@ -8,8 +8,8 @@ reader of each unit is retired in the same commit, and the KEEP list is untouche
 **Facts — what is live and must be KEPT (the old brief listed these as dead; it was wrong):**
 - acceptance/selftest.py — the acceptance runner's own self-test, run by CI first
   (.github/actions/host-insensitive-gates/action.yml:72).
-- tools/landing/selftest.py — the lander runs it before EVERY transaction (cli.py:78-150, called at :231, :293,
-  :335); preview.py:161-165 builds its Sandbox from it; acceptance registers it as `lander_selftest`
+- tools/landing/selftest.py — `tools/land lever|round|edit` runs it before each transaction (cli.py:78-150, called at
+  :231, :293, :335; tools/ingest's run_landing does not, ingest.py:450-463); preview.py:161-165 builds its Sandbox from it; acceptance registers it as `lander_selftest`
   (acceptance/checks/landing.py:43-71, PROFILE 'full'). RULEBOOK P7 retired the ruled-red ledger and P9 the
   prereg ceremony (RULEBOOK.md:145, :150); neither retired the lander self-test. The `--selftest` paths in cli.py
   are its practice landings: keep them.
@@ -21,7 +21,9 @@ reader of each unit is retired in the same commit, and the KEEP list is untouche
 **Unit 1 — tools/claims.py and the `claims` step** (retired by RULEBOOK law 11, RULEBOOK.md:46-48).
 Readers to retire in the same commit: steps.py `claims` (:2580-~2690) and its entries in LEVER_SEQUENCE (:3809)
 and ROUND_SEQUENCE (:3856) — EDIT_SEQUENCE inherits it from LEVER_SEQUENCE (:3871-3875); txn.py:449 FAULTS['claims'];
-selftest.py:25, :105, :1144-1147 (the claims leg); tools/ingest.py:463 (the filter that drops the step: delete it).
+selftest.py:25, :105, :1144-1147 (claims_negative_control) — and the self-test's fault loop over LEVER_SEQUENCE
+(:482-485, `TX.FAULTS[step]`) loses its claims fault leg with the step; tools/ingest.py:463 (the filter: delete it).
+The spec slot `claims_file` stays ACCEPTED (read by txn.py:750-756 and preflight.py:226; old specs carry it).
 **Unit 2 — `day0_rebase` becomes optional** (owner: off; the M1b ruling quoted at steps.py:1226-1229).
 It is a REQUIRED_SLOT (spec.py:70-71) validated at :515-529; four existing specs carry `"state": "on"`
 (r24_advance ACT_SPEC_R24, combined_build ACT_SPEC_COMBINED, two r24_rehearsal specs) and must still load.
@@ -41,8 +43,8 @@ spec baseline). The KEEP list above. Stash keys for existing specs.
 
 **Prove it.** `python3 tools/landing/test_txn.py`, `test_proofstash.py`, `test_store_edit.py`,
 `test_finals_bounds.py`; `python3 tools/test_restamp.py`; `python3 tools/test_ingest.py`;
-`python3 ui/tests/ownership_store_apply.test.py`; `tools/land selftest` (the lander's own self-test, legs
-reduced by exactly the removed claims leg); the spec baseline (validate every ACT_SPEC*.json); `tools/ingest --check
+`python3 ui/tests/ownership_store_apply.test.py`; `tools/land selftest` (legs reduced by exactly two:
+the claims fault leg and claims_negative_control); the spec baseline (validate every ACT_SPEC*.json); `tools/ingest --check
 scores/GF.csv` still stops cleanly with "already on the board" (ingest.py:189-191); acceptance `--profile full`; CI green.
 
 **Lands via.** Plain commits, one per unit, each message naming the ruling that retired it.

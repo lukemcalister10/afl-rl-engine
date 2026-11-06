@@ -1,14 +1,21 @@
-# P5-4 — The six unpinned env reads, and the v0-surface refit lane out of the engine (MEDIUM)
+# P5-4 — The unpinned env reads in the build, and the v0-surface refit lane out of the engine (MEDIUM)
 
-**Depends on.** P5-1 (same file, serial). P4-3 (engine_head and rl_model move in-transaction). Before P5-5, which
+**Depends on.** P5-1 (same file, serial). P4-3 (engine_head, rl_model, fv move in-transaction). Before P5-5, which
 needs a replacement for the RL_LSYM_TAB re-derivation hook.
 
-**Done when.** No engine file reads an RL_* name that is neither a data/model_config.json `vars` entry nor in
-config_manifest.INFRA_ALLOW, except the deliberate signature read below; the refit lane lives in a tool that
+**Done when.** No file the board build loads reads an RL_* name that is neither a data/model_config.json `vars` entry
+nor in config_manifest.INFRA_ALLOW, except the deliberate signature read below; the refit lane lives in a tool that
 writes data/v0surf.pkl offline; the board is byte-identical.
 
 **Facts — the counted list (script: every `os.environ.get/[...]` of a literal RL_/PAR_ name in code, minus the 90
-manifest vars and INFRA_ALLOW; checked at ffb2663b).** Six names, ten sites in the engine plus two in one_source_selftest.py:
+manifest vars and INFRA_ALLOW; checked at ffb2663b).** Over all of engine/ the script finds 13 names. An earlier
+version of this brief counted only the four main files (6 names) — incomplete. In files the BUILD loads, 11:
+- owner_overrides.py:79 RL_NO_OWNER_OVERRIDES (imported by rl_export.py:762); engine/forward_valuation/par_build.py
+  :775-785 RL_336_DBAND, RL_336_TARGET ("PINNED" literal defaults), RL_336_RFORCE, RL_336_DFORCE ("declared
+  measurement") — par_build is loaded during the build by par_redesign.py:37 (via wire_redesign); it is under the
+  `fv` identity, so `fv` moves.
+- Out of scope, stated: RL_ARM1_OUT / RL_ARM2_OUT in engine/forward_valuation/build_peak_model_v4.py:42, an OFFLINE
+  builder of peak_model_v4.pkl that the build does not load. The remaining six, ten engine sites + two in one_source_selftest.py:
 1. RL_UNCOMP_S — rl_model.py:924 (dev grid override).
 2. RL_LSYM_TAB — _merged_recover.py:299 (L-SYMMETRY re-derivation override; default = the sealed literal :294-296).
 3. RL_V0SURF_REFIT — _merged_recover.py:1994, :2101, :2440, :3196, :3200; engine/rl_after/one_source_selftest.py:752, :759.
@@ -20,9 +27,7 @@ manifest vars and INFRA_ALLOW; checked at ffb2663b).** Six names, ten sites in t
   39 names, 37 are manifest vars and RL_GAMMA's literal (0.85) DIFFERS from the manifest ('1.0'): replacing the env
   read with the literals would change the frozen signature and HALT every build. RL_DAMP_K and RL_M3_FE (not
   manifest vars) take their literal defaults because gate mode refuses them if set (config_manifest.py:121-128).
-- engine/rl_after/ingestion/forward_lens.py:129 reads the contract's `must_be_unset` list, not an env name; it is
-  round-lane code (P4-4).
-- The pinned dials (RL_O45, RL_O49, RL_DAMP, RL_EVW, RL_LEGF, RL_M3_INPROG_Y, RL_UNCONSERVE rl_model.py:926 …) are
+- forward_lens.py:129 reads the contract's `must_be_unset` list (round-lane code, P4-4). The pinned dials (RL_O45, RL_O49, RL_DAMP, RL_EVW, RL_LEGF, RL_M3_INPROG_Y, RL_UNCONSERVE rl_model.py:926 …) are
   config identity (README) and are NOT removed here.
 
 **The contract field.** `must_be_unset` (data/release_contract.json; DEFAULT_MUST_UNSET release_contract.py:48 =
@@ -34,7 +39,8 @@ the act's input commit, recompute `contract_sha256` with release_contract.contra
 DEFAULT_MUST_UNSET in the same commit (an empty list falls back to the default, :250). Law 10 does not reserve
 contract edits to the owner; the restamp's frozen check compares only across its own write, so it will not refuse.
 
-**Change.** Delete reads 1-2 (the defaults become plain code; RL_LSYM_TAB's re-derivation becomes a module constant
+**Change.** Delete reads 1-2 and the five owner_overrides/par_build reads (defaults become plain code; a
+measurement switch becomes a module constant); RL_LSYM_TAB's re-derivation becomes a module constant
 `_LSYM_TAB_PATH=None` flipped on a scratch copy, per the README rule — P5-5 uses it). Move the refit lane (:2130-~2438)
 into tools/refit_v0surf.py (execs the engine to the surface-build point, fits, writes the pickle); the engine keeps the
 frozen load and the HALT (its message names the new tool); :2440, :3196-3200 and one_source_selftest.py:745-760 drop
@@ -44,9 +50,9 @@ docstring.
 **Must not change.** The board (96896e1c); the frozen signature and `_V0SURF_GATES`; :2051; data/v0surf.pkl; config;
 `must_be_unset`; every pinned dial.
 
-**Prove it.** Re-run the counting script (put it in the commit): zero unpinned names. Bare canonical build
-byte-identical; `python3 release_contract.py check`; `tools/refit_v0surf.py` on a scratch copy reproduces the frozen
+**Prove it.** Re-run the counting script over engine/ (put it in the commit): only RL_ARM1_OUT/RL_ARM2_OUT remain.
+Bare build byte-identical; `python3 release_contract.py check`; `tools/refit_v0surf.py` on a scratch copy reproduces the frozen
 surfaces (`_V0SURF[sig]` c18/surfN/surfR equal to the pinned pickle's, numpy array_equal); one_source_selftest;
 acceptance `--profile full` (config_manifest, release_contract_seal).
 
-**Lands via.** Lever act, `moves: [engine_head, rl_model]`, board unmoved by prediction.
+**Lands via.** Lever act, `moves: [engine_head, rl_model, fv]`, board unmoved by prediction.

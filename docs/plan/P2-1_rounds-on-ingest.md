@@ -38,15 +38,20 @@ round out of order; and the round lane (P4-4) is still in place until a real or 
    all 18 played (as today).
 5. ingest_bounds re-calibrated on R21-R24 (scores/R21.csv … R24.csv exist): measure each limit on those four rounds.
 6. One out-of-order guard: the round must be as_of_round+1.
+7. The sitter sheet: the round lane re-cuts it (`sheet` step, steps.py:2801) and is the only writer of
+   data/sheet_pins.json (RULEBOOK P13). Until P4-4 gives the pins a new writer, tools/ingest rounds run on an UNCHANGED
+   sheet only; a round that needs a re-cut goes through `tools/land round`. The tool must say this when it applies.
 
 **Must not change.** The finals path (byte-identical behaviour for FW files); the store-edit shape (change edits only);
 the season-clock stop for every non-round act; the engine.
 
 **Prove it.** Hybrid replay: take the tree before the R24 inputs (the parent of a6ba4da7, the R24 scores commit;
-the landing is adf380b1, 2026-08-23), overlay today's tools/ingest.py,
-tools/landing/, finals_report.py and round_movers.py, run `tools/ingest scores/R24.csv`, and compare the landed store,
-board and movers report to the R24 act's (docs/evidence/r24_advance_2026-08-23) — explain every difference (engine
-changes since August mean the board will differ; the store edits must not). Then a synthetic 2027 R1 on the P3-2
-rehearsal copy. tools/test_ingest.py extended for rounds; test_store_edit.py; acceptance `--profile full`.
+the landing is adf380b1, 2026-08-23) and overlay the FULL set the weekly path reads today: tools/ingest.py,
+tools/ingest_bounds.py, tools/landing/, engine/rl_after/ingestion/{finals_report,round_movers,movers_bundle}.py,
+scores/fixtures.json, docs/evidence/walkforward_retro_2026-08-29/ (writers 4b/4c read it, and after P4-1a a missing
+script halts) and docs/evidence/finals_fw1_2026-08-30/ (test_finals_report, a DEFAULT_GATE, reads it, :66). List the
+overlay in the evidence. If the full landing still cannot complete on that tree, the accepted fallback is: compare
+ONLY the store edits `tools/ingest --check scores/R24.csv` computes against the R24 act's store diff (byte-identical
+edits), and say so. Then a synthetic 2027 R1 on the P3-2 rehearsal copy, landed end to end. tools/test_ingest.py extended for rounds; test_store_edit.py; acceptance `--profile full`.
 
 **Lands via.** Plain commit of the tooling, on the owner's word. Keep `land round` until a 2027 round has landed (P4-4).

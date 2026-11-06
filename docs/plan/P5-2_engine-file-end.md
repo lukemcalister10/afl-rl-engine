@@ -34,7 +34,7 @@ Every module-level statement above line 6299. The board (96896e1c), store, confi
 
 **Prove it.**
 - The string identity above (print both sha256s in the commit message).
-- Bare canonical build byte-identical (README recipe); `tools/harness docs/evidence/walkforward_retro_2026-08-29/
+- Bare build byte-identical (README recipe); `tools/harness docs/evidence/walkforward_retro_2026-08-29/
   pass_asat_seasons.py` still loads, its Y=2026 control passes (pass_asat_seasons.py:47-50) and `git diff
   --exit-code` holds on the values_asat_*.json banks it rewrites; run engine/rl_after/one_source_selftest.py yourself
   (acceptance `oneliner_f1_lens` only reads its text, acceptance/checks/m1a.py:296-305); acceptance `--profile full`.

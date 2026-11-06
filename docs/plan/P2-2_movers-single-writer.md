@@ -19,10 +19,10 @@ full-cycle drift check (below) is green on the live tree.
 - Private brace-slice readers to switch to `load`: tools/ingest.py:112-124, steps.py:936, :1541-1543,
   retro_walkforward.py:61, emit_retro_series.py:31, rebuild_movers_derived.py:50. Leave steps.py `_js_obj`
   (:1708-1714): it deliberately copies the gate's own parser (test_movers_transition._loadjs) and reads other bundles.
-- The committed file: 7,376,123 bytes, 0 raw non-ASCII characters, 59 `\u` escapes. Its body is reproduced
+- The committed file: 7,376,123 bytes; ONE raw non-ASCII character, an em dash in the `// GENERATED —` header
+  comment (round_movers.py:589 writes it), none in the JSON body; the body has 59 `\u` escapes and is reproduced
   exactly by `json.dumps(obj, ensure_ascii=True, separators=(',', ':'))` with NO sort_keys (measured); with
-  `ensure_ascii=False` or `sort_keys=True` it is not. (Reviewer said "one raw non-ASCII char and one \u escape":
-  not what this tree holds. The point stands — the writers disagree — and the choice is: the bytes on disk.)
+  `ensure_ascii=False` or `sort_keys=True` it is not. So the canonical form is the bytes on disk; keep the header.
 - The drift guard exists: `ui/tools/rebuild_movers_derived.py --check` (:31, :93-101). It is RED standalone on
   today's tree (committed 7,376,123 vs rebuilt 6,767,373 bytes) because writer 4 drops the retro series that 4b
   re-adds (steps.py:2005-2016); the ui step runs it between 4 and 4b (:1984-1989), the only place it is valid.
