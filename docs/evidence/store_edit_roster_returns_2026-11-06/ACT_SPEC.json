@@ -16,11 +16,6 @@
   "store": [
    {
     "key": "dominic-bedendo",
-    "field": "eligibilities",
-    "add": "G-FWD"
-   },
-   {
-    "key": "dominic-bedendo",
     "field": "scoring[2026]",
     "add": {
      "year": 2026,
@@ -40,11 +35,6 @@
     "field": "_last_listed",
     "old": 2024,
     "new": 2026
-   },
-   {
-    "key": "alex-mirkov",
-    "field": "eligibilities",
-    "add": "RUCK"
    },
    {
     "key": "alex-mirkov",
