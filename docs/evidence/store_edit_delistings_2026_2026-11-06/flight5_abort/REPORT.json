@@ -1,0 +1,6427 @@
+{
+  "abort": {
+    "byte_exact": true,
+    "commits_rewound": [],
+    "error": "1 of 20 gate(s) did not pass. ALL of them are listed \u2014 fix them together, because the next flight costs a full build.\n\n--- gate ownership_sidecar (exit 1)\ne board rather than blanking the app\n\nONE PLAYER, ONE CLUB \u2014 the two-clubs-at-once condition must be impossible\n  [PASS] working tier shows the new club\n  [PASS] public tier shows the SAME new club\n  [PASS] no player resolves to different clubs on the working and public tiers\n\nMOVERS \u2014 keyed rows, so ownership resolves without touching the name bridge\n  [FAIL] every movers record key exists on the working board (either section), so no mover row needs the name bridge \u2014 6 orphan(s)\n  [PASS] a movers row resolves cleanly through the keyed path\n\nLANE SEPARATION \u2014 positions are batched and must not be in the sidecar\n  [PASS] the sidecar carries no position or value field \u2014 the live lane cannot trigger an engine run\n  [PASS] \u2026and it is non-empty, so that assertion is not passing on an empty file\n\nREAD SURFACE \u2014 no view may read the stored affl_team directly\n  [PASS] every view resolves ownership through MD.ownership, not the raw board field\n  [PASS] index.html loads both the sidecar bundle and the ownership module\n  [PASS] app/ownership.js is loaded before every module that consumes it\n  [PASS] the sidecar DATA bundle is loaded before the module that reads it\n\nFAIL \u2014 34 passed, 1 failed\n\n    raw output: /home/user/afl-rl-engine/docs/evidence/store_edit_delistings_2026_2026-11-06/gate_ownership_sidecar.txt",
+    "failed_step": "gates",
+    "restore_point": {
+      "data/expected_boot.json": "be7395ca0430541ddcbed7e5903037d9",
+      "data/release_contract.json": "3616a0bdf547ad61e0c4bfa304663225",
+      "data/release_lineage.json": "0bf6765e374e339c9860cd0a3f9dacde",
+      "data/rl_build/rl_app_data.json": "15431ae8676370eb3b3b90a7def22e6e",
+      "data/rl_build/rl_app_data.json.srcmd5": "cf4552214073e2e252b98167e7a91651",
+      "data/season_state.json": "0706ea73f7a5c27bd0c04fe72a7ea63f",
+      "data/sheet_pins.json": "226b73ff64e6a6967103bfee788848a0",
+      "docs/STATE.md": "3f56d4baaf1f324c52c4ea95cf64e83b",
+      "docs/evidence/walkforward_retro_2026-08-29/CONTROL_FAIL.json": "41e56a1515cd976337f33bb75e2a3070",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r14.json": "6d68ed07fd02b5ad90b61af5789ed507",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r15.json": "1c268118a8d0737faa1ef53dc0340cda",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r16.json": "9cc8de979974e8fe93d5b817748b20cc",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r17.json": "883649ce700a611926ca3558e6f05a2c",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r18.json": "d64df0627312d9970f0cb3df6b451058",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r19.json": "db887e07047c9885f5f530ca1479646d",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r20.json": "c7ab631d8e11ecaac8093c3ae87881da",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r21.json": "265688755d05ddd416d8f7b3bcaa9e0f",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r22.json": "8799915d3dd6f6eb3c4c88f5db3342da",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r23.json": "b49802755f2cbeaacbf29e62bb25d5c2",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r24.json": "af6e688187df9cd1245f0c99d166cd3e",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r25.json": "a179b3799f8b251994d0dc7442ca4240",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r26.json": "7744e66db5d722fa3c8949601d609e36",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r27.json": "b07bd899afe8b4dd7c8b550007ac0118",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r28.json": "3c0ebb05d48282462f72e999c31721d7",
+      "docs/evidence/walkforward_retro_2026-08-29/values_r29.json": "e48c1b70a9a67b68d800fd3cf63597fe",
+      "engine/rl_after/ingestion/pos_rank_history.json": "f3a2bdd841202dae01e3b4a499bb3059",
+      "engine/rl_after/ingestion/rank_history.json": "a6dfcbd44e4e597c61891fc383a04985",
+      "engine/rl_after/ingestion/value_history.json": "be209e4f31a7eef4493151b08b7ca937",
+      "engine/rl_after/rl_app_data.json": "15431ae8676370eb3b3b90a7def22e6e",
+      "engine/rl_after/rl_app_data.json.srcmd5": "cf4552214073e2e252b98167e7a91651",
+      "engine/rl_after/rl_model_data.json": "82aed8d1df509e0c2b5869fa72036295",
+      "ui/app/positions_data.js": "cc0314c828d53de9c7d9fab8a70ae2b6",
+      "ui/data/board_view_public.js": "aafea997900b24f0198dedc53ae6e642",
+      "ui/data/board_view_working.js": "817ec515a28ece43d9a55aff53adfdb6",
+      "ui/data/club_valuation.js": "4cb58d7a8ebb168faac06c0b45d39e7c",
+      "ui/data/movers.js": "335e00bfb6076fb60efb98c97ceb0636",
+      "ui/data/movers_transition.js": "2be2bde1e06c958cabaaf307bddb1268",
+      "ui/data/ownership.js": "bab4ef18e38bc9c472eb1a5f52322abb",
+      "ui/data_aux/draft_outcomes.js": "941bd4e4531f5c8bdcd1e3d539ce7577",
+      "ui/data_aux/v0.js": "966add82dab9a44a7e66c93e0745aa9f"
+    },
+    "restored": [
+      {
+        "action": "rewrite",
+        "path": "data/expected_boot.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "data/release_contract.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "data/release_lineage.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "data/rl_build/rl_app_data.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "data/rl_build/rl_app_data.json.srcmd5"
+      },
+      {
+        "action": "rewrite",
+        "path": "data/season_state.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "docs/STATE.md"
+      },
+      {
+        "action": "rewrite",
+        "path": "docs/evidence/walkforward_retro_2026-08-29/CONTROL_FAIL.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/ingestion/pos_rank_history.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/ingestion/rank_history.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/ingestion/value_history.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/rl_app_data.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/rl_app_data.json.srcmd5"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/rl_model_data.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "ui/app/positions_data.js"
+      },
+      {
+        "action": "rewrite",
+        "path": "ui/data/board_view_public.js"
+      },
+      {
+        "action": "rewrite",
+        "path": "ui/data/board_view_working.js"
+      },
+      {
+        "action": "rewrite",
+        "path": "ui/data/club_valuation.js"
+      },
+      {
+        "action": "rewrite",
+        "path": "ui/data/movers.js"
+      },
+      {
+        "action": "rewrite",
+        "path": "ui/data/movers_transition.js"
+      },
+      {
+        "action": "rewrite",
+        "path": "ui/data/ownership.js"
+      },
+      {
+        "action": "rewrite",
+        "path": "ui/data_aux/draft_outcomes.js"
+      },
+      {
+        "action": "rewrite",
+        "path": "ui/data_aux/v0.js"
+      }
+    ]
+  },
+  "commits": [],
+  "error": "1 of 20 gate(s) did not pass. ALL of them are listed \u2014 fix them together, because the next flight costs a full build.\n\n--- gate ownership_sidecar (exit 1)\ne board rather than blanking the app\n\nONE PLAYER, ONE CLUB \u2014 the two-clubs-at-once condition must be impossible\n  [PASS] working tier shows the new club\n  [PASS] public tier shows the SAME new club\n  [PASS] no player resolves to different clubs on the working and public tiers\n\nMOVERS \u2014 keyed rows, so ownership resolves without touching the name bridge\n  [FAIL] every movers record key exists on the working board (either section), so no mover row needs the name bridge \u2014 6 orphan(s)\n  [PASS] a movers row resolves cleanly through the keyed path\n\nLANE SEPARATION \u2014 positions are batched and must not be in the sidecar\n  [PASS] the sidecar carries no position or value field \u2014 the live lane cannot trigger an engine run\n  [PASS] \u2026and it is non-empty, so that assertion is not passing on an empty file\n\nREAD SURFACE \u2014 no view may read the stored affl_team directly\n  [PASS] every view resolves ownership through MD.ownership, not the raw board field\n  [PASS] index.html loads both the sidecar bundle and the ownership module\n  [PASS] app/ownership.js is loaded before every module that consumes it\n  [PASS] the sidecar DATA bundle is loaded before the module that reads it\n\nFAIL \u2014 34 passed, 1 failed\n\n    raw output: /home/user/afl-rl-engine/docs/evidence/store_edit_delistings_2026_2026-11-06/gate_ownership_sidecar.txt",
+  "facts": {
+    "base": {
+      "carriers": {
+        "data/expected_boot.json": "be7395ca0430541ddcbed7e5903037d9",
+        "data/release_contract.json": "3616a0bdf547ad61e0c4bfa304663225",
+        "data/release_lineage.json": "0bf6765e374e339c9860cd0a3f9dacde",
+        "data/rl_build/rl_app_data.json": "15431ae8676370eb3b3b90a7def22e6e",
+        "data/rl_build/rl_app_data.json.srcmd5": "cf4552214073e2e252b98167e7a91651",
+        "data/season_state.json": "0706ea73f7a5c27bd0c04fe72a7ea63f",
+        "data/sheet_pins.json": "226b73ff64e6a6967103bfee788848a0",
+        "docs/STATE.md": "3f56d4baaf1f324c52c4ea95cf64e83b",
+        "docs/evidence/walkforward_retro_2026-08-29/CONTROL_FAIL.json": "41e56a1515cd976337f33bb75e2a3070",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r14.json": "6d68ed07fd02b5ad90b61af5789ed507",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r15.json": "1c268118a8d0737faa1ef53dc0340cda",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r16.json": "9cc8de979974e8fe93d5b817748b20cc",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r17.json": "883649ce700a611926ca3558e6f05a2c",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r18.json": "d64df0627312d9970f0cb3df6b451058",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r19.json": "db887e07047c9885f5f530ca1479646d",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r20.json": "c7ab631d8e11ecaac8093c3ae87881da",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r21.json": "265688755d05ddd416d8f7b3bcaa9e0f",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r22.json": "8799915d3dd6f6eb3c4c88f5db3342da",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r23.json": "b49802755f2cbeaacbf29e62bb25d5c2",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r24.json": "af6e688187df9cd1245f0c99d166cd3e",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r25.json": "a179b3799f8b251994d0dc7442ca4240",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r26.json": "7744e66db5d722fa3c8949601d609e36",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r27.json": "b07bd899afe8b4dd7c8b550007ac0118",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r28.json": "3c0ebb05d48282462f72e999c31721d7",
+        "docs/evidence/walkforward_retro_2026-08-29/values_r29.json": "e48c1b70a9a67b68d800fd3cf63597fe",
+        "engine/rl_after/ingestion/pos_rank_history.json": "f3a2bdd841202dae01e3b4a499bb3059",
+        "engine/rl_after/ingestion/rank_history.json": "a6dfcbd44e4e597c61891fc383a04985",
+        "engine/rl_after/ingestion/value_history.json": "be209e4f31a7eef4493151b08b7ca937",
+        "engine/rl_after/rl_app_data.json": "15431ae8676370eb3b3b90a7def22e6e",
+        "engine/rl_after/rl_app_data.json.srcmd5": "cf4552214073e2e252b98167e7a91651",
+        "engine/rl_after/rl_model_data.json": "82aed8d1df509e0c2b5869fa72036295",
+        "ui/app/positions_data.js": "cc0314c828d53de9c7d9fab8a70ae2b6",
+        "ui/data/board_view_public.js": "aafea997900b24f0198dedc53ae6e642",
+        "ui/data/board_view_working.js": "817ec515a28ece43d9a55aff53adfdb6",
+        "ui/data/club_valuation.js": "4cb58d7a8ebb168faac06c0b45d39e7c",
+        "ui/data/movers.js": "335e00bfb6076fb60efb98c97ceb0636",
+        "ui/data/movers_transition.js": "2be2bde1e06c958cabaaf307bddb1268",
+        "ui/data/ownership.js": "bab4ef18e38bc9c472eb1a5f52322abb",
+        "ui/data_aux/draft_outcomes.js": "941bd4e4531f5c8bdcd1e3d539ce7577",
+        "ui/data_aux/v0.js": "966add82dab9a44a7e66c93e0745aa9f"
+      },
+      "commit": "693554f19cf6afdb07a1cf068fc2eb647da9b371",
+      "expected_boot": {
+        "as_of_round": 24,
+        "balanced_board_md5": "f4126b629ea4d4135b4c0ad0f1b29508",
+        "band": "f39c7b96603a6d1483a8f3295fad1a29",
+        "board": "15431ae8676370eb3b3b90a7def22e6e",
+        "bust_prior": "ff87e42e502a476a90e453bad90825b0",
+        "config": "d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4",
+        "engine_head": "b8152511821fd710b4b7b530b822213e",
+        "fv": "80e63a6b8ea26b56e8aa60c9c1cf028156881fc6259d8a4fd8ebbad40963a5cd",
+        "peak_model": "8329ff9379cf6066c0e7cd73dd6cd2e0",
+        "pvc_snapshot": "4704b8296008f81e7bb5407424229e85",
+        "q97m": "5ea7546d9a4897114597a7d8ea1596db",
+        "register": "652d83e87780e415a01a2de6d8b3cc57",
+        "register_note": "LTI_REGISTER.md \u2014 owner-authored availability sidecar, pinned as a versioned input (R-REG=R2, Chapter-3 2026-07-09). Guard 5 asserts it on entry like the store; bootstrap seeds it to the workspace; the lookalike tripwire (single_source.py) keeps it single. Owner edits it -> this pin moves in the same commit (a curation edit, NOT a store bake).",
+        "release_version": "v2.11-final-rc1-PROVISIONAL",
+        "rl_model": "ad48eb299b01639b62d397c4c0016dd4",
+        "store": "82aed8d1df509e0c2b5869fa72036295",
+        "tag": "ID-PRIMARY MIGRATION candidate (clean scope) 2026-07-12 \u2014 NOT A BAKE PROMOTION (no tag, no main merge; owner word required). base = v2.8 (store 04f38dad, board 9ecbe0fa). Store MOVED 04f38dad -> b0c39d78: 804 stable_player_id (afl-player-v1-<20hex>) + affl_team + eligibilities attached (identity fields, not read by ev(), 0 board movers); 5 named DOB corrections (onley/kickett/rodriguez/driscoll _by 2000->2007/2006; mcandrew _by 1999->2000); taylor-adams marked _retired (mid-season retirement). RE-ENTRY TRIO (perez/mcandrew/keane -> pickless SSP) DEFERRED to the v2.9 lever build (owner-ruled 2026-07-12; register v11 item 11a) \u2014 it reprices 657 non-named rows via the load-time calibration refit. luke-nankervis NO-import (store PSD pick 2 stands). Engine code UNTOUCHED at the store migration (head 7a07e369) -> board de4baef9; book RE-SEALED for the new store (n re-counted). [v2.9 REFIT+BAKE 2026-07-13 rides ON this store: engine 7a07e369->2030e5df (6 env-gated levers, default-ON), board de4baef9->8a66b4ba->f2d6e3f5->81e48293 (refit -> export/display -> L7 num\u00e9raire+override BAKE, display-only), store b0c39d78 UNCHANGED; cohort gate PASS 126.8/125.2/116.1; see _engine_head_note.] Board movers vs 9ecbe0fa: 94 = 5 DOB + adams removed + 88 hairline retirement ripple (<=+/-2 SCAR, owner-declared expected). Two Max Kings remain separately keyed (collision sentry GREEN). Lineage: v2.8 (9bd0cfd) -> this candidate. Tag push + main promote are owner-only. [ITEM 20 STORE-IDENTITY JOB 2026-07-13 (first job post-v2.9-tag) MOVED the store b0c39d78 -> 340a7a32 and the board 81e48293 -> 3dc19fbb: see _item20_note above. Engine ev()/config/band/rl_model UNCHANGED; the ONLY v mover is bramble (+1); everything else is identity/display. v2.9 tag (9f8ae76) is unmoved and remains canonical; this is the next chapter's first store write, no re-tag.]",
+        "v0surf": "d9f5d15d9606edcdd5708233197dd951"
+      }
+    },
+    "build_proofs": {
+      "board_built": "159d3972cdfa9b558b7a92547688192b",
+      "build_elapsed_s": 423.6,
+      "day0_rebase": "off",
+      "edit": {
+        "movers": [
+          {
+            "after": 1060,
+            "before": 1059,
+            "delta": 1,
+            "key": "adam-cerra",
+            "name": "Adam Cerra",
+            "section": "active"
+          },
+          {
+            "after": 14,
+            "before": 421,
+            "delta": -407,
+            "key": "adam-saad",
+            "name": "Adam Saad",
+            "section": "back"
+          },
+          {
+            "after": 17,
+            "before": 806,
+            "delta": -789,
+            "key": "adam-treloar",
+            "name": "Adam Treloar",
+            "section": "back"
+          },
+          {
+            "after": 8,
+            "before": 74,
+            "delta": -66,
+            "key": "aidan-johnson",
+            "name": "Aidan Johnson",
+            "section": "back"
+          },
+          {
+            "after": 389,
+            "before": 394,
+            "delta": -5,
+            "key": "alex-neal-bullen",
+            "name": "Alex Neal-Bullen",
+            "section": "active"
+          },
+          {
+            "after": 773,
+            "before": 771,
+            "delta": 2,
+            "key": "aliir-aliir",
+            "name": "Aliir Aliir",
+            "section": "active"
+          },
+          {
+            "after": 2659,
+            "before": 2656,
+            "delta": 3,
+            "key": "andrew-brayshaw",
+            "name": "Andrew Brayshaw",
+            "section": "active"
+          },
+          {
+            "after": 7,
+            "before": 53,
+            "delta": -46,
+            "key": "andy-moniz-wakefield",
+            "name": "Andy Moniz-Wakefield",
+            "section": "back"
+          },
+          {
+            "after": 10,
+            "before": 86,
+            "delta": -76,
+            "key": "asher-eastham",
+            "name": "Asher Eastham",
+            "section": "back"
+          },
+          {
+            "after": 8,
+            "before": 13,
+            "delta": -5,
+            "key": "bailey-banfield",
+            "name": "Bailey Banfield",
+            "section": "back"
+          },
+          {
+            "after": 1812,
+            "before": 1810,
+            "delta": 2,
+            "key": "bailey-dale",
+            "name": "Bailey Dale",
+            "section": "active"
+          },
+          {
+            "after": 121,
+            "before": 122,
+            "delta": -1,
+            "key": "bailey-macdonald",
+            "name": "Bailey Macdonald",
+            "section": "active"
+          },
+          {
+            "after": 7,
+            "before": 19,
+            "delta": -12,
+            "key": "bailey-scott",
+            "name": "Bailey Scott",
+            "section": "back"
+          },
+          {
+            "after": 5862,
+            "before": 5856,
+            "delta": 6,
+            "key": "bailey-smith",
+            "name": "Bailey Smith",
+            "section": "active"
+          },
+          {
+            "after": 257,
+            "before": 261,
+            "delta": -4,
+            "key": "bayley-fritsch",
+            "name": "Bayley Fritsch",
+            "section": "active"
+          },
+          {
+            "after": 1214,
+            "before": 1215,
+            "delta": -1,
+            "key": "beau-addinsall",
+            "name": "Beau Addinsall",
+            "section": "active"
+          },
+          {
+            "after": 10,
+            "before": 179,
+            "delta": -169,
+            "key": "ben-camporeale",
+            "name": "Ben Camporeale",
+            "section": "back"
+          },
+          {
+            "after": 362,
+            "before": 370,
+            "delta": -8,
+            "key": "ben-keays",
+            "name": "Ben Keays",
+            "section": "active"
+          },
+          {
+            "after": 8,
+            "before": 23,
+            "delta": -15,
+            "key": "benny-barrett",
+            "name": "Benny Barrett",
+            "section": "back"
+          },
+          {
+            "after": 532,
+            "before": 534,
+            "delta": -2,
+            "key": "blake-hardwick",
+            "name": "Blake Hardwick",
+            "section": "active"
+          },
+          {
+            "after": 10,
+            "before": 65,
+            "delta": -55,
+            "key": "bobby-hill",
+            "name": "Bobby Hill",
+            "section": "back"
+          },
+          {
+            "after": 4026,
+            "before": 4025,
+            "delta": 1,
+            "key": "bodhi-uwland",
+            "name": "Bodhi Uwland",
+            "section": "active"
+          },
+          {
+            "after": 1413,
+            "before": 1406,
+            "delta": 7,
+            "key": "bradley-hill",
+            "name": "Bradley Hill",
+            "section": "active"
+          },
+          {
+            "after": 802,
+            "before": 803,
+            "delta": -1,
+            "key": "brayden-cook",
+            "name": "Brayden Cook",
+            "section": "active"
+          },
+          {
+            "after": 10,
+            "before": 175,
+            "delta": -165,
+            "key": "brayden-george",
+            "name": "Brayden George",
+            "section": "back"
+          },
+          {
+            "after": 1191,
+            "before": 1186,
+            "delta": 5,
+            "key": "brent-daniels",
+            "name": "Brent Daniels",
+            "section": "active"
+          },
+          {
+            "after": 1218,
+            "before": 1217,
+            "delta": 1,
+            "key": "caleb-daniel",
+            "name": "Caleb Daniel",
+            "section": "active"
+          },
+          {
+            "after": 16,
+            "before": 66,
+            "delta": -50,
+            "key": "caleb-graham",
+            "name": "Caleb Graham",
+            "section": "back"
+          },
+          {
+            "after": 4177,
+            "before": 4172,
+            "delta": 5,
+            "key": "caleb-serong",
+            "name": "Caleb Serong",
+            "section": "active"
+          },
+          {
+            "after": 1035,
+            "before": 1036,
+            "delta": -1,
+            "key": "caleb-windsor",
+            "name": "Caleb Windsor",
+            "section": "active"
+          },
+          {
+            "after": 12,
+            "before": 31,
+            "delta": -19,
+            "key": "callum-coleman-jones",
+            "name": "Callum Coleman-Jones",
+            "section": "back"
+          },
+          {
+            "after": 1946,
+            "before": 1945,
+            "delta": 1,
+            "key": "callum-mills",
+            "name": "Callum Mills",
+            "section": "active"
+          },
+          {
+            "after": 3522,
+            "before": 3510,
+            "delta": 12,
+            "key": "callum-wilkie",
+            "name": "Callum Wilkie",
+            "section": "active"
+          },
+          {
+            "after": 1574,
+            "before": 1575,
+            "delta": -1,
+            "key": "cameron-mackenzie",
+            "name": "Cameron Mackenzie",
+            "section": "active"
+          },
+          {
+            "after": 820,
+            "before": 837,
+            "delta": -17,
+            "key": "cameron-rayner",
+            "name": "Cameron Rayner",
+            "section": "active"
+          },
+          {
+            "after": 3858,
+            "before": 3853,
+            "delta": 5,
+            "key": "chad-warner",
+            "name": "Chad Warner",
+            "section": "active"
+          },
+          {
+            "after": 18,
+            "before": 39,
+            "delta": -21,
+            "key": "chayce-jones",
+            "name": "Chayce Jones",
+            "section": "back"
+          },
+          {
+            "after": 1720,
+            "before": 1718,
+            "delta": 2,
+            "key": "christian-petracca",
+            "name": "Christian Petracca",
+            "section": "active"
+          },
+          {
+            "after": 12,
+            "before": 351,
+            "delta": -339,
+            "key": "clay-hall",
+            "name": "Clay Hall",
+            "section": "back"
+          },
+          {
+            "after": 2195,
+            "before": 2192,
+            "delta": 3,
+            "key": "clayton-oliver",
+            "name": "Clayton Oliver",
+            "section": "active"
+          },
+          {
+            "after": 3,
+            "before": 31,
+            "delta": -28,
+            "key": "cody-anderson",
+            "name": "Cody Anderson",
+            "section": "back"
+          },
+          {
+            "after": 4154,
+            "before": 4170,
+            "delta": -16,
+            "key": "colby-mckercher",
+            "name": "Colby McKercher",
+            "section": "active"
+          },
+          {
+            "after": 2348,
+            "before": 2346,
+            "delta": 2,
+            "key": "connor-idun",
+            "name": "Connor Idun",
+            "section": "active"
+          },
+          {
+            "after": 2933,
+            "before": 2918,
+            "delta": 15,
+            "key": "connor-macdonald",
+            "name": "Connor MacDonald",
+            "section": "active"
+          },
+          {
+            "after": 2578,
+            "before": 2593,
+            "delta": -15,
+            "key": "connor-o-sullivan",
+            "name": "Connor O'Sullivan",
+            "section": "active"
+          },
+          {
+            "after": 3107,
+            "before": 3104,
+            "delta": 3,
+            "key": "connor-rozee",
+            "name": "Connor Rozee",
+            "section": "active"
+          },
+          {
+            "after": 14,
+            "before": 137,
+            "delta": -123,
+            "key": "conor-stone",
+            "name": "Conor Stone",
+            "section": "back"
+          },
+          {
+            "after": 6,
+            "before": 263,
+            "delta": -257,
+            "key": "cooper-bell",
+            "name": "Cooper Bell",
+            "section": "back"
+          },
+          {
+            "after": 4,
+            "before": 396,
+            "delta": -392,
+            "key": "cooper-harvey",
+            "name": "Cooper Harvey",
+            "section": "back"
+          },
+          {
+            "after": 1198,
+            "before": 1199,
+            "delta": -1,
+            "key": "cooper-lord",
+            "name": "Cooper Lord",
+            "section": "active"
+          },
+          {
+            "after": 467,
+            "before": 468,
+            "delta": -1,
+            "key": "cooper-sharman",
+            "name": "Cooper Sharman",
+            "section": "active"
+          },
+          {
+            "after": 1047,
+            "before": 1046,
+            "delta": 1,
+            "key": "dan-houston",
+            "name": "Dan Houston",
+            "section": "active"
+          },
+          {
+            "after": 10,
+            "before": 3,
+            "delta": 7,
+            "key": "dane-rampe",
+            "name": "Dane Rampe",
+            "section": "back"
+          },
+          {
+            "after": 1724,
+            "before": 1721,
+            "delta": 3,
+            "key": "daniel-turner",
+            "name": "Daniel Turner",
+            "section": "active"
+          },
+          {
+            "after": 625,
+            "before": 626,
+            "delta": -1,
+            "key": "darcy-byrne-jones",
+            "name": "Darcy Byrne-Jones",
+            "section": "active"
+          },
+          {
+            "after": 1524,
+            "before": 1525,
+            "delta": -1,
+            "key": "darcy-cameron",
+            "name": "Darcy Cameron",
+            "section": "active"
+          },
+          {
+            "after": 748,
+            "before": 749,
+            "delta": -1,
+            "key": "darcy-fogarty",
+            "name": "Darcy Fogarty",
+            "section": "active"
+          },
+          {
+            "after": 2801,
+            "before": 2799,
+            "delta": 2,
+            "key": "darcy-wilmot",
+            "name": "Darcy Wilmot",
+            "section": "active"
+          },
+          {
+            "after": 2719,
+            "before": 2712,
+            "delta": 7,
+            "key": "darcy-wilson",
+            "name": "Darcy Wilson",
+            "section": "active"
+          },
+          {
+            "after": 925,
+            "before": 924,
+            "delta": 1,
+            "key": "dayne-zorko",
+            "name": "Dayne Zorko",
+            "section": "active"
+          },
+          {
+            "after": 35,
+            "before": 234,
+            "delta": -199,
+            "key": "dion-prestia",
+            "name": "Dion Prestia",
+            "section": "back"
+          },
+          {
+            "after": 5,
+            "before": 40,
+            "delta": -35,
+            "key": "dougal-howard",
+            "name": "Dougal Howard",
+            "section": "back"
+          },
+          {
+            "after": 1320,
+            "before": 1314,
+            "delta": 6,
+            "key": "dylan-moore",
+            "name": "Dylan Moore",
+            "section": "active"
+          },
+          {
+            "after": 3023,
+            "before": 3024,
+            "delta": -1,
+            "key": "dyson-sharp",
+            "name": "Dyson Sharp",
+            "section": "active"
+          },
+          {
+            "after": 612,
+            "before": 613,
+            "delta": -1,
+            "key": "ed-langdon",
+            "name": "Ed Langdon",
+            "section": "active"
+          },
+          {
+            "after": 3929,
+            "before": 3925,
+            "delta": 4,
+            "key": "ed-richards",
+            "name": "Ed Richards",
+            "section": "active"
+          },
+          {
+            "after": 23,
+            "before": 641,
+            "delta": -618,
+            "key": "elijah-hollands",
+            "name": "Elijah Hollands",
+            "section": "back"
+          },
+          {
+            "after": 7506,
+            "before": 7498,
+            "delta": 8,
+            "key": "errol-gulden",
+            "name": "Errol Gulden",
+            "section": "active"
+          },
+          {
+            "after": 5325,
+            "before": 5320,
+            "delta": 5,
+            "key": "finn-callaghan",
+            "name": "Finn Callaghan",
+            "section": "active"
+          },
+          {
+            "after": null,
+            "before": 71,
+            "delta": null,
+            "key": "flynn-perez",
+            "name": "Flynn Perez",
+            "section": "active"
+          },
+          {
+            "after": 4,
+            "before": 58,
+            "delta": -54,
+            "key": "flynn-young",
+            "name": "Flynn Young",
+            "section": "back"
+          },
+          {
+            "after": 789,
+            "before": 806,
+            "delta": -17,
+            "key": "francis-evans",
+            "name": "Francis Evans",
+            "section": "active"
+          },
+          {
+            "after": 1774,
+            "before": 1772,
+            "delta": 2,
+            "key": "george-hewett",
+            "name": "George Hewett",
+            "section": "active"
+          },
+          {
+            "after": 5,
+            "before": 141,
+            "delta": -136,
+            "key": "george-stevens",
+            "name": "George Stevens",
+            "section": "back"
+          },
+          {
+            "after": 3026,
+            "before": 3037,
+            "delta": -11,
+            "key": "george-wardlaw",
+            "name": "George Wardlaw",
+            "section": "active"
+          },
+          {
+            "after": 1669,
+            "before": 1660,
+            "delta": 9,
+            "key": "gryan-miers",
+            "name": "Gryan Miers",
+            "section": "active"
+          },
+          {
+            "after": 3812,
+            "before": 3810,
+            "delta": 2,
+            "key": "harley-reid",
+            "name": "Harley Reid",
+            "section": "active"
+          },
+          {
+            "after": 1568,
+            "before": 1563,
+            "delta": 5,
+            "key": "harris-andrews",
+            "name": "Harris Andrews",
+            "section": "active"
+          },
+          {
+            "after": null,
+            "before": 254,
+            "delta": null,
+            "key": "harrison-coe",
+            "name": "Harrison Coe",
+            "section": "active"
+          },
+          {
+            "after": 16,
+            "before": 420,
+            "delta": -404,
+            "key": "harry-barnett",
+            "name": "Harry Barnett",
+            "section": "back"
+          },
+          {
+            "after": 10,
+            "before": 109,
+            "delta": -99,
+            "key": "harry-charleson",
+            "name": "Harry Charleson",
+            "section": "back"
+          },
+          {
+            "after": 18,
+            "before": 44,
+            "delta": -26,
+            "key": "harry-schoenberg",
+            "name": "Harry Schoenberg",
+            "section": "back"
+          },
+          {
+            "after": 10880,
+            "before": 10871,
+            "delta": 9,
+            "key": "harry-sheezel",
+            "name": "Harry Sheezel",
+            "section": "active"
+          },
+          {
+            "after": 8,
+            "before": 68,
+            "delta": -60,
+            "key": "harvey-gallagher",
+            "name": "Harvey Gallagher",
+            "section": "back"
+          },
+          {
+            "after": 5,
+            "before": 164,
+            "delta": -159,
+            "key": "harvey-johnston",
+            "name": "Harvey Johnston",
+            "section": "back"
+          },
+          {
+            "after": 1859,
+            "before": 1860,
+            "delta": -1,
+            "key": "harvey-langford",
+            "name": "Harvey Langford",
+            "section": "active"
+          },
+          {
+            "after": 1869,
+            "before": 1868,
+            "delta": 1,
+            "key": "hayden-young",
+            "name": "Hayden Young",
+            "section": "active"
+          },
+          {
+            "after": 13,
+            "before": 60,
+            "delta": -47,
+            "key": "henry-hustwaite",
+            "name": "Henry Hustwaite",
+            "section": "back"
+          },
+          {
+            "after": 1430,
+            "before": 1429,
+            "delta": 1,
+            "key": "hugh-mccluggage",
+            "name": "Hugh McCluggage",
+            "section": "active"
+          },
+          {
+            "after": 2791,
+            "before": 2790,
+            "delta": 1,
+            "key": "hugo-garcia",
+            "name": "Hugo Garcia",
+            "section": "active"
+          },
+          {
+            "after": 9,
+            "before": 314,
+            "delta": -305,
+            "key": "iliro-smit",
+            "name": "Iliro Smit",
+            "section": "back"
+          },
+          {
+            "after": 3676,
+            "before": 3672,
+            "delta": 4,
+            "key": "isaac-heeney",
+            "name": "Isaac Heeney",
+            "section": "active"
+          },
+          {
+            "after": 4941,
+            "before": 4916,
+            "delta": 25,
+            "key": "izak-rankine",
+            "name": "Izak Rankine",
+            "section": "active"
+          },
+          {
+            "after": 7,
+            "before": 114,
+            "delta": -107,
+            "key": "jack-carroll",
+            "name": "Jack Carroll",
+            "section": "back"
+          },
+          {
+            "after": 2006,
+            "before": 1997,
+            "delta": 9,
+            "key": "jack-ginnivan",
+            "name": "Jack Ginnivan",
+            "section": "active"
+          },
+          {
+            "after": 750,
+            "before": 751,
+            "delta": -1,
+            "key": "jack-graham",
+            "name": "Jack Graham",
+            "section": "active"
+          },
+          {
+            "after": 1,
+            "before": 32,
+            "delta": -31,
+            "key": "jack-henderson",
+            "name": "Jack Henderson",
+            "section": "back"
+          },
+          {
+            "after": 421,
+            "before": 422,
+            "delta": -1,
+            "key": "jack-ison",
+            "name": "Jack Ison",
+            "section": "active"
+          },
+          {
+            "after": 2355,
+            "before": 2353,
+            "delta": 2,
+            "key": "jack-ross",
+            "name": "Jack Ross",
+            "section": "active"
+          },
+          {
+            "after": 3089,
+            "before": 3087,
+            "delta": 2,
+            "key": "jack-sinclair",
+            "name": "Jack Sinclair",
+            "section": "active"
+          },
+          {
+            "after": 1082,
+            "before": 1081,
+            "delta": 1,
+            "key": "jack-steele",
+            "name": "Jack Steele",
+            "section": "active"
+          },
+          {
+            "after": 3,
+            "before": 339,
+            "delta": -336,
+            "key": "jack-williams",
+            "name": "Jack Williams",
+            "section": "back"
+          },
+          {
+            "after": 10,
+            "before": 48,
+            "delta": -38,
+            "key": "jackson-mead",
+            "name": "Jackson Mead",
+            "section": "back"
+          },
+          {
+            "after": 12,
+            "before": 64,
+            "delta": -52,
+            "key": "jacob-moss",
+            "name": "Jacob Moss",
+            "section": "back"
+          },
+          {
+            "after": 1811,
+            "before": 1813,
+            "delta": -2,
+            "key": "jacob-van-rooyen",
+            "name": "Jacob Van Rooyen",
+            "section": "active"
+          },
+          {
+            "after": 1194,
+            "before": 1190,
+            "delta": 4,
+            "key": "jacob-weitering",
+            "name": "Jacob Weitering",
+            "section": "active"
+          },
+          {
+            "after": 12,
+            "before": 15,
+            "delta": -3,
+            "key": "jade-gresham",
+            "name": "Jade Gresham",
+            "section": "back"
+          },
+          {
+            "after": 4909,
+            "before": 4915,
+            "delta": -6,
+            "key": "jagga-smith",
+            "name": "Jagga Smith",
+            "section": "active"
+          },
+          {
+            "after": 4394,
+            "before": 4389,
+            "delta": 5,
+            "key": "jai-newcombe",
+            "name": "Jai Newcombe",
+            "section": "active"
+          },
+          {
+            "after": 1079,
+            "before": 1080,
+            "delta": -1,
+            "key": "jai-serong",
+            "name": "Jai Serong",
+            "section": "active"
+          },
+          {
+            "after": 2,
+            "before": 56,
+            "delta": -54,
+            "key": "jaime-uhr-henry",
+            "name": "Jaime Uhr-Henry",
+            "section": "back"
+          },
+          {
+            "after": 3937,
+            "before": 3935,
+            "delta": 2,
+            "key": "jake-bowey",
+            "name": "Jake Bowey",
+            "section": "active"
+          },
+          {
+            "after": 8,
+            "before": 17,
+            "delta": -9,
+            "key": "jake-kolodjashnij",
+            "name": "Jake Kolodjashnij",
+            "section": "back"
+          },
+          {
+            "after": 201,
+            "before": 202,
+            "delta": -1,
+            "key": "jake-lever",
+            "name": "Jake Lever",
+            "section": "active"
+          },
+          {
+            "after": 18,
+            "before": 2,
+            "delta": 16,
+            "key": "jake-melksham",
+            "name": "Jake Melksham",
+            "section": "back"
+          },
+          {
+            "after": 10,
+            "before": 147,
+            "delta": -137,
+            "key": "jakob-ryan",
+            "name": "Jakob Ryan",
+            "section": "back"
+          },
+          {
+            "after": 13,
+            "before": 15,
+            "delta": -2,
+            "key": "james-blanck",
+            "name": "James Blanck",
+            "section": "back"
+          },
+          {
+            "after": 1168,
+            "before": 1167,
+            "delta": 1,
+            "key": "james-sicily",
+            "name": "James Sicily",
+            "section": "active"
+          },
+          {
+            "after": 8,
+            "before": 178,
+            "delta": -170,
+            "key": "james-trezise",
+            "name": "James Trezise",
+            "section": "back"
+          },
+          {
+            "after": 10,
+            "before": 9,
+            "delta": 1,
+            "key": "jamie-cripps",
+            "name": "Jamie Cripps",
+            "section": "back"
+          },
+          {
+            "after": 2607,
+            "before": 2605,
+            "delta": 2,
+            "key": "jase-burgoyne",
+            "name": "Jase Burgoyne",
+            "section": "active"
+          },
+          {
+            "after": 5370,
+            "before": 5364,
+            "delta": 6,
+            "key": "jason-horne-francis",
+            "name": "Jason Horne-Francis",
+            "section": "active"
+          },
+          {
+            "after": 2445,
+            "before": 2446,
+            "delta": -1,
+            "key": "jaspa-fletcher",
+            "name": "Jaspa Fletcher",
+            "section": "active"
+          },
+          {
+            "after": 886,
+            "before": 885,
+            "delta": 1,
+            "key": "jayden-short",
+            "name": "Jayden Short",
+            "section": "active"
+          },
+          {
+            "after": 10,
+            "before": 1,
+            "delta": 9,
+            "key": "jed-bews",
+            "name": "Jed Bews",
+            "section": "back"
+          },
+          {
+            "after": 924,
+            "before": 925,
+            "delta": -1,
+            "key": "joe-richards",
+            "name": "Joe Richards",
+            "section": "active"
+          },
+          {
+            "after": 6,
+            "before": 264,
+            "delta": -258,
+            "key": "joel-cochran",
+            "name": "Joel Cochran",
+            "section": "back"
+          },
+          {
+            "after": 2802,
+            "before": 2803,
+            "delta": -1,
+            "key": "joel-freijah",
+            "name": "Joel Freijah",
+            "section": "active"
+          },
+          {
+            "after": 2295,
+            "before": 2294,
+            "delta": 1,
+            "key": "john-noble",
+            "name": "John Noble",
+            "section": "active"
+          },
+          {
+            "after": 6,
+            "before": 23,
+            "delta": -17,
+            "key": "jordan-boyd",
+            "name": "Jordan Boyd",
+            "section": "back"
+          },
+          {
+            "after": 3042,
+            "before": 3040,
+            "delta": 2,
+            "key": "jordan-clark",
+            "name": "Jordan Clark",
+            "section": "active"
+          },
+          {
+            "after": 2796,
+            "before": 2792,
+            "delta": 4,
+            "key": "jordan-dawson",
+            "name": "Jordan Dawson",
+            "section": "active"
+          },
+          {
+            "after": 1287,
+            "before": 1280,
+            "delta": 7,
+            "key": "jordan-de-goey",
+            "name": "Jordan De Goey",
+            "section": "active"
+          },
+          {
+            "after": 1769,
+            "before": 1763,
+            "delta": 6,
+            "key": "josh-battle",
+            "name": "Josh Battle",
+            "section": "active"
+          },
+          {
+            "after": 2063,
+            "before": 2062,
+            "delta": 1,
+            "key": "josh-daicos",
+            "name": "Josh Daicos",
+            "section": "active"
+          },
+          {
+            "after": 1366,
+            "before": 1364,
+            "delta": 2,
+            "key": "josh-dunkley",
+            "name": "Josh Dunkley",
+            "section": "active"
+          },
+          {
+            "after": 1833,
+            "before": 1880,
+            "delta": -47,
+            "key": "josh-rachele",
+            "name": "Josh Rachele",
+            "section": "active"
+          },
+          {
+            "after": 4832,
+            "before": 4831,
+            "delta": 1,
+            "key": "josh-treacy",
+            "name": "Josh Treacy",
+            "section": "active"
+          },
+          {
+            "after": 2758,
+            "before": 2756,
+            "delta": 2,
+            "key": "josh-ward",
+            "name": "Josh Ward",
+            "section": "active"
+          },
+          {
+            "after": 2936,
+            "before": 2935,
+            "delta": 1,
+            "key": "josh-worrell",
+            "name": "Josh Worrell",
+            "section": "active"
+          },
+          {
+            "after": 716,
+            "before": 715,
+            "delta": 1,
+            "key": "joshua-kelly",
+            "name": "Joshua Kelly",
+            "section": "active"
+          },
+          {
+            "after": 1731,
+            "before": 1729,
+            "delta": 2,
+            "key": "justin-mcinerney",
+            "name": "Justin McInerney",
+            "section": "active"
+          },
+          {
+            "after": 1196,
+            "before": 1198,
+            "delta": -2,
+            "key": "jy-simpkin",
+            "name": "Jy Simpkin",
+            "section": "active"
+          },
+          {
+            "after": 1313,
+            "before": 1314,
+            "delta": -1,
+            "key": "jye-amiss",
+            "name": "Jye Amiss",
+            "section": "active"
+          },
+          {
+            "after": 1041,
+            "before": 1045,
+            "delta": -4,
+            "key": "jye-caldwell",
+            "name": "Jye Caldwell",
+            "section": "active"
+          },
+          {
+            "after": 1084,
+            "before": 1080,
+            "delta": 4,
+            "key": "kade-chandler",
+            "name": "Kade Chandler",
+            "section": "active"
+          },
+          {
+            "after": null,
+            "before": 65,
+            "delta": null,
+            "key": "kalani-white",
+            "name": "Kalani White",
+            "section": "active"
+          },
+          {
+            "after": 5,
+            "before": 59,
+            "delta": -54,
+            "key": "kaleb-smith",
+            "name": "Kaleb Smith",
+            "section": "back"
+          },
+          {
+            "after": 1281,
+            "before": 1280,
+            "delta": 1,
+            "key": "kane-farrell",
+            "name": "Kane Farrell",
+            "section": "active"
+          },
+          {
+            "after": 1488,
+            "before": 1492,
+            "delta": -4,
+            "key": "karl-worner",
+            "name": "Karl Worner",
+            "section": "active"
+          },
+          {
+            "after": 8,
+            "before": 300,
+            "delta": -292,
+            "key": "kayle-gerreyn",
+            "name": "Kayle Gerreyn",
+            "section": "back"
+          },
+          {
+            "after": 719,
+            "before": 720,
+            "delta": -1,
+            "key": "keidean-coleman",
+            "name": "Keidean Coleman",
+            "section": "active"
+          },
+          {
+            "after": 10,
+            "before": 111,
+            "delta": -101,
+            "key": "keighton-matofai-forbes",
+            "name": "Keighton Matofai-Forbes",
+            "section": "back"
+          },
+          {
+            "after": 1940,
+            "before": 1941,
+            "delta": -1,
+            "key": "kieren-briggs",
+            "name": "Kieren Briggs",
+            "section": "active"
+          },
+          {
+            "after": 4328,
+            "before": 4305,
+            "delta": 23,
+            "key": "kysaiah-pickett",
+            "name": "Kysaiah Pickett",
+            "section": "active"
+          },
+          {
+            "after": 1804,
+            "before": 1802,
+            "delta": 2,
+            "key": "lachie-neale",
+            "name": "Lachie Neale",
+            "section": "active"
+          },
+          {
+            "after": 1,
+            "before": 20,
+            "delta": -19,
+            "key": "lachie-sullivan",
+            "name": "Lachie Sullivan",
+            "section": "back"
+          },
+          {
+            "after": 2162,
+            "before": 2161,
+            "delta": 1,
+            "key": "lachie-whitfield",
+            "name": "Lachie Whitfield",
+            "section": "active"
+          },
+          {
+            "after": 5281,
+            "before": 5277,
+            "delta": 4,
+            "key": "lachlan-ash",
+            "name": "Lachlan Ash",
+            "section": "active"
+          },
+          {
+            "after": 73,
+            "before": 74,
+            "delta": -1,
+            "key": "lachlan-blakiston",
+            "name": "Lachlan Blakiston",
+            "section": "active"
+          },
+          {
+            "after": 11,
+            "before": 101,
+            "delta": -90,
+            "key": "lachlan-fogarty",
+            "name": "Lachlan Fogarty",
+            "section": "back"
+          },
+          {
+            "after": 10,
+            "before": 42,
+            "delta": -32,
+            "key": "lachlan-mcneil",
+            "name": "Lachlan McNeil",
+            "section": "back"
+          },
+          {
+            "after": 646,
+            "before": 643,
+            "delta": 3,
+            "key": "lachlan-schultz",
+            "name": "Lachlan Schultz",
+            "section": "active"
+          },
+          {
+            "after": 5,
+            "before": 90,
+            "delta": -85,
+            "key": "lachlan-sholl",
+            "name": "Lachlan Sholl",
+            "section": "back"
+          },
+          {
+            "after": 9,
+            "before": 241,
+            "delta": -232,
+            "key": "lachlan-smith",
+            "name": "Lachlan Smith",
+            "section": "back"
+          },
+          {
+            "after": 1698,
+            "before": 1701,
+            "delta": -3,
+            "key": "lawson-humphries",
+            "name": "Lawson Humphries",
+            "section": "active"
+          },
+          {
+            "after": 3440,
+            "before": 3441,
+            "delta": -1,
+            "key": "levi-ashcroft",
+            "name": "Levi Ashcroft",
+            "section": "active"
+          },
+          {
+            "after": 6,
+            "before": 124,
+            "delta": -118,
+            "key": "lewis-young",
+            "name": "Lewis Young",
+            "section": "back"
+          },
+          {
+            "after": 6,
+            "before": 329,
+            "delta": -323,
+            "key": "liam-fawcett",
+            "name": "Liam Fawcett",
+            "section": "back"
+          },
+          {
+            "after": 106,
+            "before": 107,
+            "delta": -1,
+            "key": "liam-henry",
+            "name": "Liam Henry",
+            "section": "active"
+          },
+          {
+            "after": 9,
+            "before": 193,
+            "delta": -184,
+            "key": "liam-mcmahon",
+            "name": "Liam McMahon",
+            "section": "back"
+          },
+          {
+            "after": 1459,
+            "before": 1460,
+            "delta": -1,
+            "key": "lloyd-meek",
+            "name": "Lloyd Meek",
+            "section": "active"
+          },
+          {
+            "after": 1303,
+            "before": 1304,
+            "delta": -1,
+            "key": "logan-mcdonald",
+            "name": "Logan McDonald",
+            "section": "active"
+          },
+          {
+            "after": 6,
+            "before": 131,
+            "delta": -125,
+            "key": "lucas-camporeale",
+            "name": "Lucas Camporeale",
+            "section": "back"
+          },
+          {
+            "after": 4,
+            "before": 157,
+            "delta": -153,
+            "key": "luke-beecken",
+            "name": "Luke Beecken",
+            "section": "back"
+          },
+          {
+            "after": 2990,
+            "before": 2986,
+            "delta": 4,
+            "key": "luke-davies-uniacke",
+            "name": "Luke Davies-Uniacke",
+            "section": "active"
+          },
+          {
+            "after": 10011,
+            "before": 10013,
+            "delta": -2,
+            "key": "luke-jackson",
+            "name": "Luke Jackson",
+            "section": "active"
+          },
+          {
+            "after": 444,
+            "before": 445,
+            "delta": -1,
+            "key": "luke-nankervis",
+            "name": "Luke Nankervis",
+            "section": "active"
+          },
+          {
+            "after": 1152,
+            "before": 1151,
+            "delta": 1,
+            "key": "luke-parker",
+            "name": "Luke Parker",
+            "section": "active"
+          },
+          {
+            "after": 1153,
+            "before": 1152,
+            "delta": 1,
+            "key": "luke-ryan",
+            "name": "Luke Ryan",
+            "section": "active"
+          },
+          {
+            "after": 6,
+            "before": 67,
+            "delta": -61,
+            "key": "luke-urquhart",
+            "name": "Luke Urquhart",
+            "section": "back"
+          },
+          {
+            "after": 3882,
+            "before": 3870,
+            "delta": 12,
+            "key": "mac-andrew",
+            "name": "Mac Andrew",
+            "section": "active"
+          },
+          {
+            "after": 4,
+            "before": 108,
+            "delta": -104,
+            "key": "mani-liddy",
+            "name": "Mani Liddy",
+            "section": "back"
+          },
+          {
+            "after": 3708,
+            "before": 3704,
+            "delta": 4,
+            "key": "marcus-bontempelli",
+            "name": "Marcus Bontempelli",
+            "section": "active"
+          },
+          {
+            "after": 832,
+            "before": 834,
+            "delta": -2,
+            "key": "marcus-herbert",
+            "name": "Marcus Herbert",
+            "section": "active"
+          },
+          {
+            "after": 1520,
+            "before": 1527,
+            "delta": -7,
+            "key": "mark-keane",
+            "name": "Mark Keane",
+            "section": "active"
+          },
+          {
+            "after": 947,
+            "before": 946,
+            "delta": 1,
+            "key": "mason-redman",
+            "name": "Mason Redman",
+            "section": "active"
+          },
+          {
+            "after": 9,
+            "before": 37,
+            "delta": -28,
+            "key": "matt-duffy",
+            "name": "Matt Duffy",
+            "section": "back"
+          },
+          {
+            "after": 7,
+            "before": 6,
+            "delta": 1,
+            "key": "matt-owies",
+            "name": "Matt Owies",
+            "section": "back"
+          },
+          {
+            "after": 4801,
+            "before": 4796,
+            "delta": 5,
+            "key": "matt-rowell",
+            "name": "Matt Rowell",
+            "section": "active"
+          },
+          {
+            "after": 1708,
+            "before": 1709,
+            "delta": -1,
+            "key": "mattaes-phillipou",
+            "name": "Mattaes Phillipou",
+            "section": "active"
+          },
+          {
+            "after": 687,
+            "before": 686,
+            "delta": 1,
+            "key": "matthew-kennedy-1",
+            "name": "Matthew Kennedy",
+            "section": "active"
+          },
+          {
+            "after": 2721,
+            "before": 2724,
+            "delta": -3,
+            "key": "max-hall",
+            "name": "Max Hall",
+            "section": "active"
+          },
+          {
+            "after": 513,
+            "before": 514,
+            "delta": -1,
+            "key": "max-heath",
+            "name": "Max Heath",
+            "section": "active"
+          },
+          {
+            "after": 7276,
+            "before": 7268,
+            "delta": 8,
+            "key": "max-holmes",
+            "name": "Max Holmes",
+            "section": "active"
+          },
+          {
+            "after": 343,
+            "before": 350,
+            "delta": -7,
+            "key": "milan-murdock",
+            "name": "Milan Murdock",
+            "section": "active"
+          },
+          {
+            "after": null,
+            "before": 116,
+            "delta": null,
+            "key": "mitch-podhajski",
+            "name": "Mitch Podhajski",
+            "section": "active"
+          },
+          {
+            "after": 17,
+            "before": 193,
+            "delta": -176,
+            "key": "mitchell-knevitt",
+            "name": "Mitchell Knevitt",
+            "section": "back"
+          },
+          {
+            "after": 2049,
+            "before": 2051,
+            "delta": -2,
+            "key": "mitchito-owens",
+            "name": "Mitchito Owens",
+            "section": "active"
+          },
+          {
+            "after": 3228,
+            "before": 3230,
+            "delta": -2,
+            "key": "murphy-reid",
+            "name": "Murphy Reid",
+            "section": "active"
+          },
+          {
+            "after": 9214,
+            "before": 9205,
+            "delta": 9,
+            "key": "nasiah-wanganeen-milera",
+            "name": "Nasiah Wanganeen-Milera",
+            "section": "active"
+          },
+          {
+            "after": 11,
+            "before": 8,
+            "delta": 3,
+            "key": "nathan-broad",
+            "name": "Nathan Broad",
+            "section": "back"
+          },
+          {
+            "after": 927,
+            "before": 928,
+            "delta": -1,
+            "key": "neil-erasmus",
+            "name": "Neil Erasmus",
+            "section": "active"
+          },
+          {
+            "after": 18,
+            "before": 111,
+            "delta": -93,
+            "key": "nicholas-coffield",
+            "name": "Nicholas Coffield",
+            "section": "back"
+          },
+          {
+            "after": 5,
+            "before": 2,
+            "delta": 3,
+            "key": "nicholas-holman",
+            "name": "Nicholas Holman",
+            "section": "back"
+          },
+          {
+            "after": 3796,
+            "before": 3793,
+            "delta": 3,
+            "key": "nicholas-martin",
+            "name": "Nicholas Martin",
+            "section": "active"
+          },
+          {
+            "after": 3979,
+            "before": 3976,
+            "delta": 3,
+            "key": "nick-blakey",
+            "name": "Nick Blakey",
+            "section": "active"
+          },
+          {
+            "after": 10371,
+            "before": 10362,
+            "delta": 9,
+            "key": "nick-daicos",
+            "name": "Nick Daicos",
+            "section": "active"
+          },
+          {
+            "after": 148,
+            "before": 149,
+            "delta": -1,
+            "key": "nick-haynes",
+            "name": "Nick Haynes",
+            "section": "active"
+          },
+          {
+            "after": 540,
+            "before": 541,
+            "delta": -1,
+            "key": "nick-larkey",
+            "name": "Nick Larkey",
+            "section": "active"
+          },
+          {
+            "after": 3872,
+            "before": 3862,
+            "delta": 10,
+            "key": "nick-watson",
+            "name": "Nick Watson",
+            "section": "active"
+          },
+          {
+            "after": 18,
+            "before": 193,
+            "delta": -175,
+            "key": "nikolas-cox",
+            "name": "Nikolas Cox",
+            "section": "back"
+          },
+          {
+            "after": 5266,
+            "before": 5260,
+            "delta": 6,
+            "key": "noah-anderson",
+            "name": "Noah Anderson",
+            "section": "active"
+          },
+          {
+            "after": 11,
+            "before": 194,
+            "delta": -183,
+            "key": "noah-howes",
+            "name": "Noah Howes",
+            "section": "back"
+          },
+          {
+            "after": 811,
+            "before": 817,
+            "delta": -6,
+            "key": "noah-mraz",
+            "name": "Noah Mraz",
+            "section": "active"
+          },
+          {
+            "after": 1048,
+            "before": 1047,
+            "delta": 1,
+            "key": "oliver-florent",
+            "name": "Oliver Florent",
+            "section": "active"
+          },
+          {
+            "after": 2,
+            "before": 101,
+            "delta": -99,
+            "key": "oliver-hayes-brown",
+            "name": "Oliver Hayes-Brown",
+            "section": "back"
+          },
+          {
+            "after": 383,
+            "before": 382,
+            "delta": 1,
+            "key": "oliver-wines",
+            "name": "Oliver Wines",
+            "section": "active"
+          },
+          {
+            "after": 2376,
+            "before": 2378,
+            "delta": -2,
+            "key": "ollie-dempsey",
+            "name": "Ollie Dempsey",
+            "section": "active"
+          },
+          {
+            "after": 4,
+            "before": 124,
+            "delta": -120,
+            "key": "ollie-lord",
+            "name": "Ollie Lord",
+            "section": "back"
+          },
+          {
+            "after": 8,
+            "before": 198,
+            "delta": -190,
+            "key": "ollie-murphy",
+            "name": "Ollie Murphy",
+            "section": "back"
+          },
+          {
+            "after": 5,
+            "before": 28,
+            "delta": -23,
+            "key": "oskar-baker",
+            "name": "Oskar Baker",
+            "section": "back"
+          },
+          {
+            "after": 54,
+            "before": 27,
+            "delta": 27,
+            "key": "paddy-dow",
+            "name": "Paddy Dow",
+            "section": "back"
+          },
+          {
+            "after": 1341,
+            "before": 1339,
+            "delta": 2,
+            "key": "patrick-cripps",
+            "name": "Patrick Cripps",
+            "section": "active"
+          },
+          {
+            "after": 160,
+            "before": 163,
+            "delta": -3,
+            "key": "patrick-dangerfield",
+            "name": "Patrick Dangerfield",
+            "section": "active"
+          },
+          {
+            "after": 680,
+            "before": 681,
+            "delta": -1,
+            "key": "patrick-lipinski",
+            "name": "Patrick Lipinski",
+            "section": "active"
+          },
+          {
+            "after": 3,
+            "before": 50,
+            "delta": -47,
+            "key": "patrick-said",
+            "name": "Patrick Said",
+            "section": "back"
+          },
+          {
+            "after": 1494,
+            "before": 1529,
+            "delta": -35,
+            "key": "paul-curtis",
+            "name": "Paul Curtis",
+            "section": "active"
+          },
+          {
+            "after": 1241,
+            "before": 1240,
+            "delta": 1,
+            "key": "peter-wright",
+            "name": "Peter Wright",
+            "section": "active"
+          },
+          {
+            "after": 1544,
+            "before": 1545,
+            "delta": -1,
+            "key": "phoenix-gothard",
+            "name": "Phoenix Gothard",
+            "section": "active"
+          },
+          {
+            "after": 2256,
+            "before": 2259,
+            "delta": -3,
+            "key": "reuben-ginbey",
+            "name": "Reuben Ginbey",
+            "section": "active"
+          },
+          {
+            "after": 9,
+            "before": 5,
+            "delta": 4,
+            "key": "rhys-stanley",
+            "name": "Rhys Stanley",
+            "section": "back"
+          },
+          {
+            "after": null,
+            "before": 91,
+            "delta": null,
+            "key": "riley-onley",
+            "name": "Riley Onley",
+            "section": "active"
+          },
+          {
+            "after": 4311,
+            "before": 4310,
+            "delta": 1,
+            "key": "riley-thilthorpe",
+            "name": "Riley Thilthorpe",
+            "section": "active"
+          },
+          {
+            "after": 8,
+            "before": 104,
+            "delta": -96,
+            "key": "robert-hansen",
+            "name": "Robert Hansen",
+            "section": "back"
+          },
+          {
+            "after": 712,
+            "before": 711,
+            "delta": 1,
+            "key": "rory-laird",
+            "name": "Rory Laird",
+            "section": "active"
+          },
+          {
+            "after": 287,
+            "before": 289,
+            "delta": -2,
+            "key": "rory-lobb",
+            "name": "Rory Lobb",
+            "section": "active"
+          },
+          {
+            "after": 4,
+            "before": 6,
+            "delta": -2,
+            "key": "ryan-gardner",
+            "name": "Ryan Gardner",
+            "section": "back"
+          },
+          {
+            "after": 1357,
+            "before": 1358,
+            "delta": -1,
+            "key": "ryan-maric",
+            "name": "Ryan Maric",
+            "section": "active"
+          },
+          {
+            "after": null,
+            "before": 23,
+            "delta": null,
+            "key": "ryda-luke",
+            "name": "Ryda Luke",
+            "section": "active"
+          },
+          {
+            "after": 3503,
+            "before": 3515,
+            "delta": -12,
+            "key": "ryley-sanders",
+            "name": "Ryley Sanders",
+            "section": "active"
+          },
+          {
+            "after": 6,
+            "before": 73,
+            "delta": -67,
+            "key": "saad-el-hawli",
+            "name": "Saad El-Hawli",
+            "section": "back"
+          },
+          {
+            "after": 2787,
+            "before": 2784,
+            "delta": 3,
+            "key": "sam-berry",
+            "name": "Sam Berry",
+            "section": "active"
+          },
+          {
+            "after": 867,
+            "before": 869,
+            "delta": -2,
+            "key": "sam-de-koning",
+            "name": "Sam De Koning",
+            "section": "active"
+          },
+          {
+            "after": 2424,
+            "before": 2421,
+            "delta": 3,
+            "key": "sam-durham",
+            "name": "Sam Durham",
+            "section": "active"
+          },
+          {
+            "after": 2504,
+            "before": 2501,
+            "delta": 3,
+            "key": "sam-flanders",
+            "name": "Sam Flanders",
+            "section": "active"
+          },
+          {
+            "after": 3406,
+            "before": 3407,
+            "delta": -1,
+            "key": "sam-lalor",
+            "name": "Sam Lalor",
+            "section": "active"
+          },
+          {
+            "after": 13,
+            "before": 56,
+            "delta": -43,
+            "key": "sam-sturt",
+            "name": "Sam Sturt",
+            "section": "back"
+          },
+          {
+            "after": 7,
+            "before": 25,
+            "delta": -18,
+            "key": "sam-switkowski",
+            "name": "Sam Switkowski",
+            "section": "back"
+          },
+          {
+            "after": 1141,
+            "before": 1147,
+            "delta": -6,
+            "key": "sam-taylor",
+            "name": "Sam Taylor",
+            "section": "active"
+          },
+          {
+            "after": 3142,
+            "before": 3138,
+            "delta": 4,
+            "key": "sam-walsh",
+            "name": "Sam Walsh",
+            "section": "active"
+          },
+          {
+            "after": 592,
+            "before": 590,
+            "delta": 2,
+            "key": "samuel-collins",
+            "name": "Samuel Collins",
+            "section": "active"
+          },
+          {
+            "after": 2215,
+            "before": 2203,
+            "delta": 12,
+            "key": "shai-bolton",
+            "name": "Shai Bolton",
+            "section": "active"
+          },
+          {
+            "after": 913,
+            "before": 912,
+            "delta": 1,
+            "key": "shaun-mannagh",
+            "name": "Shaun Mannagh",
+            "section": "active"
+          },
+          {
+            "after": 34,
+            "before": 8,
+            "delta": 26,
+            "key": "steele-sidebottom",
+            "name": "Steele Sidebottom",
+            "section": "back"
+          },
+          {
+            "after": 4,
+            "before": 114,
+            "delta": -110,
+            "key": "steely-green",
+            "name": "Steely Green",
+            "section": "back"
+          },
+          {
+            "after": 600,
+            "before": 601,
+            "delta": -1,
+            "key": "talor-byrne",
+            "name": "Talor Byrne",
+            "section": "active"
+          },
+          {
+            "after": 1935,
+            "before": 1940,
+            "delta": -5,
+            "key": "tanner-bruhn",
+            "name": "Tanner Bruhn",
+            "section": "active"
+          },
+          {
+            "after": 3,
+            "before": 166,
+            "delta": -163,
+            "key": "taylor-walker",
+            "name": "Taylor Walker",
+            "section": "back"
+          },
+          {
+            "after": 5,
+            "before": 201,
+            "delta": -196,
+            "key": "thomas-anastasopoulos",
+            "name": "Tom Anastasopoulos",
+            "section": "back"
+          },
+          {
+            "after": 18,
+            "before": 1074,
+            "delta": -1056,
+            "key": "thomas-liberatore",
+            "name": "Thomas Liberatore",
+            "section": "back"
+          },
+          {
+            "after": 1180,
+            "before": 1179,
+            "delta": 1,
+            "key": "tim-kelly",
+            "name": "Tim Kelly",
+            "section": "active"
+          },
+          {
+            "after": 2373,
+            "before": 2370,
+            "delta": 3,
+            "key": "tim-taranto",
+            "name": "Tim Taranto",
+            "section": "active"
+          },
+          {
+            "after": 733,
+            "before": 729,
+            "delta": 4,
+            "key": "toby-greene",
+            "name": "Toby Greene",
+            "section": "active"
+          },
+          {
+            "after": 267,
+            "before": 268,
+            "delta": -1,
+            "key": "tom-atkins",
+            "name": "Tom Atkins",
+            "section": "active"
+          },
+          {
+            "after": 6,
+            "before": 95,
+            "delta": -89,
+            "key": "tom-edwards",
+            "name": "Tom Edwards",
+            "section": "back"
+          },
+          {
+            "after": 5118,
+            "before": 5113,
+            "delta": 5,
+            "key": "tom-green",
+            "name": "Tom Green",
+            "section": "active"
+          },
+          {
+            "after": 396,
+            "before": 397,
+            "delta": -1,
+            "key": "tom-gross",
+            "name": "Tom Gross",
+            "section": "active"
+          },
+          {
+            "after": 1348,
+            "before": 1349,
+            "delta": -1,
+            "key": "tom-mccarthy",
+            "name": "Tom McCarthy",
+            "section": "active"
+          },
+          {
+            "after": 1397,
+            "before": 1392,
+            "delta": 5,
+            "key": "tom-mccartin",
+            "name": "Tom McCartin",
+            "section": "active"
+          },
+          {
+            "after": 5,
+            "before": 26,
+            "delta": -21,
+            "key": "tom-mcdonald",
+            "name": "Tom McDonald",
+            "section": "back"
+          },
+          {
+            "after": 512,
+            "before": 515,
+            "delta": -3,
+            "key": "tom-papley",
+            "name": "Tom Papley",
+            "section": "active"
+          },
+          {
+            "after": 1770,
+            "before": 1771,
+            "delta": -1,
+            "key": "tom-powell",
+            "name": "Tom Powell",
+            "section": "active"
+          },
+          {
+            "after": 1477,
+            "before": 1484,
+            "delta": -7,
+            "key": "tom-sparrow",
+            "name": "Tom Sparrow",
+            "section": "active"
+          },
+          {
+            "after": 2346,
+            "before": 2333,
+            "delta": 13,
+            "key": "touk-miller",
+            "name": "Touk Miller",
+            "section": "active"
+          },
+          {
+            "after": 1438,
+            "before": 1442,
+            "delta": -4,
+            "key": "trent-rivers",
+            "name": "Trent Rivers",
+            "section": "active"
+          },
+          {
+            "after": 6894,
+            "before": 6895,
+            "delta": -1,
+            "key": "tristan-xerri",
+            "name": "Tristan Xerri",
+            "section": "active"
+          },
+          {
+            "after": 5,
+            "before": 75,
+            "delta": -70,
+            "key": "tyler-brockman",
+            "name": "Tyler Brockman",
+            "section": "back"
+          },
+          {
+            "after": 16,
+            "before": 762,
+            "delta": -746,
+            "key": "tyler-sonsie",
+            "name": "Tyler Sonsie",
+            "section": "back"
+          },
+          {
+            "after": 3,
+            "before": 146,
+            "delta": -143,
+            "key": "tyler-welsh",
+            "name": "Tyler Welsh",
+            "section": "back"
+          },
+          {
+            "after": 7,
+            "before": 198,
+            "delta": -191,
+            "key": "tyson-stengle",
+            "name": "Tyson Stengle",
+            "section": "back"
+          },
+          {
+            "after": 1584,
+            "before": 1583,
+            "delta": 1,
+            "key": "wayne-milera",
+            "name": "Wayne Milera",
+            "section": "active"
+          },
+          {
+            "after": 803,
+            "before": 805,
+            "delta": -2,
+            "key": "wil-powell",
+            "name": "Wil Powell",
+            "section": "active"
+          },
+          {
+            "after": 7170,
+            "before": 7164,
+            "delta": 6,
+            "key": "will-ashcroft",
+            "name": "Will Ashcroft",
+            "section": "active"
+          },
+          {
+            "after": 35,
+            "before": 117,
+            "delta": -82,
+            "key": "will-brodie",
+            "name": "Will Brodie",
+            "section": "back"
+          },
+          {
+            "after": 1634,
+            "before": 1633,
+            "delta": 1,
+            "key": "will-day",
+            "name": "Will Day",
+            "section": "active"
+          },
+          {
+            "after": 6,
+            "before": 166,
+            "delta": -160,
+            "key": "will-lorenz",
+            "name": "Will Lorenz",
+            "section": "back"
+          },
+          {
+            "after": 958,
+            "before": 957,
+            "delta": 1,
+            "key": "will-setterfield",
+            "name": "Will Setterfield",
+            "section": "active"
+          },
+          {
+            "after": 589,
+            "before": 591,
+            "delta": -2,
+            "key": "willem-drew",
+            "name": "Willem Drew",
+            "section": "active"
+          },
+          {
+            "after": 3491,
+            "before": 3492,
+            "delta": -1,
+            "key": "willem-duursma",
+            "name": "Willem Duursma",
+            "section": "active"
+          },
+          {
+            "after": 15,
+            "before": 116,
+            "delta": -101,
+            "key": "xavier-walsh",
+            "name": "Xavier Walsh",
+            "section": "back"
+          },
+          {
+            "after": 3137,
+            "before": 3120,
+            "delta": 17,
+            "key": "zac-bailey",
+            "name": "Zac Bailey",
+            "section": "active"
+          },
+          {
+            "after": 10,
+            "before": 153,
+            "delta": -143,
+            "key": "zac-fisher",
+            "name": "Zac Fisher",
+            "section": "back"
+          },
+          {
+            "after": 11,
+            "before": 153,
+            "delta": -142,
+            "key": "zac-walker",
+            "name": "Zac Walker",
+            "section": "back"
+          },
+          {
+            "after": 2346,
+            "before": 2343,
+            "delta": 3,
+            "key": "zachary-merrett",
+            "name": "Zachary Merrett",
+            "section": "active"
+          },
+          {
+            "after": 7,
+            "before": 338,
+            "delta": -331,
+            "key": "zachary-williams",
+            "name": "Zachary Williams",
+            "section": "back"
+          },
+          {
+            "after": 6220,
+            "before": 6214,
+            "delta": 6,
+            "key": "zak-butters",
+            "name": "Zak Butters",
+            "section": "active"
+          },
+          {
+            "after": 412,
+            "before": 413,
+            "delta": -1,
+            "key": "zane-duursma",
+            "name": "Zane Duursma",
+            "section": "active"
+          }
+        ],
+        "n_movers": 298,
+        "pool_after": 673209,
+        "pool_before": 688081,
+        "pool_delta": -14872,
+        "rows_added": [],
+        "rows_compared": 1034,
+        "rows_removed": [
+          "flynn-perez",
+          "harrison-coe",
+          "kalani-white",
+          "mitch-podhajski",
+          "riley-onley",
+          "ryda-luke"
+        ],
+        "store_read_by_build": "6d70c6b93e111c9c1eb398bf8e37295f"
+      },
+      "installed": true,
+      "kill_switch": null,
+      "predicted_board": null,
+      "reference_board": null
+    },
+    "contract": {
+      "check": "PASS",
+      "seal_after": "c6e304c766827b8b55eb8b197bed0e85e95f108ede4baf2227bc2b7f43d5117e",
+      "seal_before": "38891143e58aa757396764db61c28783be82b886b86d0878db8dd561e8d33527",
+      "trailing_newline_in_committed_file": false
+    },
+    "lineage": {
+      "column": {
+        "board": "159d3972cdfa9b558b7a92547688192b",
+        "event": null,
+        "id": "exits-2026-06-11"
+      },
+      "entry": {
+        "appended": true,
+        "boundary": [
+          "24",
+          "exits-2026-06-11"
+        ],
+        "bridged_by_round": null,
+        "destination": {
+          "as_of_round": 24,
+          "balanced_board_md5": "f4126b629ea4d4135b4c0ad0f1b29508",
+          "board": "159d3972cdfa9b558b7a92547688192b",
+          "config": "d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4",
+          "engine_head": "b8152511821fd710b4b7b530b822213e",
+          "fv": "80e63a6b8ea26b56e8aa60c9c1cf028156881fc6259d8a4fd8ebbad40963a5cd",
+          "register": "652d83e87780e415a01a2de6d8b3cc57",
+          "release_version": "v2.11-final-rc1-PROVISIONAL",
+          "rl_model": "ad48eb299b01639b62d397c4c0016dd4",
+          "store": "6d70c6b93e111c9c1eb398bf8e37295f",
+          "v0surf": "d9f5d15d9606edcdd5708233197dd951"
+        },
+        "entries": 36,
+        "moved": [
+          "board",
+          "store"
+        ],
+        "source": {
+          "as_of_round": 24,
+          "balanced_board_md5": "f4126b629ea4d4135b4c0ad0f1b29508",
+          "board": "15431ae8676370eb3b3b90a7def22e6e",
+          "config": "d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4",
+          "engine_head": "b8152511821fd710b4b7b530b822213e",
+          "fv": "80e63a6b8ea26b56e8aa60c9c1cf028156881fc6259d8a4fd8ebbad40963a5cd",
+          "register": "652d83e87780e415a01a2de6d8b3cc57",
+          "release_version": "v2.11-final-rc1-PROVISIONAL",
+          "rl_model": "ad48eb299b01639b62d397c4c0016dd4",
+          "store": "82aed8d1df509e0c2b5869fa72036295",
+          "v0surf": "d9f5d15d9606edcdd5708233197dd951"
+        }
+      }
+    },
+    "pins": {
+      "board": "159d3972cdfa9b558b7a92547688192b",
+      "moved": [
+        "store",
+        "board"
+      ],
+      "store": "6d70c6b93e111c9c1eb398bf8e37295f",
+      "unmoved_checked": 6
+    },
+    "preflight": {
+      "base_commit": "693554f19cf6afdb07a1cf068fc2eb647da9b371",
+      "board_before": "15431ae8676370eb3b3b90a7def22e6e",
+      "carriers_captured": 40,
+      "lock": "land-edit-15421"
+    },
+    "state": {
+      "changed": true,
+      "md5": "d93f454c01f9544b3bf7fd9bbea6f25e",
+      "path": "docs/STATE.md",
+      "stamp_commit": "693554f19cf6afdb07a1cf068fc2eb647da9b371",
+      "written": true
+    },
+    "store_edit": {
+      "bytes_after": 1986282,
+      "bytes_before": 1984035,
+      "edits": [
+        {
+          "at": 94150,
+          "chars_after": 1984034,
+          "chars_before": 1984035,
+          "field": "_retired",
+          "key": "ben-camporeale",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            93906,
+            94570
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 94249,
+          "chars_after": 1984056,
+          "chars_before": 1984034,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "ben-camporeale",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            93906,
+            94569
+          ]
+        },
+        {
+          "at": 101860,
+          "chars_after": 1984055,
+          "chars_before": 1984056,
+          "field": "_retired",
+          "key": "lucas-camporeale",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            101557,
+            102280
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 101959,
+          "chars_after": 1984077,
+          "chars_before": 1984055,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "lucas-camporeale",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            101557,
+            102279
+          ]
+        },
+        {
+          "at": 959048,
+          "chars_after": 1984076,
+          "chars_before": 1984077,
+          "field": "_retired",
+          "key": "adam-saad",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            958205,
+            959554
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 959140,
+          "chars_after": 1984098,
+          "chars_before": 1984076,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "adam-saad",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            958205,
+            959553
+          ]
+        },
+        {
+          "at": 115666,
+          "chars_after": 1984097,
+          "chars_before": 1984098,
+          "field": "_retired",
+          "key": "harry-charleson",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            115424,
+            116185
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 115755,
+          "chars_after": 1984119,
+          "chars_before": 1984097,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "harry-charleson",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            115424,
+            116184
+          ]
+        },
+        {
+          "at": 1133006,
+          "chars_after": 1984118,
+          "chars_before": 1984119,
+          "field": "_retired",
+          "key": "zachary-williams",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            1132090,
+            1133408
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 1133105,
+          "chars_after": 1984140,
+          "chars_before": 1984118,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "zachary-williams",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1132090,
+            1133407
+          ]
+        },
+        {
+          "at": 143648,
+          "chars_after": 1984139,
+          "chars_before": 1984140,
+          "field": "_retired",
+          "key": "noah-howes",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            143410,
+            144193
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 143745,
+          "chars_after": 1984161,
+          "chars_before": 1984139,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "noah-howes",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            143410,
+            144192
+          ]
+        },
+        {
+          "at": 57855,
+          "chars_after": 1984160,
+          "chars_before": 1984161,
+          "field": "_retired",
+          "key": "harrison-coe",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            57612,
+            58304
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 57952,
+          "chars_after": 1984182,
+          "chars_before": 1984160,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "harrison-coe",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            57612,
+            58303
+          ]
+        },
+        {
+          "at": 368804,
+          "chars_after": 1984181,
+          "chars_before": 1984182,
+          "field": "_retired",
+          "key": "nikolas-cox",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            368335,
+            369316
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 368896,
+          "chars_after": 1984203,
+          "chars_before": 1984181,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "nikolas-cox",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            368335,
+            369315
+          ]
+        },
+        {
+          "at": 89933,
+          "chars_after": 1984202,
+          "chars_before": 1984203,
+          "field": "_retired",
+          "key": "kayle-gerreyn",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            89691,
+            90348
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 90025,
+          "chars_after": 1984224,
+          "chars_before": 1984202,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "kayle-gerreyn",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            89691,
+            90347
+          ]
+        },
+        {
+          "at": 213568,
+          "chars_after": 1984223,
+          "chars_before": 1984224,
+          "field": "_retired",
+          "key": "saad-el-hawli",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            213264,
+            213995
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 213662,
+          "chars_after": 1984245,
+          "chars_before": 1984223,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "saad-el-hawli",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            213264,
+            213994
+          ]
+        },
+        {
+          "at": 175325,
+          "chars_after": 1984244,
+          "chars_before": 1984245,
+          "field": "_retired",
+          "key": "ollie-murphy",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            175085,
+            175762
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 175418,
+          "chars_after": 1984266,
+          "chars_before": 1984244,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "ollie-murphy",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            175085,
+            175761
+          ]
+        },
+        {
+          "at": 306625,
+          "chars_after": 1984265,
+          "chars_before": 1984266,
+          "field": "_retired",
+          "key": "mitchell-knevitt",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            306156,
+            307035
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 306716,
+          "chars_after": 1984287,
+          "chars_before": 1984265,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "mitchell-knevitt",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            306156,
+            307034
+          ]
+        },
+        {
+          "at": 187093,
+          "chars_after": 1984286,
+          "chars_before": 1984287,
+          "field": "_retired",
+          "key": "george-stevens",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            186794,
+            187503
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 187184,
+          "chars_after": 1984308,
+          "chars_before": 1984286,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "george-stevens",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            186794,
+            187502
+          ]
+        },
+        {
+          "at": 375575,
+          "chars_after": 1984307,
+          "chars_before": 1984308,
+          "field": "_retired",
+          "key": "conor-stone",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            375061,
+            376074
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 375662,
+          "chars_after": 1984329,
+          "chars_before": 1984307,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "conor-stone",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            375061,
+            376073
+          ]
+        },
+        {
+          "at": 472080,
+          "chars_after": 1984328,
+          "chars_before": 1984329,
+          "field": "_retired",
+          "key": "flynn-perez",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            471669,
+            472455
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 472174,
+          "chars_after": 1984350,
+          "chars_before": 1984328,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "flynn-perez",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            471669,
+            472454
+          ]
+        },
+        {
+          "at": 243537,
+          "chars_after": 1984349,
+          "chars_before": 1984350,
+          "field": "_retired",
+          "key": "henry-hustwaite",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            243125,
+            243949
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 243629,
+          "chars_after": 1984371,
+          "chars_before": 1984349,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "henry-hustwaite",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            243125,
+            243948
+          ]
+        },
+        {
+          "at": 42572,
+          "chars_after": 1984370,
+          "chars_before": 1984371,
+          "field": "_retired",
+          "key": "kalani-white",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            42329,
+            43011
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 42678,
+          "chars_after": 1984392,
+          "chars_before": 1984370,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "kalani-white",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            42329,
+            43010
+          ]
+        },
+        {
+          "at": 255650,
+          "chars_after": 1984391,
+          "chars_before": 1984392,
+          "field": "_retired",
+          "key": "cooper-harvey",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            255298,
+            256081
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 255757,
+          "chars_after": 1984413,
+          "chars_before": 1984391,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "cooper-harvey",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            255298,
+            256080
+          ]
+        },
+        {
+          "at": 309367,
+          "chars_after": 1984412,
+          "chars_before": 1984413,
+          "field": "_retired",
+          "key": "tyler-sonsie",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            308894,
+            309783
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 309459,
+          "chars_after": 1984434,
+          "chars_before": 1984412,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "tyler-sonsie",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            308894,
+            309782
+          ]
+        },
+        {
+          "at": 254889,
+          "chars_after": 1984433,
+          "chars_before": 1984434,
+          "field": "_retired",
+          "key": "steely-green",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            254540,
+            255296
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 254981,
+          "chars_after": 1984455,
+          "chars_before": 1984433,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "steely-green",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            254540,
+            255295
+          ]
+        },
+        {
+          "at": 397621,
+          "chars_after": 1984454,
+          "chars_before": 1984455,
+          "field": "_retired",
+          "key": "jack-carroll",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            397155,
+            398033
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 397712,
+          "chars_after": 1984476,
+          "chars_before": 1984454,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "jack-carroll",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            397155,
+            398032
+          ]
+        },
+        {
+          "at": 1127820,
+          "chars_after": 1984475,
+          "chars_before": 1984476,
+          "field": "_retired",
+          "key": "dane-rampe",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            1126859,
+            1128396
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 1127908,
+          "chars_after": 1984497,
+          "chars_before": 1984475,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "dane-rampe",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1126859,
+            1128395
+          ]
+        },
+        {
+          "at": 179627,
+          "chars_after": 1984496,
+          "chars_before": 1984497,
+          "field": "_retired",
+          "key": "lachlan-smith",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            179382,
+            180053
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 179727,
+          "chars_after": 1984518,
+          "chars_before": 1984496,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "lachlan-smith",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            179382,
+            180052
+          ]
+        },
+        {
+          "at": 245083,
+          "chars_after": 1984517,
+          "chars_before": 1984518,
+          "field": "_retired",
+          "key": "harvey-gallagher",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            244720,
+            245609
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 245183,
+          "chars_after": 1984539,
+          "chars_before": 1984517,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "harvey-gallagher",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            244720,
+            245608
+          ]
+        },
+        {
+          "at": 462878,
+          "chars_after": 1984538,
+          "chars_before": 1984539,
+          "field": "_retired",
+          "key": "harry-schoenberg",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            462298,
+            463294
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 462970,
+          "chars_after": 1984560,
+          "chars_before": 1984538,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "harry-schoenberg",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            462298,
+            463293
+          ]
+        },
+        {
+          "at": 1153496,
+          "chars_after": 1984559,
+          "chars_before": 1984560,
+          "field": "_retired",
+          "key": "adam-treloar",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            1152454,
+            1154009
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 1153583,
+          "chars_after": 1984581,
+          "chars_before": 1984559,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "adam-treloar",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1152454,
+            1154008
+          ]
+        },
+        {
+          "at": 111454,
+          "chars_after": 1984580,
+          "chars_before": 1984581,
+          "field": "_retired",
+          "key": "aidan-johnson",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            111156,
+            111864
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 111547,
+          "chars_after": 1984602,
+          "chars_before": 1984580,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "aidan-johnson",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            111156,
+            111863
+          ]
+        },
+        {
+          "at": 347286,
+          "chars_after": 1984601,
+          "chars_before": 1984602,
+          "field": "_retired",
+          "key": "andy-moniz-wakefield",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            346976,
+            347790
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 347392,
+          "chars_after": 1984623,
+          "chars_before": 1984601,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "andy-moniz-wakefield",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            346976,
+            347789
+          ]
+        },
+        {
+          "at": 118358,
+          "chars_after": 1984622,
+          "chars_before": 1984623,
+          "field": "_retired",
+          "key": "asher-eastham",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            118120,
+            118865
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 118450,
+          "chars_after": 1984644,
+          "chars_before": 1984622,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "asher-eastham",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            118120,
+            118864
+          ]
+        },
+        {
+          "at": 672928,
+          "chars_after": 1984643,
+          "chars_before": 1984644,
+          "field": "_retired",
+          "key": "bailey-banfield",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            672237,
+            673506
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 673019,
+          "chars_after": 1984665,
+          "chars_before": 1984643,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "bailey-banfield",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            672237,
+            673505
+          ]
+        },
+        {
+          "at": 550266,
+          "chars_after": 1984664,
+          "chars_before": 1984665,
+          "field": "_retired",
+          "key": "bailey-scott",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            549617,
+            550688
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 550365,
+          "chars_after": 1984686,
+          "chars_before": 1984664,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "bailey-scott",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            549617,
+            550687
+          ]
+        },
+        {
+          "at": 128154,
+          "chars_after": 1984685,
+          "chars_before": 1984686,
+          "field": "_retired",
+          "key": "benny-barrett",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            127912,
+            128589
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 128264,
+          "chars_after": 1984707,
+          "chars_before": 1984685,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "benny-barrett",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            127912,
+            128588
+          ]
+        },
+        {
+          "at": 531565,
+          "chars_after": 1984706,
+          "chars_before": 1984707,
+          "field": "_retired",
+          "key": "bobby-hill",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            530948,
+            531969
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 531652,
+          "chars_after": 1984728,
+          "chars_before": 1984706,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "bobby-hill",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            530948,
+            531968
+          ]
+        },
+        {
+          "at": 236942,
+          "chars_after": 1984727,
+          "chars_before": 1984728,
+          "field": "_retired",
+          "key": "brayden-george",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            236701,
+            237385
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 237041,
+          "chars_after": 1984749,
+          "chars_before": 1984727,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "brayden-george",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            236701,
+            237384
+          ]
+        },
+        {
+          "at": 564342,
+          "chars_after": 1984748,
+          "chars_before": 1984749,
+          "field": "_retired",
+          "key": "caleb-graham",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            563869,
+            564782
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 564441,
+          "chars_after": 1984770,
+          "chars_before": 1984748,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "caleb-graham",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            563869,
+            564781
+          ]
+        },
+        {
+          "at": 626497,
+          "chars_after": 1984769,
+          "chars_before": 1984770,
+          "field": "_retired",
+          "key": "callum-coleman-jones",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            625888,
+            626913
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 626589,
+          "chars_after": 1984791,
+          "chars_before": 1984769,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "callum-coleman-jones",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            625888,
+            626912
+          ]
+        },
+        {
+          "at": 518456,
+          "chars_after": 1984790,
+          "chars_before": 1984791,
+          "field": "_retired",
+          "key": "chayce-jones",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            517822,
+            518965
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 518548,
+          "chars_after": 1984812,
+          "chars_before": 1984790,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "chayce-jones",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            517822,
+            518964
+          ]
+        },
+        {
+          "at": 173524,
+          "chars_after": 1984811,
+          "chars_before": 1984812,
+          "field": "_retired",
+          "key": "clay-hall",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            173178,
+            173936
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 173618,
+          "chars_after": 1984833,
+          "chars_before": 1984811,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "clay-hall",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            173178,
+            173935
+          ]
+        },
+        {
+          "at": 108701,
+          "chars_after": 1984832,
+          "chars_before": 1984833,
+          "field": "_retired",
+          "key": "cody-anderson",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            108462,
+            109107
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 108793,
+          "chars_after": 1984854,
+          "chars_before": 1984832,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "cody-anderson",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            108462,
+            109106
+          ]
+        },
+        {
+          "at": 98366,
+          "chars_after": 1984853,
+          "chars_before": 1984854,
+          "field": "_retired",
+          "key": "cooper-bell",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            98128,
+            98799
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 98477,
+          "chars_after": 1984875,
+          "chars_before": 1984853,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "cooper-bell",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            98128,
+            98798
+          ]
+        },
+        {
+          "at": 1262219,
+          "chars_after": 1984874,
+          "chars_before": 1984875,
+          "field": "_retired",
+          "key": "dion-prestia",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            1261133,
+            1262731
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 1262313,
+          "chars_after": 1984896,
+          "chars_before": 1984874,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "dion-prestia",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1261133,
+            1262730
+          ]
+        },
+        {
+          "at": 931599,
+          "chars_after": 1984895,
+          "chars_before": 1984896,
+          "field": "_retired",
+          "key": "dougal-howard",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            930788,
+            932112
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 931696,
+          "chars_after": 1984917,
+          "chars_before": 1984895,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "dougal-howard",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            930788,
+            932111
+          ]
+        },
+        {
+          "at": 368342,
+          "chars_after": 1984916,
+          "chars_before": 1984917,
+          "field": "_retired",
+          "key": "elijah-hollands",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            367868,
+            368753
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 368436,
+          "chars_after": 1984938,
+          "chars_before": 1984916,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "elijah-hollands",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            367868,
+            368752
+          ]
+        },
+        {
+          "at": 136075,
+          "chars_after": 1984937,
+          "chars_before": 1984938,
+          "field": "_retired",
+          "key": "flynn-young",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            135785,
+            136481
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 136168,
+          "chars_after": 1984959,
+          "chars_before": 1984937,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "flynn-young",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            135785,
+            136480
+          ]
+        },
+        {
+          "at": 235240,
+          "chars_after": 1984958,
+          "chars_before": 1984959,
+          "field": "_retired",
+          "key": "harry-barnett",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            234880,
+            235654
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 235334,
+          "chars_after": 1984980,
+          "chars_before": 1984958,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "harry-barnett",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            234880,
+            235653
+          ]
+        },
+        {
+          "at": 181196,
+          "chars_after": 1984979,
+          "chars_before": 1984980,
+          "field": "_retired",
+          "key": "harvey-johnston",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            180893,
+            181606
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 181290,
+          "chars_after": 1985001,
+          "chars_before": 1984979,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "harvey-johnston",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            180893,
+            181605
+          ]
+        },
+        {
+          "at": 211638,
+          "chars_after": 1985000,
+          "chars_before": 1985001,
+          "field": "_retired",
+          "key": "iliro-smit",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            211398,
+            212080
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 211735,
+          "chars_after": 1985022,
+          "chars_before": 1985000,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "iliro-smit",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            211398,
+            212079
+          ]
+        },
+        {
+          "at": 131487,
+          "chars_after": 1985021,
+          "chars_before": 1985022,
+          "field": "_retired",
+          "key": "jack-henderson",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            131185,
+            131871
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 131575,
+          "chars_after": 1985043,
+          "chars_before": 1985021,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "jack-henderson",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            131185,
+            131870
+          ]
+        },
+        {
+          "at": 330505,
+          "chars_after": 1985042,
+          "chars_before": 1985043,
+          "field": "_retired",
+          "key": "jack-williams",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            330082,
+            330917
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 330599,
+          "chars_after": 1985064,
+          "chars_before": 1985042,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "jack-williams",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            330082,
+            330916
+          ]
+        },
+        {
+          "at": 464108,
+          "chars_after": 1985063,
+          "chars_before": 1985064,
+          "field": "_retired",
+          "key": "jackson-mead",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            463632,
+            464633
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 464213,
+          "chars_after": 1985085,
+          "chars_before": 1985063,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "jackson-mead",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            463632,
+            464632
+          ]
+        },
+        {
+          "at": 124032,
+          "chars_after": 1985084,
+          "chars_before": 1985085,
+          "field": "_retired",
+          "key": "jacob-moss",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            123793,
+            124473
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 124146,
+          "chars_after": 1985106,
+          "chars_before": 1985084,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "jacob-moss",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            123793,
+            124472
+          ]
+        },
+        {
+          "at": 816209,
+          "chars_after": 1985105,
+          "chars_before": 1985106,
+          "field": "_retired",
+          "key": "jade-gresham",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            815407,
+            816615
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 816301,
+          "chars_after": 1985127,
+          "chars_before": 1985105,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "jade-gresham",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            815407,
+            816614
+          ]
+        },
+        {
+          "at": 124748,
+          "chars_after": 1985126,
+          "chars_before": 1985127,
+          "field": "_retired",
+          "key": "jaime-uhr-henry",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            124496,
+            125181
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 124857,
+          "chars_after": 1985148,
+          "chars_before": 1985126,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "jaime-uhr-henry",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            124496,
+            125180
+          ]
+        },
+        {
+          "at": 1017961,
+          "chars_after": 1985147,
+          "chars_before": 1985148,
+          "field": "_retired",
+          "key": "jake-kolodjashnij",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            1017148,
+            1018367
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 1018052,
+          "chars_after": 1985169,
+          "chars_before": 1985147,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "jake-kolodjashnij",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1017148,
+            1018366
+          ]
+        },
+        {
+          "at": 1373681,
+          "chars_after": 1985168,
+          "chars_before": 1985169,
+          "field": "_retired",
+          "key": "jake-melksham",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            1372601,
+            1374190
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 1373773,
+          "chars_after": 1985190,
+          "chars_before": 1985168,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "jake-melksham",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1372601,
+            1374189
+          ]
+        },
+        {
+          "at": 238417,
+          "chars_after": 1985189,
+          "chars_before": 1985190,
+          "field": "_retired",
+          "key": "jakob-ryan",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            238130,
+            238852
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 238512,
+          "chars_after": 1985211,
+          "chars_before": 1985189,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "jakob-ryan",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            238130,
+            238851
+          ]
+        },
+        {
+          "at": 361935,
+          "chars_after": 1985210,
+          "chars_before": 1985211,
+          "field": "_retired",
+          "key": "james-blanck",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            361582,
+            362469
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 362029,
+          "chars_after": 1985232,
+          "chars_before": 1985210,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "james-blanck",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            361582,
+            362468
+          ]
+        },
+        {
+          "at": 284709,
+          "chars_after": 1985231,
+          "chars_before": 1985232,
+          "field": "_retired",
+          "key": "james-trezise",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            284295,
+            285222
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 284803,
+          "chars_after": 1985253,
+          "chars_before": 1985231,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "james-trezise",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            284295,
+            285221
+          ]
+        },
+        {
+          "at": 1281121,
+          "chars_after": 1985252,
+          "chars_before": 1985253,
+          "field": "_retired",
+          "key": "jamie-cripps",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            1280057,
+            1281629
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 1281213,
+          "chars_after": 1985274,
+          "chars_before": 1985252,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "jamie-cripps",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1280057,
+            1281628
+          ]
+        },
+        {
+          "at": 1205448,
+          "chars_after": 1985273,
+          "chars_before": 1985274,
+          "field": "_retired",
+          "key": "jed-bews",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            1204561,
+            1205960
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 1205547,
+          "chars_after": 1985295,
+          "chars_before": 1985273,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "jed-bews",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1204561,
+            1205959
+          ]
+        },
+        {
+          "at": 96989,
+          "chars_after": 1985294,
+          "chars_before": 1985295,
+          "field": "_retired",
+          "key": "joel-cochran",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            96749,
+            97419
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 97101,
+          "chars_after": 1985316,
+          "chars_before": 1985294,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "joel-cochran",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            96749,
+            97418
+          ]
+        },
+        {
+          "at": 438698,
+          "chars_after": 1985315,
+          "chars_before": 1985316,
+          "field": "_retired",
+          "key": "jordan-boyd",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            438244,
+            439205
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 438791,
+          "chars_after": 1985337,
+          "chars_before": 1985315,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "jordan-boyd",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            438244,
+            439204
+          ]
+        },
+        {
+          "at": 251654,
+          "chars_after": 1985336,
+          "chars_before": 1985337,
+          "field": "_retired",
+          "key": "kaleb-smith",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            251310,
+            252060
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 251746,
+          "chars_after": 1985358,
+          "chars_before": 1985336,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "kaleb-smith",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            251310,
+            252059
+          ]
+        },
+        {
+          "at": 112209,
+          "chars_after": 1985357,
+          "chars_before": 1985358,
+          "field": "_retired",
+          "key": "keighton-matofai-forbes",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            111950,
+            112616
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 112300,
+          "chars_after": 1985379,
+          "chars_before": 1985357,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "keighton-matofai-forbes",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            111950,
+            112615
+          ]
+        },
+        {
+          "at": 205629,
+          "chars_after": 1985378,
+          "chars_before": 1985379,
+          "field": "_retired",
+          "key": "lachie-sullivan",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            205264,
+            206017
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 205719,
+          "chars_after": 1985400,
+          "chars_before": 1985378,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "lachie-sullivan",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            205264,
+            206016
+          ]
+        },
+        {
+          "at": 629133,
+          "chars_after": 1985399,
+          "chars_before": 1985400,
+          "field": "_retired",
+          "key": "lachlan-fogarty",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            628445,
+            629537
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 629224,
+          "chars_after": 1985421,
+          "chars_before": 1985399,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "lachlan-fogarty",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            628445,
+            629536
+          ]
+        },
+        {
+          "at": 414645,
+          "chars_after": 1985420,
+          "chars_before": 1985421,
+          "field": "_retired",
+          "key": "lachlan-mcneil",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            414118,
+            415168
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 414743,
+          "chars_after": 1985442,
+          "chars_before": 1985420,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "lachlan-mcneil",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            414118,
+            415167
+          ]
+        },
+        {
+          "at": 560717,
+          "chars_after": 1985441,
+          "chars_before": 1985442,
+          "field": "_retired",
+          "key": "lachlan-sholl",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            560139,
+            561225
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 560809,
+          "chars_after": 1985463,
+          "chars_before": 1985441,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "lachlan-sholl",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            560139,
+            561224
+          ]
+        },
+        {
+          "at": 739342,
+          "chars_after": 1985462,
+          "chars_before": 1985463,
+          "field": "_retired",
+          "key": "lewis-young",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            738649,
+            739761
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 739442,
+          "chars_after": 1985484,
+          "chars_before": 1985462,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "lewis-young",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            738649,
+            739760
+          ]
+        },
+        {
+          "at": 177024,
+          "chars_after": 1985483,
+          "chars_before": 1985484,
+          "field": "_retired",
+          "key": "liam-fawcett",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            176728,
+            177432
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 177116,
+          "chars_after": 1985505,
+          "chars_before": 1985483,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "liam-fawcett",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            176728,
+            177431
+          ]
+        },
+        {
+          "at": 391226,
+          "chars_after": 1985504,
+          "chars_before": 1985505,
+          "field": "_retired",
+          "key": "liam-mcmahon",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            390931,
+            391637
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 391321,
+          "chars_after": 1985526,
+          "chars_before": 1985504,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "liam-mcmahon",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            390931,
+            391636
+          ]
+        },
+        {
+          "at": 216262,
+          "chars_after": 1985525,
+          "chars_before": 1985526,
+          "field": "_retired",
+          "key": "luke-beecken",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            215968,
+            216773
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 216356,
+          "chars_after": 1985547,
+          "chars_before": 1985525,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "luke-beecken",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            215968,
+            216772
+          ]
+        },
+        {
+          "at": 104050,
+          "chars_after": 1985546,
+          "chars_before": 1985547,
+          "field": "_retired",
+          "key": "luke-urquhart",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            103808,
+            104472
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 104149,
+          "chars_after": 1985568,
+          "chars_before": 1985546,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "luke-urquhart",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            103808,
+            104471
+          ]
+        },
+        {
+          "at": 144823,
+          "chars_after": 1985567,
+          "chars_before": 1985568,
+          "field": "_retired",
+          "key": "mani-liddy",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            144531,
+            145344
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 144922,
+          "chars_after": 1985589,
+          "chars_before": 1985567,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "mani-liddy",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            144531,
+            145343
+          ]
+        },
+        {
+          "at": 122091,
+          "chars_after": 1985588,
+          "chars_before": 1985589,
+          "field": "_retired",
+          "key": "matt-duffy",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            121855,
+            122514
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 122194,
+          "chars_after": 1985610,
+          "chars_before": 1985588,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "matt-duffy",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            121855,
+            122513
+          ]
+        },
+        {
+          "at": 671339,
+          "chars_after": 1985609,
+          "chars_before": 1985610,
+          "field": "_retired",
+          "key": "matt-guelfi",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            670656,
+            671845
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 671431,
+          "chars_after": 1985631,
+          "chars_before": 1985609,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "matt-guelfi",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            670656,
+            671844
+          ]
+        },
+        {
+          "at": 590494,
+          "chars_after": 1985630,
+          "chars_before": 1985631,
+          "field": "_retired",
+          "key": "matt-owies",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            589928,
+            590898
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 590602,
+          "chars_after": 1985652,
+          "chars_before": 1985630,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "matt-owies",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            589928,
+            590897
+          ]
+        },
+        {
+          "at": 63422,
+          "chars_after": 1985651,
+          "chars_before": 1985652,
+          "field": "_retired",
+          "key": "mitch-podhajski",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            63175,
+            63839
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 63519,
+          "chars_after": 1985673,
+          "chars_before": 1985651,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "mitch-podhajski",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            63175,
+            63838
+          ]
+        },
+        {
+          "at": 853970,
+          "chars_after": 1985672,
+          "chars_before": 1985673,
+          "field": "_retired",
+          "key": "nathan-broad",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            853180,
+            854376
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 854062,
+          "chars_after": 1985694,
+          "chars_before": 1985672,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "nathan-broad",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            853180,
+            854375
+          ]
+        },
+        {
+          "at": 615358,
+          "chars_after": 1985693,
+          "chars_before": 1985694,
+          "field": "_retired",
+          "key": "nicholas-coffield",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            614778,
+            615772
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 615450,
+          "chars_after": 1985715,
+          "chars_before": 1985693,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "nicholas-coffield",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            614778,
+            615771
+          ]
+        },
+        {
+          "at": 1025224,
+          "chars_after": 1985714,
+          "chars_before": 1985715,
+          "field": "_retired",
+          "key": "nicholas-holman",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            1024420,
+            1025731
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 1025315,
+          "chars_after": 1985736,
+          "chars_before": 1985714,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "nicholas-holman",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1024420,
+            1025730
+          ]
+        },
+        {
+          "at": 200095,
+          "chars_after": 1985735,
+          "chars_before": 1985736,
+          "field": "_retired",
+          "key": "oliver-hayes-brown",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            199837,
+            200505
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 200204,
+          "chars_after": 1985757,
+          "chars_before": 1985735,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "oliver-hayes-brown",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            199837,
+            200504
+          ]
+        },
+        {
+          "at": 404331,
+          "chars_after": 1985756,
+          "chars_before": 1985757,
+          "field": "_retired",
+          "key": "ollie-lord",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            403923,
+            404749
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 404428,
+          "chars_after": 1985778,
+          "chars_before": 1985756,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "ollie-lord",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            403923,
+            404748
+          ]
+        },
+        {
+          "at": 651537,
+          "chars_after": 1985777,
+          "chars_before": 1985778,
+          "field": "_retired",
+          "key": "oskar-baker",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            650961,
+            652055
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 651630,
+          "chars_after": 1985799,
+          "chars_before": 1985777,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "oskar-baker",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            650961,
+            652054
+          ]
+        },
+        {
+          "at": 610164,
+          "chars_after": 1985798,
+          "chars_before": 1985799,
+          "field": "_retired",
+          "key": "paddy-dow",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            609531,
+            610570
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 610255,
+          "chars_after": 1985820,
+          "chars_before": 1985798,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "paddy-dow",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            609531,
+            610569
+          ]
+        },
+        {
+          "at": 106104,
+          "chars_after": 1985819,
+          "chars_before": 1985820,
+          "field": "_retired",
+          "key": "patrick-said",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            105867,
+            106510
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 106196,
+          "chars_after": 1985841,
+          "chars_before": 1985819,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "patrick-said",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            105867,
+            106509
+          ]
+        },
+        {
+          "at": 1504555,
+          "chars_after": 1985840,
+          "chars_before": 1985841,
+          "field": "_retired",
+          "key": "rhys-stanley",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            1503389,
+            1504964
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 1504647,
+          "chars_after": 1985862,
+          "chars_before": 1985840,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "rhys-stanley",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1503389,
+            1504963
+          ]
+        },
+        {
+          "at": 39307,
+          "chars_after": 1985861,
+          "chars_before": 1985862,
+          "field": "_retired",
+          "key": "riley-onley",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            39070,
+            39714
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 39398,
+          "chars_after": 1985883,
+          "chars_before": 1985861,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "riley-onley",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            39070,
+            39713
+          ]
+        },
+        {
+          "at": 280861,
+          "chars_after": 1985882,
+          "chars_before": 1985883,
+          "field": "_retired",
+          "key": "robert-hansen",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            280454,
+            281287
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 280962,
+          "chars_after": 1985904,
+          "chars_before": 1985882,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "robert-hansen",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            280454,
+            281286
+          ]
+        },
+        {
+          "at": 849808,
+          "chars_after": 1985903,
+          "chars_before": 1985904,
+          "field": "_retired",
+          "key": "ryan-gardner",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            849230,
+            850223
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 849899,
+          "chars_after": 1985925,
+          "chars_before": 1985903,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "ryan-gardner",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            849230,
+            850222
+          ]
+        },
+        {
+          "at": 45984,
+          "chars_after": 1985924,
+          "chars_before": 1985925,
+          "field": "_retired",
+          "key": "ryda-luke",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            45750,
+            46411
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 46090,
+          "chars_after": 1985946,
+          "chars_before": 1985924,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "ryda-luke",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            45750,
+            46410
+          ]
+        },
+        {
+          "at": 526780,
+          "chars_after": 1985945,
+          "chars_before": 1985946,
+          "field": "_retired",
+          "key": "sam-sturt",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            526330,
+            527188
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 526873,
+          "chars_after": 1985967,
+          "chars_before": 1985945,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "sam-sturt",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            526330,
+            527187
+          ]
+        },
+        {
+          "at": 669438,
+          "chars_after": 1985966,
+          "chars_before": 1985967,
+          "field": "_retired",
+          "key": "sam-switkowski",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            668809,
+            669846
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 669531,
+          "chars_after": 1985988,
+          "chars_before": 1985966,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "sam-switkowski",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            668809,
+            669845
+          ]
+        },
+        {
+          "at": 1470931,
+          "chars_after": 1985987,
+          "chars_before": 1985988,
+          "field": "_retired",
+          "key": "steele-sidebottom",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            1469708,
+            1471345
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 1471026,
+          "chars_after": 1986009,
+          "chars_before": 1985987,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "steele-sidebottom",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1469708,
+            1471344
+          ]
+        },
+        {
+          "at": 1613492,
+          "chars_after": 1986008,
+          "chars_before": 1986009,
+          "field": "_retired",
+          "key": "taylor-walker",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            1612280,
+            1613900
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 1613584,
+          "chars_after": 1986030,
+          "chars_before": 1986008,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "taylor-walker",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1612280,
+            1613899
+          ]
+        },
+        {
+          "at": 1278920,
+          "chars_after": 1986029,
+          "chars_before": 1986030,
+          "field": "_retired",
+          "key": "thomas-liberatore",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            1277872,
+            1279452
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 1279028,
+          "chars_after": 1986051,
+          "chars_before": 1986029,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "thomas-liberatore",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1277872,
+            1279451
+          ]
+        },
+        {
+          "at": 180748,
+          "chars_after": 1986050,
+          "chars_before": 1986051,
+          "field": "_retired",
+          "key": "thomas-anastasopoulos",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            180496,
+            181164
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 180845,
+          "chars_after": 1986072,
+          "chars_before": 1986050,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "thomas-anastasopoulos",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            180496,
+            181163
+          ]
+        },
+        {
+          "at": 131009,
+          "chars_after": 1986071,
+          "chars_before": 1986072,
+          "field": "_retired",
+          "key": "tom-edwards",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            130713,
+            131393
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 131096,
+          "chars_after": 1986093,
+          "chars_before": 1986071,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "tom-edwards",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            130713,
+            131392
+          ]
+        },
+        {
+          "at": 1307708,
+          "chars_after": 1986092,
+          "chars_before": 1986093,
+          "field": "_retired",
+          "key": "tom-mcdonald",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            1306620,
+            1308218
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 1307801,
+          "chars_after": 1986114,
+          "chars_before": 1986092,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "tom-mcdonald",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            1306620,
+            1308217
+          ]
+        },
+        {
+          "at": 402488,
+          "chars_after": 1986113,
+          "chars_before": 1986114,
+          "field": "_retired",
+          "key": "tyler-brockman",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            402022,
+            402896
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 402580,
+          "chars_after": 1986135,
+          "chars_before": 1986113,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "tyler-brockman",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            402022,
+            402895
+          ]
+        },
+        {
+          "at": 105499,
+          "chars_after": 1986134,
+          "chars_before": 1986135,
+          "field": "_retired",
+          "key": "tyler-welsh",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            105261,
+            105907
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 105591,
+          "chars_after": 1986156,
+          "chars_before": 1986134,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "tyler-welsh",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            105261,
+            105906
+          ]
+        },
+        {
+          "at": 763219,
+          "chars_after": 1986155,
+          "chars_before": 1986156,
+          "field": "_retired",
+          "key": "tyson-stengle",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            762596,
+            763721
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 763309,
+          "chars_after": 1986177,
+          "chars_before": 1986155,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "tyson-stengle",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            762596,
+            763720
+          ]
+        },
+        {
+          "at": 702659,
+          "chars_after": 1986176,
+          "chars_before": 1986177,
+          "field": "_retired",
+          "key": "will-brodie",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            702029,
+            703073
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 702753,
+          "chars_after": 1986198,
+          "chars_before": 1986176,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "will-brodie",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            702029,
+            703072
+          ]
+        },
+        {
+          "at": 186920,
+          "chars_after": 1986197,
+          "chars_before": 1986198,
+          "field": "_retired",
+          "key": "will-lorenz",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            186567,
+            187338
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 187017,
+          "chars_after": 1986219,
+          "chars_before": 1986197,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "will-lorenz",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            186567,
+            187337
+          ]
+        },
+        {
+          "at": 195369,
+          "chars_after": 1986218,
+          "chars_before": 1986219,
+          "field": "_retired",
+          "key": "xavier-walsh",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            195130,
+            195907
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 195464,
+          "chars_after": 1986240,
+          "chars_before": 1986218,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "xavier-walsh",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            195130,
+            195906
+          ]
+        },
+        {
+          "at": 721489,
+          "chars_after": 1986239,
+          "chars_before": 1986240,
+          "field": "_retired",
+          "key": "zac-fisher",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            720745,
+            721901
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 721580,
+          "chars_after": 1986261,
+          "chars_before": 1986239,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "zac-fisher",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            720745,
+            721900
+          ]
+        },
+        {
+          "at": 141704,
+          "chars_after": 1986260,
+          "chars_before": 1986261,
+          "field": "_retired",
+          "key": "zac-walker",
+          "kind": "change",
+          "new": true,
+          "new_text": "\"_retired\": true",
+          "old": false,
+          "old_text": "\"_retired\": false",
+          "row_span": [
+            141470,
+            142254
+          ]
+        },
+        {
+          "anchor": "after '_draft_club'",
+          "at": 141806,
+          "chars_after": 1986282,
+          "chars_before": 1986260,
+          "exemplars": 214,
+          "field": "_last_listed",
+          "key": "zac-walker",
+          "kind": "add",
+          "new": 2026,
+          "new_text": ", \"_last_listed\": 2026",
+          "old": null,
+          "old_text": "",
+          "row_span": [
+            141470,
+            142253
+          ]
+        }
+      ],
+      "rows": 2652,
+      "rows_added": 0,
+      "rows_after": 2652,
+      "season_state": {
+        "calendar_progress": 1.0,
+        "exposure_pace": 0.909,
+        "fields_checked": 10,
+        "source_store_md5": "6d70c6b93e111c9c1eb398bf8e37295f"
+      },
+      "store_after": "6d70c6b93e111c9c1eb398bf8e37295f",
+      "store_before": "82aed8d1df509e0c2b5869fa72036295",
+      "written": true
+    },
+    "ui": {
+      "bundle_md5": "72612ded88246c76a09aa90cb0fa2844",
+      "club_valuation_md5": "c0aefa62da6dde17edf77aad6c981998",
+      "club_valuation_moved": true,
+      "club_valuation_pin": "159d3972",
+      "draft_outcomes_md5": "4dba35ead50a22d97f233f25c3585534",
+      "draft_outcomes_moved": true,
+      "draft_outcomes_pin": "6d70c6b9",
+      "embedded_board": "159d3972cdfa9b558b7a92547688192b",
+      "mirror_md5": "f86a45aa36697b91d29aacbee5eac3c6",
+      "mirror_moved": true,
+      "model_changes": 26,
+      "movers_md5": "aa2c19ed3b298e6e4041f41e144a4ee4",
+      "movers_moved": true,
+      "n_picks": 240,
+      "n_selections": 1568,
+      "ownership_md5": "689d12d7db7b0c07e75d7821e5994c6d",
+      "ownership_moved": true,
+      "ownership_pin": "6d70c6b9",
+      "public_md5": "a95aa0b100222d8a3cd52ac7370545d1",
+      "register_entries": 36,
+      "writers": 7
+    }
+  },
+  "failed_step": "gates",
+  "ok": false,
+  "timings": [
+    {
+      "seconds": 0.06,
+      "step": "preflight",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 6.54,
+      "step": "store_edit",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 423.64,
+      "step": "build_proofs",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.02,
+      "step": "pins",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.16,
+      "step": "lineage",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.07,
+      "step": "contract",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 202.38,
+      "step": "ui",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.14,
+      "step": "state",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 39.61,
+      "step": "gates",
+      "verdict": "FAIL"
+    }
+  ]
+}

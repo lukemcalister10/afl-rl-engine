@@ -1,0 +1,49 @@
+$ node ui/tests/release_seam.test.js
+
+v2.11 UI/RELEASE-SEAM — UI proof (real config.js / seam.js / main.js)
+  ------------------------------------------------------------------
+  [PASS] main.js: no hardcoded 'Round 17' display literal
+  [PASS] board.js: no hardcoded 'Round 17' display literal
+  [PASS] main.js exposes MD.releaseLabel / MD.roundLabel
+  [PASS] releaseLabel shows the contract version verbatim
+  [PASS] roundLabel shows the contract round verbatim
+  [PASS] releaseLabel: missing version -> neutral 'unversioned'
+  [PASS] roundLabel: missing round -> neutral 'Round —'
+  [PASS] releaseLabel: missing version is NEVER 'v2.10'
+  [PASS] roundLabel: missing round is NEVER 'Round 17'
+  [PASS] shipped bundle carries both a board_md5 and a board of record
+  [PASS] shipped bundle's stamp.board matches its own board_md5 (what ringFence authenticates)
+  [PASS] config.js carries NO hand-typed EXPECTED_BOARD pin (retired, issue #231)
+  [PASS] seam.js reads no EXPECTED_BOARD constant
+  [PASS] ring-fence ACCEPTS a bundle keyed by board_md5
+  [PASS] ring-fence ACCEPTS a legacy bundle keyed only by the srcmd5 alias
+  [PASS] ring-fence keys on board identity ONLY (store/balanced do not authenticate it)
+  [PASS] ring-fence REFUSES a board that disagrees with the board of record (fail-closed)
+  [PASS] ring-fence reports got/want for the fail-closed screen
+  [PASS] ring-fence's expectation comes from the bundle's board of record, not a pin
+  [PASS] ring-fence REFUSES a bundle carrying no board of record
+  [PASS] ring-fence REFUSES a stamp with neither identity (no ''===''  silent pass)
+  [PASS] ring-fence REFUSES a missing working bundle
+  [PASS] the REAL shipped bundle passes the ring-fence (the app renders)
+  [PASS] retroFor is retired — board.js no longer exposes the bake-delta seam
+  [PASS] board.js no longer reads the retro bundle at all
+  [PASS] board.js: no 'delta vs bake' / 'over free' display text survives
+  [PASS] card.js: no 'delta vs bake' / 'over free' display text survives
+  [PASS] board.js exposes roundDeltas (the Round Δ source)
+  [PASS] Round Δ is the LATEST report's round pair (23 vs 22), not an older report
+  [PASS] Round Δ carries the report's own value_change/prev/cur per player
+  [PASS] every player in the report is covered
+  [PASS] no weekly report -> roundDeltas is null (renders '—', never an invented 0)
+  [PASS] board.js hardcodes neither 968de0c7 nor 06d8af60
+  [PASS] the board publishes a pool index to compare against
+  [PASS] an applied override says so explicitly (`applied: true`), so a reader never has to infer it
+  [PASS] …and the published pool level IS the override's value
+  [PASS] …and the override correctly names the derived figure it supersedes — a ruling made against a number that has since moved must not be re-applied silently
+  [PASS] …and it carries whose override it is, in whose words, and when — an undocumented override on a served figure cannot be told apart from a bug
+  [PASS] …and it names the owner input it came from, so it can be found and deleted
+  [PASS] …and it is actually doing something (if it were a no-op it should be deleted, not kept)
+  [PASS] and NO curve ordinal other than the pool differs from the board — the override is display-only at one index, not a re-priced curve
+  ------------------------------------------------------------------
+  41/41 passed
+
+[exit 0]

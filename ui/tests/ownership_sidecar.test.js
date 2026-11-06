@@ -248,14 +248,24 @@ console.log("\nMOVERS — keyed rows, so ownership resolves without touching the
   const wKeys = {};
   (ctx.__MATCHDAY_WORKING__.players || []).forEach(p => { if (p.key) wKeys[p.key] = 1; });
   (ctx.__MATCHDAY_WORKING__.back || []).forEach(p => { if (p.key) wKeys[p.key] = 1; });
-  const orphan = Object.keys(movers.values || {}).filter(k => !wKeys[k]);
+  // A key off BOTH sections is a retiree the board does not value at all (a never-played player, so
+  // no back-section price): his record is keyed, so the keyed path still resolves him off his own
+  // affl_team. Anything off both sections that is NOT a retired store row is a real orphan.
+  const storeRetired = {};
+  JSON.parse(fs.readFileSync(path.join(ROOT, "engine/rl_after/rl_model_data.json"), "utf8"))
+    .forEach(r => { if (r.key && r._retired) storeRetired[r.key] = 1; });
+  const offBoard = Object.keys(movers.values || {}).filter(k => !wKeys[k]);
+  const orphan = offBoard.filter(k => !storeRetired[k]);
   check(orphan.length === 0,
-        "every movers record key exists on the working board (either section), so no mover row needs the name bridge",
-        orphan.length + " orphan(s)");
-  const k = Object.keys(movers.values)[0];
-  const row = { key: k, affl_team: movers.values[k].affl_team, name: movers.values[k].name };
-  check(ctx.MD.ownership.resolve(row).refused === false,
-        "a movers row resolves cleanly through the keyed path");
+        "every movers record key is on the working board (either section) or is a retired store row, so no mover row needs the name bridge",
+        orphan.length + " orphan(s) of " + offBoard.length + " off-board key(s)");
+  const refusedKeys = Object.keys(movers.values || {}).filter(k => {
+    const v = movers.values[k];
+    return ctx.MD.ownership.resolve({ key: k, affl_team: v.affl_team, name: v.name }).refused !== false;
+  });
+  check(refusedKeys.length === 0,
+        "EVERY movers row resolves cleanly through the keyed path (" + Object.keys(movers.values || {}).length + " rows)",
+        refusedKeys.slice(0, 5).join(", "));
 }
 
 /* ------------------------------------------------ 8 · positions must never appear in the live lane */
