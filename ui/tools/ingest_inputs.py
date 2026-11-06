@@ -689,6 +689,38 @@ def validate_csvs(board_by_nkey, affl_teams):
     if loc_dups or pos_dups:
         halt("ambiguous player name(s) in the input CSVs: %s" % (loc_dups + pos_dups))
 
+    # A LOCATIONS ROW OFF THE BOARD (2026-11-06, the courier's shape rule): the owner's sheet may
+    # carry a player delisted in real life who is still AFFL-owned — RETIRED in the store and not
+    # on the board. Such a row is admitted iff it maps to EXACTLY ONE store row by normalised name
+    # (the same rule ownership_store_apply.preflight applies; the courier wrote its affl_team into
+    # the store at step 0). It is then OUTSIDE every board join below — no positioning id, no board
+    # row, no mirror entry — because the mirrors are generated from the board's players and the
+    # store already carries the authorship. Anything else off the board still halts by name.
+    store_by_nkey = collections.defaultdict(list)
+    try:
+        for _r in json.load(open(STORE, encoding="utf-8")):
+            if _r.get("key"):
+                store_by_nkey[nkey(_r.get("player") or "")].append(_r)
+    except Exception as e:                                           # noqa: BLE001
+        halt("could not read the store for the off-board name join: %s" % e)
+    off_board, bad_off_board = [], []
+    for r in loc_rows:
+        if nkey(r[0]) in board_by_nkey:
+            continue
+        cands = store_by_nkey.get(nkey(r[0])) or []
+        if len(cands) == 1 and cands[0].get("_retired"):
+            off_board.append(r[0])
+        else:
+            bad_off_board.append((r[0], "no store row" if not cands else
+                                  ("%d store rows" % len(cands) if len(cands) > 1 else "not retired")))
+    check("every off-board Player_Locations name -> exactly ONE retired store row (delisted, still owned)",
+          not bad_off_board, "%d off the board admitted%s; refused: %s"
+          % (len(off_board), ("" if not off_board else " (%s)" % ", ".join(off_board[:6])),
+             bad_off_board or "none"))
+    if bad_off_board:
+        halt("player name(s) off the board fail the store join: %s" % bad_off_board)
+    loc_rows = [r for r in loc_rows if nkey(r[0]) in board_by_nkey]
+
     # every location name joins to exactly one stable id via positioning, and to exactly one board row
     unmatched_pos = [r[0] for r in loc_rows if nkey(r[0]) not in pos_by]
     unmatched_board = [r[0] for r in loc_rows if nkey(r[0]) not in board_by_nkey]

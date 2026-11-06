@@ -111,24 +111,44 @@ check("sam butler" in board_twins,
 # INDEPENDENT derivation (CSV `AFL Club` cell -> table -> store row by key) rather than against a
 # hard-coded 15 that the first apply would make stale. `plan.moves` is then true iff either half is.
 plan = OSA.preflight(REPO, verbose=False)
-check(plan.rows == [] and plan.md5_before == live_md5,
-      "re-running preflight on the applied tree moves 0 affl_team rows (the ownership half is a NO-OP)")
+check(plan.md5_before == live_md5, "preflight on the live tree reads the live store")
 _rows, _enc = OSA._readcsv(os.path.join(REPO, OSA.CSV_REL))
 _i_club = OSA._column_index(_rows[0], OSA.AFL_CLUB_COLUMN)
+_i_team = OSA._column_index(_rows[0], OSA.AFFL_TEAM_COLUMN)
 _bvw_by_name = {OSA.nkey(p["name"]): p["key"] for p in bvw["players"]}
 _store_by_key = {r["key"]: r for r in store_doc if r.get("key")}
 _known_afl = {r.get("afl_club") for r in store_doc if r.get("afl_club")}
-_expect_club = set()
+_expect_club, _expect_team = set(), set()
 for _r in _rows[1:]:
     if not _r or not _r[0].strip():
         continue
     _full = OSA.afl_club_from_sheet(_r[_i_club] if _i_club < len(_r) else "", _known_afl)
-    _k = _bvw_by_name[OSA.nkey(_r[0])]
+    # the same two-step join the courier makes: the board first, else exactly one store row by name
+    _k = _bvw_by_name.get(OSA.nkey(_r[0]))
+    if _k is None:
+        _cands = by_name.get(OSA.nkey(_r[0])) or []
+        check(len(_cands) == 1 and _store_by_key[_cands[0]].get("_retired") is True,
+              "off-board sheet row %r resolves to exactly one RETIRED store row (%s)" % (_r[0], _cands))
+        _k = _cands[0]
     if _full is not None and _store_by_key[_k].get("afl_club") != _full:
         _expect_club.add((_k, _store_by_key[_k].get("afl_club"), _full))
+    _team = _r[_i_team].strip() if _i_team < len(_r) else ""
+    if _store_by_key[_k].get("affl_team") != _team:
+        _expect_team.add((_k, _store_by_key[_k].get("affl_team"), _team))
+# BOTH HALVES are asserted against an independent derivation (2026-11-06): the affl_team half used
+# to be asserted a NO-OP on the applied tree, which stopped being true the day the owner's sheet
+# first carried a delisted-but-owned player (retired in the store, no affl_team yet) — a real
+# pending addition, not a defect.
+check({(k, c, n) for k, _nm, c, n in plan.rows} == _expect_team,
+      "the affl_team plan equals the independently derived (sheet != store) set — %d pending"
+      % len(_expect_team))
 check({(k, c, n) for k, _nm, c, n in plan.club_rows} == _expect_club,
       "the afl_club plan equals the independently derived (sheet != store) set — %d pending"
       % len(_expect_club))
+check(all((k, f) in plan.added for k, fs in plan.planned.items() for f in fs if f not in _store_by_key[k])
+      and all(f not in _store_by_key[k] for k, f in plan.added),
+      "every planned move onto a row that LACKS the field is recorded as an addition, and no other is "
+      "(%d addition(s))" % len(plan.added))
 check(plan.moves == bool(plan.rows or plan.club_rows)
       and (plan.md5_after == live_md5) == (not plan.moves),
       "the store md5 budges iff a planned move exists in either field")
@@ -290,18 +310,122 @@ try:
 finally:
     shutil.rmtree(d, ignore_errors=True)
 
+# ---------------------------------------------------------------- THE SHEET'S SHAPE (2026-11-06)
+# No longer "1 header + 804 players". The sheet may carry delisted-but-AFFL-owned players — retired
+# in the store, off the board — so the rule is: every sheet row maps to exactly ONE store row, every
+# board player is on the sheet, and a retired row on the sheet is written like any other (the field
+# ADDED when the row lacks it). Each clause fired in anger below.
+import csv as _csv                                                 # noqa: E402
+
+
+def _write_rows(path, rows, enc):
+    with open(path, "w", encoding=enc, newline="") as f:
+        _csv.writer(f).writerows(rows)
+
+
+def _rewrite_bvw(path, fn):
+    t = open(path, encoding="utf-8").read()
+    o = json.loads(t[t.index("{"):t.rindex("}") + 1])
+    fn(o)
+    open(path, "w", encoding="utf-8").write(t[:t.index("{")] + json.dumps(o) + t[t.rindex("}") + 1:])
+
+
 d, ws = sandbox()
 try:
     csvp = os.path.join(ws, OSA.CSV_REL)
     rows, enc = OSA._readcsv(csvp)
-    rows.pop()                                            # 803 players, not 804
-    with open(csvp, "w", encoding=enc, newline="") as f:
-        import csv as _csv
-        _csv.writer(f).writerows(rows)
+    gone = [r for r in rows[1:] if r and OSA.nkey(r[0]) in _bvw_by_name][0]   # a BOARD player's row
+    rows.remove(gone)
+    _write_rows(csvp, rows, enc)
     halts(lambda: OSA.preflight(ws, verbose=False),
-          "P4 HALTS when the CSV is not 1 header + 804 players", "CSV shape")
+          "P5 HALTS when an ACTIVE BOARD PLAYER is not on the sheet, naming him (%s)" % gone[0],
+          gone[0])
 finally:
     shutil.rmtree(d, ignore_errors=True)
+
+# a retired store row with a unique name, lacking affl_team and afl_club, not yet on the sheet
+_sheet_names = {OSA.nkey(r[0]) for r in _rows[1:] if r and r[0].strip()}
+_retired_unique = next(r for r in store_doc
+                       if r.get("_retired") and "affl_team" not in r and "afl_club" not in r
+                       and len(by_name[OSA.nkey(r["player"])]) == 1
+                       and OSA.nkey(r["player"]) not in _sheet_names)
+d, ws = sandbox()
+try:
+    csvp = os.path.join(ws, OSA.CSV_REL)
+    rows, enc = OSA._readcsv(csvp)
+    i_team = OSA._column_index(rows[0], OSA.AFFL_TEAM_COLUMN)
+    i_club = OSA._column_index(rows[0], OSA.AFL_CLUB_COLUMN)
+    new = [""] * len(rows[0])
+    new[0], new[i_team], new[i_club] = _retired_unique["player"], "Free agents", ""   # club BLANK
+    rows.append(new)
+    _write_rows(csvp, rows, enc)
+    plan = OSA.preflight(ws, verbose=False)
+    k = _retired_unique["key"]
+    check((k, _retired_unique["player"]) in plan.off_board,
+          "a RETIRED store row on the sheet (%s) is admitted, resolved off the board to its one store row" % k)
+    check((k, _retired_unique["player"], None, "Free agents") in plan.rows and (k, "affl_team") in plan.added,
+          "...its affl_team is PLANNED as an ADDITION (the row lacked the field)")
+    check(not any(kk == k for kk, _n, _c, _nw in plan.club_rows) and (k, "afl_club") not in plan.added,
+          "...and its BLANK AFL Club adds nothing — blank means unchanged, and an absent field stays absent")
+    staged = {r["key"]: r for r in json.loads(plan.store_new)}
+    check(list(staged[k])[-1] == "affl_team" and staged[k]["affl_team"] == "Free agents"
+          and list(staged[k])[:-1] == list(_retired_unique),
+          "the staged row carries affl_team as its LAST field, every other field in place")
+    n = OSA.assert_store_diff_is_planned_only(plan.store_raw, plan.store_new, plan.planned, added=plan.added)
+    check(n >= 1, "the T2 diff proof PASSES with the addition declared (%d substitutions)" % n)
+    halts(lambda: OSA.assert_store_diff_is_planned_only(plan.store_raw, plan.store_new, plan.planned),
+          "...and REFUSES the same bytes when the addition is NOT declared", "does not declare")
+    check("added" in plan.fields_written,
+          "fields_written names the addition for the register entry (%s)" % plan.fields_written)
+finally:
+    shutil.rmtree(d, ignore_errors=True)
+
+d, ws = sandbox()
+try:
+    # Sam Butler: one on the board (sam-butler-1), one retired (sam-butler). Take the board one off
+    # the board and his sheet row is off-board with TWO store rows: ambiguous, never a coin flip.
+    _rewrite_bvw(os.path.join(ws, OSA.BVW_REL),
+                 lambda o: o.__setitem__("players", [p for p in o["players"] if p["key"] != "sam-butler-1"]))
+    halts(lambda: OSA.preflight(ws, verbose=False),
+          "P5 HALTS on an off-board name that matches MORE THAN ONE store row (Sam Butler)", "MORE THAN ONE")
+finally:
+    shutil.rmtree(d, ignore_errors=True)
+
+d, ws = sandbox()
+try:
+    # an ACTIVE store row that is not on the board is an incoherent tree, not a delisted player
+    _unique_active = next(p for p in bvw["players"] if len(by_name[OSA.nkey(p["name"])]) == 1)
+    _rewrite_bvw(os.path.join(ws, OSA.BVW_REL),
+                 lambda o: o.__setitem__("players", [p for p in o["players"] if p["key"] != _unique_active["key"]]))
+    halts(lambda: OSA.preflight(ws, verbose=False),
+          "P5 HALTS when an off-board sheet row resolves to a store row that is NOT retired", "NOT retired")
+finally:
+    shutil.rmtree(d, ignore_errors=True)
+
+d, ws = sandbox()
+try:
+    csvp = os.path.join(ws, OSA.CSV_REL)
+    rows, enc = OSA._readcsv(csvp)
+    rows.append(list(rows[1]))                            # the same name twice
+    _write_rows(csvp, rows, enc)
+    halts(lambda: OSA.preflight(ws, verbose=False),
+          "P4 HALTS when the sheet names a player twice", "more than once")
+finally:
+    shutil.rmtree(d, ignore_errors=True)
+
+mutated4 = copy.deepcopy(store_doc)
+_lack = next(r for r in mutated4 if "affl_team" not in r)
+_lack["affl_team"] = "Free agents"
+halts(lambda: OSA.assert_store_diff_is_planned_only(store_raw, json.dumps(mutated4).encode(), {}),
+      "the two-field diff proof REJECTS an added field nobody planned", "does not declare")
+mutated5 = copy.deepcopy(store_doc)
+_lack5 = next(r for r in mutated5 if "affl_team" not in r)
+_lack5["games"] = _lack5.get("games")                     # re-set in place: no change
+_lack5["_osa_test"] = 1
+halts(lambda: OSA.assert_store_diff_is_planned_only(
+          store_raw, json.dumps(mutated5).encode(), {_lack5["key"]: {"_osa_test": 1}},
+          added={(_lack5["key"], "_osa_test")}),
+      "...and REJECTS adding a NON-couriered field even when 'planned'", "adds affl_team and afl_club only")
 
 # ---------------------------------------------------------------- P8 can fail
 # Reformatting the store also moves its md5, so P3 (coherence) fires FIRST — which is the correct guard

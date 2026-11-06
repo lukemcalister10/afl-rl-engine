@@ -247,7 +247,7 @@ class LiveTreePlan(unittest.TestCase):
             self.assertNotEqual(cur, new)
         # and the staged bytes are exactly old + the plan (the T2 proof, run on the live plan)
         n = OSA.assert_store_diff_is_planned_only(self.live.store_raw, self.live.store_new,
-                                                  self.live.planned)
+                                                  self.live.planned, added=self.live.added)
         self.assertEqual(n, len(self.live.rows) + len(self.live.club_rows))
 
 

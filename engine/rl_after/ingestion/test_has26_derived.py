@@ -51,7 +51,11 @@ class Has26Derived(unittest.TestCase):
         cls.src = open(RL_MODEL, encoding='utf-8').read()
 
     def test_the_store_is_the_expected_size(self):
-        self.assertEqual(len(self.rows), 2650)
+        # 2,650 at the 2026-10-13 measurement. The store-edit lane's `add_row` verb (2026-11-06)
+        # appends rows and never removes one, so the count is a FLOOR, not a pin; every added row
+        # must still carry `_has26` (it is in the lane's measured REQUIRED key set), which is the
+        # assertion this test actually exists for.
+        self.assertGreaterEqual(len(self.rows), 2650)
         self.assertTrue(all('_has26' in p for p in self.rows))
 
     def test_the_flag_is_a_subset_of_has_a_2026_row(self):

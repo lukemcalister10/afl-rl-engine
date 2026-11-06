@@ -68,6 +68,24 @@ shared with `affl_team`: one transaction, two fields, each row's moves attribute
 The shipped board's `club` catches up at the next engine build (rl_export reads the store then);
 the board does not move here.
 
+THE SHEET'S SHAPE (2026-11-06, replacing "805 lines = 1 header + 804 players").  The owner's sheet
+legitimately carries players delisted in real life who are still AFFL-owned: they are RETIRED in the
+store (`_retired: true`, not on the board) and keep an AFFL team.  So the shape rule is no longer
+"the sheet IS the board".  It is three facts, each asserted at preflight and each a HALT by name:
+  * EVERY SHEET ROW MAPS TO EXACTLY ONE STORE ROW by name — through the board (name -> board player
+    -> key, the twin-safe join above) when the name is on the board, else DIRECTLY to the store
+    rows by normalised name, which must find exactly one (a retired name-twin pair is ambiguous and
+    halts; a name nowhere in the store halts).
+  * EVERY ACTIVE BOARD PLAYER IS ON THE SHEET — the owner authors ownership for the whole board.
+  * A RETIRED STORE ROW ON THE SHEET IS WRITTEN LIKE ANY OTHER: its `affl_team` takes the sheet's
+    bytes, and its `AFL Club` blank means unchanged.
+A row that LACKS a couriered field (1,846 of the 2,650 rows carry neither affl_team nor afl_club —
+every retired row, and these are the rows now admitted) has the field ADDED, appended as the row's
+LAST field (`row[field] = v; json.dumps` — the store's own writer's placement, under the P8
+serializer identity the whole file is held to).  The T2 diff proof names every added (key, field)
+pair and refuses any addition the plan did not declare.  A blank `AFL Club` on such a row adds
+nothing — blank means unchanged, and "unchanged" on an absent field is "still absent".
+
 CLI:
   python3 ui/tools/ownership_store_apply.py preflight   # read-only: gates + the plan, no writes
   python3 ui/tools/ownership_store_apply.py check       # read-only: the plan; exit 1 if anything is
@@ -244,10 +262,16 @@ def _column_index(header, name):
 # ------------------------------------------------------------------ preflight (P1-P8, reads only)
 class Plan(object):
     def __init__(self, rows, store_raw, store_new, md5_before, md5_after, board_md5, csv_encoding,
-                 root=None, club_rows=None):
+                 root=None, club_rows=None, added=None, off_board=None):
         self.root = root                  # the LIVE repo root, so validation can compare against it
         self.rows = rows                  # affl_team: [(key, name, from_club, to_club)]
         self.club_rows = list(club_rows or [])   # afl_club: [(key, name, from_club, to_club)]
+        # (key, field) pairs the plan ADDS to a row that lacks the field (2026-11-06); the T2 diff
+        # proof admits exactly these additions and no other change to any row's field set.
+        self.added = set(added or ())
+        # sheet rows resolved to a store row that is NOT on the board (retired, still AFFL-owned):
+        # [(key, name)]. Their moves land in the store and are invisible to the board mirrors.
+        self.off_board = list(off_board or [])
         self.store_raw = store_raw
         self.store_new = store_new
         self.md5_before = md5_before
@@ -273,12 +297,13 @@ class Plan(object):
 
     @property
     def fields_written(self):
-        """'affl_team (18 rows), afl_club (15 rows)' — the transition entry's invariant, computed."""
+        """'affl_team (18 rows, 1 added), afl_club (15 rows)' — the transition entry's invariant,
+        computed. An ADDED field is a row that lacked it and now carries it (2026-11-06)."""
         parts = []
-        if self.rows:
-            parts.append("affl_team (%d rows)" % len(self.rows))
-        if self.club_rows:
-            parts.append("afl_club (%d rows)" % len(self.club_rows))
+        for field, rows in (("affl_team", self.rows), ("afl_club", self.club_rows)):
+            if rows:
+                n_add = sum(1 for k, _n, _c, _nw in rows if (k, field) in self.added)
+                parts.append("%s (%d rows%s)" % (field, len(rows), (", %d added" % n_add) if n_add else ""))
         return ", ".join(parts) or "none"
 
 
@@ -359,39 +384,78 @@ def preflight(root, verbose=True):
         % (len(players), board_md5[:8]))
 
     # -- P4 the CSV ----------------------------------------------------------------------------
+    # THE SHAPE RULE (2026-11-06): no longer "805 lines = 1 header + 804 players". The sheet may
+    # carry delisted-but-AFFL-owned players (retired in the store, off the board), so its row count
+    # is not the board's. What is asserted instead: at least one data row, no name twice, and — at
+    # P5 — every sheet row maps to exactly one store row and every board player is on the sheet.
     rows, enc = _readcsv(p(CSV_REL))
     body = [r for r in rows[1:] if r and r[0].strip()]
-    if len(rows) != 805 or len(body) != 804:
-        raise Halt("CSV shape: expected 805 lines = 1 header + 804 players, got %d lines / %d data rows"
-                   % (len(rows), len(body)))
-    out("  [P4] CSV %s · %d lines = 1 header + %d players (CRLF preserved, never 'fixed')"
-        % (enc, len(rows), len(body)))
+    if not rows or not body:
+        raise Halt("CSV shape: expected a header line and at least one data row, got %d lines / %d "
+                   "data rows" % (len(rows), len(body)))
+    dup_names = sorted(n for n, c in collections.Counter(nkey(r[0]) for r in body).items() if c > 1)
+    if dup_names:
+        raise Halt("CSV names a player more than once (normalised): %s — the sheet cannot author two "
+                   "ownerships for one row" % dup_names)
+    out("  [P4] CSV %s · %d lines = 1 header + %d authored rows, no name twice (CRLF preserved, "
+        "never 'fixed')" % (enc, len(rows), len(body)))
 
     # -- P5 the join: CSV name -> board player -> key -> store row BY KEY -----------------------
     # The two couriered columns are located BY HEADER NAME (the owner's sheet is a spreadsheet
     # export; a re-ordered column must not become a silent club swap). Player name stays column 0.
+    # A name NOT on the board (2026-11-06) resolves DIRECTLY to the store rows by normalised name,
+    # which must find EXACTLY ONE: that is a retired, still-owned player. Two store rows (a retired
+    # name-twin pair) is ambiguous and halts; none halts. The board join still comes first, so a
+    # board player with a retired name-twin keeps resolving to the board's key, as it always did.
     i_team = _column_index(rows[0], AFFL_TEAM_COLUMN)
     i_club = _column_index(rows[0], AFL_CLUB_COLUMN)
-    unmatched, no_store_row = [], []
-    resolved = []
+    store_by_name = collections.defaultdict(list)
+    for r in store_doc:
+        if r.get("key"):
+            store_by_name[nkey(r.get("player") or "")].append(r["key"])
+    unmatched, ambiguous_store, no_store_row = [], [], []
+    resolved, off_board = [], []
     for r in body:
         k = nkey(r[0])
         m = bb.get(k)
-        if not m:
-            unmatched.append(r[0])
-            continue
-        key = m[0]["key"]
-        if key not in by_key:
-            no_store_row.append((r[0], key))
-            continue
+        if m:
+            key = m[0]["key"]
+            if key not in by_key:
+                no_store_row.append((r[0], key))
+                continue
+        else:
+            cands = store_by_name.get(k) or []
+            if not cands:
+                unmatched.append(r[0])
+                continue
+            if len(cands) > 1:
+                ambiguous_store.append((r[0], sorted(cands)))
+                continue
+            key = cands[0]
+            off_board.append((key, r[0]))
         club_cell = r[i_club] if i_club < len(r) else ""
         resolved.append((key, r[0], r[i_team].strip(), club_cell))
-    if unmatched or no_store_row:
+    if unmatched or no_store_row or ambiguous_store:
         raise Halt("NAME JOIN FAILED (validate-or-halt; never widened to fuzzy matching)\n"
-                   "    unmatched in the board universe: %s\n"
-                   "    board key absent from the store : %s" % (unmatched or "none", no_store_row or "none"))
-    out("  [P5] join by key — 0 unmatched, 0 board keys missing from the store, %d resolved"
-        % len(resolved))
+                   "    in neither the board nor the store : %s\n"
+                   "    off the board, MORE THAN ONE store row: %s\n"
+                   "    board key absent from the store     : %s"
+                   % (unmatched or "none", ambiguous_store or "none", no_store_row or "none"))
+    sheet_names = {nkey(r[0]) for r in body}
+    missing_board = sorted(pl["name"] for pl in players if nkey(pl["name"]) not in sheet_names)
+    if missing_board:
+        raise Halt("SHEET COVERAGE: %d active board player(s) are not on the sheet: %s. The owner "
+                   "authors ownership for the whole board; a board player the sheet does not name "
+                   "has no authored ownership to courier." % (len(missing_board), missing_board[:10]))
+    out("  [P5] join by key — %d resolved: %d through the board (all %d board players on the sheet), "
+        "%d off the board to exactly one store row each%s"
+        % (len(resolved), len(resolved) - len(off_board), len(players), len(off_board),
+           "" if not off_board else " (%s)" % ", ".join("%s=%s" % (n, k) for k, n in off_board[:6])))
+    for key, _name in off_board:
+        if not by_key[key].get("_retired"):
+            raise Halt("sheet row %r resolves off the board to store row %r, which is NOT retired — an "
+                       "active store row that is not on the board is an incoherent tree, not a "
+                       "delisted-but-owned player" % (_name, key))
 
     # -- P6 club spellings ---------------------------------------------------------------------
     known = {pl.get("affl_team") for pl in players if pl.get("affl_team")}
@@ -414,20 +478,25 @@ def preflight(root, verbose=True):
         if full is not None and "afl_club" not in by_key[key]:
             no_field.append((key, name))
         club_resolved.append((key, name, full))
-    if no_field:
-        raise Halt("AFL Club authored for %d row(s) whose store row carries NO afl_club field: %s. "
-                   "The courier moves a field it finds; it never adds one (the field set is asserted "
-                   "unchanged by the diff proof)." % (len(no_field), no_field[:8]))
     n_blank = sum(1 for _, _, f in club_resolved if f is None)
     out("  [P6b] AFL Club column — %d authored, %d blank (= unchanged); targets asserted against the "
-        "store's %d afl_club spellings" % (len(club_resolved) - n_blank, n_blank, len(known_afl)))
+        "store's %d afl_club spellings%s"
+        % (len(club_resolved) - n_blank, n_blank, len(known_afl),
+           "" if not no_field else "; %d authored for a row that LACKS afl_club — the field is ADDED "
+                                   "(%s)" % (len(no_field), ", ".join(k for k, _n in no_field[:6]))))
 
     # -- P7 the exact-byte plan ----------------------------------------------------------------
-    plan_rows = []
+    # A row that LACKS the couriered field (2026-11-06: the retired rows the sheet now admits, and
+    # an un-retired row the store-edit lane gave no club) has it ADDED — `row[field] = v` appends it
+    # as the row's LAST field, which is where the store's own writer puts a new key. Every such
+    # addition is recorded in `added` and the T2 diff proof admits exactly those.
+    plan_rows, added = [], set()
     for key, name, new_club, _cell in resolved:
         cur = by_key[key].get("affl_team")
         if cur != new_club:
             plan_rows.append((key, name, cur, new_club))
+            if "affl_team" not in by_key[key]:
+                added.add((key, "affl_team"))
     plan_rows.sort()
     club_rows = []
     for key, name, full in club_resolved:
@@ -436,6 +505,8 @@ def preflight(root, verbose=True):
         cur = by_key[key].get("afl_club")
         if cur != full:
             club_rows.append((key, name, cur, full))
+            if "afl_club" not in by_key[key]:
+                added.add((key, "afl_club"))
     club_rows.sort()
 
     for key, _name, _cur, new_club in plan_rows:
@@ -445,18 +516,24 @@ def preflight(root, verbose=True):
     store_new = json.dumps(store_doc).encode()
     md5_after = _md5_bytes(store_new)
 
-    out("  [P7] plan — affl_team: %d of %d authored rows move (of %d store rows; %d carry affl_team)"
-        % (len(plan_rows), len(body), len(store_doc), sum(1 for r in store_doc if "affl_team" in r)))
+    out("  [P7] plan — affl_team: %d of %d authored rows move (of %d store rows; %d carry affl_team; "
+        "%d of the moves ADD the field)"
+        % (len(plan_rows), len(body), len(store_doc), sum(1 for r in store_doc if "affl_team" in r),
+           sum(1 for k, _n, _c, _nw in plan_rows if (k, "affl_team") in added)))
     for key, name, cur, new in plan_rows:
-        out("         %-24s %-24s %-26s -> %s" % (key, name, cur, new))
-    out("  [P7] plan — afl_club: %d of %d authored rows move (%d pending; blank rows untouched)"
-        % (len(club_rows), len(club_resolved) - n_blank, len(club_rows)))
+        out("         %-24s %-24s %-26s -> %s%s" % (key, name, cur, new,
+                                                   "   (ADDED)" if (key, "affl_team") in added else ""))
+    out("  [P7] plan — afl_club: %d of %d authored rows move (%d pending; blank rows untouched; %d of "
+        "the moves ADD the field)"
+        % (len(club_rows), len(club_resolved) - n_blank, len(club_rows),
+           sum(1 for k, _n, _c, _nw in club_rows if (k, "afl_club") in added)))
     for key, name, cur, new in club_rows:
-        out("         %-24s %-24s %-26s -> %s" % (key, name, cur, new))
+        out("         %-24s %-24s %-26s -> %s%s" % (key, name, cur, new,
+                                                   "   (ADDED)" if (key, "afl_club") in added else ""))
     out("  [--] store md5 %s -> %s%s" % (md5_before[:8], md5_after[:8],
                                          "  (NO-OP)" if md5_before == md5_after else ""))
     return Plan(plan_rows, store_raw, store_new, md5_before, md5_after, board_md5, enc, root=root,
-                club_rows=club_rows)
+                club_rows=club_rows, added=added, off_board=off_board)
 
 
 # ------------------------------------------------------------------------------- the diff proof
@@ -492,21 +569,37 @@ def assert_store_diff_is_affl_team_only(old_bytes, new_bytes, expect_keys):
     return len(moved)
 
 
-def assert_store_diff_is_planned_only(old_bytes, new_bytes, planned):
+def assert_store_diff_is_planned_only(old_bytes, new_bytes, planned, added=()):
     """T2, two-field form. `planned` is {key: {field: new}} (Plan.planned). Structural, key-by-key
     over every store row: ONLY the couriered fields, ONLY on the planned (key, field) pairs, with
-    EXACTLY the planned value, every other field byte-identical, row count and order and field set
-    unmoved. Then byte-attribution: the old document plus only those substitutions must reproduce
+    EXACTLY the planned value, every other field byte-identical, row count and order unmoved, and
+    the field set unmoved EXCEPT for the (key, field) pairs in `added` (2026-11-06): a planned
+    addition appears as the row's LAST field(s), in plan order, and nothing else may join or leave
+    any row. Then byte-attribution: the old document plus only those substitutions must reproduce
     the new bytes exactly. Returns the number of (key, field) substitutions proven."""
     old, new = json.loads(old_bytes), json.loads(new_bytes)
+    added = set(added)
     if len(old) != len(new):
         raise Halt("store row count moved: %d -> %d" % (len(old), len(new)))
     moved = set()
     for a, b in zip(old, new):
         if a.get("key") != b.get("key"):
             raise Halt("store row order moved at key %r / %r" % (a.get("key"), b.get("key")))
-        if list(a.keys()) != list(b.keys()):
+        extra = list(b.keys())[len(a):]
+        if list(b.keys())[:len(a)] != list(a.keys()) or any(f in a for f in extra):
             raise Halt("store row %r field set moved" % a.get("key"))
+        for f in extra:
+            if f not in COURIERED_FIELDS:
+                raise Halt("store row %r field set moved: ADDED %r — this job adds %s only"
+                           % (a.get("key"), f, " and ".join(COURIERED_FIELDS)))
+            if (a.get("key"), f) not in added:
+                raise Halt("store row %r field set moved: ADDED %r, which the plan does not declare "
+                           "as an addition" % (a.get("key"), f))
+            want = (planned.get(a.get("key")) or {})
+            if f not in want or b[f] != want[f]:
+                raise Halt("store diff added %r = %r on row %r; the plan says %r"
+                           % (f, b[f], a.get("key"), want.get(f)))
+            moved.add((a.get("key"), f))
         for f in a:
             if a[f] != b[f]:
                 if f not in COURIERED_FIELDS:
@@ -521,6 +614,10 @@ def assert_store_diff_is_planned_only(old_bytes, new_bytes, planned):
                                % (b[f], f, a.get("key"), want[f]))
                 moved.add((a.get("key"), f))
     expect = {(k, f) for k, fs in planned.items() for f in fs}
+    if not added <= expect:
+        raise Halt("the plan declares additions it does not plan: %s" % sorted(added - expect))
+    if not added <= moved:
+        raise Halt("planned addition(s) did not land: %s" % sorted(added - moved))
     if moved != expect:
         raise Halt("store diff (key, field) set %s != planned %s" % (sorted(moved), sorted(expect)))
     reapplied = json.loads(old_bytes)
@@ -765,9 +862,11 @@ def apply(root=None, verbose=True):
         out("  [T1] store written — %s -> %s" % (plan.md5_before[:8], plan.md5_after[:8]))
 
         # T2 the diff proof — both couriered fields, each move attributed to its field
-        n = assert_store_diff_is_planned_only(plan.store_raw, plan.store_new, plan.planned)
-        out("  [T2] store diff proof — %s; exactly %d planned (key, field) substitutions; "
-            "byte-attribution OK" % (plan.fields_written, n))
+        n = assert_store_diff_is_planned_only(plan.store_raw, plan.store_new, plan.planned,
+                                              added=plan.added)
+        out("  [T2] store diff proof — %s; exactly %d planned (key, field) substitutions (%d of them "
+            "additions to rows that lacked the field); byte-attribution OK"
+            % (plan.fields_written, n, len(plan.added)))
 
         # T3 the pin moves
         restamp_manifest(w(BOOT_REL), plan.md5_after)
@@ -953,7 +1052,19 @@ def _validate_overlay(ws, plan, out):
     # carry the display form. `_mirror_club` collapses exactly one documented casing pair and nothing
     # else, so a mirror that genuinely failed to take a move still fails here — this is consistency,
     # not leniency, and the "free-agent spelling forked in the mirror" assertion below is unchanged.
+    # An OFF-BOARD row (retired, still owned — 2026-11-06) has no board_view row and no mirror row
+    # by construction: both are generated from the board's players. Its move is asserted on the
+    # staged STORE below instead, and it must NOT have appeared in either mirror.
+    off_board = {k for k, _n in plan.off_board}
+    staged_store = json.loads(open(w(STORE_REL), "rb").read())
+    staged_by_key = {r.get("key"): r for r in staged_store if r.get("key")}
     for key, name, _cur, new in plan.rows:
+        if key in off_board:
+            if key in by_key or key in own["byKey"]:
+                fails.append("off-board row %s (%s) appeared in a board mirror" % (key, name))
+            if staged_by_key.get(key, {}).get("affl_team") != new:
+                fails.append("staged store did not take the affl_team move for off-board %s" % key)
+            continue
         if _mirror_club(by_key.get(key, {}).get("affl_team")) != _mirror_club(new):
             fails.append("board_view_working did not take the move for %s" % key)
         if _mirror_club(own["byKey"].get(key)) != _mirror_club(new):
@@ -961,8 +1072,6 @@ def _validate_overlay(ws, plan, out):
     # THE STAGED STORE CARRIES THE afl_club MOVES, and the AFL club universe did not grow: the
     # targets were asserted against the live store's spellings at P6b, so the staged store's set
     # must be a subset of the live one (a club can empty out; a new spelling cannot appear).
-    staged_store = json.loads(open(w(STORE_REL), "rb").read())
-    staged_by_key = {r.get("key"): r for r in staged_store if r.get("key")}
     for key, _name, _cur, new in plan.club_rows:
         if staged_by_key.get(key, {}).get("afl_club") != new:
             fails.append("staged store did not take the afl_club move for %s" % key)

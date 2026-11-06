@@ -105,6 +105,18 @@ REQUIRED_EDIT_FIELDS = ('key', 'field', 'old', 'new')
 REQUIRED_ADD_FIELDS = ('key', 'field', 'add')
 _ADD_FIELD = re.compile(r'^[A-Za-z_][A-Za-z0-9_]*$')
 
+#: THE SEASON ADD (2026-11-06): {key, field: "scoring[Y]", add: {season object}} puts a WHOLE season
+#: on a row that carries none for Y — the one container the lane writes, because un-retiring a row
+#: means giving it the current season every active row carries. The validator can check the SHAPE
+#: (an object, scalar values, `year` == Y); the KEY SET is measured off the store's own season
+#: objects at apply time (`steps._season_shape`), which is where the store is.
+_SEASON_ADD_FIELD = re.compile(r'^scoring\[(\d{4})\]$')
+
+#: THE ROW ADD (2026-11-06): {add_row: {row object}} appends a NEW row to the store. The entry
+#: carries the row and nothing else; the row carries a string `key`; whether that key is new, and
+#: whether its key set is one the store's rows admit, is measured at apply time (`steps._row_shape`).
+REQUIRED_ADD_ROW_FIELDS = ('add_row',)
+
 
 class SpecError(RuntimeError):
     """A spec that cannot be trusted to describe the act. Never partially accepted."""
@@ -306,8 +318,20 @@ def _validate_edit(doc):
         seen = set()
         for i, e in enumerate(rows):
             if not isinstance(e, dict):
-                bad.append('edit.store[%d] must be an object with %s (a change) or %s (an add)'
-                           % (i, ', '.join(REQUIRED_EDIT_FIELDS), ', '.join(REQUIRED_ADD_FIELDS)))
+                bad.append('edit.store[%d] must be an object with %s (a change), %s (an add) or '
+                           '%s (a row add)' % (i, ', '.join(REQUIRED_EDIT_FIELDS),
+                                               ', '.join(REQUIRED_ADD_FIELDS),
+                                               ', '.join(REQUIRED_ADD_ROW_FIELDS)))
+                continue
+            if 'add_row' in e:
+                bad.extend(_validate_add_row(i, e))
+                row = e.get('add_row')
+                k = row.get('key') if isinstance(row, dict) else None
+                if k is not None:
+                    if ('row', k) in seen:
+                        bad.append('edit.store declares add_row %r twice. The lane never writes "the '
+                                   'second one".' % k)
+                    seen.add(('row', k))
                 continue
             if 'add' in e:
                 bad.extend(_validate_add(i, e))
@@ -376,14 +400,52 @@ def _validate_add(i, e):
         if k not in e:
             bad.append('edit.store[%d].%s is required for an add' % (i, k))
     f = e.get('field')
+    sm = _SEASON_ADD_FIELD.match(f) if isinstance(f, str) else None
+    if sm:
+        # THE SEASON ADD: the value is the season OBJECT, scalar-valued, and says the year the path
+        # says. (`scoring[Y].x` — a field INSIDE a season — is still refused below: that is the
+        # change verb's path, and an add never reaches inside a season it did not create.)
+        v = e.get('add')
+        if 'add' in e and not isinstance(v, dict):
+            bad.append('edit.store[%d].add must be the season OBJECT to insert at %s, not %s'
+                       % (i, f, type(v).__name__))
+        elif 'add' in e:
+            if any(isinstance(x, (dict, list)) for x in v.values()):
+                bad.append('edit.store[%d].add: a season object carries scalar values only' % i)
+            if 'year' not in v or isinstance(v.get('year'), bool) or v.get('year') != int(sm.group(1)):
+                bad.append('edit.store[%d].add.year must be %s, the year the field path names (got %r)'
+                           % (i, sm.group(1), v.get('year')))
+        return bad
     if 'field' in e and (not isinstance(f, str) or not _ADD_FIELD.match(f)):
-        bad.append('edit.store[%d].field %r is not a flat JSON key name (%s). An add puts a '
-                   'TOP-LEVEL field on the row; a season path (`scoring[Y].x`) is not one — an add '
-                   'never reaches inside a container.' % (i, f, _ADD_FIELD.pattern))
+        bad.append('edit.store[%d].field %r is not a flat JSON key name (%s) or a season (`scoring[Y]`). '
+                   'An add puts a TOP-LEVEL field or a WHOLE season on the row; a season path '
+                   '(`scoring[Y].x`) is neither — an add never reaches inside a container it did not '
+                   'create.' % (i, f, _ADD_FIELD.pattern))
     if 'add' in e and isinstance(e['add'], (dict, list)):
         bad.append('edit.store[%d].add must be a JSON SCALAR (string, number, boolean, null), not %s '
-                   '— a container\'s on-disk serialization is not the lane\'s to assume.'
+                   '— a container\'s on-disk serialization is not the lane\'s to assume (a whole '
+                   'season is the one exception, under field `scoring[Y]`).'
                    % (i, type(e['add']).__name__))
+    return bad
+
+
+def _validate_add_row(i, e):
+    """The ROW ADD's shape: {add_row: {row}} and nothing else. -> [problems]."""
+    bad = []
+    extra = sorted(set(e) - set(REQUIRED_ADD_ROW_FIELDS))
+    if extra:
+        bad.append('edit.store[%d] declares `add_row` AND %s. One entry is one verb: a row add names '
+                   'no existing row and asserts no value.' % (i, extra))
+    row = e.get('add_row')
+    if not isinstance(row, dict):
+        bad.append('edit.store[%d].add_row must be the row OBJECT to append, not %s'
+                   % (i, type(row).__name__))
+        return bad
+    if not isinstance(row.get('key'), str) or not row.get('key'):
+        bad.append('edit.store[%d].add_row must carry a non-empty string `key`' % i)
+    if not isinstance(row.get('scoring'), list) or any(not isinstance(s, dict) for s in row['scoring']):
+        bad.append('edit.store[%d].add_row must carry `scoring` as a list of season objects (an '
+                   'empty list is a row that has not played)' % i)
     return bad
 
 

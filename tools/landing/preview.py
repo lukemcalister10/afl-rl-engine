@@ -193,6 +193,12 @@ def dry_run(root, doc, keep=False, report=None, log=None):
             if a.get('kind') == 'add':
                 out('    %-28s %-18s ADD %s   (%s, as %d exemplar row(s) carry it)'
                     % (a['key'], a['field'], json.dumps(a['new']), a['anchor'], a['exemplars']))
+            elif a.get('kind') == 'add_season':
+                out('    %-28s %-18s ADD SEASON %s   (%s, in the key order of %d season object(s))'
+                    % (a['key'], a['field'], json.dumps(a['new']), a['anchor'], a['exemplars']))
+            elif a.get('kind') == 'add_row':
+                out('    %-28s %-18s ADD ROW   (%s; %d existing row(s) use exactly this order)'
+                    % (a['key'], '(new row)', a['anchor'], a['exemplars']))
             else:
                 out('    %-28s %-18s %s -> %s'
                     % (a['key'], a['field'], json.dumps(a['old']), json.dumps(a['new'])))

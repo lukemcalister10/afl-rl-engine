@@ -544,6 +544,332 @@ def _apply_add(cur, i, e, start, end, row, anchor):
                  'old_text': '', 'new_text': ins}
 
 
+# ============================================ THE SEASON ADD AND THE ROW ADD (2026-11-06)
+#: THE ONE SHAPE A SEASON ADD NAMES: the season, and nothing inside it. `scoring[2026]` adds a whole
+#: season object to a row that has none for that year; `scoring[2026].games` is the CHANGE verb's
+#: path and is refused here, as the season path is refused by the flat add.
+_SEASON_ADD_FIELD = re.compile(r'^scoring\[(\d{4})\]$')
+
+
+def _season_shape(text):
+    """THE FILE'S OWN SEASON SERIALISATION, measured off every season object the store carries.
+
+    -> {'keys': [...], 'sep': ', ', 'objects': n}. A season object is a CONTAINER, and the lane's
+    standing law is that a container's on-disk spacing is not its to assume. So it is not assumed:
+    every season object in the file is decoded at its own offset, its raw bytes are asserted equal to
+    `json.dumps` of its parse (the serializer-identity proof the ownership courier makes of the whole
+    file, made here per object), its KEY ORDER is recorded, and the bytes between consecutive
+    objects are recorded. Disagreement on any of the three is a refusal, not a vote: a file whose
+    season objects do not share one shape has no shape for this verb to copy. Measured 2026-11-06:
+    11,484 objects, one key order (`year, avg, games, pos`), one separator (`, `).
+    """
+    dec = json.JSONDecoder()
+    orders, seps, n = {}, {}, 0
+    for k, (s, e, row) in store_row_spans(text).items():
+        span = text[s:e]
+        fields, _close = _row_fields(span)
+        sc = [f for f in fields if f['key'] == 'scoring']
+        if not sc or not isinstance(row.get('scoring'), list):
+            continue
+        i = sc[0]['vstart'] + 1                          # just past the list's `[`
+        prev_end = None
+        while True:
+            while span[i] in ' \t\r\n':
+                i += 1
+            if span[i] == ']':
+                break
+            if span[i] == ',':
+                i += 1
+                continue
+            obj, end = dec.raw_decode(span, i)
+            if not isinstance(obj, dict):
+                raise StepError('row %r carries a non-object inside its scoring list; refusing to '
+                                'measure a season shape from it' % k)
+            if json.dumps(obj) != span[i:end]:
+                raise StepError('row %r season %s is not written as json.dumps writes it (%r); the '
+                                'file has no single season serialisation to copy'
+                                % (k, obj.get('year'), span[i:end][:60]))
+            orders.setdefault(tuple(obj), k)
+            if prev_end is not None:
+                seps.setdefault(span[prev_end:i], k)
+            prev_end = end
+            n += 1
+            i = end
+    if n == 0:
+        raise StepError('the store carries no season object at all, so there is no season shape to '
+                        'copy; a season add is refused')
+    if len(orders) > 1:
+        raise StepError('the store\'s season objects do not share one key order — %s. No single shape '
+                        'to copy means no shape to write; the season add is refused rather than '
+                        'guessed.' % '; '.join('%s (e.g. %s)' % (list(o), k) for o, k in orders.items()))
+    if len(seps) > 1:
+        raise StepError('the store separates its season objects in more than one way — %s; refusing '
+                        'to copy either' % ', '.join(repr(s) for s in seps))
+    sep = next(iter(seps)) if seps else ', '
+    if sep.strip() != ',':
+        raise StepError('the store separates its season objects with %r, which this lane does not '
+                        'recognise as JSON spacing' % sep)
+    return {'keys': list(next(iter(orders))), 'sep': sep, 'objects': n}
+
+
+def _apply_add_season(cur, i, e, start, end, row, shape):
+    """THE SEASON ADD on one row: insert a whole season object where the row's year order puts it.
+
+    -> (new_text, applied_record). Refuses, in order: a value that is not an object with EXACTLY the
+    key set the file's season objects carry (measured, `_season_shape`); a `year` that is not the Y
+    in the field path; a row with no `scoring` list; a row that ALREADY CARRIES that season (an add
+    never overwrites — the season it carries is named); a scoring list whose years are not in
+    ascending order (the file's own order is ascending on every row, measured; a row that breaks it
+    has no position to insert at). Then it inserts in YEAR ORDER — not blindly at the end — with the
+    file's own separator and the file's own key order, and proves the row re-parses as the original
+    dict with exactly that one season inserted.
+    """
+    key, field, value = e['key'], e['field'], e['add']
+    yr = int(_SEASON_ADD_FIELD.match(field).group(1))
+    if not isinstance(value, dict):
+        raise StepError('edit %d: a season add (`%s`) takes an OBJECT — the season to insert — not %r'
+                        % (i, field, value))
+    want_keys = shape['keys']
+    if set(value) != set(want_keys):
+        raise StepError('edit %d: the season to add carries keys %s; the store\'s season objects carry '
+                        'exactly %s (measured on %d objects). Extra or missing keys are refused.'
+                        % (i, sorted(value), want_keys, shape['objects']))
+    for k, v in value.items():
+        if isinstance(v, (dict, list)):
+            raise StepError('edit %d: season field %r is a container (%r); a season carries scalars'
+                            % (i, k, v))
+    if value['year'] != yr or isinstance(value['year'], bool):
+        raise StepError('edit %d: the field path names %d and the season object says year %r; the '
+                        'two must agree' % (i, yr, value['year']))
+    if not isinstance(row.get('scoring'), list):
+        raise StepError('edit %d: row %r has no `scoring` list to add a season to' % (i, key))
+    span = cur[start:end]
+    fields, _close = _row_fields(span)
+    sc = [f for f in fields if f['key'] == 'scoring']
+    if len(sc) != 1:
+        raise StepError('edit %d: row %r carries `scoring` %d time(s) in its text' % (i, key, len(sc)))
+    sc = sc[0]
+    dec = json.JSONDecoder()
+    elems = []                                           # [(start, end, parsed)] relative to span
+    j = sc['vstart'] + 1
+    while True:
+        while span[j] in ' \t\r\n':
+            j += 1
+        if span[j] == ']':
+            list_close = j
+            break
+        if span[j] == ',':
+            j += 1
+            continue
+        obj, oend = dec.raw_decode(span, j)
+        elems.append((j, oend, obj))
+        j = oend
+    years = [o.get('year') for _s, _e, o in elems]
+    if yr in years:
+        have = [o for _s, _e, o in elems if o.get('year') == yr]
+        raise StepError(
+            'THE SEASON AN `add` WOULD CREATE IS ALREADY ON THE ROW.\n'
+            '    row    : %s\n    season : %d\n    carries: %s\n    add    : %s\n'
+            'An add never overwrites. This is an ABORT, not a repair: if the season the row carries '
+            'is wrong, declare its fields with `old`/`new` (`scoring[%d].games`); if it is right, the '
+            'add was not needed.' % (key, yr, json.dumps(have[0]), json.dumps(value), yr))
+    if years != sorted(years):
+        raise StepError('edit %d: row %r carries its seasons out of year order (%s); the file\'s own '
+                        'order is ascending and this row has no position that keeps it'
+                        % (i, key, years))
+    idx = sum(1 for y in years if y < yr)                # insert before the first later year
+    obj_text = json.dumps({k: value[k] for k in want_keys})
+    sep = shape['sep']
+    if not elems:
+        if span[sc['vstart']:list_close + 1].strip() != '[]':
+            raise StepError('edit %d: row %r has an empty scoring list written as %r; refusing to '
+                            'insert into it' % (i, key, span[sc['vstart']:list_close + 1]))
+        at, ins, where = sc['vstart'] + 1, obj_text, 'into an EMPTY scoring list'
+    elif idx == 0:
+        at, ins, where = elems[0][0], obj_text + sep, 'as the FIRST season (before %d)' % years[0]
+    else:
+        at, ins = elems[idx - 1][1], sep + obj_text
+        where = 'after season %d' % years[idx - 1] + (
+            ' (before %d)' % years[idx] if idx < len(years) else ', as the LAST season')
+    nxt = cur[:start] + span[:at] + ins + span[at:] + cur[end:]
+
+    after = store_row_spans(nxt, [key])[key][2]
+    expect = dict(row)
+    expect['scoring'] = list(row['scoring'][:idx]) + [value] + list(row['scoring'][idx:])
+    if json.dumps(after, sort_keys=True) != json.dumps(expect, sort_keys=True):
+        raise StepError('edit %d: the row changed in some way other than the one added season' % i)
+    if list(after['scoring'][idx]) != want_keys:
+        raise StepError('edit %d: the added season\'s keys read %s; expected %s'
+                        % (i, list(after['scoring'][idx]), want_keys))
+    return nxt, {'key': key, 'field': field, 'old': None, 'new': value, 'kind': 'add_season',
+                 'anchor': where, 'exemplars': shape['objects'],
+                 'row_span': [start, end], 'at': start + at,
+                 'chars_before': len(cur), 'chars_after': len(nxt),
+                 'old_text': '', 'new_text': ins}
+
+
+def _row_shape(text):
+    """THE FILE'S OWN ROW SHAPE, measured off every row: the keys EVERY row carries (`required`), the
+    keys ANY row carries (`allowed`), the pairwise precedence of every two keys, the bytes between
+    consecutive rows, and the proof that each row's bytes are `json.dumps` of its parse.
+
+    WHY PAIRWISE AND NOT ONE SORTED LIST: the rows are NOT key-sorted and do not share one order
+    (29 distinct orders on 2026-11-06), but they very nearly share one PRECEDENCE — every pair of
+    keys that ever co-occurs is unanimous on its order except five, all five involving `_bd`. So the
+    order a new row takes is the order the MAJORITY of rows use for each pair of its keys, and a
+    pair no row has ever carried together, or a pair the rows split evenly on, is a refusal: there
+    is no majority to copy. Measured 2026-11-06: required = 19 keys, allowed = 31, separator `, `,
+    every one of 2,650 rows json.dumps-identical to its bytes.
+    """
+    spans = store_row_spans(text)
+    if not spans:
+        raise StepError('the store carries no row, so there is no row shape to measure; a row add '
+                        'is refused')
+    required, allowed, pair = None, set(), {}
+    ordered = sorted((s, e, row) for s, e, row in spans.values())
+    seps = {}
+    for n, (s, e, row) in enumerate(ordered):
+        if json.dumps(row) != text[s:e]:
+            raise StepError('row %r is not written as json.dumps writes it; the file has no single '
+                            'row serialisation to copy' % row['key'])
+        ks = list(row)
+        required = set(ks) if required is None else required & set(ks)
+        allowed |= set(ks)
+        for a in range(len(ks)):
+            for b in range(a + 1, len(ks)):
+                pair[(ks[a], ks[b])] = pair.get((ks[a], ks[b]), 0) + 1
+        if n:
+            seps.setdefault(text[ordered[n - 1][1]:s], row['key'])
+    if len(seps) > 1:
+        raise StepError('the store separates its rows in more than one way — %s; refusing to copy '
+                        'either' % ', '.join(repr(x) for x in seps))
+    sep = next(iter(seps)) if seps else ', '
+    if sep.strip() != ',':
+        raise StepError('the store separates its rows with %r, which this lane does not recognise as '
+                        'JSON spacing' % sep)
+    last_end = ordered[-1][1]
+    if text[last_end:].strip() != ']':
+        raise StepError('the store does not end with `]` after its last row (%r); refusing to append'
+                        % text[last_end:last_end + 20])
+    return {'required': required, 'allowed': allowed, 'pair': pair, 'sep': sep, 'rows': len(spans)}
+
+
+def _row_order(shape, keys):
+    """The order the majority of rows use for THESE keys, from the measured pairwise precedence.
+    -> [keys in order]. Refuses a pair with no precedent or an even split, and an order that
+    contradicts any majority pair (a cycle), rather than guessing."""
+    pair = shape['pair']
+    before = {}
+    for a in keys:
+        for b in keys:
+            if a >= b:
+                continue
+            ab, ba = pair.get((a, b), 0), pair.get((b, a), 0)
+            if ab == ba:
+                raise StepError('the store gives no majority order for %r and %r (%d row(s) each way); '
+                                'the row add is refused rather than guessed' % (a, b, ab))
+            before[(a, b) if ab > ba else (b, a)] = max(ab, ba)
+    import functools
+
+    def cmp(a, b):
+        if a == b:
+            return 0
+        return -1 if (a, b) in before else 1
+    order = sorted(keys, key=functools.cmp_to_key(cmp))
+    pos = {k: n for n, k in enumerate(order)}
+    bad = [(a, b) for (a, b) in before if pos[a] > pos[b]]
+    if bad:
+        raise StepError('the majority precedences for this row\'s keys contradict one another (%s); '
+                        'no single order to copy' % bad[:4])
+    return order
+
+
+def _apply_add_row(cur, i, e, shape):
+    """THE ROW ADD: append a whole row to the store's top-level list.
+
+    -> (new_text, applied_record). Refuses, in order: an entry that names anything but `add_row`;
+    a row without a string `key`; a key the store ALREADY carries (the lane never writes "the second
+    one"); a key set that is neither exactly the required set nor a superset of it within the
+    allowed set (an unknown key is a key no row has ever carried, and a missing required key is a
+    row every reader of the store would trip on — `_has26` among them); a `scoring` that is not a
+    list of season objects of the measured shape. Then it serialises the row in the majority order
+    (`_row_order`), its seasons in the file's season key order, with the file's own row separator,
+    at the END of the list, and proves the store re-parses with exactly one more row, that row equal
+    to the declared one, in the expected key order.
+    """
+    extra = sorted(set(e) - {'add_row'})
+    if extra:
+        raise StepError('edit %d: `add_row` is a verb of its own — it carries the row and nothing '
+                        'else, not %s' % (i, extra))
+    value = e['add_row']
+    if not isinstance(value, dict):
+        raise StepError('edit %d: `add_row` takes an OBJECT — the row — not %r' % (i, value))
+    key = value.get('key')
+    if not isinstance(key, str) or not key:
+        raise StepError('edit %d: a row to add must carry a non-empty string `key`' % i)
+    if key in store_row_spans(cur, [key]):
+        raise StepError(
+            'THE ROW AN `add_row` WOULD CREATE IS ALREADY IN THE STORE.\n    key: %s\n'
+            'An add never overwrites and the lane never writes "the second one". This is an ABORT: '
+            'if the row the store carries is wrong, declare its fields with `old`/`new`.' % key)
+    keys = set(value)
+    unknown = sorted(keys - shape['allowed'])
+    if unknown:
+        raise StepError('edit %d: row %r carries key(s) %s that NO store row carries (the %d allowed '
+                        'keys are the union of every row\'s); an unknown key is refused'
+                        % (i, key, unknown, len(shape['allowed'])))
+    missing = sorted(shape['required'] - keys)
+    if missing:
+        raise StepError('edit %d: row %r lacks %s, which EVERY store row carries (%d required keys); '
+                        'a row every reader would trip on is refused'
+                        % (i, key, missing, len(shape['required'])))
+    if not isinstance(value.get('scoring'), list):
+        raise StepError('edit %d: row %r must carry `scoring` as a list of season objects' % (i, key))
+    seasons = []
+    sshape = shape.get('season')
+    for s in value['scoring']:
+        if not isinstance(s, dict):
+            raise StepError('edit %d: row %r carries a non-object season %r' % (i, key, s))
+        if sshape is not None and set(s) != set(sshape['keys']):
+            raise StepError('edit %d: row %r season %s carries keys %s; the store\'s seasons carry %s'
+                            % (i, key, s.get('year'), sorted(s), sshape['keys']))
+        if any(isinstance(v, (dict, list)) for v in s.values()):
+            raise StepError('edit %d: row %r season %s carries a container value' % (i, key, s.get('year')))
+        seasons.append({k: s[k] for k in (sshape['keys'] if sshape else list(s))})
+    years = [s.get('year') for s in seasons]
+    if years != sorted(years) or len(set(years)) != len(years):
+        raise StepError('edit %d: row %r seasons must be in ascending year order without a repeat '
+                        '(%s)' % (i, key, years))
+    order = _row_order(shape, list(keys))
+    ordered = {k: (seasons if k == 'scoring' else value[k]) for k in order}
+    row_text = json.dumps(ordered) if cur.isascii() else json.dumps(ordered, ensure_ascii=False)
+    # THE END OF THE LIST IS MEASURED ON THE TEXT AS IT NOW STANDS, not on the input: an earlier edit
+    # in the same list may have moved every offset after it.
+    spans_cur = store_row_spans(cur)
+    last_end = max(e for _s, e, _r in spans_cur.values()) if spans_cur else cur.index('[') + 1
+    if cur[last_end:].strip() != ']':
+        raise StepError('edit %d: the store does not end with `]` after its last row (%r); refusing '
+                        'to append' % (i, cur[last_end:last_end + 20]))
+    ins = (shape['sep'] + row_text) if spans_cur else row_text
+    nxt = cur[:last_end] + ins + cur[last_end:]
+
+    spans_after = store_row_spans(nxt)
+    if len(spans_after) != len(spans_cur) + 1:
+        raise StepError('edit %d: the store re-parses to %d rows after the add, expected %d'
+                        % (i, len(spans_after), len(spans_cur) + 1))
+    after = spans_after[key][2]
+    if json.dumps(after, sort_keys=True) != json.dumps(ordered, sort_keys=True):
+        raise StepError('edit %d: the added row does not re-parse as the declared row' % i)
+    if list(after) != order:
+        raise StepError('edit %d: the added row\'s keys read %s; expected %s' % (i, list(after), order))
+    exemplars = sum(1 for _s, _e, r in spans_cur.values() if list(r) == order)
+    return nxt, {'key': key, 'field': None, 'old': None, 'new': ordered, 'kind': 'add_row',
+                 'anchor': 'as the LAST row, keys in the majority order', 'exemplars': exemplars,
+                 'order': order, 'row_span': [last_end + len(ins) - len(row_text), last_end + len(ins)],
+                 'at': last_end, 'chars_before': len(cur), 'chars_after': len(nxt),
+                 'old_text': '', 'new_text': ins}
+
+
 def apply_store_edits(text, edits):
     """THE SURGICAL BYTE REPLACEMENT. -> (new_text, [applied]). Pure: it writes nothing.
 
@@ -553,10 +879,14 @@ def apply_store_edits(text, edits):
     something to catch). A second copy of this function anywhere would be the mirrored-pair hazard the
     whole library exists to refuse.
 
-    TWO VERBS, DECLARED BY SHAPE. `{key, field, old, new}` CHANGES a field the row carries. `{key,
+    FOUR VERBS, DECLARED BY SHAPE. `{key, field, old, new}` CHANGES a field the row carries. `{key,
     field, add}` ADDS a flat field the row does NOT carry (2026-10-14: `_last_listed`, a listing fact
-    the owner supplied for ~204 retired rows that never had it). The lane never creates a ROW; it
-    adds a FIELD only under the explicit `add` verb, and the two are mutually exclusive on one entry.
+    the owner supplied for ~204 retired rows that never had it). `{key, field: "scoring[Y]", add:
+    {season}}` ADDS A SEASON object to a row that has none for Y (2026-11-06: un-retiring a row
+    means giving it the current season every active row carries), in the file's own season shape
+    (`_season_shape`, measured) and in year order. `{add_row: {row}}` ADDS A ROW (2026-11-06: the
+    category-B rookies), in the majority key order (`_row_shape` / `_row_order`, measured), at the
+    end of the list. `add` is mutually exclusive with `old`/`new`, and `add_row` stands alone.
 
     WHAT A CHANGE ASSERTS, PER EDIT, BEFORE IT CHANGES A BYTE:
 
@@ -582,18 +912,41 @@ def apply_store_edits(text, edits):
     applied = []
     cur = text
     anchors = {}   # field -> where the file puts it, measured ONCE per field off the INPUT text
+    shapes = {}    # 'season' / 'row': the file's own container shapes, measured ONCE off the INPUT
     for i, e in enumerate(edits):
+        if 'add_row' in e:
+            # THE ROW ADD (2026-11-06): the one verb that creates a row. It names no existing row,
+            # so it is dispatched before the "exactly one row with that key" assertion the other
+            # three verbs make — its own assertion is the opposite one (NO row with that key).
+            if 'row' not in shapes:
+                shapes['row'] = _row_shape(text)
+                try:
+                    shapes['row']['season'] = _season_shape(text)
+                except StepError:
+                    shapes['row']['season'] = None      # a store with no season carries no shape
+            cur, rec = _apply_add_row(cur, i, e, shapes['row'])
+            applied.append(rec)
+            continue
         key, field = e['key'], e['field']
         spans = store_row_spans(cur, [key])
         if key not in spans:
             raise StepError('edit %d: the store has no row with key %r. The lander edits a row it '
-                            'found; it never creates one.' % (i, key))
+                            'found; it never creates one (a NEW row is declared with `add_row`).'
+                            % (i, key))
         start, end, row = spans[key]
         if 'add' in e:
             if 'old' in e or 'new' in e:
                 raise StepError('edit %d: `add` is mutually exclusive with `old`/`new` — one entry is '
                                 'one verb, and there is no value to assert on a field the row does '
                                 'not have.' % i)
+            if isinstance(field, str) and _SEASON_ADD_FIELD.match(field):
+                # THE SEASON ADD (2026-11-06): `scoring[Y]` adds a whole season object — the one
+                # container the lane writes, in the shape measured off the file's own seasons.
+                if 'season' not in shapes:
+                    shapes['season'] = _season_shape(text)
+                cur, rec = _apply_add_season(cur, i, e, start, end, row, shapes['season'])
+                applied.append(rec)
+                continue
             if field not in anchors:
                 anchors[field] = _add_anchor(text, field)
             cur, rec = _apply_add(cur, i, e, start, end, row, anchors[field])
@@ -773,20 +1126,35 @@ def store_edit(ctx):
             ctx.log('    %-28s %-18s ADD %s   %s, as %d exemplar row(s) carry it   (row span %d..%d, '
                     'at char %d)' % (a['key'], a['field'], json.dumps(a['new']), a['anchor'],
                                      a['exemplars'], a['row_span'][0], a['row_span'][1], a['at']))
+        elif a.get('kind') == 'add_season':
+            ctx.log('    %-28s %-18s ADD SEASON %s   %s, in the key order of the store\'s %d season '
+                    'object(s)   (row span %d..%d, at char %d)'
+                    % (a['key'], a['field'], json.dumps(a['new']), a['anchor'], a['exemplars'],
+                       a['row_span'][0], a['row_span'][1], a['at']))
+        elif a.get('kind') == 'add_row':
+            ctx.log('    %-28s %-18s ADD ROW %s   %s (%d existing row(s) use exactly this order)   '
+                    '(row span %d..%d, at char %d)'
+                    % (a['key'], '(new row)', json.dumps(a['new'])[:120] + '...', a['anchor'],
+                       a['exemplars'], a['row_span'][0], a['row_span'][1], a['at']))
         else:
             ctx.log('    %-28s %-18s %s -> %s   (row span %d..%d, at char %d)'
                     % (a['key'], a['field'], json.dumps(a['old']), json.dumps(a['new']),
                        a['row_span'][0], a['row_span'][1], a['at']))
     ctx.log('store AFTER   %s   (%d bytes, %+d)' % (after_md5, len(new_raw), len(new_raw) - len(raw)))
-    ctx.log('byte check: reversing every declared replacement (removing every added field) reproduces '
-            'the store byte-for-byte — the ONLY bytes that differ are the declared field values.')
+    ctx.log('byte check: reversing every declared replacement (removing every added field, season and '
+            'row) reproduces the store byte-for-byte — the ONLY bytes that differ are the declared '
+            'values.')
     if after_md5 == before_md5:
         raise StepError('the edited store is byte-identical to the store this step started from. An '
                         'edit that moves no byte is not an edit.')
 
+    # THE ROW COUNT MOVES BY EXACTLY THE NUMBER OF `add_row` RECORDS (2026-11-06) and by nothing
+    # else: a field edit, a field add and a season add leave it where it was.
+    rows_added = sum(1 for a in applied if a.get('kind') == 'add_row')
+    rows_expected = rows_before + rows_added
     out = {'store_before': before_md5, 'store_after': after_md5, 'edits': applied,
-           'rows': rows_before, 'bytes_before': len(raw), 'bytes_after': len(new_raw),
-           'written': False}
+           'rows': rows_before, 'rows_after': rows_expected, 'rows_added': rows_added,
+           'bytes_before': len(raw), 'bytes_after': len(new_raw), 'written': False}
     if ctx.opts.dry_run:
         ctx.log('--dry-run: the store is NOT written. (`land edit --dry-run` predicts in a scratch '
                 'worktree — see tools/landing/preview.py; this leg exists so the sequence can be '
@@ -801,17 +1169,26 @@ def store_edit(ctx):
     if hashlib.md5(back).hexdigest() != after_md5:
         raise StepError('the store on disk is not the store this step composed')
     spans = store_row_spans(back.decode('utf-8'))
-    if len(spans) != rows_before:
-        raise StepError('the store row count moved %d -> %d across a field edit'
-                        % (rows_before, len(spans)))
+    if len(spans) != rows_expected:
+        raise StepError('the store row count moved %d -> %d across an edit that declared %d added '
+                        'row(s)' % (rows_before, len(spans), rows_added))
     for a in applied:
         # RE-READ AT THE LEVEL THE EDIT WAS MADE. A season path (`scoring[2017].games`) is not a key
         # on the row, so a flat `row.get(field)` reads null and this check fails an edit that in fact
         # applied perfectly — which is exactly what it did on the first flight of the season path.
         # The verification has to resolve the path the same way the editor did, or it is asserting
-        # about a field nobody wrote.
-        sm = _SEASON_FIELD.match(str(a['field']))
-        if sm:
+        # about a field nobody wrote. An added ROW is re-read whole; an added SEASON by its year.
+        if a.get('kind') == 'add_row':
+            got = spans[a['key']][2] if a['key'] in spans else None
+        elif a.get('kind') == 'add_season':
+            yr = int(_SEASON_ADD_FIELD.match(a['field']).group(1))
+            srows = [x for x in (spans[a['key']][2].get('scoring') or []) if x.get('year') == yr]
+            if len(srows) != 1:
+                raise StepError('re-read: row %r has %d scoring rows for %d, expected exactly one'
+                                % (a['key'], len(srows), yr))
+            got = srows[0]
+        elif _SEASON_FIELD.match(str(a['field'])):
+            sm = _SEASON_FIELD.match(str(a['field']))
             yr, sub = int(sm.group(1)), sm.group(2)
             srows = [x for x in (spans[a['key']][2].get('scoring') or []) if x.get('year') == yr]
             if len(srows) != 1:
@@ -823,8 +1200,8 @@ def store_edit(ctx):
         if json.dumps(got, sort_keys=True) != json.dumps(a['new'], sort_keys=True):
             raise StepError('re-read: row %r field %r is %s, not the written %s'
                             % (a['key'], a['field'], json.dumps(got), json.dumps(a['new'])))
-    ctx.log('WRITTEN and re-read: %d row(s) edited, %d rows in the store, every other row untouched.'
-            % (len(applied), len(spans)))
+    ctx.log('WRITTEN and re-read: %d edit(s) applied, %d row(s) added, %d rows in the store (was %d), '
+            'every other row untouched.' % (len(applied), rows_added, len(spans), rows_before))
     out['written'] = True
     # THE SECOND FILE THIS STEP TOUCHES, AND THE ONLY ONE: the season clock's PROVENANCE stamp, which
     # a moved store makes stale and `release_contract.py check` correctly refuses. See the function.
@@ -992,6 +1369,12 @@ def board_movers(before_path, after_path):
     return movers, facts
 
 
+def _mover_key(t):
+    """Sort key for a (key, before, after) mover triple: an appearance carries `before: None` and a
+    vanishing `after: None`, and None does not order against a number — the JSON text does."""
+    return (t[0], json.dumps(t[1]), json.dumps(t[2]))
+
+
 def _edit_board_checks(ctx, res):
     """THE EDIT'S OWN BUILD PROOFS: built FROM the edited store, and the movers it declared.
 
@@ -1045,8 +1428,13 @@ def _edit_board_checks(ctx, res):
         ctx.log('edit.expected_movers is not declared: the movers above are PRINTED and asserted '
                 'against nothing. Declaring them makes each one a falsifier.')
     else:
-        want = sorted((str(m['key']), m['before'], m['after']) for m in declared)
-        got = sorted((str(m['key']), m['before'], m['after']) for m in movers)
+        # AN APPEARANCE IS A MOVER WITH `before: null` (an added row that becomes ACTIVE appears on
+        # the board, exactly as a back-section appearance does; `board_movers` reads BOTH sections
+        # and keys the comparison by row key, so a row present only in the `after` board is a mover
+        # with before None). The triples are ordered on their JSON text so that a null never meets
+        # a number in a comparison.
+        want = sorted(((str(m['key']), m['before'], m['after']) for m in declared), key=_mover_key)
+        got = sorted(((str(m['key']), m['before'], m['after']) for m in movers), key=_mover_key)
         if want != got:
             unexpected = [g for g in got if g not in want]
             missing = [w for w in want if w not in got]
