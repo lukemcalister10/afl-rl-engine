@@ -97,7 +97,12 @@ def run_all():
             nm = row[0].strip()
             key = OVERRIDE.get(nm.lower())
             if not key:
-                cands = [x for x in by[_norm(nm)] if not x.get('_retired')]
+                # A scored player may since have RETIRED (the end-of-2026 exits, 2026-11-06): the
+                # score he received is still his. The retired filter is a tie-break for a shared
+                # name, not a membership test.
+                cands = by[_norm(nm)]
+                if len(cands) > 1:
+                    cands = [x for x in cands if not x.get('_retired')]
                 key = cands[0]['key'] if len(cands) == 1 else None
             if key is None or scored.get(key) != int(float(row[1])):
                 mismatched.append(nm)

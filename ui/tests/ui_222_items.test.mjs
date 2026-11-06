@@ -56,6 +56,11 @@ await page.waitForTimeout(600);
    a real board, not an empty one. */
 const N_ACTIVE = await page.evaluate(() => (window.__MATCHDAY_WORKING__.players || []).length);
 if (!(N_ACTIVE > 700)) throw new Error('the working bundle carries ' + N_ACTIVE + ' active players; not a board');
+/* THE TRACKED SET IS WIDER THAN THE ACTIVE BOARD once a player with history retires (the end-of-2026
+   exits, 2026-11-06): his history stays in the movers bundle and his card still renders it. The trace
+   and the per-player honesty sweep both iterate the movers bundle's keys, so they are pinned to it. */
+const N_TRACKED = await page.evaluate(() => Object.keys(window.__MATCHDAY_MOVERS__.values || {}).length);
+if (!(N_TRACKED >= N_ACTIVE)) throw new Error('the movers bundle tracks ' + N_TRACKED + ' players, fewer than the ' + N_ACTIVE + ' active');
 
 /* RESTATED 2026-08-28 (owner redesign): the app ships ONE fully transparent tier — the public
    renderer and the tier toggle are retired, so `setTier` went with them. Item substance that
@@ -179,7 +184,7 @@ check(HIST.series && HIST.series.length === WANT_POINTS && WANT_POINTS >= 30,
   HIST.series ? String(HIST.series.length) : 'null');
 check(HIST.series.every(r => r.v != null && r.rank != null && r.posRank != null),
   'item 3 — value, rank and positional rank are present at EVERY point (no participation gate)');
-check(HIST.traceSize === N_ACTIVE, 'item 3 — the trace covers all ' + N_ACTIVE + ' tracked players', String(HIST.traceSize));
+check(HIST.traceSize === N_TRACKED, 'item 3 — the trace covers all ' + N_TRACKED + ' tracked players', String(HIST.traceSize));
 
 const modelPts = HIST.series.filter(r => !r.isRound);
 const modelPt = modelPts[0];
@@ -340,7 +345,7 @@ check(!HONESTY.dnpByPoint['14'] && !HONESTY.dnpByPoint['post-r19-redesign-1'],
   'item 3 — no DNP at the baseline point or the restructure point');
 check(completeRounds.every(r => HONESTY.dnpByPoint[r] > 0),
   'item 3 — DNP IS shown where it is warranted (the indicator is not simply switched off)');
-check(HONESTY.unrecByPoint['15'] > 0 && HONESTY.unrecByPoint['16'] > 0 && HONESTY.unrecByPoint['14'] === N_ACTIVE,
+check(HONESTY.unrecByPoint['15'] > 0 && HONESTY.unrecByPoint['16'] > 0 && HONESTY.unrecByPoint['14'] === N_TRACKED,
   'item 3 — partial rounds and the R14 baseline read "not recorded" instead');
 check(completeRounds.every(r => HONESTY.scoreByPoint[r] === HONESTY.cov.rounds[r].scored),
   'item 3 — every recorded score is shown');

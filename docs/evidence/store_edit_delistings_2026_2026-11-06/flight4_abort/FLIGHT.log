@@ -1,0 +1,833 @@
+======================================================================================================
+LAND STORE-EDIT — THE END-OF-2026 EXITS: 107 players delisted or retired in real life (the AFL list changes ahead of 2027, cross-referenced with the owner's locations sheet: blank AFL club) are retired in the store with _last_listed 2026; AFFL-owned ones keep their AFFL team. They leave the active board.
+  tree      : /home/user/afl-rl-engine
+  owner word: Owner, 2026-11-06: "the players who have been delisted in real life now also do not have an afl club listed either (some of these are free agents, some remain affl listed players). so the master store might need an update to reflect that." and "Please proceed."
+  prereg    : docs/evidence/store_edit_delistings_2026_2026-11-06/NOTE.md   predicts board None
+  mode      : APPLY builder=real
+======================================================================================================
+
+--- STEP 0/9  preflight      clean tree, build lock, the restore point ---
+RL_/PAR_ environment  (none)
+build-lock: HELD by land-edit-13189 (pid 13189) — single writer for the shared workspace.
+base commit        2447fbfa5e52f4eb605f5fe73412786de4df07fd
+board pin (before) 15431ae8676370eb3b3b90a7def22e6e
+store pin (before) 82aed8d1df509e0c2b5869fa72036295
+restore point      40 carrier(s) captured, 40 present on disk
+    [preflight OK  0.08s]
+
+--- STEP 1/9  store_edit     THE SURGICAL STORE EDIT, applied in the work dir ---
+store BEFORE  82aed8d1df509e0c2b5869fa72036295   (1984035 bytes)
+              == expected_boot.store, so the tree is the one this act was written for.
+THE EDIT — surgical, inside the named row's span; `old` asserted, never repaired; `add` inserted, never overwriting:
+    ben-camporeale               _retired           false -> true   (row span 93906..94570, at char 94150)
+    ben-camporeale               _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 93906..94569, at char 94249)
+    lucas-camporeale             _retired           false -> true   (row span 101557..102280, at char 101860)
+    lucas-camporeale             _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 101557..102279, at char 101959)
+    adam-saad                    _retired           false -> true   (row span 958205..959554, at char 959048)
+    adam-saad                    _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 958205..959553, at char 959140)
+    harry-charleson              _retired           false -> true   (row span 115424..116185, at char 115666)
+    harry-charleson              _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 115424..116184, at char 115755)
+    zachary-williams             _retired           false -> true   (row span 1132090..1133408, at char 1133006)
+    zachary-williams             _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 1132090..1133407, at char 1133105)
+    noah-howes                   _retired           false -> true   (row span 143410..144193, at char 143648)
+    noah-howes                   _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 143410..144192, at char 143745)
+    harrison-coe                 _retired           false -> true   (row span 57612..58304, at char 57855)
+    harrison-coe                 _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 57612..58303, at char 57952)
+    nikolas-cox                  _retired           false -> true   (row span 368335..369316, at char 368804)
+    nikolas-cox                  _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 368335..369315, at char 368896)
+    kayle-gerreyn                _retired           false -> true   (row span 89691..90348, at char 89933)
+    kayle-gerreyn                _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 89691..90347, at char 90025)
+    saad-el-hawli                _retired           false -> true   (row span 213264..213995, at char 213568)
+    saad-el-hawli                _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 213264..213994, at char 213662)
+    ollie-murphy                 _retired           false -> true   (row span 175085..175762, at char 175325)
+    ollie-murphy                 _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 175085..175761, at char 175418)
+    mitchell-knevitt             _retired           false -> true   (row span 306156..307035, at char 306625)
+    mitchell-knevitt             _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 306156..307034, at char 306716)
+    george-stevens               _retired           false -> true   (row span 186794..187503, at char 187093)
+    george-stevens               _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 186794..187502, at char 187184)
+    conor-stone                  _retired           false -> true   (row span 375061..376074, at char 375575)
+    conor-stone                  _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 375061..376073, at char 375662)
+    flynn-perez                  _retired           false -> true   (row span 471669..472455, at char 472080)
+    flynn-perez                  _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 471669..472454, at char 472174)
+    henry-hustwaite              _retired           false -> true   (row span 243125..243949, at char 243537)
+    henry-hustwaite              _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 243125..243948, at char 243629)
+    kalani-white                 _retired           false -> true   (row span 42329..43011, at char 42572)
+    kalani-white                 _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 42329..43010, at char 42678)
+    cooper-harvey                _retired           false -> true   (row span 255298..256081, at char 255650)
+    cooper-harvey                _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 255298..256080, at char 255757)
+    tyler-sonsie                 _retired           false -> true   (row span 308894..309783, at char 309367)
+    tyler-sonsie                 _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 308894..309782, at char 309459)
+    steely-green                 _retired           false -> true   (row span 254540..255296, at char 254889)
+    steely-green                 _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 254540..255295, at char 254981)
+    jack-carroll                 _retired           false -> true   (row span 397155..398033, at char 397621)
+    jack-carroll                 _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 397155..398032, at char 397712)
+    dane-rampe                   _retired           false -> true   (row span 1126859..1128396, at char 1127820)
+    dane-rampe                   _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 1126859..1128395, at char 1127908)
+    lachlan-smith                _retired           false -> true   (row span 179382..180053, at char 179627)
+    lachlan-smith                _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 179382..180052, at char 179727)
+    harvey-gallagher             _retired           false -> true   (row span 244720..245609, at char 245083)
+    harvey-gallagher             _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 244720..245608, at char 245183)
+    harry-schoenberg             _retired           false -> true   (row span 462298..463294, at char 462878)
+    harry-schoenberg             _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 462298..463293, at char 462970)
+    adam-treloar                 _retired           false -> true   (row span 1152454..1154009, at char 1153496)
+    adam-treloar                 _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 1152454..1154008, at char 1153583)
+    aidan-johnson                _retired           false -> true   (row span 111156..111864, at char 111454)
+    aidan-johnson                _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 111156..111863, at char 111547)
+    andy-moniz-wakefield         _retired           false -> true   (row span 346976..347790, at char 347286)
+    andy-moniz-wakefield         _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 346976..347789, at char 347392)
+    asher-eastham                _retired           false -> true   (row span 118120..118865, at char 118358)
+    asher-eastham                _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 118120..118864, at char 118450)
+    bailey-banfield              _retired           false -> true   (row span 672237..673506, at char 672928)
+    bailey-banfield              _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 672237..673505, at char 673019)
+    bailey-scott                 _retired           false -> true   (row span 549617..550688, at char 550266)
+    bailey-scott                 _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 549617..550687, at char 550365)
+    benny-barrett                _retired           false -> true   (row span 127912..128589, at char 128154)
+    benny-barrett                _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 127912..128588, at char 128264)
+    bobby-hill                   _retired           false -> true   (row span 530948..531969, at char 531565)
+    bobby-hill                   _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 530948..531968, at char 531652)
+    brayden-george               _retired           false -> true   (row span 236701..237385, at char 236942)
+    brayden-george               _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 236701..237384, at char 237041)
+    caleb-graham                 _retired           false -> true   (row span 563869..564782, at char 564342)
+    caleb-graham                 _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 563869..564781, at char 564441)
+    callum-coleman-jones         _retired           false -> true   (row span 625888..626913, at char 626497)
+    callum-coleman-jones         _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 625888..626912, at char 626589)
+    chayce-jones                 _retired           false -> true   (row span 517822..518965, at char 518456)
+    chayce-jones                 _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 517822..518964, at char 518548)
+    clay-hall                    _retired           false -> true   (row span 173178..173936, at char 173524)
+    clay-hall                    _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 173178..173935, at char 173618)
+    cody-anderson                _retired           false -> true   (row span 108462..109107, at char 108701)
+    cody-anderson                _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 108462..109106, at char 108793)
+    cooper-bell                  _retired           false -> true   (row span 98128..98799, at char 98366)
+    cooper-bell                  _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 98128..98798, at char 98477)
+    dion-prestia                 _retired           false -> true   (row span 1261133..1262731, at char 1262219)
+    dion-prestia                 _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 1261133..1262730, at char 1262313)
+    dougal-howard                _retired           false -> true   (row span 930788..932112, at char 931599)
+    dougal-howard                _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 930788..932111, at char 931696)
+    elijah-hollands              _retired           false -> true   (row span 367868..368753, at char 368342)
+    elijah-hollands              _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 367868..368752, at char 368436)
+    flynn-young                  _retired           false -> true   (row span 135785..136481, at char 136075)
+    flynn-young                  _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 135785..136480, at char 136168)
+    harry-barnett                _retired           false -> true   (row span 234880..235654, at char 235240)
+    harry-barnett                _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 234880..235653, at char 235334)
+    harvey-johnston              _retired           false -> true   (row span 180893..181606, at char 181196)
+    harvey-johnston              _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 180893..181605, at char 181290)
+    iliro-smit                   _retired           false -> true   (row span 211398..212080, at char 211638)
+    iliro-smit                   _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 211398..212079, at char 211735)
+    jack-henderson               _retired           false -> true   (row span 131185..131871, at char 131487)
+    jack-henderson               _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 131185..131870, at char 131575)
+    jack-williams                _retired           false -> true   (row span 330082..330917, at char 330505)
+    jack-williams                _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 330082..330916, at char 330599)
+    jackson-mead                 _retired           false -> true   (row span 463632..464633, at char 464108)
+    jackson-mead                 _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 463632..464632, at char 464213)
+    jacob-moss                   _retired           false -> true   (row span 123793..124473, at char 124032)
+    jacob-moss                   _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 123793..124472, at char 124146)
+    jade-gresham                 _retired           false -> true   (row span 815407..816615, at char 816209)
+    jade-gresham                 _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 815407..816614, at char 816301)
+    jaime-uhr-henry              _retired           false -> true   (row span 124496..125181, at char 124748)
+    jaime-uhr-henry              _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 124496..125180, at char 124857)
+    jake-kolodjashnij            _retired           false -> true   (row span 1017148..1018367, at char 1017961)
+    jake-kolodjashnij            _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 1017148..1018366, at char 1018052)
+    jake-melksham                _retired           false -> true   (row span 1372601..1374190, at char 1373681)
+    jake-melksham                _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 1372601..1374189, at char 1373773)
+    jakob-ryan                   _retired           false -> true   (row span 238130..238852, at char 238417)
+    jakob-ryan                   _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 238130..238851, at char 238512)
+    james-blanck                 _retired           false -> true   (row span 361582..362469, at char 361935)
+    james-blanck                 _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 361582..362468, at char 362029)
+    james-trezise                _retired           false -> true   (row span 284295..285222, at char 284709)
+    james-trezise                _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 284295..285221, at char 284803)
+    jamie-cripps                 _retired           false -> true   (row span 1280057..1281629, at char 1281121)
+    jamie-cripps                 _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 1280057..1281628, at char 1281213)
+    jed-bews                     _retired           false -> true   (row span 1204561..1205960, at char 1205448)
+    jed-bews                     _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 1204561..1205959, at char 1205547)
+    joel-cochran                 _retired           false -> true   (row span 96749..97419, at char 96989)
+    joel-cochran                 _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 96749..97418, at char 97101)
+    jordan-boyd                  _retired           false -> true   (row span 438244..439205, at char 438698)
+    jordan-boyd                  _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 438244..439204, at char 438791)
+    kaleb-smith                  _retired           false -> true   (row span 251310..252060, at char 251654)
+    kaleb-smith                  _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 251310..252059, at char 251746)
+    keighton-matofai-forbes      _retired           false -> true   (row span 111950..112616, at char 112209)
+    keighton-matofai-forbes      _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 111950..112615, at char 112300)
+    lachie-sullivan              _retired           false -> true   (row span 205264..206017, at char 205629)
+    lachie-sullivan              _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 205264..206016, at char 205719)
+    lachlan-fogarty              _retired           false -> true   (row span 628445..629537, at char 629133)
+    lachlan-fogarty              _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 628445..629536, at char 629224)
+    lachlan-mcneil               _retired           false -> true   (row span 414118..415168, at char 414645)
+    lachlan-mcneil               _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 414118..415167, at char 414743)
+    lachlan-sholl                _retired           false -> true   (row span 560139..561225, at char 560717)
+    lachlan-sholl                _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 560139..561224, at char 560809)
+    lewis-young                  _retired           false -> true   (row span 738649..739761, at char 739342)
+    lewis-young                  _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 738649..739760, at char 739442)
+    liam-fawcett                 _retired           false -> true   (row span 176728..177432, at char 177024)
+    liam-fawcett                 _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 176728..177431, at char 177116)
+    liam-mcmahon                 _retired           false -> true   (row span 390931..391637, at char 391226)
+    liam-mcmahon                 _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 390931..391636, at char 391321)
+    luke-beecken                 _retired           false -> true   (row span 215968..216773, at char 216262)
+    luke-beecken                 _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 215968..216772, at char 216356)
+    luke-urquhart                _retired           false -> true   (row span 103808..104472, at char 104050)
+    luke-urquhart                _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 103808..104471, at char 104149)
+    mani-liddy                   _retired           false -> true   (row span 144531..145344, at char 144823)
+    mani-liddy                   _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 144531..145343, at char 144922)
+    matt-duffy                   _retired           false -> true   (row span 121855..122514, at char 122091)
+    matt-duffy                   _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 121855..122513, at char 122194)
+    matt-guelfi                  _retired           false -> true   (row span 670656..671845, at char 671339)
+    matt-guelfi                  _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 670656..671844, at char 671431)
+    matt-owies                   _retired           false -> true   (row span 589928..590898, at char 590494)
+    matt-owies                   _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 589928..590897, at char 590602)
+    mitch-podhajski              _retired           false -> true   (row span 63175..63839, at char 63422)
+    mitch-podhajski              _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 63175..63838, at char 63519)
+    nathan-broad                 _retired           false -> true   (row span 853180..854376, at char 853970)
+    nathan-broad                 _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 853180..854375, at char 854062)
+    nicholas-coffield            _retired           false -> true   (row span 614778..615772, at char 615358)
+    nicholas-coffield            _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 614778..615771, at char 615450)
+    nicholas-holman              _retired           false -> true   (row span 1024420..1025731, at char 1025224)
+    nicholas-holman              _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 1024420..1025730, at char 1025315)
+    oliver-hayes-brown           _retired           false -> true   (row span 199837..200505, at char 200095)
+    oliver-hayes-brown           _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 199837..200504, at char 200204)
+    ollie-lord                   _retired           false -> true   (row span 403923..404749, at char 404331)
+    ollie-lord                   _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 403923..404748, at char 404428)
+    oskar-baker                  _retired           false -> true   (row span 650961..652055, at char 651537)
+    oskar-baker                  _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 650961..652054, at char 651630)
+    paddy-dow                    _retired           false -> true   (row span 609531..610570, at char 610164)
+    paddy-dow                    _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 609531..610569, at char 610255)
+    patrick-said                 _retired           false -> true   (row span 105867..106510, at char 106104)
+    patrick-said                 _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 105867..106509, at char 106196)
+    rhys-stanley                 _retired           false -> true   (row span 1503389..1504964, at char 1504555)
+    rhys-stanley                 _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 1503389..1504963, at char 1504647)
+    riley-onley                  _retired           false -> true   (row span 39070..39714, at char 39307)
+    riley-onley                  _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 39070..39713, at char 39398)
+    robert-hansen                _retired           false -> true   (row span 280454..281287, at char 280861)
+    robert-hansen                _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 280454..281286, at char 280962)
+    ryan-gardner                 _retired           false -> true   (row span 849230..850223, at char 849808)
+    ryan-gardner                 _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 849230..850222, at char 849899)
+    ryda-luke                    _retired           false -> true   (row span 45750..46411, at char 45984)
+    ryda-luke                    _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 45750..46410, at char 46090)
+    sam-sturt                    _retired           false -> true   (row span 526330..527188, at char 526780)
+    sam-sturt                    _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 526330..527187, at char 526873)
+    sam-switkowski               _retired           false -> true   (row span 668809..669846, at char 669438)
+    sam-switkowski               _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 668809..669845, at char 669531)
+    steele-sidebottom            _retired           false -> true   (row span 1469708..1471345, at char 1470931)
+    steele-sidebottom            _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 1469708..1471344, at char 1471026)
+    taylor-walker                _retired           false -> true   (row span 1612280..1613900, at char 1613492)
+    taylor-walker                _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 1612280..1613899, at char 1613584)
+    thomas-liberatore            _retired           false -> true   (row span 1277872..1279452, at char 1278920)
+    thomas-liberatore            _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 1277872..1279451, at char 1279028)
+    thomas-anastasopoulos        _retired           false -> true   (row span 180496..181164, at char 180748)
+    thomas-anastasopoulos        _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 180496..181163, at char 180845)
+    tom-edwards                  _retired           false -> true   (row span 130713..131393, at char 131009)
+    tom-edwards                  _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 130713..131392, at char 131096)
+    tom-mcdonald                 _retired           false -> true   (row span 1306620..1308218, at char 1307708)
+    tom-mcdonald                 _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 1306620..1308217, at char 1307801)
+    tyler-brockman               _retired           false -> true   (row span 402022..402896, at char 402488)
+    tyler-brockman               _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 402022..402895, at char 402580)
+    tyler-welsh                  _retired           false -> true   (row span 105261..105907, at char 105499)
+    tyler-welsh                  _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 105261..105906, at char 105591)
+    tyson-stengle                _retired           false -> true   (row span 762596..763721, at char 763219)
+    tyson-stengle                _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 762596..763720, at char 763309)
+    will-brodie                  _retired           false -> true   (row span 702029..703073, at char 702659)
+    will-brodie                  _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 702029..703072, at char 702753)
+    will-lorenz                  _retired           false -> true   (row span 186567..187338, at char 186920)
+    will-lorenz                  _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 186567..187337, at char 187017)
+    xavier-walsh                 _retired           false -> true   (row span 195130..195907, at char 195369)
+    xavier-walsh                 _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 195130..195906, at char 195464)
+    zac-fisher                   _retired           false -> true   (row span 720745..721901, at char 721489)
+    zac-fisher                   _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 720745..721900, at char 721580)
+    zac-walker                   _retired           false -> true   (row span 141470..142254, at char 141704)
+    zac-walker                   _last_listed       ADD 2026   after '_draft_club', as 214 exemplar row(s) carry it   (row span 141470..142253, at char 141806)
+store AFTER   6d70c6b93e111c9c1eb398bf8e37295f   (1986282 bytes, +2247)
+byte check: reversing every declared replacement (removing every added field, season and row) reproduces the store byte-for-byte — the ONLY bytes that differ are the declared values.
+WRITTEN and re-read: 214 edit(s) applied, 0 row(s) added, 2652 rows in the store (was 2652), every other row untouched.
+season clock  re-derived from the edited store by season_state.derive (the sole deriver)
+    source_store_md5  82aed8d1df50 -> 6d70c6b93e11
+    FINALS HOLD: live store derives exposure_pace 0.955; the round-24 view (505 finals appearances subtracted) re-derives the held 0.909 exactly — held.
+    every derived VALUE asserted unchanged (10 field(s) checked); WRITTEN and re-read.
+    [store_edit OK  6.15s]
+
+--- STEP 2/9  build_proofs   bare build, predicted identity, switch leg, day-0 ---
+build         rc=0 board=159d3972cdfa9b558b7a92547688192b  (428.7s)
+built FROM the edited store: sidecar source_md5 6d70c6b93e11 == the store this act wrote
+MOVERS — EVERY ONE, WITH VALUES  (298 of 1034 valued row(s) moved)
+    adam-cerra                   Adam Cerra                 1059 -> 1060   (+1)  [active]
+    adam-saad                    Adam Saad                  421 -> 14   (-407)  [back]
+    adam-treloar                 Adam Treloar               806 -> 17   (-789)  [back]
+    aidan-johnson                Aidan Johnson              74 -> 8   (-66)  [back]
+    alex-neal-bullen             Alex Neal-Bullen           394 -> 389   (-5)  [active]
+    aliir-aliir                  Aliir Aliir                771 -> 773   (+2)  [active]
+    andrew-brayshaw              Andrew Brayshaw            2656 -> 2659   (+3)  [active]
+    andy-moniz-wakefield         Andy Moniz-Wakefield       53 -> 7   (-46)  [back]
+    asher-eastham                Asher Eastham              86 -> 10   (-76)  [back]
+    bailey-banfield              Bailey Banfield            13 -> 8   (-5)  [back]
+    bailey-dale                  Bailey Dale                1810 -> 1812   (+2)  [active]
+    bailey-macdonald             Bailey Macdonald           122 -> 121   (-1)  [active]
+    bailey-scott                 Bailey Scott               19 -> 7   (-12)  [back]
+    bailey-smith                 Bailey Smith               5856 -> 5862   (+6)  [active]
+    bayley-fritsch               Bayley Fritsch             261 -> 257   (-4)  [active]
+    beau-addinsall               Beau Addinsall             1215 -> 1214   (-1)  [active]
+    ben-camporeale               Ben Camporeale             179 -> 10   (-169)  [back]
+    ben-keays                    Ben Keays                  370 -> 362   (-8)  [active]
+    benny-barrett                Benny Barrett              23 -> 8   (-15)  [back]
+    blake-hardwick               Blake Hardwick             534 -> 532   (-2)  [active]
+    bobby-hill                   Bobby Hill                 65 -> 10   (-55)  [back]
+    bodhi-uwland                 Bodhi Uwland               4025 -> 4026   (+1)  [active]
+    bradley-hill                 Bradley Hill               1406 -> 1413   (+7)  [active]
+    brayden-cook                 Brayden Cook               803 -> 802   (-1)  [active]
+    brayden-george               Brayden George             175 -> 10   (-165)  [back]
+    brent-daniels                Brent Daniels              1186 -> 1191   (+5)  [active]
+    caleb-daniel                 Caleb Daniel               1217 -> 1218   (+1)  [active]
+    caleb-graham                 Caleb Graham               66 -> 16   (-50)  [back]
+    caleb-serong                 Caleb Serong               4172 -> 4177   (+5)  [active]
+    caleb-windsor                Caleb Windsor              1036 -> 1035   (-1)  [active]
+    callum-coleman-jones         Callum Coleman-Jones       31 -> 12   (-19)  [back]
+    callum-mills                 Callum Mills               1945 -> 1946   (+1)  [active]
+    callum-wilkie                Callum Wilkie              3510 -> 3522   (+12)  [active]
+    cameron-mackenzie            Cameron Mackenzie          1575 -> 1574   (-1)  [active]
+    cameron-rayner               Cameron Rayner             837 -> 820   (-17)  [active]
+    chad-warner                  Chad Warner                3853 -> 3858   (+5)  [active]
+    chayce-jones                 Chayce Jones               39 -> 18   (-21)  [back]
+    christian-petracca           Christian Petracca         1718 -> 1720   (+2)  [active]
+    clay-hall                    Clay Hall                  351 -> 12   (-339)  [back]
+    clayton-oliver               Clayton Oliver             2192 -> 2195   (+3)  [active]
+    cody-anderson                Cody Anderson              31 -> 3   (-28)  [back]
+    colby-mckercher              Colby McKercher            4170 -> 4154   (-16)  [active]
+    connor-idun                  Connor Idun                2346 -> 2348   (+2)  [active]
+    connor-macdonald             Connor MacDonald           2918 -> 2933   (+15)  [active]
+    connor-o-sullivan            Connor O'Sullivan          2593 -> 2578   (-15)  [active]
+    connor-rozee                 Connor Rozee               3104 -> 3107   (+3)  [active]
+    conor-stone                  Conor Stone                137 -> 14   (-123)  [back]
+    cooper-bell                  Cooper Bell                263 -> 6   (-257)  [back]
+    cooper-harvey                Cooper Harvey              396 -> 4   (-392)  [back]
+    cooper-lord                  Cooper Lord                1199 -> 1198   (-1)  [active]
+    cooper-sharman               Cooper Sharman             468 -> 467   (-1)  [active]
+    dan-houston                  Dan Houston                1046 -> 1047   (+1)  [active]
+    dane-rampe                   Dane Rampe                 3 -> 10   (+7)  [back]
+    daniel-turner                Daniel Turner              1721 -> 1724   (+3)  [active]
+    darcy-byrne-jones            Darcy Byrne-Jones          626 -> 625   (-1)  [active]
+    darcy-cameron                Darcy Cameron              1525 -> 1524   (-1)  [active]
+    darcy-fogarty                Darcy Fogarty              749 -> 748   (-1)  [active]
+    darcy-wilmot                 Darcy Wilmot               2799 -> 2801   (+2)  [active]
+    darcy-wilson                 Darcy Wilson               2712 -> 2719   (+7)  [active]
+    dayne-zorko                  Dayne Zorko                924 -> 925   (+1)  [active]
+    dion-prestia                 Dion Prestia               234 -> 35   (-199)  [back]
+    dougal-howard                Dougal Howard              40 -> 5   (-35)  [back]
+    dylan-moore                  Dylan Moore                1314 -> 1320   (+6)  [active]
+    dyson-sharp                  Dyson Sharp                3024 -> 3023   (-1)  [active]
+    ed-langdon                   Ed Langdon                 613 -> 612   (-1)  [active]
+    ed-richards                  Ed Richards                3925 -> 3929   (+4)  [active]
+    elijah-hollands              Elijah Hollands            641 -> 23   (-618)  [back]
+    errol-gulden                 Errol Gulden               7498 -> 7506   (+8)  [active]
+    finn-callaghan               Finn Callaghan             5320 -> 5325   (+5)  [active]
+    flynn-perez                  Flynn Perez                71 -> None   (appeared/vanished)  [active]
+    flynn-young                  Flynn Young                58 -> 4   (-54)  [back]
+    francis-evans                Francis Evans              806 -> 789   (-17)  [active]
+    george-hewett                George Hewett              1772 -> 1774   (+2)  [active]
+    george-stevens               George Stevens             141 -> 5   (-136)  [back]
+    george-wardlaw               George Wardlaw             3037 -> 3026   (-11)  [active]
+    gryan-miers                  Gryan Miers                1660 -> 1669   (+9)  [active]
+    harley-reid                  Harley Reid                3810 -> 3812   (+2)  [active]
+    harris-andrews               Harris Andrews             1563 -> 1568   (+5)  [active]
+    harrison-coe                 Harrison Coe               254 -> None   (appeared/vanished)  [active]
+    harry-barnett                Harry Barnett              420 -> 16   (-404)  [back]
+    harry-charleson              Harry Charleson            109 -> 10   (-99)  [back]
+    harry-schoenberg             Harry Schoenberg           44 -> 18   (-26)  [back]
+    harry-sheezel                Harry Sheezel              10871 -> 10880   (+9)  [active]
+    harvey-gallagher             Harvey Gallagher           68 -> 8   (-60)  [back]
+    harvey-johnston              Harvey Johnston            164 -> 5   (-159)  [back]
+    harvey-langford              Harvey Langford            1860 -> 1859   (-1)  [active]
+    hayden-young                 Hayden Young               1868 -> 1869   (+1)  [active]
+    henry-hustwaite              Henry Hustwaite            60 -> 13   (-47)  [back]
+    hugh-mccluggage              Hugh McCluggage            1429 -> 1430   (+1)  [active]
+    hugo-garcia                  Hugo Garcia                2790 -> 2791   (+1)  [active]
+    iliro-smit                   Iliro Smit                 314 -> 9   (-305)  [back]
+    isaac-heeney                 Isaac Heeney               3672 -> 3676   (+4)  [active]
+    izak-rankine                 Izak Rankine               4916 -> 4941   (+25)  [active]
+    jack-carroll                 Jack Carroll               114 -> 7   (-107)  [back]
+    jack-ginnivan                Jack Ginnivan              1997 -> 2006   (+9)  [active]
+    jack-graham                  Jack Graham                751 -> 750   (-1)  [active]
+    jack-henderson               Jack Henderson             32 -> 1   (-31)  [back]
+    jack-ison                    Jack Ison                  422 -> 421   (-1)  [active]
+    jack-ross                    Jack Ross                  2353 -> 2355   (+2)  [active]
+    jack-sinclair                Jack Sinclair              3087 -> 3089   (+2)  [active]
+    jack-steele                  Jack Steele                1081 -> 1082   (+1)  [active]
+    jack-williams                Jack Williams              339 -> 3   (-336)  [back]
+    jackson-mead                 Jackson Mead               48 -> 10   (-38)  [back]
+    jacob-moss                   Jacob Moss                 64 -> 12   (-52)  [back]
+    jacob-van-rooyen             Jacob Van Rooyen           1813 -> 1811   (-2)  [active]
+    jacob-weitering              Jacob Weitering            1190 -> 1194   (+4)  [active]
+    jade-gresham                 Jade Gresham               15 -> 12   (-3)  [back]
+    jagga-smith                  Jagga Smith                4915 -> 4909   (-6)  [active]
+    jai-newcombe                 Jai Newcombe               4389 -> 4394   (+5)  [active]
+    jai-serong                   Jai Serong                 1080 -> 1079   (-1)  [active]
+    jaime-uhr-henry              Jaime Uhr-Henry            56 -> 2   (-54)  [back]
+    jake-bowey                   Jake Bowey                 3935 -> 3937   (+2)  [active]
+    jake-kolodjashnij            Jake Kolodjashnij          17 -> 8   (-9)  [back]
+    jake-lever                   Jake Lever                 202 -> 201   (-1)  [active]
+    jake-melksham                Jake Melksham              2 -> 18   (+16)  [back]
+    jakob-ryan                   Jakob Ryan                 147 -> 10   (-137)  [back]
+    james-blanck                 James Blanck               15 -> 13   (-2)  [back]
+    james-sicily                 James Sicily               1167 -> 1168   (+1)  [active]
+    james-trezise                James Trezise              178 -> 8   (-170)  [back]
+    jamie-cripps                 Jamie Cripps               9 -> 10   (+1)  [back]
+    jase-burgoyne                Jase Burgoyne              2605 -> 2607   (+2)  [active]
+    jason-horne-francis          Jason Horne-Francis        5364 -> 5370   (+6)  [active]
+    jaspa-fletcher               Jaspa Fletcher             2446 -> 2445   (-1)  [active]
+    jayden-short                 Jayden Short               885 -> 886   (+1)  [active]
+    jed-bews                     Jed Bews                   1 -> 10   (+9)  [back]
+    joe-richards                 Joe Richards               925 -> 924   (-1)  [active]
+    joel-cochran                 Joel Cochran               264 -> 6   (-258)  [back]
+    joel-freijah                 Joel Freijah               2803 -> 2802   (-1)  [active]
+    john-noble                   John Noble                 2294 -> 2295   (+1)  [active]
+    jordan-boyd                  Jordan Boyd                23 -> 6   (-17)  [back]
+    jordan-clark                 Jordan Clark               3040 -> 3042   (+2)  [active]
+    jordan-dawson                Jordan Dawson              2792 -> 2796   (+4)  [active]
+    jordan-de-goey               Jordan De Goey             1280 -> 1287   (+7)  [active]
+    josh-battle                  Josh Battle                1763 -> 1769   (+6)  [active]
+    josh-daicos                  Josh Daicos                2062 -> 2063   (+1)  [active]
+    josh-dunkley                 Josh Dunkley               1364 -> 1366   (+2)  [active]
+    josh-rachele                 Josh Rachele               1880 -> 1833   (-47)  [active]
+    josh-treacy                  Josh Treacy                4831 -> 4832   (+1)  [active]
+    josh-ward                    Josh Ward                  2756 -> 2758   (+2)  [active]
+    josh-worrell                 Josh Worrell               2935 -> 2936   (+1)  [active]
+    joshua-kelly                 Joshua Kelly               715 -> 716   (+1)  [active]
+    justin-mcinerney             Justin McInerney           1729 -> 1731   (+2)  [active]
+    jy-simpkin                   Jy Simpkin                 1198 -> 1196   (-2)  [active]
+    jye-amiss                    Jye Amiss                  1314 -> 1313   (-1)  [active]
+    jye-caldwell                 Jye Caldwell               1045 -> 1041   (-4)  [active]
+    kade-chandler                Kade Chandler              1080 -> 1084   (+4)  [active]
+    kalani-white                 Kalani White               65 -> None   (appeared/vanished)  [active]
+    kaleb-smith                  Kaleb Smith                59 -> 5   (-54)  [back]
+    kane-farrell                 Kane Farrell               1280 -> 1281   (+1)  [active]
+    karl-worner                  Karl Worner                1492 -> 1488   (-4)  [active]
+    kayle-gerreyn                Kayle Gerreyn              300 -> 8   (-292)  [back]
+    keidean-coleman              Keidean Coleman            720 -> 719   (-1)  [active]
+    keighton-matofai-forbes      Keighton Matofai-Forbes    111 -> 10   (-101)  [back]
+    kieren-briggs                Kieren Briggs              1941 -> 1940   (-1)  [active]
+    kysaiah-pickett              Kysaiah Pickett            4305 -> 4328   (+23)  [active]
+    lachie-neale                 Lachie Neale               1802 -> 1804   (+2)  [active]
+    lachie-sullivan              Lachie Sullivan            20 -> 1   (-19)  [back]
+    lachie-whitfield             Lachie Whitfield           2161 -> 2162   (+1)  [active]
+    lachlan-ash                  Lachlan Ash                5277 -> 5281   (+4)  [active]
+    lachlan-blakiston            Lachlan Blakiston          74 -> 73   (-1)  [active]
+    lachlan-fogarty              Lachlan Fogarty            101 -> 11   (-90)  [back]
+    lachlan-mcneil               Lachlan McNeil             42 -> 10   (-32)  [back]
+    lachlan-schultz              Lachlan Schultz            643 -> 646   (+3)  [active]
+    lachlan-sholl                Lachlan Sholl              90 -> 5   (-85)  [back]
+    lachlan-smith                Lachlan Smith              241 -> 9   (-232)  [back]
+    lawson-humphries             Lawson Humphries           1701 -> 1698   (-3)  [active]
+    levi-ashcroft                Levi Ashcroft              3441 -> 3440   (-1)  [active]
+    lewis-young                  Lewis Young                124 -> 6   (-118)  [back]
+    liam-fawcett                 Liam Fawcett               329 -> 6   (-323)  [back]
+    liam-henry                   Liam Henry                 107 -> 106   (-1)  [active]
+    liam-mcmahon                 Liam McMahon               193 -> 9   (-184)  [back]
+    lloyd-meek                   Lloyd Meek                 1460 -> 1459   (-1)  [active]
+    logan-mcdonald               Logan McDonald             1304 -> 1303   (-1)  [active]
+    lucas-camporeale             Lucas Camporeale           131 -> 6   (-125)  [back]
+    luke-beecken                 Luke Beecken               157 -> 4   (-153)  [back]
+    luke-davies-uniacke          Luke Davies-Uniacke        2986 -> 2990   (+4)  [active]
+    luke-jackson                 Luke Jackson               10013 -> 10011   (-2)  [active]
+    luke-nankervis               Luke Nankervis             445 -> 444   (-1)  [active]
+    luke-parker                  Luke Parker                1151 -> 1152   (+1)  [active]
+    luke-ryan                    Luke Ryan                  1152 -> 1153   (+1)  [active]
+    luke-urquhart                Luke Urquhart              67 -> 6   (-61)  [back]
+    mac-andrew                   Mac Andrew                 3870 -> 3882   (+12)  [active]
+    mani-liddy                   Mani Liddy                 108 -> 4   (-104)  [back]
+    marcus-bontempelli           Marcus Bontempelli         3704 -> 3708   (+4)  [active]
+    marcus-herbert               Marcus Herbert             834 -> 832   (-2)  [active]
+    mark-keane                   Mark Keane                 1527 -> 1520   (-7)  [active]
+    mason-redman                 Mason Redman               946 -> 947   (+1)  [active]
+    matt-duffy                   Matt Duffy                 37 -> 9   (-28)  [back]
+    matt-owies                   Matt Owies                 6 -> 7   (+1)  [back]
+    matt-rowell                  Matt Rowell                4796 -> 4801   (+5)  [active]
+    mattaes-phillipou            Mattaes Phillipou          1709 -> 1708   (-1)  [active]
+    matthew-kennedy-1            Matthew Kennedy            686 -> 687   (+1)  [active]
+    max-hall                     Max Hall                   2724 -> 2721   (-3)  [active]
+    max-heath                    Max Heath                  514 -> 513   (-1)  [active]
+    max-holmes                   Max Holmes                 7268 -> 7276   (+8)  [active]
+    milan-murdock                Milan Murdock              350 -> 343   (-7)  [active]
+    mitch-podhajski              Mitch Podhajski            116 -> None   (appeared/vanished)  [active]
+    mitchell-knevitt             Mitchell Knevitt           193 -> 17   (-176)  [back]
+    mitchito-owens               Mitchito Owens             2051 -> 2049   (-2)  [active]
+    murphy-reid                  Murphy Reid                3230 -> 3228   (-2)  [active]
+    nasiah-wanganeen-milera      Nasiah Wanganeen-Milera    9205 -> 9214   (+9)  [active]
+    nathan-broad                 Nathan Broad               8 -> 11   (+3)  [back]
+    neil-erasmus                 Neil Erasmus               928 -> 927   (-1)  [active]
+    nicholas-coffield            Nicholas Coffield          111 -> 18   (-93)  [back]
+    nicholas-holman              Nicholas Holman            2 -> 5   (+3)  [back]
+    nicholas-martin              Nicholas Martin            3793 -> 3796   (+3)  [active]
+    nick-blakey                  Nick Blakey                3976 -> 3979   (+3)  [active]
+    nick-daicos                  Nick Daicos                10362 -> 10371   (+9)  [active]
+    nick-haynes                  Nick Haynes                149 -> 148   (-1)  [active]
+    nick-larkey                  Nick Larkey                541 -> 540   (-1)  [active]
+    nick-watson                  Nick Watson                3862 -> 3872   (+10)  [active]
+    nikolas-cox                  Nikolas Cox                193 -> 18   (-175)  [back]
+    noah-anderson                Noah Anderson              5260 -> 5266   (+6)  [active]
+    noah-howes                   Noah Howes                 194 -> 11   (-183)  [back]
+    noah-mraz                    Noah Mraz                  817 -> 811   (-6)  [active]
+    oliver-florent               Oliver Florent             1047 -> 1048   (+1)  [active]
+    oliver-hayes-brown           Oliver Hayes-Brown         101 -> 2   (-99)  [back]
+    oliver-wines                 Oliver Wines               382 -> 383   (+1)  [active]
+    ollie-dempsey                Ollie Dempsey              2378 -> 2376   (-2)  [active]
+    ollie-lord                   Ollie Lord                 124 -> 4   (-120)  [back]
+    ollie-murphy                 Ollie Murphy               198 -> 8   (-190)  [back]
+    oskar-baker                  Oskar Baker                28 -> 5   (-23)  [back]
+    paddy-dow                    Paddy Dow                  27 -> 54   (+27)  [back]
+    patrick-cripps               Patrick Cripps             1339 -> 1341   (+2)  [active]
+    patrick-dangerfield          Patrick Dangerfield        163 -> 160   (-3)  [active]
+    patrick-lipinski             Patrick Lipinski           681 -> 680   (-1)  [active]
+    patrick-said                 Patrick Said               50 -> 3   (-47)  [back]
+    paul-curtis                  Paul Curtis                1529 -> 1494   (-35)  [active]
+    peter-wright                 Peter Wright               1240 -> 1241   (+1)  [active]
+    phoenix-gothard              Phoenix Gothard            1545 -> 1544   (-1)  [active]
+    reuben-ginbey                Reuben Ginbey              2259 -> 2256   (-3)  [active]
+    rhys-stanley                 Rhys Stanley               5 -> 9   (+4)  [back]
+    riley-onley                  Riley Onley                91 -> None   (appeared/vanished)  [active]
+    riley-thilthorpe             Riley Thilthorpe           4310 -> 4311   (+1)  [active]
+    robert-hansen                Robert Hansen              104 -> 8   (-96)  [back]
+    rory-laird                   Rory Laird                 711 -> 712   (+1)  [active]
+    rory-lobb                    Rory Lobb                  289 -> 287   (-2)  [active]
+    ryan-gardner                 Ryan Gardner               6 -> 4   (-2)  [back]
+    ryan-maric                   Ryan Maric                 1358 -> 1357   (-1)  [active]
+    ryda-luke                    Ryda Luke                  23 -> None   (appeared/vanished)  [active]
+    ryley-sanders                Ryley Sanders              3515 -> 3503   (-12)  [active]
+    saad-el-hawli                Saad El-Hawli              73 -> 6   (-67)  [back]
+    sam-berry                    Sam Berry                  2784 -> 2787   (+3)  [active]
+    sam-de-koning                Sam De Koning              869 -> 867   (-2)  [active]
+    sam-durham                   Sam Durham                 2421 -> 2424   (+3)  [active]
+    sam-flanders                 Sam Flanders               2501 -> 2504   (+3)  [active]
+    sam-lalor                    Sam Lalor                  3407 -> 3406   (-1)  [active]
+    sam-sturt                    Sam Sturt                  56 -> 13   (-43)  [back]
+    sam-switkowski               Sam Switkowski             25 -> 7   (-18)  [back]
+    sam-taylor                   Sam Taylor                 1147 -> 1141   (-6)  [active]
+    sam-walsh                    Sam Walsh                  3138 -> 3142   (+4)  [active]
+    samuel-collins               Samuel Collins             590 -> 592   (+2)  [active]
+    shai-bolton                  Shai Bolton                2203 -> 2215   (+12)  [active]
+    shaun-mannagh                Shaun Mannagh              912 -> 913   (+1)  [active]
+    steele-sidebottom            Steele Sidebottom          8 -> 34   (+26)  [back]
+    steely-green                 Steely Green               114 -> 4   (-110)  [back]
+    talor-byrne                  Talor Byrne                601 -> 600   (-1)  [active]
+    tanner-bruhn                 Tanner Bruhn               1940 -> 1935   (-5)  [active]
+    taylor-walker                Taylor Walker              166 -> 3   (-163)  [back]
+    thomas-anastasopoulos        Tom Anastasopoulos         201 -> 5   (-196)  [back]
+    thomas-liberatore            Thomas Liberatore          1074 -> 18   (-1056)  [back]
+    tim-kelly                    Tim Kelly                  1179 -> 1180   (+1)  [active]
+    tim-taranto                  Tim Taranto                2370 -> 2373   (+3)  [active]
+    toby-greene                  Toby Greene                729 -> 733   (+4)  [active]
+    tom-atkins                   Tom Atkins                 268 -> 267   (-1)  [active]
+    tom-edwards                  Tom Edwards                95 -> 6   (-89)  [back]
+    tom-green                    Tom Green                  5113 -> 5118   (+5)  [active]
+    tom-gross                    Tom Gross                  397 -> 396   (-1)  [active]
+    tom-mccarthy                 Tom McCarthy               1349 -> 1348   (-1)  [active]
+    tom-mccartin                 Tom McCartin               1392 -> 1397   (+5)  [active]
+    tom-mcdonald                 Tom McDonald               26 -> 5   (-21)  [back]
+    tom-papley                   Tom Papley                 515 -> 512   (-3)  [active]
+    tom-powell                   Tom Powell                 1771 -> 1770   (-1)  [active]
+    tom-sparrow                  Tom Sparrow                1484 -> 1477   (-7)  [active]
+    touk-miller                  Touk Miller                2333 -> 2346   (+13)  [active]
+    trent-rivers                 Trent Rivers               1442 -> 1438   (-4)  [active]
+    tristan-xerri                Tristan Xerri              6895 -> 6894   (-1)  [active]
+    tyler-brockman               Tyler Brockman             75 -> 5   (-70)  [back]
+    tyler-sonsie                 Tyler Sonsie               762 -> 16   (-746)  [back]
+    tyler-welsh                  Tyler Welsh                146 -> 3   (-143)  [back]
+    tyson-stengle                Tyson Stengle              198 -> 7   (-191)  [back]
+    wayne-milera                 Wayne Milera               1583 -> 1584   (+1)  [active]
+    wil-powell                   Wil Powell                 805 -> 803   (-2)  [active]
+    will-ashcroft                Will Ashcroft              7164 -> 7170   (+6)  [active]
+    will-brodie                  Will Brodie                117 -> 35   (-82)  [back]
+    will-day                     Will Day                   1633 -> 1634   (+1)  [active]
+    will-lorenz                  Will Lorenz                166 -> 6   (-160)  [back]
+    will-setterfield             Will Setterfield           957 -> 958   (+1)  [active]
+    willem-drew                  Willem Drew                591 -> 589   (-2)  [active]
+    willem-duursma               Willem Duursma             3492 -> 3491   (-1)  [active]
+    xavier-walsh                 Xavier Walsh               116 -> 15   (-101)  [back]
+    zac-bailey                   Zac Bailey                 3120 -> 3137   (+17)  [active]
+    zac-fisher                   Zac Fisher                 153 -> 10   (-143)  [back]
+    zac-walker                   Zac Walker                 153 -> 11   (-142)  [back]
+    zachary-merrett              Zachary Merrett            2343 -> 2346   (+3)  [active]
+    zachary-williams             Zachary Williams           338 -> 7   (-331)  [back]
+    zak-butters                  Zak Butters                6214 -> 6220   (+6)  [active]
+    zane-duursma                 Zane Duursma               413 -> 412   (-1)  [active]
+pool (sum of active v)  688081 -> 673209  (-14872)
+edit.expected_movers is not declared: the movers above are PRINTED and asserted against nothing. Declaring them makes each one a falsifier.
+NO PREREG BOARD PREDICTION IS DECLARED (prereg.board_after is null). This act's prediction of record is its DRY RUN; the assertions made here are internal consistency only — the board was built FROM the edited store (proved above), and it moved if and only if this act declared that it would.
+day-0 re-base : OFF (default). No day-0 reference is regenerated by this landing.
+installed     board + both sidecars + the generator copy (4 files, lockstep)
+    [build_proofs OK  428.80s]
+
+--- STEP 3/9  pins           expected_boot + both sidecars + the generator copy ---
+published board  159d3972cdfa9b558b7a92547688192b
+generator board  159d3972cdfa9b558b7a92547688192b
+both sidecars agree with the board beside them and with the live store. OK.
+COMPUTED from the tree (never typed): store        = 6d70c6b93e111c9c1eb398bf8e37295f
+  expected_boot store        82aed8d1df50 -> 6d70c6b93e11   (old value occurs 1 time(s))
+COMPUTED from the tree (never typed): board        = 159d3972cdfa9b558b7a92547688192b
+  expected_boot board        15431ae86763 -> 159d3972cdfa   (old value occurs 1 time(s))
+fields that moved in expected_boot.json: ['board', 'store']
+must-not-move list: 6 checked, 0 moved
+byte check: the ONLY bytes that differ are the declared pin values.
+WRITTEN and re-read.
+    [pins OK  0.02s]
+
+--- STEP 4/9  lineage        the out-of-round column and the append-only entry ---
+column        exits-2026-06-11 registered (dry_run=False)
+ASSERTED: the newest stored point is this column, naming the live board 159d3972cdfa9b558b7a92547688192b
+chain OK: register tail destination == this entry's source on board and store
+append-only OK: 35 prior entries byte-verbatim; top-level baseline 06d8af60b679a12db07c064c60c065f9 / v2.11-present-lens-baseline UNMOVED
+MOVED by this transition: ['board', 'store'] (of 11 identities)
+re-read OK: round-trips at indent=1; prior entries still byte-verbatim.
+    [lineage OK  0.16s]
+
+--- STEP 5/9  contract       restamp_dynamic + the bake-lane repin + check ---
+contract seal self-consistent before the act: 38891143e58a
+  config       d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4   == expected_boot
+  engine_head  b8152511821fd710b4b7b530b822213e   == expected_boot
+  rl_model     ad48eb299b01639b62d397c4c0016dd4   == expected_boot
+  fv           80e63a6b8ea26b56e8aa60c9c1cf028156881fc6259d8a4fd8ebbad40963a5cd   == expected_boot
+  store        6d70c6b93e111c9c1eb398bf8e37295f   == expected_boot
+  board        159d3972cdfa9b558b7a92547688192b   == expected_boot
+WRITER 1: release_contract.restamp_dynamic(root, as_of_round=24, store, board, season_state)
+   restamp_dynamic returned seal c6e304c76682
+WRITER 2: the bake-lane identities restamp_dynamic does not touch (release_contract.restamp_bake_identities — shared with tools/restamp)
+  contract_sha256             c6e304c76682 -> c6e304c76682
+  frozen fields asserted unmoved: 10 checked, 0 moved
+RE-STAMPED, re-read, and release_contract.py check PASSES.
+    [contract OK  0.07s]
+
+--- STEP 6/9  ui             ALL SEVEN UI writers, and the identity read back out ---
+BEFORE  working 817ec515a28ece43d9a55aff53adfdb6  release-block=True
+BEFORE  public  aafea997900b24f0198dedc53ae6e642  release-block=False
+BEFORE  mirror  2be2bde1e06c958cabaaf307bddb1268  register=35 entr(ies)
+BEFORE  movers  335e00bfb6076fb60efb98c97ceb0636  model_changes=25 boundar(ies)
+BEFORE  owners bab4ef18e38bc9c472eb1a5f52322abb  pinned board=15431ae8 store=82aed8d1
+BEFORE  picks  4cb58d7a8ebb168faac06c0b45d39e7c  stamped board=15431ae8 store=82aed8d1 R24
+BEFORE  draft  941bd4e4531f5c8bdcd1e3d539ce7577  stamped store=82aed8d1
+WRITER 0/9: v0 sidecar entry-inputs signature == the landed store (73d2b70a); no early regeneration.
+WRITER 1/8: ui/tools/extract_board_view.py
+  working after writer 1: 72612ded88246c76a09aa90cb0fa2844   release-block=True   <-- DROPPED, as it always is
+WRITER 2/8: round_movers.inject_release_contract(bundle, root, 24)
+  release block: {"as_of_round": 24, "balanced_board_md5": "06d8af60b679a12db07c064c60c065f9", "board": "159d3972cdfa9b558b7a92547688192b", "config": "d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4",
+WRITER 3/8: ui/tools/generate_movers_transition.py  (the lineage projection — supervisor ruling on F-9)
+  wrote: ui/data/movers_transition.js (128386 bytes)
+  register entries mirrored: 36
+  drift guard: mirror OK — committed == projected (128386 bytes, 36 register entries)
+  mirror register == lineage register: 36 entr(ies), EQUAL  (the F-9 predicate holds)
+WRITER 4/8: ui/tools/rebuild_movers_derived.py  (points / values / model_changes — supervisor ruling on F-10)
+  wrote: ui/data/movers.js (7424026 -> 6853651 bytes, latest report R29)
+  derived blocks changed: points, values, model_changes
+  drift guard: derived blocks OK — committed == rebuilt (6853651 bytes, latest report R29)
+  shipped model_changes == live-derived: 26 boundar(ies), EQUAL  (the F-10 predicate holds)
+WRITER 4b/8: the retro CONTROL first (engine-free: banked r24 vs the live board)
+  CONTROL NOT ASSERTED: the newest banked round is r29 and it differs from the live board on 201 value(s) (4 missing). The retrospective is BEHIND the live board — a week has been applied to the store that is not yet banked. Re-price it with pass_retro_series.py (or bank the newest week from the landed board) to make this a PASS again. The series is still emitted from what IS banked, because dropping banked history is worse than carrying it one week short; see CONTROL_FAIL.json for the rows.
+WRITER 4b/8: emit_retro_series.py  (the R14-R24 walk-forward series writer 4 drops)
+  retro-r28   804 players  board in-proce
+  retro-r29   804 players  board in-proce
+  emitted 16 retro points covering up to 804 players -> ui/data/movers.js
+  retro series present: 16 points, retro-r14 .. retro-r29 (every banked round, no gap)
+WRITER 5/8: ui/tools/ingest_inputs.py --mirror-only  (the ownership mirror, re-pinned to the landed board + store)
+  LIVE MIRROR    — 701 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /home/user/afl-rl-engine/ui/data/ownership.js
+  MIRROR-ONLY    — the club-valuation bundle was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
+  drift guard: MIRROR DRIFT GUARD — ui/data/ownership.js is byte-identical to what this tree projects (65483 bytes).
+  mirror pin == the landed identity: board 159d3972 store 6d70c6b9 R24, 701 player(s) mirrored (pin() would ACTIVATE it)
+WRITER 6/8: ui/tools/ingest_inputs.py --clubs-only  (the picks bundle, re-stamped to the landed board + store)
+  CLEAN INGEST — 240 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: /home/user/afl-rl-engine/ui/data/club_valuation.js
+  CLUBS-ONLY     — the ownership mirror was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
+  drift guard: PICKS DRIFT GUARD — ui/data/club_valuation.js is byte-identical to what this tree projects (58558 bytes).
+  picks stamp == the landed identity: board 159d3972 store 6d70c6b9 R24, 240 pick(s) priced off 1c3b22d1 (pin() would ACCEPT it)
+WRITER 7/8: ui/tools/gen_draft_outcomes.py  (the draft outcome record, re-stamped to the landed store)
+  rows            1568 national-draft selections
+  never played    226  (14.4%) — the population is not survivor-filtered
+  maturity rule   4 completed seasons (measured: 99% of 1044 eventual debutants)
+  draft stamp == the landed store 6d70c6b9: 1568 selections, 226 never played, maturity 4 season(s) (pin() would ACCEPT it)
+WRITER 8/8: ui/tools/gen_v0_sidecar.py  (the v0 sidecar, re-stamped to the landed board)
+  v0 sidecar | board 159d3972 store 6d70c6b9 | rows 701 = pick-slot 498 + entry-anchor 203 + unrecoverable 0
+  wrote ui/data_aux/v0.js (44819 bytes)
+  v0 sidecar == the landed board 159d3972 (the card's v0 column will resolve)
+  carrier moved: ui/data_aux/v0.js  966add82dab9 -> 4f3a7e39d260
+WRITER 9/9: ui/tools/extract_positions.py  (the positions map, re-stamped to the landed roster + sheet)
+  carrier moved: ui/app/positions_data.js  cc0314c828d5 -> 08574309e7c1
+AFTER   working 72612ded88246c76a09aa90cb0fa2844  release-block=True
+AFTER   public  a95aa0b100222d8a3cd52ac7370545d1  release-block=False
+AFTER   movers  aa2c19ed3b298e6e4041f41e144a4ee4  MOVED 335e00bfb607 -> aa2c19ed3b29, tracking the register append
+AFTER   mirror  e873d1ca875713a2364edfc0bdbb767d  MOVED 2be2bde1e06c -> e873d1ca8757, tracking the lineage append
+AFTER   owners 689d12d7db7b0c07e75d7821e5994c6d  MOVED bab4ef18e38b -> 689d12d7db7b, tracking the landed board + store
+AFTER   picks  c0aefa62da6dde17edf77aad6c981998  MOVED 4cb58d7a8ebb -> c0aefa62da6d, tracking the landed board + store
+AFTER   draft  4dba35ead50a22d97f233f25c3585534  MOVED 941bd4e4531f -> 4dba35ead50a, tracking the landed store
+  stamp.board_md5            159d3972cdfa9b558b7a92547688192b   OK
+  stamp.board                159d3972cdfa9b558b7a92547688192b   OK
+  stamp.srcmd5               159d3972cdfa9b558b7a92547688192b   OK
+  stamp.store_md5            6d70c6b93e111c9c1eb398bf8e37295f   OK
+  stamp.balanced_board_md5   f4126b629ea4d4135b4c0ad0f1b29508   OK
+  stamp.asOfRound            24                                 OK
+THE HTML APP'S EMBEDDED BOARD IDENTITY IS 159d3972cdfa9b558b7a92547688192b. All seven writers ran; the release block is back, the reader can see the transition that produced this board, the ownership mirror is pinned to it rather than to the store it replaced, and the pick surface is stamped to it rather than to the board before it.
+    [ui OK  202.05s]
+    build-lock: RELEASED after 'ui' — the remaining steps write nothing and the one gate that builds takes the lock itself.
+
+--- STEP 7/9  state          docs/STATE.md regenerated from the carriers (3c) ---
+state: docs/STATE.md md5 5c16edf1d86d15ff1f7da91b161c0241 (moved); regeneration verified
+    [state OK  0.13s]
+
+--- STEP 8/9  gates          the landing gate set, verdicts off exit codes ---
+  release_manifest_check   PASS   exit=0  (0.1s)
+  release_contract_check   PASS   exit=0  (0.1s)
+  acceptance_runner        PASS   exit=0  (6.0s)
+  movers_transition        PASS   exit=0  (1.7s)
+  finals_report            FAIL   exit=1  (0.4s)
+  movers_ui                PASS   exit=0  (0.6s)
+  ui_222_items             FAIL   exit=1  (11.7s)
+  ui_defects_2026_08_21    PASS   exit=0  (0.4s)
+  universe                 PASS   exit=0  (0.3s)
+  draftday                 PASS   exit=0  (0.1s)
+  pickvalue                PASS   exit=0  (0.1s)
+  release_seam             PASS   exit=0  (0.1s)
+  adoption_gate            PASS   exit=0  (0.0s)
+  club_totals_parity       PASS   exit=0  (0.2s)
+  counting_rule            PASS   exit=0  (0.0s)
+  ownership_sidecar        FAIL   exit=1  (0.3s)
+  ownership_single_source  PASS   exit=0  (0.1s)
+  responsive_layout        PASS   exit=0  (15.4s)
+  extract_seam             PASS   exit=0  (0.5s)
+  club_curve_provenance    PASS   exit=0  (1.5s)
+    [gates FAILED  39.54s]
+
+======================================================================================================
+LANDING ABORTED AT STEP 'gates'
+======================================================================================================
+  3 of 20 gate(s) did not pass. ALL of them are listed — fix them together, because the next flight costs a full build.
+  
+  --- gate finals_report (exit 1)
+  m', 'Tom McDonald']
+    [PASS] rebuilt submitted_round == shipped  25
+    [PASS] rebuilt previous_round == shipped  store-fix-impossible-games-30-8
+    [PASS] rebuilt board_md5_before == shipped  f81dbcda220110ad0113ae0633b6c34e
+    [PASS] rebuilt board_md5_after == shipped  c8c2f2b6f99445484fadaa8c44afe609
+    [PASS] rebuilt player_count == shipped  804
+    [PASS] rebuilt txn_id == shipped  txn_fw1_finals_week_1_30_8
+    [PASS] rebuilt source_store_md5_before == shipped  a9dec7e4785c6861a84f3beaae2f020e
+    [PASS] rebuilt source_store_md5_after == shipped  415929d3c9d561cc58bef00ae63432b2
+    [PASS] shipped played/DNP/unrecorded == 92 / 93 / 619
+    [PASS] every rebuilt row at an unmoved club carries the shipped tri-state
+    [PASS] a player who scored is PLAYED in both, whichever club the store carries today
+    [PASS] every one of the 92 rebuilt scores == the shipped score  92
+    [PASS] every player row carries the shipped values and delta  804
+    [PASS] the report names the FEED round (25), not the calendar round
+    [PASS] and min(feed, 24) == the manifest's calendar round — the relation core.lineage asserts
+    ------------------------------------------------------------------
+  FINALS-REPORT TESTS: 1 FAIL
+  
+      raw output: /home/user/afl-rl-engine/docs/evidence/store_edit_delistings_2026_2026-11-06/gate_finals_report.txt
+  
+  --- gate ui_222_items (exit 1)
+  nal vs Finals Week 4"), never "Round 29 vs Round 28"
+    [PASS] every rendered delta is the report's own value_change — computed nowhere else
+    [PASS] bug 3 — the player card's Round Δ tooltip is the board's, word for word
+  
+  PHASE 0.2 BUG 1 — the Movers tab opens on the newest week BY NAME
+  -----------------------------------------------------------------
+    [PASS] bug 1 — the default pair is the newest one-round retro pair (a model change is the newest stored point)
+    [PASS] bug 1 — the To <select> has the pair's end and shows it selected, by its name
+    [PASS] bug 1 — the From <select> shows the pair's baseline selected, by its name
+    [PASS] bug 1 — the strip names both ends as the selects do: To Grand Final · current model · baseline Finals Week 4 · current model
+    [PASS] bug 1 — a football pair never reads "post-model" and never names a feed round as "R29"
+    [PASS] bug 1 — the newest report's own pair resolves to the STORED report (played/DNP facts), not a synthetic diff
+  
+  RUNTIME
+  -------
+    [PASS] the tab list is readable, so this loop covers the whole app
+    [PASS] every view renders with no page errors
+  
+  ------------------------------------------------------------
+  FAIL 102/104 passed
+  
+      raw output: /home/user/afl-rl-engine/docs/evidence/store_edit_delistings_2026_2026-11-06/gate_ui_222_items.txt
+  
+  --- gate ownership_sidecar (exit 1)
+  till renders the board rather than blanking the app
+  
+  ONE PLAYER, ONE CLUB — the two-clubs-at-once condition must be impossible
+    [PASS] working tier shows the new club
+    [PASS] public tier shows the SAME new club
+    [PASS] no player resolves to different clubs on the working and public tiers
+  
+  MOVERS — keyed rows, so ownership resolves without touching the name bridge
+    [FAIL] every movers record key exists on the working board, so no mover row needs the name bridge — 107 orphan(s)
+    [PASS] a movers row resolves cleanly through the keyed path
+  
+  LANE SEPARATION — positions are batched and must not be in the sidecar
+    [PASS] the sidecar carries no position or value field — the live lane cannot trigger an engine run
+    [PASS] …and it is non-empty, so that assertion is not passing on an empty file
+  
+  READ SURFACE — no view may read the stored affl_team directly
+    [PASS] every view resolves ownership through MD.ownership, not the raw board field
+    [PASS] index.html loads both the sidecar bundle and the ownership module
+    [PASS] app/ownership.js is loaded before every module that consumes it
+    [PASS] the sidecar DATA bundle is loaded before the module that reads it
+  
+  FAIL — 34 passed, 1 failed
+  
+      raw output: /home/user/afl-rl-engine/docs/evidence/store_edit_delistings_2026_2026-11-06/gate_ownership_sidecar.txt
+
+carriers that moved before the failure: 23
+    data/expected_boot.json                                          be7395ca0430 -> f1102f918b2b
+    data/release_contract.json                                       3616a0bdf547 -> bd270fff4362
+    data/release_lineage.json                                        0bf6765e374e -> 189126f3465c
+    data/rl_build/rl_app_data.json                                   15431ae86763 -> 159d3972cdfa
+    data/rl_build/rl_app_data.json.srcmd5                            cf4552214073 -> da89e248d14e
+    data/season_state.json                                           0706ea73f7a5 -> 9cdb3eea7902
+    docs/STATE.md                                                    3f56d4baaf1f -> 5c16edf1d86d
+    docs/evidence/walkforward_retro_2026-08-29/CONTROL_FAIL.json     41e56a1515cd -> 49e8317fa257
+    engine/rl_after/ingestion/pos_rank_history.json                  f3a2bdd84120 -> 07f53f85a44b
+    engine/rl_after/ingestion/rank_history.json                      a6dfcbd44e4e -> 3f65176c6557
+    engine/rl_after/ingestion/value_history.json                     be209e4f31a7 -> 2ed09d9a09c6
+    engine/rl_after/rl_app_data.json                                 15431ae86763 -> 159d3972cdfa
+    engine/rl_after/rl_app_data.json.srcmd5                          cf4552214073 -> da89e248d14e
+    engine/rl_after/rl_model_data.json                               82aed8d1df50 -> 6d70c6b93e11
+    ui/app/positions_data.js                                         cc0314c828d5 -> 08574309e7c1
+    ui/data/board_view_public.js                                     aafea997900b -> a95aa0b10022
+    ui/data/board_view_working.js                                    817ec515a28e -> 72612ded8824
+    ui/data/club_valuation.js                                        4cb58d7a8ebb -> c0aefa62da6d
+    ui/data/movers.js                                                335e00bfb607 -> aa2c19ed3b29
+    ui/data/movers_transition.js                                     2be2bde1e06c -> e873d1ca8757
+    ui/data/ownership.js                                             bab4ef18e38b -> 689d12d7db7b
+    ui/data_aux/draft_outcomes.js                                    941bd4e4531f -> 4dba35ead50a
+    ui/data_aux/v0.js                                                966add82dab9 -> 4f3a7e39d260
+RESTORING 23 carrier(s):
+    rewrite  data/expected_boot.json
+    rewrite  data/release_contract.json
+    rewrite  data/release_lineage.json
+    rewrite  data/rl_build/rl_app_data.json
+    rewrite  data/rl_build/rl_app_data.json.srcmd5
+    rewrite  data/season_state.json
+    rewrite  docs/STATE.md
+    rewrite  docs/evidence/walkforward_retro_2026-08-29/CONTROL_FAIL.json
+    rewrite  engine/rl_after/ingestion/pos_rank_history.json
+    rewrite  engine/rl_after/ingestion/rank_history.json
+    rewrite  engine/rl_after/ingestion/value_history.json
+    rewrite  engine/rl_after/rl_app_data.json
+    rewrite  engine/rl_after/rl_app_data.json.srcmd5
+    rewrite  engine/rl_after/rl_model_data.json
+    rewrite  ui/app/positions_data.js
+    rewrite  ui/data/board_view_public.js
+    rewrite  ui/data/board_view_working.js
+    rewrite  ui/data/club_valuation.js
+    rewrite  ui/data/movers.js
+    rewrite  ui/data/movers_transition.js
+    rewrite  ui/data/ownership.js
+    rewrite  ui/data_aux/draft_outcomes.js
+    rewrite  ui/data_aux/v0.js
+
+ABORT PROOF: every carrier is BYTE-EXACT to the identity captured at step 0.
+
+THE RECOVERY LADDER: abort-then-retry is the recovery. A landing this lander cannot
+complete after abort+retry is a round that SLIPS, on the owner's call — never an
+improvised manual landing under pressure.
+======================================================================================================
+
+--- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
+    preflight          0.08s  OK
+    store_edit         6.15s  OK
+    build_proofs     428.80s  OK
+    pins               0.02s  OK
+    lineage            0.16s  OK
+    contract           0.07s  OK
+    ui               202.05s  OK
+    state              0.13s  OK
+    gates             39.54s  FAIL
+    TOTAL            677.00s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_13189

@@ -242,10 +242,15 @@ console.log("\nMOVERS — keyed rows, so ownership resolves without touching the
       return s.slice(s.indexOf("{", s.indexOf("=")), s.lastIndexOf("}") + 1);
     })()
   );
-  const wKeys = {}; ctx.__MATCHDAY_WORKING__.players.forEach(p => { if (p.key) wKeys[p.key] = 1; });
+  // BOTH SECTIONS (2026-11-06): a player who retires with history keeps his movers record and his key,
+  // and sits in the board's back section; his row still resolves through the keyed path (the sidecar
+  // or, absent a mirror entry, the store's own affl_team on the record) and never the name bridge.
+  const wKeys = {};
+  (ctx.__MATCHDAY_WORKING__.players || []).forEach(p => { if (p.key) wKeys[p.key] = 1; });
+  (ctx.__MATCHDAY_WORKING__.back || []).forEach(p => { if (p.key) wKeys[p.key] = 1; });
   const orphan = Object.keys(movers.values || {}).filter(k => !wKeys[k]);
   check(orphan.length === 0,
-        "every movers record key exists on the working board, so no mover row needs the name bridge",
+        "every movers record key exists on the working board (either section), so no mover row needs the name bridge",
         orphan.length + " orphan(s)");
   const k = Object.keys(movers.values)[0];
   const row = { key: k, affl_team: movers.values[k].affl_team, name: movers.values[k].name };

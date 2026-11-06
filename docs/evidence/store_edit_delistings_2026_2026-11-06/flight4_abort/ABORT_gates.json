@@ -1,0 +1,142 @@
+{
+  "byte_exact": true,
+  "commits_rewound": [],
+  "error": "3 of 20 gate(s) did not pass. ALL of them are listed \u2014 fix them together, because the next flight costs a full build.\n\n--- gate finals_report (exit 1)\nm', 'Tom McDonald']\n  [PASS] rebuilt submitted_round == shipped  25\n  [PASS] rebuilt previous_round == shipped  store-fix-impossible-games-30-8\n  [PASS] rebuilt board_md5_before == shipped  f81dbcda220110ad0113ae0633b6c34e\n  [PASS] rebuilt board_md5_after == shipped  c8c2f2b6f99445484fadaa8c44afe609\n  [PASS] rebuilt player_count == shipped  804\n  [PASS] rebuilt txn_id == shipped  txn_fw1_finals_week_1_30_8\n  [PASS] rebuilt source_store_md5_before == shipped  a9dec7e4785c6861a84f3beaae2f020e\n  [PASS] rebuilt source_store_md5_after == shipped  415929d3c9d561cc58bef00ae63432b2\n  [PASS] shipped played/DNP/unrecorded == 92 / 93 / 619\n  [PASS] every rebuilt row at an unmoved club carries the shipped tri-state\n  [PASS] a player who scored is PLAYED in both, whichever club the store carries today\n  [PASS] every one of the 92 rebuilt scores == the shipped score  92\n  [PASS] every player row carries the shipped values and delta  804\n  [PASS] the report names the FEED round (25), not the calendar round\n  [PASS] and min(feed, 24) == the manifest's calendar round \u2014 the relation core.lineage asserts\n  ------------------------------------------------------------------\nFINALS-REPORT TESTS: 1 FAIL\n\n    raw output: /home/user/afl-rl-engine/docs/evidence/store_edit_delistings_2026_2026-11-06/gate_finals_report.txt\n\n--- gate ui_222_items (exit 1)\nnal vs Finals Week 4\"), never \"Round 29 vs Round 28\"\n  [PASS] every rendered delta is the report's own value_change \u2014 computed nowhere else\n  [PASS] bug 3 \u2014 the player card's Round \u0394 tooltip is the board's, word for word\n\nPHASE 0.2 BUG 1 \u2014 the Movers tab opens on the newest week BY NAME\n-----------------------------------------------------------------\n  [PASS] bug 1 \u2014 the default pair is the newest one-round retro pair (a model change is the newest stored point)\n  [PASS] bug 1 \u2014 the To <select> has the pair's end and shows it selected, by its name\n  [PASS] bug 1 \u2014 the From <select> shows the pair's baseline selected, by its name\n  [PASS] bug 1 \u2014 the strip names both ends as the selects do: To Grand Final \u00b7 current model \u00b7 baseline Finals Week 4 \u00b7 current model\n  [PASS] bug 1 \u2014 a football pair never reads \"post-model\" and never names a feed round as \"R29\"\n  [PASS] bug 1 \u2014 the newest report's own pair resolves to the STORED report (played/DNP facts), not a synthetic diff\n\nRUNTIME\n-------\n  [PASS] the tab list is readable, so this loop covers the whole app\n  [PASS] every view renders with no page errors\n\n------------------------------------------------------------\nFAIL 102/104 passed\n\n    raw output: /home/user/afl-rl-engine/docs/evidence/store_edit_delistings_2026_2026-11-06/gate_ui_222_items.txt\n\n--- gate ownership_sidecar (exit 1)\ntill renders the board rather than blanking the app\n\nONE PLAYER, ONE CLUB \u2014 the two-clubs-at-once condition must be impossible\n  [PASS] working tier shows the new club\n  [PASS] public tier shows the SAME new club\n  [PASS] no player resolves to different clubs on the working and public tiers\n\nMOVERS \u2014 keyed rows, so ownership resolves without touching the name bridge\n  [FAIL] every movers record key exists on the working board, so no mover row needs the name bridge \u2014 107 orphan(s)\n  [PASS] a movers row resolves cleanly through the keyed path\n\nLANE SEPARATION \u2014 positions are batched and must not be in the sidecar\n  [PASS] the sidecar carries no position or value field \u2014 the live lane cannot trigger an engine run\n  [PASS] \u2026and it is non-empty, so that assertion is not passing on an empty file\n\nREAD SURFACE \u2014 no view may read the stored affl_team directly\n  [PASS] every view resolves ownership through MD.ownership, not the raw board field\n  [PASS] index.html loads both the sidecar bundle and the ownership module\n  [PASS] app/ownership.js is loaded before every module that consumes it\n  [PASS] the sidecar DATA bundle is loaded before the module that reads it\n\nFAIL \u2014 34 passed, 1 failed\n\n    raw output: /home/user/afl-rl-engine/docs/evidence/store_edit_delistings_2026_2026-11-06/gate_ownership_sidecar.txt",
+  "failed_step": "gates",
+  "restore_point": {
+    "data/expected_boot.json": "be7395ca0430541ddcbed7e5903037d9",
+    "data/release_contract.json": "3616a0bdf547ad61e0c4bfa304663225",
+    "data/release_lineage.json": "0bf6765e374e339c9860cd0a3f9dacde",
+    "data/rl_build/rl_app_data.json": "15431ae8676370eb3b3b90a7def22e6e",
+    "data/rl_build/rl_app_data.json.srcmd5": "cf4552214073e2e252b98167e7a91651",
+    "data/season_state.json": "0706ea73f7a5c27bd0c04fe72a7ea63f",
+    "data/sheet_pins.json": "226b73ff64e6a6967103bfee788848a0",
+    "docs/STATE.md": "3f56d4baaf1f324c52c4ea95cf64e83b",
+    "docs/evidence/walkforward_retro_2026-08-29/CONTROL_FAIL.json": "41e56a1515cd976337f33bb75e2a3070",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r14.json": "6d68ed07fd02b5ad90b61af5789ed507",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r15.json": "1c268118a8d0737faa1ef53dc0340cda",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r16.json": "9cc8de979974e8fe93d5b817748b20cc",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r17.json": "883649ce700a611926ca3558e6f05a2c",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r18.json": "d64df0627312d9970f0cb3df6b451058",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r19.json": "db887e07047c9885f5f530ca1479646d",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r20.json": "c7ab631d8e11ecaac8093c3ae87881da",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r21.json": "265688755d05ddd416d8f7b3bcaa9e0f",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r22.json": "8799915d3dd6f6eb3c4c88f5db3342da",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r23.json": "b49802755f2cbeaacbf29e62bb25d5c2",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r24.json": "af6e688187df9cd1245f0c99d166cd3e",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r25.json": "a179b3799f8b251994d0dc7442ca4240",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r26.json": "7744e66db5d722fa3c8949601d609e36",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r27.json": "b07bd899afe8b4dd7c8b550007ac0118",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r28.json": "3c0ebb05d48282462f72e999c31721d7",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r29.json": "e48c1b70a9a67b68d800fd3cf63597fe",
+    "engine/rl_after/ingestion/pos_rank_history.json": "f3a2bdd841202dae01e3b4a499bb3059",
+    "engine/rl_after/ingestion/rank_history.json": "a6dfcbd44e4e597c61891fc383a04985",
+    "engine/rl_after/ingestion/value_history.json": "be209e4f31a7eef4493151b08b7ca937",
+    "engine/rl_after/rl_app_data.json": "15431ae8676370eb3b3b90a7def22e6e",
+    "engine/rl_after/rl_app_data.json.srcmd5": "cf4552214073e2e252b98167e7a91651",
+    "engine/rl_after/rl_model_data.json": "82aed8d1df509e0c2b5869fa72036295",
+    "ui/app/positions_data.js": "cc0314c828d53de9c7d9fab8a70ae2b6",
+    "ui/data/board_view_public.js": "aafea997900b24f0198dedc53ae6e642",
+    "ui/data/board_view_working.js": "817ec515a28ece43d9a55aff53adfdb6",
+    "ui/data/club_valuation.js": "4cb58d7a8ebb168faac06c0b45d39e7c",
+    "ui/data/movers.js": "335e00bfb6076fb60efb98c97ceb0636",
+    "ui/data/movers_transition.js": "2be2bde1e06c958cabaaf307bddb1268",
+    "ui/data/ownership.js": "bab4ef18e38bc9c472eb1a5f52322abb",
+    "ui/data_aux/draft_outcomes.js": "941bd4e4531f5c8bdcd1e3d539ce7577",
+    "ui/data_aux/v0.js": "966add82dab9a44a7e66c93e0745aa9f"
+  },
+  "restored": [
+    {
+      "action": "rewrite",
+      "path": "data/expected_boot.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "data/release_contract.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "data/release_lineage.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "data/rl_build/rl_app_data.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "data/rl_build/rl_app_data.json.srcmd5"
+    },
+    {
+      "action": "rewrite",
+      "path": "data/season_state.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "docs/STATE.md"
+    },
+    {
+      "action": "rewrite",
+      "path": "docs/evidence/walkforward_retro_2026-08-29/CONTROL_FAIL.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "engine/rl_after/ingestion/pos_rank_history.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "engine/rl_after/ingestion/rank_history.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "engine/rl_after/ingestion/value_history.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "engine/rl_after/rl_app_data.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "engine/rl_after/rl_app_data.json.srcmd5"
+    },
+    {
+      "action": "rewrite",
+      "path": "engine/rl_after/rl_model_data.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/app/positions_data.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data/board_view_public.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data/board_view_working.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data/club_valuation.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data/movers.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data/movers_transition.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data/ownership.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data_aux/draft_outcomes.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data_aux/v0.js"
+    }
+  ]
+}
