@@ -16,21 +16,6 @@
   "store": [
    {
     "key": "dominic-bedendo",
-    "field": "afl_club",
-    "add": "Fremantle"
-   },
-   {
-    "key": "dominic-bedendo",
-    "field": "stable_player_id",
-    "add": "afl-player-v1-11c3b75d73c4b5fe53f5"
-   },
-   {
-    "key": "dominic-bedendo",
-    "field": "affl_team",
-    "add": "Free Agents"
-   },
-   {
-    "key": "dominic-bedendo",
     "field": "eligibilities",
     "add": "G-FWD"
    },
@@ -55,21 +40,6 @@
     "field": "_last_listed",
     "old": 2024,
     "new": 2026
-   },
-   {
-    "key": "alex-mirkov",
-    "field": "afl_club",
-    "add": "GWS"
-   },
-   {
-    "key": "alex-mirkov",
-    "field": "stable_player_id",
-    "add": "afl-player-v1-9c9e1eae45b315029454"
-   },
-   {
-    "key": "alex-mirkov",
-    "field": "affl_team",
-    "add": "Free Agents"
    },
    {
     "key": "alex-mirkov",
