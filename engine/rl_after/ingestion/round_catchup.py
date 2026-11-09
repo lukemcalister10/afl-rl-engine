@@ -130,7 +130,7 @@ class RoundCatchup:
             okey, kind = self.overrides.resolve(round_n, name, score)
             if kind in ('map_all', 'by_round_score'):
                 row = by_key.get(okey)
-                if row is None or not row.get('stable_player_id') or row.get('_retired'):
+                if row is None or not RE.is_active(row, self.season):
                     residue.append({'name': name, 'score': score, 'reason': 'override-target-invalid',
                                     'override_key': okey})
                     continue
@@ -157,8 +157,8 @@ class RoundCatchup:
     def preflight(self):
         store_rows = self._store_rows()
         by_key = {r['key']: r for r in store_rows if r.get('key')}
-        resolver = RE.ActivePoolResolver(store=store_rows)
-        active_keys = {r['key'] for r in store_rows if RE.is_active(r)}
+        resolver = RE.ActivePoolResolver(store=store_rows, season=self.season)
+        active_keys = {r['key'] for r in store_rows if RE.is_active(r, self.season)}
         ledger_applied = set(load_ledger(self._ledger_path()).get('applied', []))
 
         rounds = []

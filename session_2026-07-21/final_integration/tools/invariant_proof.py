@@ -68,6 +68,10 @@ KEPT PER-PUSH, unchanged (23):
   (12) all twelve draft-asset checks
   (13) draftAssetTotals reconciled_to_f5 (x2 lenses); Board B sealed entrant layer == 83538 (that one
        reads only the git Board B blob, never the tree's board)
+RE-SORTED 2026-11-06 (the owner's roster acts move WHO is listed, not only values):
+  (10) "final active count == 804" and "no added/removed vs the reference vector", and (11) "exact
+       active universe vs Board B", moved to ADOPTION — each is equality with a baseline roster. The
+       per-push universe check is now "active universe == the store's listed (non-retired) rows".
 MOVED WHOLE TO ADOPTION (5):
   (10) final Sigma present v == 764021; zero present-v movers; zero present-rank movers; zero
        present-order movers -- these ARE the released-baseline equality.
@@ -196,10 +200,25 @@ def main():
        'board=%s active=%s sum_v=%s' % (str(RV.get('board_md5'))[:8], RV.get('active'), RV.get('sum_v')))
     # PER-PUSH: the active UNIVERSE. Roster-driven, not valuation-driven — the re-derivation moves
     # values, not who is on the list — so it holds for a correctly-built candidate board.
-    ck('(10) final active count == %d' % PRESENT_ACTIVE, len(fa) == PRESENT_ACTIVE, len(fa))
+    # THE UNIVERSE IS THE ROSTER OF RECORD (2026-11-06). Until the owner's roster acts (four players
+    # returned or added, 107 real-life exits retired) this proof pinned the active universe to the
+    # reference vector's 804 keys, on the premise that only valuation moves and the list never does.
+    # The list now moves on the owner's word, so the per-push invariant is the one that holds for every
+    # correctly-built board: the board's active set is EXACTLY the store's listed (non-retired) rows —
+    # read from the store, never from the board under test or the boot manifest. Equality with the
+    # reference vector's universe is a release-baseline claim and moves to the adoption lane below.
+    store_rows = json.load(open(os.path.join(ROOT, 'engine', 'rl_after', 'rl_model_data.json'), encoding='utf-8'))
+    listed = {r['key'] for r in store_rows if r.get('key') and not r.get('_retired')}
+    off_list = sorted(set(fby) - listed); unpriced = sorted(listed - set(fby))
+    ck('(10) the active universe == the store\'s listed (non-retired) rows (%d)' % len(listed),
+       not off_list and not unpriced,
+       'active=%d listed=%d on-board-not-listed=%s listed-not-on-board=%s'
+       % (len(fa), len(listed), off_list[:5], unpriced[:5]))
     added = sorted(set(fby) - set(aby)); removed = sorted(set(aby) - set(fby))
-    ck('(10) no added/removed active players vs the accepted reference vector', not added and not removed,
-       'added=%d removed=%d' % (len(added), len(removed)))
+    adopt('(10) final active count == %d (the reference vector\'s universe)' % PRESENT_ACTIVE,
+          len(fa) == PRESENT_ACTIVE, len(fa))
+    adopt('(10) no added/removed active players vs the accepted reference vector', not added and not removed,
+          'added=%d removed=%d' % (len(added), len(removed)))
 
     # ADOPTION: the released-baseline VALUE equality. Red for the whole baseline effort by design.
     adopt('(10) final Sigma present v == %d' % PRESENT_TOTAL, sum(p['v'] for p in fa) == PRESENT_TOTAL, sum(p['v'] for p in fa))
@@ -232,12 +251,13 @@ def main():
     pv_mov = len([k for k in fby if k in bby and fby[k]['v'] != bby[k]['v']])
     fwd_present = all(isinstance(p.get('vP1'), (int, float)) and isinstance(p.get('vP2'), (int, float)) for p in fa)
     ck('(11) forward vectors present + numeric for all %d active (board of record; its md5 is '
-       'emitted in this proof\'s identity footer)' % PRESENT_ACTIVE,
-       fwd_present and len(fa) == PRESENT_ACTIVE, 'present=%s active=%d' % (fwd_present, len(fa)))
-    ck('(11) exact active universe vs Board B (no missing/added rows)', not miss and not addf,
-       'missing=%d added=%d' % (len(miss), len(addf)))
+       'emitted in this proof\'s identity footer)' % len(fa),
+       fwd_present and len(fa) > 0, 'present=%s active=%d' % (fwd_present, len(fa)))
+    # Board B's universe is the superseded R14 roster: equality with it is a baseline claim (2026-11-06).
+    adopt('(11) exact active universe vs Board B (no missing/added rows)', not miss and not addf,
+          'missing=%d added=%d' % (len(miss), len(addf)))
     deferred('(11) vP1/vP2 acceptance vs Board B — owner-DEFERRED (forward-lens not accepted)',
-             'vP1 changed=%d/804, vP2 changed=%d/804 vs the SUPERSEDED R14 Board B 1f10220c (present-v also '
+             'vP1 changed=%d, vP2 changed=%d of the shared rows vs the SUPERSEDED R14 Board B 1f10220c (present-v also '
              'moved +%d, the STOP-1 advance). No accepted R19 forward oracle exists; the forward-lens repair '
              'is owner-deferred. Deltas recorded, NOT asserted as a pass.' % (len(ch1), len(ch2), pv_mov))
 

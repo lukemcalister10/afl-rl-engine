@@ -78,10 +78,20 @@ def norm(name):
     return _engine_norm(name)
 
 
-def is_active(row):
+def is_active(row, season=None):
     """A live active-pool row: carries a durable stable_player_id AND is not retired. Retirees carry
-    no stable id in this store, so they fall out naturally; the _retired guard is belt-and-braces."""
-    return bool(row.get('stable_player_id')) and not row.get('_retired')
+    no stable id in this store, so they fall out naturally; the _retired guard is belt-and-braces.
+
+    THE LISTING FACT (2026-11-06). A row retired at the end of a season it was LISTED in
+    (`_last_listed >= season`) played that season: the end-of-2026 exits retired 107 such rows, and
+    their 2026 round scores are theirs. When the caller names the season, such a row is eligible for
+    THAT season only — a 2027 round still refuses him. Without a season the rule is unchanged."""
+    if not row.get('stable_player_id'):
+        return False
+    if not row.get('_retired'):
+        return True
+    ll = row.get('_last_listed')
+    return season is not None and ll is not None and int(ll) >= int(season)
 
 
 # ---- artifact records ----------------------------------------------------------------------
@@ -132,13 +142,13 @@ class ActivePoolResolver:
     Kings are inactive, so today the live pool holds ZERO name collisions.
     """
 
-    def __init__(self, store=None, store_path=None):
+    def __init__(self, store=None, store_path=None, season=None):
         if store is None:
             store = json.load(open(store_path or _STORE_DEFAULT))
         self._by_norm = {}               # norm(name) -> [active rows]
         self._active_names = []          # canonical display names of the active pool (for near-match)
         for r in store:
-            if not is_active(r):
+            if not is_active(r, season):
                 continue
             self._by_norm.setdefault(norm(r.get('player')), []).append(r)
             self._active_names.append(r.get('player'))
@@ -341,7 +351,7 @@ class RoundEntry:
         self.round = int(round_n)
         self.season_year = int(season_year)
         self.store_path = store_path or _STORE_DEFAULT
-        self.resolver = ActivePoolResolver(store=store, store_path=self.store_path)
+        self.resolver = ActivePoolResolver(store=store, store_path=self.store_path, season=self.season_year)
 
     def resolve_body(self, body):
         """Parse + resolve. Returns (resolved:[ResolvedRow], residue:[ResidueLine])."""

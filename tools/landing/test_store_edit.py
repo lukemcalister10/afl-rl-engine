@@ -387,16 +387,23 @@ def add_live_store():
     # the first AFTER key", so a row that also carries `_force_active` legitimately reads
     # `_pickless, _force_active, _last_listed, future_position` (alex-mirkov, the returns act). The
     # invariant every exemplar must hold is `_pickless` < `_last_listed` < `future_position`.
-    def _prec(r):
+    # TWO WRITER FAMILIES (2026-11-06, the end-of-2026 exits): retired rows carry `_last_listed` after
+    # `_pickless` and before `future_position`; the 107 exits (active rows, which write `_pickless`
+    # later) carry it between `_draft_club` and `afl_club`. Every exemplar sits in one of the two.
+    def _fam(r):
         ks = list(r)
         i = ks.index('_last_listed')
-        return '_pickless' in ks[:i] and 'future_position' in ks[i + 1:]
-    ok(have and all(_prec(r) for r in have),
-       'every row that carries `_last_listed` (%d) has it after `_pickless` and before `future_position`' % len(have))
+        prv, nxt = ks[i - 1], (ks[i + 1] if i + 1 < len(ks) else None)
+        return 'retired' if ('_pickless' in ks[:i] and 'future_position' in ks[i + 1:]) else \
+               'active' if (prv == '_draft_club' and nxt == 'afl_club') else None
+    fams = [_fam(r) for r in have]
+    ok(have and None not in fams,
+       'every row that carries `_last_listed` (%d) is in one of the two writer families: %d retired-order, %d active-order'
+       % (len(have), fams.count('retired'), fams.count('active')))
     anchor = ST._add_anchor(text, '_last_listed')
-    ok(anchor['kind'] == 'ordered' and '_pickless' in anchor['before'] and 'future_position' in anchor['after_keys']
-       and anchor['exemplars'] == len(have),
-       'the measured precedence puts `_pickless` before and `future_position` after, from %d exemplar row(s)' % len(have))
+    ok(anchor['kind'] == 'ordered' and anchor['exemplars'] == len(have) and '_pickless' in anchor['conflict'],
+       'pooled, the families disagree on `_pickless` (%d exemplars) — so the add resolves by the neighbourhood the target row has'
+       % len(have))
     targets = []
     for nxt in ('future_position', '_bd'):
         for r in rows:

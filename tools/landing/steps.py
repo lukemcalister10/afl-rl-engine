@@ -452,27 +452,60 @@ def _add_anchor(text, field):
     # them, AFTER = keys that follow it in every exemplar that carries them. A key that is before in
     # one exemplar and after in another is a TRUE conflict and still refuses. In the target row the
     # field goes immediately after its last BEFORE key, which must sit before its first AFTER key.
-    before, after, conflict, exemplars = set(), set(), set(), 0
-    for k, (_s, _e, row) in store_row_spans(text).items():
-        if field in row:
-            exemplars += 1
-            ks = list(row)
-            at = ks.index(field)
-            for j, kk in enumerate(ks):
-                if j < at:
-                    if kk in after: conflict.add(kk)
-                    before.add(kk)
-                elif j > at:
-                    if kk in before: conflict.add(kk)
-                    after.add(kk)
-    if not exemplars:
+    orders = [list(row) for _k, (_s, _e, row) in store_row_spans(text).items() if field in row]
+    if not orders:
         return {'kind': 'last', 'after': None, 'exemplars': 0}
+    before, after, conflict = _precedence(orders, field)
+    exemplars = len(orders)
     # A key on BOTH sides is a conflict only for a target row that CARRIES it (measured 2026-11-06:
     # `_bd` sits before `_force_active` in 17 rows and after it in 46 — the file has no one order
     # for that pair, but a row without `_bd` cannot break it). The conflict set rides to the
     # insertion, which refuses when the target carries any of it.
     return {'kind': 'ordered', 'before': sorted(before - conflict), 'after_keys': sorted(after - conflict),
-            'conflict': sorted(conflict), 'after': None, 'exemplars': exemplars}
+            'conflict': sorted(conflict), 'after': None, 'exemplars': exemplars, 'orders': orders}
+
+
+def _precedence(orders, field):
+    """(before, after, conflict) key sets over exemplar key orders that each carry `field`."""
+    before, after, conflict = set(), set(), set()
+    for ks in orders:
+        at = ks.index(field)
+        for j, kk in enumerate(ks):
+            if j < at:
+                if kk in after: conflict.add(kk)
+                before.add(kk)
+            elif j > at:
+                if kk in before: conflict.add(kk)
+                after.add(kk)
+    return before, after, conflict
+
+
+def _neighbour_anchor(orders, field, names):
+    """THE EXEMPLAR NEIGHBOURHOOD THE TARGET ROW ALREADY HAS (2026-11-06, the end-of-2026 exits).
+
+    The store carries more than one writer order: retired rows read `..., _pickless, _last_listed,
+    future_position`, while active rows write `_pickless` much later, so the 107 exits took
+    `_last_listed` between `_draft_club` and `afl_club`. Pooled, the two families disagree on
+    `_pickless` and the precedence rule refuses every later add. The finer measurement: each exemplar
+    shows the field between an immediate PREVIOUS and NEXT key. A target row that carries such a pair
+    ADJACENT to each other has exactly that neighbourhood, and the field goes between them. -> the
+    previous key when exactly one distinct pair qualifies; None otherwise (the caller refuses).
+    """
+    # The row's START and END count as neighbours, so an exemplar with the field first or last is a
+    # neighbourhood like any other (and a disagreement with it is still a refusal).
+    seq = ['<start>'] + list(names) + ['<end>']
+    pos = {n: j for j, n in enumerate(seq)}
+    hits = set()
+    for ks in orders:
+        at = ks.index(field)
+        prv = ks[at - 1] if at > 0 else '<start>'
+        nxt = ks[at + 1] if at < len(ks) - 1 else '<end>'
+        if prv in pos and nxt in pos and pos[nxt] == pos[prv] + 1:
+            hits.add((prv, nxt))
+    if len(hits) != 1:
+        return None
+    prv = next(iter(hits))[0]
+    return None if prv == '<start>' else prv
 
 
 def _apply_add(cur, i, e, start, end, row, anchor):
@@ -516,6 +549,11 @@ def _apply_add(cur, i, e, start, end, row, anchor):
         # exemplars put after it must then sit later in this row, or the order cannot be kept.
         bset, aset = set(anchor['before']), set(anchor['after_keys'])
         bad = [n for n in names if n in set(anchor.get('conflict') or ())]
+        nb = _neighbour_anchor(anchor['orders'], field, names) if (bad and anchor.get('orders')) else None
+        if nb is not None:
+            # the pooled exemplars disagree on a key this row carries, but exactly one exemplar
+            # neighbourhood is already present, adjacent, in this row: the field goes between that pair.
+            bset, aset, bad = {nb}, set(names[names.index(nb) + 1:]), []
         if bad:
             raise StepError('edit %d: the rows that already carry %r do not agree on where it sits '
                             'relative to %s (before it in some rows, after it in others), and row %r '

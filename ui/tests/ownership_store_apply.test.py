@@ -127,6 +127,9 @@ for _r in _rows[1:]:
     _k = _bvw_by_name.get(OSA.nkey(_r[0]))
     if _k is None:
         _cands = by_name.get(OSA.nkey(_r[0])) or []
+        if len(_cands) > 1:   # the courier's own narrowing: the one row carrying authored ownership
+            _own = [c for c in _cands if _store_by_key[c].get("affl_team")]
+            _cands = _own if len(_own) == 1 else _cands
         check(len(_cands) == 1 and _store_by_key[_cands[0]].get("_retired") is True,
               "off-board sheet row %r resolves to exactly one RETIRED store row (%s)" % (_r[0], _cands))
         _k = _cands[0]

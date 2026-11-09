@@ -295,7 +295,10 @@ class ScoreIngestor:
             out.append(Anomaly(sid, key, player, 'impossible_score',
                                "score(s) outside [%s,%s]: %s" % (lo, hi, bad)))
         # retired / out-of-universe: resolved row is a retiree (or carries no live identity).
-        if row.get('_retired'):
+        # A row retired at the end of a season he was listed in (`_last_listed >= season_year`) played
+        # that season (the listing fact, 2026-11-06): his scores for it are not an anomaly.
+        _ll = row.get('_last_listed') if row else None
+        if row.get('_retired') and not (_ll is not None and int(_ll) >= int(season_year)):
             out.append(Anomaly(sid, key, player, 'retired',
                                "resolved row is marked _retired — scores for a retired player"))
         # cycle-year sanity (item 13): the season must be >= the player's debut year.
