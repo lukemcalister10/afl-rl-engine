@@ -1,81 +1,101 @@
 <title>Draft Night 2026</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: one working sheet per tab — a quick lookup strip, then a wide pick ledger that scrolls sideways inside its own frame. */
+/* Layout: a compact lookup strip, then one ruled ledger per draft (national, rookie, pathway) sized to fit the page. */
 :root {
-  --bg: #f3f5f1; --surface: #ffffff; --ink: #18211d; --muted: #5c6a63; --line: #d6ddd5;
-  --accent: #a8401c; --accent-soft: #f6e4dc; --good: #2f7a4b; --warn: #a66b00; --warn-soft: #fbefd6; --rowalt: #f8faf7;
+  --bg: #f3f5f1; --surface: #ffffff; --ink: #1e2424; --muted: #5c6a63; --line: #d6ddd5; --line-soft: #e6ebe4;
+  --accent: #ae432d; --accent-soft: #f6e4dc; --good: #2f7a4b; --warn: #a66b00; --warn-soft: #fbefd6; --rowalt: #f8faf7;
   --display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
-  --body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --body: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --badge: Arial, Helvetica, sans-serif;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --bg: #111614; --surface: #19201d; --ink: #e4eae6; --muted: #98a59e; --line: #2c3632;
+  --bg: #111614; --surface: #19201d; --ink: #e4eae6; --muted: #98a59e; --line: #2c3632; --line-soft: #232b28;
   --accent: #e2805b; --accent-soft: #3a2219; --good: #6cc48f; --warn: #e3b04b; --warn-soft: #3a2e14; --rowalt: #1c2420; color-scheme: dark } }
 :root[data-theme="dark"] {
-  --bg: #111614; --surface: #19201d; --ink: #e4eae6; --muted: #98a59e; --line: #2c3632;
+  --bg: #111614; --surface: #19201d; --ink: #e4eae6; --muted: #98a59e; --line: #2c3632; --line-soft: #232b28;
   --accent: #e2805b; --accent-soft: #3a2219; --good: #6cc48f; --warn: #e3b04b; --warn-soft: #3a2e14; --rowalt: #1c2420; color-scheme: dark }
 [hidden] { display: none !important; }
 body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 14px; }
-.wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 20px 40px; max-width: 1500px; margin: 0 auto; display: grid; gap: 18px; }
-h1 { font-family: var(--display); font-weight: 700; font-size: 40px; letter-spacing: .01em; margin: 0; line-height: 1; text-wrap: balance; }
-h2 { font-family: var(--display); font-weight: 600; font-size: 24px; margin: 0; letter-spacing: .01em; }
-.head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px; }
-.meta { color: var(--muted); font-size: 12px; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; }
+.wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 18px 40px; max-width: 1440px; margin: 0 auto; display: grid; gap: 16px; }
+h1 { font-family: var(--display); font-weight: 700; font-size: 38px; margin: 0; line-height: 1; }
+h2 { font-family: var(--display); font-weight: 600; font-size: 22px; margin: 0; line-height: 1.1; }
+.top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
 .chip { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: 12px; color: var(--muted); }
 .chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
 .chip.ok .dot { background: var(--good); } .chip.warn .dot { background: var(--warn); }
 .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); }
-.tab { font: 600 15px var(--body); background: none; border: 0; padding: 10px 14px; color: var(--muted); cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -1px; }
+.tab { font: 600 15px var(--body); background: none; border: 0; padding: 9px 14px; color: var(--muted); cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -1px; }
 .tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
-.tab:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
-.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: grid; gap: 12px; min-width: 0; }
-.row { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; }
-label.f { display: grid; gap: 4px; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; }
-select, input { font: 14px var(--body); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; min-width: 0; }
-input[type="number"] { width: 64px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: grid; gap: 12px; min-width: 0; }
+.lhead { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; }
+.inl { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); font-weight: 500; }
+select, input { font: 14px var(--body); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 5px 7px; min-width: 0; box-sizing: border-box; }
 .lookup { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
-.cell { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; display: grid; gap: 2px; }
-.cell b { font-family: var(--display); font-size: 26px; font-weight: 600; font-variant-numeric: tabular-nums; }
-.cell span { font-size: 12px; color: var(--muted); }
-.note { color: var(--muted); font-size: 12.5px; line-height: 1.5; max-width: 80ch; margin: 0; }
-.frame { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
-table { border-collapse: separate; border-spacing: 0; width: max-content; min-width: 100%; font-variant-numeric: tabular-nums; }
-th, td { padding: 4px 6px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; vertical-align: middle; }
-th { position: sticky; top: 0; background: var(--surface); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; z-index: 2; }
-tbody tr:nth-child(even) td { background: var(--rowalt); }
-tbody tr:nth-child(odd) td { background: var(--surface); }
-td.sticky, th.sticky { position: sticky; left: 0; z-index: 1; }
-th.sticky { z-index: 3; }
-td.slot { font-family: var(--display); font-size: 17px; font-weight: 600; min-width: 64px; }
-td.slot small { display: block; font-family: var(--body); font-size: 10.5px; color: var(--muted); font-weight: 500; }
-tr.section td { background: var(--bg) !important; font-family: var(--display); font-size: 19px; font-weight: 600; padding: 10px 8px; }
-td input.name { width: 170px; } td input.dob { width: 128px; } td select.pos { width: 168px; } td input.w { width: 56px; }
-td select.club { width: 150px; } td select.kind { width: 132px; }
-td.v0 { font-family: var(--display); font-size: 19px; font-weight: 700; color: var(--accent); min-width: 64px; text-align: right; }
-td.alt { text-align: right; min-width: 58px; color: var(--ink); }
-td.alt small, td.v0 small { display: block; font-family: var(--body); font-size: 10.5px; color: var(--muted); font-weight: 500; }
-td.flag { color: var(--warn); font-size: 11.5px; }
-.age { font-size: 11px; color: var(--muted); margin-left: 4px; }
-tr.taken td { opacity: .62; }
+.cell { border: 1px solid var(--line-soft); border-radius: 8px; padding: 7px 10px; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.cell span { font-size: 12px; color: var(--muted); font-weight: 600; letter-spacing: .04em; }
+.cell b { font-family: var(--display); font-size: 24px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.toolbar .msg { color: var(--muted); font-size: 12.5px; margin-left: 4px; }
 button.btn { font: 600 13px var(--body); border-radius: 6px; padding: 7px 12px; cursor: pointer; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
 button.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--surface); }
-button.btn:disabled { opacity: .5; cursor: default; }
-.empty { color: var(--muted); padding: 18px 8px; text-align: center; }
+.block { display: grid; gap: 8px; }
+.frame { border: 1px solid var(--line); border-radius: 10px; background: var(--surface); overflow-x: auto; }
+@media (min-width: 1240px) { .frame { overflow: visible; } }
+table { border-collapse: separate; border-spacing: 0; width: 100%; table-layout: fixed; font-variant-numeric: tabular-nums; }
+table.nd { min-width: 1150px; } table.rd, table.op { min-width: 920px; } table.live { min-width: 760px; }
+th, td { padding: 3px 5px; border-bottom: 1px solid var(--line-soft); text-align: left; white-space: nowrap; vertical-align: middle; overflow: hidden; text-overflow: ellipsis; }
+th { position: sticky; top: env(safe-area-inset-top, 0px); background: var(--surface); font-size: 10.5px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); font-weight: 600; z-index: 2; padding-block: 8px; border-bottom-color: var(--line); }
+th:first-child { border-top-left-radius: 10px; } th:last-child { border-top-right-radius: 10px; }
+th.r, td.r { text-align: right; }
+tbody tr:nth-child(even) td { background: var(--rowalt); }
+tbody tr:last-child td { border-bottom: 0; }
+tr.taken td { opacity: .6; }
+/* editable cells: a box while empty or focused, plain text once filled */
+.ed { width: 100%; font: 14px var(--body); }
+.ed.filled:not(:focus) { border-color: transparent; background: transparent; -webkit-appearance: none; appearance: none; padding-left: 2px; padding-right: 2px; cursor: text; }
+.ed.filled:not(:focus):hover { border-color: var(--line); }
+tr.has-player .ed:not(:focus) { border-color: transparent; background: transparent; -webkit-appearance: none; appearance: none; padding-left: 2px; padding-right: 2px; }
+tr.has-player .ed:not(:focus):hover { border-color: var(--line); background: var(--surface); }
+select.ed { cursor: pointer; padding-right: 2px; }
+input.name.filled:not(:focus) { font-weight: 700; font-size: .98rem; }
+input.name:not(:focus):hover { color: var(--accent); }
+input[type="number"].ed { -moz-appearance: textfield; text-align: right; }
+input[type="number"].ed::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+button.pick { font: 600 17px var(--display); background: none; border: 1px solid transparent; border-radius: 6px; color: var(--ink); cursor: pointer; padding: 2px 4px; width: 100%; text-align: left; }
+button.pick:hover { border-color: var(--line); }
+input.pickin { width: 100%; font: 600 15px var(--display); }
+.plw { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.plw input.name { flex: 1 1 auto; }
+.state-flag { width: 32px; height: 18px; flex: none; object-fit: cover; display: block; border-radius: 4px; box-shadow: 0 1px 2px rgba(25,33,31,.16); }
+.flagslot { width: 32px; flex: none; }
+.club-badge { display: inline-flex; align-items: center; overflow: hidden; padding: 0; box-sizing: border-box; border: 1px solid #bbb9b1; border-radius: 4px; background: rgba(255,255,255,.64); color: #3f4745; min-height: 26px; font-family: var(--badge); line-height: 1; text-transform: uppercase; white-space: nowrap; flex: none; }
+.club-code { min-width: 31px; height: 25px; padding: 0 6px; display: inline-flex; align-items: center; justify-content: center; font-size: .54rem; font-weight: 500; letter-spacing: .045em; box-sizing: border-box; }
+.club-type { padding: 0 8px; display: inline-flex; align-items: center; justify-content: center; font-size: .61rem; font-weight: 600; letter-spacing: .035em; }
+.warn { flex: none; width: 18px; height: 18px; border-radius: 50%; background: var(--warn-soft); color: var(--warn); font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; cursor: help; }
+td.v0 { font-family: var(--display); font-size: 18px; font-weight: 700; color: var(--accent); }
+td.alt { font-size: 13px; color: var(--ink); }
+td .age { font-size: 11px; color: var(--muted); }
+button.x { background: none; border: 0; color: var(--muted); font-size: 16px; cursor: pointer; border-radius: 4px; padding: 0 4px; visibility: hidden; }
+tr:hover button.x, button.x:focus-visible { visibility: visible; }
 .badge { display: inline-block; font-size: 11px; padding: 1px 7px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-weight: 600; }
 .badge.fa { background: var(--warn-soft); color: var(--warn); }
-textarea { width: 100%; min-height: 140px; font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 8px; box-sizing: border-box; }
-@media (max-width: 760px) { .lookup { grid-template-columns: repeat(3, minmax(0, 1fr)); } h1 { font-size: 32px; } }
+.empty { color: var(--muted); padding: 16px 8px; text-align: center; white-space: normal; }
+textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 8px; box-sizing: border-box; }
+@media (max-width: 720px) {
+  .lookup { grid-template-columns: repeat(2, minmax(0, 1fr)); } h1 { font-size: 30px; }
+  .state-flag { width: 30px; height: 17px; } .flagslot { width: 30px; }
+  .club-badge { min-height: 20px; } .club-code { width: 31px; min-width: 0; height: 19px; padding: 0; font-size: .5rem; } .club-type { width: 24px; height: 19px; padding: 0; font-size: .52rem; }
+}
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 
 <div class="wrap">
-  <div class="head">
-    <div style="display:grid;gap:6px">
-      <h1>Draft Night 2026</h1>
-      <div class="meta" id="meta"></div>
-    </div>
+  <div class="top">
+    <h1>Draft Night 2026</h1>
     <span class="chip" id="sync"><span class="dot"></span><span id="synctext">Connecting…</span></span>
   </div>
 
@@ -86,69 +106,52 @@ textarea { width: 100%; min-height: 140px; font: 12px ui-monospace, SFMono-Regul
 
   <section id="view-entry" role="tabpanel" aria-labelledby="tab-entry" style="display:grid;gap:18px">
     <div class="panel">
-      <div class="row" style="justify-content:space-between">
+      <div class="lhead">
         <h2>Quick lookup</h2>
-        <div class="row">
-          <label class="f">Slot<select id="q-slot"></select></label>
-          <label class="f">Birth year<input id="q-by" type="number" min="1990" max="2012" value="2008" style="width:84px"></label>
-        </div>
+        <label class="inl">Slot <select id="q-slot"></select></label>
+        <label class="inl">Birth year <input id="q-by" type="number" min="1990" max="2012" value="2008" style="width:76px"></label>
       </div>
       <div class="lookup" id="q-out"></div>
-      <p class="note" id="q-note"></p>
     </div>
 
-    <div class="row" style="justify-content:space-between">
-      <p class="note">Type the player against the slot he went at. v0 is a blend of each position's v0 at that slot, weighted by the percentages. If you leave Position 2 empty, Position 1 counts as 100%. Draft age comes from birth year: draft year minus birth year, never below 18. With no date of birth, age 18 is assumed.</p>
-      <div class="row">
-        <button class="btn" id="add-open">Add pathway slot</button>
-        <button class="btn primary" id="export">Download CSV</button>
-        <button class="btn" id="copy">Copy CSV</button>
-      </div>
+    <div class="toolbar">
+      <button class="btn" id="fill">Fill picks from rankings</button>
+      <button class="btn" id="add-open">Add pathway slot</button>
+      <button class="btn primary" id="export">Download CSV</button>
+      <button class="btn" id="copy">Copy CSV</button>
+      <span class="msg" id="toolmsg" aria-live="polite"></span>
     </div>
     <div class="panel" id="csvbox" hidden>
-      <p class="note" id="csvnote">Copy this and paste it back to Claude.</p>
+      <span class="toolbar"><span id="csvnote" class="msg" style="margin:0"></span></span>
       <textarea id="csvtext" readonly aria-label="CSV export"></textarea>
     </div>
 
-    <div class="frame">
-      <table id="ledger">
-        <thead><tr>
-          <th class="sticky">Slot</th><th>Player</th><th>Date of birth</th><th>Position 1</th><th>Position 2</th>
-          <th>Pos 1 %</th><th>Pos 2 %</th><th style="text-align:right">v0</th>
-          <th style="text-align:right">10 earlier</th><th style="text-align:right">5 earlier</th>
-          <th style="text-align:right">5 later</th><th style="text-align:right">10 later</th>
-          <th>AFL club</th><th>AFFL club</th><th></th>
-        </tr></thead>
-        <tbody id="ledger-body"></tbody>
-      </table>
-    </div>
+    <div class="block" data-block="nd"><h2>National draft</h2><div class="frame"><table class="nd" id="t-nd"></table></div></div>
+    <div class="block" data-block="rd"><h2>Rookie draft</h2><div class="frame"><table class="rd" id="t-rd"></table></div></div>
+    <div class="block" data-block="op"><h2>Pathway signings</h2><div class="frame"><table class="op" id="t-op"></table></div></div>
+    <datalist id="prospect-list"></datalist>
   </section>
 
   <section id="view-live" role="tabpanel" aria-labelledby="tab-live" hidden style="display:grid;gap:18px">
-    <div class="panel">
-      <div class="row" style="justify-content:space-between">
+    <div class="block">
+      <div class="lhead">
         <h2>Best available</h2>
-        <div class="row">
-          <label class="f">Position<select id="l-pos"><option value="">All positions</option></select></label>
-          <label class="f">Show<select id="l-src"><option value="all">Draftees and free agents</option><option value="draft">Draftees only</option><option value="fa">Free agents only</option></select></label>
-        </div>
+        <label class="inl">Position <select id="l-pos"><option value="">All</option></select></label>
+        <label class="inl">Show <select id="l-src"><option value="all">Draftees and free agents</option><option value="draft">Draftees</option><option value="fa">Free agents</option></select></label>
       </div>
-      <p class="note">Draftees are ranked by v0 and free agents by their current board value; both are on the same value scale. Pick an AFFL club to mark a player as taken and he drops off this list. A draftee's AFFL club also fills in on the AFL draft tab.</p>
-      <div class="frame">
-        <table>
-          <thead><tr><th class="sticky">#</th><th>Player</th><th>Came from</th><th>Position</th><th>Age</th><th style="text-align:right">Value</th><th>AFFL club</th></tr></thead>
-          <tbody id="avail"></tbody>
-        </table>
-      </div>
+      <div class="frame"><table class="live">
+        <colgroup><col style="width:44px"><col><col style="width:200px"><col style="width:96px"><col style="width:56px"><col style="width:76px"><col style="width:190px"></colgroup>
+        <thead><tr><th>#</th><th>Player</th><th>Came from</th><th>Pos</th><th class="r">Age</th><th class="r">Value</th><th>AFFL club</th></tr></thead>
+        <tbody id="avail"></tbody>
+      </table></div>
     </div>
-    <div class="panel">
+    <div class="block">
       <h2>Taken</h2>
-      <div class="frame">
-        <table>
-          <thead><tr><th class="sticky">Player</th><th>AFFL club</th><th>Came from</th><th style="text-align:right">Value</th><th></th></tr></thead>
-          <tbody id="taken"></tbody>
-        </table>
-      </div>
+      <div class="frame"><table class="live">
+        <colgroup><col><col style="width:200px"><col style="width:200px"><col style="width:76px"><col style="width:84px"></colgroup>
+        <thead><tr><th>Player</th><th>AFFL club</th><th>Came from</th><th class="r">Value</th><th></th></tr></thead>
+        <tbody id="taken"></tbody>
+      </table></div>
     </div>
   </section>
 </div>
@@ -158,51 +161,59 @@ textarea { width: 100%; min-height: 140px; font: 12px ui-monospace, SFMono-Regul
 (function () {
   "use strict";
   const D = JSON.parse(document.getElementById("v0data").textContent);
-  const POS = D.positions;
-  const POS_LABEL = { MID: "Midfielder", SF: "General forward", KPF: "Key forward", SD: "General defender", KPD: "Key defender", RUCK: "Ruck" };
-  const PATHWAYS = [
-    { code: "UNR", label: "Unregistered" }, { code: "IRE", label: "Ireland" }, { code: "PDN", label: "NGA" },
-    { code: "PDA", label: "Academy" }, { code: "IND", label: "Indigenous Rookie" }];
-  const PATH_LABEL = Object.fromEntries(PATHWAYS.map(p => [p.code, p.label]));
+  const POS = ["MID", "SF", "SD", "KPF", "KPD", "RUCK"];
+  const PSHORT = { MID: "MID", SF: "SF", SD: "SD", KPF: "KPF", KPD: "KPD", RUCK: "RUC" };
+  const PATHS = [["UNR", "UNR"], ["IRE", "IRE"], ["PDN", "NGA"], ["PDA", "ACA"], ["IND", "IND"]];
+  const PATH_LABEL = Object.fromEntries(PATHS);
+  const PATH_NAME = { UNR: "Unregistered", IRE: "Ireland", PDN: "NGA", PDA: "Academy", IND: "Indigenous Rookie" };
+  const CATS = [["", "—"], ["ACA", "ACA"], ["NGA", "NGA"], ["FS", "F/S"]];
+  const CAT_NAME = { ACA: "Academy", NGA: "NGA", FS: "father-son" };
+  const CLUB_CODE = { "Adelaide": "ADE", "Brisbane": "BRI", "Carlton": "CAR", "Collingwood": "COL", "Essendon": "ESS", "Fremantle": "FRE",
+    "GWS": "GWS", "Geelong": "GEE", "Gold Coast": "GCS", "Hawthorn": "HAW", "Melbourne": "MEL", "North Melbourne": "NTH",
+    "Port Adelaide": "PTA", "Richmond": "RIC", "St Kilda": "STK", "Sydney": "SYD", "West Coast": "WCE", "Western Bulldogs": "WBD" };
+  const CODE_CLUB = Object.fromEntries(Object.entries(CLUB_CODE).map(([k, v]) => [v, k]));
+  // club colours: the handover spec (prospects/VISUAL_SPECS.md); COL, GEE, MEL, STK added for father-son ties
+  const BADGE = { PTA: ["#008aab", "#ffffff"], CAR: ["#071a38", "#ffffff"], HAW: ["#4d2008", "#f3b72b"], BRI: ["#751936", "#f4c800"],
+    NTH: ["#095aa6", "#ffffff"], SYD: ["#d71920", "#ffffff"], WCE: ["#003b78", "#f4c430"], FRE: ["#4e2683", "#ffffff"],
+    RIC: ["#151515", "#ffd200"], ESS: ["#171717", "#ffffff"], WBD: ["#1557a4", "#ffffff"], ADE: ["#002b5c", "#f1c400"],
+    GCS: ["#d71920", "#ffd300"], GWS: ["#c84e00", "#ffffff"], COL: ["#000000", "#ffffff"], GEE: ["#1c3c63", "#ffffff"],
+    MEL: ["#0f1131", "#e21937"], STK: ["#ed1b2f", "#ffffff"] };
+  const POS_MAP = { "Midfielder": ["MID"], "Midfielder / Forward": ["MID", "SF"], "Defender": ["SD"], "Small Forward": ["SF"],
+    "Key Defender": ["KPD"], "Key Forward": ["KPF"], "Midfielder / Defender": ["MID", "SD"], "Medium Forward": ["SF", "KPF"],
+    "Ruck / Forward": ["RUCK", "KPF"], "Ruck": ["RUCK"], "Key Position Utility": ["KPD", "KPF"] };
+  const LINK_CAT = { "Academy": "ACA", "NGA": "NGA", "F/S": "FS" };
+  const PLAYER_FIELDS = ["name", "dob", "pos1", "pos2", "w1", "w2", "affl", "cat", "tie", "state", "pid"];
   const NAT = 70, RK = 20, OPEN0 = 10, LAST = D.meta.curve_last_pick, YEAR = D.meta.draft_year;
   const LS_KEY = "draft-night-2026-v1";
+  const PROS = D.prospects, PBYNAME = Object.fromEntries(PROS.map(p => [p.name.toLowerCase(), p])), PBYID = Object.fromEntries(PROS.map(p => [p.id, p]));
   const fmt = n => (n == null || !isFinite(n)) ? "—" : Math.round(n).toLocaleString("en-AU");
+  const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const opt = (v, t, sel, title) => `<option value="${esc(v)}"${sel ? " selected" : ""}${title ? ` title="${esc(title)}"` : ""}>${esc(t)}</option>`;
 
   // ---------- state
-  const S = { slots: {}, fa: {} };      // slots[id] = {name,dob,pos1,pos2,w1,w2,afl,affl,kind}; fa[key] = {affl}
+  const S = { slots: {}, fa: {} };
   try { const raw = localStorage.getItem(LS_KEY); if (raw) Object.assign(S, JSON.parse(raw)); } catch (e) { /* storage unavailable */ }
   const saveLocal = () => { try { localStorage.setItem(LS_KEY, JSON.stringify(S)); } catch (e) { /* ignore */ } };
-
-  const slotIds = () => {
-    const ids = [];
-    for (let i = 1; i <= NAT; i++) ids.push("nd" + String(i).padStart(2, "0"));
-    for (let i = 1; i <= RK; i++) ids.push("rd" + String(i).padStart(2, "0"));
-    const ops = Object.keys(S.slots).filter(k => k.startsWith("op"));
-    let n = Math.max(OPEN0, ...ops.map(k => parseInt(k.slice(2), 10) || 0));
-    for (let i = 1; i <= n; i++) ids.push("op" + String(i).padStart(2, "0"));
-    return ids;
-  };
-  const kindOf = id => id.slice(0, 2);
-  const numOf = id => parseInt(id.slice(2), 10);
+  const pad = n => String(n).padStart(2, "0");
+  function idsOf(k) {
+    if (k === "nd") return Array.from({ length: NAT }, (_, i) => "nd" + pad(i + 1));
+    if (k === "rd") return Array.from({ length: RK }, (_, i) => "rd" + pad(i + 1));
+    const ops = Object.keys(S.slots).filter(x => x.startsWith("op")).map(x => parseInt(x.slice(2), 10) || 0);
+    return Array.from({ length: Math.max(OPEN0, ...ops) }, (_, i) => "op" + pad(i + 1));
+  }
+  const allIds = () => [...idsOf("nd"), ...idsOf("rd"), ...idsOf("op")];
+  const kindOf = id => id.slice(0, 2), numOf = id => parseInt(id.slice(2), 10);
   const row = id => (S.slots[id] = S.slots[id] || {});
 
-  // ---------- v0 maths (tables from the engine: tools/draft_companion/extract_v0_tables.py)
-  function draftAge(dob) {
-    const y = parseInt(String(dob || "").slice(0, 4), 10);
-    return y > 1900 ? Math.max(YEAR - y, 18) : null;
-  }
+  // ---------- v0 (engine tables: tools/draft_companion/extract_v0_tables.py)
+  function draftAge(dob) { const y = parseInt(String(dob || "").slice(0, 4), 10); return y > 1900 ? Math.max(YEAR - y, 18) : null; }
   const tableAge = a => String(Math.min(Math.max(a == null ? 18 : a, 18), 30));
-  function natV0(pos, age, pick) {
-    if (pick < 1) return null;
-    if (pick > LAST) return D.pool_nd65;
-    return D.national[pos][tableAge(age)][pick - 1];
-  }
+  function natV0(pos, age, pick) { if (pick < 1) return null; if (pick > LAST) return D.pool_nd65; return D.national[pos][tableAge(age)][pick - 1]; }
   function slotV0(id, pos, age, pick) {
     const k = kindOf(id);
     if (k === "nd") return natV0(pos, age, pick == null ? numOf(id) : pick);
     if (k === "rd") return D.rookie[pos];
-    const code = row(id).kind || "UNR";
-    return code === "IND" ? D.pool_nd65 : D.pathways[code];
+    const c = row(id).kind || "UNR"; return c === "IND" ? D.pool_nd65 : D.pathways[c];
   }
   function weights(r) {
     if (!r.pos1) return null;
@@ -211,188 +222,282 @@ textarea { width: 100%; min-height: 140px; font: 12px ui-monospace, SFMono-Regul
     if (!isFinite(w1) && !isFinite(w2)) { w1 = 50; w2 = 50; }
     if (!isFinite(w1)) w1 = Math.max(0, 100 - w2);
     if (!isFinite(w2)) w2 = Math.max(0, 100 - w1);
-    const sum = w1 + w2;
-    if (sum <= 0) return null;
+    const sum = w1 + w2; if (sum <= 0) return null;
     return { parts: [[r.pos1, w1 / sum], [r.pos2, w2 / sum]], sum };
   }
   function rowV0(id, pick) {
-    const r = row(id), w = weights(r);
-    if (!w) return null;
-    const age = draftAge(r.dob);
-    let t = 0;
+    const r = row(id), w = weights(r); if (!w) return null;
+    const age = draftAge(r.dob); let t = 0;
     for (const [p, f] of w.parts) { const v = slotV0(id, p, age, pick); if (v == null) return null; t += f * v; }
     return t;
   }
 
-  // ---------- options
-  const opt = (v, t, sel) => `<option value="${esc(v)}"${sel ? " selected" : ""}>${esc(t)}</option>`;
-  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
-  const posOpts = (sel, blank) => (blank ? opt("", blank, !sel) : opt("", "Choose…", !sel)) + POS.map(p => opt(p, p + " · " + POS_LABEL[p], sel === p)).join("");
-  const clubOpts = (list, sel, blank) => opt("", blank, !sel) + list.map(c => opt(c, c, sel === c)).join("");
-  const kindOpts = sel => PATHWAYS.map(p => opt(p.code, p.label, (sel || "UNR") === p.code)).join("");
+  // ---------- dates: shown dd/mm/yyyy, stored yyyy-mm-dd
+  function toAu(iso) { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ""); return m ? `${m[3]}/${m[2]}/${m[1]}` : (iso || ""); }
+  function parseDob(s) {
+    s = String(s || "").trim(); if (!s) return "";
+    let m = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(s);
+    if (m) return `${m[1]}-${pad(m[2])}-${pad(m[3])}`;
+    m = /^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{4})$/.exec(s);
+    if (m && +m[2] >= 1 && +m[2] <= 12 && +m[1] >= 1 && +m[1] <= 31) return `${m[3]}-${pad(m[2])}-${pad(m[1])}`;
+    return null;
+  }
 
-  // ---------- ledger
-  const body = document.getElementById("ledger-body");
-  function slotLabel(id) {
-    const k = kindOf(id), n = numOf(id);
-    if (k === "nd") return `${n}<small>${n > LAST ? "national · pool" : "national"}</small>`;
-    if (k === "rd") return `R${n}<small>rookie draft</small>`;
-    return `P${n}<small>pathway</small>`;
+  // ---------- badges and flags
+  function badgeHtml(r) {
+    if (!r.cat) return "";
+    const code = r.tie || CLUB_CODE[r.afl] || "";
+    const [bg, fg] = BADGE[code] || ["#5c6a63", "#ffffff"];
+    const label = r.cat === "FS" ? "FS" : "A";
+    const club = CODE_CLUB[code] || code || "Club";
+    const ess = code === "ESS" ? ";box-shadow:inset 0 -3px #d71920" : "";
+    return `<span class="club-badge" title="${esc(club + " " + CAT_NAME[r.cat])}"><span class="club-code" style="background:${bg};color:${fg}${ess}">${esc(code || "—")}</span><span class="club-type">${label}</span></span>`;
+  }
+  function flagHtml(r) {
+    const src = r.state && D.flags[r.state]; const p = r.pid && PBYID[r.pid];
+    return src ? `<img class="state-flag" src="${src}" alt="${esc(p ? p.stateName : r.state)}" title="${esc(p ? p.stateName : r.state)}">` : "";
+  }
+
+  // ---------- tables
+  const posOpts = (sel, blank) => opt("", blank, !sel) + POS.map(p => opt(p, PSHORT[p], sel === p)).join("");
+  const clubOpts = (list, sel, blank) => opt("", blank, !sel) + list.map(c => opt(c, c, sel === c)).join("");
+  const COLS = {
+    nd: [["Pick", 40], ["Player", 0], ["DOB", 106], ["Pos 1", 58], ["Pos 2", 58], ["P1 %", 44], ["P2 %", 44], ["v0", 58, "r"],
+      ["−10", 50, "r", "v0 if taken 10 picks earlier"], ["−5", 50, "r", "v0 if taken 5 picks earlier"], ["+5", 50, "r", "v0 if taken 5 picks later"], ["+10", 50, "r", "v0 if taken 10 picks later"],
+      ["AFL club", 112], ["AFFL club", 150], ["Cat", 52], ["", 30]],
+    rd: [["Pick", 40], ["Player", 0], ["DOB", 106], ["Pos 1", 58], ["Pos 2", 58], ["P1 %", 44], ["P2 %", 44], ["v0", 58, "r"], ["AFL club", 112], ["AFFL club", 150], ["Cat", 52], ["", 30]],
+    op: [["Type", 62], ["Player", 0], ["DOB", 106], ["Pos 1", 58], ["Pos 2", 58], ["P1 %", 44], ["P2 %", 44], ["v0", 58, "r"], ["AFL club", 112], ["AFFL club", 150], ["Cat", 52], ["", 30]]
+  };
+  function tableHead(k) {
+    return "<colgroup>" + COLS[k].map(([, w]) => w ? `<col style="width:${w}px">` : "<col>").join("") + "</colgroup><thead><tr>"
+      + COLS[k].map(([t, , c, tip]) => `<th${c ? ` class="${c}"` : ""}${tip ? ` title="${tip}"` : ""}>${t}</th>`).join("") + `</tr></thead><tbody></tbody>`;
   }
   function rowHtml(id) {
     const r = row(id), k = kindOf(id);
-    const kindCell = k === "op" ? `<select class="kind" data-f="kind" aria-label="Pathway for ${id}">${kindOpts(r.kind)}</select>` : "";
+    const first = k === "op"
+      ? `<select class="ed kind" data-f="kind" aria-label="Pathway">${PATHS.map(([c, l]) => opt(c, l, (r.kind || "UNR") === c, PATH_NAME[c])).join("")}</select>`
+      : `<button class="pick" data-move="${id}" title="Click to move this player to another pick">${numOf(id)}</button>`;
+    const alts = k === "nd" ? ["m10", "m5", "p5", "p10"].map(o => `<td class="alt r" data-o="${o}"></td>`).join("") : "";
     return `<tr data-id="${id}">
-      <td class="slot sticky">${slotLabel(id)}${kindCell ? "<div style='margin-top:4px'>" + kindCell + "</div>" : ""}</td>
-      <td><input class="name" data-f="name" value="${esc(r.name)}" placeholder="Player name" aria-label="Player at ${id}"></td>
-      <td><input class="dob" type="date" data-f="dob" value="${esc(r.dob)}" aria-label="Date of birth at ${id}"><span class="age" data-o="age"></span></td>
-      <td><select class="pos" data-f="pos1" aria-label="Position 1 at ${id}">${posOpts(r.pos1)}</select></td>
-      <td><select class="pos" data-f="pos2" aria-label="Position 2 at ${id}">${posOpts(r.pos2, "None")}</select></td>
-      <td><input class="w" type="number" min="0" max="100" data-f="w1" value="${esc(r.w1)}" aria-label="Position 1 percent at ${id}"></td>
-      <td><input class="w" type="number" min="0" max="100" data-f="w2" value="${esc(r.w2)}" aria-label="Position 2 percent at ${id}"></td>
-      <td class="v0" data-o="v0">—</td>
-      <td class="alt" data-o="m10">—</td><td class="alt" data-o="m5">—</td><td class="alt" data-o="p5">—</td><td class="alt" data-o="p10">—</td>
-      <td><select class="club" data-f="afl" aria-label="AFL club at ${id}">${clubOpts(D.afl_clubs, r.afl, "AFL club")}</select></td>
-      <td><select class="club" data-f="affl" aria-label="AFFL club at ${id}">${clubOpts(D.affl_clubs, r.affl, "Undrafted")}</select></td>
-      <td class="flag" data-o="flag"></td></tr>`;
+      <td>${first}</td>
+      <td><div class="plw"><span class="flagslot" data-o="flag"></span><input class="ed name" data-f="name" list="prospect-list" autocomplete="off" placeholder="Player" aria-label="Player"><span data-o="badge"></span><span data-o="warn"></span></div></td>
+      <td><div class="plw" style="gap:4px"><input class="ed dob" data-f="dob" placeholder="dd/mm/yyyy" inputmode="numeric" aria-label="Date of birth"><span class="age" data-o="age"></span></div></td>
+      <td><select class="ed pos" data-f="pos1" aria-label="Position 1">${posOpts(r.pos1, "–")}</select></td>
+      <td><select class="ed pos" data-f="pos2" aria-label="Position 2">${posOpts(r.pos2, "–")}</select></td>
+      <td><input class="ed w" type="number" min="0" max="100" data-f="w1" aria-label="Position 1 percent"></td>
+      <td><input class="ed w" type="number" min="0" max="100" data-f="w2" aria-label="Position 2 percent"></td>
+      <td class="v0 r" data-o="v0"></td>${alts}
+      <td><select class="ed club" data-f="afl" aria-label="AFL club">${clubOpts(D.afl_clubs, r.afl, "–")}</select></td>
+      <td><select class="ed club" data-f="affl" aria-label="AFFL club">${clubOpts(D.affl_clubs, r.affl, "–")}</select></td>
+      <td><select class="ed cat" data-f="cat" aria-label="Category">${CATS.map(([c, l]) => opt(c, l, (r.cat || "") === c)).join("")}</select></td>
+      <td><button class="x" data-clear="${id}" title="Clear this player" aria-label="Clear this player">×</button></td></tr>`;
   }
-  function renderLedger() {
-    const ids = slotIds();
-    let html = "", last = "";
-    const titles = { nd: "National draft", rd: "Rookie draft", op: "Pathway signings" };
-    for (const id of ids) {
-      const k = kindOf(id);
-      if (k !== last) { html += `<tr class="section"><td class="sticky" colspan="15">${titles[k]}</td></tr>`; last = k; }
-      html += rowHtml(id);
-    }
-    body.innerHTML = html;
-    ids.forEach(updateRow);
+  const tb = k => document.querySelector(`#t-${k} tbody`);
+  function renderTable(k) {
+    const t = document.getElementById("t-" + k);
+    if (!t.tHead) t.innerHTML = tableHead(k);
+    tb(k).innerHTML = idsOf(k).map(rowHtml).join("");
+    idsOf(k).forEach(syncRow);
   }
-  function setOut(tr, key, html) { const el = tr.querySelector(`[data-o="${key}"]`); if (el) el.innerHTML = html; }
+  function renderAll() { ["nd", "rd", "op"].forEach(renderTable); refreshList(); }
+  const trOf = id => document.querySelector(`tr[data-id="${id}"]`);
+  // write state into a row's inputs and outputs
+  function syncRow(id) {
+    const tr = trOf(id); if (!tr) return;
+    const r = row(id);
+    tr.querySelectorAll("[data-f]").forEach(el => {
+      if (el === document.activeElement) return;
+      const f = el.dataset.f; let v = r[f] == null ? "" : r[f];
+      if (f === "kind" && !v) v = "UNR";
+      if (f === "dob") v = r.dobRaw || toAu(v);
+      el.value = v;
+      el.classList.toggle("filled", f === "kind" || f === "cat" ? true : !!el.value);
+    });
+    updateRow(id);
+  }
+  const setOut = (tr, key, html) => { const el = tr.querySelector(`[data-o="${key}"]`); if (el) el.innerHTML = html; };
   function updateRow(id) {
-    const tr = body.querySelector(`tr[data-id="${id}"]`);
-    if (!tr) return;
-    const r = row(id), k = kindOf(id), v = rowV0(id), age = draftAge(r.dob);
-    setOut(tr, "age", r.dob ? `age ${age}` : "");
-    setOut(tr, "v0", fmt(v));
-    for (const [key, d] of [["m10", -10], ["m5", -5], ["p5", 5], ["p10", 10]]) {
-      if (k !== "nd" || v == null) { setOut(tr, key, "—"); continue; }
-      const pick = numOf(id) + d;
-      const a = pick < 1 ? null : rowV0(id, pick);
-      setOut(tr, key, a == null ? "—" : `${fmt(a)}<small>pick ${pick}${pick > LAST ? " · pool" : ""}</small>`);
+    const tr = trOf(id); if (!tr) return;
+    const r = row(id), k = kindOf(id), v = rowV0(id);
+    setOut(tr, "age", r.dob ? String(draftAge(r.dob)) : "");
+    setOut(tr, "v0", r.name || r.pos1 ? fmt(v) : "");
+    if (k === "nd") for (const [key, d] of [["m10", -10], ["m5", -5], ["p5", 5], ["p10", 10]]) {
+      const pick = numOf(id) + d, a = (v == null || pick < 1) ? null : rowV0(id, pick);
+      setOut(tr, key, a == null ? "" : `<span title="pick ${pick}${pick > LAST ? " (pool)" : ""}">${fmt(a)}</span>`);
     }
-    const w = weights(r);
-    let flag = "";
-    if (w && r.pos2 && r.pos2 !== r.pos1 && Math.round(w.sum) !== 100) flag = `Weights add to ${Math.round(w.sum)}%, scaled to 100%`;
-    else if (r.name && !r.pos1) flag = "Choose Position 1";
-    else if (r.name && !r.dob) flag = "Age 18 assumed";
-    setOut(tr, "flag", esc(flag));
+    setOut(tr, "flag", flagHtml(r));
+    setOut(tr, "badge", badgeHtml(r));
+    const w = weights(r); let warn = "";
+    if (r.dobRaw) warn = "Date not recognised: use dd/mm/yyyy";
+    else if (w && r.pos2 && r.pos2 !== r.pos1 && Math.round(w.sum) !== 100) warn = `Weights add to ${Math.round(w.sum)}%, scaled to 100%`;
+    else if (r.name && !r.pos1) warn = "Choose position 1";
+    else if (r.name && !r.dob) warn = "No date of birth: age 18 assumed";
+    setOut(tr, "warn", warn ? `<span class="warn" title="${esc(warn)}" aria-label="${esc(warn)}">!</span>` : "");
     tr.classList.toggle("taken", !!r.affl);
+    tr.classList.toggle("has-player", !!r.name);
   }
-  body.addEventListener("input", onEdit);
-  body.addEventListener("change", onEdit);
+
+  // ---------- prospects
+  const placed = () => { const s = new Set(); for (const id of allIds()) { const r = S.slots[id]; if (r && r.pid) s.add(r.pid); } return s; };
+  function refreshList() {
+    const used = placed();
+    document.getElementById("prospect-list").innerHTML = PROS.filter(p => !used.has(p.id))
+      .map(p => `<option value="${esc(p.name)}">${esc([p.pos, p.state, p.rank ? "#" + p.rank : ""].filter(Boolean).join(" · "))}</option>`).join("");
+  }
+  function applyProspect(id, p) {
+    const r = row(id), pos = POS_MAP[p.pos] || [];
+    const link = (p.links || [])[0], badge = (p.badges || [])[0];
+    Object.assign(r, { name: p.name, pid: p.id, dob: p.dob, dobRaw: "", state: p.state, pos1: pos[0] || "", pos2: pos[1] || "",
+      w1: pos[1] ? "50" : "", w2: pos[1] ? "50" : "", cat: link ? (LINK_CAT[link.type] || "") : "",
+      tie: badge ? badge.code : (link ? (CLUB_CODE[link.club] || "") : "") });
+  }
+  function clearPlayer(id) { const r = row(id); PLAYER_FIELDS.forEach(f => { delete r[f]; }); delete r.dobRaw; }
+
+  // ---------- editing
+  const entry = document.getElementById("view-entry");
+  entry.addEventListener("change", onEdit);
+  entry.addEventListener("input", ev => { if (ev.target.matches("input.w")) onEdit(ev); });
+  entry.addEventListener("focusout", ev => { const el = ev.target; if (el.matches && el.matches(".ed")) el.classList.toggle("filled", el.dataset.f === "kind" || el.dataset.f === "cat" || !!el.value); });
   function onEdit(ev) {
-    const el = ev.target, f = el.dataset.f, tr = el.closest("tr[data-id]");
+    const el = ev.target, f = el.dataset.f, tr = el.closest && el.closest("tr[data-id]");
     if (!f || !tr) return;
     const id = tr.dataset.id, r = row(id);
-    if (r[f] === el.value) return;
-    r[f] = el.value;
-    if (f === "pos2" && el.value && !r.w1 && !r.w2) {
-      r.w1 = "50"; r.w2 = "50";
-      tr.querySelector('[data-f="w1"]').value = "50"; tr.querySelector('[data-f="w2"]').value = "50";
+    if (f === "name") {
+      const v = el.value.trim(), p = PBYNAME[v.toLowerCase()];
+      if (!v) clearPlayer(id);
+      else if (p && r.pid !== p.id) applyProspect(id, p);
+      else if (!p && r.pid) { clearPlayer(id); r.name = v; }
+      else r.name = v;
+      refreshList();
+    } else if (f === "dob") {
+      const iso = parseDob(el.value);
+      if (iso === null) { r.dobRaw = el.value; } else { r.dob = iso; r.dobRaw = ""; el.value = toAu(iso); }
+    } else {
+      r[f] = el.value;
+      if (f === "pos2" && el.value && !r.w1 && !r.w2) { r.w1 = "50"; r.w2 = "50"; }
+      if (f === "afl" && r.cat && !r.pid) r.tie = CLUB_CODE[el.value] || r.tie || "";
+      if (f === "cat" && el.value && !r.tie) r.tie = CLUB_CODE[r.afl] || "";
     }
-    updateRow(id); saveLocal(); queueSave("slots", id); renderLive();
+    syncRow(id); saveLocal(); queueSave("slots", id); renderLive();
   }
-  document.getElementById("add-open").addEventListener("click", () => {
-    const ops = slotIds().filter(k => k.startsWith("op"));
-    const id = "op" + String(ops.length + 1).padStart(2, "0");
-    row(id).kind = "UNR"; saveLocal(); queueSave("slots", id); renderLedger();
-    const tr = body.querySelector(`tr[data-id="${id}"] input.name`); if (tr) tr.focus();
+  entry.addEventListener("click", ev => {
+    const c = ev.target.closest("button[data-clear]");
+    if (c) { const id = c.dataset.clear; clearPlayer(id); syncRow(id); refreshList(); saveLocal(); queueSave("slots", id); renderLive(); return; }
+    const b = ev.target.closest("button[data-move]");
+    if (b) startMove(b);
   });
 
+  // ---------- move a player to another pick (the players between shift by one)
+  function startMove(btn) {
+    const id = btn.dataset.move, k = kindOf(id), n = numOf(id), max = k === "nd" ? NAT : RK;
+    const inp = document.createElement("input");
+    Object.assign(inp, { type: "number", min: 1, max, value: n, className: "pickin" });
+    inp.setAttribute("aria-label", "Move to pick");
+    btn.replaceWith(inp); inp.focus(); inp.select();
+    let done = false;
+    const finish = commit => {
+      if (done) return; done = true;
+      const to = parseInt(inp.value, 10);
+      if (commit && to >= 1 && to <= max && to !== n) movePlayer(k, n, to);
+      else inp.replaceWith(btn);
+    };
+    inp.addEventListener("keydown", e => { if (e.key === "Enter") finish(true); if (e.key === "Escape") finish(false); });
+    inp.addEventListener("blur", () => finish(true));
+  }
+  function movePlayer(k, from, to) {
+    const ids = idsOf(k), take = n => { const r = row(ids[n - 1]), o = {}; PLAYER_FIELDS.concat("dobRaw").forEach(f => { if (r[f] != null && r[f] !== "") o[f] = r[f]; }); return o; };
+    const lo = Math.min(from, to), hi = Math.max(from, to), seq = [];
+    for (let n = lo; n <= hi; n++) seq.push(take(n));
+    if (to < from) seq.unshift(seq.pop()); else seq.push(seq.shift());
+    for (let n = lo; n <= hi; n++) {
+      const id = ids[n - 1]; clearPlayer(id); Object.assign(row(id), seq[n - lo]); queueSave("slots", id);
+    }
+    saveLocal(); renderTable(k); renderLive();
+    msg(`Moved to pick ${to}; picks ${lo}–${hi} shuffled.`);
+  }
+
+  document.getElementById("fill").addEventListener("click", () => {
+    const used = placed(); let n = 0;
+    PROS.filter(p => p.rank && p.rank <= NAT && !used.has(p.id)).sort((a, b) => a.rank - b.rank).forEach(p => {
+      const id = "nd" + pad(p.rank), r = row(id);
+      if (r.name) return;
+      applyProspect(id, p); queueSave("slots", id); n++;
+    });
+    saveLocal(); renderTable("nd"); refreshList(); renderLive();
+    msg(n ? `Filled ${n} empty picks from the consensus rankings.` : "No empty picks matched a ranked prospect.");
+  });
+  document.getElementById("add-open").addEventListener("click", () => {
+    const id = "op" + pad(idsOf("op").length + 1);
+    row(id).kind = "UNR"; saveLocal(); queueSave("slots", id); renderTable("op");
+    const el = trOf(id); if (el) el.querySelector("input.name").focus();
+  });
+  let msgT; function msg(t) { const el = document.getElementById("toolmsg"); el.textContent = t; clearTimeout(msgT); msgT = setTimeout(() => { el.textContent = ""; }, 6000); }
+
   // ---------- quick lookup
-  const qSlot = document.getElementById("q-slot"), qBy = document.getElementById("q-by"), qOut = document.getElementById("q-out");
-  qSlot.innerHTML = Array.from({ length: NAT }, (_, i) => opt("nd" + (i + 1), "National pick " + (i + 1), i === 0)).join("")
-    + opt("rd", "Rookie draft", false) + PATHWAYS.map(p => opt("op:" + p.code, p.label, false)).join("");
+  const qSlot = document.getElementById("q-slot"), qBy = document.getElementById("q-by");
+  qSlot.innerHTML = Array.from({ length: NAT }, (_, i) => opt("nd" + (i + 1), "Pick " + (i + 1), i === 0)).join("")
+    + opt("rd", "Rookie draft", false) + PATHS.map(([c, l]) => opt("op:" + c, l, false, PATH_NAME[c])).join("");
   function renderLookup() {
     const s = qSlot.value, by = parseInt(qBy.value, 10), age = by > 1900 ? Math.max(YEAR - by, 18) : 18;
-    qOut.innerHTML = POS.map(p => {
+    document.getElementById("q-out").innerHTML = POS.map(p => {
       let v;
       if (s.startsWith("nd")) v = natV0(p, age, parseInt(s.slice(2), 10));
       else if (s === "rd") v = D.rookie[p];
       else { const c = s.slice(3); v = c === "IND" ? D.pool_nd65 : D.pathways[c]; }
-      return `<div class="cell"><span>${p} · ${POS_LABEL[p]}</span><b>${fmt(v)}</b></div>`;
+      return `<div class="cell"><span>${PSHORT[p]}</span><b>${fmt(v)}</b></div>`;
     }).join("");
-    document.getElementById("q-note").textContent = s.startsWith("nd")
-      ? `Draft age ${age}. ${parseInt(s.slice(2), 10) > LAST ? "Picks after " + LAST + " take the national pool value." : "From the engine's frozen pick surface."}`
-      : (s === "rd" ? "Rookie draft values are set by position and do not change with pick or age."
-        : (s === "op:IND" ? "Indigenous Rookie uses the general pool value for now." : "Pathway values are flat: the same at every age and position."));
   }
   qSlot.addEventListener("change", renderLookup); qBy.addEventListener("input", renderLookup);
 
   // ---------- live AFFL draft
   const lPos = document.getElementById("l-pos"), lSrc = document.getElementById("l-src");
-  lPos.innerHTML += POS.map(p => opt(p, p + " · " + POS_LABEL[p], false)).join("");
-  function sourceLabel(id) {
-    const k = kindOf(id), n = numOf(id);
-    if (k === "nd") return "AFL pick " + n;
-    if (k === "rd") return "Rookie pick " + n;
-    return PATH_LABEL[row(id).kind || "UNR"];
-  }
+  lPos.innerHTML += POS.map(p => opt(p, PSHORT[p], false)).join("");
+  function sourceLabel(id) { const k = kindOf(id), n = numOf(id); return k === "nd" ? "AFL pick " + n : k === "rd" ? "Rookie pick " + n : PATH_NAME[row(id).kind || "UNR"]; }
+  const FA_POS = { Mid: "MID", MID: "MID", SF: "SF", SD: "SD", KPF: "KPF", KPD: "KPD", RUCK: "RUCK", RUC: "RUCK", Ruck: "RUCK", "G-FWD": "SF", "G-DEF": "SD", "K-FWD": "KPF", "K-DEF": "KPD" };
   function candidates() {
     const out = [];
-    for (const id of slotIds()) {
+    for (const id of allIds()) {
       const r = S.slots[id]; if (!r || !r.name) continue;
-      out.push({ type: "draft", id, name: r.name, from: sourceLabel(id), pos: [r.pos1, r.pos2].filter(Boolean),
-        age: draftAge(r.dob), v: rowV0(id), affl: r.affl || "" });
+      out.push({ type: "draft", id, r, name: r.name, from: sourceLabel(id), pos: [r.pos1, r.pos2].filter(Boolean), age: draftAge(r.dob), v: rowV0(id), affl: r.affl || "" });
     }
     for (const f of D.free_agents) {
       const st = S.fa[f.key] || {};
-      out.push({ type: "fa", id: f.key, name: f.name, from: "Free agent" + (f.afl_club ? " · " + f.afl_club : ""),
-        pos: (f.elig && f.elig.length ? f.elig : [f.pos]).filter(Boolean), age: f.age, v: f.v, affl: st.affl || "" });
+      const pos = (f.elig && f.elig.length ? f.elig : [f.pos]).filter(Boolean).map(x => FA_POS[x] || x);
+      out.push({ type: "fa", id: f.key, name: f.name, from: "Free agent" + (f.afl_club ? " · " + f.afl_club : ""), pos, age: f.age, v: f.v, affl: st.affl || "", was: f.was });
     }
     return out;
   }
+  const nameCell = c => c.type === "draft"
+    ? `<div class="plw"><span class="flagslot">${flagHtml(c.r)}</span><b>${esc(c.name)}</b>${badgeHtml(c.r)}</div>`
+    : `<div class="plw"><span class="flagslot"></span><b>${esc(c.name)}</b>${c.was ? `<span class="badge fa" title="Delisted by ${esc(c.was)}">AFFL delisted</span>` : ""}</div>`;
   function renderLive() {
     const all = candidates(), pos = lPos.value, src = lSrc.value;
-    const avail = all.filter(c => !c.affl && (src === "all" || c.type === src) && (!pos || c.pos.includes(pos)))
-      .sort((a, b) => (b.v || 0) - (a.v || 0));
-    const tb = document.getElementById("avail");
-    tb.innerHTML = avail.length ? avail.slice(0, 60).map((c, i) => `<tr>
-        <td class="sticky">${i + 1}</td><td>${esc(c.name)}</td>
-        <td><span class="badge${c.type === "fa" ? " fa" : ""}">${esc(c.from)}</span></td>
-        <td>${esc(c.pos.join(" / ") || "—")}</td><td>${c.age == null ? "—" : c.age}</td>
-        <td class="v0">${fmt(c.v)}</td>
-        <td><select class="club" data-t="${c.type}" data-id="${esc(c.id)}" aria-label="AFFL club for ${esc(c.name)}">${clubOpts(D.affl_clubs, "", "Assign…")}</select></td></tr>`).join("")
-      : `<tr><td colspan="7" class="empty">No players left here. Enter draftees on the AFL draft tab, or change the filters.</td></tr>`;
+    const avail = all.filter(c => !c.affl && (src === "all" || c.type === src) && (!pos || c.pos.includes(pos))).sort((a, b) => (b.v || 0) - (a.v || 0));
+    document.getElementById("avail").innerHTML = avail.length ? avail.slice(0, 80).map((c, i) => `<tr>
+        <td>${i + 1}</td><td>${nameCell(c)}</td><td><span class="badge${c.type === "fa" ? " fa" : ""}">${esc(c.from)}</span></td>
+        <td>${esc(c.pos.map(p => PSHORT[p] || p).join(" / ") || "—")}</td><td class="r">${c.age == null ? "—" : c.age}</td>
+        <td class="v0 r">${fmt(c.v)}</td>
+        <td><select class="ed" data-t="${c.type}" data-id="${esc(c.id)}" aria-label="AFFL club for ${esc(c.name)}">${clubOpts(D.affl_clubs, "", "Assign…")}</select></td></tr>`).join("")
+      : `<tr><td colspan="7" class="empty">Nobody left here. Enter draftees on the AFL draft tab, or change the filters.</td></tr>`;
     const taken = all.filter(c => c.affl).sort((a, b) => a.affl.localeCompare(b.affl) || (b.v || 0) - (a.v || 0));
     document.getElementById("taken").innerHTML = taken.length ? taken.map(c => `<tr>
-        <td class="sticky">${esc(c.name)}</td><td>${esc(c.affl)}</td><td>${esc(c.from)}</td><td class="alt">${fmt(c.v)}</td>
+        <td>${nameCell(c)}</td><td>${esc(c.affl)}</td><td>${esc(c.from)}</td><td class="r">${fmt(c.v)}</td>
         <td><button class="btn" data-undo="${c.type}" data-id="${esc(c.id)}">Undo</button></td></tr>`).join("")
       : `<tr><td colspan="5" class="empty">Nobody taken yet.</td></tr>`;
   }
   function assign(type, id, club) {
-    if (type === "draft") {
-      row(id).affl = club; queueSave("slots", id);
-      const sel = body.querySelector(`tr[data-id="${id}"] [data-f="affl"]`); if (sel) sel.value = club; updateRow(id);
-    } else { S.fa[id] = Object.assign({}, S.fa[id], { affl: club }); queueSave("fa", id); }
+    if (type === "draft") { row(id).affl = club; queueSave("slots", id); syncRow(id); }
+    else { S.fa[id] = Object.assign({}, S.fa[id], { affl: club }); queueSave("fa", id); }
     saveLocal(); renderLive();
   }
-  document.getElementById("avail").addEventListener("change", ev => {
-    const el = ev.target; if (el.dataset.t && el.value) assign(el.dataset.t, el.dataset.id, el.value);
-  });
-  document.getElementById("taken").addEventListener("click", ev => {
-    const b = ev.target.closest("button[data-undo]"); if (b) assign(b.dataset.undo, b.dataset.id, "");
-  });
+  document.getElementById("avail").addEventListener("change", ev => { const el = ev.target; if (el.dataset.t && el.value) assign(el.dataset.t, el.dataset.id, el.value); });
+  document.getElementById("taken").addEventListener("click", ev => { const b = ev.target.closest("button[data-undo]"); if (b) assign(b.dataset.undo, b.dataset.id, ""); });
   lPos.addEventListener("change", renderLive); lSrc.addEventListener("change", renderLive);
 
   // ---------- tabs
   const tabs = { entry: document.getElementById("tab-entry"), live: document.getElementById("tab-live") };
   function show(which) {
-    for (const k of Object.keys(tabs)) {
-      tabs[k].setAttribute("aria-selected", String(k === which));
-      document.getElementById("view-" + k).hidden = k !== which;
-    }
+    for (const k of Object.keys(tabs)) { tabs[k].setAttribute("aria-selected", String(k === which)); document.getElementById("view-" + k).hidden = k !== which; }
     if (which === "live") renderLive();
     try { localStorage.setItem(LS_KEY + "-tab", which); } catch (e) { /* ignore */ }
   }
@@ -401,51 +506,42 @@ textarea { width: 100%; min-height: 140px; font: 12px ui-monospace, SFMono-Regul
   // ---------- CSV
   function csv() {
     const q = v => { const s = String(v == null ? "" : v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
-    const lines = [["record", "slot", "pathway", "player", "dob", "draft_age", "position_1", "position_2", "pos1_pct", "pos2_pct", "v0", "afl_club", "affl_club", "store_key"].join(",")];
-    for (const id of slotIds()) {
+    const lines = [["record", "slot", "pathway", "player", "dob", "draft_age", "state", "position_1", "position_2", "pos1_pct", "pos2_pct", "v0", "afl_club", "affl_club", "store_key", "category", "category_club"].join(",")];
+    for (const id of allIds()) {
       const r = S.slots[id]; if (!r || !r.name) continue;
-      const k = kindOf(id), w = weights(r);
-      const pct = w ? w.parts.map(([, f]) => Math.round(f * 100)) : [];
-      lines.push([k === "nd" ? "national" : k === "rd" ? "rookie" : "pathway",
-        k === "nd" ? numOf(id) : k === "rd" ? "R" + numOf(id) : "P" + numOf(id),
-        k === "op" ? PATH_LABEL[r.kind || "UNR"] : "", r.name, r.dob || "", draftAge(r.dob) ?? "", r.pos1 || "",
-        (r.pos2 && r.pos2 !== r.pos1) ? r.pos2 : "", pct[0] ?? "", pct[1] ?? "", rowV0(id) == null ? "" : Math.round(rowV0(id)),
-        r.afl || "", r.affl || "", ""].map(q).join(","));
+      const k = kindOf(id), w = weights(r), pct = w ? w.parts.map(([, f]) => Math.round(f * 100)) : [], v = rowV0(id);
+      lines.push([k === "nd" ? "national" : k === "rd" ? "rookie" : "pathway", k === "nd" ? numOf(id) : k === "rd" ? "R" + numOf(id) : "P" + numOf(id),
+        k === "op" ? PATH_NAME[r.kind || "UNR"] : "", r.name, r.dob || "", draftAge(r.dob) ?? "", r.state || "", r.pos1 || "",
+        (r.pos2 && r.pos2 !== r.pos1) ? r.pos2 : "", pct[0] ?? "", pct[1] ?? "", v == null ? "" : Math.round(v), r.afl || "", r.affl || "", "",
+        r.cat ? CAT_NAME[r.cat] : "", r.cat ? (CODE_CLUB[r.tie] || r.tie || "") : ""].map(q).join(","));
     }
     for (const f of D.free_agents) {
       const st = S.fa[f.key]; if (!st || !st.affl) continue;
-      lines.push(["free_agent", "", "", f.name, "", f.age ?? "", f.pos || "", "", "", "", f.v ?? "", f.afl_club || "", st.affl, f.key].map(q).join(","));
+      lines.push(["free_agent", "", "", f.name, "", f.age ?? "", "", f.pos || "", "", "", "", f.v ?? "", f.afl_club || "", st.affl, f.key, "", ""].map(q).join(","));
     }
     return lines.join("\n") + "\n";
   }
   let downloads = null;
   document.getElementById("export").addEventListener("click", async () => {
     const text = csv();
-    if (downloads) {
-      try { await downloads.save({ filename: "affl_draft_2026.csv", data: text }); return; }
-      catch (e) { if (e && e.code === "declined") return; }
-    }
+    if (downloads) { try { await downloads.save({ filename: "affl_draft_2026.csv", data: text }); return; } catch (e) { if (e && e.code === "declined") return; } }
     showCsv(text, "Downloads aren't available here. Copy this and paste it back to Claude.");
   });
   document.getElementById("copy").addEventListener("click", async () => {
     const text = csv();
-    try { await navigator.clipboard.writeText(text); showCsv(text, "Copied. Paste it back to Claude."); }
-    catch (e) { showCsv(text, "Select all and copy, then paste it back to Claude."); const t = document.getElementById("csvtext"); t.focus(); t.select(); }
+    try { await navigator.clipboard.writeText(text); msg("CSV copied."); }
+    catch (e) { showCsv(text, "Select all and copy."); const t = document.getElementById("csvtext"); t.focus(); t.select(); }
   });
-  function showCsv(text, note) {
-    document.getElementById("csvbox").hidden = false;
-    document.getElementById("csvnote").textContent = note;
-    document.getElementById("csvtext").value = text;
-  }
+  function showCsv(text, note) { document.getElementById("csvbox").hidden = false; document.getElementById("csvnote").textContent = note; document.getElementById("csvtext").value = text; }
 
   // ---------- sync with the artifact's database (fallback: this device only)
   const syncEl = document.getElementById("sync"), syncTxt = document.getElementById("synctext");
-  function setSync(state, text) { syncEl.className = "chip " + (state || ""); syncTxt.textContent = text; }
-  let db = null;
+  const setSync = (state, text) => { syncEl.className = "chip " + (state || ""); syncTxt.textContent = text; };
+  let db = null, readOnly = false;
   const timers = {}, inflight = {}, again = {};
   function queueSave(coll, id) {
-    const key = coll + "/" + id;
-    clearTimeout(timers[key]);
+    if (readOnly) return;
+    const key = coll + "/" + id; clearTimeout(timers[key]);
     if (!db) { setSync("warn", "Saved on this device only"); return; }
     setSync("", "Saving…");
     timers[key] = setTimeout(() => { delete timers[key]; flush(coll, id); }, 700);
@@ -454,54 +550,47 @@ textarea { width: 100%; min-height: 140px; font: 12px ui-monospace, SFMono-Regul
     const key = coll + "/" + id;
     if (inflight[key]) { again[key] = true; return; }
     inflight[key] = true;
-    const payload = coll === "slots" ? Object.assign({}, S.slots[id]) : Object.assign({}, S.fa[id]);
-    try { await db.collection(coll).doc(id).set(payload); setSync("ok", "All changes saved"); }
+    const payload = Object.assign({}, coll === "slots" ? S.slots[id] : S.fa[id]);
+    try { await db.collection(coll).doc(id).set(payload); if (!Object.keys(timers).length) setSync("ok", "All changes saved"); }
     catch (e) {
-      if (e && e.code === "unavailable") { setTimeout(() => flush(coll, id), 800 + Math.random() * 800); }
+      if (e && e.code === "unavailable") setTimeout(() => flush(coll, id), 800 + Math.random() * 800);
+      else if (e && e.code === "invalid_argument") { readOnly = true; setSync("warn", "View only: changes stay on this device"); }
       else setSync("warn", "Couldn't save online: kept on this device");
-    } finally {
-      inflight[key] = false;
-      if (again[key]) { again[key] = false; flush(coll, id); }
-    }
+    } finally { inflight[key] = false; if (again[key]) { again[key] = false; flush(coll, id); } }
   }
   const busy = (coll, id) => timers[coll + "/" + id] || inflight[coll + "/" + id];
   function applySnapshot(coll, snap) {
-    let changed = false;
+    let changed = false, rerender = false;
     for (const d of snap.docs) {
       if (busy(coll, d.id)) continue;
-      const data = d.data() || {};
+      const data = Object.assign({}, d.data() || {});
       if (coll === "slots") {
-        const tr = body.querySelector(`tr[data-id="${d.id}"]`);
+        const tr = trOf(d.id);
         if (tr && tr.contains(document.activeElement)) continue;
-        S.slots[d.id] = Object.assign({}, data); changed = true;
-        if (!tr) { renderLedger(); continue; }
-        tr.querySelectorAll("[data-f]").forEach(el => { const v = data[el.dataset.f]; el.value = v == null ? "" : v; });
-        updateRow(d.id);
-      } else { S.fa[d.id] = Object.assign({}, data); changed = true; }
+        S.slots[d.id] = data; changed = true;
+        if (tr) syncRow(d.id); else rerender = true;
+      } else { S.fa[d.id] = data; changed = true; }
     }
-    if (changed) { saveLocal(); renderLive(); }
+    if (rerender) renderTable("op");
+    if (changed) { saveLocal(); refreshList(); renderLive(); }
   }
   async function connect() {
-    const use = window.claude && window.claude.use;
-    if (!use) { setSync("warn", "Saved on this device only"); return; }
+    if (!(window.claude && window.claude.use)) { setSync("warn", "Saved on this device only"); return; }
     try { downloads = await window.claude.use("downloads"); } catch (e) { downloads = null; }
     try { db = await window.claude.use("db"); } catch (e) { db = null; }
     if (!db) { setSync("warn", "Saved on this device only"); return; }
-    let first = { slots: false, fa: false };
+    const first = { slots: false, fa: false };
     const timer = setTimeout(() => { if (!first.slots) setSync("warn", "Can't reach saved data yet; working on this device"); }, 10000);
     for (const coll of ["slots", "fa"]) {
       db.collection(coll).onSnapshot(snap => {
         applySnapshot(coll, snap);
         if (!snap.metadata.fromCache) { first[coll] = true; if (first.slots) { clearTimeout(timer); if (!Object.keys(timers).length) setSync("ok", "All changes saved"); } }
-      }, err => { clearTimeout(timer); setSync("warn", "Saved on this device only"); });
+      }, () => { clearTimeout(timer); setSync("warn", "Saved on this device only"); });
     }
   }
 
   // ---------- boot
-  const m = D.meta;
-  document.getElementById("meta").innerHTML =
-    `<span>v0 from the valuation engine</span><span>board ${esc(String(m.board).slice(0, 8))}</span><span>store ${esc(String(m.store).slice(0, 8))}</span><span>tables cut ${esc(m.generated.slice(0, 10))}</span>`;
-  renderLookup(); renderLedger(); renderLive();
+  renderLookup(); renderAll(); renderLive();
   let startTab = "entry"; try { startTab = localStorage.getItem(LS_KEY + "-tab") || "entry"; } catch (e) { /* ignore */ }
   show(startTab === "live" ? "live" : "entry");
   connect();

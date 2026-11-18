@@ -8,7 +8,9 @@ A claude.ai artifact for draft night: https://claude.ai/artifact/4EimaHZxtidm27J
   current free agents. It refuses to write unless every active board player's published v0 is reproduced and the
   draft-age rule matches the engine. Indigenous Rookie uses the national pool value until the owner sets one.
 - `build_page.py` injects the tables into `template.html` and writes `draft_night.html`, the published page.
-- Entries save to the artifact's database (collections `slots`, `fa`; readable and writable by the owner only)
-  and to the browser. Claude reads them back with ArtifactData; the page also exports a CSV.
+- `prospects/` holds the owner's 2026-11-19 prospect handover (99 players, state flags, badge spec); `affl_delisted.json`
+  the owner's AFFL delistings shown as free agents. build_page.py merges both.
+- Entries save to the artifact's database (collections `slots`, `fa`; anyone the page is shared with can read, only the
+  owner and Editors write) and to the browser. Claude reads them back with ArtifactData; the page also exports a CSV.
 
 Re-cut the tables after any act that moves the store or board: run the two scripts, then republish the page.

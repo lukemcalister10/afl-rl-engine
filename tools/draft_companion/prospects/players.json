@@ -1,0 +1,1786 @@
+{
+  "metadata": {
+    "exportedOn": "2026-11-19",
+    "timezone": "Australia/Sydney",
+    "releaseId": "ca230475722f3172b9286be1532d1e08fa5b6f34b8b47baa6296367afd07de35",
+    "liveUrl": "https://afl-draft-rankings-2026.afldraftboard.workers.dev/",
+    "panel": [
+      {
+        "id": "cal",
+        "name": "Cal Twomey",
+        "published": "11 November 2026",
+        "url": "https://www.afl.com.au/news/1640123/cal-twomeys-phantom-form-guide-top-draft-prospects-november-ranking"
+      },
+      {
+        "id": "espn",
+        "name": "ESPN",
+        "published": "11 November 2026",
+        "url": "https://www.espn.com.au/afl/story/_/id/50436269/afl-draft-2026-news-power-rankings-november-top-50-phantom-mock-jasper-chellappah"
+      },
+      {
+        "id": "fox",
+        "name": "Fox Sports",
+        "published": "30 October 2026",
+        "url": "https://www.foxsports.com.au/afl/draft/afl-draft-power-rankings-2026-fox-footy-top-50-best-prospects-ranked-1-to-50-clubs-who-could-take-them-player-comparisons/news-story/99db4169177c17d3013bc3386aec90d9"
+      },
+      {
+        "id": "zero",
+        "name": "Zero Hanger",
+        "published": "1 November 2026",
+        "url": "https://www.zerohanger.com/afl-draft-november-power-rankings-186751/"
+      },
+      {
+        "id": "dylan",
+        "name": "Dylan Alexander",
+        "published": "1 November 2026",
+        "url": "https://truefooty.com.au/draft-hub/rankings"
+      },
+      {
+        "id": "tommy",
+        "name": "Tommy Wolfe",
+        "published": "4 November 2026",
+        "url": "https://readingtheplay.wordpress.com/2026/11/04/2026-top-50-draft-power-rankings-v5-0/"
+      },
+      {
+        "id": "davo",
+        "name": "Davo27",
+        "published": "11 November 2026",
+        "url": "https://www.bigfooty.com/forum/threads/davo-27s-2026-draft-thread.1404048/"
+      }
+    ],
+    "totalPlayers": 99,
+    "rankedPlayers": 51,
+    "zeroListPlayers": 28,
+    "minimumLists": 3,
+    "flags": {
+      "SA": {
+        "file": "state-flags/sa.png",
+        "width": 178,
+        "height": 100,
+        "sha256": "fdb895afba7546687c71581af01798fd2e2645104a61b597cc6dbb9757895c71"
+      },
+      "WA": {
+        "file": "state-flags/wa.png",
+        "width": 178,
+        "height": 100,
+        "sha256": "7415aa51894000034ac46bc2462d72af930c2b64651464f46e7b7b23d828de22"
+      },
+      "VM": {
+        "file": "state-flags/vm.png",
+        "width": 178,
+        "height": 100,
+        "sha256": "17b9f951debfb96817c533d512f37c9dea578b26b7696359b51759233c58d806"
+      },
+      "VC": {
+        "file": "state-flags/vc.png",
+        "width": 178,
+        "height": 100,
+        "sha256": "3e8c64510b2f500d041b67fd510a9cb27dc76350e89675604fe8a43e0e966f17"
+      },
+      "AL": {
+        "file": "state-flags/al.png",
+        "width": 178,
+        "height": 100,
+        "sha256": "9c6cc7edb526ed7365326c894c0e35f6bca265df786773b873b29d225aadefa3"
+      }
+    }
+  },
+  "players": [
+    {
+      "playerId": "P0019",
+      "name": "Dougie Cochrane",
+      "birthDate": "2008-05-02",
+      "heightCm": 195,
+      "position": "Key Position Utility",
+      "state": "SA",
+      "stateCode": "SA",
+      "activeLists": 7,
+      "kemenyRank": 1,
+      "clubLinks": [
+        {
+          "club": "Port Adelaide",
+          "code": "PA",
+          "type": "NGA"
+        }
+      ],
+      "displayedBadges": [
+        {
+          "club": "Port Adelaide",
+          "code": "PTA",
+          "label": "A"
+        }
+      ],
+      "profileUrl": "https://central.rookieme.com/afl/player/douglas-cochrane/"
+    },
+    {
+      "playerId": "P0016",
+      "name": "Cody Walker",
+      "birthDate": "2008-01-26",
+      "heightCm": 187,
+      "position": "Midfielder",
+      "state": "Vic Country",
+      "stateCode": "VC",
+      "activeLists": 7,
+      "kemenyRank": 2,
+      "clubLinks": [
+        {
+          "club": "Carlton",
+          "code": "CAR",
+          "type": "F/S"
+        }
+      ],
+      "displayedBadges": [
+        {
+          "club": "Carlton",
+          "code": "CAR",
+          "label": "FS"
+        }
+      ],
+      "profileUrl": "https://central.rookieme.com/afl/player/cody-walker/"
+    },
+    {
+      "playerId": "P0020",
+      "name": "Ethan Drever",
+      "birthDate": "2008-07-10",
+      "heightCm": 189,
+      "position": "Midfielder",
+      "state": "Vic Country",
+      "stateCode": "VC",
+      "activeLists": 7,
+      "kemenyRank": 3,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/ethan-drever/"
+    },
+    {
+      "playerId": "P0007",
+      "name": "Arki Butler",
+      "birthDate": "2008-04-23",
+      "heightCm": 182,
+      "position": "Midfielder / Forward",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 7,
+      "kemenyRank": 4,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/arki-butler/"
+    },
+    {
+      "playerId": "P0037",
+      "name": "Heath Mellody",
+      "birthDate": "2008-07-27",
+      "heightCm": 185,
+      "position": "Midfielder / Defender",
+      "state": "WA",
+      "stateCode": "WA",
+      "activeLists": 7,
+      "kemenyRank": 5,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/heath-mellody/"
+    },
+    {
+      "playerId": "P0034",
+      "name": "Harry van Hattum",
+      "birthDate": "2008-07-01",
+      "heightCm": 205,
+      "position": "Ruck",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 7,
+      "kemenyRank": 6,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/harry-van-hattum/"
+    },
+    {
+      "playerId": "P0029",
+      "name": "Gus Teixeira",
+      "birthDate": "2008-03-29",
+      "heightCm": 181,
+      "position": "Midfielder / Forward",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 7,
+      "kemenyRank": 7,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/gus-teixeira/"
+    },
+    {
+      "playerId": "P0022",
+      "name": "Ethan Matthews",
+      "birthDate": "2008-09-04",
+      "heightCm": 186,
+      "position": "Midfielder",
+      "state": "Allies",
+      "stateCode": "AL",
+      "activeLists": 7,
+      "kemenyRank": 8,
+      "clubLinks": [
+        {
+          "club": "GWS Giants",
+          "code": "GWS",
+          "type": "Academy"
+        }
+      ],
+      "displayedBadges": [
+        {
+          "club": "GWS Giants",
+          "code": "GWS",
+          "label": "A"
+        }
+      ],
+      "profileUrl": "https://central.rookieme.com/afl/player/ethan-matthews/"
+    },
+    {
+      "playerId": "P0062",
+      "name": "Mitchell Harris",
+      "birthDate": "2008-07-01",
+      "heightCm": 196,
+      "position": "Key Defender",
+      "state": "SA",
+      "stateCode": "SA",
+      "activeLists": 7,
+      "kemenyRank": 9,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/mitchell-harris/"
+    },
+    {
+      "playerId": "P0013",
+      "name": "Caylen Murray",
+      "birthDate": "2008-01-03",
+      "heightCm": 180,
+      "position": "Midfielder / Defender",
+      "state": "Allies",
+      "stateCode": "AL",
+      "activeLists": 7,
+      "kemenyRank": 10,
+      "clubLinks": [
+        {
+          "club": "Brisbane Lions",
+          "code": "BRI",
+          "type": "Academy"
+        }
+      ],
+      "displayedBadges": [
+        {
+          "club": "Brisbane Lions",
+          "code": "BRI",
+          "label": "A"
+        }
+      ],
+      "profileUrl": "https://central.rookieme.com/afl/player/caylen-murray/"
+    },
+    {
+      "playerId": "P0057",
+      "name": "Leo Steed",
+      "birthDate": "2008-03-07",
+      "heightCm": 176,
+      "position": "Midfielder / Forward",
+      "state": "WA",
+      "stateCode": "WA",
+      "activeLists": 7,
+      "kemenyRank": 11,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/leo-steed/"
+    },
+    {
+      "playerId": "P0065",
+      "name": "Sam Gayfer",
+      "birthDate": "2008-05-21",
+      "heightCm": 194,
+      "position": "Key Forward",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 7,
+      "kemenyRank": 12,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/sam-gayfer/"
+    },
+    {
+      "playerId": "P0070",
+      "name": "Wil Malady",
+      "birthDate": "2008-10-12",
+      "heightCm": 190,
+      "position": "Medium Forward",
+      "state": "Vic Country",
+      "stateCode": "VC",
+      "activeLists": 7,
+      "kemenyRank": 13,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/wil-malady/"
+    },
+    {
+      "playerId": "P0069",
+      "name": "Tyson Bradley",
+      "birthDate": "2008-09-16",
+      "heightCm": 195,
+      "position": "Key Defender",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 7,
+      "kemenyRank": 14,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/tyson-bradley/"
+    },
+    {
+      "playerId": "P0068",
+      "name": "Toby Krasna",
+      "birthDate": "2008-02-28",
+      "heightCm": 182,
+      "position": "Midfielder",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 7,
+      "kemenyRank": 15,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/toby-krasna/"
+    },
+    {
+      "playerId": "P0014",
+      "name": "Clancy Snell",
+      "birthDate": "2008-08-21",
+      "heightCm": 197,
+      "position": "Key Defender",
+      "state": "Vic Country",
+      "stateCode": "VC",
+      "activeLists": 7,
+      "kemenyRank": 16,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/clancy-snell/"
+    },
+    {
+      "playerId": "P0059",
+      "name": "Lochie Burrows",
+      "birthDate": "2008-04-11",
+      "heightCm": 181,
+      "position": "Midfielder / Defender",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 7,
+      "kemenyRank": 17,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/lochie-burrows/"
+    },
+    {
+      "playerId": "P0046",
+      "name": "Jake Eime",
+      "birthDate": "2008-07-29",
+      "heightCm": 183,
+      "position": "Defender",
+      "state": "SA",
+      "stateCode": "SA",
+      "activeLists": 7,
+      "kemenyRank": 18,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/jake-eime/"
+    },
+    {
+      "playerId": "P0026",
+      "name": "George Dimer",
+      "birthDate": "2008-06-21",
+      "heightCm": 173,
+      "position": "Small Forward",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 7,
+      "kemenyRank": 19,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/george-dimer/"
+    },
+    {
+      "playerId": "P0051",
+      "name": "Khaled El Souki",
+      "birthDate": "2008-07-04",
+      "heightCm": 175,
+      "position": "Small Forward",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 7,
+      "kemenyRank": 20,
+      "clubLinks": [
+        {
+          "club": "Western Bulldogs",
+          "code": "WB",
+          "type": "NGA"
+        }
+      ],
+      "displayedBadges": [
+        {
+          "club": "Western Bulldogs",
+          "code": "WBD",
+          "label": "A"
+        }
+      ],
+      "profileUrl": "https://central.rookieme.com/afl/player/khaled-el-souki/"
+    },
+    {
+      "playerId": "P0041",
+      "name": "Jack Pickett",
+      "birthDate": "2008-03-06",
+      "heightCm": 194,
+      "position": "Key Forward",
+      "state": "Vic Country",
+      "stateCode": "VC",
+      "activeLists": 7,
+      "kemenyRank": 21,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/jack-pickett/"
+    },
+    {
+      "playerId": "P0027",
+      "name": "George Gale",
+      "birthDate": "2008-09-06",
+      "heightCm": 191,
+      "position": "Midfielder",
+      "state": "WA",
+      "stateCode": "WA",
+      "activeLists": 7,
+      "kemenyRank": 22,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/george-gale/"
+    },
+    {
+      "playerId": "P0052",
+      "name": "Koby LeCras",
+      "birthDate": "2008-04-26",
+      "heightCm": 193,
+      "position": "Medium Forward",
+      "state": "WA",
+      "stateCode": "WA",
+      "activeLists": 6,
+      "kemenyRank": 23,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/koby-lecras/"
+    },
+    {
+      "playerId": "P0043",
+      "name": "Jackson Phillips",
+      "birthDate": "2008-01-30",
+      "heightCm": 183,
+      "position": "Midfielder / Forward",
+      "state": "Vic Country",
+      "stateCode": "VC",
+      "activeLists": 7,
+      "kemenyRank": 24,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/jackson-phillips-2/"
+    },
+    {
+      "playerId": "P0063",
+      "name": "Noah Williams",
+      "birthDate": "2008-01-22",
+      "heightCm": 177,
+      "position": "Midfielder",
+      "state": "Vic Country",
+      "stateCode": "VC",
+      "activeLists": 7,
+      "kemenyRank": 25,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/noah-williams-2/"
+    },
+    {
+      "playerId": "P0053",
+      "name": "Kodah Edwards",
+      "birthDate": "2008-07-25",
+      "heightCm": 183,
+      "position": "Midfielder / Forward",
+      "state": "SA",
+      "stateCode": "SA",
+      "activeLists": 7,
+      "kemenyRank": 26,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/kodah-edwards/"
+    },
+    {
+      "playerId": "P0036",
+      "name": "Harvie Cooke",
+      "birthDate": "2008-04-12",
+      "heightCm": 176,
+      "position": "Midfielder / Forward",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 7,
+      "kemenyRank": 27,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/harvie-cooke/"
+    },
+    {
+      "playerId": "P0060",
+      "name": "Marlon Neocleous",
+      "birthDate": "2008-02-26",
+      "heightCm": 169,
+      "position": "Small Forward",
+      "state": "Vic Country",
+      "stateCode": "VC",
+      "activeLists": 6,
+      "kemenyRank": 28,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/marlon-neocleous/"
+    },
+    {
+      "playerId": "P0002",
+      "name": "Albert MacGowan",
+      "birthDate": "2008-07-27",
+      "heightCm": 187,
+      "position": "Midfielder",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 6,
+      "kemenyRank": 29,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/albert-macgowan/"
+    },
+    {
+      "playerId": "P0004",
+      "name": "Archie Elliott",
+      "birthDate": "2008-08-10",
+      "heightCm": 183,
+      "position": "Small Forward",
+      "state": "Vic Country",
+      "stateCode": "VC",
+      "activeLists": 7,
+      "kemenyRank": 30,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/archie-elliott/"
+    },
+    {
+      "playerId": "P0050",
+      "name": "Keenan Boi",
+      "birthDate": "2008-11-03",
+      "heightCm": 179,
+      "position": "Defender",
+      "state": "Vic Country",
+      "stateCode": "VC",
+      "activeLists": 5,
+      "kemenyRank": 31,
+      "clubLinks": [
+        {
+          "club": "Hawthorn",
+          "code": "HAW",
+          "type": "NGA"
+        }
+      ],
+      "displayedBadges": [
+        {
+          "club": "Hawthorn",
+          "code": "HAW",
+          "label": "A"
+        }
+      ],
+      "profileUrl": "https://central.rookieme.com/afl/player/keenan-boi/"
+    },
+    {
+      "playerId": "P0031",
+      "name": "Harrison Chapman",
+      "birthDate": "2008-01-06",
+      "heightCm": 190,
+      "position": "Midfielder",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 6,
+      "kemenyRank": 32,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/harrison-chapman/"
+    },
+    {
+      "playerId": "P0072",
+      "name": "Xavier Ladbrook",
+      "birthDate": "2008-10-16",
+      "heightCm": 201,
+      "position": "Key Defender",
+      "state": "Vic Country",
+      "stateCode": "VC",
+      "activeLists": 5,
+      "kemenyRank": 33,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/xavier-ladbrook-2/"
+    },
+    {
+      "playerId": "P0010",
+      "name": "Billy Wigmore",
+      "birthDate": "2008-03-29",
+      "heightCm": 188,
+      "position": "Defender",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 7,
+      "kemenyRank": 34,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/billy-wigmore/"
+    },
+    {
+      "playerId": "P0024",
+      "name": "Gabriel Patterson",
+      "birthDate": "2008-03-26",
+      "heightCm": 185,
+      "position": "Small Forward",
+      "state": "SA",
+      "stateCode": "SA",
+      "activeLists": 6,
+      "kemenyRank": 35,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/gabriel-patterson/"
+    },
+    {
+      "playerId": "P0098",
+      "name": "Jake Soutar",
+      "birthDate": "2006-06-22",
+      "heightCm": 191,
+      "position": "Defender",
+      "state": "WA",
+      "stateCode": "WA",
+      "activeLists": 5,
+      "kemenyRank": 36,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://wafl.com.au/player/jake-soutar"
+    },
+    {
+      "playerId": "P0071",
+      "name": "Wil Antrobus",
+      "birthDate": "2008-04-18",
+      "heightCm": 182,
+      "position": "Defender",
+      "state": "Vic Country",
+      "stateCode": "VC",
+      "activeLists": 6,
+      "kemenyRank": 37,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/wil-antrobus/"
+    },
+    {
+      "playerId": "P0035",
+      "name": "Harvey Spawton-Guy",
+      "birthDate": "2008-09-08",
+      "heightCm": 194,
+      "position": "Key Forward",
+      "state": "WA",
+      "stateCode": "WA",
+      "activeLists": 5,
+      "kemenyRank": 38,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/harvey-spawton-guy/"
+    },
+    {
+      "playerId": "P0054",
+      "name": "Lachlan Hicks",
+      "birthDate": "2008-01-19",
+      "heightCm": 183,
+      "position": "Midfielder / Forward",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 6,
+      "kemenyRank": 39,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/lachlan-hicks/"
+    },
+    {
+      "playerId": "P0018",
+      "name": "Darcy Szerszyn",
+      "birthDate": "2008-05-20",
+      "heightCm": 188,
+      "position": "Defender",
+      "state": "Vic Country",
+      "stateCode": "VC",
+      "activeLists": 5,
+      "kemenyRank": 40,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/darcy-szerszyn-2/"
+    },
+    {
+      "playerId": "P0021",
+      "name": "Ethan Herbert",
+      "birthDate": "2008-11-01",
+      "heightCm": 201,
+      "position": "Ruck / Forward",
+      "state": "SA",
+      "stateCode": "SA",
+      "activeLists": 4,
+      "kemenyRank": 41,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/ethan-herbert/"
+    },
+    {
+      "playerId": "P0011",
+      "name": "Blake Justice",
+      "birthDate": "2008-09-29",
+      "heightCm": 191,
+      "position": "Midfielder / Forward",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 4,
+      "kemenyRank": 42,
+      "clubLinks": [
+        {
+          "club": "Essendon",
+          "code": "ESS",
+          "type": "NGA"
+        }
+      ],
+      "displayedBadges": [
+        {
+          "club": "Essendon",
+          "code": "ESS",
+          "label": "A"
+        }
+      ],
+      "profileUrl": "https://central.rookieme.com/afl/player/blake-justice/"
+    },
+    {
+      "playerId": "P0064",
+      "name": "Sam Devers",
+      "birthDate": "2008-03-27",
+      "heightCm": 189,
+      "position": "Midfielder / Defender",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 5,
+      "kemenyRank": 43,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/sam-devers/"
+    },
+    {
+      "playerId": "P0006",
+      "name": "Archie Van Dyk",
+      "birthDate": "2008-07-28",
+      "heightCm": 192,
+      "position": "Midfielder",
+      "state": "SA",
+      "stateCode": "SA",
+      "activeLists": 4,
+      "kemenyRank": 44,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/archie-van-dyk/"
+    },
+    {
+      "playerId": "P0009",
+      "name": "Benji van Rooyen",
+      "birthDate": "2008-09-17",
+      "heightCm": 203,
+      "position": "Ruck / Forward",
+      "state": "WA",
+      "stateCode": "WA",
+      "activeLists": 4,
+      "kemenyRank": 45,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/benji-van-rooyen/"
+    },
+    {
+      "playerId": "P0015",
+      "name": "Cody Templeton",
+      "birthDate": "2008-01-01",
+      "heightCm": 180,
+      "position": "Midfielder / Forward",
+      "state": "Vic Country",
+      "stateCode": "VC",
+      "activeLists": 4,
+      "kemenyRank": 46,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/cody-templeton/"
+    },
+    {
+      "playerId": "P0028",
+      "name": "Gus Kennedy",
+      "birthDate": "2008-02-21",
+      "heightCm": 186,
+      "position": "Midfielder / Defender",
+      "state": "Vic Country",
+      "stateCode": "VC",
+      "activeLists": 3,
+      "kemenyRank": 47,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/gus-kennedy/"
+    },
+    {
+      "playerId": "P0086",
+      "name": "Brady Wright",
+      "birthDate": "2004-02-19",
+      "heightCm": 195,
+      "position": "Key Forward",
+      "state": "Vic Country",
+      "stateCode": "VC",
+      "activeLists": 3,
+      "kemenyRank": 48,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/brady-wright/"
+    },
+    {
+      "playerId": "P0042",
+      "name": "Jack Slattery",
+      "birthDate": "2007-09-27",
+      "heightCm": 192,
+      "position": "Key Forward",
+      "state": "SA",
+      "stateCode": "SA",
+      "activeLists": 3,
+      "kemenyRank": 49,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/jack-slattery/"
+    },
+    {
+      "playerId": "P0023",
+      "name": "Finlay Yeo",
+      "birthDate": "2008-04-01",
+      "heightCm": 172,
+      "position": "Small Forward",
+      "state": "WA",
+      "stateCode": "WA",
+      "activeLists": 3,
+      "kemenyRank": 50,
+      "clubLinks": [
+        {
+          "club": "Fremantle",
+          "code": "FRE",
+          "type": "NGA"
+        }
+      ],
+      "displayedBadges": [
+        {
+          "club": "Fremantle",
+          "code": "FRE",
+          "label": "A"
+        }
+      ],
+      "profileUrl": "https://central.rookieme.com/afl/player/finlay-yeo/"
+    },
+    {
+      "playerId": "P0048",
+      "name": "Jordan Knapp",
+      "birthDate": "2008-01-05",
+      "heightCm": 179,
+      "position": "Midfielder",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 4,
+      "kemenyRank": 51,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/jordan-knapp-2/"
+    },
+    {
+      "playerId": "P0032",
+      "name": "Harrison Leeder",
+      "birthDate": "2008-12-03",
+      "heightCm": 193,
+      "position": "Key Forward",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 1,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/harrison-leeder/"
+    },
+    {
+      "playerId": "P0044",
+      "name": "Jackson Watkins",
+      "birthDate": "2008-10-04",
+      "heightCm": 186,
+      "position": "Midfielder / Forward",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 1,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/jackson-watkins-2/"
+    },
+    {
+      "playerId": "P0096",
+      "name": "Marcus Prasad",
+      "birthDate": "2008-03-23",
+      "heightCm": 167,
+      "position": "Small Forward",
+      "state": "Vic Country",
+      "stateCode": "VC",
+      "activeLists": 2,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/marcus-prasad/"
+    },
+    {
+      "playerId": "P0066",
+      "name": "Sam Tassone",
+      "birthDate": "2008-02-12",
+      "heightCm": 180,
+      "position": "Defender",
+      "state": "SA",
+      "stateCode": "SA",
+      "activeLists": 1,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/sam-tassone/"
+    },
+    {
+      "playerId": "P0001",
+      "name": "Aidan McCartney",
+      "birthDate": "2008-11-04",
+      "heightCm": 191,
+      "position": "Medium Forward",
+      "state": "Allies",
+      "stateCode": "AL",
+      "activeLists": 1,
+      "kemenyRank": null,
+      "clubLinks": [
+        {
+          "club": "North Melbourne",
+          "code": "NM",
+          "type": "F/S"
+        },
+        {
+          "club": "Sydney Swans",
+          "code": "SYD",
+          "type": "Academy"
+        }
+      ],
+      "displayedBadges": [
+        {
+          "club": "Sydney Swans",
+          "code": "SYD",
+          "label": "A"
+        }
+      ],
+      "profileUrl": "https://central.rookieme.com/afl/player/aidan-mccartney/"
+    },
+    {
+      "playerId": "P0079",
+      "name": "Mason McGroder",
+      "birthDate": "2008-09-18",
+      "heightCm": 194,
+      "position": "Key Defender",
+      "state": "Allies",
+      "stateCode": "AL",
+      "activeLists": 2,
+      "kemenyRank": null,
+      "clubLinks": [
+        {
+          "club": "Sydney Swans",
+          "code": "SYD",
+          "type": "Academy"
+        }
+      ],
+      "displayedBadges": [
+        {
+          "club": "Sydney Swans",
+          "code": "SYD",
+          "label": "A"
+        }
+      ],
+      "profileUrl": "https://central.rookieme.com/afl/player/mason-mcgroder/"
+    },
+    {
+      "playerId": "P0033",
+      "name": "Harry Franz",
+      "birthDate": "2008-11-27",
+      "heightCm": 192,
+      "position": "Key Defender",
+      "state": "SA",
+      "stateCode": "SA",
+      "activeLists": 2,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/harry-franz/"
+    },
+    {
+      "playerId": "P0017",
+      "name": "Cooper Hodge",
+      "birthDate": "2008-07-26",
+      "heightCm": 183,
+      "position": "Midfielder / Forward",
+      "state": "Allies",
+      "stateCode": "AL",
+      "activeLists": 2,
+      "kemenyRank": null,
+      "clubLinks": [
+        {
+          "club": "Hawthorn",
+          "code": "HAW",
+          "type": "F/S"
+        },
+        {
+          "club": "Brisbane Lions",
+          "code": "BRI",
+          "type": "Academy"
+        }
+      ],
+      "displayedBadges": [
+        {
+          "club": "Brisbane Lions",
+          "code": "BRI",
+          "label": "A"
+        }
+      ],
+      "profileUrl": "https://central.rookieme.com/afl/player/cooper-hodge/"
+    },
+    {
+      "playerId": "P0099",
+      "name": "Judd Burgiel",
+      "birthDate": "2008-03-04",
+      "heightCm": 179,
+      "position": "Defender",
+      "state": "Vic Country",
+      "stateCode": "VC",
+      "activeLists": 1,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/judd-burgiel/"
+    },
+    {
+      "playerId": "P0055",
+      "name": "Lachlan McGlade",
+      "birthDate": "2008-01-06",
+      "heightCm": 173,
+      "position": "Small Forward",
+      "state": "WA",
+      "stateCode": "WA",
+      "activeLists": 1,
+      "kemenyRank": null,
+      "clubLinks": [
+        {
+          "club": "West Coast",
+          "code": "WCE",
+          "type": "NGA"
+        }
+      ],
+      "displayedBadges": [
+        {
+          "club": "West Coast",
+          "code": "WCE",
+          "label": "A"
+        }
+      ],
+      "profileUrl": "https://central.rookieme.com/afl/player/lachlan-mcglade/"
+    },
+    {
+      "playerId": "P0061",
+      "name": "Memphis Webb",
+      "birthDate": "2008-06-04",
+      "heightCm": 183,
+      "position": "Midfielder",
+      "state": "SA",
+      "stateCode": "SA",
+      "activeLists": 2,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/memphis-webb/"
+    },
+    {
+      "playerId": "P0091",
+      "name": "Matthew Owen",
+      "birthDate": "2008-03-01",
+      "heightCm": 179,
+      "position": "Midfielder",
+      "state": "Allies",
+      "stateCode": "AL",
+      "activeLists": 1,
+      "kemenyRank": null,
+      "clubLinks": [
+        {
+          "club": "Brisbane Lions",
+          "code": "BRI",
+          "type": "Academy"
+        }
+      ],
+      "displayedBadges": [
+        {
+          "club": "Brisbane Lions",
+          "code": "BRI",
+          "label": "A"
+        }
+      ],
+      "profileUrl": "https://central.rookieme.com/afl/player/matthew-owen/"
+    },
+    {
+      "playerId": "P0038",
+      "name": "Henry Meaney",
+      "birthDate": "2008-08-23",
+      "heightCm": 184,
+      "position": "Midfielder",
+      "state": "Allies",
+      "stateCode": "AL",
+      "activeLists": 1,
+      "kemenyRank": null,
+      "clubLinks": [
+        {
+          "club": "Sydney Swans",
+          "code": "SYD",
+          "type": "Academy"
+        }
+      ],
+      "displayedBadges": [
+        {
+          "club": "Sydney Swans",
+          "code": "SYD",
+          "label": "A"
+        }
+      ],
+      "profileUrl": "https://central.rookieme.com/afl/player/henry-meaney/"
+    },
+    {
+      "playerId": "P0083",
+      "name": "Andrio Sousa",
+      "birthDate": "2008-08-11",
+      "heightCm": 182,
+      "position": "Small Forward",
+      "state": "Vic Country",
+      "stateCode": "VC",
+      "activeLists": 2,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/andrio-sousa/"
+    },
+    {
+      "playerId": "P0005",
+      "name": "Archie Hill",
+      "birthDate": "2008-03-04",
+      "heightCm": 181,
+      "position": "Midfielder / Defender",
+      "state": "Allies",
+      "stateCode": "AL",
+      "activeLists": 1,
+      "kemenyRank": null,
+      "clubLinks": [
+        {
+          "club": "Gold Coast Suns",
+          "code": "GC",
+          "type": "Academy"
+        }
+      ],
+      "displayedBadges": [
+        {
+          "club": "Gold Coast Suns",
+          "code": "GCS",
+          "label": "A"
+        }
+      ],
+      "profileUrl": "https://central.rookieme.com/afl/player/archie-hill/"
+    },
+    {
+      "playerId": "P0067",
+      "name": "Tanner Armstrong",
+      "birthDate": "2008-02-27",
+      "heightCm": 177,
+      "position": "Midfielder / Defender",
+      "state": "Vic Country",
+      "stateCode": "VC",
+      "activeLists": 1,
+      "kemenyRank": null,
+      "clubLinks": [
+        {
+          "club": "Richmond",
+          "code": "RICH",
+          "type": "NGA"
+        }
+      ],
+      "displayedBadges": [
+        {
+          "club": "Richmond",
+          "code": "RIC",
+          "label": "A"
+        }
+      ],
+      "profileUrl": "https://central.rookieme.com/afl/player/tanner-armstrong/"
+    },
+    {
+      "playerId": "P0008",
+      "name": "Benjamin Pignatelli",
+      "birthDate": "2008-03-14",
+      "heightCm": 191,
+      "position": "Key Forward",
+      "state": "Allies",
+      "stateCode": "AL",
+      "activeLists": 1,
+      "kemenyRank": null,
+      "clubLinks": [
+        {
+          "club": "Sydney Swans",
+          "code": "SYD",
+          "type": "Academy"
+        }
+      ],
+      "displayedBadges": [
+        {
+          "club": "Sydney Swans",
+          "code": "SYD",
+          "label": "A"
+        }
+      ],
+      "profileUrl": "https://central.rookieme.com/afl/player/benjamin-pignatelli/"
+    },
+    {
+      "playerId": "P0030",
+      "name": "Harper Banfield",
+      "birthDate": "2008-12-18",
+      "heightCm": 181,
+      "position": "Midfielder / Forward",
+      "state": "WA",
+      "stateCode": "WA",
+      "activeLists": 1,
+      "kemenyRank": null,
+      "clubLinks": [
+        {
+          "club": "West Coast",
+          "code": "WCE",
+          "type": "F/S"
+        }
+      ],
+      "displayedBadges": [
+        {
+          "club": "West Coast",
+          "code": "WCE",
+          "label": "FS"
+        }
+      ],
+      "profileUrl": "https://central.rookieme.com/afl/player/harper-banfield/"
+    },
+    {
+      "playerId": "P0025",
+      "name": "Garrison Kenh",
+      "birthDate": "2008-04-19",
+      "heightCm": 182,
+      "position": "Defender",
+      "state": "WA",
+      "stateCode": "WA",
+      "activeLists": 1,
+      "kemenyRank": null,
+      "clubLinks": [
+        {
+          "club": "West Coast",
+          "code": "WCE",
+          "type": "NGA"
+        }
+      ],
+      "displayedBadges": [
+        {
+          "club": "West Coast",
+          "code": "WCE",
+          "label": "A"
+        }
+      ],
+      "profileUrl": "https://central.rookieme.com/afl/player/garrison-kenh/"
+    },
+    {
+      "playerId": "P0056",
+      "name": "Lachlan Price",
+      "birthDate": "2007-08-11",
+      "heightCm": 180,
+      "position": "Midfielder",
+      "state": "Allies",
+      "stateCode": "AL",
+      "activeLists": 1,
+      "kemenyRank": null,
+      "clubLinks": [
+        {
+          "club": "Sydney Swans",
+          "code": "SYD",
+          "type": "Academy"
+        }
+      ],
+      "displayedBadges": [
+        {
+          "club": "Sydney Swans",
+          "code": "SYD",
+          "label": "A"
+        }
+      ],
+      "profileUrl": "https://central.rookieme.com/afl/player/lachlan-price/"
+    },
+    {
+      "playerId": "P0097",
+      "name": "Angus Tippett",
+      "birthDate": "2008-02-12",
+      "heightCm": 194,
+      "position": "Midfielder",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/angus-tippett/"
+    },
+    {
+      "playerId": "P0085",
+      "name": "Angus White",
+      "birthDate": "2008-07-06",
+      "heightCm": 185,
+      "position": "Midfielder / Forward",
+      "state": "SA",
+      "stateCode": "SA",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/angus-white/"
+    },
+    {
+      "playerId": "P0003",
+      "name": "Anthony Long",
+      "birthDate": "2008-03-23",
+      "heightCm": 184,
+      "position": "Small Forward",
+      "state": "SA",
+      "stateCode": "SA",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [
+        {
+          "club": "Adelaide",
+          "code": "ADEL",
+          "type": "NGA"
+        }
+      ],
+      "displayedBadges": [
+        {
+          "club": "Adelaide",
+          "code": "ADE",
+          "label": "A"
+        }
+      ],
+      "profileUrl": "https://central.rookieme.com/afl/player/anthony-long/"
+    },
+    {
+      "playerId": "P0084",
+      "name": "Archie Spencer",
+      "birthDate": "2008-09-04",
+      "heightCm": 181,
+      "position": "Midfielder",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/archie-spencer/"
+    },
+    {
+      "playerId": "P0012",
+      "name": "Cameron Maynard",
+      "birthDate": "2008-08-14",
+      "heightCm": 170,
+      "position": "Small Forward",
+      "state": "WA",
+      "stateCode": "WA",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/cameron-maynard/"
+    },
+    {
+      "playerId": "P0093",
+      "name": "Charlie Nash",
+      "birthDate": "2008-05-20",
+      "heightCm": 193,
+      "position": "Key Defender",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/charlie-nash/"
+    },
+    {
+      "playerId": "P0075",
+      "name": "Flynn Woolhouse",
+      "birthDate": "2008-05-06",
+      "heightCm": 195,
+      "position": "Key Forward",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/flynn-woolhouse/"
+    },
+    {
+      "playerId": "P0039",
+      "name": "Hudson Graham",
+      "birthDate": "2008-05-28",
+      "heightCm": 194,
+      "position": "Key Defender",
+      "state": "WA",
+      "stateCode": "WA",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/hudson-graham/"
+    },
+    {
+      "playerId": "P0040",
+      "name": "Hugh McCallum",
+      "birthDate": "2008-08-10",
+      "heightCm": 181,
+      "position": "Midfielder",
+      "state": "Allies",
+      "stateCode": "AL",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/hugh-mccallum/"
+    },
+    {
+      "playerId": "P0073",
+      "name": "Jack Leys",
+      "birthDate": "2008-05-11",
+      "heightCm": 182,
+      "position": "Midfielder",
+      "state": "SA",
+      "stateCode": "SA",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [
+        {
+          "club": "Richmond",
+          "code": "RICH",
+          "type": "F/S"
+        }
+      ],
+      "displayedBadges": [
+        {
+          "club": "Richmond",
+          "code": "RIC",
+          "label": "FS"
+        }
+      ],
+      "profileUrl": "https://central.rookieme.com/afl/player/jack-leys/"
+    },
+    {
+      "playerId": "P0095",
+      "name": "Jack Nelson",
+      "birthDate": "2008-09-29",
+      "heightCm": 186,
+      "position": "Midfielder",
+      "state": "SA",
+      "stateCode": "SA",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/jack-nelson/"
+    },
+    {
+      "playerId": "P0090",
+      "name": "Jack Surkitt",
+      "birthDate": "2008-08-13",
+      "heightCm": 177,
+      "position": "Midfielder / Forward",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/jack-surkitt/"
+    },
+    {
+      "playerId": "P0089",
+      "name": "Jackson Hewitt",
+      "birthDate": "2008-03-19",
+      "heightCm": 182,
+      "position": "Defender",
+      "state": "Vic Country",
+      "stateCode": "VC",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/jackson-hewitt/"
+    },
+    {
+      "playerId": "P0080",
+      "name": "Jackson O'Brien",
+      "birthDate": "2008-06-05",
+      "heightCm": 205,
+      "position": "Ruck",
+      "state": "Vic Country",
+      "stateCode": "VC",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/jackson-obrien/"
+    },
+    {
+      "playerId": "P0045",
+      "name": "Jacob McNicol",
+      "birthDate": "2008-06-28",
+      "heightCm": 177,
+      "position": "Midfielder",
+      "state": "SA",
+      "stateCode": "SA",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/jacob-mcnicol-2/"
+    },
+    {
+      "playerId": "P0047",
+      "name": "Jake Medved",
+      "birthDate": "2008-06-02",
+      "heightCm": 191,
+      "position": "Defender",
+      "state": "Allies",
+      "stateCode": "AL",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [
+        {
+          "club": "Sydney Swans",
+          "code": "SYD",
+          "type": "Academy"
+        }
+      ],
+      "displayedBadges": [
+        {
+          "club": "Sydney Swans",
+          "code": "SYD",
+          "label": "A"
+        }
+      ],
+      "profileUrl": "https://central.rookieme.com/afl/player/jake-medved/"
+    },
+    {
+      "playerId": "P0081",
+      "name": "Kai Parker",
+      "birthDate": "2008-10-17",
+      "heightCm": 189,
+      "position": "Defender",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/kai-parker/"
+    },
+    {
+      "playerId": "P0049",
+      "name": "Kale Matthews-Hampton",
+      "birthDate": "2008-05-18",
+      "heightCm": 188,
+      "position": "Defender",
+      "state": "SA",
+      "stateCode": "SA",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/kale-matthews-hampton/"
+    },
+    {
+      "playerId": "P0092",
+      "name": "Klay Nicholls",
+      "birthDate": "2008-05-15",
+      "heightCm": 187,
+      "position": "Defender",
+      "state": "Vic Country",
+      "stateCode": "VC",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/klay-nicholls/"
+    },
+    {
+      "playerId": "P0058",
+      "name": "Lewis Houndsome",
+      "birthDate": "2008-05-29",
+      "heightCm": 199,
+      "position": "Ruck / Forward",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/lewis-houndsome/"
+    },
+    {
+      "playerId": "P0074",
+      "name": "Lucas Robinson",
+      "birthDate": "2008-02-13",
+      "heightCm": 191,
+      "position": "Midfielder",
+      "state": "WA",
+      "stateCode": "WA",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [
+        {
+          "club": "Fremantle",
+          "code": "FRE",
+          "type": "NGA"
+        }
+      ],
+      "displayedBadges": [
+        {
+          "club": "Fremantle",
+          "code": "FRE",
+          "label": "A"
+        }
+      ],
+      "profileUrl": "https://central.rookieme.com/afl/player/lucas-robinson/"
+    },
+    {
+      "playerId": "P0088",
+      "name": "Oliver Bartal",
+      "birthDate": "2008-04-03",
+      "heightCm": 190,
+      "position": "Key Defender",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/oliver-bartal/"
+    },
+    {
+      "playerId": "P0087",
+      "name": "Sam Harris",
+      "birthDate": "2008-01-17",
+      "heightCm": 179,
+      "position": "Midfielder / Forward",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [
+        {
+          "club": "North Melbourne",
+          "code": "NM",
+          "type": "F/S"
+        }
+      ],
+      "displayedBadges": [
+        {
+          "club": "North Melbourne",
+          "code": "NTH",
+          "label": "FS"
+        }
+      ],
+      "profileUrl": "https://central.rookieme.com/afl/player/sam-harris/"
+    },
+    {
+      "playerId": "P0078",
+      "name": "Sebastian Marsic",
+      "birthDate": "2008-08-30",
+      "heightCm": 194,
+      "position": "Key Forward",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/sebastian-marsic/"
+    },
+    {
+      "playerId": "P0082",
+      "name": "Sonny Smiler",
+      "birthDate": "2008-10-20",
+      "heightCm": 176,
+      "position": "Midfielder / Forward",
+      "state": "Allies",
+      "stateCode": "AL",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/sonny-smiler/"
+    },
+    {
+      "playerId": "P0077",
+      "name": "Tate Hodgson",
+      "birthDate": "2008-07-24",
+      "heightCm": 197,
+      "position": "Key Defender",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/tate-hodgson/"
+    },
+    {
+      "playerId": "P0094",
+      "name": "Tom Brown",
+      "birthDate": "2008-07-29",
+      "heightCm": 185,
+      "position": "Defender",
+      "state": "WA",
+      "stateCode": "WA",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/tom-brown-2/"
+    },
+    {
+      "playerId": "P0076",
+      "name": "Zac Antonellos",
+      "birthDate": "2008-04-04",
+      "heightCm": 181,
+      "position": "Small Forward",
+      "state": "Vic Metro",
+      "stateCode": "VM",
+      "activeLists": 0,
+      "kemenyRank": null,
+      "clubLinks": [],
+      "displayedBadges": [],
+      "profileUrl": "https://central.rookieme.com/afl/player/zac-antonellos-2/"
+    }
+  ]
+}

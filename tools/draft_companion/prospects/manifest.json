@@ -1,0 +1,86 @@
+{
+  "exportedOn": "2026-11-19",
+  "timezone": "Australia/Sydney",
+  "releaseId": "ca230475722f3172b9286be1532d1e08fa5b6f34b8b47baa6296367afd07de35",
+  "liveUrl": "https://afl-draft-rankings-2026.afldraftboard.workers.dev/",
+  "panel": [
+    {
+      "id": "cal",
+      "name": "Cal Twomey",
+      "published": "11 November 2026",
+      "url": "https://www.afl.com.au/news/1640123/cal-twomeys-phantom-form-guide-top-draft-prospects-november-ranking"
+    },
+    {
+      "id": "espn",
+      "name": "ESPN",
+      "published": "11 November 2026",
+      "url": "https://www.espn.com.au/afl/story/_/id/50436269/afl-draft-2026-news-power-rankings-november-top-50-phantom-mock-jasper-chellappah"
+    },
+    {
+      "id": "fox",
+      "name": "Fox Sports",
+      "published": "30 October 2026",
+      "url": "https://www.foxsports.com.au/afl/draft/afl-draft-power-rankings-2026-fox-footy-top-50-best-prospects-ranked-1-to-50-clubs-who-could-take-them-player-comparisons/news-story/99db4169177c17d3013bc3386aec90d9"
+    },
+    {
+      "id": "zero",
+      "name": "Zero Hanger",
+      "published": "1 November 2026",
+      "url": "https://www.zerohanger.com/afl-draft-november-power-rankings-186751/"
+    },
+    {
+      "id": "dylan",
+      "name": "Dylan Alexander",
+      "published": "1 November 2026",
+      "url": "https://truefooty.com.au/draft-hub/rankings"
+    },
+    {
+      "id": "tommy",
+      "name": "Tommy Wolfe",
+      "published": "4 November 2026",
+      "url": "https://readingtheplay.wordpress.com/2026/11/04/2026-top-50-draft-power-rankings-v5-0/"
+    },
+    {
+      "id": "davo",
+      "name": "Davo27",
+      "published": "11 November 2026",
+      "url": "https://www.bigfooty.com/forum/threads/davo-27s-2026-draft-thread.1404048/"
+    }
+  ],
+  "totalPlayers": 99,
+  "rankedPlayers": 51,
+  "zeroListPlayers": 28,
+  "minimumLists": 3,
+  "flags": {
+    "SA": {
+      "file": "state-flags/sa.png",
+      "width": 178,
+      "height": 100,
+      "sha256": "fdb895afba7546687c71581af01798fd2e2645104a61b597cc6dbb9757895c71"
+    },
+    "WA": {
+      "file": "state-flags/wa.png",
+      "width": 178,
+      "height": 100,
+      "sha256": "7415aa51894000034ac46bc2462d72af930c2b64651464f46e7b7b23d828de22"
+    },
+    "VM": {
+      "file": "state-flags/vm.png",
+      "width": 178,
+      "height": 100,
+      "sha256": "17b9f951debfb96817c533d512f37c9dea578b26b7696359b51759233c58d806"
+    },
+    "VC": {
+      "file": "state-flags/vc.png",
+      "width": 178,
+      "height": 100,
+      "sha256": "3e8c64510b2f500d041b67fd510a9cb27dc76350e89675604fe8a43e0e966f17"
+    },
+    "AL": {
+      "file": "state-flags/al.png",
+      "width": 178,
+      "height": 100,
+      "sha256": "9c6cc7edb526ed7365326c894c0e35f6bca265df786773b873b29d225aadefa3"
+    }
+  }
+}
