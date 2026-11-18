@@ -8,7 +8,7 @@ projected row, with r_pop (the L-SYMMETRY damper's sealed rate) re-derived WITHO
 the export-layer within-cohort rule (the 2026-10-14 survival act) retired in the same act; the owner has seen the
 three measured variants with movers by age and evidence, a blind review is filed, and the act lands on his word.
 
-**Facts (checked at ffb2663b).**
+**Facts (checked at 9a400286).**
 - LEG F4 / L-SYMMETRY damper: _merged_recover.py:267-403. The sealed literal `_LSYM_SEAL` (:294-296):
   r_pop = 1.0016 (18), 1.0007 (20), 0.9777 (22), 0.9073 (24), 0.7886 (26 through 36), 0.6591 (38), seal
   `r_pop_sha256_8` c62b5ee8; s(age) = 0 (18-22), 0.048 (24), 0.5988 / 0.6053 / 0.5988 / 0.426 (26-32), 1.0 from 34

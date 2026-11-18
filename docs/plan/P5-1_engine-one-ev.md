@@ -6,7 +6,7 @@
 the ORDER 43/45/46g/49 stages in today's order as named helpers, every module-level caller still sees the stage it
 sees today, and the board is byte-identical.
 
-**Facts (checked at ffb2663b).**
+**Facts (checked at 9a400286).**
 - `def raw_ev` at :907 and :1573 (the second is the W4 wrapper; `_raw_ev_w4_0=raw_ev` at :1572).
 - `def ev` at :2968, :3107, :6035 (`__inner=_ev_pre43`, alias :6034), :6153 (`__inner=_ev_pre45`, alias :6152),
   :6227 (`__inner=_ev_pre46g`, alias :6226), :6269 (`__inner=_ev_pre49`, alias :6268). `_ev_click=ev` at :3065
@@ -30,7 +30,7 @@ a stage (several stages call their inner twice: :6198/:6202, :6286/:6290).
 **Must not change.** Arithmetic, call order and rounding inside every stage; memo behaviour; which stage each
 module-level call and each alias sees; what a function body that calls the GLOBAL name `ev(` / `raw_ev(` at call
 time resolves to (grep every body between :907 and the end for bare calls — rebinding the global changes them); the `_O45`/`_O49` conditions; anything P5-4 owns (the unpinned reads, the
-refit lane at :2130-~2438). The board (96896e1c), store, config.
+refit lane at :2130-~2438). The board (159d3972), store, config.
 
 **Prove it.**
 - Before editing, record for every row `ev(p,Y)` for Y in 2024..2028 and every module-level result those seven calls

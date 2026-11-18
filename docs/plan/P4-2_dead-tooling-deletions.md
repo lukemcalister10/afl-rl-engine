@@ -5,7 +5,7 @@
 **Done when.** The three units below are gone or made optional, each in its own commit naming the ruling, every
 reader of each unit is retired in the same commit, and the KEEP list is untouched.
 
-**Facts — what is live and must be KEPT (the old brief listed these as dead; it was wrong):**
+**Facts (checked at 9a400286) — what is live and must be KEPT (the old brief listed these as dead; it was wrong):**
 - acceptance/selftest.py — the acceptance runner's own self-test, run by CI first
   (.github/actions/host-insensitive-gates/action.yml:72).
 - tools/landing/selftest.py — `tools/land lever|round|edit` runs it before each transaction (cli.py:78-150, called at
@@ -15,21 +15,21 @@ reader of each unit is retired in the same commit, and the KEEP list is untouche
   are its practice landings: keep them.
 - engine/rl_after/ingestion/sibling_repin.py + forward_lens.py — live inside the round lane: staged_apply.py:883-884
   loads sibling_repin (c3), which loads forward_lens (sibling_repin.py:82-84). They go with the lane in P4-4.
-- tools/landing/day0_emit.py — DAY0_GENERATOR (steps.py:3438) for the round lane's `day0` step (:3365-3433).
+- tools/landing/day0_emit.py — DAY0_GENERATOR (steps.py:3943) for the round lane's `day0` step (:3870-3938).
   Goes with the lane in P4-4.
 
 **Unit 1 — tools/claims.py and the `claims` step** (retired by RULEBOOK law 11, RULEBOOK.md:46-48).
-Readers to retire in the same commit: steps.py `claims` (:2580-~2690) and its entries in LEVER_SEQUENCE (:3809)
-and ROUND_SEQUENCE (:3856) — EDIT_SEQUENCE inherits it from LEVER_SEQUENCE (:3871-3875); txn.py:449 FAULTS['claims'];
+Readers to retire in the same commit: steps.py `claims` (:3085-~3195) and its entries in LEVER_SEQUENCE (:4314)
+and ROUND_SEQUENCE (:4361) — EDIT_SEQUENCE inherits it from LEVER_SEQUENCE (:4376-4380); txn.py:449 FAULTS['claims'];
 selftest.py:25, :105, :1144-1147 (claims_negative_control) — and the self-test's fault loop over LEVER_SEQUENCE
 (:482-485, `TX.FAULTS[step]`) loses its claims fault leg with the step; tools/ingest.py:463 (the filter: delete it).
 The spec slot `claims_file` stays ACCEPTED (read by txn.py:750-756 and preflight.py:226; old specs carry it).
-**Unit 2 — `day0_rebase` becomes optional** (owner: off; the M1b ruling quoted at steps.py:1226-1229).
-It is a REQUIRED_SLOT (spec.py:70-71) validated at :515-529; four existing specs carry `"state": "on"`
+**Unit 2 — `day0_rebase` becomes optional** (owner: off; the M1b ruling quoted at steps.py:1681-1684).
+It is a REQUIRED_SLOT (spec.py:70-71) validated at :577-591; four existing specs carry `"state": "on"`
 (r24_advance ACT_SPEC_R24, combined_build ACT_SPEC_COMBINED, two r24_rehearsal specs) and must still load.
 Change: drop it from REQUIRED_SLOTS, keep the validation when the slot is present, absent = off. proofstash.build_key
 reads it (proofstash.py:105): normalise `spec.get('day0_rebase') or {'state': 'off'}` so existing stash keys do
-not move. Leave steps.py `_day0` (:1214, :1223) for the lever lane's off path; the `on` path stays until P4-4.
+not move. Leave steps.py `_day0` (:1669, :1678) for the lever lane's off path; the `on` path stays until P4-4.
 **Unit 3 — dead function** engine/rl_after/ingestion/scratch_fixture.py `align_to_config_of_record` (:406-~470)
 opens sibling_repin.py (:427) and has no caller (`git grep align_to_config_of_record` = its definition only).
 test_r14_fixture.py uses `install_sibling_support_trees` (:235), not this; leave that.
@@ -38,7 +38,7 @@ test_r14_fixture.py uses `install_sibling_support_trees` (:235), not this; leave
 acceptance/, .github/, engine/, ui/, docs/runbooks/, docs/RULEBOOK.md. A live reader you cannot retire in the
 same commit stops that unit: report it, do not delete. The RULEBOOK is not edited (law 10a).
 
-**Must not change.** The board, the store, any pin. The 28 specs that validate today still validate (the README's
+**Must not change.** The board, the store, any pin. The 30 specs that validate today still validate (the README's
 spec baseline). The KEEP list above. Stash keys for existing specs.
 
 **Prove it.** `python3 tools/landing/test_txn.py`, `test_proofstash.py`, `test_store_edit.py`,

@@ -9,7 +9,7 @@ the others link to it. One closing register entry naming the plan's landing comm
 `python3 tools/seat/pen.py append --entry-file F` (it writes entries/vNNN.md, rewrites docs/register/LATEST.md and
 runs `verify`, pen.py:13-21) — never hand-edit LATEST.md or the index.
 
-**Facts (checked at ffb2663b).**
+**Facts (checked at 9a400286).**
 - Live docs: the 14 top-level docs/*.md, docs/runbooks/ (F5_OFFBYONE_DIAGNOSIS.md, R23_RUNBOOK.md,
   STANDING_PROCEDURES.md, WEEKLY_SCORES.md), the root README.md, START_HERE.md, REQUIRED_INPUTS.md, ui/MAINTAINER.md.
 - Records that are never rewritten: docs/OPEN_ITEMS_REGISTER.md (frozen; tools/incident_index.py:15, :203 "NEVER

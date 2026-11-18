@@ -8,50 +8,63 @@ word." This item adds the calendar advance and a round report to the weekly path
 re-averaged), advances the calendar N→N+1 through the lane, writes the round's weekly report, and pushes; it refuses a
 round out of order; and the round lane (P4-4) is still in place until a real or rehearsed 2027 round has landed.
 
-**Facts (checked at ffb2663b).**
+**Facts (checked at 9a400286).**
 - tools/ingest.py:179-181 dies on `R\d+` ("the next one is 2027 round 1, after the season rollover"). `R25` is not
   a round: WEEK_ALIASES (:71) maps FW1→25 … GF→29; the next home-and-away round is 2027 R1. SEASON = 2026 is a
   literal (:63; P3-1). build_spec (:388-437) declares `as_of_round` UNMOVED (:418-420).
 - Declaring as_of_round in `moves` does nothing: it is a DELEGATED_PIN (steps.py:112) and the pins step only logs
-  "delegated … not here" (:1323-1327). The real blocker is the season-clock step (:872-892): it derives at the
+  "delegated … not here" (:1778-1782). The real blocker is the season-clock step (:1316-1336): it derives at the
   CURRENT as_of_round and stops if anything but source_store_md5 moves; `_finals_exposure_hold` returns None below the
-  round-24 ceiling (:933-934). So the lane can neither advance the clock (it derives at N, never N+1) nor absorb a
+  round-24 ceiling (:1377-1378). So the lane can neither advance the clock (it derives at N, never N+1) nor absorb a
   round whose games move exposure_pace (it stops).
 - The edit lane's `lineage` step writes an out-of-round column and a release_lineage entry when the board moves
-  (:1392-1430) — a round earns neither (ROUND_SEQUENCE comment, :3836-3841; build_spec always sends a `column` and `lineage`, :421-430).
-- Writer 4c writes a weekly report only for a FINALS column (`feed_round_of(col) is not None`, :2120); a round would
+  (:1847-1885) — a round earns neither (ROUND_SEQUENCE comment, :4341-4346; build_spec always sends a `column` and `lineage`, :421-430).
+- Writer 4c writes a weekly report only for a FINALS column (`feed_round_of(col) is not None`, :2611); a round would
   land with no report. round_movers.fixture_clubs returns None (every club played) when a round has no fixture entry
   (round_movers.py:329-356) — wrong for a BYE round, where clubs sit out and their players would be marked DNP.
 - tools/ingest_bounds.py limits were calibrated on FW2 (:7-17), a finals week; rounds move more players.
 - A replay of R24 cannot run on the pre-R24 tree (R24 landed 2026-08-23 via the round lane, docs/evidence/
   r24_advance_2026-08-23): tools/ingest.py (added 2026-09-24, 74e084cf), the edit lane and finals_report.py (2026-09-10)
   did not exist. The FW2 replay precedent (docs/runbooks/WEEKLY_SCORES.md:49-53) was finals on a post-ingest tree.
+- tools/ingest.resolve_names keeps only non-`_retired` rows (ingest.py:219); round_entry.is_active(row, season) now
+  admits a retired row with `_last_listed >= season` for that season (63ee76ae). On today's tree the 107 end-of-2026
+  exits are retired with `_last_listed 2026`, so tools/ingest cannot resolve them for a 2026 week (right for 2027).
+- compute_edits stops the week for a player without exactly one season-Y row (ingest.py:276-279) and emits only
+  change edits (`scoring[Y].games`/`.avg`, career `games`). A 2027 R1 player has no 2027 row unless P3-2 seeds one;
+  the lane's `scoring[Y]` season add (steps.py:618, :682; b52b74e5) can create it.
 
 **Change.**
 1. A season-state writer for a round act (reuse P3-2's): as_of_round N→N+1 in data/expected_boot.json,
    release_contract.json (restamp_dynamic, release_contract.py:441) and season_state.json, deriving at N+1.
-2. No column and no lineage entry for a round. Today spec.py:536-540 refuses a store-edit that moves the board with
+2. No column and no lineage entry for a round. Today spec.py:598-602 refuses a store-edit that moves the board with
    `column: null`; its `column._exempt_because` escape still hands the lineage step a column object, which it then
-   writes (:1414-1416). Add one declared round marker that the validator and the lineage step both recognise.
+   writes (:1869-1871). Add one declared round marker that the validator and the lineage step both recognise.
 3. A round-report writer (round_movers report for feed round N, keyed per P2-4), run where 4c runs.
 4. Fixtures: a bye round carries a fixtures.json entry listing the clubs that played; a round with no entry means
    all 18 played (as today).
 5. ingest_bounds re-calibrated on R21-R24 (scores/R21.csv … R24.csv exist): measure each limit on those four rounds.
 6. One out-of-order guard: the round must be as_of_round+1.
-7. The sitter sheet: the round lane re-cuts it (`sheet` step, steps.py:2801) and is the only writer of
+7. The sitter sheet: the round lane re-cuts it (`sheet` step, steps.py:3306) and is the only writer of
    data/sheet_pins.json (RULEBOOK P13). Until P4-4 gives the pins a new writer, tools/ingest rounds run on an UNCHANGED
    sheet only; a round that needs a re-cut goes through `tools/land round`. The tool must say this when it applies.
+
+**Open question for the owner.** Who creates a player's first 2027 season row: the rollover (P3-2 seeds 0-game 2027
+rows) or the first round's ingest (a `scoring[2027]` season add per first-time player)? Until answered, the store-edit
+shape below stays "change edits only" and a 2027 round needs P3-2's seeded rows.
 
 **Must not change.** The finals path (byte-identical behaviour for FW files); the store-edit shape (change edits only);
 the season-clock stop for every non-round act; the engine.
 
 **Prove it.** Hybrid replay: take the tree before the R24 inputs (the parent of a6ba4da7, the R24 scores commit;
 the landing is adf380b1, 2026-08-23) and overlay the FULL set the weekly path reads today: tools/ingest.py,
-tools/ingest_bounds.py, tools/landing/, engine/rl_after/ingestion/{finals_report,round_movers,movers_bundle}.py,
+tools/ingest_bounds.py, tools/landing/, ui/tools/ (the ui step's writers; the conditional writer 0 and writer 9,
+extract_positions.py, are new since ffb2663b), engine/rl_after/ingestion/{finals_report,round_movers,movers_bundle}.py,
 scores/fixtures.json, docs/evidence/walkforward_retro_2026-08-29/ (writers 4b/4c read it, and after P4-1a a missing
 script halts) and docs/evidence/finals_fw1_2026-08-30/ (test_finals_report, a DEFAULT_GATE, reads it, :66). List the
 overlay in the evidence. If the full landing still cannot complete on that tree, the accepted fallback is: compare
-ONLY the store edits `tools/ingest --check scores/R24.csv` computes against the R24 act's store diff (byte-identical
-edits), and say so. Then a synthetic 2027 R1 on the P3-2 rehearsal copy, landed end to end. tools/test_ingest.py extended for rounds; test_store_edit.py; acceptance `--profile full`.
+ONLY the store edits `tools/ingest --check scores/R24.csv` computes on the hybrid tree (not HEAD: see the retired-row
+fact) against the R24 act's store diff (byte-identical edits), and say so. Then a synthetic 2027 R1 on the P3-2
+rehearsal copy, landed end to end. tools/test_ingest.py extended for rounds; test_store_edit.py; acceptance
+`--profile full`.
 
 **Lands via.** Plain commit of the tooling, on the owner's word. Keep `land round` until a 2027 round has landed (P4-4).

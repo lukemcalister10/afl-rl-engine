@@ -8,7 +8,7 @@ nor in config_manifest.INFRA_ALLOW, except the deliberate signature read below; 
 writes data/v0surf.pkl offline; the board is byte-identical.
 
 **Facts — the counted list (script: every `os.environ.get/[...]` of a literal RL_/PAR_ name in code, minus the 90
-manifest vars and INFRA_ALLOW; checked at ffb2663b).** Over all of engine/ the script finds 13 names. An earlier
+manifest vars and INFRA_ALLOW; checked at 9a400286).** Over all of engine/ the script finds 13 names. An earlier
 version of this brief counted only the four main files (6 names) — incomplete. In files the BUILD loads, 11:
 - owner_overrides.py:79 RL_NO_OWNER_OVERRIDES (imported by rl_export.py:762); engine/forward_valuation/par_build.py
   :775-785 RL_336_DBAND, RL_336_TARGET ("PINNED" literal defaults), RL_336_RFORCE, RL_336_DFORCE ("declared
@@ -47,7 +47,7 @@ frozen load and the HALT (its message names the new tool); :2440, :3196-3200 and
 the "declared refit" state (only "frozen surface LOADED" passes). Retire the session_2026-07-18 driver's role in its
 docstring.
 
-**Must not change.** The board (96896e1c); the frozen signature and `_V0SURF_GATES`; :2051; data/v0surf.pkl; config;
+**Must not change.** The board (159d3972); the frozen signature and `_V0SURF_GATES`; :2051; data/v0surf.pkl; config;
 `must_be_unset`; every pinned dial.
 
 **Prove it.** Re-run the counting script over engine/ (put it in the commit): only RL_ARM1_OUT/RL_ARM2_OUT remain.

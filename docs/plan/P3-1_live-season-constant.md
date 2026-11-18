@@ -8,7 +8,7 @@ tools/ingest reads one accessor, `season_read.live_season()` (from data/season_s
 that is a historical fact keeps its literal with a one-line comment saying so; an inventory of every remaining 2026
 literal (file:line, class: live | historical | label) is committed; the board is byte-identical; a 2027 copy builds.
 
-**Facts (checked at ffb2663b).**
+**Facts (checked at 9a400286).**
 - data/season_state.json carries `season_year` 2026 and `inprog_year` 2026. engine/rl_after/season_read.py reads only
   KEYS = calendar_progress, exposure_pace (:16, :26-29): `live_season()` is new.
 - Engine sites: rl_model.py:74 `LIVE_SEASON=2026`, :163-164 `AGE_REF`/`BASE_REF=2026`, :1187 and :1215
@@ -16,9 +16,11 @@ literal (file:line, class: live | historical | label) is committed; the board is
   RL_M3_INPROG_Y), conditional_prior.py:65 `EXPO_INPROG_Y` (RL_EXPO_INPROG_Y); rl_export.py:210-212 (`BASE_REF=
   AGE_REF=2026`, `ev(p,2024/2025/2026)`), :695 and :1005 (`lensYear: 2026+_off`), :985 and :1029 (`range(2027, …)` pick classes). tools/ingest.py:63 `SEASON = 2026`.
   The default `Y=2026` arguments of every `ev`/`raw_ev` definition (P5-1 lists them) are live-season defaults.
+  Outside that scope but in the inventory: ui/tools/ingest_inputs.py:108 `BASE_YEAR = 2026` (the pick-year base;
+  P3-2 moves it).
 - RL_M3_INPROG_Y and RL_EXPO_INPROG_Y are manifest dials pinned "2026" (data/model_config.json `vars`) — config
-  identity. `config` is in FLIP_SCOPED_IDENTITIES (spec.py:65) and refused in `moves` (:481-488) until P4-3.
-- `_has26`: on all 2,650 rows, asserted by test_has26_derived.py:52-53; deleting it is a store edit and the lane has
+  identity. `config` is in FLIP_SCOPED_IDENTITIES (spec.py:65) and refused in `moves` (:543-550) until P4-3.
+- `_has26`: on all 2,652 rows, asserted by test_has26_derived.py:58-59 (row count now a floor); deleting it is a store edit and the lane has
   no remove verb. DROPPED from this item (the old brief's sub-item). Its reads are already derived from rows.
 
 **Change.**
@@ -29,7 +31,7 @@ literal (file:line, class: live | historical | label) is committed; the board is
    only where the result is byte-identical (prove per site; leave a default literal if a caller relies on it).
 4. tools/ingest.py SEASON reads season_state (the column id stays `<prefix><slug>-<SEASON>`).
 
-**Must not change.** The board at season_year 2026 (96896e1c), store, config, every historical literal (ruling
+**Must not change.** The board at season_year 2026 (159d3972), store, config, every historical literal (ruling
 dates, frozen anchors, `draft-pick:<class>` labels), the frozen v0-surface signature.
 
 **Prove it.**

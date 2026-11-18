@@ -6,7 +6,7 @@
 `print("=== AFTER (wired: delist + staleness + isotonic) — named players ===")` to end of file), rl_export.py and
 the harness exec the whole file, the harness asserts the marker is ABSENT, and the board is byte-identical.
 
-**Facts (checked at ffb2663b).**
+**Facts (checked at 9a400286).**
 - The file is 6,347 lines; the marker is line 6299 and is the only occurrence (`grep -n "=== AFTER"`).
 - rl_export.py:68 execs `open('_merged_recover.py').read().split('print("=== AFTER')[0]`.
 - tools/harness_run.py:39 defines TAIL_MARKER and :71-74 STOPS ("the script-tail marker … is not in
@@ -30,7 +30,7 @@ the harness exec the whole file, the harness asserts the marker is ABSENT, and t
    scope: import would run module-level code that needs RL_REPO and the engine cwd.
 
 **Must not change.** The text exec'd: `old_src.split('print("=== AFTER')[0] == new_src` must hold byte for byte.
-Every module-level statement above line 6299. The board (96896e1c), store, config.
+Every module-level statement above line 6299. The board (159d3972), store, config.
 
 **Prove it.**
 - The string identity above (print both sha256s in the commit message).
@@ -38,6 +38,6 @@ Every module-level statement above line 6299. The board (96896e1c), store, confi
   pass_asat_seasons.py` still loads, its Y=2026 control passes (pass_asat_seasons.py:47-50) and `git diff
   --exit-code` holds on the values_asat_*.json banks it rewrites; run engine/rl_after/one_source_selftest.py yourself
   (acceptance `oneliner_f1_lens` only reads its text, acceptance/checks/m1a.py:296-305); acceptance `--profile full`.
-- The lever act: `moves: [engine_head]`, `prereg.board_before == board_after == 96896e1c…`.
+- The lever act: `moves: [engine_head]`, `prereg.board_before == board_after == 159d3972…`.
 
 **Lands via.** Lever act (after P4-3), board declared unmoved by prediction; the lander proves it.

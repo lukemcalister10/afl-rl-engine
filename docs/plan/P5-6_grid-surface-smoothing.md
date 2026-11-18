@@ -7,7 +7,7 @@ re-pricing each live-season row five times on the level axis and three times on 
 pinned build input with its fit script committed and a signature halt like v0surf; the owner has seen the diff and
 the step-removal demonstration, a blind review is filed, and the act lands on his word.
 
-**Facts (checked at ffb2663b).**
+**Facts (checked at 9a400286).**
 - _merged_recover.py:2912-2952 `_prod_path`: for a row with a live-season row, Y == BASE_REF and not first-evidence,
   it prices avg −1, −0.5, 0, +0.5, +1 and takes the mean (:2920-2935, "owner-approved 2026-10-13"; four extra
   raw_ev × iso_eff calls per row); the first-evidence family gets a ±1-game 3-point average (:2936-2952). Scope is

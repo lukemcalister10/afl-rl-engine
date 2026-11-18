@@ -8,17 +8,17 @@ ONE parser per language (`round_key.parse(id) -> (season, feed_round)` in engine
 ui/app/movers.js `core`), the committed data is migrated once with a reversible mapping beside it, and every reader
 uses the parser (no dual-shape readers).
 
-**Facts (checked at ffb2663b).**
+**Facts (checked at 9a400286).**
 - ui/data/movers.js `reports` keys are bare strings '15'…'29' (feed rounds 25-29 = FW1…GF, tools/ingest.py:71).
 - season_state.finals_played does `int(rnd)` on every report key (season_state.py:67-78); a key like `2026-FW1`
-  raises ValueError, and it is called by every held store edit (steps.py:937, `_finals_exposure_hold`).
-- steps.py:2089-2095: banks found by `re.match(r'values_r(\d+)\.json$')`; retro point ids parsed by
+  raises ValueError, and it is called by every held store edit (steps.py:1382, `_finals_exposure_hold`).
+- steps.py:2574-2580 (repeated at :2668-2671): banks found by `re.match(r'values_r(\d+)\.json$')`; retro point ids parsed by
   `int(_i.split('-r')[-1])`. tools/ingest.py:445 carries `values_r*.json` as a glob (WEEK_CARRIERS);
   :189-194 tests `str(feed) in reports` and `range(25, feed)`; :63 `SEASON = 2026`; the column id already carries the
   season (`<prefix><slug>-<SEASON>`, :398).
 - Banks: docs/evidence/walkforward_retro_2026-08-29/values_r14.json … values_r29.json; point ids `retro-r14` …
   (ui/tests/movers.test.js has 11 `retro-r` occurrences).
-- The value history is engine/rl_after/ingestion/value_history.json (written via out_of_round_column; read at steps.py:1443, :3488);
+- The value history is engine/rl_after/ingestion/value_history.json (written via out_of_round_column; read at steps.py:1898, :3993);
   there is no data/value_history.json.
 - The UI has no `> 24` comparisons: it uses `core.HOME_AND_AWAY_ROUNDS` (ui/app/movers.js:373, :418) and
   `core.FINALS_COLUMNS` (:445-448), read by card.js:212 and history.js:52. Python twins: spec.py:30 HOME_AND_AWAY_ROUNDS,
@@ -30,9 +30,12 @@ uses the parser (no dual-shape readers).
   `release_transition` (`reportsDigest`; never rewritten), checked by test_movers_transition.py:250-287. Re-keying
   R15-R19 breaks the digest and the UI refuses the history.
 - More bare-int readers: ui/tools/rebuild_movers_derived.py:61 (writer 4, every landing); round_movers.py:656, :888;
-  steps.py:1544 (`key=int`), :2177; test_movers_transition.py:85; ui/app/history.js:92; ui/app/movers.js:462; under
+  steps.py:1999 (`key=int`); test_movers_transition.py:85; ui/app/history.js:92; ui/app/movers.js:462; under
   docs/evidence/walkforward_retro_2026-08-29: bank_from_landed_board.py:45, :54; emit_retro_series.py:52-64;
   pass_retro_series.py:80, :124, :142; retro_walkforward.py:270, :363. This list is not proof of completeness.
+- Not round keys: round_entry.is_active(row, season) / ActivePoolResolver(…, season) and their callers in
+  round_catchup.py and score_ingestor.py (63ee76ae) take the season as its own argument (the `_last_listed >= season`
+  eligibility rule); leave that rule as is.
 
 **Change.** FIRST attach to the work the output of `git grep -n "reports\|values_r" -- ':!docs/evidence' ':!session_*'
 ':!backups'` plus the same grep on docs/evidence/walkforward_retro_2026-08-29, every hit classified. Pick the id form once (e.g. `2026-R24`, `2026-F25` — the feed

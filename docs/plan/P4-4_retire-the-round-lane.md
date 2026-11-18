@@ -8,22 +8,25 @@ Serial rule: steps.py, spec.py, carriers.py. **Owner word (law 10a):** RULEBOOK 
 a named writer outside the lane (and P13 says so, on the owner's word), every historical round-advance spec still
 validates, and acceptance + CI are green.
 
-**Facts (checked at ffb2663b).**
-- The lane: ROUND_SEQUENCE steps.py:3843-3858 (preflight, sheet, scores, catchup_preflight, advance,
-  generator_sync, day0, contract, ui, movers_page, state, gates, claims, commit); SEQUENCES 'round-advance' (:3879);
-  the `tools/land round` verb (tools/land:4; cli.py); spec.py ACT_KINDS (:28), `_validate_round` (:124),
-  `_round_template` (:675); the round carriers in carriers.py:267-294 (season_state, applied_rounds_ledger,
+**Facts (checked at 9a400286).**
+- The lane: ROUND_SEQUENCE steps.py:4348-4363 (preflight, sheet, scores, catchup_preflight, advance,
+  generator_sync, day0, contract, ui, movers_page, state, gates, claims, commit); SEQUENCES 'round-advance' (:4384);
+  the `tools/land round` verb (tools/land:4; cli.py); spec.py ACT_KINDS (:28), `_validate_round` (:136),
+  `_round_template` (:737); the round carriers in carriers.py:269-296 (season_state, applied_rounds_ledger,
   finalization_state/journal, movers/*, .weekly_txn/**, the c3 sibling targets).
 - Code only the lane reaches: staged_apply.py (its c3 loads sibling_repin.py, :883-884, which loads forward_lens.py,
   sibling_repin.py:82-84), round_apply.py, round_catchup.py, round_finalize.py, tools/landing/day0_emit.py
-  (DAY0_GENERATOR :3438) and the DAY0_CP carrier (carriers.py:306-311; txn.py:376), DELEGATED_PINS 'as_of_round' /
+  (DAY0_GENERATOR :3943) and the DAY0_CP carrier (carriers.py:308-313; txn.py:376), DELEGATED_PINS 'as_of_round' /
   'season_state' / 'rl_model_data' text (:112-114; P2-1/P3-2 give them a new writer first).
 - LIVE READERS that stop a deletion until handled in the same commit: acceptance `oneliner_r14_restore`
   (acceptance/checks/m1a.py:272-292, PROFILE 'host-insensitive', so CI runs it) executes
   engine/rl_after/ingestion/test_weekly_updater.py, which imports round_entry, staged_apply, score_ingestor (:19-21)
   and round_finalize (:295); tools/round_entry/ (weekly_update.sh/.bat) drives round_entry; ui/tools/
   rebuild_movers_derived.py uses round_movers (keep round_movers). round_finalize.py:311 is a movers.js writer (P2-2).
-- The sheet step (steps.py:2801, SHEET_PIN_REL :2763) is the only programmatic writer of data/sheet_pins.json.
+- The season-aware eligibility rule (a retired row with `_last_listed >= season` plays that season; 63ee76ae) lives
+  in round_entry.is_active / ActivePoolResolver and score_ingestor (both outlive the lane; tools/ingest imports
+  score_ingestor) and is called from round_catchup.py; deleting round_catchup removes only that call.
+- The sheet step (steps.py:3306, SHEET_PIN_REL :3268) is the only programmatic writer of data/sheet_pins.json.
 - Round-advance specs on disk (`grep -rl '"round-advance"' --include='ACT_SPEC*.json' docs/evidence`): 7 —
   fw1_advance_2026-08-30/ACT_SPEC_FW1.json, p2b_round_lander_2026-08-21/ACT_SPEC_DRYRUN.json,
   r24_advance_2026-08-23/ACT_SPEC_R24.json and four r24_rehearsal_2026-08-21/act_specs/*. Not "R15-R24": earlier rounds
