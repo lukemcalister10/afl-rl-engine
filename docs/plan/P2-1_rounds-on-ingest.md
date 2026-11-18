@@ -48,9 +48,10 @@ round out of order; and the round lane (P4-4) is still in place until a real or 
    data/sheet_pins.json (RULEBOOK P13). Until P4-4 gives the pins a new writer, tools/ingest rounds run on an UNCHANGED
    sheet only; a round that needs a re-cut goes through `tools/land round`. The tool must say this when it applies.
 
-**Open question for the owner.** Who creates a player's first 2027 season row: the rollover (P3-2 seeds 0-game 2027
-rows) or the first round's ingest (a `scoring[2027]` season add per first-time player)? Until answered, the store-edit
-shape below stays "change edits only" and a 2027 round needs P3-2's seeded rows.
+**Owner ruling (2026-11-18).** "All active players get an entry": the rollover (P3-2) seeds a 0-game 2027 row on every
+active row, so a round's store edits stay "change edits only" and a 2027 round needs P3-2's seeded rows. A player
+added mid-season by a store-edit act gets his 2027 row in that act (the `scoring[Y]` season add), as Roarty and
+Purcell got 2026 rows on 2026-11-06.
 
 **Must not change.** The finals path (byte-identical behaviour for FW files); the store-edit shape (change edits only);
 the season-clock stop for every non-round act; the engine.

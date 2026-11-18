@@ -46,10 +46,15 @@ ownership_sidecar.test.js's orphan check (players + store-retired only) stop exp
 patching board_view_working.js and becomes the ui step's writer of asat_boards.js (add a carrier entry);
 (5) the banks enter the proof-stash key (P4-3 trace; bump KEY_SCHEMA). The banks are re-stamped, not re-priced, before measuring.
 
-**Open question for the owner.** The 2026-11-06 roster acts lean on `back`: the 107 exits sit there at a retiree
-value and the ownership orphan check was rewritten to read it. Is "delete `back`" (Change 2) still wanted, or does
-`back` stay (and with it the −1/−2 lensConservation sums over it)? And with no reader of ui/data/asat_boards.js, should Change (4) make it a carrier the lander rewrites, or retire the file?
-Do not implement Changes (2)-(4) until answered.
+**Owner ruling (2026-11-18) on `back`.** "Retirees - quarantine them outside of the board but sometimes guys come back
+so not fully deleting them from the store might be a good idea." So Change (2) stands: retirees come OFF the board
+(no `back` section). Their STORE rows are never deleted — a retired row stays in rl_model_data.json with `_retired`
+and `_last_listed`, so a return is a store edit (`_retired` true→false), as Bedendo and Mirkov were on 2026-11-06.
+Change (3) must also move the two readers the roster acts added: ownership_sidecar.test.js's orphan check (a movers
+key not on the board must be a retired STORE row) and steps.py `board_values`/`board_movers` (a retirement then
+reports as a vanish, not a move to `back`; the store-edit NOTE template should say so).
+**Still open:** ui/data/asat_boards.js has no reader — Change (4) makes it a carrier the lander rewrites (the
+recommendation) or retires the file. Do not implement Change (4) until answered.
 
 **Must not change.** v, vP1, vP2 key for key; the store; the banks' `values` (only their stamp gains four fields); the present lens conservation.
 

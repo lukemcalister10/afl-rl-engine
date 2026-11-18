@@ -48,10 +48,11 @@ acts landed 2026-11-06 (4 returns/adds, 107 real-life exits retired with `_last_
   P5-6. RULEBOOK edits (law 10a): P4-4 (P13 names the round lander as the sheet-pin writer). A new step on the
   weekly path (P14, RULEBOOK.md:173: "No session adds a step to this path without the owner's signed word"):
   P2-1. A history rewrite: P4-1b. Everything else is the owner-accepted plan.
-- **Open questions for the owner (re-check 9a400286).** P5-3: keep or delete `back` (the exits sit there; the
-  ownership test reads it) and keep or retire the reader-less ui/data/asat_boards.js. P3-2: the list changes already
-  landed — `--list-changes` verify-only or dropped; does the pick-class shift ride the rollover. P2-1: who creates a
-  player's first 2027 season row (rollover seed or a `scoring[2027]` add at ingest). Each brief holds its question.
+- **Owner rulings (2026-11-18) on the re-check questions.** P5-3: retirees come off the board (`back` goes); their
+  store rows are kept so a player can return. P3-2: `--list-changes` is verify-only; the pick-class shift rides the
+  rollover; every active player gets a seeded 2027 entry; draftees added during the draft by store-edit acts are
+  checked, not re-added. P2-1: follows from the seeded entries. **Still open:** P5-3's ui/data/asat_boards.js —
+  a lander carrier (recommended) or retired.
 ## Order
 | # | brief | tier | depends on | lands via |
 |---|---|---|---|---|
@@ -62,7 +63,7 @@ acts landed 2026-11-06 (4 returns/adds, 107 real-life exits retired with `_last_
 | 5 | P5-2 engine file end | MEDIUM | P4-3 | lever act, board unmoved |
 | 6 | P5-1 one ev | MEDIUM | P5-2 | lever act, board unmoved |
 | 7 | P5-4 unpinned reads in the build + refit lane | MEDIUM | P5-1 | lever act, board unmoved |
-| 8 | P5-3 as-at −1/−2 columns (a value move; open question on `back`) | HIGH | P4-3 | lever act, owner word, blind review |
+| 8 | P5-3 as-at −1/−2 columns (a value move; retirees off the board) | HIGH | P4-3 | lever act, owner word, blind review |
 | 9 | P2-3 tools/player (`add_row` already landed) | MEDIUM | P4-2 | plain commit + rehearsal |
 | 10 | P2-4 season-keyed ids | MEDIUM | P2-2 | plain commit (one data migration) |
 | 11 | P3-1 one live season | MEDIUM | P4-3, P5-4 | lever act, board unmoved |

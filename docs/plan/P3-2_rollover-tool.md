@@ -16,7 +16,8 @@ owner as a full movers board first, and the first 2027 week can then be ingested
   (steps.py:1316-1336). A rollover therefore needs a declared season-state writer in the edit lane (season_year+1,
   as_of_round 0, re-derived from the edited store). Build it here; P2-1 reuses it for round N→N+1.
 - Store: 809 rows carry a 2026 scoring row, 141 of them with 0 games (every one of the 701 non-retired rows carries
-  one; 97 of those have 0 games) — measure how a 0-game live row is represented and whether the engine needs a 2027 row at round 0 (build a copy both ways; do not assume).
+  one; 97 of those have 0 games). Owner ruling (c): every active row gets a 0-game 2027 row at the rollover — measure
+  how the engine prices a 0-game live row at round 0 (build a copy with and without) and show the movers.
 - The as-at banks/emitter use SEASONS = (2025, 2024) (emit_asat_seasons.py:42) — they become (2026, 2025).
   Phantom pick classes start at 2027 (rl_export.py:1029). tools/ingest.py:63 SEASON (P3-1 routes it).
   RL_M3_INPROG_Y / RL_EXPO_INPROG_Y are pinned "2026" in data/model_config.json (config identity; P3-1 asserts they
@@ -43,11 +44,15 @@ retire, move or add the 2026-11-06 acts already landed. Draftees (national, rook
 their picks from the owner's draft file. Season-state move. The two config dials to "2027" ride the act's INPUT commit (data/model_config.json is
 not a carrier; recompute its config_sha256) and are declared `config` in `moves` — so P4-3's launch exemption for
 declared identities must cover that commit; fixtures reset;
-ingest_inputs BASE_YEAR to 2027 (see the open question); as-at bank re-run for 2026/2025 (so −1 = 2026); movers bundle
+ingest_inputs BASE_YEAR to 2027 (owner ruling (b)); as-at bank re-run for 2026/2025 (so −1 = 2026); movers bundle
 season section opened. `--check` prints all edits and the predicted movers (the lane's dry run). docs/runbooks/ROLLOVER.md.
 
-**Open question for the owner.** With the list changes already landed, keep `--list-changes` as a verify-only pass
-(as written above) or drop it? And does the pick-class shift ride the rollover act or a separate picks act?
+**Owner rulings (2026-11-18).** (a) `--list-changes` stays as the verify-only pass written above. (b) The pick-class
+shift (2027 → 1.0×, 2028 → 0.9×, BASE_YEAR 2027) rides the rollover act. (c) Every active player gets a 2027 season
+entry: the rollover seeds a 0-game 2027 row on every non-retired row (P2-1 then only changes edits). Measure the board
+effect of the seeded rows and show it with the act's movers. (d) Draftees are being added during the 2026 draft
+period (from 2026-11-18) by store-edit acts, before this tool exists: like the list changes, `--draft` CHECKS that
+each draftee in the owner's file is already a row at his pick and club, and adds only those that are not.
 
 **Must not change.** 2026 history (reports, value/rank histories, release_lineage entries); the frozen v0-surface
 signature (a draft intake changes the v0 kernel's roster sample — measure whether the signature moves BEFORE the act;
