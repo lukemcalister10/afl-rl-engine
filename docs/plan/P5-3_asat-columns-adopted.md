@@ -53,8 +53,9 @@ and `_last_listed`, so a return is a store edit (`_retired` true→false), as Be
 Change (3) must also move the two readers the roster acts added: ownership_sidecar.test.js's orphan check (a movers
 key not on the board must be a retired STORE row) and steps.py `board_values`/`board_movers` (a retirement then
 reports as a vanish, not a move to `back`; the store-edit NOTE template should say so).
-**Still open:** ui/data/asat_boards.js has no reader — Change (4) makes it a carrier the lander rewrites (the
-recommendation) or retires the file. Do not implement Change (4) until answered.
+**Owner ruling (2026-11-18) on asat_boards.js.** "Make the as-at file a lander carrier": Change (4) makes
+ui/data/asat_boards.js a carrier (tools/landing/carriers.py) that the lander's ui step regenerates from the banks on
+every landing, as WRITER 9 does for the positions map. It has no ui/app reader yet; keep it current regardless.
 
 **Must not change.** v, vP1, vP2 key for key; the store; the banks' `values` (only their stamp gains four fields); the present lens conservation.
 

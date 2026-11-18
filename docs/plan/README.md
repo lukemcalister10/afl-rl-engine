@@ -51,8 +51,8 @@ acts landed 2026-11-06 (4 returns/adds, 107 real-life exits retired with `_last_
 - **Owner rulings (2026-11-18) on the re-check questions.** P5-3: retirees come off the board (`back` goes); their
   store rows are kept so a player can return. P3-2: `--list-changes` is verify-only; the pick-class shift rides the
   rollover; every active player gets a seeded 2027 entry; draftees added during the draft by store-edit acts are
-  checked, not re-added. P2-1: follows from the seeded entries. **Still open:** P5-3's ui/data/asat_boards.js —
-  a lander carrier (recommended) or retired.
+  checked, not re-added. P2-1: follows from the seeded entries. P5-3: ui/data/asat_boards.js becomes a lander
+  carrier, regenerated from the banks on every landing.
 ## Order
 | # | brief | tier | depends on | lands via |
 |---|---|---|---|---|
