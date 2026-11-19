@@ -7,7 +7,7 @@
 :root {
   --bg: #f4f4f1; --surface: #ffffff; --sunk: #f8f8f5; --ink: #1e2424; --ink-2: #3f4745; --muted: #6b7471; --faint: #9aa19e;
   --line: #e1e2dc; --line-2: #ecece7; --accent: #ae432d; --accent-ink: #ffffff; --accent-soft: #f7e7e2;
-  --good: #2f7a4b; --warn: #a66b00; --warn-soft: #fbf1dc; --hover: #fbf6f4;
+  --good: #2f7a4b; --warn: #a66b00; --warn-soft: #fbf1dc; --hover: #fbf6f4; --chev: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M2 3.5 5 6.5l3-3' fill='none' stroke='%236b7471' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   --head: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --body: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --badge: Arial, Helvetica, sans-serif;
@@ -16,11 +16,11 @@
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
   --bg: #121615; --surface: #1a1f1e; --sunk: #161b1a; --ink: #e8ecea; --ink-2: #c9d0cd; --muted: #98a3a0; --faint: #6f7a77;
   --line: #2b3331; --line-2: #232a28; --accent: #e57f63; --accent-ink: #1a1f1e; --accent-soft: #3a231c;
-  --good: #6cc48f; --warn: #e3b04b; --warn-soft: #382c14; --hover: #221f1d; color-scheme: dark } }
+  --good: #6cc48f; --warn: #e3b04b; --warn-soft: #382c14; --hover: #221f1d; --chev: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M2 3.5 5 6.5l3-3' fill='none' stroke='%2398a3a0' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); color-scheme: dark } }
 :root[data-theme="dark"] {
   --bg: #121615; --surface: #1a1f1e; --sunk: #161b1a; --ink: #e8ecea; --ink-2: #c9d0cd; --muted: #98a3a0; --faint: #6f7a77;
   --line: #2b3331; --line-2: #232a28; --accent: #e57f63; --accent-ink: #1a1f1e; --accent-soft: #3a231c;
-  --good: #6cc48f; --warn: #e3b04b; --warn-soft: #382c14; --hover: #221f1d; color-scheme: dark }
+  --good: #6cc48f; --warn: #e3b04b; --warn-soft: #382c14; --hover: #221f1d; --chev: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M2 3.5 5 6.5l3-3' fill='none' stroke='%2398a3a0' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); color-scheme: dark }
 [hidden] { display: none !important; }
 body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 14px; -webkit-font-smoothing: antialiased; }
 .wrap { padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); padding-block: 22px 48px; max-width: 1440px; margin: 0 auto; display: grid; gap: 22px; }
@@ -87,9 +87,10 @@ input.pickin { width: 52px; font: 600 13px var(--body); border: 1px solid var(--
 /* editable cells: a box while empty or focused, plain text once the row holds a player */
 .ed { width: 100%; box-sizing: border-box; font: 13.5px var(--body); color: var(--ink); background: var(--sunk); border: 1px solid var(--line); border-radius: 6px; padding: 5px 7px; min-width: 0; transition: border-color .12s ease, background .12s ease; }
 .ed::placeholder { color: var(--faint); }
-select.ed { cursor: pointer; }
-tr.has-player .ed:not(:focus), .ed.filled:not(:focus) { border-color: transparent; background: transparent; -webkit-appearance: none; appearance: none; padding-left: 3px; padding-right: 3px; }
-tr.has-player .ed:not(:focus):hover, .ed.filled:not(:focus):hover { border-color: var(--line); background: var(--surface); }
+select.ed { cursor: pointer; -webkit-appearance: none; appearance: none; background-image: var(--chev); background-repeat: no-repeat; background-position: right 6px center; padding-right: 20px; }
+tr.has-player .ed:not(:focus), .ed.filled:not(:focus) { border-color: transparent; background-color: transparent; background-image: none; padding-left: 3px; padding-right: 3px; }
+input.name::-webkit-calendar-picker-indicator { display: none !important; opacity: 0; }
+tr.has-player .ed:not(:focus):hover, .ed.filled:not(:focus):hover { border-color: var(--line); background-color: var(--surface); }
 .ed:focus { background: var(--surface); border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px var(--accent-soft); }
 input.name { font-weight: 700; font-size: .98rem; letter-spacing: -.005em; }
 input.name::placeholder { font-weight: 400; font-size: 13.5px; }
@@ -447,12 +448,22 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
     inp.addEventListener("keydown", e => { if (e.key === "Enter") finish(true); if (e.key === "Escape") finish(false); });
     inp.addEventListener("blur", () => finish(true));
   }
+  // The mover leaves `from` empty. The players between shift one place towards the nearest empty pick
+  // on the way (moving up: the first gap at or after `to`; moving down: the last gap at or before `to`),
+  // so a gap is filled rather than carried along. With no gap between, that empty pick is `from` itself.
   function movePlayer(k, from, to) {
     const ids = idsOf(k), take = n => { const r = row(ids[n - 1]), o = {}; PLAYER_FIELDS.concat("dobRaw").forEach(f => { if (r[f] != null && r[f] !== "") o[f] = r[f]; }); return o; };
-    const lo = Math.min(from, to), hi = Math.max(from, to), seq = [];
-    for (let n = lo; n <= hi; n++) seq.push(take(n));
-    if (to < from) seq.unshift(seq.pop()); else seq.push(seq.shift());
-    for (let n = lo; n <= hi; n++) { const id = ids[n - 1]; clearPlayer(id); Object.assign(row(id), seq[n - lo]); queueSave("slots", id); }
+    const filled = n => !!(S.slots[ids[n - 1]] && S.slots[ids[n - 1]].name);
+    const mover = take(from), put = (n, o) => { const id = ids[n - 1]; clearPlayer(id); Object.assign(row(id), o); queueSave("slots", id); };
+    put(from, {});
+    if (to < from) {
+      let g = to; while (g < from && filled(g)) g++;
+      for (let n = g; n > to; n--) put(n, take(n - 1));
+    } else {
+      let g = to; while (g > from && filled(g)) g--;
+      for (let n = g; n < to; n++) put(n, take(n + 1));
+    }
+    put(to, mover);
     saveLocal(); renderTable(k); renderLive();
   }
 
