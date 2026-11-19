@@ -14,3 +14,6 @@ A claude.ai artifact for draft night: https://claude.ai/artifact/4EimaHZxtidm27J
   owner and Editors write) and to the browser. Claude reads them back with ArtifactData; the page also exports a CSV.
 
 Re-cut the tables after any act that moves the store or board: run the two scripts, then republish the page.
+- `draft_night_standalone.html` is the same page for people without a Claude account: it saves in the viewer's
+  browser (not the artifact's database) and downloads the CSV directly. It starts from `board_snapshot.json`, the
+  artifact's entries when the file was built; rebuild it to take a newer snapshot.

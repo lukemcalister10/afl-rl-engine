@@ -39,9 +39,26 @@ for code in ('SA', 'WA', 'VM', 'VC', 'AL'):
 data['flags'] = flags
 
 tpl = open(os.path.join(HERE, 'template.html'), encoding='utf-8').read()
-blob = json.dumps(data, separators=(',', ':')).replace('</', '<\\/')
-assert tpl.count('/*__DATA__*/') == 1
+js = lambda o: json.dumps(o, separators=(',', ':')).replace('</', '<\\/')
+assert tpl.count('/*__DATA__*/') == 1 and tpl.count('/*__SEED__*/') == 1
+page = tpl.replace('/*__DATA__*/', js(data))
+
+# 1. the claude.ai artifact: entries live in the artifact's database, so no board is baked in
 out = os.path.join(HERE, 'draft_night.html')
-open(out, 'w', encoding='utf-8').write(tpl.replace('/*__DATA__*/', blob))
+open(out, 'w', encoding='utf-8').write(page.replace('/*__SEED__*/', 'null'))
 print('wrote draft_night.html (%d bytes): %d free agents (%d AFFL delistings), %d prospects'
       % (os.path.getsize(out), len(fas), len(dl), len(data['prospects'])))
+
+# 2. the standalone file: opens in any browser, saves in that browser, starts from board_snapshot.json.
+#    The artifact host wraps its page in a document skeleton; a standalone file carries its own.
+snap = json.load(open(os.path.join(HERE, 'board_snapshot.json')))
+seed = {'standalone': True, 'taken': snap.get('taken'), 'slots': snap.get('slots', {}), 'fa': snap.get('fa', {})}
+head = ('<!doctype html><html lang="en"><head><meta charset="utf-8">'
+        '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">'
+        '<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}'
+        'body{margin:0;font:14px system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}img{max-width:100%}'
+        '[hidden]{display:none!important}</style></head><body>')
+sa = os.path.join(HERE, 'draft_night_standalone.html')
+open(sa, 'w', encoding='utf-8').write(head + page.replace('/*__SEED__*/', js(seed)) + '</body></html>\n')
+print('wrote draft_night_standalone.html (%d bytes): board snapshot %s, %d entries'
+      % (os.path.getsize(sa), seed['taken'], sum(1 for s in seed['slots'].values() if s.get('name'))))

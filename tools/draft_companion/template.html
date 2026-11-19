@@ -201,6 +201,7 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
 </div>
 
 <script type="application/json" id="v0data">/*__DATA__*/</script>
+<script type="application/json" id="seed">/*__SEED__*/</script>
 <script>
 (function () {
   "use strict";
@@ -227,7 +228,9 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
   const LINK_CAT = { "Academy": "ACA", "NGA": "NGA", "F/S": "FS" };
   const PLAYER_FIELDS = ["name", "dob", "pos1", "pos2", "w1", "w2", "affl", "cat", "tie", "state", "pid"];
   const NAT = 70, RK = 20, OPEN0 = 10, LAST = D.meta.curve_last_pick, YEAR = D.meta.draft_year;
-  const LS_KEY = "draft-night-2026-v1";
+  const SEED = JSON.parse(document.getElementById("seed").textContent || "null");
+  const STANDALONE = !!(SEED && SEED.standalone);
+  const LS_KEY = STANDALONE ? "draft-night-2026-standalone" : "draft-night-2026-v1";
   const PROS = D.prospects, PBYNAME = Object.fromEntries(PROS.map(p => [p.name.toLowerCase(), p])), PBYID = Object.fromEntries(PROS.map(p => [p.id, p]));
   const fmt = n => (n == null || !isFinite(n)) ? "—" : Math.round(n).toLocaleString("en-AU");
   const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -236,7 +239,9 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
 
   // ---------- state
   const S = { slots: {}, fa: {} };
-  try { const raw = localStorage.getItem(LS_KEY); if (raw) Object.assign(S, JSON.parse(raw)); } catch (e) { /* storage unavailable */ }
+  let loaded = false;
+  try { const raw = localStorage.getItem(LS_KEY); if (raw) { Object.assign(S, JSON.parse(raw)); loaded = true; } } catch (e) { /* storage unavailable */ }
+  if (!loaded && SEED) { S.slots = JSON.parse(JSON.stringify(SEED.slots || {})); S.fa = JSON.parse(JSON.stringify(SEED.fa || {})); }
   const saveLocal = () => { try { localStorage.setItem(LS_KEY, JSON.stringify(S)); } catch (e) { /* ignore */ } };
   function idsOf(k) {
     if (k === "nd") return Array.from({ length: NAT }, (_, i) => "nd" + pad(i + 1));
@@ -523,7 +528,7 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
   }
   const nameCell = c => c.type === "draft"
     ? `<div class="plw"><span class="flagslot">${flagHtml(c.r)}</span><span class="nmtext">${esc(c.name)}</span><span class="badgeslot">${badgeHtml(c.r)}</span></div>`
-    : `<div class="plw"><span class="flagslot"></span><span class="nmtext">${esc(c.name)}</span>${c.was ? `<span class="tag fa" title="Delisted by ${esc(c.was)}">AFFL delisted</span>` : `<span class="badgeslot"></span>`}</div>`;
+    : `<div class="plw"><span class="flagslot"></span><span class="nmtext">${esc(c.name)}</span><span class="badgeslot"></span></div>`;
   function renderLive() {
     const all = candidates(), pos = lPos.value, src = lSrc.value;
     const avail = all.filter(c => !c.affl && (src === "all" || c.type === src) && (!pos || c.pos.includes(pos))).sort((a, b) => (b.v || 0) - (a.v || 0));
@@ -579,6 +584,11 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
   let downloads = null;
   document.getElementById("export").addEventListener("click", async () => {
     const text = csv();
+    if (STANDALONE) {
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([text], { type: "text/csv" })); a.download = "affl_draft_2026.csv";
+      document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 0); return;
+    }
     if (downloads) { try { await downloads.save({ filename: "affl_draft_2026.csv", data: text }); return; } catch (e) { if (e && e.code === "declined") return; } }
     showCsv(text, "Downloads aren't available here. Copy this instead.");
   });
@@ -597,6 +607,7 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
   function queueSave(coll, id) {
     if (readOnly) return;
     const key = coll + "/" + id; clearTimeout(timers[key]);
+    if (STANDALONE) { setSync("ok", "Saved in this browser"); return; }
     if (!db) { setSync("warn", "Saved on this device only"); return; }
     setSync("", "Saving…");
     timers[key] = setTimeout(() => { delete timers[key]; flush(coll, id); }, 700);
@@ -630,6 +641,7 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
     if (changed) { saveLocal(); counts(); refreshList(); renderLive(); }
   }
   async function connect() {
+    if (STANDALONE) { setSync("ok", "Saved in this browser"); return; }
     if (!(window.claude && window.claude.use)) { setSync("warn", "Saved on this device only"); return; }
     try { downloads = await window.claude.use("downloads"); } catch (e) { downloads = null; }
     try { db = await window.claude.use("db"); } catch (e) { db = null; }

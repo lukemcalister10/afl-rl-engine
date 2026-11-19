@@ -1,0 +1,577 @@
+{
+ "taken": "2026-11-19T00:45:29Z",
+ "source": "artifact 4EimaHZxtidm27JGiiUarn db",
+ "slots": {
+  "nd01": {
+   "cat": "NGA",
+   "dob": "2008-05-02",
+   "name": "Dougie Cochrane",
+   "pid": "P0019",
+   "pos1": "KPF",
+   "pos2": "MID",
+   "state": "SA",
+   "tie": "PTA",
+   "w1": "50",
+   "w2": "50"
+  },
+  "nd02": {
+   "cat": "FS",
+   "dob": "2008-01-26",
+   "name": "Cody Walker",
+   "pid": "P0016",
+   "pos1": "MID",
+   "state": "VC",
+   "tie": "CAR"
+  },
+  "nd03": {
+   "dob": "2008-07-10",
+   "name": "Ethan Drever",
+   "pid": "P0020",
+   "pos1": "MID",
+   "state": "VC"
+  },
+  "nd04": {
+   "dob": "2008-04-23",
+   "name": "Arki Butler",
+   "pid": "P0007",
+   "pos1": "SF",
+   "pos2": "MID",
+   "state": "VM",
+   "w1": "85",
+   "w2": "15"
+  },
+  "nd05": {
+   "dob": "2008-07-27",
+   "name": "Heath Mellody",
+   "pid": "P0037",
+   "pos1": "MID",
+   "pos2": "SD",
+   "state": "WA",
+   "w1": "75",
+   "w2": "25"
+  },
+  "nd06": {
+   "dob": "2008-07-01",
+   "name": "Harry van Hattum",
+   "pid": "P0034",
+   "pos1": "RUCK",
+   "state": "VM"
+  },
+  "nd07": {
+   "dob": "2008-03-29",
+   "name": "Gus Teixeira",
+   "pid": "P0029",
+   "pos1": "SF",
+   "pos2": "MID",
+   "state": "VM",
+   "w1": "60",
+   "w2": "40"
+  },
+  "nd08": {
+   "cat": "ACA",
+   "dob": "2008-09-04",
+   "name": "Ethan Matthews",
+   "pid": "P0022",
+   "pos1": "MID",
+   "state": "AL",
+   "tie": "GWS"
+  },
+  "nd09": {
+   "dob": "2008-07-01",
+   "name": "Mitchell Harris",
+   "pid": "P0062",
+   "pos1": "KPD",
+   "state": "SA"
+  },
+  "nd10": {
+   "cat": "ACA",
+   "dob": "2008-01-03",
+   "name": "Caylen Murray",
+   "pid": "P0013",
+   "pos1": "SD",
+   "pos2": "MID",
+   "state": "AL",
+   "tie": "BRI",
+   "w1": "60",
+   "w2": "40"
+  },
+  "nd11": {
+   "dob": "2008-03-07",
+   "name": "Leo Steed",
+   "pid": "P0057",
+   "pos1": "MID",
+   "pos2": "SF",
+   "state": "WA",
+   "w1": "80",
+   "w2": "20"
+  },
+  "nd12": {
+   "dob": "2008-05-21",
+   "name": "Sam Gayfer",
+   "pid": "P0065",
+   "pos1": "KPF",
+   "pos2": "KPD",
+   "state": "VM",
+   "w1": "80",
+   "w2": "20"
+  },
+  "nd13": {
+   "dob": "2008-10-12",
+   "name": "Wil Malady",
+   "pid": "P0070",
+   "pos1": "SF",
+   "pos2": "KPF",
+   "state": "VC",
+   "w1": "50",
+   "w2": "50"
+  },
+  "nd14": {
+   "dob": "2008-09-16",
+   "name": "Tyson Bradley",
+   "pid": "P0069",
+   "pos1": "KPD",
+   "state": "VM"
+  },
+  "nd15": {
+   "dob": "2008-02-28",
+   "name": "Toby Krasna",
+   "pid": "P0068",
+   "pos1": "MID",
+   "pos2": "SF",
+   "state": "VM",
+   "w1": "80",
+   "w2": "20"
+  },
+  "nd16": {
+   "dob": "2008-08-21",
+   "name": "Clancy Snell",
+   "pid": "P0014",
+   "pos1": "KPD",
+   "state": "VC"
+  },
+  "nd17": {
+   "dob": "2008-04-11",
+   "name": "Lochie Burrows",
+   "pid": "P0059",
+   "pos1": "SD",
+   "pos2": "MID",
+   "state": "VM",
+   "w1": "65",
+   "w2": "35"
+  },
+  "nd18": {
+   "dob": "2008-07-29",
+   "name": "Jake Eime",
+   "pid": "P0046",
+   "pos1": "SD",
+   "state": "SA"
+  },
+  "nd19": {
+   "dob": "2008-06-21",
+   "name": "George Dimer",
+   "pid": "P0026",
+   "pos1": "SF",
+   "pos2": "MID",
+   "state": "VM",
+   "w1": "90",
+   "w2": "10"
+  },
+  "nd20": {
+   "cat": "NGA",
+   "dob": "2008-07-04",
+   "name": "Khaled El Souki",
+   "pid": "P0051",
+   "pos1": "SF",
+   "state": "VM",
+   "tie": "WBD"
+  },
+  "nd21": {
+   "dob": "2008-03-06",
+   "name": "Jack Pickett",
+   "pid": "P0041",
+   "pos1": "KPF",
+   "state": "VC"
+  },
+  "nd22": {
+   "dob": "2008-09-06",
+   "name": "George Gale",
+   "pid": "P0027",
+   "pos1": "MID",
+   "pos2": "SD",
+   "state": "WA",
+   "w1": "70",
+   "w2": "30"
+  },
+  "nd23": {
+   "dob": "2008-04-26",
+   "name": "Koby LeCras",
+   "pid": "P0052",
+   "pos1": "SF",
+   "pos2": "KPF",
+   "state": "WA",
+   "w1": "50",
+   "w2": "50"
+  },
+  "nd24": {
+   "dob": "2008-01-30",
+   "name": "Jackson Phillips",
+   "pid": "P0043",
+   "pos1": "MID",
+   "pos2": "SF",
+   "state": "VC",
+   "w1": "80",
+   "w2": "20"
+  },
+  "nd25": {
+   "dob": "2008-01-22",
+   "name": "Noah Williams",
+   "pid": "P0063",
+   "pos1": "MID",
+   "pos2": "SD",
+   "state": "VC",
+   "w1": "50",
+   "w2": "50"
+  },
+  "nd26": {
+   "dob": "2008-07-25",
+   "name": "Kodah Edwards",
+   "pid": "P0053",
+   "pos1": "MID",
+   "pos2": "SF",
+   "state": "SA",
+   "w1": "50",
+   "w2": "50"
+  },
+  "nd27": {
+   "dob": "2008-04-12",
+   "name": "Harvie Cooke",
+   "pid": "P0036",
+   "pos1": "SF",
+   "pos2": "MID",
+   "state": "VM",
+   "w1": "80",
+   "w2": "20"
+  },
+  "nd28": {
+   "dob": "2008-02-26",
+   "name": "Marlon Neocleous",
+   "pid": "P0060",
+   "pos1": "SF",
+   "pos2": "MID",
+   "state": "VC",
+   "w1": "90",
+   "w2": "10"
+  },
+  "nd29": {
+   "dob": "2008-07-27",
+   "name": "Albert MacGowan",
+   "pid": "P0002",
+   "pos1": "MID",
+   "pos2": "SF",
+   "state": "VM",
+   "w1": "90",
+   "w2": "10"
+  },
+  "nd30": {
+   "dob": "2008-08-10",
+   "name": "Archie Elliott",
+   "pid": "P0004",
+   "pos1": "SF",
+   "state": "VC"
+  },
+  "nd31": {
+   "cat": "NGA",
+   "dob": "2008-11-03",
+   "name": "Keenan Boi",
+   "pid": "P0050",
+   "pos1": "SF",
+   "state": "VC",
+   "tie": "HAW"
+  },
+  "nd32": {
+   "dob": "2008-01-06",
+   "name": "Harrison Chapman",
+   "pid": "P0031",
+   "pos1": "MID",
+   "pos2": "SD",
+   "state": "VM",
+   "w1": "80",
+   "w2": "20"
+  },
+  "nd33": {
+   "dob": "2008-10-16",
+   "name": "Xavier Ladbrook",
+   "pid": "P0072",
+   "pos1": "KPD",
+   "state": "VC"
+  },
+  "nd34": {
+   "dob": "2008-03-29",
+   "name": "Billy Wigmore",
+   "pid": "P0010",
+   "pos1": "SD",
+   "state": "VM"
+  },
+  "nd35": {
+   "dob": "2008-03-26",
+   "name": "Gabriel Patterson",
+   "pid": "P0024",
+   "pos1": "SF",
+   "state": "SA"
+  },
+  "nd36": {
+   "dob": "2006-06-22",
+   "name": "Jake Soutar",
+   "pid": "P0098",
+   "pos1": "KPD",
+   "state": "WA"
+  },
+  "nd37": {
+   "dob": "2008-04-18",
+   "name": "Wil Antrobus",
+   "pid": "P0071",
+   "pos1": "SD",
+   "state": "VC"
+  },
+  "nd38": {
+   "dob": "2008-09-08",
+   "name": "Harvey Spawton-Guy",
+   "pid": "P0035",
+   "pos1": "KPF",
+   "state": "WA"
+  },
+  "nd39": {
+   "dob": "2008-01-19",
+   "name": "Lachlan Hicks",
+   "pid": "P0054",
+   "pos1": "MID",
+   "pos2": "SF",
+   "state": "VM",
+   "w1": "65",
+   "w2": "35"
+  },
+  "nd40": {
+   "dob": "2008-05-20",
+   "name": "Darcy Szerszyn",
+   "pid": "P0018",
+   "pos1": "SD",
+   "state": "VC"
+  },
+  "nd41": {
+   "dob": "2008-11-01",
+   "name": "Ethan Herbert",
+   "pid": "P0021",
+   "pos1": "RUCK",
+   "pos2": "KPF",
+   "state": "SA",
+   "w1": "75",
+   "w2": "25"
+  },
+  "nd42": {
+   "cat": "NGA",
+   "dob": "2008-09-29",
+   "name": "Blake Justice",
+   "pid": "P0011",
+   "pos1": "SF",
+   "pos2": "MID",
+   "state": "VM",
+   "tie": "ESS",
+   "w1": "60",
+   "w2": "40"
+  },
+  "nd43": {
+   "dob": "2008-03-27",
+   "name": "Sam Devers",
+   "pid": "P0064",
+   "pos1": "SD",
+   "state": "VM",
+   "w1": "100"
+  },
+  "nd44": {
+   "dob": "2008-07-28",
+   "name": "Archie Van Dyk",
+   "pid": "P0006",
+   "pos1": "MID",
+   "state": "SA"
+  },
+  "nd45": {
+   "dob": "2008-09-17",
+   "name": "Benji van Rooyen",
+   "pid": "P0009",
+   "pos1": "RUCK",
+   "state": "WA",
+   "w1": "100"
+  },
+  "nd46": {
+   "dob": "2008-01-01",
+   "name": "Cody Templeton",
+   "pid": "P0015",
+   "pos1": "SF",
+   "pos2": "MID",
+   "state": "VC",
+   "w1": "70",
+   "w2": "30"
+  },
+  "nd47": {
+   "dob": "2008-02-21",
+   "name": "Gus Kennedy",
+   "pid": "P0028",
+   "pos1": "SD",
+   "pos2": "MID",
+   "state": "VC",
+   "w1": "70",
+   "w2": "30"
+  },
+  "nd48": {
+   "dob": "2004-02-19",
+   "name": "Brady Wright",
+   "pid": "P0086",
+   "pos1": "KPF",
+   "pos2": "SF",
+   "state": "VC",
+   "w1": "70",
+   "w2": "30"
+  },
+  "nd49": {
+   "dob": "2007-09-27",
+   "name": "Jack Slattery",
+   "pid": "P0042",
+   "pos1": "KPF",
+   "pos2": "SF",
+   "state": "SA",
+   "w1": "80",
+   "w2": "20"
+  },
+  "nd50": {
+   "cat": "NGA",
+   "dob": "2008-04-01",
+   "name": "Finlay Yeo",
+   "pid": "P0023",
+   "pos1": "SF",
+   "state": "WA",
+   "tie": "FRE"
+  },
+  "nd51": {
+   "dob": "2008-01-05",
+   "name": "Jordan Knapp",
+   "pid": "P0048",
+   "pos1": "MID",
+   "state": "VM"
+  },
+  "nd52": {
+   "dob": "2008-10-04",
+   "name": "Jackson Watkins",
+   "pid": "P0044",
+   "pos1": "MID",
+   "pos2": "SF",
+   "state": "VM",
+   "w1": "50",
+   "w2": "50"
+  },
+  "nd53": {
+   "dob": "2008-02-12",
+   "name": "Sam Tassone",
+   "pid": "P0066",
+   "pos1": "SD",
+   "state": "SA"
+  },
+  "nd54": {
+   "cat": "FS",
+   "dob": "2008-11-04",
+   "name": "Aidan McCartney",
+   "pid": "P0001",
+   "pos1": "KPF",
+   "pos2": "SF",
+   "state": "AL",
+   "tie": "SYD",
+   "w1": "50",
+   "w2": "50"
+  },
+  "nd55": {
+   "cat": "ACA",
+   "dob": "2008-09-18",
+   "name": "Mason McGroder",
+   "pid": "P0079",
+   "pos1": "KPD",
+   "state": "AL",
+   "tie": "SYD"
+  },
+  "nd56": {
+   "dob": "2008-03-23",
+   "name": "Marcus Prasad",
+   "pid": "P0096",
+   "pos1": "SF",
+   "state": "VC"
+  },
+  "nd57": {
+   "cat": "FS",
+   "dob": "2008-07-26",
+   "name": "Cooper Hodge",
+   "pid": "P0017",
+   "pos1": "MID",
+   "pos2": "SF",
+   "state": "AL",
+   "tie": "BRI",
+   "w1": "50",
+   "w2": "50"
+  },
+  "nd58": {
+   "dob": "2008-10-20",
+   "name": "Sonny Smiler",
+   "pid": "P0082",
+   "pos1": "SF",
+   "state": "AL",
+   "w1": "100"
+  },
+  "nd59": {
+   "dob": "2008-04-04",
+   "name": "Zac Antonellos",
+   "pid": "P0076",
+   "pos1": "SF",
+   "state": "VM"
+  },
+  "nd60": {
+   "cat": "ACA",
+   "dob": "2008-06-02",
+   "name": "Jake Medved",
+   "pid": "P0047",
+   "pos1": "KPF",
+   "state": "AL",
+   "tie": "SYD"
+  },
+  "nd61": {
+   "cat": "NGA",
+   "dob": "2008-04-19",
+   "name": "Garrison Kenh",
+   "pid": "P0025",
+   "pos1": "SD",
+   "state": "WA",
+   "tie": "WCE"
+  },
+  "nd62": {
+   "dob": "2008-12-03",
+   "name": "Harrison Leeder",
+   "pid": "P0032",
+   "pos1": "KPF",
+   "state": "VM"
+  },
+  "nd63": {
+   "dob": "2008-08-30",
+   "name": "Sebastian Marsic",
+   "pid": "P0078",
+   "pos1": "KPF",
+   "state": "VM"
+  },
+  "nd64": {
+   "dob": "2008-08-11",
+   "name": "Andrio Sousa",
+   "pid": "P0083",
+   "pos1": "SF",
+   "state": "VC"
+  },
+  "nd65": {},
+  "nd66": {},
+  "nd67": {}
+ },
+ "fa": {}
+}
