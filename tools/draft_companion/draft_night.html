@@ -23,7 +23,7 @@
   --good: #6cc48f; --warn: #e3b04b; --warn-soft: #382c14; --hover: #221f1d; color-scheme: dark }
 [hidden] { display: none !important; }
 body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 14px; -webkit-font-smoothing: antialiased; }
-.wrap { padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); padding-block: 22px 48px; max-width: 1440px; margin: 0 auto; display: grid; gap: 18px; }
+.wrap { padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); padding-block: 22px 48px; max-width: 1440px; margin: 0 auto; display: grid; gap: 22px; }
 .cap { font-family: var(--head); font-stretch: 85%; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; }
 h1 { margin: 0; font-size: 26px; line-height: 1; letter-spacing: .05em; }
 h2 { margin: 0; font-size: 13px; color: var(--ink-2); }
@@ -33,7 +33,7 @@ h2 { margin: 0; font-size: 13px; color: var(--ink-2); }
 .masthead { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .sync { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; color: var(--muted); white-space: nowrap; }
 .sync .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--faint); }
-.sync.ok .dot { background: var(--good); } .sync.warn .dot { background: var(--warn); }
+.sync.is-ok .dot { background: var(--good); } .sync.is-warn .dot { background: var(--warn); }
 .bar { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px 16px; flex-wrap: wrap; border-bottom: 1px solid var(--line); }
 .tabs { display: flex; gap: 22px; }
 .tab { background: none; border: 0; padding: 10px 0 11px; cursor: pointer; color: var(--muted); font-size: 12.5px; border-bottom: 2px solid transparent; margin-bottom: -1px; }
@@ -44,7 +44,8 @@ h2 { margin: 0; font-size: 13px; color: var(--ink-2); }
 .btn:hover { border-color: var(--faint); }
 .btn.primary { background: var(--ink); border-color: var(--ink); color: var(--surface); }
 .btn.primary:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-.toast { font-size: 12.5px; color: var(--muted); min-height: 18px; margin-top: -8px; }
+.toast { font-size: 12.5px; color: var(--muted); align-self: center; margin-right: 6px; }
+.toast:empty { display: none; }
 
 /* ---- quick lookup: one row, collapsible */
 .lookup { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); display: flex; align-items: center; gap: 14px 20px; padding: 10px 14px; flex-wrap: wrap; }
@@ -98,13 +99,16 @@ input.dob { font-size: 13px; color: var(--ink-2); }
 select.pos, select.cat, select.kind { font-weight: 600; font-size: 12.5px; letter-spacing: .03em; }
 select.club { font-size: 13px; }
 .plw { display: flex; align-items: center; gap: 10px; min-width: 0; }
-.plw input.name { flex: 0 1 auto; field-sizing: content; min-width: 9ch; max-width: 100%; }
-.plw .club-badge { margin-left: 22px; }
+.plw input.name { flex: 1 1 auto; min-width: 0; }
+.plw .nmtext { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; font-weight: 700; font-size: .98rem; }
+.badgeslot { flex: none; width: 62px; display: flex; }
+.warnslot { flex: none; display: flex; }
+.warnslot:empty { display: none; }
 td.x, th.x { padding: 0; text-overflow: clip; text-align: center; }
 .flagslot { width: 32px; flex: none; display: flex; }
 .state-flag { width: 32px; height: 18px; flex: none; object-fit: cover; display: block; border-radius: 4px; box-shadow: 0 1px 2px rgba(25,33,31,.16); }
 .club-badge { display: inline-flex; align-items: center; overflow: hidden; padding: 0; box-sizing: border-box; border: 1px solid #bbb9b1; border-radius: 4px; background: rgba(255,255,255,.64); color: #3f4745; min-height: 26px; font-family: var(--badge); line-height: 1; text-transform: uppercase; white-space: nowrap; flex: none; }
-.club-code { min-width: 31px; height: 25px; padding: 0 6px; display: inline-flex; align-items: center; justify-content: center; font-size: .54rem; font-weight: 500; letter-spacing: .045em; box-sizing: border-box; }
+.club-code { width: 34px; height: 25px; padding: 0; display: inline-flex; align-items: center; justify-content: center; font-size: .54rem; font-weight: 500; letter-spacing: .045em; box-sizing: border-box; }
 .club-type { padding: 0 8px; display: inline-flex; align-items: center; justify-content: center; font-size: .61rem; font-weight: 600; letter-spacing: .035em; }
 .warn { flex: none; width: 18px; height: 18px; border-radius: 50%; background: var(--warn-soft); color: var(--warn); font: 700 11px var(--body); display: inline-flex; align-items: center; justify-content: center; cursor: help; }
 td.v0 { font: 700 14.5px var(--body); color: var(--accent); letter-spacing: -.01em; }
@@ -141,13 +145,13 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
       <button class="tab cap" role="tab" id="tab-live" aria-selected="false" aria-controls="view-live">Live AFFL draft</button>
     </div>
     <div class="actions">
+      <span class="toast" id="toolmsg" aria-live="polite"></span>
       <button class="btn" id="fill" data-entry-only>Fill picks from rankings</button>
       <button class="btn" id="add-open" data-entry-only>Add pathway slot</button>
       <button class="btn" id="copy">Copy CSV</button>
       <button class="btn primary" id="export">Download CSV</button>
     </div>
   </div>
-  <div class="toast" id="toolmsg" aria-live="polite"></div>
   <div class="csvbox" id="csvbox" hidden>
     <div class="toast" id="csvnote" style="margin:0"></div>
     <textarea id="csvtext" readonly aria-label="CSV export"></textarea>
@@ -166,9 +170,9 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
       </div>
     </div>
 
-    <div class="block" data-block="nd"><div class="block-head"><h2 class="cap">National draft</h2><span class="count" id="c-nd"></span></div><div class="frame"><table class="nd" id="t-nd"></table></div></div>
-    <div class="block" data-block="rd"><div class="block-head"><h2 class="cap">Rookie draft</h2><span class="count" id="c-rd"></span></div><div class="frame"><table class="rd" id="t-rd"></table></div></div>
-    <div class="block" data-block="op"><div class="block-head"><h2 class="cap">Pathway signings</h2><span class="count" id="c-op"></span></div><div class="frame"><table class="op" id="t-op"></table></div></div>
+    <div class="block" data-block="nd"><div class="block-head"><h2 class="cap">National draft</h2></div><div class="frame"><table class="nd" id="t-nd"></table></div></div>
+    <div class="block" data-block="rd"><div class="block-head"><h2 class="cap">Rookie draft</h2></div><div class="frame"><table class="rd" id="t-rd"></table></div></div>
+    <div class="block" data-block="op"><div class="block-head"><h2 class="cap">Pathway signings</h2></div><div class="frame"><table class="op" id="t-op"></table></div></div>
     <datalist id="prospect-list"></datalist>
   </section>
 
@@ -186,7 +190,7 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
       </table></div>
     </div>
     <div class="block">
-      <div class="block-head"><h2 class="cap">Taken</h2><span class="count" id="c-taken"></span></div>
+      <div class="block-head"><h2 class="cap">Taken</h2></div>
       <div class="frame"><table class="live">
         <colgroup><col><col style="width:210px"><col style="width:210px"><col style="width:80px"><col style="width:90px"></colgroup>
         <thead><tr><th>Player</th><th>AFFL club</th><th>Came from</th><th class="r">Value</th><th></th></tr></thead>
@@ -300,8 +304,8 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
   // ---------- tables
   const posOpts = sel => opt("", "–", !sel) + POS.map(p => opt(p, PSHORT[p], sel === p)).join("");
   const clubOpts = (list, sel, blank) => opt("", blank, !sel) + list.map(c => opt(c, c, sel === c)).join("");
-  const TAIL = [["AFL club", 118, "sep"], ["AFFL club", 158], ["Cat", 54], ["", 34, "x"]];
-  const HEAD = [["Player", 0], ["DOB", 100], ["Pos 1", 58], ["Pos 2", 58], ["P1 %", 46], ["P2 %", 46], ["v0", 64, "r sep"]];
+  const TAIL = [["AFL club", 116, "sep"], ["AFFL club", 152], ["Cat", 50], ["", 32, "x"]];
+  const HEAD = [["Player", 0], ["DOB", 98], ["Pos 1", 58], ["Pos 2", 58], ["P1 %", 46], ["P2 %", 46], ["v0", 64, "r sep"]];
   const COLS = {
     nd: [["Pick", 52], ...HEAD, ["−10", 52, "r", "v0 if taken 10 picks earlier"], ["−5", 52, "r", "v0 if taken 5 picks earlier"], ["+5", 52, "r", "v0 if taken 5 picks later"], ["+10", 52, "r", "v0 if taken 10 picks later"], ...TAIL],
     rd: [["Pick", 52], ...HEAD, ...TAIL],
@@ -319,7 +323,7 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
     const alts = k === "nd" ? ["m10", "m5", "p5", "p10"].map(o => `<td class="alt r" data-o="${o}"></td>`).join("") : "";
     return `<tr data-id="${id}">
       <td>${first}</td>
-      <td><div class="plw"><span class="flagslot" data-o="flag"></span><input class="ed name" data-f="name" list="prospect-list" autocomplete="off" placeholder="Add player" aria-label="Player"><span data-o="badge"></span><span data-o="warn"></span></div></td>
+      <td><div class="plw"><span class="flagslot" data-o="flag"></span><input class="ed name" data-f="name" list="prospect-list" autocomplete="off" placeholder="Add player" aria-label="Player"><span class="badgeslot" data-o="badge"></span><span class="warnslot" data-o="warn"></span></div></td>
       <td><div class="plw" style="gap:5px"><input class="ed dob" data-f="dob" placeholder="d/m/yy" inputmode="numeric" aria-label="Date of birth"><span class="age" data-o="age"></span></div></td>
       <td><select class="ed pos" data-f="pos1" aria-label="Position 1">${posOpts(r.pos1)}</select></td>
       <td><select class="ed pos" data-f="pos2" aria-label="Position 2">${posOpts(r.pos2)}</select></td>
@@ -339,12 +343,7 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
     idsOf(k).forEach(syncRow);
     counts();
   }
-  function counts() {
-    for (const k of ["nd", "rd", "op"]) {
-      const ids = idsOf(k), n = ids.filter(id => S.slots[id] && S.slots[id].name).length;
-      document.getElementById("c-" + k).textContent = `${n} of ${ids.length} filled`;
-    }
-  }
+  function counts() { /* section counts removed at the owner's request */ }
   function renderAll() { ["nd", "rd", "op"].forEach(renderTable); refreshList(); }
   const trOf = id => document.querySelector(`tr[data-id="${id}"]`);
   function syncRow(id) {
@@ -517,8 +516,8 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
     return out;
   }
   const nameCell = c => c.type === "draft"
-    ? `<div class="plw"><span class="flagslot">${flagHtml(c.r)}</span><b>${esc(c.name)}</b>${badgeHtml(c.r)}</div>`
-    : `<div class="plw"><span class="flagslot"></span><b>${esc(c.name)}</b>${c.was ? `<span class="tag fa" title="Delisted by ${esc(c.was)}">AFFL delisted</span>` : ""}</div>`;
+    ? `<div class="plw"><span class="flagslot">${flagHtml(c.r)}</span><span class="nmtext">${esc(c.name)}</span><span class="badgeslot">${badgeHtml(c.r)}</span></div>`
+    : `<div class="plw"><span class="flagslot"></span><span class="nmtext">${esc(c.name)}</span>${c.was ? `<span class="tag fa" title="Delisted by ${esc(c.was)}">AFFL delisted</span>` : `<span class="badgeslot"></span>`}</div>`;
   function renderLive() {
     const all = candidates(), pos = lPos.value, src = lSrc.value;
     const avail = all.filter(c => !c.affl && (src === "all" || c.type === src) && (!pos || c.pos.includes(pos))).sort((a, b) => (b.v || 0) - (a.v || 0));
@@ -529,7 +528,6 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
         <td><select class="ed" data-t="${c.type}" data-id="${esc(c.id)}" aria-label="AFFL club for ${esc(c.name)}">${clubOpts(D.affl_clubs, "", "Assign to club…")}</select></td></tr>`).join("")
       : `<tr><td colspan="7" class="empty">Nobody left here. Enter draftees on the AFL draft tab, or change the filters.</td></tr>`;
     const taken = all.filter(c => c.affl).sort((a, b) => a.affl.localeCompare(b.affl) || (b.v || 0) - (a.v || 0));
-    document.getElementById("c-taken").textContent = taken.length ? `${taken.length} taken` : "";
     document.getElementById("taken").innerHTML = taken.length ? taken.map(c => `<tr>
         <td class="nm" style="padding-left:14px">${nameCell(c)}</td><td style="font-weight:600">${esc(c.affl)}</td><td>${esc(c.from)}</td><td class="r">${fmt(c.v)}</td>
         <td class="r"><button class="btn" data-undo="${c.type}" data-id="${esc(c.id)}">Undo</button></td></tr>`).join("")
@@ -587,7 +585,7 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
 
   // ---------- sync with the artifact's database (fallback: this device only)
   const syncEl = document.getElementById("sync"), syncTxt = document.getElementById("synctext");
-  const setSync = (state, text) => { syncEl.className = "sync " + (state || ""); syncTxt.textContent = text; };
+  const setSync = (state, text) => { syncEl.className = "sync" + (state ? " is-" + state : ""); syncTxt.textContent = text; };
   let db = null, readOnly = false;
   const timers = {}, inflight = {}, again = {};
   function queueSave(coll, id) {
