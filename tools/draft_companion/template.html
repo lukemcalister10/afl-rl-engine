@@ -1,92 +1,128 @@
 <title>Draft Night 2026</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Inter:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: a compact lookup strip, then one ruled ledger per draft (national, rookie, pathway) sized to fit the page. */
+/* Layout: a single control bar (title, tabs, actions), a collapsible one-line lookup, then one ruled ledger per draft. */
 :root {
-  --bg: #f3f5f1; --surface: #ffffff; --ink: #1e2424; --muted: #5c6a63; --line: #d6ddd5; --line-soft: #e6ebe4;
-  --accent: #ae432d; --accent-soft: #f6e4dc; --good: #2f7a4b; --warn: #a66b00; --warn-soft: #fbefd6; --rowalt: #f8faf7;
-  --display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --bg: #f4f4f1; --surface: #ffffff; --sunk: #f8f8f5; --ink: #1e2424; --ink-2: #3f4745; --muted: #6b7471; --faint: #9aa19e;
+  --line: #e1e2dc; --line-2: #ecece7; --accent: #ae432d; --accent-ink: #ffffff; --accent-soft: #f7e7e2;
+  --good: #2f7a4b; --warn: #a66b00; --warn-soft: #fbf1dc; --hover: #fbf6f4;
+  --head: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --body: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --badge: Arial, Helvetica, sans-serif;
+  --shadow: 0 1px 2px rgba(25,33,31,.05), 0 1px 1px rgba(25,33,31,.03);
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --bg: #111614; --surface: #19201d; --ink: #e4eae6; --muted: #98a59e; --line: #2c3632; --line-soft: #232b28;
-  --accent: #e2805b; --accent-soft: #3a2219; --good: #6cc48f; --warn: #e3b04b; --warn-soft: #3a2e14; --rowalt: #1c2420; color-scheme: dark } }
+  --bg: #121615; --surface: #1a1f1e; --sunk: #161b1a; --ink: #e8ecea; --ink-2: #c9d0cd; --muted: #98a3a0; --faint: #6f7a77;
+  --line: #2b3331; --line-2: #232a28; --accent: #e57f63; --accent-ink: #1a1f1e; --accent-soft: #3a231c;
+  --good: #6cc48f; --warn: #e3b04b; --warn-soft: #382c14; --hover: #221f1d; color-scheme: dark } }
 :root[data-theme="dark"] {
-  --bg: #111614; --surface: #19201d; --ink: #e4eae6; --muted: #98a59e; --line: #2c3632; --line-soft: #232b28;
-  --accent: #e2805b; --accent-soft: #3a2219; --good: #6cc48f; --warn: #e3b04b; --warn-soft: #3a2e14; --rowalt: #1c2420; color-scheme: dark }
+  --bg: #121615; --surface: #1a1f1e; --sunk: #161b1a; --ink: #e8ecea; --ink-2: #c9d0cd; --muted: #98a3a0; --faint: #6f7a77;
+  --line: #2b3331; --line-2: #232a28; --accent: #e57f63; --accent-ink: #1a1f1e; --accent-soft: #3a231c;
+  --good: #6cc48f; --warn: #e3b04b; --warn-soft: #382c14; --hover: #221f1d; color-scheme: dark }
 [hidden] { display: none !important; }
-body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 14px; }
-.wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 18px 40px; max-width: 1440px; margin: 0 auto; display: grid; gap: 16px; }
-h1 { font-family: var(--display); font-weight: 700; font-size: 38px; margin: 0; line-height: 1; }
-h2 { font-family: var(--display); font-weight: 600; font-size: 22px; margin: 0; line-height: 1.1; }
-.top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
-.chip { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: 12px; color: var(--muted); }
-.chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
-.chip.ok .dot { background: var(--good); } .chip.warn .dot { background: var(--warn); }
-.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); }
-.tab { font: 600 15px var(--body); background: none; border: 0; padding: 9px 14px; color: var(--muted); cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -1px; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 14px; -webkit-font-smoothing: antialiased; }
+.wrap { padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); padding-block: 22px 48px; max-width: 1440px; margin: 0 auto; display: grid; gap: 18px; }
+.cap { font-family: var(--head); font-stretch: 85%; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; }
+h1 { margin: 0; font-size: 26px; line-height: 1; letter-spacing: .05em; }
+h2 { margin: 0; font-size: 13px; color: var(--ink-2); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+/* ---- title + control bar */
+.masthead { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.sync { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; color: var(--muted); white-space: nowrap; }
+.sync .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--faint); }
+.sync.ok .dot { background: var(--good); } .sync.warn .dot { background: var(--warn); }
+.bar { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px 16px; flex-wrap: wrap; border-bottom: 1px solid var(--line); }
+.tabs { display: flex; gap: 22px; }
+.tab { background: none; border: 0; padding: 10px 0 11px; cursor: pointer; color: var(--muted); font-size: 12.5px; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+.tab:hover { color: var(--ink); }
 .tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
-.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: grid; gap: 12px; min-width: 0; }
-.lhead { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; }
-.inl { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); font-weight: 500; }
-select, input { font: 14px var(--body); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 5px 7px; min-width: 0; box-sizing: border-box; }
-.lookup { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
-.cell { border: 1px solid var(--line-soft); border-radius: 8px; padding: 7px 10px; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-.cell span { font-size: 12px; color: var(--muted); font-weight: 600; letter-spacing: .04em; }
-.cell b { font-family: var(--display); font-size: 24px; font-weight: 600; font-variant-numeric: tabular-nums; }
-.toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-.toolbar .msg { color: var(--muted); font-size: 12.5px; margin-left: 4px; }
-button.btn { font: 600 13px var(--body); border-radius: 6px; padding: 7px 12px; cursor: pointer; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
-button.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--surface); }
-.block { display: grid; gap: 8px; }
-.frame { border: 1px solid var(--line); border-radius: 10px; background: var(--surface); overflow-x: auto; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; padding-bottom: 8px; }
+.btn { font: 600 12.5px var(--body); border-radius: 7px; padding: 7px 12px; cursor: pointer; border: 1px solid var(--line); background: var(--surface); color: var(--ink); box-shadow: var(--shadow); white-space: nowrap; }
+.btn:hover { border-color: var(--faint); }
+.btn.primary { background: var(--ink); border-color: var(--ink); color: var(--surface); }
+.btn.primary:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.toast { font-size: 12.5px; color: var(--muted); min-height: 18px; margin-top: -8px; }
+
+/* ---- quick lookup: one row, collapsible */
+.lookup { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); display: flex; align-items: center; gap: 14px 20px; padding: 10px 14px; flex-wrap: wrap; }
+.lk-toggle { display: inline-flex; align-items: center; gap: 8px; background: none; border: 0; padding: 4px 0; cursor: pointer; color: var(--ink-2); font-size: 13px; }
+.lk-toggle svg { transition: transform .15s ease; }
+.lookup[data-open="0"] .lk-toggle svg { transform: rotate(-90deg); }
+.lk-body { display: flex; align-items: center; gap: 12px 18px; flex: 1 1 auto; flex-wrap: wrap; min-width: 0; }
+.lookup[data-open="0"] .lk-body { display: none; }
+.field { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.field select, .field input { font: 500 13px var(--body); color: var(--ink); background: var(--sunk); border: 1px solid var(--line); border-radius: 7px; padding: 6px 8px; }
+.lk-vals { display: grid; grid-template-columns: repeat(6, minmax(78px, 1fr)); flex: 1 1 520px; border-left: 1px solid var(--line-2); margin-left: 2px; min-width: 0; }
+.lk-v { display: grid; gap: 1px; padding: 0 14px; border-right: 1px solid var(--line-2); }
+.lk-v:last-child { border-right: 0; }
+.lk-v span { font-size: 10.5px; font-weight: 600; letter-spacing: .08em; color: var(--muted); }
+.lk-v b { font: 700 19px var(--body); font-variant-numeric: tabular-nums; letter-spacing: -.01em; color: var(--ink); }
+
+/* ---- ledgers */
+.block { display: grid; gap: 10px; }
+.block-head { display: flex; align-items: baseline; gap: 10px; }
+.block-head .count { font-size: 12px; color: var(--muted); }
+.frame { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); overflow-x: auto; }
 @media (min-width: 1240px) { .frame { overflow: visible; } }
 table { border-collapse: separate; border-spacing: 0; width: 100%; table-layout: fixed; font-variant-numeric: tabular-nums; }
-table.nd { min-width: 1150px; } table.rd, table.op { min-width: 920px; } table.live { min-width: 760px; }
-th, td { padding: 3px 5px; border-bottom: 1px solid var(--line-soft); text-align: left; white-space: nowrap; vertical-align: middle; overflow: hidden; text-overflow: ellipsis; }
-th { position: sticky; top: env(safe-area-inset-top, 0px); background: var(--surface); font-size: 10.5px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); font-weight: 600; z-index: 2; padding-block: 8px; border-bottom-color: var(--line); }
-th:first-child { border-top-left-radius: 10px; } th:last-child { border-top-right-radius: 10px; }
+table.nd { min-width: 1120px; } table.rd, table.op { min-width: 900px; } table.live { min-width: 740px; }
+th, td { padding: 0 6px; height: 40px; border-bottom: 1px solid var(--line-2); text-align: left; white-space: nowrap; vertical-align: middle; overflow: hidden; text-overflow: ellipsis; }
+th { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 2; height: 34px; background: var(--surface); border-bottom-color: var(--line); font: 600 10.5px var(--body); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+th:first-child { border-top-left-radius: 12px; padding-left: 14px; } th:last-child { border-top-right-radius: 12px; }
+td:first-child { padding-left: 8px; }
 th.r, td.r { text-align: right; }
-tbody tr:nth-child(even) td { background: var(--rowalt); }
+th.sep, td.sep { border-left: 1px solid var(--line-2); }
 tbody tr:last-child td { border-bottom: 0; }
-tr.taken td { opacity: .6; }
-/* editable cells: a box while empty or focused, plain text once filled */
-.ed { width: 100%; font: 14px var(--body); }
-.ed.filled:not(:focus) { border-color: transparent; background: transparent; -webkit-appearance: none; appearance: none; padding-left: 2px; padding-right: 2px; cursor: text; }
-.ed.filled:not(:focus):hover { border-color: var(--line); }
-tr.has-player .ed:not(:focus) { border-color: transparent; background: transparent; -webkit-appearance: none; appearance: none; padding-left: 2px; padding-right: 2px; }
-tr.has-player .ed:not(:focus):hover { border-color: var(--line); background: var(--surface); }
-select.ed { cursor: pointer; padding-right: 2px; }
-input.name.filled:not(:focus) { font-weight: 700; font-size: .98rem; }
-input.name:not(:focus):hover { color: var(--accent); }
+tbody tr:hover td { background: var(--hover); }
+tr.taken td { opacity: .55; }
+tr.taken:hover td { opacity: .8; }
+.pick { font: 600 13px var(--body); font-variant-numeric: tabular-nums; color: var(--muted); background: none; border: 1px solid transparent; border-radius: 6px; cursor: pointer; padding: 4px 6px; min-width: 30px; text-align: center; }
+tr.has-player .pick { color: var(--ink); }
+.pick:hover { border-color: var(--line); background: var(--surface); color: var(--accent); }
+input.pickin { width: 52px; font: 600 13px var(--body); border: 1px solid var(--accent); border-radius: 6px; padding: 4px 6px; background: var(--surface); color: var(--ink); }
+/* editable cells: a box while empty or focused, plain text once the row holds a player */
+.ed { width: 100%; box-sizing: border-box; font: 13.5px var(--body); color: var(--ink); background: var(--sunk); border: 1px solid var(--line); border-radius: 6px; padding: 5px 7px; min-width: 0; transition: border-color .12s ease, background .12s ease; }
+.ed::placeholder { color: var(--faint); }
+select.ed { cursor: pointer; }
+tr.has-player .ed:not(:focus), .ed.filled:not(:focus) { border-color: transparent; background: transparent; -webkit-appearance: none; appearance: none; padding-left: 3px; padding-right: 3px; }
+tr.has-player .ed:not(:focus):hover, .ed.filled:not(:focus):hover { border-color: var(--line); background: var(--surface); }
+.ed:focus { background: var(--surface); border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px var(--accent-soft); }
+input.name { font-weight: 700; font-size: .98rem; letter-spacing: -.005em; }
+input.name::placeholder { font-weight: 400; font-size: 13.5px; }
 input[type="number"].ed { -moz-appearance: textfield; text-align: right; }
-input[type="number"].ed::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-button.pick { font: 600 17px var(--display); background: none; border: 1px solid transparent; border-radius: 6px; color: var(--ink); cursor: pointer; padding: 2px 4px; width: 100%; text-align: left; }
-button.pick:hover { border-color: var(--line); }
-input.pickin { width: 100%; font: 600 15px var(--display); }
-.plw { display: flex; align-items: center; gap: 8px; min-width: 0; }
-.plw input.name { flex: 1 1 auto; }
+input[type="number"].ed::-webkit-inner-spin-button, input[type="number"].ed::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+input.dob { font-size: 13px; color: var(--ink-2); }
+select.pos, select.cat, select.kind { font-weight: 600; font-size: 12.5px; letter-spacing: .03em; }
+select.club { font-size: 13px; }
+.plw { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.plw input.name { flex: 0 1 auto; field-sizing: content; min-width: 9ch; max-width: 100%; }
+.plw .club-badge { margin-left: 22px; }
+td.x, th.x { padding: 0; text-overflow: clip; text-align: center; }
+.flagslot { width: 32px; flex: none; display: flex; }
 .state-flag { width: 32px; height: 18px; flex: none; object-fit: cover; display: block; border-radius: 4px; box-shadow: 0 1px 2px rgba(25,33,31,.16); }
-.flagslot { width: 32px; flex: none; }
 .club-badge { display: inline-flex; align-items: center; overflow: hidden; padding: 0; box-sizing: border-box; border: 1px solid #bbb9b1; border-radius: 4px; background: rgba(255,255,255,.64); color: #3f4745; min-height: 26px; font-family: var(--badge); line-height: 1; text-transform: uppercase; white-space: nowrap; flex: none; }
 .club-code { min-width: 31px; height: 25px; padding: 0 6px; display: inline-flex; align-items: center; justify-content: center; font-size: .54rem; font-weight: 500; letter-spacing: .045em; box-sizing: border-box; }
 .club-type { padding: 0 8px; display: inline-flex; align-items: center; justify-content: center; font-size: .61rem; font-weight: 600; letter-spacing: .035em; }
-.warn { flex: none; width: 18px; height: 18px; border-radius: 50%; background: var(--warn-soft); color: var(--warn); font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; cursor: help; }
-td.v0 { font-family: var(--display); font-size: 18px; font-weight: 700; color: var(--accent); }
-td.alt { font-size: 13px; color: var(--ink); }
-td .age { font-size: 11px; color: var(--muted); }
-button.x { background: none; border: 0; color: var(--muted); font-size: 16px; cursor: pointer; border-radius: 4px; padding: 0 4px; visibility: hidden; }
-tr:hover button.x, button.x:focus-visible { visibility: visible; }
-.badge { display: inline-block; font-size: 11px; padding: 1px 7px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-weight: 600; }
-.badge.fa { background: var(--warn-soft); color: var(--warn); }
-.empty { color: var(--muted); padding: 16px 8px; text-align: center; white-space: normal; }
-textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 8px; box-sizing: border-box; }
+.warn { flex: none; width: 18px; height: 18px; border-radius: 50%; background: var(--warn-soft); color: var(--warn); font: 700 11px var(--body); display: inline-flex; align-items: center; justify-content: center; cursor: help; }
+td.v0 { font: 700 14.5px var(--body); color: var(--accent); letter-spacing: -.01em; }
+td.alt { font-size: 12.5px; color: var(--muted); }
+td .age { font-size: 11px; color: var(--faint); font-weight: 500; }
+button.x { background: none; border: 0; color: var(--faint); font-size: 17px; line-height: 1; cursor: pointer; border-radius: 5px; padding: 2px 6px; opacity: 0; }
+tr:hover button.x, button.x:focus-visible { opacity: 1; }
+button.x:hover { color: var(--accent); background: var(--accent-soft); }
+.tag { display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 5px; font-size: 11.5px; font-weight: 600; background: var(--sunk); color: var(--ink-2); border: 1px solid var(--line-2); }
+.tag.fa { background: var(--warn-soft); color: var(--warn); border-color: transparent; }
+td.nm b { font-weight: 700; font-size: .98rem; }
+.empty { color: var(--muted); padding: 22px 8px; text-align: center; white-space: normal; height: auto; }
+.csvbox { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px; display: grid; gap: 8px; }
+textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--ink); background: var(--sunk); border: 1px solid var(--line); border-radius: 8px; padding: 8px; box-sizing: border-box; }
 @media (max-width: 720px) {
-  .lookup { grid-template-columns: repeat(2, minmax(0, 1fr)); } h1 { font-size: 30px; }
+  .wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  h1 { font-size: 22px; } .lk-vals { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 10px; border-left: 0; margin-left: 0; flex-basis: 100%; }
+  .lk-v:nth-child(3n) { border-right: 0; }
   .state-flag { width: 30px; height: 17px; } .flagslot { width: 30px; }
   .club-badge { min-height: 20px; } .club-code { width: 31px; min-width: 0; height: 19px; padding: 0; font-size: .5rem; } .club-type { width: 24px; height: 19px; padding: 0; font-size: .52rem; }
 }
@@ -94,61 +130,65 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
 </style>
 
 <div class="wrap">
-  <div class="top">
-    <h1>Draft Night 2026</h1>
-    <span class="chip" id="sync"><span class="dot"></span><span id="synctext">Connecting…</span></span>
+  <div class="masthead">
+    <h1 class="cap">Draft Night 2026</h1>
+    <span class="sync" id="sync"><span class="dot"></span><span id="synctext">Connecting…</span></span>
   </div>
 
-  <div class="tabs" role="tablist">
-    <button class="tab" role="tab" id="tab-entry" aria-selected="true" aria-controls="view-entry">AFL draft</button>
-    <button class="tab" role="tab" id="tab-live" aria-selected="false" aria-controls="view-live">Live AFFL draft</button>
-  </div>
-
-  <section id="view-entry" role="tabpanel" aria-labelledby="tab-entry" style="display:grid;gap:18px">
-    <div class="panel">
-      <div class="lhead">
-        <h2>Quick lookup</h2>
-        <label class="inl">Slot <select id="q-slot"></select></label>
-        <label class="inl">Birth year <input id="q-by" type="number" min="1990" max="2012" value="2008" style="width:76px"></label>
-      </div>
-      <div class="lookup" id="q-out"></div>
+  <div class="bar">
+    <div class="tabs" role="tablist">
+      <button class="tab cap" role="tab" id="tab-entry" aria-selected="true" aria-controls="view-entry">AFL draft</button>
+      <button class="tab cap" role="tab" id="tab-live" aria-selected="false" aria-controls="view-live">Live AFFL draft</button>
     </div>
-
-    <div class="toolbar">
-      <button class="btn" id="fill">Fill picks from rankings</button>
-      <button class="btn" id="add-open">Add pathway slot</button>
-      <button class="btn primary" id="export">Download CSV</button>
+    <div class="actions">
+      <button class="btn" id="fill" data-entry-only>Fill picks from rankings</button>
+      <button class="btn" id="add-open" data-entry-only>Add pathway slot</button>
       <button class="btn" id="copy">Copy CSV</button>
-      <span class="msg" id="toolmsg" aria-live="polite"></span>
+      <button class="btn primary" id="export">Download CSV</button>
     </div>
-    <div class="panel" id="csvbox" hidden>
-      <span class="toolbar"><span id="csvnote" class="msg" style="margin:0"></span></span>
-      <textarea id="csvtext" readonly aria-label="CSV export"></textarea>
+  </div>
+  <div class="toast" id="toolmsg" aria-live="polite"></div>
+  <div class="csvbox" id="csvbox" hidden>
+    <div class="toast" id="csvnote" style="margin:0"></div>
+    <textarea id="csvtext" readonly aria-label="CSV export"></textarea>
+  </div>
+
+  <section id="view-entry" role="tabpanel" aria-labelledby="tab-entry" style="display:grid;gap:22px">
+    <div class="lookup" id="lookup" data-open="1">
+      <button class="lk-toggle cap" id="lk-toggle" aria-expanded="true" aria-controls="lk-body">
+        <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.25 6 7.75l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Quick lookup
+      </button>
+      <div class="lk-body" id="lk-body">
+        <label class="field">Slot <select id="q-slot"></select></label>
+        <label class="field">Born <input id="q-by" type="number" min="1990" max="2012" value="2008" style="width:70px"></label>
+        <div class="lk-vals" id="q-out"></div>
+      </div>
     </div>
 
-    <div class="block" data-block="nd"><h2>National draft</h2><div class="frame"><table class="nd" id="t-nd"></table></div></div>
-    <div class="block" data-block="rd"><h2>Rookie draft</h2><div class="frame"><table class="rd" id="t-rd"></table></div></div>
-    <div class="block" data-block="op"><h2>Pathway signings</h2><div class="frame"><table class="op" id="t-op"></table></div></div>
+    <div class="block" data-block="nd"><div class="block-head"><h2 class="cap">National draft</h2><span class="count" id="c-nd"></span></div><div class="frame"><table class="nd" id="t-nd"></table></div></div>
+    <div class="block" data-block="rd"><div class="block-head"><h2 class="cap">Rookie draft</h2><span class="count" id="c-rd"></span></div><div class="frame"><table class="rd" id="t-rd"></table></div></div>
+    <div class="block" data-block="op"><div class="block-head"><h2 class="cap">Pathway signings</h2><span class="count" id="c-op"></span></div><div class="frame"><table class="op" id="t-op"></table></div></div>
     <datalist id="prospect-list"></datalist>
   </section>
 
-  <section id="view-live" role="tabpanel" aria-labelledby="tab-live" hidden style="display:grid;gap:18px">
+  <section id="view-live" role="tabpanel" aria-labelledby="tab-live" hidden style="display:grid;gap:22px">
     <div class="block">
-      <div class="lhead">
-        <h2>Best available</h2>
-        <label class="inl">Position <select id="l-pos"><option value="">All</option></select></label>
-        <label class="inl">Show <select id="l-src"><option value="all">Draftees and free agents</option><option value="draft">Draftees</option><option value="fa">Free agents</option></select></label>
+      <div class="block-head" style="flex-wrap:wrap;gap:10px 18px;align-items:center">
+        <h2 class="cap">Best available</h2>
+        <label class="field">Position <select id="l-pos"><option value="">All</option></select></label>
+        <label class="field">Show <select id="l-src"><option value="all">Draftees and free agents</option><option value="draft">Draftees</option><option value="fa">Free agents</option></select></label>
       </div>
       <div class="frame"><table class="live">
-        <colgroup><col style="width:44px"><col><col style="width:200px"><col style="width:96px"><col style="width:56px"><col style="width:76px"><col style="width:190px"></colgroup>
+        <colgroup><col style="width:52px"><col><col style="width:210px"><col style="width:96px"><col style="width:56px"><col style="width:80px"><col style="width:200px"></colgroup>
         <thead><tr><th>#</th><th>Player</th><th>Came from</th><th>Pos</th><th class="r">Age</th><th class="r">Value</th><th>AFFL club</th></tr></thead>
         <tbody id="avail"></tbody>
       </table></div>
     </div>
     <div class="block">
-      <h2>Taken</h2>
+      <div class="block-head"><h2 class="cap">Taken</h2><span class="count" id="c-taken"></span></div>
       <div class="frame"><table class="live">
-        <colgroup><col><col style="width:200px"><col style="width:200px"><col style="width:76px"><col style="width:84px"></colgroup>
+        <colgroup><col><col style="width:210px"><col style="width:210px"><col style="width:80px"><col style="width:90px"></colgroup>
         <thead><tr><th>Player</th><th>AFFL club</th><th>Came from</th><th class="r">Value</th><th></th></tr></thead>
         <tbody id="taken"></tbody>
       </table></div>
@@ -164,7 +204,6 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
   const POS = ["MID", "SF", "SD", "KPF", "KPD", "RUCK"];
   const PSHORT = { MID: "MID", SF: "SF", SD: "SD", KPF: "KPF", KPD: "KPD", RUCK: "RUC" };
   const PATHS = [["UNR", "UNR"], ["IRE", "IRE"], ["PDN", "NGA"], ["PDA", "ACA"], ["IND", "IND"]];
-  const PATH_LABEL = Object.fromEntries(PATHS);
   const PATH_NAME = { UNR: "Unregistered", IRE: "Ireland", PDN: "NGA", PDA: "Academy", IND: "Indigenous Rookie" };
   const CATS = [["", "—"], ["ACA", "ACA"], ["NGA", "NGA"], ["FS", "F/S"]];
   const CAT_NAME = { ACA: "Academy", NGA: "NGA", FS: "father-son" };
@@ -189,12 +228,12 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
   const fmt = n => (n == null || !isFinite(n)) ? "—" : Math.round(n).toLocaleString("en-AU");
   const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const opt = (v, t, sel, title) => `<option value="${esc(v)}"${sel ? " selected" : ""}${title ? ` title="${esc(title)}"` : ""}>${esc(t)}</option>`;
+  const pad = n => String(n).padStart(2, "0");
 
   // ---------- state
   const S = { slots: {}, fa: {} };
   try { const raw = localStorage.getItem(LS_KEY); if (raw) Object.assign(S, JSON.parse(raw)); } catch (e) { /* storage unavailable */ }
   const saveLocal = () => { try { localStorage.setItem(LS_KEY, JSON.stringify(S)); } catch (e) { /* ignore */ } };
-  const pad = n => String(n).padStart(2, "0");
   function idsOf(k) {
     if (k === "nd") return Array.from({ length: NAT }, (_, i) => "nd" + pad(i + 1));
     if (k === "rd") return Array.from({ length: RK }, (_, i) => "rd" + pad(i + 1));
@@ -232,41 +271,41 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
     return t;
   }
 
-  // ---------- dates: shown dd/mm/yyyy, stored yyyy-mm-dd
-  function toAu(iso) { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ""); return m ? `${m[3]}/${m[2]}/${m[1]}` : (iso || ""); }
+  // ---------- dates: shown d/m/yy, stored yyyy-mm-dd
+  function toShort(iso) { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ""); return m ? `${+m[3]}/${+m[2]}/${m[1].slice(2)}` : (iso || ""); }
   function parseDob(s) {
     s = String(s || "").trim(); if (!s) return "";
     let m = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(s);
     if (m) return `${m[1]}-${pad(m[2])}-${pad(m[3])}`;
-    m = /^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{4})$/.exec(s);
-    if (m && +m[2] >= 1 && +m[2] <= 12 && +m[1] >= 1 && +m[1] <= 31) return `${m[3]}-${pad(m[2])}-${pad(m[1])}`;
-    return null;
+    m = /^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{2}|\d{4})$/.exec(s);
+    if (!m || +m[2] < 1 || +m[2] > 12 || +m[1] < 1 || +m[1] > 31) return null;
+    const y = m[3].length === 2 ? (+m[3] <= 30 ? 2000 + +m[3] : 1900 + +m[3]) : +m[3];
+    return `${y}-${pad(m[2])}-${pad(m[1])}`;
   }
 
   // ---------- badges and flags
   function badgeHtml(r) {
     if (!r.cat) return "";
     const code = r.tie || CLUB_CODE[r.afl] || "";
-    const [bg, fg] = BADGE[code] || ["#5c6a63", "#ffffff"];
-    const label = r.cat === "FS" ? "FS" : "A";
+    const [bg, fg] = BADGE[code] || ["#6b7471", "#ffffff"];
     const club = CODE_CLUB[code] || code || "Club";
     const ess = code === "ESS" ? ";box-shadow:inset 0 -3px #d71920" : "";
-    return `<span class="club-badge" title="${esc(club + " " + CAT_NAME[r.cat])}"><span class="club-code" style="background:${bg};color:${fg}${ess}">${esc(code || "—")}</span><span class="club-type">${label}</span></span>`;
+    return `<span class="club-badge" title="${esc(club + " " + CAT_NAME[r.cat])}"><span class="club-code" style="background:${bg};color:${fg}${ess}">${esc(code || "—")}</span><span class="club-type">${r.cat === "FS" ? "FS" : "A"}</span></span>`;
   }
   function flagHtml(r) {
-    const src = r.state && D.flags[r.state]; const p = r.pid && PBYID[r.pid];
-    return src ? `<img class="state-flag" src="${src}" alt="${esc(p ? p.stateName : r.state)}" title="${esc(p ? p.stateName : r.state)}">` : "";
+    const src = r.state && D.flags[r.state]; const p = r.pid && PBYID[r.pid]; const nm = p ? p.stateName : r.state;
+    return src ? `<img class="state-flag" src="${src}" alt="${esc(nm)}" title="${esc(nm)}">` : "";
   }
 
   // ---------- tables
-  const posOpts = (sel, blank) => opt("", blank, !sel) + POS.map(p => opt(p, PSHORT[p], sel === p)).join("");
+  const posOpts = sel => opt("", "–", !sel) + POS.map(p => opt(p, PSHORT[p], sel === p)).join("");
   const clubOpts = (list, sel, blank) => opt("", blank, !sel) + list.map(c => opt(c, c, sel === c)).join("");
+  const TAIL = [["AFL club", 118, "sep"], ["AFFL club", 158], ["Cat", 54], ["", 34, "x"]];
+  const HEAD = [["Player", 0], ["DOB", 100], ["Pos 1", 58], ["Pos 2", 58], ["P1 %", 46], ["P2 %", 46], ["v0", 64, "r sep"]];
   const COLS = {
-    nd: [["Pick", 40], ["Player", 0], ["DOB", 106], ["Pos 1", 58], ["Pos 2", 58], ["P1 %", 44], ["P2 %", 44], ["v0", 58, "r"],
-      ["−10", 50, "r", "v0 if taken 10 picks earlier"], ["−5", 50, "r", "v0 if taken 5 picks earlier"], ["+5", 50, "r", "v0 if taken 5 picks later"], ["+10", 50, "r", "v0 if taken 10 picks later"],
-      ["AFL club", 112], ["AFFL club", 150], ["Cat", 52], ["", 30]],
-    rd: [["Pick", 40], ["Player", 0], ["DOB", 106], ["Pos 1", 58], ["Pos 2", 58], ["P1 %", 44], ["P2 %", 44], ["v0", 58, "r"], ["AFL club", 112], ["AFFL club", 150], ["Cat", 52], ["", 30]],
-    op: [["Type", 62], ["Player", 0], ["DOB", 106], ["Pos 1", 58], ["Pos 2", 58], ["P1 %", 44], ["P2 %", 44], ["v0", 58, "r"], ["AFL club", 112], ["AFFL club", 150], ["Cat", 52], ["", 30]]
+    nd: [["Pick", 52], ...HEAD, ["−10", 52, "r", "v0 if taken 10 picks earlier"], ["−5", 52, "r", "v0 if taken 5 picks earlier"], ["+5", 52, "r", "v0 if taken 5 picks later"], ["+10", 52, "r", "v0 if taken 10 picks later"], ...TAIL],
+    rd: [["Pick", 52], ...HEAD, ...TAIL],
+    op: [["Type", 72], ...HEAD, ...TAIL]
   };
   function tableHead(k) {
     return "<colgroup>" + COLS[k].map(([, w]) => w ? `<col style="width:${w}px">` : "<col>").join("") + "</colgroup><thead><tr>"
@@ -276,21 +315,21 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
     const r = row(id), k = kindOf(id);
     const first = k === "op"
       ? `<select class="ed kind" data-f="kind" aria-label="Pathway">${PATHS.map(([c, l]) => opt(c, l, (r.kind || "UNR") === c, PATH_NAME[c])).join("")}</select>`
-      : `<button class="pick" data-move="${id}" title="Click to move this player to another pick">${numOf(id)}</button>`;
+      : `<button class="pick" data-move="${id}" title="Move this player to another pick">${numOf(id)}</button>`;
     const alts = k === "nd" ? ["m10", "m5", "p5", "p10"].map(o => `<td class="alt r" data-o="${o}"></td>`).join("") : "";
     return `<tr data-id="${id}">
       <td>${first}</td>
-      <td><div class="plw"><span class="flagslot" data-o="flag"></span><input class="ed name" data-f="name" list="prospect-list" autocomplete="off" placeholder="Player" aria-label="Player"><span data-o="badge"></span><span data-o="warn"></span></div></td>
-      <td><div class="plw" style="gap:4px"><input class="ed dob" data-f="dob" placeholder="dd/mm/yyyy" inputmode="numeric" aria-label="Date of birth"><span class="age" data-o="age"></span></div></td>
-      <td><select class="ed pos" data-f="pos1" aria-label="Position 1">${posOpts(r.pos1, "–")}</select></td>
-      <td><select class="ed pos" data-f="pos2" aria-label="Position 2">${posOpts(r.pos2, "–")}</select></td>
+      <td><div class="plw"><span class="flagslot" data-o="flag"></span><input class="ed name" data-f="name" list="prospect-list" autocomplete="off" placeholder="Add player" aria-label="Player"><span data-o="badge"></span><span data-o="warn"></span></div></td>
+      <td><div class="plw" style="gap:5px"><input class="ed dob" data-f="dob" placeholder="d/m/yy" inputmode="numeric" aria-label="Date of birth"><span class="age" data-o="age"></span></div></td>
+      <td><select class="ed pos" data-f="pos1" aria-label="Position 1">${posOpts(r.pos1)}</select></td>
+      <td><select class="ed pos" data-f="pos2" aria-label="Position 2">${posOpts(r.pos2)}</select></td>
       <td><input class="ed w" type="number" min="0" max="100" data-f="w1" aria-label="Position 1 percent"></td>
       <td><input class="ed w" type="number" min="0" max="100" data-f="w2" aria-label="Position 2 percent"></td>
-      <td class="v0 r" data-o="v0"></td>${alts}
-      <td><select class="ed club" data-f="afl" aria-label="AFL club">${clubOpts(D.afl_clubs, r.afl, "–")}</select></td>
+      <td class="v0 r sep" data-o="v0"></td>${alts}
+      <td class="sep"><select class="ed club" data-f="afl" aria-label="AFL club">${clubOpts(D.afl_clubs, r.afl, "–")}</select></td>
       <td><select class="ed club" data-f="affl" aria-label="AFFL club">${clubOpts(D.affl_clubs, r.affl, "–")}</select></td>
       <td><select class="ed cat" data-f="cat" aria-label="Category">${CATS.map(([c, l]) => opt(c, l, (r.cat || "") === c)).join("")}</select></td>
-      <td><button class="x" data-clear="${id}" title="Clear this player" aria-label="Clear this player">×</button></td></tr>`;
+      <td class="x"><button class="x" data-clear="${id}" title="Clear this player" aria-label="Clear this player">×</button></td></tr>`;
   }
   const tb = k => document.querySelector(`#t-${k} tbody`);
   function renderTable(k) {
@@ -298,10 +337,16 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
     if (!t.tHead) t.innerHTML = tableHead(k);
     tb(k).innerHTML = idsOf(k).map(rowHtml).join("");
     idsOf(k).forEach(syncRow);
+    counts();
+  }
+  function counts() {
+    for (const k of ["nd", "rd", "op"]) {
+      const ids = idsOf(k), n = ids.filter(id => S.slots[id] && S.slots[id].name).length;
+      document.getElementById("c-" + k).textContent = `${n} of ${ids.length} filled`;
+    }
   }
   function renderAll() { ["nd", "rd", "op"].forEach(renderTable); refreshList(); }
   const trOf = id => document.querySelector(`tr[data-id="${id}"]`);
-  // write state into a row's inputs and outputs
   function syncRow(id) {
     const tr = trOf(id); if (!tr) return;
     const r = row(id);
@@ -309,13 +354,13 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
       if (el === document.activeElement) return;
       const f = el.dataset.f; let v = r[f] == null ? "" : r[f];
       if (f === "kind" && !v) v = "UNR";
-      if (f === "dob") v = r.dobRaw || toAu(v);
+      if (f === "dob") v = r.dobRaw || toShort(v);
       el.value = v;
-      el.classList.toggle("filled", f === "kind" || f === "cat" ? true : !!el.value);
+      el.classList.toggle("filled", f === "kind" || f === "cat" || !!el.value);
     });
     updateRow(id);
   }
-  const setOut = (tr, key, html) => { const el = tr.querySelector(`[data-o="${key}"]`); if (el) el.innerHTML = html; };
+  const setOut = (tr, key, html) => { const el = tr.querySelector(`[data-o="${key}"]`); if (el && el.innerHTML !== html) el.innerHTML = html; };
   function updateRow(id) {
     const tr = trOf(id); if (!tr) return;
     const r = row(id), k = kindOf(id), v = rowV0(id);
@@ -323,12 +368,12 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
     setOut(tr, "v0", r.name || r.pos1 ? fmt(v) : "");
     if (k === "nd") for (const [key, d] of [["m10", -10], ["m5", -5], ["p5", 5], ["p10", 10]]) {
       const pick = numOf(id) + d, a = (v == null || pick < 1) ? null : rowV0(id, pick);
-      setOut(tr, key, a == null ? "" : `<span title="pick ${pick}${pick > LAST ? " (pool)" : ""}">${fmt(a)}</span>`);
+      setOut(tr, key, a == null ? "" : `<span title="Pick ${pick}${pick > LAST ? " (pool value)" : ""}">${fmt(a)}</span>`);
     }
     setOut(tr, "flag", flagHtml(r));
     setOut(tr, "badge", badgeHtml(r));
     const w = weights(r); let warn = "";
-    if (r.dobRaw) warn = "Date not recognised: use dd/mm/yyyy";
+    if (r.dobRaw) warn = "Date not recognised: use d/m/yy";
     else if (w && r.pos2 && r.pos2 !== r.pos1 && Math.round(w.sum) !== 100) warn = `Weights add to ${Math.round(w.sum)}%, scaled to 100%`;
     else if (r.name && !r.pos1) warn = "Choose position 1";
     else if (r.name && !r.dob) warn = "No date of birth: age 18 assumed";
@@ -358,6 +403,7 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
   entry.addEventListener("change", onEdit);
   entry.addEventListener("input", ev => { if (ev.target.matches("input.w")) onEdit(ev); });
   entry.addEventListener("focusout", ev => { const el = ev.target; if (el.matches && el.matches(".ed")) el.classList.toggle("filled", el.dataset.f === "kind" || el.dataset.f === "cat" || !!el.value); });
+  entry.addEventListener("keydown", ev => { if (ev.key === "Enter" && ev.target.matches && ev.target.matches("input.ed")) ev.target.blur(); });
   function onEdit(ev) {
     const el = ev.target, f = el.dataset.f, tr = el.closest && el.closest("tr[data-id]");
     if (!f || !tr) return;
@@ -371,18 +417,18 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
       refreshList();
     } else if (f === "dob") {
       const iso = parseDob(el.value);
-      if (iso === null) { r.dobRaw = el.value; } else { r.dob = iso; r.dobRaw = ""; el.value = toAu(iso); }
+      if (iso === null) r.dobRaw = el.value; else { r.dob = iso; r.dobRaw = ""; }
     } else {
       r[f] = el.value;
       if (f === "pos2" && el.value && !r.w1 && !r.w2) { r.w1 = "50"; r.w2 = "50"; }
       if (f === "afl" && r.cat && !r.pid) r.tie = CLUB_CODE[el.value] || r.tie || "";
       if (f === "cat" && el.value && !r.tie) r.tie = CLUB_CODE[r.afl] || "";
     }
-    syncRow(id); saveLocal(); queueSave("slots", id); renderLive();
+    syncRow(id); counts(); saveLocal(); queueSave("slots", id); renderLive();
   }
   entry.addEventListener("click", ev => {
     const c = ev.target.closest("button[data-clear]");
-    if (c) { const id = c.dataset.clear; clearPlayer(id); syncRow(id); refreshList(); saveLocal(); queueSave("slots", id); renderLive(); return; }
+    if (c) { const id = c.dataset.clear; clearPlayer(id); syncRow(id); counts(); refreshList(); saveLocal(); queueSave("slots", id); renderLive(); return; }
     const b = ev.target.closest("button[data-move]");
     if (b) startMove(b);
   });
@@ -398,8 +444,7 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
     const finish = commit => {
       if (done) return; done = true;
       const to = parseInt(inp.value, 10);
-      if (commit && to >= 1 && to <= max && to !== n) movePlayer(k, n, to);
-      else inp.replaceWith(btn);
+      if (commit && to >= 1 && to <= max && to !== n) movePlayer(k, n, to); else inp.replaceWith(btn);
     };
     inp.addEventListener("keydown", e => { if (e.key === "Enter") finish(true); if (e.key === "Escape") finish(false); });
     inp.addEventListener("blur", () => finish(true));
@@ -409,22 +454,20 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
     const lo = Math.min(from, to), hi = Math.max(from, to), seq = [];
     for (let n = lo; n <= hi; n++) seq.push(take(n));
     if (to < from) seq.unshift(seq.pop()); else seq.push(seq.shift());
-    for (let n = lo; n <= hi; n++) {
-      const id = ids[n - 1]; clearPlayer(id); Object.assign(row(id), seq[n - lo]); queueSave("slots", id);
-    }
+    for (let n = lo; n <= hi; n++) { const id = ids[n - 1]; clearPlayer(id); Object.assign(row(id), seq[n - lo]); queueSave("slots", id); }
     saveLocal(); renderTable(k); renderLive();
-    msg(`Moved to pick ${to}; picks ${lo}–${hi} shuffled.`);
+    const who = row(ids[to - 1]).name;
+    msg(`${who || "Pick"} moved from ${from} to ${to}. Picks ${lo}–${hi} shifted.`);
   }
 
   document.getElementById("fill").addEventListener("click", () => {
     const used = placed(); let n = 0;
     PROS.filter(p => p.rank && p.rank <= NAT && !used.has(p.id)).sort((a, b) => a.rank - b.rank).forEach(p => {
-      const id = "nd" + pad(p.rank), r = row(id);
-      if (r.name) return;
+      const id = "nd" + pad(p.rank); if (row(id).name) return;
       applyProspect(id, p); queueSave("slots", id); n++;
     });
     saveLocal(); renderTable("nd"); refreshList(); renderLive();
-    msg(n ? `Filled ${n} empty picks from the consensus rankings.` : "No empty picks matched a ranked prospect.");
+    msg(n ? `Filled ${n} empty picks from the consensus rankings.` : "Every ranked prospect is already placed, or their pick is taken.");
   });
   document.getElementById("add-open").addEventListener("click", () => {
     const id = "op" + pad(idsOf("op").length + 1);
@@ -434,9 +477,9 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
   let msgT; function msg(t) { const el = document.getElementById("toolmsg"); el.textContent = t; clearTimeout(msgT); msgT = setTimeout(() => { el.textContent = ""; }, 6000); }
 
   // ---------- quick lookup
-  const qSlot = document.getElementById("q-slot"), qBy = document.getElementById("q-by");
+  const qSlot = document.getElementById("q-slot"), qBy = document.getElementById("q-by"), lookup = document.getElementById("lookup"), lkT = document.getElementById("lk-toggle");
   qSlot.innerHTML = Array.from({ length: NAT }, (_, i) => opt("nd" + (i + 1), "Pick " + (i + 1), i === 0)).join("")
-    + opt("rd", "Rookie draft", false) + PATHS.map(([c, l]) => opt("op:" + c, l, false, PATH_NAME[c])).join("");
+    + opt("rd", "Rookie draft", false) + PATHS.map(([c, l]) => opt("op:" + c, PATH_NAME[c], false)).join("");
   function renderLookup() {
     const s = qSlot.value, by = parseInt(qBy.value, 10), age = by > 1900 ? Math.max(YEAR - by, 18) : 18;
     document.getElementById("q-out").innerHTML = POS.map(p => {
@@ -444,10 +487,16 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
       if (s.startsWith("nd")) v = natV0(p, age, parseInt(s.slice(2), 10));
       else if (s === "rd") v = D.rookie[p];
       else { const c = s.slice(3); v = c === "IND" ? D.pool_nd65 : D.pathways[c]; }
-      return `<div class="cell"><span>${PSHORT[p]}</span><b>${fmt(v)}</b></div>`;
+      return `<div class="lk-v"><span>${PSHORT[p]}</span><b>${fmt(v)}</b></div>`;
     }).join("");
   }
   qSlot.addEventListener("change", renderLookup); qBy.addEventListener("input", renderLookup);
+  function setLookup(open) {
+    lookup.dataset.open = open ? "1" : "0"; lkT.setAttribute("aria-expanded", String(open));
+    try { localStorage.setItem(LS_KEY + "-lookup", open ? "1" : "0"); } catch (e) { /* ignore */ }
+  }
+  lkT.addEventListener("click", () => setLookup(lookup.dataset.open !== "1"));
+  try { if (localStorage.getItem(LS_KEY + "-lookup") === "0") setLookup(false); } catch (e) { /* ignore */ }
 
   // ---------- live AFFL draft
   const lPos = document.getElementById("l-pos"), lSrc = document.getElementById("l-src");
@@ -469,20 +518,21 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
   }
   const nameCell = c => c.type === "draft"
     ? `<div class="plw"><span class="flagslot">${flagHtml(c.r)}</span><b>${esc(c.name)}</b>${badgeHtml(c.r)}</div>`
-    : `<div class="plw"><span class="flagslot"></span><b>${esc(c.name)}</b>${c.was ? `<span class="badge fa" title="Delisted by ${esc(c.was)}">AFFL delisted</span>` : ""}</div>`;
+    : `<div class="plw"><span class="flagslot"></span><b>${esc(c.name)}</b>${c.was ? `<span class="tag fa" title="Delisted by ${esc(c.was)}">AFFL delisted</span>` : ""}</div>`;
   function renderLive() {
     const all = candidates(), pos = lPos.value, src = lSrc.value;
     const avail = all.filter(c => !c.affl && (src === "all" || c.type === src) && (!pos || c.pos.includes(pos))).sort((a, b) => (b.v || 0) - (a.v || 0));
     document.getElementById("avail").innerHTML = avail.length ? avail.slice(0, 80).map((c, i) => `<tr>
-        <td>${i + 1}</td><td>${nameCell(c)}</td><td><span class="badge${c.type === "fa" ? " fa" : ""}">${esc(c.from)}</span></td>
-        <td>${esc(c.pos.map(p => PSHORT[p] || p).join(" / ") || "—")}</td><td class="r">${c.age == null ? "—" : c.age}</td>
+        <td class="r" style="padding-right:14px;color:var(--muted);font-weight:600">${i + 1}</td><td class="nm">${nameCell(c)}</td><td><span class="tag${c.type === "fa" ? " fa" : ""}">${esc(c.from)}</span></td>
+        <td style="font-weight:600;font-size:12.5px">${esc(c.pos.map(p => PSHORT[p] || p).join(" / ") || "—")}</td><td class="r">${c.age == null ? "—" : c.age}</td>
         <td class="v0 r">${fmt(c.v)}</td>
-        <td><select class="ed" data-t="${c.type}" data-id="${esc(c.id)}" aria-label="AFFL club for ${esc(c.name)}">${clubOpts(D.affl_clubs, "", "Assign…")}</select></td></tr>`).join("")
+        <td><select class="ed" data-t="${c.type}" data-id="${esc(c.id)}" aria-label="AFFL club for ${esc(c.name)}">${clubOpts(D.affl_clubs, "", "Assign to club…")}</select></td></tr>`).join("")
       : `<tr><td colspan="7" class="empty">Nobody left here. Enter draftees on the AFL draft tab, or change the filters.</td></tr>`;
     const taken = all.filter(c => c.affl).sort((a, b) => a.affl.localeCompare(b.affl) || (b.v || 0) - (a.v || 0));
+    document.getElementById("c-taken").textContent = taken.length ? `${taken.length} taken` : "";
     document.getElementById("taken").innerHTML = taken.length ? taken.map(c => `<tr>
-        <td>${nameCell(c)}</td><td>${esc(c.affl)}</td><td>${esc(c.from)}</td><td class="r">${fmt(c.v)}</td>
-        <td><button class="btn" data-undo="${c.type}" data-id="${esc(c.id)}">Undo</button></td></tr>`).join("")
+        <td class="nm" style="padding-left:14px">${nameCell(c)}</td><td style="font-weight:600">${esc(c.affl)}</td><td>${esc(c.from)}</td><td class="r">${fmt(c.v)}</td>
+        <td class="r"><button class="btn" data-undo="${c.type}" data-id="${esc(c.id)}">Undo</button></td></tr>`).join("")
       : `<tr><td colspan="5" class="empty">Nobody taken yet.</td></tr>`;
   }
   function assign(type, id, club) {
@@ -498,6 +548,7 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
   const tabs = { entry: document.getElementById("tab-entry"), live: document.getElementById("tab-live") };
   function show(which) {
     for (const k of Object.keys(tabs)) { tabs[k].setAttribute("aria-selected", String(k === which)); document.getElementById("view-" + k).hidden = k !== which; }
+    document.querySelectorAll("[data-entry-only]").forEach(b => { b.hidden = which !== "entry"; });
     if (which === "live") renderLive();
     try { localStorage.setItem(LS_KEY + "-tab", which); } catch (e) { /* ignore */ }
   }
@@ -525,18 +576,18 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
   document.getElementById("export").addEventListener("click", async () => {
     const text = csv();
     if (downloads) { try { await downloads.save({ filename: "affl_draft_2026.csv", data: text }); return; } catch (e) { if (e && e.code === "declined") return; } }
-    showCsv(text, "Downloads aren't available here. Copy this and paste it back to Claude.");
+    showCsv(text, "Downloads aren't available here. Copy this instead.");
   });
   document.getElementById("copy").addEventListener("click", async () => {
     const text = csv();
-    try { await navigator.clipboard.writeText(text); msg("CSV copied."); }
+    try { await navigator.clipboard.writeText(text); msg("CSV copied to the clipboard."); }
     catch (e) { showCsv(text, "Select all and copy."); const t = document.getElementById("csvtext"); t.focus(); t.select(); }
   });
   function showCsv(text, note) { document.getElementById("csvbox").hidden = false; document.getElementById("csvnote").textContent = note; document.getElementById("csvtext").value = text; }
 
   // ---------- sync with the artifact's database (fallback: this device only)
   const syncEl = document.getElementById("sync"), syncTxt = document.getElementById("synctext");
-  const setSync = (state, text) => { syncEl.className = "chip " + (state || ""); syncTxt.textContent = text; };
+  const setSync = (state, text) => { syncEl.className = "sync " + (state || ""); syncTxt.textContent = text; };
   let db = null, readOnly = false;
   const timers = {}, inflight = {}, again = {};
   function queueSave(coll, id) {
@@ -554,7 +605,7 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
     try { await db.collection(coll).doc(id).set(payload); if (!Object.keys(timers).length) setSync("ok", "All changes saved"); }
     catch (e) {
       if (e && e.code === "unavailable") setTimeout(() => flush(coll, id), 800 + Math.random() * 800);
-      else if (e && e.code === "invalid_argument") { readOnly = true; setSync("warn", "View only: changes stay on this device"); }
+      else if (e && e.code === "invalid_argument") { readOnly = true; setSync("warn", "View only"); }
       else setSync("warn", "Couldn't save online: kept on this device");
     } finally { inflight[key] = false; if (again[key]) { again[key] = false; flush(coll, id); } }
   }
@@ -572,19 +623,23 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
       } else { S.fa[d.id] = data; changed = true; }
     }
     if (rerender) renderTable("op");
-    if (changed) { saveLocal(); refreshList(); renderLive(); }
+    if (changed) { saveLocal(); counts(); refreshList(); renderLive(); }
   }
   async function connect() {
     if (!(window.claude && window.claude.use)) { setSync("warn", "Saved on this device only"); return; }
     try { downloads = await window.claude.use("downloads"); } catch (e) { downloads = null; }
     try { db = await window.claude.use("db"); } catch (e) { db = null; }
     if (!db) { setSync("warn", "Saved on this device only"); return; }
+    try {
+      const user = await window.claude.use("user");
+      if (user && !(await user.canEdit())) { readOnly = true; setSync("ok", "Viewing live"); }
+    } catch (e) { /* not told: keep inputs */ }
     const first = { slots: false, fa: false };
     const timer = setTimeout(() => { if (!first.slots) setSync("warn", "Can't reach saved data yet; working on this device"); }, 10000);
     for (const coll of ["slots", "fa"]) {
       db.collection(coll).onSnapshot(snap => {
         applySnapshot(coll, snap);
-        if (!snap.metadata.fromCache) { first[coll] = true; if (first.slots) { clearTimeout(timer); if (!Object.keys(timers).length) setSync("ok", "All changes saved"); } }
+        if (!snap.metadata.fromCache) { first[coll] = true; if (first.slots) { clearTimeout(timer); if (!Object.keys(timers).length && !readOnly) setSync("ok", "All changes saved"); } }
       }, () => { clearTimeout(timer); setSync("warn", "Saved on this device only"); });
     }
   }
