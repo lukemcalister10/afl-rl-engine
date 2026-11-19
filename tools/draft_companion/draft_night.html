@@ -1,14 +1,14 @@
 <title>Draft Night 2026</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <style>
 /* Layout: a single control bar (title, tabs, actions), a collapsible one-line lookup, then one ruled ledger per draft. */
 :root {
   --bg: #f4f4f1; --surface: #ffffff; --sunk: #f8f8f5; --ink: #1e2424; --ink-2: #3f4745; --muted: #6b7471; --faint: #9aa19e;
   --line: #e1e2dc; --line-2: #ecece7; --accent: #ae432d; --accent-ink: #ffffff; --accent-soft: #f7e7e2;
   --good: #2f7a4b; --warn: #a66b00; --warn-soft: #fbf1dc; --hover: #fbf6f4;
-  --head: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --head: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --body: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --badge: Arial, Helvetica, sans-serif;
   --shadow: 0 1px 2px rgba(25,33,31,.05), 0 1px 1px rgba(25,33,31,.03);
@@ -24,8 +24,8 @@
 [hidden] { display: none !important; }
 body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 14px; -webkit-font-smoothing: antialiased; }
 .wrap { padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); padding-block: 22px 48px; max-width: 1440px; margin: 0 auto; display: grid; gap: 22px; }
-.cap { font-family: var(--head); font-stretch: 85%; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; }
-h1 { margin: 0; font-size: 26px; line-height: 1; letter-spacing: .05em; }
+.cap { font-family: var(--head); text-transform: uppercase; letter-spacing: .025em; font-weight: 700; }
+h1 { margin: 0; font-size: 24px; line-height: 1; letter-spacing: .01em; font-weight: 800; }
 h2 { margin: 0; font-size: 13px; color: var(--ink-2); }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
 
@@ -54,12 +54,12 @@ h2 { margin: 0; font-size: 13px; color: var(--ink-2); }
 .lookup[data-open="0"] .lk-toggle svg { transform: rotate(-90deg); }
 .lk-body { display: flex; align-items: center; gap: 12px 18px; flex: 1 1 auto; flex-wrap: wrap; min-width: 0; }
 .lookup[data-open="0"] .lk-body { display: none; }
-.field { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.field { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted); font-weight: 600; letter-spacing: .03em; text-transform: uppercase; }
 .field select, .field input { font: 500 13px var(--body); color: var(--ink); background: var(--sunk); border: 1px solid var(--line); border-radius: 7px; padding: 6px 8px; }
 .lk-vals { display: grid; grid-template-columns: repeat(6, minmax(78px, 1fr)); flex: 1 1 520px; border-left: 1px solid var(--line-2); margin-left: 2px; min-width: 0; }
 .lk-v { display: grid; gap: 1px; padding: 0 14px; border-right: 1px solid var(--line-2); }
 .lk-v:last-child { border-right: 0; }
-.lk-v span { font-size: 10.5px; font-weight: 600; letter-spacing: .08em; color: var(--muted); }
+.lk-v span { font-size: 10.5px; font-weight: 600; letter-spacing: .04em; color: var(--muted); }
 .lk-v b { font: 700 19px var(--body); font-variant-numeric: tabular-nums; letter-spacing: -.01em; color: var(--ink); }
 
 /* ---- ledgers */
@@ -71,7 +71,7 @@ h2 { margin: 0; font-size: 13px; color: var(--ink-2); }
 table { border-collapse: separate; border-spacing: 0; width: 100%; table-layout: fixed; font-variant-numeric: tabular-nums; }
 table.nd { min-width: 1120px; } table.rd, table.op { min-width: 900px; } table.live { min-width: 740px; }
 th, td { padding: 0 6px; height: 40px; border-bottom: 1px solid var(--line-2); text-align: left; white-space: nowrap; vertical-align: middle; overflow: hidden; text-overflow: ellipsis; }
-th { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 2; height: 34px; background: var(--surface); border-bottom-color: var(--line); font: 600 10.5px var(--body); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+th { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 2; height: 34px; background: var(--surface); border-bottom-color: var(--line); font: 600 10.5px var(--body); text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
 th:first-child { border-top-left-radius: 12px; padding-left: 14px; } th:last-child { border-top-right-radius: 12px; }
 td:first-child { padding-left: 8px; }
 th.r, td.r { text-align: right; }
@@ -96,7 +96,7 @@ input.name::placeholder { font-weight: 400; font-size: 13.5px; }
 input[type="number"].ed { -moz-appearance: textfield; text-align: right; }
 input[type="number"].ed::-webkit-inner-spin-button, input[type="number"].ed::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 input.dob { font-size: 13px; color: var(--ink-2); }
-select.pos, select.cat, select.kind { font-weight: 600; font-size: 12.5px; letter-spacing: .03em; }
+select.pos, select.cat, select.kind { font-weight: 600; font-size: 12.5px; letter-spacing: .01em; }
 select.club { font-size: 13px; }
 .plw { display: flex; align-items: center; gap: 10px; min-width: 0; }
 .plw input.name { flex: 1 1 auto; min-width: 0; }
@@ -109,7 +109,7 @@ td.x, th.x { padding: 0; text-overflow: clip; text-align: center; }
 .state-flag { width: 32px; height: 18px; flex: none; object-fit: cover; display: block; border-radius: 4px; box-shadow: 0 1px 2px rgba(25,33,31,.16); }
 .club-badge { display: inline-flex; align-items: center; overflow: hidden; padding: 0; box-sizing: border-box; border: 1px solid #bbb9b1; border-radius: 4px; background: rgba(255,255,255,.64); color: #3f4745; min-height: 26px; font-family: var(--badge); line-height: 1; text-transform: uppercase; white-space: nowrap; flex: none; }
 .club-code { width: 34px; height: 25px; padding: 0; display: inline-flex; align-items: center; justify-content: center; font-size: .54rem; font-weight: 500; letter-spacing: .045em; box-sizing: border-box; }
-.club-type { padding: 0 8px; display: inline-flex; align-items: center; justify-content: center; font-size: .61rem; font-weight: 600; letter-spacing: .035em; }
+.club-type { width: 26px; padding: 0; display: inline-flex; align-items: center; justify-content: center; font-size: .61rem; font-weight: 600; letter-spacing: .035em; }
 .warn { flex: none; width: 18px; height: 18px; border-radius: 50%; background: var(--warn-soft); color: var(--warn); font: 700 11px var(--body); display: inline-flex; align-items: center; justify-content: center; cursor: help; }
 td.v0 { font: 700 14.5px var(--body); color: var(--accent); letter-spacing: -.01em; }
 td.alt { font-size: 12.5px; color: var(--muted); }
@@ -145,7 +145,6 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
       <button class="tab cap" role="tab" id="tab-live" aria-selected="false" aria-controls="view-live">Live AFFL draft</button>
     </div>
     <div class="actions">
-      <span class="toast" id="toolmsg" aria-live="polite"></span>
       <button class="btn" id="fill" data-entry-only>Fill picks from rankings</button>
       <button class="btn" id="add-open" data-entry-only>Add pathway slot</button>
       <button class="btn" id="copy">Copy CSV</button>
@@ -455,25 +454,21 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
     if (to < from) seq.unshift(seq.pop()); else seq.push(seq.shift());
     for (let n = lo; n <= hi; n++) { const id = ids[n - 1]; clearPlayer(id); Object.assign(row(id), seq[n - lo]); queueSave("slots", id); }
     saveLocal(); renderTable(k); renderLive();
-    const who = row(ids[to - 1]).name;
-    msg(`${who || "Pick"} moved from ${from} to ${to}. Picks ${lo}–${hi} shifted.`);
   }
 
   document.getElementById("fill").addEventListener("click", () => {
-    const used = placed(); let n = 0;
+    const used = placed();
     PROS.filter(p => p.rank && p.rank <= NAT && !used.has(p.id)).sort((a, b) => a.rank - b.rank).forEach(p => {
       const id = "nd" + pad(p.rank); if (row(id).name) return;
-      applyProspect(id, p); queueSave("slots", id); n++;
+      applyProspect(id, p); queueSave("slots", id);
     });
     saveLocal(); renderTable("nd"); refreshList(); renderLive();
-    msg(n ? `Filled ${n} empty picks from the consensus rankings.` : "Every ranked prospect is already placed, or their pick is taken.");
   });
   document.getElementById("add-open").addEventListener("click", () => {
     const id = "op" + pad(idsOf("op").length + 1);
     row(id).kind = "UNR"; saveLocal(); queueSave("slots", id); renderTable("op");
     const el = trOf(id); if (el) el.querySelector("input.name").focus();
   });
-  let msgT; function msg(t) { const el = document.getElementById("toolmsg"); el.textContent = t; clearTimeout(msgT); msgT = setTimeout(() => { el.textContent = ""; }, 6000); }
 
   // ---------- quick lookup
   const qSlot = document.getElementById("q-slot"), qBy = document.getElementById("q-by"), lookup = document.getElementById("lookup"), lkT = document.getElementById("lk-toggle");
@@ -578,7 +573,7 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
   });
   document.getElementById("copy").addEventListener("click", async () => {
     const text = csv();
-    try { await navigator.clipboard.writeText(text); msg("CSV copied to the clipboard."); }
+    try { await navigator.clipboard.writeText(text); const b = document.getElementById("copy"); b.textContent = "Copied"; setTimeout(() => { b.textContent = "Copy CSV"; }, 1500); }
     catch (e) { showCsv(text, "Select all and copy."); const t = document.getElementById("csvtext"); t.focus(); t.select(); }
   });
   function showCsv(text, note) { document.getElementById("csvbox").hidden = false; document.getElementById("csvnote").textContent = note; document.getElementById("csvtext").value = text; }
