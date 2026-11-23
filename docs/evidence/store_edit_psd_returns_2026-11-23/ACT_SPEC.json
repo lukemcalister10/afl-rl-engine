@@ -1,0 +1,352 @@
+{
+ "schema_version": 1,
+ "act_kind": "store-edit",
+ "act": "PSD RETURNS: Kallan Dawson (GWS rookie), Tyler Sellers (Essendon SSP), Nathan Kreuger (Essendon), Liam Jones (Gold Coast) and James Bell (GWS) un-retired with a 2026 season for the pre-season draft; Mitchell Knevitt (Richmond Tigers) and Steely Green (AFFL free agent) un-retired. Seven players appear on the board.",
+ "date": "2026-11-23",
+ "owner_word": "Owner, 2026-11-23: \"We also need to add some players to the pool for PSD: Liam Jones, James Bell, Dominic Bedendo, Nathan Kreuger, Alex Mirkov, Tyler Sellers, Kallan Dawson ... Can you find them, reactivate them, and put them in the draft night artifact?\"; \"Sellers is being added as a SSP player today. Jones, Kreuger and Bell are being added as first nations category B rookies, a new category, but I think we can classify them as SSP players for our purposes. All have AFL history, like Bedendo.\"; \"Sellers, Kreuger - Essendon; Jones - Gold Coast; Bell - GWS; Knevitt, still at Richmond, now Sydney IRL; Green - a selectable free agent now.\"",
+ "authority": "owner word on this act",
+ "prereg": {
+  "path": "docs/evidence/store_edit_psd_returns_2026-11-23/NOTE.md",
+  "board_before": "159d3972cdfa9b558b7a92547688192b",
+  "board_after": null,
+  "reference_board": null,
+  "kill_switch": null
+ },
+ "edit": {
+  "store": [
+   {
+    "key": "kallan-dawson",
+    "field": "scoring[2026]",
+    "add": {
+     "year": 2026,
+     "avg": 0.0,
+     "games": 0,
+     "pos": "KPD"
+    }
+   },
+   {
+    "key": "kallan-dawson",
+    "field": "_retired",
+    "old": true,
+    "new": false
+   },
+   {
+    "key": "kallan-dawson",
+    "field": "_last_listed",
+    "old": 2025,
+    "new": 2026
+   },
+   {
+    "key": "kallan-dawson",
+    "field": "eligibilities",
+    "add": "KPD"
+   },
+   {
+    "key": "tyler-sellers",
+    "field": "scoring[2026]",
+    "add": {
+     "year": 2026,
+     "avg": 0.0,
+     "games": 0,
+     "pos": "KPF"
+    }
+   },
+   {
+    "key": "tyler-sellers",
+    "field": "_retired",
+    "old": true,
+    "new": false
+   },
+   {
+    "key": "tyler-sellers",
+    "field": "_last_listed",
+    "old": 2024,
+    "new": 2026
+   },
+   {
+    "key": "tyler-sellers",
+    "field": "eligibilities",
+    "add": "KPF"
+   },
+   {
+    "key": "nathan-kreuger",
+    "field": "scoring[2026]",
+    "add": {
+     "year": 2026,
+     "avg": 0.0,
+     "games": 0,
+     "pos": "KPF"
+    }
+   },
+   {
+    "key": "nathan-kreuger",
+    "field": "_retired",
+    "old": true,
+    "new": false
+   },
+   {
+    "key": "nathan-kreuger",
+    "field": "_last_listed",
+    "old": 2024,
+    "new": 2026
+   },
+   {
+    "key": "nathan-kreuger",
+    "field": "eligibilities",
+    "add": "KPF"
+   },
+   {
+    "key": "liam-jones",
+    "field": "scoring[2026]",
+    "add": {
+     "year": 2026,
+     "avg": 0.0,
+     "games": 0,
+     "pos": "KPD"
+    }
+   },
+   {
+    "key": "liam-jones",
+    "field": "_retired",
+    "old": true,
+    "new": false
+   },
+   {
+    "key": "liam-jones",
+    "field": "_last_listed",
+    "old": 2025,
+    "new": 2026
+   },
+   {
+    "key": "liam-jones",
+    "field": "eligibilities",
+    "add": "KPD"
+   },
+   {
+    "key": "james-bell",
+    "field": "scoring[2026]",
+    "add": {
+     "year": 2026,
+     "avg": 0.0,
+     "games": 0,
+     "pos": "SF"
+    }
+   },
+   {
+    "key": "james-bell",
+    "field": "_retired",
+    "old": true,
+    "new": false
+   },
+   {
+    "key": "james-bell",
+    "field": "_last_listed",
+    "add": 2026
+   },
+   {
+    "key": "james-bell",
+    "field": "eligibilities",
+    "add": "SF"
+   },
+   {
+    "key": "mitchell-knevitt",
+    "field": "_retired",
+    "old": true,
+    "new": false
+   },
+   {
+    "key": "steely-green",
+    "field": "_retired",
+    "old": true,
+    "new": false
+   }
+  ],
+  "expected_movers": null,
+  "_doc_expected_movers": "Four rows appear on the active board (Bedendo from the back section at 48; Roarty 53; Purcell 108; Mirkov at his 2026 entry price). Flight 3 also showed 61 rows moving by exactly -1: the board is normalised to its pool (G[_PL_F]), so adding active rows re-scales every value by a hair and the rounding lands on 61 of them. Printed, not asserted (the dry run is the prediction of record)."
+ },
+ "identities": {
+  "moves": [
+   "store",
+   "board"
+  ],
+  "unmoved": [
+   "engine_head",
+   "rl_model",
+   "fv",
+   "config",
+   "register",
+   "as_of_round"
+  ]
+ },
+ "column": {
+  "id": "psd-returns-23-11",
+  "label": "23/11 PSD returns: Dawson, Sellers, Kreuger, Jones, Bell, Knevitt, Green un-retired (owner word)",
+  "after_round": 24
+ },
+ "lineage": {
+  "doc": "docs/evidence/store_edit_psd_returns_2026-11-23/NOTE.md",
+  "owner_ruling_id": [
+   "PSD_RETURNS_2026-11-23"
+  ],
+  "owner_ruling": "The owner's list of pre-season draft returns and the clubs they named are the roster facts.",
+  "authority": "owner word 2026-11-23",
+  "kind": "owner-store-edit",
+  "invariants": {}
+ },
+ "day0_rebase": {
+  "state": "off"
+ },
+ "evidence_dir": "docs/evidence/store_edit_psd_returns_2026-11-23",
+ "gates": [
+  {
+   "name": "release_manifest_check",
+   "argv": [
+    "python3",
+    "release_manifest_check.py"
+   ],
+   "must_contain": "PASS"
+  },
+  {
+   "name": "release_contract_check",
+   "argv": [
+    "python3",
+    "release_contract.py",
+    "check"
+   ],
+   "must_contain": "PASS"
+  },
+  {
+   "name": "acceptance_runner",
+   "argv": [
+    "python3",
+    "-m",
+    "acceptance.runner",
+    "--profile",
+    "in-transaction",
+    "--evidence",
+    "@EVIDENCE@"
+   ],
+   "must_contain": "GREEN"
+  },
+  {
+   "name": "movers_transition",
+   "argv": [
+    "python3",
+    "engine/rl_after/ingestion/test_movers_transition.py"
+   ]
+  },
+  {
+   "name": "finals_report",
+   "argv": [
+    "python3",
+    "engine/rl_after/ingestion/test_finals_report.py"
+   ]
+  },
+  {
+   "name": "movers_ui",
+   "argv": [
+    "node",
+    "ui/tests/movers.test.js"
+   ]
+  },
+  {
+   "name": "ui_222_items",
+   "argv": [
+    "node",
+    "ui/tests/ui_222_items.test.mjs"
+   ]
+  },
+  {
+   "name": "ui_defects_2026_08_21",
+   "argv": [
+    "node",
+    "ui/tests/ui_defects_2026-08-21.test.js"
+   ]
+  },
+  {
+   "name": "universe",
+   "argv": [
+    "node",
+    "ui/tests/universe.test.js"
+   ]
+  },
+  {
+   "name": "draftday",
+   "argv": [
+    "node",
+    "ui/tests/draftday.test.js"
+   ]
+  },
+  {
+   "name": "pickvalue",
+   "argv": [
+    "node",
+    "ui/tests/pickvalue.test.js"
+   ]
+  },
+  {
+   "name": "release_seam",
+   "argv": [
+    "node",
+    "ui/tests/release_seam.test.js"
+   ]
+  },
+  {
+   "name": "adoption_gate",
+   "argv": [
+    "node",
+    "ui/tests/adoption_gate.test.js"
+   ]
+  },
+  {
+   "name": "club_totals_parity",
+   "argv": [
+    "node",
+    "ui/tests/club_totals_parity.test.js"
+   ]
+  },
+  {
+   "name": "counting_rule",
+   "argv": [
+    "node",
+    "ui/tests/counting_rule.test.js"
+   ]
+  },
+  {
+   "name": "ownership_sidecar",
+   "argv": [
+    "node",
+    "ui/tests/ownership_sidecar.test.js"
+   ]
+  },
+  {
+   "name": "ownership_single_source",
+   "argv": [
+    "node",
+    "ui/tests/ownership_single_source.test.js"
+   ]
+  },
+  {
+   "name": "responsive_layout",
+   "argv": [
+    "node",
+    "ui/tests/responsive_layout.test.mjs"
+   ]
+  },
+  {
+   "name": "extract_seam",
+   "argv": [
+    "python3",
+    "ui/tests/extract_seam.test.py"
+   ]
+  },
+  {
+   "name": "club_curve_provenance",
+   "argv": [
+    "python3",
+    "ui/tests/club_curve_provenance.test.py"
+   ]
+  }
+ ],
+ "commit_message": "STORE: PSD returns \u2014 Dawson, Sellers, Kreuger, Jones, Bell, Knevitt, Green un-retired (owner word 2026-11-23)"
+}
