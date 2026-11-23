@@ -312,7 +312,7 @@ Oliver Wiltshire,Port Adelaide Power,G-FWD,GEE
 Patrick Dangerfield,Port Adelaide Power,G-FWD,GEE
 Sam De Koning,Port Adelaide Power,"G-DEF,K-DEF",GEE
 Tom Atkins,Port Adelaide Power,MID,GEE
-Mitchell Knevitt,Richmond Tigers,MID,
+Mitchell Knevitt,Richmond Tigers,MID,SYD
 George Stevens,St Kilda Saints,MID,
 Jacob Molier,St Kilda Saints,RUCK,GEE
 Lennox Hoffman,St Kilda Saints,G-DEF,GEE
@@ -555,7 +555,7 @@ Seth Campbell,St Kilda Saints,G-FWD,RIC
 Ben Miller,Sydney Swans,"G-DEF,K-DEF",RIC
 Jack Ross,Sydney Swans,"MID,G-FWD",RIC
 Kye Annand,Sydney Swans,"K-DEF,G-DEF",RIC
-Steely Green,Sydney Swans,G-FWD,
+Steely Green,Free Agents,G-FWD,RIC
 Tim Taranto,West Coast Eagles,MID,RIC
 Toby Nankervis,West Coast Eagles,RUCK,RIC
 Cooper Sharman,Adelaide Crows,"G-FWD,K-FWD",STK
@@ -807,3 +807,8 @@ Dominic Bedendo,Free Agents,G-FWD,FRE
 Alex Mirkov,Free Agents,RUCK,GWS
 Finnbarr Roarty,Free Agents,K-DEF,COL
 Ollie Purcell,Free Agents,G-DEF,HAW
+Kallan Dawson,Free Agents,K-DEF,GWS
+Tyler Sellers,Free Agents,K-FWD,ESS
+Nathan Kreuger,Free Agents,K-FWD,ESS
+Liam Jones,Free Agents,K-DEF,GCS
+James Bell,Free Agents,G-FWD,GWS
