@@ -532,7 +532,7 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
   function renderLive() {
     const all = candidates(), pos = lPos.value, src = lSrc.value;
     const avail = all.filter(c => !c.affl && (src === "all" || c.type === src) && (!pos || c.pos.includes(pos))).sort((a, b) => (b.v || 0) - (a.v || 0));
-    document.getElementById("avail").innerHTML = avail.length ? avail.slice(0, 80).map((c, i) => `<tr>
+    document.getElementById("avail").innerHTML = avail.length ? avail.map((c, i) => `<tr>
         <td class="r" style="padding-right:14px;color:var(--muted);font-weight:600">${i + 1}</td><td class="nm">${nameCell(c)}</td><td><span class="tag${c.type === "fa" ? " fa" : ""}">${esc(c.from)}</span></td>
         <td style="font-weight:600;font-size:12.5px">${esc(c.pos.map(p => PSHORT[p] || p).join(" / ") || "—")}</td><td class="r">${c.age == null ? "—" : c.age}</td>
         <td class="v0 r">${fmt(c.v)}</td>
