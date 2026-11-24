@@ -1,0 +1,349 @@
+swept 1 orphaned sandbox dir(s) from /tmp (0.2 MB reclaimed) — their owning processes are gone
+======================================================================================================
+LAND STORE-EDIT — BANFIELD AND STEVENS: Bailey Banfield (AFFL free agent) and George Stevens (St Kilda Saints) un-retired for the pre-season draft.
+  tree      : /home/user/afl-rl-engine
+  owner word: Owner, 2026-11-24: "Bailey Banfield and George Stevens need to be reactivated too"
+  prereg    : docs/evidence/store_edit_banfield_stevens_2026-11-24/NOTE.md   predicts board None
+  mode      : APPLY builder=real
+======================================================================================================
+
+--- STEP 0/9  preflight      clean tree, build lock, the restore point ---
+RL_/PAR_ environment  (none)
+build-lock: HELD by land-edit-344 (pid 344) — single writer for the shared workspace.
+base commit        fd9c2c951afc72a1bbb219eabd4437d1514a3b11
+board pin (before) e103dc19574d8cca4a9c02236b3d8214
+store pin (before) d1c23ba147c063e8b5df0ea22d9f7eaa
+restore point      40 carrier(s) captured, 40 present on disk
+    [preflight OK  0.09s]
+
+--- STEP 1/9  store_edit     THE SURGICAL STORE EDIT, applied in the work dir ---
+store BEFORE  d1c23ba147c063e8b5df0ea22d9f7eaa   (1986966 bytes)
+              == expected_boot.store, so the tree is the one this act was written for.
+THE EDIT — surgical, inside the named row's span; `old` asserted, never repaired; `add` inserted, never overwriting:
+    bailey-banfield              _retired           true -> false   (row span 673712..675002, at char 674403)
+    george-stevens               _retired           true -> false   (row span 187382..188112, at char 187681)
+store AFTER   37a0f805f417d8c8af34336d6c98594f   (1986968 bytes, +2)
+byte check: reversing every declared replacement (removing every added field, season and row) reproduces the store byte-for-byte — the ONLY bytes that differ are the declared values.
+WRITTEN and re-read: 2 edit(s) applied, 0 row(s) added, 2652 rows in the store (was 2652), every other row untouched.
+season clock  re-derived from the edited store by season_state.derive (the sole deriver)
+    source_store_md5  d1c23ba147c0 -> 37a0f805f417
+    FINALS HOLD: live store derives exposure_pace 0.955; the round-24 view (505 finals appearances subtracted) re-derives the held 0.909 exactly — held.
+    every derived VALUE asserted unchanged (10 field(s) checked); WRITTEN and re-read.
+    [store_edit OK  0.42s]
+
+--- STEP 2/9  build_proofs   bare build, predicted identity, switch leg, day-0 ---
+build         rc=0 board=3f3994306e49271ced07b87c09feb0e7  (521.4s)
+built FROM the edited store: sidecar source_md5 37a0f805f417 == the store this act wrote
+MOVERS — EVERY ONE, WITH VALUES  (82 of 1029 valued row(s) moved)
+    aaron-naughton               Aaron Naughton             1469 -> 1470   (+1)  [active]
+    aliir-aliir                  Aliir Aliir                772 -> 773   (+1)  [active]
+    bailey-banfield              Bailey Banfield            8 -> 13   (+5)  [active]
+    bailey-macdonald             Bailey Macdonald           121 -> 122   (+1)  [active]
+    bailey-smith                 Bailey Smith               5862 -> 5863   (+1)  [active]
+    beau-addinsall               Beau Addinsall             1214 -> 1215   (+1)  [active]
+    bodhi-uwland                 Bodhi Uwland               4026 -> 4027   (+1)  [active]
+    brent-daniels                Brent Daniels              1191 -> 1192   (+1)  [active]
+    caleb-windsor                Caleb Windsor              1035 -> 1036   (+1)  [active]
+    callum-wilkie                Callum Wilkie              3518 -> 3519   (+1)  [active]
+    charlie-curnow               Charlie Curnow             1278 -> 1279   (+1)  [active]
+    connor-rozee                 Connor Rozee               3107 -> 3108   (+1)  [active]
+    cooper-sharman               Cooper Sharman             467 -> 468   (+1)  [active]
+    darcy-cameron                Darcy Cameron              1524 -> 1525   (+1)  [active]
+    darcy-fogarty                Darcy Fogarty              748 -> 749   (+1)  [active]
+    darcy-wilson                 Darcy Wilson               2719 -> 2720   (+1)  [active]
+    dylan-moore                  Dylan Moore                1320 -> 1321   (+1)  [active]
+    dyson-sharp                  Dyson Sharp                3023 -> 3024   (+1)  [active]
+    ed-richards                  Ed Richards                3929 -> 3930   (+1)  [active]
+    errol-gulden                 Errol Gulden               7506 -> 7507   (+1)  [active]
+    finn-callaghan               Finn Callaghan             5325 -> 5326   (+1)  [active]
+    george-hewett                George Hewett              1774 -> 1775   (+1)  [active]
+    george-stevens               George Stevens             5 -> 141   (+136)  [active]
+    harley-reid                  Harley Reid                3812 -> 3813   (+1)  [active]
+    harry-mckay                  Harry McKay                1619 -> 1620   (+1)  [active]
+    harry-sheezel                Harry Sheezel              10880 -> 10881   (+1)  [active]
+    isaac-heeney                 Isaac Heeney               3676 -> 3677   (+1)  [active]
+    jack-ginnivan                Jack Ginnivan              2006 -> 2007   (+1)  [active]
+    jack-gunston                 Jack Gunston               626 -> 627   (+1)  [active]
+    jack-ison                    Jack Ison                  421 -> 422   (+1)  [active]
+    jack-ross                    Jack Ross                  2355 -> 2356   (+1)  [active]
+    jack-sinclair                Jack Sinclair              3089 -> 3090   (+1)  [active]
+    jacob-van-rooyen             Jacob Van Rooyen           1811 -> 1812   (+1)  [active]
+    jai-serong                   Jai Serong                 1079 -> 1080   (+1)  [active]
+    jake-bowey                   Jake Bowey                 3937 -> 3938   (+1)  [active]
+    jason-horne-francis          Jason Horne-Francis        5370 -> 5371   (+1)  [active]
+    jaspa-fletcher               Jaspa Fletcher             2445 -> 2446   (+1)  [active]
+    jeremy-cameron               Jeremy Cameron             669 -> 670   (+1)  [active]
+    joe-richards                 Joe Richards               924 -> 925   (+1)  [active]
+    joel-freijah                 Joel Freijah               2802 -> 2803   (+1)  [active]
+    john-noble                   John Noble                 2295 -> 2296   (+1)  [active]
+    josh-treacy                  Josh Treacy                4832 -> 4834   (+2)  [active]
+    jye-amiss                    Jye Amiss                  1313 -> 1314   (+1)  [active]
+    kieren-briggs                Kieren Briggs              1940 -> 1941   (+1)  [active]
+    lachlan-ash                  Lachlan Ash                5281 -> 5282   (+1)  [active]
+    levi-ashcroft                Levi Ashcroft              3440 -> 3441   (+1)  [active]
+    lloyd-meek                   Lloyd Meek                 1459 -> 1460   (+1)  [active]
+    logan-morris                 Logan Morris               2855 -> 2857   (+2)  [active]
+    luke-jackson                 Luke Jackson               10011 -> 10013   (+2)  [active]
+    luke-nankervis               Luke Nankervis             444 -> 445   (+1)  [active]
+    matt-rowell                  Matt Rowell                4801 -> 4802   (+1)  [active]
+    mattaes-phillipou            Mattaes Phillipou          1708 -> 1709   (+1)  [active]
+    max-hall                     Max Hall                   2721 -> 2722   (+1)  [active]
+    max-heath                    Max Heath                  513 -> 514   (+1)  [active]
+    max-holmes                   Max Holmes                 7276 -> 7277   (+1)  [active]
+    mitch-georgiades             Mitch Georgiades           1534 -> 1535   (+1)  [active]
+    mitchito-owens               Mitchito Owens             2049 -> 2050   (+1)  [active]
+    nasiah-wanganeen-milera      Nasiah Wanganeen-Milera    9214 -> 9215   (+1)  [active]
+    nicholas-martin              Nicholas Martin            3796 -> 3797   (+1)  [active]
+    nick-blakey                  Nick Blakey                3979 -> 3980   (+1)  [active]
+    nick-daicos                  Nick Daicos                10371 -> 10372   (+1)  [active]
+    ollie-dempsey                Ollie Dempsey              2376 -> 2377   (+1)  [active]
+    paul-curtis                  Paul Curtis                1494 -> 1495   (+1)  [active]
+    phoenix-gothard              Phoenix Gothard            1544 -> 1545   (+1)  [active]
+    riley-thilthorpe             Riley Thilthorpe           4311 -> 4313   (+2)  [active]
+    rory-lobb                    Rory Lobb                  287 -> 288   (+1)  [active]
+    ryan-maric                   Ryan Maric                 1357 -> 1358   (+1)  [active]
+    ryley-sanders                Ryley Sanders              3503 -> 3504   (+1)  [active]
+    sam-darcy                    Sam Darcy                  5264 -> 5266   (+2)  [active]
+    sam-de-koning                Sam De Koning              867 -> 868   (+1)  [active]
+    sam-flanders                 Sam Flanders               2504 -> 2505   (+1)  [active]
+    sam-lalor                    Sam Lalor                  3406 -> 3407   (+1)  [active]
+    shannon-neale                Shannon Neale              2096 -> 2097   (+1)  [active]
+    shaun-mannagh                Shaun Mannagh              913 -> 914   (+1)  [active]
+    tom-green                    Tom Green                  5118 -> 5119   (+1)  [active]
+    tom-gross                    Tom Gross                  396 -> 397   (+1)  [active]
+    tom-powell                   Tom Powell                 1770 -> 1771   (+1)  [active]
+    tristan-xerri                Tristan Xerri              6894 -> 6895   (+1)  [active]
+    will-ashcroft                Will Ashcroft              7170 -> 7171   (+1)  [active]
+    willem-duursma               Willem Duursma             3491 -> 3492   (+1)  [active]
+    zachary-merrett              Zachary Merrett            2346 -> 2347   (+1)  [active]
+    zane-duursma                 Zane Duursma               412 -> 413   (+1)  [active]
+pool (sum of active v)  673644 -> 673883  (+239)
+edit.expected_movers is not declared: the movers above are PRINTED and asserted against nothing. Declaring them makes each one a falsifier.
+NO PREREG BOARD PREDICTION IS DECLARED (prereg.board_after is null). This act's prediction of record is its DRY RUN; the assertions made here are internal consistency only — the board was built FROM the edited store (proved above), and it moved if and only if this act declared that it would.
+day-0 re-base : OFF (default). No day-0 reference is regenerated by this landing.
+installed     board + both sidecars + the generator copy (4 files, lockstep)
+    [build_proofs OK  521.49s]
+
+--- STEP 3/9  pins           expected_boot + both sidecars + the generator copy ---
+published board  3f3994306e49271ced07b87c09feb0e7
+generator board  3f3994306e49271ced07b87c09feb0e7
+both sidecars agree with the board beside them and with the live store. OK.
+COMPUTED from the tree (never typed): store        = 37a0f805f417d8c8af34336d6c98594f
+  expected_boot store        d1c23ba147c0 -> 37a0f805f417   (old value occurs 1 time(s))
+COMPUTED from the tree (never typed): board        = 3f3994306e49271ced07b87c09feb0e7
+  expected_boot board        e103dc19574d -> 3f3994306e49   (old value occurs 1 time(s))
+fields that moved in expected_boot.json: ['board', 'store']
+must-not-move list: 6 checked, 0 moved
+byte check: the ONLY bytes that differ are the declared pin values.
+WRITTEN and re-read.
+    [pins OK  0.02s]
+
+--- STEP 4/9  lineage        the out-of-round column and the append-only entry ---
+column        banfield-stevens-24-11 registered (dry_run=False)
+ASSERTED: the newest stored point is this column, naming the live board 3f3994306e49271ced07b87c09feb0e7
+chain OK: register tail destination == this entry's source on board and store
+append-only OK: 39 prior entries byte-verbatim; top-level baseline 06d8af60b679a12db07c064c60c065f9 / v2.11-present-lens-baseline UNMOVED
+MOVED by this transition: ['board', 'store'] (of 11 identities)
+re-read OK: round-trips at indent=1; prior entries still byte-verbatim.
+    [lineage OK  0.47s]
+
+--- STEP 5/9  contract       restamp_dynamic + the bake-lane repin + check ---
+contract seal self-consistent before the act: a72f427e4018
+  config       d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4   == expected_boot
+  engine_head  b8152511821fd710b4b7b530b822213e   == expected_boot
+  rl_model     ad48eb299b01639b62d397c4c0016dd4   == expected_boot
+  fv           80e63a6b8ea26b56e8aa60c9c1cf028156881fc6259d8a4fd8ebbad40963a5cd   == expected_boot
+  store        37a0f805f417d8c8af34336d6c98594f   == expected_boot
+  board        3f3994306e49271ced07b87c09feb0e7   == expected_boot
+WRITER 1: release_contract.restamp_dynamic(root, as_of_round=24, store, board, season_state)
+   restamp_dynamic returned seal 15f7419591b3
+WRITER 2: the bake-lane identities restamp_dynamic does not touch (release_contract.restamp_bake_identities — shared with tools/restamp)
+  contract_sha256             15f7419591b3 -> 15f7419591b3
+  frozen fields asserted unmoved: 10 checked, 0 moved
+RE-STAMPED, re-read, and release_contract.py check PASSES.
+    [contract OK  0.07s]
+
+--- STEP 6/9  ui             ALL SEVEN UI writers, and the identity read back out ---
+BEFORE  working d6ac953269b9cc54ac4df0c55e14cb41  release-block=True
+BEFORE  public  faf75b9addb211b31a0128554067d57f  release-block=False
+BEFORE  mirror  2053727f341bfe8a48b0e8466acabc7b  register=39 entr(ies)
+BEFORE  movers  69b6b883e5c7d9166eb0a88559f07fe3  model_changes=28 boundar(ies)
+BEFORE  owners 4a0ff218b0938f76e90fde63de3fdd12  pinned board=e103dc19 store=d1c23ba1
+BEFORE  picks  4ba1df55f893e4fe79fa61e57218e3aa  stamped board=e103dc19 store=d1c23ba1 R24
+BEFORE  draft  1582b8239f7ec3ead9f56ae071c4c781  stamped store=d1c23ba1
+WRITER 0/9: ui/tools/gen_v0_sidecar.py  (sidecar sig 9ee9266e, landed store 9ee9266e; 2 landed board row(s) not in the sidecar, e.g. bailey-banfield, george-stevens — regenerated BEFORE writer 1 joins it)
+  v0 sidecar | board 3f399430 store 37a0f805 | rows 710 = pick-slot 502 + entry-anchor 208 + unrecoverable 0
+  wrote ui/data_aux/v0.js (45341 bytes)
+  carrier moved: ui/data_aux/v0.js  8fa9ef1486ae -> 3b69f59bd957
+WRITER 1/8: ui/tools/extract_board_view.py
+  working after writer 1: f425daa7884bcc2f3d648fac53a1d4c6   release-block=True   <-- DROPPED, as it always is
+WRITER 2/8: round_movers.inject_release_contract(bundle, root, 24)
+  release block: {"as_of_round": 24, "balanced_board_md5": "06d8af60b679a12db07c064c60c065f9", "board": "3f3994306e49271ced07b87c09feb0e7", "config": "d4f3c3cf8707350dd4c48d7a78ed85c4207cd33d274daf74bb9b99760afadae4",
+WRITER 3/8: ui/tools/generate_movers_transition.py  (the lineage projection — supervisor ruling on F-9)
+  wrote: ui/data/movers_transition.js (136698 bytes)
+  register entries mirrored: 40
+  drift guard: mirror OK — committed == projected (136698 bytes, 40 register entries)
+  mirror register == lineage register: 40 entr(ies), EQUAL  (the F-9 predicate holds)
+WRITER 4/8: ui/tools/rebuild_movers_derived.py  (points / values / model_changes — supervisor ruling on F-10)
+  wrote: ui/data/movers.js (7542376 -> 6977874 bytes, latest report R29)
+  derived blocks changed: points, values, model_changes
+  drift guard: derived blocks OK — committed == rebuilt (6977874 bytes, latest report R29)
+  shipped model_changes == live-derived: 29 boundar(ies), EQUAL  (the F-10 predicate holds)
+WRITER 4b/8: the retro CONTROL first (engine-free: banked r24 vs the live board)
+  CONTROL NOT ASSERTED: the newest banked round is r29 and it differs from the live board on 179 value(s) (9 missing). The retrospective is BEHIND the live board — a week has been applied to the store that is not yet banked. Re-price it with pass_retro_series.py (or bank the newest week from the landed board) to make this a PASS again. The series is still emitted from what IS banked, because dropping banked history is worse than carrying it one week short; see CONTROL_FAIL.json for the rows.
+WRITER 4b/8: emit_retro_series.py  (the R14-R24 walk-forward series writer 4 drops)
+  retro-r28   804 players  board in-proce
+  retro-r29   804 players  board in-proce
+  emitted 16 retro points covering up to 804 players -> ui/data/movers.js
+  retro series present: 16 points, retro-r14 .. retro-r29 (every banked round, no gap)
+WRITER 5/8: ui/tools/ingest_inputs.py --mirror-only  (the ownership mirror, re-pinned to the landed board + store)
+  LIVE MIRROR    — 710 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /home/user/afl-rl-engine/ui/data/ownership.js
+  MIRROR-ONLY    — the club-valuation bundle was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
+  drift guard: MIRROR DRIFT GUARD — ui/data/ownership.js is byte-identical to what this tree projects (66274 bytes).
+  mirror pin == the landed identity: board 3f399430 store 37a0f805 R24, 710 player(s) mirrored (pin() would ACTIVATE it)
+WRITER 6/8: ui/tools/ingest_inputs.py --clubs-only  (the picks bundle, re-stamped to the landed board + store)
+  CLEAN INGEST — 240 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: /home/user/afl-rl-engine/ui/data/club_valuation.js
+  CLUBS-ONLY     — the ownership mirror was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
+  drift guard: PICKS DRIFT GUARD — ui/data/club_valuation.js is byte-identical to what this tree projects (58558 bytes).
+  picks stamp == the landed identity: board 3f399430 store 37a0f805 R24, 240 pick(s) priced off 1c3b22d1 (pin() would ACCEPT it)
+WRITER 7/8: ui/tools/gen_draft_outcomes.py  (the draft outcome record, re-stamped to the landed store)
+  rows            1568 national-draft selections
+  never played    226  (14.4%) — the population is not survivor-filtered
+  maturity rule   4 completed seasons (measured: 99% of 1044 eventual debutants)
+  draft stamp == the landed store 37a0f805: 1568 selections, 226 never played, maturity 4 season(s) (pin() would ACCEPT it)
+WRITER 8/8: ui/tools/gen_v0_sidecar.py  (the v0 sidecar, re-stamped to the landed board)
+  v0 sidecar | board 3f399430 store 37a0f805 | rows 710 = pick-slot 502 + entry-anchor 208 + unrecoverable 0
+  wrote ui/data_aux/v0.js (45341 bytes)
+  v0 sidecar == the landed board 3f399430 (the card's v0 column will resolve)
+WRITER 9/9: ui/tools/extract_positions.py  (the positions map, re-stamped to the landed roster + sheet)
+  carrier moved: ui/app/positions_data.js  418a61869c09 -> a2c18a33a1f6
+AFTER   working f425daa7884bcc2f3d648fac53a1d4c6  release-block=True
+AFTER   public  3babc07293021ba56e6dec5b509f25d6  release-block=False
+AFTER   movers  219ced3d86289a8823b4221108f8980e  MOVED 69b6b883e5c7 -> 219ced3d8628, tracking the register append
+AFTER   mirror  d23cf44ec3a9c94aa6cb5da2b0fc5cc6  MOVED 2053727f341b -> d23cf44ec3a9, tracking the lineage append
+AFTER   owners 7b7cd022a141ae680e7854e104cbf245  MOVED 4a0ff218b093 -> 7b7cd022a141, tracking the landed board + store
+AFTER   picks  13c2b6bab2699c8343eb3c8af9e2f02b  MOVED 4ba1df55f893 -> 13c2b6bab269, tracking the landed board + store
+AFTER   draft  8d421568a8bccf25141d8638ac96898e  MOVED 1582b8239f7e -> 8d421568a8bc, tracking the landed store
+  stamp.board_md5            3f3994306e49271ced07b87c09feb0e7   OK
+  stamp.board                3f3994306e49271ced07b87c09feb0e7   OK
+  stamp.srcmd5               3f3994306e49271ced07b87c09feb0e7   OK
+  stamp.store_md5            37a0f805f417d8c8af34336d6c98594f   OK
+  stamp.balanced_board_md5   f4126b629ea4d4135b4c0ad0f1b29508   OK
+  stamp.asOfRound            24                                 OK
+THE HTML APP'S EMBEDDED BOARD IDENTITY IS 3f3994306e49271ced07b87c09feb0e7. All seven writers ran; the release block is back, the reader can see the transition that produced this board, the ownership mirror is pinned to it rather than to the store it replaced, and the pick surface is stamped to it rather than to the board before it.
+    [ui OK  465.02s]
+    build-lock: RELEASED after 'ui' — the remaining steps write nothing and the one gate that builds takes the lock itself.
+
+--- STEP 7/9  state          docs/STATE.md regenerated from the carriers (3c) ---
+state: docs/STATE.md md5 3277803cf8103296c37f1921f63b6255 (moved); regeneration verified
+    [state OK  0.43s]
+
+--- STEP 8/9  gates          the landing gate set, verdicts off exit codes ---
+  release_manifest_check   PASS   exit=0  (0.1s)
+  release_contract_check   PASS   exit=0  (0.1s)
+  acceptance_runner        PASS   exit=0  (13.6s)
+  movers_transition        PASS   exit=0  (2.0s)
+  finals_report            PASS   exit=0  (0.6s)
+  movers_ui                PASS   exit=0  (0.6s)
+  ui_222_items             PASS   exit=0  (13.5s)
+  ui_defects_2026_08_21    PASS   exit=0  (0.4s)
+  universe                 PASS   exit=0  (0.3s)
+  draftday                 PASS   exit=0  (0.4s)
+  pickvalue                PASS   exit=0  (0.1s)
+  release_seam             PASS   exit=0  (0.1s)
+  adoption_gate            PASS   exit=0  (0.0s)
+  club_totals_parity       PASS   exit=0  (0.2s)
+  counting_rule            PASS   exit=0  (0.0s)
+  ownership_sidecar        PASS   exit=0  (0.3s)
+  ownership_single_source  PASS   exit=0  (0.1s)
+  responsive_layout        PASS   exit=0  (17.1s)
+  extract_seam             PASS   exit=0  (0.6s)
+  club_curve_provenance    PASS   exit=0  (1.8s)
+    [gates OK  51.93s]
+
+--- STEP 9/9  commit         ONE commit, explicit paths only ---
+explicit paths (63):
+    data/expected_boot.json
+    data/release_contract.json
+    data/release_lineage.json
+    data/rl_build/rl_app_data.json
+    data/rl_build/rl_app_data.json.srcmd5
+    data/season_state.json
+    docs/STATE.md
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/PREFLIGHT.json
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/build_LANDING.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_acceptance_runner.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_acceptance_runner_evidence/boot_guard_checkout.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_acceptance_runner_evidence/config_manifest.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_acceptance_runner_evidence/dial_coverage.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_acceptance_runner_evidence/doc_lint.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_acceptance_runner_evidence/inbox_manifest.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_acceptance_runner_evidence/mirror_parity.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_acceptance_runner_evidence/oneliner_f1_lens.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_acceptance_runner_evidence/oneliner_gamma.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_acceptance_runner_evidence/oneliner_r14_restore.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_acceptance_runner_evidence/register_form_index.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_acceptance_runner_evidence/register_form_pen.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_acceptance_runner_evidence/release_contract_seal.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_acceptance_runner_evidence/release_manifest.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_acceptance_runner_evidence/rulebook_lint.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_acceptance_runner_evidence/ruled_red_ledger.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_acceptance_runner_evidence/ruling_config.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_acceptance_runner_evidence/state_file.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_acceptance_runner_evidence/store_coherence_six_way.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_adoption_gate.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_club_curve_provenance.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_club_totals_parity.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_counting_rule.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_draftday.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_extract_seam.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_finals_report.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_movers_transition.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_movers_ui.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_ownership_sidecar.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_ownership_single_source.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_pickvalue.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_release_contract_check.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_release_manifest_check.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_release_seam.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_responsive_layout.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_ui_222_items.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_ui_defects_2026_08_21.txt
+    docs/evidence/store_edit_banfield_stevens_2026-11-24/gate_universe.txt
+    docs/evidence/walkforward_retro_2026-08-29/CONTROL_FAIL.json
+    engine/rl_after/ingestion/pos_rank_history.json
+    engine/rl_after/ingestion/rank_history.json
+    engine/rl_after/ingestion/value_history.json
+    engine/rl_after/rl_app_data.json
+    engine/rl_after/rl_app_data.json.srcmd5
+    engine/rl_after/rl_model_data.json
+    ui/app/positions_data.js
+    ui/data/board_view_public.js
+    ui/data/board_view_working.js
+    ui/data/club_valuation.js
+    ui/data/movers.js
+    ui/data/movers_transition.js
+    ui/data/ownership.js
+    ui/data_aux/draft_outcomes.js
+    ui/data_aux/v0.js
+committed 98acae3630cf
+    [commit OK  0.56s]
+
+--- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
+    preflight          0.09s  OK
+    store_edit         0.42s  OK
+    build_proofs     521.49s  OK
+    pins               0.02s  OK
+    lineage            0.47s  OK
+    contract           0.07s  OK
+    ui               465.02s  OK
+    state              0.43s  OK
+    gates             51.93s  OK
+    commit             0.56s  OK
+    TOTAL           1040.50s
+
+======================================================================================================
+LANDING COMPLETE — every step's postcondition held.
+SOAK: hand-verification stands until the owner's word per act type (G3.iv).
+======================================================================================================
+work dir discarded (the landing completed): /tmp/landing_work_344
