@@ -1,17 +1,17 @@
 {
  "meta": {
-  "generated": "2026-11-18T22:57:06Z",
+  "generated": "2026-11-24T02:23:50Z",
   "generator": "tools/draft_companion/extract_v0_tables.py",
-  "board": "159d3972cdfa9b558b7a92547688192b",
-  "store": "6d70c6b93e111c9c1eb398bf8e37295f",
+  "board": "e103dc19574d8cca4a9c02236b3d8214",
+  "store": "d1c23ba147c063e8b5df0ea22d9f7eaa",
   "engine_head": "b8152511821fd710b4b7b530b822213e",
   "draft_year": 2026,
   "board_factor": 1.0524,
   "curve_last_pick": 64,
   "age_rule": "draft age = max(draft year - birth year, 18); surface clamps 16..30",
   "proof": {
-   "national_rows_matched": 498,
-   "pool_rows_matched": 203,
+   "national_rows_matched": 501,
+   "pool_rows_matched": 207,
    "age_rule_years": 21
   }
  },
@@ -5501,6 +5501,17 @@
    "age": 22
   },
   {
+   "key": "steely-green",
+   "name": "Steely Green",
+   "afl_club": "Richmond",
+   "pos": "Fwd",
+   "elig": [
+    "SF"
+   ],
+   "v": 114,
+   "age": 22
+  },
+  {
    "key": "zak-evans",
    "name": "Zak Evans",
    "afl_club": "Gold Coast",
@@ -5711,6 +5722,17 @@
    "age": 25
   },
   {
+   "key": "tyler-sellers",
+   "name": "Tyler Sellers",
+   "afl_club": "Essendon",
+   "pos": "Key Fwd",
+   "elig": [
+    "KPF"
+   ],
+   "v": 71,
+   "age": 24
+  },
+  {
    "key": "maurice-rioli-1",
    "name": "Maurice Rioli",
    "afl_club": "Richmond",
@@ -5899,6 +5921,17 @@
    "age": 23
   },
   {
+   "key": "kallan-dawson",
+   "name": "Kallan Dawson",
+   "afl_club": "GWS",
+   "pos": "Key Def",
+   "elig": [
+    "KPD"
+   ],
+   "v": 28,
+   "age": 28
+  },
+  {
    "key": "charlie-spargo",
    "name": "Charlie Spargo",
    "afl_club": "North Melbourne",
@@ -5932,6 +5965,17 @@
    "age": 27
   },
   {
+   "key": "nathan-kreuger",
+   "name": "Nathan Kreuger",
+   "afl_club": "Essendon",
+   "pos": "Key Fwd",
+   "elig": [
+    "KPF"
+   ],
+   "v": 17,
+   "age": 27
+  },
+  {
    "key": "laitham-vandermeer",
    "name": "Laitham Vandermeer",
    "afl_club": "Western Bulldogs",
@@ -5954,6 +5998,17 @@
    "age": 33
   },
   {
+   "key": "liam-jones",
+   "name": "Liam Jones",
+   "afl_club": "Gold Coast",
+   "pos": "Key Def",
+   "elig": [
+    "KPD"
+   ],
+   "v": 8,
+   "age": 36
+  },
+  {
    "key": "darragh-joyce",
    "name": "Darragh Joyce",
    "afl_club": "North Melbourne",
@@ -5963,6 +6018,17 @@
    ],
    "v": 6,
    "age": 29
+  },
+  {
+   "key": "james-bell",
+   "name": "James Bell",
+   "afl_club": "GWS",
+   "pos": "Fwd",
+   "elig": [
+    "SF"
+   ],
+   "v": 6,
+   "age": 27
   },
   {
    "key": "daniel-butler",

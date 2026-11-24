@@ -1,5 +1,5 @@
 {
- "taken": "2026-11-23T23:39:01Z",
+ "taken": "2026-11-24T02:24:00Z",
  "source": "artifact 4EimaHZxtidm27JGiiUarn db",
  "slots": {
   "nd01": {
@@ -671,11 +671,47 @@
    "w1": "70",
    "w2": "30"
   },
-  "nd63": {},
-  "nd64": {},
-  "nd65": {},
-  "nd66": {},
-  "nd67": {},
+  "nd63": {
+   "affl": "Essendon Bombers",
+   "dob": "2008-03-29",
+   "name": "Billy Wigmore",
+   "pid": "P0010",
+   "pos1": "SD",
+   "state": "VM"
+  },
+  "nd64": {
+   "affl": "Essendon Bombers",
+   "dob": "2008-02-26",
+   "name": "Marlon Neocleous",
+   "pid": "P0060",
+   "pos1": "SF",
+   "state": "VC"
+  },
+  "nd65": {
+   "affl": "West Coast Eagles",
+   "cat": "NGA",
+   "dob": "2008-02-27",
+   "name": "Tanner Armstrong",
+   "pid": "P0067",
+   "pos1": "MID",
+   "state": "VC",
+   "tie": "RIC",
+   "w1": "100"
+  },
+  "nd66": {
+   "affl": "West Coast Eagles",
+   "dob": "2003-05-13",
+   "name": "Brandon Leary",
+   "pos1": "SF"
+  },
+  "nd67": {
+   "affl": "St Kilda Saints",
+   "dob": "2008-06-04",
+   "name": "Memphis Webb",
+   "pid": "P0061",
+   "pos1": "MID",
+   "state": "SA"
+  },
   "nd68": {},
   "nd69": {},
   "nd70": {},
@@ -701,11 +737,23 @@
   }
  },
  "fa": {
+  "alex-mirkov": {
+   "affl": "Richmond Tigers"
+  },
   "callum-brown-ire": {
    "affl": "Collingwood Magpies"
   },
+  "dominic-bedendo": {
+   "affl": "Essendon Bombers"
+  },
+  "harry-cunningham": {
+   "affl": "Brisbane Lions"
+  },
   "isaac-keeler": {
    "affl": "Adelaide Crows"
+  },
+  "jack-buller": {
+   "affl": "St Kilda Saints"
   },
   "liam-reidy": {
    "affl": "Fremantle Dockers"
