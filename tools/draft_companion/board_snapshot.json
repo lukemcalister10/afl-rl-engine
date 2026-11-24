@@ -1,5 +1,5 @@
 {
- "taken": "2026-11-24T02:24:00Z",
+ "taken": "2026-11-24T05:03:25Z",
  "source": "artifact 4EimaHZxtidm27JGiiUarn db",
  "slots": {
   "nd01": {
@@ -743,11 +743,23 @@
   "callum-brown-ire": {
    "affl": "Collingwood Magpies"
   },
+  "corey-wagner": {
+   "affl": "Brisbane Lions"
+  },
   "dominic-bedendo": {
    "affl": "Essendon Bombers"
   },
+  "finn-maginness": {
+   "affl": "Fremantle Dockers"
+  },
+  "finnegan-davis": {
+   "affl": "North Melbourne Kangaroos"
+  },
   "harry-cunningham": {
    "affl": "Brisbane Lions"
+  },
+  "hunter-clark": {
+   "affl": "North Melbourne Kangaroos"
   },
   "isaac-keeler": {
    "affl": "Adelaide Crows"
@@ -755,8 +767,23 @@
   "jack-buller": {
    "affl": "St Kilda Saints"
   },
+  "james-bell": {
+   "affl": "Carlton Blues"
+  },
+  "kallan-dawson": {
+   "affl": "Geelong Cats"
+  },
+  "koby-evans": {
+   "affl": "North Melbourne Kangaroos"
+  },
+  "lance-collard": {
+   "affl": "Western Bulldogs"
+  },
   "liam-reidy": {
    "affl": "Fremantle Dockers"
+  },
+  "nathan-kreuger": {
+   "affl": "North Melbourne Kangaroos"
   },
   "ned-bowman": {
    "affl": "Hawthorn Hawks"
@@ -764,8 +791,20 @@
   "oscar-berry": {
    "affl": "Port Adelaide Power"
   },
+  "patrick-snell": {
+   "affl": "Essendon Bombers"
+  },
   "riley-hamilton": {
    "affl": "Brisbane Lions"
+  },
+  "tim-membrey": {
+   "affl": "Sydney Swans"
+  },
+  "tom-doedee": {
+   "affl": "North Melbourne Kangaroos"
+  },
+  "tyler-sellers": {
+   "affl": "Western Bulldogs"
   },
   "will-mclachlan": {
    "affl": "Western Bulldogs"

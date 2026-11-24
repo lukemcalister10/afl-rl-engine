@@ -1,17 +1,17 @@
 {
  "meta": {
-  "generated": "2026-11-24T02:23:50Z",
+  "generated": "2026-11-24T05:03:10Z",
   "generator": "tools/draft_companion/extract_v0_tables.py",
-  "board": "e103dc19574d8cca4a9c02236b3d8214",
-  "store": "d1c23ba147c063e8b5df0ea22d9f7eaa",
+  "board": "3f3994306e49271ced07b87c09feb0e7",
+  "store": "0946f15c4302476e1f192744d0adcaa7",
   "engine_head": "b8152511821fd710b4b7b530b822213e",
   "draft_year": 2026,
   "board_factor": 1.0524,
   "curve_last_pick": 64,
   "age_rule": "draft age = max(draft year - birth year, 18); surface clamps 16..30",
   "proof": {
-   "national_rows_matched": 501,
-   "pool_rows_matched": 207,
+   "national_rows_matched": 502,
+   "pool_rows_matched": 208,
    "age_rule_years": 21
   }
  },
@@ -5457,6 +5457,17 @@
    "age": 23
   },
   {
+   "key": "george-stevens",
+   "name": "George Stevens",
+   "afl_club": "Geelong",
+   "pos": "Mid",
+   "elig": [
+    "MID"
+   ],
+   "v": 141,
+   "age": 21
+  },
+  {
    "key": "rhys-unwin",
    "name": "Rhys Unwin",
    "afl_club": "Essendon",
@@ -5985,6 +5996,17 @@
    ],
    "v": 17,
    "age": 27
+  },
+  {
+   "key": "bailey-banfield",
+   "name": "Bailey Banfield",
+   "afl_club": "Fremantle",
+   "pos": "Def",
+   "elig": [
+    "SD"
+   ],
+   "v": 13,
+   "age": 28
   },
   {
    "key": "joel-hamling",

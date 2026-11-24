@@ -12,11 +12,14 @@ data = json.load(open(os.path.join(HERE, 'v0_tables.json')))
 bv = open(os.path.join(ROOT, 'ui', 'data', 'board_view_working.js'), encoding='utf-8').read()
 bvo = json.loads(bv[bv.index('{', bv.index('=')):bv.rindex('}') + 1])
 dl = set(json.load(open(os.path.join(HERE, 'affl_delisted.json')))['keys'])
+# the AFL club comes from the store: the board carries the club it was BUILT with, so an ownership-courier club
+# change (identity only, no board build) would otherwise show the old club until the next board build.
+club_of = {r['key']: r.get('afl_club') for r in json.load(open(os.path.join(ROOT, 'engine', 'rl_after', 'rl_model_data.json')))}
 seen, fas = set(), []
 for p in bvo['players']:
     if (p.get('affl_team') or '') == 'Free Agents' or p.get('key') in dl:
         seen.add(p.get('key'))
-        fas.append({'key': p.get('key'), 'name': p.get('name'), 'afl_club': p.get('afl_club'), 'pos': p.get('pos'),
+        fas.append({'key': p.get('key'), 'name': p.get('name'), 'afl_club': club_of.get(p.get('key')) or p.get('afl_club'), 'pos': p.get('pos'),
                     'elig': p.get('elig'), 'v': p.get('v'), 'age': p.get('age'),
                     'was': p.get('affl_team') if p.get('key') in dl else None})
 missing = sorted(dl - seen)
