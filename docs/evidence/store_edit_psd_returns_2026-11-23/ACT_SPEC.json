@@ -3,12 +3,12 @@
  "act_kind": "store-edit",
  "act": "PSD RETURNS: Kallan Dawson (GWS rookie), Tyler Sellers (Essendon SSP), Nathan Kreuger (Essendon), Liam Jones (Gold Coast) and James Bell (GWS) un-retired with a 2026 season for the pre-season draft; Mitchell Knevitt (Richmond Tigers) and Steely Green (AFFL free agent) un-retired. Seven players appear on the board.",
  "date": "2026-11-23",
- "owner_word": "Owner, 2026-11-23: \"We also need to add some players to the pool for PSD: Liam Jones, James Bell, Dominic Bedendo, Nathan Kreuger, Alex Mirkov, Tyler Sellers, Kallan Dawson ... Can you find them, reactivate them, and put them in the draft night artifact?\"; \"Sellers is being added as a SSP player today. Jones, Kreuger and Bell are being added as first nations category B rookies, a new category, but I think we can classify them as SSP players for our purposes. All have AFL history, like Bedendo.\"; \"Sellers, Kreuger - Essendon; Jones - Gold Coast; Bell - GWS; Knevitt, still at Richmond, now Sydney IRL; Green - a selectable free agent now.\"",
+ "owner_word": "Owner, 2026-11-23: \"We also need to add some players to the pool for PSD: Liam Jones, James Bell, Dominic Bedendo, Nathan Kreuger, Alex Mirkov, Tyler Sellers, Kallan Dawson ... Can you find them, reactivate them, and put them in the draft night artifact?\"; \"Sellers is being added as a SSP player today. Jones, Kreuger and Bell are being added as first nations category B rookies, a new category, but I think we can classify them as SSP players for our purposes. All have AFL history, like Bedendo.\"; \"Sellers, Kreuger - Essendon; Jones - Gold Coast; Bell - GWS; Knevitt, still at Richmond, now Sydney IRL; Green - a selectable free agent now.\" Owner, 2026-11-24, on the dry run's movers: \"Yes, Knevitt and Green should be reactivated. Knevitt was never inactive - he was on Richmond's list in 2026 (AFFL) and was retained through the drafts.\"",
  "authority": "owner word on this act",
  "prereg": {
   "path": "docs/evidence/store_edit_psd_returns_2026-11-23/NOTE.md",
   "board_before": "159d3972cdfa9b558b7a92547688192b",
-  "board_after": null,
+  "board_after": "9f8ff91d99983c1364cabe575614fa9a",
   "reference_board": null,
   "kill_switch": null
  },

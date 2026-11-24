@@ -21,3 +21,9 @@ The sheet, register and the store's afl_club/affl_team were carried by the owner
 ## Movers
 Seven rows appear on the active board; the rest of the board re-scales by rounding only (pool normalisation,
 as in the roster-returns act). The dry run is the prediction of record.
+
+## Dry run (2026-11-24) and owner word
+Board 159d3972 → 9f8ff91d, store 4c61f352 → e8dd5c5b; 25 of 1029 valued rows move: the seven (Sellers 11→71,
+Dawson 10→28, Kreuger 5→19, Jones 10→8, Bell new at 6, Knevitt 17→193, Green 4→114) and 18 rounding movers
+(−4..+5). Pool 673,209 → 673,646. Owner: "Yes, Knevitt and Green should be reactivated. Knevitt was never inactive -
+he was on Richmond's list in 2026 (AFFL) and was retained through the drafts." board_after is pinned to the dry run.
