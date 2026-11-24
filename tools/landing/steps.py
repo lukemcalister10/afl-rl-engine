@@ -2379,9 +2379,20 @@ def ui(ctx):
     finally:
         sys.path.pop(0)
     have_sig = str(_do_stamp(v0side_early).get('entryInputsSig') or '')
-    if have_sig != want_sig:
-        ctx.log('WRITER 0/9: ui/tools/gen_v0_sidecar.py  (the act moved an entry-price input: sidecar sig %s, '
-                'landed store %s — regenerated BEFORE writer 1 joins it)' % (have_sig[:8] or '-', want_sig[:8]))
+    # The signature covers every store row, retired or not, so an act that brings a retired row back
+    # onto the board leaves it unchanged while the sidecar (active rows only) misses the new row. The
+    # PSD returns act of 2026-11-24 (seven rows un-retired) was refused at ui_defects for exactly that.
+    try:
+        _act = {r.get('key') for r in json.load(open(_p(ctx, 'data', 'rl_build', 'rl_app_data.json'),
+                                                     encoding='utf-8')).get('active') or []}
+        _uncovered = sorted(_act - set((_js_obj(v0side_early).get('byKey') or {}).keys()))
+    except (OSError, ValueError):
+        _uncovered = ['(sidecar unreadable)']
+    if have_sig != want_sig or _uncovered:
+        ctx.log('WRITER 0/9: ui/tools/gen_v0_sidecar.py  (sidecar sig %s, landed store %s; %d landed board row(s) '
+                'not in the sidecar%s — regenerated BEFORE writer 1 joins it)'
+                % (have_sig[:8] or '-', want_sig[:8], len(_uncovered),
+                   (', e.g. ' + ', '.join(_uncovered[:3])) if _uncovered else ''))
         v0_b0 = md5(v0side_early)
         rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'gen_v0_sidecar.py')], timeout=3600)
         if rc != 0:
@@ -2409,7 +2420,18 @@ def ui(ctx):
         rel = rm.inject_release_contract(bundle, ctx.root, int(boot['as_of_round']))
         ctx.log('  release block: %s' % json.dumps(rel, sort_keys=True)[:200])
     else:
-        ctx.log('WRITER 2/8: SKIPPED BY FAULT INJECTION — the trap is live in this transaction.')
+        # Since 2026-10-14 writer 1 writes the release block itself, so skipping writer 2 alone moved
+        # nothing and this fault could no longer be caught (the self-test refused every landing). The
+        # fault now also removes the block writer 1 wrote: the bundle writer 2 exists to repair.
+        with open(bundle, encoding='utf-8') as fh:
+            _txt = fh.read()
+        _i, _j = _txt.index('{'), _txt.rindex('}')
+        _obj = json.loads(_txt[_i:_j + 1])
+        (_obj.get('stamp') or {}).pop('release', None)
+        with open(bundle, 'w', encoding='utf-8') as fh:
+            fh.write(_txt[:_i] + json.dumps(_obj, ensure_ascii=False, separators=(',', ':')) + _txt[_j + 1:])
+        ctx.log('WRITER 2/8: SKIPPED BY FAULT INJECTION, and the release block writer 1 wrote removed — '
+                'the trap is live in this transaction.')
 
     mirror_before = md5(mirror)
     ctx.log('WRITER 3/8: ui/tools/generate_movers_transition.py  '

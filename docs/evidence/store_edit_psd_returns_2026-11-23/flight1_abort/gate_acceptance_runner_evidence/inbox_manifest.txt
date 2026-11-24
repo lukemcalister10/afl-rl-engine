@@ -1,0 +1,8 @@
+$ python3 tools/inbox_manifest.py check
+(cwd /home/user/afl-rl-engine)
+
+inbox_manifest: 2 archived file(s), 0 problem(s), 2 stale generated file(s)
+  STALE   docs/inputs/incoming/MANIFEST.md — regenerate with tools/inbox_manifest.py write
+  STALE   docs/inputs/incoming/manifest.json — regenerate with tools/inbox_manifest.py write
+
+[exit 1]

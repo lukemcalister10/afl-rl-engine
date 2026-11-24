@@ -156,6 +156,9 @@ TARGETS = (
     ("board_view_public", BVP_REL),
     ("ownership_sidecar", OWNERSHIP_REL),
     ("club_valuation", CLUBVAL_REL),
+    ("draft_outcomes", os.path.join("ui", "data_aux", "draft_outcomes.js")),   # 2026-11-24: pinned to the
+    ("positions_map", os.path.join("ui", "app", "positions_data.js")),        # store / the sheet; both
+    # went stale on the 2026-11-23 apply and the next landing's self-test refused the tree for it.
     ("v0_sidecar", V0_REL),   # 2026-10-14: MD.v0 refuses a sidecar whose store stamp is not the loaded
     # store; the courier moved the store on 2026-10-13 and left this stamp behind (ui_defects red on
     # main until the next landing regenerated it). Restamped here, under the entry-inputs signature.
@@ -934,6 +937,11 @@ def apply(root=None, verbose=True):
         _run([sys.executable, os.path.join(ws, "ui", "tools", "ingest_inputs.py")], cwd=ws,
              env={"RL_OSA_SKIP": "1"}, label="ingest_inputs")
         out("  [T8] ownership.js (generated mirror) + club_valuation.js regenerated from the store")
+        _run([sys.executable, os.path.join(ws, "ui", "tools", "gen_draft_outcomes.py")], cwd=ws, env={},
+             label="gen_draft_outcomes")
+        _run([sys.executable, os.path.join(ws, "ui", "tools", "extract_positions.py")], cwd=ws, env={},
+             label="extract_positions")
+        out("  [T8b] draft_outcomes.js + positions_data.js regenerated from the store and the sheet")
 
         # T9 overlay validation
         _validate_overlay(ws, plan, out)

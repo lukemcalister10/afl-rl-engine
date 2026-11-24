@@ -1,0 +1,142 @@
+{
+  "byte_exact": true,
+  "commits_rewound": [],
+  "error": "4 of 20 gate(s) did not pass. ALL of them are listed \u2014 fix them together, because the next flight costs a full build.\n\n--- gate acceptance_runner (exit 1); 'GREEN' absent from output\nror_parity            /home/user/afl-rl-engine/docs/evidence/store_edit_psd_returns_2026-11-23/gate_acceptance_runner_evidence/mirror_parity.txt\n  dial_coverage            /home/user/afl-rl-engine/docs/evidence/store_edit_psd_returns_2026-11-23/gate_acceptance_runner_evidence/dial_coverage.txt\n  oneliner_gamma           /home/user/afl-rl-engine/docs/evidence/store_edit_psd_returns_2026-11-23/gate_acceptance_runner_evidence/oneliner_gamma.txt\n  oneliner_r14_restore     /home/user/afl-rl-engine/docs/evidence/store_edit_psd_returns_2026-11-23/gate_acceptance_runner_evidence/oneliner_r14_restore.txt\n  oneliner_f1_lens         /home/user/afl-rl-engine/docs/evidence/store_edit_psd_returns_2026-11-23/gate_acceptance_runner_evidence/oneliner_f1_lens.txt\n  register_form            /home/user/afl-rl-engine/docs/evidence/store_edit_psd_returns_2026-11-23/gate_acceptance_runner_evidence/register_form_index.txt\n  state_file               /home/user/afl-rl-engine/docs/evidence/store_edit_psd_returns_2026-11-23/gate_acceptance_runner_evidence/state_file.txt\n\nAGGREGATE  17 checks  |  PASS 15  FAIL 2  BLOCKED 0  RULED-RED 0\nVERDICT    RED \u2014 2 gating failure(s): inbox_manifest, oneliner_r14_restore\n\n    raw output: /home/user/afl-rl-engine/docs/evidence/store_edit_psd_returns_2026-11-23/gate_acceptance_runner_evidence\n\n--- gate ui_222_items (exit 1)\nnode:internal/modules/cjs/loader:1430\n  const err = new Error(message);\n              ^\n\nError: Cannot find module 'playwright-core'\nRequire stack:\n- /home/user/afl-rl-engine/ui/tests/ui_222_items.test.mjs\n    at Function._resolveFilename (node:internal/modules/cjs/loader:1430:15)\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1040:19)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1045:22)\n    at Function._load (node:internal/modules/cjs/loader:1216:25)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19)\n    at Module.require (node:internal/modules/cjs/loader:1527:12)\n    at require (node:internal/modules/helpers:147:16)\n    at file:///home/user/afl-rl-engine/ui/tests/ui_222_items.test.mjs:24:22\n    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26) {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: [ '/home/user/afl-rl-engine/ui/tests/ui_222_items.test.mjs' ]\n}\n\nNode.js v22.23.5\n\n    raw output: /home/user/afl-rl-engine/docs/evidence/store_edit_psd_returns_2026-11-23/gate_ui_222_items.txt\n\n--- gate ui_defects_2026_08_21 (exit 1)\nthe 2024 cohort carries draft year 2025 \u2014 the clock rule, on real rows\n  [PASS] a null age filter matches everything\n  [PASS] an exact age matches\n  [PASS] \u2026and only that age\n  [PASS] the 20-and-under band matches 19\n  [PASS] \u2026and not 21\n  [PASS] the 29-and-over band matches 34\n  [PASS] a row with NO age drops out while an age filter is on, rather than being bucketed\n  [PASS] the bands are well-formed and cover the range in order\n  [PASS] a null eligibility filter matches everything\n  [PASS] a dual player matches his KPF eligibility\n  [PASS] \u2026AND his MID eligibility\n  [PASS] a player without the eligibility does not match\n  [PASS] an empty eligibility set matches nothing\n  [PASS] \u2026and so does an absent one\n  [PASS] every shipped row carries an eligibility set\n  [PASS] and the board really has dual-eligible players (167) \u2014 the case the modelling Position axis cannot answer\n  [PASS] \"eligible to play KPF now\" is a superset of \"modelled as KPF\"\n  [PASS] the snapshot carries all five surviving filters, so Back restores the board you were on\n  [PASS] \u2026and restore round-trips them\n\n  ------------------------------------------------------------------------\nUI ACT 2026-08-21: 2 FAIL / 180\n\n    raw output: /home/user/afl-rl-engine/docs/evidence/store_edit_psd_returns_2026-11-23/gate_ui_defects_2026_08_21.txt\n\n--- gate responsive_layout (exit 1)\nnode:internal/modules/cjs/loader:1430\n  const err = new Error(message);\n              ^\n\nError: Cannot find module 'playwright-core'\nRequire stack:\n- /home/user/afl-rl-engine/ui/tests/responsive_layout.test.mjs\n    at Function._resolveFilename (node:internal/modules/cjs/loader:1430:15)\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1040:19)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1045:22)\n    at Function._load (node:internal/modules/cjs/loader:1216:25)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19)\n    at Module.require (node:internal/modules/cjs/loader:1527:12)\n    at require (node:internal/modules/helpers:147:16)\n    at file:///home/user/afl-rl-engine/ui/tests/responsive_layout.test.mjs:31:22\n    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26) {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: [ '/home/user/afl-rl-engine/ui/tests/responsive_layout.test.mjs' ]\n}\n\nNode.js v22.23.5\n\n    raw output: /home/user/afl-rl-engine/docs/evidence/store_edit_psd_returns_2026-11-23/gate_responsive_layout.txt",
+  "failed_step": "gates",
+  "restore_point": {
+    "data/expected_boot.json": "732373b77c16a4dd85276e1319b9071a",
+    "data/release_contract.json": "105d8f819caf48980a039cbde2594608",
+    "data/release_lineage.json": "8c87733254d6880d6ef1705c32a6a105",
+    "data/rl_build/rl_app_data.json": "159d3972cdfa9b558b7a92547688192b",
+    "data/rl_build/rl_app_data.json.srcmd5": "bda68d3e6f5267107974fa175c3d758d",
+    "data/season_state.json": "e5cc0cbb7de8b0ab7f6d21ad73ba5348",
+    "data/sheet_pins.json": "226b73ff64e6a6967103bfee788848a0",
+    "docs/STATE.md": "b32fec1700f7c0b02ca551258d633e40",
+    "docs/evidence/walkforward_retro_2026-08-29/CONTROL_FAIL.json": "49e8317fa257fcdbe84698d36fefb137",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r14.json": "6d68ed07fd02b5ad90b61af5789ed507",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r15.json": "1c268118a8d0737faa1ef53dc0340cda",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r16.json": "9cc8de979974e8fe93d5b817748b20cc",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r17.json": "883649ce700a611926ca3558e6f05a2c",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r18.json": "d64df0627312d9970f0cb3df6b451058",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r19.json": "db887e07047c9885f5f530ca1479646d",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r20.json": "c7ab631d8e11ecaac8093c3ae87881da",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r21.json": "265688755d05ddd416d8f7b3bcaa9e0f",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r22.json": "8799915d3dd6f6eb3c4c88f5db3342da",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r23.json": "b49802755f2cbeaacbf29e62bb25d5c2",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r24.json": "af6e688187df9cd1245f0c99d166cd3e",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r25.json": "a179b3799f8b251994d0dc7442ca4240",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r26.json": "7744e66db5d722fa3c8949601d609e36",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r27.json": "b07bd899afe8b4dd7c8b550007ac0118",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r28.json": "3c0ebb05d48282462f72e999c31721d7",
+    "docs/evidence/walkforward_retro_2026-08-29/values_r29.json": "e48c1b70a9a67b68d800fd3cf63597fe",
+    "engine/rl_after/ingestion/pos_rank_history.json": "07f53f85a44b1c9ce9e6d80d82b92739",
+    "engine/rl_after/ingestion/rank_history.json": "3f65176c6557ca3217e4af599a852c77",
+    "engine/rl_after/ingestion/value_history.json": "2ed09d9a09c694119cab218b4d77c003",
+    "engine/rl_after/rl_app_data.json": "159d3972cdfa9b558b7a92547688192b",
+    "engine/rl_after/rl_app_data.json.srcmd5": "bda68d3e6f5267107974fa175c3d758d",
+    "engine/rl_after/rl_model_data.json": "4c61f3528b3f1bcbf8a29914bfd2194f",
+    "ui/app/positions_data.js": "08574309e7c122eced0d3e94425e299e",
+    "ui/data/board_view_public.js": "a95aa0b100222d8a3cd52ac7370545d1",
+    "ui/data/board_view_working.js": "71bb1fb9d5042e72f76cb57378ad78cf",
+    "ui/data/club_valuation.js": "db50ed42b771d0564ebb3ec20b8fb0b5",
+    "ui/data/movers.js": "aa2c19ed3b298e6e4041f41e144a4ee4",
+    "ui/data/movers_transition.js": "94b92acc53acfa03fbf66862bbbc9ca6",
+    "ui/data/ownership.js": "7ed04f3640aa977b49fe4691579cda35",
+    "ui/data_aux/draft_outcomes.js": "1b3a754cb3390e6229189efe09fa2b67",
+    "ui/data_aux/v0.js": "f1e2c0864abdb7aadc7ae6b274bb8674"
+  },
+  "restored": [
+    {
+      "action": "rewrite",
+      "path": "data/expected_boot.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "data/release_contract.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "data/release_lineage.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "data/rl_build/rl_app_data.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "data/rl_build/rl_app_data.json.srcmd5"
+    },
+    {
+      "action": "rewrite",
+      "path": "data/season_state.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "docs/STATE.md"
+    },
+    {
+      "action": "rewrite",
+      "path": "docs/evidence/walkforward_retro_2026-08-29/CONTROL_FAIL.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "engine/rl_after/ingestion/pos_rank_history.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "engine/rl_after/ingestion/rank_history.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "engine/rl_after/ingestion/value_history.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "engine/rl_after/rl_app_data.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "engine/rl_after/rl_app_data.json.srcmd5"
+    },
+    {
+      "action": "rewrite",
+      "path": "engine/rl_after/rl_model_data.json"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/app/positions_data.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data/board_view_public.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data/board_view_working.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data/club_valuation.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data/movers.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data/movers_transition.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data/ownership.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data_aux/draft_outcomes.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data_aux/v0.js"
+    }
+  ]
+}
