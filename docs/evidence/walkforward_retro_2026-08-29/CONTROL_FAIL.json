@@ -35,7 +35,7 @@
   ],
   "zak-butters": [
    6214,
-   6220
+   6221
   ],
   "max-holmes": [
    7269,
@@ -79,7 +79,7 @@
   ],
   "mac-andrew": [
    3870,
-   3882
+   3878
   ],
   "lachlan-ash": [
    5278,
@@ -155,7 +155,7 @@
   ],
   "noah-mraz": [
    817,
-   811
+   812
   ],
   "logan-morris": [
    2856,
@@ -175,7 +175,7 @@
   ],
   "callum-wilkie": [
    3510,
-   3522
+   3518
   ],
   "hugo-garcia": [
    2790,
@@ -219,7 +219,7 @@
   ],
   "connor-o-sullivan": [
    2593,
-   2578
+   2583
   ],
   "sam-berry": [
    2784,
@@ -275,7 +275,7 @@
   ],
   "reuben-ginbey": [
    2259,
-   2256
+   2257
   ],
   "jaspa-fletcher": [
    2446,
@@ -307,7 +307,7 @@
   ],
   "josh-worrell": [
    2935,
-   2936
+   2937
   ],
   "tanner-bruhn": [
    1941,
@@ -363,7 +363,7 @@
   ],
   "josh-battle": [
    1763,
-   1769
+   1767
   ],
   "karl-worner": [
    1492,
@@ -415,7 +415,7 @@
   ],
   "harris-andrews": [
    1563,
-   1568
+   1567
   ],
   "darcy-cameron": [
    1525,
@@ -491,7 +491,7 @@
   ],
   "tom-mccartin": [
    1392,
-   1397
+   1395
   ],
   "brent-daniels": [
    1186,
@@ -511,7 +511,7 @@
   ],
   "jacob-weitering": [
    1190,
-   1194
+   1193
   ],
   "adam-cerra": [
    1059,
@@ -547,7 +547,7 @@
   ],
   "daniel-turner": [
    1721,
-   1724
+   1723
   ],
   "paul-curtis": [
    1529,
@@ -571,7 +571,7 @@
   ],
   "mark-keane": [
    1527,
-   1520
+   1522
   ],
   "mason-redman": [
    946,
@@ -579,7 +579,7 @@
   ],
   "aliir-aliir": [
    771,
-   773
+   772
   ],
   "cooper-sharman": [
    468,
@@ -611,7 +611,7 @@
   ],
   "sam-taylor": [
    1147,
-   1141
+   1143
   ],
   "kade-chandler": [
    1080,
@@ -643,7 +643,7 @@
   ],
   "samuel-collins": [
    590,
-   592
+   591
   ],
   "wil-powell": [
    805,
@@ -696,10 +696,6 @@
   "jai-serong": [
    1080,
    1079
-  ],
-  "cooper-lord": [
-   1199,
-   1198
   ],
   "tom-papley": [
    515,
@@ -785,10 +781,6 @@
    163,
    160
   ],
-  "jake-lever": [
-   202,
-   201
-  ],
   "oscar-steene": [
    464,
    463
@@ -810,6 +802,11 @@
   "alex-mirkov",
   "finnbarr-roarty",
   "ollie-purcell",
-  "dominic-bedendo"
+  "tyler-sellers",
+  "kallan-dawson",
+  "dominic-bedendo",
+  "liam-jones",
+  "james-bell",
+  "nathan-kreuger"
  ]
 }
