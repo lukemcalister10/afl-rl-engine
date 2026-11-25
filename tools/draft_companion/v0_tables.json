@@ -1,9 +1,9 @@
 {
  "meta": {
-  "generated": "2026-11-24T05:03:10Z",
+  "generated": "2026-11-25T02:58:35Z",
   "generator": "tools/draft_companion/extract_v0_tables.py",
-  "board": "3f3994306e49271ced07b87c09feb0e7",
-  "store": "0946f15c4302476e1f192744d0adcaa7",
+  "board": "32660fb4cef76b1d543ab45d54d75bf1",
+  "store": "98e1573f4290e374e202c6e8dad7c4e7",
   "engine_head": "b8152511821fd710b4b7b530b822213e",
   "draft_year": 2026,
   "board_factor": 1.0524,
@@ -11,7 +11,7 @@
   "age_rule": "draft age = max(draft year - birth year, 18); surface clamps 16..30",
   "proof": {
    "national_rows_matched": 502,
-   "pool_rows_matched": 208,
+   "pool_rows_matched": 209,
    "age_rule_years": 21
   }
  },
@@ -6000,7 +6000,7 @@
   {
    "key": "bailey-banfield",
    "name": "Bailey Banfield",
-   "afl_club": "Fremantle",
+   "afl_club": "Essendon",
    "pos": "Def",
    "elig": [
     "SD"

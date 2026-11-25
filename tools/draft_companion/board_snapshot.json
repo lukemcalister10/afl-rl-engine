@@ -1,5 +1,5 @@
 {
- "taken": "2026-11-24T05:03:25Z",
+ "taken": "2026-11-25T02:58:52Z",
  "source": "artifact 4EimaHZxtidm27JGiiUarn db",
  "slots": {
   "nd01": {
@@ -651,8 +651,8 @@
    "dob": "2008-04-26",
    "name": "Koby LeCras",
    "pid": "P0052",
-   "pos1": "MID",
-   "pos2": "KPF",
+   "pos1": "KPF",
+   "pos2": "MID",
    "state": "WA",
    "w1": "50",
    "w2": "50"
@@ -734,14 +734,112 @@
    "pos1": "SF",
    "state": "AL",
    "tie": "COL"
+  },
+  "rd03": {
+   "affl": "Hawthorn Hawks",
+   "afl": "Western Bulldogs",
+   "cat": "NGA",
+   "dob": "2001-11-10",
+   "name": "Cooper Craig-Peters",
+   "pos1": "MID",
+   "tie": "WBD"
+  },
+  "rd04": {
+   "affl": "Fremantle Dockers",
+   "afl": "Carlton",
+   "cat": "NGA",
+   "dob": "2007-11-24",
+   "name": "Jai Leach",
+   "pos1": "KPF",
+   "tie": "CAR"
+  },
+  "rd05": {
+   "affl": "Melbourne Demons",
+   "afl": "Fremantle",
+   "cat": "NGA",
+   "dob": "2008-04-01",
+   "name": "Finlay Yeo",
+   "pid": "P0023",
+   "pos1": "SF",
+   "state": "WA",
+   "tie": "FRE"
+  },
+  "rd06": {
+   "affl": "Essendon Bombers",
+   "afl": "Adelaide",
+   "dob": "2008-01-01",
+   "name": "Cody Templeton",
+   "pid": "P0015",
+   "pos1": "SF",
+   "pos2": "MID",
+   "state": "VC",
+   "w1": "50",
+   "w2": "50"
+  },
+  "rd07": {
+   "affl": "Richmond Tigers",
+   "afl": "Essendon",
+   "dob": "2005-04-08",
+   "name": "Boston Dowling",
+   "pos1": "RUCK"
+  },
+  "rd08": {
+   "affl": "Collingwood Magpies",
+   "afl": "Carlton",
+   "dob": "2008-03-23",
+   "name": "Marcus Prasad",
+   "pid": "P0096",
+   "pos1": "SF",
+   "state": "VC"
+  },
+  "rd09": {
+   "affl": "Carlton Blues",
+   "afl": "Geelong",
+   "dob": "2008-07-09",
+   "name": "Max Downes",
+   "pos1": "MID",
+   "pos2": "SF",
+   "w1": "50",
+   "w2": "50"
+  },
+  "rd10": {
+   "affl": "West Coast Eagles",
+   "afl": "Geelong",
+   "dob": "2008-02-08",
+   "name": "Charlie Robbins",
+   "pos1": "MID"
+  },
+  "rd11": {
+   "affl": "Carlton Blues",
+   "afl": "Brisbane",
+   "dob": "2008-10-17",
+   "name": "Kai Parker",
+   "pid": "P0081",
+   "pos1": "SD",
+   "state": "VM"
   }
  },
  "fa": {
   "alex-mirkov": {
    "affl": "Richmond Tigers"
   },
+  "brandon-starcevich": {
+   "affl": "Port Adelaide Power"
+  },
+  "brandon-walker": {
+   "affl": "Port Adelaide Power"
+  },
   "callum-brown-ire": {
    "affl": "Collingwood Magpies"
+  },
+  "cillian-bourke": {
+   "affl": "North Melbourne Kangaroos"
+  },
+  "cillian-burke": {
+   "affl": "Adelaide Crows"
+  },
+  "corey-durdin": {
+   "affl": "Brisbane Lions"
   },
   "corey-wagner": {
    "affl": "Brisbane Lions"
@@ -782,6 +880,12 @@
   "liam-reidy": {
    "affl": "Fremantle Dockers"
   },
+  "liam-ryan": {
+   "affl": "Geelong Cats"
+  },
+  "matt-cottrell": {
+   "affl": "Sydney Swans"
+  },
   "nathan-kreuger": {
    "affl": "North Melbourne Kangaroos"
   },
@@ -789,6 +893,15 @@
    "affl": "Hawthorn Hawks"
   },
   "oscar-berry": {
+   "affl": "Port Adelaide Power"
+  },
+  "oscar-mcdonald": {
+   "affl": "Richmond Tigers"
+  },
+  "paddy-cross": {
+   "affl": "St Kilda Saints"
+  },
+  "patrick-carr": {
    "affl": "Port Adelaide Power"
   },
   "patrick-snell": {

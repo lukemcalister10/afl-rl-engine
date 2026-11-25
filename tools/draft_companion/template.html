@@ -260,8 +260,11 @@ textarea { width: 100%; min-height: 120px; font: 12px ui-monospace, SFMono-Regul
   function slotV0(id, pos, age, pick) {
     const k = kindOf(id);
     if (k === "nd") return natV0(pos, age, pick == null ? numOf(id) : pick);
-    if (k === "rd") return D.rookie[pos];
-    const c = row(id).kind || "UNR"; return c === "IND" ? D.pool_nd65 : D.pathways[c];
+    // NGA players reach a rookie list only by being passed over in the national draft, so their v0 is
+    // never above the last national pick's (owner ruling 2026-11-25). Ireland / Unregistered are not capped.
+    const ngaCap = v => Math.min(v, natV0(pos, age, LAST));
+    if (k === "rd") return row(id).cat === "NGA" ? ngaCap(D.rookie[pos]) : D.rookie[pos];
+    const c = row(id).kind || "UNR"; return c === "IND" ? D.pool_nd65 : c === "PDN" ? ngaCap(D.pathways[c]) : D.pathways[c];
   }
   function weights(r) {
     if (!r.pos1) return null;
